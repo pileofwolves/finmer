@@ -1,0 +1,166 @@
+﻿<UserControl
+    x:Class="Finmer.Views.CombatantListItemView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance vm:CombatParticipantViewModel}"
+    d:DesignHeight="150" d:DesignWidth="240"
+    DataContextChanged="CombatantListItemView_OnDataContextChanged">
+    <UserControl.Resources>
+        <cv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+    </UserControl.Resources>
+    <!-- =================== HEALTH ANIMATIONS =================== -->
+    <UserControl.Triggers>
+        <!-- TAKING DAMAGE -->
+        <EventTrigger RoutedEvent="v:CombatantListItemView.HealthLost">
+            <BeginStoryboard>
+                <Storyboard
+                    Storyboard.TargetName="CombatantHealthBar">
+                    <!-- Shake around some -->
+                    <DoubleAnimationUsingKeyFrames
+                        Storyboard.TargetProperty="RenderTransform.Children[1].X">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.00" Value="0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.04" Value="-5" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.12" Value="5" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.20" Value="-5" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.24" Value="0" />
+                    </DoubleAnimationUsingKeyFrames>
+                    <DoubleAnimationUsingKeyFrames
+                        Storyboard.TargetProperty="RenderTransform.Children[1].Y">
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.02" Value="0" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.06" Value="-6" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.14" Value="6" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.22" Value="-6" />
+                        <LinearDoubleKeyFrame KeyTime="0:0:0.26" Value="0" />
+                    </DoubleAnimationUsingKeyFrames>
+                    <!-- Flash purple -->
+                    <ColorAnimationUsingKeyFrames
+                        Storyboard.TargetProperty="InnerColor">
+                        <LinearColorKeyFrame KeyTime="0:0:0.10" Value="#A06400FF" />
+                        <LinearColorKeyFrame KeyTime="0:0:0.30" Value="{Binding InnerColor}" />
+                    </ColorAnimationUsingKeyFrames>
+                    <ColorAnimationUsingKeyFrames
+                        Storyboard.TargetProperty="OuterColor">
+                        <LinearColorKeyFrame KeyTime="0:0:0.10" Value="#5A2A00FF" />
+                        <LinearColorKeyFrame KeyTime="0:0:0.30" Value="{Binding OuterColor}" />
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+        <!-- HEALING -->
+        <EventTrigger RoutedEvent="v:CombatantListItemView.HealthGained">
+            <BeginStoryboard>
+                <Storyboard
+                    Storyboard.TargetName="CombatantHealthBar"
+                    Storyboard.TargetProperty="InnerColor">
+                    <!-- Flash white -->
+                    <ColorAnimationUsingKeyFrames>
+                        <LinearColorKeyFrame KeyTime="0:0:0.15" Value="White" />
+                        <LinearColorKeyFrame KeyTime="0:0:0.50" Value="{Binding InnerColor}" />
+                    </ColorAnimationUsingKeyFrames>
+                </Storyboard>
+            </BeginStoryboard>
+        </EventTrigger>
+    </UserControl.Triggers>
+    <!-- =================== GENERAL LAYOUT =================== -->
+    <StackPanel
+        Orientation="Vertical">
+        <StackPanel.RenderTransform>
+            <TranslateTransform />
+        </StackPanel.RenderTransform>
+        <!-- =================== LAYOUT ANIMATIONS =================== -->
+        <StackPanel.Style>
+            <Style TargetType="{x:Type StackPanel}">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding IsMyTurn}" Value="True">
+                        <!-- Indentation for active turn -->
+                        <DataTrigger.EnterActions>
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)">
+                                    <DoubleAnimation Duration="0:0:0.3" To="12">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.EnterActions>
+                        <DataTrigger.ExitActions>
+                            <BeginStoryboard>
+                                <Storyboard
+                                    Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)">
+                                    <DoubleAnimation Duration="0:0:0.3" To="0">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseInOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </DataTrigger.ExitActions>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </StackPanel.Style>
+        <!-- =================== COMBATANT DATA =================== -->
+        <Grid HorizontalAlignment="Left">
+            <!-- Turn indicator -->
+            <Rectangle
+                Fill="{StaticResource HighlightBrush}"
+                Visibility="{Binding IsMyTurn, Converter={StaticResource BoolToVisibilityConverter}}"
+                HorizontalAlignment="Left"
+                Width="3">
+                <Rectangle.RenderTransform>
+                    <TranslateTransform X="-8" />
+                </Rectangle.RenderTransform>
+            </Rectangle>
+            <!-- Character name -->
+            <TextBlock
+                Style="{StaticResource TextBlockDefault}"
+                Foreground="{Binding TextColor}"
+                Text="{Binding Text}"
+                HorizontalAlignment="Left" />
+            <!-- Death indicator -->
+            <Rectangle
+                Height="2"
+                Fill="Red"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Center"
+                Width="Auto"
+                Visibility="{Binding IsDead, Converter={StaticResource BoolToVisibilityConverter}}"
+                RenderTransformOrigin="0.5, 0.5">
+                <Rectangle.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform ScaleX="1.15" />
+                        <RotateTransform Angle="-7.5" />
+                    </TransformGroup>
+                </Rectangle.RenderTransform>
+            </Rectangle>
+        </Grid>
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="{Binding Subtext}"
+            Margin="0,-2,0,2" />
+        <v:ColoredBar
+            x:Name="CombatantHealthBar"
+            Width="Auto"
+            Height="28"
+            InnerColor="{Binding InnerColor}"
+            OuterColor="{Binding OuterColor}"
+            Minimum="0"
+            Maximum="{Binding HealthMax}"
+            Value="{Binding Health}">
+            <v:ColoredBar.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform />
+                    <TranslateTransform />
+                </TransformGroup>
+            </v:ColoredBar.RenderTransform>
+        </v:ColoredBar>
+    </StackPanel>
+</UserControl>

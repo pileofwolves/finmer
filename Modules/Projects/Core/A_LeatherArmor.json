@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "228f276d-9d4f-47d6-a879-da7eb5d955b9",
+	"Name": "A_LeatherArmor",
+	"ObjectName": "Leather Tunic",
+	"ObjectAlias": "",
+	"FlavorText": "A tough leather cuirass, fashioned of hardened animal hide. Commonly worn to help shield oneself from the harsh Northern climate.",
+	"ItemType": "Armor",
+	"PurchaseValue": 20,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "420c398d-a6a5-4f14-91a0-25090b2ab513",
+		"Name": "LeatherArmor_UseScript"
+	}
+}

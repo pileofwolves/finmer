@@ -1,0 +1,120 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "ab8156c9-bdce-41a2-be64-2818742cae0b",
+	"Name": "Strings_TownMisc",
+	"Entries": [
+		{
+			"Key": "BRIDGE_BROKEN",
+			"Text": [
+				"Down that way is South Finmer, but the bridge over the river was destroyed. Your task is on this end, not the other."
+			]
+		},
+		{
+			"Key": "BRIDGE_REPAIR_LONG",
+			"Text": [
+				"It looks like the repair crew got their paws on the required materials, but they're only just getting started with the emergency repairs. It's going to take some time."
+			]
+		},
+		{
+			"Key": "BRIDGE_REPAIR_SHORT",
+			"Text": [
+				"It looks like they're almost done rebuilding the bridge! The overall structure is all done, this time using a bunch more reinforcements and solid architecture than before. It shouldn't be much longer before they give the all-clear."
+			]
+		},
+		{
+			"Key": "NOTICE__BEGIN",
+			"Text": [
+				"The notice reads:"
+			]
+		},
+		{
+			"Key": "NOTICE__MEME",
+			"Text": [
+				"You have absolutely no idea what that gibberish means."
+			]
+		},
+		{
+			"Key": "NOTICE_CHANGELOG",
+			"Text": [
+				"Update 1\\n* Adds the Club to North Finmer\\n* Adds or improves disposal scenes for most characters\\n* Lots of bug fixes\\n\\nDemo\\n* Initial release.\\n\\n\"If you have any questions, bug reports, suggestions, or just want to get in touch, you can find me as 'nuntis' on FurAffinity.\""
+			]
+		},
+		{
+			"Key": "NOTICE_SQ02_KICKOFF",
+			"Text": [
+				"\"To any able-bodied folk: the beast that terrorizes the nearby forest is getting out of hand. Scouts (not all of which have returned) have reported this concerns a dire wolf specifically; a monstrous predator that is significantly larger than its normal brethren.\\n\\nAs part of protecting our community, livestock and livelihood, this monster must be slain. Anyone demonstrating proof of the beast's demise to me personally shall be rewarded handsomely.\\n\\nSigned, Mayor Canbell of North Finmer\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_BOUGHT",
+			"Text": [
+				"\"Thank you for your continued patronage.\"",
+				"\"You've received quite a bargain. I can expect to make no profit off the deal.\"",
+				"\"Thank you kindly!\"",
+				"\"Thank you. Can I do anything else for you?\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_BUY",
+			"Text": [
+				"\"For that {{item}}, I ask only {{item.value}} coins.\"",
+				"\"For you, friend, that'll be {{item.value}} coins.\"",
+				"\"How does {{item.value}} coins sound for that?\"",
+				"\"A fine choice. What do you say to {{item.value}} coins?\"",
+				"\"A {{item}}, of course. How's {{item.value}} coins?\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_CANNOT_AFFORD",
+			"Text": [
+				"\"Sorry, friend, it looks like you're a little light there.\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_CANNOT_SELL",
+			"Text": [
+				"\"Oh, no, I can't buy that {{item}}. Sorry.\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_HELLO",
+			"Text": [
+				"\"How may I help?\"",
+				"\"What can I do for you?\"",
+				"\"What'll it be?\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_SELL",
+			"Text": [
+				"\"Hmm, for your {{item}}, how about this?\"",
+				"\"Would this be an acceptable offer?\""
+			]
+		},
+		{
+			"Key": "SHOP_GENERIC_SOLD",
+			"Text": [
+				"\"Thank you for your continued patronage.\"",
+				"\"You've received quite a bargain. I can expect to make no profit off the deal.\"",
+				"\"Thank you kindly!\"",
+				"\"Thank you. Can I do anything else for you?\""
+			]
+		},
+		{
+			"Key": "TOWN_NIGHTLOCK",
+			"Text": [
+				"The door is locked. You should probably come back later.",
+				"The door is shut and won't budge. Turns out people sleep at night.",
+				"It's locked up for the night. Looks like you'll have to come back later."
+			]
+		},
+		{
+			"Key": "TOWN_NOTICE_OPEN",
+			"Text": [
+				"Sticking your paws in your sides, you glance over the posted notices.",
+				"Crossing your arms, you gloss over the posted notices.",
+				"You carefully peer at the posted notices on the board."
+			]
+		}
+	]
+}

@@ -1,0 +1,113 @@
+﻿<vb:CharCreateViewBase
+    x:Class="Finmer.Views.CharCreateAbility"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="600"
+    Loaded="CharCreateViewBase_Loaded">
+    <UserControl.Resources>
+        <!-- Collection of ability scores implemented in the game -->
+        <vm:AbilityPointCollectionViewModel x:Key="AbilityCollection">
+            <vm:AbilityPointViewModel
+                Name="Strength"
+                Description="Physical prowess. Improves offense and predation prowess." />
+            <vm:AbilityPointViewModel
+                Name="Agility"
+                Description="Quickness. Improves dodging and resisting predation." />
+            <vm:AbilityPointViewModel
+                Name="Body"
+                Description="Physical fortitude. Each Body point grants one Health point." />
+            <vm:AbilityPointViewModel
+                Name="Wits"
+                Description="Mental prowess. Affects conversation and perception." />
+        </vm:AbilityPointCollectionViewModel>
+    </UserControl.Resources>
+    <StackPanel
+        Width="500"
+        HorizontalAlignment="Center"
+        Margin="20"
+        Orientation="Vertical">
+
+        <!-- Page headers -->
+        <TextBlock
+            Style="{StaticResource TextBlockLarge}"
+            Text="Ability Points (2/2)"
+            HorizontalAlignment="Center" />
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="You get more later by leveling up."
+            Margin="0,0,0,30"
+            HorizontalAlignment="Center" />
+
+        <!-- Remaining points -->
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="{Binding PointsLeftText}"
+            Margin="0,0,0,24" />
+
+        <!-- Abilities list -->
+        <StackPanel Orientation="Vertical">
+            <ItemsControl
+                ItemsSource="{StaticResource AbilityCollection}">
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate DataType="{x:Type vm:AbilityPointViewModel}">
+                        <Grid Margin="0,0,0,16">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="Auto" />
+                            </Grid.ColumnDefinitions>
+
+                            <StackPanel Grid.Column="0" Orientation="Vertical">
+                                <TextBlock
+                                    Style="{StaticResource TextBlockDefault}"
+                                    Text="{Binding Name}" />
+                                <TextBlock
+                                    Style="{StaticResource TextBlockSubtle}"
+                                    TextWrapping="Wrap"
+                                    Text="{Binding Description}" />
+                            </StackPanel>
+
+                            <StackPanel
+                                Grid.Column="1"
+                                Orientation="Horizontal">
+                                <StackPanel.Resources>
+                                    <Style
+                                        TargetType="{x:Type Button}"
+                                        BasedOn="{StaticResource {x:Type Button}}">
+                                        <Setter Property="Width" Value="32" />
+                                        <Setter Property="Height" Value="32" />
+                                    </Style>
+                                </StackPanel.Resources>
+                                <Button
+                                    Command="{Binding DecrementCommand}"
+                                    Content="-" />
+                                <TextBlock
+                                    Style="{StaticResource TextBlockLarge}"
+                                    Text="{Binding Value}"
+                                    VerticalAlignment="Center"
+                                    Margin="10"
+                                    Width="20"
+                                    FontWeight="Bold"
+                                    TextAlignment="Center" />
+                                <Button
+                                    Command="{Binding IncrementCommand}"
+                                    Content="+" />
+                            </StackPanel>
+                        </Grid>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </StackPanel>
+
+        <Button
+            Margin="10"
+            Width="110"
+            Height="40"
+            Content="Randomize"
+            Click="ButtonRandomize_Click" />
+    </StackPanel>
+</vb:CharCreateViewBase>

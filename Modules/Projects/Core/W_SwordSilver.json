@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "94e9a105-0898-4bf3-847b-0bca6434be89",
+	"Name": "W_SwordSilver",
+	"ObjectName": "Silver Sword",
+	"ObjectAlias": "sword",
+	"FlavorText": "While sharing its overall design with the steel longsword, a silver alloy is used instead for the blade, making it much lighter to handle. It is said that silver can cut through magic and certain monsters in a way that steel cannot.",
+	"ItemType": "Weapon",
+	"PurchaseValue": 55,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "271ca648-3625-422e-aaa0-c7bdc25f9a90",
+		"Name": "94e9a105-0898-4bf3-847b-0bca6434be89_UseScript"
+	}
+}

@@ -1,0 +1,17 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "70bdfecc-1366-4245-8e7a-07cc105230a4",
+	"Name": "CR_Test_MedOpponent",
+	"ObjectName": "Medium Opponent",
+	"ObjectAlias": "",
+	"Strength": 6,
+	"Agility": 6,
+	"Body": 6,
+	"Wits": 6,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": false,
+	"StringMappings": []
+}

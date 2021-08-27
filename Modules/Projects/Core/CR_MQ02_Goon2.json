@@ -1,0 +1,17 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "35013658-0d1f-4f8f-9fe9-5619f8d76676",
+	"Name": "CR_MQ02_Goon2",
+	"ObjectName": "Panther",
+	"ObjectAlias": "the panther",
+	"Strength": 1,
+	"Agility": 1,
+	"Body": 1,
+	"Wits": 1,
+	"Flags": 0,
+	"Level": 1,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": false,
+	"StringMappings": []
+}

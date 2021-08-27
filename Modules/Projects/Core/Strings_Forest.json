@@ -1,0 +1,98 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "173a4e95-0687-4f5d-b72e-485765819701",
+	"Name": "Strings_Forest",
+	"Entries": [
+		{
+			"Key": "FOREST_CLEARING_SAVEPOINT",
+			"Text": [
+				"You wake up and get up from the forest floor with a yawn and a stretch, and begin tearing down the little makeshift camp. Around you the endless expanse of trees still awaits."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE",
+			"Text": [
+				"You reach the familiar cottage again. The clearing greets you with a calming rustling of greenery. Past the cabin, further to the east, the expanse of pine trees begins, skylight filtering through the leaves."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE_ENTER",
+			"Text": [
+				"You step inside the lonely yet homely-looking cottage. The interior isn't that big - there's a fireplace, a couch with a bookshelf next to it, and a table with chairs. Off to the side, there are two doors."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE_ENTER_DEAD",
+			"Text": [
+				"Of course, considering your efforts in dispatching the local inhabitant earlier, nobody's here to greet you."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE_FIRST",
+			"Text": [
+				"The winding road leads to the forest edge, and ends right next to a cozy-looking wooden hut that's settled neatly next to the untamed woods. This must be where the carpenter you were told about lives. It's a rather picturesque place - living here must be beautiful in its own right, if a bit isolated from society. Past the cabin, further to the east, the expanse of pine trees begins, skylight filtering through the leaves to create an inviting scenery."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE_OLIVER_HELLO",
+			"Text": [
+				"Oliver notices you entering and waves cheerfully, then continues what he was doing.",
+				"The lion carpenter nods as he sees your approach, looking at you expectantly.",
+				"\"Hello, dear %species! How's the world out there?\" Oliver exclaims from the couch, looking up from his book."
+			]
+		},
+		{
+			"Key": "FOREST_COTTAGE_SQ03_HANDIN",
+			"Text": [
+				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, %name! You have no idea how much this means to me!\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
+			]
+		},
+		{
+			"Key": "FOREST_ENTRY",
+			"Text": [
+				"As you wander off into the woods, the vast expanse of trees quickly takes over the immediate surroundings, and it becomes quite difficult to discern where exactly you're going."
+			]
+		},
+		{
+			"Key": "FOREST_EXIT",
+			"Text": [
+				"By some stroke of luck, or a good sense of direction, you reach the edge of the forest.",
+				"Just ahead of you, you see the trees clearing away to reveal the cozy cottage you passed earlier."
+			]
+		},
+		{
+			"Key": "FOREST_NO_EVENT_DAY",
+			"Text": [
+				"A loud crack beneath your feet startles you, but it was just a twig. Hopefully nobody else heard that.",
+				"You wander through the serene environment, dried leaves crunching under your feet.",
+				"You thought you heard a noise behind you, but when you turn to look, nothing's there. Odd.",
+				"You walk straight ahead for a while, but there's little happening to indicate your progress - your surroundings look virtually identical.",
+				"Several stray rays of sunlight make it through the leafy canopy above you, creating quite the idyllic picture as they illuminate random spots on the forest floor.",
+				"The chirping of a few birds brings some life to the atmospheric scene surrounding you."
+			]
+		},
+		{
+			"Key": "FOREST_NO_EVENT_NIGHT",
+			"Text": [
+				"A loud crack beneath your feet startles you, but it was just a twig. Hopefully nobody else heard that.",
+				"You wander through the serene environment, dried leaves crunching under your feet.",
+				"You thought you heard a noise behind you, but when you turn to look, nothing's there. Odd.",
+				"You walk straight ahead for a while, but there's little happening to indicate your progress - your surroundings look virtually identical.",
+				"Several stray rays of moonlight make it through the leafy canopy above you, creating quite the idyllic picture as they illuminate random spots on the forest floor.",
+				"An owl ominously hoots nearby, though you can't really tell where exactly the sound came from."
+			]
+		},
+		{
+			"Key": "FOREST_SLEEP",
+			"Text": [
+				"You decide to camp it out for the time being, and make yourself comfortable on the ground..."
+			]
+		},
+		{
+			"Key": "FOREST_SLEEP_WAKEUP",
+			"Text": [
+				"Several hours later, you awaken, feeling refreshed."
+			]
+		}
+	]
+}

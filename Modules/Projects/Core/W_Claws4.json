@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "9bf144ad-b9df-4b79-806c-d569849bc850",
+	"Name": "W_Claws4",
+	"ObjectName": "Claws",
+	"ObjectAlias": "claws",
+	"FlavorText": "",
+	"ItemType": "Weapon",
+	"PurchaseValue": 0,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "883b0f5f-cf99-4051-ad4a-9361c7f63e41",
+		"Name": "9bf144ad-b9df-4b79-806c-d569849bc850_UseScript"
+	}
+}

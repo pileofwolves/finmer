@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="Finmer.Views.NewGamePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="800">
+    <Grid>
+        <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center">
+            <TextBlock Style="{StaticResource TextBlockLargest}" Text="Create a Character" HorizontalAlignment="Center" />
+            <v:CarouselView Margin="0,20,0,0" MaxWidth="600" x:Name="NewGameCarousel" />
+        </StackPanel>
+        <!--<Grid Width="400" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Bottom">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="Auto" />
+            </Grid.ColumnDefinitions>
+        </Grid>-->
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="20">
+            <StackPanel.Resources>
+                <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="8,4,8,4" />
+                    <Setter Property="Width" Value="150" />
+                    <Setter Property="Height" Value="40" />
+                </Style>
+            </StackPanel.Resources>
+            <Button x:Name="BackButton" Content="Back" Click="BackButton_Click" />
+            <Button x:Name="NextButton" Content="Next" Click="NextButton_Click" IsEnabled="{Binding CanGoNext}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

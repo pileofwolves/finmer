@@ -1,0 +1,44 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "b74ebcf9-e9d5-4e01-8877-902dbd3006c8",
+	"Name": "CR_Town_Foxtaur",
+	"ObjectName": "Foxtaur",
+	"ObjectAlias": "the taur",
+	"Strength": 3,
+	"Agility": -3,
+	"Body": 4,
+	"Wits": 0,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Large",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "SELF",
+			"NewValue": "INN_FOXTAUR_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "SELF",
+			"NewValue": "INN_FOXTAUR_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "KILL_GENERIC_POV",
+			"Rule": "SELF",
+			"NewValue": "INN_FOXTAUR_KILL_GENERIC_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PLAYER",
+			"NewValue": "INN_FOXTAUR_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PLAYER",
+			"NewValue": "INN_FOXTAUR_KILL_GENERIC"
+		}
+	]
+}

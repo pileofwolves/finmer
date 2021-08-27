@@ -1,0 +1,176 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "885b2cbf-be29-4fee-b085-5977cd6a4cf7",
+	"Name": "Scene_TownSmithy",
+	"ScriptCustom": {
+		"ID": "8fc8f2c9-3b4a-4f1b-b4a8-17e95e3b6e97",
+		"Name": "Scene_TownSmithy_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "3164f09c-684b-4cdd-baaa-0e1a7c77d392",
+		"Name": "Scene_TownSmithy_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "5d08dc95-bf03-4703-ace1-908bccb3e573",
+		"Name": "885b2cbf-be29-4fee-b085-5977cd6a4cf7_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Leave the busy fellow to his work.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Browse",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Browse",
+						"Tooltip": "Have a look at what's in stock.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "local shop = Shop(\"TownSmithy\")\r\nshop.Title = \"North Finmer Smithy\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 48\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"A_LeatherArmor\"), math.random(1, 2))\r\n    shop:AddItem(Item(\"W_Dagger\"), math.random(1, 4))\r\n    shop:AddItem(Item(\"W_SwordSteel\"), math.random(1, 2))\r\n    if math.random(0, 1) == 1 then\r\n        shop:AddItem(Item(\"W_SwordSilver\"), 1)\r\n    end\r\nend\r\nshop:Show()\r\nshop:Save()",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "AutoLink",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Main",
+								"Children": []
+							}
+						]
+					},
+					{
+						"Key": "Work",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Work",
+						"Tooltip": "Ask the fox if she knows any leads for work.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return not Storage.GetFlag(\"town_hall_open\")",
+						"Children": [
+							{
+								"Key": "WorkResponse",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"town_smithy_work\")\r\nStorage.SetFlag(\"town_hall_open\", true)\r\nJournal.Update(\"MQ01\", 20)",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "WorkExit",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "Thank her for the information.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Log(\"town_smithy_work2\")",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Chat",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Chat",
+						"Tooltip": "Talk for a spell.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "ChatMQ02",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.SetFlag(\"town_smithy_chat_mq02\", true)\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02_ALT\")\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02\")\r\nend",
+								"ScriptAppear": "return Storage.GetFlag(\"mq02_done\") and not Storage.GetFlag(\"town_smithy_chat_mq02\")",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Chat_Exit",
+										"Children": []
+									}
+								]
+							},
+							{
+								"Key": "ChatGeneral",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Chat_Exit",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

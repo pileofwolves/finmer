@@ -1,0 +1,178 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "ab250357-19c3-4e27-9c8f-505e01f329af",
+	"Name": "Scene_Intro",
+	"ScriptCustom": {
+		"ID": "86c336d1-a308-4fbb-a7a8-af37c1839df1",
+		"Name": "ab250357-19c3-4e27-9c8f-505e01f329af_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "79909545-9e8e-4719-80ad-bccba2e69d02",
+		"Name": "Scene_Intro_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "ac78344e-d5a8-4a74-9dd4-cbe583d7f5b5",
+		"Name": "ab250357-19c3-4e27-9c8f-505e01f329af_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Start",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "--SetScene(\"Scene_TownInn\")\r\n\r\n\r\nSetInventoryEnabled(false)\r\nLog(\"welcome\", Color.Gray)\r\nLog(\"tutorialprompt\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "TutSkip",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Nah, I'm good",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "BeginGame()",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "TutStart",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Yes please!",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_Tutorial\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "DBGROOT",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "DEBUG MENU",
+						"Tooltip": "Here be dragons",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return IsDebugMode()",
+						"Children": [
+							{
+								"Key": "DBGROOT_ACT",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "DBG_SHOP",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Shop test",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.StringGroup = \"shoptxt_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "DBGROOT_ACT",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "DBG2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Go to Inn",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"town_first\", true)\r\nSetScene(\"Scene_TownInn\")",
+										"ScriptAppear": "",
+										"Children": []
+									},
+									{
+										"Key": "DBG3",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Go to MQ02 RoadEnc",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
+										"ScriptAppear": "",
+										"Children": []
+									},
+									{
+										"Key": "DBG4",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Go to MQ02 Chase Event",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_done\", true)\r\nSetScene(\"Scene_TownMarket\")",
+										"ScriptAppear": "",
+										"Children": []
+									},
+									{
+										"Key": "DBG6",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Go to Forest Edge (SQ02)",
+										"Tooltip": "Also begins SQ02",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
+										"ScriptAppear": "",
+										"Children": []
+									},
+									{
+										"Key": "DBG7",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Combat Exit Test",
+										"Tooltip": "Test fix for crash after leaving endo pred",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\n\r\n-- This tests that CombatManager.InterruptCombat no longer corrupts global state when reverting to SceneScripted DURING a combat callback\r\n\r\nlocal wuff = Creature(\"SQ02_Wolf_OV\")\r\nwuff.StomachDigest = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_VORE_HIT_POV\")\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\n\r\nlocal rounds = 0\r\nCombat.AddCombatant(wuff)\r\nCombat.SetVored(wuff, Player, true)\r\nCombat.OnRoundEnd(function()\r\n    -- end combat after x rounds, by transferring to a different scene\r\n    rounds = rounds + 1\r\n    if (rounds >= 1) then\r\n        Combat.Interrupt()\r\n    end\r\nend)\r\nCombat.Begin()\r\n\r\nLogRaw(\"omg it didn't crash\")\r\nSleep(2)\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")",
+										"ScriptAppear": "",
+										"Children": []
+									},
+									{
+										"Key": "DBG8",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Go to Pit",
+										"Tooltip": "Level 3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"town_pit_unlocked\", true)\r\nSetScene(\"Scene_TownPit\")",
+										"ScriptAppear": "",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

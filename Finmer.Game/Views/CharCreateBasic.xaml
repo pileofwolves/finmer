@@ -1,0 +1,58 @@
+﻿<vb:CharCreateViewBase
+    x:Class="Finmer.Views.CharCreateBasic"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="600" Loaded="CharCreateViewBase_Loaded">
+    <StackPanel Width="400" HorizontalAlignment="Center" Margin="20" Orientation="Vertical">
+        <TextBlock Style="{StaticResource TextBlockLarge}" Text="Basics (1/2)" HorizontalAlignment="Center" />
+        <TextBlock Style="{StaticResource TextBlockSubtle}" Text="Let's get acquainted." Margin="0,0,0,30" HorizontalAlignment="Center" />
+
+        <TextBlock Style="{StaticResource TextBlockDefault}" Text="Name:" />
+        <TextBlock Style="{StaticResource TextBlockSubtle}" Text="For best results, use a short name, like a nickname." />
+        <TextBox MaxLength="30" x:Name="txtName" TextChanged="txtName_TextChanged" />
+
+        <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Species:" />
+        <TextBlock Style="{StaticResource TextBlockSubtle}"
+            Text="Focused mostly on furries right now." />
+        <!--<TextBox MaxLength="20" CharacterCasing="Lower" Text="{Binding Species, Mode=TwoWay}" />-->
+        <ComboBox x:Name="cmbSpecies" SelectionChanged="cmbSpecies_SelectionChanged" SelectedValuePath="Content" IsEditable="False">
+            <ComboBoxItem Content="bear" />
+            <ComboBoxItem Content="cat" />
+            <ComboBoxItem Content="cheetah" />
+            <ComboBoxItem Content="dog" />
+            <ComboBoxItem Content="fennec" />
+            <ComboBoxItem Content="fox" />
+            <ComboBoxItem Content="goat" />
+            <ComboBoxItem Content="husky" />
+            <ComboBoxItem Content="horse" />
+            <ComboBoxItem Content="hyena" />
+            <ComboBoxItem Content="jackal" />
+            <ComboBoxItem Content="jaguar" />
+            <ComboBoxItem Content="leopard" />
+            <ComboBoxItem Content="lion" />
+            <ComboBoxItem Content="mouse" />
+            <ComboBoxItem Content="otter" />
+            <ComboBoxItem Content="panda" />
+            <ComboBoxItem Content="panther" />
+            <ComboBoxItem Content="possum" />
+            <ComboBoxItem Content="rabbit" />
+            <ComboBoxItem Content="raccoon" />
+            <ComboBoxItem Content="ram" />
+            <ComboBoxItem Content="rat" />
+            <ComboBoxItem Content="sergal" />
+            <ComboBoxItem Content="shepherd" />
+            <ComboBoxItem Content="tiger" />
+            <ComboBoxItem Content="wolf" />
+        </ComboBox>
+
+        <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Sex:" />
+        <TextBlock Style="{StaticResource TextBlockSubtle}"
+            Text="Mostly aesthetic (pronouns etc.) but can affect dialogue." />
+        <RadioButton x:Name="optGenderMale" IsChecked="True" Checked="optGender_Checked">Male</RadioButton>
+        <RadioButton x:Name="optGenderFemale" Checked="optGender_Checked">Female</RadioButton>
+    </StackPanel>
+</vb:CharCreateViewBase>

@@ -1,0 +1,441 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{D68AF111-EC73-465E-BB30-F661238A0858}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Finmer</RootNamespace>
+    <AssemblyName>Finmer</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+    <LangVersion>7.3</LangVersion>
+    <AllowUnsafeBlocks>false</AllowUnsafeBlocks>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FinmerIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Converters\HourToClockAngleConverter.cs" />
+    <Compile Include="Converters\CountToListConverter.cs" />
+    <Compile Include="Converters\QuantityToVisibilityConverter.cs" />
+    <Compile Include="Converters\DieFaceToImageConverter.cs" />
+    <Compile Include="Gameplay\Buff.cs" />
+    <Compile Include="Gameplay\Character.cs" />
+    <Compile Include="Gameplay\Combat\CombatCallbacks.cs" />
+    <Compile Include="Gameplay\Combat\CombatDisplay.cs" />
+    <Compile Include="Gameplay\Combat\CombatLogic.cs" />
+    <Compile Include="Gameplay\Combat\CombatSession.cs" />
+    <Compile Include="Gameplay\Combat\EDieFace.cs" />
+    <Compile Include="Gameplay\Combat\Participant.cs" />
+    <Compile Include="Gameplay\CompassDirection.cs" />
+    <Compile Include="Gameplay\GameSession.cs" />
+    <Compile Include="Gameplay\Gender.cs" />
+    <Compile Include="Gameplay\Journal.cs" />
+    <Compile Include="Gameplay\SceneCombat2.cs" />
+    <Compile Include="Gameplay\Scripting\Combat2ScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\GameplayScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\LuaUtils.cs" />
+    <Compile Include="Gameplay\Scripting\SaveDataScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\GrammarScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\ScriptCallbackTable.cs" />
+    <Compile Include="Gameplay\Scripting\ScriptCompiler.cs" />
+    <Compile Include="Gameplay\Scripting\ScriptException.cs" />
+    <Compile Include="Gameplay\Scripting\UIScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\GlobalScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\LuaApi.cs" />
+    <Compile Include="Gameplay\ScriptableObject.cs" />
+    <Compile Include="Gameplay\Scripting\ScriptContext.cs" />
+    <Compile Include="Gameplay\ShopState.cs" />
+    <Compile Include="Gameplay\TextAttributes.cs" />
+    <Compile Include="Gameplay\TextParser.cs" />
+    <Compile Include="Models\LogMessageModel.cs" />
+    <Compile Include="Models\ChoiceButtonModel.cs" />
+    <Compile Include="Models\GameUI.cs" />
+    <Compile Include="Properties\AssemblyVersion.cs" />
+    <Compile Include="Utility\Extensions.cs" />
+    <Compile Include="Utility\RelayCommand.cs" />
+    <Compile Include="Models\UserConfig.cs" />
+    <Compile Include="ViewModels\AbilityPointViewModel.cs" />
+    <Compile Include="ViewModels\BaseProp.cs" />
+    <Compile Include="ViewModels\CombatRoundPipsViewModel.cs" />
+    <Compile Include="ViewModels\CombatStateViewModel.cs" />
+    <Compile Include="ViewModels\GameObjectViewModel.cs" />
+    <Compile Include="ViewModels\CharacterViewModel.cs" />
+    <Compile Include="ViewModels\CombatResolveViewModel.cs" />
+    <Compile Include="ViewModels\CombatResolveParticipantViewModel.cs" />
+    <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\UserConfigViewModel.cs" />
+    <Compile Include="ViewModels\CompassGridViewModel.cs" />
+    <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
+    <Compile Include="Views\Base\CharCreateViewBase.cs" />
+    <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
+    <Compile Include="Views\CarouselView.xaml.cs">
+      <DependentUpon>CarouselView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharCreateAbility.xaml.cs">
+      <DependentUpon>CharCreateAbility.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharCreateBasic.xaml.cs">
+      <DependentUpon>CharCreateBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharSheetPage.xaml.cs">
+      <DependentUpon>CharSheetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\StringCapFirstConverter.cs" />
+    <Compile Include="Gameplay\GameController.cs" />
+    <Compile Include="Gameplay\GameObject.cs" />
+    <Compile Include="Gameplay\Item.cs" />
+    <Compile Include="Gameplay\Logger.cs" />
+    <Compile Include="Views\ChoicePanelView.xaml.cs">
+      <DependentUpon>ChoicePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClockWidgetView.xaml.cs">
+      <DependentUpon>ClockWidgetView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatantListItemView.xaml.cs">
+      <DependentUpon>CombatantListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatantPanelView.xaml.cs">
+      <DependentUpon>CombatantPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatResolveDiceTrackView.xaml.cs">
+      <DependentUpon>CombatResolveDiceTrackView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatResolveParticipantView.xaml.cs">
+      <DependentUpon>CombatResolveParticipantView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatResolvePanelView.xaml.cs">
+      <DependentUpon>CombatResolvePanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CombatRoundPipsView.xaml.cs">
+      <DependentUpon>CombatRoundPipsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompassGridView.xaml.cs">
+      <DependentUpon>CompassGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GameOverPanelView.xaml.cs">
+      <DependentUpon>GameOverPanelView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemBoxView.xaml.cs">
+      <DependentUpon>ItemBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\JournalListItemView.xaml.cs">
+      <DependentUpon>JournalListItemView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemIconView.xaml.cs">
+      <DependentUpon>ItemIconView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemShopListView.xaml.cs">
+      <DependentUpon>ItemShopListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemListView.xaml.cs">
+      <DependentUpon>ItemListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ItemTooltipView.xaml.cs">
+      <DependentUpon>ItemTooltipView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gameplay\ContentLoader.cs" />
+    <Compile Include="Views\LoadingPage.xaml.cs">
+      <DependentUpon>LoadingPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogView.xaml.cs">
+      <DependentUpon>LogView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MainPage.xaml.cs">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Utility\ENavigatorAnimation.cs" />
+    <Compile Include="Views\NewGamePage.xaml.cs">
+      <DependentUpon>NewGamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Gameplay\Player.cs" />
+    <Compile Include="Gameplay\SaveManager.cs" />
+    <Compile Include="Gameplay\Scene.cs" />
+    <Compile Include="Gameplay\SceneScripted.cs" />
+    <Compile Include="Gameplay\ScriptAttribute.cs" />
+    <Compile Include="Utility\Theme.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Views\OptionsPage.xaml.cs">
+      <DependentUpon>OptionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SaveGamePage.xaml.cs">
+      <DependentUpon>SaveGamePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ScrollViewerBehavior.cs" />
+    <Compile Include="Views\ShopPage.xaml.cs">
+      <DependentUpon>ShopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\WelcomePage.xaml.cs">
+      <DependentUpon>WelcomePage.xaml</DependentUpon>
+    </Compile>
+    <DesignData Include="Models\DesignData\SamplePlayer.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </DesignData>
+    <DesignData Include="Models\DesignData\SampleCharCreateAbility.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </DesignData>
+    <Page Include="Views\CarouselView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharCreateAbility.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CharCreateBasic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharSheetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ChoicePanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClockWidgetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ColoredBar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatantListItemView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatantPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatResolveDiceTrackView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatResolveParticipantView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatResolvePanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CombatRoundPipsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CompassGridView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\GameOverPanelView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JournalListItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ItemIconView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemShopListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\ItemListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ItemTooltipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoadingPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LogView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewGamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\OptionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveGamePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShopPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\WelcomePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Resource Include="Colors.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+    <Page Include="Views\MainPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Views\ColoredBar.xaml.cs">
+      <DependentUpon>ColoredBar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Resource Include="Theme.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Resource>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Finmer.Core\Finmer.Core.csproj">
+      <Project>{57108665-EC8F-495A-B060-667CF8A3D069}</Project>
+      <Name>Finmer.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="FinmerIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice\Attack1.png" />
+    <Resource Include="Resources\Dice\Attack2.png" />
+    <Resource Include="Resources\Dice\Defense1.png" />
+    <Resource Include="Resources\Dice\Defense2.png" />
+    <Resource Include="Resources\Dice\Empty.png" />
+    <Resource Include="Resources\Dice\Grapple.png" />
+    <Resource Include="Resources\Dice\VoreStruggle.png" />
+    <Resource Include="Resources\Dice\VoreSwallow.png" />
+    <Resource Include="Resources\UI\Clock.png" />
+    <Resource Include="Resources\UI\LoadingSpinner.png" />
+    <Resource Include="Resources\UI\MissingItemIcon.png" />
+    <Resource Include="Resources\UI\Money.png" />
+    <Resource Include="Resources\UI\StatDefense.png" />
+    <Resource Include="Resources\UI\StatInventory.png" />
+    <Resource Include="Resources\UI\StatOffense.png" />
+    <Resource Include="Resources\UI\StatPrimary.png" />
+    <Resource Include="Resources\UI\StatVore.png" />
+    <Resource Include="Resources\UI\RoundPipAlly.png" />
+    <Resource Include="Resources\UI\RoundPipEnemy.png" />
+  </ItemGroup>
+  <PropertyGroup>
+    <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
+    <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>xcopy /S /Y $(SolutionDir)External\lua\bin\$(ConfigurationName) $(TargetDir)
+xcopy /S /Y $(SolutionDir)External\lua\bin\$(ConfigurationName) $(TargetDir)</PostBuildEvent>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>
+    </PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

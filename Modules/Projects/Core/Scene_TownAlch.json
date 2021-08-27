@@ -1,0 +1,690 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "997b304e-0de9-407b-9600-a3b796cbabe2",
+	"Name": "Scene_TownAlch",
+	"ScriptCustom": {
+		"ID": "df843c61-bcd5-444f-bf52-a92282fb1e33",
+		"Name": "Scene_TownAlch_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "536e3639-b0a6-4442-9e21-c9a59f810f7f",
+		"Name": "Scene_TownAlch_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "2257a6cc-d2cb-4fcb-bca2-ca31ea21b350",
+		"Name": "997b304e-0de9-407b-9600-a3b796cbabe2_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Abandoned",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "if Storage.GetFlag(\"town_alch_stolen\") then\r\n    -- this is not the player's first visit to the now-empty place\r\n    Log(\"town_alch_abandoned\")\r\nelse\r\n    Sleep(3)\r\n    Storage.SetFlag(\"town_alch_stolen\", true)\r\n    Log(\"SQ01_STEAL_AFTER_DEATH\")\r\n    Player:GiveItem(\"U_PotionHeal1\", false) -- looks dumb\r\n    Player:GiveItem(\"U_PotionHeal1\", true)\r\n    Player:GiveItem(\"SQ01_AlchSupplies\", true)\r\n    Player:GiveItem(\"I_Amber01\", true)\r\nend",
+				"ScriptAppear": "return Storage.GetFlag(\"town_alch_dead\")",
+				"Children": [
+					{
+						"Key": "Unnamed",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "Unnamed",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Exit",
+						"Children": []
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Exit",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Browse",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Browse",
+						"Tooltip": "Have a look at the wares on display.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "local shop = Shop(\"Alchemist\")\r\nshop.Title = \"Jar'la's Solutions\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Shop",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Main",
+								"Children": []
+							}
+						]
+					},
+					{
+						"Key": "Q01_Intro1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Book",
+						"Tooltip": "Ask about the book he was just reading.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 0",
+						"Children": [
+							{
+								"Key": "Q01_Info1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"sq01_intro\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Q01_Reject1",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Back",
+										"Tooltip": "Change the subject.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Q01_Rejected1",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"sq01_rejected\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Exit",
+														"Children": []
+													},
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Browse",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Q01_OfferHelp",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Offer Help",
+										"Tooltip": "Say that you would be willing to help him.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Q01_Info2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"sq01_confirm\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Q01_Reject2",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Back Out",
+														"Tooltip": "Say that you can't really help him there.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Q01_Rejected2",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"sq01_rejected_alt\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Exit",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Browse",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Q01_BeNosy",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Investigate",
+														"Tooltip": "Ask him why he would need such a thing.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Storage.GetNumber(\"sq01_nosy\") == 0",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Q01_InvestigReply",
+																"Children": []
+															}
+														]
+													},
+													{
+														"Key": "Q01_BeReallyNosy",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Investigate",
+														"Tooltip": "Press him futher...",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Storage.GetNumber(\"sq01_nosy\") > 0",
+														"Children": [
+															{
+																"Key": "Q01_TooNosy",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"sq01_ask_why\" .. Storage.GetNumber(\"sq01_nosy\") + 1)",
+																"ScriptAppear": "-- player won't stop asking...\r\nreturn Storage.GetNumber(\"sq01_nosy\") >= 4",
+																"Children": [
+																	{
+																		"Key": "Q01_BeginFight",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Uh-oh...",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "-- start a fight with the alchemist\r\ncombatant = Creature(\"SQ01_Alchemist\")\r\nCombat.AddCombatant(combatant)\r\nCombat.OnCombatEnd(function()\r\n    Storage.SetFlag(\"town_alch_dead\", true)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(combatant)\r\n    PostVore(\"SQ01_POSTVORE_SCAT_POV\")\r\nend)\r\nCombat.OnPlayerDigested(function()\r\n    PostVore(\"SQ01_POSTVORE_SCAT_POV\")\r\nend)\r\nCombat.Begin()",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "FightWon_AteGuy",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "--Log(\"SQ01_ALCH_GOT_DIGESTED\")",
+																				"ScriptAppear": "return combatant:IsEatenBy(Player)",
+																				"Children": [
+																					{
+																						"Key": "FightWon_C_SleepOff",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Sleep Off",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "FightWon_R_SleepOff",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "FoodComa()\r\nPostVore(\"SQ01_POSTVORE_SCAT\", \"SQ01_POSTVORE_NOSCAT\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "FightWon_C_ToAbandon",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Continue",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "AutoLink",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Abandoned",
+																												"Children": []
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"Key": "FightWon_KilledGuy",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "--Log(\"SQ01_ALCH_GOT_KILLED\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "FightWon_C_Swallow",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Swallow him",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "FightWon_R_Swallow",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"SQ01_ALCH_EAT_ANYWAY\")\r\nSleep(3)\r\nLog(\"SQ01_ALCH_KILL_DIGESTED\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Unnamed",
+																										"IsState": false,
+																										"IsLink": true,
+																										"Title": "Unnamed",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"LinkTarget": "FightWon_C_SleepOff",
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"Key": "FightWon_C_Leave",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Leave him",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "Log(\"SQ01_ALCH_LEAVE_BEHIND\")\r\nSleep(2)",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Unnamed",
+																								"IsState": true,
+																								"IsLink": true,
+																								"LinkTarget": "Abandoned",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"Key": "Q01_InvestigReply",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "local stubborn = Storage.GetNumber(\"sq01_nosy\") + 1\r\nStorage.SetNumber(\"sq01_nosy\", stubborn)\r\nLog(\"sq01_ask_why\" .. stubborn)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_Reject2",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_BeReallyNosy",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_AskReward",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_Accept",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Q01_AskReward",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Reward",
+														"Tooltip": "Ask what's in it for you.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Q01_TellReward",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"sq01_ask_reward\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_Reject2",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_BeNosy",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_BeReallyNosy",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_AskReward",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Q01_Accept",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Q01_Accept",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Accept",
+														"Tooltip": "Say that you can handle that.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Q01_Accepted",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"sq01_accepted\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Q01_AcceptReturn",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Unnamed",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Main",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Q01_Handin",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Give Vial",
+						"Tooltip": "Say you did as he asked.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 1 and Player:HasItem(\"SQ01_VialFull\")",
+						"Children": [
+							{
+								"Key": "Q01_Handin1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"sq01_handin1\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Q01_Handin2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Q01_Handin3",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"sq01_handin2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"SQ01_VialFull\")\r\nStorage.SetNumber(\"sq01\", 2)\r\nStorage.SetNumber(\"town_alch_reward\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer.Money = Player.Money + RewardGold.SQ01\r\nLogGsub(\"gold_get\", {num = RewardGold.SQ01}, Color.LightBlue)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Q01_Handin4",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Main",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Q01_CollectReward",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Sample",
+						"Tooltip": "Ask about the sample you were promised.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 2 and not Storage.GetFlag(\"sq01_collected_sample\")",
+						"Children": [
+							{
+								"Key": "Q01_Reward_NotReady",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"SQ01_REWARD_NOTREADY\")",
+								"ScriptAppear": "return Storage.GetNumber(\"town_alch_reward\") > GetTimeHourTotal()",
+								"Children": [
+									{
+										"Key": "Q01_Reward_Close1",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Q01_Reward_Ready",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Unnamed",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "Unnamed",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Q01_Reward_Close1",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

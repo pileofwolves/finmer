@@ -1,0 +1,169 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "175dbff5-66cf-40ee-bcb9-72371b20b82c",
+	"Name": "Strings_SQ02",
+	"Entries": [
+		{
+			"Key": "SQ02_ABANDONED",
+			"Text": [
+				"You approach a small clearing in the forest, where the trees grow a lot more sparsely and a good amount of %sunlight illuminates the otherwise quite dark forest floor. It's eerily quiet, other than the distant hooting of an owl. Perhaps this would be a good spot to take a rest."
+			]
+		},
+		{
+			"Key": "SQ02_APPROACH",
+			"Text": [
+				"You carefully but determinedly walk towards the beast, making little attempt to mask your approach. Unsurprisingly, the lupine picks up on this. His head rises and within seconds, his sharp yellow eyes pierce into yours. For the time being, the canine just stares, and you have a feeling that your every movement is being carefully observed - and judged."
+			]
+		},
+		{
+			"Key": "SQ02_APPROACH_AGAIN",
+			"Text": [
+				"Unfazed, you carefully continue your steps. The wolf, seemingly confused by this, slowly rises up from his somewhat vulnerable position, and bares his teeth. A low, powerful growl reverberates through the air, the canine's bushy tail rising. Maybe he doesn't like you... a thought made all the more obvious when the growl breaks into a full on snarl and the massive lupine prepares to pounce on you."
+			]
+		},
+		{
+			"Key": "SQ02_APPROACH_BACK",
+			"Text": [
+				"You gently reverse your steps, increasing the distance between the menacing-looking lupine. He, in turn, slowly rises up from his somewhat vulnerable position, and bares his teeth. A low, powerful growl reverberates through the air, the canine's bushy tail rising. If you run, you must be prey... a thought made all the more obvious when the growl breaks into a full on snarl and the massive lupine prepares to pounce on you."
+			]
+		},
+		{
+			"Key": "SQ02_APPROACH_STOP",
+			"Text": [
+				"You decide it's best to stay still, and avoid staring at the majestic wolf. Eye contact is some kind of a dominance thing with canines, you've been told. Now the great lupine's curiosity is fully piqued, and he calmly rises up on all fours, gives a stretch and a long yawn, before he slowly walks over to you. Despite the massive size of those paws, and the light dents they leave in the soil, they are almost inaudible - truly a hallmark of a dangerously powerful predator. The dire wolf hasn't attacked you quite yet, but the question it asks is obvious: what are you doing here?"
+			]
+		},
+		{
+			"Key": "SQ02_BELLYRUB",
+			"Text": [
+				"Careful not to make sudden movements that might aggravate the mighty creature, you gently place your paws on the wolf's flank. The fur coat is thick and lush, if a bit shaggy. The wolf lets out a surprised growl, but oddly enough, does not make an attempt to stop you. So with this implicit approval in mind, you let your paws roam around the wolf's belly, rubbing and kneading away.\\n\\nEventually, the large canine turns to face you. His nose touches yours, and you can't help but note how his muzzle is larger than your entire head - it's a bit intimidating. Then, without warning, the lupine's maw opens wide, his long, slimy tongue rolling out for you like a carpet. Hot wolf breath washes against you as he patiently waits, reeking of whatever meat and animal went down that gaping gullet last time. He stays like this, his bushy tail swaying back and forth, as if waiting for your response."
+			]
+		},
+		{
+			"Key": "SQ02_BELLYRUB_SNEAK",
+			"Text": [
+				"You gently place your paws on the wolf's flank.  The fur coat is thick and lush, if a bit shaggy. This immediately wakes the massive predator, of course, who yelps loudly, perhaps uncharacteristically for such a beast, before lifting his head to inspect his assailant. The wolf lets out a surprised growl, but oddly enough, does not make an attempt to stop you. So with this implicit approval in mind, you let your paws roam around the wolf's belly, rubbing and kneading away.\\n\\nEventually, the large canine rises from the forest floor, and turns to face you. His nose touches yours, and you can't help but note how his muzzle is larger than your entire head - it's a bit intimidating. Then, without warning, the lupine's maw opens wide, his long, slimy tongue rolling out for you like a carpet. Hot wolf breath washes against you as he patiently waits, reeking of whatever meat and animal went down that gaping gullet last time. He stays like this, his bushy tail swaying back and forth, as if waiting for your response."
+			]
+		},
+		{
+			"Key": "SQ02_OFFER_FISH",
+			"Text": [
+				"You pull a wrapped fish from your pack, and unwrap the paper from it. The wolf initially recoils at your movements, but once the tasty-looking fish is presented - and probably its scent - that quickly changes. The great canine carefully steps forwards, and after a few moments of testing your reactions, snatches it from your paws. It goes down whole, with a single loud gulp. As the lupine's tail gives a slow, gentle wag, his mouth opens again slightly as the predator starts panting lightly. Well, sure does seem like he liked that snack.\\n\\nHis nose touches yours, and you can't help but note how his muzzle is larger than your entire head - it's a bit intimidating. Then, without warning, the lupine's maw opens wide, his long, slimy tongue rolling out for you like a carpet. Hot, stale wolf breath washes against you as he patiently waits, reeking of the fish that went down that gaping gullet just now. He stays like this, his bushy tail swaying back and forth, as if waiting for your response."
+			]
+		},
+		{
+			"Key": "SQ02_OPENING",
+			"Text": [
+				"You approach a small clearing in the forest, where the trees grow a lot more sparsely and a good amount of %sunlight illuminates the otherwise quite dark forest floor. To your surprise, you spot a massive canine sleeping just ahead - a wolf. It looks easily as tall as you are, though right now it's lying on its side, loosely curled. The skylight reflects off of the lupine's beautiful gray and silver fur coat, streaked with dark colors along his spine. This must be the wolf the notice in town mentioned."
+			]
+		},
+		{
+			"Key": "SQ02_SNEAK_FAIL",
+			"Text": [
+				"You try to slow down your footfalls as much as possible, but at the worst possible moment, a branch snaps beneath your foot with an obnoxiously loud crack. Unsurprisingly, the lupine picks up on this. His head rises and within seconds, his sharp yellow eyes pierce into yours. For the time being, the canine just stares, and you have a feeling that your every movement is being carefully observed - and judged."
+			]
+		},
+		{
+			"Key": "SQ02_SNEAK_OK",
+			"Text": [
+				"You creep ever closer to the massive canine, slowing your pace to the point where your footfalls make almost no noise. Sure enough, it is sufficient to fool even the lupine's sharp senses. The sleeping wolf huffs loudly and shifts slightly, but remains still otherwise. His thick, lush coat of silvery fur is within your reach now."
+			]
+		},
+		{
+			"Key": "SQ02_SNEAK_SLAY_NOWEAPON",
+			"Text": [
+				"You have nothing to do that with. Your %claws aren't nearly enough to pierce the wolf's thick fur coat. You probably hadn't thought this far ahead, hmm?"
+			]
+		},
+		{
+			"Key": "SQ02_SNEAK_SLAY_OK",
+			"Text": [
+				"You draw your %weapon and quietly take a breath, before lifting your arm up high, and bringing it down crashing upon the wolf's exposed neck. In a split second, a loud, pained yelp echoes through the clearing as steel meets flesh. The wolf's panicked cry quickly turns to a gurgle before stopping, as do a few small twitches of his limbs. With a disgusting slicing sound and a crack, you cut the dire wolf's head clean off. Blood splatters everywhere, thoroughly infesting the late feral's fur and your clothing. The crimson fluid flows freely on the mossy ground and a distinct, stinging metallic scent hits your nose, reaffirming what exactly it is you're doing. Perhaps it's best to not linger around here for too long."
+			]
+		},
+		{
+			"Key": "SQ02_TOWNHALL_ENTER",
+			"Text": [
+				"At the far end of the table sits the mayor, a pair of glasses on her nose, as she appears to be poring over paperwork. To get her attention, you unceremoniously dump the dire wolf's head on your end of the table with a loud thud, and she snaps her head up to face you. Within seconds, her expression turns to one of disgust. \"What the hell is the meaning of this?\" she exclaims."
+			]
+		},
+		{
+			"Key": "SQ02_TOWNHALL_EXPLAIN",
+			"Text": [
+				"You rather casually comment that this is the dire wolf she posted a notice for. An odd mixture of awe and utter disgust flashes across her features before she glances over in the side room. \"Wilhelm, clean this up please,\" she says, and within a few moments, her assistant, a tabby cat, swings by. His eyes widen as he spots the wolf head, but he's quick to make his way over there and lift the thing off of the table, all the while looking as if he'd rather not be touching it.\\n\\nCanbell turns to you with an impassive stare, before she reaches into a drawer behind her and pulls out a small purse, then slides it across the table. \"Well, thank you, I suppose. That does, uh, help.\" She nods. \"If you don't mind, I need to get back to work.\""
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_ENDO_BEGIN",
+			"Text": [
+				"A few minutes have passed now, and all around you is the persistent and inevitable force of stomach walls, soft but unyielding in their strength, kneading away at you and rubbing warm slime into your %fur. The air is breathable, if rather hot, shallow, and reeking of meat. Oddly enough, however, you don't actually feel like you're being digested."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_ENDO_REGURGITATE",
+			"Text": [
+				"Your temporary host appears to have taken notice of your weak movements, as a low growl begins to reverberate throughout your organic prison. Being so close to its source, it is difficult not to be shaken slightly. Suddenly, the stomach walls begin convulsing and rippling around you with intense force. You think for a second the stomach has finally realized what to do with its meal, but then the muscular waves of peristalsis begin squeezing somewhere and you realize the wolf is coughing and hacking. Before long, you re-emerge into the canine's cavernous maw, and are spat back up onto the cool forest floor. Being utterly and completely soaked in wolf drool and stomach slime, you take a few seconds to recover, take in the fresh morning air and sunlight, and steel yourself against the harsh cold that comes with being wet. A long, gentle lick is planted on the side of your head - almost like a kiss goodbye. When you turn to face your mystery protector, the dire wolf turns and sprints away, its bushy tail waving slightly and its hind paws kicking up dirt.\\n\\nAfter you spend a few more moments wiping the worst of the thick, sticky saliva off of yourself, you realize the wolf has left you on the outskirts of the woods, close to the cozy-looking cabin."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_ENDO_RUNAWAY",
+			"Text": [
+				"The moment you move to make a break for it, one of the feral's large paws slams down on you, pinning you to the ground and forcing the air from your lungs. Without giving you a single moment to recover from this predicament, the wolf eagerly uses his tongue and paw to guide you into his waiting maw."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_ENDO_SLEEP",
+			"Text": [
+				"The environment is rather overbearing, even if not immediately hostile. The pressing warmth is making you sleepy; the rhythmic pounding of a strong heart somewhere above you and the gentle but possessively firm kneading of the stomach walls all around you certainly aren't helping matters. Just closing your eyes for a few moments should be fine..."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_ENDO_VORE_WIN_POV",
+			"Text": [
+				"The apex predator's efforts are eventually rewarded as your nose breaches the sphincter leading further into the wolf's stomach, more and more of your delicious body following suit. The gullet unceremoniously dumps you in the oppressive furnace, slime and liquids splattering about as you are swallowed whole. As soon as you make contact with the slick stomach walls, they clench around their newest prize, eager to get to know you inside out. The dire wolf hungrily swallows a few more times, pulling in your tail and legs. The cool outside air is replaced by hot pulsating flesh as you are forced to curl up in the very center of a carnivore's digestive system - a fleshy sack that immediately conforms to your body shape. Warm and stale air is all you have, while a constantly moving, kneading and pulsating environment reminds you of just where you are."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_KILL_DIGESTED_POV",
+			"Text": [
+				"The wolf belches and lazily smacks his ebony lips, perhaps as an act of mercy, before your acidic grave gets a bit too cruel. He glances over at the wiggly bulge on his gut, and lovingly licks and noses it. You, on the other hand, are not quite having as much fun. Defeated, sapped of your strength and now of your precious air, your body falls limp in the loving embrace of the canine's belly, now not much more than just a ball of meat to digest and absorb. To the wolf, you're just another snack to keep him satisfied throughout the night - certainly not the first adventurer he'd devour, and hopefully not the last."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_POSTVORE",
+			"Text": [
+				"Come morning, the dire wolf awakens to a bright sun. With a yawn and a stretch, he glances at his furry middle. The bulge that used to be you had shrunk a fair bit, though it was by no means gone. No, it'd take some time to digest a meal that size. Smacking his black lips and wagging his large, bushy tail, the wolf sets off to find another snack."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_POSTVORE_SCAT",
+			"Text": [
+				"Come morning, the dire wolf awakens to a bright sun. With a yawn and a stretch, he glances at his furry middle. The bulge that used to be you had shrunk a fair bit, though it was by no means gone. No, it'd take some time to digest a meal that size. Smacking his black lips and wagging his large, bushy tail, the wolf sets off to take care of something urgent.\\n\\nFinding some thick shrubbery a ways away from his lair, the large feral squats down and begins to release what's left of his snack. His puckered tailhole widens as thick, brown chunks are squeezed out, dropping unceremoniously on the cold forest floor. After a few more seconds of squeezing fresh feces from his wrinkling anus, the wolf gets up and kicks back some dirt in a poor attempt to cover his droppings. He can still feel his meal weighing down his stomach, so surely he would be returning soon to further dispose of his prey. For now, however, the lupine happily licks his lips, and trots off."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_SAVEPOINT",
+			"Text": [
+				"You reawaken to the odd sensation of being surrounded by slimy warmth and flesh on all sides, as you vaguely remember you've been swallowed whole by a dire wolf. Why or how you're still in one piece, you know not, but neither are you in a position to question such things. Being held tightly and securely in the muscular chamber, there is little you can do but wiggle slightly and hope the predator takes notice."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_VORE_HIT_POV",
+			"Text": [
+				"The oversized canine eagerly in takes your paws and curls his long, sloppy tongue around your upper body. He pulls you forward and begins swallowing. Before you know it, your arms are held tightly by hot and wet flesh. A powerful ripple echoes through those slick throat muscles and your head and shoulders are sucked inside. While the wolf's tongue does an excellent job at giving your %fur a nice, warm drool coating, you're forced to hold your breath in the skin-tight tube."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_VORE_WILLING",
+			"Text": [
+				"As you gently touch the ebony black lips before you, the slippery mat of flesh sneaks out from between and plants a wet lick on your face. After a few moments of silence, the massive canine lies down on the cold floor. His head rests right in between his forepaws, just a whisker's length shy from your face. He stares at you and wags his long, bushy tail for what feels like hours, before his maw opens wide, his long, slimy tongue rolling out for you like a carpet. Hot wolf breath washes against you as he patiently waits, reeking of whatever meat and animal went down that gaping gullet last time. Tentatively, you make an effort to join them, as you creep forwards and place a paw on the lupine's tongue with a wet squelch."
+			]
+		},
+		{
+			"Key": "SQ02_WOLF_VORE_WIN_POV",
+			"Text": [
+				"The apex predator's efforts are eventually rewarded as your nose breaches the sphincter leading further into the wolf's stomach, more and more of your delicious body following suit. The gullet unceremoniously dumps you in the oppressive digestive furnace, slime and liquids splattering about as you are swallowed whole. As soon as you make contact with the slick stomach walls, they clench around their newest prize, eager to get to know you inside out. The dire wolf hungrily swallows a few more times, pulling in your tail and legs. The cool outside air is replaced by hot pulsating flesh as you are forced to curl up in the very center of a carnivore's digestive system - a caustic organ designed specifically to digest meat, which is exactly what you've been reduced to. Warm and stale air is all you have, while a constantly moving, kneading and pulsating environment reminds you of just where you are - not just physically, but on the food chain.\\n\\nOn the outside, the wolf curls up around his slightly distended furry belly, listening to it groan and gurgle as it attempts to subdue the new load of %species-meat inside."
+			]
+		}
+	]
+}

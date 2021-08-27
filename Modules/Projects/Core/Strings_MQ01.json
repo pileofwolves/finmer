@@ -1,0 +1,85 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "879c7e5e-c7b8-4460-abb4-2aecd5fb74f3",
+	"Name": "Strings_MQ01",
+	"Entries": [
+		{
+			"Key": "MQ01_ACCEPT",
+			"Text": [
+				"\"Excellent,\" she exclaims, before snatching a small piece of paper and scribbling something on it. The snow leopardess then hands it to you. \"Give this to Edgard at the local inn. He'll know it's from me, and he will be able to tell you more.\"\\n\\nThe mayor clasps her paws together. \"Now, I believe our business is concluded?\""
+			]
+		},
+		{
+			"Key": "MQ01_ACCEPTED_LEAVE",
+			"Text": [
+				"You give a polite nod and turn to leave while the mayor resumes her presumably important work. The wooden door slams shut behind you, perhaps a tad more loud than strictly necessary, and the warm glow of the sunny outdoors greets you again. Absolutely nothing changed in your minute of absence."
+			]
+		},
+		{
+			"Key": "MQ01_ASK_REWARD",
+			"Text": [
+				"The white feline huffs, though you feel like she should've expected the question. \"I'm sure the wanderer-types such as yourself are swayed by gold, no? And I can throw in a free bed at the local inn. Deal?\""
+			]
+		},
+		{
+			"Key": "MQ01_ASK_SPECIFICS",
+			"Text": [
+				"With one paw she idly scratches herself behind her ears, eyeing the %weapon on your back. \"You seem like a decently built %guy? If not for physical labor, I'm sure they can use someone like you to keep an eye on our crew. This place may be lush, but that means we have lots of critters and predators around, too.\""
+			]
+		},
+		{
+			"Key": "MQ01_ASK_SPECIFICS_NOWEP",
+			"Text": [
+				"With one paw she idly scratches herself behind her ears, her gaze travelling up and down your body. \"You seem like a decently built %guy? If not for physical labor, I'm sure they can use someone like you to keep an eye on our crew. This place may be lush, but that means we have lots of critters and predators around, too.\""
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP_ABOUTBRIDGE",
+			"Text": [
+				"\"More info? Eh, well, it collapsed about two days ago. We sent the messenger to the carpenter the day after, but yeah, neither are here.\" The %bartender idly taps his claws against the surface of the counter. \"Not sure what caused it though, far as I know it was pretty sturdy, even for wood. Maybe someone or something broke it. I dunno.\""
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP_ABOUTGUY",
+			"Text": [
+				"The %bartender folds his arms. \"He's a tiger, white fur, wears a blue bandana. Uhh...\" He glances away for a second and scratches himself behind his ears in thought. \"Prefers knives in a fight? Yeah, that's all I know, I think.\""
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP_DISCUSS",
+			"Text": [
+				"He scratches his chin. \"So I'm not sure what the mayor told you, but let me get you up to speed. Bridge down south's broken, seems to have collapsed. All washed away down the river. There's other ways around, of course, but they're not nearly as convenient. So we got a crew together to build a new one, but they'll need materials. Now, most of the wood and such we use here comes from a forester who lives near the woods, east of here.\" The %bartender pauses and takes a breath. His eyes wander to the wall behind you, then back to you. \"We sent a guy yesterday to check on him, order the wood, but lad's not come back.\" His face takes on a more serious expression. \"I don't know what happened, but I want you to go there, see which way's up.\""
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP_THANK",
+			"Text": [
+				"You thank the barkeep for his help and say that you'll see what you can do. In turn, he nods politely and fishes for something under the counter, then tosses a small key into your paws. \"First room on the left, upstairs. You can use it while you're here, mayor's treat.\" A smile cracks on the %bartender's lips. \"She's not as cold as she seems, mind.\" With that, he goes back to his routine of washing mugs.\\n\\nSo, off to the woods it is, then. There's nothing like a good hike on a warm summer day."
+			]
+		},
+		{
+			"Key": "MQ01_FLIRT_F",
+			"Text": [
+				"The vaguest outline of a smile creeps onto her face. \"Thanks, I guess. Not too bad yourself.\" She straightens her posture a bit. \"What do you need?\""
+			]
+		},
+		{
+			"Key": "MQ01_FLIRT_M",
+			"Text": [
+				"Her nostrils flare as she sighs, glaring at you. \"Men are always the same, hmm?\" She points at the door behind you. \"If you're just here to waste my time, sod off.\""
+			]
+		},
+		{
+			"Key": "MQ01_INQUIRE",
+			"Text": [
+				"She raises an eyebrow at your inquiry. \"Work, hm?\" The leopardess ponders your question. For a moment you expect her to send you away, but instead, she sighs and makes eye contact again. \"Well, to the south, just a bit outside the gate, a storm wrecked the bridge over the river. If you're willing to lend a paw with the repairs, I'm not turning you down.\""
+			]
+		},
+		{
+			"Key": "MQ01_INTRO",
+			"Text": [
+				"A lone figure sits at the table, parchments scattered in front of her as she scribbles on the documents with a quill. The snow leopardess looks up from her work and gives you a scrutinizing stare. She looks beautiful: her fur is well-kept and her simple but functional white clothes suit her well.\\n\\n\"Yes?\" she asks in a soft but demanding voice."
+			]
+		}
+	]
+}

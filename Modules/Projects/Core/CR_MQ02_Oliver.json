@@ -1,0 +1,38 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "bc1a3ca9-d85b-40aa-99d8-82b1ca76985e",
+	"Name": "CR_MQ02_Oliver",
+	"ObjectName": "Oliver",
+	"ObjectAlias": "",
+	"Strength": 1,
+	"Agility": 1,
+	"Body": 1,
+	"Wits": 0,
+	"Flags": 0,
+	"Level": 2,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": false,
+	"StringMappings": [
+		{
+			"Key": "VORE_HIT",
+			"Rule": "PLAYER",
+			"NewValue": "MQ02_OLIVER_VORE_HIT"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "PLAYER",
+			"NewValue": "MQ02_OLIVER_VORE_WIN"
+		},
+		{
+			"Key": "PREDPOV_DIGEST",
+			"Rule": "",
+			"NewValue": "MQ02_OLIVER_PREDPOV_DIGEST"
+		},
+		{
+			"Key": "PREDPOV_ENDO",
+			"Rule": "",
+			"NewValue": "MQ02_OLIVER_PREDPOV_DIGEST"
+		}
+	]
+}

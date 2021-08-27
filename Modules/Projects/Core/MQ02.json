@@ -1,0 +1,20 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "a2246b90-c1e8-4c99-8c28-f58ad055cf9c",
+	"Name": "MQ02",
+	"Title": "MQ02",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "Materials are needed to fix the bridge, but the messenger going east has disappeared. Go after him - past the south watchtower and follow the road east - and see what's going on."
+		},
+		{
+			"Key": 20,
+			"Text": "You met with Oliver, the forester and carpenter. He's been attacked by a gang boss named Randall. You did find the supplies, however - Edgard will want to know about all this."
+		},
+		{
+			"Key": 21,
+			"Text": "After Oliver, the forester and carpenter, was attacked by a gang boss named Randall, you finished him off yourself. You did find the supplies, however - Edgard will want to know about that."
+		}
+	]
+}

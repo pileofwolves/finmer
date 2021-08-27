@@ -1,0 +1,20 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "7339abe2-273d-427d-a081-d76c3cbc21da",
+	"Name": "MQ01",
+	"Title": "MQ01",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "You've awoken in an unfamiliar place, with no memory of how you got here. Look around, perhaps you can get your bearings on this place somehow."
+		},
+		{
+			"Key": 20,
+			"Text": "You got a tip that the mayor of the town is looking for hired help. She can be found in the town hall, near the north square."
+		},
+		{
+			"Key": 30,
+			"Text": "The mayor instructed you to meet with Edgard, the innkeep. He should give you more info about the broken bridge and what you can do to help."
+		}
+	]
+}

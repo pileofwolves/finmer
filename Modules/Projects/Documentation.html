@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Finmer Editor Reference</title>
+    <style type="text/css">
+        body {
+            font-family: sans-serif;
+            font-size: 12pt;
+            background: #323232;
+            color: #efefef;
+            margin-bottom: 80px;
+        }
+        .main {
+            display: block;
+            margin: 0 auto 0 auto;
+            width: 60%;
+            min-width: 500px;
+            max-width: 1000px;
+        }
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            text-align: center;
+            background-color: #292929;
+        }
+        .footer p {
+            display: block;
+            width: 50%;
+            min-width: 800px;
+            color: #909090;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        p, li {
+            /* Slightly more pleasant reading */
+            line-height: 125%;
+        }
+        li {
+            padding-bottom: 5px;
+        }
+        h2 {
+            color: rgb(255, 212, 177);
+            border-top: 2px solid rgb(255, 212, 177);
+            margin-top: 32px;
+            padding-top: 12px;
+        }
+        h3 {
+            border-top: 1px dashed rgb(255, 212, 177);
+            color: rgb(255, 212, 177);
+            padding: 10px  0px 0px 12px;
+        }
+        h3::before {
+            content: '\2022\00A0';
+        }
+        a[href] {
+            color: rgb(116, 165, 255);
+        }
+        .clicky {
+            display: inline;
+            padding: 1px 4px 1px 4px;
+            border: 1px solid #808080;
+            border-radius: 4px;
+            background-color: #454040;
+        }
+        .scriptapi {
+            display: block;
+            min-width: 500px;
+            width: 75%;
+            margin: 8px 1px 12px 1px;
+            padding: 5px;
+            border: 1px solid #808080;
+            border-radius: 5px;
+        }
+        .scriptapi .title {
+            font-size: 14pt;
+            font-family: monospace;
+            font-weight: bold;
+        }
+        .scriptapi .title .syntax {
+            color: #858585;
+        }
+        .scriptapi .desc {
+            margin-top: 16px;
+        }
+        /* Custom ul format for the argument list, to keep it compact */
+        .scriptapi li {
+            display: block;
+            margin-left: 72px;
+        }
+        .scriptapi .input, .scriptapi .output, .scriptapi .type {
+            display: inline;
+            margin: 0;
+            padding: 0;
+            color: #a0a0a0;
+            list-style-type: none;
+        }
+        .scriptapi .type:before {
+            content: 'Type:';
+            float: left;
+        }
+        .scriptapi .input:before {
+            content: 'Input:';
+            float: left;
+        }
+        .scriptapi .output:before {
+            content: 'Output:';
+            float: left;
+        }
+        /* Table of contents */
+        .toc ol {
+            counter-reset: item;
+            list-style-type: none;
+        }
+        .toc li:before {
+            content: counters(item, ".") ". ";
+            counter-increment: item;
+        }
+    </style>
+</head>
+<body>
+    <div class="main">
+    <h1>Finmer - Editor Reference</h1>
+    <h2>Introduction</h2>
+    <p>
+        Hi, and welcome to this guide. You're about to make some content for Finmer, and that's awesome! I have spent a sizable portion of my free time over the last few years building this game for your enjoyment, and I am humbled and honored by the fact that you're interested in adding some content of your own. I hope that this document provides all the information needed to get your paws dirty. If you ever have any questions, concerns, suggestions or bug reports, you can contact me as <a href="https://www.furaffinity.net/user/nuntis/" target="_blank" rel="noopener">~nuntis on FurAffinity</a> - I won't bite (but might swallow)!
+    </p>
+    <p>
+        This is a text adventure game built with furries, vore and mod support in mind. If that doesn't sound like it's quite your cup of tea, or if you don't know what the former two mean, you should probably get rid of this game.
+    </p>
+    <h3>What you need to know</h3>
+    <p>
+        I have tried to make the editor accessible and reasonably easy to get the hang of, and I have spent time writing this documentation, but this is not Quest. <strong>Leveraging the full power of this editor currently requires you to have basic knowledge of the Lua scripting language.</strong> Lua is a simple, elegant and fast scripting language, usually embedded in game engines to script gameplay (as it is used here). If you don't know Lua, there are lots of resources available online for you to learn. You can find the <a href="http://www.lua.org/manual/5.1/manual.html" target="_blank" rel="noopener">Lua 5.1 reference manual here</a>, and <a href="http://lua-users.org/wiki/TutorialDirectory" target="_blank" rel="noopener">a large directory of user-made tutorials here</a>.
+    </p>
+    <p>
+        Feel free to look at the small example files bundled with this editor, or the Core file which contains my own stuff, to see how some things are done or set up!
+    </p>
+    <p>
+        <em>&quot;But Quest doesn't need you to write script code...&quot;</em> Sadly; super-flexible, slick and user-friendly tools cost a <em>lot</em> of time to develop. That's why I've chosen to focus more on the game itself. However, if there's enough interest, I might revisit the editor and create some simpler scripting tools, so if that sounds like something you want to see, make yourself heard! Likewise, if you have ideas and/or suggestions, I'd be happy to hear them. c:
+    </p>
+    <p>
+        With that said, I think the editor works quite well in its current state. And, of course, if you have any questions or thoughts, I'd be happy to hear them.
+    </p>
+    <p>
+        The game makes available for you most standard Lua libraries. You can use the <code>base</code>, <code>coroutine</code>, <code>table</code>, <code>string</code> and <code>math</code> libraries. Note that for security reasons, the <code>io</code>, <code>os</code>, <code>package</code> and <code>debug</code> libraries are unavailable.
+    </p>
+    <h2>Table of Contents</h2>
+    <div class="toc">
+        <!--<li><a href="#"></a></li>-->
+        <ol>
+            <li><a href="#aboutfurballs">About Furballs</a></li>
+            <li><a href="#gettingstarted">Getting Started</a></li>
+            <li>
+                <a href="#scenes">About Scenes</a>
+                <ol>
+                    <li><a href="#scenes-nodes">Nodes &amp; Scene Tree</a></li>
+                    <li><a href="#scenes-nodescripts">Node Scripts</a></li>
+                    <li><a href="#scenes-scripts">Scene-Wide Scripts</a></li>
+                </ol>
+            </li>
+            <li>
+                <a href="#sref">Script Reference</a>
+                <ol>
+                    <li><a href="#sref-logging">Messages &amp; Logging</a></li>
+                    <li><a href="#sref-flow">Scene &amp; Flow Control</a></li>
+                    <li><a href="#sref-combat1">Combat System &bull; Basic</a></li>
+                    <li><a href="#sref-combat2">Combat System &bull; State</a></li>
+                    <li><a href="#sref-combat3">Combat System &bull; Callbacks</a></li>
+                    <li><a href="#sref-storage">Persistent Storage</a></li>
+                    <li><a href="#sref-journal">Journal System</a></li>
+                    <li><a href="#sref-shop">Shop System</a></li>
+                    <li><a href="#sref-object">GameObject API</a></li>
+                    <li><a href="#sref-creature">Creature API</a></li>
+                    <li><a href="#sref-player">Player API</a></li>
+                </ol>
+            </li>
+        </ol>
+    </div>
+
+    <a name="aboutfurballs"><h2>About Furballs</h2></a>
+    <p>
+        The Finmer game uses <em>assets</em> to store information about the game world - things such as items, creatures and places. These assets are what you build in the Finmer Editor, and a group of assets is saved in a file unironically called a <em>furball</em>. In the Editor, you can open and edit one furball at a time, and the game will load all furballs it finds in the Modules folder when it starts up. The base-game (the stuff I made) is all contained in one file, however this modular approach makes it easy to add new content (like an extra quest) in a new furball file, and because the assets are self-contained, it's easy to distribute the files to other people.
+    </p>
+    <p>
+        An asset can be any of the following types:
+    </p>
+    <ul>
+        <li><strong>Scenes</strong> describe an in-game location, event or dialogue tree. They state <em>what</em> happens <em>when</em>, and the options the player can click. All other asset types come together here.</li>
+        <li><strong>Items</strong> describe anything a Creature can hold or equip. This includes consumables, quest items and equipment (including invisible items such as natural weapons).</li>
+        <li><strong>Creatures</strong> describe a template for something that can participate in combat. These are only used for the battle system, 'real NPCs' just exist in Scenes.</li>
+        <li><strong>Feats</strong> describe special qualities the player character may have. Some have effects on the battle system, but they can also be used for scripted events.</li>
+        <li><strong>Journals</strong> contain text entries that can be added to (and removed from) the player's journal log. These are meant for progressing quests, but are not strictly limited to that idea.</li>
+        <li><strong>String Tables</strong> contain game text. Groups of strings are assigned to a key, with built-in random selection. See below for more details.</li>
+        <li><strong>Scripts</strong> are raw Lua scripts. All Scripts are automagically executed on game start. They are primarily useful for defining tables and common functions.</li>
+    </ul>
+
+    <a name="gettingstarted"><h2>Getting Started</h2></a>
+    <p>
+        To start building, simply open the Finmer Editor. An empty furball will be open by default. Click the <span class="clicky">Add Asset</span> button on the toolbar, then click <span class="clicky">Scene</span>, to add a new scene and get things off the ground. Be sure to save your new furball in the game's Modules folder, and it will automatically be loaded next time you start the game.
+    </p>
+    <p>
+        You can double-click assets in the left-hand panel to open and edit them. Slow-click an asset label, or press <span class="clicky">F2</span>, to rename it. You can use the other buttons on the toolbar to move or delete your assets, or to launch the game conveniently from within the editor. Note that if you launch the game using the <span class="clicky">Play</span> button in the editor, some development tools will be made available, including a script console.
+    </p>
+
+    <a name="strtables"><h2>About String Tables</h2></a>
+    <a name="strtables-grammar"><h3>Grammar &amp; Contexts</h3></a>
+    <p>
+        The game core supports some basic English grammar, and automatic substitution of objects and pronouns. When a string is acquired from a string table (such as through <code>Log()</code> or <code>GetString()</code>), various Contexts may be available to specialize the string to the current situation.
+        A <strong>Context</strong> is a GameObject that has been bound to a specific name. For example, in some combat-related text, the <code>attacker</code> context could refer to the Creature who is initiating an attack.
+    </p>
+    <p>
+        The grammar engine's output depends on the context's gender. For Creatures, the gender is set by you in the editor. For the Player, they themselves set their gender in the game. For Items, the gender is always Neuter (it/its).
+    </p>
+    <p>
+        You can invoke the grammar engine by placing a command of the form <code>{{<em>command</em>}}</code> in your text. (Curly braces, not round.) The engine will replace the command with the evaluated result. The following commands are available:
+    </p>
+    <ul>
+        <li><code>{{<em>context</em>}}</code>, with no further commands, is a short version of, and identical to, <code>{{context.alias}}</code>.</li>
+        <li><code>{{<em>context</em> <em>verb</em>}}</code>, where <em>verb</em> is an English infinitive verb. The game will automatically conjugate the verb based on the gender of the context.</li>
+        <li><code>{{<em>context</em>.name}}</code> returns the formal name of the context.</li>
+        <li><code>{{<em>context</em>.alias}}</code> returns the alias of the context.</li>
+        <li><code>{{<em>context</em>.object}}</code> returns <em>context</em>'s objective pronoun in the closest form possible. Examples: you, he, she, they</li>
+        <li><code>{{<em>context</em>.subject}}</code> returns <em>context</em>'s nominative pronoun in the closest form possible. Examples: you, him, her, them</li>
+        <li><code>{{<em>context</em>.possessive}}</code> returns <em>context</em>'s possessive pronoun in the closest form possible. Examples: your, his, her, their</li>
+        <li><code>{{<em>context</em>.object3p}}</code> returns <em>context</em>'s objective pronoun in third person. Examples: he, she, they</li>
+        <li><code>{{<em>context</em>.subject3p}}</code> returns <em>context</em>'s nominative pronoun in third person. Examples: him, her, them</li>
+        <li><code>{{<em>context</em>.possessive3p}}</code> returns <em>context</em>'s possessive pronoun in third person. Examples: his, her, their</li>
+        <li><code>{{<em>context</em>.aliaspossessive}}</code> combines <em>alias</em> and <em>possessive</em>. Example: your, the dog's, Bob's</li>
+        <li><code>{{<em>context</em>.namepossessive}}</code> combines <em>name</em> and <em>possessive</em>. Example: Nuntis', Dog's, Bob's</li>
+    </ul>
+    <p>
+        Additionally, for Items, these commands are available:
+        <ul>
+            <li><code>{{<em>context</em>.value}}</code> returns the value in coins of the item</li>
+        </ul>
+    </p>
+    <p>
+        Additionally, for the Player, these commands are available:
+        <ul>
+            <li><code>{{<em>context</em>.species}}</code> returns the lowercase species text of the player (such as 'dragon' or 'tiger').</li>
+        </ul>
+    </p>
+    <h4>Usage Example:</h4>
+    <dd>
+        <p>
+            In the combat system, the <code>ATTACK_MISS</code> string is used when an attack fails. The <code>attacker</code> and <code>defender</code> contexts are available. Consider this example string:
+        </p>
+        <p>
+            <code>{{defender}} nimbly {{defender dodge}} {{attacker.aliaspossessive}} awkward punch, and {{attacker.subject}} {{attacker hit}} the wall instead.</code>
+        </p>
+        <p>
+            which could evaluate to the following results:
+        </p>
+        <p>
+            "You nimbly dodge Dave's awkward punch, and he hits the wall instead."<br />
+            "Dave nimbly dodges your awkward punch, and you hit the wall instead."
+        </p>
+    </dd>
+    <p>
+        I'm sure you can see this feature being useful for avoiding duplicate text everywhere just to make the grammar work. :)
+    </p>
+
+    <a name="scenes"><h2>About Scenes</h2></a>
+    <p>
+        The Scene system is the heart of the game. Scenes dictate what happens in the game, and so all other content comes together here.
+    </p>
+    <a name="scenes-nodes"><h3>Nodes &amp; Scene Tree</h3></a>
+    <p>
+        In Finmer, Scenes are a tree of <em>nodes</em>. You can think of each node as a single decision made in, or by, the game world. Each node can contain scripts that determine what happens if that node is picked, and whether or not that node will be shown in-game. For reference, the Scene editor is heavily inspired by - and works similarly to - the dialogue editor from the old Neverwinter Nights game. So if you're familiar with that, welcome back.
+    </p>
+    <p>
+        There are three types of nodes:
+    </p>
+    <ul>
+        <li><strong>Choices</strong> are options available to the player. In the game, these are the buttons at the bottom of the screen. A Choice will generally lead to another State. In the editor, Choices have a speech bubble as icon.</li>
+        <li><strong>States</strong> are groups of Choice nodes. Think of them as the game's response to a player's Choice. Each State may contain any number of Choices. In the editor, States have a paper sheet as icon.</li>
+        <li><strong>Links</strong> are 'teleports' to other nodes. These are useful to avoid duplicating the same nodes over and over, and to make it possible to return to an earlier point in the tree. Links may replace States or Choices anywhere in the tree, and they will function as if the link's target was actually there. In the game, these are invisible to the player. In the editor, Links have a chain as icon.</li>
+    </ul>
+    <p>
+        States and Choices alternate each other in the Scene tree. Each State may contain a number of Choices, and each Choice may contain a number of States. <strong>The idea is that the player can click on any Choice they like, and the game subsequently picks the next State in response.</strong> Then the new set of Choices are shown, and we begin again. It is not possible for States to contain States, or for Choices to contain Choices, as that wouldn't really make sense.
+    </p>
+    <a name="scenes-ukey"><h3>Unique Keys</h3></a>
+    <p>
+        All nodes have a <em>unique key</em>. This key is used by the game internally to refer to the nodes, and the keys are what Links use to know where they lead. For example, if you have a State named 'HelloWorld', then a Link that wants to go there must specify 'HelloWorld' as its target. You must manually fill in keys for your nodes, and the game will give you an error if you have two nodes with the same key. They need only be unique within one Scene.
+    </p>
+    <p>
+        You are free to name them whatever you want, but I recommend keeping them at least somewhat organized.
+    </p>
+    <a name="scenes-nodescripts"><h3>Node Scripts</h3></a>
+    <p>
+        Each node (both States and Choices) may optionally contain either or both of two special scripts.
+    </p>
+    <ul>
+        <li><strong>Actions Taken</strong> is run whenever that Choice is selected, or State is activated. This is where you put actions such as adding text to the window, opening a shop, starting combat, etc.</li>
+        <li><strong>Node Appears When</strong> is run whenever the game evaluates whether or not to use this node. This script determines whether (for Choices) to show the button or not, or (for States) to select this State or not.</li>
+    </ul>
+    <p>
+        The Actions Taken script is simply a block of Lua code that is run whenever the node is selected (when a Choice is clicked, or a State is activated). If you want something to happen when a button is clicked, it technically doesn't matter whether you put your script in the Choice or in the State, either is fine, as both will be executed. I personally prefer putting actions in the State (as they represent the game's 'response' to your choices), but if you link back to that State (for example, with dialogue trees) putting them in the preceding Choice prevents them from being executed when you don't want them to.
+    </p>
+    <p>
+        The Node Appears When script is perhaps a bit more complicated. For Choices, it determines whether or not the button will be shown to the player. For States, it determines whether this State may become active. It must return a boolean. If it returns true, it may be selected, if false, it will be hidden. This 'Node Appears When' system makes it possible to have the scene change dynamically. You can easily enable or disable entire dialogue paths.
+    </p>
+    <p>
+        After a Choice is selected, the game will go over all child States, from top to bottom (as seen in editor). The first State that either returns true, or has no Appears When function at all, will become the new active State. For Choices, it's a bit simpler: every child Choice whose Appears When function returns true (or doesn't have one at all) will appear at the bottom of the screen. Note that for Links, the scripts of their respective link targets (if any) are used.
+    </p>
+    <p>
+        In the editor, nodes that have an Appears When function defined, will have their icons tinted yellow.
+    </p>
+    <a name="scenes-scripts"><h3>Scene-Wide Scripts</h3></a>
+    <p>
+        A Scene may optionally contain three additional Lua scripts:
+    </p>
+    <ul>
+        <li><strong>EnterScript</strong> runs whenever the player enters this scene, for example when changing scenes using <code>SetScene</code>. It runs after the previous scene's LeaveScript, and before this scene's first State. Think of it like an 'Actions Taken' for the Root node.</li>
+        <li><strong>LeaveScript</strong> runs whenever the player leaves the scene. It'll run right before the next scene's EnterScript. You probably won't need to use LeaveScripts for most use cases, but if you need to clean something up, here's the place to do it.</li>
+        <li><strong>CustomScript</strong> will be embedded at the start of the scene's generated Lua script. It's useful for declaring variables and common functions. Stuff you declare here is accessible in any other part of the scene. <em>Do not immediately query or manipulate game objects, their state is undefined at this point.</em> Using the <code>Storage</code> API is fine.</li>
+    </ul>
+
+    <a name="sref"><h2>Script Reference</h2></a>
+    <p>The following is documentation for all public Lua APIs exposed by the Finmer game core. You can use these functions in your own scenes and scripts.</p>
+
+    <a name="sref-logging"><h3>Messages &amp; Logging</h3></a>
+    <div class="scriptapi">
+        <div class="title">Log<span class="syntax">(key, [color])</span></div>
+        <ul class="input">
+            <li>key - string table key to look up and log</li>
+            <li>color - <em>optional</em> - the color to draw with, default is white</li>
+        </ul>
+        <div class="desc">Adds a message to the game window. The specified key is looked up in the string tables, and a random entry will be chosen. If the key cannot be found, a placeholder message is used instead. Color may be obtained using the Color table.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">LogRaw<span class="syntax">(message, [color])</span></div>
+        <ul class="input">
+            <li>message - the full string to add to the game window</li>
+            <li>color - <em>optional</em> - the color to draw with, default is white</li>
+        </ul>
+        <div class="desc">Adds a message to the game window. Unlike Log, this variant does not use string tables, and takes the final message as input directly. <code>LogRaw(GetString(key))</code> is functionally identical to <code>Log(key)</code>.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">LogSplit<span class="syntax">()</span></div>
+        <div class="desc">Adds a horizontal bar (splitter) to the game log. Useful for visually distinguishing unrelated pieces of text. The game does this by default when switching Scenes.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">ClearLog<span class="syntax">()</span></div>
+        <div class="desc">Erases all text in the game log.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">GetString<span class="syntax">(key)</span></div>
+        <ul class="input">
+            <li>key - string table key</li>
+        </ul>
+        <ul class="output">
+            <li>(string) a random string table entry</li>
+        </ul>
+        <div class="desc">Looks up the specified key in the string tables, and returns a random entry.</div>
+    </div>
+
+    <a name="sref-flow"><h3>Scene &amp; Flow Control</h3></a>
+    <div class="scriptapi">
+        <div class="title">SetScene<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - the asset name of the new scene to load.</li>
+        </ul>
+        <div class="desc">Switches to a different scene. In order: the new scene will be loaded, the current scene's LeaveScript will be executed, the new scene is made active, and the new scene's EnterScript is executed. Note that <code>SetScene</code> will terminate the currently running script, so any instructions coming after it will not run.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">SetLocation<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) the user-friendly name of the player's location.</li>
+        </ul>
+        <div class="desc">Sets the text displayed above the compass. It is intended to be used to show the player's current location, though it is not technically limited to that. This string is also shown in the player's save game.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">SetInstruction<span class="syntax">(text)</span></div>
+        <ul class="input">
+            <li>text - (string) a user-facing text string.</li>
+        </ul>
+        <div class="desc">Sets the default tooltip text displayed above the choice buttons, if no other tooltip is currently active. This is reset back to an empty string after every player turn.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">SetInventoryEnabled<span class="syntax">(mode)</span></div>
+        <ul class="input">
+            <li>mode - (boolean) true if enabled, false if not.</li>
+        </ul>
+        <div class="desc">Sets whether or not the player can access their Character Sheet. If true, access is allowed, if false, the button will be greyed out.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Sleep<span class="syntax">(seconds)</span></div>
+        <ul class="input">
+            <li>seconds - (number) the time in seconds for which to pause.</li>
+        </ul>
+        <div class="desc">Pauses execution of the script for the specified time. Dramatic pause, oh my!</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">SaveGame<span class="syntax">()</span></div>
+        <div class="desc">Opens a screen where the player can choose to save their progress to disk. When the game is loaded from this save, the current scene will be re-entered as if <code>SetScene</code> were called.</div>
+    </div>
+
+    <a name="sref-combat1"><h3>Combat System &bull; Basic</h3></a>
+    <div class="scriptapi">
+        <div class="title">Creature<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) the asset name of the desired Creature</li>
+        </ul>
+        <ul class="output">
+            <li>(Creature) a new instance of the requested asset</li>
+        </ul>
+        <div class="desc">Creates and returns a new Creature instance based on the specified Creature asset. The specified name must be the unique asset name, not the creature's user-friendly name.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.AddCombatant<span class="syntax">(combatant)</span></div>
+        <ul class="input">
+            <li>combatant - (Creature) the new creature to involve in this fight.</li>
+        </ul>
+        <div class="desc">Registers a new participant in the next combat session. Be sure to register all combatants before calling <code>Combat.Begin</code>. You do not need to add the player, this is done automagically.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.Begin<span class="syntax">()</span></div>
+        <div class="desc">Begins a combat session using the current configuration, or resumes a previously interrupted session. The running script is paused until combat completes or pauses.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.End<span class="syntax">()</span></div>
+        <div class="desc">Manually stops a combat session, and resets the combat system. The player will be awarded with XP (if any), and the script that originally called <code>Combat.Begin</code> will be resumed. You don't need to call this unless you want to stop the fight mid-way through.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.Reset<span class="syntax">()</span></div>
+        <div class="desc">Erases combat state. This clears the list of combatants, removes all callbacks, clears state such as grappling/pinning and discards any potential XP payouts. Note that the combat system will automatically reset after a combat ends. This is particularly useful for manually resetting after <code>Combat.Interrupt</code> was called.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.Interrupt<span class="syntax">()</span></div>
+        <div class="desc">Pauses the combat session, and resumes the script that originally called <code>Combat.Begin</code>. You may later resume the fight by calling <code>Combat.Begin</code> again. This is mostly intended for scripted events and such.</div>
+    </div>
+    <a name="sref-combat2"><h3>Combat System &bull; State</h3></a>
+    <p>
+        Use these functions to force characters into specific states, such as for example already swallowed by some predator before the combat begins.
+    </p>
+    <p>
+        Be sure that all Creatures you pass to these functions, are already registered using <code>Combat.AddCombatant</code>. Not doing so will lead to errors.
+    </p>
+    <div class="scriptapi">
+        TODO: SetState APIs
+    </div>
+    <a name="sref-combat3"><h3>Combat System &bull; Callbacks</h3></a>
+    <p>
+        You can use these functions to have the combat system inform you of certain events.
+    </p>
+    <div class="scriptapi">
+        <div class="title">Combat.OnRoundEnd<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(round))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when a combat round ends. The <code>round</code> parameter passed to the function is the number of the round that just ended (starting at 1).</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnCombatEnd<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function())</li>
+        </ul>
+        <div class="desc">Invokes the specified function when the combat ends.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnCharacterKilled<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(killer, target))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when a non-player character dies through regular attacks. The killer and the victim are passed as arguments to the callback.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnCharacterVored<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(predator, prey))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when any character is swallowed. The predator and prey are passed as arguments to the callback.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnCharacterDigested<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(predator, prey))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when a non-player character takes fatal digestion damage. The predator and prey are passed as arguments to the callback.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnCharacterReleased<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(predator, prey, forceful))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when a character is regurgitated by their predator. The predator and prey are passed as arguments to the callback. The <code>forceful</code> parameter (boolean) is true if a third character forced the predator to spit up their prey, false if they released their prey voluntarily.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnPlayerKilled<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(killer, target))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when the player character dies through regular attacks. The killer and the player are passed as arguments to the callback.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Combat.OnPlayerDigested<span class="syntax">(callback)</span></div>
+        <ul class="input">
+            <li>callback - (function(predator, prey))</li>
+        </ul>
+        <div class="desc">Invokes the specified function when the player character takes fatal digestion damage. The predator and player are passed as arguments to the callback.</div>
+    </div>
+
+    <a name="sref-storage"><h3>Persistent Storage</h3></a>
+    <p>
+        These functions can be used to store data and keep it around between scenes. The key/value pairs are saved with the player's savegame. As Scenes have their own self-contained environment, this is the one and only way to communicate data between two Scenes, or to remember data the next time the same Scene is visited.
+    </p>
+    <p>
+        Keys must be unique (as they identify the thing you want to save or load), but are not case-sensitive (e.g. 'MyNumber' and 'mYnUmBeR' are the same).
+    </p>
+    <div class="scriptapi">
+        <div class="title">Storage.GetFlag<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to retrieve.</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) the state of the requested flag</li>
+        </ul>
+        <div class="desc">Returns the state of a flag (boolean). The default value is <code>false</code> for flags that were never set before.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Storage.GetNumber<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to retrieve.</li>
+        </ul>
+        <ul class="output">
+            <li>(number) the requested value</li>
+        </ul>
+        <div class="desc">Returns a number from storage. The default value is <code>0</code> for numbers that were never set before.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Storage.GetString<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to retrieve.</li>
+        </ul>
+        <ul class="output">
+            <li>(string) the requested value</li>
+        </ul>
+        <div class="desc">Returns a string from storage. The default value is an empty string (not <code>nil</code>!) if never set before.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Storage.SetFlag<span class="syntax">(name, value)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to store.</li>
+            <li>value - (boolean) the new value to associate with this name.</li>
+        </ul>
+        <div class="desc">Saves a flag with the specified key to persistent storage.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Storage.SetNumber<span class="syntax">(name, value)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to store.</li>
+            <li>value - (number) the new value to associate with this name.</li>
+        </ul>
+        <div class="desc">Saves a number with the specified key to persistent storage.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Storage.SetString<span class="syntax">(name, value)</span></div>
+        <ul class="input">
+            <li>name - (string) the unique name of the value to store.</li>
+            <li>value - (string) the new value to associate with this name.</li>
+        </ul>
+        <div class="desc">Saves a string with the specified key to persistent storage.</div>
+    </div>
+
+    <a name="sref-journal"><h3>Journal System</h3></a>
+    <p>
+        These functions can be used to manipulate the player's quest log (show on the character sheet).
+    </p>
+    <div class="scriptapi">
+        <div class="title">Journal.Set<span class="syntax">(quest, stage)</span></div>
+        <ul class="input">
+            <li>quest - (string) the asset name of the Journal to update</li>
+            <li>stage - (number) the stage number to set this Journal to</li>
+        </ul>
+        <div class="desc">Sets the specified quest to the specified stage number (as preconfigured in the Journal asset), and updates the journal list. If the quest was not yet in the player's journal, it will be added.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title">Journal.Close<span class="syntax">(quest)</span></div>
+        <ul class="input">
+            <li>quest - (string) the asset name of the Journal to update</li>
+        </ul>
+        <div class="desc">Removes a quest from the player's journal.</div>
+    </div>
+
+    <a name="sref-shop"><h3>Shop System</h3></a>
+    <p>
+        These functions and properties are members of Shop instances. Create a Shop instance using the <code>Shop</code> function.
+    </p>
+    <p>
+        The general procedure is as follows: load a shop's data using the <code>Shop</code> function, and check the <code>NeedsRestock</code> property. If it returns true, you should call <code>RemoveDefaultStock()</code> to erase the previous stock, then add fresh items using <code>AddItem()</code>. Afterwards, call <code>Show()</code> to display to the player, and <em>then</em> call <code>Save()</code> to save the shop (not before showing, because the player may purchase or sell things, thus modifying the shop).
+    </p>
+    <p>
+        You do not need to call <code>Show()</code> if you only wish to modify stock and then save it again.
+    </p>
+    <div class="scriptapi">
+        <div class="title">Shop<span class="syntax">(key)</span></div>
+        <ul class="input">
+            <li>key - (string) the unique internal name of this shop</li>
+        </ul>
+        <ul class="output">
+            <li>(Shop) a new Shop instance</li>
+        </ul>
+        <div class="desc">Creates and returns a new Shop instance. If a Shop with the same key was ever saved before, that data will be loaded. Otherwise, an empty shop template is returned.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop.</span>ShopKey</div>
+        <ul class="type"><li>string - read-only</li></ul>
+        <div class="desc">The internal name that uniquely identifies this shop.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop.</span>Title</div>
+        <ul class="type"><li>string - read/write</li></ul>
+        <div class="desc">The text that is displayed at the top of the shop screen.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop.</span>StringGroup</div>
+        <ul class="type"><li>string - read/write</li></ul>
+        <div class="desc">A prefix added to the shopkeep's quips (shown at the bottom of the screen) before they are looked up in string tables. The default value is &quot;shop_generic_&quot;. Possible quips are <code>hello</code>, <code>buy</code>, <code>bought</code>, <code>sell</code>, <code>sold</code>, <code>cannot_afford</code>, <code>cannot_sell</code>. For relevant quips, the <code>{{item}}</code> context refers to the selected or bought/sold item.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop.</span>NeedsRestock</div>
+        <ul class="type"><li>boolean - read/write</li></ul>
+        <div class="desc">Indicates whether you should take action to restock the shop. Set this to false when you're done. The game may set this to true when <code>RestockInterval</code> elapses.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop.</span>RestockInterval</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The number of hours between restocks. If this number of game hours elapse after <code>NeedsRestock</code> was set back to false, <code>NeedsRestock</code> will be flipped to true.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop:</span>Save<span class="syntax">()</span></div>
+        <div class="desc">Saves the state of this shop. Any future calls to <code>Shop()</code> with this shop's key will return the data as it was at the moment this function was called.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop:</span>Show<span class="syntax">()</span></div>
+        <div class="desc">Opens the shop for the player. The running script will be paused until the player exits the shop screen.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop:</span>RemoveDefaultStock<span class="syntax">()</span></div>
+        <div class="desc">Removes items that are not unique items from the shop's stock.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop:</span>RemoveAll<span class="syntax">()</span></div>
+        <div class="desc">Removes all items from the shop's stock.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">shop:</span>AddItem<span class="syntax">(item, quantity)</span></div>
+        <ul class="input">
+            <li>item - (Item) the item template to stock</li>
+            <li>quantity - (number) number of copies in stock. <code>-1</code> indicates unlimited stock.</li>
+        </ul>
+        <div class="desc">Adds an item to the shop's stock. This stack will be considered part of the shop's normal stock.</div>
+    </div>
+    <div class="scriptapi">
+            <div class="title"><span class="syntax">shop:</span>AddUniqueItem<span class="syntax">(item, quantity)</span></div>
+            <ul class="input">
+                <li>item - (Item) the item template to stock</li>
+                <li>quantity - (number) number of copies in stock. <code>-1</code> indicates unlimited stock.</li>
+            </ul>
+            <div class="desc">Adds an item to the shop's stock. This stack will not be removed when calling <code>RemoveDefaultStock()</code>, and thus could be used to for example add a new quest-related item to a shop, without risking it getting removed when the shop restocks.</div>
+    </div>
+
+    <a name="sref-object"><h3>GameObject API</h3></a>
+    <p>
+        These functions and properties are members of GameObject instances. All Creatures (including Player) and Items are GameObjects.
+    </p>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">object.</span>Name</div>
+        <ul class="type"><li>string - read/write</li></ul>
+        <div class="desc">The user-friendly name of this instance.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">object.</span>Alias</div>
+        <ul class="type"><li>string - read/write</li></ul>
+        <div class="desc">The user-friendly alias of this instance. This will be used instead of Name in combat logs etc, if set.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">object:</span>HasTag<span class="syntax">(tag)</span></div>
+        <ul class="input">
+            <li>tag - (string) the script tag to check. case insensitive.</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if matching tag was found.</li>
+        </ul>
+        <div class="desc">Returns whether this object has the specified tag.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">object:</span>AddTag<span class="syntax">(tag)</span></div>
+        <ul class="input">
+            <li>tag - (string) the script tag to add. case insensitive.</li>
+        </ul>
+        <div class="desc">Adds the specified tag to this object's tag list.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">object:</span>RemoveTag<span class="syntax">(tag)</span></div>
+        <ul class="input">
+            <li>tag - (string) the script tag to remove. case insensitive.</li>
+        </ul>
+        <div class="desc">Removes the specified tag from this object. No error is thrown if the tag was not found.</div>
+    </div>
+
+    <a name="sref-creature"><h3>Creature API</h3></a>
+    <p>
+        These functions and properties are members of Creature instances. You can use them on the <code>Player</code>, or on an instance you made by calling <code>Creature</code>.
+    </p>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>Health</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The number of hit points this Creature has left.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>HealthMax</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The max number of hit points this Creature can have. For AI creatures, this cannot be modified outside the Editor. For the Player, you may modify HealthBase instead.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>Armor</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The current Armor value of this Creature. If you want to modify this, change equipment.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>CR</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The Challenge Rating of this Creature. XP calculation is mostly based on this value.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>Level</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The XP level of this Creature. This cannot be changed for normal Creatures.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>IsPredator</div>
+        <ul class="type"><li>boolean - read/write</li></ul>
+        <div class="desc">Indicates whether this Creature is a predator. If true, the Creature may choose to take vore-related actions in combat.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>StomachDigest</div>
+        <ul class="type"><li>boolean - read/write</li></ul>
+        <div class="desc">If true, swallowed prey will take digestion damage each round. If false, it's all nice and cozy. <strong>CAUTION:</strong> If you disable digestion, you MUST script the encounter in such a way that the player is either released, or the combat ends. AI predators never regurgitate their prey, so the game would softlock.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>StomachCount</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The number of prey items currently swallowed by this Creature. Includes Creatures and Items.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>Predatoriness</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">A flat multiplier for the chance of selecting vore-related actions. A value of 2.0 would make the Creature twice as likely to try and eat someone. Default is 1.0.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>Digestedness</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">Indicates to what extent this Creature has been digested, after losing all HP. 0.0 means not at all (may be still alive), 1.0 is completely gone. Affects stomach space calculation. Caution: Note that if this value is 1.0 or higher, the game will delete the Creature at some point.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature.</span>StruggleFatigue</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The number of rounds spent swallowed, or resisting being swallowed, by another Creature. This number is applied as a penalty to all struggle checks. For the Player, this resets to zero when resting.</div>
+    </div>
+    <div class="scriptapi">
+        TODO: Update these.
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature:</span>IsGrappling<span class="syntax">(other)</span></div>
+        <ul class="input">
+            <li>other - (Creature) the character to check</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if grappling with specified Creature</li>
+        </ul>
+        <div class="desc">Returns true if this Creature is currently grappling with the specified other Creature.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature:</span>IsEaten<span class="syntax">()</span></div>
+        <ul class="output">
+            <li>(boolean) true if eaten</li>
+        </ul>
+        <div class="desc">Returns true if this Creature has been swallowed by something.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">creature:</span>IsEatenBy<span class="syntax">()</span></div>
+        <ul class="input">
+            <li>other - (Creature) the character to check</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if eaten</li>
+        </ul>
+        <div class="desc">Returns true if this Creature has been swallowed by something.</div>
+    </div>
+
+    <a name="sref-player"><h3>Player API</h3></a>
+    <p>
+        These functions and properties are members of the Player instance.
+    </p>
+    <div class="scriptapi">
+        <div class="title">Player</div>
+        <ul class="type"><li>Creature - read-only</li></ul>
+        <div class="desc">Global variable that references the player character. You can use any properties or functions that are available on Creatures, in addition to the extra features below.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>Species</div>
+        <ul class="type"><li>string - read/write</li></ul>
+        <div class="desc">The lowercase species name of the player character. It's possible but not recommended to change this (unless you've got some TF content or whatever going on) - respect the player's wishes if you can.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>PreferEndo</div>
+        <ul class="type"><li>boolean - read-only</li></ul>
+        <div class="desc">Set to true if the user expressed a desire to disable digestion and disposal content, false otherwise. Not currently used in the main game, however I recommend considering supporting this option for future compatibility.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>PreferScat</div>
+        <ul class="type"><li>boolean - read-only</li></ul>
+        <div class="desc">Set to true if the user has enabled disposal content. <em>Do not</em> show explicit scat or disposal content if this value is false -- respect the player's wishes. Referencing it in dialogue, or implicit content, is fine.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>HealthBase</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The base number of hit points the player has (i.e. their hit dice, in D&amp;D terms), excluding any other bonuses. You can change this to adjust player max health if you wish.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>XP</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The number of XP acquired so far. If you wish to change this, call <code>AwardXP()</code>.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>RequiredXP</div>
+        <ul class="type"><li>number - read-only</li></ul>
+        <div class="desc">The number of XP required to level up.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>FeatPoints</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The number of unspent feat points available for the player. Part of an upcoming feature.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>AbilityPoints</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The number of unspent ability points available for the player.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>Money</div>
+        <ul class="type"><li>number - read/write</li></ul>
+        <div class="desc">The amount of money the player owns.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player.</span>Location</div>
+        <ul class="type"><li>string - read-only</li></ul>
+        <div class="desc">The asset name of the Scene the player is currently visiting.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player:</span>HasItem<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) asset name of the item to check</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if owned</li>
+        </ul>
+        <div class="desc">Returns true if the player has an item in their inventory (NOT equipment) with the specified asset name.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player:</span>GiveItem<span class="syntax">(name, [announce])</span></div>
+        <ul class="input">
+            <li>name - (string) asset name of the item to give</li>
+            <li>announce - <em>optional</em> - (boolean) if true, print 'You obtained x...' in the game log</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if succeeded</li>
+        </ul>
+        <div class="desc">Attempts to add an item to the player's inventory. If the addition would make the player exceed their maximum carry weight, the addition is cancelled and false is returned. Quest items ignore weight rules and are always added.</div>
+    </div>
+    <div class="scriptapi">
+        <div class="title"><span class="syntax">Player:</span>TakeItem<span class="syntax">(name)</span></div>
+        <ul class="input">
+            <li>name - (string) asset name of the item to remove</li>
+        </ul>
+        <ul class="output">
+            <li>(boolean) true if succeeded</li>
+        </ul>
+        <div class="desc">Looks for the first item in the player's inventory with the specified asset name. If found, the item is deleted and true is returned. Otherwise, returns false.</div>
+    </div>
+
+    <div class="footer"><p>This game was developed by Nuntis the Wolf. Do not sell, redistribute or repackage any part of this game without my prior written permission. Don't be a dick and steal other people's hard work, please.&nbsp;&nbsp;&nbsp;&bull;&nbsp;&nbsp;&nbsp;<a href="https://www.furaffinity.net/user/nuntis/" target="_blank" rel="noopener">Contact me</a></a></p></div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "2ccd5fdb-bfc1-42d0-b5f0-08c609a8b6ba",
+	"Name": "A_ClothArmor",
+	"ObjectName": "Tunic",
+	"ObjectAlias": "",
+	"FlavorText": "Basic traveler's clothing, providing some modest cover from the sun.",
+	"ItemType": "Armor",
+	"PurchaseValue": 5,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "d938249f-675d-4d2b-bae2-7699de263e25",
+		"Name": "2ccd5fdb-bfc1-42d0-b5f0-08c609a8b6ba_UseScript"
+	}
+}

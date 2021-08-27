@@ -1,0 +1,156 @@
+﻿/*
+ * FINMER - Interactive Text Adventure
+ * Copyright (C) 2019-2021 Nuntis the Wolf.
+ *
+ * Licensed under the GNU General Public License v3.0 (GPL3). See LICENSE.md for details.
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+
+using Finmer.Core.Serialization;
+
+namespace Finmer.Core.Assets
+{
+
+    /// <summary>
+    /// Represents a template for an inventory item or equipable item.
+    /// </summary>
+    public class AssetItem : AssetBase
+    {
+
+        /// <summary>
+        /// Describes the in-game functionality of an item.
+        /// </summary>
+        public enum EItemType
+        {
+            Generic,
+            Weapon,
+            Armor,
+            Usable
+        }
+
+        /// <summary>
+        /// The name of the object, used as value for GameObject.Name.
+        /// </summary>
+        public string ObjectName { get; set; }
+
+        /// <summary>
+        /// The alternate name of the object, used as value for GameObject.Alias.
+        /// </summary>
+        public string ObjectAlias { get; set; }
+
+        /// <summary>
+        /// Arbitrary narrative or informative text displayed at the bottom of the item tooltip.
+        /// </summary>
+        public string FlavorText { get; set; }
+
+        /// <summary>
+        /// The in-game functionality group of the item.
+        /// </summary>
+        public EItemType ItemType { get; set; }
+
+        /// <summary>
+        /// The economic value of this item. Set to zero to prevent the item from being traded.
+        /// </summary>
+        public int PurchaseValue { get; set; }
+
+        /// <summary>
+        /// Whether this represents a quest item. Quest items cannot be deleted by the player.
+        /// </summary>
+        public bool IsQuestItem { get; set; }
+
+        /// <summary>
+        /// If ItemType is Usable, indicates whether this item is deleted when it is used.
+        /// </summary>
+        public bool IsConsumable { get; set; }
+
+        /// <summary>
+        /// If ItemType is Usable, indicates whether this item can be used from the Inventory screen.
+        /// </summary>
+        public bool CanUseInField { get; set; }
+
+        /// <summary>
+        /// If ItemType is Usable, indicates whether this item can be used during the player's turn in combat.
+        /// </summary>
+        public bool CanUseInBattle { get; set; }
+
+        /// <summary>
+        /// If ItemType is Usable, specifies a string to display on the item tooltip that describes this item's effect.
+        /// </summary>
+        public string UseDescription { get; set; }
+
+        /// <summary>
+        /// A 32x32 icon to display in UI to represent this item. May be null, in which case a default icon is used.
+        /// </summary>
+        public byte[] InventoryIcon { get; set; }
+
+        /// <summary>
+        /// The script that is invoked when the item is Used from the character sheet.
+        /// </summary>
+        public AssetScript UseScript { get; set; }
+
+        public override void Serialize(IFurballContentWriter outstream)
+        {
+            base.Serialize(outstream);
+
+            // Core stats
+            outstream.WriteStringProperty("ObjectName", ObjectName);
+            outstream.WriteStringProperty("ObjectAlias", ObjectAlias);
+            outstream.WriteStringProperty("FlavorText", FlavorText);
+            outstream.WriteEnumProperty("ItemType", ItemType);
+            outstream.WriteInt32Property("PurchaseValue", PurchaseValue);
+            outstream.WriteBooleanProperty("IsQuestItem", IsQuestItem);
+
+            // Usable item data
+            outstream.WriteBooleanProperty("IsConsumable", IsConsumable);
+            outstream.WriteBooleanProperty("CanUseInField", CanUseInField);
+            outstream.WriteBooleanProperty("CanUseInBattle", CanUseInBattle);
+            outstream.WriteStringProperty("UseDescription", UseDescription);
+            outstream.BeginObject("UseScript");
+            UseScript.Serialize(outstream);
+            outstream.EndObject();
+
+            // Icon data
+            outstream.WriteAttachment(GetIconAttachmentName(), InventoryIcon);
+        }
+
+        public override void Deserialize(IFurballContentReader instream, int version)
+        {
+            base.Deserialize(instream, version);
+
+            // Core stats
+            ObjectName = instream.ReadStringProperty("ObjectName");
+            ObjectAlias = instream.ReadStringProperty("ObjectAlias");
+            FlavorText = instream.ReadStringProperty("FlavorText");
+            ItemType = instream.ReadEnumProperty<EItemType>("ItemType");
+            PurchaseValue = instream.ReadInt32Property("PurchaseValue");
+            IsQuestItem = instream.ReadBooleanProperty("IsQuestItem");
+
+            // Usable item data
+            IsConsumable = instream.ReadBooleanProperty("IsConsumable");
+            CanUseInField = instream.ReadBooleanProperty("CanUseInField");
+            CanUseInBattle = instream.ReadBooleanProperty("CanUseInBattle");
+            UseDescription = instream.ReadStringProperty("UseDescription");
+
+            // Attached scripts
+            instream.BeginObject("UseScript");
+            UseScript = new AssetScript();
+            UseScript.Deserialize(instream, version);
+            instream.EndObject();
+
+            // Icon data (Was changed from byte array attribute to attachment file in format version 9)
+            InventoryIcon = version >= 9
+                ? instream.ReadAttachment(GetIconAttachmentName())
+                : instream.ReadByteArrayProperty("InventoryIcon");
+        }
+
+        /// <summary>
+        /// Returns an attachment key suitable for the item icon image.
+        /// </summary>
+        private string GetIconAttachmentName()
+        {
+            return Name + ".png";
+        }
+
+    }
+
+}

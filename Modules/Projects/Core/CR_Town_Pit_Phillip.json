@@ -1,0 +1,39 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "217681a6-e59f-4ca6-aee2-10eeed0d40da",
+	"Name": "CR_Town_Pit_Phillip",
+	"ObjectName": "Phillip",
+	"ObjectAlias": "the horse",
+	"Strength": 4,
+	"Agility": -1,
+	"Body": 3,
+	"Wits": 0,
+	"Flags": 0,
+	"Level": 4,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_PHILLIP_VORE_WIN"
+		},
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_PHILLIP_VORE_WIN_POV"
+		}
+	]
+}

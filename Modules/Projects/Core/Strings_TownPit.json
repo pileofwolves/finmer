@@ -1,0 +1,683 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "a26050f3-7c62-4f1c-bbb1-be6d3087bc72",
+	"Name": "Strings_TownPit",
+	"Entries": [
+		{
+			"Key": "TOWN_NSQ_PITOPEN_BEGIN",
+			"Text": [
+				"Someone bumps into you from your flank. Briefly, you stumble, before regaining your balance. While you're busy brushing off and glaring at your assailant, the beady eyes of a hooded chameleon meet yours, and an expression of shock washes over his face. The lizard apologizes profusely, before turning tail and jogging off in the direction he was going, back towards the marketplace. Rude."
+			]
+		},
+		{
+			"Key": "TOWN_NSQ_PITOPEN_END",
+			"Text": [
+				"Mere seconds after the strange encounter, once you are left to your own devices, you notice a piece of paper in your pocket that wasn't there before - likely the chameleon placed it there. Well then; that's one way to deliver a message, and actually a rather impressive sleight of hand."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_CH_DENY_BELLY",
+			"Text": [
+				"As you express an interest in taking on the next challenge, Venna, who was patiently working at the desk as ever, casually lifts herself up from her chair and casts a glance at your swollen stomach. \"Tcch,\" she huffs, comfortably plopping herself down again, before continuing. \"How about you {{?|sleep off that gut|finish digesting your food|get rid of that %furry bulge}}, and then we'll talk?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_CH_DENY_ENDED",
+			"Text": [
+				"Venna greets you with a respectful grin, and simply shakes her head. \"I'm afraid, my dear champion of the cage, that you've devoured all competition we had to offer.\" She idly scratches the side of her muzzle. \"I understand someone of your particular talents would like to see more, but for now you'll have to wait until the next... 'batch'... arrives.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_ACCEPT",
+			"Text": [
+				"\"Excellent,\" she states, with perhaps a bit less genuine excitement than one might expect. \"Obviously, we are not responsible for any injury or death that will occur. You get digested, that's your problem.\" The vixen rises from her little workspace, and marches over to the cupboard at the end of the room, between the pub and management areas. Perhaps somewhat surprisingly, she opens it, and steps inside. You hear a mechanical click, and before long the back panel of the cupboard slides open, revealing a stone stairway leading down. Venna gives you a sly smile. \"Out of sight, out of mind. Now then, shall we? I'll introduce you for your first round. Come on.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_LEGAL",
+			"Text": [
+				"Suspicion and annoyance flash across Venna's features. \"Are you really so naive to have to ask such a stupid question?\" She regards you with a dangerously unimpressed expression. \"You're free to walk if you're not interested, but don't even think about talking.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REFUSE",
+			"Text": [
+				"\"Very well,\" she says, managing to hide some disappointment surprisingly well behind a layer of professionalism, before fishing one of the parchments out of the pile on her desk and beginning to make changes to it. \"If you change your mind, you know where to find us. Rech will... show you out.\" As if on cue, the impressive crocodile has materialized behind you while you weren't looking, and gestures wordlessly towards the door you came in through."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REFUSE_RETURN",
+			"Text": [
+				"Venna, the vixen behind the messy desk, stops what she's doing and regards you briefly, before turning back to her work. Without facing you, she greets you. \"Couldn't resist the call, %species?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REFUSE_SNITCH",
+			"Text": [
+				"\"Oh,\" Venna begins, turning to Rech before the two of you leave. She reaches into a drawer under her desk, before tossing a small silver coin to Rech, who catches it with nonchalant ease. \"I almost forgot, Rech.\" A short pause follows, before she continues. \"I'll need you back in here quickly, so don't take too long,\" she adds ominously. In response, the imposing emerald crocodile simply nods."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REFUSE_SNITCH2",
+			"Text": [
+				"With remarkable ease, he forcefully pushes you towards the door, out into the open world beyond. You are greeted by the faint light of a quiet, starry night, but an indifferent grunt followed by the gurgle of an empty stomach behind you draws your attention away from the scenery."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REFUSE2",
+			"Text": [
+				"Only a few moments later, you're back on the street, with the memory of a strange few minutes. Considering the subject matter and purpose of that club, you should probably feel lucky they let you walk at all, rather than turning you into a belly bulge yourself. Pudge can't talk, after all."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_REWARD",
+			"Text": [
+				"\"Handsomely, if I might say so myself,\" the vixen simply replies. \"The patrons will bet on which predator they believe will win, then watch your game and get a live showing like no other. Well, the betting part only really matters for our patrons, you'll simply get a share of the profits. On top of your predatory fix, of course. Sound good?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT_WHY",
+			"Text": [
+				"\"Ah, well that's a simple one,\" the red-furred canine replies. \"Rech and I run this... establishment. We can offer you, as predator, all the live prey you could ever want, and you even get paid for swallowing them. That is, of course, assuming you don't screw up. We both make money, everyone goes home happy. Some of us with a full belly, even,\" she winks."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT1",
+			"Text": [
+				"She appears only barely interested enough in your presence to lift her gaze up to meet your eyes. \"Welcome to the Club, %species,\" she states simply, her voice smooth but matter-of-factly."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_INIT2",
+			"Text": [
+				"The vulpine continues. \"We believed you might have some aptitude for this line of work, hence our invitation. I'm Venna, I run most of this place, so let me explain.\" Briefly she pauses, maintaining eye contact as you give her a nod to bid her to tell you more. \"Put simply, we have a little arena downstairs, and every few nights we pit two predators against each other. Rules are simple: One weapon of choice, one piece of armor of choice. The winner is the one who turns the other into a belly bulge. Simple enough, yes?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_REWARD",
+			"Text": [
+				"The vixen nods, and fishes something from a drawer. With practiced precision, she tosses you a small pouch filled with coins, and you catch it. {{?|\"Good work down there, yeah? I expect I'll see you again some time in the future, then.\"|\"How much is left of them in there? Never mind, I don't want to know.\"}}",
+				"The vixen nods, and {{?|snatches|procures}} a small pouch filled with coins from a drawer, then nonchalantly hands it to you. \"And I even had such high hopes for that fellow,\" she states dryly, {{?|\"no disrespect to your achievements of course.\"|\"I thought you might've looked cute as padding on that waist of theirs. But I like being proven wrong.\"}}"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_REWARD_ANNOY",
+			"Text": [
+				"Venna closes her eyes and places her palms on the smooth oak desk, sighing softly. Then, she inclines her head and meets your eyes. \"Fine. If you want material gain so badly, we have just the thing for you.\" Her paw vanishes in a pocket for a brief moment, before reappearing to press a small, tarnished coin into your paw. \"Take this to Rech. Yeah, the crocodile gentleman watching the door just outside. He'll show you what I mean.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_DESK_REWARD_POKE",
+			"Text": [
+				"Venna shakes her head with a sad smile. \"Nuh-uh, it's not going to be that easy, %name. Work for it.\"",
+				"The vixen huffs and stares at you for a bit. \"I don't recall you having earned a share any time recently. How about you go digest someone in the pit and we'll talk again?\"",
+				"Your question is met with an indignant grunt. \"Nope. Come back at midnight and turn someone into %species-fat, then we may just have a share ready for you here.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTER",
+			"Text": [
+				"You step inside the dimly lit entrance room, carefully hidden from view in the protective gaze of a certain crocodile. It is noticeably warmer than outside - pleasantly so, if anything - and this place carries a light scent of booze. Still, now that you're out of sight of the streets, you might even be able to get somewhat comfortable here, in a place where predators are not immediately shunned."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTER_FIRST",
+			"Text": [
+				"Carefully, you enter a cozy room, lit only by a handful of lanterns on the wall. Perhaps unexpectedly, the area looks like a cross between a pub and an office. On one side, a red vixen is poring over some papers on a desk, with well-stocked shelves and cabinets behind her. On the flipside, you see a few wooden tables and chairs, some occupied, with drink and laughter aplenty. Barrels and crates line the walls. A simple purple rug runs between and divides these two sections, with a nondescript cupboard at the end of the carpet.\\n\\nBefore long, the vixen takes note of you and beckons you over. Apparently it's easy for her to recognize that you're new -- either that, or these people are surprisingly well-coordinated in their communications."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_DAYTIME",
+			"Text": [
+				"There's not really anything noteworthy in this dark alley -- smooth stone walls on either side sporting a tightly shut door, and some random trash plus a discarded poster on the cobblestones. Frankly you're not really sure why you even stepped in here."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_DAYTIME_CLOSED",
+			"Text": [
+				"There's not really anything noteworthy in this dark alley -- smooth stone walls on either side sporting a tightly shut door, and some random trash plus a discarded poster on the cobblestones. They'll be open again at nighttime."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_DENY_ENTRY",
+			"Text": [
+				"The large reptile chuckles, and puts his hands in his sides. Perhaps intentionally, he completely blocks the ominous door behind him, and puts a fairly impressive amount of muscle and scales between you and it. \"Sorry, kid, no can do. Run along now, yeah?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_DENY_WHATSTHIS",
+			"Text": [
+				"In response to your simple inquiry, the croc's brow rises, though he maintains a relatively impassive expression. \"If you have to ask, I reckon you shouldn't be here,\" he states coolly. \"This is private property.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_INV",
+			"Text": [
+				"The large crocodile looks you over, and you see his nostrils flare for a second. \"%name, is it? I was told to expect a %species who looks just like you,\" he states, his voice deep yet as smooth as the cobblestones on the street."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_INV2",
+			"Text": [
+				"A grin spreads on the intimidating fellow's features, revealing a dangerous-looking set of teeth. \"So you came. Good. Give me the note, and you can head on inside. My colleague will explain further.\" He extends a clawed hand towards you, waiting expectantly."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_INV3",
+			"Text": [
+				"He reaches behind him and opens the door. You immediately notice that the door has been reinforced on the inside with steel - either to help keep people out, or in. Probably wouldn't have ever worked to sneak in like that. The crocodile gives you a respectful nod - perhaps a surprising gesture - and motions for you to step inside. \"Name's Rech, by the way. You're expected, so go on in.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_LEAVE",
+			"Text": [
+				"Maybe you'll be able to find a way inside later. That hunk of a crocodile isn't going anywhere, from the looks of it, so brute force probably isn't going to be an option for you."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_NIGHTTIME",
+			"Text": [
+				"Between the smooth stone walls of the alleyway, past a turn, you spot an imposing-looking crocodile leaning against a lone door. In a sense he looks rather out of place, as if on the lookout for something, but then again this place is surprisingly well-concealed from the public eye. The emerald crocodile gives you an inquisitive stare, arms crossed but doing a poor job of concealing the muscle underneath a simple shirt. He says nothing."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_ENTRANCE_NIGHTTIME_UNLOCKED",
+			"Text": [
+				"Hidden under the cover of night, you find Rech, the emerald-colored bouncer, glare at you. Obviously he spotted you well before the other way around. He greets you with a huff and a nod, the entrance to the Club just behind him."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_LOWER_ENTER_FIRST",
+			"Text": [
+				"You closely trail behind her, down the dark stairs. The vixen opens another door before you, and as light floods in from the room beyond, you hear the cupboard behind you close. Someone must've sealed it up again while you weren't looking.\\n\\nSoon enough, you walk into a surprisingly expansive underground room, lanterns lining the smoothly-hewn walls - far more than upstairs, bathing the room in a warm glow. A few wooden stools sit against the walls, some occupied with a small handful of people, chattering about one subject or another. The most attention-demanding feature by far, however, is a large iron cage in the center of the room. It's several paces wide and deep; large enough to comfortably jog around in -- and large enough to host a show. A few handfuls of straw dot the floor in places, doing an extremely poor job of covering the cold, hard flagstones underneath. Each wall of iron bars reaches up to the ceiling - a few bars visibly dented in places - and sits a few meters off of the stone wall, to allow observers some space around the action. Otherwise, the arena is mostly bland and featureless, serving only one purpose."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_LOWER_INTRO_ROAR",
+			"Text": [
+				"You open your mouth and release a moderately impressive roar, adding to the excitement of the crowd. Immediately you are met with cheers and even a whistle or two, before it dies down in only a few more seconds."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_LOWER_INTRO_SILENCE",
+			"Text": [
+				"You decide to maintain an air of mystery about yourself - after all, giving away information is probably the easiest way to get yourself killed. Your prospective crowd feels differently about the matter, however, and you hear a grumble and even a snort."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_LOWER_INTRO_TAUNT",
+			"Text": [
+				"You loudly reaffirm your intentions regarding any prey who might blunder into your paws. Immediately you are met with cheers and even a whistle or two, before it dies down in only a few more seconds."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_LOWER_INTRODUCE",
+			"Text": [
+				"Venna raises one paw up high and shouts, \"Everyone, allow me to introduce today's newcomer! This is {{player.name}}, and {{player.subject3p}}'ll be entertaining you tonight.\" You meet the eyes of several patrons around the room, their expressions varying from disinterested to gleeful, and you consider how to respond."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_NEWCHAMP1",
+			"Text": [
+				"Amidst the loud celebration of your victory, Venna strides towards you and pulls you out of the arena. The sudden movement dislodges something in your noisy stomach, causing you to awkwardly burp in her face, but she doesn't even seem to notice. \"Folks, I present to you: %name, your new champion!\" she shouts, and is met with another loud cheer and more than one visible bulging set of pants. Lewd, the lot of them!"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_NEWCHAMP2",
+			"Text": [
+				"Immediately, you are assaulted by a few excited patrons who jump at the chance to rub your gut, massaging and tenderizing the meal inside in all the right ways. One in particular - a young-looking mouse lady - really gets into the groove, and with a satisfied grin, you decide to grab her and plant a long, slimy lick on her cheek, in response to which she almost literally melts. Such a preyslut, it's a miracle she hasn't been snatched up yet! It would appear that the Club has a new favorite, the one and only %species who swallows apex predators like they're afternoon snacks!"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_NEWCHAMP3",
+			"Text": [
+				"As you are lifted off the ground by everyone present - an impressive feat considering your massively increased weight - amidst the borderline hero-worship you manage to pick up on the fact that you're being half-carried-half-pushed up the stairs to the common room. There's a party to be had, according to your new fans, and what better way to show the now-nameless meal breaking apart deep inside you by throwing a few more mugs of alcohol on top...?"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_NEWCHAMP4",
+			"Text": [
+				"Groggily, you reawaken the next morning, taking a few short moments to realize where you are. The familiar bed and featureless granite brick room carries your scent ever so slightly, owing to the handful of nights you've spent here now. Immediately, your gaze travels to your swollen stomach. Most of your prey has clearly been processed by now, only a pudgy potbelly remaining. You note that you've become quite good at smelting down prey! With a stretch and a yawn leading into a burp, you decide to leave the comfort of the small bedroom behind for now. While there are no more prey for you to conquer at the Club, there would be more opportunities in the future - of this, you are quite certain."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_DEFEAT",
+			"Text": [
+				"Hours later, you reawaken in the middle of the pit. Slowly, and with a cough, you lift yourself off the cold, smooth flagstones. As you dust yourself off, you check on your injuries - everything still feels incredibly sore after that botched mess of a fight - in the dim light of a single lantern left besides you. In that gentle glow, you recognize the iron bars of the pit around you; apparently you've been left down here alone and all the other lanterns lining the wall have gone out while you were down."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_DEFEAT2",
+			"Text": [
+				"It would seem that Carson declined to actually swallow you after besting you in combat, instead leaving you to shame. A loud metallic clang breaks you out of your reverie, and you quickly look up to see a large greenish crocodile holding the pit gate open for you. \"You got very, very lucky, %species,\" Rech announces in his usual bassy voice. \"This is a strange spot for the Club; we didn't really know what to do with you. I was thinking about offering you to one of our patrons, or perhaps myself... but that's not good for business. Just... get out, will ya?\" He steps backwards and gestures at the stairs with one hand, holding the door open for you as you gather yourself and stumble out, trying not to embarrass yourself any further."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_KILL_DIGESTED",
+			"Text": [
+				"Unbeknownst to you, inside the hostile environment of your digestive system, the otter squirms weakly against the unstoppable onslaught of writhing flesh and acid. The promise of the Club turned out to be too good to be true after all; his acidic grave certainly made him regret his choice of adventure. But it matters not; one more crass belch deprives the prey of further wiggle room, and your belly falls mostly still, only a hunk of meat to be processed left inside."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_KILL_GENERIC",
+			"Text": [
+				"You throw a punch at the otter, intentionally leaving yourself open while making sure not to shift too much weight forward. As expected, Carson immediately tries to exploit your apparent vulnerability, but you snatch his wrist with your other paw as he makes an attempt to slash at you. Taking full advantage of his momentum, you yank at his arm. The otter loses his balance and falls flat on the ground with an unceremonious thud."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_KILL_GENERIC_POV",
+			"Text": [
+				"A sharp sting travels up the side of your arm, as you realize Carson managed to land a blow with one of his knives, drawing blood. You stumble backwards, taking a second to assess the damage, but the river otter is right on top of you within moments. He throws one hook at your chest and muzzle after the other, and you find yourself unable to mount a proper defense until you are sent falling backwards, saliva sputtering from your mouth. In just a few more pain-filled moments, you sprawl out on the cobblestone floor, unconscious."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_MISS",
+			"Text": [
+				"Just as you think you land a hit on the river otter, he disappears. Quick little bugger.",
+				"You take a swing at Carson, but he nimbly crouches underneath."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_TIP",
+			"Text": [
+				"The administrator ponders your inquiry for a moment, and decides to oblige. \"I say 'interesting' because he's won once, just like you, and yet actually declined to swallow his victim when he got the chance. A statement, maybe, but an odd one to make in a predator's club.\" Gracefully, she gestures to the pub area of the waiting room. \"The rest is up to you, %species, I'm not about to give you an advantage. Have a seat while we wait, whydoncha?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY",
+			"Text": [
+				"With your second victory under your belt - quite literally so - a buzz goes through the curious onlookers, as evidenced by the excited chattering, not to mention the one guy actually going so far as to masturbate in full view of everyone, staring at your wriggling stomach with longing eyes. You briefly wonder if they'd go down smoothly or squirming. Nevertheless, truly, that sagging gut of yours is a sight to behold. Judging by the cheering, the crowd is agreed: perhaps that new %species isn't such a bad predator after all, as evidenced by the obnoxiously loud and disgustingly wet grrooooorrrgle coming from your stomach."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY_NV",
+			"Text": [
+				"With your footpaw pressed tightly on the otter's upper chest, squeezing on the base of his throat, you pin him to the cold floor. Carson meets your eyes, breathing heavily. Despite his earlier steely gaze, his quivering whiskers betray his fear. Now that your opponent is entirely at your mercy, it would appear that you are presented with a choice. Though if the crowd's mood is any indication - banging on the iron bars and chanting 'eat him', 'eat him' - your intended purpose in the Club is obvious."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY_NV_EAT",
+			"Text": [
+				"With malicious glee, you turn to the already-humiliated otter and pull him up by his shoulders... there is nothing he can do to save himself now and both of you know it. The cheering surrounding you fades away into white noise as Carson watches you part your jaws."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY_SPARE",
+			"Text": [
+				"You figure that it might just be sufficient to apply a bit of pressure, just enough to let the unfortunate otter know that you -could-, if you wanted to. But you don't, because you choose not to. A moment later, you lift your footpaw from his throat, leaving your helpless would-be prey to wheeze and sputter. Having sufficiently humiliated your opponent, you decide enough is enough and march over to the iron gate. Rech, who had been patiently observing, grunts and shakes his head disapprovingly."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY_SPARE2",
+			"Text": [
+				"\"Your business is unfinished,\" he states simply, nodding towards the exhausted and helplessly coughing otter on the floor. \"You're just going to pass up that free meal? Not chickening out, are we, %name?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VICTORY_SPARE3",
+			"Text": [
+				"Much to the displeasure of the crowd, you decide to leave the humiliated Carson to his devices. Perhaps someone else will make a snack out of him - there are plenty of other predators watching, after all - but you will not be the one to do it. To be sure, this is a unique situation considering your predator status and the reason for the Club's existence, but you have a feeling the otter was never here for those reasons.\\n\\nIn lieu of any direct instructions on the matter, Rech isn't one to keep you waiting, and sure enough, he holds the door open for you. At the same time, he's using his other meaty arm to block a noisy and imposing-looking horse without even giving them a second glance. Confidently, you stride through, up and away from the dingy basement, resisting the urge to look over your shoulder. While you are technically the victor, perhaps it would be wise to not linger too long lest the mood takes a turn for the worse. You -had- just made Venna's administration significantly more complicated, after all."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON_VORE_WIN",
+			"Text": [
+				"With gleeful abandon you shove the slightly smaller mammal down your throat. Undeniably, otters seem to have a place in the world as food: with their bodies being well-suited for swimming, the slick, slimy and pulsating tissue of your bowels would afford him little resistance on his way down. Even when you begin devouring your meal proper, Carson's lower half sticking out of your maw with everything else already lodged in your throat, you get surprisingly little resistance. Perhaps you knocked him out, or perhaps the otter resigned himself to his slimy fate inside of a %species already. Before you even realize how hungry you were, the otter's feet and long, pointed tail disappear into the all-consuming maw."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON1",
+			"Text": [
+				"\"Right then,\" she begins as you declare your intent. \"Tonight we have an... interesting match for you. An otter, Carson. Smaller of stature, perhaps, but deceptively slippery. Don't underestimate him, he's good at what he does. Curious fellow. Appeared out of nowhere one day, says he's just traveling the area.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON2",
+			"Text": [
+				"Come midnight, you find yourself escorted into the iron cage that would serve as your arena once more. You are given only a few moments to take in your situation, and you feel your pulse quicken in anticipation of the encounter about to unfold. Various onlookers - canines, felines, scalies and more - bang on the metal bars, producing a lot of noise in an attempt to get on either your or your opponent's nerves. Maybe both. You do your best to filter out the sound and concentrate."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_CARSON3",
+			"Text": [
+				"Readying two daggers of his own, one in each paw, a red-brownish river otter observes you carefully from a few paces away. A pair of icy eyes fix themselves on you, but a mild scowl on his cream-colored muzzle belies his disposition. He says nothing; either a sign of confidence or a healthy fear of revealing too much. You briefly wonder then, what sequence of events would have led a character like him here; with a slightly below-average height and nothing but a simple leather tunic, he seems a little out of place. But it matters not; you know better than to underestimate your opponents. Shifting into a battle stance, he evidently waits for you to make the first move, his long, pointed tail brushing against the flagstones below."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED",
+			"Text": [
+				"It would seem that even for the reigning champion of the Club, there is simply no matching your predatory talent. As the horse's agonized thrashing slows down to a weak kicking, you finally become aware of the pressing silence in the room. Everyone present is observing your feat from a safe distance, though one or two are clinging excitedly to the iron bars separating them from you. Even Venna peeks into the room, apparently curious enough to leave her work for a moment."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED_POV",
+			"Text": [
+				"For a species that's usually herbivorous, Phillip's digestive system is so aggressive with its grinding, churning and spewing of fluids, that it might as well have belonged to any carnivore. Even with the extra time the previous occupant has bought you, having diluted the digestive fluids, this does not stop the stomach from trying anyway. Little remained now of the appetizer that came before you. Much of the chyme has been drained into the predator's gurgling bowels below by now, leaving only you and several pounds of writhing stomach wall. Crushing waves of peristalsis knead and tenderize the meat you have been reduced to, and with your strength and thoughts quickly fading amidst the bubbling pool, it matters not that you'll need an extra hour or two to be processed properly. As you've come to experience first-hand, this horse is not usually one for patience. But with one-and-a-half meal in his gut, even he should be satisfied for a little while."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP_VICTORY",
+			"Text": [
+				"As digestion sets in properly and nature begins to take its course, your hugely swollen gut groans and gurgles loudly in preparation of the work ahead. A familiar pressure bubbles up your throat, and before you are even able to try to stop it, a massive belch escapes your maw. With it, your loyal patrons begin cheering and chanting your name."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP_VORE_WIN",
+			"Text": [
+				"Despite the proud equine's resistance, you manage to successfully cram his head down your gullet. A moment's distraction, followed by a brief moment of stunned silence, is all you need to get a head start on your work. The ex-champion's wide and muscular shoulders are tough to get down, even for you. Still, you manage, if only by forcing him down, between yourself and the uncaring flagstones, leaving his upper body with nowhere else to go. It is in this way that you whittle him down, little by little, each swallow and rippling wave of muscular pressure claiming a little bit more of a very vocal Phillip.\\n\\nWith the bulk of his chest dealt with, and his arms pressed to his sides in the tight embrace of your digestive tract, his potbelly filled with digesting prey serves as your next obstacle. Even that is no match for your predatory prowess, and with only a pair of beefy legs remaining, you finish the job easily. Immediately, your prey begins thrashing inside his new temporary home, much to your stomach's displeasure. You don't need to focus to hear the fluid sloshing around inside, the occupant screaming, coated in slime and acid."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP_VORE_WIN_POV",
+			"Text": [
+				"Just as the champion had suggested previously, he does not keep his stomach waiting. With his meal held in just the right spot, he greedily stuffs your head down his throat. Unlike most predators, the carnivorous equine doesn't even pause to sample his prey, and appears to be forcefully cramming and pushing you down his gullet more so than actually relying on swallows and his throat muscle. With the heavy breathing and flow of saliva around you, he must be really excited to be devouring a %species. Even so, the fleshy tube surrounding you seals around your form tightly as you sink into the stinking heat. With the warm, slimy haze enveloping your butt and legs, your head's journey through the skin-tight esophagus comes to an end. The stomach below opens up for you, a large, distended chamber blasting fumes of bile and rotting, partially processed food right into your nostrils, and you fail to suppress a gag. This was the acidic grave of another %species who came before you, and as you sink into the mire of chyme, you realize that this is exactly what you will be reduced to in a manner of hours. Clearly, fighting with a full stomach has not proven to be a disadvantage for the ravenous predator. Once the digestive organ finishes spitting out your feet and tail, you curl up into a ball, surrounded by a flood of warm, gooey mush. In the oppressive heat, it's almost impossible to tell the difference between the fluid and the stomach walls."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP1",
+			"Text": [
+				"\"Ah,\" Venna says simply, \"I was wondering when you would show up again.\" She takes a few moments to glance down at her notes, before continuing. \"With these victories of yours under your belt - quite literally so - you're actually up against the reigning champion, as a matter of fact.\" As she speaks, you can't help but notice a sly smile spreading on her muzzle. \"Incidentally, Phillip has asked for you specifically. Wanted to 'save space for that %species', as he put it.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP2",
+			"Text": [
+				"For one final time, you are led into the Club's heart. Fewer of the lanterns lining the walls have been lit today, perhaps to create some atmosphere. This is an important night, after all, and the turnout compared to yesterday has almost doubled. Excited furs and scalies cheer for you when you approach, one even all-out naked and lounging on a chair. Of course, you reason, that's nothing compared to the subject matter at hand.\\n\\nFinally, you enter the caged arena, where Phillip patiently sits on the floor. He rises, revealing the pudgy horse's moderately impressive build and belly. On any other day, you might have even called those deep green eyes and the polished chestnut coat captivating, were it not for the trail of saliva leaking from his lips."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP3A",
+			"Text": [
+				"The muscular horse regards you silently. It is only when his hand strokes his oversized gut, that you finally notice it is actually distended a little bit too far for it to just be a layer of pudge. He'd been busy, evidently. A grin creeps over the mammal's face as he scratches at a pair of old but vicious scars running over his right eye."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP3B",
+			"Text": [
+				"\"Finally,\" he states simply. \"When I saw you working your... 'magic', the other night, and I heard you would face me next... Oh, I knew I had a thing for you when I first saw you. And then I craved %species so badly, I couldn't help myself, and I gobbled up someone else in your place.\" He rubs his bulging gut; clearly some time has passed since his prey vanished in there, but it's obvious a good part of the mass is still in there, digesting. You silently hope it will throw him off balance."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_PHILLIP3C",
+			"Text": [
+				"\"So then, snack,\" Phillip declares as he widens his stance slightly, yet refined and casual, hands open but close by and at the ready. \"Do not keep me and my poor stomach waiting any longer.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_CARSONSPARED",
+			"Text": [
+				"\"Oh, before we begin,\" she states, even going so far as to rise from her chair and prodding you with a finger. She is clearly displeased, but managing to stay composed regardless. \"About yesterday: that nonsense will be nipped in the bud. We weren't sure what to do with the last two times Carson pulled it on us, but you're not going to join him in that regard. He's fine for now, but next time, the cage doesn't open until one of you is a bulge. We have a paying clientele who want to see pred-on-prey action, and that's what they're going to get. Am I understood?\" With that, when you give her a quiet nod, she sits down again, resuming her moderately unimpressed expression. \"Now then...\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_KILL_DIGESTED",
+			"Text": [
+				"Having spent sufficient time playing with your prey and pushing his features - notably, the antlers that make a curious-looking bulge on your swollen stomach - you decide that it's been enough. Wrapping your arms around your squirming belly, you squeeze it tightly against your chest and belch loudly. The act removes most of your meal's movement options, compacting him tightly and giving your stretched, gurgling stomach walls plenty of opportunity to tenderize and work on its contents. As the meal once known as Tye sinks into his warm, acidic grave, the crowd erupts into cheers."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_KILL_DIGESTED_POV",
+			"Text": [
+				"You were certainly not Tye's first prey; by now the predator was quite experienced with keeping his balance while a bulge of at least his own weight juts out from his usually smooth belly. To add insult to injury, he knows just how to rub and squeeze his melting food, to get it to squirm and kick just how he likes it. It is only when a hard, flat surface presses into your side and splashes thick, caustic fluids all over your form, that you realize the wolf-deer hybrid has long since left the arena and is now settling down in the room that could have been yours. Alas, you will be spending the night in that comfy bed - just with an extra layer of fleshy, pulsating covers that is doing a respectable job so far with kneading and grinding its contents into chyme and fuel. And as Tye releases warm, %species-scented burps, relishing in your flavor as you slowly digest, he drifts off thinking about what a good decision participating in the Club had been."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_VICTORY",
+			"Text": [
+				"Though there were markedly fewer patrons today, they do not appear to be any less pleased - and aroused - by the night's proceedings. All eyes are fixated on you and your loudly growling and guuurrrgling belly. Yet your celebration is interrupted as slimy lump travels up your gullet, and with a hacking cough, you regurgitate an odd trinket: a simple silver amulet, coated in stomach goo and slightly tarnished, but otherwise intact. It must've belonged to your dinner. A tabby cat off to your side mumbles about room for seconds, and you flash her a toothy grin, before striding out of the arena. You feel pretty good about yourself, and as the anonymous patrons follow you out of the room, you can't help but feel like some are trying to steal a glimpse of your gut at work. And you're not sure if you mind at all."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_VORE_WIN",
+			"Text": [
+				"With surprisingly little fuss, you manage to wrap your jaws around the hybrid's head, breathing hot and foggy %species-breath over his muzzle before you begin swallowing. The wolf-deer's antlers are too small - and by no means sharp enough - to create any real obstacle for a more experienced predator such as yourself. However, once you pack your prey's shoulders away into your starving gullet, Tye's limbs flailing and attempting to get a grip on literally anything, you find that you need to take a moment to pause before continuing. Swallowing someone of your own size is no mean feat, after all! But despite your new meal's protests and shouts of complaint, he cannot hope to work against the forces of gravity and slides down the well-lubricated tunnel into the depths of your digestive system. The both of you know well that from this point, his fate as pudge is sealed."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE_VORE_WIN_POV",
+			"Text": [
+				"With a particularly well-timed jab to the temple, the hybrid manages to leave you momentarily dazed. He seizes the opportunity to push you to the ground while your face disappears into the wolf-deer's slimy kiss. Caught off-guard, there is no time for you to recover before your shoulders are compacted and pulled into the experienced predator's gullet with a loud, wet -gllllrrrrk-. With his prey locked securely in place, Tye takes the time to sample your taste, sensually rubbing his tongue up against your %fur while your body disappears rapidly into the ravenous carnivore. From within the pulsating tunnel, barely being able to breathe, there is little you can do to keep the hybrid from tasting you like a snack before, much less reverse the progress of your devourment. Gurgling, rippling waves of muscular pressure squeeze you down into the wolf-deer's bowels like the meaty meal you are, before the cardia greets you with a slimy kiss, parting to allow your entry. You don't even notice how your feet are carefully licked and teased before being sent down to you join you, being as distracted by the pressure and sounds of a body at work as you are. As you settle into the only slightly more spacious stomach, a quivering wall in every direction and bent on grinding you down into paste, Tye's latest victory is secured."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE1",
+			"Text": [
+				"The administrator clasps her paws together. \"Next up on the shopping list, hmm? Alright...\" She checks the paperwork on the desk just to be sure, and you notice her ears perking up. \"Oh, that'd be Tye, of course. Cute wolf-deer fella. Well, I say cute, but he's eaten a good number of folks. You know.\" She pauses and humms. \"Very good at what he does, that guy. Most who climb the ladder here usually end up on his haunches. One of you is going to challenge the reigning champion soon; I wonder who it'll be,\" she finishes with an eerily toothy grin."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE1_TIP",
+			"Text": [
+				"She tilts her head inquisitively and snorts. \"Nuh-uh. He's... well, how do I put it... a favorite, let's say. But we're keeping the playing field even here. Neither of you know anything about the other, and we're going to keep it that way, all the way until you get -very- intimate, mhm.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE2",
+			"Text": [
+				"After spending the remaining daylight hours preparing (and fasting, as you do), you are brought back down into the now-familiar dungeon room. Unlike the previous two times, nobody is there yet, Rech's footsteps behind you and the irregular flickering of the lanterns lining the walls being the only things to keep you company. It is only when you've taken a place at the far end of the arena, that the crowd - and your opponent - file into the room."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_TYE3A",
+			"Text": [
+				"The crowd is notably smaller than last time, you note; other than the confident wolf-deer striding towards you and the deceptively bored-looking Rech, you count only five other patrons, a variety of furs who must've paid good money to receive a show. And a show they shall receive.\\n\\nThe circumstances are of no importance, however, and your focus returns to the matter at hand. Tye would be a relatively unremarkable gray wolf, were it not for the light blue spots dotting his muzzle, and the tiny set of antlers he's sporting - a natural deterrent for the modern-day predators like yourself. A confident grin splits his lips, his tail swishing in excitement as he wipes his muzzle with the same paw he's using to hold a dagger. \"You sure you can take me on, cutie? I could go for some %species today,\" he teases."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_KILL_DIGESTED",
+			"Text": [
+				"As it turns out, your digestive system cares not for the fox's rapidly fading cocky disposition. A crushing wave of pressure manifests itself as a lewd gurgle, an angry kick from your prey and a quiet, wet burp. Satisfied, you smack your lips, letting your paws roam around your swollen midsection in an attempt to both appease your noisy stomach and to coax your meal into squirming just that little bit extra. All in all, you feel quite accomplished, letting a wave of satisfied lethargy wash over you as your food begins settling down."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_KILL_DIGESTED_POV",
+			"Text": [
+				"As you sink below the crushing pressure of an active digestive system, you can barely make out the exciting yelling and shouting of the crowd. Your organic prison shifts as your predator walks, the contents of the stomach sloshing around. Several eternities of gurgling and splashing acid pass before the organ settles down and the vulpine yawns audibly; it seems like you're in it for the long haul. A few weak kicks and squirms are all the protest you can muster, unable to change your situation for the better - and yet your predator is quite pleased with this turn of events. The digestive system surrounding you kicks into higher gear as it kneads and churns away at you, determined to dissolve your entire being into nutritious slop. While Vulpes dreams of tasty prey and his next profitable opportunity, you spend the night in his steamy, hungry belly, serving as fox chow."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_KILL_GENERIC",
+			"Text": [
+				"You throw yourself to the right, preparing to make a move. Vulpes begins moving in the opposite direction to dodge, but realizes too late that he fell for your setup. With his weight off-balance, you swiftly sweep his legs out from under him. In a manner of seconds, the gray fox painfully hits the floor, dazed."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_KILL_GENERIC_POV",
+			"Text": [
+				"As you throw a hook at the nimb fox, he leans to his left to dodge. Immediately, you try to recover, only to realize you fell for the feint when the vulpine takes advantage of your imbalance to knock your feet out right from under you. With a dizzying shift of gravity, you fall right on your back, the back of your head painfully hitting the smooth stone floor."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_MISS",
+			"Text": [
+				"You awkwardly lean forward and claw at Vulpes. He immediately takes advantage of your unstable footing and kicks dirt in your face, throwing you off.",
+				"Vulpes sticks out a foot and you only barely manage to keep yourself from tripping."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_VICTORY",
+			"Text": [
+				"The crowd, at this point rather excited and vocal about it to boot, shouts and clings to the cage as you finally give in to the building pressure and release a massively loud belch. Maybe your patrons expected the new %species to be less fortunate. Or Vulpes did. Either way, it doesn't matter anymore. The fate of your prey is sealed, and with the removal of his air supply, the intensity of the squirms and struggles die down significantly. Now, as you contentedly smack your lips and lazily gaze around the room, it's simply a matter of allowing nature to take its course with this snack. That, and spending the night somewhere safe and uninterrupted."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_VORE_WIN",
+			"Text": [
+				"You are quick to take advantage of Vulpes' vulnerable state, and cram his muzzle down your gullet as fast as you can. Once that's in, you have some time for teasing and tasting, after all. The crowd roars in excitement; it didn't take that long for you to get the upper hand. Methodically you devour the helpless fox, who vanishes into your depths gulp by gulp. Your %furry gut swells to accommodate the fresh prey, and despite the prey's handful of angry kicks, as his footpaws vanish from view into your hungry, gurgling bowels, your very first match turns out to be a tasty victory."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES_VORE_WIN_POV",
+			"Text": [
+				"Wasting no time, Vulpes is right on top of you, and begins swallowing your head. Drool leaks down your features in spades, and yet, having a mouthful of %species does little to suppress the vulpine's personality. With your body firmly pinned to the ground, he takes his time devouring you, making an obvious show of tasting and lubricating your features for the many folks who watch on with morbid curiosity. They all know what's happening, and it's all too obvious who tonight's victor is. The wrinkling tunnel of the fox's throat pulls you down with practiced, deliberate swallows. Before long, the predator decides to finish the show and after a few agonizing seconds amidst suffocating flesh and fluid, you push through a muscular barrier that deposits you in the warm, humid stomach. With your face immediately pushing into a pool of gunk and a spongy wall, it feels like the organ isn't nearly big enough to fit you, but that quickly changes as more of you joins you. On the outside, Vulpes gives your feet several more seconds of teasing - then it goes down the hatch. Only a huge, squirming, furry gut and a loud belch suggest that there might have been another person on the outside at some point."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES1",
+			"Text": [
+				"The vixen then turns to you with a mischievous grin. \"Now then. Your first opponent here shall be... Vulpes over here.\" Right on cue, a lean and athletic-looking fox steps out from the crowd. He'd been leaning against the wall just before, and blended in surprisingly well until now."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES1B",
+			"Text": [
+				"As a gray fox, his fur is a noisy but neutral shade, with orange and white tufts sticking out here and there from his curiously blue clothes. He confidently marches over to you and places a paw on your shoulder, as if caressing you. \"A pleasure, %mister %species,\" he quips. \"I hear we're both new, then? I'm honored that you'll be my first,\" your opponent adds, teasingly licking his lips.\\n\\nBefore you can so much as respond, Venna interjects, glaring at the overly eager fox. \"You know the rules, Vulpes,\" she states dryly, yet the accused vulpine never loses his smile. Instead, he gives you a bow, holding on to his feathered hat with one paw to ensure it doesn't fall off. With that, he makes his way over to the other side of the room. What a curious fellow."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_O_VULPES2",
+			"Text": [
+				"A buzz goes through the crowd, having observed your exchange just now, as the establishment's manager opens the loudly creaking iron gate for you. She gives you a wink as you step inside the enclosure. \"Good luck,\" she declares flatly, as she throws the door shut behind you with significantly more force than strictly necessary. Vulpes, on the other end of the pit, appears to have received the same treatment, though it does not appear to have shaken him in the slightest. Instead, he flashes you a smooth, cocky grin as he draws a rapier in a deliberate, almost taunting motion, and begins creeping ever so slowly towards you. \"A dance, then? Just the two of us.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_ENDING",
+			"Text": [
+				"After both you and your predator have had a second or two to recover from the ordeal, you hear Rech snort again. \"I did say I'd let you out. You look so surprised.\" Then, a huff and a cough. \"Word to the wise, snack. If you weren't prepared for that, you have no business around these parts. Consider this a warning. If I catch you again, you won't be leaving me the same way you went in. Now get out of here.\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_ENDING2",
+			"Text": [
+				"You don't need more encouragement to make your way away from wherever he spit you up. Hopefully you don't smell badly enough to rouse suspicion from anyone else."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_VORE1",
+			"Text": [
+				"Not even affording his prey the time and patience to observe his maw before shoving you into it, your vision turns dark in mere moments - if not because of a lack of light, then due to the thick, spongy tongue that eagerly explores your features. Indeed, the crocodile's maw is just large enough to fit your head inside. Unfortunately for you, Rech soon decides he's sampled quite enough of your %fur, and no sooner do you manage to gasp for some air than the muscle surrounding you leaps into action, a rush of saliva and a powerful contraction sucking you down into the predator's gullet."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_VORE2",
+			"Text": [
+				"Swallow after swallow forces your body deeper into the ravenous crocodile, no more than an afternoon snack to a hungry bouncer who has obvious experience with this line of work. Though the tight gullet smears your %fur with thick, gooey slime in a bid to help you slide down more easily, it leaves much to be desired in general comfort and ease of breathing. As if keenly aware of your distress, the slick tube widens to permit your entry into the fleshy sack below, which shall serve as your first stop on your journey through the digestive tract. Less than a minute is all the time Rech needs to cram his latest catch into his stomach. Your face presses into the floor of the stomach, its spongy surface contorting and splashing some juices on your muzzle, before your chest, arms and thighs join you in the cramped area. Unsurprisingly, the organ stretches admirably to fit the entirety of you inside, even as your feet are fully enveloped in moist heat and you are pressed neatly into a ball of %species."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_WALK1",
+			"Text": [
+				"The loud gulping noises cease as soon as you are fully deposited into the organic furnace, the slimy, muscular walls kneading into you and leaving no doubts as to where exactly you were. On the outside, Rech slaps his comically oversized gut, sloshing the liquids inside around, as he smacks his lips. \"Oof, you were a cutie -and- tasty. Stop squirming so much, I'll let you out after my shift, alright?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_WALK2",
+			"Text": [
+				"Your prison shifts every now and then, slime splashing around as the stomach churns and gurgles loudly around you, whether from its natural response to prey such as yourself, or whether Rech is actually moving, you cannot tell. Despite the discomfort of being squeezed into a tight ball, the unending rippling waves of muscular pressure, the slight difficulties with breathing, and the sheer humiliation of having been devoured, you seem to be feeling alright."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_WALK3",
+			"Text": [
+				"A while must have passed by now, and nothing is happening still. It is impossible to tell time - and direction, for that matter - from your current position. Your world is one of pulsating flesh and wet, organic squelches."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_WALK4",
+			"Text": [
+				"Muffled voices rouse you from a slumber you only now realize you had fallen into. In your drowsy state of mind, drunk on the heated, acidic fumes, you are unable to make out the words. Before long, the rhythmic kneading of your temporary home lulls you back to sleep."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK_WALK5",
+			"Text": [
+				"A rush of frigid air is the jolt you need to become fully awake once more, gasping and sputtering for a fresh lungful of anything but second-hand breath. While your vision is still blurry, you are suddenly keenly aware of the smooth flesh sliding across your features as you are lowered towards the ground. It would appear that Rech is regurgitating you after all. Finally, after a few more moments filled with harsh hacking noises on the predator's part, and slimy squelches on yours, your feet and tail leave the delicate touch of the predator's innards. The smooth stones underneath you are a cold, yet welcome touch."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK1",
+			"Text": [
+				"You casually make your way through the damp corridor, trying not to draw attention to yourself even though the only other person around already has his eyes set on you. Just when you make it past the hulking monstrosity of a guard, and you permit your lips to curl into the slighest hint of a smile, a strong hand latches onto your shoulder and yanks you right back, almost making you lose your balance."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK2",
+			"Text": [
+				"A sigh leaves the crocodile's lips, before he addresses you with a low, calm, and yet intimidating tone. \"And where might you be going, %species? Do you really think you're the first one to a try that trick?\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK3",
+			"Text": [
+				"The bouncer doesn't even let you finish your attempted excuse, and simply snorts. He casts a glance over at the alley exit and the abandoned street beyond. \"There's no business here but us,\" is the simple reply. Clearly, nobody is around to stop him from doing what he is, in fact, about to do. \"So, perhaps a night inside Rech should do you some good.\" Before you can protest or ask for clarification, the muscular reptile pulls you close, into a crushing embrace against his chest, as his jaws quickly part to envelop your face."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_SNEAK3B",
+			"Text": [
+				"The bouncer doesn't even let you finish your stammering, and simply snorts. He casts a glance over at the alley exit and the abandoned street beyond. Clearly, he doesn't need to voice to you that he knows full well you're lying, and nobody is around to stop him from doing what he is, in fact, about to do. \"If that is so, then perhaps a night inside Rech should do your 'curiosity' some good.\" Before you can protest or ask for clarification, the muscular reptile pulls you close, into a crushing embrace against his chest, as his jaws quickly part to envelop your face."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_TOKEN_KILL_DIGESTED_POV",
+			"Text": [
+				"The stomach walls writhe against you, the wet muscle doing its utmost best to knead and grind you into a more manageable form for the crocodile's digestive system. And it is most certainly on the winning side of the equation. Weakened and drained further by the relentless pressure of an organ that seeks to claim your very being, your movements slow down. This development does not go unnoticed by the sated crocodile, though he is content to respond only by lifting his gut with both arms and cradling it lovingly. There is no need for words in the chorus of digestion, of course. The obnoxiously loud gurgling and groaning of his stomach hard at work is all that needs to be said. As you fade away, a perhaps once promising candidate for the Club, Rech resigns himself to having to carry you around for the night, perhaps another. At least with a swollen stomach and fresh prey on his breath, he might be even more effective at scaring away the overly curious than usual. Though the %species had tasted wonderfully, it really was a shame, he thought. The bouncer would've been interested to see where your path might have taken you. But, alas, he sighs as he gingerly removes one hand from his gut and extracts the tiny, tarnished metal disk from his pocket again, idly turning it over. If the coin decides you are food, who was he to argue?"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_TOKEN_SHOW",
+			"Text": [
+				"The impressively muscled crocodile reaches out with one arm, taking the tiny item you offered him. Briefly, he holds it up in the air and studies it, then gracefully slides it into his pocket. \"The coin, huh?\" he mutters, turning to you. An eyebrow is raised before he breaks the awkward silence with a chuckle and a shake of his head. For a moment, you feel perhaps a bit smaller under the crushing gaze of the bouncer."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_TOKEN_SHOW2",
+			"Text": [
+				"Without warning, the huge reptile slams into you and pins you to the brick wall behind you, forcing the air from your lungs if only briefly. \"Oh, and I had such hopes for you when you came here, %species. But if she says to eat you...\" he begins, parting his jaws and taking his time to show off the gaping, pulsating depths of flesh before his meaty tongue drags across your face. The throat widens as if anticipating your arrival, and you have a sinking feeling that there might just be a reason why Rech is the one responsible for keeping the peace in this establishment. \"...then so be it,\" he finishes, leaving you ample time to sample the hot, strong-smelling air wafting from the open cavern. \"The coin is reserved for those who are to be 'disposed' of, yeah? Well...\""
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_TOKEN_VORE1",
+			"Text": [
+				"\"... you'll figure it out.\" And with that, Rech effortlessly fits his jaws around your head, permitting you a few more samples of hot, stale breath, and swallows. Heated air, thick with the scent of meat, is soon replaced with sheets of wet flesh sticking to your every feature. Having had a few moments to recover, you finally begin your resistance proper, however the crocodile's sheer strength keeps you pinned with ease. With two large hands forcing your arms against the cold stone wall, there is nothing you can do but wait and squirm pathetically as you are crammed down the esophagus. The seasoned predator guides you past his razor-sharp teeth with expert precision, apparently preferring his meals quite whole and intact. The sensation of being so utterly enveloped by a tube of flesh is an enthralling one, perhaps, were it not for the loud gulping noises, the rush of liquids and the thunder of a heartbeat near you. With your chest and waist utterly soaked in saliva, you know full well you have only a manner of seconds left in the outside world. Drawn ever further down into the digestive tract behind the dark green reptile's maw, you breach the entrance of the lewdly gurgling organ that would welcome you with a belch of acrid air."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_RECH_TOKEN_VORE2",
+			"Text": [
+				"A few weak kicks is all that is left of a certain %species, before those limbs too disappear into the ravenous predator. The digestive cradle, meanwhile, squeezes your head as if planting a vile kiss, before the folds of flesh part again, leaving your head coated in slime and goop you would perhaps rather not identify. Once you are deposited fully into your temporary home, your organic prison shrinks further when your host burps loudly, forcing you into a tight ball of %fur. He smacks his gut, holding and examining the large scaly bulge. \"Whew, little %species, you fill me up quite nicely. Enjoy yourself in there, yeah?\" With that, the bouncer's task complete, he returns to his post near the door and lazily leans against the wall just as before. If not for the swollen, moving stomach, one might think nothing had changed. For now, though, Rech is content with gently rubbing his newly acquired prey."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_ENTER_2",
+			"Text": [
+				"With your work finished, you thank the crowd for their patronage, before you make your way back out of the makeshift arena. The small bedroom adjacent to the lobby invites you, offering a safe place to quietly sleep off your food. You muse for a second that it might be a bit of a design flaw to have to walk through the main room to get there, considering the need for secrecy, but you have a much more pressing need to sleep off your food than to think about such frivolities.",
+				"Having completed the night's show, you decide to make your exit and head for the stairs leading back to the common room. Your huge gut sloshes and bounces with every step, but you manage to make it back up the poorly lit tunnel alright. You stumble into your allotted bedroom without too much trouble, but not without drawing stares from the one or two people who were hanging out here.",
+				"Now that the match is complete, you let out a wet belch and saunter up the narrow staircase leading out of the underground area, all the while carefully managing your hefty, gurgling gut, so as not to bounce off of a wall. Before long, you end up in the small safe room without much further incident (not counting the more than a few stares)."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_FIRST",
+			"Text": [
+				"Luckily, Venna materializes from the poorly lit corridor leading out of the room. Wordlessly, she guides you back upstairs to the common room and into a small, inconspicious room off to the side. She shows you inside, and to your surprise it's a small, cozy-looking bedroom with a carpet on the floor and a large bed at the fair end - no other furniture. The vixen gives you a knowing smile and gestures at your moving, swollen belly, then forward. \"Winner's privilege. You can sleep your prey off here safely. Door's locked from the inside, so no disturbances, you can leave when you feel you're... done.\" A toothy grin spreads on her muzzle as she slaps your gut, evoking a wet slosh and a loud gurgle from your digestive system. \"Nice first round, %name, I'm impressed. I'll see you tomorrow. Oh, and you can come get your share from me later.\" With that, she leaves you in silence, the oak door slamming shut behind her. Apparently she has a tendency to do that with doors."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_LEAVE",
+			"Text": [
+				"You leave the protective atmosphere of your private room, into the club's lobby area. Some patrons spot your reentrance and respectfully raise a mug, their low chatter dimming briefly, only to pick back up again right after.",
+				"You leave the protective atmosphere of your private room, into the club's lobby area. The vixen at the entrance desk gives you a nod, and continues her work without another glance.",
+				"You leave the protective atmosphere of your private room, into the club's lobby area. The warm glow of the fireplace is actually rather soothing, and if anything your gut says you could use a few more hours of sleep."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_SAVE",
+			"Text": [
+				"[Would you like to save the game?]"
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_SLEEP",
+			"Text": [
+				"After ensuring the door is barred, you collapse on the bed in the safe room. You need only a few more moments of prodding and poking at your gut, which has by now fallen mostly silent save for the chorus of digestion, before you doze off.",
+				"Once there, still basking in the adrenaline high of your victory and safe from prying eyes, you crash into the cozy mattress, playing with your twitching prey just a little bit longer before the food coma overtakes you."
+			]
+		},
+		{
+			"Key": "TOWN_PIT_SLEEPROOM_WAKE",
+			"Text": [
+				"Some time later, you reawaken, feeling refreshed and sated. Your belly, in the mean time, has shrunk significantly, having been hard at work digesting your latest catch. The paunch is still there, containing the gently gurgling soup your prey has been reduced to, but at least it should be safe to walk around in public."
+			]
+		}
+	]
+}

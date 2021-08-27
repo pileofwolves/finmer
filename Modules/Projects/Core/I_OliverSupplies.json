@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "e27a0ede-d796-4c47-abfa-8ae7219a7eea",
+	"Name": "I_OliverSupplies",
+	"ObjectName": "Oliver's Toolbox",
+	"ObjectAlias": "toolbox",
+	"FlavorText": "A wooden box filled with tools for cutting, shaping, gouging and polishing wood. A simple engraving of a cat face with pointed ears is emblazoned on the side. These tools belong to Oliver, who lives east of North Finmer.",
+	"ItemType": "Generic",
+	"PurchaseValue": 75,
+	"IsQuestItem": true,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "b9f46815-bbc2-4836-b929-cce667a095a8",
+		"Name": "e27a0ede-d796-4c47-abfa-8ae7219a7eea_UseScript"
+	}
+}

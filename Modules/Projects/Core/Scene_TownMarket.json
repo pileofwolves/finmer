@@ -1,0 +1,1762 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "7fa92424-80ed-46a4-913d-96be0790cb49",
+	"Name": "Scene_TownMarket",
+	"ScriptCustom": {
+		"ID": "a6a31243-f028-4dc2-b04d-4cd4734c17f1",
+		"Name": "Scene_TownMarket_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "e3113cee-658c-4297-a2a8-dd311f4a26f2",
+		"Name": "Scene_TownMarket_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "8fcbad70-8e51-447b-86c9-1910688844d8",
+		"Name": "7fa92424-80ed-46a4-913d-96be0790cb49_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "WakeUp",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "SetInventoryEnabled(false)\r\nSetLocation(\"...\")\r\nStorage.SetFlag(\"town_first\", true)\r\nLog(\"town_first\")",
+				"ScriptAppear": "return not Storage.GetFlag(\"town_first\")",
+				"Children": [
+					{
+						"Key": "WakeUp_C_OK1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "WakeUp_R_OK1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_FIRST_FOX1\")\r\nSleep(4)\r\nLog(\"TOWN_FIRST_FOX2\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "WakeUp_C_Amnesia",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Answer",
+										"Tooltip": "Tell him you don't know where you are, or why.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "WakeUp_R_Amnesia",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_FIRST_FROMWHERE\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "WakeUp_C_FromNorth",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "North",
+														"Tooltip": "Say that you come from the far, cold North, from where many thick-furred races hail.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetString(\"player_origin\", \"north\")",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "WakeUp_R_FromThere",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_FIRST_FROM\" .. Storage.GetString(\"player_origin\"))",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "WakeUp_C_Leave",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Leave",
+																		"Tooltip": "Thank him and say you want a minute to breathe.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "WakeUp_R_Leave",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "WakeUp_C_Leave2",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "WakeUp_R_Leave2",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE2\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "WakeUp_C_Leave3",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Step outside",
+																										"Tooltip": "The world is out there, waiting...",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "LogSplit()\r\nLog(\"TOWN_FIRST_FOX_LEAVE3\")\r\nLog(\"TOWN_MARKET_DAY\")\r\nLog(\"TOWN_MARKET\")\r\nLog(\"WELCOME\", Color.Gray)\r\nJournal.Update(\"MQ01\", 10)\r\nSetInventoryEnabled(true)",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Unnamed",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Main",
+																												"Children": []
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "WakeUp_C_AskFinmer",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Finmer",
+																		"Tooltip": "Ask him to tell you more about this place.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_FINMER\")",
+																		"Children": [
+																			{
+																				"Key": "WakeUp_R_AskFinmer",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_FINMER\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FINMER\", true)",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_Leave",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskFox",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskAlley",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "WakeUp_C_AskFox",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Fox",
+																		"Tooltip": "Ask who he is, and why he's helping you.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_FOX\")",
+																		"Children": [
+																			{
+																				"Key": "WakeUp_R_AskFox",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_FOX\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FOX\", true)",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_Leave",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskFinmer",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskAlley",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "WakeUp_C_AskAlley",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Alleyway",
+																		"Tooltip": "Ask how he managed to find you.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_ALLEY\")",
+																		"Children": [
+																			{
+																				"Key": "WakeUp_R_AskAlley",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_ALLEY\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_ALLEY\", true)",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_Leave",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskFinmer",
+																						"Children": []
+																					},
+																					{
+																						"Key": "Unnamed",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "Unnamed",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "WakeUp_C_AskFox",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "WakeUp_C_FromEast",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "East",
+														"Tooltip": "Say that you come from the modest East, where many cultures live interspersed.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetString(\"player_origin\", \"east\")",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "WakeUp_R_FromThere",
+																"Children": []
+															}
+														]
+													},
+													{
+														"Key": "WakeUp_C_FromSouth",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "South",
+														"Tooltip": "Say that you come from the balmy South, where the centers of commerce lie.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetString(\"player_origin\", \"south\")",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "WakeUp_R_FromThere",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "WakeUp_C_Skip",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "[DBG] Skip",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return IsDebugMode()",
+						"Children": [
+							{
+								"Key": "AutoLink",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Main",
+								"Children": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Event_PostMQ02_Chase",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "-- advance the clock to make it night (9 PM or later)\r\nlocal hour = GetTimeHour()\r\nif hour < 21 then\r\n    AdvanceTime(21 - hour)\r\nend\r\n\r\nStorage.SetFlag(\"town_market_postmq02_event\", true)\r\nSetInventoryEnabled(false)\r\nLog(\"MARKET_MQ02_BEGIN\")",
+				"ScriptAppear": "return Storage.GetFlag(\"mq02_done\") and not Storage.GetFlag(\"town_market_postmq02_event\")",
+				"Children": [
+					{
+						"Key": "EvChase_C_Chase",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "Best not let this chance slip away.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "EvChase_R_Chase",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"MARKET_MQ02_CHASE\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "EvChase_C_P1_Body",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Run",
+										"Tooltip": "[Body] Try to catch up with the mysterious figure",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "EvChase_R_P1_Body_OK",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MARKET_MQ02_CHASE_BODY\")",
+												"ScriptAppear": "return Player.Body >= 2",
+												"Children": [
+													{
+														"Key": "EvChase_C_P2_Str",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Throw Weapon",
+														"Tooltip": "[Strength] Try throwing your weapon at them",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "-- cannot throw claws, and throwing a massive axe or some shit is ridiculous\r\nlocal wt = Player.PrimaryWeapon.WeaponType\r\nreturn wt == WeaponType.Light or wt == WeaponType.OneHanded",
+														"Children": [
+															{
+																"Key": "EvChase_R_P2_Str_OK",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"MARKET_MQ02_CHASE_FIGHT\", {weapon = Player.PrimaryWeapon.Alias})",
+																"ScriptAppear": "return Player.Strength >= 2",
+																"Children": [
+																	{
+																		"Key": "EvChase_C_Grab",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Grab",
+																		"Tooltip": "Got them right where you want them.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "EvChase_R_Grab",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"iso_found_early\", true)\r\nStorage.SetFlag(\"iso_friend\", true)\r\nLog(\"MARKET_MQ02_GRAB\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "EvChase_C_Question",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Question",
+																						"Tooltip": "Ask her how she knows your name.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "EvChase_R_Question",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"MARKET_MQ02_QUESTION\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "EvChase_C_MawDeny",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Deny",
+																										"Tooltip": "Say that you don't want anything to do with that guy.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "EvChase_R_MawDeny",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"MARKET_MQ02_MAW_DENY\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "EvChase_C_GetUp",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Relent",
+																														"Tooltip": "Might as well. You don't think she's got anywhere to run.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "EvChase_R_GetUp",
+																																"IsState": true,
+																																"IsLink": false,
+																																"ScriptAction": "Log(\"MARKET_MQ02_GETUP\")",
+																																"ScriptAppear": "",
+																																"Children": [
+																																	{
+																																		"Key": "EvChase_C_AskWho",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "Who",
+																																		"Tooltip": "Ask her who she is.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return not Storage.GetFlag(\"iso_event_chase_ask_who\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_AskWho",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Storage.SetFlag(\"iso_event_chase_ask_who\", true)\r\nLog(\"MARKET_MQ02_ASK_WHO\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSelf",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSpy",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskBridge",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskMemory",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_Ask_End",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"Key": "EvChase_C_AskSelf",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "You",
+																																		"Tooltip": "Ask her who you are to her.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return not Storage.GetFlag(\"iso_event_chase_ask_self\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_AskSelf",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Storage.SetFlag(\"iso_event_chase_ask_self\", true)\r\nLog(\"MARKET_MQ02_ASK_SELF\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskWho",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSpy",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskBridge",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskMemory",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_Ask_End",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"Key": "EvChase_C_AskSpy",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "Spying",
+																																		"Tooltip": "Ask why she was spying on you.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return not Storage.GetFlag(\"iso_event_chase_ask_spy\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_AskSpy",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Storage.SetFlag(\"iso_event_chase_ask_spy\", true)\r\nLog(\"MARKET_MQ02_ASK_SPY\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskWho",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSelf",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskBridge",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskMemory",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_Ask_End",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"Key": "EvChase_C_AskBridge",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "Bridge",
+																																		"Tooltip": "Ask her to tell you more about the 'bridge case'.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return (not Storage.GetFlag(\"iso_event_chase_ask_bridge\")) and Storage.GetFlag(\"iso_event_chase_ask_self\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_AskBridge",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Storage.SetFlag(\"iso_event_chase_ask_bridge\", true)\r\nLog(\"MARKET_MQ02_ASK_BRIDGE\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskWho",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSelf",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSpy",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskMemory",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_Ask_End",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"Key": "EvChase_C_AskMemory",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "Memory",
+																																		"Tooltip": "Inquire about your memory loss. Does she know anything about it?",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return (not Storage.GetFlag(\"iso_event_chase_ask_memory\")) and Storage.GetFlag(\"iso_event_chase_ask_bridge\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_AskMemory",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Storage.SetFlag(\"iso_event_chase_ask_memory\", true)\r\nLog(\"MARKET_MQ02_ASK_MEMORY\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskWho",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSelf",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskSpy",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_AskBridge",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "EvChase_C_Ask_End",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"Key": "EvChase_C_Ask_End",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "What now?",
+																																		"Tooltip": "What's going to happen now?",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "return\r\n    Storage.GetFlag(\"iso_event_chase_ask_who\") and\r\n    Storage.GetFlag(\"iso_event_chase_ask_self\") and\r\n    Storage.GetFlag(\"iso_event_chase_ask_spy\") and\r\n    Storage.GetFlag(\"iso_event_chase_ask_bridge\") and\r\n    Storage.GetFlag(\"iso_event_chase_ask_memory\")",
+																																		"Children": [
+																																			{
+																																				"Key": "EvChase_R_Ask_End",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "Log(\"MARKET_MQ02_ASK_PLAN\")",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "EvChase_C_Oliver_OK",
+																																						"IsState": false,
+																																						"IsLink": false,
+																																						"Title": "Confirm",
+																																						"Tooltip": "Explain what happened, and that Oliver is fine, if a bit shaken.",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"ScriptAction": "",
+																																						"ScriptAppear": "return not Storage.GetFlag(\"oliver_dead\")",
+																																						"Children": [
+																																							{
+																																								"Key": "EvChase_R_Oliver",
+																																								"IsState": true,
+																																								"IsLink": false,
+																																								"ScriptAction": "Log(\"MARKET_MQ02_OLIVER\")",
+																																								"ScriptAppear": "",
+																																								"Children": [
+																																									{
+																																										"Key": "EvChase_C_Finale",
+																																										"IsState": false,
+																																										"IsLink": false,
+																																										"Title": "Plan",
+																																										"Tooltip": "What's the plan moving forward?",
+																																										"Highlight": false,
+																																										"ButtonWidth": 1.0,
+																																										"ScriptAction": "",
+																																										"ScriptAppear": "",
+																																										"Children": [
+																																											{
+																																												"Key": "EvChase_R_Finale",
+																																												"IsState": true,
+																																												"IsLink": false,
+																																												"ScriptAction": "Log(\"MARKET_MQ02_FINALE\")\r\nPlayer:AwardXP(RewardXP.MQ02_ChaseComplete)",
+																																												"ScriptAppear": "",
+																																												"Children": [
+																																													{
+																																														"Key": "AutoLink",
+																																														"IsState": false,
+																																														"IsLink": true,
+																																														"Title": "",
+																																														"Tooltip": "",
+																																														"Highlight": false,
+																																														"ButtonWidth": 1.0,
+																																														"LinkTarget": "EvChase_C_ExitToMain",
+																																														"Children": []
+																																													}
+																																												]
+																																											}
+																																										]
+																																									}
+																																								]
+																																							}
+																																						]
+																																					},
+																																					{
+																																						"Key": "EvChase_C_Oliver_Rip",
+																																						"IsState": false,
+																																						"IsLink": false,
+																																						"Title": "Lie",
+																																						"Tooltip": "Loosely explain what happened, and that Randall got rid of Oliver.",
+																																						"Highlight": true,
+																																						"ButtonWidth": 1.0,
+																																						"ScriptAction": "",
+																																						"ScriptAppear": "return Storage.GetFlag(\"oliver_dead\")",
+																																						"Children": [
+																																							{
+																																								"Key": "EvChase_R_OliverAlt",
+																																								"IsState": true,
+																																								"IsLink": false,
+																																								"ScriptAction": "Log(\"MARKET_MQ02_OLIVER_ALT\")",
+																																								"ScriptAppear": "",
+																																								"Children": [
+																																									{
+																																										"Key": "AutoLink",
+																																										"IsState": false,
+																																										"IsLink": true,
+																																										"Title": "",
+																																										"Tooltip": "",
+																																										"Highlight": false,
+																																										"ButtonWidth": 1.0,
+																																										"LinkTarget": "EvChase_C_Finale",
+																																										"Children": []
+																																									}
+																																								]
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "EvChase_C_MawDodge",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Dodge",
+																										"Tooltip": "Evade the question. Ask her why she was spying on you.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "EvChase_R_MawDodge",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"MARKET_MQ02_MAW_DODGE\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "EvChase_C_GetUp",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "EvChase_C_MawConfirm",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Confirm",
+																										"Tooltip": "Claim that you are, in fact, part of the Red Maw.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "return false -- PATH TODO",
+																										"Children": [
+																											{
+																												"Key": "EvChase_R_MawConfirm",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"MARKET_MQ02_MAW_CONFIRM\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "EvChase_C_Nomnom",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"Key": "EvChase_C_Intimidate",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Intimidate",
+																						"Tooltip": "Tell her not to try any funny business.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "AutoLink",
+																								"IsState": true,
+																								"IsLink": true,
+																								"LinkTarget": "EvChase_R_Question",
+																								"Children": []
+																							}
+																						]
+																					},
+																					{
+																						"Key": "EvChase_C_Nomnom",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Devour",
+																						"Tooltip": "You can't help but drool all over that delicious-looking face.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "-- jeez, do you really have to try and eat everything? fatty\r\n\r\nStorage.SetFlag(\"iso_freed_from_you\", false)\r\nStorage.SetFlag(\"iso_enemy\", true)\r\n\r\nlocal snack = Creature(\"Town_Iso\")\r\nCombat.AddCombatant(snack)\r\nCombat.SetGrappling(Player, snack, true)\r\nCombat.SetPinned(Player, snack, true)\r\nCombat.OnRoundEnd(function()\r\n    -- if player doesn't have a hold of Iso, she flees\r\n    local grab = snack:IsGrappling()\r\n    local gulp = snack:IsBeingSwallowed() or snack:IsEaten()\r\n    if not grab and not gulp then\r\n        Storage.SetFlag(\"iso_freed_from_you\", true)\r\n        Combat.Interrupt()\r\n    end\r\nend)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    \r\nend)\r\nCombat.Begin()",
+																						"ScriptAppear": "return false -- PATH TODO",
+																						"Children": [
+																							{
+																								"Key": "EvChase_R_Nom_Free",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "-- need to clean up after Interrupt()\r\nCombat.Reset()\r\n\r\n",
+																								"ScriptAppear": "return Storage.GetFlag(\"iso_freed_from_you\")",
+																								"Children": []
+																							},
+																							{
+																								"Key": "EvChase_R_Nom_Gurgle",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "",
+																								"ScriptAppear": "",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"Key": "EvChase_R_P2_Str_Fai",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"MARKET_MQ02_CHASE_FIGHT_FAIL\", {weapon = Player.PrimaryWeapon.Alias})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "EvChase_C_ExitToMain",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "EvChase_C_P2_Agi",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Pull Down",
+														"Tooltip": "[Agility] Try to grab on to them and pull them back down",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "EvChase_R_P2_Agi_OK",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MARKET_MQ02_CHASE_AGI\")",
+																"ScriptAppear": "return Player.Agility >= 2",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "EvChase_C_Grab",
+																		"Children": []
+																	}
+																]
+															},
+															{
+																"Key": "EvChase_R_P2_Agi_Fai",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MARKET_MQ02_CHASE_AGI_FAIL\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "EvChase_C_ExitToMain",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"Key": "EvChase_R_P1_Body_F",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MARKET_MQ02_CHASE_BODY_FAIL\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "EvChase_C_ExitToMain",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "EvChase_C_P1_Wits",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Search",
+										"Tooltip": "[Wits] Forgo the chase, and instead look for anything left behind",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "EvChase_R_P1_Wits_OK",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MARKET_MQ02_CHASE_WITS\")\r\nPlayer:GiveItem(\"AC_IsoRing\", true)",
+												"ScriptAppear": "return Player.Wits >= 2",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "EvChase_C_ExitToMain",
+														"Children": []
+													}
+												]
+											},
+											{
+												"Key": "EvChase_R_P1_Wits_F",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MARKET_MQ02_CHASE_WITS_FAIL\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "EvChase_C_ExitToMain",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "EvChase_C_Abandon",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Abandon",
+						"Tooltip": "It's good enough that you noticed them.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "-- disabled as of v0.5\r\nreturn false",
+						"Children": [
+							{
+								"Key": "EvChase_R_Abandon",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"MARKET_MQ02_ABANDON\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "EvChase_C_ExitToMain",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "LogSplit()",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Event_Naked",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "-- randomize the guard's species\r\nguardSpecies = GetString(\"SPECIES_ANY\")\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nLogGsub(\"EVENT_NAKED_BEGIN\", {guard=guardSpecies})",
+				"ScriptAppear": "return Player.EquippedArmor == nil",
+				"Children": [
+					{
+						"Key": "EvNaked_C_Apologize",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Apologize",
+						"Tooltip": "You'll, uh, make sure it doesn't happen again.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "EvNaked_R_Apologize",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"EVENT_NAKED_APOLOGIZE\")\r\nLogGsub(\"EVENT_NAKED_ARRESTED\", {guard=guardSpecies})",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "EvNaked_C_VoreHit",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Uhh...",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "EvNaked_R_VoreHit",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "LogGsub(\"TOWN_GUARD_VORE_HIT_POV\", {guard=guardSpecies})",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "EvNaked_C_GetEaten",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Gllrrk!",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "LogGsub(\"TOWN_GUARD_VORE_WIN_POV\", {guard=guardSpecies})\r\n\r\nlocal guard = Creature(\"Town_Guard\")\r\nguard.Alias = guardSpecies\r\nguard.StomachDigest = false\r\n\r\nCombat.AddCombatant(guard)\r\nCombat.SetVored(guard, Player, true)\r\nCombat.OnRoundEnd(function(round)\r\n    -- print some sexy text and release after some rounds\r\n    LogGsub(\"TOWN_GUARD_POSTVORE\" .. round, {guard = guardSpecies})\r\n    if round >= 5 then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "EvNaked_R_GetEaten",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "-- take a fine, and make sure the player has clothes now\r\nPlayer.Money = math.max(Player.Money - 10, 0)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "EvNaked_C_Regurg",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "EvNaked_R_Regurg",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogGsub(\"TOWN_GUARD_REGURGITATED\", {guard=guardSpecies})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "EvNaked_C_ExitToGate",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "EvNaked_R_ExitToGate",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "SetScene(\"Scene_TownGate\")",
+																								"ScriptAppear": "",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "EvNaked_C_Defy",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Defy",
+						"Tooltip": "Make a corny sex joke.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "EvNaked_R_Defy",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"EVENT_NAKED_DEFY\")\r\nLogGsub(\"EVENT_NAKED_ARRESTED\", {guard=guardSpecies})",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "EvNaked_C_VoreHit",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "AddLink(Compass.NORTH, \"Scene_TownNSQ\")\r\nAddLink(Compass.WEST, \"Scene_TownWSQ\")\r\nAddLink(Compass.SOUTH, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Inn",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Inn",
+						"Tooltip": "Visit the town's local public house.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownInn\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "GoFishStall",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Fish Stall",
+						"Tooltip": "They sell fish in a fishing village, who knew?",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "-- done here and not in the following States, because the conversation returns to those nodes as roots\r\nLog(Storage.GetFlag(\"town_market_fish_first\") and \"TOWN_MARKET_FISH_HELLO\" or \"TOWN_MARKET_FISH_FIRST\")\r\nStorage.SetFlag(\"town_market_fish_first\", true)",
+						"ScriptAppear": "return not GetIsNight()",
+						"Children": [
+							{
+								"Key": "FishStall",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "FishLeave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Log(\"town_market_fish_leave\")",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "FishWork",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Work",
+										"Tooltip": "Ask the fox if he knows any leads for work.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return not Storage.GetFlag(\"town_hall_open\")",
+										"Children": [
+											{
+												"Key": "FishWorkResponse",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"town_market_fish_work\")\r\nStorage.SetFlag(\"town_hall_open\", true)\r\nJournal.Update(\"MQ01\", 20)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "FishWorkExit",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "Thank him for the information.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Log(\"TOWN_MARKET_FISH_WORK2\")",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "FishStall",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "FishTalk",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Chat",
+										"Tooltip": "Ask the fox how business is.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "FishTalkResponse",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "LogRumor(\"TOWN_MARKET_FISH_TALK_RUMOR\", \"TOWN_MARKET_FISH_TALK_NO\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "FishTalkExit",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "FishStall",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "FishBuy",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Buy",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local shop = Shop(\"MarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAppear": "",
+										"Children": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "GoFruitStall",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Fruit Stall",
+						"Tooltip": "And fruit & veggies too, apparently, if you're into that sort of thing.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLog(\"town_market_fruit_hello\")",
+						"ScriptAppear": "return not GetIsNight()",
+						"Children": [
+							{
+								"Key": "FruitStall",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "FruitLeave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "--Log(\"town_market_fruit_leave\")",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "FruitTalk",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Chat",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "FruitTalkResponse",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLogRumor(\"TOWN_MARKET_FRUIT_TALK_RUMOR\", \"TOWN_MARKET_FRUIT_TALK_NO\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "FruitTalkExit",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "FruitStall",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "FruitBuy",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Buy",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local shop = Shop(\"MarketFruit\")\r\nshop.Title = \"Fresh Foods Stand\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodBread\"), -1)\r\n    shop:AddItem(Item(\"U_FoodCheese\"), -1)\r\n    shop:AddItem(Item(\"U_FoodGrapes\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAppear": "",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

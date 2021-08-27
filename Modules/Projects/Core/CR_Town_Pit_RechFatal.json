@@ -1,0 +1,24 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "06a5b275-49cc-4dd5-9ccc-3e409c72db92",
+	"Name": "CR_Town_Pit_RechFatal",
+	"ObjectName": "Rech",
+	"ObjectAlias": "the croc",
+	"Strength": 4,
+	"Agility": 0,
+	"Body": 4,
+	"Wits": 0,
+	"Flags": 0,
+	"Level": 5,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_RECH_TOKEN_KILL_DIGESTED_POV"
+		}
+	]
+}

@@ -1,0 +1,1 @@
+local context_wolf = Creature("SQ02_Wolf_OV")

@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "105559ca-7be5-4fd6-b4d1-e7125284635a",
+	"Name": "U_FoodBread",
+	"ObjectName": "Bread",
+	"ObjectAlias": "",
+	"FlavorText": "Even for those with carnivorous inclinations, freshly baked bread remains a diet staple in the Reaches, owing to its relative ease of production and usefulness in enhancing texture in dishes.",
+	"ItemType": "Usable",
+	"PurchaseValue": 3,
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": true,
+	"UseDescription": "Heal 5 HP.",
+	"UseScript": {
+		"ID": "e738d640-5752-41bd-a1d3-a3202e66bce5",
+		"Name": "U_FoodBread_UseScript"
+	}
+}

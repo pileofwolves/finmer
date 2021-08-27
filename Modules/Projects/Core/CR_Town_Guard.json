@@ -1,0 +1,18 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "8fa747e9-e675-4fa8-86a4-8e1c8bd279b7",
+	"Name": "CR_Town_Guard",
+	"ObjectName": "Town Guard",
+	"ObjectAlias": "<REPLACE ME>",
+	"Strength": 2,
+	"Agility": 1,
+	"Body": 3,
+	"Wits": 1,
+	"Flags": 0,
+	"Level": 5,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": []
+}

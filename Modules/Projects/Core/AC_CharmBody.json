@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "63b5fad8-91fc-4072-b109-ddc2b042b534",
+	"Name": "AC_CharmBody",
+	"ObjectName": "Item",
+	"ObjectAlias": "",
+	"FlavorText": "",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "89a721a0-f776-42b3-8229-cec99da844a3",
+		"Name": "63b5fad8-91fc-4072-b109-ddc2b042b534_UseScript"
+	}
+}

@@ -1,0 +1,13 @@
+# Visual Studio
+.vs
+bin
+obj
+packages
+*.user
+
+# Generated files
+*.sav
+*.furball
+
+# Non-public files
+Data

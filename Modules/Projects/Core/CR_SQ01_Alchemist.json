@@ -1,0 +1,54 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "5b1bc9b6-947e-419f-b1ea-806167e440fa",
+	"Name": "CR_SQ01_Alchemist",
+	"ObjectName": "Jar'la",
+	"ObjectAlias": "",
+	"Strength": 1,
+	"Agility": 3,
+	"Body": 2,
+	"Wits": 2,
+	"Flags": 0,
+	"Level": 4,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "VORE_HIT_POV",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_VORE_HIT_POV"
+		},
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "KILL_GENERIC_POV",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_KILL_GENERIC_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_KILL_GENERIC"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "",
+			"NewValue": "SQ01_ALCH_VORE_WIN"
+		}
+	]
+}

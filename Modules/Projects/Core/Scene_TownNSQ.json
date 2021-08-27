@@ -1,0 +1,220 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
+	"Name": "Scene_TownNSQ",
+	"ScriptCustom": {
+		"ID": "7ffa0cf6-d6bb-4518-baa6-0892f242adfa",
+		"Name": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "071913c7-2015-4970-a791-58ab26568dbe",
+		"Name": "Scene_TownNSQ_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "c3dd69e0-afc7-4648-9da9-4cd171efde4d",
+		"Name": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "SQ04_Opening",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"TOWN_NSQ_PITOPEN_BEGIN\")\r\nStorage.SetNumber(\"sq04\", 1)",
+				"ScriptAppear": "-- To trigger SQ04, player must have digested any prey\r\nreturn Player.TotalPreyDigested > 0 and Storage.GetNumber(\"sq04\") == 0",
+				"Children": [
+					{
+						"Key": "SQ04_C_Opening",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "Well, that was weird.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "SQ04_OpeningEnd",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_NSQ_PITOPEN_END\")\r\nPlayer:GiveItem(\"I_PitInvite\", true)\r\nJournal.Update(\"SQ04\", 10)",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "SQ04_C_OpeningEnd",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "AddLink(Compass.SOUTH, \"Scene_TownMarket\")\r\nSetInventoryEnabled(true)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Hall",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Town Hall",
+						"Tooltip": "Visit the town hall.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "if Storage.GetFlag(\"town_hall_open\") then\r\n    SetScene(\"Scene_TownHall\")\r\nelse\r\n    Log(\"town_hall_closed\")\r\nend",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Board",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Notice Board",
+						"Tooltip": "Examine the notice board.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "Log(\"TOWN_NOTICE_OPEN\")",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "ViewBoard",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Board_Close",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "(Back)",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Board_C_Changelog",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Recent Renovations",
+										"Tooltip": "This notice describes recent changes to Finmer, whatever that means.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Board_R_Changelog",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_CHANGELOG\")\r\nLog(\"NOTICE__MEME\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "ReturnToBoard",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "ViewBoard",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Board_C_SQ02_Kickoff",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Wanted: Dire Wolf",
+										"Tooltip": "This notice details a dire wolf, and calls for it to be slain.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return Storage.GetNumber(\"sq02\") == 0",
+										"Children": [
+											{
+												"Key": "Board_R_SQ02_Kickoff",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_SQ02_KICKOFF\")\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "ReturnToBoard",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,13 @@
+﻿<UserControl
+    x:Class="Finmer.Views.ItemIconView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
+    mc:Ignorable="d"
+    MinWidth="32" MaxWidth="32"
+    MinHeight="32" MaxHeight="32"
+    d:DataContext="{d:DesignInstance gp:Item}">
+    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Image}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+</UserControl>

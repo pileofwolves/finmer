@@ -1,0 +1,101 @@
+﻿<UserControl
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    x:Class="Finmer.Views.OptionsPage"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.Resources>
+        <Style x:Key="OptionSubtitle" TargetType="TextBlock" BasedOn="{StaticResource TextBlockSubtle}">
+            <Setter Property="Margin" Value="25,-2,0,4" />
+        </Style>
+        <Style x:Key="OptionSpacer" TargetType="Grid">
+            <Setter Property="Margin" Value="8" />
+        </Style>
+    </UserControl.Resources>
+    <Grid VerticalAlignment="Center" HorizontalAlignment="Center"
+        d:DataContext="{d:DesignInstance vm:UserConfigViewModel}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="200" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0">
+            <TextBlock Style="{StaticResource TextBlockLargest}" Text="Options" />
+            <Grid Style="{StaticResource OptionSpacer}" />
+
+            <TextBlock Style="{StaticResource TextBlockDefault}">
+                Presentation
+            </TextBlock>
+            <CheckBox Content="Enable hyphenation in game log" IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource OptionSubtitle}">
+                Allows breaking and wrapping of words in the game log.
+            </TextBlock>
+            <CheckBox Content="Enable disposal content" IsChecked="{Binding PreferScat, Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource OptionSubtitle}">
+                Allows explicit post-vore scat and such.
+            </TextBlock>
+
+            <Grid Style="{StaticResource OptionSpacer}" />
+
+            <TextBlock Style="{StaticResource TextBlockDefault}">
+                Zoom level
+            </TextBlock>
+            <TextBlock Style="{StaticResource OptionSubtitle}">
+                Make everything bigger, for easier reading.<LineBreak />
+                Caution: Ensure your screen is big enough to fit.
+            </TextBlock>
+            <!--<Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="25" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Grid.Column="0" Height="25" Content="&lt;" />
+                <Button Grid.Column="2" Height="25" Content="&gt;" />
+            </Grid>-->
+            <ComboBox IsEditable="False" SelectedIndex="{Binding ZoomIndex, Mode=TwoWay}">
+                <ComboBoxItem Content="100%" />
+                <ComboBoxItem Content="110%" />
+                <ComboBoxItem Content="120%" />
+                <ComboBoxItem Content="130%" />
+                <ComboBoxItem Content="140%" />
+                <ComboBoxItem Content="150%" />
+            </ComboBox>
+            <!--<Slider
+                IsSnapToTickEnabled="True"
+                LargeChange="1"
+                SmallChange="1"
+
+                TickPlacement="BottomRight"
+                TickFrequency="0.05"
+                Foreground="{StaticResource BrightBackgroundBrush}"
+                Value="1"
+                Minimum="1"
+                Maximum="1.5"
+                AutoToolTipPlacement="TopLeft"
+                ToolTip="Booiii">
+            </Slider>-->
+
+
+            <!--<CheckBox Content="Use metric measurements" IsChecked="{Binding MetricSystem, Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource TextBlockSubtle}" FontSize="12" Margin="25,-2,0,4">
+                For people who like grams with their meters.
+            </TextBlock>-->
+
+            <!--<CheckBox Content="Disable digestion" IsChecked="{Binding ForceEndo, Mode=TwoWay}" />
+            <TextBlock Style="{StaticResource TextBlockSubtle}" FontSize="12" Margin="25,-2,0,4">
+                All preds (including you) will never digest their prey.
+                <LineBreak/>This will only affect newly started games.
+            </TextBlock>-->
+        </StackPanel>
+        <Button Grid.Row="2"
+            Width="180"
+            Height="40"
+            Content="OK"
+            Click="Button_Click" />
+    </Grid>
+</UserControl>

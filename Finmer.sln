@@ -1,0 +1,61 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finmer", "Finmer.Game\Finmer.csproj", "{D68AF111-EC73-465E-BB30-F661238A0858}"
+	ProjectSection(ProjectDependencies) = postProject
+		{01EFC407-AE92-4969-BA34-561B6E98EBDA} = {01EFC407-AE92-4969-BA34-561B6E98EBDA}
+		{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4} = {F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finmer.Editor", "Finmer.Editor\Finmer.Editor.csproj", "{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D68AF111-EC73-465E-BB30-F661238A0858} = {D68AF111-EC73-465E-BB30-F661238A0858}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Finmer.Core", "Finmer.Core\Finmer.Core.csproj", "{57108665-EC8F-495A-B060-667CF8A3D069}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua51_x64", "External\lua\Lua51_x64.vcxproj", "{01EFC407-AE92-4969-BA34-561B6E98EBDA}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Lua51_x86", "External\lua\Lua51_x86.vcxproj", "{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{6195AA14-4E1E-494C-864E-C27723C4C26D}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D68AF111-EC73-465E-BB30-F661238A0858}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D68AF111-EC73-465E-BB30-F661238A0858}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D68AF111-EC73-465E-BB30-F661238A0858}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D68AF111-EC73-465E-BB30-F661238A0858}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{57108665-EC8F-495A-B060-667CF8A3D069}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{57108665-EC8F-495A-B060-667CF8A3D069}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{57108665-EC8F-495A-B060-667CF8A3D069}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{57108665-EC8F-495A-B060-667CF8A3D069}.Release|Any CPU.Build.0 = Release|Any CPU
+		{01EFC407-AE92-4969-BA34-561B6E98EBDA}.Debug|Any CPU.ActiveCfg = Debug|x64
+		{01EFC407-AE92-4969-BA34-561B6E98EBDA}.Debug|Any CPU.Build.0 = Debug|x64
+		{01EFC407-AE92-4969-BA34-561B6E98EBDA}.Release|Any CPU.ActiveCfg = Release|x64
+		{01EFC407-AE92-4969-BA34-561B6E98EBDA}.Release|Any CPU.Build.0 = Release|x64
+		{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}.Debug|Any CPU.Build.0 = Debug|Win32
+		{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}.Release|Any CPU.ActiveCfg = Release|Win32
+		{F399D85C-C4E4-45DC-8F36-9E5AB7BE64B4}.Release|Any CPU.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0BB8D9AF-2A44-427C-8DE7-DCCB4F57569B}
+	EndGlobalSection
+EndGlobal

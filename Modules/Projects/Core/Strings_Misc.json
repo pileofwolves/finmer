@@ -1,0 +1,122 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "678a693f-9f5a-4739-b72e-d63453ee5d20",
+	"Name": "Strings_Misc",
+	"Entries": [
+		{
+			"Key": "DEMO_END",
+			"Text": [
+				"You've reached the end of the main story content available at this time. Be sure to explore North Finmer for things and sidequests that you might've missed.\\n\\nMore is coming; this story is not over. Please leave a comment and let me know what you did or didn't like, that'd really help me.\\n\\nTHANK YOU for playing! <3"
+			]
+		},
+		{
+			"Key": "GOLD_GET",
+			"Text": [
+				"You receive %num coins."
+			]
+		},
+		{
+			"Key": "ITEM_CANNOTUSE",
+			"Text": [
+				"You can't use this item right now."
+			]
+		},
+		{
+			"Key": "ITEM_CANNOTUSEHERE",
+			"Text": [
+				"You can't use this item here."
+			]
+		},
+		{
+			"Key": "NYI",
+			"Text": [
+				"There's a card here with an odd message on it, about how this area is 'not yet implemented'. Weird. Maybe you should come back some other time."
+			]
+		},
+		{
+			"Key": "RUMOR",
+			"Text": [
+				"<this is not implemented>"
+			]
+		},
+		{
+			"Key": "SPECIES_ANY",
+			"Text": [
+				"bear",
+				"badger",
+				"cat",
+				"cheetah",
+				"cobra",
+				"dog",
+				"dragon",
+				"fennec",
+				"ferret",
+				"fox",
+				"gecko",
+				"goat",
+				"gryphon",
+				"horse",
+				"husky",
+				"hyena",
+				"jackal",
+				"jaguar",
+				"kitsune",
+				"leopard",
+				"lion",
+				"lizard",
+				"mouse",
+				"naga",
+				"otter",
+				"panda",
+				"panther",
+				"possum",
+				"rabbit",
+				"raccoon",
+				"ram",
+				"rat",
+				"sergal",
+				"shepherd",
+				"skunk",
+				"tiger",
+				"weasel",
+				"wolf"
+			]
+		},
+		{
+			"Key": "SPECIES_CANINE",
+			"Text": [
+				"dog",
+				"fox",
+				"husky",
+				"hyena",
+				"sergal",
+				"shepherd",
+				"wolf"
+			]
+		},
+		{
+			"Key": "SPECIES_FELINE",
+			"Text": [
+				"cat",
+				"cheetah",
+				"jaguar",
+				"leopard",
+				"lion",
+				"panther",
+				"tiger"
+			]
+		},
+		{
+			"Key": "TIP_BELLY_CAPACITY",
+			"Text": [
+				"< Tip: Prey that you're currently digesting (if any) is listed in your Character Sheet, under the vore-related stats. And they might kick a bit. >"
+			]
+		},
+		{
+			"Key": "TIP_HIGHLIGHT_BUTTON",
+			"Text": [
+				"< Tip: Some options may be highlighted in blue. This means that they were unlocked earlier, or are shown because of some special reason. Keep in mind, however, that they're not necessarily better than other options. >"
+			]
+		}
+	]
+}

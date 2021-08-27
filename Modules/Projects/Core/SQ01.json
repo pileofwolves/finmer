@@ -1,0 +1,20 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "024488cf-046f-4bd1-b490-13991010338b",
+	"Name": "SQ01",
+	"Title": "SQ01 (Alchemist)",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "Jar'la, the local alchemist, has tasked you with acquiring stomach fluids somehow. It won't be easy to obtain such a thing unscathed, but the old lizard promised a good reward."
+		},
+		{
+			"Key": 20,
+			"Text": "You managed to obtain the requested stomach fluids as instructed. Return to Jar'la in North Finmer."
+		},
+		{
+			"Key": 30,
+			"Text": "You delivered the vial to Jar'la in North Finmer. He told you to return a day later to collect your reward."
+		}
+	]
+}

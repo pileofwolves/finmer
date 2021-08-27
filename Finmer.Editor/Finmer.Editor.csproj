@@ -1,0 +1,349 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A5F82AB8-A7CA-4F76-82D3-2474CA4E874E}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Finmer.Editor</RootNamespace>
+    <AssemblyName>Finmer.Editor</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <Prefer32Bit>false</Prefer32Bit>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FinmerIcon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
+      <Link>Properties\AssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="AssetPickerBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AssetPickerBrowser.Designer.cs">
+      <DependentUpon>AssetPickerBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetPickerControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="AssetPickerControl.Designer.cs">
+      <DependentUpon>AssetPickerControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AssetWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Extensions.cs" />
+    <Compile Include="FormAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAbout.Designer.cs">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentJournal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentJournal.Designer.cs">
+      <DependentUpon>FormDocumentJournal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentFeat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentFeat.Designer.cs">
+      <DependentUpon>FormDocumentFeat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentCreature.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentCreature.Designer.cs">
+      <DependentUpon>FormDocumentCreature.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentItem.Designer.cs">
+      <DependentUpon>FormDocumentItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentProject.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentProject.Designer.cs">
+      <DependentUpon>FormDocumentProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentScene.Designer.cs">
+      <DependentUpon>FormDocumentScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentScript.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentScript.Designer.cs">
+      <DependentUpon>FormDocumentScript.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentStringTable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentStringTable.Designer.cs">
+      <DependentUpon>FormDocumentStringTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormLoadingProgress.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadingProgress.Designer.cs">
+      <DependentUpon>FormLoadingProgress.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMain.Designer.cs">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormFeatBrowser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormFeatBrowser.Designer.cs">
+      <DependentUpon>FormFeatBrowser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormPreferences.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormPreferences.Designer.cs">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FurballContentReaderText.cs" />
+    <Compile Include="FurballContentWriterText.cs" />
+    <Compile Include="FurballFileDeviceText.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RibbonColorTableCustom.cs" />
+    <Compile Include="ScintillaHelper.cs" />
+    <Compile Include="EditorPreferences.cs" />
+    <EmbeddedResource Include="AssetPickerBrowser.resx">
+      <DependentUpon>AssetPickerBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetPickerControl.resx">
+      <DependentUpon>AssetPickerControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AssetWindow.resx">
+      <DependentUpon>AssetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAbout.resx">
+      <DependentUpon>FormAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentJournal.resx">
+      <DependentUpon>FormDocumentJournal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentFeat.resx">
+      <DependentUpon>FormDocumentFeat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentCreature.resx">
+      <DependentUpon>FormDocumentCreature.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentItem.resx">
+      <DependentUpon>FormDocumentItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentProject.resx">
+      <DependentUpon>FormDocumentProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentScene.resx">
+      <DependentUpon>FormDocumentScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentScript.resx">
+      <DependentUpon>FormDocumentScript.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentStringTable.resx">
+      <DependentUpon>FormDocumentStringTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadingProgress.resx">
+      <DependentUpon>FormLoadingProgress.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMain.resx">
+      <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormFeatBrowser.resx">
+      <DependentUpon>FormFeatBrowser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormPreferences.resx">
+      <DependentUpon>FormPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\animal-dog.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\box.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\control.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cross-script.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disk.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document--plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-rename.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\document-text.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-horizontal-open.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\home.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\script-code.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\tick.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\t-shirt-gray.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\wrench-screwdriver.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Finmer.Core\Finmer.Core.csproj">
+      <Project>{57108665-ec8f-495a-b060-667cf8a3d069}</Project>
+      <Name>Finmer.Core</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\pencil.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\minus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\plus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-in.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-out.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\chain.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\disks.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-090.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\arrow-270.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\folder-export.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="FinmerIcon.ico" />
+    <None Include="Resources\tags-label.png" />
+    <None Include="Resources\bug--play.png" />
+    <None Include="Resources\folder-import.png" />
+    <None Include="Resources\document.png" />
+    <None Include="Resources\document--plus-32.png" />
+    <None Include="Resources\plus-32.png" />
+    <None Include="Resources\disk-32.png" />
+    <None Include="Resources\scripts-text.png" />
+    <None Include="Resources\information-frame.png" />
+    <None Include="Resources\book.png" />
+    <None Include="Resources\folder-horizontal-32.png" />
+    <None Include="Resources\tag-label.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="DockPanelSuite">
+      <Version>3.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="DockPanelSuite.ThemeVS2015">
+      <Version>3.0.6</Version>
+    </PackageReference>
+    <PackageReference Include="jacobslusser.ScintillaNET">
+      <Version>3.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>13.0.1</Version>
+    </PackageReference>
+    <PackageReference Include="RibbonWinForms">
+      <Version>5.0.1.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

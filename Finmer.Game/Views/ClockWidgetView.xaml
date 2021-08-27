@@ -1,0 +1,57 @@
+﻿<UserControl
+    x:Class="Finmer.Views.ClockWidgetView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="150" d:DesignWidth="150"
+    d:DataContext="{d:DesignInstance vm:PlayerViewModel}">
+    <UserControl.Resources>
+        <cv:HourToClockAngleConverter x:Key="HourToClockAngleConverter" />
+    </UserControl.Resources>
+    <Grid Width="150" Height="75" Margin="0,0,0,24">
+        <!-- Rotating clock graphic -->
+        <Grid Height="150">
+            <Grid.Clip>
+                <RectangleGeometry Rect="0, 0, 150, 75" />
+            </Grid.Clip>
+            <Image
+                Source="../Resources/UI/Clock.png"
+                Width="150"
+                Height="150"
+                Stretch="None"
+                RenderTransformOrigin="0.5,0.5">
+                <Image.Triggers>
+                    <EventTrigger RoutedEvent="Binding.TargetUpdated">
+                        <BeginStoryboard>
+                            <Storyboard>
+                                <DoubleAnimation
+                                    Storyboard.TargetProperty="RenderTransform.(RotateTransform.Angle)"
+                                    To="{Binding TimeHourCumulative, Converter={StaticResource HourToClockAngleConverter}, NotifyOnTargetUpdated=True, Mode=OneWay}"
+                                    Duration="0:0:1.1">
+                                    <DoubleAnimation.EasingFunction>
+                                        <CubicEase EasingMode="EaseOut" />
+                                    </DoubleAnimation.EasingFunction>
+                                </DoubleAnimation>
+                            </Storyboard>
+                        </BeginStoryboard>
+                    </EventTrigger>
+                </Image.Triggers>
+                <Image.RenderTransform>
+                    <RotateTransform Angle="{Binding TimeHourCumulative, Converter={StaticResource HourToClockAngleConverter}, Mode=OneTime}" />
+                </Image.RenderTransform>
+            </Image>
+        </Grid>
+        <!-- Day number -->
+        <TextBlock
+            Text="{Binding TimeDay}"
+            Style="{StaticResource TextBlockLarge}"
+            RenderTransformOrigin="0.5,0.5"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Margin="0,0,0,-6" />
+    </Grid>
+</UserControl>

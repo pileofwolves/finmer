@@ -1,0 +1,16 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "9011a5fb-a8dc-4efb-bd89-8458490a64f8",
+	"Name": "SQ02",
+	"Title": "SQ02 (Dire Wolf)",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "A notice called for the slaying of a dire wolf, found in the forests east of North Finmer."
+		},
+		{
+			"Key": 20,
+			"Text": "You've killed the dire wolf and taken its head as a trophy. Return to Canbell, the mayor, in North Finmer."
+		}
+	]
+}

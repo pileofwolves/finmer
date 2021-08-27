@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "7ec9b71e-d022-4f9a-a74a-f7ffc22ca4a3",
+	"Name": "U_FoodGrapes",
+	"ObjectName": "Grapes",
+	"ObjectAlias": "",
+	"FlavorText": "Tiny sweet fruits, either enjoyed as-is, or used as a sweetener in fine local spirits. In the northernmost regions, honey is often preferred over grapes for this purpose.",
+	"ItemType": "Usable",
+	"PurchaseValue": 2,
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": true,
+	"UseDescription": "Heal 5 HP.",
+	"UseScript": {
+		"ID": "55b89f81-d83e-4b93-a75a-11354aacb53f",
+		"Name": "U_FoodGrapes_UseScript"
+	}
+}

@@ -1,0 +1,18 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "0bef5d6d-114f-4091-8ea5-cc30cb371a49",
+	"Name": "CR_Town_Pit_RechEndo",
+	"ObjectName": "Rech",
+	"ObjectAlias": "the croc",
+	"Strength": 4,
+	"Agility": 0,
+	"Body": 4,
+	"Wits": 0,
+	"Flags": 0,
+	"Level": 5,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": []
+}

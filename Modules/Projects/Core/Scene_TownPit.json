@@ -1,0 +1,1993 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "9940ef7e-a0f8-42fe-a03d-797ffd3bebf4",
+	"Name": "Scene_TownPit",
+	"ScriptCustom": {
+		"ID": "12c54e50-b12b-4d7e-b8eb-fd8f54714038",
+		"Name": "9940ef7e-a0f8-42fe-a03d-797ffd3bebf4_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "d1a16b05-2458-42c5-b5ed-4ae07e4a8409",
+		"Name": "Scene_TownPit_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "38b440d4-224e-48c9-83bf-f6c20591a1a3",
+		"Name": "9940ef7e-a0f8-42fe-a03d-797ffd3bebf4_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "SavePoint",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)\r\nSetInventoryEnabled(true)\r\n\r\nif Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend",
+				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
+				"Children": [
+					{
+						"Key": "SafeRoom_Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Return to the common room.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "Log(\"TOWN_PIT_SLEEPROOM_LEAVE\")",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "AutoLink",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Entry",
+								"Children": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Entry_RefuseReturn",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_ENTER\")\r\nLog(\"TOWN_PIT_DESK_INIT_REFUSE_RETURN\")",
+				"ScriptAppear": "return Storage.GetFlag(\"town_pit_refused\")",
+				"Children": [
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_DeskWhy",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_DeskReward",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_DeskLegal",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_DeskRefuse",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_DeskAccept",
+						"Children": []
+					}
+				]
+			},
+			{
+				"Key": "Entry_First",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_ENTER_FIRST\")\r\nStorage.SetFlag(\"town_pit_first\", true)",
+				"ScriptAppear": "return not Storage.GetFlag(\"town_pit_first\")",
+				"Children": [
+					{
+						"Key": "Entry_C_DeskInit1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Come over",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Entry_R_DeskInit1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT1\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Entry_C_DeskInit2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Entry_R_DeskInit2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT2\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Entry_C_DeskWhy",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Why",
+														"Tooltip": "Ask why this is even a thing.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"town_pit_desk_why\")",
+														"Children": [
+															{
+																"Key": "Entry_R_DeskWhy",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_WHY\")\r\nStorage.SetFlag(\"town_pit_desk_why\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskReward",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskLegal",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskRefuse",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskAccept",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Entry_C_DeskReward",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Reward",
+														"Tooltip": "Ask how the rewards work.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"town_pit_desk_reward\")",
+														"Children": [
+															{
+																"Key": "Entry_R_DeskReward",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_REWARD\")\r\nStorage.SetFlag(\"town_pit_desk_reward\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskWhy",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskLegal",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskRefuse",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskAccept",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Entry_C_DeskLegal",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Legal",
+														"Tooltip": "Ask about the legality of this business.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"town_pit_desk_legal\")",
+														"Children": [
+															{
+																"Key": "Entry_R_DeskLegal",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_LEGAL\")\r\nStorage.SetFlag(\"town_pit_desk_legal\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskWhy",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskReward",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskRefuse",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Entry_C_DeskAccept",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Entry_C_DeskRefuse",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Refuse",
+														"Tooltip": "Say that you're not really interested.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Storage.GetFlag(\"town_pit_desk_showaccept\")",
+														"Children": [
+															{
+																"Key": "Entry_R_DeskRefuse",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_REFUSE\")\r\nStorage.SetFlag(\"town_pit_refused\", true)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Entry_C_DeskRefuse2",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Leave",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Entry_R_DeskRefuseSn",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"town_pit_refused_snitch\", true)\r\nLog(\"TOWN_PIT_DESK_INIT_REFUSE_SNITCH\")",
+																				"ScriptAppear": "-- If the player asks about legality, and then leaves, they're a snitch! So they get 'ate :)\r\nreturn Storage.GetFlag(\"town_pit_desk_legal\")",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "Entry_C_DeskRefuse3",
+																						"Children": []
+																					}
+																				]
+																			},
+																			{
+																				"Key": "Entry_R_DeskRefuse2",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_REFUSE2\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Entry_C_DeskRefuse3",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+																						"ScriptAppear": "",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Entry_C_DeskAccept",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Accept",
+														"Tooltip": "Say that you want to participate.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Storage.GetFlag(\"town_pit_desk_showaccept\")",
+														"Children": [
+															{
+																"Key": "Entry_R_DeskAccept",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_ACCEPT\")\r\nStorage.SetFlag(\"town_pit_refused\", false)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Lower_C_First1",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Go downstairs",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Lower_R_First1",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_LOWER_ENTER_FIRST\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Lower_C_First2",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Lower_R_First2",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TOWN_PIT_LOWER_INTRODUCE\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Lower_C_IntroRoar",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "ROAR!",
+																										"Tooltip": "Give them a taste of your fighting spirit.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Lower_R_IntroRoar",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"TOWN_PIT_LOWER_INTRO_ROAR\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "Lower_C_MeetOpp1",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Continue",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "Unnamed",
+																																"IsState": true,
+																																"IsLink": true,
+																																"LinkTarget": "Op1",
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Lower_C_IntroTaunt",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Taunt",
+																										"Tooltip": "Give them a taste of your carnivorous intentions.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Lower_R_IntroTaunt",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"TOWN_PIT_LOWER_INTRO_TAUNT\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "Lower_C_MeetOpp1",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Lower_C_IntroSilent",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Remain silent",
+																										"Tooltip": "Give them a taste of your calculated cunning.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Lower_R_IntroSilent",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"TOWN_PIT_LOWER_INTRO_SILENCE\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "Lower_C_MeetOpp1",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Entry_C_Dbg_StartOpp",
+						"Children": []
+					}
+				]
+			},
+			{
+				"Key": "Entry",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_ENTER\")\r\nSetLocation(\"The Club\")\r\nSetInventoryEnabled(true)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Entry_C_Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Entry_C_Challenge",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Challenge",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetInventoryEnabled(false)",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Entry_R_Chall_Full",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_DESK_CH_DENY_BELLY\")",
+								"ScriptAppear": "return Player.StomachCount > 0",
+								"Children": [
+									{
+										"Key": "Entry_C_Chall_DenyOK",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Entry_R_Chall_DenyOK",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "SetInventoryEnabled(true)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Entry_C_Leave",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Entry_C_Challenge",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Entry_C_ClaimReward",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Chall_Ended",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_DESK_CH_DENY_ENDED\")",
+								"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP4_FOUGHT\")",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Chall_DenyOK",
+										"Children": []
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Chall_Op4",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_PHILLIP1\")",
+								"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP3_FOUGHT\")",
+								"Children": [
+									{
+										"Key": "Entry_C_Op4_Start",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op4",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Chall_Op3Alt",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "-- A little reprimand for sparing Carson, so it doesn't feel like it has zero consequence\r\nLog(\"TOWN_PIT_O_TYE_CARSONSPARED\")",
+								"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP2_FOUGHT\") and Storage.GetFlag(\"CARSON_SPARED\")",
+								"Children": [
+									{
+										"Key": "Entry_C_Chall_Op3Alt",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Entry_R_Chall_Op3",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Chall_Op3",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_TYE1\")",
+								"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP2_FOUGHT\")",
+								"Children": [
+									{
+										"Key": "Entry_C_Op3_Start",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op3",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Entry_C_Op3_Tip",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Tip",
+										"Tooltip": "Ask for some advice.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Entry_R_Op3_Tip",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_O_TYE1_TIP\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Entry_C_Op3_Start",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Chall_Op2",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_CARSON1\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Entry_C_Op2_Start",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op2",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Entry_C_Op2_Tip",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Tip",
+										"Tooltip": "Ask for some advice.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Entry_R_Op2_Tip",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_TIP\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Entry_C_Op2_Start",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Entry_C_ClaimReward",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Claim reward",
+						"Tooltip": "Ask for shares owed to you by the Club.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "local hasClaim = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\") < Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal hasAnnoyed = Storage.GetFlag(\"TOWN_PIT_BUGGED_LOTS\")\r\n\r\n-- can view whenever you have an actual claim, or not yet received Rech's token\r\nreturn hasClaim or not hasAnnoyed",
+						"Children": [
+							{
+								"Key": "Entry_R_Claim_Reward",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer.Money = Player.Money + totalReward\r\nLog(\"TOWN_PIT_DESK_REWARD\")\r\nLogGsub(\"gold_get\", {num = totalReward}, Color.LightBlue)",
+								"ScriptAppear": "return Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\") < Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Leave",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Challenge",
+										"Children": []
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Claim_Annoy",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPlayer:GiveItem(\"I_PitRechToken\", true)",
+								"ScriptAppear": "-- Just one extra click is enough, because most players will be conditioned to not click the same button twice, let alone three times.\r\nreturn Storage.GetNumber(\"TOWN_PIT_CASH_BUGGED\") > 0",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Leave",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Challenge",
+										"Children": []
+									}
+								]
+							},
+							{
+								"Key": "Entry_R_Claim_Poke",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.ModifyNumber(\"TOWN_PIT_CASH_BUGGED\", 1)\r\nLog(\"TOWN_PIT_DESK_REWARD_POKE\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Leave",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_Challenge",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "Entry_C_ClaimReward",
+										"Children": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Entry_C_Dbg_StartOpp",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "[DBG] Challenge Specific",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return IsDebugMode()",
+						"Children": [
+							{
+								"Key": "Entry_R_Dbg_StartOpp",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Entry_C_Dbg_Opp1",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "O1",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op1",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Entry_C_Dbg_Opp2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "O2",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op2",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Entry_C_Dbg_Opp3",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "O3",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op3",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Entry_C_Dbg_Opp4",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "O4",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op4",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "____________________",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "-- this state should be unreachable\r\nerror()",
+				"ScriptAppear": "",
+				"Children": []
+			},
+			{
+				"Key": "SafeRoomEnter",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_SLEEPROOM_ENTER_2\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "SafeRoomEnter_C",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "SafeRoom",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "SetLocation(\"The Club, Break Room\")\r\nStorage.SetFlag(\"savepoint\", true)\r\n\r\nif not Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_SLEEPROOM_SLEEP\")\r\nend\r\n\r\nFoodComa()\r\nLog(\"TOWN_PIT_SLEEPROOM_SAVE\", Color.LightGray)",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "SafeRoom_Save",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Save",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "SaveGame()",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "SavePoint",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "SafeRoom_Continue",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "SavePoint",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Op1",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_O_VULPES1\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Op1_C_1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Op1_R_1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_VULPES1B\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Op1_C_2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Op1_R_2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_O_VULPES2\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Op1_C_Fight",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Begin",
+														"Tooltip": "Dance the dance of predation.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "local guy = Creature(\"Town_Pit_Vulpes\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    -- Take a different branch\r\n    -- EDIT: Why not just call EatThePreyAnyway() right here? Saves a bunch of complexity\r\n    Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", true)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Op1_R_FightWonNoVore",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", false)\r\n\r\nlocal guy = Creature(\"Town_Pit_Vulpes\")\r\nEatThePreyAnyway(guy)",
+																"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP1_END_NOVORE\")",
+																"Children": [
+																	{
+																		"Key": "Op1_C_End_Vore",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Op1_R_FightWon",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"Key": "Op1_R_FightWon",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP1_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP1_FOUGHT\", true)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_ENTITLED\", 1) -- Reward tier 1\r\nLog(\"TOWN_PIT_O_VULPES_VICTORY\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Op1_C_ToRoom",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "SafeRoomFirst",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogSplit()\r\nLog(\"TOWN_PIT_SLEEPROOM_FIRST\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "SafeRoomFirst_C_OK",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "AutoLink",
+																								"IsState": true,
+																								"IsLink": true,
+																								"LinkTarget": "SafeRoom",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Op1_C_Dbg_Skip1",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "[DBG] Skip, kill",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", true)",
+														"ScriptAppear": "return IsDebugMode()",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Op1_R_FightWonNoVore",
+																"Children": []
+															}
+														]
+													},
+													{
+														"Key": "Op1_C_Dbg_Skip2",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "[DBG] Skip, digest",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return IsDebugMode()",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Op1_R_FightWon",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Op2",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_O_CARSON2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Op2_C_1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Op2_R_1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_CARSON3\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Op2_C_Fight",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Begin",
+										"Tooltip": "The moment of truth.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local guy = Creature(\"Town_Pit_Carson\")\r\nlocal stop = false\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    -- Completed encounter without eating Carson, alternate dialogue\r\n    Storage.SetFlag(\"TOWN_PIT_OPP2_END_NOVORE\", true)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\n    -- WORKAROUND: Ending combat here resets the CombatManager, which will cause an enumerator invalidation\r\n    -- in OnTurn and therefore a crash. By moving this to the round end function, we're out of the offending loop, and can stop combat.\r\n    stop = true\r\n    Player.Health = 1\r\nend)\r\nCombat.OnRoundEnd(function()\r\n    if stop then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Op2_R_FightLost",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLog(\"TOWN_PIT_O_CARSON_DEFEAT\")",
+												"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP2_LOST\")",
+												"Children": [
+													{
+														"Key": "Op2_C_FightLost_C1",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Op2_R_FightLost_C1",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_DEFEAT2\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Op2_C_FightLost_C2",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "LogSplit()",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Entry",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"Key": "Op2_R_FightWonNoVore",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP2_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY_NV\")",
+												"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP2_END_NOVORE\")",
+												"Children": [
+													{
+														"Key": "Op2_C_NV_Eat",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Devour",
+														"Tooltip": "The best meal is a defenseless and squirming meal.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Op2_R_NV_Eat",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\nSleep(4)\r\nEatThePreyAnyway(Creature(\"Town_Pit_Carson\"))",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Op2_C_NV_Eat2",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Op2_R_FightWon",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Op2_C_NV_Spare",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Spare",
+														"Tooltip": "You hope that he might have done the same to you.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Op2_R_NV_Spare",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_VICTORY_SPARE\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Op2_C_NV_Spare2",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Op2_R_NV_Spare2",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_VICTORY_SPARE2\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Op2_C_NV_Spare3",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Insist",
+																						"Tooltip": "You had a change of heart, perhaps.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Op2_R_NV_Spare3",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Storage.SetFlag(\"CARSON_SPARED\", true)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY_SPARE3\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Op2_C_NV_Spare4",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Continue",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "AutoLink",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Entry",
+																												"Children": []
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "Op2_C_NV_Eat",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"Key": "Op2_R_FightWon",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP2_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nStorage.SetFlag(\"CARSON_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Op2_C_FightWon",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Tooltip": "Your work here is done.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "SafeRoomEnter",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Op2_C_Dbg_Skip1",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "[DBG] Skip, kill",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return IsDebugMode()",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op2_R_FightWon",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Op3",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_O_TYE2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Op3_C_1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Op3_R_1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_TYE3A\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Op3_C_Fight",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Begin",
+										"Tooltip": "We'll see about that.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local guy = Creature(\"Town_Pit_Tye\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    EatThePreyAnyway(guy)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Op3_R_FightWon",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP3_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP3_FOUGHT\", true)\r\nStorage.SetFlag(\"TYE_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_TYE_VICTORY\")\r\nPlayer:GiveItem(\"I_PitTyePendant\", true)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Op3_C_FightWon",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "SafeRoomEnter",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Op3_C_Dbg_Skip1",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "[DBG] Skip",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return IsDebugMode()",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Op3_R_FightWon",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Op4",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_O_PHILLIP2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Op4_C_1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Op4_R_1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_O_PHILLIP3A\")\r\nLog(\"TOWN_PIT_O_PHILLIP3B\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Op4_C_2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Op4_R_2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_O_PHILLIP3C\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Op4_C_Fight",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Begin",
+														"Tooltip": "Oh, you won't keep him waiting, alright...",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "-- I really should be unifying these combat scripts somewhere.\r\nlocal guy = Creature(\"Town_Pit_Phillip\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    EatThePreyAnyway(guy)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Op4_R_FightWon",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP4_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP4_FOUGHT\", true)\r\nStorage.SetFlag(\"PHILLIP_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_PHILLIP_VICTORY\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Op4_C_FightWon",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Unnamed",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "NewChamp",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Op4_C_Dbg_Skip1",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "[DBG] Skip",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return IsDebugMode()",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Op4_R_FightWon",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "NewChamp",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_NEWCHAMP1\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "NewChamp_C_1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "NewChamp_R_1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_NEWCHAMP2\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "NewChamp_C_2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "NewChamp_R_2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_NEWCHAMP3\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "NewChamp_C_3",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "LogSplit()",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "SafeRoom",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

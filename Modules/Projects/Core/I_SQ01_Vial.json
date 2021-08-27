@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "334a8b21-ea88-4d8d-a2b3-4c16418775e3",
+	"Name": "I_SQ01_Vial",
+	"ObjectName": "Vial",
+	"ObjectAlias": "",
+	"FlavorText": "A small vial given to you by Finmer's local alchemist. You're supposed to fill it with the slime and enzymes found in a stomach. Yikes.",
+	"ItemType": "Usable",
+	"PurchaseValue": 0,
+	"IsQuestItem": true,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": true,
+	"UseDescription": "When used while swallowed, fill the vial with stomach slime.",
+	"UseScript": {
+		"ID": "825616c7-f734-4ef2-a914-971981705d2c",
+		"Name": "SQ01_Vial_UseScript"
+	}
+}

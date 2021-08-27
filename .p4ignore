@@ -1,0 +1,13 @@
+# Visual Studio
+.vs
+bin
+obj
+packages
+*.user
+
+# VCS
+.git
+
+# Generated files
+*.sav
+*.furball

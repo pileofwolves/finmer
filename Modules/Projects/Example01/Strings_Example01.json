@@ -1,0 +1,13 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "baa9419e-7b44-4e1b-bfc5-0d5252f89c72",
+	"Name": "Strings_Example01",
+	"Entries": [
+		{
+			"Key": "NOTICE_EXAMPLE01",
+			"Text": [
+				"\"This module is a demonstration of patching in new content into other modules, such as the vanilla game. Whooo!\""
+			]
+		}
+	]
+}

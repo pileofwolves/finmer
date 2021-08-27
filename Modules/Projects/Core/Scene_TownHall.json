@@ -1,0 +1,341 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "ed630092-2d61-419d-ac36-df1c77845026",
+	"Name": "Scene_TownHall",
+	"ScriptCustom": {
+		"ID": "b56418d5-be87-469a-bac7-85e887ea4b66",
+		"Name": "Scene_TownHall_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "aed794cb-a1d5-4fa1-9189-7f5fc005555a",
+		"Name": "Scene_TownHall_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "7491312f-247b-45e3-9f85-35ff0887e19c",
+		"Name": "Scene_TownHall_OnLeave"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "MQ01_Intro",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"town_hall_enter\")\r\nLog(\"mq01_intro\")",
+				"ScriptAppear": "return not Storage.GetFlag(\"mq01_started\")",
+				"Children": [
+					{
+						"Key": "MQ01_Inquire",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Inquire",
+						"Tooltip": "Say that you were told to look for jobs here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "MQ01_Setup",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"mq01_inquire\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "MQ01_Accept",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Accept",
+										"Tooltip": "Say that you'll see what you can do.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "MQ01_Accepted",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ01_ACCEPT\")\r\nStorage.SetFlag(\"mq01_started\", true)\r\nJournal.Update(\"MQ01\", 30)\r\nPlayer:GiveItem(\"MQ01_InnPass\")\r\nPlayer:AwardXP(RewardXP.MQ01_Accept)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "MQ01_Leave",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Tooltip": "Yep, we're done here.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Log(\"MQ01_ACCEPTED_LEAVE\")\r\nSetScene(\"Scene_TownNSQ\")",
+														"ScriptAppear": "",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "MQ01_AskSpecifics",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Investigate",
+										"Tooltip": "Ask what you're needed for exactly.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "MQ01_Specifics_Unarm",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "LogGsub(\"MQ01_ASK_SPECIFICS_NOWEP\",\r\n {guy = (Player.Gender == Gender.Male and \"guy\" or \"lady\")}\r\n)",
+												"ScriptAppear": "return Player.EquippedWeapon == nil",
+												"Children": [
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_Accept",
+														"Children": []
+													},
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_AskReward",
+														"Children": []
+													}
+												]
+											},
+											{
+												"Key": "MQ01_Specifics",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "LogGsub(\"MQ01_ASK_SPECIFICS\",\r\n {guy = Player.Gender == Gender.Male and \"guy\" or \"lady\",\r\n  weapon = Player.PrimaryWeapon.Name}\r\n)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_Accept",
+														"Children": []
+													},
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_AskReward",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "MQ01_AskReward",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Reward",
+										"Tooltip": "Ask what you're getting out of this.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "MQ01_TellReward",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ01_ASK_REWARD\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_Accept",
+														"Children": []
+													},
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_AskSpecifics",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "MQ01_Flirt",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Flirt",
+						"Tooltip": "Comment on how well she looks.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "MQ01_Flirt_M",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"mq01_flirt_m\")",
+								"ScriptAppear": "return Player.Gender == Gender.Male",
+								"Children": [
+									{
+										"Key": "MQ01_Flirt_End",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "Right, so you were here for a reason...",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "MQ01_Setup",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "MQ01_Flirt_F",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"mq01_flirt_f\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Unnamed",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "Unnamed",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "MQ01_Flirt_End",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "SQ02_Handin",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"town_hall_enter\")\r\nLog(\"SQ02_TOWNHALL_ENTER\")",
+				"ScriptAppear": "return Player:HasItem(\"SQ02_WolfHead\")",
+				"Children": [
+					{
+						"Key": "SQ02_C_Explain",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Explain",
+						"Tooltip": "You're here for the reward, so...",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "SQ02_R_Explain",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"SQ02_WolfHead\")\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nPlayer.Money = Player.Money + RewardGold.SQ02\r\nJournal.Close(\"SQ02\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "SQ02_C_Leave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "Time to take your leave.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+										"ScriptAppear": "",
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Empty",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"town_hall_empty\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Go outside, nothing to see here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+						"ScriptAppear": "",
+						"Children": []
+					}
+				]
+			}
+		]
+	}
+}

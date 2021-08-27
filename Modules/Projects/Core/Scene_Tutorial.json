@@ -1,0 +1,118 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "f6430525-6f2a-41dc-a303-068c9e9f0b87",
+	"Name": "Scene_Tutorial",
+	"ScriptCustom": {
+		"ID": "f288ac90-b326-4e1e-987f-4d122ad5d45d",
+		"Name": "Scene_Tutorial_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "0e002bd1-9d2e-410e-9c14-35d152d5b642",
+		"Name": "Scene_Tutorial_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "b617dfe4-0e30-4662-800c-113aa9694568",
+		"Name": "f6430525-6f2a-41dc-a303-068c9e9f0b87_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Text1",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "-- TODO: this is really old, predating Finmer itself... could probably replace gsubs with Text.SetContext\r\nLogGsub(\"tutorial1\",\r\n    {instructor = instr_s,\r\n    instrhis = instr_g.Possessive,\r\n    instrhe = instr_g.Subject,\r\n    instrHe = CapFirst(instr_g.Subject)})",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Continue1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Text2",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "LogGsub(\"tutorial2\",\r\n    {instrhe = instr_g.Subject})",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Continue2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Fight1",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "trainingdummy = Creature(\"TrainingDummy1\")\r\nLog(\"tutorial3\", tutcolor)\r\nLog(\"tutorial4\", tutcolor)\r\nCombat.AddCombatant(trainingdummy)\r\nCombat.OnRoundEnd(function()\r\n    if trainingdummy.Health == trainingdummy.HealthMax then\r\n        -- keep repeating \"try hitting it\" until that actually happens\r\n        Log(\"tutorial4\", tutcolor)\r\n    elseif not fight1_hitConfirmed then\r\n        -- \"nice!\"\r\n        fight1_hitConfirmed = true\r\n        Log(\"tutorial5\", tutcolor)\r\n    end\r\nend)\r\nCombat.OnCombatEnd(function()\r\n    Sleep(0.1)\r\n    LogGsub(\"tutorial6\",\r\n        {instructor = instr_s,\r\n        instrhis = instr_g.Possessive,\r\n        instrhe = instr_g.Subject,\r\n        instrHe = CapFirst(instr_g.Subject)})\r\nend)\r\nCombat.Begin(false)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Continue3",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Fight2",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "trainingdummy = Creature(\"TrainingDummy2\")\r\nLog(\"tutorial7\", tutcolor)\r\nCombat.AddCombatant(trainingdummy)\r\nCombat.OnRoundEnd(function()\r\n    if (not fight2_grappled) and trainingdummy:IsGrappling(Player) then\r\n        -- vore tutorial\r\n        fight2_grappled = true\r\n        Log(\"tutorial8\", tutcolor)\r\n    end\r\n    if (not fight2_swallowed) and trainingdummy:IsEatenBy(Player) then\r\n        -- digestion tutorial\r\n        fight2_swallowed = true\r\n        Log(Player.EndoOnly and \"tutorial9b\" or \"tutorial9\", tutcolor)\r\n    end\r\nend)\r\nCombat.Begin(false)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Exit",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Finish",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "BeginGame()",
+																		"ScriptAppear": "",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

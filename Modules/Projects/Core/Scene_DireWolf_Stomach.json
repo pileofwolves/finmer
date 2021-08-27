@@ -1,0 +1,342 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "a56dc882-f82e-4192-a1a6-6f325cb8b63e",
+	"Name": "Scene_DireWolf_Stomach",
+	"ScriptCustom": {
+		"ID": "223086a6-e84a-4efb-b4f6-bb59d90d9c6c",
+		"Name": "Scene_DireWolf_Stomach_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "9b891c31-1d9d-4483-a2b6-86a206e5e447",
+		"Name": "Scene_DireWolf_Stomach_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "a94b8345-0abe-47d1-8aa2-2c6dd5cce685",
+		"Name": "a56dc882-f82e-4192-a1a6-6f325cb8b63e_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "SavePoint_Stomach",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
+				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
+				"Children": [
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "C_Struggle",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "C_Submit",
+						"Children": []
+					},
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "C_SQ01_UseVial",
+						"Children": []
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", false)\r\nJournal.Close(\"SQ02\")\r\nLog(\"SQ02_WOLF_ENDO_BEGIN\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "C_Struggle",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Move",
+						"Tooltip": "Push and kick around!",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "R_StrugglePostRest",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)",
+								"ScriptAppear": "return Storage.GetFlag(\"forest_direwolf_sleptinside\")",
+								"Children": [
+									{
+										"Key": "C_GetSpatUp",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "Ugh... so much drool...",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "R_GetSpatUp",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "SetScene(\"Scene_ForestCottage\")",
+												"ScriptAppear": "",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "R_Struggle",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"POV_STRUGGLE\")\r\nLog(\"POV_ENDO\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Struggle",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Submit",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_SQ01_UseVial",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Sleep",
+										"Children": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "C_Submit",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Unnamed",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "-- TODO: Removed, because it's kinda synonymous with Sleep\r\nreturn false",
+						"Children": []
+					},
+					{
+						"Key": "C_SQ01_UseVial",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Use Vial",
+						"Tooltip": "Scoop up some of the stomach fluids.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "return Player:HasItem(\"SQ01_Vial\")",
+						"Children": [
+							{
+								"Key": "R_SQ01_UseVial",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"SQ01_Vial\")\r\nPlayer:GiveItem(\"SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Struggle",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Submit",
+										"Children": []
+									},
+									{
+										"Key": "AutoLink",
+										"IsState": false,
+										"IsLink": true,
+										"Title": "",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"LinkTarget": "C_Sleep",
+										"Children": []
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "C_Sleep",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Rest",
+						"Tooltip": "It is oddly reassuring that an apex predator is keeping you safe.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "R_Sleep",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_ENDO_SLEEP\")\r\n\r\nRest()",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "C_SleepSave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Save",
+										"Tooltip": "Record your adventure so far.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "R_AwakeAfterSleep",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "C_SleepContinue",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "R_AwakeAfterSleep",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "C_Struggle",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "C_Submit",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "C_SQ01_UseVial",
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

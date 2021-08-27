@@ -1,0 +1,226 @@
+﻿<UserControl
+    x:Class="Finmer.Views.CharSheetPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    xmlns:v="clr-namespace:Finmer.Views"
+    mc:Ignorable="d"
+    d:DesignWidth="1000" d:DesignHeight="640"
+    d:DataContext="{d:DesignData Source=../Models/DesignData/SamplePlayer.xaml}">
+    <UserControl.Resources>
+        <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
+    </UserControl.Resources>
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="800" Height="600">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- Back button -->
+        <Button Grid.Column="2" Grid.Row="1" Width="180" Height="40" HorizontalAlignment="Right" Content="Back" Click="BackButton_Click" />
+
+        <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical">
+            <!-- Character info -->
+            <TextBlock Text="{Binding Name, Mode=OneTime}" Style="{StaticResource TextBlockLargest}" />
+            <TextBlock Style="{StaticResource TextBlockLarge}">
+                <Run Text="{Binding Species, Mode=OneTime, Converter={StaticResource StringCapFirstConverter}}" />
+            </TextBlock>
+
+            <TextBlock Style="{StaticResource TextBlockLarge}">
+                Level
+                <Run Text="{Binding Level, Mode=OneTime}" />
+                (<Run Text="{Binding XP, Mode=OneTime}" /> / <Run Text="{Binding RequiredXP, Mode=OneTime}" /> XP)
+            </TextBlock>
+
+            <Grid Margin="16">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="26" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+
+                <!-- Armor -->
+                <Image Grid.Column="0" Grid.Row="0" Source="/Finmer;component/Resources/UI/StatDefense.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <TextBlock Grid.Column="1" Grid.Row="0" Margin="0,0,0,15" Style="{StaticResource TextBlockDefault}">
+                    ??? Armor
+                </TextBlock>
+
+                <!-- Offense -->
+                <Image Grid.Column="0" Grid.Row="1" Source="/Finmer;component/Resources/UI/StatOffense.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <TextBlock Grid.Column="1" Grid.Row="1" Margin="0,0,0,15" Style="{StaticResource TextBlockDefault}">
+                    Some Weapon
+                    <LineBreak />
+                    Damage: ???
+                </TextBlock>
+
+                <!-- Vore -->
+                <Image Grid.Column="0" Grid.Row="2" Source="/Finmer;component/Resources/UI/StatVore.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <Grid Grid.Column="1" Grid.Row="2" Margin="0,0,0,15">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TextBlockDefault}">
+                        Some pred stat:<LineBreak />
+                        Some bonus:
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBlockDefault}">
+                        + 4<LineBreak />
+                        + 1
+                    </TextBlock>
+                    <TextBlock Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="1"
+                        Style="{StaticResource TextBlockDefault}"
+                        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}"
+                        Visibility="{Binding ShowDigestingPreyPanel, Mode=OneTime}">
+                        <Run Text="Currently digesting prey:" Foreground="{StaticResource DepressedBrush}" />
+                        <LineBreak />
+                        <Run Text="{Binding DigestingPreyList, Mode=OneTime}" />
+                    </TextBlock>
+                </Grid>
+
+                <!-- Abilities -->
+                <Image Grid.Column="0" Grid.Row="3" Source="/Finmer;component/Resources/UI/StatPrimary.png" Stretch="None" HorizontalAlignment="Left" VerticalAlignment="Top" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <Grid Grid.Column="1" Grid.Row="3">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="3*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="2*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Column="0" Style="{StaticResource TextBlockDefault}">
+                        Strength:<LineBreak />
+                        Agility:<LineBreak />
+                        Body:<LineBreak />
+                        Wits:
+                    </TextBlock>
+                    <TextBlock Grid.Column="1" Style="{StaticResource TextBlockDefault}">
+                        <Run Text="{Binding Strength, Mode=OneWay}" /><LineBreak />
+                        <Run Text="{Binding Agility, Mode=OneWay}" /><LineBreak />
+                        <Run Text="{Binding Body, Mode=OneWay}" /><LineBreak />
+                        <Run Text="{Binding Wits, Mode=OneWay}" />
+                    </TextBlock>
+                    <TextBlock Grid.Column="2"
+                        Style="{StaticResource TextBlockDefault}"
+                        Visibility="{Binding ShowIncreaseAbilityPanel, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}">
+                        <!-- Animated pulsing of this text block, to draw user's attention to unspent points -->
+                        <TextBlock.Background>
+                            <SolidColorBrush x:Name="AbilityUpgradePanelAnimatedBack" Color="{StaticResource ButtonHoverColorAlt}" Opacity="0" />
+                        </TextBlock.Background>
+                        <TextBlock.Triggers>
+                            <EventTrigger RoutedEvent="UserControl.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard
+                                        RepeatBehavior="Forever"
+                                        FillBehavior="HoldEnd">
+                                        <DoubleAnimationUsingKeyFrames
+                                            Storyboard.TargetName="AbilityUpgradePanelAnimatedBack"
+                                            Storyboard.TargetProperty="Opacity">
+                                            <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.0" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.2" Value="1" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.4" Value="0" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.6" Value="1" />
+                                            <LinearDoubleKeyFrame KeyTime="0:0:2.8" Value="0" />
+                                        </DoubleAnimationUsingKeyFrames>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </TextBlock.Triggers>
+                        <Hyperlink Command="{Binding IncreaseAbilityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}" CommandParameter="0">+1</Hyperlink>
+                        <Span Foreground="{StaticResource DepressedBrush}">(<Run Text="{Binding AbilityPoints, Mode=OneWay}" /> left)</Span><LineBreak />
+                        <Hyperlink Command="{Binding IncreaseAbilityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}" CommandParameter="1">+1</Hyperlink><LineBreak />
+                        <Hyperlink Command="{Binding IncreaseAbilityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}" CommandParameter="2">+1</Hyperlink><LineBreak />
+                        <Hyperlink Command="{Binding IncreaseAbilityCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type v:CharSheetPage}}}" CommandParameter="3">+1</Hyperlink>
+                    </TextBlock>
+                </Grid>
+            </Grid>
+        </StackPanel>
+
+        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
+            <!-- Equipment -->
+            <TextBlock Text="Equipment" Style="{StaticResource TextBlockLarge}" />
+            <StackPanel Margin="10,16,10,24" Orientation="Horizontal">
+                <StackPanel.Resources>
+                    <Style TargetType="v:ItemBoxView">
+                        <Setter Property="Margin" Value="0,0,10,0" />
+                        <Setter Property="ToolTipService.ShowDuration" Value="12000" />
+                        <Setter Property="ToolTip">
+                            <Setter.Value>
+                                <v:ItemTooltipView />
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </StackPanel.Resources>
+                <v:ItemBoxView DataContext="{Binding Equipment[0]}" MouseDown="ItemBoxView_MouseDown" Tag="0" />
+                <v:ItemBoxView DataContext="{Binding Equipment[1]}" MouseDown="ItemBoxView_MouseDown" Tag="1" />
+                <!-- Shield and Charms slots, which we do not use for now
+                <v:ItemBoxView DataContext="{Binding Equipment[2]}" MouseDown="ItemBoxView_MouseDown" Tag="2" />
+                <v:ItemBoxView DataContext="{Binding Equipment[3]}" MouseDown="ItemBoxView_MouseDown" Tag="3" />
+                <v:ItemBoxView DataContext="{Binding Equipment[4]}" MouseDown="ItemBoxView_MouseDown" Tag="4" /> -->
+            </StackPanel>
+
+            <!-- Inventory -->
+            <TextBlock Text="Backpack" Style="{StaticResource TextBlockLarge}" />
+            <Grid Margin="14">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <StackPanel Orientation="Horizontal" Grid.Column="0">
+                    <Image Source="/Finmer;component/Resources/UI/Money.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <TextBlock Style="{StaticResource TextBlockDefault}">
+                        <Run Text="{Binding Money, Mode=OneWay}" />
+                    </TextBlock>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Grid.Column="1">
+                    <Image Source="/Finmer;component/Resources/UI/StatInventory.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <TextBlock Style="{StaticResource TextBlockDefault}">
+                        <Run Text="{Binding Inventory.Count, Mode=OneWay}" /> item(s)
+                    </TextBlock>
+                </StackPanel>
+            </Grid>
+            <v:ItemListView x:Name="ItemList" MaxHeight="244" ItemsSource="{Binding Inventory}" SelectionChanged="ItemListView_SelectionChanged" />
+
+            <!-- Item actions -->
+            <StackPanel Margin="4,16,4,4" Orientation="Horizontal">
+                <Button Name="ItemUseButton" Margin="4" Height="35" Width="120" Content="Use" Click="ItemUseButton_Click" IsEnabled="False" />
+                <Button Name="ItemDropButton" Height="35" Width="120" Content="Drop" Click="ItemDropButton_Click" IsEnabled="False" />
+            </StackPanel>
+            <Popup x:Name="PopupSimple" MaxWidth="200" StaysOpen="False">
+                <Border Style="{StaticResource PopupBorderStyle}">
+                    <TextBlock x:Name="PopupSimpleText" Style="{StaticResource TextBlockDefault}" Margin="4" Text="aaaaa" TextWrapping="Wrap" />
+                </Border>
+            </Popup>
+            <Popup x:Name="PopupDropConfirm" MaxWidth="200" StaysOpen="False">
+                <Border Style="{StaticResource PopupBorderStyle}">
+                    <StackPanel>
+                        <TextBlock x:Name="PopupDropText" Style="{StaticResource TextBlockDefault}" Margin="6,6,6,16" TextWrapping="Wrap" />
+                        <Button x:Name="DropConfirmButton" Height="35" Content="Drop" Foreground="OrangeRed" Margin="5,0,5,5" Click="DropConfirmButton_Click" />
+                        <Button x:Name="DropCancelButton" Height="35" Content="Never mind" Margin="5,0,5,5" Click="DropCancelButton_Click" />
+                    </StackPanel>
+                </Border>
+            </Popup>
+        </StackPanel>
+
+        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
+            <!-- Quest Journal -->
+            <TextBlock Text="Journal" Style="{StaticResource TextBlockLarge}" />
+            <StackPanel x:Name="JournalList" Margin="10,16,10,24" Orientation="Vertical" />
+        </StackPanel>
+    </Grid>
+</UserControl>

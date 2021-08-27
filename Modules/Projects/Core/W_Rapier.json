@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "b5f9289b-46c5-4e90-916b-95832ccbc584",
+	"Name": "W_Rapier",
+	"ObjectName": "Rapier",
+	"ObjectAlias": "rapier",
+	"FlavorText": "A somewhat unusual weapon designed for rapid thrusting attacks, while maintaining a healthy distance from one's opponent. Fencing is an elegant if somewhat foreign sport that usually involves such rapiers.",
+	"ItemType": "Weapon",
+	"PurchaseValue": 30,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "15ce7d39-11f7-4aca-957f-bca6f9e0c35f",
+		"Name": "b5f9289b-46c5-4e90-916b-95832ccbc584_UseScript"
+	}
+}

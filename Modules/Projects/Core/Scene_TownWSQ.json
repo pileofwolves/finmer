@@ -1,0 +1,643 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "2b113d7d-464f-4033-9a89-b50048eccb01",
+	"Name": "Scene_TownWSQ",
+	"ScriptCustom": {
+		"ID": "8b5cef63-b93e-46d6-88ae-09aab71c1f30",
+		"Name": "2b113d7d-464f-4033-9a89-b50048eccb01_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "3538cc96-09e9-4dac-b7cd-1feb3dc505eb",
+		"Name": "Scene_TownWSQ_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "b84ccd81-541c-46ed-95ee-264b3ce8495a",
+		"Name": "2b113d7d-464f-4033-9a89-b50048eccb01_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Pit_Snitched",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TOWN_PIT_DESK_INIT_REFUSE_SNITCH2\")",
+				"ScriptAppear": "-- Activated if the player acted like a snitch. We enter the same vore path as if the player had given Rech the token.\r\nreturn Storage.GetFlag(\"town_pit_refused_snitch\")",
+				"Children": [
+					{
+						"Key": "Pit_Snitched_End",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "AutoLink",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Pit_R_GiveToken2",
+								"Children": []
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "AddLink(Compass.EAST, \"Scene_TownMarket\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Smith",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Smithy",
+						"Tooltip": "Pay a visit to the local blacksmith.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "if GetIsNight() then\r\n    Log(\"town_nightlock\")\r\nelse\r\n    SetScene(\"Scene_TownSmithy\")\r\nend",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "AutoLink",
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Main",
+								"Children": []
+							}
+						]
+					},
+					{
+						"Key": "Alch",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Alchemist",
+						"Tooltip": "Visit the alchemy shop.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownAlch\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Pit",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Alley",
+						"Tooltip": "A narrow, unlit pathway runs between the buildings.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Pit_R_Unlocked",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME_UNLOCKED\")",
+								"ScriptAppear": "return Storage.GetFlag(\"town_pit_unlocked\")",
+								"Children": [
+									{
+										"Key": "Pit_C_UnlockedEnter",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Enter",
+										"Tooltip": "Brush past him and step inside.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Pit_R_UnlockedEnter",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "SetScene(\"Scene_TownPit\")",
+												"ScriptAppear": "",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Pit_C_GiveToken",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Give Token",
+										"Tooltip": "Show him the token Venna gave you.",
+										"Highlight": true,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return Player:HasItem(\"I_PitRechToken\")",
+										"Children": [
+											{
+												"Key": "Pit_R_GiveToken",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Pit_C_GiveToken2",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Pit_R_GiveToken2",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_RECH_TOKEN_SHOW2\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Pit_C_GiveToken3",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Uh-oh...",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Pit_R_GiveToken3",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_RECH_TOKEN_VORE1\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Pit_C_GiveToken4",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "Slip and slide...",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Pit_R_GiveToken4",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"Town_Pit_RechFatal\")\r\nCombat.AddCombatant(rech)\r\nCombat.SetVored(rech, Player, true)\r\nCombat.Begin()",
+																								"ScriptAppear": "",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Pit_R_Night",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")",
+								"ScriptAppear": "return GetIsNight()",
+								"Children": [
+									{
+										"Key": "Pit_C_AskWhat",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Location",
+										"Tooltip": "Ask what's behind the door.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Pit_R_WasInvited",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_INV\")\r\nPlayer:TakeItem(\"I_PitInvite\")\r\nJournal.Close(\"SQ04\")",
+												"ScriptAppear": "return Storage.GetNumber(\"sq04\") == 1",
+												"Children": [
+													{
+														"Key": "Pit_C_Invited2",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Pit_R_Invited2",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_INV2\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Pit_C_Invited3",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Pit_R_Invited3",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_INV3\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Pit_C_InvitedEnter",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Step inside",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Pit_R_InvitedEnter",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Storage.SetFlag(\"town_pit_unlocked\", true)\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nSetScene(\"Scene_TownPit\")",
+																								"ScriptAppear": "",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"Key": "Pit_R_AskWhat",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_DENY_WHATSTHIS\")\r\nStorage.SetFlag(\"town_pit_showsneaky\", true)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_AskEntry",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_EnterAnyway",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_Leave2",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Pit_C_AskEntry",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Entry",
+										"Tooltip": "Ask if you can go inside.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Pit_R_WasInvited",
+												"Children": []
+											},
+											{
+												"Key": "Pit_R_AskEntry",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_DENY_ENTRY\")\r\nStorage.SetFlag(\"town_pit_showsneaky\", true)",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_AskWhat",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_EnterAnyway",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Pit_C_Leave2",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Pit_C_EnterAnyway",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Sneak in",
+										"Tooltip": "Hide nearby, and wait for him to leave.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "return not Storage.GetFlag(\"town_pit_rech_sneaky\")",
+										"Children": [
+											{
+												"Key": "Pit_R_Sneak1",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "-- Can only do this interaction once, because it's silly to repeat it\r\nStorage.SetFlag(\"town_pit_rech_sneaky\", true)\r\n\r\nLog(\"TOWN_PIT_RECH_SNEAK1\")\r\nSleep(4)\r\nLog(\"TOWN_PIT_RECH_SNEAK2\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Pit_C_Sneak_Business",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Business",
+														"Tooltip": "Claim that you need to get through here.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Pit_R_Sneak_Business",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK3\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Pit_C_SneakVore",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Uh-oh...",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Pit_R_SneakVore1",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_VORE1\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Pit_C_SneakVore2",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Pit_R_SneakVore2",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_VORE2\")\r\nSleep(4)\r\n\r\nlocal rounds = 1\r\nlocal rech = Creature(\"Town_Pit_RechEndo\")\r\nCombat.AddCombatant(rech)\r\nCombat.SetVored(rech, Player, true)\r\nCombat.OnRoundEnd(function(round)\r\n    Log(\"TOWN_PIT_RECH_SNEAK_WALK\" .. rounds)\r\n    rounds = rounds + 1\r\n\r\n    if rounds >= 6 then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Pit_C_SneakEnding",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Continue",
+																										"Tooltip": "Take a quick moment to catch your breath...",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Pit_R_SneakEnding",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_ENDING\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "Pit_C_SneakEnding3",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Continue",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_ENDING2\")\r\nLogSplit()",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "AutoLink",
+																																"IsState": true,
+																																"IsLink": true,
+																																"LinkTarget": "Main",
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Pit_C_Sneak_Back",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Backpedal",
+														"Tooltip": "Apologize and say that you'll get out of his way!",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Pit_R_Sneak_Back",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK3B\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Pit_C_SneakVore",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Pit_C_Leave2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "Oh well...",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_LEAVE\")",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "Pit_R_Day",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_DAYTIME\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Pit_C_Leave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "Return to there where the sun shines.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -1,0 +1,39 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
+	"Name": "Scene_RoadNorth",
+	"ScriptCustom": {
+		"ID": "c42131d7-f7df-4ffa-8cca-315eddfca078",
+		"Name": "Scene_RoadNorth_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "18c0964f-4cdb-47b2-b55e-a7b8320e6c4a",
+		"Name": "Scene_RoadNorth_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "24b2c6d9-c179-4650-8b3f-260d01b8f786",
+		"Name": "Scene_RoadNorth_OnLeave"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"road_north\")\r\nAddLink(Compass.NORTH, \"Scene_TownGate\")\r\nAddLink(Compass.EAST, function() BeginRoadTravel(\"Scene_ForestCottage\") end)\r\nAddLink(Compass.SOUTH, TrySouthRoad)",
+				"ScriptAppear": "",
+				"Children": []
+			}
+		]
+	}
+}

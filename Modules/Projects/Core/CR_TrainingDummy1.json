@@ -1,0 +1,38 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "66f65198-ff19-4fd9-a039-52cbe6f14c2b",
+	"Name": "CR_TrainingDummy1",
+	"ObjectName": "Training Dummy",
+	"ObjectAlias": "the dummy",
+	"Strength": 0,
+	"Agility": 0,
+	"Body": 2,
+	"Wits": 0,
+	"Flags": 59,
+	"Level": 1,
+	"Size": "Medium",
+	"Gender": "Neuter",
+	"IsPredator": false,
+	"StringMappings": [
+		{
+			"Key": "ATTACK_HIT",
+			"Rule": "",
+			"NewValue": "TDUMMY_ATTACK_HIT"
+		},
+		{
+			"Key": "ATTACK_MISS",
+			"Rule": "",
+			"NewValue": "TDUMMY_ATTACK_MISS"
+		},
+		{
+			"Key": "ATTACK_CRIT",
+			"Rule": "",
+			"NewValue": "TDUMMY_ATTACK_CRIT"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "",
+			"NewValue": "TDUMMY_KILL_GENERIC"
+		}
+	]
+}

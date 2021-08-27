@@ -1,0 +1,28 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "09a922d6-c348-490a-960b-9095199ae5e9",
+	"Name": "CR_TrainingDummy2",
+	"ObjectName": "Prey",
+	"ObjectAlias": "the prey",
+	"Strength": 0,
+	"Agility": 0,
+	"Body": 2,
+	"Wits": 0,
+	"Flags": 252,
+	"Level": 1,
+	"Size": "Medium",
+	"Gender": "Neuter",
+	"IsPredator": false,
+	"StringMappings": [
+		{
+			"Key": "GRAPPLE_HIT",
+			"Rule": "",
+			"NewValue": "TDUMMY_GRAPPLE_HIT"
+		},
+		{
+			"Key": "GRAPPLE_MISS",
+			"Rule": "",
+			"NewValue": "TDUMMY_GRAPPLE_MISS"
+		}
+	]
+}

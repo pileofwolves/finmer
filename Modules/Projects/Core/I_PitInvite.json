@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "b7127d73-bb37-4396-905d-b5e2464a28f0",
+	"Name": "I_PitInvite",
+	"ObjectName": "Ominous Letter",
+	"ObjectAlias": "",
+	"FlavorText": "\"Greetings, predator,\r\n\r\nWord of your involvement in a recent disappearance has reached us. Instead of simply denouncing such activities, however, we would like to extend an invitation to you, and offer an opportunity to further develop your talents.\r\n\r\nIf you are interested in feasting once more, find us after dark in the western neighborhood.\"",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": true,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "a4568a7b-850c-4e1b-ba94-fef226f8e346",
+		"Name": "b7127d73-bb37-4396-905d-b5e2464a28f0_UseScript"
+	}
+}

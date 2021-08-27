@@ -1,0 +1,54 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "2c137b53-d7b6-446d-badd-355858ea3d0c",
+	"Name": "CR_Town_Pit_Vulpes",
+	"ObjectName": "Vulpes",
+	"ObjectAlias": "the fox",
+	"Strength": 1,
+	"Agility": 2,
+	"Body": 3,
+	"Wits": 3,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "ATTACK_MISS",
+			"Rule": "PLAYER",
+			"NewValue": "TOWN_PIT_O_VULPES_MISS"
+		},
+		{
+			"Key": "KILL_GENERIC_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_KILL_GENERIC_POV"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_KILL_GENERIC"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_VORE_WIN"
+		},
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "",
+			"NewValue": "TOWN_PIT_O_VULPES_VORE_WIN_POV"
+		}
+	]
+}

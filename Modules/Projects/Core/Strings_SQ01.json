@@ -1,0 +1,187 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "9373aa4a-3c09-4050-b6ae-b77b0eb2d4f6",
+	"Name": "Strings_SQ01",
+	"Entries": [
+		{
+			"Key": "SQ01_ACCEPTED",
+			"Text": [
+				"For a brief moment you see surprise on the shopkeeper's face, but he proceeds to hide it behind a polite smile. \"Very well.\" He hands you a small crystalline vial. \"Find me here when you have filled it up. Remember, getting someone to lick you won't be enough... you actually have to get in there... and back out. I'm sure you'll figure it out.\""
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_EAT_ANYWAY",
+			"Text": [
+				"In his unconscious state, the big lizard is helpless to stop you. You spread your jaws wide and cram his head in your maw, hungrily swallowing your prey whole. Your tongue sloppily slurps over every scale and bit of skin it can possibly find, giving it a good coating of %species-drool while also savoring the food's flavor. With each gulp, more of the lizard disappears into your digestive system, your belly growing to contain your catch. Before long, nothing is left but a limply hanging tail, which doesn't last long either - it gets sucked up like a noodle to join its owner inside a %species."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_KILL_DIGESTED",
+			"Text": [
+				"The %furry belly bulge is still, your prey having fully succumbed to the overwhelming might of your digestive system. Only loud gurgles and glorps come from the busy stomach as it works its newest prize into nutritious sludge - all that the local alchemist has been reduced to. But it'll be a while longer until it's done digesting its meal, and as you consider this, a wave of lethargy washes over you. You sit down behind the desk and fall asleep, listening to the organic chorus as if it were some kind of lullaby."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_KILL_DIGESTED_POV",
+			"Text": [
+				"The heat and pressure of the soft flesh constantly pressing in on you is unbearable, and you feel your %fur falling off in places, exposing the soft flesh underneath to the merciless digestive acid. To add insult to injury, your predator lets out a loud belch, robbing you of whatever air you had left. Folds of stomach walls squeeze at you, eager to knead you into slop. Your muscles are drained of their strength, if not already being directly attacked by caustic juices, leaving you unable to further protest to the onslaught of physical digestion. Luckily for you, however, the lack of fresh oxygen quickly causes you to black out.\\n\\nOutside, the engorged lizard sits down by a crackling fireplace, a good book in his hand as he contentedly lets his body process the bulk of %species-meat. Even as the bulge falls still, the alchemist wonders where to get his missing ingredient from. Quietly, however, he hopes that the next adventurer to blunder into his stomach will be as delicious and as good a squirmer as you were."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_KILL_GENERIC",
+			"Text": [
+				"You look at the mess you created - the alchemist lies sprawled out on the floor, unmoving. You could probably still leave, but it wouldn't be long until somebody walks in on this bloody mess and finds the lizard's body. Unless..."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_KILL_GENERIC_POV",
+			"Text": [
+				"The mage sends spell after spell flying your way - from rays of fire to strange darts that speed after you. While you try to dodge all of it, eventually you tire out and mess up. A strong blast of wind coming from the wand knocks you back into the alchemist's desk. With a grunt, you topple over and fall on your stomach. As quickly as you can, you roll over on your back, only to find a foot stomp into your %furry belly.\\n\\n"
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_LEAVE_BEHIND",
+			"Text": [
+				"You decide he's not really worth the trouble anyway. There's nothing here that could possibly link back to you, so your paws are clean."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_VORE_HIT_POV",
+			"Text": [
+				"Jar'la's wand gives you a good zap right in your stomach. A sudden feeling of extreme heat shoots through your body, as if you were struck with a branding iron, and you cry out in pain.\\n\\nHe wastes no time on this opportunity, seeing that you are left unable to defend yourself. The lizard wraps his arms around you tightly and opens his looming maw. Hot, sour-smelling breath wafts against your face as your face is pushed forward, your nose breaking a few strands of drool as you make contact with the soft, squishy tongue in front of you. You see the muscles at the back of the reptile's maw wiggle in anticipation for a split second before a powerful swallow sends your head down the fleshy abyss."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_VORE_WIN",
+			"Text": [
+				"You spread your jaws wide and cram his head in your maw, hungrily swallowing your prey whole. Your tongue sloppily slurps over every scale and bit of skin it can possibly find, giving it a good coating of %species-drool while also savoring the food's flavor. With each gulp, more of the lizard disappears into your digestive system, your belly growing to contain your catch. Before long, nothing is left but a limply hanging tail, which doesn't last long either - it gets sucked up like a noodle to join its owner inside a %species."
+			]
+		},
+		{
+			"Key": "SQ01_ALCH_VORE_WIN_POV",
+			"Text": [
+				"At this point, Jar'la has you right where he wants you, and nothing in your power could possibly stop him from sending you down to a rather acidic grave. Slowly but steadily, each gulp pulls more of your body in. You wince as your head pokes into a slightly roomier space - the stomach, of course. The stench of acid and meat is strong here, and the thought strikes you that these softly pulsating walls around you will grind you down into mush, like all other food that has ever passed here. With a few more swallows and a loving last lick on your feet, the predatory shopkeep finishes you off, watching his gut expand to accomodate the overload of fresh, squirming meat.\\n\\n\"Not so talkative now, are you, meat?\" he teases, rubbing your form in his oversized belly while he disappears in the back of the shop, seeking to digest his meal in private."
+			]
+		},
+		{
+			"Key": "SQ01_ASK_REWARD",
+			"Text": [
+				"\"Coin, obviously. And the experience, I guess, if you're into that sort of thing.\" He chuckles darkly at his own joke. \"On a more serious note, as a thanks - and assuming this new formula works - I'll give you some of the first batch.\""
+			]
+		},
+		{
+			"Key": "SQ01_ASK_WHY1",
+			"Text": [
+				"At that, the old lizard meets your eyes. An emotion flickers across his face that you can't quite place, but it quickly vanishes. \"To further my research, of course. I'm on the cusp of unlocking something new.\" He smiles warmly, apparently leaving it at that."
+			]
+		},
+		{
+			"Key": "SQ01_ASK_WHY2",
+			"Text": [
+				"Jar'la sighs. \"If you really must know; it's an elixir that can help you stay out of any hungry gut you might've otherwise landed into. Ironic that I'm sending you into one, then, isn't it?\" A sly smile creeps on his face."
+			]
+		},
+		{
+			"Key": "SQ01_ASK_WHY3",
+			"Text": [
+				"The lizard frowns, his long spiky tail flicking once. \"I'm sure that in your line of work, you learn not to ask so many questions.\""
+			]
+		},
+		{
+			"Key": "SQ01_ASK_WHY4",
+			"Text": [
+				"The reptile growls at you. \"Are you going to do it or am I going to find someone more capable?\""
+			]
+		},
+		{
+			"Key": "SQ01_ASK_WHY5",
+			"Text": [
+				"With a loud, angry snarl, he rises from his chair and strides towards you. \"You know what? With you and your ~inquisitive~ nature, I bet you're going to spill this conversation to anyone and everyone. Now that wouldn't be helpful,\" he remarks, a predatory glint in his eyes. In his hand is a short wand that glows with fiery magics. \"So come here, and quietly.\""
+			]
+		},
+		{
+			"Key": "SQ01_CONFIRM",
+			"Text": [
+				"A grin creeps over the alchemist's face. \"Is that so? Well, I appreciate the offer, however... the component I require is, well, a secretion found in the digestive fluids of most creatures.\" He chuckles darkly for a moment. \"Still interested?\""
+			]
+		},
+		{
+			"Key": "SQ01_HANDIN1",
+			"Text": [
+				"\"Color me surprised,\" he simply states as he takes the vial from your hands, glancing you over. \"You don't look too much worse for the wear.\""
+			]
+		},
+		{
+			"Key": "SQ01_HANDIN2",
+			"Text": [
+				"\"Anyway,\" the shopkeeper continues while peering into the goo inside the vial. \"You have my thanks, this will be useful. Here, take this for your trouble,\" he states as he hands you a few coins. \"If you come back tomorrow, I'll give you a sample of what I'm making. You earned that much at least.\""
+			]
+		},
+		{
+			"Key": "SQ01_INTRO",
+			"Text": [
+				"\"Hmm? Oh, yes.\" He picks up the book and shows the cover to you for a moment. It reads 'Mystical Solutions', an odd title, but perhaps to be expected in a shop such as this one. \"I'm researching some new interesting formulae. I ran out of ingredients to experiment with, though, so I'm simply reviewing the book for now. Name's Jar'la, by the way.\""
+			]
+		},
+		{
+			"Key": "SQ01_POSTVORE_NOSCAT",
+			"Text": [
+				"When you reawaken several hours later, still feeling utterly bloated and satisfied, your gut has become noticeably smaller, the features and bulges at least a lot less well-defined. With some effort, you can probably hide your belly from the public eye, if not examined too closely, although it will still take a lot more time to fully digest your prey. You awkwardly climb to your feet with a grunt, your doughy belly sloshing and gurgling loudly in protest."
+			]
+		},
+		{
+			"Key": "SQ01_POSTVORE_SCAT",
+			"Text": [
+				"When you reawaken several hours later, still feeling utterly bloated and satisfied, your gut has become noticeably smaller, the features and bulges at least a lot less well-defined. With some effort, you can probably hide your belly from the public eye, if not examined too closely, although it will still take a lot more time to fully digest your prey. And your attention is required on that front. You awkwardly climb to your feet with a grunt, your doughy belly sloshing and gurgling loudly in protest. Slowly but steadily, trying and failing to not bump into too many walls, you make your way over to the back room.\\n\\nUnfortunately, there is no proper place to relieve yourself in sight, but that does not deter the pressure on your tailhole in the slightest. You unceremoniously pull your pants down and squat, as your anus widens to release the digested remains of your latest prey. It could be considered a funny twist how you did unto him exactly what he was about to do unto you, but now it matters little. Thick, long logs of %species shit make their way into the outside world, dropping onto the mahogany planks with a wet plop. After a minute of producing an impressive pile of waste, you decide it is enough, and finish up. There will be a lot more work for your bowels to go around for the next day or two. With that in mind, you grin, glancing at your handiwork, before returning to the front room."
+			]
+		},
+		{
+			"Key": "SQ01_POSTVORE_SCAT_POV",
+			"Text": [
+				"After having spent the vast majority of the next day snoring and sleeping off his meal, the grizzled reptile rises from the comfort of a simple bed. He wraps his arms around his greatly swollen gut and hefts it up slightly, earning several loud groans and gurgles as its contents slosh around. Clearly, that dumb %species in there is goop by now, but by no means gone just yet. The establishment might just have to remain closed for one more day as the shopkeep finishes digesting his prey.\\n\\nJar'la had had the foresight to regurgitate some of his prey's bones before they were damaged too much or fully dissolved outright. Now, your skull, bleached clean by strong acids and perhaps slightly less thick than usual, rests neatly on a bookshelf, posing as a somewhat appropriate ornament for this place, while liquified meat is being pumped through the lizard's bowels, to be drained and compacted into waste and released later. Nobody would miss some random, nameless adventurer - not even the alchemist himself, who is content to be kept company by his stomach's chorus of digestion, and his ever-growing collection of trophies."
+			]
+		},
+		{
+			"Key": "SQ01_REJECTED",
+			"Text": [
+				"\"So what can I do for you?\""
+			]
+		},
+		{
+			"Key": "SQ01_REJECTED_ALT",
+			"Text": [
+				"\"Probably a good idea,\" Jar'la chuckles. \"So what can I do for you?\""
+			]
+		},
+		{
+			"Key": "SQ01_REWARD_NOTREADY",
+			"Text": [
+				"Jar'la chuckles. \"Excited, are we?\" His expression turns more serious and he shakes his head. \"Sorry, no. I need more time. Come back later, alright?\""
+			]
+		},
+		{
+			"Key": "SQ01_REWARD_READY",
+			"Text": [
+				"Jar'la nods eagerly, clearly excited about his creation, whatever it is exactly. \"I was hoping you'd drop by soon. It's done.\"\\n\\nHe hands you two small vials and you look up at him expectantly. \"So you seem like the kind of %species who gets in trouble. If you should ever find yourself in, well, a hungry beast's belly, and you're tiring out, take one. You'll feel a lot better, and it'll keep you safe for a short time.\" The alchemist pats you on the shoulder. \"I believe that concludes our business. Best be on your way, dear %species.\""
+			]
+		},
+		{
+			"Key": "SQ01_STEAL_AFTER_DEATH",
+			"Text": [
+				"Before you leave, you snatch a few things off of the late alchemist's desk. He's got no more use for them anyway, right? You take a few vials that you recognize as wound-healing solutions, and a few random vials and tools that just look interesting."
+			]
+		},
+		{
+			"Key": "SQ01_VIAL_NEEDTAUR",
+			"Text": [
+				"There's plenty of stomach slime around for you to collect, but you remember the alchemist's words: it had to be from a taur. Maybe try getting eaten by someone else?"
+			]
+		},
+		{
+			"Key": "SQ01_VIAL_USE",
+			"Text": [
+				"You pop the cork from the vial and scrape it along the gently pulsating stomach walls around you. There's plenty of foul-smelling goop dribbling from the flesh, so before long you've collected a decent amount of slime. Satisfied, you seal the tube again.\\nNow, how to get out of here..."
+			]
+		}
+	]
+}

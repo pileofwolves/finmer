@@ -1,0 +1,12 @@
+﻿<vm:AbilityPointCollectionViewModel
+    xmlns:vm="clr-namespace:Finmer.ViewModels">
+    <vm:AbilityPointViewModel
+        Name="Ability 1"
+        Description="Very useful ability 12345" />
+    <vm:AbilityPointViewModel
+        Name="Ability 2"
+        Description="Very useful ability abcdef" />
+    <vm:AbilityPointViewModel
+        Name="Ability 3"
+        Description="Very useful ability qwerty" />
+</vm:AbilityPointCollectionViewModel>

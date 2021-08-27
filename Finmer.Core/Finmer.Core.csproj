@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{57108665-EC8F-495A-B060-667CF8A3D069}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Finmer.Core</RootNamespace>
+    <AssemblyName>Finmer.Core</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <LangVersion>7.3</LangVersion>
+    <CodeAnalysisRuleSet>ManagedMinimumRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
+      <Link>Properties\AssemblyVersion.cs</Link>
+    </Compile>
+    <Compile Include="Assets\AssetBase.cs" />
+    <Compile Include="Assets\AssetJournal.cs" />
+    <Compile Include="Assets\AssetFeat.cs" />
+    <Compile Include="Assets\AssetScene.cs" />
+    <Compile Include="Assets\AssetStringTable.cs" />
+    <Compile Include="Assets\AssetCreature.cs" />
+    <Compile Include="Assets\AssetItem.cs" />
+    <Compile Include="Assets\AssetScript.cs" />
+    <Compile Include="Bindings\Binding.cs" />
+    <Compile Include="Bindings\EBindingType.cs" />
+    <Compile Include="Bindings\LiteralBinding.cs" />
+    <Compile Include="CompiledScript.cs" />
+    <Compile Include="ECharacterFlags.cs" />
+    <Compile Include="EGender.cs" />
+    <Compile Include="Extensions.cs" />
+    <Compile Include="Furball.cs" />
+    <Compile Include="FurballDependency.cs" />
+    <Compile Include="FurballMetadata.cs" />
+    <Compile Include="Compilers\IScriptCompiler.cs" />
+    <Compile Include="Compilers\SceneCompiler.cs" />
+    <Compile Include="CoreUtility.cs" />
+    <Compile Include="Minidump.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PropertyBag.cs" />
+    <Compile Include="Compilers\SceneCompilerException.cs" />
+    <Compile Include="Serialization\FurballContentReaderBinary.cs" />
+    <Compile Include="Serialization\FurballContentWriterBinary.cs" />
+    <Compile Include="Serialization\IFurballContentWriter.cs" />
+    <Compile Include="Serialization\IFurballContentReader.cs" />
+    <Compile Include="Serialization\FurballExceptions.cs" />
+    <Compile Include="Serialization\FurballFileDevice.cs" />
+    <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
+    <Compile Include="StringTable.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup />
+  <PropertyGroup>
+    <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
+  </PropertyGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

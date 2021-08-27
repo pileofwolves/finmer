@@ -1,0 +1,34 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "c6a565f3-d3d1-420e-85af-9a1156890bb7",
+	"Name": "CR_SQ02_Wolf_OV",
+	"ObjectName": "Dire Wolf",
+	"ObjectAlias": "the wolf",
+	"Strength": 3,
+	"Agility": 2,
+	"Body": 4,
+	"Wits": -4,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Huge",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "VORE_HIT_POV",
+			"Rule": "SELF",
+			"NewValue": "SQ02_WOLF_VORE_HIT_POV"
+		},
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "SELF",
+			"NewValue": "SQ02_WOLF_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "SELF",
+			"NewValue": "SQ02_WOLF_KILL_DIGESTED_POV"
+		}
+	]
+}

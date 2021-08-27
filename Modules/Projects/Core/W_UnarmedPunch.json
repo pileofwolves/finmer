@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "0be57b08-5da7-40f8-8fef-53805ba9bfa8",
+	"Name": "W_UnarmedPunch",
+	"ObjectName": "Fists",
+	"ObjectAlias": "fists",
+	"FlavorText": "",
+	"ItemType": "Weapon",
+	"PurchaseValue": 0,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "05d7f7ba-a810-4cc4-84ed-a267160d5a95",
+		"Name": "0be57b08-5da7-40f8-8fef-53805ba9bfa8_UseScript"
+	}
+}

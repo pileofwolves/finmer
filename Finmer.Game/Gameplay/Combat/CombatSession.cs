@@ -1,0 +1,336 @@
+﻿/*
+ * FINMER - Interactive Text Adventure
+ * Copyright (C) 2019-2021 Nuntis the Wolf.
+ *
+ * Licensed under the GNU General Public License v3.0 (GPL3). See LICENSE.md for details.
+ * SPDX-License-Identifier: GPL-3.0-only
+ */
+
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using Finmer.Gameplay.Scripting;
+
+namespace Finmer.Gameplay.Combat
+{
+
+    /// <summary>
+    /// Contains the state for a V2 combat instance.
+    /// </summary>
+    public class CombatSession : ScriptableObject
+    {
+
+        private const string k_CallbackName_OnRoundEnd = "OnRoundEnd";
+        private const string k_CallbackName_OnCombatEnd = "OnCombatEnd";
+        private const string k_CallbackName_OnCharacterKilled = "OnCreatureKilled";
+        private const string k_CallbackName_OnCharacterVored = "OnCreatureVored";
+        private const string k_CallbackName_OnCharacterReleased = "OnCreatureReleased";
+        private const string k_CallbackName_OnPlayerKilled = "OnPlayerKilled";
+
+        private readonly ScriptCallbackTable m_Binder;
+
+        /// <summary>
+        /// Collection of participating characters in this combat.
+        /// </summary>
+        public List<Participant> Participants { get; } = new List<Participant>();
+
+        /// <summary>
+        /// The combat turn number. Starts at 1 for the first round.
+        /// </summary>
+        [ScriptableProperty(EScriptAccess.Read)]
+        public int Round { get; set; }
+
+        /// <summary>
+        /// The amount of XP to award to the player at the end of combat.
+        /// </summary>
+        public int TotalXPAward { get; set; }
+
+        /// <summary>
+        /// Whether the player is allowed to attempt fleeing.
+        /// </summary>
+        public bool CanFlee { get; set; }
+
+        /// <summary>
+        /// Gets the character whose turn it currently is in the combat system.
+        /// </summary>
+        public Participant WhoseTurn { get; set; }
+
+        public CombatSession(ScriptContext context) : base(context)
+        {
+            m_Binder = new ScriptCallbackTable(context);
+
+            AttachScriptCallbacks();
+        }
+
+        public void AddParticipant(Character character)
+        {
+            Participants.Add(new Participant(character, this));
+        }
+
+        public void SetVored(Participant predator, Participant prey)
+        {
+            Debug.Assert(!predator.Prey.Contains(prey), "Predator already has prey marked as swallowed");
+            Debug.Assert(prey.Predator == null, "Prey already has a predator set");
+
+            // Link the predator and prey
+            predator.Prey.Add(prey);
+            prey.Predator = predator;
+
+            // Give one turn of damage immunity, since that looks/plays better
+            prey.DigestionImmunity = true;
+
+            // Update display state
+            predator.UpdateDisplay();
+            prey.UpdateDisplay();
+
+            // Run script callback
+            OnCharacterVored?.Invoke(predator, prey);
+        }
+
+        public void UnsetVored(Participant predator, Participant prey)
+        {
+            Debug.Assert(predator.Prey.Contains(prey), "Predator does not have prey marked as swallowed");
+            Debug.Assert(prey.Predator == predator, "Prey was not swallowed by expected predator");
+
+            // Unlink the predator and prey
+            predator.Prey.Remove(prey);
+            prey.Predator = null;
+
+            // Update display state
+            predator.UpdateDisplay();
+            prey.UpdateDisplay();
+
+            // Run script callback
+            OnCharacterReleased?.Invoke(predator, prey);
+        }
+
+        /// <summary>
+        /// Notify event listeners that a round has ended.
+        /// </summary>
+        public void NotifyRoundEnded()
+        {
+            OnRoundEnd?.Invoke(Round);
+        }
+
+        /// <summary>
+        /// Notify event listeners that this combat session has terminated.
+        /// </summary>
+        public void NotifyCombatEnded()
+        {
+            OnCombatEnd?.Invoke();
+        }
+
+        /// <summary>
+        /// Notify event listeners that a participant lost all HP.
+        /// </summary>
+        public void NotifyParticipantKilled(Participant killer, Participant victim)
+        {
+            var victim_character = victim.Character;
+            Debug.Assert(victim_character.IsDead());
+
+            if (victim_character is Player)
+                OnPlayerKilled?.Invoke(killer, victim);
+            else
+                OnCharacterKilled?.Invoke(killer, victim);
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedAddParticipant(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var character = FromLuaNonOptional<Character>(state, 2);
+            self.AddParticipant(character);
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedBegin(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var session = GameController.Session;
+
+            // Start combat
+            session.PushScene(new SceneCombat2(self));
+
+            // Pause script until combat exits
+            return LuaApi.lua_yield(state, 0);
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedEnd(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var game_session = GameController.Session;
+
+            // Validate that a combat session is actually running
+            var scene = game_session.PeekScene() as SceneCombat2;
+            if (scene == null)
+                return LuaApi.luaL_error(state, "no active combat to end");
+
+            // Validate that this is the same combat
+            if (scene.Session != self)
+                return LuaApi.luaL_error(state, "another combat is active, call End() on the correct instance instead");
+
+            // Terminate the session
+            scene.RequestExit();
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnRoundEnd(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnRoundEnd);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnCombatEnd(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnCombatEnd);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnCreatureKilled(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnCharacterKilled);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnPlayerKilled(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnPlayerKilled);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnCreatureVored(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnCharacterVored);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedOnCreatureReleased(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnCharacterReleased);
+
+            return 0;
+        }
+
+        private void AttachScriptCallbacks()
+        {
+            OnRoundEnd += round =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnRoundEnd))
+                {
+                    LuaApi.lua_pushnumber(stack, round);
+                    m_Binder.Call(stack, 1);
+                }
+            };
+
+            OnCombatEnd += () =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCombatEnd))
+                    m_Binder.Call(stack, 0);
+            };
+
+            OnCharacterKilled += (killer, victim) =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterKilled))
+                {
+                    killer.Character.PushToLua(stack);
+                    victim.Character.PushToLua(stack);
+                    m_Binder.Call(stack, 2);
+                }
+            };
+
+            OnPlayerKilled += (killer, victim) =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnPlayerKilled))
+                {
+                    killer.Character.PushToLua(stack);
+                    victim.Character.PushToLua(stack);
+                    m_Binder.Call(stack, 2);
+                }
+            };
+
+            OnCharacterVored += (predator, prey) =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterVored))
+                {
+                    predator.Character.PushToLua(stack);
+                    prey.Character.PushToLua(stack);
+                    m_Binder.Call(stack, 2);
+                }
+            };
+
+            OnCharacterReleased += (predator, prey) =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterReleased))
+                {
+                    predator.Character.PushToLua(stack);
+                    prey.Character.PushToLua(stack);
+                    m_Binder.Call(stack, 2);
+                }
+            };
+        }
+
+        /// <summary>
+        /// Called when a round ends.
+        /// </summary>
+        public event RoundEndHandler OnRoundEnd;
+
+        /// <summary>
+        /// Called when combat ends.
+        /// </summary>
+        public event CombatEndHandler OnCombatEnd;
+
+        /// <summary>
+        /// Called when a character is killed.
+        /// </summary>
+        public event CharacterKilledHandler OnCharacterKilled;
+
+        /// <summary>
+        /// Called when the player character is killed.
+        /// </summary>
+        public event CharacterKilledHandler OnPlayerKilled;
+
+        /// <summary>
+        /// Called when a character is devoured by another character.
+        /// </summary>
+        public event CharacterVoredHandler OnCharacterVored;
+
+        /// <summary>
+        /// Called when a character is released from a vore situation.
+        /// </summary>
+        public event CharacterReleasedHandler OnCharacterReleased;
+
+    }
+
+}

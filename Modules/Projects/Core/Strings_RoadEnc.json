@@ -1,0 +1,22 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "422b28ef-0677-49f6-9741-461253c984eb",
+	"Name": "Strings_RoadEnc",
+	"Entries": [
+		{
+			"Key": "ROAD_NO_ENC",
+			"Text": [
+				"The scenery is quite beautiful. Most landscapes in the area are completely untouched by civilization, allowing nature's bounty to unfold to its fullest potential.",
+				"Nothing remotely interesting happens during your travel. The trek is long, but perhaps the change of pace is also nice in its own right.",
+				"The long path of packed dirt keeps going on and on, snaking over the occasional hill or under a canopy of trees.",
+				"The road runs mostly parallel to a huge, roaring river. While it's way too wide to cross even remotely safely, it adds quite a lot to the serene and calm feeling of your surroundings."
+			]
+		},
+		{
+			"Key": "ROAD_NORTH",
+			"Text": [
+				"A road marker sits on the crossroads just outside town. The dirt path goes off to the east, leading to the dense forests and a slightly mountaineous area, and also to the south, leading to the aptly named South Finmer."
+			]
+		}
+	]
+}

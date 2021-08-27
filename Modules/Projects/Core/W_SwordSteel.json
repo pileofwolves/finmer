@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "84275343-9229-4009-8bfc-c75f90236086",
+	"Name": "W_SwordSteel",
+	"ObjectName": "Steel Sword",
+	"ObjectAlias": "sword",
+	"FlavorText": "Balanced and versatile, the standard steel longsword is good for both stabbing and slashing. While a little heavier to wield, it also allowing parrying of incoming blows with respectable efficiency.",
+	"ItemType": "Weapon",
+	"PurchaseValue": 40,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "1216e41a-2eee-45fe-a12d-95d01902df2b",
+		"Name": "84275343-9229-4009-8bfc-c75f90236086_UseScript"
+	}
+}

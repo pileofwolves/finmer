@@ -1,0 +1,21 @@
+﻿<Window
+    x:Class="Finmer.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    Title="Finmer"
+    Background="{StaticResource BackgroundBrush}"
+    Width="1280" Height="720"
+    MinWidth="1000" MinHeight="640">
+    <v:CarouselView x:Name="MainWindowCarousel">
+        <v:CarouselView.LayoutTransform>
+            <ScaleTransform
+                ScaleX="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}"
+                ScaleY="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}" />
+        </v:CarouselView.LayoutTransform>
+    </v:CarouselView>
+</Window>

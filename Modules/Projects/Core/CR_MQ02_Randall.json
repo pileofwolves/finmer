@@ -1,0 +1,39 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "3612d1f1-d12c-40c0-8424-3e54a1ca2ca2",
+	"Name": "CR_MQ02_Randall",
+	"ObjectName": "Randall",
+	"ObjectAlias": "",
+	"Strength": 3,
+	"Agility": -1,
+	"Body": 3,
+	"Wits": 0,
+	"Flags": 2,
+	"Level": 4,
+	"Size": "Medium",
+	"Gender": "Male",
+	"IsPredator": true,
+	"DigestsPrey": true,
+	"StringMappings": [
+		{
+			"Key": "VORE_HIT_POV",
+			"Rule": "SELF",
+			"NewValue": "MQ02_RANDALL_VORE_HIT_POV"
+		},
+		{
+			"Key": "VORE_WIN_POV",
+			"Rule": "SELF",
+			"NewValue": "MQ02_RANDALL_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED_POV",
+			"Rule": "SELF",
+			"NewValue": "MQ02_RANDALL_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PLAYER",
+			"NewValue": "MQ02_RANDALL_KILL_GENERIC"
+		}
+	]
+}

@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "41fa646f-cc58-4d9f-9e90-52f7a4882474",
+	"Name": "I_SQ01_FireWand",
+	"ObjectName": "Fire Wand",
+	"ObjectAlias": "",
+	"FlavorText": "A magic wand used by the late alchemist of North Finmer, charged with the element of fire. It's one-of-a-kind: despite their power. spells are rather uncommon.",
+	"ItemType": "Weapon",
+	"PurchaseValue": 80,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "02a1220a-68c3-44eb-bd87-125318bf4389",
+		"Name": "41fa646f-cc58-4d9f-9e90-52f7a4882474_UseScript"
+	}
+}

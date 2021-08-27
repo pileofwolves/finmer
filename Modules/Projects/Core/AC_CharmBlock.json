@@ -1,0 +1,19 @@
+﻿{
+	"!Type": "AssetItem",
+	"ID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
+	"Name": "AC_CharmBlock",
+	"ObjectName": "Item",
+	"ObjectAlias": "",
+	"FlavorText": "",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": false,
+	"IsConsumable": false,
+	"CanUseInField": false,
+	"CanUseInBattle": false,
+	"UseDescription": "",
+	"UseScript": {
+		"ID": "e0360ce9-b6a6-42ee-a340-f9fc581551f1",
+		"Name": "8b49aff2-624c-401d-b78b-9987785e7cf1_UseScript"
+	}
+}

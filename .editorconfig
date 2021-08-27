@@ -1,0 +1,21 @@
+﻿[*.cs]
+
+# IDE0019: Use pattern matching
+# Justification: Not a useful blanket rule; pattern matching (especially negative pattern matches) can result in less readable code.
+dotnet_diagnostic.IDE0019.severity = none
+
+# IDE1006: Naming Styles
+# Justification: ReSharper takes care of this, and has some abbreviations configured so they aren't flagged.
+dotnet_diagnostic.IDE1006.severity = none
+
+# S1168: Empty arrays and collections should be returned instead of null
+# Justification: Not a useful blanket rule; null avoids unnecessary allocation overhead and is useful for indicating true absence of a value.
+dotnet_diagnostic.S1168.severity = none
+
+# S1199: Nested code blocks should not be used
+# Justification: Not a useful blanket rule; nested scopes can be useful for clearly delimiting intended usages for local variables.
+dotnet_diagnostic.S1199.severity = none
+
+# S2344: Enumeration type names should not have "Flags" or "Enum" suffixes
+# Justification: Matter of preference; I think have an 'EFooFlags' enum is very useful to visibly denote its purpose / mark it as a bitfield.
+dotnet_diagnostic.S2344.severity = none

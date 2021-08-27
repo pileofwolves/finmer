@@ -1,0 +1,1532 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
+	"Name": "Scene_TownInn",
+	"ScriptCustom": {
+		"ID": "8fc3cde0-8fdd-4719-83b1-4a475944dee6",
+		"Name": "Scene_TownInn_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "21f01211-786d-4302-bf3c-5ee0050f0d7a",
+		"Name": "Scene_TownInn_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "27a53955-4b63-4d8e-a0d6-d4190e966606",
+		"Name": "Scene_TownInn_OnLeave"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "SavePoint_Room",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)",
+				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
+				"Children": [
+					{
+						"Key": "AutoLink",
+						"IsState": false,
+						"IsLink": true,
+						"Title": "",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"LinkTarget": "Room_C_Leave",
+						"Children": []
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "SetInventoryEnabled(true)",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Bail!",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetScene(\"Scene_TownMarket\")",
+						"ScriptAppear": "",
+						"Children": []
+					},
+					{
+						"Key": "Talk",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Talk",
+						"Tooltip": "Exchange words with other living things.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "SetInventoryEnabled(false)",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "EwwPublicInteraction",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "--Log(\"town_inn_talktowho\")\r\nSetInstruction(GetString(\"town_inn_talktowho\"))",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "TalkCancel",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "< Back",
+										"Tooltip": "Never mind... words are hard.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "TalkInnkeep",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Barkeep",
+										"Tooltip": "Talk to the fellow behind the bar.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "local key = Storage.GetFlag(\"town_inn_barkeep_first\")\r\n    and \"TOWN_INN_BARKEEP_BEGIN\"\r\n    or \"TOWN_INN_BARKEEP_BEGIN_FIRST\"\r\nStorage.SetFlag(\"town_inn_barkeep_first\", true)\r\nLogGsub(key, {bartender = barkeep})",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "InnkeepTalkRoot",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "InnkeepTalkLeave",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Log(\"town_inn_barkeep_leave\")",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Main",
+																"Children": []
+															}
+														]
+													},
+													{
+														"Key": "InnkeepTalkDrink",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Drink",
+														"Tooltip": "Buy a drink and spend some time at the bar.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Player.Money >= drink_price",
+														"Children": [
+															{
+																"Key": "BottomsUp",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "-- TODO: Could add some more smut here, perhaps random encounters\r\n\r\nPlayer.Money = Player.Money - drink_price\r\nLogGsub(\"town_inn_drink\", {bartender = barkeep})\r\nAdvanceTime(1)",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "DrinkOK",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Unnamed",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "InnkeepTalkRoot",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "InnkeepTalkMQ01",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Show Pass",
+														"Tooltip": "Show the pass from the mayor.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Player:HasItem(\"MQ01_InnPass\")",
+														"Children": [
+															{
+																"Key": "MQ01_GivePass",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Player:TakeItem(\"MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_free\", true)\r\n\r\nLogGsub(\"town_inn_barkeep_givepass\", {bartender = barkeep})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "MQ01_AskDetails",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "MQ01_DiscussDetails",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogGsub(\"mq01_barkeep_discuss\", {bartender = barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "MQ01_Accept",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Accept",
+																						"Tooltip": "Thank him and take your leave.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "LogGsub(\"mq01_barkeep_thank\", {bartender = barkeep})\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Unnamed",
+																								"IsState": true,
+																								"IsLink": true,
+																								"LinkTarget": "Main",
+																								"Children": []
+																							}
+																						]
+																					},
+																					{
+																						"Key": "MQ01_AskAboutGuy",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Messenger",
+																						"Tooltip": "Ask for details about the missing messenger.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "MQ01_TalkAboutGuy",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "LogGsub(\"MQ01_BARKEEP_ABOUTGUY\", {bartender = barkeep})",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Unnamed",
+																										"IsState": false,
+																										"IsLink": true,
+																										"Title": "Unnamed",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"LinkTarget": "MQ01_Accept",
+																										"Children": []
+																									},
+																									{
+																										"Key": "Unnamed",
+																										"IsState": false,
+																										"IsLink": true,
+																										"Title": "Unnamed",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"LinkTarget": "MQ01_AskAboutBridge",
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"Key": "MQ01_AskAboutBridge",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Bridge",
+																						"Tooltip": "Ask for more details about what happened to the bridge.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "MQ01_TalkAboutBridge",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "LogGsub(\"MQ01_BARKEEP_ABOUTBRIDGE\", {bartender = barkeep})",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Unnamed",
+																										"IsState": false,
+																										"IsLink": true,
+																										"Title": "Unnamed",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"LinkTarget": "MQ01_Accept",
+																										"Children": []
+																									},
+																									{
+																										"Key": "Unnamed",
+																										"IsState": false,
+																										"IsLink": true,
+																										"Title": "Unnamed",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"LinkTarget": "MQ01_AskAboutGuy",
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "InnkeepTalkMQ02",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Bridge Supplies",
+														"Tooltip": "Say you've got news.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return Storage.GetFlag(\"mq02_ambushed\") and not Storage.GetFlag(\"mq02_done\")",
+														"Children": [
+															{
+																"Key": "MQ02F_Begin",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"mq02_barkeep_begin\", {barkeep=barkeep})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "MQ02F_C_End",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Finish",
+																		"Tooltip": "That's all you know right now.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return\r\n    Storage.GetFlag(\"mq02f_discuss_supplies\") and\r\n    Storage.GetFlag(\"mq02f_discuss_tiger\") and\r\n    Storage.GetFlag(\"mq02f_discuss_oliver\") and\r\n    Storage.GetFlag(\"mq02f_discuss_randall\")",
+																		"Children": [
+																			{
+																				"Key": "MQ02F_R_End",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"mq02_done\", true)\r\nStorage.SetNumber(\"bridge_repair\", GetTimeHourTotal() + 32)\r\nLog(\"mq02_barkeep_end\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "MQ02F_C_End2",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "AutoLink",
+																								"IsState": true,
+																								"IsLink": true,
+																								"LinkTarget": "Main",
+																								"Children": []
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ02F_C_Supplies",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Supplies",
+																		"Tooltip": "Say where the supplies are.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_supplies\")",
+																		"Children": [
+																			{
+																				"Key": "MQ02F_R_Supplies",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_supplies\", true)\r\nLogGsub(\"mq02_barkeep_supplies\", {barkeep = barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_End",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Tiger",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Randall",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Oliver",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ02F_C_Tiger",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Messenger",
+																		"Tooltip": "Explain what happened to the first messenger.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_tiger\")",
+																		"Children": [
+																			{
+																				"Key": "MQ02F_R_Tiger",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_tiger\", true)\r\nLogGsub(\"mq02_barkeep_tiger\", {barkeep = barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_End",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Supplies",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Randall",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Oliver",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ02F_C_Oliver",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Forester",
+																		"Tooltip": "Explain what happened to Oliver.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_oliver\")",
+																		"Children": [
+																			{
+																				"Key": "MQ02F_R_Oliver",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_oliver\", true)\r\n\r\n-- alternate keys for outcome of Oliver scene\r\nlocal key = \"MQ02_BARKEEP_OLIVER\"\r\nif Storage.GetFlag(\"oliver_eaten\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_EATEN\"\r\nelseif Storage.GetFlag(\"oliver_dead\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_DEAD\"\r\nend\r\nLogGsub(key, {barkeep = barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_End",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Supplies",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Tiger",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Randall",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ02F_C_Randall",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Randall",
+																		"Tooltip": "Talk about the cocky wolf you met.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_randall\")",
+																		"Children": [
+																			{
+																				"Key": "MQ02F_R_Randall",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_randall\", true)\r\nLogGsub(\"mq02_barkeep_randall\", {barkeep = barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_End",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Supplies",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Tiger",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ02F_C_Oliver",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "InnkeepTalkRentRoom",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Rent a Room",
+														"Tooltip": "Ask about a bed for the night.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "-- rooms not yet free & player hasn't rented a room already\r\nreturn not Storage.GetFlag(\"town_inn_free\") and not Storage.GetFlag(\"town_inn_rented\")",
+														"Children": [
+															{
+																"Key": "RentInfo",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"town_inn_rent_info\", {bartender = barkeep, price = room_price})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "RentPay",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Pay up",
+																		"Tooltip": "Give him money for a room.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "LogGsub(\"town_inn_rent_pay\", {price = room_price})\r\nStorage.SetFlag(\"town_inn_rented\", true)\r\nPlayer.Money = Player.Money - room_price",
+																		"ScriptAppear": "return Player.Money >= room_price",
+																		"Children": [
+																			{
+																				"Key": "Unnamed",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Main",
+																				"Children": []
+																			}
+																		]
+																	},
+																	{
+																		"Key": "RentCancel",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Never mind",
+																		"Tooltip": "Yeah, maybe later...",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "Log(\"town_inn_rent_nope\")",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Unnamed",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "InnkeepTalkRoot",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "InnkeepTalkGossip",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Rumors",
+														"Tooltip": "Ask about recent happenings in the area.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "InnkeepRumorEnd",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "-- TODO: Add actual gossip states here\r\nLogGsub(\"town_inn_rumor_none\", {bartender = barkeep})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "InnkeepTalkLeave",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "InnkeepTalkDrink",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "InnkeepTalkMQ01",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "InnkeepTalkRentRoom",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Unnamed",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "Unnamed",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "InnkeepTalkGossip",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "TalkFoxtaur",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Taur",
+										"Tooltip": "Talk to the big fuzzy-looking taur in the corner.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "LogGsub(\"INN_FOXTAUR_APPROACH\", {partner = ftpartner})",
+										"ScriptAppear": "return not Storage.GetFlag(\"town_inn_foxtaur_arrested\")",
+										"Children": [
+											{
+												"Key": "FoxtaurTalkRoot",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Foxtaur_C_Intro",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Introduce",
+														"Tooltip": "Get their attention.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Foxtaur_R_IntroFox",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"INN_FOXTAUR_HELLO_FOX\", {partner = ftpartner})",
+																"ScriptAppear": "return Player.Species == \"fox\"",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Foxtaur_C_AskDrink",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Foxtaur_C_AskChat",
+																		"Children": []
+																	}
+																]
+															},
+															{
+																"Key": "Foxtaur_R_Intro",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogGsub(\"INN_FOXTAUR_HELLO\", {partner = ftpartner})",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Foxtaur_C_AskDrink",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Drink",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Foxtaur_R_AskDrink",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ASK_DRINK\", {partner = ftpartner})\r\ntemp_getdrink = true",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Foxtaur_C_DoJoin",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Foxtaur_R_DoJoin",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "LogGsub(\"INN_FOXTAUR_JOIN1\", {partner = ftpartner})\r\n\r\nif temp_getdrink == true then\r\n    -- picked the 'drink' option earlier\r\n    Log(\"INN_FOXTAUR_JOIN_DRINK\")\r\nend\r\n\r\nLog(\"INN_FOXTAUR_JOIN2\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Foxtaur_C_Apologize",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Apologize",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Foxtaur_R_Apologize",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"INN_FOXTAUR_JOIN_APOLOGIZE\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "Foxtaur_C_WantChat",
+																														"Children": []
+																													},
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "Foxtaur_C_WantWork",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Foxtaur_C_WantChat",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Chat",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Foxtaur_R_WantChat",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"INN_FOXTAUR_ASK_CHAT\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "Foxtaur_C_GoUpstairs",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Join him",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "AutoLink",
+																																"IsState": true,
+																																"IsLink": true,
+																																"LinkTarget": "Foxtaur_Private",
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Foxtaur_C_WantWork",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Work",
+																										"Tooltip": "",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Foxtaur_R_WantWork",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"INN_FOXTAUR_ASK_WORK\")\r\ntemp_foxtaurwork = true",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "AutoLink",
+																														"IsState": false,
+																														"IsLink": true,
+																														"Title": "",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"LinkTarget": "Foxtaur_C_GoUpstairs",
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "Foxtaur_C_AskChat",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Chat",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Foxtaur_R_AskChat",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ASK_TALK\", {partner = ftpartner})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "Foxtaur_C_DoJoin",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Foxtaur_C_Leave",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Tooltip": "Walk away.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Unnamed",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Main",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "GoRoom",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Go Upstairs",
+						"Tooltip": "Head up to your room.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "if Storage.GetFlag(\"town_inn_room_visited\") then\r\n    Log(\"town_inn_room_enter\")\r\nelse\r\n    Storage.SetFlag(\"town_inn_room_visited\", true)\r\n    Log(\"town_inn_room_enter_first\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend",
+						"ScriptAppear": "return Storage.GetFlag(\"town_inn_free\") or Storage.GetFlag(\"town_inn_rented\")",
+						"Children": [
+							{
+								"Key": "Room_Main",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Room_C_Leave",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Leave",
+										"Tooltip": "Go back to the common room.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "Log(\"town_inn_room_leave\")",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Unnamed",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Room_C_Save",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Save",
+										"Tooltip": "Record your adventure so far.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "-- to make the save return to SavePointRoom\r\nStorage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\n\r\n-- but we don't want that if the player re-enters the inn\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "AutoLink",
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Room_Main",
+												"Children": []
+											}
+										]
+									},
+									{
+										"Key": "Room_C_Sleep",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Sleep",
+										"Tooltip": "The bed does look rather inviting.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Room_R_SleepCannot",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"town_inn_room_nosleep\")",
+												"ScriptAppear": "return not Storage.GetFlag(\"town_inn_cansleep\")\r\n\r\n--[[\r\n-- the rent flag was reset if we slept, so use that to prevent sleeping twice.\r\n-- also can't sleep during the day.\r\nlocal hour = GetTimeHour()\r\nlocal sleepytime = hour < 6 or hour > 19\r\nreturn not sleepytime --and not Storage.GetFlag(\"town_inn_rented\")\r\n]]",
+												"Children": [
+													{
+														"Key": "Unnamed",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "Unnamed",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Foxtaur_C_Leave",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Room_C_Save",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "Room_C_Sleep",
+														"Children": []
+													}
+												]
+											},
+											{
+												"Key": "Room_R_Sleep",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"town_inn_room_sleep\")\r\nStorage.SetFlag(\"town_inn_rented\", false)\r\nStorage.SetFlag(\"town_inn_cansleep\", false)\r\nRest()",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "RoomDoSleepEnd",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "You wake up feeling refreshed...",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Room_Main",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Foxtaur_Private",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"INN_FOXTAUR_MOVE_AGREE\")\r\nLog(\"INN_FOXTAUR_MOVE1\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "Foxtaur_C_Move1",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "Foxtaur_R_Move1",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"INN_FOXTAUR_MOVE2\")\r\nLog(\"INN_FOXTAUR_MOVE3\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "Foxtaur_C_Move2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Step inside",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "Foxtaur_R_Move2",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"INN_FOXTAUR_MOVE4\")\r\nLog((temp_foxtaurwork == true)\r\n    and \"INN_FOXTAUR_REVEAL_WORK\"\r\n    or \"INN_FOXTAUR_REVEAL_CHAT\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Foxtaur_C_Battle",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Uh-oh...",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "local foxbutt = Creature(\"Town_Foxtaur\")\r\nCombat.Reset()\r\nCombat.AddCombatant(foxbutt)\r\nCombat.SetGrappling(foxbutt, Player, true)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(foxbutt)\r\n    PostVore(\"INN_FOXTAUR_POSTVORE_SCAT_POV\")\r\nend)\r\nCombat.Begin()",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Foxtaur_R_BattleWon",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "-- TODO: assuming player can't actually eat the taur due to size.\r\n-- so this doesn't handle vore scenarios at all.\r\n\r\nStorage.SetFlag(\"town_inn_foxtaur_arrested\", true)\r\nLog(\"INN_FOXTAUR_ARREST1\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "Foxtaur_C_Arrest",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "Foxtaur_R_Arrest",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ARREST2\", {barkeep=barkeep})",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "Foxtaur_C_Arrest2",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Leave",
+																						"Tooltip": "Go back downstairs to the common room.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "",
+																						"ScriptAppear": "",
+																						"Children": [
+																							{
+																								"Key": "Foxtaur_R_Stmt1",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "LogSplit()\r\nLogGsub(\"INN_FOXTAUR_STMT1\", {barkeep=barkeep})\r\nLog(Storage.GetFlag(\"law_ever_arrested\") and \"INN_FOXTAUR_STMT2_MET\" or \"INN_FOXTAUR_STMT2_NEW\")",
+																								"ScriptAppear": "",
+																								"Children": [
+																									{
+																										"Key": "Foxtaur_C_Stmt_True",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Truthful",
+																										"Tooltip": "Try to relay the events as they happened.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT3_TRUE\", {ftpartner=ftpartner})\r\nStorage.SetNumber(\"law_gavin_stmt\", 1)",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Foxtaur_R_StmtWrap1",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP1\")\r\nStorage.SetFlag(\"law_gavin_arrested\", true)",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "Foxtaur_C_StmtWrap2",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Continue",
+																														"Tooltip": "",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "Foxtaur_R_StmtWrap2",
+																																"IsState": true,
+																																"IsLink": false,
+																																"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT_WRAPUP2\", {barkeep=barkeep})",
+																																"ScriptAppear": "",
+																																"Children": [
+																																	{
+																																		"Key": "Foxtaur_C_StmtWrap3",
+																																		"IsState": false,
+																																		"IsLink": false,
+																																		"Title": "Continue",
+																																		"Tooltip": "",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": "",
+																																		"ScriptAppear": "",
+																																		"Children": [
+																																			{
+																																				"Key": "Foxtaur_R_StmtWrap3",
+																																				"IsState": true,
+																																				"IsLink": false,
+																																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT_WRAPUP3\", {barkeep=barkeep})",
+																																				"ScriptAppear": "",
+																																				"Children": [
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "Leave",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "Talk",
+																																						"Children": []
+																																					},
+																																					{
+																																						"Key": "AutoLink",
+																																						"IsState": false,
+																																						"IsLink": true,
+																																						"Title": "",
+																																						"Tooltip": "",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"LinkTarget": "GoRoom",
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Foxtaur_C_Stmt_Boast",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Boast",
+																										"Tooltip": "[Lie] Describe how you saved a lady's life.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT3_BOAST\", {ftpartner=ftpartner})\r\nStorage.SetNumber(\"law_gavin_stmt\", 2)",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "AutoLink",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Foxtaur_R_StmtWrap1",
+																												"Children": []
+																											}
+																										]
+																									},
+																									{
+																										"Key": "Foxtaur_C_Stmt_Down",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Downplay",
+																										"Tooltip": "Try to alleviate the charge of predation against the taur.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_DOWNPLAY\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 3)",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "AutoLink",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Foxtaur_R_StmtWrap1",
+																												"Children": []
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Foxtaur_C_DbgBatSkip",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "[DBG] Skip Battle",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return IsDebugMode()",
+														"Children": [
+															{
+																"Key": "AutoLink",
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Foxtaur_R_BattleWon",
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -40,11 +40,16 @@
                             <Grid.RenderTransform>
                                 <ScaleTransform x:Name="DieScaleTransform" />
                             </Grid.RenderTransform>
-                            <Image Width="42" Height="42" Margin="2" ClipToBounds="False">
-                                <Image.Source>
-                                    <BitmapImage UriSource="{Binding Path=., Converter={StaticResource DieFaceToImageConverter}}" />
-                                </Image.Source>
-                            </Image>
+                            <Grid Width="42" Height="42" Margin="2" ClipToBounds="False">
+                                <!-- Background -->
+                                <Image Source="/Finmer;component/Resources/Dice/BackGenericD6.png"/>
+                                <!-- Foreground -->
+                                <Image>
+                                    <Image.Source>
+                                        <BitmapImage UriSource="{Binding Path=., Converter={StaticResource DieFaceToImageConverter}}" />
+                                    </Image.Source>
+                                </Image>
+                            </Grid>
                         </Grid>
                     </DataTemplate>
                 </ItemsControl.ItemTemplate>

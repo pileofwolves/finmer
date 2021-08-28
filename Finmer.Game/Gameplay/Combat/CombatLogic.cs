@@ -8,6 +8,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
 using Finmer.Core;
 
 namespace Finmer.Gameplay.Combat
@@ -29,10 +31,10 @@ namespace Finmer.Gameplay.Combat
         public static void PerformAttack(Participant instigator, Participant target)
         {
             // Roll dice for this attack
-            List<EDieFace> attack_dice = RollAttackDice(instigator);
-            List<EDieFace> defense_dice = RollDefenseDice(target);
-            int num_attacks = SumDice(attack_dice);
-            int num_defense = SumDice(defense_dice);
+            List<int> attack_dice = RollCombatDice(instigator.Character.NumAttackDice);
+            List<int> defense_dice = RollCombatDice(target.Character.NumDefenseDice);
+            int num_attacks = attack_dice.Sum();
+            int num_defense = defense_dice.Sum();
 
             // Number of hitpoints subtracted is the attack power minus the defense power
             int damage = Math.Max(0, num_attacks - num_defense);
@@ -59,8 +61,8 @@ namespace Finmer.Gameplay.Combat
                     {
                         OffenseTotal = num_attacks,
                         DefenseTotal = num_defense,
-                        OffenseDice = attack_dice,
-                        DefenseDice = defense_dice
+                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.CombatAttack),
+                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.CombatDefense)
                     }
                 }
             };
@@ -99,10 +101,10 @@ namespace Finmer.Gameplay.Combat
             while (true)
             {
                 // Roll dice for this attack
-                List<EDieFace> attack_dice = RollVoreSwallowDice(instigator);
-                List<EDieFace> defense_dice = RollVoreStruggleDice(target);
-                int num_attacks = SumDice(attack_dice);
-                int num_defense = SumDice(defense_dice);
+                List<int> attack_dice = RollGenericD6(instigator.Character.NumSwallowDice);
+                List<int> defense_dice = RollGenericD6(instigator.Character.NumStruggleDice);
+                int num_attacks = attack_dice.Sum();
+                int num_defense = defense_dice.Sum();
 
                 // Predator wins the round if they roll higher than the prey - so ties are in favor of the prey
                 if (num_attacks > num_defense)
@@ -116,8 +118,8 @@ namespace Finmer.Gameplay.Combat
                     DefenseTotal = num_defense,
                     OffenseRoundsWon = rounds_attack,
                     DefenseRoundsWon = rounds_defend,
-                    OffenseDice = attack_dice,
-                    DefenseDice = defense_dice
+                    OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Vore),
+                    DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Vore)
                 });
 
                 // Break loop if either character has won the contest
@@ -185,7 +187,7 @@ namespace Finmer.Gameplay.Combat
                         if (prey.Character.IsDead())
                             prey.Session.NotifyParticipantKilled(participant, prey);
                     }
-                
+
                 // Print a message indicating such (but of only one random prey, to avoid clutter when many prey are swallowed)
                 var random_prey = participant.Prey[CoreUtility.Rng.Next(participant.Prey.Count)];
                 CombatDisplay.ShowSimpleMessage("vore_ext_struggle", participant, random_prey);
@@ -211,122 +213,122 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
-        /// Computes the number of attack dice that a participant can use, then generates a list of die faces for those dice.
+        /// Rolls a set of abstract combat dice (either attack or defense), and returns the set of rolls.
         /// </summary>
-        private static List<EDieFace> RollAttackDice(Participant instigator)
+        private static List<int> RollCombatDice(int count)
         {
-            int num_dice = instigator.Character.NumAttackDice;
-            var ret = new List<EDieFace>(num_dice);
-
-            for (int i = 0; i < num_dice; i++)
+            var ret = new List<int>(count);
+            for (int i = 0; i < count; i++)
             {
                 // Distribution: 3/6 attack, 2/3 miss, 1/3 critical
                 int roll = CoreUtility.Rng.Next(6);
-                switch (roll)
-                {
-                    case 0:
-                    case 1:
-                    case 2:
-                        ret.Add(EDieFace.Attack);
-                        break;
-                    case 3:
-                        ret.Add(EDieFace.AttackCritical);
-                        break;
-                    default:
-                        ret.Add(EDieFace.Empty);
-                        break;
-                }
+                if (roll <= 3)
+                    ret.Add(1);
+                else if (roll <= 5)
+                    ret.Add(2);
+                else
+                    ret.Add(0);
             }
 
             return ret;
         }
 
         /// <summary>
-        /// Computes the number of defense dice that a participant can use, then generates a list of die faces for those dice.
+        /// Rolls a number of six-sided dice and returns the results.
         /// </summary>
-        private static List<EDieFace> RollDefenseDice(Participant instigator)
+        private static List<int> RollGenericD6(int count)
         {
-            int num_dice = instigator.Character.NumDefenseDice;
-            var ret = new List<EDieFace>(num_dice);
+            var ret = new List<int>(count);
 
-            for (int i = 0; i < num_dice; i++)
+            for (int i = 0; i < count; i++)
+                ret.Add(CoreUtility.Rng.Next(6) + 1);
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Converts an attack die roll value to a user-presentable die face.
+        /// </summary>
+        private static EDieFace ConvertAttackRollToDieFace(int roll)
+        {
+            switch (roll)
             {
-                // Distribution: 3/6 attack, 2/3 miss, 1/3 critical
-                int roll = CoreUtility.Rng.Next(6);
-                switch (roll)
+                case 1:
+                    return EDieFace.Attack;
+                case 2:
+                    return EDieFace.AttackCritical;
+                default:
+                    return EDieFace.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Converts a defense die roll value to a user-presentable die face.
+        /// </summary>
+        private static EDieFace ConvertDefenseRollToDieFace(int roll)
+        {
+            switch (roll)
+            {
+                case 1:
+                    return EDieFace.Defense;
+                case 2:
+                    return EDieFace.DefenseCritical;
+                default:
+                    return EDieFace.Empty;
+            }
+        }
+
+        /// <summary>
+        /// Converts a D6 roll value to a user-presentable die face.
+        /// </summary>
+        private static EDieFace ConvertD6ToDieFace(int roll)
+        {
+            Debug.Assert(roll >= 1 && roll <= 6);
+            return EDieFace.Generic1 + (roll - 1);
+        }
+
+        /// <summary>
+        /// Given a sequence of raw roll values, returns a set of die faces suitable for presenting to the user.
+        /// </summary>
+        /// <param name="rolls">The rolls to convert.</param>
+        /// <param name="action">The type of action that was performed.</param>
+        private static List<EDieFace> ConvertRollToDieFaces(IReadOnlyCollection<int> rolls, ERollType action)
+        {
+            List<EDieFace> faces = new List<EDieFace>(rolls.Count);
+
+            foreach (int roll in rolls)
+            {
+                switch (action)
                 {
-                    case 0:
-                    case 1:
-                    case 2:
-                        ret.Add(EDieFace.Defense);
+                    case ERollType.CombatAttack:
+                        faces.Add(ConvertAttackRollToDieFace(roll));
                         break;
-                    case 3:
-                        ret.Add(EDieFace.DefenseCritical);
+
+                    case ERollType.CombatDefense:
+                        faces.Add(ConvertDefenseRollToDieFace(roll));
                         break;
+
+                    case ERollType.Vore:
+                        faces.Add(ConvertD6ToDieFace(roll));
+                        break;
+
                     default:
-                        ret.Add(EDieFace.Empty);
-                        break;
+                        // Not yet supported
+                        throw new ArgumentOutOfRangeException(nameof(action));
                 }
             }
 
-            return ret;
+            return faces;
         }
 
         /// <summary>
-        /// Computes the number of offensive vore dice that a participant can use, then generates a list of die faces for those dice.
+        /// Describes the type of action being performed, used for translating a roll value to a set of die faces.
         /// </summary>
-        private static List<EDieFace> RollVoreSwallowDice(Participant instigator)
+        private enum ERollType
         {
-            int num_dice = instigator.Character.NumSwallowDice;
-            var ret = new List<EDieFace>(num_dice);
-
-            for (int i = 0; i < num_dice; i++)
-                // Distribution: 50/50 hit/miss
-                ret.Add((CoreUtility.Rng.Next(2) == 0) ? EDieFace.VoreSwallow : EDieFace.Empty);
-
-            return ret;
-        }
-
-        /// <summary>
-        /// Computes the number of defensive vore dice that a participant can use, then generates a list of die faces for those dice.
-        /// </summary>
-        private static List<EDieFace> RollVoreStruggleDice(Participant instigator)
-        {
-            int num_dice = instigator.Character.NumStruggleDice;
-            var ret = new List<EDieFace>(num_dice);
-
-            for (int i = 0; i < num_dice; i++)
-                // Distribution: 50/50 hit/miss
-                ret.Add((CoreUtility.Rng.Next(2) == 0) ? EDieFace.VoreStruggle : EDieFace.Empty);
-
-            return ret;
-        }
-
-        /// <summary>
-        /// Sum a collection of die faces together, to represent the total roll value.
-        /// </summary>
-        /// <param name="rolls">The dice to sum. Should contain either only attack die faces, or only defense die faces, not both.</param>
-        private static int SumDice(IEnumerable<EDieFace> rolls)
-        {
-            var total = 0;
-            foreach (EDieFace face in rolls)
-                switch (face)
-                {
-                    case EDieFace.Attack:
-                    case EDieFace.Defense:
-                    case EDieFace.Grapple:
-                    case EDieFace.VoreSwallow:
-                    case EDieFace.VoreStruggle:
-                        total += 1;
-                        break;
-
-                    case EDieFace.AttackCritical:
-                    case EDieFace.DefenseCritical:
-                        total += 2;
-                        break;
-                }
-
-            return total;
+            CombatAttack,
+            CombatDefense,
+            Vore
         }
 
     }

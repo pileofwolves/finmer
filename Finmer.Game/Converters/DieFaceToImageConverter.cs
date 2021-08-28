@@ -24,46 +24,41 @@ namespace Finmer.Converters
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
             Debug.Assert(value != null);
+
+            // Convert the face to a file name
             EDieFace face = (EDieFace)value;
+            string face_name = GetFileNameForDieFace(face);
 
-            string face_name;
-            switch (face)
-            {
-                case EDieFace.Empty:
-                    face_name = "Dice/Empty.png";
-                    break;
-                case EDieFace.Attack:
-                    face_name = "Dice/Attack1.png";
-                    break;
-                case EDieFace.AttackCritical:
-                    face_name = "Dice/Attack2.png";
-                    break;
-                case EDieFace.Defense:
-                    face_name = "Dice/Defense1.png";
-                    break;
-                case EDieFace.DefenseCritical:
-                    face_name = "Dice/Defense2.png";
-                    break;
-                case EDieFace.Grapple:
-                    face_name = "Dice/Grapple.png";
-                    break;
-                case EDieFace.VoreSwallow:
-                    face_name = "Dice/VoreSwallow.png";
-                    break;
-                case EDieFace.VoreStruggle:
-                    face_name = "Dice/VoreStruggle.png";
-                    break;
-                default:
-                    face_name = "UI/MissingItemIcon.png";
-                    break;
-            }
-
+            // Compose the image file name into a full path for display
             return new Uri("pack://application:,,,/Finmer;component/Resources/" + face_name, UriKind.Absolute);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotSupportedException();
+        }
+
+        /// <summary>
+        /// Given a die face, returns the image file name that can be used to represent it.
+        /// </summary>
+        private string GetFileNameForDieFace(EDieFace face)
+        {
+            switch (face)
+            {
+                case EDieFace.Empty:                return "Dice/Empty.png";
+                case EDieFace.Attack:               return "Dice/Attack1.png";
+                case EDieFace.AttackCritical:       return "Dice/Attack2.png";
+                case EDieFace.Defense:              return "Dice/Defense1.png";
+                case EDieFace.DefenseCritical:      return "Dice/Defense2.png";
+                case EDieFace.Grapple:              return "Dice/Grapple.png";
+                case EDieFace.Generic1:             return "Dice/Generic1.png";
+                case EDieFace.Generic2:             return "Dice/Generic2.png";
+                case EDieFace.Generic3:             return "Dice/Generic3.png";
+                case EDieFace.Generic4:             return "Dice/Generic4.png";
+                case EDieFace.Generic5:             return "Dice/Generic5.png";
+                case EDieFace.Generic6:             return "Dice/Generic6.png";
+                default:                            throw new ArgumentOutOfRangeException(nameof(face));
+            }
         }
 
     }

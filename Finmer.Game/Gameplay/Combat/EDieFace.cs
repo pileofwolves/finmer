@@ -20,8 +20,12 @@ namespace Finmer.Gameplay.Combat
         Defense,
         DefenseCritical,
         Grapple,
-        VoreSwallow,
-        VoreStruggle,
+        Generic1,
+        Generic2,
+        Generic3,
+        Generic4,
+        Generic5,
+        Generic6
     }
 
 }

@@ -404,8 +404,6 @@
     <Resource Include="Resources\Dice\Defense2.png" />
     <Resource Include="Resources\Dice\Empty.png" />
     <Resource Include="Resources\Dice\Grapple.png" />
-    <Resource Include="Resources\Dice\VoreStruggle.png" />
-    <Resource Include="Resources\Dice\VoreSwallow.png" />
     <Resource Include="Resources\UI\Clock.png" />
     <Resource Include="Resources\UI\LoadingSpinner.png" />
     <Resource Include="Resources\UI\MissingItemIcon.png" />
@@ -417,6 +415,14 @@
     <Resource Include="Resources\UI\StatVore.png" />
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Dice\Generic1.png" />
+    <Resource Include="Resources\Dice\Generic2.png" />
+    <Resource Include="Resources\Dice\Generic3.png" />
+    <Resource Include="Resources\Dice\Generic4.png" />
+    <Resource Include="Resources\Dice\Generic5.png" />
+    <Resource Include="Resources\Dice\Generic6.png" />
   </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>

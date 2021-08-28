@@ -200,9 +200,15 @@ namespace Finmer.Gameplay.Combat
 
             while (true)
             {
+                // Calculate the number of struggle dice for the target
+                int num_struggle_dice = target.Character.NumStruggleDice;
+                if (target.IsGrappling())
+                    // If the target is being grappled, the pred should be more likely to overpower the prey
+                    num_struggle_dice = Math.Max(1, num_struggle_dice - 2);
+
                 // Roll dice for this attack
                 List<int> attack_dice = RollGenericD6(instigator.Character.NumSwallowDice);
-                List<int> defense_dice = RollGenericD6(instigator.Character.NumStruggleDice);
+                List<int> defense_dice = RollGenericD6(num_struggle_dice);
                 int num_attacks = attack_dice.Sum();
                 int num_defense = defense_dice.Sum();
 

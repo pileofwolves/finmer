@@ -29,6 +29,16 @@ namespace Finmer.Gameplay.Combat
         public CombatSession Session { get; }
 
         /// <summary>
+        /// Gets or sets the participant that is grappling with this participant.
+        /// </summary>
+        public Participant GrapplingWith { get; set; }
+
+        /// <summary>
+        /// Gets or sets whether this participant is the one with the upper paw in a grappling session.
+        /// </summary>
+        public bool GrapplingInitiator { get; set; }
+
+        /// <summary>
         /// Gets or sets the participant that has swallowed this participant.
         /// </summary>
         public Participant Predator { get; set; }
@@ -63,6 +73,14 @@ namespace Finmer.Gameplay.Combat
         public bool IsPlayer()
         {
             return Character is Player;
+        }
+
+        /// <summary>
+        /// Shorthand for checking if this participant is engaged in a grappling session.
+        /// </summary>
+        public bool IsGrappling()
+        {
+            return GrapplingWith != null;
         }
 
         /// <summary>

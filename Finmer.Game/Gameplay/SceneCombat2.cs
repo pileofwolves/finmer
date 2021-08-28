@@ -123,6 +123,8 @@ namespace Finmer.Gameplay
                 case EMenuState.Default:
                     if (m_Player.IsSwallowed())
                         ShowUISwallowed(GameUI.Instance);
+                    else if (m_Player.IsGrappling())
+                        ShowUIGrappling(GameUI.Instance);
                     else
                         ShowUIDefault(GameUI.Instance);
                     break;
@@ -151,6 +153,7 @@ namespace Finmer.Gameplay
         private IEnumerable<Participant> GetViableAttackTargets(Participant attacker)
         {
             return GetLiveOpponents(attacker)
+                .Where(candidate => !candidate.IsGrappling())
                 .Where(candidate => !candidate.IsSwallowed());
         }
 
@@ -159,6 +162,11 @@ namespace Finmer.Gameplay
         /// </summary>
         private IEnumerable<Participant> GetViablePreyTargets(Participant predator)
         {
+            // If the predator is currently grappling, the only possible prey they can touch now is their grappling opponent
+            if (predator.IsGrappling())
+                return new List<Participant> { predator.GrapplingWith };
+
+            // Otherwise, anyone will do
             return GetViableAttackTargets(predator)
                 .Where(prey => predator.Character.CanSwallow(prey.Character));
         }
@@ -183,13 +191,41 @@ namespace Finmer.Gameplay
             if (ai.IsSwallowed())
                 return new CombatAction(ECombatAction.Prey_Struggle, null);
 
+            // Handling grapples
+            if (ai.IsGrappling())
+            {
+                if (ai.GrapplingInitiator)
+                {
+                    // Predators will try to swallow their prey at this point
+                    if (ai.Character.IsPredator)
+                        return new CombatAction(ECombatAction.Swallow, ai.GrapplingWith);
+
+                    // Non-preds shouldn't have reached this since we don't support in-grapple attacks yet
+                    Debug.Fail("Non-predator character is the grapple initiator, this should not be possible");
+                    return new CombatAction(ECombatAction.SkipTurn, null);
+                }
+                else
+                {
+                    // Predators will always try to reverse, so that they can swallow their target.
+                    // Everyone else will just try to escape.
+                    return new CombatAction(ai.Character.IsPredator
+                        ? ECombatAction.GrappleReverse
+                        : ECombatAction.GrappleEscape, ai.GrapplingWith);
+                }
+            }
+
             // Try swallowing someone
             var prey = GetViablePreyTargets(ai).ToList();
             if (ai.Character.IsPredator && prey.Any() && CoreUtility.Rng.Next(100) < 60)
             {
+                // Randomly choose to either pin the prey down, or just begin gulping right away
+                var intent = CoreUtility.Rng.Next(100) < 50
+                    ? ECombatAction.Swallow
+                    : ECombatAction.GrappleInitiate;
+
                 // Gulp an eligible prey
                 var selected_prey = prey.FirstOrDefault();
-                return new CombatAction(ECombatAction.Swallow, selected_prey);
+                return new CombatAction(intent, selected_prey);
             }
 
             // TODO, just attack player for prototype
@@ -225,6 +261,29 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Handles target select checking.
+        /// </summary>
+        /// <remarks>
+        /// If multiple targets are available, changes state to a target select submenu; otherwise, selects the one available target.
+        /// </remarks>
+        private void HandlePlayerPotentialTargetSelect(ECombatAction intent)
+        {
+            Debug.Assert(m_PotentialPlayerTargets.Count != 0);
+
+            if (m_PotentialPlayerTargets.Count == 1)
+            {
+                // If only one target exists, pick it automatically; no need to show a submenu.
+                m_PlayerDecision = new CombatAction(intent, m_PotentialPlayerTargets[0]);
+            }
+            else
+            {
+                // Otherwise, show a menu where the player can choose.
+                m_PendingPlayerDecision = intent;
+                m_MenuState = EMenuState.SelectTarget;
+            }
+        }
+
+        /// <summary>
         /// Handle player input for the default UI state.
         /// </summary>
         private void HandlePlayerInputDefault(ECombatAction action)
@@ -232,34 +291,25 @@ namespace Finmer.Gameplay
             switch (action)
             {
                 case ECombatAction.Attack:
-                    // If only one target exists, pick it automatically. Otherwise, show a menu where the player can choose.
+                case ECombatAction.GrappleInitiate:
                     m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
-                    if (m_PotentialPlayerTargets.Count == 1)
-                    {
-                        m_PlayerDecision = new CombatAction(ECombatAction.Attack, m_PotentialPlayerTargets[0]);
-                    }
-                    else
-                    {
-                        m_PendingPlayerDecision = ECombatAction.Attack;
-                        m_MenuState = EMenuState.SelectTarget;
-                    }
+                    HandlePlayerPotentialTargetSelect(action);
                     break;
 
                 case ECombatAction.Swallow:
-                    // If only one target exists, pick it automatically. Otherwise, show a menu where the player can choose.
                     m_PotentialPlayerTargets = GetViablePreyTargets(m_Player).ToList();
-                    if (m_PotentialPlayerTargets.Count == 1)
-                    {
-                        m_PlayerDecision = new CombatAction(ECombatAction.Swallow, m_PotentialPlayerTargets[0]);
-                    }
-                    else
-                    {
-                        m_PendingPlayerDecision = ECombatAction.Swallow;
-                        m_MenuState = EMenuState.SelectTarget;
-                    }
+                    HandlePlayerPotentialTargetSelect(ECombatAction.Swallow);
+                    break;
+
+                case ECombatAction.GrappleReverse:
+                case ECombatAction.GrappleEscape:
+                case ECombatAction.GrappleRelease:
+                    // Perform the action with the grapple partner
+                    m_PlayerDecision = new CombatAction(action, m_Player.GrapplingWith);
                     break;
 
                 default:
+                    // No special logic is required, just copy over the intent directly and move on to the round step
                     m_PlayerDecision = new CombatAction(action, null);
                     break;
             }
@@ -347,6 +397,18 @@ namespace Finmer.Gameplay
                 case ECombatAction.Item:
                     // No action; item has already been used directly from the menu
                     break;
+                case ECombatAction.GrappleInitiate:
+                    CombatLogic.PerformGrappleInitiate(instigator, target);
+                    break;
+                case ECombatAction.GrappleEscape:
+                    CombatLogic.PerformGrappleEscape(instigator, target);
+                    break;
+                case ECombatAction.GrappleReverse:
+                    CombatLogic.PerformGrappleReverse(instigator, target);
+                    break;
+                case ECombatAction.GrappleRelease:
+                    CombatLogic.PerformGrappleRelease(instigator, target);
+                    break;
                 case ECombatAction.Swallow:
                     CombatLogic.PerformVore(instigator, target);
                     break;
@@ -385,12 +447,30 @@ namespace Finmer.Gameplay
             // Direct attack
             var attack_targets = GetViableAttackTargets(m_Player);
             if (attack_targets.Any())
-                ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.Attack, Label = "Fight" });
+            {
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.Attack,
+                    Label = "Fight",
+                    Tooltip = "Attack another character to deal damage."
+                });
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.GrappleInitiate,
+                    Label = "Grapple",
+                    Tooltip = "Try to restrain another character, to make them more vulnerable."
+                });
+            }
 
             // Vore!
             var vore_targets = GetViablePreyTargets(m_Player);
             if (vore_targets.Any())
-                ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.Swallow, Label = "Swallow" });
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.Swallow,
+                    Label = "Swallow",
+                    Tooltip = "Attempt to devour another character."
+                });
 
             // Inventory items
             //m_PotentialPlayerItems = GetUsableItems().ToList();
@@ -399,9 +479,23 @@ namespace Finmer.Gameplay
 
             // Misc options
             if (m_Player.Prey.Count != 0 && m_Player.Character.StomachDigest)
-                ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.SkipTurn, Label = "Digest" });
+            {
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.SkipTurn,
+                    Label = "Digest",
+                    Tooltip = "End your turn and continue digesting your prey."
+                });
+            }
             else
-                ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.SkipTurn, Label = "Wait" });
+            {
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.SkipTurn,
+                    Label = "Wait",
+                    Tooltip = "End your turn."
+                });
+            }
         }
 
         private void ShowUITargetSelect(GameUI ui)
@@ -414,8 +508,59 @@ namespace Finmer.Gameplay
 
         private void ShowUISwallowed(GameUI ui)
         {
-            ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.Prey_Struggle, Label = "Struggle", Tooltip = "Resist your predation." });
-            ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.Prey_Submit, Label = "Submit", Tooltip = "Relax in your slimy embrace." });
+            ui.AddButton(new ChoiceButtonModel
+            {
+                Choice = (int)ECombatAction.Prey_Struggle,
+                Label = "Struggle",
+                Tooltip = "Resist your predation."
+            });
+            ui.AddButton(new ChoiceButtonModel
+            {
+                Choice = (int)ECombatAction.Prey_Submit,
+                Label = "Submit",
+                Tooltip = "Relax in your slimy embrace."
+            });
+        }
+
+        private void ShowUIGrappling(GameUI ui)
+        {
+            // Only the grapple initiator may try swallowing the victim; and only the victim can try reversing it.
+            if (m_Player.GrapplingInitiator)
+            {
+                // Player is on top
+                ui.Instruction = $"You're pinning down {m_Player.GrapplingWith.Character.Name}. What will you do?";
+
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.Swallow,
+                    Label = "Swallow",
+                    Tooltip = "Attempt to devour your pinned prey."
+                });
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.GrappleRelease,
+                    Label = "Release",
+                    Tooltip = "Let your victim go."
+                });
+            }
+            else
+            {
+                // Player is being pinned
+                ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
+
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.GrappleReverse,
+                    Label = "Release",
+                    Tooltip = "Attempt to reverse the grapple, so you end up on top."
+                });
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.GrappleEscape,
+                    Label = "Release",
+                    Tooltip = "Attempt to escape from the grapple."
+                });
+            }
         }
 
         /// <summary>
@@ -435,6 +580,10 @@ namespace Finmer.Gameplay
             Invalid,
             SkipTurn,
             Attack,
+            GrappleInitiate,
+            GrappleEscape,
+            GrappleReverse,
+            GrappleRelease,
             Item,
             Swallow,
             Prey_Struggle,

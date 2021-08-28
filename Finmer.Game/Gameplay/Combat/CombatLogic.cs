@@ -77,6 +77,106 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Helper function that performs a grapple roll between two participants, and returns whether the instigator won.
+        /// </summary>
+        private static bool GrappleRoll(Participant instigator, Participant target, string logKeyWin, string logKeyLose)
+        {
+            // Roll dice for this attack
+            List<int> attack_dice = RollGenericD6(instigator.Character.NumGrappleDice);
+            List<int> defense_dice = RollGenericD6(target.Character.NumGrappleDice);
+            int num_attacks = attack_dice.Sum();
+            int num_defense = defense_dice.Sum();
+
+            // Instigator wins if they roll more than the target, meaning they were able overpower them.
+            bool success = num_attacks > num_defense;
+
+            // Perform animation
+            CombatDisplay.ResolveInfo info = new CombatDisplay.ResolveInfo
+            {
+                Instigator = instigator,
+                Target = target,
+                Action = CombatDisplay.EResolveType.Grapple,
+                LogKey = success ? logKeyWin : logKeyLose,
+                Rounds = new List<CombatDisplay.ResolveRound>
+                {
+                    new CombatDisplay.ResolveRound
+                    {
+                        OffenseTotal = num_attacks,
+                        DefenseTotal = num_defense,
+                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Grapple),
+                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Grapple)
+                    }
+                }
+            };
+            CombatDisplay.ShowRoundResolve(info);
+
+            return success;
+        }
+
+        /// <summary>
+        /// Initiate a grappling session.
+        /// </summary>
+        /// <param name="instigator">The participant that is initiating the attack.</param>
+        /// <param name="target">The participant that is being attacked.</param>
+        public static void PerformGrappleInitiate(Participant instigator, Participant target)
+        {
+            // Set these characters to grappling if the instigator succeeded
+            bool success = GrappleRoll(instigator, target, "grapple_hit", "grapple_miss");
+            if (success)
+                instigator.Session.SetGrappling(instigator, target);
+        }
+
+        /// <summary>
+        /// Attempt to escape a grappling session.
+        /// </summary>
+        /// <param name="instigator">The participant that is initiating the attack.</param>
+        /// <param name="target">The participant that is being attacked.</param>
+        public static void PerformGrappleEscape(Participant instigator, Participant target)
+        {
+            // If the instigator wins, they were able to escape
+            bool success = GrappleRoll(instigator, target, "grapple_escape_hit", "grapple_escape_miss");
+            if (success)
+                instigator.Session.UnsetGrappling(instigator, target);
+        }
+
+        /// <summary>
+        /// Attempt to reverse a grappling session, swapping the grappler and grapplee.
+        /// </summary>
+        /// <param name="instigator">The participant that is initiating the attack.</param>
+        /// <param name="target">The participant that is being attacked.</param>
+        public static void PerformGrappleReverse(Participant instigator, Participant target)
+        {
+            Debug.Assert(!instigator.GrapplingInitiator, "Instigator is attempting reverse grapple, but is already the initiator");
+            Debug.Assert(target.GrapplingInitiator, "Target is supposed to be the grapple initiator, but isn't");
+
+            // If the instigator wins, they were able to escape
+            bool success = GrappleRoll(instigator, target, "grapple_escape_hit", "grapple_escape_miss");
+            if (success)
+            {
+                // Reset the grappling session, and then create a new one where the instigator is on top (which the target used to be).
+                instigator.Session.UnsetGrappling(instigator, target);
+                instigator.Session.SetGrappling(instigator, target);
+            }
+        }
+
+        /// <summary>
+        /// Perform an action where the grapple initiator releases their victim. This does not require a roll.
+        /// </summary>
+        /// <param name="instigator">The participant that is initiating the attack.</param>
+        /// <param name="target">The participant that is being attacked.</param>
+        public static void PerformGrappleRelease(Participant instigator, Participant target)
+        {
+            Debug.Assert(instigator.GrapplingInitiator, "Instigator is expected to be the initiator");
+            Debug.Assert(!target.GrapplingInitiator, "Target is expected to not be the initiator");
+
+            // Reset the grappling session
+            instigator.Session.UnsetGrappling(instigator, target);
+
+            // Print a simple message, since there is no further dice animation for this action
+            CombatDisplay.ShowSimpleMessage("grapple_pin_release", instigator, target);
+        }
+
+        /// <summary>
         /// Perform a Vore action.
         /// </summary>
         /// <param name="instigator">The participant that is initiating the attack.</param>
@@ -309,6 +409,7 @@ namespace Finmer.Gameplay.Combat
                         break;
 
                     case ERollType.Vore:
+                    case ERollType.Grapple:
                         faces.Add(ConvertD6ToDieFace(roll));
                         break;
 
@@ -328,7 +429,8 @@ namespace Finmer.Gameplay.Combat
         {
             CombatAttack,
             CombatDefense,
-            Vore
+            Vore,
+            Grapple
         }
 
     }

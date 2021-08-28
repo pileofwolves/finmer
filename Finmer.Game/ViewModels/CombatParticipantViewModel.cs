@@ -103,6 +103,13 @@ namespace Finmer.ViewModels
                 text.Add($"Swallowed by {predator.Character.Name}");
             }
 
+            // Grapple link
+            if (m_Participant.IsGrappling())
+            {
+                var other = m_Participant.GrapplingWith;
+                text.Add(m_Participant.GrapplingInitiator ? $"Grappling with {other.Character.Name}" : $"Pinned by {other.Character.Name}");
+            }
+
             // Prey links
             int prey_count = m_Participant.Prey.Count;
             if (prey_count != 0)

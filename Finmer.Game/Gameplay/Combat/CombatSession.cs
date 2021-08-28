@@ -104,6 +104,36 @@ namespace Finmer.Gameplay.Combat
             OnCharacterReleased?.Invoke(predator, prey);
         }
 
+        public void SetGrappling(Participant instigator, Participant target)
+        {
+            Debug.Assert(instigator.GrapplingWith == null, "Grappler is already grappling someone");
+            Debug.Assert(target.GrapplingWith == null, "Grapplee is already grappling someone");
+
+            // Link the two participants together
+            instigator.GrapplingWith = target;
+            target.GrapplingWith = instigator;
+            instigator.GrapplingInitiator = true;
+            target.GrapplingInitiator = false;
+
+            // Update display state
+            instigator.UpdateDisplay();
+            target.UpdateDisplay();
+        }
+
+        public void UnsetGrappling(Participant a, Participant b)
+        {
+            Debug.Assert(a.GrapplingWith == b, "Grappler is not grappling the expected participant");
+            Debug.Assert(b.GrapplingWith == a, "Grapplee is not grappling the expected participant");
+
+            // Unlink the participants
+            a.GrapplingWith = null;
+            b.GrapplingWith = null;
+
+            // Update display state
+            a.UpdateDisplay();
+            b.UpdateDisplay();
+        }
+
         /// <summary>
         /// Notify event listeners that a round has ended.
         /// </summary>

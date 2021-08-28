@@ -4,6 +4,10 @@
 # Justification: Not a useful blanket rule; pattern matching (especially negative pattern matches) can result in less readable code.
 dotnet_diagnostic.IDE0019.severity = none
 
+# IDE0049: Simplify Names
+# Justification: Matter of preference. ReSharper has a few rules codified in the DotSettings file to deal with this.
+dotnet_diagnostic.IDE0049.severity = none
+
 # IDE1006: Naming Styles
 # Justification: ReSharper takes care of this, and has some abbreviations configured so they aren't flagged.
 dotnet_diagnostic.IDE1006.severity = none

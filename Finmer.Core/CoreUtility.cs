@@ -24,8 +24,8 @@ namespace Finmer.Core
         /// </summary>
         public static string CapFirst(this string value)
         {
-            if (string.IsNullOrEmpty(value))
-                return string.Empty;
+            if (String.IsNullOrEmpty(value))
+                return String.Empty;
 
             // Capitalize the first character in the string's character array, then build a new string with that change
             char[] ca = value.ToCharArray();

@@ -176,7 +176,7 @@ namespace Finmer.Editor
 
             // populate the node combobox with the nodes of the selected target scene
             m_SceneInject = target_scene;
-            target_scene.Root.Children.Traverse(node => node.Children).Where(node => node.IsState && !node.IsLink && !string.IsNullOrEmpty(node.Key)).Select(node => node.Key)
+            target_scene.Root.Children.Traverse(node => node.Children).Where(node => node.IsState && !node.IsLink && !String.IsNullOrEmpty(node.Key)).Select(node => node.Key)
                 .ForEach(name => cmbInjectTargetNode.Items.Add(name));
 
             // update the scene data

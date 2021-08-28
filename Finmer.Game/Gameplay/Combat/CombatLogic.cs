@@ -221,10 +221,10 @@ namespace Finmer.Gameplay.Combat
             for (int i = 0; i < count; i++)
             {
                 // Distribution: 3/6 attack, 2/3 miss, 1/3 critical
-                int roll = CoreUtility.Rng.Next(6);
+                int roll = CoreUtility.Rng.Next(6) + 1;
                 if (roll <= 3)
                     ret.Add(1);
-                else if (roll <= 5)
+                else if (roll <= 4)
                     ret.Add(2);
                 else
                     ret.Add(0);

@@ -217,10 +217,15 @@
             </Popup>
         </StackPanel>
 
-        <StackPanel Grid.Column="2" Grid.Row="0" Orientation="Vertical">
+        <DockPanel Grid.Column="2" Grid.Row="0">
             <!-- Quest Journal -->
-            <TextBlock Text="Journal" Style="{StaticResource TextBlockLarge}" />
-            <StackPanel x:Name="JournalList" Margin="10,16,10,24" Orientation="Vertical" />
-        </StackPanel>
+            <TextBlock
+                DockPanel.Dock="Top"
+                Text="Journal"
+                Style="{StaticResource TextBlockLarge}" />
+            <v:JournalListView
+                x:Name="JournalList"
+                Margin="10,16,10,24" />
+        </DockPanel>
     </Grid>
 </UserControl>

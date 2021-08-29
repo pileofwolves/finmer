@@ -22,6 +22,8 @@ namespace Finmer.Views
         public JournalListItemView()
         {
             InitializeComponent();
+
+            // Randomize the rotation on each item, so it looks less repetitive
             Rotator.Angle = (CoreUtility.Rng.NextDouble() * 2.0 - 1.0) * k_RotationMax;
         }
 

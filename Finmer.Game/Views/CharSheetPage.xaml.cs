@@ -17,6 +17,7 @@ using System.Windows.Input;
 using Finmer.Core.Assets;
 using Finmer.Gameplay;
 using Finmer.Utility;
+using Finmer.ViewModels;
 using JetBrains.Annotations;
 
 namespace Finmer.Views
@@ -38,20 +39,12 @@ namespace Finmer.Views
         {
             InitializeComponent();
 
-            DataContext = GameController.Session.Player.GetOrCreateViewModel();
+            // Populate the main view
+            var player = GameController.Session.Player;
+            DataContext = player.GetOrCreateViewModel();
 
             // Populate the journal list
-            // TODO: MVVMify this
-            Journal journal = GameController.Session.Player.Journal;
-            foreach (AssetJournal quest in journal.GetAllQuests())
-            {
-                int stage = journal.GetQuestStage(quest);
-                string text_stage = quest.GetEntryForStage(stage);
-
-                var view = new JournalListItemView();
-                view.TextEntry.Text = text_stage;
-                JournalList.Children.Add(view);
-            }
+            JournalList.DataContext = new JournalViewModel(player.Journal);
         }
 
         public ICommand IncreaseAbilityCommand => m_IncreaseAbilityCmd ?? (m_IncreaseAbilityCmd = new RelayCommand(IncreaseAbilityLink_Click));

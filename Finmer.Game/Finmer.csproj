@@ -111,6 +111,8 @@
     <Compile Include="ViewModels\CharacterViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveParticipantViewModel.cs" />
+    <Compile Include="ViewModels\JournalItemViewModel.cs" />
+    <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
@@ -184,6 +186,9 @@
       <DependentUpon>ItemTooltipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gameplay\ContentLoader.cs" />
+    <Compile Include="Views\JournalListView.xaml.cs">
+      <DependentUpon>JournalListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
@@ -306,6 +311,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\ItemTooltipView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\JournalListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

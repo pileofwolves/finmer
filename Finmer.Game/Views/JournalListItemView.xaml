@@ -4,13 +4,17 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
-    d:DesignWidth="300" d:DesignHeight="100"
-    Margin="0,0,0,5">
+    d:DataContext="{d:DesignInstance vm:JournalItemViewModel}"
+    d:DesignWidth="300" d:DesignHeight="100">
     <Grid>
-        <!-- Nice border with a random minor rotation, for aesthetics -->
-        <Border BorderBrush="{StaticResource BrightBackgroundBrush}" Background="{StaticResource BackgroundBrush}" BorderThickness="2.5">
-            <Border.RenderTransformOrigin>0.5, 0.5</Border.RenderTransformOrigin>
+        <!-- Border with randomized angle, for aesthetics -->
+        <Border
+            BorderBrush="{StaticResource BrightBackgroundBrush}"
+            Background="{StaticResource BackgroundBrush}"
+            BorderThickness="2.5"
+            RenderTransformOrigin="0.5, 0.5">
             <Border.RenderTransform>
                 <RotateTransform x:Name="Rotator" Angle="4" />
             </Border.RenderTransform>
@@ -18,8 +22,10 @@
 
         <!-- Actual contents -->
         <StackPanel Orientation="Vertical" Margin="15" MaxWidth="300">
-            <!--<TextBlock x:Name="TextTitle" Style="{StaticResource TextBlockLarge}">Title</TextBlock>-->
-            <TextBlock x:Name="TextEntry" Style="{StaticResource TextBlockDefault}" TextWrapping="Wrap">Content</TextBlock>
+            <TextBlock
+                Style="{StaticResource TextBlockDefault}"
+                Text="{Binding JournalEntry}"
+                TextWrapping="Wrap" />
         </StackPanel>
     </Grid>
 </UserControl>

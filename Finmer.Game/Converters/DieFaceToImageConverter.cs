@@ -11,6 +11,7 @@ using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Data;
 using Finmer.Gameplay.Combat;
+using Finmer.Utility;
 
 namespace Finmer.Converters
 {
@@ -30,7 +31,7 @@ namespace Finmer.Converters
             string face_name = GetFileNameForDieFace(face);
 
             // Compose the image file name into a full path for display
-            return new Uri("pack://application:,,,/Finmer;component/Resources/" + face_name, UriKind.Absolute);
+            return PackUriGenerator.GetGameResource(face_name);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

@@ -40,7 +40,7 @@ namespace Finmer.Gameplay
                 if (Asset.InventoryIcon == null)
                 {
                     // no icon specified in editor, so use a default one included in resources
-                    src.UriSource = new Uri("pack://application:,,,/Finmer;component/Resources/UI/MissingItemIcon.png", UriKind.Absolute);
+                    src.UriSource = PackUriGenerator.GetGameResource("UI/MissingItemIcon.png");
                     src.EndInit();
                     src.Freeze(); // prevents unnecessary CPU->GPU copies
                 }

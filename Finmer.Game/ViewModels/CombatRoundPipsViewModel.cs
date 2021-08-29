@@ -1,4 +1,7 @@
-﻿namespace Finmer.ViewModels
+﻿using System;
+using Finmer.Utility;
+
+namespace Finmer.ViewModels
 {
 
     /// <summary>
@@ -7,8 +10,8 @@
     public class CombatRoundPipsViewModel : BaseProp
     {
 
-        private const string k_PipIconPath_Ally = "/Finmer;component/Resources/UI/RoundPipAlly.png";
-        private const string k_PipIconPath_Enemy = "/Finmer;component/Resources/UI/RoundPipEnemy.png";
+        private const string k_PipIconPath_Ally = "UI/RoundPipAlly.png";
+        private const string k_PipIconPath_Enemy = "UI/RoundPipEnemy.png";
 
         private int m_NumLeftPips;
         private int m_NumRightPips;
@@ -52,9 +55,9 @@
             }
         }
 
-        public string LeftPipImagePath => IsLeftAlly ? k_PipIconPath_Ally : k_PipIconPath_Enemy;
+        public Uri LeftPipImagePath => PackUriGenerator.GetGameResource(IsLeftAlly ? k_PipIconPath_Ally : k_PipIconPath_Enemy);
 
-        public string RightPipImagePath => IsLeftAlly ? k_PipIconPath_Enemy : k_PipIconPath_Ally;
+        public Uri RightPipImagePath => PackUriGenerator.GetGameResource(IsLeftAlly ? k_PipIconPath_Enemy : k_PipIconPath_Ally);
 
     }
 

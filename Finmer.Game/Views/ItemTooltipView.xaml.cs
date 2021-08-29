@@ -34,11 +34,10 @@ namespace Finmer.Views
             SnapsToDevicePixels = true,
             UseLayoutRounding = true,
 
-            Source =
-                new BitmapImage(new Uri("pack://application:,,,/Finmer;component/Resources/UI/Money.png", UriKind.Absolute))
-                {
-                    CacheOption = BitmapCacheOption.OnLoad
-                }
+            Source = new BitmapImage(PackUriGenerator.GetGameResource("UI/Money.png"))
+            {
+                CacheOption = BitmapCacheOption.OnLoad
+            }
         };
 
         public ItemTooltipView()

@@ -212,6 +212,7 @@
     <Compile Include="Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Utility\PackUriGenerator.cs" />
     <Compile Include="Views\SaveGamePage.xaml.cs">
       <DependentUpon>SaveGamePage.xaml</DependentUpon>
     </Compile>

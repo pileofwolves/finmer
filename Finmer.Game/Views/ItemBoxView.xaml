@@ -5,29 +5,54 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
-    x:Name="ItemBoxWrapper"
     mc:Ignorable="d"
-    MinWidth="36" MaxWidth="36"
-    MinHeight="36" MaxHeight="36">
-    <UserControl.Resources>
-        <Style x:Key="ItemBoxBorderStyle" TargetType="{x:Type Border}">
-            <Setter Property="BorderBrush" Value="{StaticResource BrightBackgroundBrush}" />
-            <Setter Property="BorderThickness" Value="2" />
-            <Setter Property="Background" Value="{StaticResource DarkBackgroundBrush}" />
-            <Style.Triggers>
-                <Trigger Property="IsMouseOver" Value="True">
-                    <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
-                </Trigger>
-                <Trigger Property="IsEnabled" Value="False">
-                    <!-- Misusing IsEnabled to set state flag... I don't know how to bind triggers
-                         to custom dependency props higher up in the visual tree, so yeah. -->
-                    <Setter Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
-                    <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
-                </Trigger>
-            </Style.Triggers>
-        </Style>
-    </UserControl.Resources>
-    <Border Style="{StaticResource ItemBoxBorderStyle}">
-        <v:ItemIconView HorizontalAlignment="Center" VerticalAlignment="Center" />
+    MinWidth="36"
+    MaxWidth="36"
+    MinHeight="36"
+    MaxHeight="36">
+    <Border
+        d:DataContext="{d:DesignInstance v:ItemBoxView}"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=v:ItemBoxView}}"
+        MouseLeftButtonDown="OnClick"
+        ToolTipService.ShowDuration="12000">
+
+        <!-- Detailed item tooltip -->
+        <Border.ToolTip>
+            <!-- The tooltip lives in its own element tree, and needs to be explicitly bound to the ItemBoxView -->
+            <ToolTip
+                DataContext="{Binding Path=PlacementTarget.(FrameworkElement.DataContext).(v:ItemBoxView.DisplayedItem), RelativeSource={RelativeSource Self}}">
+                <v:ItemTooltipView />
+            </ToolTip>
+        </Border.ToolTip>
+
+        <!-- Border changes color depending on selection status -->
+        <Border.Style>
+            <Style TargetType="{x:Type Border}">
+                <Setter Property="BorderBrush" Value="{StaticResource BrightBackgroundBrush}" />
+                <Setter Property="BorderThickness" Value="2" />
+                <Setter Property="Background" Value="{StaticResource DarkBackgroundBrush}" />
+                <Style.Triggers>
+                    <!-- Highlight border when hovering -->
+                    <DataTrigger Binding="{Binding IsMouseOver}" Value="True">
+                        <DataTrigger.Setters>
+                            <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
+                        </DataTrigger.Setters>
+                    </DataTrigger>
+                    <!-- Bright background when selected -->
+                    <DataTrigger Binding="{Binding IsSelected}" Value="True">
+                        <DataTrigger.Setters>
+                            <Setter Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
+                            <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
+                        </DataTrigger.Setters>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Border.Style>
+
+        <!-- Item icon centered in the box -->
+        <v:ItemIconView
+            DataContext="{Binding DisplayedItem}"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center" />
     </Border>
 </UserControl>

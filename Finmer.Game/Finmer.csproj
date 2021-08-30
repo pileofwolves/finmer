@@ -105,6 +105,7 @@
     <Compile Include="Models\UserConfig.cs" />
     <Compile Include="ViewModels\AbilityPointViewModel.cs" />
     <Compile Include="ViewModels\BaseProp.cs" />
+    <Compile Include="ViewModels\CharacterSheetViewModel.cs" />
     <Compile Include="ViewModels\CombatRoundPipsViewModel.cs" />
     <Compile Include="ViewModels\CombatStateViewModel.cs" />
     <Compile Include="ViewModels\GameObjectViewModel.cs" />
@@ -230,6 +231,10 @@
     <DesignData Include="Models\DesignData\SampleCharCreateAbility.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </DesignData>
+    <DesignData Include="Models\DesignData\SampleCharacterSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </DesignData>
     <Page Include="Views\CarouselView.xaml">
       <SubType>Designer</SubType>

@@ -8,6 +8,8 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -27,7 +29,11 @@ namespace Finmer.ViewModels
 
         public JournalViewModel JournalViewModel => m_JournalViewModel ?? (m_JournalViewModel = new JournalViewModel(Player.Journal));
 
-        public ICommand IncreaseAbilityCommand => m_IncreaseAbilityCmd ?? (m_IncreaseAbilityCmd = new RelayCommand(SpendAbilityPoint));
+        public ICommand UseItemCommand => m_UseItemCommand ?? (m_UseItemCommand = new RelayCommand(UseItem));
+
+        public ICommand DropItemCommand => m_DropItemCommand ?? (m_DropItemCommand = new RelayCommand(DropItem));
+
+        public ICommand IncreaseAbilityCommand => m_IncreaseAbilityCommand ?? (m_IncreaseAbilityCommand = new RelayCommand(SpendAbilityPoint));
 
         public Visibility AbilityPointVisibility => AbilityPoints > 0 ? Visibility.Visible : Visibility.Hidden;
 
@@ -57,17 +63,19 @@ namespace Finmer.ViewModels
 
         public string PreyList => String.Join(", ", Player.Stomach.Select(prey => prey.Name));
 
-        public List<Item> Inventory => Player.Inventory;
+        public ObservableCollection<Item> Inventory { get; }
 
         public Item[] Equipment => Player.Equipment;
 
-        private ICommand m_IncreaseAbilityCmd;
-
+        private ICommand m_UseItemCommand;
+        private ICommand m_DropItemCommand;
+        private ICommand m_IncreaseAbilityCommand;
         private JournalViewModel m_JournalViewModel;
 
         public CharacterSheetViewModel(Player player)
         {
             Player = player;
+            Inventory = new ObservableCollection<Item>(Player.Inventory);
         }
 
         private void SpendAbilityPoint(object args)
@@ -93,6 +101,25 @@ namespace Finmer.ViewModels
             OnPropertyChanged(nameof(AbilityPoints));
             OnPropertyChanged(nameof(AbilityPointVisibility));
         }
+
+        private void UseItem(object arg)
+        {
+            Item item = (Item)arg;
+
+            // TODO: Invoke item use script / swap equipment
+            Debug.WriteLine(item);
+        }
+
+        private void DropItem(object arg)
+        {
+            // Remove the item from the character sheet. This will notify the view to update.
+            Item item = (Item)arg;
+            Inventory.Remove(item);
+
+            // Remove the item from the real player inventory. This should be safe to do since modifications are made 1:1.
+            Player.Inventory.Remove(item);
+        }
+
     }
 
 }

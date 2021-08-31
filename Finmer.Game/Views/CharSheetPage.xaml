@@ -7,11 +7,15 @@
     xmlns:cv="clr-namespace:Finmer.Converters"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DesignWidth="1000" d:DesignHeight="640"
     d:DataContext="{d:DesignData Source=../Models/DesignData/SampleCharacterSheet.xaml}">
     <UserControl.Resources>
         <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
+        <cv:CharSheetItemUseConverter x:Key="CharSheetItemUseConverter" />
+        <cv:CharSheetItemDropConverter x:Key="CharSheetItemDropConverter" />
+        <cv:CharSheetUseLabelConverter x:Key="CharSheetUseLabelConverter" />
     </UserControl.Resources>
     <Grid
         HorizontalAlignment="Center"
@@ -262,7 +266,7 @@
             </Popup>
 
             <!-- Inventory list -->
-            <v:ItemListView ItemsSource="{Binding Inventory}">
+            <v:ItemListView ItemsSource="{Binding Inventory, Mode=OneWay}">
                 <v:ItemListView.ItemOptionsTemplate>
                     <ControlTemplate>
                         <!-- Item action buttons -->
@@ -273,18 +277,24 @@
                                 <ColumnDefinition Width="*" />
                                 <ColumnDefinition Width="*" />
                             </Grid.ColumnDefinitions>
+                            <!-- Use/Equip button -->
                             <Button
                                 Grid.Column="0"
                                 Margin="2"
                                 Height="35"
-                                Content="Use"
-                                IsEnabled="{Binding Asset.CanUseInField}" />
+                                Content="{Binding Converter={StaticResource CharSheetUseLabelConverter}}"
+                                Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UseItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                                CommandParameter="{Binding}"
+                                IsEnabled="{Binding Converter={StaticResource CharSheetItemUseConverter}}" />
+                            <!-- Drop button -->
                             <Button
                                 Grid.Column="1"
                                 Margin="2"
                                 Height="35"
                                 Content="Drop"
-                                IsEnabled="{Binding Asset.IsQuestItem}" />
+                                Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.DropItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                                CommandParameter="{Binding}"
+                                IsEnabled="{Binding Converter={StaticResource CharSheetItemDropConverter}}" />
                         </Grid>
                     </ControlTemplate>
                 </v:ItemListView.ItemOptionsTemplate>

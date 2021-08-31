@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CharSheetItemDropConverter.cs" />
+    <Compile Include="Converters\CharSheetUseLabelConverter.cs" />
+    <Compile Include="Converters\CharSheetItemUseConverter.cs" />
     <Compile Include="Converters\HourToClockAngleConverter.cs" />
     <Compile Include="Converters\CountToListConverter.cs" />
     <Compile Include="Converters\QuantityToVisibilityConverter.cs" />

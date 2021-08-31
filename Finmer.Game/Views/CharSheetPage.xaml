@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:cv="clr-namespace:Finmer.Converters"
     xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
     d:DesignWidth="1000" d:DesignHeight="640"
     d:DataContext="{d:DesignData Source=../Models/DesignData/SampleCharacterSheet.xaml}">
@@ -212,66 +213,44 @@
         </StackPanel>
 
         <!-- MIDDLE PANEL -->
-        <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
-            <!-- Equipment -->
-            <TextBlock Text="Equipment" Style="{StaticResource TextBlockLarge}" />
-            <StackPanel Margin="10,16,10,24" Orientation="Horizontal">
-                <v:ItemBoxView
-                    Margin="0,0,12,0"
-                    SelectedChanged="EquipmentBox_SelectedChanged"
-                    DisplayedItem="{Binding Equipment[0]}" />
-                <v:ItemBoxView
-                    Margin="0,0,12,0"
-                    SelectedChanged="EquipmentBox_SelectedChanged"
-                    DisplayedItem="{Binding Equipment[1]}" />
+        <DockPanel Grid.Column="1" Grid.Row="0">
+            <StackPanel DockPanel.Dock="Top" Orientation="Vertical">
+                <!-- Equipment -->
+                <TextBlock Text="Equipment" Style="{StaticResource TextBlockLarge}" />
+                <StackPanel Margin="10,16,10,24" Orientation="Horizontal">
+                    <v:ItemBoxView
+                        Margin="0,0,12,0"
+                        SelectedChanged="EquipmentBox_SelectedChanged"
+                        DisplayedItem="{Binding Equipment[0]}" />
+                    <v:ItemBoxView
+                        Margin="0,0,12,0"
+                        SelectedChanged="EquipmentBox_SelectedChanged"
+                        DisplayedItem="{Binding Equipment[1]}" />
+                </StackPanel>
+
+                <!-- Inventory -->
+                <TextBlock Text="Backpack" Style="{StaticResource TextBlockLarge}" />
+                <Grid Margin="14">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <!-- Money -->
+                    <StackPanel Orientation="Horizontal" Grid.Column="0">
+                        <Image Source="/Finmer;component/Resources/UI/Money.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                        <TextBlock Style="{StaticResource TextBlockDefault}">
+                            <Run Text="{Binding Money, Mode=OneWay}" />
+                        </TextBlock>
+                    </StackPanel>
+                    <!-- Item count -->
+                    <StackPanel Orientation="Horizontal" Grid.Column="1">
+                        <Image Source="/Finmer;component/Resources/UI/StatInventory.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                        <TextBlock Style="{StaticResource TextBlockDefault}">
+                            <Run Text="{Binding Inventory.Count, Mode=OneWay}" /> item(s)
+                        </TextBlock>
+                    </StackPanel>
+                </Grid>
             </StackPanel>
-
-            <!-- Inventory -->
-            <TextBlock Text="Backpack" Style="{StaticResource TextBlockLarge}" />
-            <Grid Margin="14">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!-- Money -->
-                <StackPanel Orientation="Horizontal" Grid.Column="0">
-                    <Image Source="/Finmer;component/Resources/UI/Money.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    <TextBlock Style="{StaticResource TextBlockDefault}">
-                        <Run Text="{Binding Money, Mode=OneWay}" />
-                    </TextBlock>
-                </StackPanel>
-                <!-- Item count -->
-                <StackPanel Orientation="Horizontal" Grid.Column="1">
-                    <Image Source="/Finmer;component/Resources/UI/StatInventory.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    <TextBlock Style="{StaticResource TextBlockDefault}">
-                        <Run Text="{Binding Inventory.Count, Mode=OneWay}" /> item(s)
-                    </TextBlock>
-                </StackPanel>
-            </Grid>
-
-            <!-- Inventory list -->
-            <v:ItemListView
-                ItemsSource="{Binding Inventory}" />
-
-            <!-- Item actions -->
-            <Grid Margin="4">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button
-                    Grid.Column="0"
-                    Margin="3"
-                    Height="35"
-                    Content="Use"
-                    IsEnabled="False" />
-                <Button
-                    Grid.Column="1"
-                    Margin="3"
-                    Height="35"
-                    Content="Drop"
-                    IsEnabled="False" />
-            </Grid>
             <Popup x:Name="PopupDropConfirm" MaxWidth="200" StaysOpen="False">
                 <Border Style="{StaticResource PopupBorderStyle}">
                     <StackPanel>
@@ -281,7 +260,36 @@
                     </StackPanel>
                 </Border>
             </Popup>
-        </StackPanel>
+
+            <!-- Inventory list -->
+            <v:ItemListView ItemsSource="{Binding Inventory}">
+                <v:ItemListView.ItemOptionsTemplate>
+                    <ControlTemplate>
+                        <!-- Item action buttons -->
+                        <Grid
+                            d:DataContext="{d:DesignInstance gp:Item}"
+                            Margin="8">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="*" />
+                            </Grid.ColumnDefinitions>
+                            <Button
+                                Grid.Column="0"
+                                Margin="2"
+                                Height="35"
+                                Content="Use"
+                                IsEnabled="{Binding Asset.CanUseInField}" />
+                            <Button
+                                Grid.Column="1"
+                                Margin="2"
+                                Height="35"
+                                Content="Drop"
+                                IsEnabled="{Binding Asset.IsQuestItem}" />
+                        </Grid>
+                    </ControlTemplate>
+                </v:ItemListView.ItemOptionsTemplate>
+            </v:ItemListView>
+        </DockPanel>
 
         <!-- RIGHT PANEL -->
         <DockPanel Grid.Column="2" Grid.Row="0">

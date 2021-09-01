@@ -55,7 +55,7 @@ namespace Finmer
 
         protected override void OnExit(ExitEventArgs e)
         {
-            //Release Lua Context before Application is destroyed.
+            // Ensure all gameplay state is released while the app framework is still available
             GameController.ExitSession();
 
             // Persist the user settings to disk

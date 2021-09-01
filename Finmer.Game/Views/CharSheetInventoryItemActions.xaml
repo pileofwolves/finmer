@@ -1,0 +1,68 @@
+﻿<UserControl
+    x:Class="Finmer.Views.CharSheetInventoryItemActions"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    mc:Ignorable="d"
+    d:DesignHeight="100"
+    d:DesignWidth="250">
+    <UserControl.Resources>
+        <cv:CharSheetItemUseConverter x:Key="CharSheetItemUseConverter" />
+        <cv:CharSheetItemDropConverter x:Key="CharSheetItemDropConverter" />
+        <cv:CharSheetUseLabelConverter x:Key="CharSheetUseLabelConverter" />
+    </UserControl.Resources>
+    <!-- Item action buttons -->
+    <Grid
+        d:DataContext="{d:DesignInstance gp:Item}"
+        Margin="8">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <!-- Use/Equip button -->
+        <Button
+            Grid.Column="0"
+            Margin="2"
+            Height="35"
+            Content="{Binding Converter={StaticResource CharSheetUseLabelConverter}}"
+            Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UseItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+            CommandParameter="{Binding}"
+            IsEnabled="{Binding Converter={StaticResource CharSheetItemUseConverter}}" />
+        <!-- Drop button -->
+        <ToggleButton
+            Grid.Column="1"
+            x:Name="ItemDropButton"
+            Margin="2"
+            Height="35"
+            Content="Drop"
+            IsEnabled="{Binding Converter={StaticResource CharSheetItemDropConverter}}" />
+        <!-- Drop confirmation popup -->
+        <Popup
+            Grid.Column="1"
+            IsOpen="{Binding IsChecked, Mode=TwoWay, ElementName=ItemDropButton}"
+            MaxWidth="200"
+            StaysOpen="False">
+            <Border Style="{StaticResource PopupBorderStyle}">
+                <StackPanel>
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Margin="6,6,6,16"
+                        Text="Are you sure you want to discard this item?"
+                        TextWrapping="Wrap" />
+                    <Button
+                        Height="35"
+                        Content="Confirm Drop"
+                        Foreground="OrangeRed"
+                        Margin="5"
+                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.DropItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                        CommandParameter="{Binding}" />
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

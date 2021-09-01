@@ -133,6 +133,9 @@
     <Compile Include="Views\CharCreateBasic.xaml.cs">
       <DependentUpon>CharCreateBasic.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\CharSheetInventoryItemActions.xaml.cs">
+      <DependentUpon>CharSheetInventoryItemActions.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CharSheetPage.xaml.cs">
       <DependentUpon>CharSheetPage.xaml</DependentUpon>
     </Compile>
@@ -248,6 +251,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CharCreateBasic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharSheetInventoryItemActions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

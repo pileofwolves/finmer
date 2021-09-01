@@ -1,0 +1,12 @@
+﻿<vm:CharacterSheetViewModel
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    Name="Food"
+    Species="tasty snack"
+    Level="3"
+    XP="159"
+    RequiredXP="200"
+    Strength="4"
+    Agility="2"
+    Body="4"
+    Wits="1"
+    Money="1234" />

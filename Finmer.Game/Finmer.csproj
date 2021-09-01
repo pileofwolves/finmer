@@ -63,6 +63,9 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\CharSheetItemDropConverter.cs" />
+    <Compile Include="Converters\CharSheetUseLabelConverter.cs" />
+    <Compile Include="Converters\CharSheetItemUseConverter.cs" />
     <Compile Include="Converters\HourToClockAngleConverter.cs" />
     <Compile Include="Converters\CountToListConverter.cs" />
     <Compile Include="Converters\QuantityToVisibilityConverter.cs" />
@@ -105,6 +108,7 @@
     <Compile Include="Models\UserConfig.cs" />
     <Compile Include="ViewModels\AbilityPointViewModel.cs" />
     <Compile Include="ViewModels\BaseProp.cs" />
+    <Compile Include="ViewModels\CharacterSheetViewModel.cs" />
     <Compile Include="ViewModels\CombatRoundPipsViewModel.cs" />
     <Compile Include="ViewModels\CombatStateViewModel.cs" />
     <Compile Include="ViewModels\GameObjectViewModel.cs" />
@@ -128,6 +132,9 @@
     </Compile>
     <Compile Include="Views\CharCreateBasic.xaml.cs">
       <DependentUpon>CharCreateBasic.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CharSheetInventoryItemActions.xaml.cs">
+      <DependentUpon>CharSheetInventoryItemActions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CharSheetPage.xaml.cs">
       <DependentUpon>CharSheetPage.xaml</DependentUpon>
@@ -167,8 +174,8 @@
     <Compile Include="Views\GameOverPanelView.xaml.cs">
       <DependentUpon>GameOverPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemBoxView.xaml.cs">
-      <DependentUpon>ItemBoxView.xaml</DependentUpon>
+    <Compile Include="Views\ItemEquipmentBoxView.xaml.cs">
+      <DependentUpon>ItemEquipmentBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JournalListItemView.xaml.cs">
       <DependentUpon>JournalListItemView.xaml</DependentUpon>
@@ -231,6 +238,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </DesignData>
+    <DesignData Include="Models\DesignData\SampleCharacterSheet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </DesignData>
     <Page Include="Views\CarouselView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -240,6 +251,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\CharCreateBasic.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CharSheetInventoryItemActions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -291,7 +306,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemBoxView.xaml">
+    <Page Include="Views\ItemEquipmentBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

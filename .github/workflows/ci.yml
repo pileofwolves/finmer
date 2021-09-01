@@ -1,0 +1,40 @@
+name: CI Build
+
+on:
+  push:
+    branches: [ $default-branch ]
+  pull_request:
+    branches: [ $default-branch ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    name: Windows
+    strategy:
+      matrix:
+        configuration: [Debug, Release]
+    env:
+      SolutionName: Finmer.sln
+
+    steps:
+    # Download repository
+    - name: Checkout
+      uses: actions/checkout@v2
+      with:
+        fetch-depth: 0
+
+    # Add MSBuild to the PATH
+    - name: Setup MSBuild
+      uses: microsoft/setup-msbuild@v1.0.2
+
+    # Restore NuGet packages
+    - name: Restore packages
+      run: msbuild $env:SolutionName /t:Restore /p:Configuration=$env:Configuration
+      env:
+        Configuration: ${{ matrix.configuration }}
+
+    # Build all executables
+    - name: Build solution
+      run: msbuild $env:SolutionName /p:Configuration=$env:Configuration
+      env:
+        Configuration: ${{ matrix.configuration }}

@@ -81,6 +81,7 @@
     <Compile Include="Gameplay\CompassDirection.cs" />
     <Compile Include="Gameplay\GameSession.cs" />
     <Compile Include="Gameplay\Gender.cs" />
+    <Compile Include="Gameplay\ItemUtilities.cs" />
     <Compile Include="Gameplay\Journal.cs" />
     <Compile Include="Gameplay\SceneCombat2.cs" />
     <Compile Include="Gameplay\Scripting\Combat2ScriptLibrary.cs" />

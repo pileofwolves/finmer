@@ -32,7 +32,12 @@ namespace Finmer.Converters
             // Usable-type items as well as equipable items can be 'used' from the character sheet
             switch (item.Asset.ItemType)
             {
+                case AssetItem.EItemType.Equipable:
+                    // Equipable items are always available, since they can be swapped with the current equipment if needed
+                    return true;
+
                 case AssetItem.EItemType.Usable:
+                    // We're in the character sheet, so Usable items should be marked as field-usable
                     return item.Asset.CanUseInField;
 
                 default:

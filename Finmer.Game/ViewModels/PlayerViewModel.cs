@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using Finmer.Gameplay;
 
 namespace Finmer.ViewModels
@@ -32,7 +32,7 @@ namespace Finmer.ViewModels
 
         public string Species => PlayerModel.Species;
 
-        public List<Item> Inventory => PlayerModel.Inventory;
+        public ObservableCollection<Item> Inventory => PlayerModel.Inventory;
 
         public int TimeHour => PlayerModel.TimeHour;
 

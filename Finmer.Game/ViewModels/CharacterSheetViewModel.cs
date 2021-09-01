@@ -8,10 +8,10 @@
 
 using System;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
+using Finmer.Core.Assets;
 using Finmer.Gameplay;
 using Finmer.Utility;
 
@@ -64,7 +64,7 @@ namespace Finmer.ViewModels
 
         public string PreyList => String.Join(", ", Player.Stomach.Select(prey => prey.Name));
 
-        public ObservableCollection<Item> Inventory { get; }
+        public ObservableCollection<Item> Inventory => Player.Inventory;
 
         public Item[] Equipment => Player.Equipment;
 
@@ -77,7 +77,6 @@ namespace Finmer.ViewModels
         public CharacterSheetViewModel(Player player)
         {
             Player = player;
-            Inventory = new ObservableCollection<Item>(Player.Inventory);
         }
 
         private void SpendAbilityPoint(object args)
@@ -108,37 +107,45 @@ namespace Finmer.ViewModels
         {
             Item item = (Item)arg;
 
-            // TODO: Invoke item use script / swap equipment
-            Debug.WriteLine(item);
+            // Apply this item
+            switch (item.Asset.ItemType)
+            {
+                case AssetItem.EItemType.Equipable:
+                    // Equip the item, potentially swapping it with another
+                    ItemUtilities.EquipItem(Player, item);
+                    OnPropertyChanged(nameof(Equipment));
+                    break;
+
+                case AssetItem.EItemType.Usable:
+                    // Use and consume the item
+                    ItemUtilities.UseItem(GameController.Session, item);
+                    break;
+
+                default:
+                    throw new ArgumentException("Item cannot be used from the character sheet", nameof(arg));
+            }
         }
 
         private void DropItem(object arg)
         {
-            // Remove the item from the character sheet. This will notify the view to update.
+            // Remove the item from the character sheet. This will also notify the view to update.
             Item item = (Item)arg;
             Inventory.Remove(item);
-
-            // Remove the item from the real player inventory. This should be safe to do since modifications are made 1:1.
-            Player.Inventory.Remove(item);
         }
 
         private void UnequipItem(object arg)
         {
             // Find the equipped item; validate that the slot actually contains something as a failsafe
             int equipment_index = (int)arg;
-            Item equipped = Player.Equipment[equipment_index];
+            Item equipped = Equipment[equipment_index];
             if (equipped == null)
                 return;
 
-            // Remove the equipped item from the equipment slot
-            Player.Equipment[equipment_index] = null;
+            // Unequip it
+            ItemUtilities.UnequipItem(Player, equipment_index);
 
             // Make sure to update the equipment box view
             OnPropertyChanged(nameof(Equipment));
-
-            // Append the item to the end of the inventory
-            Inventory.Add(equipped);
-            Player.Inventory.Add(equipped);
         }
 
     }

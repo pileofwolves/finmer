@@ -225,6 +225,14 @@
                         Margin="0,0,12,0"
                         EquipmentIndex="1"
                         DisplayedItem="{Binding Equipment[1]}" />
+                    <v:ItemEquipmentBoxView
+                        Margin="0,0,12,0"
+                        EquipmentIndex="2"
+                        DisplayedItem="{Binding Equipment[2]}" />
+                    <v:ItemEquipmentBoxView
+                        Margin="0,0,12,0"
+                        EquipmentIndex="3"
+                        DisplayedItem="{Binding Equipment[3]}" />
                 </StackPanel>
 
                 <!-- Inventory -->

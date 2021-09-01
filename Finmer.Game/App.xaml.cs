@@ -55,6 +55,9 @@ namespace Finmer
 
         protected override void OnExit(ExitEventArgs e)
         {
+            //Prevent code from triggerting until after game session has been properly released.
+            GameController.ExitSession();
+
             // Persist the user settings to disk
             UserConfig.Save();
 

@@ -17,6 +17,7 @@ jobs:
       SolutionName: Finmer.sln
 
     steps:
+    # Download repository
     - name: Checkout
       uses: actions/checkout@v2
       with:

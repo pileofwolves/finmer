@@ -7,7 +7,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Linq;
@@ -32,6 +31,8 @@ namespace Finmer.ViewModels
         public ICommand UseItemCommand => m_UseItemCommand ?? (m_UseItemCommand = new RelayCommand(UseItem));
 
         public ICommand DropItemCommand => m_DropItemCommand ?? (m_DropItemCommand = new RelayCommand(DropItem));
+
+        public ICommand UnequipItemCommand => m_UnequipItemCommand ?? (m_UnequipItemCommand = new RelayCommand(UnequipItem));
 
         public ICommand IncreaseAbilityCommand => m_IncreaseAbilityCommand ?? (m_IncreaseAbilityCommand = new RelayCommand(SpendAbilityPoint));
 
@@ -69,6 +70,7 @@ namespace Finmer.ViewModels
 
         private ICommand m_UseItemCommand;
         private ICommand m_DropItemCommand;
+        private ICommand m_UnequipItemCommand;
         private ICommand m_IncreaseAbilityCommand;
         private JournalViewModel m_JournalViewModel;
 
@@ -118,6 +120,25 @@ namespace Finmer.ViewModels
 
             // Remove the item from the real player inventory. This should be safe to do since modifications are made 1:1.
             Player.Inventory.Remove(item);
+        }
+
+        private void UnequipItem(object arg)
+        {
+            // Find the equipped item; validate that the slot actually contains something as a failsafe
+            int equipment_index = (int)arg;
+            Item equipped = Player.Equipment[equipment_index];
+            if (equipped == null)
+                return;
+
+            // Remove the equipped item from the equipment slot
+            Player.Equipment[equipment_index] = null;
+
+            // Make sure to update the equipment box view
+            OnPropertyChanged(nameof(Equipment));
+
+            // Append the item to the end of the inventory
+            Inventory.Add(equipped);
+            Player.Inventory.Add(equipped);
         }
 
     }

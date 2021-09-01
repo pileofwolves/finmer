@@ -7,6 +7,7 @@
  */
 
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Input;
 using Finmer.Gameplay;
@@ -21,31 +22,16 @@ namespace Finmer.Views
     {
 
         /// <summary>
-        /// Currently selected item box.
-        /// </summary>
-        /// <remarks>
-        /// Note that this is a static because that's a much simpler solution than implementing some kind of overarching viewmodel for
-        /// simulating radio buttons etc. Also, it's a weak reference to ensure that the field does not keep closed UI trees alive.
-        /// </remarks>
-        private static readonly WeakReference<ItemEquipmentBoxView> s_Selected = new WeakReference<ItemEquipmentBoxView>(null);
-
-        /// <summary>
         /// Dependency property for DisplayedItem.
         /// </summary>
         public static readonly DependencyProperty DisplayedItemProperty = DependencyProperty.Register(
             "DisplayedItem", typeof(Item), typeof(ItemEquipmentBoxView), new PropertyMetadata(null));
 
         /// <summary>
-        /// Dependency property for IsSelected.
+        /// Dependency property for EquipmentIndex.
         /// </summary>
-        public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
-            "IsSelected", typeof(bool), typeof(ItemEquipmentBoxView), new PropertyMetadata(false));
-
-        /// <summary>
-        /// Routed event for SelectedChanged.
-        /// </summary>
-        public static readonly RoutedEvent SelectedChangedEvent = EventManager.RegisterRoutedEvent(
-            "SelectedChanged", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(ItemEquipmentBoxView));
+        public static readonly DependencyProperty EquipmentIndexProperty = DependencyProperty.Register(
+            "EquipmentIndex", typeof(int), typeof(ItemEquipmentBoxView), new PropertyMetadata(0));
 
         /// <summary>
         /// Indicates whether the user has activated this UI element.
@@ -59,10 +45,10 @@ namespace Finmer.Views
         /// <summary>
         /// Indicates whether the user has activated this UI element.
         /// </summary>
-        public bool IsSelected
+        public int EquipmentIndex
         {
-            get => (bool)GetValue(IsSelectedProperty);
-            set => SetValue(IsSelectedProperty, value);
+            get => (int)GetValue(EquipmentIndexProperty);
+            set => SetValue(EquipmentIndexProperty, value);
         }
 
         public ItemEquipmentBoxView()
@@ -70,34 +56,17 @@ namespace Finmer.Views
             InitializeComponent();
         }
 
-        /// <summary>
-        /// Fired when the selection status of this UI element changes.
-        /// </summary>
-        public event RoutedEventHandler SelectedChanged
+        private void OpenActionsButton_Click(object sender, RoutedEventArgs e)
         {
-            add => AddHandler(SelectedChangedEvent, value);
-            remove => RemoveHandler(SelectedChangedEvent, value);
+            // Open the actions popup if there is actually an item in this box
+            if (DisplayedItem != null)
+                EquipmentActionsPopup.IsOpen = true;
         }
 
-        private void OnClick(object sender, MouseButtonEventArgs e)
+        private void UnequipButton_Click(object sender, RoutedEventArgs e)
         {
-            // Deselect the previous selected box, if any.
-            if (s_Selected.TryGetTarget(out ItemEquipmentBoxView previous))
-            {
-                previous.IsSelected = false;
-                previous.RaiseEvent(new RoutedEventArgs(SelectedChangedEvent, previous));
-            }
-
-            // Can only select a box if it has an item in it
-            if (DisplayedItem == null)
-                return;
-
-            // Assign the new box
-            s_Selected.SetTarget(this);
-            IsSelected = true;
-
-            // Trigger event
-            RaiseEvent(new RoutedEventArgs(SelectedChangedEvent, this));
+            // Ensure the popup closes
+            EquipmentActionsPopup.IsOpen = false;
         }
 
     }

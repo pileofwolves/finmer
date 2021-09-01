@@ -6,7 +6,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Diagnostics;
 using System.Windows;
 using Finmer.Gameplay;
 using Finmer.Utility;
@@ -21,31 +20,18 @@ namespace Finmer.Views
     public partial class CharSheetPage
     {
 
-        private readonly CharacterSheetViewModel m_ViewModel;
-
         public CharSheetPage()
         {
             InitializeComponent();
 
             // Populate the main view
             var player = GameController.Session.Player;
-            m_ViewModel = new CharacterSheetViewModel(player);
-            DataContext = m_ViewModel;
+            DataContext = new CharacterSheetViewModel(player);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideRight);
-        }
-
-        private void EquipmentBox_SelectedChanged(object sender, RoutedEventArgs e)
-        {
-            ItemEquipmentBoxView box = sender as ItemEquipmentBoxView;
-            if (box == null || !box.IsSelected)
-                return;
-
-            // Update which box is currently selected
-            Debug.WriteLine(box.DisplayedItem?.Asset.ObjectName ?? "Nothing");
         }
 
     }

@@ -55,8 +55,6 @@ namespace Finmer
 
         protected override void OnExit(ExitEventArgs e)
         {
-            //Prevent script erros through random execution.
-            GameController.ExitSession();
             // Persist the user settings to disk
             UserConfig.Save();
 

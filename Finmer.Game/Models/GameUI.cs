@@ -140,6 +140,7 @@ namespace Finmer.Models
 
         public void Reset()
         {
+
             ClearButtons();
             ClearLog();
 

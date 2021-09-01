@@ -14,6 +14,6 @@
 	"UseDescription": "When used while swallowed, fill the vial with stomach slime.",
 	"UseScript": {
 		"ID": "825616c7-f734-4ef2-a914-971981705d2c",
-		"Name": "SQ01_Vial_UseScript"
+		"Name": "I_SQ01_Vial_UseScript"
 	}
 }

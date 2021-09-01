@@ -38,8 +38,7 @@ namespace Finmer.Converters
 
                     return "Use";
 
-                case AssetItem.EItemType.Weapon:
-                case AssetItem.EItemType.Armor:
+                case AssetItem.EItemType.Equipable:
                     return "Equip";
 
                 default:

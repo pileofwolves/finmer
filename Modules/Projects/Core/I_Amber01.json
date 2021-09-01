@@ -7,13 +7,5 @@
 	"FlavorText": "While the exact reason is a strangely well-guarded secret, even trace amounts of true amber are of interest to those who would claim some degree of mastery over the unnatural arts.",
 	"ItemType": "Generic",
 	"PurchaseValue": 40,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "2455bfc3-f20e-4f57-b207-2b52d2eb0403",
-		"Name": "3476c303-554a-4651-8952-aac9c1a8f329_UseScript"
-	}
+	"IsQuestItem": false
 }

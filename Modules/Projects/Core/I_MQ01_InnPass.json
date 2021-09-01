@@ -7,13 +7,5 @@
 	"FlavorText": "A small piece of writing given to you by the mayor. The scribbles are completely indecipherable, but the innkeep should know what to do with it.",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,
-	"IsQuestItem": true,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "22f3c9e3-7f30-4cae-8430-7e66089db670",
-		"Name": "7678c3fd-5f12-4a72-9e0a-16d43615741e_UseScript"
-	}
+	"IsQuestItem": true
 }

@@ -1,5 +1,7 @@
 # FINMER
 
+[![Build](https://github.com/pileofwolves/finmer/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/pileofwolves/finmer/actions/workflows/ci.yml)
+
 Welcome to Finmer, an 18+ interactive text adventure.
 
 ## :warning: CAUTION

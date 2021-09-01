@@ -17,7 +17,7 @@ namespace Finmer.Views
     /// <summary>
     /// Interaction logic for ItemBoxView.xaml
     /// </summary>
-    public partial class ItemBoxView
+    public partial class ItemEquipmentBoxView
     {
 
         /// <summary>
@@ -27,25 +27,25 @@ namespace Finmer.Views
         /// Note that this is a static because that's a much simpler solution than implementing some kind of overarching viewmodel for
         /// simulating radio buttons etc. Also, it's a weak reference to ensure that the field does not keep closed UI trees alive.
         /// </remarks>
-        private static readonly WeakReference<ItemBoxView> s_Selected = new WeakReference<ItemBoxView>(null);
+        private static readonly WeakReference<ItemEquipmentBoxView> s_Selected = new WeakReference<ItemEquipmentBoxView>(null);
 
         /// <summary>
         /// Dependency property for DisplayedItem.
         /// </summary>
         public static readonly DependencyProperty DisplayedItemProperty = DependencyProperty.Register(
-            "DisplayedItem", typeof(Item), typeof(ItemBoxView), new PropertyMetadata(null));
+            "DisplayedItem", typeof(Item), typeof(ItemEquipmentBoxView), new PropertyMetadata(null));
 
         /// <summary>
         /// Dependency property for IsSelected.
         /// </summary>
         public static readonly DependencyProperty IsSelectedProperty = DependencyProperty.Register(
-            "IsSelected", typeof(bool), typeof(ItemBoxView), new PropertyMetadata(false));
+            "IsSelected", typeof(bool), typeof(ItemEquipmentBoxView), new PropertyMetadata(false));
 
         /// <summary>
         /// Routed event for SelectedChanged.
         /// </summary>
         public static readonly RoutedEvent SelectedChangedEvent = EventManager.RegisterRoutedEvent(
-            "SelectedChanged", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(ItemBoxView));
+            "SelectedChanged", RoutingStrategy.Direct, typeof(RoutedEventHandler), typeof(ItemEquipmentBoxView));
 
         /// <summary>
         /// Indicates whether the user has activated this UI element.
@@ -65,7 +65,7 @@ namespace Finmer.Views
             set => SetValue(IsSelectedProperty, value);
         }
 
-        public ItemBoxView()
+        public ItemEquipmentBoxView()
         {
             InitializeComponent();
         }
@@ -82,7 +82,7 @@ namespace Finmer.Views
         private void OnClick(object sender, MouseButtonEventArgs e)
         {
             // Deselect the previous selected box, if any.
-            if (s_Selected.TryGetTarget(out ItemBoxView previous))
+            if (s_Selected.TryGetTarget(out ItemEquipmentBoxView previous))
             {
                 previous.IsSelected = false;
                 previous.RaiseEvent(new RoutedEventArgs(SelectedChangedEvent, previous));

@@ -40,7 +40,7 @@ namespace Finmer.Views
 
         private void EquipmentBox_SelectedChanged(object sender, RoutedEventArgs e)
         {
-            ItemBoxView box = sender as ItemBoxView;
+            ItemEquipmentBoxView box = sender as ItemEquipmentBoxView;
             if (box == null || !box.IsSelected)
                 return;
 

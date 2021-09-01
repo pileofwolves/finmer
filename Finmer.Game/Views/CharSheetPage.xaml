@@ -217,11 +217,11 @@
                 <!-- Equipment -->
                 <TextBlock Text="Equipment" Style="{StaticResource TextBlockLarge}" />
                 <StackPanel Margin="10,16,10,24" Orientation="Horizontal">
-                    <v:ItemBoxView
+                    <v:ItemEquipmentBoxView
                         Margin="0,0,12,0"
                         SelectedChanged="EquipmentBox_SelectedChanged"
                         DisplayedItem="{Binding Equipment[0]}" />
-                    <v:ItemBoxView
+                    <v:ItemEquipmentBoxView
                         Margin="0,0,12,0"
                         SelectedChanged="EquipmentBox_SelectedChanged"
                         DisplayedItem="{Binding Equipment[1]}" />

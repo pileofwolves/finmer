@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Finmer.Views.ItemBoxView"
+    x:Class="Finmer.Views.ItemEquipmentBoxView"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -11,8 +11,8 @@
     MinHeight="36"
     MaxHeight="36">
     <Border
-        d:DataContext="{d:DesignInstance v:ItemBoxView}"
-        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=v:ItemBoxView}}"
+        d:DataContext="{d:DesignInstance v:ItemEquipmentBoxView}"
+        DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=v:ItemEquipmentBoxView}}"
         MouseLeftButtonDown="OnClick"
         ToolTipService.ShowDuration="12000">
 
@@ -20,7 +20,7 @@
         <Border.ToolTip>
             <!-- The tooltip lives in its own element tree, and needs to be explicitly bound to the ItemBoxView -->
             <ToolTip
-                DataContext="{Binding Path=PlacementTarget.(FrameworkElement.DataContext).(v:ItemBoxView.DisplayedItem), RelativeSource={RelativeSource Self}}">
+                DataContext="{Binding Path=PlacementTarget.(FrameworkElement.DataContext).(v:ItemEquipmentBoxView.DisplayedItem), RelativeSource={RelativeSource Self}}">
                 <v:ItemTooltipView />
             </ToolTip>
         </Border.ToolTip>

@@ -174,8 +174,8 @@
     <Compile Include="Views\GameOverPanelView.xaml.cs">
       <DependentUpon>GameOverPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemBoxView.xaml.cs">
-      <DependentUpon>ItemBoxView.xaml</DependentUpon>
+    <Compile Include="Views\ItemEquipmentBoxView.xaml.cs">
+      <DependentUpon>ItemEquipmentBoxView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\JournalListItemView.xaml.cs">
       <DependentUpon>JournalListItemView.xaml</DependentUpon>
@@ -306,7 +306,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemBoxView.xaml">
+    <Page Include="Views\ItemEquipmentBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

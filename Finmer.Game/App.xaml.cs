@@ -55,6 +55,9 @@ namespace Finmer
 
         protected override void OnExit(ExitEventArgs e)
         {
+            // Ensure all gameplay state is released while the app framework is still available
+            GameController.ExitSession();
+
             // Persist the user settings to disk
             UserConfig.Save();
 

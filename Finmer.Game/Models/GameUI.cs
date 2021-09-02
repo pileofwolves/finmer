@@ -151,6 +151,7 @@ namespace Finmer.Models
             IsScriptConsoleOpened = false;
             ControlsEnabled = false;
             InventoryEnabled = false;
+            
         }
 
         public void AddButton(ChoiceButtonModel settings)

@@ -7,7 +7,7 @@
  */
 
 using System;
-using System.Collections.ObjectModel;
+using System.Collections.Generic;
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
@@ -64,7 +64,7 @@ namespace Finmer.ViewModels
 
         public string PreyList => String.Join(", ", Player.Stomach.Select(prey => prey.Name));
 
-        public ObservableCollection<Item> Inventory => Player.Inventory;
+        public IReadOnlyCollection<Item> Inventory { get; private set; }
 
         public Item[] Equipment => Player.Equipment;
 
@@ -77,6 +77,8 @@ namespace Finmer.ViewModels
         public CharacterSheetViewModel(Player player)
         {
             Player = player;
+
+            RefreshInventory();
         }
 
         private void SpendAbilityPoint(object args)
@@ -124,13 +126,18 @@ namespace Finmer.ViewModels
                 default:
                     throw new ArgumentException("Item cannot be used from the character sheet", nameof(arg));
             }
+
+            OnPropertyChanged(nameof(Inventory));
         }
 
         private void DropItem(object arg)
         {
-            // Remove the item from the character sheet. This will also notify the view to update.
+            // Remove the item from the character sheet
             Item item = (Item)arg;
-            Inventory.Remove(item);
+            Player.Inventory.Remove(item);
+
+            // Refresh the cached copy for the view
+            RefreshInventory();
         }
 
         private void UnequipItem(object arg)
@@ -146,6 +153,17 @@ namespace Finmer.ViewModels
 
             // Make sure to update the equipment box view
             OnPropertyChanged(nameof(Equipment));
+
+            // Refresh the cached copy for the view
+            RefreshInventory();
+        }
+
+        private void RefreshInventory()
+        {
+            // ListBox will not update the items collection if the collection changes but the collection itself remains reference-equal.
+            // So instead, we'll just allocate a new container entirely, copying the player's inventory into it.
+            Inventory = new List<Item>(Player.Inventory);
+            OnPropertyChanged(nameof(Inventory));
         }
 
     }

@@ -132,6 +132,10 @@ namespace Finmer.Gameplay
                 case EMenuState.SelectTarget:
                     ShowUITargetSelect(GameUI.Instance);
                     break;
+
+                case EMenuState.SelectItem:
+                    ShowUIItemSelect(GameUI.Instance);
+                    break;
             }
         }
 
@@ -254,6 +258,10 @@ namespace Finmer.Gameplay
                 case EMenuState.SelectTarget:
                     HandlePlayerInputSelectTarget(choice);
                     break;
+
+                case EMenuState.SelectItem:
+                    HandlePlayerInputSelectItem(choice);
+                    break;
             }
 
             // Validate handler output - must either have an action selected, or have a submenu open
@@ -266,7 +274,7 @@ namespace Finmer.Gameplay
         /// <remarks>
         /// If multiple targets are available, changes state to a target select submenu; otherwise, selects the one available target.
         /// </remarks>
-        private void HandlePlayerPotentialTargetSelect(ECombatAction intent)
+        private void BeginPlayerPotentialTargetSelect(ECombatAction intent)
         {
             Debug.Assert(m_PotentialPlayerTargets.Count != 0);
 
@@ -293,12 +301,16 @@ namespace Finmer.Gameplay
                 case ECombatAction.Attack:
                 case ECombatAction.GrappleInitiate:
                     m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
-                    HandlePlayerPotentialTargetSelect(action);
+                    BeginPlayerPotentialTargetSelect(action);
                     break;
 
                 case ECombatAction.Swallow:
                     m_PotentialPlayerTargets = GetViablePreyTargets(m_Player).ToList();
-                    HandlePlayerPotentialTargetSelect(ECombatAction.Swallow);
+                    BeginPlayerPotentialTargetSelect(ECombatAction.Swallow);
+                    break;
+
+                case ECombatAction.Item:
+                    m_MenuState = EMenuState.SelectItem;
                     break;
 
                 case ECombatAction.GrappleReverse:
@@ -320,16 +332,35 @@ namespace Finmer.Gameplay
         /// </summary>
         private void HandlePlayerInputSelectTarget(int choice)
         {
+            // Always return to main state
+            m_MenuState = EMenuState.Default;
+
             // Back button
             if (choice == 0)
-            {
-                m_MenuState = EMenuState.Default;
                 return;
-            }
 
-            // Otherwise, select target
-            m_MenuState = EMenuState.Default;
+            // Select the desired target
             m_PlayerDecision = new CombatAction(m_PendingPlayerDecision, m_PotentialPlayerTargets[choice - 1]);
+        }
+
+        /// <summary>
+        /// Handle player input for the item selection state.
+        /// </summary>
+        private void HandlePlayerInputSelectItem(int choice)
+        {
+            // Always return to main state
+            m_MenuState = EMenuState.Default;
+
+            // Back button
+            if (choice == 0)
+                return;
+
+            // Set a dummy action
+            m_PlayerDecision = new CombatAction(ECombatAction.Item, null);
+
+            // Use the item now
+            Item item = m_PotentialPlayerItems[choice - 1];
+            ItemUtilities.UseItem(GameController.Session, item);
         }
 
         /// <summary>
@@ -473,9 +504,16 @@ namespace Finmer.Gameplay
                 });
 
             // Inventory items
-            //m_PotentialPlayerItems = GetUsableItems().ToList();
-            //if (m_PotentialPlayerItems.Count > 0)
-            //    ui.AddButton(new ChoiceButtonModel { Choice = (int)ECombatAction.Item, Label = "Item" });
+            m_PotentialPlayerItems = GetUsableItems().ToList();
+            if (m_PotentialPlayerItems.Count > 0)
+            {
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.Item,
+                    Label = "Item",
+                    Tooltip = "Use an item."
+                });
+            }
 
             // Misc options
             if (m_Player.Prey.Count != 0 && m_Player.Character.StomachDigest)
@@ -504,6 +542,14 @@ namespace Finmer.Gameplay
 
             for (int i = 0; i < m_PotentialPlayerTargets.Count; i++)
                 ui.AddButton(new ChoiceButtonModel { Choice = i + 1, Label = m_PotentialPlayerTargets[i].Character.Name });
+        }
+
+        private void ShowUIItemSelect(GameUI ui)
+        {
+            ui.AddButton(new ChoiceButtonModel { Choice = 0, Label = "(< Back)", Width = 0.5f });
+
+            for (int i = 0; i < m_PotentialPlayerItems.Count; i++)
+                ui.AddButton(new ChoiceButtonModel { Choice = i + 1, Label = m_PotentialPlayerItems[i].Asset.ObjectName });
         }
 
         private void ShowUISwallowed(GameUI ui)
@@ -569,7 +615,8 @@ namespace Finmer.Gameplay
         private enum EMenuState
         {
             Default,
-            SelectTarget
+            SelectTarget,
+            SelectItem
         }
 
         /// <summary>

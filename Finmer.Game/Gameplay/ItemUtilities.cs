@@ -29,7 +29,24 @@ namespace Finmer.Gameplay
         /// </summary>
         public static void UseItem(GameSession session, Item item)
         {
-            //
+            Debug.Assert(item.Asset.ItemType == AssetItem.EItemType.Usable, "Trying to use a non-Usable item");
+
+            // Load the item's UseScript onto the script stack
+            var asset = item.Asset;
+            var script_context = session.ScriptContext;
+            if (!script_context.LoadScript(asset.UseScript.PrecompiledScript, asset.UseScript.Name))
+                return;
+
+            // Execute the script
+            if (!script_context.RunProtectedCall(0, 0))
+                return;
+
+            // If the item is consumable, delete it from the inventory now
+            if (asset.IsConsumable)
+            {
+                var inventory = session.Player.Inventory;
+                inventory.Remove(item);
+            }
         }
 
         /// <summary>

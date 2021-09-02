@@ -7,13 +7,5 @@
 	"FlavorText": "",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "8379997a-2f21-4d75-9ffd-a6c748b2bad7",
-		"Name": "01d5d8e7-edf4-48da-b293-54aed0e2a05e_UseScript"
-	}
+	"IsQuestItem": false
 }

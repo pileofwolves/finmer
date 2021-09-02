@@ -81,13 +81,8 @@ namespace Finmer.Views
             // specialized stats
             switch (asset.ItemType)
             {
-                case AssetItem.EItemType.Weapon:
-                    inl.Add("Weapon");
-                    inl.Add(new LineBreak());
-                    break;
-
-                case AssetItem.EItemType.Armor:
-                    inl.Add("Armor");
+                case AssetItem.EItemType.Equipable:
+                    inl.Add("Equipment");
                     inl.Add(new LineBreak());
                     break;
 

@@ -7,13 +7,5 @@
 	"FlavorText": "The refraction of light through the misty crystals is often used to tell useless glass apart from true amber. It is deemed a precious material by the select few who dare tame the arcane.",
 	"ItemType": "Generic",
 	"PurchaseValue": 65,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "61cababb-fefb-4ee5-99ae-0bd98a7c62ea",
-		"Name": "95623bd8-43cd-4198-bffc-9c903d7f36a6_UseScript"
-	}
+	"IsQuestItem": false
 }

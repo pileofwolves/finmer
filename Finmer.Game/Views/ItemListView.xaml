@@ -8,35 +8,52 @@
     xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="300">
-    <!--<ItemsControl.ItemContainerStyle>
-        <Style TargetType="vm:ItemIconViewModel" />
-    </ItemsControl.ItemContainerStyle>-->
     <ListBox.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style TargetType="ListBoxItem">
             <Setter Property="Template">
                 <Setter.Value>
                     <ControlTemplate TargetType="ListBoxItem">
-                        <ControlTemplate.Resources>
-                            <Style x:Key="ItemBorderStyle" TargetType="{x:Type Border}">
-                                <Setter Property="Background" Value="Transparent" />
-                                <Setter Property="BorderThickness" Value="2" />
-                            </Style>
-                        </ControlTemplate.Resources>
-                        <Border x:Name="Border" Style="{StaticResource ItemBorderStyle}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" d:DataContext="{d:DesignInstance gp:Item}" ToolTipService.ShowDuration="12000">
-                            <StackPanel Orientation="Horizontal">
-                                <v:ItemIconView Margin="2" />
-                                <TextBlock Text="{Binding Asset.ObjectName}" Style="{StaticResource TextBlockDefault}" VerticalAlignment="Center" Margin="4,0,0,0" />
+                        <Border
+                            x:Name="Border"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            d:DataContext="{d:DesignInstance gp:Item}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                </Style>
+                            </Border.Style>
+                            <StackPanel Orientation="Vertical">
+                                <!-- Item icon and name -->
+                                <StackPanel Orientation="Horizontal">
+                                    <v:ItemIconView Margin="2" />
+                                    <TextBlock
+                                        Text="{Binding Asset.ObjectName}"
+                                        Style="{StaticResource TextBlockDefault}"
+                                        VerticalAlignment="Center"
+                                        Margin="4,0,0,0" />
+                                </StackPanel>
+
+                                <!-- Item actions -->
+                                <ContentControl
+                                    Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                    Template="{Binding ItemOptionsTemplate, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemListView}}" />
                             </StackPanel>
                             <Border.ToolTip>
+                                <!-- Item tooltip -->
                                 <v:ItemTooltipView DataContext="{TemplateBinding Content}" />
                             </Border.ToolTip>
                         </Border>
                         <ControlTemplate.Triggers>
-                            <Trigger Property="IsMouseOver" Value="True">
-                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
-                            </Trigger>
+                            <!-- Highlight background when row is selected -->
                             <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DepressedBrush}" />
                                 <Setter TargetName="Border" Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
+                            </Trigger>
+                            <!-- Highlight border when hovered -->
+                            <Trigger Property="IsMouseOver" Value="True">
                                 <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
                             </Trigger>
                         </ControlTemplate.Triggers>
@@ -47,8 +64,15 @@
     </ListBox.Resources>
     <ListBox.Template>
         <ControlTemplate>
-            <ScrollViewer Margin="0" Focusable="false" VerticalScrollBarVisibility="Auto" CanContentScroll="True">
-                <VirtualizingStackPanel Margin="2" IsItemsHost="True" />
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto"
+                CanContentScroll="false">
+                <StackPanel
+                    Margin="2"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical"
+                    IsItemsHost="True" />
             </ScrollViewer>
         </ControlTemplate>
     </ListBox.Template>

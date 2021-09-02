@@ -215,26 +215,29 @@ namespace Finmer.Gameplay
             using (var script_compiler = new ScriptCompiler())
             {
                 // Get all global scripts, and all item use scripts
-                GameController.Content.Assets
+                var scripts = GameController.Content.Assets
                     .OfType<AssetScript>()
                     .Concat(GameController.Content.Assets
                         .OfType<AssetItem>()
-                        .Select(item => item.UseScript))
-                    .ForEach(script =>
-                    {
-                        try
-                        {
-                            // Compile the script, so we can cache the binary form (which is much faster to load in the future)
-                            script.PrecompiledScript = script_compiler.Compile(script.ScriptText, script.Name);
+                        .Where(item => item.ItemType == AssetItem.EItemType.Usable)
+                        .Select(item => item.UseScript));
 
-                            // Discard the original script source, to save a little bit of memory
-                            script.ScriptText = null;
-                        }
-                        catch (Exception ex)
-                        {
-                            throw new LoaderException($"Failed to compile script '{script.Name}': {ex.Message}", ex);
-                        }
-                    });
+                // Precompile all of them
+                foreach (var script in scripts)
+                {
+                    try
+                    {
+                        // Compile the script, so we can cache the binary form (which is much faster to load in the future)
+                        script.PrecompiledScript = script_compiler.Compile(script.ScriptText, script.Name);
+
+                        // Discard the original script source, to save a little bit of memory
+                        script.ScriptText = null;
+                    }
+                    catch (Exception ex)
+                    {
+                        throw new LoaderException($"Failed to compile script '{script.Name}': {ex.Message}", ex);
+                    }
+                }
             }
         }
 

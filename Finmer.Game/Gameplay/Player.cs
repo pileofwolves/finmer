@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
@@ -139,7 +140,7 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Collection of Items held by the player.
         /// </summary>
-        public List<Item> Inventory { get; } = new List<Item>();
+        public ObservableCollection<Item> Inventory { get; } = new ObservableCollection<Item>();
 
         /// <summary>
         /// Returns the player's Journal state.

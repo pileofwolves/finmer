@@ -88,9 +88,21 @@ namespace Finmer.Editor
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            fraWeapon.Visible = cmbType.SelectedIndex == 1;
-            fraArmor.Visible = cmbType.SelectedIndex == 2;
-            fraUsable.Visible = cmbType.SelectedIndex == 3;
+            AssetItem item = (AssetItem)Asset;
+
+            // Show/hide the appropriate UI bits
+            fraWeapon.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
+            fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
+
+            // If the item is now Usable, but its UseScript was optimized away, restore it now
+            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable && item.UseScript == null)
+            {
+                item.UseScript = new AssetScript
+                {
+                    ID = Guid.NewGuid(),
+                    Name = item.Name + "_UseScript"
+                };
+            }
         }
 
         private void UpdateIcon(byte[] newImage)

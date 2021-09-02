@@ -1,0 +1,91 @@
+﻿<UserControl
+    x:Class="Finmer.Views.ItemEquipmentBoxView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    MinWidth="36"
+    MaxWidth="36"
+    MinHeight="36"
+    MaxHeight="36">
+    <Grid>
+        <Button Click="OpenActionsButton_Click">
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border>
+                        <!-- Border changes color depending on selection status -->
+                        <Border.Style>
+                            <Style TargetType="Border">
+                                <Setter Property="BorderBrush" Value="{StaticResource BrightBackgroundBrush}" />
+                                <Setter Property="BorderThickness" Value="2" />
+                                <Setter Property="Background" Value="{StaticResource DarkBackgroundBrush}" />
+                                <Style.Triggers>
+                                    <!-- Highlight border when hovering -->
+                                    <DataTrigger Binding="{Binding IsMouseOver, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}" Value="True">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                    <!-- Bright background when selected -->
+                                    <DataTrigger Binding="{Binding IsOpen, ElementName=EquipmentActionsPopup}" Value="True">
+                                        <DataTrigger.Setters>
+                                            <Setter Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
+                                            <Setter Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
+                                        </DataTrigger.Setters>
+                                    </DataTrigger>
+                                </Style.Triggers>
+                            </Style>
+                        </Border.Style>
+                        <!-- Button contents -->
+                        <ContentPresenter />
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+
+            <!-- Item display -->
+            <Grid
+                ToolTipService.ShowDuration="12000"
+                d:DataContext="{d:DesignInstance v:ItemEquipmentBoxView}"
+                HorizontalAlignment="Stretch"
+                VerticalAlignment="Stretch"
+                DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=v:ItemEquipmentBoxView}}">
+
+                <!-- Detailed item tooltip -->
+                <Grid.ToolTip>
+                    <!-- The tooltip lives in its own element tree, and needs to be explicitly bound to the ItemBoxView -->
+                    <ToolTip
+                        DataContext="{Binding Path=PlacementTarget.(FrameworkElement.DataContext).(v:ItemEquipmentBoxView.DisplayedItem), RelativeSource={RelativeSource Self}}">
+                        <v:ItemTooltipView />
+                    </ToolTip>
+                </Grid.ToolTip>
+
+                <!-- Item icon centered in the box -->
+                <v:ItemIconView
+                    DataContext="{Binding DisplayedItem}"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center" />
+            </Grid>
+        </Button>
+
+        <!-- Equipment actions -->
+        <Popup
+            x:Name="EquipmentActionsPopup"
+            Width="100"
+            StaysOpen="False">
+            <Border Style="{StaticResource PopupBorderStyle}">
+                <StackPanel>
+                    <Button
+                        Margin="4"
+                        Height="32"
+                        Content="Unequip"
+                        Click="UnequipButton_Click"
+                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UnequipItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                        CommandParameter="{Binding EquipmentIndex, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemEquipmentBoxView}}" />
+                </StackPanel>
+            </Border>
+        </Popup>
+    </Grid>
+</UserControl>

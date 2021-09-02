@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.Assets
@@ -23,9 +24,18 @@ namespace Finmer.Core.Assets
         public enum EItemType
         {
             Generic,
+            Equipable,
+            Usable
+        }
+
+        /// <summary>
+        /// Describes the type of equipment slot that fits an Equipable item.
+        /// </summary>
+        public enum EEquipSlot
+        {
             Weapon,
             Armor,
-            Usable
+            Accessory
         }
 
         /// <summary>
@@ -47,6 +57,11 @@ namespace Finmer.Core.Assets
         /// The in-game functionality group of the item.
         /// </summary>
         public EItemType ItemType { get; set; }
+
+        /// <summary>
+        /// The in-game functionality group of the item.
+        /// </summary>
+        public EEquipSlot EquipSlot { get; set; }
 
         /// <summary>
         /// The economic value of this item. Set to zero to prevent the item from being traded.
@@ -76,7 +91,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// If ItemType is Usable, specifies a string to display on the item tooltip that describes this item's effect.
         /// </summary>
-        public string UseDescription { get; set; }
+        public string UseDescription { get; set; } = String.Empty;
 
         /// <summary>
         /// A 32x32 icon to display in UI to represent this item. May be null, in which case a default icon is used.
@@ -97,17 +112,28 @@ namespace Finmer.Core.Assets
             outstream.WriteStringProperty("ObjectAlias", ObjectAlias);
             outstream.WriteStringProperty("FlavorText", FlavorText);
             outstream.WriteEnumProperty("ItemType", ItemType);
+            if (ItemType == EItemType.Equipable)
+            {
+                // Save equip slot setting only for equipable items
+                outstream.WriteEnumProperty("EquipSlot", EquipSlot);
+                outstream.BeginArray("EquipEffects", 0);
+                outstream.EndArray();
+            }
             outstream.WriteInt32Property("PurchaseValue", PurchaseValue);
             outstream.WriteBooleanProperty("IsQuestItem", IsQuestItem);
 
             // Usable item data
-            outstream.WriteBooleanProperty("IsConsumable", IsConsumable);
-            outstream.WriteBooleanProperty("CanUseInField", CanUseInField);
-            outstream.WriteBooleanProperty("CanUseInBattle", CanUseInBattle);
-            outstream.WriteStringProperty("UseDescription", UseDescription);
-            outstream.BeginObject("UseScript");
-            UseScript.Serialize(outstream);
-            outstream.EndObject();
+            if (ItemType == EItemType.Usable)
+            {
+                outstream.WriteBooleanProperty("IsConsumable", IsConsumable);
+                outstream.WriteBooleanProperty("CanUseInField", CanUseInField);
+                outstream.WriteBooleanProperty("CanUseInBattle", CanUseInBattle);
+                outstream.WriteStringProperty("UseDescription", UseDescription);
+
+                outstream.BeginObject("UseScript");
+                UseScript.Serialize(outstream);
+                outstream.EndObject();
+            }
 
             // Icon data
             outstream.WriteAttachment(GetIconAttachmentName(), InventoryIcon);
@@ -122,20 +148,29 @@ namespace Finmer.Core.Assets
             ObjectAlias = instream.ReadStringProperty("ObjectAlias");
             FlavorText = instream.ReadStringProperty("FlavorText");
             ItemType = instream.ReadEnumProperty<EItemType>("ItemType");
+            if (ItemType == EItemType.Equipable)
+            {
+                EquipSlot = instream.ReadEnumProperty<EEquipSlot>("EquipSlot");
+                instream.BeginArray("EquipEffects");
+                instream.EndArray();
+            }
             PurchaseValue = instream.ReadInt32Property("PurchaseValue");
             IsQuestItem = instream.ReadBooleanProperty("IsQuestItem");
 
             // Usable item data
-            IsConsumable = instream.ReadBooleanProperty("IsConsumable");
-            CanUseInField = instream.ReadBooleanProperty("CanUseInField");
-            CanUseInBattle = instream.ReadBooleanProperty("CanUseInBattle");
-            UseDescription = instream.ReadStringProperty("UseDescription");
+            if (ItemType == EItemType.Usable)
+            {
+                IsConsumable = instream.ReadBooleanProperty("IsConsumable");
+                CanUseInField = instream.ReadBooleanProperty("CanUseInField");
+                CanUseInBattle = instream.ReadBooleanProperty("CanUseInBattle");
+                UseDescription = instream.ReadStringProperty("UseDescription");
 
-            // Attached scripts
-            instream.BeginObject("UseScript");
-            UseScript = new AssetScript();
-            UseScript.Deserialize(instream, version);
-            instream.EndObject();
+                // Attached scripts
+                instream.BeginObject("UseScript");
+                UseScript = new AssetScript();
+                UseScript.Deserialize(instream, version);
+                instream.EndObject();
+            }
 
             // Icon data (Was changed from byte array attribute to attachment file in format version 9)
             InventoryIcon = version >= 9

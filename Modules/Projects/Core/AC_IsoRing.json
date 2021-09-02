@@ -7,13 +7,5 @@
 	"FlavorText": "A small gold ring with intricate patterns carved on the outside. This trinket probably means something important to someone.",
 	"ItemType": "Generic",
 	"PurchaseValue": 20,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "756a29f3-4549-4e3c-a058-a0ee8811b2c8",
-		"Name": "9424541d-3712-4dc7-8c30-5934d1581317_UseScript"
-	}
+	"IsQuestItem": false
 }

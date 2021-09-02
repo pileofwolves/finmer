@@ -7,13 +7,5 @@
 	"FlavorText": "The severed head of a dire wolf. It's frighteningly massive - almost too big and heavy for you to carry - and smells a bit. It would be best to not carry this around for too long, lest it starts decomposing.",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,
-	"IsQuestItem": true,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "01484b53-75ba-4875-8852-54950a1413b7",
-		"Name": "f96ed656-7870-4257-88a1-c504f122568c_UseScript"
-	}
+	"IsQuestItem": true
 }

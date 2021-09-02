@@ -259,8 +259,7 @@
             this.cmbType.FormattingEnabled = true;
             this.cmbType.Items.AddRange(new object[] {
             "Generic",
-            "Weapon",
-            "Armor",
+            "Equipable",
             "Usable"});
             this.cmbType.Location = new System.Drawing.Point(16, 136);
             this.cmbType.Name = "cmbType";
@@ -627,7 +626,7 @@
             // 
             this.dlgIconOpen.Filter = "PNG Image (*.png)|*.png";
             // 
-            // frmDocumentItem
+            // FormDocumentItem
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -636,7 +635,7 @@
             this.Controls.Add(this.fraGeneral);
             this.Controls.Add(this.fraUsable);
             this.Controls.Add(this.fraArmor);
-            this.Name = "frmDocumentItem";
+            this.Name = "FormDocumentItem";
             this.Text = "frmDocumentItem";
             this.Load += new System.EventHandler(this.FormDocumentItem_Load);
             this.fraGeneral.ResumeLayout(false);

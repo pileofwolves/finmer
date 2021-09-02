@@ -5,15 +5,9 @@
 	"ObjectName": "Dagger",
 	"ObjectAlias": "dagger",
 	"FlavorText": "A small iron blade - though its size belies its power. Knives and daggers are well known for their roles in the creation and destruction of kings and kingdoms alike.",
-	"ItemType": "Weapon",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [],
 	"PurchaseValue": 15,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "ce2c052a-4020-4003-b1e4-c1ebaba64f33",
-		"Name": "795c79f2-ce54-4c2f-837e-d767e3c2599a_UseScript"
-	}
+	"IsQuestItem": false
 }

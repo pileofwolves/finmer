@@ -5,15 +5,9 @@
 	"ObjectName": "Claws",
 	"ObjectAlias": "claws",
 	"FlavorText": "",
-	"ItemType": "Weapon",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [],
 	"PurchaseValue": 0,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "d4d8c1c9-cf9b-4d24-bb45-af09ad9325cf",
-		"Name": "796e5537-b920-4ed2-b71b-679f98d8cfbf_UseScript"
-	}
+	"IsQuestItem": false
 }

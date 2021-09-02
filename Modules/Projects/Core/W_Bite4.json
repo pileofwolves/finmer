@@ -5,15 +5,9 @@
 	"ObjectName": "Bite",
 	"ObjectAlias": "teeth",
 	"FlavorText": "",
-	"ItemType": "Weapon",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [],
 	"PurchaseValue": 0,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "278028a4-3b86-43cd-b2b7-fd30b443c1e3",
-		"Name": "1310e6c1-154f-4b29-9904-ba2ef3c0837a_UseScript"
-	}
+	"IsQuestItem": false
 }

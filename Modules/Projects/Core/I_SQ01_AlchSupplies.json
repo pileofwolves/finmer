@@ -7,13 +7,5 @@
 	"FlavorText": "A modest collection of flasks, herbs and filled vials you can't identify. Given the right buyer, it should fetch a good price.",
 	"ItemType": "Generic",
 	"PurchaseValue": 110,
-	"IsQuestItem": false,
-	"IsConsumable": false,
-	"CanUseInField": false,
-	"CanUseInBattle": false,
-	"UseDescription": "",
-	"UseScript": {
-		"ID": "f88fb933-46bb-4811-9a7f-fffdb0911068",
-		"Name": "baef8361-87cb-460d-80a5-6d8e4bca404a_UseScript"
-	}
+	"IsQuestItem": false
 }

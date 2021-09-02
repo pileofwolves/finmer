@@ -10,7 +10,9 @@
     d:DataContext="{d:DesignInstance gp:Item}"
     Loaded="UserControl_Loaded">
     <StackPanel>
-        <!--<TextBlock Text="{Binding Name}" Style="{StaticResource TextBlockDefault}" FontWeight="Bold" Margin="0,0,0,15" />-->
-        <TextBlock Name="ItemInfoLabel" Style="{StaticResource TextBlockDefault}" MaxWidth="300" TextWrapping="Wrap" />
+        <TextBlock Name="ItemInfoLabel"
+            Style="{StaticResource TextBlockDefault}"
+            MaxWidth="300"
+            TextWrapping="Wrap" />
     </StackPanel>
 </UserControl>

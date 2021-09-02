@@ -9,5 +9,9 @@
     MinWidth="32" MaxWidth="32"
     MinHeight="32" MaxHeight="32"
     d:DataContext="{d:DesignInstance gp:Item}">
-    <Image HorizontalAlignment="Center" VerticalAlignment="Center" Source="{Binding Image}" RenderOptions.BitmapScalingMode="NearestNeighbor" />
+    <Image
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center"
+        Source="{Binding Image}"
+        RenderOptions.BitmapScalingMode="NearestNeighbor" />
 </UserControl>

@@ -38,7 +38,7 @@ namespace Finmer.Gameplay
             Item
         }
 
-        private const int k_EquipSlotCount = 5;
+        private const int k_EquipSlotCount = 4;
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Health

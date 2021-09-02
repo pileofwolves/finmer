@@ -70,7 +70,6 @@
     <Compile Include="Converters\CountToListConverter.cs" />
     <Compile Include="Converters\QuantityToVisibilityConverter.cs" />
     <Compile Include="Converters\DieFaceToImageConverter.cs" />
-    <Compile Include="Gameplay\Buff.cs" />
     <Compile Include="Gameplay\Character.cs" />
     <Compile Include="Gameplay\Combat\CombatCallbacks.cs" />
     <Compile Include="Gameplay\Combat\CombatDisplay.cs" />

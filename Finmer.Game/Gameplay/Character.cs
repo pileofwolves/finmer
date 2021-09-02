@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using Finmer.Core;
 using Finmer.Core.Assets;
+using Finmer.Core.Buffs;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
@@ -139,7 +140,7 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns the cumulative collection of buffs applied to this Character and all its equipped items.
         /// </summary>
-        public IEnumerable<Buff> CumulativeBuffs => LocalBuffs.Concat(Equipment.Where(item => item != null).SelectMany(item => item.Buffs));
+        public IEnumerable<Buff> CumulativeBuffs => LocalBuffs.Concat(Equipment.Where(item => item != null).SelectMany(item => item.Asset.EquipEffects));
 
         [ScriptableProperty(EScriptAccess.Read)]
         public int NumAttackDice => Math.Max(Strength + CumulativeBuffs.OfType<BuffAttackDice>().Sum(buff => buff.Delta), 1);

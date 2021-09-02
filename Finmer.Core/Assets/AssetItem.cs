@@ -7,6 +7,8 @@
  */
 
 using System;
+using System.Collections.Generic;
+using Finmer.Core.Buffs;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.Assets
@@ -62,6 +64,11 @@ namespace Finmer.Core.Assets
         /// The in-game functionality group of the item.
         /// </summary>
         public EEquipSlot EquipSlot { get; set; }
+
+        /// <summary>
+        /// Collection of buffs applied when the item is equipped.
+        /// </summary>
+        public List<Buff> EquipEffects { get; set; }
 
         /// <summary>
         /// The economic value of this item. Set to zero to prevent the item from being traded.

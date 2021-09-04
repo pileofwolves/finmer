@@ -35,4 +35,17 @@ namespace Finmer.Core.Buffs
 
     }
 
+    /// <summary>
+    /// Represents a buff that applies a simple delta value to a variable.
+    /// </summary>
+    public abstract class SimpleDeltaBuff : Buff
+    {
+
+        /// <summary>
+        /// Change to apply to the number of dice.
+        /// </summary>
+        public int Delta { get; set; }
+
+    }
+
 }

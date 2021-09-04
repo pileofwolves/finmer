@@ -68,6 +68,15 @@
     <Compile Include="AssetWindow.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="EquipEffects\BaseEffectEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipEffects\FormEffectEditorSingleDelta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipEffects\FormEffectEditorSingleDelta.Designer.cs">
+      <DependentUpon>FormEffectEditorSingleDelta.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>
@@ -164,6 +173,9 @@
     <EmbeddedResource Include="AssetWindow.resx">
       <DependentUpon>AssetWindow.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="EquipEffects\FormEffectEditorSingleDelta.resx">
+      <DependentUpon>FormEffectEditorSingleDelta.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +190,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormDocumentItem.resx">
       <DependentUpon>FormDocumentItem.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDocumentProject.resx">
       <DependentUpon>FormDocumentProject.cs</DependentUpon>
@@ -342,6 +355,7 @@
       <Version>5.0.1.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
   </PropertyGroup>

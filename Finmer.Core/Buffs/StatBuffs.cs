@@ -20,6 +20,19 @@ namespace Finmer.Core.Buffs
             return Delta >= 0 ? EBuffIcon.IncreasedHealth : EBuffIcon.DecreasedHealth;
         }
 
+        public override string GetDescription()
+        {
+            return $"{Delta:+#;-#;0} Max Health";
+        }
+
+        public override Buff Clone()
+        {
+            return new BuffHealth
+            {
+                Delta = Delta
+            };
+        }
+
     }
 
 }

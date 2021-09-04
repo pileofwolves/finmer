@@ -20,6 +20,19 @@ namespace Finmer.Core.Buffs
             return Delta >= 0 ? EBuffIcon.IncreasedAttack : EBuffIcon.DecreasedAttack;
         }
 
+        public override string GetDescription()
+        {
+            return $"{Delta:+#;-#;0} Dice";
+        }
+
+        public override Buff Clone()
+        {
+            return new BuffAttackDice
+            {
+                Delta = Delta
+            };
+        }
+
     }
 
     /// <summary>
@@ -31,6 +44,19 @@ namespace Finmer.Core.Buffs
         public override EBuffIcon GetIcon()
         {
             return Delta >= 0 ? EBuffIcon.IncreasedDefense : EBuffIcon.DecreasedDefense;
+        }
+
+        public override string GetDescription()
+        {
+            return $"{Delta:+#;-#;0} Dice";
+        }
+
+        public override Buff Clone()
+        {
+            return new BuffDefenseDice
+            {
+                Delta = Delta
+            };
         }
 
     }

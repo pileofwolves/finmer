@@ -68,7 +68,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Collection of buffs applied when the item is equipped.
         /// </summary>
-        public List<Buff> EquipEffects { get; set; }
+        public List<Buff> EquipEffects { get; } = new List<Buff>();
 
         /// <summary>
         /// The economic value of this item. Set to zero to prevent the item from being traded.

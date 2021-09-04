@@ -20,6 +20,16 @@ namespace Finmer.Core.Buffs
         /// </summary>
         public abstract EBuffIcon GetIcon();
 
+        /// <summary>
+        /// Instantiates a new copy of this buff object.
+        /// </summary>
+        public abstract Buff Clone();
+
+        /// <summary>
+        /// Gets an unlocalized human-readable description of the buff, for editor display.
+        /// </summary>
+        public abstract string GetDescription();
+
     }
 
     /// <summary>

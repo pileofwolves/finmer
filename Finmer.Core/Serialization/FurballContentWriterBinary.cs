@@ -48,12 +48,12 @@ namespace Finmer.Core.Serialization
 
         public void WriteEnumProperty<TEnum>(string key, TEnum value) where TEnum : struct, Enum
         {
-            var enumType = typeof(TEnum);
-            Debug.Assert(enumType.IsEnum);
+            var enum_type = typeof(TEnum);
+            Debug.Assert(enum_type.IsEnum);
 
             // Validate that the specified value is a valid value for the input enum type
-            if (!Enum.IsDefined(enumType, value))
-                throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enumType.Name}'");
+            if (!Enum.IsDefined(enum_type, value))
+                throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enum_type.Name}'");
 
             // We don't actually need any further info about the enumerator here, since the value is already provided
             m_Stream.Write(Convert.ToInt32(value));

@@ -20,7 +20,7 @@ namespace Finmer.Core
         public static readonly Random Rng = new Random(Guid.NewGuid().GetHashCode());
 
         /// <summary>
-        /// Capitalises the first letter in a string.
+        /// Capitalizes the first letter in a string.
         /// </summary>
         public static string CapFirst(this string value)
         {

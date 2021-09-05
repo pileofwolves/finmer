@@ -43,6 +43,7 @@ namespace Finmer.Editor
             chkQuest.Checked = item.IsQuestItem;
 
             // Equipment data
+            cmbEquipSlot.SelectedIndex = (int)item.EquipSlot;
             foreach (var buff in item.EquipEffects)
                 AddEquipEffect(buff);
 
@@ -74,6 +75,7 @@ namespace Finmer.Editor
             item.IsQuestItem = chkQuest.Checked;
 
             // Equipment data
+            item.EquipSlot = (AssetItem.EEquipSlot)cmbEquipSlot.SelectedIndex;
             item.EquipEffects.Clear();
             foreach (var buff_item in lsvEquipEffects.Items)
             {

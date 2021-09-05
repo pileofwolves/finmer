@@ -151,8 +151,10 @@ namespace Finmer.Models
             IsScriptConsoleOpened = false;
             ControlsEnabled = false;
             InventoryEnabled = false;
-            Finmer.Gameplay.Combat.CombatDisplay.CloseCombatUI();
+            //m_CombatStateViewModel = null;
+            s_Inst = new GameUI();
             
+
         }
 
         public void AddButton(ChoiceButtonModel settings)

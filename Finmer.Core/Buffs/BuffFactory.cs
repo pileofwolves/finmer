@@ -24,13 +24,13 @@ namespace Finmer.Core.Buffs
         {
             switch (typeName)
             {
-                case "BuffAttackDice":
+                case nameof(BuffAttackDice):
                     return new BuffAttackDice();
 
-                case "BuffDefenseDice":
+                case nameof(BuffDefenseDice):
                     return new BuffDefenseDice();
 
-                case "BuffHealth":
+                case nameof(BuffHealth):
                     return new BuffHealth();
 
                 default:

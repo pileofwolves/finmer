@@ -25,114 +25,121 @@ namespace Finmer.Views
     public partial class ItemTooltipView
     {
 
-        private static readonly Image CoinImage = new Image
-        {
-            Margin = new Thickness(6, 3, 0, 0),
-            Stretch = Stretch.None,
-            MinWidth = 16,
-            MinHeight = 16,
-            SnapsToDevicePixels = true,
-            UseLayoutRounding = true,
-
-            Source = new BitmapImage(PackUriGenerator.GetGameResource("UI/Money.png"))
-            {
-                CacheOption = BitmapCacheOption.OnLoad
-            }
-        };
-
         public ItemTooltipView()
         {
             InitializeComponent();
-
-            RenderOptions.SetBitmapScalingMode(CoinImage, BitmapScalingMode.NearestNeighbor);
-            CoinImage.Source.Freeze();
         }
 
-        private void UserControl_Loaded(object sender, EventArgs e)
+        private void Tooltip_OnLoaded(object sender, RoutedEventArgs e)
         {
-            var item = (Item)DataContext;
-            InlineCollection inl = ItemInfoLabel.Inlines;
-            inl.Clear();
+            // Regenerate the tooltip
+            if (DataContext != null)
+                CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
+        }
 
-            // disconnect coin icon
-            var coin_parent = CoinImage.Parent as Canvas;
-            coin_parent?.Children.Remove(CoinImage);
+        private static void CreateTooltipContent(AssetItem asset, InlineCollection parts)
+        {
+            // Ensure we're not duplicating the tooltip contents
+            parts.Clear();
 
-            // handle empty slots
-            var parent = (UIElement)Parent;
-            parent.Visibility = Visibility.Visible;
-            if (item == null)
-            {
-                parent.Visibility = Visibility.Hidden;
-                return;
-            }
+            // Display the item name
+            parts.Add(new Bold(new Run(asset.ObjectName)));
+            parts.Add(new LineBreak());
 
-            // item name
-            AssetItem asset = item.Asset;
-            inl.Add(new Bold(new Run(asset.ObjectName)));
-            inl.Add(new LineBreak());
-
+            // Quest item marker
             if (asset.IsQuestItem)
             {
-                inl.Add("Quest Item");
-                inl.Add(new LineBreak());
+                parts.Add("Quest Item");
+                parts.Add(new LineBreak());
             }
 
-            // specialized stats
+            // Type-specific stats
             switch (asset.ItemType)
             {
                 case AssetItem.EItemType.Equipable:
-                    inl.Add("Equipment");
-                    inl.Add(new LineBreak());
+                    parts.Add(asset.EquipSlot.ToString());
+                    parts.Add(new LineBreak());
                     break;
 
                 case AssetItem.EItemType.Generic:
-                    // if generic already has quest tag, don't write similar text lines
+                    // Write a tag indicating this is a generic item (but avoid writing it again if it's also a Quest Item)
                     if (!asset.IsQuestItem)
                     {
-                        inl.Add("Item");
-                        inl.Add(new LineBreak());
+                        parts.Add("Item");
+                        parts.Add(new LineBreak());
                     }
 
                     break;
 
                 case AssetItem.EItemType.Usable:
-                    inl.Add(new LineBreak());
-
+                    // If a Use Description was specified in the editor, include it here
                     string usable_text = !String.IsNullOrWhiteSpace(asset.UseDescription)
                         ? "Usable: " + asset.UseDescription
                         : "Usable";
-                    inl.Add(new Run(usable_text) { Foreground = new SolidColorBrush(Theme.LogColorPositive) });
-                    inl.Add(new LineBreak());
+
+                    // Add the text as a standalone paragraph
+                    parts.Add(new LineBreak());
+                    parts.Add(new Run(usable_text) { Foreground = new SolidColorBrush(Theme.LogColorPositive) });
+                    parts.Add(new LineBreak());
 
                     break;
             }
 
-            // general stats
-            inl.Add(new LineBreak());
-
+            // Monetary value
             if (asset.PurchaseValue > 0)
             {
-                var coin_canvas = new Canvas();
-                coin_canvas.Children.Add(CoinImage);
-                coin_canvas.Width = 25;
-                coin_canvas.Height = 16;
-                inl.Add("Value:");
-                inl.Add(coin_canvas);
-                inl.Add(asset.PurchaseValue.ToString());
-                inl.Add(new LineBreak());
+                parts.Add(new LineBreak());
+                parts.Add("Value:");
+                parts.Add(CreateCoinImage());
+                parts.Add($"{asset.PurchaseValue:##,###}");
+                parts.Add(new LineBreak());
             }
 
-            // write flavor text at the end, if any
+            // Flavor text (if specified in editor)
             if (!String.IsNullOrEmpty(asset.FlavorText))
             {
-                inl.Add(new LineBreak());
-                inl.Add(new LineBreak());
-                inl.Add(new Italic(new Run(asset.FlavorText))
+                parts.Add(new LineBreak());
+                parts.Add(new LineBreak());
+                parts.Add(new Italic(new Run(asset.FlavorText))
                 {
                     Foreground = new SolidColorBrush(Theme.LogColorLightGray)
                 });
             }
+        }
+
+        private static UIElement CreateCoinImage()
+        {
+            // Generate a new icon object
+            var output = new Image
+            {
+                Margin = new Thickness(6, 3, 0, 0),
+                Stretch = Stretch.None,
+                MinWidth = 16,
+                MinHeight = 16,
+                SnapsToDevicePixels = true,
+                UseLayoutRounding = true,
+
+                Source = new BitmapImage(PackUriGenerator.GetGameResource("UI/Money.png"))
+                {
+                    CacheOption = BitmapCacheOption.OnLoad
+                }
+            };
+
+            // Avoid blurry scaling
+            RenderOptions.SetBitmapScalingMode(output, BitmapScalingMode.NearestNeighbor);
+
+            // Avoid unnecessary image copies between CPU and GPU
+            output.Source.Freeze();
+
+            // Wrap the image in a grid so it can have a relative position
+            var container = new Canvas
+            {
+                Width = 25,
+                Height = 16
+            };
+            container.Children.Add(output);
+
+            return container;
         }
 
     }

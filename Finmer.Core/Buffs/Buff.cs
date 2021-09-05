@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core.Serialization;
+
 namespace Finmer.Core.Buffs
 {
 
@@ -30,31 +32,18 @@ namespace Finmer.Core.Buffs
         /// </summary>
         public abstract string GetDescription();
 
-    }
-
-    /// <summary>
-    /// Represents a Buff that lasts a limited number of combat turns.
-    /// </summary>
-    public abstract class VolatileBuff : Buff
-    {
+        /// <summary>
+        /// Writes the state of this instance to a content stream.
+        /// </summary>
+        public virtual void Serialize(IFurballContentWriter outstream)
+        {
+            outstream.WriteStringProperty("!Type", GetType().Name);
+        }
 
         /// <summary>
-        /// Number of combat turns remaining before this buff disappears.
+        /// Read and populate the state of this instance from a content stream.
         /// </summary>
-        public int TurnsRemaining { get; set; }
-
-    }
-
-    /// <summary>
-    /// Represents a buff that applies a simple delta value to a variable.
-    /// </summary>
-    public abstract class SimpleDeltaBuff : Buff
-    {
-
-        /// <summary>
-        /// Change to apply to the number of dice.
-        /// </summary>
-        public int Delta { get; set; }
+        public abstract void Deserialize(IFurballContentReader instream);
 
     }
 

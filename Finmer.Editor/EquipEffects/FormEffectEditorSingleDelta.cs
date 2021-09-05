@@ -21,13 +21,13 @@ namespace Finmer.Editor
 
         protected override void LoadBuff()
         {
-            var source = (SimpleDeltaBuff)SourceBuff;
+            var source = (SingleDeltaBuff)SourceBuff;
             nudDelta.Value = source.Delta;
         }
 
         public override Buff CopyBuff()
         {
-            var copy = (SimpleDeltaBuff)SourceBuff.Clone();
+            var copy = (SingleDeltaBuff)SourceBuff.Clone();
             copy.Delta = (int)nudDelta.Value;
 
             return copy;

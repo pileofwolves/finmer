@@ -77,7 +77,7 @@ namespace Finmer.Editor
             item.EquipEffects.Clear();
             foreach (var buff_item in lsvEquipEffects.Items)
             {
-                var buff = (Buff)buff_item;
+                var buff = (Buff)((ListViewItem)buff_item).Tag;
                 item.EquipEffects.Add(buff);
             }
 
@@ -182,11 +182,11 @@ namespace Finmer.Editor
             lsvEquipEffects.Items.Add(buff_item);
         }
 
-        private BaseEffectEditor CreateEquipEffectEditor(Buff buff)
+        private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)
         {
             switch (buff)
             {
-                case SimpleDeltaBuff delta_buff:
+                case SingleDeltaBuff _:
                     return new FormEffectEditorSingleDelta();
 
                 default:

@@ -12,7 +12,7 @@ namespace Finmer.Core.Buffs
     /// <summary>
     /// Modifies the number of attack dice a character has in combat.
     /// </summary>
-    public sealed class BuffAttackDice : SimpleDeltaBuff
+    public sealed class BuffAttackDice : SingleDeltaBuff
     {
 
         public override EBuffIcon GetIcon()
@@ -38,7 +38,7 @@ namespace Finmer.Core.Buffs
     /// <summary>
     /// Modifies the number of defense dice a character has in combat.
     /// </summary>
-    public sealed class BuffDefenseDice : SimpleDeltaBuff
+    public sealed class BuffDefenseDice : SingleDeltaBuff
     {
 
         public override EBuffIcon GetIcon()

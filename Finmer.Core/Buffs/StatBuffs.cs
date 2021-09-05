@@ -12,7 +12,7 @@ namespace Finmer.Core.Buffs
     /// <summary>
     /// Modifies the maximum HP of a character.
     /// </summary>
-    public sealed class BuffHealth : SimpleDeltaBuff
+    public sealed class BuffHealth : SingleDeltaBuff
     {
 
         public override EBuffIcon GetIcon()

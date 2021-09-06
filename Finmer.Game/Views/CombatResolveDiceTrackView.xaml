@@ -42,13 +42,9 @@
                             </Grid.RenderTransform>
                             <Grid Width="42" Height="42" Margin="2" ClipToBounds="False">
                                 <!-- Background -->
-                                <Image Source="/Finmer;component/Resources/Dice/BackGenericD6.png"/>
+                                <Image Source="/Finmer;component/Resources/Dice/BackGenericD6.png" />
                                 <!-- Foreground -->
-                                <Image>
-                                    <Image.Source>
-                                        <BitmapImage UriSource="{Binding Path=., Converter={StaticResource DieFaceToImageConverter}}" />
-                                    </Image.Source>
-                                </Image>
+                                <Image Source="{Binding Path=., Converter={StaticResource DieFaceToImageConverter}}" />
                             </Grid>
                         </Grid>
                     </DataTemplate>
@@ -60,9 +56,9 @@
                 </ItemsControl.ItemsPanel>
             </ItemsControl>
             <!-- Nice fade-out overlay near edge -->
-            <Rectangle 
+            <Rectangle
                 Height="{Binding ElementName=Container, Path=ActualHeight}"
-                MaxHeight="64" 
+                MaxHeight="64"
                 VerticalAlignment="Bottom"
                 HorizontalAlignment="Stretch">
                 <Rectangle.Fill>

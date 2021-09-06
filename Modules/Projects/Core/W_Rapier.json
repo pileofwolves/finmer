@@ -7,7 +7,12 @@
 	"FlavorText": "A somewhat unusual weapon designed for rapid thrusting attacks, while maintaining a healthy distance from one's opponent. Fencing is an elegant if somewhat foreign sport that usually involves such rapiers.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffAttackDice",
+			"Delta": 1
+		}
+	],
 	"PurchaseValue": 30,
 	"IsQuestItem": false
 }

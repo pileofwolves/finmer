@@ -2,10 +2,17 @@
 	"!Type": "AssetItem",
 	"ID": "63b5fad8-91fc-4072-b109-ddc2b042b534",
 	"Name": "AC_CharmBody",
-	"ObjectName": "Item",
+	"ObjectName": "Charm of Health",
 	"ObjectAlias": "",
 	"FlavorText": "",
-	"ItemType": "Generic",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "BuffHealth",
+			"Delta": 1
+		}
+	],
 	"PurchaseValue": 0,
 	"IsQuestItem": false
 }

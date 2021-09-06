@@ -7,7 +7,12 @@
 	"FlavorText": "While sharing its overall design with the steel longsword, a silver alloy is used instead for the blade, making it much lighter to handle. It is said that silver can cut through magic and certain monsters in a way that steel cannot.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffAttackDice",
+			"Delta": 2
+		}
+	],
 	"PurchaseValue": 55,
 	"IsQuestItem": false
 }

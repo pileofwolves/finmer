@@ -7,7 +7,12 @@
 	"FlavorText": "A tough leather cuirass, fashioned of hardened animal hide. Commonly worn to help shield oneself from the harsh Northern climate.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Armor",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffDefenseDice",
+			"Delta": 1
+		}
+	],
 	"PurchaseValue": 20,
 	"IsQuestItem": false
 }

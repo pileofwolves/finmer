@@ -52,6 +52,10 @@ namespace Finmer.ViewModels
 
         public int Wits => Player.Wits;
 
+        public int NumAttackDice => Player.NumAttackDice;
+
+        public int NumDefenseDice => Player.NumDefenseDice;
+
         public int Level => Player.Level;
 
         public int XP => Player.XP;
@@ -116,6 +120,8 @@ namespace Finmer.ViewModels
                     // Equip the item, potentially swapping it with another
                     ItemUtilities.EquipItem(Player, item);
                     OnPropertyChanged(nameof(Equipment));
+                    OnPropertyChanged(nameof(NumAttackDice));
+                    OnPropertyChanged(nameof(NumDefenseDice));
                     break;
 
                 case AssetItem.EItemType.Usable:
@@ -127,7 +133,8 @@ namespace Finmer.ViewModels
                     throw new ArgumentException("Item cannot be used from the character sheet", nameof(arg));
             }
 
-            OnPropertyChanged(nameof(Inventory));
+            // Refresh the cached copy for the view
+            RefreshInventory();
         }
 
         private void DropItem(object arg)
@@ -151,8 +158,10 @@ namespace Finmer.ViewModels
             // Unequip it
             ItemUtilities.UnequipItem(Player, equipment_index);
 
-            // Make sure to update the equipment box view
+            // Make sure to update the equipment readouts
             OnPropertyChanged(nameof(Equipment));
+            OnPropertyChanged(nameof(NumAttackDice));
+            OnPropertyChanged(nameof(NumDefenseDice));
 
             // Refresh the cached copy for the view
             RefreshInventory();

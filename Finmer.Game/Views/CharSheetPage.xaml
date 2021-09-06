@@ -77,13 +77,11 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <TextBlock
+                <v:SimpleDiceTrack
                     Grid.Column="1"
                     Grid.Row="0"
-                    Margin="0,0,0,15"
-                    Style="{StaticResource TextBlockDefault}">
-                    ??? Armor
-                </TextBlock>
+                    DiceStyle="Defense"
+                    DiceCount="{Binding NumDefenseDice}" />
 
                 <!-- Offense -->
                 <Image
@@ -94,15 +92,14 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <TextBlock
+                <StackPanel
                     Grid.Column="1"
                     Grid.Row="1"
-                    Margin="0,0,0,15"
-                    Style="{StaticResource TextBlockDefault}">
-                    Some Weapon
-                    <LineBreak />
-                    Damage: ???
-                </TextBlock>
+                    Orientation="Vertical">
+                    <v:SimpleDiceTrack
+                        DiceStyle="Attack"
+                        DiceCount="{Binding NumAttackDice}" />
+                </StackPanel>
 
                 <!-- Vore -->
                 <Image

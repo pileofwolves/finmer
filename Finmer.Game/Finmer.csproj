@@ -220,6 +220,9 @@
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\PackUriGenerator.cs" />
+    <Compile Include="Views\Parts\SimpleDiceTrack.xaml.cs">
+      <DependentUpon>SimpleDiceTrack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SaveGamePage.xaml.cs">
       <DependentUpon>SaveGamePage.xaml</DependentUpon>
     </Compile>
@@ -350,6 +353,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Parts\SimpleDiceTrack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SaveGamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -448,6 +455,7 @@
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

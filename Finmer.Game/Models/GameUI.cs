@@ -140,16 +140,8 @@ namespace Finmer.Models
 
         public void Reset()
         {
-            ClearButtons();
-            ClearLog();
-
-            Tooltip = String.Empty;
-            Location = String.Empty;
-            Instruction = String.Empty;
-            IsGameOver = false;
-            IsScriptConsoleOpened = false;
-            ControlsEnabled = false;
-            InventoryEnabled = false;
+            //Create new UI instance entirely
+            s_Inst = new GameUI();
         }
 
         public void AddButton(ChoiceButtonModel settings)

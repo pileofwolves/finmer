@@ -52,7 +52,7 @@
         <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Sex:" />
         <TextBlock Style="{StaticResource TextBlockSubtle}"
             Text="Mostly aesthetic (pronouns etc.) but can affect dialogue." />
-        <RadioButton x:Name="optGenderMale" IsChecked="True" Checked="optGender_Checked">Male</RadioButton>
+        <RadioButton x:Name="optGenderMale" Checked="optGender_Checked">Male</RadioButton>
         <RadioButton x:Name="optGenderFemale" Checked="optGender_Checked">Female</RadioButton>
     </StackPanel>
 </vb:CharCreateViewBase>

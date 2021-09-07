@@ -35,12 +35,8 @@ namespace Finmer.Views
         {
             txtName.Text = InitialSaveData.GetString("name");
             cmbSpecies.Text = InitialSaveData.GetString("species");
-            //check if there was some initial value saved in the gender field, if not we go without anything checked.
-            if (!String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender")))
-            {
-                optGenderMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
-                optGenderFemale.IsChecked = !optGenderMale.IsChecked;
-            }
+            optGenderMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
+            optGenderFemale.IsChecked = !optGenderMale.IsChecked;            
             m_Setup = false;
 
             // Apply some default settings to enable quickly clicking through to the game
@@ -48,6 +44,18 @@ namespace Finmer.Views
             {
                 txtName.Text = "Snack";
                 cmbSpecies.SelectedIndex = CoreUtility.Rng.Next(cmbSpecies.Items.Count);
+                //make a coin flip to see if it's male or female randomly selected, then set the gender accordingly.
+                int genderFlip = CoreUtility.Rng.Next(2);
+                if (genderFlip == 0) 
+                {
+                    optGenderMale.IsChecked = true;
+                    optGenderFemale.IsChecked = !optGenderMale.IsChecked;
+                }
+                else
+                {
+                    optGenderMale.IsChecked = false;
+                    optGenderFemale.IsChecked = !optGenderMale.IsChecked;
+                }
                 ValidateForm();
             }
         }

@@ -47,18 +47,10 @@ namespace Finmer.Views
             {
                 txtName.Text = "Snack";
                 cmbSpecies.SelectedIndex = CoreUtility.Rng.Next(cmbSpecies.Items.Count);
-                //make a coin flip to see if it's male or female randomly selected, then set the gender accordingly.
-                int genderFlip = CoreUtility.Rng.Next(2);
-                if (genderFlip == 0) 
-                {
-                    optGenderMale.IsChecked = true;
-                    optGenderFemale.IsChecked = !optGenderMale.IsChecked;
-                }
-                else
-                {
-                    optGenderMale.IsChecked = false;
-                    optGenderFemale.IsChecked = !optGenderMale.IsChecked;
-                }
+                // Make a coin flip to see if it's male or female randomly selected, then set the gender accordingly.
+                int gender_flip = CoreUtility.Rng.Next(2);
+                optGenderMale.IsChecked = (gender_flip == 0);
+                optGenderFemale.IsChecked = !optGenderMale.IsChecked;
                 ValidateForm();
             }
         }
@@ -92,7 +84,6 @@ namespace Finmer.Views
 
         private void ValidateForm()
         {
-            //add additional check to make sure radio button has been selected.
             m_CanGoNext =
                 !String.IsNullOrWhiteSpace(InitialSaveData.GetString("name")) && 
                 !String.IsNullOrWhiteSpace(InitialSaveData.GetString("species")) &&

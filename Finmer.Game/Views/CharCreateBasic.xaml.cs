@@ -77,9 +77,11 @@ namespace Finmer.Views
 
         private void ValidateForm()
         {
+            //add additional check to make sure radio button has been selected.
             m_CanGoNext =
                 !String.IsNullOrWhiteSpace(InitialSaveData.GetString("name")) && 
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("species"));
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("species")) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender"));
             OnPropertyChanged(nameof(CanGoNext));
         }
 

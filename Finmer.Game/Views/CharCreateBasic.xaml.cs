@@ -35,8 +35,11 @@ namespace Finmer.Views
         {
             txtName.Text = InitialSaveData.GetString("name");
             cmbSpecies.Text = InitialSaveData.GetString("species");
-            optGenderMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
-            optGenderFemale.IsChecked = !optGenderMale.IsChecked;            
+            if (!String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender")))
+            {
+                optGenderMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
+                optGenderFemale.IsChecked = !optGenderMale.IsChecked;
+            }
             m_Setup = false;
 
             // Apply some default settings to enable quickly clicking through to the game

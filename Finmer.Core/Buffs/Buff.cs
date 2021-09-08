@@ -18,6 +18,16 @@ namespace Finmer.Core.Buffs
     {
 
         /// <summary>
+        /// Describes how a buff affects the player.
+        /// </summary>
+        public enum EImpact
+        {
+            Neutral,
+            Positive,
+            Negative
+        }
+
+        /// <summary>
         /// Describes this buff.
         /// </summary>
         public abstract EBuffIcon GetIcon();
@@ -26,6 +36,11 @@ namespace Finmer.Core.Buffs
         /// Instantiates a new copy of this buff object.
         /// </summary>
         public abstract Buff Clone();
+
+        /// <summary>
+        /// Describes how this buff affects the player.
+        /// </summary>
+        public abstract EImpact GetImpact();
 
         /// <summary>
         /// Gets an unlocalized human-readable description of the buff, for editor display.

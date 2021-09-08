@@ -8,6 +8,7 @@
     mc:Ignorable="d"
     d:DesignHeight="50" d:DesignWidth="250">
     <Grid
+        DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemTooltipBuffRow}}"
         Margin="16,2,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="105" />
@@ -18,11 +19,15 @@
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Style="{StaticResource TextBlockDefault}"
-            Text="{Binding RowLabel, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemTooltipBuffRow}}" />
+            Text="{Binding RowLabel}">
+            <TextBlock.Foreground>
+                <SolidColorBrush Color="{Binding RowImpactColor}"></SolidColorBrush>
+            </TextBlock.Foreground>
+        </TextBlock>
         <ContentControl
             Grid.Column="1"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
-            Content="{Binding RowWidget, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemTooltipBuffRow}}" />
+            Content="{Binding RowWidget}" />
     </Grid>
 </UserControl>

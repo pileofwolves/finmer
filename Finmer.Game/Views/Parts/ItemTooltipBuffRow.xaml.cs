@@ -8,6 +8,9 @@
 
 using System;
 using System.Windows;
+using System.Windows.Media;
+using Finmer.Core.Buffs;
+using Finmer.Utility;
 
 namespace Finmer.Views
 {
@@ -31,6 +34,12 @@ namespace Finmer.Views
             "RowLabel", typeof(string), typeof(ItemTooltipBuffRow), new PropertyMetadata(String.Empty));
 
         /// <summary>
+        /// Dependency property for RowLabel.
+        /// </summary>
+        public static readonly DependencyProperty RowImpactProperty = DependencyProperty.Register(
+            "RowImpact", typeof(Buff.EImpact), typeof(ItemTooltipBuffRow), new PropertyMetadata(Buff.EImpact.Neutral));
+
+        /// <summary>
         /// Arbitrary user control shown besides the row label.
         /// </summary>
         public UIElement RowWidget
@@ -46,6 +55,34 @@ namespace Finmer.Views
         {
             get => (string)GetValue(RowLabelProperty);
             set => SetValue(RowLabelProperty, value);
+        }
+
+        /// <summary>
+        /// Gets or sets the player impact indicator of this row.
+        /// </summary>
+        public Buff.EImpact RowImpact
+        {
+            get => (Buff.EImpact)GetValue(RowImpactProperty);
+            set => SetValue(RowImpactProperty, value);
+        }
+
+        /// <summary>
+        /// Gets an appropriate color for the current value of RowImpact.
+        /// </summary>
+        public Color RowImpactColor
+        {
+            get
+            {
+                switch (RowImpact)
+                {
+                    case Buff.EImpact.Positive:
+                        return Theme.LogColorPositive;
+                    case Buff.EImpact.Negative:
+                        return Theme.LogColorNegative;
+                    default:
+                        return Theme.LogColorDefault;
+                }
+            }
         }
 
         public ItemTooltipBuffRow()

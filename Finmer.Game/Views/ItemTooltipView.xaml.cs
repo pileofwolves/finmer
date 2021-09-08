@@ -145,7 +145,7 @@ namespace Finmer.Views
                     var track_attack = new SimpleDiceTrack();
                     track_attack.DiceCount = effect_attack.Delta;
                     track_attack.DiceStyle = SimpleDiceTrack.EDiceStyle.Attack;
-                    parts.Add(CreateBuffContainer("Attack Dice:", track_attack));
+                    parts.Add(CreateBuffContainer(effect, $"{effect_attack.Delta:+#;-#;0} Attack Dice", track_attack));
                     break;
 
                 case BuffDefenseDice effect_defense:
@@ -153,7 +153,7 @@ namespace Finmer.Views
                     var track_defense = new SimpleDiceTrack();
                     track_defense.DiceCount = effect_defense.Delta;
                     track_defense.DiceStyle = SimpleDiceTrack.EDiceStyle.Defense;
-                    parts.Add(CreateBuffContainer("Defense Dice:", track_defense));
+                    parts.Add(CreateBuffContainer(effect, $"{effect_defense.Delta:+#;-#;0} Defense Dice", track_defense));
                     break;
 
                 case BuffHealth effect_health:
@@ -164,15 +164,16 @@ namespace Finmer.Views
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Center
                     };
-                    parts.Add(CreateBuffContainer("Health:", info));
+                    parts.Add(CreateBuffContainer(effect, $"{effect_health.Delta:+#;-#;0} Health", info));
                     break;
             }
         }
 
-        private static UIElement CreateBuffContainer(string description, UIElement child)
+        private static UIElement CreateBuffContainer(Buff buff, string description, UIElement child)
         {
             var container = new ItemTooltipBuffRow
             {
+                RowImpact = buff.GetImpact(),
                 RowLabel = description,
                 RowWidget = child
             };

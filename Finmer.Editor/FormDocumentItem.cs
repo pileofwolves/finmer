@@ -12,6 +12,7 @@ using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
+using Finmer.Core.Buffs;
 
 namespace Finmer.Editor
 {
@@ -41,6 +42,11 @@ namespace Finmer.Editor
             nudValue.Value = item.PurchaseValue;
             chkQuest.Checked = item.IsQuestItem;
 
+            // Equipment data
+            cmbEquipSlot.SelectedIndex = (int)item.EquipSlot;
+            foreach (var buff in item.EquipEffects)
+                AddEquipEffect(buff);
+
             // Usable item data
             txtUseDesc.Text = item.UseDescription;
             chkItemConsumable.Checked = item.IsConsumable;
@@ -68,6 +74,15 @@ namespace Finmer.Editor
             item.PurchaseValue = (int)nudValue.Value;
             item.IsQuestItem = chkQuest.Checked;
 
+            // Equipment data
+            item.EquipSlot = (AssetItem.EEquipSlot)cmbEquipSlot.SelectedIndex;
+            item.EquipEffects.Clear();
+            foreach (var buff_item in lsvEquipEffects.Items)
+            {
+                var buff = (Buff)((ListViewItem)buff_item).Tag;
+                item.EquipEffects.Add(buff);
+            }
+
             // Usable item data
             item.UseDescription = txtUseDesc.Text;
             item.IsConsumable = chkItemConsumable.Checked;
@@ -91,7 +106,7 @@ namespace Finmer.Editor
             AssetItem item = (AssetItem)Asset;
 
             // Show/hide the appropriate UI bits
-            fraWeapon.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
+            fraEquipment.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
             fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
 
             // If the item is now Usable, but its UseScript was optimized away, restore it now
@@ -158,6 +173,97 @@ namespace Finmer.Editor
             cmdIconClear.Enabled = false;
             cmdIconExport.Enabled = false;
             Dirty = true;
+        }
+
+        private void AddEquipEffect(Buff buff)
+        {
+            var buff_item = new ListViewItem();
+            buff_item.SubItems.Add(buff.GetDescription());
+            buff_item.Text = buff.GetIcon().ToString();
+            buff_item.Tag = buff;
+            lsvEquipEffects.Items.Add(buff_item);
+        }
+
+        private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)
+        {
+            switch (buff)
+            {
+                case SingleDeltaBuff _:
+                    return new FormEffectEditorSingleDelta();
+
+                default:
+                    throw new ArgumentException(nameof(buff));
+            }
+        }
+
+        private void EditSelectedEquipEffect()
+        {
+            // Validate that there actually is a selection to edit
+            if (lsvEquipEffects.SelectedItems.Count == 0)
+                return;
+
+            // Get the Buff object associated with the selected row
+            var item = lsvEquipEffects.SelectedItems[0];
+            var buff = (Buff)item.Tag;
+
+            using (var form = CreateEquipEffectEditor(buff))
+            {
+                form.SourceBuff = buff;
+
+                // Save result only if user clicked OK
+                if (form.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // Make a copy of the buff and store it in the list item
+                var new_buff = form.CopyBuff();
+                item.SubItems.Clear();
+                item.SubItems.Add(new_buff.GetDescription());
+                item.Text = new_buff.GetIcon().ToString();
+                item.Tag = new_buff;
+            }
+        }
+
+        private void cmdEquipEffectAdd_Click(object sender, EventArgs e)
+        {
+            mnuEquipEffectAdd.Show(cmdEquipEffectAdd, new Point(0, cmdEquipEffectAdd.Height));
+        }
+
+        private void cmdEquipEffectRemove_Click(object sender, EventArgs e)
+        {
+            foreach (var selection in lsvEquipEffects.SelectedItems)
+                lsvEquipEffects.Items.Remove((ListViewItem)selection);
+        }
+
+        private void cmdEquipEffectEdit_Click(object sender, EventArgs e)
+        {
+            EditSelectedEquipEffect();
+        }
+
+        private void lsvEquipEffects_DoubleClick(object sender, EventArgs e)
+        {
+            EditSelectedEquipEffect();
+        }
+
+        private void lsvEquipEffects_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            bool has_selection = lsvEquipEffects.SelectedItems.Count != 0;
+            cmdEquipEffectEdit.Enabled = has_selection;
+            cmdEquipEffectRemove.Enabled = has_selection;
+        }
+
+        private void mnuEffectDiceAttack_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffAttackDice());
+        }
+
+        private void mnuEffectDiceDefense_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffDefenseDice());
+        }
+
+        private void mnuEffectStatHP_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffHealth());
         }
 
     }

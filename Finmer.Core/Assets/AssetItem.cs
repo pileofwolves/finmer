@@ -7,6 +7,8 @@
  */
 
 using System;
+using System.Collections.Generic;
+using Finmer.Core.Buffs;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.Assets
@@ -64,6 +66,11 @@ namespace Finmer.Core.Assets
         public EEquipSlot EquipSlot { get; set; }
 
         /// <summary>
+        /// Collection of buffs applied when the item is equipped.
+        /// </summary>
+        public List<Buff> EquipEffects { get; } = new List<Buff>();
+
+        /// <summary>
         /// The economic value of this item. Set to zero to prevent the item from being traded.
         /// </summary>
         public int PurchaseValue { get; set; }
@@ -116,7 +123,14 @@ namespace Finmer.Core.Assets
             {
                 // Save equip slot setting only for equipable items
                 outstream.WriteEnumProperty("EquipSlot", EquipSlot);
-                outstream.BeginArray("EquipEffects", 0);
+                outstream.BeginArray("EquipEffects", EquipEffects.Count);
+                foreach (var effect in EquipEffects)
+                {
+                    // Serialize each equip effect
+                    outstream.BeginObject();
+                    effect.Serialize(outstream);
+                    outstream.EndObject();
+                }
                 outstream.EndArray();
             }
             outstream.WriteInt32Property("PurchaseValue", PurchaseValue);
@@ -151,7 +165,16 @@ namespace Finmer.Core.Assets
             if (ItemType == EItemType.Equipable)
             {
                 EquipSlot = instream.ReadEnumProperty<EEquipSlot>("EquipSlot");
-                instream.BeginArray("EquipEffects");
+                for (int count = instream.BeginArray("EquipEffects"); count > 0; count--)
+                {
+                    // Read each equip effect
+                    instream.BeginObject();
+                    var effect_type_name = instream.ReadStringProperty("!Type");
+                    var effect_instance = BuffFactory.CreateInstance(effect_type_name);
+                    effect_instance.Deserialize(instream);
+                    EquipEffects.Add(effect_instance);
+                    instream.EndObject();
+                }
                 instream.EndArray();
             }
             PurchaseValue = instream.ReadInt32Property("PurchaseValue");

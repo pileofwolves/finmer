@@ -70,7 +70,6 @@
     <Compile Include="Converters\CountToListConverter.cs" />
     <Compile Include="Converters\QuantityToVisibilityConverter.cs" />
     <Compile Include="Converters\DieFaceToImageConverter.cs" />
-    <Compile Include="Gameplay\Buff.cs" />
     <Compile Include="Gameplay\Character.cs" />
     <Compile Include="Gameplay\Combat\CombatCallbacks.cs" />
     <Compile Include="Gameplay\Combat\CombatDisplay.cs" />
@@ -221,6 +220,12 @@
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Utility\PackUriGenerator.cs" />
+    <Compile Include="Views\Parts\ItemTooltipBuffRow.xaml.cs">
+      <DependentUpon>ItemTooltipBuffRow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\SimpleDiceTrack.xaml.cs">
+      <DependentUpon>SimpleDiceTrack.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SaveGamePage.xaml.cs">
       <DependentUpon>SaveGamePage.xaml</DependentUpon>
     </Compile>
@@ -351,6 +356,14 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\Parts\ItemTooltipBuffRow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\SimpleDiceTrack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\SaveGamePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -448,6 +461,9 @@
     <Resource Include="Resources\UI\StatVore.png" />
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\RemovedStatOverlay.png" />
   </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>

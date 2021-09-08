@@ -2,10 +2,17 @@
 	"!Type": "AssetItem",
 	"ID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
 	"Name": "AC_CharmBlock",
-	"ObjectName": "Item",
+	"ObjectName": "Charm of Shields",
 	"ObjectAlias": "",
 	"FlavorText": "",
-	"ItemType": "Generic",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "BuffDefenseDice",
+			"Delta": 1
+		}
+	],
 	"PurchaseValue": 0,
 	"IsQuestItem": false
 }

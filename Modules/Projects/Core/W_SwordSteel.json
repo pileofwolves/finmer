@@ -7,7 +7,12 @@
 	"FlavorText": "Balanced and versatile, the standard steel longsword is good for both stabbing and slashing. While a little heavier to wield, it also allowing parrying of incoming blows with respectable efficiency.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffAttackDice",
+			"Delta": 2
+		}
+	],
 	"PurchaseValue": 40,
 	"IsQuestItem": false
 }

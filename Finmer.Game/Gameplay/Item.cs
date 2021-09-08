@@ -7,7 +7,6 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.IO;
 using System.Windows.Media.Imaging;
 using Finmer.Core;
@@ -27,8 +26,6 @@ namespace Finmer.Gameplay
     {
 
         public AssetItem Asset { get; }
-
-        public List<Buff> Buffs { get; } = new List<Buff>();
 
         public BitmapImage Image
         {

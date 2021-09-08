@@ -1,0 +1,58 @@
+﻿<UserControl
+    x:Class="Finmer.Views.SimpleDiceTrack"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    mc:Ignorable="d"
+    d:DesignWidth="200"
+    d:DesignHeight="50">
+    <UserControl.Resources>
+        <cv:CountToListConverter x:Key="CountToListConverter" />
+        <cv:DieFaceToImageConverter x:Key="DieFaceToImageConverter" />
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <StackPanel
+        Orientation="Horizontal"
+        DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=v:SimpleDiceTrack}}">
+        <!-- Dice track -->
+        <ItemsControl
+            ItemsSource="{Binding EffectiveDiceCount, Converter={StaticResource CountToListConverter}}">
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Margin="2"
+                        Width="32"
+                        Height="32"
+                        DataContext="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=v:SimpleDiceTrack}}">
+                        <Image
+                            Source="/Finmer;component/Resources/Dice/BackGenericD6.png"
+                            RenderOptions.BitmapScalingMode="HighQuality" />
+                        <Image
+                            Source="{Binding CombatDieFace, Converter={StaticResource DieFaceToImageConverter}}"
+                            RenderOptions.BitmapScalingMode="HighQuality" />
+                        <Image
+                            Source="/Finmer;component/Resources/UI/RemovedStatOverlay.png"
+                            Visibility="{Binding IsNegative, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            RenderOptions.BitmapScalingMode="HighQuality" />
+                    </Grid>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+        </ItemsControl>
+        <!-- Overflow counter -->
+        <!-- Note that DiceCount is never shown with a sign, even if it's negative, because we already have RemovedStatOverlay.png for that -->
+        <TextBlock
+            HorizontalAlignment="Left"
+            VerticalAlignment="Center"
+            Visibility="{Binding IsDiceOverflowing, Converter={StaticResource BooleanToVisibilityConverter}}"
+            Style="{StaticResource TextBlockLarge}"
+            Text="{Binding DiceCount, StringFormat=x \{0:#;#;0\}}" />
+    </StackPanel>
+</UserControl>

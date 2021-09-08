@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Data;
+using System.Windows.Media.Imaging;
 using Finmer.Gameplay.Combat;
 using Finmer.Utility;
 
@@ -17,7 +18,7 @@ namespace Finmer.Converters
 {
 
     /// <summary>
-    /// Converts an EDieFace to an equivalent image source URI.
+    /// Converts an EDieFace to an equivalent ImageSource.
     /// </summary>
     public class DieFaceToImageConverter : IValueConverter
     {
@@ -31,7 +32,12 @@ namespace Finmer.Converters
             string face_name = GetFileNameForDieFace(face);
 
             // Compose the image file name into a full path for display
-            return PackUriGenerator.GetGameResource(face_name);
+            var source = new BitmapImage();
+            source.BeginInit();
+            source.UriSource = PackUriGenerator.GetGameResource(face_name);
+            source.EndInit();
+            source.Freeze();
+            return source;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)

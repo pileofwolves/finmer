@@ -7,7 +7,12 @@
 	"FlavorText": "A small iron blade - though its size belies its power. Knives and daggers are well known for their roles in the creation and destruction of kings and kingdoms alike.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffAttackDice",
+			"Delta": 1
+		}
+	],
 	"PurchaseValue": 15,
 	"IsQuestItem": false
 }

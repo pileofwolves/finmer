@@ -6,13 +6,14 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
+    Loaded="Tooltip_OnLoaded"
     d:DesignHeight="200" d:DesignWidth="300"
-    d:DataContext="{d:DesignInstance gp:Item}"
-    Loaded="UserControl_Loaded">
-    <StackPanel>
-        <TextBlock Name="ItemInfoLabel"
+    d:DataContext="{d:DesignInstance gp:Item}">
+    <StackPanel
+        MaxWidth="300">
+        <TextBlock
+            x:Name="ItemInfoLabel"
             Style="{StaticResource TextBlockDefault}"
-            MaxWidth="300"
             TextWrapping="Wrap" />
     </StackPanel>
 </UserControl>

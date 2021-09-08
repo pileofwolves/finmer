@@ -6,15 +6,16 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core.Assets;
+using Finmer.Core.Buffs;
+using Finmer.Gameplay;
+using Finmer.Utility;
 using System;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using Finmer.Core.Assets;
-using Finmer.Gameplay;
-using Finmer.Utility;
 
 namespace Finmer.Views
 {
@@ -40,7 +41,8 @@ namespace Finmer.Views
         private static void CreateTooltipContent(AssetItem asset, InlineCollection parts)
         {
             // Ensure we're not duplicating the tooltip contents
-            parts.Clear();
+            if (parts.Count != 0)
+                return;
 
             // Display the item name
             parts.Add(new Bold(new Run(asset.ObjectName)));
@@ -57,31 +59,15 @@ namespace Finmer.Views
             switch (asset.ItemType)
             {
                 case AssetItem.EItemType.Equipable:
-                    parts.Add(asset.EquipSlot.ToString());
-                    parts.Add(new LineBreak());
+                    DescribeEquipableItem(asset, parts);
                     break;
 
                 case AssetItem.EItemType.Generic:
-                    // Write a tag indicating this is a generic item (but avoid writing it again if it's also a Quest Item)
-                    if (!asset.IsQuestItem)
-                    {
-                        parts.Add("Item");
-                        parts.Add(new LineBreak());
-                    }
-
+                    DescribeGenericItem(asset, parts);
                     break;
 
                 case AssetItem.EItemType.Usable:
-                    // If a Use Description was specified in the editor, include it here
-                    string usable_text = !String.IsNullOrWhiteSpace(asset.UseDescription)
-                        ? "Usable: " + asset.UseDescription
-                        : "Usable";
-
-                    // Add the text as a standalone paragraph
-                    parts.Add(new LineBreak());
-                    parts.Add(new Run(usable_text) { Foreground = new SolidColorBrush(Theme.LogColorPositive) });
-                    parts.Add(new LineBreak());
-
+                    DescribeUsableItem(asset, parts);
                     break;
             }
 
@@ -89,10 +75,10 @@ namespace Finmer.Views
             if (asset.PurchaseValue > 0)
             {
                 parts.Add(new LineBreak());
+                parts.Add(new LineBreak());
                 parts.Add("Value:");
                 parts.Add(CreateCoinImage());
                 parts.Add($"{asset.PurchaseValue:##,###}");
-                parts.Add(new LineBreak());
             }
 
             // Flavor text (if specified in editor)
@@ -105,6 +91,93 @@ namespace Finmer.Views
                     Foreground = new SolidColorBrush(Theme.LogColorLightGray)
                 });
             }
+        }
+
+        private static void DescribeUsableItem(AssetItem asset, InlineCollection parts)
+        {
+            parts.Add("Usable");
+
+            // If a Use Description was specified in the editor, include it here
+            if (!String.IsNullOrWhiteSpace(asset.UseDescription))
+            {
+                // Add the text as a standalone paragraph
+                parts.Add(new LineBreak());
+                parts.Add(new LineBreak());
+                parts.Add(new Run("When used: " + asset.UseDescription) { Foreground = new SolidColorBrush(Theme.LogColorPositive) });
+            }
+        }
+
+        private static void DescribeGenericItem(AssetItem asset, InlineCollection parts)
+        {
+            // Write a tag indicating this is a generic item (but avoid writing it again if it's also a Quest Item)
+            if (!asset.IsQuestItem)
+                parts.Add("Item");
+        }
+
+        private static void DescribeEquipableItem(AssetItem asset, InlineCollection parts)
+        {
+            // Write the name of the required equip slot
+            parts.Add(asset.EquipSlot.ToString());
+
+            // Show equipment effects
+            if (asset.EquipEffects.Count != 0)
+            {
+                // Header text
+                parts.Add(new LineBreak());
+                parts.Add(new LineBreak());
+                parts.Add("When equipped:");
+
+                // Describe all buffs provided by this item
+                foreach (var effect in asset.EquipEffects)
+                {
+                    parts.Add(new LineBreak());
+                    DescribeEquipmentBuff(parts, effect);
+                }
+            }
+        }
+
+        private static void DescribeEquipmentBuff(InlineCollection parts, Buff effect)
+        {
+            switch (effect)
+            {
+                case BuffAttackDice effect_attack:
+                    // Show a dice track indicating the added/removed dice
+                    var track_attack = new SimpleDiceTrack();
+                    track_attack.DiceCount = effect_attack.Delta;
+                    track_attack.DiceStyle = SimpleDiceTrack.EDiceStyle.Attack;
+                    parts.Add(CreateBuffContainer("Attack Dice:", track_attack));
+                    break;
+
+                case BuffDefenseDice effect_defense:
+                    // Show a dice track indicating the added/removed dice
+                    var track_defense = new SimpleDiceTrack();
+                    track_defense.DiceCount = effect_defense.Delta;
+                    track_defense.DiceStyle = SimpleDiceTrack.EDiceStyle.Defense;
+                    parts.Add(CreateBuffContainer("Defense Dice:", track_defense));
+                    break;
+
+                case BuffHealth effect_health:
+                    // Show the added/removed health points
+                    var info = new TextBlock
+                    {
+                        Text = $"{effect_health.Delta:+##,###;-##,###;0} Max Health",
+                        HorizontalAlignment = HorizontalAlignment.Left,
+                        VerticalAlignment = VerticalAlignment.Center
+                    };
+                    parts.Add(CreateBuffContainer("Health:", info));
+                    break;
+            }
+        }
+
+        private static UIElement CreateBuffContainer(string description, UIElement child)
+        {
+            var container = new ItemTooltipBuffRow
+            {
+                RowLabel = description,
+                RowWidget = child
+            };
+
+            return container;
         }
 
         private static UIElement CreateCoinImage()

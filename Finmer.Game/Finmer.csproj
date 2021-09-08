@@ -462,7 +462,9 @@
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\UI\RemovedStatOverlay.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

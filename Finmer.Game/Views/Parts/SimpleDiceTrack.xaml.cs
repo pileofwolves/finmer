@@ -80,12 +80,17 @@ namespace Finmer.Views
         /// <summary>
         /// Returns the actual number of dice to display on the track.
         /// </summary>
-        public int EffectiveDiceCount => IsDiceOverflowing ? 1 : DiceCount;
+        public int EffectiveDiceCount => IsDiceOverflowing ? 1 : Math.Abs(DiceCount);
 
         /// <summary>
         /// Indicates whether there are too many dice to be displayed and the display should be simplified instead.
         /// </summary>
-        public bool IsDiceOverflowing => DiceCount >= 5;
+        public bool IsDiceOverflowing => Math.Abs(DiceCount) >= 5;
+
+        /// <summary>
+        /// Indicates whether the dice total is negative.
+        /// </summary>
+        public bool IsNegative => DiceCount < 0;
 
         public SimpleDiceTrack()
         {

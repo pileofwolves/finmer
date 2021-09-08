@@ -38,16 +38,21 @@
                         <Image
                             Source="{Binding CombatDieFace, Converter={StaticResource DieFaceToImageConverter}}"
                             RenderOptions.BitmapScalingMode="HighQuality" />
+                        <Image
+                            Source="/Finmer;component/Resources/UI/RemovedStatOverlay.png"
+                            Visibility="{Binding IsNegative, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            RenderOptions.BitmapScalingMode="HighQuality" />
                     </Grid>
                 </DataTemplate>
             </ItemsControl.ItemTemplate>
         </ItemsControl>
         <!-- Overflow counter -->
+        <!-- Note that DiceCount is never shown with a sign, even if it's negative, because we already have RemovedStatOverlay.png for that -->
         <TextBlock
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
             Visibility="{Binding IsDiceOverflowing, Converter={StaticResource BooleanToVisibilityConverter}}"
             Style="{StaticResource TextBlockLarge}"
-            Text="{Binding DiceCount, StringFormat=x \{0:##\,###\}}" />
+            Text="{Binding DiceCount, StringFormat=x \{0:#;#;0\}}" />
     </StackPanel>
 </UserControl>

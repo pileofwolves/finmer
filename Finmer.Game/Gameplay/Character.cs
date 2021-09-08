@@ -53,7 +53,7 @@ namespace Finmer.Gameplay
         }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int HealthMax => Math.Max(1, Body);
+        public int HealthMax => Math.Max(1, Body + CumulativeBuffs.OfType<BuffHealth>().Sum(buff => buff.Delta));
 
         public Item[] Equipment { get; } = new Item[k_EquipSlotCount];
 

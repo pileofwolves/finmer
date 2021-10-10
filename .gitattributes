@@ -8,5 +8,8 @@
 *.sln      text eol=crlf merge=union
 *.csproj   text merge=union
 
-# Exclude third-party libraries from language analysis
+# Language analysis: exclude 3rd-party libraries
 External/* linguist-vendored
+
+# Language analysis: exclude documentation
+Modules/Projects/Documentation.html linguist-documentation

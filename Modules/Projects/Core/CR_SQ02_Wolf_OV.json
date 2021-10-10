@@ -12,8 +12,14 @@
 	"Level": 3,
 	"Size": "Huge",
 	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"DigestsPrey": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": false,
+	"PredatorAlwaysSwallowPlayer": false,
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT_POV",

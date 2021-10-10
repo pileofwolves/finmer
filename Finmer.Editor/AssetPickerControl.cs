@@ -57,6 +57,7 @@ namespace Finmer.Editor
         /// <summary>
         /// Returns the Guid of the selected asset. Works even if the target asset is unloaded.
         /// </summary>
+        [Browsable(false)]
         public Guid SelectedGuid
         {
             get => m_SelectedAssetGuid;
@@ -70,6 +71,7 @@ namespace Finmer.Editor
         /// <summary>
         /// Returns the currently selected asset object, or null if it is unset or not loaded.
         /// </summary>
+        [Browsable(false)]
         public AssetBase SelectedAsset =>
             Program.ActiveFurball.GetAssetByID(m_SelectedAssetGuid) ??
             Program.ActiveDependencies.GetAssetByID(m_SelectedAssetGuid);
@@ -98,7 +100,7 @@ namespace Finmer.Editor
             {
                 // Link could not be resolved; asset was deleted or unloaded
                 lblAssetName.Enabled = false;
-                lblAssetName.LinkColor = SystemColors.GrayText;
+                lblAssetName.LinkColor = Color.OrangeRed;
                 lblAssetName.Text = m_SelectedAssetGuid.ToString();
             }
             else

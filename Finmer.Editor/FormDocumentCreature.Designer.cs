@@ -27,55 +27,438 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
+            System.Windows.Forms.Label label11;
+            System.Windows.Forms.Label label8;
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label label10;
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.GroupBox fraCombatFlags;
+            System.Windows.Forms.Label label18;
+            System.Windows.Forms.Label label17;
+            System.Windows.Forms.Label label15;
+            System.Windows.Forms.Label label14;
+            System.Windows.Forms.Label label13;
+            System.Windows.Forms.Label label12;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.GroupBox fraGeneral;
+            System.Windows.Forms.Label label16;
+            System.Windows.Forms.Label label9;
+            System.Windows.Forms.GroupBox fraTags;
+            System.Windows.Forms.Label label19;
+            this.lblCombatOverview = new System.Windows.Forms.Label();
+            this.assetEquip4 = new Finmer.Editor.AssetPickerControl();
+            this.assetEquip3 = new Finmer.Editor.AssetPickerControl();
+            this.assetEquip2 = new Finmer.Editor.AssetPickerControl();
+            this.assetEquip1 = new Finmer.Editor.AssetPickerControl();
+            this.chkVoreAlwaysSwallow = new System.Windows.Forms.CheckBox();
+            this.chkVoreDisposal = new System.Windows.Forms.CheckBox();
+            this.chkVoreDigest = new System.Windows.Forms.CheckBox();
+            this.chkFlagSkipTurns = new System.Windows.Forms.CheckBox();
+            this.chkVorePred = new System.Windows.Forms.CheckBox();
+            this.chkFlagNoXP = new System.Windows.Forms.CheckBox();
+            this.chkFlagNoFight = new System.Windows.Forms.CheckBox();
+            this.chkFlagNoVore = new System.Windows.Forms.CheckBox();
+            this.chkFlagNoGrapple = new System.Windows.Forms.CheckBox();
+            this.cmbGender = new System.Windows.Forms.ComboBox();
             this.cmbSize = new System.Windows.Forms.ComboBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
+            this.txtAlias = new System.Windows.Forms.TextBox();
             this.nudLevel = new System.Windows.Forms.NumericUpDown();
             this.nudWis = new System.Windows.Forms.NumericUpDown();
             this.nudCon = new System.Windows.Forms.NumericUpDown();
             this.nudDex = new System.Windows.Forms.NumericUpDown();
             this.nudStr = new System.Windows.Forms.NumericUpDown();
             this.txtGuid = new System.Windows.Forms.TextBox();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.fraVoreSettings = new System.Windows.Forms.GroupBox();
-            this.lblStatsSummary = new System.Windows.Forms.Label();
-            this.lblVorePredness = new System.Windows.Forms.Label();
-            this.chkVoreDigest = new System.Windows.Forms.CheckBox();
-            this.nudVorePredness = new System.Windows.Forms.NumericUpDown();
-            this.chkVorePred = new System.Windows.Forms.CheckBox();
-            this.fraCombatFlags = new System.Windows.Forms.GroupBox();
-            this.chkFlagFailVore = new System.Windows.Forms.CheckBox();
-            this.chkFlagFailGrapple = new System.Windows.Forms.CheckBox();
-            this.chkFlagSkipAOO = new System.Windows.Forms.CheckBox();
-            this.chkFlagSkipTurns = new System.Windows.Forms.CheckBox();
-            this.chkFlagNoXP = new System.Windows.Forms.CheckBox();
-            this.chkFlagNoFight = new System.Windows.Forms.CheckBox();
-            this.chkFlagNoVore = new System.Windows.Forms.CheckBox();
-            this.chkFlagNoGrapple = new System.Windows.Forms.CheckBox();
             this.txtTags = new System.Windows.Forms.TextBox();
-            this.fraGeneral = new System.Windows.Forms.GroupBox();
-            this.cmbGender = new System.Windows.Forms.ComboBox();
-            this.label16 = new System.Windows.Forms.Label();
-            this.txtAlias = new System.Windows.Forms.TextBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.fraTags = new System.Windows.Forms.GroupBox();
+            label11 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label2 = new System.Windows.Forms.Label();
+            label10 = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            fraCombatFlags = new System.Windows.Forms.GroupBox();
+            label18 = new System.Windows.Forms.Label();
+            label17 = new System.Windows.Forms.Label();
+            label15 = new System.Windows.Forms.Label();
+            label14 = new System.Windows.Forms.Label();
+            label13 = new System.Windows.Forms.Label();
+            label12 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            fraGeneral = new System.Windows.Forms.GroupBox();
+            label16 = new System.Windows.Forms.Label();
+            label9 = new System.Windows.Forms.Label();
+            fraTags = new System.Windows.Forms.GroupBox();
+            label19 = new System.Windows.Forms.Label();
+            fraCombatFlags.SuspendLayout();
+            fraGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWis)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStr)).BeginInit();
-            this.fraVoreSettings.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudVorePredness)).BeginInit();
-            this.fraCombatFlags.SuspendLayout();
-            this.fraGeneral.SuspendLayout();
-            this.fraTags.SuspendLayout();
+            fraTags.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new System.Drawing.Point(104, 120);
+            label11.Name = "label11";
+            label11.Size = new System.Drawing.Size(58, 13);
+            label11.TabIndex = 25;
+            label11.Text = "Size Class:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(208, 168);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(31, 13);
+            label8.TabIndex = 24;
+            label8.Text = "Wits:";
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(144, 168);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(34, 13);
+            label7.TabIndex = 23;
+            label7.Text = "Body:";
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new System.Drawing.Point(80, 168);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(37, 13);
+            label6.TabIndex = 22;
+            label6.Text = "Agility:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(16, 168);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(50, 13);
+            label5.TabIndex = 21;
+            label5.Text = "Strength:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 120);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(36, 13);
+            label2.TabIndex = 16;
+            label2.Text = "Level:";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new System.Drawing.Point(16, 312);
+            label10.Name = "label10";
+            label10.Size = new System.Drawing.Size(66, 13);
+            label10.TabIndex = 9;
+            label10.Text = "Asset GUID:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 24);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(38, 13);
+            label1.TabIndex = 0;
+            label1.Text = "Name:";
+            // 
+            // fraCombatFlags
+            // 
+            fraCombatFlags.Controls.Add(label17);
+            fraCombatFlags.Controls.Add(label15);
+            fraCombatFlags.Controls.Add(label14);
+            fraCombatFlags.Controls.Add(label13);
+            fraCombatFlags.Controls.Add(this.assetEquip4);
+            fraCombatFlags.Controls.Add(this.assetEquip3);
+            fraCombatFlags.Controls.Add(this.assetEquip2);
+            fraCombatFlags.Controls.Add(this.assetEquip1);
+            fraCombatFlags.Controls.Add(label12);
+            fraCombatFlags.Controls.Add(this.chkVoreAlwaysSwallow);
+            fraCombatFlags.Controls.Add(label4);
+            fraCombatFlags.Controls.Add(this.chkVoreDisposal);
+            fraCombatFlags.Controls.Add(label3);
+            fraCombatFlags.Controls.Add(this.chkVoreDigest);
+            fraCombatFlags.Controls.Add(this.chkFlagSkipTurns);
+            fraCombatFlags.Controls.Add(this.chkVorePred);
+            fraCombatFlags.Controls.Add(this.chkFlagNoXP);
+            fraCombatFlags.Controls.Add(this.chkFlagNoFight);
+            fraCombatFlags.Controls.Add(this.chkFlagNoVore);
+            fraCombatFlags.Controls.Add(this.chkFlagNoGrapple);
+            fraCombatFlags.Location = new System.Drawing.Point(344, 16);
+            fraCombatFlags.Name = "fraCombatFlags";
+            fraCombatFlags.Size = new System.Drawing.Size(352, 304);
+            fraCombatFlags.TabIndex = 5;
+            fraCombatFlags.TabStop = false;
+            fraCombatFlags.Text = "Combat Settings";
+            // 
+            // lblCombatOverview
+            // 
+            this.lblCombatOverview.Location = new System.Drawing.Point(112, 232);
+            this.lblCombatOverview.Name = "lblCombatOverview";
+            this.lblCombatOverview.Size = new System.Drawing.Size(88, 72);
+            this.lblCombatOverview.TabIndex = 17;
+            this.lblCombatOverview.Text = "...";
+            // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(16, 216);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(53, 13);
+            label18.TabIndex = 16;
+            label18.Text = "Summary:";
+            // 
+            // label17
+            // 
+            label17.Location = new System.Drawing.Point(16, 272);
+            label17.Name = "label17";
+            label17.Size = new System.Drawing.Size(48, 24);
+            label17.TabIndex = 15;
+            label17.Text = "Slot 4:";
+            label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label15
+            // 
+            label15.Location = new System.Drawing.Point(16, 248);
+            label15.Name = "label15";
+            label15.Size = new System.Drawing.Size(48, 24);
+            label15.TabIndex = 14;
+            label15.Text = "Slot 3:";
+            label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label14
+            // 
+            label14.Location = new System.Drawing.Point(16, 224);
+            label14.Name = "label14";
+            label14.Size = new System.Drawing.Size(48, 24);
+            label14.TabIndex = 13;
+            label14.Text = "Slot 2:";
+            label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label13
+            // 
+            label13.Location = new System.Drawing.Point(16, 200);
+            label13.Name = "label13";
+            label13.Size = new System.Drawing.Size(48, 24);
+            label13.TabIndex = 12;
+            label13.Text = "Slot 1:";
+            label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // assetEquip4
+            // 
+            this.assetEquip4.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
+            this.assetEquip4.Location = new System.Drawing.Point(64, 272);
+            this.assetEquip4.Name = "assetEquip4";
+            this.assetEquip4.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetEquip4.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip4.TabIndex = 11;
+            // 
+            // assetEquip3
+            // 
+            this.assetEquip3.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
+            this.assetEquip3.Location = new System.Drawing.Point(64, 248);
+            this.assetEquip3.Name = "assetEquip3";
+            this.assetEquip3.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetEquip3.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip3.TabIndex = 10;
+            // 
+            // assetEquip2
+            // 
+            this.assetEquip2.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
+            this.assetEquip2.Location = new System.Drawing.Point(64, 224);
+            this.assetEquip2.Name = "assetEquip2";
+            this.assetEquip2.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetEquip2.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip2.TabIndex = 9;
+            // 
+            // assetEquip1
+            // 
+            this.assetEquip1.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
+            this.assetEquip1.Location = new System.Drawing.Point(64, 200);
+            this.assetEquip1.Name = "assetEquip1";
+            this.assetEquip1.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetEquip1.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip1.TabIndex = 8;
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new System.Drawing.Point(8, 176);
+            label12.Name = "label12";
+            label12.Size = new System.Drawing.Size(60, 13);
+            label12.TabIndex = 7;
+            label12.Text = "Equipment:";
+            // 
+            // chkVoreAlwaysSwallow
+            // 
+            this.chkVoreAlwaysSwallow.AutoSize = true;
+            this.chkVoreAlwaysSwallow.Location = new System.Drawing.Point(184, 120);
+            this.chkVoreAlwaysSwallow.Name = "chkVoreAlwaysSwallow";
+            this.chkVoreAlwaysSwallow.Size = new System.Drawing.Size(144, 17);
+            this.chkVoreAlwaysSwallow.TabIndex = 3;
+            this.chkVoreAlwaysSwallow.Text = "Swallow Defeated Player";
+            this.chkVoreAlwaysSwallow.UseVisualStyleBackColor = true;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(168, 24);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(73, 13);
+            label4.TabIndex = 6;
+            label4.Text = "Vore Settings:";
+            // 
+            // chkVoreDisposal
+            // 
+            this.chkVoreDisposal.AutoSize = true;
+            this.chkVoreDisposal.Location = new System.Drawing.Point(184, 96);
+            this.chkVoreDisposal.Name = "chkVoreDisposal";
+            this.chkVoreDisposal.Size = new System.Drawing.Size(122, 17);
+            this.chkVoreDisposal.TabIndex = 2;
+            this.chkVoreDisposal.Text = "Has Disposal Scene";
+            this.chkVoreDisposal.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(8, 24);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(100, 13);
+            label3.TabIndex = 5;
+            label3.Text = "Behavior Overrides:";
+            // 
+            // chkVoreDigest
+            // 
+            this.chkVoreDigest.AutoSize = true;
+            this.chkVoreDigest.Location = new System.Drawing.Point(184, 72);
+            this.chkVoreDigest.Name = "chkVoreDigest";
+            this.chkVoreDigest.Size = new System.Drawing.Size(85, 17);
+            this.chkVoreDigest.TabIndex = 1;
+            this.chkVoreDigest.Text = "Digests Prey";
+            this.chkVoreDigest.UseVisualStyleBackColor = true;
+            // 
+            // chkFlagSkipTurns
+            // 
+            this.chkFlagSkipTurns.AutoSize = true;
+            this.chkFlagSkipTurns.Location = new System.Drawing.Point(16, 48);
+            this.chkFlagSkipTurns.Name = "chkFlagSkipTurns";
+            this.chkFlagSkipTurns.Size = new System.Drawing.Size(91, 17);
+            this.chkFlagSkipTurns.TabIndex = 4;
+            this.chkFlagSkipTurns.Text = "Skip All Turns";
+            this.chkFlagSkipTurns.UseVisualStyleBackColor = true;
+            // 
+            // chkVorePred
+            // 
+            this.chkVorePred.AutoSize = true;
+            this.chkVorePred.Location = new System.Drawing.Point(176, 48);
+            this.chkVorePred.Name = "chkVorePred";
+            this.chkVorePred.Size = new System.Drawing.Size(77, 17);
+            this.chkVorePred.TabIndex = 0;
+            this.chkVorePred.Text = "Is Predator";
+            this.chkVorePred.UseVisualStyleBackColor = true;
+            this.chkVorePred.CheckedChanged += new System.EventHandler(this.chkVorePred_CheckedChanged);
+            // 
+            // chkFlagNoXP
+            // 
+            this.chkFlagNoXP.AutoSize = true;
+            this.chkFlagNoXP.Location = new System.Drawing.Point(16, 144);
+            this.chkFlagNoXP.Name = "chkFlagNoXP";
+            this.chkFlagNoXP.Size = new System.Drawing.Size(113, 17);
+            this.chkFlagNoXP.TabIndex = 3;
+            this.chkFlagNoXP.Text = "Does Not Give XP";
+            this.chkFlagNoXP.UseVisualStyleBackColor = true;
+            // 
+            // chkFlagNoFight
+            // 
+            this.chkFlagNoFight.AutoSize = true;
+            this.chkFlagNoFight.Location = new System.Drawing.Point(16, 72);
+            this.chkFlagNoFight.Name = "chkFlagNoFight";
+            this.chkFlagNoFight.Size = new System.Drawing.Size(122, 17);
+            this.chkFlagNoFight.TabIndex = 2;
+            this.chkFlagNoFight.Text = "Cannot Be Attacked";
+            this.chkFlagNoFight.UseVisualStyleBackColor = true;
+            // 
+            // chkFlagNoVore
+            // 
+            this.chkFlagNoVore.AutoSize = true;
+            this.chkFlagNoVore.Location = new System.Drawing.Point(16, 120);
+            this.chkFlagNoVore.Name = "chkFlagNoVore";
+            this.chkFlagNoVore.Size = new System.Drawing.Size(107, 17);
+            this.chkFlagNoVore.TabIndex = 1;
+            this.chkFlagNoVore.Text = "Cannot Be Vored";
+            this.chkFlagNoVore.UseVisualStyleBackColor = true;
+            // 
+            // chkFlagNoGrapple
+            // 
+            this.chkFlagNoGrapple.AutoSize = true;
+            this.chkFlagNoGrapple.Location = new System.Drawing.Point(16, 96);
+            this.chkFlagNoGrapple.Name = "chkFlagNoGrapple";
+            this.chkFlagNoGrapple.Size = new System.Drawing.Size(100, 17);
+            this.chkFlagNoGrapple.TabIndex = 0;
+            this.chkFlagNoGrapple.Text = "Cannot Grapple";
+            this.chkFlagNoGrapple.UseVisualStyleBackColor = true;
+            // 
+            // fraGeneral
+            // 
+            fraGeneral.Controls.Add(label19);
+            fraGeneral.Controls.Add(this.lblCombatOverview);
+            fraGeneral.Controls.Add(label18);
+            fraGeneral.Controls.Add(this.cmbGender);
+            fraGeneral.Controls.Add(this.cmbSize);
+            fraGeneral.Controls.Add(label11);
+            fraGeneral.Controls.Add(label16);
+            fraGeneral.Controls.Add(this.txtAlias);
+            fraGeneral.Controls.Add(label9);
+            fraGeneral.Controls.Add(label8);
+            fraGeneral.Controls.Add(label7);
+            fraGeneral.Controls.Add(label6);
+            fraGeneral.Controls.Add(label5);
+            fraGeneral.Controls.Add(label2);
+            fraGeneral.Controls.Add(this.nudLevel);
+            fraGeneral.Controls.Add(this.nudWis);
+            fraGeneral.Controls.Add(this.nudCon);
+            fraGeneral.Controls.Add(this.nudDex);
+            fraGeneral.Controls.Add(this.nudStr);
+            fraGeneral.Controls.Add(this.txtGuid);
+            fraGeneral.Controls.Add(label10);
+            fraGeneral.Controls.Add(this.txtName);
+            fraGeneral.Controls.Add(label1);
+            fraGeneral.Location = new System.Drawing.Point(16, 16);
+            fraGeneral.Name = "fraGeneral";
+            fraGeneral.Size = new System.Drawing.Size(312, 368);
+            fraGeneral.TabIndex = 3;
+            fraGeneral.TabStop = false;
+            fraGeneral.Text = "General";
+            // 
+            // cmbGender
+            // 
+            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbGender.FormattingEnabled = true;
+            this.cmbGender.Items.AddRange(new object[] {
+            "Male",
+            "Female",
+            "Neuter",
+            "Herm"});
+            this.cmbGender.Location = new System.Drawing.Point(200, 88);
+            this.cmbGender.Name = "cmbGender";
+            this.cmbGender.Size = new System.Drawing.Size(96, 21);
+            this.cmbGender.TabIndex = 30;
             // 
             // cmbSize
             // 
@@ -87,68 +470,40 @@
             "Medium",
             "Large",
             "Huge"});
-            this.cmbSize.Location = new System.Drawing.Point(104, 200);
+            this.cmbSize.Location = new System.Drawing.Point(104, 136);
             this.cmbSize.Name = "cmbSize";
             this.cmbSize.Size = new System.Drawing.Size(112, 21);
             this.cmbSize.TabIndex = 26;
             // 
-            // label11
+            // label16
             // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(104, 184);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(58, 13);
-            this.label11.TabIndex = 25;
-            this.label11.Text = "Size Class:";
+            label16.AutoSize = true;
+            label16.Location = new System.Drawing.Point(200, 72);
+            label16.Name = "label16";
+            label16.Size = new System.Drawing.Size(45, 13);
+            label16.TabIndex = 29;
+            label16.Text = "Gender:";
             // 
-            // label8
+            // txtAlias
             // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(208, 136);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(31, 13);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Wits:";
+            this.txtAlias.Location = new System.Drawing.Point(16, 88);
+            this.txtAlias.MaxLength = 100;
+            this.txtAlias.Name = "txtAlias";
+            this.txtAlias.Size = new System.Drawing.Size(176, 20);
+            this.txtAlias.TabIndex = 1;
             // 
-            // label7
+            // label9
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(144, 136);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 13);
-            this.label7.TabIndex = 23;
-            this.label7.Text = "Body:";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(80, 136);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(37, 13);
-            this.label6.TabIndex = 22;
-            this.label6.Text = "Agility:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(16, 136);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(50, 13);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "Strength:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(16, 184);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 13);
-            this.label2.TabIndex = 16;
-            this.label2.Text = "Level:";
+            label9.AutoSize = true;
+            label9.Location = new System.Drawing.Point(16, 72);
+            label9.Name = "label9";
+            label9.Size = new System.Drawing.Size(32, 13);
+            label9.TabIndex = 28;
+            label9.Text = "Alias:";
             // 
             // nudLevel
             // 
-            this.nudLevel.Location = new System.Drawing.Point(16, 200);
+            this.nudLevel.Location = new System.Drawing.Point(16, 136);
             this.nudLevel.Maximum = new decimal(new int[] {
             40,
             0,
@@ -170,7 +525,7 @@
             // 
             // nudWis
             // 
-            this.nudWis.Location = new System.Drawing.Point(208, 152);
+            this.nudWis.Location = new System.Drawing.Point(208, 184);
             this.nudWis.Maximum = new decimal(new int[] {
             50,
             0,
@@ -187,7 +542,7 @@
             // 
             // nudCon
             // 
-            this.nudCon.Location = new System.Drawing.Point(144, 152);
+            this.nudCon.Location = new System.Drawing.Point(144, 184);
             this.nudCon.Maximum = new decimal(new int[] {
             50,
             0,
@@ -204,7 +559,7 @@
             // 
             // nudDex
             // 
-            this.nudDex.Location = new System.Drawing.Point(80, 152);
+            this.nudDex.Location = new System.Drawing.Point(80, 184);
             this.nudDex.Maximum = new decimal(new int[] {
             50,
             0,
@@ -221,7 +576,7 @@
             // 
             // nudStr
             // 
-            this.nudStr.Location = new System.Drawing.Point(16, 152);
+            this.nudStr.Location = new System.Drawing.Point(16, 184);
             this.nudStr.Maximum = new decimal(new int[] {
             50,
             0,
@@ -239,21 +594,12 @@
             // txtGuid
             // 
             this.txtGuid.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtGuid.Location = new System.Drawing.Point(16, 264);
+            this.txtGuid.Location = new System.Drawing.Point(16, 328);
             this.txtGuid.MaxLength = 100;
             this.txtGuid.Name = "txtGuid";
             this.txtGuid.ReadOnly = true;
             this.txtGuid.Size = new System.Drawing.Size(280, 21);
             this.txtGuid.TabIndex = 21;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(16, 248);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(66, 13);
-            this.label10.TabIndex = 9;
-            this.label10.Text = "Asset GUID:";
             // 
             // txtName
             // 
@@ -263,181 +609,15 @@
             this.txtName.Size = new System.Drawing.Size(280, 20);
             this.txtName.TabIndex = 0;
             // 
-            // label1
+            // fraTags
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(70, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Public Name:";
-            // 
-            // fraVoreSettings
-            // 
-            this.fraVoreSettings.Controls.Add(this.lblStatsSummary);
-            this.fraVoreSettings.Controls.Add(this.lblVorePredness);
-            this.fraVoreSettings.Controls.Add(this.chkVoreDigest);
-            this.fraVoreSettings.Controls.Add(this.nudVorePredness);
-            this.fraVoreSettings.Controls.Add(this.chkVorePred);
-            this.fraVoreSettings.Location = new System.Drawing.Point(16, 336);
-            this.fraVoreSettings.Name = "fraVoreSettings";
-            this.fraVoreSettings.Size = new System.Drawing.Size(312, 128);
-            this.fraVoreSettings.TabIndex = 4;
-            this.fraVoreSettings.TabStop = false;
-            this.fraVoreSettings.Text = "Vore Stats";
-            // 
-            // lblStatsSummary
-            // 
-            this.lblStatsSummary.Location = new System.Drawing.Point(152, 24);
-            this.lblStatsSummary.Name = "lblStatsSummary";
-            this.lblStatsSummary.Size = new System.Drawing.Size(144, 88);
-            this.lblStatsSummary.TabIndex = 27;
-            this.lblStatsSummary.Text = "label11";
-            // 
-            // lblVorePredness
-            // 
-            this.lblVorePredness.AutoSize = true;
-            this.lblVorePredness.Location = new System.Drawing.Point(16, 80);
-            this.lblVorePredness.Name = "lblVorePredness";
-            this.lblVorePredness.Size = new System.Drawing.Size(77, 13);
-            this.lblVorePredness.TabIndex = 26;
-            this.lblVorePredness.Text = "Predatoryness:";
-            // 
-            // chkVoreDigest
-            // 
-            this.chkVoreDigest.AutoSize = true;
-            this.chkVoreDigest.Location = new System.Drawing.Point(16, 48);
-            this.chkVoreDigest.Name = "chkVoreDigest";
-            this.chkVoreDigest.Size = new System.Drawing.Size(85, 17);
-            this.chkVoreDigest.TabIndex = 1;
-            this.chkVoreDigest.Text = "Digests Prey";
-            this.chkVoreDigest.UseVisualStyleBackColor = true;
-            // 
-            // nudVorePredness
-            // 
-            this.nudVorePredness.DecimalPlaces = 2;
-            this.nudVorePredness.Location = new System.Drawing.Point(16, 96);
-            this.nudVorePredness.Maximum = new decimal(new int[] {
-            10,
-            0,
-            0,
-            0});
-            this.nudVorePredness.Name = "nudVorePredness";
-            this.nudVorePredness.Size = new System.Drawing.Size(88, 20);
-            this.nudVorePredness.TabIndex = 25;
-            this.nudVorePredness.Value = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            // 
-            // chkVorePred
-            // 
-            this.chkVorePred.AutoSize = true;
-            this.chkVorePred.Location = new System.Drawing.Point(16, 24);
-            this.chkVorePred.Name = "chkVorePred";
-            this.chkVorePred.Size = new System.Drawing.Size(77, 17);
-            this.chkVorePred.TabIndex = 0;
-            this.chkVorePred.Text = "Is Predator";
-            this.chkVorePred.UseVisualStyleBackColor = true;
-            this.chkVorePred.CheckedChanged += new System.EventHandler(this.chkVorePred_CheckedChanged);
-            // 
-            // fraCombatFlags
-            // 
-            this.fraCombatFlags.Controls.Add(this.chkFlagFailVore);
-            this.fraCombatFlags.Controls.Add(this.chkFlagFailGrapple);
-            this.fraCombatFlags.Controls.Add(this.chkFlagSkipAOO);
-            this.fraCombatFlags.Controls.Add(this.chkFlagSkipTurns);
-            this.fraCombatFlags.Controls.Add(this.chkFlagNoXP);
-            this.fraCombatFlags.Controls.Add(this.chkFlagNoFight);
-            this.fraCombatFlags.Controls.Add(this.chkFlagNoVore);
-            this.fraCombatFlags.Controls.Add(this.chkFlagNoGrapple);
-            this.fraCombatFlags.Location = new System.Drawing.Point(344, 16);
-            this.fraCombatFlags.Name = "fraCombatFlags";
-            this.fraCombatFlags.Size = new System.Drawing.Size(352, 128);
-            this.fraCombatFlags.TabIndex = 5;
-            this.fraCombatFlags.TabStop = false;
-            this.fraCombatFlags.Text = "Combat Flags";
-            // 
-            // chkFlagFailVore
-            // 
-            this.chkFlagFailVore.AutoSize = true;
-            this.chkFlagFailVore.Location = new System.Drawing.Point(176, 96);
-            this.chkFlagFailVore.Name = "chkFlagFailVore";
-            this.chkFlagFailVore.Size = new System.Drawing.Size(142, 17);
-            this.chkFlagFailVore.TabIndex = 7;
-            this.chkFlagFailVore.Text = "Auto-fail All Vore Checks";
-            this.chkFlagFailVore.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagFailGrapple
-            // 
-            this.chkFlagFailGrapple.AutoSize = true;
-            this.chkFlagFailGrapple.Location = new System.Drawing.Point(176, 72);
-            this.chkFlagFailGrapple.Name = "chkFlagFailGrapple";
-            this.chkFlagFailGrapple.Size = new System.Drawing.Size(157, 17);
-            this.chkFlagFailGrapple.TabIndex = 6;
-            this.chkFlagFailGrapple.Text = "Auto-fail All Grapple Checks";
-            this.chkFlagFailGrapple.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagSkipAOO
-            // 
-            this.chkFlagSkipAOO.AutoSize = true;
-            this.chkFlagSkipAOO.Location = new System.Drawing.Point(176, 48);
-            this.chkFlagSkipAOO.Name = "chkFlagSkipAOO";
-            this.chkFlagSkipAOO.Size = new System.Drawing.Size(76, 17);
-            this.chkFlagSkipAOO.TabIndex = 5;
-            this.chkFlagSkipAOO.Text = "Skip AoOs";
-            this.chkFlagSkipAOO.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagSkipTurns
-            // 
-            this.chkFlagSkipTurns.AutoSize = true;
-            this.chkFlagSkipTurns.Location = new System.Drawing.Point(176, 24);
-            this.chkFlagSkipTurns.Name = "chkFlagSkipTurns";
-            this.chkFlagSkipTurns.Size = new System.Drawing.Size(91, 17);
-            this.chkFlagSkipTurns.TabIndex = 4;
-            this.chkFlagSkipTurns.Text = "Skip All Turns";
-            this.chkFlagSkipTurns.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagNoXP
-            // 
-            this.chkFlagNoXP.AutoSize = true;
-            this.chkFlagNoXP.Location = new System.Drawing.Point(16, 96);
-            this.chkFlagNoXP.Name = "chkFlagNoXP";
-            this.chkFlagNoXP.Size = new System.Drawing.Size(113, 17);
-            this.chkFlagNoXP.TabIndex = 3;
-            this.chkFlagNoXP.Text = "Does Not Give XP";
-            this.chkFlagNoXP.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagNoFight
-            // 
-            this.chkFlagNoFight.AutoSize = true;
-            this.chkFlagNoFight.Location = new System.Drawing.Point(16, 72);
-            this.chkFlagNoFight.Name = "chkFlagNoFight";
-            this.chkFlagNoFight.Size = new System.Drawing.Size(122, 17);
-            this.chkFlagNoFight.TabIndex = 2;
-            this.chkFlagNoFight.Text = "Cannot Be Attacked";
-            this.chkFlagNoFight.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagNoVore
-            // 
-            this.chkFlagNoVore.AutoSize = true;
-            this.chkFlagNoVore.Location = new System.Drawing.Point(16, 48);
-            this.chkFlagNoVore.Name = "chkFlagNoVore";
-            this.chkFlagNoVore.Size = new System.Drawing.Size(107, 17);
-            this.chkFlagNoVore.TabIndex = 1;
-            this.chkFlagNoVore.Text = "Cannot Be Vored";
-            this.chkFlagNoVore.UseVisualStyleBackColor = true;
-            // 
-            // chkFlagNoGrapple
-            // 
-            this.chkFlagNoGrapple.AutoSize = true;
-            this.chkFlagNoGrapple.Location = new System.Drawing.Point(16, 24);
-            this.chkFlagNoGrapple.Name = "chkFlagNoGrapple";
-            this.chkFlagNoGrapple.Size = new System.Drawing.Size(100, 17);
-            this.chkFlagNoGrapple.TabIndex = 0;
-            this.chkFlagNoGrapple.Text = "Cannot Grapple";
-            this.chkFlagNoGrapple.UseVisualStyleBackColor = true;
+            fraTags.Controls.Add(this.txtTags);
+            fraTags.Location = new System.Drawing.Point(344, 336);
+            fraTags.Name = "fraTags";
+            fraTags.Size = new System.Drawing.Size(352, 104);
+            fraTags.TabIndex = 7;
+            fraTags.TabStop = false;
+            fraTags.Text = "Script Tags (one per line)";
             // 
             // txtTags
             // 
@@ -446,156 +626,68 @@
             this.txtTags.Multiline = true;
             this.txtTags.Name = "txtTags";
             this.txtTags.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTags.Size = new System.Drawing.Size(288, 72);
+            this.txtTags.Size = new System.Drawing.Size(336, 72);
             this.txtTags.TabIndex = 0;
             // 
-            // fraGeneral
+            // label19
             // 
-            this.fraGeneral.Controls.Add(this.cmbGender);
-            this.fraGeneral.Controls.Add(this.cmbSize);
-            this.fraGeneral.Controls.Add(this.label11);
-            this.fraGeneral.Controls.Add(this.label16);
-            this.fraGeneral.Controls.Add(this.txtAlias);
-            this.fraGeneral.Controls.Add(this.label9);
-            this.fraGeneral.Controls.Add(this.label8);
-            this.fraGeneral.Controls.Add(this.label7);
-            this.fraGeneral.Controls.Add(this.label6);
-            this.fraGeneral.Controls.Add(this.label5);
-            this.fraGeneral.Controls.Add(this.label2);
-            this.fraGeneral.Controls.Add(this.nudLevel);
-            this.fraGeneral.Controls.Add(this.nudWis);
-            this.fraGeneral.Controls.Add(this.nudCon);
-            this.fraGeneral.Controls.Add(this.nudDex);
-            this.fraGeneral.Controls.Add(this.nudStr);
-            this.fraGeneral.Controls.Add(this.txtGuid);
-            this.fraGeneral.Controls.Add(this.label10);
-            this.fraGeneral.Controls.Add(this.txtName);
-            this.fraGeneral.Controls.Add(this.label1);
-            this.fraGeneral.Location = new System.Drawing.Point(16, 16);
-            this.fraGeneral.Name = "fraGeneral";
-            this.fraGeneral.Size = new System.Drawing.Size(312, 304);
-            this.fraGeneral.TabIndex = 3;
-            this.fraGeneral.TabStop = false;
-            this.fraGeneral.Text = "General";
-            // 
-            // cmbGender
-            // 
-            this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbGender.FormattingEnabled = true;
-            this.cmbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Neuter",
-            "Herm"});
-            this.cmbGender.Location = new System.Drawing.Point(200, 88);
-            this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(96, 21);
-            this.cmbGender.TabIndex = 30;
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(200, 72);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(45, 13);
-            this.label16.TabIndex = 29;
-            this.label16.Text = "Gender:";
-            // 
-            // txtAlias
-            // 
-            this.txtAlias.Location = new System.Drawing.Point(16, 88);
-            this.txtAlias.MaxLength = 100;
-            this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Size = new System.Drawing.Size(176, 20);
-            this.txtAlias.TabIndex = 1;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(16, 72);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(32, 13);
-            this.label9.TabIndex = 28;
-            this.label9.Text = "Alias:";
-            // 
-            // fraTags
-            // 
-            this.fraTags.Controls.Add(this.txtTags);
-            this.fraTags.Location = new System.Drawing.Point(16, 480);
-            this.fraTags.Name = "fraTags";
-            this.fraTags.Size = new System.Drawing.Size(312, 104);
-            this.fraTags.TabIndex = 7;
-            this.fraTags.TabStop = false;
-            this.fraTags.Text = "Script Tags (one per line)";
+            label19.Location = new System.Drawing.Point(24, 232);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(88, 72);
+            label19.TabIndex = 31;
+            label19.Text = "Attack Dice:\r\nDefense Dice:\r\nGrapple Dice:\r\nSwallow Dice:\r\nStruggle Dice:";
             // 
             // FormDocumentCreature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 601);
-            this.Controls.Add(this.fraTags);
-            this.Controls.Add(this.fraCombatFlags);
-            this.Controls.Add(this.fraVoreSettings);
-            this.Controls.Add(this.fraGeneral);
+            this.ClientSize = new System.Drawing.Size(705, 474);
+            this.Controls.Add(fraTags);
+            this.Controls.Add(fraCombatFlags);
+            this.Controls.Add(fraGeneral);
             this.Name = "FormDocumentCreature";
             this.Text = "frmDocumentCreature";
             this.Load += new System.EventHandler(this.FormDocumentCreature_Load);
+            fraCombatFlags.ResumeLayout(false);
+            fraCombatFlags.PerformLayout();
+            fraGeneral.ResumeLayout(false);
+            fraGeneral.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudWis)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudCon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudDex)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStr)).EndInit();
-            this.fraVoreSettings.ResumeLayout(false);
-            this.fraVoreSettings.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudVorePredness)).EndInit();
-            this.fraCombatFlags.ResumeLayout(false);
-            this.fraCombatFlags.PerformLayout();
-            this.fraGeneral.ResumeLayout(false);
-            this.fraGeneral.PerformLayout();
-            this.fraTags.ResumeLayout(false);
-            this.fraTags.PerformLayout();
+            fraTags.ResumeLayout(false);
+            fraTags.PerformLayout();
             this.ResumeLayout(false);
 
 		}
 
 		#endregion
 		private System.Windows.Forms.TextBox txtGuid;
-		private System.Windows.Forms.Label label10;
 		private System.Windows.Forms.TextBox txtName;
-		private System.Windows.Forms.Label label1;
 		private System.Windows.Forms.NumericUpDown nudLevel;
 		private System.Windows.Forms.NumericUpDown nudWis;
 		private System.Windows.Forms.NumericUpDown nudCon;
 		private System.Windows.Forms.NumericUpDown nudDex;
 		private System.Windows.Forms.NumericUpDown nudStr;
-		private System.Windows.Forms.Label label2;
-		private System.Windows.Forms.GroupBox fraVoreSettings;
-		private System.Windows.Forms.CheckBox chkVoreDigest;
-		private System.Windows.Forms.CheckBox chkVorePred;
-		private System.Windows.Forms.Label label8;
-		private System.Windows.Forms.Label label7;
-		private System.Windows.Forms.Label label6;
-		private System.Windows.Forms.Label label5;
-		private System.Windows.Forms.Label lblVorePredness;
-		private System.Windows.Forms.NumericUpDown nudVorePredness;
-		private System.Windows.Forms.Label lblStatsSummary;
 		private System.Windows.Forms.ComboBox cmbSize;
-		private System.Windows.Forms.Label label11;
-		private System.Windows.Forms.GroupBox fraCombatFlags;
-		private System.Windows.Forms.CheckBox chkFlagNoFight;
-		private System.Windows.Forms.CheckBox chkFlagNoVore;
-		private System.Windows.Forms.CheckBox chkFlagNoGrapple;
-		private System.Windows.Forms.CheckBox chkFlagFailVore;
-		private System.Windows.Forms.CheckBox chkFlagFailGrapple;
-		private System.Windows.Forms.CheckBox chkFlagSkipAOO;
-		private System.Windows.Forms.CheckBox chkFlagSkipTurns;
-		private System.Windows.Forms.CheckBox chkFlagNoXP;
 		private System.Windows.Forms.TextBox txtTags;
-		private System.Windows.Forms.GroupBox fraGeneral;
-		private System.Windows.Forms.GroupBox fraTags;
 		private System.Windows.Forms.TextBox txtAlias;
-		private System.Windows.Forms.Label label9;
 		private System.Windows.Forms.ComboBox cmbGender;
-		private System.Windows.Forms.Label label16;
+        private System.Windows.Forms.CheckBox chkVoreAlwaysSwallow;
+        private System.Windows.Forms.CheckBox chkVoreDisposal;
+        private System.Windows.Forms.CheckBox chkVoreDigest;
+        private System.Windows.Forms.CheckBox chkVorePred;
+        private System.Windows.Forms.CheckBox chkFlagSkipTurns;
+        private System.Windows.Forms.CheckBox chkFlagNoXP;
+        private System.Windows.Forms.CheckBox chkFlagNoFight;
+        private System.Windows.Forms.CheckBox chkFlagNoVore;
+        private System.Windows.Forms.CheckBox chkFlagNoGrapple;
+        private System.Windows.Forms.Label lblCombatOverview;
+        private AssetPickerControl assetEquip4;
+        private AssetPickerControl assetEquip3;
+        private AssetPickerControl assetEquip2;
+        private AssetPickerControl assetEquip1;
     }
 }

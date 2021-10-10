@@ -90,27 +90,35 @@ namespace Finmer.Editor
         /// <param name="ctl">The control (and its children) to hook.</param>
         protected void MakeControlsDirty(Control ctl)
         {
-            // hook changed events to mark the asset as dirty
+            // Hook changed events so that the asset is marked dirty when the control is changed by the user
             switch (ctl)
             {
                 case TextBox _:
                     ctl.TextChanged += (sender, args) => Dirty = true;
-                    return;
+                    break;
+
                 case NumericUpDown nud:
                     nud.ValueChanged += (sender, args) => Dirty = true;
                     nud.TextChanged += (sender, args) => Dirty = true;
-                    return;
+                    break;
+
                 case CheckBox chk:
                     chk.CheckedChanged += (sender, args) => Dirty = true;
-                    return;
+                    break;
+
                 case ComboBox cmb:
                     cmb.TextChanged += (sender, args) => Dirty = true;
                     cmb.SelectedIndexChanged += (sender, args) => Dirty = true;
-                    return;
+                    break;
+
+                case AssetPickerControl picker:
+                    picker.SelectedAssetChanged += (sender, args) => Dirty = true;
+                    break;
             }
 
-            // run this on children too
-            foreach (Control child in ctl.Controls) MakeControlsDirty(child);
+            // Recursively run this on child controls too
+            foreach (Control child in ctl.Controls)
+                MakeControlsDirty(child);
         }
 
     }

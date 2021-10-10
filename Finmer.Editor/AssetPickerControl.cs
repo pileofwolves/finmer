@@ -65,6 +65,9 @@ namespace Finmer.Editor
             {
                 m_SelectedAssetGuid = value;
                 UpdateLabel();
+
+                // Raise event
+                SelectedAssetChanged?.Invoke(this, EventArgs.Empty);
             }
         }
 
@@ -82,6 +85,11 @@ namespace Finmer.Editor
         {
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Occurs when the SelectedGuid value changes.
+        /// </summary>
+        public event EventHandler SelectedAssetChanged;
 
         private void UpdateLabel()
         {
@@ -140,7 +148,7 @@ namespace Finmer.Editor
         private void cmdBrowse_Click(object sender, EventArgs e)
         {
             // Open a dialog box where the user can select a new target asset
-            using (AssetPickerBrowser browser = new AssetPickerBrowser())
+            using (var browser = new AssetPickerBrowser())
             {
                 // Add all acceptable assets to the dialog from both the current project and all loaded dependencies
                 Type target_type = s_AssetTypeLookup[AssetType];

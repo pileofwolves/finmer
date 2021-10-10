@@ -45,7 +45,7 @@ namespace Finmer.Editor
             // Equipment data
             cmbEquipSlot.SelectedIndex = (int)item.EquipSlot;
             foreach (var buff in item.EquipEffects)
-                AddEquipEffect(buff);
+                AddEquipEffect(buff, false);
 
             // Usable item data
             txtUseDesc.Text = item.UseDescription;
@@ -175,13 +175,17 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
-        private void AddEquipEffect(Buff buff)
+        private void AddEquipEffect(Buff buff, bool isUserAction = true)
         {
+            // Create a new list entry that represents this effect
             var buff_item = new ListViewItem();
             buff_item.SubItems.Add(buff.GetDescription());
             buff_item.Text = buff.GetIcon().ToString();
             buff_item.Tag = buff;
             lsvEquipEffects.Items.Add(buff_item);
+
+            // Mark asset as having changed
+            Dirty |= isUserAction;
         }
 
         private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)
@@ -220,6 +224,9 @@ namespace Finmer.Editor
                 item.SubItems.Add(new_buff.GetDescription());
                 item.Text = new_buff.GetIcon().ToString();
                 item.Tag = new_buff;
+
+                // Mark the asset as having changed
+                Dirty = true;
             }
         }
 
@@ -232,6 +239,9 @@ namespace Finmer.Editor
         {
             foreach (var selection in lsvEquipEffects.SelectedItems)
                 lsvEquipEffects.Items.Remove((ListViewItem)selection);
+
+            // Mark the asset as having changed
+            Dirty = true;
         }
 
         private void cmdEquipEffectEdit_Click(object sender, EventArgs e)

@@ -80,7 +80,7 @@
 								"Key": "EwwPublicInteraction",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "--Log(\"town_inn_talktowho\")\r\nSetInstruction(GetString(\"town_inn_talktowho\"))",
+								"ScriptAction": "SetInstruction(Text.GetString(\"town_inn_talktowho\"))",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -1300,7 +1300,7 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local foxbutt = Creature(\"Town_Foxtaur\")\r\nCombat.Reset()\r\nCombat.AddCombatant(foxbutt)\r\nCombat.SetGrappling(foxbutt, Player, true)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(foxbutt)\r\n    PostVore(\"INN_FOXTAUR_POSTVORE_SCAT_POV\")\r\nend)\r\nCombat.Begin()",
+														"ScriptAction": "local foxbutt = Creature(\"CR_Town_Foxtaur\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(foxbutt)\r\nstate:SetGrappling(foxbutt, Player)\r\nstate:OnPlayerKilled(function()\r\n    EatThePlayerAnyway(foxbutt)\r\n    PostVore(\"INN_FOXTAUR_POSTVORE_SCAT_POV\")\r\nend)\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{

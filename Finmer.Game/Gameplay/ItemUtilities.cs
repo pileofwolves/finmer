@@ -19,10 +19,10 @@ namespace Finmer.Gameplay
     public static class ItemUtilities
     {
 
-        private const int k_SlotIndex_Weapon = 0;
-        private const int k_SlotIndex_Armor = 1;
-        private const int k_SlotIndex_Accessory1 = 2;
-        private const int k_SlotIndex_Accessory2 = 3;
+        public const int k_SlotIndex_Weapon = 0;
+        public const int k_SlotIndex_Armor = 1;
+        public const int k_SlotIndex_Accessory1 = 2;
+        public const int k_SlotIndex_Accessory2 = 3;
 
         /// <summary>
         /// Invoke an item's UseScript and handle side effects such as consumable status.

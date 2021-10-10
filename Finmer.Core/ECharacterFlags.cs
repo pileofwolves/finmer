@@ -17,15 +17,12 @@ namespace Finmer.Core
     [Flags]
     public enum ECharacterFlags
     {
-        None = 0,
-        NoGrapple = 1,
-        NoPrey = 2,
-        NoFight = 4,
-        NoXP = 8,
-        SkipTurns = 16,
-        SkipAOO = 32,
-        FailGrapple = 64,
-        FailVore = 128
+        None                = 0,
+        NoGrapple           = 1,
+        NoPrey              = 2,
+        NoFight             = 4,
+        NoXP                = 8,
+        SkipTurns           = 16,
     }
 
 }

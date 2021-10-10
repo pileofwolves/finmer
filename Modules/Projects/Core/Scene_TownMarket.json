@@ -1355,8 +1355,8 @@
 				"Key": "Event_Naked",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- randomize the guard's species\r\nguardSpecies = GetString(\"SPECIES_ANY\")\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nLogGsub(\"EVENT_NAKED_BEGIN\", {guard=guardSpecies})",
-				"ScriptAppear": "return Player.EquippedArmor == nil",
+				"ScriptAction": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")",
+				"ScriptAppear": "local a = Player.EquippedArmor;\r\nif a ~= nil then print(\"armor = \" .. a.Name) end\r\nreturn Player.EquippedArmor == nil",
 				"Children": [
 					{
 						"Key": "EvNaked_C_Apologize",
@@ -1373,7 +1373,7 @@
 								"Key": "EvNaked_R_Apologize",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"EVENT_NAKED_APOLOGIZE\")\r\nLogGsub(\"EVENT_NAKED_ARRESTED\", {guard=guardSpecies})",
+								"ScriptAction": "Log(\"EVENT_NAKED_APOLOGIZE\")\r\nLog(\"EVENT_NAKED_ARRESTED\")",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -1391,7 +1391,7 @@
 												"Key": "EvNaked_R_VoreHit",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "LogGsub(\"TOWN_GUARD_VORE_HIT_POV\", {guard=guardSpecies})",
+												"ScriptAction": "Log(\"TOWN_GUARD_VORE_HIT_POV\")",
 												"ScriptAppear": "",
 												"Children": [
 													{
@@ -1402,14 +1402,14 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "LogGsub(\"TOWN_GUARD_VORE_WIN_POV\", {guard=guardSpecies})\r\n\r\nlocal guard = Creature(\"Town_Guard\")\r\nguard.Alias = guardSpecies\r\nguard.StomachDigest = false\r\n\r\nCombat.AddCombatant(guard)\r\nCombat.SetVored(guard, Player, true)\r\nCombat.OnRoundEnd(function(round)\r\n    -- print some sexy text and release after some rounds\r\n    LogGsub(\"TOWN_GUARD_POSTVORE\" .. round, {guard = guardSpecies})\r\n    if round >= 5 then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.StomachDigest = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "EvNaked_R_GetEaten",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- take a fine, and make sure the player has clothes now\r\nPlayer.Money = math.max(Player.Money - 10, 0)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
+																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer.Money = math.max(Player.Money - 10, 0)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -1427,7 +1427,7 @@
 																				"Key": "EvNaked_R_Regurg",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"TOWN_GUARD_REGURGITATED\", {guard=guardSpecies})",
+																				"ScriptAction": "-- Context was discarded (scene change) so we need to reset it now\r\nText.SetContext(\"guard\", guard)\r\n\r\nLog(\"TOWN_GUARD_REGURGITATED\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -1482,7 +1482,7 @@
 								"Key": "EvNaked_R_Defy",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"EVENT_NAKED_DEFY\")\r\nLogGsub(\"EVENT_NAKED_ARRESTED\", {guard=guardSpecies})",
+								"ScriptAction": "Log(\"EVENT_NAKED_DEFY\")\r\nLog(\"EVENT_NAKED_ARRESTED\")",
 								"ScriptAppear": "",
 								"Children": [
 									{

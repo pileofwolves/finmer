@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using Finmer.Gameplay.Scripting;
 
 namespace Finmer.Gameplay.Combat
@@ -38,7 +39,7 @@ namespace Finmer.Gameplay.Combat
         /// The combat turn number. Starts at 1 for the first round.
         /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
-        public int Round { get; set; }
+        public int Round { get; set; } = 1;
 
         /// <summary>
         /// The amount of XP to award to the player at the end of combat.
@@ -267,6 +268,46 @@ namespace Finmer.Gameplay.Combat
             return 0;
         }
 
+        [ScriptableFunction]
+        protected static int ExportedSetGrappling(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var lhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 2));
+            var rhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 3));
+            self.SetGrappling(lhs, rhs);
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedSetVored(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var lhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 2));
+            var rhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 3));
+            self.SetVored(lhs, rhs);
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedUnsetGrappling(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var lhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 2));
+            var rhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 3));
+            self.UnsetGrappling(lhs, rhs);
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedUnsetVored(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var lhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 2));
+            var rhs = self.GetParticipantForCharacter(FromLuaNonOptional<Character>(state, 3));
+            self.UnsetVored(lhs, rhs);
+            return 0;
+        }
+
         private void AttachScriptCallbacks()
         {
             OnRoundEnd += round =>
@@ -329,6 +370,11 @@ namespace Finmer.Gameplay.Combat
                     m_Binder.Call(stack, 2);
                 }
             };
+        }
+
+        private Participant GetParticipantForCharacter(Character character)
+        {
+            return Participants.FirstOrDefault(participant => participant.Character == character);
         }
 
         /// <summary>

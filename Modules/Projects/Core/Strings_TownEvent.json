@@ -12,13 +12,13 @@
 		{
 			"Key": "EVENT_NAKED_ARRESTED",
 			"Text": [
-				"He hands his halberd to his partner, then confidently marches over to you and snatches you by the scruff of your neck. The %guard forcefully pushes and pins you against the smooth and cold surface of the nearest wall, then pulls back his visor. An assertive and authoritative, yet also predatory, pair of eyes meets your gaze. \"Hold still, citizen. In order to preserve public order, I am forced to... temporarily remove your presence until you come to your senses.\""
+				"He hands his halberd to his partner, then confidently marches over to you and snatches you by the scruff of your neck. The {{guard}} forcefully pushes and pins you against the smooth and cold surface of the nearest wall, then pulls back his visor. An assertive and authoritative, yet also predatory, pair of eyes meets your gaze. \"Hold still, citizen. In order to preserve public order, I am forced to... temporarily remove your presence until you come to your senses.\""
 			]
 		},
 		{
 			"Key": "EVENT_NAKED_BEGIN",
 			"Text": [
-				"A duo of heavily armored guardsmen approaches you, each holding a massive halberd in one paw. Light glints off of the polished surface of the weapons, somehow adding to the authority of the two figures. \"Halt!\" what looks to be a %guard shouts. \"What is the meaning of this, %species? You think you can just wander around naked? Have you no decency?\" one of the two asks you incredulously."
+				"A duo of heavily armored guardsmen approaches you, each holding a massive halberd in one paw. Light glints off of the polished surface of the weapons, somehow adding to the authority of the two figures. \"Halt!\" what looks to be a {{guard}} shouts. \"What is the meaning of this, {{player.species}}? You think you can just wander around naked? Have you no decency?\" one of the two asks you incredulously."
 			]
 		},
 		{
@@ -420,25 +420,25 @@
 		{
 			"Key": "TOWN_GUARD_POSTVORE5",
 			"Text": [
-				"As the fleshy organ appears to squeeze you into a direction, you finally realize what's going on. Your predator heaves and gags, your body being squeezed back up the skin-tight tube again. Before long, having performed the same harrowing trip in reverse, you reach the %guard's maw once more. The twisting tongue and rows of teeth frame your vision, the light blinding you, as you are forced further out still. The guard finishes regurgitating your sorry drool-soaked mess, and you take a few moments to breathe the cool, fresh air and recollect yourself."
+				"As the fleshy organ appears to squeeze you into a direction, you finally realize what's going on. Your predator heaves and gags, your body being squeezed back up the skin-tight tube again. Before long, having performed the same harrowing trip in reverse, you reach the {{guard}}'s maw once more. The twisting tongue and rows of teeth frame your vision, the light blinding you, as you are forced further out still. The guard finishes regurgitating your sorry drool-soaked mess, and you take a few moments to breathe the cool, fresh air and recollect yourself."
 			]
 		},
 		{
 			"Key": "TOWN_GUARD_REGURGITATED",
 			"Text": [
-				"The %guard helps you up on your feet, and wipes some of the goop off of you. Then he hands you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" he warns, before turning and walking away. \"You can wash up there,\" you hear him call out, as he gestures off-handedly behind him.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
+				"The {{guard}} helps you up on your feet, and wipes some of the goop off of you. Then he hands you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" he warns, before turning and walking away. \"You can wash up there,\" you hear him call out, as he gestures off-handedly behind him.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
 			]
 		},
 		{
 			"Key": "TOWN_GUARD_VORE_HIT_POV",
 			"Text": [
-				"The guard spreads his jaws before you, dangerously sharp teeth and a slick-looking undulating tongue looming ever closer. Before you even have a chance to protest, that warm, slimy flesh makes contact with your face as your head is enveloped in the %guard's maw. The spongy tongue makes a few rounds over your features, completely soaking your %fur in sticky drool. Then, the first swallow comes. You hear it almost more strongly than you feel it - a loud, wet glllrrrk noise accompanied by the muscles surrounding your head pulling you inevitably towards the pulsating gullet."
+				"The guard spreads his jaws before you, dangerously sharp teeth and a slick-looking undulating tongue looming ever closer. Before you even have a chance to protest, that warm, slimy flesh makes contact with your face as your head is enveloped in the {{guard}}'s maw. The spongy tongue makes a few rounds over your features, completely soaking your {{player.fur}} in sticky drool. Then, the first swallow comes. You hear it almost more strongly than you feel it - a loud, wet glllrrrk noise accompanied by the muscles surrounding your head pulling you inevitably towards the pulsating gullet."
 			]
 		},
 		{
 			"Key": "TOWN_GUARD_VORE_WIN_POV",
 			"Text": [
-				"Your ears are pinned back to your head, and with the tightness of the predator's throat, every sound around you seems to be amplified - from the thumping heart nearby, to the running of slime, and to the obnoxiously loud and somewhat concerning gulps and swallows. The guard certainly wastes no time getting his prey down. With practiced force, your arms are squeezed to your sides, keeping you locked down and unable to resist your descent down the oppressively hot digestive system. Drool leaks down your chest as more and more of your body vanishes down the ravenous guardsman's throat, your fur easily matted down, lubed up for the trip.\\n\\nBefore long, you breach the stomach sphincter as your head and shoulders are forced into the cramped, superheated chamber. Rippling waves of muscular pressure force you down into the stomach little by little, and for a few moments you're pushed into a thin pool of slime and viscous goo. As your belly, thighs and legs join you inside the stomach, you are squeezed and curled up into a tight %furry ball. Mere moments after your toes leave the sphincter's touch with a disgustingly wet squelch, a deafening belch rumbles your surroundings. Fluids splatter everywhere, and the stomach walls take the opportunity to cave in on you, smothering you in soft, slimy warmth."
+				"Your ears are pinned back to your head, and with the tightness of the predator's throat, every sound around you seems to be amplified - from the thumping heart nearby, to the running of slime, and to the obnoxiously loud and somewhat concerning gulps and swallows. The guard certainly wastes no time getting his prey down. With practiced force, your arms are squeezed to your sides, keeping you locked down and unable to resist your descent down the oppressively hot digestive system. Drool leaks down your chest as more and more of your body vanishes down the ravenous guardsman's throat, your fur easily matted down, lubed up for the trip.\\n\\nBefore long, you breach the stomach sphincter as your head and shoulders are forced into the cramped, superheated chamber. Rippling waves of muscular pressure force you down into the stomach little by little, and for a few moments you're pushed into a thin pool of slime and viscous goo. As your belly, thighs and legs join you inside the stomach, you are squeezed and curled up into a tight {{player.furry}} ball. Mere moments after your toes leave the sphincter's touch with a disgustingly wet squelch, a deafening belch rumbles your surroundings. Fluids splatter everywhere, and the stomach walls take the opportunity to cave in on you, smothering you in soft, slimy warmth."
 			]
 		}
 	]

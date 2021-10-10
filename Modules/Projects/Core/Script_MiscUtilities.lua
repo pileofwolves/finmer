@@ -31,7 +31,11 @@ function LogRumor(success, fail, vars, color)
 end
 
 function LogGsub(key, vars, color)
-    print("using gsub with key " .. key .. ", consider phasing out")
+    -- Deprecation warning
+    if IsDebugMode() then
+        print("Called LogGsub(" .. key .. "), this function is deprecated")
+    end
+
     local strval = Text.GetString(key)
     assert(type(vars) == "table")
     for k, v in pairs(vars) do
@@ -76,14 +80,8 @@ function SetTimeHour(target)
     end
 end
 
--- shared function for simulating sleeping off prey
 function FoodComa()
-    -- advance by 12 hours gradually
-    --[[for i = 1, 6 do
-        Sleep(0.65)
-        AdvanceTime(2)
-    end]]
-
+    -- Used to have its own animation; is now an alias for Rest().
     Rest()
 end
 
@@ -115,14 +113,12 @@ end
 
 -- returns randomly generated character, see script documentation
 function GetRandomCharacter()
-    print("Genders: " .. #Gender)
-    local result = Creature("RandomAnthro")
+    local result = Creature("CR_RandomAnthro")
     result.Alias = Text.GetString("SPECIES_ANY")
     result.Gender = math.random(0, #Gender)
     return result
 end
 function GetUniqueCharacter(ident)
-    print("Genders: " .. #Gender)
     local prefix = "_uchar_" .. ident
     local ch_species
     local ch_gender
@@ -140,7 +136,7 @@ function GetUniqueCharacter(ident)
     end
 
     -- Wrap as a Creature, so it can be used as a grammar context
-    local result = Creature("RandomAnthro")
+    local result = Creature("CR_RandomAnthro")
     result.Alias = ch_species
     result.Gender = ch_gender
     return result
@@ -153,6 +149,11 @@ end
 -- Meant to be used from a Combat.OnPlayerKilled callback, to force a vore scene
 -- despite the player being defeated through non-vore combat actions
 function EatThePlayerAnyway(predator)
+    -- Deprecation warning - replace with PredatorAlwaysSwallowPlayer
+    if IsDebugMode() then
+        print("Called EatThePlayerAnyway - this function is deprecated")
+    end
+
     Text.SetContext("predator", predator)
     Text.SetContext("prey", Player)
     Sleep(2)
@@ -163,6 +164,11 @@ function EatThePlayerAnyway(predator)
     LogRaw(predator:GetString("kill_digested_pov"))
 end
 function EatThePreyAnyway(prey)
+    -- Deprecation warning - this should be replaced by a new flag like PreyAlwaysSwallowedOnDefeat
+    if IsDebugMode() then
+        print("Called EatThePreyAnyway - this function is deprecated")
+    end
+
     -- As EatThePlayerAnyway(), but from player POV
     Text.SetContext("predator", Player)
     Text.SetContext("prey", prey)
@@ -175,6 +181,11 @@ function EatThePreyAnyway(prey)
     LogRaw(prey:GetString("KILL_DIGESTED", Player))
 end
 function PostVore(scat, noscat)
+    -- Deprecation warning
+    if IsDebugMode() then
+        print("Called PostVore(" .. scat .. ") - this function is deprecated")
+    end
+
     -- if the player disabled scat, then use the noscat msg if present, otherwise exit
     local text = Player.PreferScat and scat or noscat
     if text == nil then return end

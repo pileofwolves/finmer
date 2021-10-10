@@ -41,3 +41,12 @@ Gender = {
     Neuter = 2,
     Herm = 3,
 }
+
+ECharacterFlags = {
+    None            = 0,
+    NoGrapple       = 1,
+    NoPrey          = 2,
+    NoFight         = 4,
+    NoXP            = 8,
+    SkipTurns       = 16,
+}

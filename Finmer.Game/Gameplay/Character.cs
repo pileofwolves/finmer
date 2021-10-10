@@ -63,7 +63,8 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public AssetCreature.ESize Size { get; set; }
 
-        public ECharacterFlags Flags => (ECharacterFlags?)m_Asset?.Flags ?? ECharacterFlags.None;
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public ECharacterFlags Flags { get; set; }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public bool IsPredator { get; set; }
@@ -132,6 +133,18 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public float StomachFullness => Stomach.OfType<Character>().Sum(ch => GetBellySizeForPrey(ch));
 
+        [ScriptableProperty(EScriptAccess.Read)]
+        public Item EquippedWeapon => Equipment[ItemUtilities.k_SlotIndex_Weapon];
+
+        [ScriptableProperty(EScriptAccess.Read)]
+        public Item EquippedArmor => Equipment[ItemUtilities.k_SlotIndex_Armor];
+
+        [ScriptableProperty(EScriptAccess.Read)]
+        public Item EquippedAccessory1 => Equipment[ItemUtilities.k_SlotIndex_Accessory1];
+
+        [ScriptableProperty(EScriptAccess.Read)]
+        public Item EquippedAccessory2 => Equipment[ItemUtilities.k_SlotIndex_Accessory2];
+
         /// <summary>
         /// Collection of buffs applied to this character specifically (e.g. excludes items).
         /// </summary>
@@ -176,6 +189,7 @@ namespace Finmer.Gameplay
             Agility = template.GetInt("dex");
             Body = template.GetInt("con");
             Wits = template.GetInt("wis");
+            Flags = (ECharacterFlags)template.GetInt("flags");
             Level = template.GetInt("level");
             Size = (AssetCreature.ESize)template.GetInt("size", (int)AssetCreature.ESize.Medium);
             Health = template.GetInt("health", HealthMax);
@@ -240,10 +254,10 @@ namespace Finmer.Gameplay
                 props.SetInt("dex", creature.Agility);
                 props.SetInt("con", creature.Body);
                 props.SetInt("wis", creature.Wits);
+                props.SetInt("flags", creature.Flags);
+                props.SetInt("level", creature.Level);
                 props.SetBool("predator", creature.PredatorEnabled);
                 props.SetBool("digest", creature.PredatorDigests);
-                props.SetInt("level", creature.Level);
-                props.SetInt("flags", creature.Flags);
 
                 return new Character(context, props);
             }

@@ -88,8 +88,8 @@ namespace Finmer.Editor
             // Handle unset links
             if (m_SelectedAssetGuid == Guid.Empty)
             {
-                lblAssetName.Enabled = false;
                 lblAssetName.LinkColor = SystemColors.GrayText;
+                lblAssetName.LinkBehavior = LinkBehavior.NeverUnderline;
                 lblAssetName.Text = "Not set";
                 return;
             }
@@ -99,28 +99,42 @@ namespace Finmer.Editor
             if (selected_asset == null)
             {
                 // Link could not be resolved; asset was deleted or unloaded
-                lblAssetName.Enabled = false;
                 lblAssetName.LinkColor = Color.OrangeRed;
+                lblAssetName.LinkBehavior = LinkBehavior.NeverUnderline;
                 lblAssetName.Text = m_SelectedAssetGuid.ToString();
             }
             else
             {
                 // Link resolved successfully; display its metadata
-                lblAssetName.Enabled = true;
                 lblAssetName.LinkColor = Color.Blue;
+                lblAssetName.LinkBehavior = LinkBehavior.HoverUnderline;
                 lblAssetName.Text = selected_asset.Name;
             }
         }
 
         private void lblAssetName_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            // Safety check: nothing to open if there's no set asset (but somehow this link was clicked anyway)
-            var selected_asset = SelectedAsset;
-            if (selected_asset == null)
-                return;
+            switch (e.Button)
+            {
+                case MouseButtons.Left:
+                    // Safety check: nothing to open if there's no set asset (but somehow this link was clicked anyway)
+                    var selected_asset = SelectedAsset;
+                    if (selected_asset == null)
+                        return;
 
-            // Open the specified asset in the editor
-            Program.MainForm.OpenAssetEditor(selected_asset);
+                    // Open the specified asset in the editor
+                    Program.MainForm.OpenAssetEditor(selected_asset);
+                    break;
+
+                case MouseButtons.Right:
+                    // Erase the link
+                    if (SelectedGuid != Guid.Empty)
+                    {
+                        SelectedGuid = Guid.Empty;
+                        UpdateLabel();
+                    }
+                    break;
+            }
         }
 
         private void cmdBrowse_Click(object sender, EventArgs e)

@@ -115,7 +115,12 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Whether this creature will always swallow the player if they kill the player through non-vore combat actions.
         /// </summary>
-        public bool PredatorAlwaysSwallowPlayer { get; set; }
+        public bool AutoSwallowPlayer { get; set; }
+
+        /// <summary>
+        /// Whether this creature will always be swallowed by the player if they are killed through non-vore combat actions.
+        /// </summary>
+        public bool AutoSwallowedByPlayer { get; set; }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
@@ -145,7 +150,7 @@ namespace Finmer.Core.Assets
             {
                 outstream.WriteBooleanProperty("PredatorDigests", PredatorDigests);
                 outstream.WriteBooleanProperty("PredatorDisposal", PredatorDisposal);
-                outstream.WriteBooleanProperty("PredatorAlwaysSwallowPlayer", PredatorAlwaysSwallowPlayer);
+                outstream.WriteBooleanProperty("PredatorAlwaysSwallowPlayer", AutoSwallowPlayer);
             }
 
             // String re-mappings
@@ -199,7 +204,7 @@ namespace Finmer.Core.Assets
                 // Version 11
                 PredatorDigests = instream.ReadBooleanProperty("PredatorDigests");
                 PredatorDisposal = instream.ReadBooleanProperty("PredatorDisposal");
-                PredatorAlwaysSwallowPlayer = instream.ReadBooleanProperty("PredatorAlwaysSwallowPlayer");
+                AutoSwallowPlayer = instream.ReadBooleanProperty("PredatorAlwaysSwallowPlayer");
             }
 
             // String re-mappings

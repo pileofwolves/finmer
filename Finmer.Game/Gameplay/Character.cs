@@ -196,7 +196,7 @@ namespace Finmer.Gameplay
 
             // Vore stats
             IsPredator = template.GetBool("predator");
-            StomachDigest = template.GetBool("digest", true);
+            StomachDigest = template.GetBool("predator_digest", true);
             Predatoriness = template.GetFloat("predness");
             Digestedness = template.GetFloat("digested");
             BowelFullness = template.GetFloat("bowelfullness");
@@ -257,7 +257,11 @@ namespace Finmer.Gameplay
                 props.SetInt("flags", creature.Flags);
                 props.SetInt("level", creature.Level);
                 props.SetBool("predator", creature.PredatorEnabled);
-                props.SetBool("digest", creature.PredatorDigests);
+                props.SetBool("predator_digest", creature.PredatorDigests);
+                props.SetNestedPropertyBag("eqp_0", Item.FromAsset(context, creature.Equipment[0])?.SerializeProperties());
+                props.SetNestedPropertyBag("eqp_1", Item.FromAsset(context, creature.Equipment[1])?.SerializeProperties());
+                props.SetNestedPropertyBag("eqp_2", Item.FromAsset(context, creature.Equipment[2])?.SerializeProperties());
+                props.SetNestedPropertyBag("eqp_3", Item.FromAsset(context, creature.Equipment[3])?.SerializeProperties());
 
                 return new Character(context, props);
             }
@@ -296,7 +300,7 @@ namespace Finmer.Gameplay
 
             // Vore stats
             props.SetBool("predator", IsPredator);
-            props.SetBool("digest", StomachDigest);
+            props.SetBool("predator_digest", StomachDigest);
             props.SetFloat("predness", Predatoriness);
             props.SetFloat("digested", Digestedness);
             props.SetFloat("bowelfullness", BowelFullness);

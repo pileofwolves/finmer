@@ -12,7 +12,6 @@ using System.Windows.Media.Imaging;
 using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
-using Finmer.Models;
 using Finmer.Utility;
 using Finmer.ViewModels;
 
@@ -66,7 +65,6 @@ namespace Finmer.Gameplay
             // Item is a bit of a special case; because all its properties are read-only from script, we can safely discard the entire
             // instance and just save the Asset ID, then look it up in the Furball when we deserialize to re-create the same object.
             var serialized = new PropertyBag();
-            serialized.SetBytes("guid", ID.ToByteArray()); // stack ID
             serialized.SetBytes("asset", Asset.ID.ToByteArray()); // asset ID
             return serialized;
         }
@@ -78,49 +76,48 @@ namespace Finmer.Gameplay
 
         public static Item FromAsset(ScriptContext context, string assetName)
         {
-            try
-            {
-                // Find the AssetItem represented by the specified file name
-                AssetBase asset = GameController.Content.GetAssetByName(assetName);
-                if (!(asset is AssetItem item))
-                    throw new ArgumentException($"The specified asset ('{assetName ?? "[null]"}') does not exist or is not an Item.", nameof(assetName));
-
-                // Initialize the item with empty save data
-                PropertyBag template = new PropertyBag();
-                return new Item(context, template, item);
-            }
-            catch (Exception ex)
-            {
-                GameUI.Instance.Log($"ERROR: Failed to create item '{assetName}': {ex}", Theme.LogColorError);
+            // Find the AssetItem represented by the specified file name
+            AssetItem item = GameController.Content.GetAssetByName(assetName) as AssetItem;
+            if (item == null)
                 return null;
-            }
+
+            // Initialize the item with empty save data
+            PropertyBag template = new PropertyBag();
+            return new Item(context, template, item);
+        }
+
+        public static Item FromAsset(ScriptContext context, Guid guid)
+        {
+            // Empty Guid is well-defined to return a null object
+            if (guid == Guid.Empty)
+                return null;
+
+            // Find the AssetItem represented by the specified file name
+            AssetItem item = GameController.Content.GetAssetByID(guid) as AssetItem;
+            if (item == null)
+                return null;
+
+            // Initialize the item with empty save data
+            PropertyBag template = new PropertyBag();
+            return new Item(context, template, item);
         }
 
         public static Item FromSaveGame(ScriptContext context, PropertyBag savedata)
         {
-            try
-            {
-                // Read the asset file ID
-                byte[] asset_id_bytes = savedata.GetBytes("asset")
-                    ?? throw new ArgumentException("A saved item is missing its asset GUID. This save file is probably corrupt.", nameof(savedata));
-
-                // Get the asset associated with that ID
-                var asset_guid = new Guid(asset_id_bytes);
-                AssetItem item = GameController.Content.GetAssetByID(asset_guid) as AssetItem
-                    ?? throw new ArgumentException($"A saved item has Asset ID {asset_guid}, but no such Item was found in loaded modules. Was it unloaded or edited in the mean time?");
-
-                // Save data used for deserialization only needs to contain the ScriptableObject ID, everything else is taken
-                // from the AssetItem directly since it is read-only and can be treated as the single source of truth for items.
-                var template = new PropertyBag();
-                template.SetBytes("guid", savedata.GetBytes("guid"));
-
-                return new Item(context, template, item);
-            }
-            catch (Exception ex)
-            {
-                GameUI.Instance.Log($"ERROR: Failed to load item from save: {ex}", Theme.LogColorError);
+            // Read the asset file ID
+            byte[] asset_id_bytes = savedata.GetBytes("asset");
+            if (asset_id_bytes == null || asset_id_bytes.Length != 16)
                 return null;
-            }
+
+            // Get the asset associated with that ID
+            var asset_guid = new Guid(asset_id_bytes);
+            AssetItem item = GameController.Content.GetAssetByID(asset_guid) as AssetItem;
+            if (item == null)
+                return null;
+
+            // We don't need to actually restore any state from the save data because Items are immutable
+            var template = new PropertyBag();
+            return new Item(context, template, item);
         }
 
     }

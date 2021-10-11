@@ -133,17 +133,33 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public float StomachFullness => Stomach.OfType<Character>().Sum(ch => GetBellySizeForPrey(ch));
 
-        [ScriptableProperty(EScriptAccess.Read)]
-        public Item EquippedWeapon => Equipment[ItemUtilities.k_SlotIndex_Weapon];
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public Item EquippedWeapon
+        {
+            get => Equipment[ItemUtilities.k_SlotIndex_Weapon];
+            set => Equipment[ItemUtilities.k_SlotIndex_Weapon] = value;
+        }
 
-        [ScriptableProperty(EScriptAccess.Read)]
-        public Item EquippedArmor => Equipment[ItemUtilities.k_SlotIndex_Armor];
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public Item EquippedArmor
+        {
+            get => Equipment[ItemUtilities.k_SlotIndex_Armor];
+            set => Equipment[ItemUtilities.k_SlotIndex_Armor] = value;
+        }
 
-        [ScriptableProperty(EScriptAccess.Read)]
-        public Item EquippedAccessory1 => Equipment[ItemUtilities.k_SlotIndex_Accessory1];
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public Item EquippedAccessory1
+        {
+            get => Equipment[ItemUtilities.k_SlotIndex_Accessory1];
+            set => Equipment[ItemUtilities.k_SlotIndex_Accessory1] = value;
+        }
 
-        [ScriptableProperty(EScriptAccess.Read)]
-        public Item EquippedAccessory2 => Equipment[ItemUtilities.k_SlotIndex_Accessory2];
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public Item EquippedAccessory2
+        {
+            get => Equipment[ItemUtilities.k_SlotIndex_Accessory2];
+            set => Equipment[ItemUtilities.k_SlotIndex_Accessory2] = value;
+        }
 
         /// <summary>
         /// Collection of buffs applied to this character specifically (e.g. excludes items).

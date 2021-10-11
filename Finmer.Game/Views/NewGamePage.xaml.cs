@@ -94,16 +94,14 @@ namespace Finmer.Views
 
         private void DoBeginGame()
         {
-            // Initialize the savegame with reasonable defaults
+            // Initialize the savegame with basic defaults.
+            // The scripts in content can make any other adjustments if needed (such as starting equipment).
             m_Player.SetInt("level", 1);
             m_Player.SetInt("timeday", 1);
             m_Player.SetInt("timehour", 9);
-            m_Player.SetInt("money", 7);
-            m_Player.SetInt("healthbase", 8);
-            m_Player.SetNestedPropertyBag("eqp_nat", Item.FromAsset(null, "W_Claws4").SerializeProperties());
-            m_Player.SetNestedPropertyBag("eqp_1", Item.FromAsset(null, "A_ClothArmor").SerializeProperties());
             m_Player.SetString("location", "Scene_Intro");
 
+            // Launch the session
             GameController.BeginNewSession(m_Player);
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }

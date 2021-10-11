@@ -4,6 +4,10 @@ function BeginGame()
     Player.TotalPreySwallowed = 0
     Player.TotalPreyDigested = 0
 
+    -- Assign starting equipment
+    Player.Money = 7
+    Player.EquippedArmor = Item("A_ClothArmor")
+
     -- Opening text
     ClearLog()
     Log("opening")

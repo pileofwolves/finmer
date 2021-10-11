@@ -1356,7 +1356,7 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")",
-				"ScriptAppear": "local a = Player.EquippedArmor;\r\nif a ~= nil then print(\"armor = \" .. a.Name) end\r\nreturn Player.EquippedArmor == nil",
+				"ScriptAppear": "return Player.EquippedArmor == nil",
 				"Children": [
 					{
 						"Key": "EvNaked_C_Apologize",

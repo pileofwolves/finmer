@@ -90,21 +90,9 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedAddTime(IntPtr L)
         {
-            var hours = (int)luaL_checknumber(L, 1);
-            if (hours < 0) return luaL_error(L, "cannot advance time by negative hours");
-
-            Player player = GameController.Session.Player;
-            player.TimeHour += hours;
-            while (player.TimeHour >= 24)
-            {
-                player.TimeHour -= 24;
-                player.TimeDay++;
-            }
-
-            // process prey
-            player.DigestPrey(hours);
-
-            return 2;
+            int hours = (int)luaL_checknumber(L, 1);
+            GameController.Session.AdvanceTime(hours);
+            return 0;
         }
 
         private static int ExportedSetScene(IntPtr L)

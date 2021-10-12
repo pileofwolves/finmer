@@ -393,6 +393,7 @@ namespace Finmer.Gameplay
         /// Simulate time spent digesting swallowed prey.
         /// </summary>
         /// <param name="hours">The number of hours passed.</param>
+        [Obsolete]
         public void DigestPrey(float hours)
         {
             // TODO: Clean up this method (leftover from V1 combat) and move it somewhere other than the Character class

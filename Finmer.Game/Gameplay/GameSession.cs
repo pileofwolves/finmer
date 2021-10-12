@@ -58,9 +58,13 @@ namespace Finmer.Gameplay
 
         public GameSession(PropertyBag savedata)
         {
+            // Create a new player object for this session, populated with the save data
             Player = new Player(ScriptContext, savedata);
+
+            // Allow scripts to access the player object as a global variable
             ScriptContext.PinObjectAsGlobal(Player, "Player");
 
+            // Launch the script thread
             m_ScriptWaitEvent = new AutoResetEvent(false);
             m_ScriptThread = new Thread(ScriptThreadWorker, k_ScriptStackSize)
             {
@@ -94,6 +98,9 @@ namespace Finmer.Gameplay
             PushScene(scene);
         }
 
+        /// <summary>
+        /// Pushes a scene onto the scene stack.
+        /// </summary>
         public void PushScene(Scene scene)
         {
             Debug.Assert(!IsGameOver());
@@ -112,6 +119,9 @@ namespace Finmer.Gameplay
             RunSceneEvent(ESceneEvent.Turn);
         }
 
+        /// <summary>
+        /// Pops the topmost scene off the scene stack.
+        /// </summary>
         public void PopScene()
         {
             // Run the scene's Leave callback
@@ -129,10 +139,52 @@ namespace Finmer.Gameplay
             return m_SceneStack.Peek();
         }
 
+        /// <summary>
+        /// Wake the paused scene script.
+        /// </summary>
         public void ResumeScript()
         {
             // Wake the script thread by posting a new Turn event, which will resume any paused script
             RunSceneEvent(ESceneEvent.Turn, -1);
+        }
+
+        /// <summary>
+        /// Enqueue a scene event for execution on the script thread.
+        /// </summary>
+        /// <param name="type">The type of event to perform.</param>
+        /// <param name="data">Parameter to pass to the event.</param>
+        public void RunSceneEvent(ESceneEvent type, int data = 0)
+        {
+            lock (m_EventQueueLock)
+            {
+                m_EventQueue.Enqueue(new SceneEvent { Scene = m_SceneStack.Peek(), Type = type, Data = data });
+            }
+
+            // Wake the script thread
+            m_ScriptWaitEvent.Set();
+        }
+
+        /// <summary>
+        /// Advance the game clock by a number of hours.
+        /// </summary>
+        public void AdvanceTime(int hours)
+        {
+            // Nothing to do?
+            if (hours < 1)
+                return;
+
+            // Advance the clock
+            Player.TimeHour += hours % 24;
+            Player.TimeDay += hours / 24;
+            if (Player.TimeHour >= 24)
+            {
+                // Wrap around
+                Player.TimeHour -= 24;
+                Player.TimeDay++;
+            }
+
+            // process prey
+            Player.DigestPrey(hours);
         }
 
         private bool IsGameOver()
@@ -148,17 +200,6 @@ namespace Finmer.Gameplay
             ui.InventoryEnabled = false;
             ui.Location = String.Empty;
             ui.IsGameOver = true;
-        }
-
-        public void RunSceneEvent(ESceneEvent type, int data = 0)
-        {
-            lock (m_EventQueueLock)
-            {
-                m_EventQueue.Enqueue(new SceneEvent { Scene = m_SceneStack.Peek(), Type = type, Data = data });
-            }
-
-            // Wake the script thread
-            m_ScriptWaitEvent.Set();
         }
 
         private void ScriptThreadWorker()
@@ -185,7 +226,7 @@ namespace Finmer.Gameplay
 
                         // Get the next work item
                         item = m_EventQueue.Dequeue();
-                        Debug.Assert(item.Type != ESceneEvent.Turn || m_EventQueue.Count == 0, 
+                        Debug.Assert(item.Type != ESceneEvent.Turn || m_EventQueue.Count == 0,
                             "No other actions may come after a Turn, because the player must provide input");
                     }
 
@@ -237,6 +278,7 @@ namespace Finmer.Gameplay
             public int Data { get; set; }
 
         }
+
     }
 
 }

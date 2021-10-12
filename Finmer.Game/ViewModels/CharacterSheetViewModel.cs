@@ -8,7 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows;
 using System.Windows.Input;
 using Finmer.Core.Assets;
@@ -38,8 +37,6 @@ namespace Finmer.ViewModels
 
         public Visibility AbilityPointVisibility => AbilityPoints > 0 ? Visibility.Visible : Visibility.Hidden;
 
-        public Visibility PreyVisibility => Player.StomachFullness > 0f ? Visibility.Visible : Visibility.Collapsed;
-
         public string Name => Player.Name;
 
         public string Species => Player.Species;
@@ -65,8 +62,6 @@ namespace Finmer.ViewModels
         public int Money => Player.Money;
 
         public int AbilityPoints => Player.AbilityPoints;
-
-        public string PreyList => String.Join(", ", Player.Stomach.Select(prey => prey.Name));
 
         public IReadOnlyCollection<Item> Inventory { get; private set; }
 

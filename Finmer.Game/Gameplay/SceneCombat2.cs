@@ -516,7 +516,7 @@ namespace Finmer.Gameplay
             }
 
             // Misc options
-            if (m_Player.Prey.Count != 0 && m_Player.Character.StomachDigest)
+            if (m_Player.Prey.Count != 0 && m_Player.Character.PredatorDigests)
             {
                 ui.AddButton(new ChoiceButtonModel
                 {

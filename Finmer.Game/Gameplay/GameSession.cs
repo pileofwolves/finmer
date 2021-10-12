@@ -182,9 +182,6 @@ namespace Finmer.Gameplay
                 Player.TimeHour -= 24;
                 Player.TimeDay++;
             }
-
-            // process prey
-            Player.DigestPrey(hours);
         }
 
         private bool IsGameOver()

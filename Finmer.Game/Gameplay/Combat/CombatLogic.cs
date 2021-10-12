@@ -280,7 +280,7 @@ namespace Finmer.Gameplay.Combat
             Character character = participant.Character;
 
             // Digest prey, if any
-            if (participant.Prey.Count != 0 && character.StomachDigest)
+            if (participant.Prey.Count != 0 && character.PredatorDigests)
             {
                 // Deal digestion damage to all live prey
                 var digestion_damage = character.Level + Character.GetAbilityModifier(character.Body);

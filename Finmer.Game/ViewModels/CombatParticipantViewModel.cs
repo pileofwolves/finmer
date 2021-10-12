@@ -115,7 +115,7 @@ namespace Finmer.ViewModels
             if (prey_count != 0)
             {
                 var prey = m_Participant.Prey.First();
-                text.Add(m_Participant.Character.StomachDigest ? $"Digesting {prey.Character.Name}" : $"Swallowed {prey.Character.Name}");
+                text.Add(m_Participant.Character.PredatorDigests ? $"Digesting {prey.Character.Name}" : $"Swallowed {prey.Character.Name}");
 
                 // Extra suffix text for several prey, don't list all of them to avoid clutter
                 if (prey_count > 1)

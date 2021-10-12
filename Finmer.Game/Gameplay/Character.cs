@@ -8,8 +8,6 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using Finmer.Core;
 using Finmer.Core.Assets;
@@ -29,15 +27,6 @@ namespace Finmer.Gameplay
     {
 
         public const int k_AbilityScoreMinimum = 3;
-
-        /// <summary>
-        /// Type of a serialized object in the save data for a Character's stomach.
-        /// </summary>
-        private enum ESerializedPreyType
-        {
-            Creature,
-            Item
-        }
 
         private const int k_EquipSlotCount = 4;
 
@@ -65,15 +54,6 @@ namespace Finmer.Gameplay
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public ECharacterFlags Flags { get; set; }
-
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public bool IsPredator { get; set; }
-
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public float Predatoriness { get; set; }
-
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public float Digestedness { get; set; }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Strength
@@ -119,19 +99,14 @@ namespace Finmer.Gameplay
             }
         }
 
-        public List<GameObject> Stomach { get; } = new List<GameObject>();
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public bool IsPredator { get; set; }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public bool StomachDigest { get; set; }
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int StomachCount => Stomach.Count;
+        public bool PredatorDigests { get; set; }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public float BowelFullness { get; set; }
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public float StomachFullness => Stomach.OfType<Character>().Sum(ch => GetBellySizeForPrey(ch));
+        public float PredatorFullness { get; set; }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public Item EquippedWeapon
@@ -212,10 +187,8 @@ namespace Finmer.Gameplay
 
             // Vore stats
             IsPredator = template.GetBool("predator");
-            StomachDigest = template.GetBool("predator_digest", true);
-            Predatoriness = template.GetFloat("predness");
-            Digestedness = template.GetFloat("digested");
-            BowelFullness = template.GetFloat("bowelfullness");
+            PredatorDigests = template.GetBool("predator_digest", true);
+            PredatorFullness = template.GetFloat("predator_fullness");
 
             // Load equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
@@ -223,33 +196,6 @@ namespace Finmer.Gameplay
                 PropertyBag nested = template.GetNestedPropertyBag("eqp_" + i);
                 if (nested != null)
                     Equipment[i] = Item.FromSaveGame(context, nested);
-            }
-
-            // Stomach contents
-            int preycount = template.GetInt("stomach_count");
-            for (var i = 0; i < preycount; i++)
-            {
-                PropertyBag nested = template.GetNestedPropertyBag("stomach_" + i);
-                if (nested != null)
-                {
-                    // Deserialize the prey object as an instance of the appropriate class
-                    GameObject prey;
-                    switch ((ESerializedPreyType)template.GetInt("stomach_type_" + i))
-                    {
-                        case ESerializedPreyType.Creature:
-                            prey = FromSaveGame(context, nested);
-                            break;
-
-                        case ESerializedPreyType.Item:
-                            prey = Item.FromSaveGame(context, nested);
-                            break;
-
-                        default:
-                            throw new InvalidDataException("Unknown serialized prey type");
-                    }
-
-                    Stomach.Add(prey);
-                }
             }
         }
 
@@ -288,11 +234,6 @@ namespace Finmer.Gameplay
             }
         }
 
-        public static Character FromSaveGame(ScriptContext context, PropertyBag savedata)
-        {
-            return new Character(context, savedata);
-        }
-
         /// <summary>
         /// Saves the <see cref="Character" />'s properties to the underlying <seealso cref="PropertyBag" />.
         /// </summary>
@@ -316,22 +257,12 @@ namespace Finmer.Gameplay
 
             // Vore stats
             props.SetBool("predator", IsPredator);
-            props.SetBool("predator_digest", StomachDigest);
-            props.SetFloat("predness", Predatoriness);
-            props.SetFloat("digested", Digestedness);
-            props.SetFloat("bowelfullness", BowelFullness);
+            props.SetBool("predator_digest", PredatorDigests);
+            props.SetFloat("predator_fullness", PredatorFullness);
 
             // Equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
                 props.SetNestedPropertyBag("eqp_" + i, Equipment[i]?.SerializeProperties());
-
-            // Stomach contents
-            props.SetInt("stomach_count", StomachCount);
-            for (var i = 0; i < StomachCount; i++)
-            {
-                props.SetInt("stomach_type_" + i, (int)(Stomach[i] is Character ? ESerializedPreyType.Creature : ESerializedPreyType.Item));
-                props.SetNestedPropertyBag("stomach_" + i, Stomach[i].SerializeProperties());
-            }
 
             return props;
         }
@@ -373,14 +304,6 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Returns a <see cref="List&lt;Character&gt;" /> of swallowed prey that are still alive.
-        /// </summary>
-        public List<Character> GetLivePrey()
-        {
-            return Stomach.OfType<Character>().Where(prey => !prey.IsDead()).ToList();
-        }
-
-        /// <summary>
         /// Returns a value indicating whether a certain prey can be swallowed.
         /// </summary>
         /// <param name="prey">The hypothetical prey character.</param>
@@ -389,93 +312,9 @@ namespace Finmer.Gameplay
             return prey.Size <= Size;
         }
 
-        /// <summary>
-        /// Simulate time spent digesting swallowed prey.
-        /// </summary>
-        /// <param name="hours">The number of hours passed.</param>
-        [Obsolete]
-        public void DigestPrey(float hours)
-        {
-            // TODO: Clean up this method (leftover from V1 combat) and move it somewhere other than the Character class
-
-            // if the player has live prey, select a random one and show a message that theyre still being digested
-            List<Character> live_prey = Stomach.OfType<Character>().Where(ch => ch.Digestedness < 1f).ToList();
-            if (this is Player && StomachDigest && live_prey.Count >= 1)
-            {
-                Character random_prey = live_prey[CoreUtility.Rng.Next(0, live_prey.Count)];
-                TextParser.SetContext("predator", this, false);
-                TextParser.SetContext("prey", random_prey, false);
-                GameUI.Instance.Log(random_prey.GetRandomString("predpov_clock_digesting", this), Theme.LogColorDefault);
-
-                // belly capacity tip... this is a decent place to put this code, I guess?
-                if (!GameController.Session.Player.AdditionalSaveData.GetBool("tip_shown_bellycapacity"))
-                {
-                    GameController.Session.Player.AdditionalSaveData.SetBool("tip_shown_bellycapacity", true);
-                    GameUI.Instance.Log(GameController.GetString("tip_belly_capacity"), Theme.LogColorHighlight);
-                }
-            }
-
-            for (int i = Stomach.Count - 1; i >= 0; i--)
-            {
-                GameObject obj = Stomach[i];
-                if (obj is Character prey)
-                {
-                    // same-size prey will take 15 hours to fully digest, smaller prey is faster
-                    if (StomachDigest)
-                    {
-                        float digest_speed = (float)Size / (float)prey.Size;
-                        prey.Digestedness += hours * (0.06666f * digest_speed);
-                    }
-
-                    // fully digested prey is removed entirely
-                    if (prey.Digestedness >= 1f)
-                    {
-                        float meat = (float)prey.Size / (float)Size;
-                        TextParser.SetContext("predator", this, false);
-                        TextParser.SetContext("prey", prey, false);
-                        GameUI.Instance.Log(prey.GetRandomString("predpov_clock_digested", this), Theme.LogColorDefault);
-                        Debug.Assert(prey.StomachCount == 0); // will be lost, should've been removed by CombatManager.CheckKill
-                        BowelFullness += meat * meat;
-                        Stomach.RemoveAt(i);
-                    }
-                    else
-                    {
-                        // recurse so prey also digest their own prey, if that happens to be a thing
-                        prey.DigestPrey(hours);
-                    }
-                }
-                else if (obj is Item item)
-                {
-                    // object vore, I guess? I don't really want to bother tracking digestedness for items, so just instant gurgles
-                    TextParser.SetContext("predator", this, false);
-                    TextParser.SetContext("item", item, false);
-                    GameUI.Instance.Log(GetRandomString("predpov_clock_item_digested", this), Theme.LogColorDefault);
-                    BowelFullness += 0.5f;
-                    Stomach.RemoveAt(i);
-                }
-            }
-        }
-
-        /// <summary>
-        /// Returns the relative amount of space a given prey character would take up when swallowed.
-        /// </summary>
-        /// <param name="prey">The hypothetical prey.</param>
-        private float GetBellySizeForPrey(Character prey)
-        {
-            return (float)Math.Pow(0.5, Size - prey.Size) * (1f - prey.Digestedness);
-        }
-
         protected override GameObjectViewModel CreateViewModel()
         {
             return new CharacterViewModel(this);
-        }
-
-        [ScriptableFunction]
-        protected static int ExportedClearStomach(IntPtr state)
-        {
-            Character self = FromLuaNonOptional<Character>(state, 1);
-            self.Stomach.Clear();
-            return 0;
         }
 
         [ScriptableFunction]

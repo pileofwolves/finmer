@@ -127,18 +127,6 @@
                         + 4<LineBreak />
                         + 1
                     </TextBlock>
-
-                    <!-- Prey list -->
-                    <TextBlock
-                        Grid.Column="0"
-                        Grid.ColumnSpan="2"
-                        Grid.Row="1"
-                        Style="{StaticResource TextBlockDefault}"
-                        Visibility="{Binding PreyVisibility, Mode=OneTime}">
-                        <Run Text="Currently digesting prey:" Foreground="{StaticResource DepressedBrush}" />
-                        <LineBreak />
-                        <Run Text="{Binding PreyList, Mode=OneTime}" />
-                    </TextBlock>
                 </Grid>
 
                 <!-- Abilities -->

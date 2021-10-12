@@ -94,9 +94,9 @@
 
         <!-- Game Log -->
         <v:LogView
-            x:Name="LogPrimary"
             Grid.Column="1"
             Grid.Row="0"
+            MessageSource="{Binding UI.Messages}"
             Margin="12" />
 
         <!-- Combat panels -->

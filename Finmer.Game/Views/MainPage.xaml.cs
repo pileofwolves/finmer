@@ -27,10 +27,6 @@ namespace Finmer.Views
 
             // Set up the view model
             DataContext = new MainPageViewModel();
-
-            // hook up the log viewers to the correct sources
-            // TODO: MVVM-ify this
-            LogPrimary.LogSource = GameUI.Instance.Messages;
         }
 
         private void SheetButton_Click(object sender, RoutedEventArgs e)

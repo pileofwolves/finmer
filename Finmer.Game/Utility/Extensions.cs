@@ -55,16 +55,6 @@ namespace Finmer.Utility
             return child;
         }
 
-        /// <summary>
-        /// Removes items from the collection until the element count is less than or equal to the specified maximum.
-        /// </summary>
-        /// <param name="collection">The collection to cap.</param>
-        /// <param name="max">The maximum desired number of elements.</param>
-        public static void CapAtCount<T>(this Collection<T> collection, int max)
-        {
-            while (collection.Count > max) collection.RemoveAt(0);
-        }
-
     }
 
 }

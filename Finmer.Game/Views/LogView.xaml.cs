@@ -26,66 +26,86 @@ namespace Finmer.Views
     public partial class LogView
     {
 
+        /// <summary>
+        /// Dependency property for MessageSource.
+        /// </summary>
+        public static readonly DependencyProperty MessageSourceProperty = DependencyProperty.Register(
+            "MessageSource", typeof(ObservableCollection<LogMessageModel>), typeof(LogView), new PropertyMetadata(null,
+                (o, args) =>
+                {
+                    var self = (LogView)o;
+                    self.LogView_OnMessageSourceChanged(args);
+                }));
+
+        /// <summary>
+        /// The collection of messages to display in this log.
+        /// </summary>
+        public ObservableCollection<LogMessageModel> MessageSource
+        {
+            get => (ObservableCollection<LogMessageModel>)GetValue(MessageSourceProperty);
+            set => SetValue(MessageSourceProperty, value);
+        }
+
+        private ScrollViewer m_FlowDocumentScrollViewer;
+
         public LogView()
         {
             InitializeComponent();
         }
 
-        public ObservableCollection<LogMessageModel> LogSource { get; set; }
-        public bool IsCombatLog { get; set; }
-
-        private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        private void LogView_OnLoaded(object sender, RoutedEventArgs e)
         {
-            // sanity checks: don't crash the XAML editor, and this must be run on UI thread
-            if (DesignerProperties.GetIsInDesignMode(this)) return;
-            Debug.Assert(Dispatcher != null);
-            Dispatcher.VerifyAccess();
+            // Avoid running this in the XAML designer
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
 
-            // take the opportunity to cut down on the log size, and readd some old messages
-            LogSource.CapAtCount(100);
-            foreach (LogMessageModel item in LogSource)
+            // Find and cache the ScrollViewer owned by the FlowDocumentScrollViewer so we can talk to it directly
+            m_FlowDocumentScrollViewer = this.GetVisualChild<ScrollViewer>();
+
+            // Automatically scroll the message log to the bottom
+            m_FlowDocumentScrollViewer.ScrollToEnd();
+        }
+
+        private void LogView_OnMessageSourceChanged(DependencyPropertyChangedEventArgs args)
+        {
+            // Avoid running this in the XAML designer
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+
+            // Unsubscribe the old context from the message log
+            if (args.OldValue is INotifyCollectionChanged old_source)
+                CollectionChangedEventManager.RemoveHandler(old_source, MessageSource_OnCollectionChanged);
+
+            // Re-add old messages from the source back to the log, for continuity
+            Dispatcher.VerifyAccess();
+            foreach (LogMessageModel item in MessageSource)
                 AddParagraphForMessage(item, false);
 
-            // subscribe to future change events
-            // EDIT: use weak event pattern, or else LogSource never loses ref to this view, --> big memory leak
-            CollectionChangedEventManager.AddHandler(LogSource, Messages_CollectionChanged);
+            // Subscribe to future change events
+            CollectionChangedEventManager.AddHandler(MessageSource, MessageSource_OnCollectionChanged);
 
-            // scroll the message log to the bottom, to help avoid confusion
-            if (IsCombatLog)
-                ScrollViewer.VerticalScrollBarVisibility = ScrollBarVisibility.Hidden;
-            var scroll_viewer = ScrollViewer.GetVisualChild<ScrollViewer>();
-            scroll_viewer?.ScrollToEnd();
+            // Automatically scroll the message log to the bottom
+            // Note: This callback may occur before the Loaded event fired, so the reference may still be null
+            m_FlowDocumentScrollViewer?.ScrollToEnd();
         }
 
-        private void UserControl_Unloaded(object sender, RoutedEventArgs e)
+        private void MessageSource_OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            // unsubscribe from the message log
-            CollectionChangedEventManager.RemoveHandler(LogSource, Messages_CollectionChanged);
-
-            // as an extra safety measure, explicitly discard the document (which takes up most memory)
-            Document.Blocks.Clear();
-        }
-
-        private void Messages_CollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
-        {
-            // expect UI thread
+            // This should run on the UI thread
             Dispatcher.VerifyAccess();
 
             switch (e.Action)
             {
                 case NotifyCollectionChangedAction.Add:
+                    // Add new paragraphs
                     foreach (object new_item in e.NewItems)
                         AddParagraphForMessage((LogMessageModel)new_item, true);
 
                     break;
 
                 case NotifyCollectionChangedAction.Reset:
+                    // Wipe the log
                     Document.Blocks.Clear();
-                    break;
-
-                case NotifyCollectionChangedAction.Remove:
-                    // ASSUME these are removed from the top down by GameUI!
-                    Document.Blocks.Remove(Document.Blocks.FirstBlock);
                     break;
 
                 default:
@@ -95,16 +115,16 @@ namespace Finmer.Views
 
         private void AddParagraphForMessage(LogMessageModel vm, bool animate)
         {
-            UIElement elem;
+            UIElement element;
 
-            // create a frozen brush, hopefully that helps perf a bit
+            // Use a frozen brush since we won't change it after this point
             var brush = new SolidColorBrush(vm.TextColor);
             brush.Freeze();
 
             if (vm.IsBar)
             {
-                // horizontal splitter
-                elem = new Rectangle
+                // Create horizontal splitter
+                element = new Rectangle
                 {
                     Margin = new Thickness(6, 10, 6, 10),
                     HorizontalAlignment = HorizontalAlignment.Stretch,
@@ -114,11 +134,10 @@ namespace Finmer.Views
             }
             else
             {
-                // text entry
+                // Create text entry
                 Debug.Assert(vm.Text != null);
                 Debug.Assert(vm.TextStyle != null);
-
-                elem = new TextBlock
+                element = new TextBlock
                 {
                     Text = vm.Text,
                     Style = vm.TextStyle,
@@ -128,67 +147,89 @@ namespace Finmer.Views
                 };
             }
 
-            // add to visual tree
-            Document.Blocks.Add(new BlockUIContainer(elem));
+            // Add to visual tree
+            Document.Blocks.Add(new BlockUIContainer(element));
 
-            // do animation if not reloading the page (i.e. coming from another page)
+            // Do animation if that was requested
             if (animate)
             {
                 if (vm.IsBar)
-                    LogSplitAnimation(elem);
+                    LogSplitAnimation(element);
                 else
-                    LogEntryAnimation(elem);
+                    LogEntryAnimation(element);
             }
         }
 
         private void LogEntryAnimation(UIElement container)
         {
-            var transform_translate = new TranslateTransform { Y = 64 };
-
-            var duration_text = new Duration(TimeSpan.FromSeconds(0.5));
-            var duration_scroll = new Duration(TimeSpan.FromSeconds(0.7));
-
-            // apply opacity and slide animations
-            container.RenderTransform = transform_translate;
+            // Prepare an opacity and fly-in animation
+            var translation = new TranslateTransform { X = 64 };
+            var duration = new Duration(TimeSpan.FromSeconds(0.5));
+            container.RenderTransform = translation;
             container.RenderTransformOrigin = new Point(0, 0);
-            container.UpdateLayout();
+
+            // Play the animations
             container.BeginAnimation(OpacityProperty,
-                new DoubleAnimation(0.0, 1.0, duration_text)
+                new DoubleAnimation(0.0, 1.0, duration)
                 {
-                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseInOut }
+                    EasingFunction = new QuadraticEase
+                    {
+                        EasingMode = EasingMode.EaseInOut
+                    }
                 }, HandoffBehavior.SnapshotAndReplace);
-            transform_translate.BeginAnimation(TranslateTransform.YProperty,
-                new DoubleAnimation(0, duration_text)
+            translation.BeginAnimation(TranslateTransform.XProperty,
+                new DoubleAnimation(0, duration)
                 {
-                    EasingFunction = new QuadraticEase { EasingMode = EasingMode.EaseOut }
+                    EasingFunction = new QuadraticEase
+                    {
+                        EasingMode = EasingMode.EaseOut
+                    }
                 }, HandoffBehavior.SnapshotAndReplace);
 
-            // need to call this because we just added a text block, and ExtentHeight & ViewportHeight will be outdated
-            ScrollViewer.UpdateLayout();
-
-            // get the actual scrollviewer owned by the flowdoc, so we can scroll it
-            var underlying_scroll_view = ScrollViewer.GetVisualChild<ScrollViewer>();
-            if (underlying_scroll_view == null) return;
-
-            // smoothly scroll to the bottom
-            var anim = new DoubleAnimation(underlying_scroll_view.VerticalOffset, underlying_scroll_view.ExtentHeight - underlying_scroll_view.ViewportHeight, duration_scroll)
-            {
-                EasingFunction = new CubicEase { EasingMode = EasingMode.EaseInOut }
-            };
-            underlying_scroll_view.BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, anim, HandoffBehavior.SnapshotAndReplace);
+            // Scroll down
+            ScrollToBottomAnimation();
         }
 
         private void LogSplitAnimation(UIElement container)
         {
+            // Prepare an animation for extending the splitter
             var transform_scale = new ScaleTransform(0, 1);
+            var duration_scale = new Duration(TimeSpan.FromSeconds(1.0));
             container.RenderTransform = transform_scale;
 
-            var duration_scale = new Duration(TimeSpan.FromSeconds(1.0));
+            // Play the animation
             transform_scale.BeginAnimation(ScaleTransform.ScaleXProperty,
                 new DoubleAnimation(0.0, 1.0, duration_scale)
                 {
-                    EasingFunction = new CubicEase { EasingMode = EasingMode.EaseOut }
+                    EasingFunction = new CubicEase
+                    {
+                        EasingMode = EasingMode.EaseOut
+                    }
                 }, HandoffBehavior.SnapshotAndReplace);
+
+            // Scroll down
+            ScrollToBottomAnimation();
+        }
+
+        private void ScrollToBottomAnimation()
+        {
+            // Ensure layout is updated, we just added a text block, so ExtentHeight and ViewportHeight will be outdated
+            m_FlowDocumentScrollViewer.UpdateLayout();
+
+            // Prepare an animation for smoothly scrolling to the bottom of the view
+            double from = m_FlowDocumentScrollViewer.VerticalOffset;
+            double to = m_FlowDocumentScrollViewer.ExtentHeight - m_FlowDocumentScrollViewer.ViewportHeight;
+            var duration_scroll = new Duration(TimeSpan.FromSeconds(0.65));
+            var anim = new DoubleAnimation(from, to, duration_scroll)
+            {
+                EasingFunction = new CubicEase
+                {
+                    EasingMode = EasingMode.EaseOut
+                }
+            };
+
+            // Play the animation
+            m_FlowDocumentScrollViewer.BeginAnimation(ScrollViewerBehavior.VerticalOffsetProperty, anim, HandoffBehavior.SnapshotAndReplace);
         }
 
     }

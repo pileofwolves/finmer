@@ -7,10 +7,8 @@
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DesignHeight="450" d:DesignWidth="800"
-    Loaded="UserControl_Loaded"
-    Unloaded="UserControl_Unloaded">
+    Loaded="LogView_OnLoaded">
     <FlowDocumentScrollViewer
-        x:Name="ScrollViewer"
         Margin="0"
         IsSelectionEnabled="False">
         <FlowDocument

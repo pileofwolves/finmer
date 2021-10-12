@@ -73,6 +73,9 @@ namespace Finmer.Gameplay.Combat
             Debug.Assert(!predator.Prey.Contains(prey), "Predator already has prey marked as swallowed");
             Debug.Assert(prey.Predator == null, "Prey already has a predator set");
 
+            // Automatically remove grapple status since the characters cannot be in both states
+            UnsetGrappling(predator, prey);
+
             // Link the predator and prey
             predator.Prey.Add(prey);
             prey.Predator = predator;

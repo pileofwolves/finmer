@@ -597,13 +597,13 @@ namespace Finmer.Gameplay
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleReverse,
-                    Label = "Release",
+                    Label = "Reverse",
                     Tooltip = "Attempt to reverse the grapple, so you end up on top."
                 });
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleEscape,
-                    Label = "Release",
+                    Label = "Escape",
                     Tooltip = "Attempt to escape from the grapple."
                 });
             }

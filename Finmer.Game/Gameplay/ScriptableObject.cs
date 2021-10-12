@@ -70,10 +70,10 @@ namespace Finmer.Gameplay
             ScriptContext = context;
 
             // Read the object ID
-            byte[] idbytes = template.GetBytes("guid");
-            ID = idbytes == null || idbytes.Length != 16
+            byte[] id_bytes = template.GetBytes("guid");
+            ID = id_bytes == null || id_bytes.Length != 16
                 ? Guid.NewGuid()
-                : new Guid(idbytes);
+                : new Guid(id_bytes);
 
             // Read tags
             for (var i = 0; i < template.GetInt("tag_count"); i++)
@@ -149,24 +149,36 @@ namespace Finmer.Gameplay
             return context.GetPinnedObject(object_guid);
         }
 
+        /// <summary>
+        /// Works like FromLua(), but attempts to cast the recovered ScriptableObject to a derived class.
+        /// </summary>
+        /// <returns>
+        /// Recovered ScriptableObject, or null if the object at the specified stack index is invalid or if the cast is invalid.
+        /// </returns>
         public static T FromLuaOptional<T>(IntPtr state, int stackIndex) where T : ScriptableObject
         {
             return FromLua(state, stackIndex) as T;
         }
 
+        /// <summary>
+        /// Works like FromLua(), but casts the recovered ScriptableObject to a derived class. Throws a Lua error if this is not possible.
+        /// </summary>
+        /// <returns>
+        /// Recovered ScriptableObject, or null if the object at the specified stack index is invalid.
+        /// </returns>
         public static T FromLuaNonOptional<T>(IntPtr state, int stackIndex) where T : ScriptableObject
         {
-            var sobj = FromLua(state, stackIndex);
-            if (sobj == null)
+            var obj = FromLua(state, stackIndex);
+            if (obj == null)
             {
                 LuaApi.luaL_typerror(state, stackIndex, typeof(T).Name);
                 return null;
             }
 
-            var derived = sobj as T;
+            var derived = obj as T;
             if (derived == null)
             {
-                LuaApi.luaL_argerror(state, stackIndex, $"expected {typeof(T).Name}, but got {sobj.GetType().Name}");
+                LuaApi.luaL_argerror(state, stackIndex, $"expected {typeof(T).Name}, but got {obj.GetType().Name}");
                 return null;
             }
 
@@ -174,7 +186,7 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Pushes a new userdatum that exposes this <seealso cref="GameObject" />'s scriptables on a Lua stack.
+        /// Pushes a new userdatum on a Lua stack that exposes this ScriptableObject's scriptable properties and methods.
         /// </summary>
         /// <param name="state">The stack to push the userdatum on. May be a main thread or a coroutine.</param>
         public void PushToLua(IntPtr state)
@@ -191,13 +203,13 @@ namespace Finmer.Gameplay
                 // If this is the first usage of the metatable, populate it with the metamethods we're interested in
                 Debug.Assert(state == ScriptContext.LuaState, "Currently expecting this to run on the main stack; otherwise this code needs changes.");
                 ScriptContext.PushDelegate(LuaMetaGet);
-                LuaApi.lua_setfield(state, -2, "__index");
+                LuaApi.lua_setfield(state, -2, @"__index");
                 ScriptContext.PushDelegate(LuaMetaSet);
-                LuaApi.lua_setfield(state, -2, "__newindex");
+                LuaApi.lua_setfield(state, -2, @"__newindex");
                 ScriptContext.PushDelegate(LuaMetaGC);
-                LuaApi.lua_setfield(state, -2, "__gc");
+                LuaApi.lua_setfield(state, -2, @"__gc");
                 ScriptContext.PushDelegate(LuaMetaEquality);
-                LuaApi.lua_setfield(state, -2, "__eq");
+                LuaApi.lua_setfield(state, -2, @"__eq");
             }
 
             // Fill the userdatum memory with the GUID bytes
@@ -243,7 +255,7 @@ namespace Finmer.Gameplay
                 .Where(item => item.m_Attribute != null)
                 .Where(item => item.m_Method.Name.StartsWith("Exported"));
 
-            // Build the hashmaps with the found objects
+            // Build the hash-maps with the found objects
             foreach (ExportedProperty item in exported_props)
                 m_ExportedProperties.Add(item.m_Property.Name, item);
             foreach (ExportedMethod item in exported_methods)
@@ -284,9 +296,9 @@ namespace Finmer.Gameplay
                 // Hardcoded handler: all derived types of ScriptableObject
                 if (type.IsSubclassOf(typeof(ScriptableObject)))
                 {
-                    var sobj = (ScriptableObject)value;
-                    if (sobj != null)
-                        sobj.PushToLua(state);
+                    var obj = (ScriptableObject)value;
+                    if (obj != null)
+                        obj.PushToLua(state);
                     else
                         LuaApi.lua_pushnil(state);
 

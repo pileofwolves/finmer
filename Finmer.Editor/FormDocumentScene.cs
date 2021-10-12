@@ -449,7 +449,7 @@ namespace Finmer.Editor
         private void trvNodes_DragDrop(object sender, DragEventArgs e)
         {
             // Get the node that is being dragged, and the node it is being dropped on
-            var source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
+            var source = (TreeNode)e.Data.GetData(typeof(TreeNode));
             var target = trvNodes.GetNodeAt(trvNodes.PointToClient(new Point(e.X, e.Y)));
 
             // Get the SceneNode of those node representations

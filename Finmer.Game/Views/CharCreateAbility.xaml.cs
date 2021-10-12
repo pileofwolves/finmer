@@ -103,7 +103,7 @@ namespace Finmer.Views
                 return 0;
 
             // Total the points used so far above the minimum value
-            return m_Abilities.Sum(ability => ability.Value - Player.k_AbilityScoreMinimum);
+            return m_Abilities.Sum(ability => ability.Value - Character.k_AbilityScoreMinimum);
         }
 
     }

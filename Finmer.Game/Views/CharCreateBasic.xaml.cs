@@ -10,7 +10,6 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using Finmer.Core;
-using Finmer.Gameplay;
 
 namespace Finmer.Views
 {

@@ -6,10 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
-using System.ComponentModel;
 using System.Windows;
-using System.Windows.Input;
 using Finmer.Gameplay;
 
 namespace Finmer.Views

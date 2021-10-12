@@ -160,7 +160,7 @@ namespace Finmer.Editor
                     throw new InvalidOperationException("You cannot add a module as a dependency to itself.");
 
                 // Cannot be added more than once
-                if (m_Furball.Dependencies.Any(existing_dep => existing_dep.ID == dep_meta.ID))
+                if (m_Furball.Dependencies.Any(existingDependency => existingDependency.ID == dep_meta.ID))
                     throw new InvalidOperationException("The selected file is already registered as a dependency.");
             }
             catch (Exception ex)

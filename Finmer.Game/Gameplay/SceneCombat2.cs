@@ -34,7 +34,7 @@ namespace Finmer.Gameplay
         private List<Participant> m_PotentialPlayerTargets;
         private List<Item> m_PotentialPlayerItems;
         private bool m_IsFirstTurn = true;
-        private bool m_IsEnded = false;
+        private bool m_IsEnded;
 
         public SceneCombat2(CombatSession session)
         {

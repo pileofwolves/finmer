@@ -210,6 +210,7 @@ namespace Finmer.Gameplay
 
                 // Convert the asset to a savedata template with initial settings
                 PropertyBag props = new PropertyBag();
+                props.SetBytes("asset", asset.ID.ToByteArray());
                 props.SetString("name", creature.ObjectName);
                 props.SetString("alias", creature.ObjectAlias);
                 props.SetInt("str", creature.Strength);

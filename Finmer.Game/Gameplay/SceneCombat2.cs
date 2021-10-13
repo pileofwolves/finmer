@@ -462,8 +462,21 @@ namespace Finmer.Gameplay
 
         private bool IsCombatEnded()
         {
-            // The combat ends when script requests it, or there are no more living enemies, or the player died
-            return m_IsEnded || m_Player.Character.IsDead() || !GetLiveOpponents(m_Player).Any();
+            // Immediately end combat when script requests it
+            if (m_IsEnded)
+                return true;
+
+            // If player died, combat always ends
+            if (m_Player != null && m_Player.Character.IsDead())
+                return true;
+
+            // Find the first living ally. If there are none, then there are no more opposing characters, so combat ends
+            Participant ally = Session.Participants.FirstOrDefault(p => !p.Character.IsDead() && p.Character.IsAlly());
+            if (ally == null)
+                return true;
+
+            // Otherwise, there must also be opponents
+            return !GetLiveOpponents(ally).Any();
         }
 
         private bool IsPlayerInputRequired()

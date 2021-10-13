@@ -23,8 +23,7 @@ end
 local function ResetCombat()
     combat = Combat2()
     numParticipants = 0
-    hasPlayer = true -- TEMP
-    combat:AddParticipant(Player)
+    hasPlayer = false
 end
 
 ResetCombat()

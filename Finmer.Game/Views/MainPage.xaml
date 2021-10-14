@@ -49,8 +49,8 @@
                     <Run Text="{Binding Species, Mode=OneWay, Converter={StaticResource StringCapFirstConverter}}" />
                 </TextBlock>
 
-                <v:ColoredBar DockPanel.Dock="Top" Margin="0,16,0,0" InnerColor="#d02020" OuterColor="#402020" ValueFormat="{}{0} / {2} HP" Minimum="0" Maximum="{Binding HealthMax}" Value="{Binding Health}" />
-                <v:ColoredBar DockPanel.Dock="Top" Margin="0,8,0,24" InnerColor="#6060c0" OuterColor="#202030" ValueFormat="{}{0} / {2} XP" Minimum="0" Maximum="{Binding RequiredXP}" Value="{Binding XP}" />
+                <v:ColoredBar DockPanel.Dock="Top" Margin="0,16,0,0" InnerColor="#9a2020" OuterColor="#402020" ValueFormat="{}{0} / {2} HP" Minimum="0" Maximum="{Binding HealthMax}" Value="{Binding Health}" />
+                <v:ColoredBar DockPanel.Dock="Top" Margin="0,8,0,24" InnerColor="#5a5ab0" OuterColor="#202030" ValueFormat="{}{0} / {2} XP" Minimum="0" Maximum="{Binding RequiredXP}" Value="{Binding XP}" />
             </StackPanel>
 
             <!-- Player control buttons -->

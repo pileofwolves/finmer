@@ -5,24 +5,27 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
-    mc:Ignorable="d" d:DesignHeight="32" d:DesignWidth="128"
-    d:DataContext="{d:DesignInstance v:ColoredBar}">
+    mc:Ignorable="d" d:DesignHeight="32" d:DesignWidth="128">
     <Border
         DataContext="{Binding RelativeSource={RelativeSource AncestorType=v:ColoredBar}}"
         d:DataContext="{d:DesignInstance v:ColoredBar}"
         BorderThickness="2"
         BorderBrush="{StaticResource BrightBackgroundBrush}"
-        CornerRadius="4"
+        CornerRadius="2"
         ClipToBounds="True">
         <Border.Resources>
             <SolidColorBrush x:Key="BarBackBrush" Color="{Binding OuterColor}" />
             <SolidColorBrush x:Key="BarFrontBrush" Color="{Binding InnerColor}" />
             <Style TargetType="TextBlock">
-                <Setter Property="FontSize" Value="14" />
+                <Setter Property="FontFamily" Value="{StaticResource DefaultFont}" />
+                <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
             </Style>
         </Border.Resources>
         <Grid Background="{StaticResource BarBackBrush}">
-            <Grid x:Name="FillArea" Background="{StaticResource BarFrontBrush}" RenderTransformOrigin="0,0">
+            <Grid
+                x:Name="FillArea"
+                Background="{StaticResource BarFrontBrush}"
+                RenderTransformOrigin="0,0">
                 <Grid.RenderTransform>
                     <ScaleTransform ScaleX="{Binding DesiredBarWidth, Mode=OneTime}" />
                 </Grid.RenderTransform>
@@ -30,13 +33,12 @@
                     <EventTrigger RoutedEvent="v:ColoredBar.BarValueChanged">
                         <BeginStoryboard HandoffBehavior="Compose">
                             <Storyboard>
-                                <!--Storyboard.TargetName="FillArea"-->
                                 <DoubleAnimation
                                     Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
                                     To="{Binding DesiredBarWidth, Mode=OneWay}"
                                     Duration="0:0:0.25">
                                     <DoubleAnimation.EasingFunction>
-                                        <CubicEase />
+                                        <CubicEase EasingMode="EaseOut" />
                                     </DoubleAnimation.EasingFunction>
                                 </DoubleAnimation>
                             </Storyboard>
@@ -44,22 +46,30 @@
                     </EventTrigger>
                 </Grid.Triggers>
             </Grid>
+            <!-- Glowing center -->
+            <Rectangle Margin="0,0,0,0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0.5" EndPoint="0,0.6">
+                        <GradientStop Offset="0" Color="#00000000" />
+                        <GradientStop Offset="1" Color="#50000000" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
             <!-- Text with drop shadow -->
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="Black" Text="{Binding ValueText}">
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="Black"
+                Text="{Binding ValueText}">
                 <TextBlock.RenderTransform>
                     <TranslateTransform X="1" Y="1" />
                 </TextBlock.RenderTransform>
             </TextBlock>
-            <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="{StaticResource ForegroundBrush}" Text="{Binding ValueText}" />
-            <!-- Glowing center -->
-            <Rectangle Margin="0,0,0,0">
-                <Rectangle.Fill>
-                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                        <GradientStop Offset="0" Color="Transparent" />
-                        <GradientStop Offset="1" Color="#40000000" />
-                    </LinearGradientBrush>
-                </Rectangle.Fill>
-            </Rectangle>
+            <TextBlock
+                HorizontalAlignment="Center"
+                VerticalAlignment="Center"
+                Foreground="{StaticResource ForegroundBrush}"
+                Text="{Binding ValueText}" />
         </Grid>
     </Border>
 </UserControl>

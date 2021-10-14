@@ -54,8 +54,8 @@ namespace Finmer.ViewModels
         public int HealthMax => m_Upstream.HealthMax;
 
         public Color InnerColor => IsAlly
-            ? Color.FromRgb(96, 96, 192)
-            : Color.FromRgb(208, 32, 32);
+            ? Color.FromRgb(90, 90, 176)
+            : Color.FromRgb(154, 32, 32);
 
         public Color OuterColor => IsAlly
             ? Color.FromRgb(32, 32, 48)

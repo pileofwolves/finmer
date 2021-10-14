@@ -31,27 +31,11 @@ namespace Finmer.Editor
             m_Furball = furball;
         }
 
-        private void FormDocumentProject_Load(object sender, EventArgs e)
-        {
-            txtTitle.Text = m_Furball.Metadata.Title;
-            txtAuthor.Text = m_Furball.Metadata.Author;
-            txtGUID.Text = m_Furball.Metadata.ID.ToString();
-            lblStats.Text = GatherStats();
-
-            foreach (FurballDependency dependency in m_Furball.Dependencies)
-                AddDependencyEntry(dependency);
-
-            MakeControlsDirty(this);
-
-#if DEBUG
-            cmdRandomGuid.Visible = true;
-#endif
-        }
-
         public override void Flush()
         {
             base.Flush();
 
+            // Save changed data back to the module
             m_Furball.Metadata = new FurballMetadata
             {
                 ID = m_Furball.Metadata.ID,
@@ -60,73 +44,90 @@ namespace Finmer.Editor
             };
         }
 
-        private int ComputeWordCount(List<string> group)
+        private void FormDocumentProject_Load(object sender, EventArgs e)
         {
-            return group.Sum(str => str?.Count(x => x == ' ') + 1 ?? 0);
+            // Populate UI
+            txtTitle.Text = m_Furball.Metadata.Title;
+            txtAuthor.Text = m_Furball.Metadata.Author;
+            txtGUID.Text = m_Furball.Metadata.ID.ToString();
+            lblStats.Text = GatherStats();
+
+            // Populate dependencies table
+            foreach (FurballDependency dependency in m_Furball.Dependencies)
+                AddDependencyEntry(dependency);
+
+            // Allow saving when an input field is changed
+            MakeControlsDirty(this);
         }
 
         private string GatherStats()
         {
-            List<string> phrases_tables = new List<string>();
-            List<string> phrases_scenes = new List<string>();
-            List<string> phrases_journals = new List<string>();
-            List<string> phrases_items = new List<string>();
             var sb = new StringBuilder();
 
-            sb.AppendLine(m_Furball.Assets.Count.ToString());
+            // Total asset count
+            sb.AppendLine($"{m_Furball.Assets.Count:##,##0}");
 
-            // count scene nodes
-            sb.AppendLine(m_Furball.Assets.OfType<AssetScene>().Sum(scene =>
-            {
-                int ret = -1; // don't count root
-                Stack<AssetScene.SceneNode> stack = new Stack<AssetScene.SceneNode>();
-                stack.Push(scene.Root);
-                while (stack.Count > 0)
-                {
-                    AssetScene.SceneNode node = stack.Pop();
-                    node.Children.ForEach(stack.Push);
-                    phrases_scenes.Add(node.Title);
-                    phrases_scenes.Add(node.Tooltip);
-                    ret++;
-                }
+            // Scene node count
+            sb.AppendLine($"{CountAllSceneNodes():##,##0}");
 
-                return ret;
-            }).ToString());
-
-            // ---- WORD COUNT ----
-            var sets = 0;
-
-            // count words in game text (string tables)
-            m_Furball.Assets.OfType<AssetStringTable>().ForEach(table =>
-            {
-                Dictionary<string, List<string>> dict = table.Table.GetTable();
-                sets += dict.Count;
-                phrases_tables.AddRange(dict.SelectMany(pair => pair.Value.ToList()));
-            });
-            // count words in items
-            m_Furball.Assets.OfType<AssetItem>().ForEach(item =>
-            {
-                phrases_items.Add(item.FlavorText);
-                phrases_items.Add(item.UseDescription);
-            });
-            // count words in journals
-            m_Furball.Assets.OfType<AssetJournal>().ForEach(journal => { phrases_journals.AddRange(journal.Stages.Select(entry => entry.Text)); });
-
-            int words_tables = ComputeWordCount(phrases_tables);
-            int words_scenes = ComputeWordCount(phrases_scenes);
-            int words_items = ComputeWordCount(phrases_items);
-            int words_journals = ComputeWordCount(phrases_journals);
-            sb.AppendLine($"{sets:##,##0}");
-            sb.AppendFormat("{0:##,##0}   ", words_tables + words_scenes + words_items + words_journals);
-            sb.AppendFormat("({0:##,##0} in tables, {1:##,##0} in scenes, {2:##,##0} in items, {3:##,##0} in journals)", words_tables, words_scenes, words_items, words_journals);
+            // Word count
+            sb.AppendLine($"{CountAllWords():##,##0}");
 
             return sb.ToString();
+        }
+
+        private int CountAllSceneNodes()
+        {
+            return m_Furball.Assets
+                .OfType<AssetScene>()
+                .Select(scene => scene.Root)
+                .Traverse(node => node.Children)
+                .Count();
+        }
+
+        private int CountAllWords()
+        {
+            var total = 0;
+
+            // Find text in string tables
+            foreach (AssetStringTable table in m_Furball.Assets.OfType<AssetStringTable>())
+            {
+                Dictionary<string, List<string>> dictionary = table.Table.GetTable();
+                IEnumerable<string> text_entries = dictionary.SelectMany(pair => pair.Value);
+                total += CountWords(text_entries);
+            }
+
+            // Find text in items
+            foreach (AssetItem item in m_Furball.Assets.OfType<AssetItem>())
+            {
+                total += CountWords(item.FlavorText);
+                total += CountWords(item.UseDescription);
+            }
+
+            // Find text in journals
+            foreach (AssetJournal journal in m_Furball.Assets.OfType<AssetJournal>())
+            {
+                IEnumerable<string> stages = journal.Stages.Select(entry => entry.Text);
+                total += CountWords(stages);
+            }
+
+            return total;
+        }
+
+        private static int CountWords(string phrase)
+        {
+            return phrase.Count(x => x == ' ') + 1;
+        }
+
+        private static int CountWords(IEnumerable<string> group)
+        {
+            return group.Sum(CountWords);
         }
 
         private void cmdRandomGuid_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Are you sure you want to regenerate the module ID? You should ONLY do this if you're making a NEW module that you COPIED from a template."
-                    + "\r\n\r\nThis will break players' savegames if they ever used this module before, because savegames record which module IDs they were saved with (and therefore require)."
+                    + "\r\n\r\nThis will break players' save data if they ever used this module before, because save data records which module IDs it requires."
                     + "\r\n\r\nAre you sure you know what you're doing?",
                     "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation)
                 == DialogResult.No) return;
@@ -170,7 +171,7 @@ namespace Finmer.Editor
             }
 
             // Register the dependency
-            FurballDependency dependency = new FurballDependency
+            var dependency = new FurballDependency
             {
                 ID = dep_meta.ID,
                 FileNameHint = dlgSelectDep.SafeFileName
@@ -194,21 +195,21 @@ namespace Finmer.Editor
                 Tag = dependency.ID
             };
 
-            lsvDeps.Items.Add(item);
+            lsvDependencies.Items.Add(item);
         }
 
-        private void lsvDeps_SelectedIndexChanged(object sender, EventArgs e)
+        private void lsvDependencies_SelectedIndexChanged(object sender, EventArgs e)
         {
-            cmdDepRemove.Enabled = lsvDeps.SelectedIndices.Count > 0;
+            cmdDepRemove.Enabled = lsvDependencies.SelectedIndices.Count > 0;
         }
 
         private void cmdDepRemove_Click(object sender, EventArgs e)
         {
-            Debug.Assert(lsvDeps.SelectedItems.Count == 1);
+            Debug.Assert(lsvDependencies.SelectedItems.Count == 1);
 
             // Remove the item from the list view
-            ListViewItem selected = lsvDeps.SelectedItems[0];
-            lsvDeps.Items.Remove(selected);
+            ListViewItem selected = lsvDependencies.SelectedItems[0];
+            lsvDependencies.Items.Remove(selected);
 
             // Unregister the dependency
             m_Furball.Dependencies.RemoveAll(dep => dep.ID == (Guid)selected.Tag);

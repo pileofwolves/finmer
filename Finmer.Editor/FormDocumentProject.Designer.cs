@@ -27,46 +27,77 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-            this.lblTitle = new System.Windows.Forms.Label();
-            this.txtTitle = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.Label lblTitle;
+            System.Windows.Forms.Label lblAuthor;
+            System.Windows.Forms.Label label1;
+            System.Windows.Forms.GroupBox fraMeta;
+            System.Windows.Forms.GroupBox fraStats;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.GroupBox groupBox1;
+            System.Windows.Forms.Label lblDepInfo;
             this.txtAuthor = new System.Windows.Forms.TextBox();
-            this.lblAuthor = new System.Windows.Forms.Label();
-            this.txtGUID = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.fraMeta = new System.Windows.Forms.GroupBox();
-            this.fraStats = new System.Windows.Forms.GroupBox();
+            this.txtTitle = new System.Windows.Forms.TextBox();
             this.cmdRandomGuid = new System.Windows.Forms.Button();
             this.lblStats = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtGUID = new System.Windows.Forms.TextBox();
             this.cmdDepRemove = new System.Windows.Forms.Button();
             this.cmdDepAdd = new System.Windows.Forms.Button();
-            this.lsvDeps = new System.Windows.Forms.ListView();
+            this.lsvDependencies = new System.Windows.Forms.ListView();
             this.clhDepFile = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhDepID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lblDepInfo = new System.Windows.Forms.Label();
             this.dlgSelectDep = new System.Windows.Forms.OpenFileDialog();
-            this.fraMeta.SuspendLayout();
-            this.fraStats.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            lblTitle = new System.Windows.Forms.Label();
+            lblAuthor = new System.Windows.Forms.Label();
+            label1 = new System.Windows.Forms.Label();
+            fraMeta = new System.Windows.Forms.GroupBox();
+            fraStats = new System.Windows.Forms.GroupBox();
+            label2 = new System.Windows.Forms.Label();
+            groupBox1 = new System.Windows.Forms.GroupBox();
+            lblDepInfo = new System.Windows.Forms.Label();
+            fraMeta.SuspendLayout();
+            fraStats.SuspendLayout();
+            groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
-            this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(16, 24);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(64, 13);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "Furball Title:";
+            lblTitle.AutoSize = true;
+            lblTitle.Location = new System.Drawing.Point(16, 24);
+            lblTitle.Name = "lblTitle";
+            lblTitle.Size = new System.Drawing.Size(64, 13);
+            lblTitle.TabIndex = 0;
+            lblTitle.Text = "Furball Title:";
             // 
-            // txtTitle
+            // lblAuthor
             // 
-            this.txtTitle.Location = new System.Drawing.Point(16, 40);
-            this.txtTitle.MaxLength = 100;
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(320, 20);
-            this.txtTitle.TabIndex = 1;
+            lblAuthor.AutoSize = true;
+            lblAuthor.Location = new System.Drawing.Point(16, 80);
+            lblAuthor.Name = "lblAuthor";
+            lblAuthor.Size = new System.Drawing.Size(41, 13);
+            lblAuthor.TabIndex = 2;
+            lblAuthor.Text = "Author:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 24);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(55, 13);
+            label1.TabIndex = 4;
+            label1.Text = "Furball ID:";
+            // 
+            // fraMeta
+            // 
+            fraMeta.Controls.Add(this.txtAuthor);
+            fraMeta.Controls.Add(lblTitle);
+            fraMeta.Controls.Add(this.txtTitle);
+            fraMeta.Controls.Add(lblAuthor);
+            fraMeta.Location = new System.Drawing.Point(16, 16);
+            fraMeta.Name = "fraMeta";
+            fraMeta.Size = new System.Drawing.Size(352, 136);
+            fraMeta.TabIndex = 6;
+            fraMeta.TabStop = false;
+            fraMeta.Text = "Basic Information";
             // 
             // txtAuthor
             // 
@@ -76,14 +107,52 @@
             this.txtAuthor.Size = new System.Drawing.Size(320, 20);
             this.txtAuthor.TabIndex = 3;
             // 
-            // lblAuthor
+            // txtTitle
             // 
-            this.lblAuthor.AutoSize = true;
-            this.lblAuthor.Location = new System.Drawing.Point(16, 80);
-            this.lblAuthor.Name = "lblAuthor";
-            this.lblAuthor.Size = new System.Drawing.Size(41, 13);
-            this.lblAuthor.TabIndex = 2;
-            this.lblAuthor.Text = "Author:";
+            this.txtTitle.Location = new System.Drawing.Point(16, 40);
+            this.txtTitle.MaxLength = 100;
+            this.txtTitle.Name = "txtTitle";
+            this.txtTitle.Size = new System.Drawing.Size(320, 20);
+            this.txtTitle.TabIndex = 1;
+            // 
+            // fraStats
+            // 
+            fraStats.Controls.Add(this.cmdRandomGuid);
+            fraStats.Controls.Add(this.lblStats);
+            fraStats.Controls.Add(label2);
+            fraStats.Controls.Add(this.txtGUID);
+            fraStats.Controls.Add(label1);
+            fraStats.Location = new System.Drawing.Point(16, 168);
+            fraStats.Name = "fraStats";
+            fraStats.Size = new System.Drawing.Size(352, 136);
+            fraStats.TabIndex = 7;
+            fraStats.TabStop = false;
+            fraStats.Text = "Stats for nerds";
+            // 
+            // cmdRandomGuid
+            // 
+            this.cmdRandomGuid.Location = new System.Drawing.Point(256, 16);
+            this.cmdRandomGuid.Name = "cmdRandomGuid";
+            this.cmdRandomGuid.Size = new System.Drawing.Size(80, 24);
+            this.cmdRandomGuid.TabIndex = 8;
+            this.cmdRandomGuid.Text = "Randomize";
+            this.cmdRandomGuid.UseVisualStyleBackColor = true;
+            this.cmdRandomGuid.Click += new System.EventHandler(this.cmdRandomGuid_Click);
+            // 
+            // lblStats
+            // 
+            this.lblStats.Location = new System.Drawing.Point(152, 80);
+            this.lblStats.Name = "lblStats";
+            this.lblStats.Size = new System.Drawing.Size(184, 48);
+            this.lblStats.TabIndex = 7;
+            // 
+            // label2
+            // 
+            label2.Location = new System.Drawing.Point(16, 80);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(136, 48);
+            label2.TabIndex = 6;
+            label2.Text = "Number of Assets:\r\nNumber of Scene Nodes:\r\nTotal Word Count:";
             // 
             // txtGUID
             // 
@@ -95,81 +164,18 @@
             this.txtGUID.Size = new System.Drawing.Size(320, 21);
             this.txtGUID.TabIndex = 5;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Furball ID:";
-            // 
-            // fraMeta
-            // 
-            this.fraMeta.Controls.Add(this.txtAuthor);
-            this.fraMeta.Controls.Add(this.lblTitle);
-            this.fraMeta.Controls.Add(this.txtTitle);
-            this.fraMeta.Controls.Add(this.lblAuthor);
-            this.fraMeta.Location = new System.Drawing.Point(16, 16);
-            this.fraMeta.Name = "fraMeta";
-            this.fraMeta.Size = new System.Drawing.Size(352, 136);
-            this.fraMeta.TabIndex = 6;
-            this.fraMeta.TabStop = false;
-            this.fraMeta.Text = "Basic Information";
-            // 
-            // fraStats
-            // 
-            this.fraStats.Controls.Add(this.cmdRandomGuid);
-            this.fraStats.Controls.Add(this.lblStats);
-            this.fraStats.Controls.Add(this.label2);
-            this.fraStats.Controls.Add(this.txtGUID);
-            this.fraStats.Controls.Add(this.label1);
-            this.fraStats.Location = new System.Drawing.Point(16, 168);
-            this.fraStats.Name = "fraStats";
-            this.fraStats.Size = new System.Drawing.Size(352, 176);
-            this.fraStats.TabIndex = 7;
-            this.fraStats.TabStop = false;
-            this.fraStats.Text = "Stats for nerds";
-            // 
-            // cmdRandomGuid
-            // 
-            this.cmdRandomGuid.Location = new System.Drawing.Point(256, 16);
-            this.cmdRandomGuid.Name = "cmdRandomGuid";
-            this.cmdRandomGuid.Size = new System.Drawing.Size(80, 24);
-            this.cmdRandomGuid.TabIndex = 8;
-            this.cmdRandomGuid.Text = "Randomize";
-            this.cmdRandomGuid.UseVisualStyleBackColor = true;
-            this.cmdRandomGuid.Visible = false;
-            this.cmdRandomGuid.Click += new System.EventHandler(this.cmdRandomGuid_Click);
-            // 
-            // lblStats
-            // 
-            this.lblStats.Location = new System.Drawing.Point(152, 80);
-            this.lblStats.Name = "lblStats";
-            this.lblStats.Size = new System.Drawing.Size(184, 80);
-            this.lblStats.TabIndex = 7;
-            // 
-            // label2
-            // 
-            this.label2.Location = new System.Drawing.Point(16, 80);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(136, 80);
-            this.label2.TabIndex = 6;
-            this.label2.Text = "Number of Assets:\r\nNumber of Scene Nodes:\r\nNumber of String Sets:\r\nTotal Word Cou" +
-    "nt:";
-            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.cmdDepRemove);
-            this.groupBox1.Controls.Add(this.cmdDepAdd);
-            this.groupBox1.Controls.Add(this.lsvDeps);
-            this.groupBox1.Controls.Add(this.lblDepInfo);
-            this.groupBox1.Location = new System.Drawing.Point(384, 16);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(320, 304);
-            this.groupBox1.TabIndex = 8;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Dependencies";
+            groupBox1.Controls.Add(this.cmdDepRemove);
+            groupBox1.Controls.Add(this.cmdDepAdd);
+            groupBox1.Controls.Add(this.lsvDependencies);
+            groupBox1.Controls.Add(lblDepInfo);
+            groupBox1.Location = new System.Drawing.Point(384, 16);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(320, 304);
+            groupBox1.TabIndex = 8;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Dependencies";
             // 
             // cmdDepRemove
             // 
@@ -198,21 +204,22 @@
             this.cmdDepAdd.UseVisualStyleBackColor = true;
             this.cmdDepAdd.Click += new System.EventHandler(this.cmdDepAdd_Click);
             // 
-            // lsvDeps
+            // lsvDependencies
             // 
-            this.lsvDeps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lsvDependencies.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.clhDepFile,
             this.clhDepID});
-            this.lsvDeps.FullRowSelect = true;
-            this.lsvDeps.GridLines = true;
-            this.lsvDeps.Location = new System.Drawing.Point(16, 88);
-            this.lsvDeps.MultiSelect = false;
-            this.lsvDeps.Name = "lsvDeps";
-            this.lsvDeps.Size = new System.Drawing.Size(288, 152);
-            this.lsvDeps.TabIndex = 1;
-            this.lsvDeps.UseCompatibleStateImageBehavior = false;
-            this.lsvDeps.View = System.Windows.Forms.View.Details;
-            this.lsvDeps.SelectedIndexChanged += new System.EventHandler(this.lsvDeps_SelectedIndexChanged);
+            this.lsvDependencies.FullRowSelect = true;
+            this.lsvDependencies.GridLines = true;
+            this.lsvDependencies.HideSelection = false;
+            this.lsvDependencies.Location = new System.Drawing.Point(16, 88);
+            this.lsvDependencies.MultiSelect = false;
+            this.lsvDependencies.Name = "lsvDependencies";
+            this.lsvDependencies.Size = new System.Drawing.Size(288, 152);
+            this.lsvDependencies.TabIndex = 1;
+            this.lsvDependencies.UseCompatibleStateImageBehavior = false;
+            this.lsvDependencies.View = System.Windows.Forms.View.Details;
+            this.lsvDependencies.SelectedIndexChanged += new System.EventHandler(this.lsvDependencies_SelectedIndexChanged);
             // 
             // clhDepFile
             // 
@@ -226,53 +233,44 @@
             // 
             // lblDepInfo
             // 
-            this.lblDepInfo.Location = new System.Drawing.Point(16, 24);
-            this.lblDepInfo.Name = "lblDepInfo";
-            this.lblDepInfo.Size = new System.Drawing.Size(288, 56);
-            this.lblDepInfo.TabIndex = 0;
-            this.lblDepInfo.Text = "Specify modules required by this module. They will be additionally loaded by the " +
+            lblDepInfo.Location = new System.Drawing.Point(16, 24);
+            lblDepInfo.Name = "lblDepInfo";
+            lblDepInfo.Size = new System.Drawing.Size(288, 56);
+            lblDepInfo.TabIndex = 0;
+            lblDepInfo.Text = "Specify modules required by this module. They will be additionally loaded by the " +
     "editor for convenience.\r\n\r\nReload this module to make changes take effect.";
             // 
             // dlgSelectDep
             // 
             this.dlgSelectDep.Filter = "Finmer Asset Packages (*.furball)|*.furball";
             // 
-            // frmDocumentProject
+            // FormDocumentProject
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(721, 461);
-            this.Controls.Add(this.groupBox1);
-            this.Controls.Add(this.fraStats);
-            this.Controls.Add(this.fraMeta);
-            this.Name = "frmDocumentProject";
+            this.Controls.Add(groupBox1);
+            this.Controls.Add(fraStats);
+            this.Controls.Add(fraMeta);
+            this.Name = "FormDocumentProject";
             this.Text = "Furball Settings";
             this.Load += new System.EventHandler(this.FormDocumentProject_Load);
-            this.fraMeta.ResumeLayout(false);
-            this.fraMeta.PerformLayout();
-            this.fraStats.ResumeLayout(false);
-            this.fraStats.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
+            fraMeta.ResumeLayout(false);
+            fraMeta.PerformLayout();
+            fraStats.ResumeLayout(false);
+            fraStats.PerformLayout();
+            groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
 
 		#endregion
-
-		private System.Windows.Forms.Label lblTitle;
 		private System.Windows.Forms.TextBox txtTitle;
 		private System.Windows.Forms.TextBox txtAuthor;
-		private System.Windows.Forms.Label lblAuthor;
 		private System.Windows.Forms.TextBox txtGUID;
-		private System.Windows.Forms.Label label1;
-		private System.Windows.Forms.GroupBox fraMeta;
-		private System.Windows.Forms.GroupBox fraStats;
 		private System.Windows.Forms.Label lblStats;
-		private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button cmdRandomGuid;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label lblDepInfo;
-        private System.Windows.Forms.ListView lsvDeps;
+        private System.Windows.Forms.ListView lsvDependencies;
         private System.Windows.Forms.ColumnHeader clhDepFile;
         private System.Windows.Forms.ColumnHeader clhDepID;
         private System.Windows.Forms.Button cmdDepRemove;

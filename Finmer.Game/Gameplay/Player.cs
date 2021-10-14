@@ -203,7 +203,7 @@ namespace Finmer.Gameplay
         {
             // removed, message is now printed by CombatManager.CheckKill()
             if (announce)
-                GameUI.Instance.Log($"You gain {amount} XP.", Theme.LogColorLevelup);
+                GameUI.Instance.Log($"You gain {amount} XP.", Theme.LogColorLightGray);
             XP += amount;
 
             while (XP >= RequiredXP)
@@ -219,7 +219,7 @@ namespace Finmer.Gameplay
                 // notify player
                 GameUI.Instance.Log(
                     $"Congratulations, you have reached level {Level}! You gain 1 ability point.",
-                    Theme.LogColorLevelup);
+                    Theme.LogColorNotification);
 
                 OnPropertyChanged(nameof(Level));
                 OnPropertyChanged(nameof(RequiredXP));
@@ -341,7 +341,7 @@ namespace Finmer.Gameplay
             self.AddItem(item);
 
             // Display announcement
-            GameUI.Instance.Log($"{item.Name} added to your backpack.", Theme.LogColorOrange);
+            GameUI.Instance.Log($"{item.Name} added to your backpack.", Theme.LogColorNotification);
 
             return 0;
         }

@@ -423,6 +423,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <Resource Include="Resources\Fonts\NunitoSans-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Finmer.Core\Finmer.Core.csproj">
@@ -465,6 +466,7 @@
   <ItemGroup>
     <Resource Include="Resources\UI\RemovedStatOverlay.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

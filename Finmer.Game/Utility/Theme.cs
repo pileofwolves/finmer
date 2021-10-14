@@ -18,24 +18,37 @@ namespace Finmer.Utility
     public static class Theme
     {
 
-        // ReSharper disable PossibleNullReferenceException
-        public static readonly Color LogColorDefault = (Color)Application.Current.FindResource("LogColorDefault");
-        public static readonly Color LogColorPositive = (Color)Application.Current.FindResource("LogColorPositive");
-        public static readonly Color LogColorNeutral = (Color)Application.Current.FindResource("LogColorNeutral");
-        public static readonly Color LogColorNegative = (Color)Application.Current.FindResource("LogColorNegative");
-        public static readonly Color LogColorError = (Color)Application.Current.FindResource("LogColorError");
-        public static readonly Color LogColorGray = (Color)Application.Current.FindResource("LogColorGray");
-        public static readonly Color LogColorLightGray = (Color)Application.Current.FindResource("LogColorLightGray");
-        public static readonly Color LogColorOrange = (Color)Application.Current.FindResource("LogColorOrange");
-        public static readonly Color LogColorDarkGray = (Color)Application.Current.FindResource("LogColorDarkGray");
-        public static readonly Color LogColorLevelup = (Color)Application.Current.FindResource("LogColorLightBlue");
-        public static readonly Color LogColorHighlight = (Color)Application.Current.FindResource("LogColorHighlight");
-        public static readonly Color LogColorDarkCyan = (Color)Application.Current.FindResource("LogColorDarkCyan");
+        public static readonly Color LogColorDefault;
+        public static readonly Color LogColorPositive;
+        public static readonly Color LogColorNeutral;
+        public static readonly Color LogColorNegative;
+        public static readonly Color LogColorError;
+        public static readonly Color LogColorNotification;
+        public static readonly Color LogColorGray;
+        public static readonly Color LogColorLightGray;
+        public static readonly Color LogColorDarkGray;
+        public static readonly Color LogColorHighlight;
+        public static readonly Color LogColorDarkCyan;
+        public static readonly Style TextBlockDefault;
 
-        public static readonly Style TextBlockDefault = (Style)Application.Current.FindResource("TextBlockDefault");
+        static Theme()
+        {
+            Application app = Application.Current;
 
-        public static readonly Style TextBlockCombatLog = (Style)Application.Current.FindResource("TextBlockCombatLog");
-        // ReSharper restore PossibleNullReferenceException
+            // ReSharper disable PossibleNullReferenceException
+            LogColorDefault = (Color)app.FindResource("LogColorDefault");
+            LogColorPositive = (Color)app.FindResource("LogColorPositive");
+            LogColorNeutral = (Color)app.FindResource("LogColorNeutral");
+            LogColorNegative = (Color)app.FindResource("LogColorNegative");
+            LogColorError = (Color)app.FindResource("LogColorError");
+            LogColorNotification = (Color)app.FindResource("LogColorNotification");
+            LogColorGray = (Color)app.FindResource("LogColorGray");
+            LogColorLightGray = (Color)app.FindResource("LogColorLightGray");
+            LogColorDarkGray = (Color)app.FindResource("LogColorDarkGray");
+            LogColorHighlight = (Color)app.FindResource("LogColorHighlight");
+            LogColorDarkCyan = (Color)app.FindResource("LogColorDarkCyan");
+            TextBlockDefault = (Style)app.FindResource("TextBlockDefault");
+        }
 
     }
 

@@ -35,7 +35,7 @@ namespace Finmer.Gameplay
         public void SetQuestStage(AssetJournal quest, int stage)
         {
             SetQuestStage(quest.ID, stage);
-            GameUI.Instance.Log("Your journal has been updated.", Theme.LogColorOrange);
+            GameUI.Instance.Log("Your journal has been updated.", Theme.LogColorNotification);
         }
 
         /// <summary>

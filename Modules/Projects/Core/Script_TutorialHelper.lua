@@ -1,6 +1,6 @@
 function BeginGame()
     -- Remove tutorial prey, if any
-    Player:ClearStomach()
+    Player.PredatorFullness = 0
     Player.TotalPreySwallowed = 0
     Player.TotalPreyDigested = 0
 

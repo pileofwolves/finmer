@@ -59,6 +59,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedAddButton(IntPtr L)
         {
+            // Compose all info provided by script into a model
             var settings = new ChoiceButtonModel
             {
                 Choice = (int)luaL_checknumber(L, 1),
@@ -68,7 +69,17 @@ namespace Finmer.Gameplay.Scripting
                 Width = (lua_type(L, 5) == ELuaType.Number) ? (float)lua_tonumber(L, 5) : 1.0f
             };
 
+            // Add the button to the UI
             GameUI.Instance.AddButton(settings);
+
+            // The first time a script shows a highlighted button, show a tip about it
+            var save_data = GameController.Session.Player.AdditionalSaveData;
+            if (settings.Highlight && !save_data.GetBool("tip_shown_highlight"))
+            {
+                save_data.SetBool("tip_shown_highlight", true);
+                GameUI.Instance.Log(GameController.GetString("tip_highlight_button"), Theme.LogColorHighlight);
+            }
+
             return 0;
         }
 

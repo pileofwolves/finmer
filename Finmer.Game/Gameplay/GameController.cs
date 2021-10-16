@@ -65,7 +65,7 @@ namespace Finmer.Gameplay
         public static void BeginNewSession(PropertyBag savedata)
         {
             // Reset UI
-            GameUI.Instance.Reset();
+            GameUI.Reset();
 
             // Set up the new gameplay session
             Session?.Dispose();

@@ -124,7 +124,7 @@
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
-    <Compile Include="Views\CarouselView.xaml.cs">
+    <Compile Include="Views\Parts\CarouselView.xaml.cs">
       <DependentUpon>CarouselView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CharCreateAbility.xaml.cs">
@@ -133,7 +133,7 @@
     <Compile Include="Views\CharCreateBasic.xaml.cs">
       <DependentUpon>CharCreateBasic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CharSheetInventoryItemActions.xaml.cs">
+    <Compile Include="Views\Parts\CharSheetInventoryItemActions.xaml.cs">
       <DependentUpon>CharSheetInventoryItemActions.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CharSheetPage.xaml.cs">
@@ -144,62 +144,62 @@
     <Compile Include="Gameplay\GameObject.cs" />
     <Compile Include="Gameplay\Item.cs" />
     <Compile Include="Gameplay\Logger.cs" />
-    <Compile Include="Views\ChoicePanelView.xaml.cs">
+    <Compile Include="Views\Parts\ChoicePanelView.xaml.cs">
       <DependentUpon>ChoicePanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ClockWidgetView.xaml.cs">
+    <Compile Include="Views\Parts\ClockWidgetView.xaml.cs">
       <DependentUpon>ClockWidgetView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatantListItemView.xaml.cs">
+    <Compile Include="Views\Parts\CombatantListItemView.xaml.cs">
       <DependentUpon>CombatantListItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatantPanelView.xaml.cs">
+    <Compile Include="Views\Parts\CombatantPanelView.xaml.cs">
       <DependentUpon>CombatantPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatResolveDiceTrackView.xaml.cs">
+    <Compile Include="Views\Parts\CombatResolveDiceTrackView.xaml.cs">
       <DependentUpon>CombatResolveDiceTrackView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatResolveParticipantView.xaml.cs">
+    <Compile Include="Views\Parts\CombatResolveParticipantView.xaml.cs">
       <DependentUpon>CombatResolveParticipantView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatResolvePanelView.xaml.cs">
+    <Compile Include="Views\Parts\CombatResolvePanelView.xaml.cs">
       <DependentUpon>CombatResolvePanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CombatRoundPipsView.xaml.cs">
+    <Compile Include="Views\Parts\CombatRoundPipsView.xaml.cs">
       <DependentUpon>CombatRoundPipsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CompassGridView.xaml.cs">
+    <Compile Include="Views\Parts\CompassGridView.xaml.cs">
       <DependentUpon>CompassGridView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\GameOverPanelView.xaml.cs">
+    <Compile Include="Views\Parts\GameOverPanelView.xaml.cs">
       <DependentUpon>GameOverPanelView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemEquipmentBoxView.xaml.cs">
+    <Compile Include="Views\Parts\ItemEquipmentBoxView.xaml.cs">
       <DependentUpon>ItemEquipmentBoxView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\JournalListItemView.xaml.cs">
+    <Compile Include="Views\Parts\JournalListItemView.xaml.cs">
       <DependentUpon>JournalListItemView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemIconView.xaml.cs">
+    <Compile Include="Views\Parts\ItemIconView.xaml.cs">
       <DependentUpon>ItemIconView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemShopListView.xaml.cs">
+    <Compile Include="Views\Parts\ItemShopListView.xaml.cs">
       <DependentUpon>ItemShopListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemListView.xaml.cs">
+    <Compile Include="Views\Parts\ItemListView.xaml.cs">
       <DependentUpon>ItemListView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ItemTooltipView.xaml.cs">
+    <Compile Include="Views\Parts\ItemTooltipView.xaml.cs">
       <DependentUpon>ItemTooltipView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Gameplay\ContentLoader.cs" />
-    <Compile Include="Views\JournalListView.xaml.cs">
+    <Compile Include="Views\Parts\JournalListView.xaml.cs">
       <DependentUpon>JournalListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\LoadingPage.xaml.cs">
       <DependentUpon>LoadingPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LogView.xaml.cs">
+    <Compile Include="Views\Parts\LogView.xaml.cs">
       <DependentUpon>LogView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\MainPage.xaml.cs">
@@ -248,7 +248,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
-    <Page Include="Views\CarouselView.xaml">
+    <Page Include="Views\Parts\CarouselView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -260,7 +260,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CharSheetInventoryItemActions.xaml">
+    <Page Include="Views\Parts\CharSheetInventoryItemActions.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -268,75 +268,75 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ChoicePanelView.xaml">
+    <Page Include="Views\Parts\ChoicePanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ClockWidgetView.xaml">
+    <Page Include="Views\Parts\ClockWidgetView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ColoredBar.xaml">
+    <Page Include="Views\Parts\ColoredBar.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatantListItemView.xaml">
+    <Page Include="Views\Parts\CombatantListItemView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatantPanelView.xaml">
+    <Page Include="Views\Parts\CombatantPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatResolveDiceTrackView.xaml">
+    <Page Include="Views\Parts\CombatResolveDiceTrackView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatResolveParticipantView.xaml">
+    <Page Include="Views\Parts\CombatResolveParticipantView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatResolvePanelView.xaml">
+    <Page Include="Views\Parts\CombatResolvePanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CombatRoundPipsView.xaml">
+    <Page Include="Views\Parts\CombatRoundPipsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CompassGridView.xaml">
+    <Page Include="Views\Parts\CompassGridView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\GameOverPanelView.xaml">
+    <Page Include="Views\Parts\GameOverPanelView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemEquipmentBoxView.xaml">
+    <Page Include="Views\Parts\ItemEquipmentBoxView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\JournalListItemView.xaml">
+    <Page Include="Views\Parts\JournalListItemView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ItemIconView.xaml">
+    <Page Include="Views\Parts\ItemIconView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemShopListView.xaml">
+    <Page Include="Views\Parts\ItemShopListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Page Include="Views\ItemListView.xaml">
+    <Page Include="Views\Parts\ItemListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ItemTooltipView.xaml">
+    <Page Include="Views\Parts\ItemTooltipView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\JournalListView.xaml">
+    <Page Include="Views\Parts\JournalListView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -344,7 +344,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LogView.xaml">
+    <Page Include="Views\Parts\LogView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -392,7 +392,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="Views\ColoredBar.xaml.cs">
+    <Compile Include="Views\Parts\ColoredBar.xaml.cs">
       <DependentUpon>ColoredBar.xaml</DependentUpon>
     </Compile>
     <Compile Include="MainWindow.xaml.cs">

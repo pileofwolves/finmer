@@ -19,7 +19,7 @@
                 <RectangleGeometry Rect="0, 0, 150, 75" />
             </Grid.Clip>
             <Image
-                Source="../Resources/UI/Clock.png"
+                Source="/Finmer;component/Resources/UI/Clock.png"
                 Width="150"
                 Height="150"
                 Stretch="None"

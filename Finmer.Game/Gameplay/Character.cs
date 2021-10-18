@@ -285,7 +285,7 @@ namespace Finmer.Gameplay
         {
             // TODO: Reimplement m_Asset.StringMappings
 
-            return GameController.GetString(key);
+            return GameController.Content.GetAndParseString(key);
         }
 
         /// <summary>

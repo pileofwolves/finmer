@@ -16,7 +16,6 @@ using Finmer.Core.Assets;
 using Finmer.Core.Compilers;
 using Finmer.Core.Serialization;
 using Finmer.Gameplay.Scripting;
-using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -50,14 +49,13 @@ namespace Finmer.Gameplay
             // Load modules from disk
             LoadModules();
 
-            // Preload all save slots, to cache their header information
-            SaveManager.CacheSlots();
-
             // Prepare content
-            LoadAllStrings();
             CompileGlobalScripts();
             CompileScenePatches();
             CompileScenes();
+
+            // Touch all save slots, to cache their header information
+            SaveManager.CacheSlots();
         }
 
         /// <summary>
@@ -65,8 +63,6 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void LoadModules()
         {
-            GameController.Content = new Furball();
-
             try
             {
                 // Open the Modules folder
@@ -85,6 +81,7 @@ namespace Finmer.Gameplay
                 // Load all module files
                 foreach (FileInfo file in files)
                 {
+                    // Read the module file from disk
                     Furball furball;
                     try
                     {
@@ -107,7 +104,7 @@ namespace Finmer.Gameplay
                     GameController.LoadedModules.Add(furball.Metadata);
 
                     // Merge the furball with the central asset repository
-                    GameController.Content.Merge(furball);
+                    GameController.Content.Add(furball.Assets);
                 }
 
                 // Verify that all dependencies are present
@@ -123,22 +120,6 @@ namespace Finmer.Gameplay
             }
         }
 
-        private static void LoadAllStrings()
-        {
-            // Merge all strings from all content packages into a central table
-            GameController.Content.Assets
-                .OfType<AssetStringTable>()
-                .Select(asset => asset.Table)
-                .ForEach(table =>
-                {
-                    // Merge into the central table
-                    GameController.MergedStrings.Merge(table);
-
-                    // Get rid of the contents of the old table, to avoid duplicate memory usage
-                    table.Clear();
-                });
-        }
-
         /// <summary>
         /// Inject all scene patches.
         /// </summary>
@@ -146,10 +127,10 @@ namespace Finmer.Gameplay
         {
             try
             {
-                GameController.Content.Assets
-                    .OfType<AssetScene>()
-                    .Where(scene => scene.Inject)
-                    .ForEach(InjectScenePatch);
+                // Find all scene patches and inject them
+                foreach (AssetScene scene in GameController.Content.GetAssetsByType<AssetScene>())
+                    if (scene.Inject)
+                        InjectScenePatch(scene);
             }
             catch (SceneCompilerException ex)
             {
@@ -163,18 +144,19 @@ namespace Finmer.Gameplay
         /// <param name="patch">The patch to process.</param>
         private static void InjectScenePatch(AssetScene patch)
         {
-            // find the target scene
+            // Find the target scene
             var target_scene = GameController.Content.GetAssetByID(patch.InjectScene) as AssetScene;
             if (target_scene == null)
                 throw new SceneCompilerException(
                     $"Scene '{patch.Name}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
 
+            // Find the anchor node the patch should be added to
             AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectNode);
             if (target_node == null)
                 throw new SceneCompilerException(
                     $"Scene '{patch.Name}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
 
-            // find the injection point (target parent node) and the index at which to insert our patch
+            // Find the injection point (target parent node) and the index at which to insert our patch
             AssetScene.SceneNode insert_parent;
             int insert_index;
             switch (patch.InjectMode)
@@ -196,34 +178,32 @@ namespace Finmer.Gameplay
                     insert_index = insert_parent.Children.Count;
                     break;
                 default:
-                    throw new SceneCompilerException($"Scene '{patch.Name}' requested invalid injection mode. Corrupt file or editor bug maybe?");
+                    throw new SceneCompilerException($"Scene '{patch.Name}' requested invalid injection mode. Module file is likely corrupt.");
             }
 
-            // insert the patch nodes now
+            // Insert the patch nodes into the target scene
             foreach (AssetScene.SceneNode patch_node in patch.Root.Children)
                 insert_parent.Children.Insert(insert_index++, patch_node);
-
-            // remove the scene from the main repository, so it can't be travelled to
-            GameController.Content.Assets.Remove(patch);
         }
 
         /// <summary>
-        /// Compiles and runs all global script assets.
+        /// Compiles and caches all global script assets.
         /// </summary>
         private static void CompileGlobalScripts()
         {
             using (var script_compiler = new ScriptCompiler())
             {
-                // Get all global scripts, and all item use scripts
-                var scripts = GameController.Content.Assets
-                    .OfType<AssetScript>()
-                    .Concat(GameController.Content.Assets
-                        .OfType<AssetItem>()
-                        .Where(item => item.ItemType == AssetItem.EItemType.Usable)
-                        .Select(item => item.UseScript));
+                // Find all script assets in content
+                var global_scripts = GameController.Content.GetAssetsByType<AssetScript>();
+                var item_scripts = GameController.Content.GetAssetsByType<AssetItem>()
+                    .Where(item => item.ItemType == AssetItem.EItemType.Usable)
+                    .Select(item => item.UseScript);
+
+                // Get the merged collection of scripts
+                var all_scripts = global_scripts.Concat(item_scripts);
 
                 // Precompile all of them
-                foreach (var script in scripts)
+                foreach (var script in all_scripts)
                 {
                     try
                     {
@@ -233,7 +213,7 @@ namespace Finmer.Gameplay
                         // Discard the original script source, to save a little bit of memory
                         script.ScriptText = null;
                     }
-                    catch (Exception ex)
+                    catch (InvalidDataException ex)
                     {
                         throw new LoaderException($"Failed to compile script '{script.Name}': {ex.Message}", ex);
                     }
@@ -246,24 +226,23 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void CompileScenes()
         {
-            // build Lua scripts from all scenes
             try
             {
                 using (var script_compiler = new ScriptCompiler())
                 {
-                    GameController.Content.Assets
-                        .OfType<AssetScene>()
-                        .ForEach(asset =>
-                        {
-                            // convert the scene graph into a script
-                            SceneCompiler.Compile(script_compiler, asset);
+                    var all_scenes = GameController.Content.GetAssetsByType<AssetScene>();
+                    foreach (var scene in all_scenes)
+                    {
+                        // Convert the scene graph into a Lua script, and precompile the Lua script as well
+                        if (!scene.Inject)
+                            SceneCompiler.Compile(script_compiler, scene);
 
-                            // discard the scene graph as we no longer need it
-                            asset.Root = null;
-                            asset.ScriptEnter = null;
-                            asset.ScriptLeave = null;
-                            asset.ScriptCustom = null;
-                        });
+                        // Discard the scene graph since it is no longer needed and will just take up space
+                        scene.Root = null;
+                        scene.ScriptEnter = null;
+                        scene.ScriptLeave = null;
+                        scene.ScriptCustom = null;
+                    }
                 }
             }
             catch (InvalidDataException ex)

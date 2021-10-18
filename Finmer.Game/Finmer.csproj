@@ -78,6 +78,7 @@
     <Compile Include="Gameplay\Combat\EDieFace.cs" />
     <Compile Include="Gameplay\Combat\Participant.cs" />
     <Compile Include="Gameplay\CompassDirection.cs" />
+    <Compile Include="Gameplay\ContentStore.cs" />
     <Compile Include="Gameplay\GameSession.cs" />
     <Compile Include="Gameplay\Gender.cs" />
     <Compile Include="Gameplay\ItemUtilities.cs" />

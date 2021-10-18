@@ -7,7 +7,6 @@
  */
 
 using System.Collections.Generic;
-using System.Linq;
 using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Models;
@@ -28,9 +27,9 @@ namespace Finmer.Gameplay
         public static MainWindow Window { get; set; }
 
         /// <summary>
-        /// Gets or sets the central asset repository. All loaded modules have their assets merged into this container module.
+        /// Gets the accelerated asset repository. This repository will contain the content of all loaded modules.
         /// </summary>
-        public static Furball Content { get; set; }
+        public static ContentStore Content { get; } = new ContentStore();
 
         /// <summary>
         /// Gets a list of loaded modules. Entries contain no assets, only metadata.
@@ -42,34 +41,23 @@ namespace Finmer.Gameplay
         /// </summary>
         public static GameSession Session { get; private set; }
 
-        public static StringTable MergedStrings { get; } = new StringTable();
-
         /// <summary>
         /// Gets or sets whether debug mode is enabled, which allows various development tools to be shown and used.
         /// </summary>
         public static bool DebugMode { get; set; }
 
         /// <summary>
-        /// Retrieves a string from the game string table and automatically substitutes text parser tags.
-        /// </summary>
-        /// <param name="key">The table key to look up.</param>
-        public static string GetString(string key)
-        {
-            return TextParser.Parse(MergedStrings.GetRandomEntry(key));
-        }
-
-        /// <summary>
         /// Activate a new GameSession using the provided save data.
         /// </summary>
-        /// <param name="savedata">Save data with which to create the player object.</param>
-        public static void BeginNewSession(PropertyBag savedata)
+        /// <param name="saveData">Save data with which to create the player object.</param>
+        public static void BeginNewSession(PropertyBag saveData)
         {
             // Reset UI
             GameUI.Reset();
 
             // Set up the new gameplay session
             Session?.Dispose();
-            Session = new GameSession(savedata);
+            Session = new GameSession(saveData);
 
             // Bind player grammar context
             TextParser.ClearAllContexts();
@@ -77,7 +65,7 @@ namespace Finmer.Gameplay
 
             // Run global scripts
             var script_context = Session.ScriptContext;
-            foreach (var script in Content.Assets.OfType<AssetScript>())
+            foreach (var script in Content.GetAssetsByType<AssetScript>())
                 if (script_context.LoadScript(script.PrecompiledScript, script.Name))
                     script_context.RunProtectedCall(0, 0);
 

@@ -77,7 +77,7 @@ namespace Finmer.Gameplay.Scripting
             if (settings.Highlight && !save_data.GetBool("tip_shown_highlight"))
             {
                 save_data.SetBool("tip_shown_highlight", true);
-                GameUI.Instance.Log(GameController.GetString("tip_highlight_button"), Theme.LogColorHighlight);
+                GameUI.Instance.Log(GameController.Content.GetAndParseString("tip_highlight_button"), Theme.LogColorHighlight);
             }
 
             return 0;
@@ -109,7 +109,7 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedLog(IntPtr L)
         {
             Color color = lua_type(L, 2) == ELuaType.Table ? LuaUtils.lua_tocolor(L, 2) : Theme.LogColorDefault;
-            GameUI.Instance.Log(GameController.GetString(luaL_checkstring(L, 1)), color);
+            GameUI.Instance.Log(GameController.Content.GetAndParseString(luaL_checkstring(L, 1)), color);
             return 0;
         }
 

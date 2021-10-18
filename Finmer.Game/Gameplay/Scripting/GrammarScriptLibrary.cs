@@ -47,7 +47,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedTextGetString(IntPtr L)
         {
-            lua_pushstring(L, GameController.GetString(luaL_checkstring(L, 1)));
+            lua_pushstring(L, GameController.Content.GetAndParseString(luaL_checkstring(L, 1)));
             return 1;
         }
 

@@ -132,7 +132,7 @@ namespace Finmer.Views
         private void SetShopkeepText(string key)
         {
             TextParser.SetContext("item", m_SelectedItem, false);
-            ShopkeepText.Text = GameController.GetString(m_State.StringGroup + key);
+            ShopkeepText.Text = GameController.Content.GetAndParseString(m_State.StringGroup + key);
         }
 
         private static int GetSalePrice(int buyPrice)

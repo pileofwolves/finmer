@@ -12,12 +12,12 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Represents a scene link direction.
     /// </summary>
-    public enum CompassDirection
+    public enum ECompassDirection
     {
-        North = 0,
-        West = 1,
-        South = 2,
-        East = 3
+        North,
+        West,
+        South,
+        East
     }
 
 }

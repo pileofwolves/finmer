@@ -13,13 +13,13 @@
 
         <TextBlock Style="{StaticResource TextBlockDefault}" Text="Name:" />
         <TextBlock Style="{StaticResource TextBlockSubtle}" Text="For best results, use a short name, like a nickname." />
-        <TextBox MaxLength="30" x:Name="txtName" TextChanged="txtName_TextChanged" />
+        <TextBox MaxLength="30" x:Name="NameInput" TextChanged="txtName_TextChanged" />
 
         <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Species:" />
         <TextBlock Style="{StaticResource TextBlockSubtle}"
             Text="Focused mostly on furries right now." />
         <!--<TextBox MaxLength="20" CharacterCasing="Lower" Text="{Binding Species, Mode=TwoWay}" />-->
-        <ComboBox x:Name="cmbSpecies" SelectionChanged="cmbSpecies_SelectionChanged" SelectedValuePath="Content" IsEditable="False">
+        <ComboBox x:Name="SpeciesInput" SelectionChanged="cmbSpecies_SelectionChanged" SelectedValuePath="Content" IsEditable="False">
             <ComboBoxItem Content="bear" />
             <ComboBoxItem Content="cat" />
             <ComboBoxItem Content="cheetah" />
@@ -52,7 +52,7 @@
         <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Sex:" />
         <TextBlock Style="{StaticResource TextBlockSubtle}"
             Text="Mostly aesthetic (pronouns etc.) but can affect dialogue." />
-        <RadioButton x:Name="optGenderMale" Checked="optGender_Checked">Male</RadioButton>
-        <RadioButton x:Name="optGenderFemale" Checked="optGender_Checked">Female</RadioButton>
+        <RadioButton x:Name="GenderInputMale" Checked="optGender_Checked">Male</RadioButton>
+        <RadioButton x:Name="GenderInputFemale" Checked="optGender_Checked">Female</RadioButton>
     </StackPanel>
 </vb:CharCreateViewBase>

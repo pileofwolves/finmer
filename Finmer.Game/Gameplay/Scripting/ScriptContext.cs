@@ -263,12 +263,12 @@ namespace Finmer.Gameplay.Scripting
             {
                 // Marshal the data behind the unmanaged pointer to a managed byte array
                 int count = (int)chunkLen.ToUInt32();
-                var chunkBytes = new byte[count];
-                Marshal.Copy(chunkPtr, chunkBytes, 0, count);
+                var chunk_bytes = new byte[count];
+                Marshal.Copy(chunkPtr, chunk_bytes, 0, count);
 
                 // Write the bytes to the output stream
                 var outstream = (MemoryStream)GCHandle.FromIntPtr(userdata).Target;
-                outstream.Write(chunkBytes, 0, count);
+                outstream.Write(chunk_bytes, 0, count);
 
                 return 0;
             }

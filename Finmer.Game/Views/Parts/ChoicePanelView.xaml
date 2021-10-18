@@ -16,7 +16,7 @@
     </UserControl.Resources>
     <StackPanel Orientation="Vertical">
         <!-- Script console -->
-        <TextBox x:Name="txtConsole"
+        <TextBox x:Name="ConsoleInput"
             Visibility="{Binding IsScriptConsoleOpened, Converter={StaticResource BooleanToVisibilityConverter}}"
             TextWrapping="Wrap"
             VerticalAlignment="Top"

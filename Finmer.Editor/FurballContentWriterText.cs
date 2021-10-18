@@ -56,15 +56,15 @@ namespace Finmer.Editor
 
         public void WriteEnumProperty<TEnum>(string key, TEnum value) where TEnum : struct, Enum
         {
-            var enumType = typeof(TEnum);
-            Debug.Assert(enumType.IsEnum);
+            var enum_type = typeof(TEnum);
+            Debug.Assert(enum_type.IsEnum);
 
             // Validate that the specified value is a valid value for the input enum type
-            if (!Enum.IsDefined(enumType, value))
-                throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enumType.Name}'");
+            if (!Enum.IsDefined(enum_type, value))
+                throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enum_type.Name}'");
 
             // Write the name of the enum value to the output document
-            string name = Enum.GetName(enumType, value);
+            string name = Enum.GetName(enum_type, value);
             m_Stream.WritePropertyName(key);
             m_Stream.WriteValue(name);
         }

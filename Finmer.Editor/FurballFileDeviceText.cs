@@ -142,7 +142,7 @@ namespace Finmer.Editor
 
                 // Delete all .json files in the target folder that do not have matching assets
                 var unused_files = project_dir.GetFiles("*.json")
-                    .Where(existing_file => furball.GetAssetByName(Path.GetFileNameWithoutExtension(existing_file.Name)) == null);
+                    .Where(existingFile => furball.GetAssetByName(Path.GetFileNameWithoutExtension(existingFile.Name)) == null);
                 foreach (var unused_file in unused_files)
                     unused_file.Delete();
 

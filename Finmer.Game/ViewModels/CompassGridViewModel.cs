@@ -30,7 +30,7 @@ namespace Finmer.ViewModels
             if (Application.Current.MainWindow == null)
                 return;
 
-            var dir = (CompassDirection)Enum.Parse(typeof(CompassDirection), (string)args);
+            var dir = (ECompassDirection)Enum.Parse(typeof(ECompassDirection), (string)args);
             GameUI.Instance.PerformDirectionalLink(dir);
         }
 
@@ -40,7 +40,7 @@ namespace Finmer.ViewModels
             if (Application.Current.MainWindow == null)
                 return false;
 
-            var dir = (CompassDirection)Enum.Parse(typeof(CompassDirection), (string)args);
+            var dir = (ECompassDirection)Enum.Parse(typeof(ECompassDirection), (string)args);
             return GameUI.Instance.DirectionalLinks.ContainsKey(dir);
         }
 

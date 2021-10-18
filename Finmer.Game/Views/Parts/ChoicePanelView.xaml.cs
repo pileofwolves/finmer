@@ -107,7 +107,7 @@ namespace Finmer.Views
                 return;
 
             // Run the input script
-            var command = txtConsole.Text;
+            var command = ConsoleInput.Text;
             var script_context = GameController.Session.ScriptContext;
             lock (script_context)
             {
@@ -116,7 +116,7 @@ namespace Finmer.Views
             }
 
             // Clear UI
-            txtConsole.Text = String.Empty;
+            ConsoleInput.Text = String.Empty;
             e.Handled = true;
         }
 

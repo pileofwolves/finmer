@@ -90,17 +90,17 @@ namespace Finmer.Editor
 
         public TEnum ReadEnumProperty<TEnum>(string key) where TEnum : struct, Enum
         {
-            var enumType = typeof(TEnum);
-            Debug.Assert(enumType.IsEnum);
+            var enum_type = typeof(TEnum);
+            Debug.Assert(enum_type.IsEnum);
 
             // Read the raw value as a string
             string name = ReadStringProperty(key);
 
             // Convert it to a member of the generic enum
-            if (!Enum.TryParse(name, out TEnum enumValue))
-                throw new FurballInvalidAssetException($"Property '{key}' has value '{name}' which is not a member of enum type '{enumType.Name}'");
+            if (!Enum.TryParse(name, out TEnum enum_value))
+                throw new FurballInvalidAssetException($"Property '{key}' has value '{name}' which is not a member of enum type '{enum_type.Name}'");
 
-            return enumValue;
+            return enum_value;
         }
 
         public Guid ReadGuidProperty(string key)

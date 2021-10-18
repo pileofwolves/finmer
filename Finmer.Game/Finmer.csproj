@@ -77,7 +77,7 @@
     <Compile Include="Gameplay\Combat\CombatSession.cs" />
     <Compile Include="Gameplay\Combat\EDieFace.cs" />
     <Compile Include="Gameplay\Combat\Participant.cs" />
-    <Compile Include="Gameplay\CompassDirection.cs" />
+    <Compile Include="Gameplay\ECompassDirection.cs" />
     <Compile Include="Gameplay\ContentStore.cs" />
     <Compile Include="Gameplay\GameSession.cs" />
     <Compile Include="Gameplay\Gender.cs" />
@@ -103,6 +103,7 @@
     <Compile Include="Models\LogMessageModel.cs" />
     <Compile Include="Models\ChoiceButtonModel.cs" />
     <Compile Include="Models\GameUI.cs" />
+    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="Utility\Extensions.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
@@ -214,7 +215,7 @@
     <Compile Include="Gameplay\SaveManager.cs" />
     <Compile Include="Gameplay\Scene.cs" />
     <Compile Include="Gameplay\SceneScripted.cs" />
-    <Compile Include="Gameplay\ScriptAttribute.cs" />
+    <Compile Include="Gameplay\Scripting\ScriptAttribute.cs" />
     <Compile Include="Utility\Theme.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Views\OptionsPage.xaml.cs">
@@ -406,7 +407,6 @@
     </Resource>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>

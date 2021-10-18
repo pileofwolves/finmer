@@ -85,7 +85,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedAddLink(IntPtr L)
         {
-            var dir = (CompassDirection)(int)luaL_checknumber(L, 1);
+            var dir = (ECompassDirection)(int)luaL_checknumber(L, 1);
 
             if (lua_type(L, 2) == ELuaType.Function)
             {

@@ -58,7 +58,7 @@ namespace Finmer.Models
         /// <summary>
         /// Collection of links that the user can choose from to traverse between game areas.
         /// </summary>
-        public Dictionary<CompassDirection, string> DirectionalLinks { get; } = new Dictionary<CompassDirection, string>();
+        public Dictionary<ECompassDirection, string> DirectionalLinks { get; } = new Dictionary<ECompassDirection, string>();
 
         /// <summary>
         /// UI state for the combat displays.
@@ -204,7 +204,7 @@ namespace Finmer.Models
         /// <summary>
         /// Add a directional link to the compass.
         /// </summary>
-        public void AddLink(CompassDirection dir, string target)
+        public void AddLink(ECompassDirection dir, string target)
         {
             Dispatcher.BeginInvoke(new Action(() =>
             {
@@ -254,7 +254,7 @@ namespace Finmer.Models
         /// <summary>
         /// TODO: Move this function elsewhere, this doesn't belong in GameUI
         /// </summary>
-        public void PerformDirectionalLink(CompassDirection dir)
+        public void PerformDirectionalLink(ECompassDirection dir)
         {
             Debug.Assert(DirectionalLinks.ContainsKey(dir), "Missing CompassDirection when executing directional link");
 

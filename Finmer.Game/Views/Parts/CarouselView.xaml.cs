@@ -39,25 +39,25 @@ namespace Finmer.Views
         {
             if (anim == ENavigatorAnimation.Instant)
             {
-                oldGrid.Content = null;
-                oldGrid.IsHitTestVisible = false;
-                newGrid.Content = target;
-                newGrid.IsHitTestVisible = true;
+                OldGrid.Content = null;
+                OldGrid.IsHitTestVisible = false;
+                NewGrid.Content = target;
+                NewGrid.IsHitTestVisible = true;
                 NavigationComplete?.Invoke(this, EventArgs.Empty);
                 return;
             }
 
-            oldGrid.Content = newGrid.Content;
-            oldGrid.IsHitTestVisible = false;
-            newGrid.Content = target;
-            newGrid.IsHitTestVisible = false;
+            OldGrid.Content = NewGrid.Content;
+            OldGrid.IsHitTestVisible = false;
+            NewGrid.Content = target;
+            NewGrid.IsHitTestVisible = false;
 
             var old_transform = new TranslateTransform();
             var new_transform = new TranslateTransform();
 
             // Attach the transforms to their respective grids
-            oldGrid.RenderTransform = old_transform;
-            newGrid.RenderTransform = new_transform;
+            OldGrid.RenderTransform = old_transform;
+            NewGrid.RenderTransform = new_transform;
             var anim_length = new Duration(TimeSpan.FromSeconds(0.4));
 
             // Determine the actual animation to play
@@ -90,8 +90,8 @@ namespace Finmer.Views
             // When animation is complete, destroy the old page and re-enable input
             new_anim.Completed += (sender, args) =>
             {
-                oldGrid.Content = null;
-                newGrid.IsHitTestVisible = true;
+                OldGrid.Content = null;
+                NewGrid.IsHitTestVisible = true;
                 NavigationComplete?.Invoke(this, EventArgs.Empty);
             };
 
@@ -102,8 +102,8 @@ namespace Finmer.Views
                 var fade_out = new DoubleAnimation(1.0, 0.0, anim_length);
                 fade_in.EasingFunction = easing;
                 fade_out.EasingFunction = easing;
-                oldGrid.BeginAnimation(OpacityProperty, fade_out);
-                newGrid.BeginAnimation(OpacityProperty, fade_in);
+                OldGrid.BeginAnimation(OpacityProperty, fade_out);
+                NewGrid.BeginAnimation(OpacityProperty, fade_in);
             }
 
             // Begin animation

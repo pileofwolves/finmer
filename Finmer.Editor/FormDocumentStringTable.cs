@@ -67,26 +67,26 @@ namespace Finmer.Editor
                 return;
 
             // Check for uniqueness of the key
-            string newKey = e.Label.ToUpperInvariant();
-            if (m_Table.ContainsKey(newKey))
+            string new_key = e.Label.ToUpperInvariant();
+            if (m_Table.ContainsKey(new_key))
             {
                 MessageBox.Show("The table key must be unique, please try something else.", "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
 
             // Update the label
-            var listItem = lstKeys.Items[e.Item];
-            var oldKey = listItem.Text;
-            listItem.Text = newKey;
+            var list_item = lstKeys.Items[e.Item];
+            var old_key = list_item.Text;
+            list_item.Text = new_key;
             lstKeys.Sort();
 
             // Move the list to the new key
-            m_Table.Add(newKey, m_Table[oldKey]);
-            m_Table.Remove(oldKey);
+            m_Table.Add(new_key, m_Table[old_key]);
+            m_Table.Remove(old_key);
 
             // Update the editing key to match, if we happen to be editing that same key
-            if (oldKey.Equals(m_EditingKey))
-                m_EditingKey = newKey;
+            if (old_key.Equals(m_EditingKey))
+                m_EditingKey = new_key;
 
             Dirty = true;
         }
@@ -135,15 +135,15 @@ namespace Finmer.Editor
         private void lstKeys_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Show editing UI only if a set is selected
-            bool hasSelection = lstKeys.SelectedIndices.Count != 0;
-            scintilla.Visible = hasSelection;
-            tsbRemove.Enabled = hasSelection;
+            bool has_selection = lstKeys.SelectedIndices.Count != 0;
+            scintilla.Visible = has_selection;
+            tsbRemove.Enabled = has_selection;
 
             // Save any previously selected set
             FlushSelected();
 
             // Update editing UI if a new set is selected
-            if (!hasSelection)
+            if (!has_selection)
                 return;
 
             // Show new set (and avoid marking asset as dirty while we're updating the text shown in the text control)

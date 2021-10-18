@@ -32,24 +32,24 @@ namespace Finmer.Views
 
         private void CharCreateViewBase_Loaded(object sender, RoutedEventArgs e)
         {
-            txtName.Text = InitialSaveData.GetString("name");
-            cmbSpecies.Text = InitialSaveData.GetString("species");
+            NameInput.Text = InitialSaveData.GetString("name");
+            SpeciesInput.Text = InitialSaveData.GetString("species");
             if (!String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender")))
             {
-                optGenderMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
-                optGenderFemale.IsChecked = !optGenderMale.IsChecked;
+                GenderInputMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
+                GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
             }
             m_Setup = false;
 
             // Apply some default settings to enable quickly clicking through to the game
             //if (GameController.DebugMode)
             {
-                txtName.Text = "Snack";
-                cmbSpecies.SelectedIndex = CoreUtility.Rng.Next(cmbSpecies.Items.Count);
+                NameInput.Text = "Snack";
+                SpeciesInput.SelectedIndex = CoreUtility.Rng.Next(SpeciesInput.Items.Count);
                 // Make a coin flip to see if it's male or female randomly selected, then set the gender accordingly.
                 int gender_flip = CoreUtility.Rng.Next(2);
-                optGenderMale.IsChecked = (gender_flip == 0);
-                optGenderFemale.IsChecked = !optGenderMale.IsChecked;
+                GenderInputMale.IsChecked = (gender_flip == 0);
+                GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
                 ValidateForm();
             }
         }
@@ -59,7 +59,7 @@ namespace Finmer.Views
             if (m_Setup)
                 return;
 
-            InitialSaveData.SetString("name", txtName.Text);
+            InitialSaveData.SetString("name", NameInput.Text);
             ValidateForm();
         }
 
@@ -68,7 +68,7 @@ namespace Finmer.Views
             if (m_Setup) 
                 return;
 
-            InitialSaveData.SetString("species", (string)cmbSpecies.SelectedValue);
+            InitialSaveData.SetString("species", (string)SpeciesInput.SelectedValue);
             ValidateForm();
         }
 
@@ -77,7 +77,7 @@ namespace Finmer.Views
             if (m_Setup) 
                 return;
 
-            InitialSaveData.SetString("gender", (optGenderMale.IsChecked ?? false) ? "Male" : "Female");
+            InitialSaveData.SetString("gender", (GenderInputMale.IsChecked ?? false) ? "Male" : "Female");
             ValidateForm();
         }
 

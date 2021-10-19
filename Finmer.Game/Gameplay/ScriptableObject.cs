@@ -244,15 +244,12 @@ namespace Finmer.Gameplay
             // Find exported methods (public static methods named Exported...() and tagged with ScriptableFunctionAttribute)
             var all_methods = GetType().GetMethods(BindingFlags.FlattenHierarchy | BindingFlags.Static | BindingFlags.NonPublic);
             IEnumerable<ExportedMethod> exported_methods = all_methods
+                .Where(method => method.GetCustomAttribute<ScriptableFunctionAttribute>() != null)
                 .Select(method => new ExportedMethod
                 {
                     m_Method = method,
-                    m_Attribute = method
-                        .GetCustomAttributes<ScriptableFunctionAttribute>()
-                        .FirstOrDefault(),
                     m_Delegate = (LuaApi.lua_CFunction)method.CreateDelegate(typeof(LuaApi.lua_CFunction))
                 })
-                .Where(item => item.m_Attribute != null)
                 .Where(item => item.m_Method.Name.StartsWith("Exported"));
 
             // Build the hash-maps with the found objects
@@ -401,7 +398,6 @@ namespace Finmer.Gameplay
         private struct ExportedMethod
         {
             public MethodInfo m_Method;
-            public ScriptableFunctionAttribute m_Attribute;
             public LuaApi.lua_CFunction m_Delegate;
         }
 

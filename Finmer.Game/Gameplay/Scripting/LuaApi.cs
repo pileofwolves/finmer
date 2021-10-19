@@ -308,19 +308,17 @@ namespace Finmer.Gameplay.Scripting
         public static extern IntPtr lua_topointer(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        private static extern IntPtr lua_tolstring(IntPtr L, int index, ref UIntPtr len);
+        private static extern IntPtr lua_tolstring(IntPtr L, int index, out UIntPtr len);
 
         public static string lua_tostring(IntPtr L, int index)
         {
+            // Per Lua documentation, tostring should return null for non-string stack items
             if (lua_type(L, index) != ELuaType.String)
                 return null;
 
-            UIntPtr len = UIntPtr.Zero;
-            IntPtr stringPtr = lua_tolstring(L, index, ref len);
-
-            return stringPtr == IntPtr.Zero
-                ? null
-                : Marshal.PtrToStringAnsi(stringPtr, checked((int)len.ToUInt32()));
+            // Convert the string's ANSI pointer to a managed string
+            IntPtr stringPtr = lua_tolstring(L, index, out UIntPtr len);
+            return Marshal.PtrToStringAnsi(stringPtr, checked((int)len.ToUInt32()));
         }
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
@@ -332,13 +330,9 @@ namespace Finmer.Gameplay.Scripting
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern ELuaType lua_type(IntPtr L, int index);
 
-        [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION, EntryPoint = "lua_typename")]
-        private static extern IntPtr lua_typename_backend(IntPtr luaState, ELuaType index);
-
-        public static string lua_typename(IntPtr L, ELuaType index)
-        {
-            return Marshal.PtrToStringAnsi(lua_typename_backend(L, index));
-        }
+        [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
+        [return: MarshalAs(UnmanagedType.LPStr)]
+        public static extern string lua_typename(IntPtr L, ELuaType type);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern void lua_xmove(IntPtr from, IntPtr to, int n);
@@ -395,12 +389,23 @@ namespace Finmer.Gameplay.Scripting
         public static extern double luaL_checknumber(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        private static extern IntPtr luaL_checklstring(IntPtr L, int index, out uint size);
+        private static extern IntPtr luaL_checklstring(IntPtr L, int index, out UIntPtr size);
 
         public static string luaL_checkstring(IntPtr L, int index)
         {
-            return Marshal.PtrToStringAnsi(luaL_checklstring(L, index, out uint size), (int)size);
+            return Marshal.PtrToStringAnsi(luaL_checklstring(L, index, out UIntPtr size), (int)size);
         }
+
+        [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
+        private static extern IntPtr luaL_optlstring(IntPtr L, int numArg, [MarshalAs(UnmanagedType.LPStr)] string def, out UIntPtr l);
+
+        public static string luaL_optstring(IntPtr L, int index, string def)
+        {
+            return Marshal.PtrToStringAnsi(luaL_optlstring(L, index, def, out UIntPtr size), (int)size);
+        }
+
+        [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
+        public static extern double luaL_optnumber(IntPtr L, int nArg, double def);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern void luaL_where(IntPtr L, int lvl);

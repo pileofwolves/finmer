@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
 using Finmer.Utility;
@@ -16,205 +17,264 @@ using Finmer.Views;
 namespace Finmer.Gameplay
 {
 
-    public sealed class ShopState : ScriptableObject
+    /// <summary>
+    /// Represents a serializable item shop.
+    /// </summary>
+    public class ShopState : ScriptableObject
     {
 
-        public ShopState(ScriptContext context) : base(context)
-        {
-            Stock = new List<ShopEntry>();
-        }
-
+        /// <summary>
+        /// The unique identifier of this shop, used for serializing the shop to and from save data.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
-        public string ShopKey { get; set; }
+        public string Key { get; set; }
 
+        /// <summary>
+        /// The title of the shop, as presented in the UI.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public string Title { get; set; }
 
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public string StringGroup { get; set; }
-
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public bool NeedsRestock { get; set; }
-
+        /// <summary>
+        /// Time in world clock hours until the RestockRequired property will be flipped to 'true'.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int RestockInterval { get; set; }
 
-        public List<ShopEntry> Stock { get; }
+        /// <summary>
+        /// Indicates whether this shop's RestockInterval has elapsed.
+        /// </summary>
+        [ScriptableProperty(EScriptAccess.Read)]
+        public bool RestockRequired { get; private set; }
 
-        public void AddItem(Item item, int quantity, bool unique = false)
+        /// <summary>
+        /// The timestamp in world clock hours when this stock was last restocked.
+        /// </summary>
+        [ScriptableProperty(EScriptAccess.Read)]
+        public int RestockLastTime { get; private set; }
+
+        /// <summary>
+        /// Contains the stock of items available in this shop.
+        /// </summary>
+        public List<ShopItemStack> Stock { get; } = new List<ShopItemStack>();
+
+        public ShopState(ScriptContext context) : base(context) {}
+
+        public void AddItem(Item item, int quantity, ShopItemStack.EStackType type)
         {
-            int index = Stock.FindIndex(other => item.Asset.Name.Equals(other.Item.Asset.Name));
-            if (index != -1)
+            // If the item is not unique, we can try merging it with an existing stack
+            if (type != ShopItemStack.EStackType.Unique)
             {
-                // add quantity to existing stack
-                ShopEntry entry = Stock[index];
+                // Find an existing stack of the same item type
+                int index = Stock.FindIndex(other => item.Asset.Name.Equals(other.Item.Asset.Name));
+                if (index != -1)
+                {
+                    ShopItemStack entry = Stock[index];
 
-                // if quantity is -1, it's an infinite stack, so don't touch the magic -1 number
-                if (entry.Quantity != -1)
-                    entry.Quantity += quantity;
+                    // Add the quantity to the stack (unless it already has infinite stock)
+                    if (entry.Quantity != -1)
+                        entry.Quantity += quantity;
+
+                    return;
+                }
             }
-            else
+
+            // The item cannot be merged with another stack, so create a new stack
+            Stock.Add(new ShopItemStack(item, type)
             {
-                // create new stack
-                Stock.Add(new ShopEntry(item, quantity, unique));
-            }
+                Quantity = quantity
+            });
         }
 
-        public void DeductItem(int index)
+        /// <summary>
+        /// Deduct the quantity of an item.
+        /// </summary>
+        public void RemoveItem(Item item)
         {
-            ShopEntry entry = Stock[index];
+            int index = Stock.FindIndex(other => item.Asset.Name.Equals(other.Item.Asset.Name));
+            if (index == -1)
+            {
+                Debug.Fail($"Failed to find item {item.Asset.Name} in shop stock");
+                return;
+            }
 
-            // quantity of -1 indicates infinite stock
-            if (entry.Quantity == -1) return;
+            ShopItemStack entry = Stock[index];
 
-            // decrease stack size
+            // If the item has infinite stock, don't change the quantity value
+            if (entry.Quantity == -1)
+                return;
+
+            // Decrease stack size
             entry.Quantity--;
 
-            // remove empty stacks
+            // Remove empty stacks
             if (entry.Quantity == 0)
                 Stock.RemoveAt(index);
         }
 
-        [ScriptableFunction]
-        private int LuaD_RemoveDefaultStock(IntPtr L)
+        /// <summary>
+        /// Given an item's base purchase value, returns the sale price the item goes for when sold back to a shop.
+        /// </summary>
+        public static int GetSalePrice(int buyPrice)
         {
-            Stock.RemoveAll(entry => !entry.Unique);
-            return 0;
+            return (buyPrice + 1) / 2;
         }
 
-        [ScriptableFunction]
-        private int LuaD_RemoveAll(IntPtr L)
+        /// <summary>
+        /// Returns the shop with the specified unique ID, either by retrieving it from save data or by generating a new one.
+        /// </summary>
+        /// <param name="context">The script context this shop object must be bound to.</param>
+        /// <param name="id">The unique ID of the shop to load.</param>
+        public static ShopState LoadOrCreate(ScriptContext context, string id)
         {
-            Stock.Clear();
-            return 0;
-        }
-
-        private int Lua_AddItemHelper(IntPtr L, bool unique)
-        {
-            var item = ScriptableObject.FromLua(L, 2) as Item;
-            if (item == null) return LuaApi.luaL_error(L, "bad argument 1: expected Item");
-
-            var quantity = 1;
-            if (LuaApi.lua_type(L, 3) == LuaApi.ELuaType.Number)
-                quantity = (int)LuaApi.lua_tonumber(L, 3);
-
-            AddItem(item, quantity, unique);
-            return 0;
-        }
-
-        [ScriptableFunction]
-        private int LuaD_AddItem(IntPtr L)
-        {
-            return Lua_AddItemHelper(L, false);
-        }
-
-        [ScriptableFunction]
-        private int LuaD_AddUniqueItem(IntPtr L)
-        {
-            return Lua_AddItemHelper(L, true);
-        }
-
-        [ScriptableFunction]
-        private int LuaD_Save(IntPtr L)
-        {
-            Save();
-            return 0;
-        }
-
-        [ScriptableFunction]
-        private int LuaD_Show(IntPtr L)
-        {
-            // sanity check
-            var self = ScriptableObject.FromLua(L, 1) as ShopState;
-            if (self == null || self != this)
-                return LuaApi.luaL_error(L, "bad self to ShopState:Show()");
-
-            // navigate to the thingy
-            GameController.Window.Dispatcher.Invoke(delegate { GameController.Window.Navigate(new ShopPage(this), ENavigatorAnimation.SlideLeft); });
-            return LuaApi.lua_yield(L, 0);
-        }
-
-        public static ShopState Load(ScriptContext context, string id)
-        {
-            // we save shop state as a nested propertybag in the player's main save, so it's all nicely contained
-            // and doesn't clutter up the "global namespace" of the save file
+            // Generate a default shop
             var ret = new ShopState(context)
             {
-                Title = "Shop_" + id,
-                StringGroup = "shop_generic_",
-                ShopKey = id,
-                NeedsRestock = true,
+                Key = id,
+                Title = "Shop",
+                RestockRequired = true,
                 RestockInterval = 24
             };
 
             // Look for the shop in the player's save data
-            PropertyBag saved = GameController.Session.Player.AdditionalSaveData.GetNestedPropertyBag("shop_" + id);
+            Player player = GameController.Session.Player;
+            PropertyBag saved = player.AdditionalSaveData.GetNestedPropertyBag(GetShopID(id));
 
             // If found, deserialize it. Otherwise, we leave the properties at defaults (as above).
             if (saved != null)
             {
-                // Read basic metadata
+                // Overwrite the shop's settings with things retrieved from the save file
                 ret.Title = saved.GetString("title");
-                ret.StringGroup = saved.GetString("strings");
-                ret.NeedsRestock = saved.GetBool("restock_needed");
                 ret.RestockInterval = saved.GetInt("restock_interval");
+                ret.RestockLastTime = saved.GetInt("restock_timestamp");
 
                 // Read stock
                 int num_stock = saved.GetInt("stock_count");
                 for (var i = 0; i < num_stock; i++)
                 {
-                    int quantity = saved.GetInt($"stock_{i}_qty");
-                    bool unique = saved.GetBool($"stock_{i}_unique");
-                    PropertyBag data = saved.GetNestedPropertyBag($"stock_{i}_data");
-                    ret.AddItem(Item.FromSaveGame(context, data), quantity, unique);
+                    var quantity = saved.GetInt($"stock_{i}_qty");
+                    var type = saved.GetBool($"stock_{i}_unique") ? ShopItemStack.EStackType.Unique : ShopItemStack.EStackType.Regular;
+                    var item_data = saved.GetNestedPropertyBag($"stock_{i}_data");
+                    ret.AddItem(Item.FromSaveGame(context, item_data), quantity, type);
                 }
+
+                // If the restock interval has elapsed, set the RestockRequired flag
+                int total_world_hours = player.TimeHourCumulative;
+                ret.RestockRequired = ret.RestockInterval != 0 && total_world_hours >= ret.RestockLastTime + ret.RestockInterval;
             }
 
             return ret;
         }
 
+        /// <summary>
+        /// Serializes a snapshot of the shop to the player's save data.
+        /// </summary>
         public void Save()
         {
-            GameController.Session.Player.AdditionalSaveData.SetNestedPropertyBag("shop_" + ShopKey, SerializeProperties());
+            PropertyBag save_data = SerializeProperties();
+            GameController.Session.Player.AdditionalSaveData.SetNestedPropertyBag(GetShopID(Key), save_data);
         }
 
         public override PropertyBag SerializeProperties()
         {
-            var props = base.SerializeProperties();
+            PropertyBag props = base.SerializeProperties();
 
-            // Store metadata
+            // Serialize metadata
             props.SetString("title", Title);
-            props.SetString("strings", StringGroup);
-            props.SetBool("restock_needed", NeedsRestock);
-            props.SetInt("restock_interval", RestockInterval);
+            props.SetBool("restock_needed", RestockRequired);
+            props.SetInt("restock_timestamp", RestockLastTime);
 
             // Serialize stock
             props.SetInt("stock_count", Stock.Count);
             for (var i = 0; i < Stock.Count; i++)
             {
-                ShopEntry entry = Stock[i];
+                ShopItemStack entry = Stock[i];
                 props.SetInt($"stock_{i}_qty", entry.Quantity);
-                props.SetBool($"stock_{i}_unique", entry.Unique);
+                props.SetBool($"stock_{i}_unique", entry.Type == ShopItemStack.EStackType.Unique);
                 props.SetNestedPropertyBag($"stock_{i}_data", entry.Item.SerializeProperties());
             }
 
-            return base.SerializeProperties();
+            return props;
         }
 
-        public sealed class ShopEntry
+        private int AddItemInternal(IntPtr state, ShopItemStack.EStackType type)
         {
+            // Retrieve arguments from script
+            var item = FromLuaNonOptional<Item>(state, 2);
+            var quantity = (int)LuaApi.luaL_optnumber(state, 3, 1);
 
-            public ShopEntry(Item item, int quantity, bool unique = false)
-            {
-                Item = item;
-                Quantity = quantity;
-                Unique = unique;
-            }
+            // Add the item to the shop
+            AddItem(item, quantity, type);
 
-            public Item Item { get; set; }
-            public int Quantity { get; set; }
-            public bool Unique { get; set; }
+            return 0;
+        }
 
+        [ScriptableFunction]
+        protected static int ExportedRemoveDefaultStock(IntPtr state)
+        {
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            shop.Stock.RemoveAll(entry => entry.Type == ShopItemStack.EStackType.Regular);
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedRemoveAll(IntPtr state)
+        {
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            shop.Stock.Clear();
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedAddItem(IntPtr state)
+        {
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            return shop.AddItemInternal(state, ShopItemStack.EStackType.Regular);
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedAddUniqueItem(IntPtr state)
+        {
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            return shop.AddItemInternal(state, ShopItemStack.EStackType.Unique);
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedSave(IntPtr state)
+        {
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            shop.Save();
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedMarkRestocked(IntPtr state)
+        {
+            // Update the shop's restock timestamp, and remove the restock-required flag
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            shop.RestockRequired = false;
+            shop.RestockLastTime = GameController.Session.Player.TimeHourCumulative;
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedShow(IntPtr state)
+        {
+            // Queue a delegate on the main thread to navigate to the shop page
+            var shop = FromLuaNonOptional<ShopState>(state, 1);
+            GameController.Window.Dispatcher.Invoke(delegate { GameController.Window.Navigate(new ShopPage(shop), ENavigatorAnimation.SlideLeft); });
+
+            // Pause the script until the shop page closes
+            return LuaApi.lua_yield(state, 0);
+        }
+
+        /// <summary>
+        /// Returns a deterministic namespace to use for the shop in save data.
+        /// </summary>
+        private static string GetShopID(string shopName)
+        {
+            return "shop_" + shopName;
         }
 
     }

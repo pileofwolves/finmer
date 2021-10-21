@@ -46,38 +46,42 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedNewCharacter(IntPtr state)
         {
-            // try to load the specified character object
+            // Try creating an instance of a Character with the specified asset name
             string name = luaL_checkstring(state, 1);
             Character ch = Character.FromAsset(ScriptContext.FromLua(state), name);
+
+            // If that failed, throw a script error
             if (ch == null)
                 return luaL_error(state, $"failed to load creature '{name}'");
 
-            // save a reference to it and return it to lua
+            // Return it to script
             ch.PushToLua(state);
             return 1;
         }
 
         private static int ExportedNewItem(IntPtr state)
         {
-            // try to load the specified character object
+            // Try creating an instance of an Item with the specified asset name
             string name = luaL_checkstring(state, 1);
             Item obj = Item.FromAsset(ScriptContext.FromLua(state), name);
+
+            // If that failed, throw a script error
             if (obj == null)
                 return luaL_error(state, $"failed to load item '{name}'");
 
-            // save a reference to it and return it to lua
+            // Return it to script
             obj.PushToLua(state);
             return 1;
         }
 
         private static int ExportedNewShop(IntPtr state)
         {
-            // try to load the specified character object
-            string name = luaL_checkstring(state, 1);
-            ShopState shopstate = ShopState.Load(ScriptContext.FromLua(state), name);
+            // Get or create the shop with the specified unique key
+            string key = luaL_checkstring(state, 1);
+            ShopState shop = ShopState.LoadOrCreate(ScriptContext.FromLua(state), key);
 
-            // save a reference to it and return it to lua
-            shopstate.PushToLua(state);
+            // Return it to script
+            shop.PushToLua(state);
             return 1;
         }
 

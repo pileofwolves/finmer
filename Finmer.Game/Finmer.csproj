@@ -63,13 +63,15 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ChainConverter.cs" />
     <Compile Include="Converters\CharSheetItemDropConverter.cs" />
     <Compile Include="Converters\CharSheetUseLabelConverter.cs" />
     <Compile Include="Converters\CharSheetItemUseConverter.cs" />
     <Compile Include="Converters\HourToClockAngleConverter.cs" />
     <Compile Include="Converters\CountToListConverter.cs" />
-    <Compile Include="Converters\QuantityToVisibilityConverter.cs" />
+    <Compile Include="Converters\ShopStackQuantityVisibilityConverter.cs" />
     <Compile Include="Converters\DieFaceToImageConverter.cs" />
+    <Compile Include="Converters\ShopItemSellValueConverter.cs" />
     <Compile Include="Gameplay\Character.cs" />
     <Compile Include="Gameplay\Combat\CombatCallbacks.cs" />
     <Compile Include="Gameplay\Combat\CombatDisplay.cs" />
@@ -97,6 +99,7 @@
     <Compile Include="Gameplay\Scripting\LuaApi.cs" />
     <Compile Include="Gameplay\ScriptableObject.cs" />
     <Compile Include="Gameplay\Scripting\ScriptContext.cs" />
+    <Compile Include="Gameplay\ShopItemStack.cs" />
     <Compile Include="Gameplay\ShopState.cs" />
     <Compile Include="Gameplay\TextAttributes.cs" />
     <Compile Include="Gameplay\TextParser.cs" />
@@ -121,6 +124,7 @@
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\PlayerViewModel.cs" />
+    <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
@@ -135,8 +139,14 @@
     <Compile Include="Views\CharCreateBasic.xaml.cs">
       <DependentUpon>CharCreateBasic.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Parts\CharSheetInventoryItemActions.xaml.cs">
-      <DependentUpon>CharSheetInventoryItemActions.xaml</DependentUpon>
+    <Compile Include="Views\Parts\ItemActionsShopSell.xaml.cs">
+      <DependentUpon>ItemActionsShopSell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ItemActionsShopBuy.xaml.cs">
+      <DependentUpon>ItemActionsShopBuy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\ItemActionsCharSheet.xaml.cs">
+      <DependentUpon>ItemActionsCharSheet.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CharSheetPage.xaml.cs">
       <DependentUpon>CharSheetPage.xaml</DependentUpon>
@@ -185,8 +195,8 @@
     <Compile Include="Views\Parts\ItemIconView.xaml.cs">
       <DependentUpon>ItemIconView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Parts\ItemShopListView.xaml.cs">
-      <DependentUpon>ItemShopListView.xaml</DependentUpon>
+    <Compile Include="Views\Parts\ShopItemListView.xaml.cs">
+      <DependentUpon>ShopItemListView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Parts\ItemListView.xaml.cs">
       <DependentUpon>ItemListView.xaml</DependentUpon>
@@ -217,7 +227,7 @@
     <Compile Include="Gameplay\SceneScripted.cs" />
     <Compile Include="Gameplay\Scripting\ScriptAttribute.cs" />
     <Compile Include="Utility\Theme.cs" />
-    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\BooleanInvertConverter.cs" />
     <Compile Include="Views\OptionsPage.xaml.cs">
       <DependentUpon>OptionsPage.xaml</DependentUpon>
     </Compile>
@@ -262,7 +272,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Parts\CharSheetInventoryItemActions.xaml">
+    <Page Include="Views\Parts\ItemActionsShopSell.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\ItemActionsShopBuy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\ItemActionsCharSheet.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -326,7 +344,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\Parts\ItemShopListView.xaml">
+    <Page Include="Views\Parts\ShopItemListView.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>

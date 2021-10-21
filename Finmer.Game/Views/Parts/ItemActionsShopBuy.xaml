@@ -1,0 +1,33 @@
+﻿<UserControl
+    x:Class="Finmer.Views.ItemActionsShopBuy"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="100"
+    d:DesignWidth="250">
+    <Grid
+        d:DataContext="{d:DesignInstance gp:ShopItemStack}"
+        Margin="8">
+        <Button
+            Margin="2"
+            Height="35"
+            Command="{Binding Path=DataContext.(vm:ShopViewModel.BuyCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopPage}}"
+            CommandParameter="{Binding}">
+            <StackPanel Orientation="Horizontal">
+                <TextBlock Style="{StaticResource TextBlockDefault}">Buy</TextBlock>
+                <Image
+                    Source="/Finmer;component/Resources/UI/Money.png"
+                    Stretch="None"
+                    Margin="8,0,3,0" />
+                <TextBlock
+                    Style="{StaticResource TextBlockDefault}"
+                    Text="{Binding Item.Asset.PurchaseValue, StringFormat='##,##0'}" />
+            </StackPanel>
+        </Button>
+    </Grid>
+</UserControl>

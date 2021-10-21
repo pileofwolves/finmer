@@ -1,0 +1,50 @@
+﻿<UserControl
+    x:Class="Finmer.Views.ItemActionsShopSell"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:cv="clr-namespace:Finmer.Converters"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="100"
+    d:DesignWidth="250">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cv:ShopItemSellValueConverter x:Key="ShopItemSellValueConverter" />
+        <cv:ChainConverter x:Key="InvertedBooleanToVisibilityConverter">
+            <cv:BooleanInvertConverter />
+            <BooleanToVisibilityConverter />
+        </cv:ChainConverter>
+    </UserControl.Resources>
+    <Grid
+        d:DataContext="{d:DesignInstance gp:Item}"
+        Margin="8">
+        <Button
+            Margin="2"
+            Height="35"
+            Command="{Binding Path=DataContext.(vm:ShopViewModel.SellCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopPage}}"
+            CommandParameter="{Binding}">
+            <Grid>
+                <StackPanel
+                    Orientation="Horizontal"
+                    Visibility="{Binding IsEnabled, Converter={StaticResource BooleanToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}">
+                    <TextBlock Style="{StaticResource TextBlockDefault}">Sell</TextBlock>
+                    <Image
+                        Source="/Finmer;component/Resources/UI/Money.png"
+                        Stretch="None"
+                        Margin="8,0,3,0" />
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="{Binding Asset.PurchaseValue, Converter={StaticResource ShopItemSellValueConverter}, StringFormat='##,##0'}" />
+                </StackPanel>
+                <TextBlock
+                    Style="{StaticResource TextBlockSubtle}"
+                    Visibility="{Binding IsEnabled, Converter={StaticResource InvertedBooleanToVisibilityConverter}, RelativeSource={RelativeSource FindAncestor, AncestorType=Button}}"
+                    Text="Can't sell" />
+            </Grid>
+        </Button>
+    </Grid>
+</UserControl>

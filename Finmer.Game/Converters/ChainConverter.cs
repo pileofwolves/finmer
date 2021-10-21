@@ -8,34 +8,28 @@
 
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Globalization;
+using System.Linq;
 using System.Windows.Data;
 
 namespace Finmer.Converters
 {
 
     /// <summary>
-    /// Converts an integer value to a collection with the same number of elements, because that is how we repeat controls in MVVM. *shrug*
+    /// Converter utility that invokes a chain of converters, passing the result of each to the next.
     /// </summary>
-    public class CountToListConverter : IValueConverter
+    public sealed class ChainConverter : List<IValueConverter>, IValueConverter
     {
 
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {
-            Debug.Assert(value != null);
-
-            var output = new List<object>();
-            for (int i = 0; i < (int)value; i++)
-                output.Add(new object());
-            return output;
+            return this.Aggregate(value, (current, converter) => converter.Convert(current, targetType, parameter, culture));
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }
-
     }
 
 }

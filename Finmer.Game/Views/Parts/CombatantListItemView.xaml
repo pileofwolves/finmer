@@ -12,7 +12,7 @@
     d:DesignHeight="150" d:DesignWidth="240"
     DataContextChanged="CombatantListItemView_OnDataContextChanged">
     <UserControl.Resources>
-        <cv:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+        <cv:BooleanInvertConverter x:Key="BoolToVisibilityConverter" />
     </UserControl.Resources>
     <!-- =================== HEALTH ANIMATIONS =================== -->
     <UserControl.Triggers>

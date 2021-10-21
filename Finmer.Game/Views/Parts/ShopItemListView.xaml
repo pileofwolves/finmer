@@ -1,0 +1,95 @@
+﻿<ListBox
+    x:Class="Finmer.Views.ShopItemListView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
+    mc:Ignorable="d"
+    d:DesignHeight="300" d:DesignWidth="300">
+    <ListBox.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <Style TargetType="ListBoxItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListBoxItem">
+                        <Border
+                            x:Name="Border"
+                            VerticalAlignment="Stretch"
+                            HorizontalAlignment="Stretch"
+                            d:DataContext="{d:DesignInstance gp:ShopItemStack}">
+                            <Border.Style>
+                                <Style TargetType="Border">
+                                    <Setter Property="Background" Value="Transparent" />
+                                    <Setter Property="BorderThickness" Value="2" />
+                                </Style>
+                            </Border.Style>
+                            <StackPanel Orientation="Vertical">
+                                <!-- Item icon and name -->
+                                <StackPanel Orientation="Horizontal">
+                                    <v:ItemIconView
+                                        DataContext="{Binding Item}"
+                                        Margin="2" />
+                                    <StackPanel
+                                        Orientation="Vertical"
+                                        VerticalAlignment="Center"
+                                        Margin="4,0,0,0">
+                                        <!-- Item name -->
+                                        <TextBlock
+                                            Text="{Binding Item.Asset.ObjectName}"
+                                            Style="{StaticResource TextBlockDefault}" />
+                                        <!-- Cost -->
+                                        <StackPanel Orientation="Horizontal">
+                                            <Image
+                                                Source="/Finmer;component/Resources/UI/Money.png"
+                                                Stretch="None"
+                                                Margin="0,0,8,0" />
+                                            <TextBlock
+                                                Text="{Binding Item.Asset.PurchaseValue, StringFormat='##,##0'}"
+                                                Style="{StaticResource TextBlockDefault}" />
+                                        </StackPanel>
+                                    </StackPanel>
+                                </StackPanel>
+
+                                <!-- Item actions -->
+                                <ContentControl
+                                    Visibility="{Binding IsSelected, RelativeSource={RelativeSource FindAncestor, AncestorType=ListBoxItem}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                                    Template="{Binding ItemOptionsTemplate, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopItemListView}}" />
+                            </StackPanel>
+                            <Border.ToolTip>
+                                <!-- Item tooltip -->
+                                <v:ItemTooltipView DataContext="{Binding Path=Content.(gp:ShopItemStack.Item), RelativeSource={RelativeSource TemplatedParent}}" />
+                            </Border.ToolTip>
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <!-- Highlight background when row is selected -->
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource DepressedBrush}" />
+                                <Setter TargetName="Border" Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
+                            </Trigger>
+                            <!-- Highlight border when hovered -->
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter TargetName="Border" Property="BorderBrush" Value="{StaticResource HighlightBrush}" />
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ListBox.Resources>
+    <ListBox.Template>
+        <ControlTemplate>
+            <ScrollViewer
+                HorizontalScrollBarVisibility="Disabled"
+                VerticalScrollBarVisibility="Auto"
+                CanContentScroll="false">
+                <StackPanel
+                    Margin="2"
+                    VerticalAlignment="Top"
+                    Orientation="Vertical"
+                    IsItemsHost="True" />
+            </ScrollViewer>
+        </ControlTemplate>
+    </ListBox.Template>
+</ListBox>

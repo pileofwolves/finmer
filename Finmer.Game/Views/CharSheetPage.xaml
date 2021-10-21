@@ -248,7 +248,7 @@
             <v:ItemListView ItemsSource="{Binding Inventory, Mode=OneWay}">
                 <v:ItemListView.ItemOptionsTemplate>
                     <ControlTemplate>
-                        <v:CharSheetInventoryItemActions />
+                        <v:ItemActionsCharSheet />
                     </ControlTemplate>
                 </v:ItemListView.ItemOptionsTemplate>
             </v:ItemListView>

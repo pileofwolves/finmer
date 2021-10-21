@@ -5,64 +5,85 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
-    d:DesignWidth="1000" d:DesignHeight="640"
-    d:DataContext="{d:DesignData Source=../Models/DesignData/SamplePlayer.xaml}">
-
-    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="600" Height="600">
+    d:DataContext="{d:DesignInstance vm:ShopViewModel}"
+    d:DesignWidth="1000" d:DesignHeight="400">
+    <Grid HorizontalAlignment="Center" VerticalAlignment="Center" Width="550" Height="400">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
-            <RowDefinition Height="80" />
             <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="50" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Status text -->
-        <TextBlock x:Name="ShopkeepText" Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="3" Style="{StaticResource TextBlockSubtle}"
-            TextAlignment="Center" HorizontalAlignment="Center" Width="400" TextWrapping="Wrap">
-            Hello, world!
-        </TextBlock>
-
         <!-- Back button -->
-        <Button Grid.Column="2" Grid.Row="2" Width="150" Height="40" HorizontalAlignment="Right" Content="Done"
+        <Button
+            Grid.Column="2"
+            Grid.Row="1"
+            Width="150"
+            Height="40"
+            HorizontalAlignment="Right"
+            Content="Close"
             Click="BackButton_Click" />
 
         <!-- Inventory panels -->
-        <StackPanel Grid.Row="0" Grid.Column="0" Orientation="Vertical" x:Name="NpcPanel" d:DataContext="{d:DesignData Finmer.Gameplay.ShopState}">
-            <TextBlock Style="{StaticResource TextBlockLargest}" Margin="0,0,0,10" Text="Shopkeep" x:Name="ShopTitle" />
-            <v:ItemShopListView x:Name="ItemsShop" MaxHeight="405" ItemsSource="{Binding Stock}" SelectionChanged="ItemsShop_SelectionChanged" />
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="2" Orientation="Vertical">
-            <TextBlock Style="{StaticResource TextBlockLargest}" Margin="0,0,0,10" Text="{Binding Name}" />
-            <v:ItemListView x:Name="ItemsPlayer" MaxHeight="405" ItemsSource="{Binding Inventory}" SelectionChanged="ItemsPlayer_SelectionChanged" />
-        </StackPanel>
-
-        <!-- Center panel (buy/sell/money) -->
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
-            <Button x:Name="ButtonBuy" Height="40" Margin="4" Click="ButtonBuy_Click">&gt;&gt; Buy</Button>
-            <Button x:Name="ButtonSell" Height="40" Margin="4" Click="ButtonSell_Click">Sell &lt;&lt;</Button>
-        </StackPanel>
-        <StackPanel Grid.Row="0" Grid.Column="1" VerticalAlignment="Bottom" Margin="6,0,6,40">
-            <StackPanel x:Name="ValuePanel" Margin="0,0,0,25">
-                <TextBlock Style="{StaticResource TextBlockDefault}">Value:</TextBlock>
-                <StackPanel Orientation="Horizontal">
-                    <Image Source="/Finmer;component/Resources/coin.png" Stretch="None" Margin="0,0,6,0"
-                        RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                    <TextBlock x:Name="ValueText" Style="{StaticResource TextBlockDefault}" />
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="0">
+            <TextBlock
+                DockPanel.Dock="Top"
+                Style="{StaticResource TextBlockLargest}"
+                Margin="0,0,0,10"
+                Text="{Binding ShopTitle}" />
+            <v:ShopItemListView
+                ItemsSource="{Binding ShopInventory, Mode=OneWay}">
+                <v:ShopItemListView.ItemOptionsTemplate>
+                    <ControlTemplate>
+                        <v:ItemActionsShopBuy />
+                    </ControlTemplate>
+                </v:ShopItemListView.ItemOptionsTemplate>
+            </v:ShopItemListView>
+        </DockPanel>
+        <DockPanel
+            Grid.Row="0"
+            Grid.Column="2">
+            <Grid DockPanel.Dock="Top"
+                Margin="0,0,0,10">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <TextBlock
+                    Grid.Column="0"
+                    Style="{StaticResource TextBlockLargest}"
+                    Text="{Binding PlayerName}" />
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Horizontal"
+                    VerticalAlignment="Center">
+                    <Image
+                        Source="/Finmer;component/Resources/UI/Money.png"
+                        VerticalAlignment="Center"
+                        Stretch="None"
+                        Margin="0,1,6,0" />
+                    <TextBlock
+                        VerticalAlignment="Center"
+                        Style="{StaticResource TextBlockLarge}"
+                        Text="{Binding PlayerMoney, StringFormat='##,##0'}" />
                 </StackPanel>
-            </StackPanel>
-            <TextBlock Style="{StaticResource TextBlockDefault}">Your Gold:</TextBlock>
-            <StackPanel Orientation="Horizontal">
-                <Image Source="/Finmer;component/Resources/coin.png" Stretch="None" Margin="0,0,6,0"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <TextBlock Style="{StaticResource TextBlockDefault}">
-                    <Run Text="{Binding Money, Mode=OneWay}" />
-                </TextBlock>
-            </StackPanel>
-        </StackPanel>
+            </Grid>
+            <v:ItemListView
+                ItemsSource="{Binding PlayerInventory, Mode=OneWay}">
+                <v:ItemListView.ItemOptionsTemplate>
+                    <ControlTemplate>
+                        <v:ItemActionsShopSell />
+                    </ControlTemplate>
+                </v:ItemListView.ItemOptionsTemplate>
+            </v:ItemListView>
+        </DockPanel>
     </Grid>
 </UserControl>

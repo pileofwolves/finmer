@@ -83,7 +83,7 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.StringGroup = \"shoptxt_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAction": "-- Give the player some random items\r\nif not Player:HasItem(\"I_PitInvite\") then Player:GiveItem(\"I_PitInvite\") end\r\nif not Player:HasItem(\"U_FoodBread\") then Player:GiveItem(\"U_FoodBread\") end\r\nif not Player:HasItem(\"I_SQ01_Vial\") then Player:GiveItem(\"I_SQ01_Vial\") end\r\nif not Player:HasItem(\"A_LeatherArmor\") then Player:GiveItem(\"A_LeatherArmor\") end\r\nif not Player:HasItem(\"A_ClothArmor\") then Player:GiveItem(\"A_ClothArmor\") end\r\n\r\n-- Launch shop\r\nlocal shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.RestockInterval = 24\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"U_FoodGrapes\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
 										"ScriptAppear": "",
 										"Children": [
 											{

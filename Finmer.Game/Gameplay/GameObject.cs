@@ -7,10 +7,8 @@
  */
 
 using System;
-using System.Runtime.CompilerServices;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
-using Finmer.ViewModels;
 
 namespace Finmer.Gameplay
 {
@@ -35,41 +33,6 @@ namespace Finmer.Gameplay
                 m_Alias = m_Name;
 
             Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString("gender", "Neuter"));
-        }
-
-        /// <summary>
-        /// Gets or sets the view model instance associated with this game object.
-        /// </summary>
-        private WeakReference<GameObjectViewModel> ViewModel { get; set; }
-
-        /// <summary>
-        /// Returns either a cached viewmodel that wraps this model, or a newly created one. This function must be called on the UI thread.
-        /// </summary>
-        public GameObjectViewModel GetOrCreateViewModel()
-        {
-            // Try to find a cached viewmodel to return
-            if (ViewModel == null || !ViewModel.TryGetTarget(out GameObjectViewModel output))
-            {
-                // If it's unavailable, create and cache a new viewmodel
-                output = CreateViewModel();
-                ViewModel = new WeakReference<GameObjectViewModel>(output);
-            }
-
-            return output;
-        }
-
-        /// <summary>
-        /// Notifies the cached viewmodel, if any, that a property on the (view)model has changed values.
-        /// </summary>
-        /// <param name="propertyName">The name of the property that changed.</param>
-        protected void OnPropertyChanged([CallerMemberName] string propertyName = null)
-        {
-            // Try to get the viewmodel associated with this object
-            if (ViewModel == null || !ViewModel.TryGetTarget(out GameObjectViewModel output))
-                return;
-
-            // Relay the change notification to the viewmodel, which will schedule it for the UI thread
-            output.RelayPropertyChanged(propertyName);
         }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
@@ -153,8 +116,6 @@ namespace Finmer.Gameplay
 
             return props;
         }
-
-        protected abstract GameObjectViewModel CreateViewModel();
 
         protected virtual void ReloadPronouns()
         {

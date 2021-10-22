@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Media;
+using Finmer.Gameplay;
 using Finmer.Gameplay.Combat;
 using Finmer.Utility;
 
@@ -25,12 +26,12 @@ namespace Finmer.ViewModels
 
         private const float k_CriticalHealthFraction = 0.3f;
 
-        private readonly CharacterViewModel m_Upstream;
+        private readonly Character m_Upstream;
         private readonly Participant m_Participant;
 
         public CombatParticipantViewModel(Participant owner)
         {
-            m_Upstream = (CharacterViewModel)owner.Character.GetOrCreateViewModel();
+            m_Upstream = owner.Character;
             m_Participant = owner;
 
             PropertyChangedEventManager.AddHandler(m_Upstream, Character_PropertyChanged, String.Empty);
@@ -41,9 +42,9 @@ namespace Finmer.ViewModels
 
         public string Subtext => GetLatestSubtext();
 
-        public bool IsAlly => m_Upstream.CharacterModel.IsAlly();
+        public bool IsAlly => m_Upstream.IsAlly();
 
-        public bool IsDead => m_Upstream.CharacterModel.IsDead();
+        public bool IsDead => m_Upstream.IsDead();
 
         public bool IsMyTurn => m_Participant.Session.WhoseTurn == m_Participant;
 
@@ -67,7 +68,7 @@ namespace Finmer.ViewModels
 
         private void Character_PropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals(nameof(CharacterViewModel.Health)))
+            if (e.PropertyName.Equals(nameof(m_Upstream.Health)))
             {
                 OnPropertyChanged(nameof(TextColor));
                 OnPropertyChanged(nameof(IsDead)); // actually nameof(Danger)

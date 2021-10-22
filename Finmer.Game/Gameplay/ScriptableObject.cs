@@ -14,6 +14,7 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
+using Finmer.ViewModels;
 
 namespace Finmer.Gameplay
 {
@@ -21,7 +22,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Represents an object that can be manipulated from Lua script.
     /// </summary>
-    public abstract class ScriptableObject
+    public abstract class ScriptableObject : BaseProp
     {
 
         private static readonly Dictionary<Type, Func<IntPtr, object, int>> s_MarshalFunctions =

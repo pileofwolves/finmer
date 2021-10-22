@@ -15,7 +15,6 @@ using Finmer.Core.Buffs;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
-using Finmer.ViewModels;
 
 namespace Finmer.Gameplay
 {
@@ -311,11 +310,6 @@ namespace Finmer.Gameplay
         public bool CanSwallow(Character prey)
         {
             return prey.Size <= Size;
-        }
-
-        protected override GameObjectViewModel CreateViewModel()
-        {
-            return new CharacterViewModel(this);
         }
 
         [ScriptableFunction]

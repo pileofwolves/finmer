@@ -5,10 +5,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:cv="clr-namespace:Finmer.Converters"
-    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
     d:DesignHeight="150" d:DesignWidth="150"
-    d:DataContext="{d:DesignInstance vm:PlayerViewModel}">
+    d:DataContext="{d:DesignInstance gp:Player}">
     <UserControl.Resources>
         <cv:HourToClockAngleConverter x:Key="HourToClockAngleConverter" />
     </UserControl.Resources>

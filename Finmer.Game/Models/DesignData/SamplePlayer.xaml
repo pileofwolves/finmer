@@ -1,5 +1,5 @@
-﻿<vm:PlayerViewModel
-    xmlns:vm="clr-namespace:Finmer.ViewModels"
+﻿<gp:Player
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
     Name="Food"
     Species="snack"
     Gender="Male"

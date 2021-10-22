@@ -13,7 +13,6 @@ using Finmer.Core;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
-using Finmer.ViewModels;
 using JetBrains.Annotations;
 
 namespace Finmer.Gameplay
@@ -309,11 +308,6 @@ namespace Finmer.Gameplay
                 }
 
             return false;
-        }
-
-        protected override GameObjectViewModel CreateViewModel()
-        {
-            return new PlayerViewModel(this);
         }
 
         [ScriptableFunction]

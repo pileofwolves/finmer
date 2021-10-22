@@ -116,14 +116,11 @@
     <Compile Include="ViewModels\CharacterSheetViewModel.cs" />
     <Compile Include="ViewModels\CombatRoundPipsViewModel.cs" />
     <Compile Include="ViewModels\CombatStateViewModel.cs" />
-    <Compile Include="ViewModels\GameObjectViewModel.cs" />
-    <Compile Include="ViewModels\CharacterViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveParticipantViewModel.cs" />
     <Compile Include="ViewModels\JournalItemViewModel.cs" />
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
-    <Compile Include="ViewModels\PlayerViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />

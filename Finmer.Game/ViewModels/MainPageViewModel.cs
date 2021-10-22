@@ -13,12 +13,12 @@ namespace Finmer.ViewModels
 {
 
     /// <summary>
-    /// Exposes a set of downstream viewmodels that the MainPage can bind to.
+    /// Exposes a set of downstream view models that the MainPage can bind to.
     /// </summary>
     internal class MainPageViewModel : BaseProp
     {
 
-        public PlayerViewModel Player { get; } = (PlayerViewModel)GameController.Session.Player.GetOrCreateViewModel();
+        public Player Player => GameController.Session.Player;
 
         public GameUI UI => GameUI.Instance;
 

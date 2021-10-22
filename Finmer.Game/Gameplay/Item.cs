@@ -13,7 +13,6 @@ using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
 using Finmer.Utility;
-using Finmer.ViewModels;
 
 namespace Finmer.Gameplay
 {
@@ -67,11 +66,6 @@ namespace Finmer.Gameplay
             var serialized = new PropertyBag();
             serialized.SetBytes("asset", Asset.ID.ToByteArray()); // asset ID
             return serialized;
-        }
-
-        protected override GameObjectViewModel CreateViewModel()
-        {
-            throw new NotImplementedException();
         }
 
         public static Item FromAsset(ScriptContext context, string assetName)

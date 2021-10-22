@@ -54,7 +54,7 @@ namespace Finmer.ViewModels
         /// <summary>
         /// Mirror of the player's current money total.
         /// </summary>
-        public int PlayerMoney { get; private set; }
+        public int PlayerMoney => m_Player.Money;
 
         private readonly ShopState m_Shop;
         private readonly Player m_Player;
@@ -124,7 +124,6 @@ namespace Finmer.ViewModels
         private void UpdateUI()
         {
             // Update cached data
-            PlayerMoney = m_Player.Money;
             PlayerInventory = new List<Item>(m_Player.Inventory);
             ShopInventory = new List<ShopItemStack>(m_Shop.Stock);
 

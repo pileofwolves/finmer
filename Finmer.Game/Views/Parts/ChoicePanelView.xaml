@@ -18,6 +18,7 @@
         <!-- Script console -->
         <TextBox x:Name="ConsoleInput"
             Visibility="{Binding IsScriptConsoleOpened, Converter={StaticResource BooleanToVisibilityConverter}}"
+            FontFamily="Consolas,Courier New"
             TextWrapping="Wrap"
             VerticalAlignment="Top"
             KeyDown="txtConsole_KeyDown" />

@@ -162,6 +162,10 @@ namespace Finmer.Views
 
         private void LogEntryAnimation(UIElement container)
         {
+            // Skip animations if this view is not yet displayed on-screen
+            if (m_FlowDocumentScrollViewer == null)
+                return;
+
             // Prepare an opacity and fly-in animation
             var translation = new TranslateTransform { X = 64 };
             var duration = new Duration(TimeSpan.FromSeconds(0.5));
@@ -192,6 +196,10 @@ namespace Finmer.Views
 
         private void LogSplitAnimation(UIElement container)
         {
+            // Skip animations if this view is not yet displayed on-screen
+            if (m_FlowDocumentScrollViewer == null)
+                return;
+
             // Prepare an animation for extending the splitter
             var transform_scale = new ScaleTransform(0, 1);
             var duration_scale = new Duration(TimeSpan.FromSeconds(1.0));

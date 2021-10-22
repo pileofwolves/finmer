@@ -74,13 +74,15 @@ namespace Finmer.Gameplay
         public static void Save(int slot, PropertyBag savedata)
         {
             string filename = GetSaveFileName(slot);
+            string description;
             using (var file = new FileStream(filename, FileMode.Create))
             {
                 using (var writer = new BinaryWriter(file, Encoding.UTF8, true))
                 {
                     // Write the save version, and the short save info, as header
+                    description = DescribeSaveFile(savedata);
                     writer.Write(k_SaveVersion);
-                    writer.Write(DescribeSaveFile(savedata));
+                    writer.Write(description);
 
                     // Write dependencies list
                     writer.Write(GameController.LoadedModules.Count);
@@ -92,8 +94,9 @@ namespace Finmer.Gameplay
                 }
             }
 
-            // blank the cache array
-            Array.Clear(s_Slots, 0, k_SlotCount);
+            // Overwrite the cached version of the slot so it's displayed correctly in UI
+            s_Slots[slot].Info = description;
+            s_Slots[slot].IsLoadable = true;
         }
 
         /// <summary>

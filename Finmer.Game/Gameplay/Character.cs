@@ -234,9 +234,6 @@ namespace Finmer.Gameplay
             }
         }
 
-        /// <summary>
-        /// Saves the <see cref="Character" />'s properties to the underlying <seealso cref="PropertyBag" />.
-        /// </summary>
         public override PropertyBag SerializeProperties()
         {
             PropertyBag props = base.SerializeProperties();

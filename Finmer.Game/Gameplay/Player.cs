@@ -227,9 +227,6 @@ namespace Finmer.Gameplay
             OnPropertyChanged(nameof(XP));
         }
 
-        /// <summary>
-        /// Saves the <see cref="Player" />'s properties to the underlying <seealso cref="PropertyBag" />.
-        /// </summary>
         public override PropertyBag SerializeProperties()
         {
             PropertyBag props = base.SerializeProperties();

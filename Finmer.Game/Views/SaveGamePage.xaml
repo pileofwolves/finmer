@@ -4,25 +4,86 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:sys="clr-namespace:System;assembly=mscorlib"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance vm:SavePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="600">
     <Grid>
-        <StackPanel Orientation="Vertical" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <TextBlock Style="{StaticResource TextBlockLargest}" Margin="0,0,0,32" HorizontalAlignment="Center">Save your Progress</TextBlock>
-            <Button x:Name="btnSlot1" Width="250" Height="60" Margin="0,10,0,0">Slot 1</Button>
-            <Button x:Name="btnSlot2" Width="250" Height="60" Margin="0,10,0,0">Slot 2</Button>
-            <Button x:Name="btnSlot3" Width="250" Height="60" Margin="0,10,0,0">Slot 3</Button>
-            <Button Width="150" Height="40" Margin="0,50,0,0" Click="CancelButton_Click">Cancel</Button>
+        <StackPanel
+            Orientation="Vertical"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <StackPanel.Resources>
+                <Style x:Key="SaveSlotButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Style.Setters>
+                        <Setter Property="Margin" Value="0,0,0,15" />
+                        <Setter Property="Width" Value="300" />
+                        <Setter Property="Height" Value="60" />
+                    </Style.Setters>
+                </Style>
+            </StackPanel.Resources>
+            <TextBlock
+                Style="{StaticResource TextBlockLargest}"
+                Margin="0,0,0,32"
+                HorizontalAlignment="Center">
+                Save your Progress
+            </TextBlock>
 
-            <Popup x:Name="PopupOverwriteConfirm" MaxWidth="200" StaysOpen="False">
+            <!-- Overwrite confirmation popup -->
+            <Popup
+                MaxWidth="250"
+                Placement="Mouse"
+                IsOpen="{Binding IsConfirmPopupOpen, Mode=TwoWay}"
+                StaysOpen="False">
                 <Border Style="{StaticResource PopupBorderStyle}">
-                    <StackPanel>
-                        <TextBlock Style="{StaticResource TextBlockDefault}" Margin="6,6,6,16" TextWrapping="Wrap" Text="Are you sure you want to overwrite this save slot?" />
-                        <Button Height="35" Content="Overwrite" Foreground="OrangeRed" Margin="5,0,5,5" Click="OverwriteConfirmButton_Click" />
-                        <Button Height="35" Content="No, wait!" Margin="5,0,5,5" Click="OverwriteCancelButton_Click" />
+                    <StackPanel Margin="4">
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Margin="6,6,6,16"
+                            TextWrapping="Wrap"
+                            Text="Are you sure you want to overwrite this save slot?" />
+                        <Button
+                            Height="35"
+                            Content="Overwrite"
+                            Command="{Binding PopupConfirmCommand}"
+                            Foreground="DarkOrange"
+                            Margin="5,0,5,5" />
                     </StackPanel>
                 </Border>
             </Popup>
+
+            <!-- Save slots -->
+            <Button
+                Style="{StaticResource SaveSlotButton}"
+                Content="{Binding Save1Text}"
+                Command="{Binding SaveCommand}">
+                <Button.CommandParameter>
+                    <sys:Int32>0</sys:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Style="{StaticResource SaveSlotButton}"
+                Content="{Binding Save2Text}"
+                Command="{Binding SaveCommand}">
+                <Button.CommandParameter>
+                    <sys:Int32>1</sys:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Style="{StaticResource SaveSlotButton}"
+                Content="{Binding Save3Text}"
+                Command="{Binding SaveCommand}">
+                <Button.CommandParameter>
+                    <sys:Int32>2</sys:Int32>
+                </Button.CommandParameter>
+            </Button>
+            <Button
+                Width="150"
+                Height="40"
+                Margin="0,50,0,0"
+                Content="Never mind"
+                Command="{Binding CloseCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

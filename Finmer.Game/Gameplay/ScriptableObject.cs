@@ -133,7 +133,7 @@ namespace Finmer.Gameplay
         /// </returns>
         /// <param name="state">The Lua state to inspect.</param>
         /// <param name="stackIndex">The acceptable index on the stack at which the userdatum is located.</param>
-        public static ScriptableObject FromLua(IntPtr state, int stackIndex)
+        private static ScriptableObject FromLua(IntPtr state, int stackIndex)
         {
             // This function must be called on a userdatum
             if (LuaApi.lua_type(state, stackIndex) != LuaApi.ELuaType.Userdata)

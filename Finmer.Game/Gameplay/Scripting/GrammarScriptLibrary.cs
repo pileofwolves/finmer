@@ -36,12 +36,13 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedTextSetContext(IntPtr state)
         {
             // Parse arguments
-            string key = luaL_checkstring(state, 1);
-            if (!(ScriptableObject.FromLua(state, 2) is GameObject context))
-                return luaL_error(state, "GameObject expected as argument #2");
-            bool persist = lua_toboolean(state, 3) == 1; // Optional
+            var key = luaL_checkstring(state, 1);
+            var context = ScriptableObject.FromLuaNonOptional<GameObject>(state, 2);
+            var persist = lua_toboolean(state, 3) == 1; // Optional
 
+            // Register the grammar context
             TextParser.SetContext(key, context, persist);
+
             return 0;
         }
 

@@ -28,12 +28,22 @@ namespace Finmer.Gameplay
     internal static class TextParser
     {
 
-        private static readonly Dictionary<string, string> s_Globals = new Dictionary<string, string>();
+        private static readonly Dictionary<string, string> s_Variables = new Dictionary<string, string>();
         private static readonly Dictionary<string, Context> s_Contexts = new Dictionary<string, Context>();
 
-        static TextParser()
+        /// <summary>
+        /// Adds or replaces a substitutable variable with the specified value.
+        /// </summary>
+        /// <param name="key">The key of the value. This is what game text should reference in a grammar tag.</param>
+        /// <param name="value">The text that the grammar tag will be replaced with.</param>
+        public static void SetVariable(string key, string value)
         {
-            SetSubstitute("\\n", Environment.NewLine);
+            // Add a prefix/postfix to the key so it looks like a grammar tag
+            string grammar_tag = $"{{{{!{key}}}}}";
+
+            // Register the tag
+            s_Variables.Remove(grammar_tag);
+            s_Variables.Add(grammar_tag, value);
         }
 
         /// <summary>
@@ -55,6 +65,7 @@ namespace Finmer.Gameplay
         /// </summary>
         public static void ClearNonPersistentContexts()
         {
+            s_Variables.Clear();
             s_Contexts
                 .Where(context => !context.Value.IsPersistent)
                 .ForEach(context => s_Contexts.Remove(context.Key));
@@ -65,6 +76,7 @@ namespace Finmer.Gameplay
         /// </summary>
         public static void ClearAllContexts()
         {
+            s_Variables.Clear();
             s_Contexts.Clear();
         }
 
@@ -74,8 +86,11 @@ namespace Finmer.Gameplay
         /// <param name="raw">The unmodified template whose tags to substitute.</param>
         public static string Parse(string raw)
         {
-            // Apply basic substitutions
-            s_Globals.ForEach(pair => raw = raw.Replace(pair.Key, pair.Value));
+            // Insert newlines
+            raw = raw.Replace("\\n", Environment.NewLine);
+
+            // Apply variable substitutions
+            s_Variables.ForEach(pair => raw = raw.Replace(pair.Key, pair.Value));
 
             // Handle grammar tags
             var index_end = 0;
@@ -106,10 +121,10 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void SetSubstitute(string key, string value)
         {
-            if (s_Globals.ContainsKey(key))
-                s_Globals.Remove(key);
+            if (s_Variables.ContainsKey(key))
+                s_Variables.Remove(key);
 
-            s_Globals.Add(key, value);
+            s_Variables.Add(key, value);
         }
 
         private static string ProcessGrammarTag(string command)

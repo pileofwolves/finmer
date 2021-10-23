@@ -28,9 +28,22 @@ namespace Finmer.Gameplay.Scripting
 
             // Text table
             lua_createtable(state, 0, 2);
+            context.RegisterFunction("SetVariable", ExportedTextSetVariable);
             context.RegisterFunction("SetContext", ExportedTextSetContext);
             context.RegisterFunction("GetString", ExportedTextGetString);
             lua_setglobal(state, "Text");
+        }
+
+        private static int ExportedTextSetVariable(IntPtr state)
+        {
+            // Parse arguments
+            var key = luaL_checkstring(state, 1);
+            var value = luaL_checkstring(state, 2);
+
+            // Register the variable
+            TextParser.SetVariable(key, value);
+
+            return 0;
         }
 
         private static int ExportedTextSetContext(IntPtr state)

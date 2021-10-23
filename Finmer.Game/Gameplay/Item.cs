@@ -57,6 +57,10 @@ namespace Finmer.Gameplay
         private Item(ScriptContext context, PropertyBag template, AssetItem asset) : base(context, template)
         {
             Asset = asset;
+
+            // Copy name and alias from the asset
+            Name = Asset.ObjectName;
+            Alias = asset.ObjectAlias;
         }
 
         public override PropertyBag SerializeProperties()

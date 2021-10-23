@@ -42,7 +42,7 @@ namespace Finmer.ViewModels
 
         public string Subtext => GetLatestSubtext();
 
-        public bool IsAlly => m_Upstream.IsAlly();
+        public bool IsAlly => m_Upstream.IsAlly;
 
         public bool IsDead => m_Upstream.IsDead();
 

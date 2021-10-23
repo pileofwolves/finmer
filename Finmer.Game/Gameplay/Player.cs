@@ -150,6 +150,9 @@ namespace Finmer.Gameplay
         /// </summary>
         public PropertyBag AdditionalSaveData { get; }
 
+        [ScriptableProperty(EScriptAccess.Read)]
+        public sealed override bool IsAlly => true;
+
         private int m_AbilityPoints;
         private int m_FeatPoints;
         private int m_Money;
@@ -259,12 +262,6 @@ namespace Finmer.Gameplay
                 props.SetNestedPropertyBag("inv_" + i, Inventory[i].SerializeProperties());
 
             return props;
-        }
-
-        public override bool IsAlly()
-        {
-            // Player is by definition friendly to themselves
-            return true;
         }
 
         protected override void ReloadPronouns()

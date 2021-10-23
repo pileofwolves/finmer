@@ -79,7 +79,7 @@ namespace Finmer.ViewModels
             // Update the display of round victory pips
             m_PipsViewModel.NumLeftPips = round.OffenseRoundsWon;
             m_PipsViewModel.NumRightPips = round.DefenseRoundsWon;
-            m_PipsViewModel.IsLeftAlly = info.Instigator.Character.IsAlly();
+            m_PipsViewModel.IsLeftAlly = info.Instigator.Character.IsAlly;
         }
 
     }

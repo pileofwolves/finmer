@@ -148,7 +148,7 @@ namespace Finmer.Gameplay
             return Session.Participants.Where(candidate =>
                 candidate != attacker &&
                 !candidate.Character.IsDead() &&
-                candidate.Character.IsAlly() != attacker.Character.IsAlly());
+                candidate.Character.IsAlly != attacker.Character.IsAlly);
         }
 
         /// <summary>
@@ -471,7 +471,7 @@ namespace Finmer.Gameplay
                 return true;
 
             // Find the first living ally. If there are none, then there are no more opposing characters, so combat ends
-            Participant ally = Session.Participants.FirstOrDefault(p => !p.Character.IsDead() && p.Character.IsAlly());
+            Participant ally = Session.Participants.FirstOrDefault(p => !p.Character.IsDead() && p.Character.IsAlly);
             if (ally == null)
                 return true;
 

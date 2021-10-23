@@ -98,6 +98,12 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Gets or sets whether this character is friendly to the player during combat.
+        /// </summary>
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        public virtual bool IsAlly { get; set; }
+
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public bool IsPredator { get; set; }
 
@@ -184,7 +190,7 @@ namespace Finmer.Gameplay
             Size = (AssetCreature.ESize)template.GetInt("size", (int)AssetCreature.ESize.Medium);
             Health = template.GetInt("health", HealthMax);
 
-            // Vore stats
+            // Combat settings
             IsPredator = template.GetBool("predator");
             PredatorDigests = template.GetBool("predator_digest", true);
             PredatorFullness = template.GetFloat("predator_fullness");
@@ -290,14 +296,6 @@ namespace Finmer.Gameplay
         public bool IsDead()
         {
             return Health <= 0;
-        }
-
-        /// <summary>
-        /// Returns a value indicating whether this character is friendly to the player.
-        /// </summary>
-        public virtual bool IsAlly()
-        {
-            return false;
         }
 
         /// <summary>

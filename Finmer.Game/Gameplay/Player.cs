@@ -275,7 +275,7 @@ namespace Finmer.Gameplay
             Alias = "you";
             PronounObjective = "you";
             PronounSubjective = "your";
-            PronounPossessive = "you";
+            PronounPossessive = "your";
             AliasPossessive = "your";
             NamePossessive = "your";
         }

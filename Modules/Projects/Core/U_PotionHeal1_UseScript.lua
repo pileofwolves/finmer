@@ -1,1 +1,1 @@
-Player.Health = Player.Health + (Player.HealthMax * 0.5)
+Player.Health = Player.HealthMax

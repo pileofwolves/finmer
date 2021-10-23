@@ -444,7 +444,7 @@
 										"Tooltip": "Add various weapons/armor to inventory",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local function AddUnique(name)\r\n    if not Player:HasItem(name) then\r\n        Player:GiveItem(name)\r\n    end\r\nend\r\n\r\nAddUnique(\"A_ClothArmor\")\r\nAddUnique(\"A_LeatherArmor\")\r\nAddUnique(\"AC_CharmBlock\")\r\nAddUnique(\"AC_CharmBody\")\r\nAddUnique(\"AC_CharmFight\")\r\nAddUnique(\"W_Dagger\")\r\nAddUnique(\"W_SwordSteel\")\r\nAddUnique(\"W_SwordSilver\")",
+										"ScriptAction": "local function AddUnique(name)\r\n    if not Player:HasItem(name) then\r\n        Player:GiveItem(name)\r\n    end\r\nend\r\n\r\nAddUnique(\"A_ClothArmor\")\r\nAddUnique(\"A_LeatherArmor\")\r\nAddUnique(\"AC_CharmBlock\")\r\nAddUnique(\"AC_CharmBody\")\r\nAddUnique(\"AC_CharmFight\")\r\nAddUnique(\"W_Dagger\")\r\nAddUnique(\"W_SwordSteel\")\r\nAddUnique(\"W_SwordSilver\")\r\nAddUnique(\"U_PotionHeal1\")",
 										"ScriptAppear": "",
 										"Children": [
 											{

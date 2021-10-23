@@ -88,7 +88,7 @@ end
 function Rest()
     Sleep(1)
 
-    -- sleep until morning at least
+    -- Sleep until morning at least
     local sleepTime
     local hr = GetTimeHour()
     if hr >= 7 then
@@ -96,14 +96,10 @@ function Rest()
     else
         sleepTime = 12
     end
-    -- sleep a minimum time if digesting prey
-    if Player.StomachCount > 0 and Player.StomachDigest then
-        sleepTime = math.max(sleepTime, 20)
-    end
     AdvanceTime(sleepTime)
     Sleep(1)
 
-    -- recover
+    -- Recover
     Player.Health = Player.HealthMax
 end
 

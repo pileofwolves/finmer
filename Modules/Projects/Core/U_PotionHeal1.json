@@ -11,7 +11,7 @@
 	"IsConsumable": true,
 	"CanUseInField": true,
 	"CanUseInBattle": true,
-	"UseDescription": "Heal 50% HP.",
+	"UseDescription": "Restore all Health.",
 	"UseScript": {
 		"ID": "43cffb55-ce77-4ca4-b8f4-a69a0a0152e5",
 		"Name": "U_PotionHeal1_UseScript"

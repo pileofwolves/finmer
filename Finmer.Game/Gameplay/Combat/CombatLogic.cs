@@ -66,6 +66,8 @@ namespace Finmer.Gameplay.Combat
                     }
                 }
             };
+            TextParser.SetVariable("weapon", instigator.Character.EquippedWeapon?.Alias ?? "claws");
+            TextParser.SetVariable("damage", $"{damage:##,##0}");
             CombatDisplay.ShowRoundResolve(info);
 
             // Actually take away the health now that the animation has finished

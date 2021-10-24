@@ -15,87 +15,74 @@
             <Setter Property="Margin" Value="8" />
         </Style>
     </UserControl.Resources>
-    <Grid VerticalAlignment="Center" HorizontalAlignment="Center"
+    <StackPanel
+        VerticalAlignment="Center"
+        HorizontalAlignment="Center"
         d:DataContext="{d:DesignInstance vm:UserConfigViewModel}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="Auto" />
-            <RowDefinition Height="200" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0">
-            <TextBlock Style="{StaticResource TextBlockLargest}" Text="Options" />
-            <Grid Style="{StaticResource OptionSpacer}" />
+        <TextBlock
+            Style="{StaticResource TextBlockLargest}"
+            Text="Options" />
+        <Grid
+            Style="{StaticResource OptionSpacer}" />
 
-            <TextBlock Style="{StaticResource TextBlockDefault}">
-                Presentation
-            </TextBlock>
-            <CheckBox Content="Enable hyphenation in game log" IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
-            <TextBlock Style="{StaticResource OptionSubtitle}">
-                Allows breaking and wrapping of words in the game log.
-            </TextBlock>
-            <CheckBox Content="Enable disposal content" IsChecked="{Binding PreferScat, Mode=TwoWay}" />
-            <TextBlock Style="{StaticResource OptionSubtitle}">
-                Allows explicit post-vore scat and such.
-            </TextBlock>
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="General" />
+        <CheckBox
+            Content="Enable hyphenation in game log"
+            IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Allows breaking and wrapping of words in the game log." />
+        <CheckBox
+            Content="Enable disposal content"
+            IsChecked="{Binding PreferScat, Mode=TwoWay}" />
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Allows explicit post-vore scat and such." />
 
-            <Grid Style="{StaticResource OptionSpacer}" />
+        <Grid Style="{StaticResource OptionSpacer}" />
 
-            <TextBlock Style="{StaticResource TextBlockDefault}">
-                Zoom level
-            </TextBlock>
-            <TextBlock Style="{StaticResource OptionSubtitle}">
-                Make everything bigger, for easier reading.<LineBreak />
-                Caution: Ensure your screen is big enough to fit.
-            </TextBlock>
-            <!--<Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="25" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Button Grid.Column="0" Height="25" Content="&lt;" />
-                <Button Grid.Column="2" Height="25" Content="&gt;" />
-            </Grid>-->
-            <ComboBox IsEditable="False" SelectedIndex="{Binding ZoomIndex, Mode=TwoWay}">
-                <ComboBoxItem Content="100%" />
-                <ComboBoxItem Content="110%" />
-                <ComboBoxItem Content="120%" />
-                <ComboBoxItem Content="130%" />
-                <ComboBoxItem Content="140%" />
-                <ComboBoxItem Content="150%" />
-            </ComboBox>
-            <!--<Slider
-                IsSnapToTickEnabled="True"
-                LargeChange="1"
-                SmallChange="1"
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Combat Animations" />
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Adjust combat pacing to your liking." />
+        <ComboBox
+            IsEditable="False"
+            SelectedIndex="{Binding CombatAnimation, Mode=TwoWay}">
+            <ComboBoxItem Content="Full (play all animations)" />
+            <ComboBoxItem Content="Quick (play shortened animations)" />
+            <ComboBoxItem Content="Disabled (hide animations)" />
+        </ComboBox>
 
-                TickPlacement="BottomRight"
-                TickFrequency="0.05"
-                Foreground="{StaticResource BrightBackgroundBrush}"
-                Value="1"
-                Minimum="1"
-                Maximum="1.5"
-                AutoToolTipPlacement="TopLeft"
-                ToolTip="Booiii">
-            </Slider>-->
+        <Grid Style="{StaticResource OptionSpacer}" />
 
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Zoom level" />
+        <TextBlock Style="{StaticResource OptionSubtitle}">
+            Make everything bigger, for easier reading.<LineBreak />
+            Caution: Ensure your screen is big enough to fit.
+        </TextBlock>
 
-            <!--<CheckBox Content="Use metric measurements" IsChecked="{Binding MetricSystem, Mode=TwoWay}" />
-            <TextBlock Style="{StaticResource TextBlockSubtle}" FontSize="12" Margin="25,-2,0,4">
-                For people who like grams with their meters.
-            </TextBlock>-->
+        <ComboBox
+            IsEditable="False"
+            SelectedIndex="{Binding ZoomIndex, Mode=TwoWay}">
+            <ComboBoxItem Content="100%" />
+            <ComboBoxItem Content="110%" />
+            <ComboBoxItem Content="120%" />
+            <ComboBoxItem Content="130%" />
+            <ComboBoxItem Content="140%" />
+            <ComboBoxItem Content="150%" />
+        </ComboBox>
 
-            <!--<CheckBox Content="Disable digestion" IsChecked="{Binding ForceEndo, Mode=TwoWay}" />
-            <TextBlock Style="{StaticResource TextBlockSubtle}" FontSize="12" Margin="25,-2,0,4">
-                All preds (including you) will never digest their prey.
-                <LineBreak/>This will only affect newly started games.
-            </TextBlock>-->
-        </StackPanel>
-        <Button Grid.Row="2"
+        <Button
+            Margin="0,40,0,0"
             Width="180"
             Height="40"
-            Content="OK"
+            Content="Done"
             Click="Button_Click" />
-    </Grid>
+    </StackPanel>
 </UserControl>

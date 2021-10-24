@@ -36,7 +36,7 @@
             <ItemsControl x:Name="DiceList" ItemsSource="{Binding DieFaces}">
                 <ItemsControl.ItemTemplate>
                     <DataTemplate>
-                        <Grid x:Name="DieGrid" Loaded="Grid_Loaded" RenderTransformOrigin="0.5, 0.5" ClipToBounds="False" Opacity="0">
+                        <Grid x:Name="DieGrid" Loaded="Grid_Loaded" RenderTransformOrigin="0.5, 0.5" ClipToBounds="False">
                             <Grid.RenderTransform>
                                 <ScaleTransform x:Name="DieScaleTransform" />
                             </Grid.RenderTransform>

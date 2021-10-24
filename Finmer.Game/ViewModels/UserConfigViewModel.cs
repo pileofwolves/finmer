@@ -20,7 +20,6 @@ namespace Finmer.ViewModels
 
         private static UserConfigViewModel s_Inst;
 
-        private UserConfigViewModel() { }
         public static UserConfigViewModel Instance => s_Inst ?? (s_Inst = new UserConfigViewModel());
 
         public bool Hyphenation
@@ -60,6 +59,14 @@ namespace Finmer.ViewModels
                 OnPropertyChanged(nameof(ZoomLevel));
             }
         }
+
+        public int CombatAnimation
+        {
+            get => (int)UserConfig.CombatAnimation;
+            set => UserConfig.CombatAnimation = (UserConfig.EAnimationLevel)value;
+        }
+
+        private UserConfigViewModel() {}
 
     }
 

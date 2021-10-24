@@ -9,6 +9,7 @@
 using System;
 using System.Windows;
 using System.Windows.Media.Animation;
+using Finmer.Models;
 
 namespace Finmer.Views
 {
@@ -31,6 +32,13 @@ namespace Finmer.Views
 
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
+            // Skip playing the dice animation if the animation speed is not set to Full
+            if (UserConfig.CombatAnimation != UserConfig.EAnimationLevel.Full)
+                return;
+
+            // Make the die invisible to start, so there's no flickering when the delayed animation starts
+            ((UIElement)sender).Opacity = 0.0;
+
             // Clunky :( There is no nice way to let the templated item know its index in the collection, so we'll get it the hard way
             int my_index = DiceList.ItemContainerGenerator.IndexFromContainer(((FrameworkElement)sender).TemplatedParent);
 

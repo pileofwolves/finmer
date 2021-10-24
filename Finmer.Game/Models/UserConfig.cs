@@ -20,6 +20,16 @@ namespace Finmer.Models
     public static class UserConfig
     {
 
+        /// <summary>
+        /// Describes user preference for animation displays.
+        /// </summary>
+        public enum EAnimationLevel
+        {
+            Full,
+            Quick,
+            Disabled
+        }
+
         public const float k_Zoom_Min = 1.0f;
         public const float k_Zoom_Max = 1.5f;
 
@@ -31,6 +41,8 @@ namespace Finmer.Models
         public static bool PreferScat { get; set; } = true;
 
         public static float Zoom { get; set; } = 1.0f;
+
+        public static EAnimationLevel CombatAnimation { get; set; } = EAnimationLevel.Full;
 
         public static void Reload()
         {
@@ -53,9 +65,10 @@ namespace Finmer.Models
                         PropertyBag props = PropertyBag.FromStream(instream);
 
                         // Extract properties we're interested in
-                        Hyphenation = props.GetBool("hyph");
-                        PreferScat = props.GetBool("scat");
-                        Zoom = Math.Min(Math.Max(props.GetFloat("zoom"), k_Zoom_Min), k_Zoom_Max); // clamp
+                        Hyphenation = props.GetBool(@"hyph");
+                        PreferScat = props.GetBool(@"scat");
+                        Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
+                        CombatAnimation = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(@"combatanim"), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
                     }
                 }
             }
@@ -91,10 +104,11 @@ namespace Finmer.Models
         public static PropertyBag Flush()
         {
             var props = new PropertyBag();
-            props.SetString("game_version", CompileConstants.k_VersionString);
-            props.SetBool("hyph", Hyphenation);
-            props.SetBool("scat", PreferScat);
-            props.SetFloat("zoom", Zoom);
+            props.SetString(@"game_version", CompileConstants.k_VersionString);
+            props.SetBool(@"hyph", Hyphenation);
+            props.SetBool(@"scat", PreferScat);
+            props.SetFloat(@"zoom", Zoom);
+            props.SetInt(@"combatanim", (int)CombatAnimation);
             return props;
         }
 

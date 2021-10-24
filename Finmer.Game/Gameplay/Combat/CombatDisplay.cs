@@ -21,7 +21,7 @@ namespace Finmer.Gameplay.Combat
     /// </summary>
     /// <remarks>
     /// All functions in this class are blocking, meaning they are expected to run from another thread than the UI thread, and will block
-    /// execution on this subthread until relevant animations and display logic has finished playing.
+    /// execution on this background thread until relevant animations and display logic has finished playing.
     /// </remarks>
     public static class CombatDisplay
     {
@@ -145,27 +145,47 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         public static void ShowRoundResolve(ResolveInfo settings)
         {
-            // Prepare the contents of the viewmodel
-            CombatResolveViewModel vm = new CombatResolveViewModel();
-            GameUI.Instance.CombatStateViewModel.CombatResolveViewModel = vm;
-
-            for (int i = 0; i < settings.Rounds.Count; i++)
+            // Skip animation if they were disabled entirely
+            bool has_animation = UserConfig.CombatAnimation != UserConfig.EAnimationLevel.Disabled;
+            if (has_animation)
             {
-                // Display this round
-                vm.SetRound(settings, i);
+                // Prepare the contents of the viewmodel
+                CombatResolveViewModel vm = new CombatResolveViewModel();
+                GameUI.Instance.CombatStateViewModel.CombatResolveViewModel = vm;
 
-                // Wait for dice animation, then fade out
-                int sleep_time = settings.Rounds.Count > 1 ? 2000 : 2500;
-                Thread.Sleep(sleep_time);
+                for (int i = 0; i < settings.Rounds.Count; i++)
+                {
+                    // Display this round
+                    vm.SetRound(settings, i);
+
+                    // Wait for dice animation, then fade out
+                    const int k_SleepLongMain = 2500;
+                    const int k_SleepLongPart = 2000;
+                    const int k_SleepShortMain = 1450;
+                    const int k_SleepShortPart = 950;
+                    int sleep_time;
+                    if (UserConfig.CombatAnimation == UserConfig.EAnimationLevel.Full)
+                        sleep_time = settings.Rounds.Count > 1 ? k_SleepLongPart : k_SleepLongMain;
+                    else
+                        sleep_time = settings.Rounds.Count > 1 ? k_SleepShortPart : k_SleepShortMain;
+                    Thread.Sleep(sleep_time);
+                }
+
+                // Print text to game log while the dialog is closing
+                WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);
+
+                // Wait for fade-out animation
+                Debug.Assert(vm != null);
+                vm.AnimationState = CombatResolveViewModel.EPanelState.FadeOut;
+                Thread.Sleep(500);
+                GameUI.Instance.CombatStateViewModel.CombatResolveViewModel = null;
             }
-
-            // Print text to game log
-            WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);
-
-            // Wait for fade-out animation
-            vm.AnimationState = CombatResolveViewModel.EPanelState.FadeOut;
-            Thread.Sleep(500);
-            GameUI.Instance.CombatStateViewModel.CombatResolveViewModel = null;
+            else
+            {
+                // Print text to game log
+                WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);
+                Thread.Sleep(500);
+            }
         }
 
         /// <summary>

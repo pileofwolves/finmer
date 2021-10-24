@@ -228,13 +228,19 @@ namespace Finmer.Gameplay
                     : ECombatAction.GrappleInitiate;
 
                 // Gulp an eligible prey
-                var selected_prey = prey.FirstOrDefault();
+                var selected_prey = prey[CoreUtility.Rng.Next(prey.Count)];
                 return new CombatAction(intent, selected_prey);
             }
 
-            // TODO, just attack player for prototype
-            var targets = GetViableAttackTargets(ai);
-            var target = targets.FirstOrDefault();
+            // Otherwise, we'll need to use a default attack. Look for targets.
+            var targets = GetViableAttackTargets(ai).ToList();
+
+            // No targets = nothing to do at all
+            if (!targets.Any())
+                return new CombatAction(ECombatAction.SkipTurn, null);
+
+            // Otherwise, select a random target to attack
+            var target = targets[CoreUtility.Rng.Next(targets.Count)];
             return new CombatAction(target != null ? ECombatAction.Attack : ECombatAction.SkipTurn, target);
         }
 

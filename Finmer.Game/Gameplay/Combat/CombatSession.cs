@@ -29,6 +29,7 @@ namespace Finmer.Gameplay.Combat
         private const string k_CallbackName_OnPlayerKilled = "OnPlayerKilled";
 
         private readonly ScriptCallbackTable m_Binder;
+        private Participant m_WhoseTurn;
 
         /// <summary>
         /// Collection of participating characters in this combat.
@@ -52,9 +53,18 @@ namespace Finmer.Gameplay.Combat
         public bool CanFlee { get; set; }
 
         /// <summary>
-        /// Gets the character whose turn it currently is in the combat system.
+        /// Gets or sets the participant who currently has the active turn in the combat system.
+        /// Used for display purposes, not combat logic.
         /// </summary>
-        public Participant WhoseTurn { get; set; }
+        public Participant WhoseTurn
+        {
+            get => m_WhoseTurn;
+            set
+            {
+                m_WhoseTurn = value;
+                OnPropertyChanged();
+            }
+        }
 
         public CombatSession(ScriptContext context) : base(context)
         {

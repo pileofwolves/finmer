@@ -117,6 +117,9 @@ namespace Finmer.Gameplay
 
         private void PrepareInterface()
         {
+            // While the player is selecting something, no participant has the turn
+            Session.WhoseTurn = null;
+
             // Show UI for the next player choice
             switch (m_MenuState)
             {
@@ -422,6 +425,9 @@ namespace Finmer.Gameplay
         /// <param name="target">The target of the participant's action, or null if irrelevant.</param>
         private void StepParticipant(Participant instigator, ECombatAction action, Participant target)
         {
+            // Show this participant as having the turn
+            Session.WhoseTurn = instigator;
+
             // Dispatch selected action
             switch (action)
             {

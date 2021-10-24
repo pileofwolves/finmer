@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows.Media;
 using Finmer.Gameplay;
@@ -34,8 +35,12 @@ namespace Finmer.ViewModels
             m_Upstream = owner.Character;
             m_Participant = owner;
 
+            // Subscribe to change notifications for the participant itself
             PropertyChangedEventManager.AddHandler(m_Upstream, Character_PropertyChanged, String.Empty);
-            PropertyChangedEventManager.AddHandler(owner, Participant_PropertyChanged, String.Empty);
+            PropertyChangedEventManager.AddHandler(m_Participant, Participant_PropertyChanged, String.Empty);
+
+            // Subscribe to change notifications for the turn indicator
+            PropertyChangedEventManager.AddHandler(m_Participant.Session, Session_PropertyChanged, nameof(CombatSession.WhoseTurn));
         }
 
         public string Text => m_Upstream.Name;
@@ -85,6 +90,15 @@ namespace Finmer.ViewModels
         {
             // Any change in the combat state should get us to reevaluate the display state as well
             OnPropertyChanged(nameof(Subtext));
+        }
+
+        private void Session_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            // We only subscribed to change events for the WhoseTurn property, so we shouldn't receive any others
+            Debug.Assert(e.PropertyName.Equals(nameof(CombatSession.WhoseTurn)));
+
+            // Re-evaluate whether to display the turn indicator
+            OnPropertyChanged(nameof(IsMyTurn));
         }
 
         private string GetLatestSubtext()

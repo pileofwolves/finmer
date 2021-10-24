@@ -271,7 +271,7 @@ namespace Finmer.Gameplay
             // Hardcode the player's 'pronouns' to be first-person
             Alias = "you";
             PronounObjective = "you";
-            PronounSubjective = "your";
+            PronounSubjective = "you";
             PronounPossessive = "your";
             AliasPossessive = "your";
             NamePossessive = "your";

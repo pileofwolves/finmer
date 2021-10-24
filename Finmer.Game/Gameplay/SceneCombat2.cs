@@ -263,9 +263,6 @@ namespace Finmer.Gameplay
                     HandlePlayerInputSelectItem(choice);
                     break;
             }
-
-            // Validate handler output - must either have an action selected, or have a submenu open
-            Debug.Assert(m_PlayerDecision.IsValid() || m_MenuState != EMenuState.Default, "Player input did not result in a valid action");
         }
 
         /// <summary>

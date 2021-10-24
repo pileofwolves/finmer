@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
@@ -222,8 +223,9 @@ end"
                 }
 
                 // Emit a call to the 'Appears When' test, then the AddButton call if it passes.
+                string formatted_button_width = String.Format(CultureInfo.InvariantCulture, "{0:F3}", link_target.ButtonWidth);
                 state.TableStateFns.Append($"if _CanAppear(\"{link_target.Key}\") then ");
-                state.TableStateFns.Append($"AddButton(_Choices.{link_target.Key}, \"{EscapeLuaString(link_target.Title)}\", \"{EscapeLuaString(link_target.Tooltip)}\", {(link_target.Highlight ? "true" : "false")}, {link_target.ButtonWidth})");
+                state.TableStateFns.Append($"AddButton(_Choices.{link_target.Key}, \"{EscapeLuaString(link_target.Title)}\", \"{EscapeLuaString(link_target.Tooltip)}\", {(link_target.Highlight ? "true" : "false")}, {formatted_button_width})");
                 state.TableStateFns.AppendLine(" end");
             }
 

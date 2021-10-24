@@ -427,7 +427,7 @@
             // 
             // nudCustomWidth
             // 
-            this.nudCustomWidth.DecimalPlaces = 1;
+            this.nudCustomWidth.DecimalPlaces = 2;
             this.nudCustomWidth.Increment = new decimal(new int[] {
             25,
             0,
@@ -627,14 +627,14 @@
             this.scriptAppear.TabIndex = 1;
             this.scriptAppear.TextChanged += new System.EventHandler(this.scriptAppear_TextChanged);
             // 
-            // frmDocumentScene
+            // FormDocumentScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(688, 551);
             this.Controls.Add(this.splitNodeList);
             this.Controls.Add(this.toolStrip);
-            this.Name = "frmDocumentScene";
+            this.Name = "FormDocumentScene";
             this.Text = "Scene";
             this.Load += new System.EventHandler(this.FormDocumentScene_Load);
             this.toolStrip.ResumeLayout(false);

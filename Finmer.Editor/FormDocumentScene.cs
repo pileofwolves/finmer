@@ -22,6 +22,8 @@ namespace Finmer.Editor
     {
 
         private const float k_Button_Default_Width = 1.0f;
+        private const float k_Button_Min_Width = 0.25f;
+        private const float k_Button_Max_Width = 3.0f;
 
         private AssetScene m_Scene;
         private AssetScene m_SceneInject;
@@ -109,7 +111,9 @@ namespace Finmer.Editor
 
             chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
             chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;
-            nudCustomWidth.Value = chkCustomWidth.Checked ? (decimal)m_SelectedNode.ButtonWidth : (decimal)k_Button_Default_Width;
+            nudCustomWidth.Value = chkCustomWidth.Checked
+                ? (decimal)Math.Max(Math.Min(m_SelectedNode.ButtonWidth, k_Button_Max_Width), k_Button_Min_Width)
+                : (decimal)k_Button_Default_Width;
 
             UpdateLinkTargetList();
 
@@ -427,7 +431,7 @@ namespace Finmer.Editor
             if (m_SkipDirtyUpdates) return;
 
             Dirty = true;
-            m_SelectedNode.ButtonWidth = (int)nudCustomWidth.Value;
+            m_SelectedNode.ButtonWidth = (float)nudCustomWidth.Value;
         }
 
         private void trvNodes_ItemDrag(object sender, ItemDragEventArgs e)

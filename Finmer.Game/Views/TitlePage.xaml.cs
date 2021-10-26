@@ -6,18 +6,20 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-namespace Finmer.Utility
+namespace Finmer.Views
 {
 
     /// <summary>
-    /// Specifies which animation, if any, should be used to animate a navigation.
+    /// Interaction logic for TitlePage.xaml
     /// </summary>
-    public enum ENavigatorAnimation
+    public partial class TitlePage
     {
-        Instant,
-        SlideLeft,
-        SlideRight,
-        SlideUp
+
+        public TitlePage()
+        {
+            InitializeComponent();
+        }
+
     }
 
 }

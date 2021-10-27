@@ -465,27 +465,27 @@
                             </Grid.RowDefinitions>
                             <Rectangle
                                 Grid.Row="0"
-                                Margin="-3,-3,-3,0"
+                                Margin="-4,-4,-4,0"
                                 IsHitTestVisible="False"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="#19FFFFFF" Offset="0" />
+                                        <GradientStop Color="#29FFFFFF" Offset="0" />
                                         <GradientStop Color="#00FFFFFF" Offset="1" />
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
                             <Rectangle
                                 Grid.Row="2"
-                                Margin="-3,0,-3,-3"
+                                Margin="-4,0,-4,-4"
                                 IsHitTestVisible="False"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
                                     <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
                                         <GradientStop Color="#00000000" Offset="0" />
-                                        <GradientStop Color="#3F000000" Offset="1" />
+                                        <GradientStop Color="#3A000000" Offset="1" />
                                     </LinearGradientBrush>
                                 </Rectangle.Fill>
                             </Rectangle>
@@ -1037,7 +1037,11 @@
                         <ContentPresenter
                             Margin="4"
                             HorizontalAlignment="Center"
-                            VerticalAlignment="Top" />
+                            VerticalAlignment="Top">
+                            <ContentPresenter.Resources>
+                                <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}" />
+                            </ContentPresenter.Resources>
+                        </ContentPresenter>
                     </Border>
                 </ControlTemplate>
             </Setter.Value>

@@ -30,7 +30,7 @@ namespace Finmer.Views
             GameController.ExitSession();
 
             // Go to the main menu
-            GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.SlideRight);
+            GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
         }
 
     }

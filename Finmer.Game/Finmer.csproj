@@ -123,6 +123,7 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SavePageViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
+    <Compile Include="ViewModels\TitlePageViewModel.cs" />
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />

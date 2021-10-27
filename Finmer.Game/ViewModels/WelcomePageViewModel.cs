@@ -21,7 +21,7 @@ namespace Finmer.ViewModels
     /// View model for the first-time player welcome screen, and base for the title page view model.
     /// </summary>
     [SuppressMessage("Minor Code Smell", "S1075:URIs should not be hardcoded")]
-    public sealed class WelcomePageViewModel : BaseProp
+    public class WelcomePageViewModel : BaseProp
     {
 
         public ICommand VisitFaCommand => m_CommandVisitFa ?? (m_CommandVisitFa = new RelayCommand(OnClickFA));

@@ -67,7 +67,7 @@ namespace Finmer.Views
             switch (m_Page)
             {
                 case 0:
-                    GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.SlideRight);
+                    GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
                     return;
                 case 1:
                     m_CurrentPage = new CharCreateBasic();

@@ -30,7 +30,7 @@ namespace Finmer.Views
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             UserConfig.Save();
-            GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.SlideRight);
+            GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideLeft);
         }
 
     }

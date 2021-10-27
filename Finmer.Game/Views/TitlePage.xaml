@@ -5,7 +5,9 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
+    d:DataContext="{d:DesignInstance vm:TitlePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="TitleButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
@@ -43,10 +45,12 @@
                     <Button
                         DockPanel.Dock="Top"
                         Style="{StaticResource TitleButton}"
+                        Command="{Binding NewGameCommand}"
                         Content="Start New Game" />
                     <Button
                         DockPanel.Dock="Top"
                         Style="{StaticResource TitleButton}"
+                        Command="{Binding OptionsCommand}"
                         Content="Options" />
                     <Grid
                         DockPanel.Dock="Top">
@@ -58,21 +62,24 @@
                         <Button
                             Grid.Column="0"
                             ToolTip="Visit me on FurAffinity"
-                            Style="{StaticResource TitleButton}">
+                            Style="{StaticResource TitleButton}"
+                            Command="{Binding VisitFaCommand}">
                             <Image
                                 Source="/Finmer;component/Resources/UI/MenuButtonFA.png" />
                         </Button>
                         <Button
                             Grid.Column="1"
                             ToolTip="Buy me a coffee?"
-                            Style="{StaticResource TitleButton}">
+                            Style="{StaticResource TitleButton}"
+                            Command="{Binding DonateCommand}">
                             <Image
                                 Source="/Finmer;component/Resources/UI/MenuButtonKofi.png" />
                         </Button>
                         <Button
                             Grid.Column="2"
                             ToolTip="Visit the project on GitHub"
-                            Style="{StaticResource TitleButton}">
+                            Style="{StaticResource TitleButton}"
+                            Command="{Binding VisitGhCommand}">
                             <Image
                                 Source="/Finmer;component/Resources/UI/MenuButtonGitHub.png" />
                         </Button>
@@ -80,6 +87,7 @@
                     <Button
                         Style="{StaticResource TitleButton}"
                         Content="Exit"
+                        Command="{Binding ExitCommand}"
                         VerticalAlignment="Bottom" />
                 </DockPanel>
                 <StackPanel
@@ -117,6 +125,6 @@
             VerticalAlignment="Bottom"
             HorizontalAlignment="Right"
             Style="{StaticResource TextBlockSubtle}"
-            Text="Version" />
+            Text="{Binding VersionNumber}" />
     </Grid>
 </UserControl>

@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Finmer.Core.Serialization;
 
 namespace Finmer.Core
 {
@@ -289,67 +288,33 @@ namespace Finmer.Core
         }
 
         /// <summary>
-        /// Parses a ProperyBag from a stream, and returns it.
+        /// Parses a PropertyBag from a stream, and returns it.
         /// </summary>
         /// <param name="instream">The stream to read from.</param>
-        /// <param name="dataVersion">The file version number at which this stream was saved. Used for backwards compatibility.</param>
-        public static PropertyBag FromStream(BinaryReader instream, int dataVersion = FurballFileDevice.k_LatestVersion)
+        public static PropertyBag FromStream(BinaryReader instream)
         {
             PropertyBag output = new PropertyBag();
 
-            // V6 format with support for longs/doubles
+            // Flags
             int count;
-            if (dataVersion <= 6)
-            {
-                // Bools
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetBool(instream.ReadString(), instream.ReadBoolean());
-                // Bytes
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetBytes(instream.ReadString(), instream.ReadBytes(instream.ReadInt32()));
-                // Int
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetInt(instream.ReadString(), instream.ReadInt32());
-                // Long
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetInt(instream.ReadString(), (int)instream.ReadInt64());
-                // Float
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetFloat(instream.ReadString(), instream.ReadSingle());
-                // Double
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetFloat(instream.ReadString(), (float)instream.ReadDouble());
-                // String
-                count = instream.ReadInt32();
-                while (count-- > 0)
-                    output.SetString(instream.ReadString(), instream.ReadString());
+            for (count = instream.ReadInt32(); count > 0; count--)
+                output.SetBool(instream.ReadString(), true);
 
-                return output;
-            }
+            // Byte arrays
+            for (count = instream.ReadInt32(); count > 0; count--)
+                output.SetBytes(instream.ReadString(), instream.ReadBytes(instream.ReadInt32()));
 
-            // V7 optimized format
-            {
-                for (count = instream.ReadInt32(); count > 0; count--)
-                    output.SetBool(instream.ReadString(), true);
+            // Integers
+            for (count = instream.ReadInt32(); count > 0; count--)
+                output.SetInt(instream.ReadString(), instream.ReadInt32());
 
-                for (count = instream.ReadInt32(); count > 0; count--)
-                    output.SetBytes(instream.ReadString(), instream.ReadBytes(instream.ReadInt32()));
+            // Floats
+            for (count = instream.ReadInt32(); count > 0; count--)
+                output.SetFloat(instream.ReadString(), instream.ReadSingle());
 
-                for (count = instream.ReadInt32(); count > 0; count--)
-                    output.SetInt(instream.ReadString(), instream.ReadInt32());
-
-                for (count = instream.ReadInt32(); count > 0; count--)
-                    output.SetFloat(instream.ReadString(), instream.ReadSingle());
-
-                for (count = instream.ReadInt32(); count > 0; count--)
-                    output.SetString(instream.ReadString(), instream.ReadString());
-            }
+            // Strings
+            for (count = instream.ReadInt32(); count > 0; count--)
+                output.SetString(instream.ReadString(), instream.ReadString());
 
             return output;
         }

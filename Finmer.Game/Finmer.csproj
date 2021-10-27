@@ -491,7 +491,11 @@
   <ItemGroup>
     <Resource Include="Resources\UI\RemovedStatOverlay.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\UI\MenuButtonFA.png" />
+    <Resource Include="Resources\UI\MenuButtonGitHub.png" />
+    <Resource Include="Resources\UI\MenuButtonKofi.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

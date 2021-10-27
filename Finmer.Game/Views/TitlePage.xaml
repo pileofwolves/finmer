@@ -9,11 +9,11 @@
     d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <Style x:Key="TitleButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-            <Setter Property="Margin" Value="10,4" />
+            <Setter Property="Margin" Value="4" />
             <Setter Property="Height" Value="40" />
         </Style>
         <Style x:Key="TitleSaveDataButton" TargetType="Button" BasedOn="{StaticResource TitleButton}">
-            <Setter Property="Height" Value="60" />
+            <Setter Property="Height" Value="64" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -26,54 +26,94 @@
                 Style="{StaticResource TextBlockLargest}"
                 FontSize="22"
                 HorizontalAlignment="Center" />
-            <TextBlock 
-                Style="{StaticResource TextBlockSubtle}" 
+            <TextBlock
+                Style="{StaticResource TextBlockSubtle}"
                 HorizontalAlignment="Center">
                 <Run>A Text Adventure Game by</Run> <Bold>Nuntis the Wolf</Bold>
             </TextBlock>
-            <StackPanel
-                Width="250"
-                Orientation="Vertical">
-
-                <Button
-                    Style="{StaticResource TitleButton}"
-                    Content="Start New Game" />
-                <Button
-                    Style="{StaticResource TitleSaveDataButton}"
-                    Content="{Binding Save1Text}"
-                    Command="{Binding SaveCommand}">
-                    <Button.CommandParameter>
-                        <system:Int32>0</system:Int32>
-                    </Button.CommandParameter>
-                </Button>
-                <Button
-                    Style="{StaticResource TitleSaveDataButton}"
-                    Content="{Binding Save2Text}"
-                    Command="{Binding SaveCommand}">
-                    <Button.CommandParameter>
-                        <system:Int32>1</system:Int32>
-                    </Button.CommandParameter>
-                </Button>
-                <Button
-                    Style="{StaticResource TitleSaveDataButton}"
-                    Content="{Binding Save3Text}"
-                    Command="{Binding SaveCommand}">
-                    <Button.CommandParameter>
-                        <system:Int32>2</system:Int32>
-                    </Button.CommandParameter>
-                </Button>
-                <Button
-                    Style="{StaticResource TitleButton}"
-                    Content="Options" />
-                <Button
-                    Style="{StaticResource TitleButton}"
-                    Content="Exit"
-                    VerticalAlignment="Bottom" />
-            </StackPanel>
+            <Grid
+                Margin="0,50,0,20"
+                Width="500">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <DockPanel
+                    Grid.Column="0">
+                    <Button
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource TitleButton}"
+                        Content="Start New Game" />
+                    <Button
+                        DockPanel.Dock="Top"
+                        Style="{StaticResource TitleButton}"
+                        Content="Options" />
+                    <Grid
+                        DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            ToolTip="Visit me on FurAffinity"
+                            Style="{StaticResource TitleButton}">
+                            <Image
+                                Source="/Finmer;component/Resources/UI/MenuButtonFA.png" />
+                        </Button>
+                        <Button
+                            Grid.Column="1"
+                            ToolTip="Buy me a coffee?"
+                            Style="{StaticResource TitleButton}">
+                            <Image
+                                Source="/Finmer;component/Resources/UI/MenuButtonKofi.png" />
+                        </Button>
+                        <Button
+                            Grid.Column="2"
+                            ToolTip="Visit the project on GitHub"
+                            Style="{StaticResource TitleButton}">
+                            <Image
+                                Source="/Finmer;component/Resources/UI/MenuButtonGitHub.png" />
+                        </Button>
+                    </Grid>
+                    <Button
+                        Style="{StaticResource TitleButton}"
+                        Content="Exit"
+                        VerticalAlignment="Bottom" />
+                </DockPanel>
+                <StackPanel
+                    Grid.Column="1"
+                    Orientation="Vertical">
+                    <Button
+                        Style="{StaticResource TitleSaveDataButton}"
+                        Content="{Binding Save1Text}"
+                        Command="{Binding LoadGameCommand}">
+                        <Button.CommandParameter>
+                            <system:Int32>0</system:Int32>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button
+                        Style="{StaticResource TitleSaveDataButton}"
+                        Content="{Binding Save2Text}"
+                        Command="{Binding LoadGameCommand}">
+                        <Button.CommandParameter>
+                            <system:Int32>1</system:Int32>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button
+                        Style="{StaticResource TitleSaveDataButton}"
+                        Content="{Binding Save3Text}"
+                        Command="{Binding LoadGameCommand}">
+                        <Button.CommandParameter>
+                            <system:Int32>2</system:Int32>
+                        </Button.CommandParameter>
+                    </Button>
+                </StackPanel>
+            </Grid>
         </StackPanel>
-
         <TextBlock
-            Margin="24"
+            Margin="30"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Right"
             Style="{StaticResource TextBlockSubtle}"

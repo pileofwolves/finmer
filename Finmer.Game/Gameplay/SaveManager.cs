@@ -61,7 +61,7 @@ namespace Finmer.Gameplay
                     reader.ReadBytes(num_modules * 16);
 
                     // Deserialize stream
-                    return PropertyBag.FromStream(reader, version);
+                    return PropertyBag.FromStream(reader);
                 }
             }
         }

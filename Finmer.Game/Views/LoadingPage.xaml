@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     mc:Ignorable="d"
-    Background="{StaticResource DarkBackgroundBrush}"
     Loaded="UserControl_Loaded"
     d:DesignHeight="400" d:DesignWidth="500"
     d:DataContext="{d:DesignInstance v:LoadingPage}">

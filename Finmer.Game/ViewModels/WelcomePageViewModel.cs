@@ -11,6 +11,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Input;
 using Finmer.Gameplay;
+using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views;
 
@@ -70,6 +71,10 @@ namespace Finmer.ViewModels
 
         private static void OnGoTitle(object args)
         {
+            // Don't show the welcome page again
+            UserConfig.FirstStart = false;
+
+            // Navigate to the title screen
             GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideUp);
         }
     }

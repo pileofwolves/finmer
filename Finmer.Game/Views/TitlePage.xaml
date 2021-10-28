@@ -19,6 +19,18 @@
         </Style>
     </UserControl.Resources>
     <Grid>
+        <Grid.Triggers>
+            <!-- Fade in all page contents on page load -->
+            <EventTrigger RoutedEvent="UserControl.Loaded">
+                <BeginStoryboard>
+                    <Storyboard>
+                        <DoubleAnimation
+                            Storyboard.TargetProperty="Opacity"
+                            From="0" To="1" Duration="0:0:0.45" />
+                    </Storyboard>
+                </BeginStoryboard>
+            </EventTrigger>
+        </Grid.Triggers>
         <StackPanel
             Orientation="Vertical"
             VerticalAlignment="Center"
@@ -42,6 +54,25 @@
                 </Grid.ColumnDefinitions>
                 <DockPanel
                     Grid.Column="0">
+                    <DockPanel.RenderTransform>
+                        <TranslateTransform />
+                    </DockPanel.RenderTransform>
+                    <DockPanel.Triggers>
+                        <!-- Scroll in on page load -->
+                        <EventTrigger RoutedEvent="UserControl.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        From="-40" To="0" Duration="0:0:0.6">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </DockPanel.Triggers>
                     <Button
                         DockPanel.Dock="Top"
                         Style="{StaticResource TitleButton}"
@@ -93,6 +124,25 @@
                 <StackPanel
                     Grid.Column="1"
                     Orientation="Vertical">
+                    <StackPanel.RenderTransform>
+                        <TranslateTransform />
+                    </StackPanel.RenderTransform>
+                    <StackPanel.Triggers>
+                        <!-- Scroll in on page load -->
+                        <EventTrigger RoutedEvent="UserControl.Loaded">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation
+                                        Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
+                                        From="40" To="0" Duration="0:0:0.6">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                    </StackPanel.Triggers>
                     <Button
                         Style="{StaticResource TitleSaveDataButton}"
                         Content="{Binding Save1Text}"

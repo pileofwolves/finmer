@@ -107,7 +107,6 @@ namespace Finmer.Views
             if (UserConfig.FirstStart)
             {
                 // On the first boot, navigate to a special page that introduces the game
-                UserConfig.FirstStart = false;
                 GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.Instant);
             }
             else

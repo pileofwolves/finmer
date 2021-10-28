@@ -5,7 +5,6 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
-    Background="{StaticResource DarkBackgroundBrush}"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:WelcomePageViewModel}"
     d:DesignWidth="1000" d:DesignHeight="620">

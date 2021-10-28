@@ -45,6 +45,8 @@ using System.Diagnostics;
 #pragma warning disable SA1623
 #pragma warning disable SA1629
 #pragma warning disable SA1649
+#pragma warning disable S4070
+#pragma warning disable S101
 
 namespace JetBrains.Annotations
 {

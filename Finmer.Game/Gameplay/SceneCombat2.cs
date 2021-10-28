@@ -65,9 +65,8 @@ namespace Finmer.Gameplay
             // Handle UI and user input if the player needs to choose an action
             if (IsPlayerInputRequired())
             {
-                // If input was provided, handle it now
-                if (choice != 0)
-                    HandlePlayerInput(choice);
+                // Process provided input
+                HandlePlayerInput(choice);
 
                 // If the player still has no final decision (such as because a submenu was opened) then refresh UI and delay the round
                 if (!m_PlayerDecision.IsValid())

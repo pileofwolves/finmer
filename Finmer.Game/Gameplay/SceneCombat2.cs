@@ -629,6 +629,14 @@ namespace Finmer.Gameplay
                     Tooltip = "Attempt to escape from the grapple."
                 });
             }
+
+            // Can always skip turn if desired
+            ui.AddButton(new ChoiceButtonModel
+            {
+                Choice = (int)ECombatAction.SkipTurn,
+                Label = "Wait",
+                Tooltip = "End your turn."
+            });
         }
 
         /// <summary>

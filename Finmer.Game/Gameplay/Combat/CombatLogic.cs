@@ -259,7 +259,14 @@ namespace Finmer.Gameplay.Combat
         public static void PerformSkipTurn(Participant instigator)
         {
             // Perform animation
-            CombatDisplay.ShowSimpleMessage("turn_wait", instigator);
+            if (instigator.IsGrappling())
+            {
+                CombatDisplay.ShowSimpleMessage("turn_wait_grappled", instigator);
+            }
+            else
+            {
+                CombatDisplay.ShowSimpleMessage("turn_wait", instigator);
+            }
         }
 
         /// <summary>

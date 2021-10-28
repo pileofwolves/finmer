@@ -47,6 +47,9 @@ namespace Finmer.Gameplay
             // Cache the Player participant, so we can easily reference it during the UI stage
             m_Player = Session.Participants.FirstOrDefault(participant => participant.IsPlayer());
 
+            // Sort the participants by their Wits stat, so the participant with highest Wits goes first
+            Session.Participants.Sort((lhs, rhs) => Comparer<int>.Default.Compare(rhs.Character.Wits, lhs.Character.Wits));
+
             // Open the combat UI on the display
             CombatDisplay.OpenCombatUI(Session);
         }

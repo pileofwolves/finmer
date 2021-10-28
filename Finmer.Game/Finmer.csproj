@@ -123,9 +123,11 @@
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\SavePageViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
+    <Compile Include="ViewModels\TitlePageViewModel.cs" />
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
+    <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
     <Compile Include="Views\Parts\CarouselView.xaml.cs">
@@ -242,6 +244,9 @@
     <Compile Include="Views\ScrollViewerBehavior.cs" />
     <Compile Include="Views\ShopPage.xaml.cs">
       <DependentUpon>ShopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TitlePage.xaml.cs">
+      <DependentUpon>TitlePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\WelcomePage.xaml.cs">
       <DependentUpon>WelcomePage.xaml</DependentUpon>
@@ -390,6 +395,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\TitlePage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\WelcomePage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -483,7 +492,11 @@
   <ItemGroup>
     <Resource Include="Resources\UI\RemovedStatOverlay.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\UI\MenuButtonFA.png" />
+    <Resource Include="Resources\UI\MenuButtonGitHub.png" />
+    <Resource Include="Resources\UI\MenuButtonKofi.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

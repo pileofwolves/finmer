@@ -36,14 +36,34 @@ namespace Finmer.Models
         private const uint k_ConfigMagic = 0xF1CF0001;
         private const string k_ConfigFileName = "Settings.sav";
 
+        /// <summary>
+        /// Indicates whether word breaking is enabled in the game log.
+        /// </summary>
         public static bool Hyphenation { get; set; } = true;
 
+        /// <summary>
+        /// Indicates whether explicit disposal content is enabled.
+        /// </summary>
         public static bool PreferScat { get; set; } = true;
 
+        /// <summary>
+        /// Indicates whether this is the application's first time starting up.
+        /// </summary>
+        public static bool FirstStart { get; set; } = true;
+
+        /// <summary>
+        /// The relative UI zoom multiplier.
+        /// </summary>
         public static float Zoom { get; set; } = 1.0f;
 
+        /// <summary>
+        /// The desired combat animation speed.
+        /// </summary>
         public static EAnimationLevel CombatAnimation { get; set; } = EAnimationLevel.Full;
 
+        /// <summary>
+        /// Load user settings from disk, overwriting any cached settings.
+        /// </summary>
         public static void Reload()
         {
             try
@@ -67,6 +87,7 @@ namespace Finmer.Models
                         // Extract properties we're interested in
                         Hyphenation = props.GetBool(@"hyph");
                         PreferScat = props.GetBool(@"scat");
+                        FirstStart = props.GetBool(@"firststart");
                         Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
                         CombatAnimation = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(@"combatanim"), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
                     }
@@ -78,6 +99,9 @@ namespace Finmer.Models
             }
         }
 
+        /// <summary>
+        /// Save the current user settings to disk.
+        /// </summary>
         public static void Save()
         {
             try
@@ -101,12 +125,16 @@ namespace Finmer.Models
             }
         }
 
+        /// <summary>
+        /// Generate a PropertyBag that contains a snapshot of the user settings.
+        /// </summary>
         public static PropertyBag Flush()
         {
             var props = new PropertyBag();
             props.SetString(@"game_version", CompileConstants.k_VersionString);
             props.SetBool(@"hyph", Hyphenation);
             props.SetBool(@"scat", PreferScat);
+            props.SetBool(@"firststart", FirstStart);
             props.SetFloat(@"zoom", Zoom);
             props.SetInt(@"combatanim", (int)CombatAnimation);
             return props;

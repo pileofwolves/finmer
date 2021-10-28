@@ -6,7 +6,6 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     mc:Ignorable="d"
-    Background="{StaticResource DarkBackgroundBrush}"
     Loaded="UserControl_Loaded"
     d:DesignHeight="400" d:DesignWidth="500"
     d:DataContext="{d:DesignInstance v:LoadingPage}">
@@ -14,16 +13,15 @@
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
     <UserControl.Triggers>
-        <!-- Spinner fade-out animation after loading has completed -->
+        <!-- Fade-out animation after loading has completed -->
         <EventTrigger RoutedEvent="v:LoadingPage.GameContentLoaded">
             <BeginStoryboard>
                 <Storyboard
                     Completed="DisplayFadeComplete">
                     <DoubleAnimation
-                        Storyboard.TargetName="LoadingSpinnerPanel"
+                        Storyboard.TargetName="LoadingOverlay"
                         Storyboard.TargetProperty="Opacity"
-                        To="0"
-                        Duration="0:0:0.65">
+                        To="0" BeginTime="0:0:0.1" Duration="0:0:0.65">
                         <DoubleAnimation.EasingFunction>
                             <CubicEase EasingMode="EaseOut" />
                         </DoubleAnimation.EasingFunction>
@@ -32,10 +30,11 @@
             </BeginStoryboard>
         </EventTrigger>
     </UserControl.Triggers>
-    <Grid>
+    <Grid
+        x:Name="LoadingOverlay"
+        Background="{StaticResource DarkBackgroundBrush}">
         <!-- Loading spinner -->
         <StackPanel
-            x:Name="LoadingSpinnerPanel"
             Visibility="{Binding ShowSpinner, Converter={StaticResource BooleanToVisibilityConverter}}"
             VerticalAlignment="Center"
             HorizontalAlignment="Center">

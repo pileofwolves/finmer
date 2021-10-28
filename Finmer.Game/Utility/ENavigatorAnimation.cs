@@ -16,7 +16,8 @@ namespace Finmer.Utility
     {
         Instant,
         SlideLeft,
-        SlideRight
+        SlideRight,
+        SlideUp
     }
 
 }

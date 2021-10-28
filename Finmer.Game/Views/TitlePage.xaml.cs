@@ -12,17 +12,17 @@ namespace Finmer.Views
 {
 
     /// <summary>
-    /// Interaction logic for WelcomePage.xaml
+    /// Interaction logic for TitlePage.xaml
     /// </summary>
-    public partial class WelcomePage
+    public partial class TitlePage
     {
 
-        public WelcomePage()
+        public TitlePage()
         {
             InitializeComponent();
 
             // Set up data context
-            DataContext = new WelcomePageViewModel();
+            DataContext = new TitlePageViewModel();
         }
 
     }

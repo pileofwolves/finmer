@@ -54,27 +54,38 @@ namespace Finmer.Views
 
             var old_transform = new TranslateTransform();
             var new_transform = new TranslateTransform();
+            DependencyProperty dependency_property;
 
             // Attach the transforms to their respective grids
             OldGrid.RenderTransform = old_transform;
             NewGrid.RenderTransform = new_transform;
-            var anim_length = new Duration(TimeSpan.FromSeconds(0.4));
+            var anim_length = new Duration(TimeSpan.FromSeconds(0.45));
 
             // Determine the actual animation to play
             DoubleAnimation old_anim, new_anim;
             switch (anim)
             {
                 case ENavigatorAnimation.SlideLeft:
+                    dependency_property = TranslateTransform.XProperty;
                     new_transform.X = ActualWidth;
                     old_anim = new DoubleAnimation(-ActualWidth, anim_length);
                     new_anim = new DoubleAnimation(0, anim_length);
                     break;
 
                 case ENavigatorAnimation.SlideRight:
+                    dependency_property = TranslateTransform.XProperty;
                     new_transform.X = -ActualWidth;
                     old_anim = new DoubleAnimation(ActualWidth, anim_length);
                     new_anim = new DoubleAnimation(0, anim_length);
                     break;
+
+                case ENavigatorAnimation.SlideUp:
+                    dependency_property = TranslateTransform.YProperty;
+                    new_transform.Y = ActualHeight;
+                    old_anim = new DoubleAnimation(-ActualHeight, anim_length);
+                    new_anim = new DoubleAnimation(0, anim_length);
+                    break;
+
                 default:
                     throw new ArgumentOutOfRangeException(nameof(anim));
             }
@@ -107,8 +118,8 @@ namespace Finmer.Views
             }
 
             // Begin animation
-            old_transform.BeginAnimation(TranslateTransform.XProperty, old_anim);
-            new_transform.BeginAnimation(TranslateTransform.XProperty, new_anim);
+            old_transform.BeginAnimation(dependency_property, old_anim);
+            new_transform.BeginAnimation(dependency_property, new_anim);
         }
 
     }

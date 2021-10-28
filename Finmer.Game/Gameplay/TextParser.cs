@@ -116,17 +116,6 @@ namespace Finmer.Gameplay
             return raw;
         }
 
-        /// <summary>
-        /// Adds a global replacement key/value pair for all future Parse calls.
-        /// </summary>
-        private static void SetSubstitute(string key, string value)
-        {
-            if (s_Variables.ContainsKey(key))
-                s_Variables.Remove(key);
-
-            s_Variables.Add(key, value);
-        }
-
         private static string ProcessGrammarTag(string command)
         {
             // Randomizer command

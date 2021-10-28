@@ -18,6 +18,21 @@ Please check the project's main README file for building and launching instructi
 
 Pull requests are accepted for both code and content (though not entirely _new_ content, see README). Be sure to use the same general style and flow of the code surrounding your changes (see below for guidelines).
 
+### Running the game with developer tools
+
+Finmer has a **debug mode** that enables various diagnostics, as well as a script console that can be used to inspect, cheat or modify things as desired.
+
+To activate debug mode, do either of the following:
+
+- Compile and run a build in the Debug configuration. Debug builds have debug mode enabled by default.
+- Alternatively, pass the `-debug` command line option to a Release build.
+
+When in-game, a new Script Console button will appear in the panel on the left. Click it to reveal an input field. You can enter any arbitrary Lua code in this field. Refer to the Script Documentation for a list of functions and properties that you can use here. Press Enter to run your code.
+
+### Guide to furballs & assets
+
+Check out the Editor Documentation and Script Documentation (`/Modules/Projects/Documentation.html`) for info on how content modules work, what kind of assets there are, and how they interact with the game application.
+
 ## General Guidelines
 
 - All code must compile using C# 7.3 and run on .NET Framework 4.8. Currently, Finmer does not use later versions of .NET (such as .NET Core).

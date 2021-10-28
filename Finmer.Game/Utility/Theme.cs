@@ -31,6 +31,8 @@ namespace Finmer.Utility
         public static readonly Color LogColorDarkCyan;
         public static readonly Style TextBlockDefault;
 
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Minor Code Smell", "S3963:\"static\" fields should be initialized inline",
+            Justification = "More readable, and not concerned about minor performance overhead")]
         static Theme()
         {
             Application app = Application.Current;

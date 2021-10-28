@@ -9,6 +9,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
@@ -26,6 +27,7 @@ namespace Finmer.Gameplay
         Leave,
         Turn
     }
+
 
     /// <summary>
     /// Encompasses gameplay state associated with one running session, that can be discarded when returning to the menu screen.

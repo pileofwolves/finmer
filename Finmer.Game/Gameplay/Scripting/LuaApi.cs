@@ -12,6 +12,7 @@ using System.Runtime.InteropServices;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
+// ReSharper disable IdentifierTypo
 // ReSharper disable InconsistentNaming
 
 namespace Finmer.Gameplay.Scripting
@@ -70,13 +71,10 @@ namespace Finmer.Gameplay.Scripting
 
         private static IntPtr s_NativeLibraryHandle = IntPtr.Zero;
 
-        static LuaApi()
-        {
-            // Load the platform-appropriate Lua library. Note that we do not unload the library, because there is no need to.
-            LoadNativeLibrary();
-        }
-
-        private static void LoadNativeLibrary()
+        /// <summary>
+        /// Load the platform-appropriate Lua library. Note that we never unload the library, because there is no need to.
+        /// </summary>
+        public static void LoadNativeLibrary()
         {
             if (s_NativeLibraryHandle != IntPtr.Zero)
                 return;

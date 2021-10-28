@@ -10,6 +10,7 @@ using System;
 using System.Linq;
 using System.Windows;
 using Finmer.Gameplay;
+using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views;
@@ -39,6 +40,9 @@ namespace Finmer
             // Enable development mode if requested by user (or the editor)
             GameController.DebugMode = e.Args.Contains("-debug");
 #endif
+
+            // Load script runtime
+            LuaApi.LoadNativeLibrary();
 
             // Load user settings
             UserConfig.Reload();

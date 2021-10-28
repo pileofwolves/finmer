@@ -30,12 +30,12 @@ namespace Finmer.Editor
 
         private void lklFA_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://www.furaffinity.net/user/nuntis");
+            Process.Start(@"https://www.furaffinity.net/user/nuntis");
         }
 
         private void lklGitHub_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("https://github.com/pileofwolves/finmer");
+            Process.Start(@"https://github.com/pileofwolves/finmer");
         }
 
     }

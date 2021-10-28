@@ -25,16 +25,17 @@ namespace Finmer.Gameplay
 
         public CombatSession Session { get; }
 
-        private Participant m_Player;
-
         private EMenuState m_MenuState = EMenuState.Default;
+        private Participant[] m_RoundParticipants;
+        private int m_RoundStepIndex;
+        private bool m_IsEnded;
+
+        private Participant m_Player;
         private CombatAction m_PlayerDecision;
 
         private ECombatAction m_PendingPlayerDecision;
         private List<Participant> m_PotentialPlayerTargets;
         private List<Item> m_PotentialPlayerItems;
-        private bool m_IsFirstTurn = true;
-        private bool m_IsEnded;
 
         public SceneCombat2(CombatSession session)
         {
@@ -58,38 +59,35 @@ namespace Finmer.Gameplay
 
         public override void Turn(int choice)
         {
-            // Process player input to advance to different submenus/states
-            bool can_run_round = true;
+            // Handle UI and user input if the player needs to choose an action
             if (IsPlayerInputRequired())
             {
-                // Skip the first turn, because the combat just begun and we have no player action yet, but we do need to show the buttons
-                if (m_IsFirstTurn)
+                // If input was provided, handle it now
+                if (choice != 0)
+                    HandlePlayerInput(choice);
+
+                // If the player still has no final decision (such as because a submenu was opened) then refresh UI and delay the round
+                if (!m_PlayerDecision.IsValid())
                 {
-                    Debug.Assert(choice == 0);
-                    m_IsFirstTurn = false;
                     PrepareInterface();
                     return;
                 }
-
-                HandlePlayerInput(choice);
-                can_run_round = m_MenuState == EMenuState.Default && m_PlayerDecision.IsValid();
             }
 
-            // Avoid running combat logic when opening a submenu
-            if (can_run_round)
+            // Run the combat round
+            Debug.Assert(!IsPlayerInputRequired());
+            StepRound();
+
+            // If the combat is over, get rid of the combat scene so we return to game scripts
+            if (IsCombatEnded())
             {
-                // If we reach this point in logic, then the player has finalized their choice, and we can run the combat round
-                StepRound();
-
-                // If the combat is over, get rid of the combat scene so we return to game scripts
-                if (IsCombatEnded())
-                {
-                    ExitCombat();
-                    return;
-                }
+                ExitCombat();
+                return;
             }
 
-            // Show UI
+            // Show UI so the player can make a new choice. Note: we should not reach this spot if the player is not
+            // participating, because then the combat should have ended in one StepRound() call.
+            Debug.Assert(IsPlayerInputRequired());
             PrepareInterface();
         }
 
@@ -117,9 +115,6 @@ namespace Finmer.Gameplay
 
         private void PrepareInterface()
         {
-            // While the player is selecting something, no participant has the turn
-            Session.WhoseTurn = null;
-
             // Show UI for the next player choice
             switch (m_MenuState)
             {
@@ -376,22 +371,41 @@ namespace Finmer.Gameplay
         {
             while (true)
             {
-                // Make a copy of the participants list so it can be edited by combat callbacks etc
-                Participant[] participants = Session.Participants.ToArray();
-
-                foreach (Participant participant in participants)
+                // Prepare a new participant list if we don't already have one cached. A list may be cached if the round was
+                // interrupted because the player needed to select a combat action.
+                if (m_RoundParticipants == null)
                 {
+                    // Make a copy of the participants list so it can be edited by combat callbacks etc
+                    m_RoundParticipants = Session.Participants.ToArray();
+                    m_RoundStepIndex = 0;
+                }
+
+                // Step all participants
+                for (int i = m_RoundStepIndex; i < m_RoundParticipants.Length; i++)
+                {
+                    Participant participant = m_RoundParticipants[i];
+
                     // Skip downed or immobilized participants
                     if (!participant.CanAct())
                         continue;
 
+                    // Show this participant as having the turn
+                    Session.WhoseTurn = participant;
+
                     if (m_Player != null && participant == m_Player)
                     {
+                        // If the player has not yet selected an action, pause the round now and present UI
+                        if (!m_PlayerDecision.IsValid())
+                        {
+                            // Save the step index so we can resume stepping the round once the player has selected an action
+                            m_RoundStepIndex = i;
+                            return;
+                        }
+
                         // Run player action
-                        Debug.Assert(m_PlayerDecision.IsValid());
                         StepParticipant(participant, m_PlayerDecision.Action, m_PlayerDecision.Target);
 
-                        // Invalidate the player action so they can select a new one
+                        // Invalidate the player action so they can select a new one next round
                         m_PlayerDecision = new CombatAction();
                     }
                     else
@@ -401,19 +415,14 @@ namespace Finmer.Gameplay
                         StepParticipant(participant, decision.Action, decision.Target);
                     }
 
-                    // Optionally terminate the round at the end of each turn
+                    // Optionally terminate the round cycle at the end of each turn if needed
                     if (IsCombatEnded())
                         return;
                 }
 
                 // Post-round cleanup
                 CombatLogic.PostRound(Session);
-
-                // At the end of the round, if the player is part of the combat, exit this loop to allow them to pick their action.
-                // This construction may look a bit weird, but it enables support for combats involving only NPCs. (Without this,
-                // the player would get offered a choice in UI, which is then ignored because the player doesn't actually participate.)
-                if (IsPlayerInputRequired())
-                    break;
+                m_RoundParticipants = null;
             }
         }
 
@@ -425,9 +434,6 @@ namespace Finmer.Gameplay
         /// <param name="target">The target of the participant's action, or null if irrelevant.</param>
         private void StepParticipant(Participant instigator, ECombatAction action, Participant target)
         {
-            // Show this participant as having the turn
-            Session.WhoseTurn = instigator;
-
             // Dispatch selected action
             switch (action)
             {
@@ -490,7 +496,9 @@ namespace Finmer.Gameplay
 
         private bool IsPlayerInputRequired()
         {
-            return m_Player != null && !m_Player.Character.IsDead();
+            // Player input is required if the player is participating, and the round was paused because they have
+            // not yet selected a valid action to perform this round.
+            return m_Player != null && m_RoundParticipants != null && !m_PlayerDecision.IsValid();
         }
 
         private void ShowUIDefault(GameUI ui)

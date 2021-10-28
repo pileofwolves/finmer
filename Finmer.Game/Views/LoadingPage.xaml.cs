@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using System.Windows;
 using Finmer.Gameplay;
+using Finmer.Models;
 using Finmer.Utility;
 using JetBrains.Annotations;
 
@@ -102,8 +103,18 @@ namespace Finmer.Views
 
         private void DisplayFadeComplete(object sender, EventArgs e)
         {
-            // Animation is done; transition to the main menu page
-            GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.Instant);
+            // Animation is done
+            if (UserConfig.FirstStart)
+            {
+                // On the first boot, navigate to a special page that introduces the game
+                UserConfig.FirstStart = false;
+                GameController.Window.Navigate(new WelcomePage(), ENavigatorAnimation.Instant);
+            }
+            else
+            {
+                // Otherwise, go straight to the title screen
+                GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.Instant);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

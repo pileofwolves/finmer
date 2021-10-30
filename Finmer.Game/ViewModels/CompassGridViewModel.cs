@@ -6,42 +6,49 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
-using System.Windows;
 using System.Windows.Input;
 using Finmer.Gameplay;
-using Finmer.Models;
 using Finmer.Utility;
 
 namespace Finmer.ViewModels
 {
 
-    internal sealed class CompassGridViewModel : BaseProp
+    /// <summary>
+    /// View model for the compass button widget.
+    /// </summary>
+    public sealed class CompassGridViewModel : BaseProp
     {
 
-        private RelayCommand m_DirCommand;
+        /// <summary>
+        /// Command for activating a directional link.
+        /// </summary>
+        public ICommand DirectionalLinkCommand => m_CommandLink ??
+            (m_CommandLink = new RelayCommand(DirectionalLinkExecute, DirectionalLinkCheck));
 
-        public ICommand DirectionalLinkCommand => m_DirCommand ??
-            (m_DirCommand = new RelayCommand(DirectionalLinkExecute, DirectionalLinkCheck));
+        private ICommand m_CommandLink;
 
         private void DirectionalLinkExecute(object args)
         {
-            // Design mode check
-            if (Application.Current.MainWindow == null)
+            var session = GameController.Session;
+
+            // Session may be null in the XAML designer
+            if (session == null || args == null)
                 return;
 
-            var dir = (ECompassDirection)Enum.Parse(typeof(ECompassDirection), (string)args);
-            GameUI.Instance.PerformDirectionalLink(dir);
+            var direction = (ECompassDirection)args;
+            session.Compass.ExecuteLink(direction, session.ScriptContext.LuaState);
         }
 
         private bool DirectionalLinkCheck(object args)
         {
-            // Design mode check
-            if (Application.Current.MainWindow == null)
+            var session = GameController.Session;
+
+            // Session may be null in the XAML designer
+            if (session == null || args == null)
                 return false;
 
-            var dir = (ECompassDirection)Enum.Parse(typeof(ECompassDirection), (string)args);
-            return GameUI.Instance.DirectionalLinks.ContainsKey(dir);
+            var direction = (ECompassDirection)args;
+            return session.Compass.HasLink(direction);
         }
 
     }

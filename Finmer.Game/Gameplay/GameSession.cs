@@ -9,7 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Diagnostics.CodeAnalysis;
 using System.Threading;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
@@ -27,7 +26,6 @@ namespace Finmer.Gameplay
         Leave,
         Turn
     }
-
 
     /// <summary>
     /// Encompasses gameplay state associated with one running session, that can be discarded when returning to the menu screen.
@@ -50,6 +48,11 @@ namespace Finmer.Gameplay
         /// </summary>
         public ScriptContext ScriptContext { get; } = new ScriptContext();
 
+        /// <summary>
+        /// The directional link manager for this session.
+        /// </summary>
+        public CompassController Compass { get; }
+
         private readonly Queue<SceneEvent> m_EventQueue = new Queue<SceneEvent>();
         private readonly object m_EventQueueLock = new object();
 
@@ -60,7 +63,8 @@ namespace Finmer.Gameplay
 
         public GameSession(PropertyBag savedata)
         {
-            // Create a new player object for this session, populated with the save data
+            // Initialize the session
+            Compass = new CompassController(this);
             Player = new Player(ScriptContext, savedata);
 
             // Allow scripts to access the player object as a global variable
@@ -112,6 +116,7 @@ namespace Finmer.Gameplay
             GameUI.Instance.ClearButtons();
             GameUI.Instance.Instruction = String.Empty;
             TextParser.ClearNonPersistentContexts();
+            Compass.Reset();
 
             // Add this scene onto the stack
             m_SceneStack.Push(scene);

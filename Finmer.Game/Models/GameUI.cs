@@ -9,7 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -54,11 +53,6 @@ namespace Finmer.Models
         /// Collection of buttons that the user can choose from to progress gameplay.
         /// </summary>
         public ObservableCollection<ChoiceButtonModel> ChoiceButtons { get; } = new ObservableCollection<ChoiceButtonModel>();
-
-        /// <summary>
-        /// Collection of links that the user can choose from to traverse between game areas.
-        /// </summary>
-        public Dictionary<ECompassDirection, string> DirectionalLinks { get; } = new Dictionary<ECompassDirection, string>();
 
         /// <summary>
         /// UI state for the combat displays.
@@ -202,19 +196,6 @@ namespace Finmer.Models
         }
 
         /// <summary>
-        /// Add a directional link to the compass.
-        /// </summary>
-        public void AddLink(ECompassDirection dir, string target)
-        {
-            Dispatcher.BeginInvoke(new Action(() =>
-            {
-                if (DirectionalLinks.ContainsKey(dir))
-                    DirectionalLinks.Remove(dir);
-                DirectionalLinks.Add(dir, target);
-            }));
-        }
-
-        /// <summary>
         /// Add a text message to the game log.
         /// </summary>
         public void Log(string text, Color color)
@@ -252,20 +233,6 @@ namespace Finmer.Models
         }
 
         /// <summary>
-        /// TODO: Move this function elsewhere, this doesn't belong in GameUI
-        /// </summary>
-        public void PerformDirectionalLink(ECompassDirection dir)
-        {
-            Debug.Assert(DirectionalLinks.ContainsKey(dir), "Missing CompassDirection when executing directional link");
-
-            string target = DirectionalLinks[dir];
-            if (target == null) // a callback was linked up instead of a scene name, so invoke the callback
-                Debugger.Break(); // TODO
-            else // travel to the new scene
-                GameController.Session.SetScene(new SceneScripted(GameController.Session.ScriptContext, target));
-        }
-
-        /// <summary>
         /// Erases the collection of choice buttons and directional links.
         /// </summary>
         public void ClearButtons()
@@ -273,7 +240,6 @@ namespace Finmer.Models
             Dispatcher.BeginInvoke(new Action(() =>
             {
                 ChoiceButtons.Clear();
-                DirectionalLinks.Clear();
             }));
         }
 

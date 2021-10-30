@@ -85,22 +85,22 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedAddLink(IntPtr L)
         {
-            var dir = (ECompassDirection)(int)luaL_checknumber(L, 1);
+            // Retrieve and validate the input compass direction
+            var direction = (ECompassDirection)(int)luaL_checknumber(L, 1);
+            if (direction < ECompassDirection.North || direction > ECompassDirection.East)
+                return luaL_argerror(L, 1, "invalid compass direction");
 
             if (lua_type(L, 2) == ELuaType.Function)
             {
-                // custom function was passed, copy it to registry and add special link target 'null'
+                // This is a script link, store the function for later use
                 lua_pushvalue(L, 2);
-                lua_setfield(L, LUA_REGISTRYINDEX, "LinkCallback" + dir);
-                // MainWindow.PerformDirectionalLink will check for null and invoke script
-                // probably not the best way of passing information but it's the easiest I think
-                GameUI.Instance.AddLink(dir, null);
+                GameController.Session.Compass.AddScriptLink(direction, L);
             }
             else
             {
-                // assume string
+                // Otherwise, this should be a direct link to a scene
                 string target = luaL_checkstring(L, 2);
-                GameUI.Instance.AddLink(dir, target);
+                GameController.Session.Compass.AddDirectLink(direction, target);
             }
 
             return 0;

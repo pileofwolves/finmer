@@ -73,6 +73,20 @@ namespace Finmer.Gameplay.Scripting
         }
 
         /// <summary>
+        /// Remove all bound callbacks.
+        /// </summary>
+        public void UnbindAll()
+        {
+            IntPtr stack = m_Context.LuaState;
+
+            // Replace our callback table with an empty table, so all contents are effectively wiped
+            luaL_newmetatable(stack, k_CallbackTable);
+            lua_newtable(stack);
+            lua_rawseti(stack, -2, m_TableRef);
+            lua_pop(stack, 1);
+        }
+
+        /// <summary>
         /// Find the callback associated with the specified name. Returns true if available, false if not.
         /// </summary>
         public bool PrepareCall(IntPtr stack, string name)

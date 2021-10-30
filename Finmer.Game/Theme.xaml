@@ -696,7 +696,14 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="{StaticResource HighlightBrush}" />
+                            <Setter Property="Background" TargetName="Root">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonPressedColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonPressedColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                             <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}" />
                         </Trigger>
 

@@ -704,7 +704,7 @@
                                     </LinearGradientBrush>
                                 </Setter.Value>
                             </Setter>
-                            <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}" />
+                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
                         </Trigger>
 
                         <Trigger Property="IsChecked" Value="False">

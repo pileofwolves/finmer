@@ -621,11 +621,21 @@
 
     <Style TargetType="ToggleButton">
         <Setter Property="FocusVisualStyle" Value="{x:Null}" />
-        <Setter Property="BorderThickness" Value="0" />
-        <Setter Property="Padding" Value="8" />
-        <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
-        <Setter Property="BorderBrush" Value="Transparent" />
-        <Setter Property="Background" Value="{StaticResource DepressedBrush}" />
+        <Setter Property="FontFamily" Value="{StaticResource DefaultFont}" />
+        <Setter Property="FontSize" Value="{StaticResource DefaultFontSize}" />
+        <Setter Property="BorderThickness" Value="1" />
+        <Setter Property="Padding" Value="4" />
+        <Setter Property="Cursor" Value="Hand" />
+        <Setter Property="BorderBrush" Value="{StaticResource DarkBackgroundBrush}" />
+        <Setter Property="Foreground" Value="{StaticResource DepressedBrush}" />
+        <Setter Property="Background">
+            <Setter.Value>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                    <GradientStop Color="{StaticResource ButtonDisabledColor}" Offset="0" />
+                    <GradientStop Color="{StaticResource ButtonDisabledColorAlt}" Offset="1" />
+                </LinearGradientBrush>
+            </Setter.Value>
+        </Setter>
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="ToggleButton">
@@ -633,23 +643,68 @@
                         BorderThickness="{TemplateBinding Property=BorderThickness}"
                         Padding="{TemplateBinding Property=Padding}"
                         TextBlock.Foreground="{TemplateBinding Property=Foreground}"
-                        BorderBrush="{StaticResource DepressedBrush}"
+                        BorderBrush="{TemplateBinding Property=BorderBrush}"
                         Background="{TemplateBinding Property=Background}"
-                        RenderTransformOrigin="0.5,0.5">
-
+                        RenderTransformOrigin="0.5,0.5"
+                        CornerRadius="3">
                         <Border.RenderTransform>
-                            <ScaleTransform x:Name="Scale" ScaleX="1" ScaleY="1" />
+                            <TransformGroup>
+                                <ScaleTransform x:Name="Scale" />
+                                <TranslateTransform x:Name="Translate" />
+                            </TransformGroup>
                         </Border.RenderTransform>
-
-                        <ContentPresenter x:Name="PART_ContentHost"
-                            OverridesDefaultStyle="True"
-                            HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
-                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="3" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="4" />
+                            </Grid.RowDefinitions>
+                            <Rectangle
+                                Grid.Row="0"
+                                Margin="-4,-4,-4,0"
+                                IsHitTestVisible="False"
+                                RadiusX="4"
+                                RadiusY="2">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#29FFFFFF" Offset="0" />
+                                        <GradientStop Color="#00FFFFFF" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Rectangle
+                                Grid.Row="2"
+                                Margin="-4,0,-4,-4"
+                                IsHitTestVisible="False"
+                                RadiusX="4"
+                                RadiusY="2">
+                                <Rectangle.Fill>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="#00000000" Offset="0" />
+                                        <GradientStop Color="#3A000000" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <ContentPresenter
+                                x:Name="PART_ContentHost"
+                                Grid.Row="0"
+                                Grid.RowSpan="3"
+                                OverridesDefaultStyle="False"
+                                HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsChecked" Value="True">
-                            <Setter Property="Background" Value="{StaticResource HighlightBrush}" />
-                            <Setter Property="Foreground" Value="{StaticResource BackgroundBrush}" />
+                            <Setter Property="Background" TargetName="Root">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonPressedColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonPressedColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
                         </Trigger>
 
                         <Trigger Property="IsChecked" Value="False">
@@ -658,26 +713,36 @@
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" TargetName="Root"
-                                Value="{StaticResource DepressedBrush}" />
-
+                            <Setter Property="BorderBrush" Value="{StaticResource DarkBackgroundBrush}" />
+                            <Setter Property="Background" TargetName="Root">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonPressedColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonPressedColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                             <Trigger.EnterActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="Scale"
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Scale"
                                             Storyboard.TargetProperty="ScaleX"
                                             From="1"
-                                            To="0.90" Duration="0:0:0.05">
+                                            To="0.90"
+                                            Duration="0:0:0.05">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut" />
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetName="Scale"
-                                            From="1"
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Scale"
                                             Storyboard.TargetProperty="ScaleY"
-                                            To="0.90" Duration="0:0:0.05">
+                                            From="1"
+                                            To="0.90"
+                                            Duration="0:0:0.05">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseOut" />
+                                                <CubicEase EasingMode="EaseOut" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -686,20 +751,24 @@
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard>
-                                        <DoubleAnimation Storyboard.TargetName="Scale"
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Scale"
                                             Storyboard.TargetProperty="ScaleX"
                                             From="0.90"
-                                            To="1" Duration="0:0:0.05">
+                                            To="1"
+                                            Duration="0:0:0.05">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseIn" />
+                                                <CubicEase EasingMode="EaseIn" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
-                                        <DoubleAnimation Storyboard.TargetName="Scale"
-                                            From="0.90"
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Scale"
                                             Storyboard.TargetProperty="ScaleY"
-                                            To="1" Duration="0:0:0.05">
+                                            From="0.90"
+                                            To="1"
+                                            Duration="0:0:0.05">
                                             <DoubleAnimation.EasingFunction>
-                                                <CircleEase EasingMode="EaseIn" />
+                                                <CubicEase EasingMode="EaseIn" />
                                             </DoubleAnimation.EasingFunction>
                                         </DoubleAnimation>
                                     </Storyboard>
@@ -708,8 +777,44 @@
                         </Trigger>
 
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" TargetName="Root"
-                                Value="{StaticResource HighlightBrush}" />
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonHoverColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonHoverColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                            <Trigger.EnterActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Translate"
+                                            Storyboard.TargetProperty="Y"
+                                            To="-2"
+                                            Duration="0:0:0.45">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.EnterActions>
+                            <Trigger.ExitActions>
+                                <BeginStoryboard>
+                                    <Storyboard>
+                                        <DoubleAnimation
+                                            Storyboard.TargetName="Translate"
+                                            Storyboard.TargetProperty="Y"
+                                            To="0"
+                                            Duration="0:0:0.45">
+                                            <DoubleAnimation.EasingFunction>
+                                                <CubicEase EasingMode="EaseOut" />
+                                            </DoubleAnimation.EasingFunction>
+                                        </DoubleAnimation>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </Trigger.ExitActions>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>

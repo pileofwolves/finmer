@@ -36,7 +36,7 @@ namespace Finmer.ViewModels
                 return;
 
             var direction = (ECompassDirection)args;
-            session.Compass.ExecuteLink(direction, session.ScriptContext.LuaState);
+            session.Compass.QueueExecuteLink(direction);
         }
 
         private bool DirectionalLinkCheck(object args)

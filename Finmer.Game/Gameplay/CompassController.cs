@@ -32,15 +32,26 @@ namespace Finmer.Gameplay
             m_Links = new Dictionary<ECompassDirection, string>(4);
         }
 
+        /// <summary>
+        /// Add a link to another scene.
+        /// </summary>
+        /// <param name="direction">The compass direction of the target link.</param>
+        /// <param name="scene">The asset name of the linked scene.</param>
         public void AddDirectLink(ECompassDirection direction, string scene)
         {
             lock (m_Lock)
             {
                 // Associate the direction with the scene name
+                m_Session.VerifyScriptThread();
                 m_Links.Add(direction, scene);
             }
         }
 
+        /// <summary>
+        /// Add a link to a script callback.
+        /// </summary>
+        /// <param name="direction">The compass direction of the target link.</param>
+        /// <param name="stack">The Lua stack pointer to retrieve the function from. The function must be at the top of the stack.</param>
         public void AddScriptLink(ECompassDirection direction, IntPtr stack)
         {
             lock (m_Lock)
@@ -49,19 +60,29 @@ namespace Finmer.Gameplay
                 m_Links.Add(direction, null);
 
                 // Store the script function at the top of the script stack for later reuse
+                m_Session.VerifyScriptThread();
                 m_CallbackTable.Bind(stack, DirectionToString(direction));
             }
         }
 
+        /// <summary>
+        /// Erases all registered links.
+        /// </summary>
         public void Reset()
         {
             lock (m_Lock)
             {
-                m_Links.Clear();
-                m_CallbackTable.UnbindAll();
+                lock (m_Session.ScriptContext)
+                {
+                    m_Links.Clear();
+                    m_CallbackTable.UnbindAll();
+                }
             }
         }
 
+        /// <summary>
+        /// Indicates whether a link in the specified compass direction has been registered.
+        /// </summary>
         public bool HasLink(ECompassDirection direction)
         {
             lock (m_Lock)
@@ -70,18 +91,31 @@ namespace Finmer.Gameplay
             }
         }
 
-        public void ExecuteLink(ECompassDirection direction, IntPtr stack)
+        /// <summary>
+        /// Marshal a request to follow a link onto the script thread. Should be called from the main thread.
+        /// </summary>
+        public void QueueExecuteLink(ECompassDirection direction)
+        {
+            m_Session.RunSceneEvent(ESceneEvent.Link, (int)direction);
+        }
+
+        /// <summary>
+        /// Perform a queued link follow request. Must be called from the script thread.
+        /// </summary>
+        public void ExecuteLink(ECompassDirection direction)
         {
             lock (m_Lock)
             {
+                // Sanity checks
                 Debug.Assert(HasLink(direction), "Executing invalid link");
+                m_Session.VerifyScriptThread();
 
+                // Follow the link
                 string target_scene = m_Links[direction];
                 if (target_scene == null)
                 {
                     // This is a script link, load the callback function
-                    // TODO: Marshal this onto the script thread, since doing this on the main thread opens up data race crashes
-                    // TODO: if the script does something that invokes the script thread (such as calling SetScene())
+                    var stack = m_Session.ScriptContext.LuaState;
                     if (!m_CallbackTable.PrepareCall(stack, DirectionToString(direction)))
                     {
                         Debug.Fail("Could not load script link");

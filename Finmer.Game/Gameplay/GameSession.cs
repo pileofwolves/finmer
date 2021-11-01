@@ -24,7 +24,8 @@ namespace Finmer.Gameplay
     {
         Enter,
         Leave,
-        Turn
+        Turn,
+        Link
     }
 
     /// <summary>
@@ -93,6 +94,15 @@ namespace Finmer.Gameplay
             m_SceneStack.Clear();
             Compass.Dispose();
             ScriptContext.Dispose();
+        }
+
+        /// <summary>
+        /// Validate that the calling thread is the script thread.
+        /// </summary>
+        [Conditional("DEBUG")]
+        public void VerifyScriptThread()
+        {
+            Debug.Assert(Thread.CurrentThread == m_ScriptThread, "This function must be executed on the script thread");
         }
 
         /// <summary>
@@ -249,12 +259,19 @@ namespace Finmer.Gameplay
                             case ESceneEvent.Enter:
                                 item.Scene.Enter();
                                 break;
+
                             case ESceneEvent.Leave:
                                 item.Scene.Leave();
                                 break;
+
                             case ESceneEvent.Turn:
                                 item.Scene.Turn(item.Data);
                                 break;
+
+                            case ESceneEvent.Link:
+                                Compass.ExecuteLink((ECompassDirection)item.Data);
+                                break;
+
                             default:
                                 throw new NotSupportedException();
                         }
@@ -279,7 +296,9 @@ namespace Finmer.Gameplay
         {
 
             public Scene Scene { get; set; }
+
             public ESceneEvent Type { get; set; }
+
             public int Data { get; set; }
 
         }

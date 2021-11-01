@@ -17,7 +17,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Helper class that manages state for the compass' directional links.
     /// </summary>
-    public class CompassController
+    public class CompassController : IDisposable
     {
 
         private readonly GameSession m_Session;
@@ -114,6 +114,11 @@ namespace Finmer.Gameplay
                 default:
                     throw new ArgumentException(nameof(direction));
             }
+        }
+
+        public void Dispose()
+        {
+            m_CallbackTable.Dispose();
         }
 
     }

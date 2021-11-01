@@ -16,20 +16,19 @@ namespace Finmer.Gameplay.Scripting
     /// <summary>
     /// Manages a collection of callbacks to user code. Callbacks can be supplied by script, and then invoked from C# code by name.
     /// </summary>
-    public class ScriptCallbackTable
+    public class ScriptCallbackTable : IDisposable
     {
 
         private const string k_CallbackTable = "ScriptCallbackTables";
 
         private readonly ScriptContext m_Context;
-        private readonly int m_TableRef;
+        private int m_TableRef;
 
         public ScriptCallbackTable(ScriptContext context)
         {
             m_Context = context;
 
             // Generate an empty table where we can store the callbacks
-            // TODO: This table is never unref'd and therefore will never be collected. This class must have a finalizer of some kind.
             IntPtr state = m_Context.LuaState;
             luaL_newmetatable(state, k_CallbackTable);
             lua_newtable(state);
@@ -37,11 +36,23 @@ namespace Finmer.Gameplay.Scripting
             lua_pop(state, 1);
         }
 
+        ~ScriptCallbackTable()
+        {
+            ReleaseUnmanagedResources();
+        }
+
+        public void Dispose()
+        {
+            ReleaseUnmanagedResources();
+            GC.SuppressFinalize(this);
+        }
+
         /// <summary>
         /// Pop and attach the function at the top of the input Lua stack to the specified name.
         /// </summary>
         public void Bind(IntPtr stack, string name)
         {
+            Debug.Assert(m_TableRef != -1, "Table used after being freed");
             Debug.Assert(lua_gettop(stack) > 0, "Stack is empty");
             Debug.Assert(lua_isfunction(stack, -1), "Stack top must be a function");
 
@@ -61,6 +72,7 @@ namespace Finmer.Gameplay.Scripting
         /// </summary>
         public void Unbind(string name)
         {
+            Debug.Assert(m_TableRef != -1, "Table used after being freed");
             IntPtr stack = m_Context.LuaState;
 
             // Assign nil to the name, so the function can be GC'd
@@ -77,6 +89,7 @@ namespace Finmer.Gameplay.Scripting
         /// </summary>
         public void UnbindAll()
         {
+            Debug.Assert(m_TableRef != -1, "Table used after being freed");
             IntPtr stack = m_Context.LuaState;
 
             // Replace our callback table with an empty table, so all contents are effectively wiped
@@ -91,6 +104,8 @@ namespace Finmer.Gameplay.Scripting
         /// </summary>
         public bool PrepareCall(IntPtr stack, string name)
         {
+            Debug.Assert(m_TableRef != -1, "Table used after being freed");
+
             // Retrieve the function from the callback table
             PushCallbackTable(stack);
             lua_getfield(stack, -1, name);
@@ -111,6 +126,7 @@ namespace Finmer.Gameplay.Scripting
         /// </summary>
         public void Call(IntPtr stack, int numArgs)
         {
+            Debug.Assert(m_TableRef != -1, "Table used after being freed");
             Debug.Assert(lua_type(stack, -1 - numArgs) == ELuaType.Function, "Call PrepareCall first, and check that it returned 'true'");
 
             // The stack has already been prepared, so perform the call
@@ -125,6 +141,19 @@ namespace Finmer.Gameplay.Scripting
             luaL_newmetatable(stack, k_CallbackTable);
             lua_rawgeti(stack, -1, m_TableRef);
             lua_remove(stack, -2);
+        }
+
+        private void ReleaseUnmanagedResources()
+        {
+            IntPtr stack = m_Context.LuaState;
+
+            // Release the internal callback table so it can be collected
+            luaL_newmetatable(stack, k_CallbackTable);
+            luaL_unref(stack, -1, m_TableRef);
+            lua_pop(stack, 1);
+
+            // Invalidate the table reference ID
+            m_TableRef = -1;
         }
 
     }

@@ -91,6 +91,7 @@ namespace Finmer.Gameplay
 
             // Clean up runtime
             m_SceneStack.Clear();
+            Compass.Dispose();
             ScriptContext.Dispose();
         }
 

@@ -86,6 +86,7 @@
     <Compile Include="Serialization\FurballExceptions.cs" />
     <Compile Include="Serialization\FurballFileDevice.cs" />
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
+    <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
   </ItemGroup>
   <ItemGroup>

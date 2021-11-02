@@ -81,6 +81,63 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Given an input string table key, returns a string table key modified for the input characters' string mappings.
+        /// </summary>
+        /// <param name="input">The string table key to transform.</param>
+        /// <param name="instigator">The character who performed some action.</param>
+        /// <param name="target">The character who is the target of the instigator's action. Optional, may be null.</param>
+        public static string EvaluateStringMappings(string input, Character instigator, Character target = null)
+        {
+            // Find a matching rule in the instigator's string mappings
+            var asset = instigator.Asset;
+            if (asset != null)
+            {
+                // Accept the first matching mapping
+                foreach (var mapping in asset.StringMappings)
+                    if (EvaluateStringMappingRule(mapping, input, instigator, target))
+                        return mapping.NewKey;
+            }
+
+            // Repeat for the string mappings of the target
+            asset = target?.Asset;
+            if (asset != null)
+            {
+                // Accept the first matching mapping
+                foreach (var mapping in asset.StringMappings)
+                    if (EvaluateStringMappingRule(mapping, input, instigator, target))
+                        return mapping.NewKey;
+            }
+
+            // No matching rule was found; return input unchanged
+            return input;
+        }
+
+        /// <summary>
+        /// Evaluates whether an individual StringMapping matches the input parameters. Returns true on matches, false otherwise.
+        /// </summary>
+        private static bool EvaluateStringMappingRule(StringMapping mapping, string input, Character instigator, Character target)
+        {
+            // The mapped input key must match
+            if (!mapping.Key.Equals(input, StringComparison.InvariantCultureIgnoreCase))
+                return false;
+
+            // Verify the actual rule
+            switch (mapping.Rule)
+            {
+                case StringMapping.ERule.Always:
+                    return true;
+                case StringMapping.ERule.NpcToPlayer:
+                    return target is Player;
+                case StringMapping.ERule.NpcToNpc:
+                    return !(instigator is Player || target is Player);
+                case StringMapping.ERule.PlayerToNpc:
+                    return instigator is Player;
+                default:
+                    throw new ArgumentException(nameof(mapping));
+            }
+        }
+
+        /// <summary>
         /// Parses a text template and replaces all tags with configured substitutes and contexts.
         /// </summary>
         /// <param name="raw">The unmodified template whose tags to substitute.</param>
@@ -256,7 +313,7 @@ namespace Finmer.Gameplay
             {
                 var all_properties = Subject.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public);
                 foreach (var property in all_properties)
-                { 
+                {
                     var attr = property.GetCustomAttribute<TextPropertyAttribute>();
                     if (attr == null)
                         continue;

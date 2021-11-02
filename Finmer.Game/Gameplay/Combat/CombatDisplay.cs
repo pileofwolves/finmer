@@ -219,16 +219,16 @@ namespace Finmer.Gameplay.Combat
             TextParser.SetContext("defender", target.Character, false);
             TextParser.SetContext("prey", target.Character, false);
 
-            string text = instigator.Character.GetRandomString(key, target.Character);
-            GameUI.Instance.Log(text, Theme.LogColorDefault);
+            string new_key = TextParser.EvaluateStringMappings(key, instigator.Character, target.Character);
+            GameUI.Instance.Log(GameController.Content.GetAndParseString(new_key), Theme.LogColorDefault);
         }
 
         private static void WriteCombatLog(string key, Participant instigator)
         {
             TextParser.SetContext("instigator", instigator.Character, false);
 
-            string text = instigator.Character.GetRandomString(key, instigator.Character);
-            GameUI.Instance.Log(text, Theme.LogColorDefault);
+            string new_key = TextParser.EvaluateStringMappings(key, instigator.Character);
+            GameUI.Instance.Log(GameController.Content.GetAndParseString(new_key), Theme.LogColorDefault);
         }
 
     }

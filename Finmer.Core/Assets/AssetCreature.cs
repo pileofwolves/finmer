@@ -28,15 +28,6 @@ namespace Finmer.Core.Assets
             Huge
         }
 
-        public struct StringMapping
-        {
-
-            public string Rule { get; set; }
-
-            public string NewValue { get; set; }
-
-        }
-
         /// <summary>
         /// The name of the object, used as value for GameObject.Name.
         /// </summary>
@@ -95,7 +86,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Table of customized combat strings.
         /// </summary>
-        public Dictionary<string, StringMapping> StringMappings { get; } = new Dictionary<string, StringMapping>();
+        public List<StringMapping> StringMappings { get; } = new List<StringMapping>();
 
         /// <summary>
         /// Whether this creature can initiate vore actions.
@@ -159,8 +150,8 @@ namespace Finmer.Core.Assets
             {
                 outstream.BeginObject();
                 outstream.WriteStringProperty("Key", pair.Key);
-                outstream.WriteStringProperty("Rule", pair.Value.Rule);
-                outstream.WriteStringProperty("NewValue", pair.Value.NewValue);
+                outstream.WriteEnumProperty("Rule", pair.Rule);
+                outstream.WriteStringProperty("NewKey", pair.NewKey);
                 outstream.EndObject();
             }
 
@@ -212,13 +203,14 @@ namespace Finmer.Core.Assets
             {
                 instream.BeginObject();
                 {
-                    string key = instream.ReadStringProperty("Key");
-                    string rule = instream.ReadStringProperty("Rule");
-                    string value = instream.ReadStringProperty("NewValue");
-                    StringMappings.Add(key, new StringMapping
+                    var key = instream.ReadStringProperty("Key");
+                    var rule = instream.ReadEnumProperty<StringMapping.ERule>("Rule");
+                    var value = instream.ReadStringProperty("NewKey");
+                    StringMappings.Add(new StringMapping
                     {
+                        Key = key,
                         Rule = rule,
-                        NewValue = value
+                        NewKey = value
                     });
                 }
                 instream.EndObject();

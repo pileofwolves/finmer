@@ -166,7 +166,8 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public int NumStruggleDice => Math.Max(Agility, 1);
 
-        private readonly AssetCreature m_Asset;
+        public AssetCreature Asset { get; }
+
         private int m_Strength;
         private int m_Agility;
         private int m_Body;
@@ -178,7 +179,7 @@ namespace Finmer.Gameplay
             // Asset ID
             byte[] asset_id = template.GetBytes("asset");
             if (asset_id != null)
-                m_Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
+                Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
 
             // Core stats
             Strength = template.GetInt("str");
@@ -245,8 +246,8 @@ namespace Finmer.Gameplay
             PropertyBag props = base.SerializeProperties();
 
             // Asset ID
-            if (m_Asset != null)
-                props.SetBytes("asset", m_Asset.ID.ToByteArray());
+            if (Asset != null)
+                props.SetBytes("asset", Asset.ID.ToByteArray());
 
             // Core stats
             props.SetInt("str", Strength);
@@ -279,18 +280,6 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Returns a random string from the string table.
-        /// </summary>
-        /// <param name="key">The key to look up in the table.</param>
-        /// <param name="cause"></param>
-        public string GetRandomString(string key, ScriptableObject cause)
-        {
-            // TODO: Reimplement m_Asset.StringMappings
-
-            return GameController.Content.GetAndParseString(key);
-        }
-
-        /// <summary>
         /// Returns a value indicating whether this character has zero HP or less.
         /// </summary>
         public bool IsDead()
@@ -305,15 +294,6 @@ namespace Finmer.Gameplay
         public bool CanSwallow(Character prey)
         {
             return prey.Size <= Size;
-        }
-
-        [ScriptableFunction]
-        protected static int ExportedGetString(IntPtr state)
-        {
-            Character self = FromLuaNonOptional<Character>(state, 1);
-            Character cause = FromLuaOptional<Character>(state, 3) ?? self;
-            LuaApi.lua_pushstring(state, self.GetRandomString(LuaApi.luaL_checkstring(state, 2), cause));
-            return 1;
         }
 
     }

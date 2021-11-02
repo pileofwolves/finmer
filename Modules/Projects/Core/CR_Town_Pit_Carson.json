@@ -20,28 +20,28 @@
 	"StringMappings": [
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_CARSON_KILL_GENERIC"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_CARSON_KILL_GENERIC"
 		},
 		{
 			"Key": "KILL_GENERIC_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_CARSON_KILL_GENERIC_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_CARSON_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "ATTACK_MISS",
-			"Rule": "PLAYER",
-			"NewValue": "TOWN_PIT_O_CARSON_MISS"
+			"Rule": "PlayerToNpc",
+			"NewKey": "TOWN_PIT_O_CARSON_MISS"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_CARSON_KILL_DIGESTED"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_CARSON_KILL_DIGESTED"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_CARSON_VORE_WIN"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_CARSON_VORE_WIN"
 		}
 	]
 }

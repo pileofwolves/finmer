@@ -23,18 +23,18 @@
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT_POV",
-			"Rule": "SELF",
-			"NewValue": "SQ02_WOLF_VORE_HIT_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_VORE_HIT_POV"
 		},
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "SELF",
-			"NewValue": "SQ02_WOLF_VORE_WIN_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_VORE_WIN_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "SELF",
-			"NewValue": "SQ02_WOLF_KILL_DIGESTED_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_KILL_DIGESTED_POV"
 		}
 	]
 }

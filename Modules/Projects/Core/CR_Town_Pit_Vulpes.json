@@ -23,38 +23,38 @@
 	"StringMappings": [
 		{
 			"Key": "ATTACK_MISS",
-			"Rule": "PLAYER",
-			"NewValue": "TOWN_PIT_O_VULPES_MISS"
+			"Rule": "PlayerToNpc",
+			"NewKey": "TOWN_PIT_O_VULPES_MISS"
 		},
 		{
 			"Key": "KILL_GENERIC_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_KILL_GENERIC_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_KILL_GENERIC"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_KILL_GENERIC"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_KILL_DIGESTED"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_KILL_DIGESTED"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_KILL_DIGESTED_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_VORE_WIN"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_VORE_WIN"
 		},
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_VULPES_VORE_WIN_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_VULPES_VORE_WIN_POV"
 		}
 	]
 }

@@ -23,23 +23,23 @@
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT_POV",
-			"Rule": "SELF",
-			"NewValue": "MQ02_RANDALL_VORE_HIT_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ02_RANDALL_VORE_HIT_POV"
 		},
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "SELF",
-			"NewValue": "MQ02_RANDALL_VORE_WIN_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ02_RANDALL_VORE_WIN_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "SELF",
-			"NewValue": "MQ02_RANDALL_KILL_DIGESTED_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ02_RANDALL_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "PLAYER",
-			"NewValue": "MQ02_RANDALL_KILL_GENERIC"
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ02_RANDALL_KILL_GENERIC"
 		}
 	]
 }

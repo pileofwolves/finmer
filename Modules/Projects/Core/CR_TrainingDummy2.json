@@ -20,13 +20,13 @@
 	"StringMappings": [
 		{
 			"Key": "GRAPPLE_HIT",
-			"Rule": "",
-			"NewValue": "TDUMMY_GRAPPLE_HIT"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_GRAPPLE_HIT"
 		},
 		{
 			"Key": "GRAPPLE_MISS",
-			"Rule": "",
-			"NewValue": "TDUMMY_GRAPPLE_MISS"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_GRAPPLE_MISS"
 		}
 	]
 }

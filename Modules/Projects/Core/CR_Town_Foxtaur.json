@@ -23,28 +23,28 @@
 	"StringMappings": [
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "SELF",
-			"NewValue": "INN_FOXTAUR_VORE_WIN_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "INN_FOXTAUR_VORE_WIN_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "SELF",
-			"NewValue": "INN_FOXTAUR_KILL_DIGESTED_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "INN_FOXTAUR_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "KILL_GENERIC_POV",
-			"Rule": "SELF",
-			"NewValue": "INN_FOXTAUR_KILL_GENERIC_POV"
+			"Rule": "NpcToPlayer",
+			"NewKey": "INN_FOXTAUR_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "PLAYER",
-			"NewValue": "INN_FOXTAUR_KILL_DIGESTED"
+			"Rule": "PlayerToNpc",
+			"NewKey": "INN_FOXTAUR_KILL_DIGESTED"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "PLAYER",
-			"NewValue": "INN_FOXTAUR_KILL_GENERIC"
+			"Rule": "PlayerToNpc",
+			"NewKey": "INN_FOXTAUR_KILL_GENERIC"
 		}
 	]
 }

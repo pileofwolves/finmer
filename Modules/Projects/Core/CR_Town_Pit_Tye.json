@@ -23,23 +23,23 @@
 	"StringMappings": [
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_TYE_KILL_DIGESTED"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_TYE_KILL_DIGESTED"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_TYE_KILL_DIGESTED_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_TYE_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_TYE_VORE_WIN"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_TYE_VORE_WIN"
 		},
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_O_TYE_VORE_WIN_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_O_TYE_VORE_WIN_POV"
 		}
 	]
 }

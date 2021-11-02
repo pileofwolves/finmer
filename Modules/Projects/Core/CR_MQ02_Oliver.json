@@ -20,23 +20,23 @@
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT",
-			"Rule": "PLAYER",
-			"NewValue": "MQ02_OLIVER_VORE_HIT"
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ02_OLIVER_VORE_HIT"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "PLAYER",
-			"NewValue": "MQ02_OLIVER_VORE_WIN"
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ02_OLIVER_VORE_WIN"
 		},
 		{
 			"Key": "PREDPOV_DIGEST",
-			"Rule": "",
-			"NewValue": "MQ02_OLIVER_PREDPOV_DIGEST"
+			"Rule": "Always",
+			"NewKey": "MQ02_OLIVER_PREDPOV_DIGEST"
 		},
 		{
 			"Key": "PREDPOV_ENDO",
-			"Rule": "",
-			"NewValue": "MQ02_OLIVER_PREDPOV_DIGEST"
+			"Rule": "Always",
+			"NewKey": "MQ02_OLIVER_PREDPOV_DIGEST"
 		}
 	]
 }

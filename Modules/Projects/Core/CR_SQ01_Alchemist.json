@@ -23,38 +23,38 @@
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT_POV",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_VORE_HIT_POV"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_VORE_HIT_POV"
 		},
 		{
 			"Key": "VORE_WIN_POV",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_VORE_WIN_POV"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_VORE_WIN_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_KILL_DIGESTED_POV"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "KILL_GENERIC_POV",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_KILL_GENERIC_POV"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_KILL_DIGESTED"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_KILL_DIGESTED"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_KILL_GENERIC"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_KILL_GENERIC"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "",
-			"NewValue": "SQ01_ALCH_VORE_WIN"
+			"Rule": "Always",
+			"NewKey": "SQ01_ALCH_VORE_WIN"
 		}
 	]
 }

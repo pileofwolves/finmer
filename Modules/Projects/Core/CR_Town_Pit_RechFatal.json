@@ -23,8 +23,8 @@
 	"StringMappings": [
 		{
 			"Key": "KILL_DIGESTED_POV",
-			"Rule": "",
-			"NewValue": "TOWN_PIT_RECH_TOKEN_KILL_DIGESTED_POV"
+			"Rule": "Always",
+			"NewKey": "TOWN_PIT_RECH_TOKEN_KILL_DIGESTED_POV"
 		}
 	]
 }

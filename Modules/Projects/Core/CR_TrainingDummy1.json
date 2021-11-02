@@ -20,23 +20,23 @@
 	"StringMappings": [
 		{
 			"Key": "ATTACK_HIT",
-			"Rule": "",
-			"NewValue": "TDUMMY_ATTACK_HIT"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_ATTACK_HIT"
 		},
 		{
 			"Key": "ATTACK_MISS",
-			"Rule": "",
-			"NewValue": "TDUMMY_ATTACK_MISS"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_ATTACK_MISS"
 		},
 		{
 			"Key": "ATTACK_CRIT",
-			"Rule": "",
-			"NewValue": "TDUMMY_ATTACK_CRIT"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_ATTACK_CRIT"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "",
-			"NewValue": "TDUMMY_KILL_GENERIC"
+			"Rule": "Always",
+			"NewKey": "TDUMMY_KILL_GENERIC"
 		}
 	]
 }

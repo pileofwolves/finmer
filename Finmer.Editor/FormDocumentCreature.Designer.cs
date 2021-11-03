@@ -36,7 +36,6 @@
             System.Windows.Forms.Label label10;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.GroupBox fraCombatFlags;
-            System.Windows.Forms.Label label18;
             System.Windows.Forms.Label label17;
             System.Windows.Forms.Label label15;
             System.Windows.Forms.Label label14;
@@ -44,12 +43,13 @@
             System.Windows.Forms.Label label12;
             System.Windows.Forms.Label label4;
             System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label18;
             System.Windows.Forms.GroupBox fraGeneral;
+            System.Windows.Forms.Label label19;
             System.Windows.Forms.Label label16;
             System.Windows.Forms.Label label9;
             System.Windows.Forms.GroupBox fraTags;
-            System.Windows.Forms.Label label19;
-            this.lblCombatOverview = new System.Windows.Forms.Label();
+            System.Windows.Forms.GroupBox fraStringMappings;
             this.assetEquip4 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip3 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip2 = new Finmer.Editor.AssetPickerControl();
@@ -63,6 +63,7 @@
             this.chkFlagNoFight = new System.Windows.Forms.CheckBox();
             this.chkFlagNoVore = new System.Windows.Forms.CheckBox();
             this.chkFlagNoGrapple = new System.Windows.Forms.CheckBox();
+            this.lblCombatOverview = new System.Windows.Forms.Label();
             this.cmbGender = new System.Windows.Forms.ComboBox();
             this.cmbSize = new System.Windows.Forms.ComboBox();
             this.txtAlias = new System.Windows.Forms.TextBox();
@@ -74,6 +75,13 @@
             this.txtGuid = new System.Windows.Forms.TextBox();
             this.txtName = new System.Windows.Forms.TextBox();
             this.txtTags = new System.Windows.Forms.TextBox();
+            this.cmdStringMappingRemove = new System.Windows.Forms.Button();
+            this.cmdStringMappingEdit = new System.Windows.Forms.Button();
+            this.cmdStringMappingAdd = new System.Windows.Forms.Button();
+            this.lsvStringMappings = new System.Windows.Forms.ListView();
+            this.clhKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clhRule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.clhNewKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             label11 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -83,7 +91,6 @@
             label10 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
             fraCombatFlags = new System.Windows.Forms.GroupBox();
-            label18 = new System.Windows.Forms.Label();
             label17 = new System.Windows.Forms.Label();
             label15 = new System.Windows.Forms.Label();
             label14 = new System.Windows.Forms.Label();
@@ -91,11 +98,13 @@
             label12 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
+            label18 = new System.Windows.Forms.Label();
             fraGeneral = new System.Windows.Forms.GroupBox();
+            label19 = new System.Windows.Forms.Label();
             label16 = new System.Windows.Forms.Label();
             label9 = new System.Windows.Forms.Label();
             fraTags = new System.Windows.Forms.GroupBox();
-            label19 = new System.Windows.Forms.Label();
+            fraStringMappings = new System.Windows.Forms.GroupBox();
             fraCombatFlags.SuspendLayout();
             fraGeneral.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudLevel)).BeginInit();
@@ -104,6 +113,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudDex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.nudStr)).BeginInit();
             fraTags.SuspendLayout();
+            fraStringMappings.SuspendLayout();
             this.SuspendLayout();
             // 
             // label11
@@ -206,23 +216,6 @@
             fraCombatFlags.TabIndex = 5;
             fraCombatFlags.TabStop = false;
             fraCombatFlags.Text = "Combat Settings";
-            // 
-            // lblCombatOverview
-            // 
-            this.lblCombatOverview.Location = new System.Drawing.Point(112, 232);
-            this.lblCombatOverview.Name = "lblCombatOverview";
-            this.lblCombatOverview.Size = new System.Drawing.Size(88, 72);
-            this.lblCombatOverview.TabIndex = 17;
-            this.lblCombatOverview.Text = "...";
-            // 
-            // label18
-            // 
-            label18.AutoSize = true;
-            label18.Location = new System.Drawing.Point(16, 216);
-            label18.Name = "label18";
-            label18.Size = new System.Drawing.Size(53, 13);
-            label18.TabIndex = 16;
-            label18.Text = "Summary:";
             // 
             // label17
             // 
@@ -414,6 +407,15 @@
             this.chkFlagNoGrapple.Text = "Cannot Grapple";
             this.chkFlagNoGrapple.UseVisualStyleBackColor = true;
             // 
+            // label18
+            // 
+            label18.AutoSize = true;
+            label18.Location = new System.Drawing.Point(16, 216);
+            label18.Name = "label18";
+            label18.Size = new System.Drawing.Size(53, 13);
+            label18.TabIndex = 16;
+            label18.Text = "Summary:";
+            // 
             // fraGeneral
             // 
             fraGeneral.Controls.Add(label19);
@@ -445,6 +447,22 @@
             fraGeneral.TabIndex = 3;
             fraGeneral.TabStop = false;
             fraGeneral.Text = "General";
+            // 
+            // label19
+            // 
+            label19.Location = new System.Drawing.Point(24, 232);
+            label19.Name = "label19";
+            label19.Size = new System.Drawing.Size(88, 72);
+            label19.TabIndex = 31;
+            label19.Text = "Attack Dice:\r\nDefense Dice:\r\nGrapple Dice:\r\nSwallow Dice:\r\nStruggle Dice:";
+            // 
+            // lblCombatOverview
+            // 
+            this.lblCombatOverview.Location = new System.Drawing.Point(112, 232);
+            this.lblCombatOverview.Name = "lblCombatOverview";
+            this.lblCombatOverview.Size = new System.Drawing.Size(88, 72);
+            this.lblCombatOverview.TabIndex = 17;
+            this.lblCombatOverview.Text = "...";
             // 
             // cmbGender
             // 
@@ -612,9 +630,9 @@
             // fraTags
             // 
             fraTags.Controls.Add(this.txtTags);
-            fraTags.Location = new System.Drawing.Point(344, 336);
+            fraTags.Location = new System.Drawing.Point(16, 392);
             fraTags.Name = "fraTags";
-            fraTags.Size = new System.Drawing.Size(352, 104);
+            fraTags.Size = new System.Drawing.Size(312, 96);
             fraTags.TabIndex = 7;
             fraTags.TabStop = false;
             fraTags.Text = "Script Tags (one per line)";
@@ -626,22 +644,100 @@
             this.txtTags.Multiline = true;
             this.txtTags.Name = "txtTags";
             this.txtTags.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtTags.Size = new System.Drawing.Size(336, 72);
+            this.txtTags.Size = new System.Drawing.Size(296, 64);
             this.txtTags.TabIndex = 0;
             // 
-            // label19
+            // fraStringMappings
             // 
-            label19.Location = new System.Drawing.Point(24, 232);
-            label19.Name = "label19";
-            label19.Size = new System.Drawing.Size(88, 72);
-            label19.TabIndex = 31;
-            label19.Text = "Attack Dice:\r\nDefense Dice:\r\nGrapple Dice:\r\nSwallow Dice:\r\nStruggle Dice:";
+            fraStringMappings.Controls.Add(this.cmdStringMappingRemove);
+            fraStringMappings.Controls.Add(this.cmdStringMappingEdit);
+            fraStringMappings.Controls.Add(this.cmdStringMappingAdd);
+            fraStringMappings.Controls.Add(this.lsvStringMappings);
+            fraStringMappings.Location = new System.Drawing.Point(344, 336);
+            fraStringMappings.Name = "fraStringMappings";
+            fraStringMappings.Size = new System.Drawing.Size(352, 152);
+            fraStringMappings.TabIndex = 8;
+            fraStringMappings.TabStop = false;
+            fraStringMappings.Text = "String Mappings";
+            // 
+            // cmdStringMappingRemove
+            // 
+            this.cmdStringMappingRemove.Enabled = false;
+            this.cmdStringMappingRemove.Image = global::Finmer.Editor.Properties.Resources.cross;
+            this.cmdStringMappingRemove.Location = new System.Drawing.Point(320, 88);
+            this.cmdStringMappingRemove.Name = "cmdStringMappingRemove";
+            this.cmdStringMappingRemove.Size = new System.Drawing.Size(24, 24);
+            this.cmdStringMappingRemove.TabIndex = 16;
+            this.cmdStringMappingRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdStringMappingRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdStringMappingRemove.UseVisualStyleBackColor = true;
+            this.cmdStringMappingRemove.Click += new System.EventHandler(this.cmdStringMappingRemove_Click);
+            // 
+            // cmdStringMappingEdit
+            // 
+            this.cmdStringMappingEdit.Enabled = false;
+            this.cmdStringMappingEdit.Image = global::Finmer.Editor.Properties.Resources.pencil;
+            this.cmdStringMappingEdit.Location = new System.Drawing.Point(320, 56);
+            this.cmdStringMappingEdit.Name = "cmdStringMappingEdit";
+            this.cmdStringMappingEdit.Size = new System.Drawing.Size(24, 24);
+            this.cmdStringMappingEdit.TabIndex = 15;
+            this.cmdStringMappingEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdStringMappingEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdStringMappingEdit.UseVisualStyleBackColor = true;
+            this.cmdStringMappingEdit.Click += new System.EventHandler(this.cmdStringMappingEdit_Click);
+            // 
+            // cmdStringMappingAdd
+            // 
+            this.cmdStringMappingAdd.Image = global::Finmer.Editor.Properties.Resources.plus;
+            this.cmdStringMappingAdd.Location = new System.Drawing.Point(320, 24);
+            this.cmdStringMappingAdd.Name = "cmdStringMappingAdd";
+            this.cmdStringMappingAdd.Size = new System.Drawing.Size(24, 24);
+            this.cmdStringMappingAdd.TabIndex = 14;
+            this.cmdStringMappingAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdStringMappingAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdStringMappingAdd.UseVisualStyleBackColor = true;
+            this.cmdStringMappingAdd.Click += new System.EventHandler(this.cmdStringMappingAdd_Click);
+            // 
+            // lsvStringMappings
+            // 
+            this.lsvStringMappings.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.clhKey,
+            this.clhRule,
+            this.clhNewKey});
+            this.lsvStringMappings.FullRowSelect = true;
+            this.lsvStringMappings.GridLines = true;
+            this.lsvStringMappings.HideSelection = false;
+            this.lsvStringMappings.Location = new System.Drawing.Point(8, 16);
+            this.lsvStringMappings.MultiSelect = false;
+            this.lsvStringMappings.Name = "lsvStringMappings";
+            this.lsvStringMappings.Size = new System.Drawing.Size(304, 128);
+            this.lsvStringMappings.TabIndex = 17;
+            this.lsvStringMappings.UseCompatibleStateImageBehavior = false;
+            this.lsvStringMappings.View = System.Windows.Forms.View.Details;
+            this.lsvStringMappings.SelectedIndexChanged += new System.EventHandler(this.lsvStringMappings_SelectedIndexChanged);
+            this.lsvStringMappings.DoubleClick += new System.EventHandler(this.lsvStringMappings_DoubleClick);
+            // 
+            // clhKey
+            // 
+            this.clhKey.Text = "Key";
+            this.clhKey.Width = 105;
+            // 
+            // clhRule
+            // 
+            this.clhRule.Text = "Rule";
+            this.clhRule.Width = 70;
+            // 
+            // clhNewKey
+            // 
+            this.clhNewKey.Text = "Replacement Key";
+            this.clhNewKey.Width = 105;
             // 
             // FormDocumentCreature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(705, 474);
+            this.ClientSize = new System.Drawing.Size(705, 505);
+            this.Controls.Add(fraStringMappings);
             this.Controls.Add(fraTags);
             this.Controls.Add(fraCombatFlags);
             this.Controls.Add(fraGeneral);
@@ -659,6 +755,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudStr)).EndInit();
             fraTags.ResumeLayout(false);
             fraTags.PerformLayout();
+            fraStringMappings.ResumeLayout(false);
             this.ResumeLayout(false);
 
 		}
@@ -689,5 +786,12 @@
         private AssetPickerControl assetEquip3;
         private AssetPickerControl assetEquip2;
         private AssetPickerControl assetEquip1;
+        private System.Windows.Forms.Button cmdStringMappingRemove;
+        private System.Windows.Forms.Button cmdStringMappingEdit;
+        private System.Windows.Forms.Button cmdStringMappingAdd;
+        private System.Windows.Forms.ListView lsvStringMappings;
+        private System.Windows.Forms.ColumnHeader clhKey;
+        private System.Windows.Forms.ColumnHeader clhRule;
+        private System.Windows.Forms.ColumnHeader clhNewKey;
     }
 }

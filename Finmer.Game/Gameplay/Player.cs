@@ -45,7 +45,7 @@ namespace Finmer.Gameplay
         public int XP { get; private set; }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int RequiredXP => 100 + (Level - 1) * 50;
+        public int RequiredXP => 100 + (Level - 1) * 20;
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int FeatPoints

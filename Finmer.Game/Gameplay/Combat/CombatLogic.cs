@@ -328,6 +328,66 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Implements auto-vore logic for combat participants.
+        /// </summary>
+        /// <remarks>
+        /// In the Editor, creatures can be configured to automatically swallow or be swallowed when they or other participants are
+        /// defeated in combat through a non-vore method, to help reduce logic branches a scene designer needs to take into account.
+        /// </remarks>
+        /// <param name="killer">The participant who killed the victim.</param>
+        /// <param name="victim">The participant who lost all health.</param>
+        public static void HandleAutoVore(Participant killer, Participant victim)
+        {
+            var session = killer.Session;
+            var all_participants = session.Participants;
+
+            // NPC prey
+            var victim_asset = victim.Character.Asset;
+            if (victim_asset != null && !victim.Character.IsAlly && victim_asset.AutoSwallowedByPlayer)
+            {
+                // If the victim is marked as auto-prey, have the player swallow them now.
+                // Find the player participant.
+                Participant predator = all_participants.FirstOrDefault(p => p.IsPlayer() && !p.Character.IsDead());
+                if (predator == null)
+                    return;
+
+                // TODO: Take into account edge cases like predator being occupied (grappling, already swallowed themselves, etc)
+
+                // Proceed with having the player swallow the target
+                Debug.Assert(!victim.IsPlayer() && victim != predator);
+                session.SetVored(predator, victim);
+                CombatDisplay.ShowSimpleMessage(@"vore_win", predator, victim);
+
+                return;
+            }
+
+            // Player prey
+            if (victim.IsPlayer())
+            {
+                // If the victim is the player, and there is an auto-vore pred, have them swallow the player.
+                // Search for the first living predator who is marked as an auto-vore pred - note that this is not necessarily the original killer.
+                Participant predator = all_participants.FirstOrDefault(p =>
+                    !p.Character.IsDead() && !p.Character.IsAlly && p.Character.Asset != null && p.Character.Asset.AutoSwallowPlayer);
+                if (predator == null)
+                    return;
+
+                // Proceed with having the predator swallow the player
+                Debug.Assert(victim != predator);
+                session.SetVored(predator, victim);
+                CombatDisplay.ShowSimpleMessage(@"vore_win", predator, victim);
+            }
+        }
+
+        /// <summary>
+        /// Calculates and returns the amount of XP that the target character would award when defeated.
+        /// </summary>
+        public static int CalculateXP(Character victim)
+        {
+            // Start at 20 XP per kill, multiplying by log(n) for levels above 1
+            return (int)Math.Round((Math.Log(victim.Level) + 1) * 20);
+        }
+
+        /// <summary>
         /// Rolls a set of abstract combat dice (either attack or defense), and returns the set of rolls.
         /// </summary>
         private static List<int> RollCombatDice(int count)

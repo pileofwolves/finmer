@@ -110,6 +110,17 @@ namespace Finmer.Gameplay
             // Run user callbacks
             Session.NotifyCombatEnded();
 
+            // Pay out any collected XP
+            if (Session.TotalXPAward > 0)
+            {
+                // Award XP only if the player actually participated themselves
+                if (m_Player != null && !m_Player.Character.IsDead())
+                    GameController.Session.Player.AwardXP(Session.TotalXPAward);
+
+                // Reset the XP back to zero in case the same session object is reused
+                Session.TotalXPAward = 0;
+            }
+
             // Resume the caller script
             game_session.PopScene();
             game_session.ResumeScript();

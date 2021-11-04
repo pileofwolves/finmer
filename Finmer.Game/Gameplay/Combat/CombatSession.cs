@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Finmer.Gameplay.Scripting;
+using Finmer.Models;
 
 namespace Finmer.Gameplay.Combat
 {
@@ -46,11 +47,6 @@ namespace Finmer.Gameplay.Combat
         /// The amount of XP to award to the player at the end of combat.
         /// </summary>
         public int TotalXPAward { get; set; }
-
-        /// <summary>
-        /// Whether the player is allowed to attempt fleeing.
-        /// </summary>
-        public bool CanFlee { get; set; }
 
         /// <summary>
         /// Gets or sets the participant who currently has the active turn in the combat system.
@@ -173,10 +169,47 @@ namespace Finmer.Gameplay.Combat
             var victim_character = victim.Character;
             Debug.Assert(victim_character.IsDead());
 
-            if (victim_character is Player)
+            // Invoke the appropriate callback
+            if (victim.IsPlayer())
                 OnPlayerKilled?.Invoke(killer, victim);
             else
                 OnCharacterKilled?.Invoke(killer, victim);
+
+            // Check again whether the character is still dead - we allow the above callback to revive them
+            if (!victim_character.IsDead())
+                return;
+
+            // If the victim was not swallowed, there may be auto-vore triggers we need to activate, check now
+            if (!victim.IsSwallowed())
+                CombatLogic.HandleAutoVore(killer, victim);
+
+            // Now that the killer/victim relation is finalized, handle it.
+            // Note that we must check swallowed state again here because any auto-vore triggers may have changed it.
+            if (!victim.IsSwallowed())
+            {
+                // This was a regular kill
+                CombatDisplay.ShowSimpleMessage(@"kill_generic", killer, victim);
+            }
+            else
+            {
+                // This was a vore kill
+                Debug.Assert(victim.Predator == killer);
+                CombatDisplay.ShowSimpleMessage(@"kill_digested", killer, victim);
+
+                // Optional disposal scene if available and enabled by the user
+                var predator_asset = killer.Character.Asset;
+                if (predator_asset != null && predator_asset.PredatorDisposal && UserConfig.PreferScat)
+                    CombatDisplay.ShowSimpleMessage(@"vore_disposal", killer, victim);
+            }
+
+            // If the victim was an enemy, award XP to the player
+            if (!victim_character.IsAlly)
+            {
+                // Store the XP for later, so we can award it all at once at the end of the combat. This prevents the player from
+                // leveling up mid-combat, which looks odd and doesn't help the player since they can't spend points yet anyway.
+                int xp = CombatLogic.CalculateXP(victim_character);
+                TotalXPAward += xp;
+            }
         }
 
         [ScriptableFunction]

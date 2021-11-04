@@ -46,6 +46,9 @@ namespace Finmer.Editor
             // Vore stats
             chkVorePred.Checked = creature.PredatorEnabled;
             chkVoreDigest.Checked = creature.PredatorDigests;
+            chkVoreDisposal.Checked = creature.PredatorDisposal;
+            chkAutoVorePred.Checked = creature.AutoSwallowPlayer;
+            chkAutoVorePrey.Checked = creature.AutoSwallowedByPlayer;
             chkVorePred_CheckedChanged(sender, e); // Make sure to update enabled states
 
             // Combat flags
@@ -83,7 +86,7 @@ namespace Finmer.Editor
             bool mode = chkVorePred.Checked;
             chkVoreDigest.Enabled = mode;
             chkVoreDisposal.Enabled = mode;
-            chkVoreAlwaysSwallow.Enabled = mode;
+            chkAutoVorePred.Enabled = mode;
         }
 
         public override void Flush()
@@ -106,6 +109,9 @@ namespace Finmer.Editor
             // Vore stats
             creature.PredatorEnabled = chkVorePred.Checked;
             creature.PredatorDigests = chkVoreDigest.Checked;
+            creature.PredatorDisposal = chkVoreDisposal.Checked;
+            creature.AutoSwallowPlayer = chkAutoVorePred.Checked;
+            creature.AutoSwallowedByPlayer = chkAutoVorePrey.Checked;
 
             // Combat flags
             var flags = ECharacterFlags.None;

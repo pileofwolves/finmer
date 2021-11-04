@@ -54,7 +54,7 @@
             this.assetEquip3 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip2 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip1 = new Finmer.Editor.AssetPickerControl();
-            this.chkVoreAlwaysSwallow = new System.Windows.Forms.CheckBox();
+            this.chkAutoVorePred = new System.Windows.Forms.CheckBox();
             this.chkVoreDisposal = new System.Windows.Forms.CheckBox();
             this.chkVoreDigest = new System.Windows.Forms.CheckBox();
             this.chkFlagSkipTurns = new System.Windows.Forms.CheckBox();
@@ -82,6 +82,7 @@
             this.clhKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhRule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhNewKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.chkAutoVorePrey = new System.Windows.Forms.CheckBox();
             label11 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -190,6 +191,7 @@
             // 
             // fraCombatFlags
             // 
+            fraCombatFlags.Controls.Add(this.chkAutoVorePrey);
             fraCombatFlags.Controls.Add(label17);
             fraCombatFlags.Controls.Add(label15);
             fraCombatFlags.Controls.Add(label14);
@@ -199,7 +201,7 @@
             fraCombatFlags.Controls.Add(this.assetEquip2);
             fraCombatFlags.Controls.Add(this.assetEquip1);
             fraCombatFlags.Controls.Add(label12);
-            fraCombatFlags.Controls.Add(this.chkVoreAlwaysSwallow);
+            fraCombatFlags.Controls.Add(this.chkAutoVorePred);
             fraCombatFlags.Controls.Add(label4);
             fraCombatFlags.Controls.Add(this.chkVoreDisposal);
             fraCombatFlags.Controls.Add(label3);
@@ -298,15 +300,15 @@
             label12.TabIndex = 7;
             label12.Text = "Equipment:";
             // 
-            // chkVoreAlwaysSwallow
+            // chkAutoVorePred
             // 
-            this.chkVoreAlwaysSwallow.AutoSize = true;
-            this.chkVoreAlwaysSwallow.Location = new System.Drawing.Point(184, 120);
-            this.chkVoreAlwaysSwallow.Name = "chkVoreAlwaysSwallow";
-            this.chkVoreAlwaysSwallow.Size = new System.Drawing.Size(144, 17);
-            this.chkVoreAlwaysSwallow.TabIndex = 3;
-            this.chkVoreAlwaysSwallow.Text = "Swallow Defeated Player";
-            this.chkVoreAlwaysSwallow.UseVisualStyleBackColor = true;
+            this.chkAutoVorePred.AutoSize = true;
+            this.chkAutoVorePred.Location = new System.Drawing.Point(184, 120);
+            this.chkAutoVorePred.Name = "chkAutoVorePred";
+            this.chkAutoVorePred.Size = new System.Drawing.Size(144, 17);
+            this.chkAutoVorePred.TabIndex = 3;
+            this.chkAutoVorePred.Text = "Swallow Defeated Player";
+            this.chkAutoVorePred.UseVisualStyleBackColor = true;
             // 
             // label4
             // 
@@ -732,6 +734,16 @@
             this.clhNewKey.Text = "Replacement Key";
             this.clhNewKey.Width = 105;
             // 
+            // chkAutoVorePrey
+            // 
+            this.chkAutoVorePrey.AutoSize = true;
+            this.chkAutoVorePrey.Location = new System.Drawing.Point(176, 144);
+            this.chkAutoVorePrey.Name = "chkAutoVorePrey";
+            this.chkAutoVorePrey.Size = new System.Drawing.Size(156, 17);
+            this.chkAutoVorePrey.TabIndex = 16;
+            this.chkAutoVorePrey.Text = "Swallowed When Defeated";
+            this.chkAutoVorePrey.UseVisualStyleBackColor = true;
+            // 
             // FormDocumentCreature
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -772,7 +784,7 @@
 		private System.Windows.Forms.TextBox txtTags;
 		private System.Windows.Forms.TextBox txtAlias;
 		private System.Windows.Forms.ComboBox cmbGender;
-        private System.Windows.Forms.CheckBox chkVoreAlwaysSwallow;
+        private System.Windows.Forms.CheckBox chkAutoVorePred;
         private System.Windows.Forms.CheckBox chkVoreDisposal;
         private System.Windows.Forms.CheckBox chkVoreDigest;
         private System.Windows.Forms.CheckBox chkVorePred;
@@ -793,5 +805,6 @@
         private System.Windows.Forms.ColumnHeader clhKey;
         private System.Windows.Forms.ColumnHeader clhRule;
         private System.Windows.Forms.ColumnHeader clhNewKey;
+        private System.Windows.Forms.CheckBox chkAutoVorePrey;
     }
 }

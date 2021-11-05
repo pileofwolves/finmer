@@ -137,11 +137,12 @@ namespace Finmer.Core.Assets
 
             // Vore stats
             outstream.WriteBooleanProperty("IsPredator", PredatorEnabled);
+            outstream.WriteBooleanProperty("AutoVorePrey", AutoSwallowedByPlayer);
             if (PredatorEnabled)
             {
+                outstream.WriteBooleanProperty("AutoVorePredator", AutoSwallowPlayer);
                 outstream.WriteBooleanProperty("PredatorDigests", PredatorDigests);
                 outstream.WriteBooleanProperty("PredatorDisposal", PredatorDisposal);
-                outstream.WriteBooleanProperty("PredatorAlwaysSwallowPlayer", AutoSwallowPlayer);
             }
 
             // String re-mappings
@@ -185,17 +186,29 @@ namespace Finmer.Core.Assets
 
             // Vore stats
             PredatorEnabled = instream.ReadBooleanProperty("IsPredator");
+
+            // Auto-vore prey property is included as of v13
+            if (version >= 13)
+                AutoSwallowedByPlayer = instream.ReadBooleanProperty("AutoVorePrey");
+
             if (PredatorEnabled && version <= 10)
             {
                 // Version 10
                 PredatorDigests = instream.ReadBooleanProperty("DigestsPrey");
             }
-            else if (PredatorEnabled)
+            else if (PredatorEnabled && version <= 12)
             {
-                // Version 11
+                // Version 11/12
                 PredatorDigests = instream.ReadBooleanProperty("PredatorDigests");
                 PredatorDisposal = instream.ReadBooleanProperty("PredatorDisposal");
                 AutoSwallowPlayer = instream.ReadBooleanProperty("PredatorAlwaysSwallowPlayer");
+            }
+            else if (PredatorEnabled)
+            {
+                // Version 13
+                AutoSwallowPlayer = instream.ReadBooleanProperty("AutoVorePredator");
+                PredatorDigests = instream.ReadBooleanProperty("PredatorDigests");
+                PredatorDisposal = instream.ReadBooleanProperty("PredatorDisposal");
             }
 
             // String re-mappings

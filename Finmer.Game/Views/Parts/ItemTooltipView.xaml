@@ -8,7 +8,9 @@
     mc:Ignorable="d"
     Loaded="Tooltip_OnLoaded"
     d:DesignHeight="200" d:DesignWidth="300"
-    d:DataContext="{d:DesignInstance gp:Item}">
+    d:DataContext="{d:DesignInstance gp:Item}"
+    DataContextChanged="ItemTooltipView_OnContextchanged">
+    
     <StackPanel
         MaxWidth="300">
         <TextBlock

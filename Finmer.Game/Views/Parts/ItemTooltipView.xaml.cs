@@ -12,6 +12,8 @@ using Finmer.Gameplay;
 using Finmer.Utility;
 using System;
 using System.Windows;
+using System.ComponentModel;
+using System.Diagnostics;
 using System.Windows.Controls;
 using System.Windows.Documents;
 using System.Windows.Media;
@@ -26,6 +28,8 @@ namespace Finmer.Views
     public partial class ItemTooltipView
     {
 
+        private WeakReference<ItemTooltipView> m_CurrentTip;
+
         public ItemTooltipView()
         {
             InitializeComponent();
@@ -36,6 +40,21 @@ namespace Finmer.Views
             // Regenerate the tooltip
             if (DataContext != null)
                 CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
+        }
+
+        private void ItemTooltipView_OnContextchanged(object sender, DependencyPropertyChangedEventArgs e) 
+        {
+            ItemTooltipView tip = DataContext as ItemTooltipView;
+            Debug.Assert(tip != null);
+
+            if (m_CurrentTip != null && m_CurrentTip.TryGetTarget(out ItemTooltipView old_tip))
+                PropertyChangedEventManager.RemoveHandler(old_tip, Tooltip_PropertyChanged, String.Empty);
+        }
+
+        private void Tooltip_PropertyChanged(object sender, PropertyChangedEventArgs e) 
+        {
+            if (!m_CurrentTip.TryGetTarget(out ItemTooltipView tip))
+                return;
         }
 
         private static void CreateTooltipContent(AssetItem asset, InlineCollection parts)
@@ -216,6 +235,10 @@ namespace Finmer.Views
             return container;
         }
 
+        private void UserControl_DataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
     }
 
 }

@@ -17,6 +17,7 @@
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": false,
+	"AutoVorePrey": false,
 	"StringMappings": [
 		{
 			"Key": "GRAPPLE_HIT",

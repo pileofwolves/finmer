@@ -17,9 +17,10 @@
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
-	"PredatorDisposal": false,
-	"PredatorAlwaysSwallowPlayer": false,
+	"PredatorDisposal": true,
 	"StringMappings": [
 		{
 			"Key": "VORE_HIT_POV",

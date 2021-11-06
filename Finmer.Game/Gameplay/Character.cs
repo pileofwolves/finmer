@@ -225,6 +225,7 @@ namespace Finmer.Gameplay
                 props.SetInt("wis", creature.Wits);
                 props.SetInt("flags", creature.Flags);
                 props.SetInt("level", creature.Level);
+                props.SetInt("size", (int)creature.Size);
                 props.SetBool("predator", creature.PredatorEnabled);
                 props.SetBool("predator_digest", creature.PredatorDigests);
                 props.SetNestedPropertyBag("eqp_0", Item.FromAsset(context, creature.Equipment[0])?.SerializeProperties());

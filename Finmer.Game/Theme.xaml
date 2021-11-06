@@ -935,7 +935,8 @@
         <Setter Property="ItemsPanel">
             <Setter.Value>
                 <ItemsPanelTemplate>
-                    <VirtualizingStackPanel IsItemsHost="True"
+                    <VirtualizingStackPanel
+                        IsItemsHost="True"
                         VirtualizationMode="Recycling" />
                 </ItemsPanelTemplate>
             </Setter.Value>
@@ -952,8 +953,7 @@
                             Padding="{TemplateBinding Control.Padding}"
                             Focusable="False">
                             <ItemsPresenter
-                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}"
-                                Margin="0,0,5,0" />
+                                SnapsToDevicePixels="{TemplateBinding UIElement.SnapsToDevicePixels}" />
                         </ScrollViewer>
                     </Border>
                 </ControlTemplate>

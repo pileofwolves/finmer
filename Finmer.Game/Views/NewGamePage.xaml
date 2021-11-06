@@ -8,17 +8,25 @@
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="800">
     <Grid>
-        <StackPanel Orientation="Vertical" Margin="20" VerticalAlignment="Top" HorizontalAlignment="Center">
-            <TextBlock Style="{StaticResource TextBlockLargest}" Text="Create a Character" HorizontalAlignment="Center" />
-            <v:CarouselView Margin="0,20,0,0" MaxWidth="600" x:Name="NewGameCarousel" />
+        <StackPanel
+            Margin="20"
+            Orientation="Vertical"
+            VerticalAlignment="Top"
+            HorizontalAlignment="Center">
+            <TextBlock
+                Style="{StaticResource TextBlockLargest}"
+                Text="Create a Character"
+                HorizontalAlignment="Center" />
+            <v:CarouselView
+                x:Name="NewGameCarousel"
+                Margin="0,40,0,0"
+                MaxWidth="600" />
         </StackPanel>
-        <!--<Grid Width="400" HorizontalAlignment="Center" Margin="20" VerticalAlignment="Bottom">
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="Auto" />
-            </Grid.ColumnDefinitions>
-        </Grid>-->
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Bottom" Orientation="Horizontal" Margin="20">
+        <StackPanel
+            HorizontalAlignment="Center"
+            VerticalAlignment="Bottom"
+            Orientation="Horizontal"
+            Margin="20">
             <StackPanel.Resources>
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource {x:Type Button}}">
                     <Setter Property="Margin" Value="8,4,8,4" />

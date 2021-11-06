@@ -10,6 +10,7 @@ using System;
 using System.Windows;
 using System.Windows.Controls;
 using Finmer.Core;
+using Finmer.Gameplay;
 
 namespace Finmer.Views
 {
@@ -21,7 +22,6 @@ namespace Finmer.Views
     {
 
         private bool m_CanGoNext;
-        private bool m_Setup = true;
 
         public CharCreateBasic()
         {
@@ -30,63 +30,50 @@ namespace Finmer.Views
 
         public override bool CanGoNext => m_CanGoNext;
 
-        private void CharCreateViewBase_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            NameInput.Text = InitialSaveData.GetString("name");
-            SpeciesInput.Text = InitialSaveData.GetString("species");
-            if (!String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender")))
+            // Copy data that was already cached in the save data
+            NameInput.Text = InitialSaveData.GetString(@"name");
+            if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"gender")))
             {
-                GenderInputMale.IsChecked = InitialSaveData.GetString("gender").Equals("Male");
-                GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
-            }
-            m_Setup = false;
-
-            // Apply some default settings to enable quickly clicking through to the game
-            //if (GameController.DebugMode)
-            {
-                NameInput.Text = "Snack";
-                SpeciesInput.SelectedIndex = CoreUtility.Rng.Next(SpeciesInput.Items.Count);
-                // Make a coin flip to see if it's male or female randomly selected, then set the gender accordingly.
+                // Randomly select one of the genders by default
                 int gender_flip = CoreUtility.Rng.Next(2);
-                GenderInputMale.IsChecked = (gender_flip == 0);
+                GenderInputMale.IsChecked = gender_flip == 0;
                 GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
-                ValidateForm();
             }
+            else
+            {
+                GenderInputMale.IsChecked = InitialSaveData.GetString(@"gender").Equals("Male");
+                GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
+            }
+
+            // When debugging, apply default settings to enable quickly clicking through to the game
+            if (GameController.DebugMode && String.IsNullOrWhiteSpace(NameInput.Text))
+                NameInput.Text = "Snack";
         }
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (m_Setup)
-                return;
-
-            InitialSaveData.SetString("name", NameInput.Text);
-            ValidateForm();
-        }
-
-        private void cmbSpecies_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            if (m_Setup) 
-                return;
-
-            InitialSaveData.SetString("species", (string)SpeciesInput.SelectedValue);
+            InitialSaveData.SetString(@"name", NameInput.Text);
             ValidateForm();
         }
 
         private void optGender_Checked(object sender, RoutedEventArgs e)
         {
-            if (m_Setup) 
-                return;
+            RadioButton gender_option = (RadioButton)sender;
 
-            InitialSaveData.SetString("gender", (GenderInputMale.IsChecked ?? false) ? "Male" : "Female");
+            // If this option was actually ticked (it might be toggled off instead) then update the selected gender
+            if (gender_option.IsChecked ?? false)
+                InitialSaveData.SetString(@"gender", (string)gender_option.Tag);
+
             ValidateForm();
         }
 
         private void ValidateForm()
         {
             m_CanGoNext =
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("name")) && 
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("species")) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString("gender"));
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"name")) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"gender"));
             OnPropertyChanged(nameof(CanGoNext));
         }
 

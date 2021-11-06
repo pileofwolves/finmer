@@ -27,7 +27,7 @@ namespace Finmer.Gameplay
         public const int k_AbilityScorePointsAllowed = 8;
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
-        [TextProperty("species")]
+        [TextProperty(@"species")]
         public string Species
         {
             get => m_Species;
@@ -37,6 +37,18 @@ namespace Finmer.Gameplay
                 OnPropertyChanged();
             }
         }
+
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        [TextProperty(@"speciesplural")]
+        public string SpeciesPlural { get; set; }
+
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        [TextProperty(@"fur")]
+        public string CoatNoun { get; set; }
+
+        [ScriptableProperty(EScriptAccess.ReadWrite)]
+        [TextProperty(@"furry")]
+        public string CoatAdjective { get; set; }
 
         [ScriptableProperty(EScriptAccess.Read)]
         public bool PreferEndo { get; private set; }
@@ -167,6 +179,9 @@ namespace Finmer.Gameplay
         {
             // Player stats
             m_Species = template.GetString("species");
+            SpeciesPlural = template.GetString(@"species_plural");
+            CoatNoun = template.GetString(@"species_coat_n");
+            CoatAdjective = template.GetString(@"species_coat_a");
             Location = template.GetString("location");
             PreferEndo = template.GetBool("endo");
 
@@ -235,6 +250,9 @@ namespace Finmer.Gameplay
             PropertyBag props = base.SerializeProperties();
 
             props.SetString("species", m_Species);
+            props.SetString(@"species_plural", SpeciesPlural);
+            props.SetString(@"species_coat_n", CoatNoun);
+            props.SetString(@"species_coat_a", CoatAdjective);
             props.SetBool("endo", PreferEndo);
             props.SetInt("level", Level);
             props.SetInt("xp", XP);

@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:vb="clr-namespace:Finmer.Views.Base"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:views="clr-namespace:Finmer.Views"
     mc:Ignorable="d"
     d:DesignHeight="400" d:DesignWidth="600"
-    Loaded="CharCreateViewBase_Loaded">
+    Loaded="Page_Loaded">
     <UserControl.Resources>
         <!-- Collection of ability scores implemented in the game -->
         <vm:AbilityPointCollectionViewModel x:Key="AbilityCollection">
@@ -23,19 +24,21 @@
                 Description="Physical fortitude. Each Body point grants one Health point." />
             <vm:AbilityPointViewModel
                 Name="Wits"
-                Description="Mental prowess. Affects conversation and perception." />
+                Description="Mental prowess. Affects turn order and perception." />
         </vm:AbilityPointCollectionViewModel>
     </UserControl.Resources>
     <StackPanel
         Width="500"
         HorizontalAlignment="Center"
-        Margin="20"
         Orientation="Vertical">
-
-        <!-- Page headers -->
+        <views:DotProgressIndicatorView
+            HorizontalAlignment="Center"
+            Margin="0,0,0,6"
+            DotCount="3"
+            FilledCount="3" />
         <TextBlock
             Style="{StaticResource TextBlockLarge}"
-            Text="Ability Points (2/2)"
+            Text="Ability Points"
             HorizontalAlignment="Center" />
         <TextBlock
             Style="{StaticResource TextBlockSubtle}"

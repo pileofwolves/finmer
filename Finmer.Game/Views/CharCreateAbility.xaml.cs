@@ -51,12 +51,12 @@ namespace Finmer.Views
             ValidateForm();
         }
 
-        private void CharCreateViewBase_Loaded(object sender, RoutedEventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
-            m_Abilities[0].Reset(InitialSaveData.GetInt("str"));
-            m_Abilities[1].Reset(InitialSaveData.GetInt("dex"));
-            m_Abilities[2].Reset(InitialSaveData.GetInt("con"));
-            m_Abilities[3].Reset(InitialSaveData.GetInt("wis"));
+            m_Abilities[0].Reset(InitialSaveData.GetInt(@"str"));
+            m_Abilities[1].Reset(InitialSaveData.GetInt(@"dex"));
+            m_Abilities[2].Reset(InitialSaveData.GetInt(@"con"));
+            m_Abilities[3].Reset(InitialSaveData.GetInt(@"wis"));
 
             // In debug mode, roll random stats when the page opens, to allow quickly clicking through to the game
             if (GameController.DebugMode)
@@ -69,10 +69,10 @@ namespace Finmer.Views
         private void ValidateForm()
         {
             // Update the player save data with the new settings
-            InitialSaveData.SetInt("str", m_Abilities[0].Value);
-            InitialSaveData.SetInt("dex", m_Abilities[1].Value);
-            InitialSaveData.SetInt("con", m_Abilities[2].Value);
-            InitialSaveData.SetInt("wis", m_Abilities[3].Value);
+            InitialSaveData.SetInt(@"str", m_Abilities[0].Value);
+            InitialSaveData.SetInt(@"dex", m_Abilities[1].Value);
+            InitialSaveData.SetInt(@"con", m_Abilities[2].Value);
+            InitialSaveData.SetInt(@"wis", m_Abilities[3].Value);
 
             // Update points total
             OnPropertyChanged(nameof(PointsLeftText));

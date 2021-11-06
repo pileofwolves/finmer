@@ -73,9 +73,12 @@ namespace Finmer.Views
                     m_CurrentPage = new CharCreateBasic();
                     break;
                 case 2:
-                    m_CurrentPage = new CharCreateAbility();
+                    m_CurrentPage = new CharCreateSpecies();
                     break;
                 case 3:
+                    m_CurrentPage = new CharCreateAbility();
+                    break;
+                case 4:
                     DoBeginGame();
                     return;
                 default:

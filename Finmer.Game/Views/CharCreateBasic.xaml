@@ -4,55 +4,56 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
     xmlns:vb="clr-namespace:Finmer.Views.Base"
     mc:Ignorable="d"
-    d:DesignHeight="600" d:DesignWidth="600" Loaded="CharCreateViewBase_Loaded">
-    <StackPanel Width="400" HorizontalAlignment="Center" Margin="20" Orientation="Vertical">
-        <TextBlock Style="{StaticResource TextBlockLarge}" Text="Basics (1/2)" HorizontalAlignment="Center" />
-        <TextBlock Style="{StaticResource TextBlockSubtle}" Text="Let's get acquainted." Margin="0,0,0,30" HorizontalAlignment="Center" />
+    d:DesignHeight="400" d:DesignWidth="600"
+    Loaded="Page_Loaded">
+    <UserControl.Resources>
+        <Style x:Key="Separator" TargetType="Grid">
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel
+        Width="400"
+        HorizontalAlignment="Center"
+        Orientation="Vertical">
+        <v:DotProgressIndicatorView
+            HorizontalAlignment="Center"
+            Margin="0,0,0,6"
+            DotCount="3"
+            FilledCount="1" />
+        <TextBlock
+            Style="{StaticResource TextBlockLarge}"
+            Text="Basics"
+            HorizontalAlignment="Center" />
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="Let's get acquainted."
+            HorizontalAlignment="Center" />
 
-        <TextBlock Style="{StaticResource TextBlockDefault}" Text="Name:" />
-        <TextBlock Style="{StaticResource TextBlockSubtle}" Text="For best results, use a short name, like a nickname." />
-        <TextBox MaxLength="30" x:Name="NameInput" TextChanged="txtName_TextChanged" />
+        <Grid Style="{StaticResource Separator}" />
 
-        <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Species:" />
-        <TextBlock Style="{StaticResource TextBlockSubtle}"
-            Text="Focused mostly on furries right now." />
-        <!--<TextBox MaxLength="20" CharacterCasing="Lower" Text="{Binding Species, Mode=TwoWay}" />-->
-        <ComboBox x:Name="SpeciesInput" SelectionChanged="cmbSpecies_SelectionChanged" SelectedValuePath="Content" IsEditable="False">
-            <ComboBoxItem Content="bear" />
-            <ComboBoxItem Content="cat" />
-            <ComboBoxItem Content="cheetah" />
-            <ComboBoxItem Content="dog" />
-            <ComboBoxItem Content="fennec" />
-            <ComboBoxItem Content="fox" />
-            <ComboBoxItem Content="goat" />
-            <ComboBoxItem Content="husky" />
-            <ComboBoxItem Content="horse" />
-            <ComboBoxItem Content="hyena" />
-            <ComboBoxItem Content="jackal" />
-            <ComboBoxItem Content="jaguar" />
-            <ComboBoxItem Content="leopard" />
-            <ComboBoxItem Content="lion" />
-            <ComboBoxItem Content="mouse" />
-            <ComboBoxItem Content="otter" />
-            <ComboBoxItem Content="panda" />
-            <ComboBoxItem Content="panther" />
-            <ComboBoxItem Content="possum" />
-            <ComboBoxItem Content="rabbit" />
-            <ComboBoxItem Content="raccoon" />
-            <ComboBoxItem Content="ram" />
-            <ComboBoxItem Content="rat" />
-            <ComboBoxItem Content="sergal" />
-            <ComboBoxItem Content="shepherd" />
-            <ComboBoxItem Content="tiger" />
-            <ComboBoxItem Content="wolf" />
-        </ComboBox>
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Name:" />
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="For best results, use a short name, like a nickname." />
+        <TextBox
+            x:Name="NameInput"
+            MaxLength="30"
+            TextChanged="txtName_TextChanged" />
 
-        <TextBlock Margin="0,30,0,0" Style="{StaticResource TextBlockDefault}" Text="Sex:" />
-        <TextBlock Style="{StaticResource TextBlockSubtle}"
-            Text="Mostly aesthetic (pronouns etc.) but can affect dialogue." />
-        <RadioButton x:Name="GenderInputMale" Checked="optGender_Checked">Male</RadioButton>
-        <RadioButton x:Name="GenderInputFemale" Checked="optGender_Checked">Female</RadioButton>
+        <Grid Style="{StaticResource Separator}" />
+
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Sex:" />
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="Primarily affects pronouns, but can influence dialogue." />
+        <RadioButton x:Name="GenderInputMale" Tag="Male" Checked="optGender_Checked">Male</RadioButton>
+        <RadioButton x:Name="GenderInputFemale" Tag="Female" Checked="optGender_Checked">Female</RadioButton>
     </StackPanel>
 </vb:CharCreateViewBase>

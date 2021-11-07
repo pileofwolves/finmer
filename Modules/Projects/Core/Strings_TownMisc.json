@@ -57,11 +57,11 @@
 		{
 			"Key": "SHOP_GENERIC_BUY",
 			"Text": [
-				"\"For that {{item}}, I ask only {{item.value}} coins.\"",
-				"\"For you, friend, that'll be {{item.value}} coins.\"",
-				"\"How does {{item.value}} coins sound for that?\"",
-				"\"A fine choice. What do you say to {{item.value}} coins?\"",
-				"\"A {{item}}, of course. How's {{item.value}} coins?\""
+				"\"For that {item}, I ask only {item.value} coins.\"",
+				"\"For you, friend, that'll be {item.value} coins.\"",
+				"\"How does {item.value} coins sound for that?\"",
+				"\"A fine choice. What do you say to {item.value} coins?\"",
+				"\"A {item}, of course. How's {item.value} coins?\""
 			]
 		},
 		{
@@ -73,7 +73,7 @@
 		{
 			"Key": "SHOP_GENERIC_CANNOT_SELL",
 			"Text": [
-				"\"Oh, no, I can't buy that {{item}}. Sorry.\""
+				"\"Oh, no, I can't buy that {item}. Sorry.\""
 			]
 		},
 		{
@@ -87,7 +87,7 @@
 		{
 			"Key": "SHOP_GENERIC_SELL",
 			"Text": [
-				"\"Hmm, for your {{item}}, how about this?\"",
+				"\"Hmm, for your {item}, how about this?\"",
 				"\"Would this be an acceptable offer?\""
 			]
 		},

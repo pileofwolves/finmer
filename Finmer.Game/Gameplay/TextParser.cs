@@ -39,7 +39,7 @@ namespace Finmer.Gameplay
         public static void SetVariable(string key, string value)
         {
             // Add a prefix/postfix to the key so it looks like a grammar tag
-            string grammar_tag = $"{{{{!{key}}}}}";
+            string grammar_tag = $"{{!{key}}}";
 
             // Register the tag
             s_Variables.Remove(grammar_tag);
@@ -153,11 +153,13 @@ namespace Finmer.Gameplay
             var index_end = 0;
             while (true)
             {
-                // Search the text for tags enclosed by double curly braces
-                int index_start = raw.IndexOf("{{", index_end, StringComparison.InvariantCulture);
-                if (index_start == -1) break;
-                index_end = raw.IndexOf("}}", index_start, StringComparison.InvariantCulture);
-                if (index_end == -1) break;
+                // Search the text for tags enclosed by curly braces
+                int index_start = raw.IndexOf('{', index_end);
+                if (index_start == -1)
+                    break;
+                index_end = raw.IndexOf('}', index_start);
+                if (index_end == -1)
+                    break;
 
                 // Handle this grammar tag
                 string command = raw.Substring(index_start + 2, index_end - index_start - 2);
@@ -175,10 +177,10 @@ namespace Finmer.Gameplay
 
         private static string ProcessGrammarTag(string command)
         {
-            // Randomizer command
+            // Randomized expression
             if (command.StartsWith("?"))
             {
-                // Find randomizer substrings, separated with a pipe character
+                // Find candidate substrings, separated with a pipe character
                 string[] random_parts = command.Split(new [] { '|' }, StringSplitOptions.RemoveEmptyEntries);
                 if (random_parts.Length >= 2)
                 {
@@ -189,7 +191,7 @@ namespace Finmer.Gameplay
                     return random_parts[CoreUtility.Rng.Next(random_parts.Length)];
                 }
 
-                return "{{invalid randomizer expression}}";
+                return "{invalid randomized expression}";
             }
 
             // This is a context-based command; find the context key and parameter
@@ -200,7 +202,7 @@ namespace Finmer.Gameplay
             // Find the context for this key
             string context_key = command.Substring(0, index_split);
             if (!s_Contexts.TryGetValue(context_key, out Context context))
-                return $"{{{{undefined context '{context_key}'}}}}";
+                return $"{{undefined context '{context_key}'}}";
 
             // Short form: If no split is found, and only the context name is present, then assume the Alias property is desired.
             if (index_split == command.Length)
@@ -209,7 +211,7 @@ namespace Finmer.Gameplay
             // Get the parameter after the dot/space
             string parameter = command.Substring(index_split + 1, command.Length - index_split - 1);
             if (String.IsNullOrWhiteSpace(parameter))
-                return "{{invalid parameter}}";
+                return "{invalid parameter}";
 
             // Property access with a dot
             if (command[index_split] == '.')
@@ -227,7 +229,7 @@ namespace Finmer.Gameplay
                 return value;
             }
 
-            return $"{{{{context '{context.Subject.Name}' has no property '{key}'}}}}";
+            return $"{{context '{context.Subject.Name}' has no property '{key}'}}";
         }
 
         private static string Conjugate(string article, string verb)

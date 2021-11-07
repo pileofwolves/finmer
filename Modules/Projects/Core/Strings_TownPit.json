@@ -18,7 +18,7 @@
 		{
 			"Key": "TOWN_PIT_DESK_CH_DENY_BELLY",
 			"Text": [
-				"As you express an interest in taking on the next challenge, Venna, who was patiently working at the desk as ever, casually lifts herself up from her chair and casts a glance at your swollen stomach. \"Tcch,\" she huffs, comfortably plopping herself down again, before continuing. \"How about you {{?|sleep off that gut|finish digesting your food|get rid of that %furry bulge}}, and then we'll talk?\""
+				"As you express an interest in taking on the next challenge, Venna, who was patiently working at the desk as ever, casually lifts herself up from her chair and casts a glance at your swollen stomach. \"Tcch,\" she huffs, comfortably plopping herself down again, before continuing. \"How about you {?|sleep off that gut|finish digesting your food|get rid of that %furry bulge}, and then we'll talk?\""
 			]
 		},
 		{
@@ -96,8 +96,8 @@
 		{
 			"Key": "TOWN_PIT_DESK_REWARD",
 			"Text": [
-				"The vixen nods, and fishes something from a drawer. With practiced precision, she tosses you a small pouch filled with coins, and you catch it. {{?|\"Good work down there, yeah? I expect I'll see you again some time in the future, then.\"|\"How much is left of them in there? Never mind, I don't want to know.\"}}",
-				"The vixen nods, and {{?|snatches|procures}} a small pouch filled with coins from a drawer, then nonchalantly hands it to you. \"And I even had such high hopes for that fellow,\" she states dryly, {{?|\"no disrespect to your achievements of course.\"|\"I thought you might've looked cute as padding on that waist of theirs. But I like being proven wrong.\"}}"
+				"The vixen nods, and fishes something from a drawer. With practiced precision, she tosses you a small pouch filled with coins, and you catch it. {?|\"Good work down there, yeah? I expect I'll see you again some time in the future, then.\"|\"How much is left of them in there? Never mind, I don't want to know.\"}",
+				"The vixen nods, and {?|snatches|procures} a small pouch filled with coins from a drawer, then nonchalantly hands it to you. \"And I even had such high hopes for that fellow,\" she states dryly, {?|\"no disrespect to your achievements of course.\"|\"I thought you might've looked cute as padding on that waist of theirs. But I like being proven wrong.\"}"
 			]
 		},
 		{
@@ -213,7 +213,7 @@
 		{
 			"Key": "TOWN_PIT_LOWER_INTRODUCE",
 			"Text": [
-				"Venna raises one paw up high and shouts, \"Everyone, allow me to introduce today's newcomer! This is {{player.name}}, and {{player.subject3p}}'ll be entertaining you tonight.\" You meet the eyes of several patrons around the room, their expressions varying from disinterested to gleeful, and you consider how to respond."
+				"Venna raises one paw up high and shouts, \"Everyone, allow me to introduce today's newcomer! This is {player.name}, and {player.subject3p}'ll be entertaining you tonight.\" You meet the eyes of several patrons around the room, their expressions varying from disinterested to gleeful, and you consider how to respond."
 			]
 		},
 		{

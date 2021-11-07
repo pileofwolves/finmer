@@ -24,7 +24,7 @@
 		{
 			"Key": "TOWN_FIRST",
 			"Text": [
-				"You wake up with a start, gasping for breath, coughing and sputtering. Awkwardly, you brace yourself against the floor and try - and fail - to push yourself up in a vain attempt to make your head stop spinning. {{player}} - that's who you are. You remember... nothing... only that you are a {{player.species}} named {{player}}.\\n\\nThe moment you vaguely register the sound of approaching footsteps, an arm wraps around your shoulders. You flail in wild panic, but you hear a loud voice just above you. \"Whoa, calm down!\""
+				"You wake up with a start, gasping for breath, coughing and sputtering. Awkwardly, you brace yourself against the floor and try - and fail - to push yourself up in a vain attempt to make your head stop spinning. {player} - that's who you are. You remember... nothing... only that you are a {player.species} named {player}.\\n\\nThe moment you vaguely register the sound of approaching footsteps, an arm wraps around your shoulders. You flail in wild panic, but you hear a loud voice just above you. \"Whoa, calm down!\""
 			]
 		},
 		{
@@ -42,7 +42,7 @@
 		{
 			"Key": "TOWN_FIRST_ASK_FOX",
 			"Text": [
-				"\"Who, me? Oh, I'm just a fox who makes a living selling the treasures of the sea. Call me Gabe.\" He chuckles heartily. Then, as he studies your features, his face takes on a more serious expression. \"I was just on my way to my market stall when I spied a {{player.species}} sprawled on the ground, hmm? I'd say you had a drink too many, but you don't smell of alcohol.\""
+				"\"Who, me? Oh, I'm just a fox who makes a living selling the treasures of the sea. Call me Gabe.\" He chuckles heartily. Then, as he studies your features, his face takes on a more serious expression. \"I was just on my way to my market stall when I spied a {player.species} sprawled on the ground, hmm? I'd say you had a drink too many, but you don't smell of alcohol.\""
 			]
 		},
 		{
@@ -72,7 +72,7 @@
 		{
 			"Key": "TOWN_FIRST_FOX2",
 			"Text": [
-				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. \"There ya go,\" he says.\\n\\nAnxiously, you look around; it seems you're in a narrow alleyway between two buildings. You can see the bright sun just overhead, brightly illuminating whatever is just ahead.\\n\\n\"So,\" the vulpine begins. \"Ain't every day I find a drunk {{player.species}} in an alley. What's your story?\""
+				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. \"There ya go,\" he says.\\n\\nAnxiously, you look around; it seems you're in a narrow alleyway between two buildings. You can see the bright sun just overhead, brightly illuminating whatever is just ahead.\\n\\n\"So,\" the vulpine begins. \"Ain't every day I find a drunk {player.species} in an alley. What's your story?\""
 			]
 		},
 		{
@@ -346,16 +346,16 @@
 		{
 			"Key": "TOWN_MARKET_FRUIT_HELLO",
 			"Text": [
-				"A {{vendor}} is tending the fruit stand, and {{vendor.subject}} greets you with a bow.",
-				"The {{vendor}} waves to you as you approach. \"Good to see you again, {{player}}!\"",
-				"The owner of the fruit stall, a {{vendor}}, gives you a friendly smile. \"Hello, dear {{player.species}}! How's the world out there?\""
+				"A {vendor} is tending the fruit stand, and {vendor.subject} greets you with a bow.",
+				"The {vendor} waves to you as you approach. \"Good to see you again, {player}!\"",
+				"The owner of the fruit stall, a {vendor}, gives you a friendly smile. \"Hello, dear {player.species}! How's the world out there?\""
 			]
 		},
 		{
 			"Key": "TOWN_MARKET_FRUIT_TALK_NO",
 			"Text": [
-				"\"Come on,\" the {{vendor}} quips, \"I've got other customers to tend to. We'll talk later.\"",
-				"The {{vendor}} simply shakes {{vendor.possessive}} head. \"No time to chat now, sorry.\""
+				"\"Come on,\" the {vendor} quips, \"I've got other customers to tend to. We'll talk later.\"",
+				"The {vendor} simply shakes {vendor.possessive} head. \"No time to chat now, sorry.\""
 			]
 		},
 		{

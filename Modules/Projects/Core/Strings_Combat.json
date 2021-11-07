@@ -6,195 +6,160 @@
 		{
 			"Key": "ATTACK_CRIT",
 			"Text": [
-				"{{attacker}} {{attacker strike}} a vital spot on {{defender}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker swing}} {{attacker.possessive}} {{!weapon}} and {{attacker manage}} to land a critical blow on {{defender}}, dealing {{!damage}} damage.",
-				"With an unusually powerful blow, {{attacker}} {{attacker deal}} a massive {{!damage}} damage to {{defender}}."
+				"{attacker} {attacker strike} a vital spot on {defender}, dealing {!damage} damage.",
+				"{attacker} {attacker swing} {attacker.possessive} {!weapon} and {attacker manage} to land a critical blow on {defender}, dealing {!damage} damage.",
+				"With an unusually powerful blow, {attacker} {attacker deal} a massive {!damage} damage to {defender}."
 			]
 		},
 		{
 			"Key": "ATTACK_HIT",
 			"Text": [
-				"{{attacker}} {{attacker attack}} {{defender}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker charge}} at {{defender}} and {{attacker strike}} with {{attacker.possessive}} {{!weapon}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker hit}} {{defender}} with {{attacker.possessive}} {{!weapon}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker strike}} {{defender}} with {{attacker.possessive}} {{!weapon}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker land}} a hit on {{defender}} with {{attacker.possessive}} {{!weapon}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker swing}} {{attacker.possessive}} {{!weapon}} and manage to hit {{defender.alias}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker manage}} to land a solid hit on {{defender}}, dealing {{!damage}} damage.",
-				"{{attacker}} {{attacker land}} a hit on {{defender}}, dealing {{!damage}} damage."
+				"{attacker} {attacker attack} {defender}, dealing {!damage} damage.",
+				"{attacker} {attacker charge} at {defender} and {attacker strike} with {attacker.possessive} {!weapon}, dealing {!damage} damage.",
+				"{attacker} {attacker hit} {defender} with {attacker.possessive} {!weapon}, dealing {!damage} damage.",
+				"{attacker} {attacker strike} {defender} with {attacker.possessive} {!weapon}, dealing {!damage} damage.",
+				"{attacker} {attacker land} a hit on {defender} with {attacker.possessive} {!weapon}, dealing {!damage} damage.",
+				"{attacker} {attacker swing} {attacker.possessive} {!weapon} and manage to hit {defender.alias}, dealing {!damage} damage.",
+				"{attacker} {attacker manage} to land a solid hit on {defender}, dealing {!damage} damage.",
+				"{attacker} {attacker land} a hit on {defender}, dealing {!damage} damage."
 			]
 		},
 		{
 			"Key": "ATTACK_MISS",
 			"Text": [
-				"{{attacker}} {{attacker swing}} {{attacker.possessive}} {{!weapon}}, but {{defender.alias}} nimbly {{defender dodge}} the blow.",
-				"{{attacker}} {{attacker attack}} {{defender.alias}} but {{attacker fail}} to land a hit.",
-				"{{attacker}} completely {{attacker miss}} {{defender.alias}}.",
-				"{{defender}} {{defender sidestep}} as {{attacker.alias}} {{attacker charge}} at {{defender.object}}.",
-				"{{attacker}} can't seem to hit {{defender.alias}} with {{attacker.possessive}} {{!weapon}}."
+				"{attacker} {attacker swing} {attacker.possessive} {!weapon}, but {defender.alias} nimbly {defender dodge} the blow.",
+				"{attacker} {attacker attack} {defender.alias} but {attacker fail} to land a hit.",
+				"{attacker} completely {attacker miss} {defender.alias}.",
+				"{defender} {defender sidestep} as {attacker.alias} {attacker charge} at {defender.object}.",
+				"{attacker} can't seem to hit {defender.alias} with {attacker.possessive} {!weapon}."
 			]
 		},
 		{
 			"Key": "GRAPPLE_ESCAPE_HIT",
 			"Text": [
-				"{{attacker}} {{attacker push}} {{attacker.possessive}} opponent away from {{attacker.object}}.",
-				"{{attacker}} {{attacker squirm}} out of {{defender}}'s hold."
+				"{attacker} {attacker push} {attacker.possessive} opponent away from {attacker.object}.",
+				"{attacker} {attacker squirm} out of {defender}'s hold."
 			]
 		},
 		{
 			"Key": "GRAPPLE_ESCAPE_MISS",
 			"Text": [
-				"{{attacker}} {{attacker try}} to wiggle away from {{attacker.possessive}} opponent, but {{defender}} {{defender manage}} to hold {{attacker}} tightly."
+				"{attacker} {attacker try} to wiggle away from {attacker.possessive} opponent, but {defender} {defender manage} to hold {attacker} tightly."
 			]
 		},
 		{
 			"Key": "GRAPPLE_HIT",
 			"Text": [
-				"{{attacker}} {{attacker grab}} a hold of {{defender}} and {{attacker pull}} {{defender.object}} closer.",
-				"{{attacker}} {{attacker snatch}} {{defender.aliaspossessive}} wrists and {{attacker start}} scuffling around with {{defender.object}}."
+				"{attacker} {attacker grab} a hold of {defender} and {attacker pull} {defender.object} closer.",
+				"{attacker} {attacker snatch} {defender.aliaspossessive} wrists and {attacker start} scuffling around with {defender.object}."
 			]
 		},
 		{
 			"Key": "GRAPPLE_MISS",
 			"Text": [
-				"{{attacker.alias}} {{attacker try}} to get close to {{defender.alias}}, but {{defender.subject}} quickly {{defender dodge}}.",
-				"{{attacker.alias}} {{attacker try}} to grab {{defender.alias}} but {{defender.subject}} {{defender move}} out of the way."
+				"{attacker.alias} {attacker try} to get close to {defender.alias}, but {defender.subject} quickly {defender dodge}.",
+				"{attacker.alias} {attacker try} to grab {defender.alias} but {defender.subject} {defender move} out of the way."
 			]
 		},
 		{
 			"Key": "GRAPPLE_PIN_HIT",
 			"Text": [
-				"{{attacker}} {{attacker push}} {{defender}} down on the ground with {{attacker.object}} on top.",
-				"{{attacker}} {{attacker pull}} {{defender}} into a tight hug, preventing {{defender.object}} from moving.",
-				"{{attacker}} {{attacker wrap}} {{attacker.possessive}} arms around {{defender}} and {{attacker squeeze}} {{defender.object}} against {{attacker.object}}."
+				"{attacker} {attacker push} {defender} down on the ground with {attacker.object} on top.",
+				"{attacker} {attacker pull} {defender} into a tight hug, preventing {defender.object} from moving.",
+				"{attacker} {attacker wrap} {attacker.possessive} arms around {defender} and {attacker squeeze} {defender.object} against {attacker.object}."
 			]
 		},
 		{
 			"Key": "GRAPPLE_PIN_MISS",
 			"Text": [
-				"{{attacker}} {{attacker try}} to immobilize {{defender}} underneath {{attacker.object}} but {{defender}} {{defender wiggle}} out of {{attacker.possessive}} grip.",
-				"{{attacker}} {{attacker try}} to wrap {{attacker.possessive}} arms around {{defender}} but {{defender.subject}} {{defender push}} {{attacker}} away."
+				"{attacker} {attacker try} to immobilize {defender} underneath {attacker.object} but {defender} {defender wiggle} out of {attacker.possessive} grip.",
+				"{attacker} {attacker try} to wrap {attacker.possessive} arms around {defender} but {defender.subject} {defender push} {attacker} away."
 			]
 		},
 		{
 			"Key": "GRAPPLE_PIN_RELEASE",
 			"Text": [
-				"{{attacker}} {{attacker let}} {{defender}} crawl out from underneath {{attacker}}.",
-				"{{attacker}} {{attacker release}} {{defender}} from {{attacker.possessive}} tight grip."
+				"{attacker} {attacker let} {defender} crawl out from underneath {attacker}.",
+				"{attacker} {attacker release} {defender} from {attacker.possessive} tight grip."
 			]
 		},
 		{
 			"Key": "KILL_DIGESTED",
 			"Text": [
-				"{{predator.aliaspossessive}} belly gurgles loudly as it processes the remains of {{prey}}. The nutrient-rich goop of {{predator.aliaspossessive}} food courses through {{predator.possessive}} digestive tract with a series of long, wet glorps.",
-				"{{predator.aliaspossessive}} belly lets out a gurgle as it finally finishes digesting {{prey}} into something more useful. {{prey.aliaspossessive}} body has been completely {{?|processed|absorbed|digested}} by {{predator}}, fueling {{predator.possessive}} next hunt.",
-				"{{predator.aliaspossessive}} body rumbles as it finishes melting {{prey}} into sludge and absorbing its useful qualities. {{prey.aliaspossessive}} body has been completely {{?|processed|absorbed|digested}} by {{predator}}, fueling {{predator.possessive}} next hunt.",
-				"{{prey}} completely succumbs to {{predator.aliaspossessive}} digestive system, which noisily breaks the prey apart into soft slurry. As {{predator.aliaspossessive}} bowels finish digesting its prey, the remains of {{prey}} add some extra weight to {{predator.aliaspossessive}} {{?|thighs|rump|belly}}.",
-				"{{prey}} finally succumbs to digestion inside {{predator}} as the digestive system kicks into full gear. {{predator.aliaspossessive}} bowels groan and gurgle as liquified prey is admitted into the intestines piecemeal, ready for absorption and further processing.",
-				"{{prey}} slows down and eventually stops moving; it would appear there's not a lot left of {{prey.object}} inside {{predator.aliaspossessive}} stomach. {{predator.aliaspossessive}} stomach begins gushing the remains of {{prey}} through {{predator.possessive}} system, adding some extra weight to {{predator.aliaspossessive}} {{?|thighs|rump|belly}}.",
-				"{{prey}} falls limp in {{predator.aliaspossessive}} stomach, providing no further resistance to {{prey.possessive}} acidic fate. {{predator.aliaspossessive}} stomach churns {{prey}} down into a hot slush as nutrient-rich remains course through {{predator.possessive}} digestive tract with a series of long, wet glorps.",
-				"{{prey}} stops moving inside {{predator}}, having succumbed to digestion and reduced to nutrition. {{predator.aliaspossessive}} stomach glorps and groans lewdly as it begins pumping the remains of {{prey}} further into {{predator.possessive}} digestive tract.",
-				"{{predator.aliaspossessive}} stomach groans as {{prey}} {{prey be}} rendered down into a thick soup; {{prey.possessive}} remains soon flow deeper into {{predator.aliaspossessive}} body to be absorbed.",
-				"{{predator.aliaspossessive}} stomach lets out a lewd glorp as the muscles eagerly grind {{prey}} into a warm pulp. {{prey.aliaspossessive}} body loses form in {{predator.possessive}} belly; {{prey}} {{prey be}} nothing but a soup of churning slop now.",
-				"{{prey.aliaspossessive}} struggles cease as {{predator.aliaspossessive}} digestive onslaught becomes too much for {{prey.object}} to handle. {{predator}} {{predator feel}} something shifting as {{prey}} succumbs to {{predator.aliaspossessive}} digestive system, which noisily breaks {{prey}} apart into soft slurry."
-			]
-		},
-		{
-			"Key": "KILL_DIGESTED_POV",
-			"Text": [
-				"{{predator.aliaspossessive}} belly gurgles loudly as it processes the remains of {{prey}}. The nutrient-rich goop of {{predator.aliaspossessive}} food courses through {{predator.possessive}} digestive tract with a series of long, wet glorps.",
-				"{{predator.aliaspossessive}} belly lets out a gurgle as it finally finishes digesting {{prey}} into something more useful. {{prey.aliaspossessive}} body has been completely {{?|processed|absorbed|digested}} by {{predator}}, fueling {{predator.possessive}} next hunt.",
-				"{{predator.aliaspossessive}} body rumbles as it finishes melting {{prey}} into sludge and absorbing its useful qualities. {{prey.aliaspossessive}} body has been completely {{?|processed|absorbed|digested}} by {{predator}}, fueling {{predator.possessive}} next hunt.",
-				"{{prey}} completely succumbs to {{predator.aliaspossessive}} digestive system, which noisily breaks the prey apart into soft slurry. As {{predator.aliaspossessive}} bowels finish digesting its prey, the remains of {{prey}} add some extra weight to {{predator.aliaspossessive}} {{?|thighs|rump|belly}}.",
-				"{{prey}} finally succumbs to digestion inside {{predator}} as the digestive system kicks into full gear. {{predator.aliaspossessive}} bowels groan and gurgle as liquified prey is admitted into the intestines piecemeal, ready for absorption and further processing.",
-				"{{prey}} slows down and eventually stops moving; it would appear there's not a lot left of {{prey.object}} inside {{predator.aliaspossessive}} stomach. {{predator.aliaspossessive}} stomach begins gushing the remains of {{prey}} through {{predator.possessive}} system, adding some extra weight to {{predator.aliaspossessive}} {{?|thighs|rump|belly}}.",
-				"{{prey}} falls limp in {{predator.aliaspossessive}} stomach, providing no further resistance to {{prey.possessive}} acidic fate. {{predator.aliaspossessive}} stomach churns {{prey}} down into a hot slush as nutrient-rich remains course through {{predator.possessive}} digestive tract with a series of long, wet glorps.",
-				"{{prey}} stops moving inside {{predator}}, having succumbed to digestion and reduced to nutrition. {{predator.aliaspossessive}} stomach glorps and groans lewdly as it begins pumping the remains of {{prey}} further into {{predator.possessive}} digestive tract.",
-				"{{predator.aliaspossessive}} stomach groans as {{prey}} {{prey be}} rendered down into a thick soup; {{prey.possessive}} remains soon flow deeper into {{predator.aliaspossessive}} body to be absorbed.",
-				"{{predator.aliaspossessive}} stomach lets out a lewd glorp as the muscles eagerly grind {{prey}} into a warm pulp. {{prey.aliaspossessive}} body loses form in {{predator.possessive}} belly; {{prey}} {{prey be}} nothing but a soup of churning slop now.",
-				"{{prey.aliaspossessive}} struggles cease as {{predator.aliaspossessive}} digestive onslaught becomes too much for {{prey.object}} to handle. {{predator}} {{predator feel}} something shifting as {{prey}} succumbs to {{predator.aliaspossessive}} digestive system, which noisily breaks {{prey}} apart into soft slurry."
+				"{predator.aliaspossessive} belly gurgles loudly as it processes the remains of {prey}. The nutrient-rich goop of {predator.aliaspossessive} food courses through {predator.possessive} digestive tract with a series of long, wet glorps.",
+				"{predator.aliaspossessive} belly lets out a gurgle as it finally finishes digesting {prey} into something more useful. {prey.aliaspossessive} body has been completely {?|processed|absorbed|digested} by {predator}, fueling {predator.possessive} next hunt.",
+				"{predator.aliaspossessive} body rumbles as it finishes melting {prey} into sludge and absorbing its useful qualities. {prey.aliaspossessive} body has been completely {?|processed|absorbed|digested} by {predator}, fueling {predator.possessive} next hunt.",
+				"{prey} completely succumbs to {predator.aliaspossessive} digestive system, which noisily breaks the prey apart into soft slurry. As {predator.aliaspossessive} bowels finish digesting its prey, the remains of {prey} add some extra weight to {predator.aliaspossessive} {?|thighs|rump|belly}.",
+				"{prey} finally succumbs to digestion inside {predator} as the digestive system kicks into full gear. {predator.aliaspossessive} bowels groan and gurgle as liquified prey is admitted into the intestines piecemeal, ready for absorption and further processing.",
+				"{prey} slows down and eventually stops moving; it would appear there's not a lot left of {prey.object} inside {predator.aliaspossessive} stomach. {predator.aliaspossessive} stomach begins gushing the remains of {prey} through {predator.possessive} system, adding some extra weight to {predator.aliaspossessive} {?|thighs|rump|belly}.",
+				"{prey} falls limp in {predator.aliaspossessive} stomach, providing no further resistance to {prey.possessive} acidic fate. {predator.aliaspossessive} stomach churns {prey} down into a hot slush as nutrient-rich remains course through {predator.possessive} digestive tract with a series of long, wet glorps.",
+				"{prey} stops moving inside {predator}, having succumbed to digestion and reduced to nutrition. {predator.aliaspossessive} stomach glorps and groans lewdly as it begins pumping the remains of {prey} further into {predator.possessive} digestive tract.",
+				"{predator.aliaspossessive} stomach groans as {prey} {prey be} rendered down into a thick soup; {prey.possessive} remains soon flow deeper into {predator.aliaspossessive} body to be absorbed.",
+				"{predator.aliaspossessive} stomach lets out a lewd glorp as the muscles eagerly grind {prey} into a warm pulp. {prey.aliaspossessive} body loses form in {predator.possessive} belly; {prey} {prey be} nothing but a soup of churning slop now.",
+				"{prey.aliaspossessive} struggles cease as {predator.aliaspossessive} digestive onslaught becomes too much for {prey.object} to handle. {predator} {predator feel} something shifting as {prey} succumbs to {predator.aliaspossessive} digestive system, which noisily breaks {prey} apart into soft slurry."
 			]
 		},
 		{
 			"Key": "KILL_GENERIC",
 			"Text": [
-				"{{target}} {{target succumb}} to {{target.possessive}} wounds and {{target fall}} down on the ground.",
-				"{{target}} {{target collapse}} to the ground with a dull thud.",
-				"{{target.aliaspossessive}} vision fades and {{target.subject}} {{target drop}} on the ground.",
-				"{{target.aliaspossessive}} injuries are too severe and {{target.subject}} {{target collapse}}."
-			]
-		},
-		{
-			"Key": "KILL_GENERIC_POV",
-			"Text": [
-				"{{target}} {{target succumb}} to {{target.possessive}} wounds and {{target fall}} down on the ground.",
-				"{{target}} {{target collapse}} to the ground with a dull thud.",
-				"{{target}} {{target slump}} to the ground in a sad ball of dead %species.",
-				"{{target.aliaspossessive}} vision fades and {{target.subject}} {{target drop}} on the ground.",
-				"{{target.aliaspossessive}} injuries are too severe and {{target.subject}} {{target collapse}}."
+				"{target} {target succumb} to {target.possessive} wounds and {target fall} down on the ground.",
+				"{target} {target collapse} to the ground with a dull thud.",
+				"{target.aliaspossessive} vision fades and {target.subject} {target drop} on the ground.",
+				"{target.aliaspossessive} injuries are too severe and {target.subject} {target collapse}."
 			]
 		},
 		{
 			"Key": "TURN_DEFEND",
 			"Text": [
-				"{{instigator}} {{instigator brace}} for an incoming blow.",
-				"{{instigator}} {{instigator shield}} {{instigator.object}}self.",
-				"{{instigator}} {{instigator try}} deflecting attacks."
+				"{instigator} {instigator brace} for an incoming blow.",
+				"{instigator} {instigator shield} {instigator.object}self.",
+				"{instigator} {instigator try} deflecting attacks."
 			]
 		},
 		{
 			"Key": "TURN_WAIT",
 			"Text": [
-				"{{instigator}} {{instigator decide}} twiddling {{instigator.possessive}} thumbs is a better way of spending {{instigator.possessive}} time.",
-				"{{instigator}} blankly {{instigator stare}} ahead of {{instigator.object}}.",
-				"{{instigator}} {{instigator do}} absolutely nothing.",
-				"{{instigator}} just {{instigator wait}} around for a bit.",
-				"{{instigator}} {{instigator wait}} for a better moment to act."
+				"{instigator} {instigator decide} twiddling {instigator.possessive} thumbs is a better way of spending {instigator.possessive} time.",
+				"{instigator} blankly {instigator stare} ahead of {instigator.object}.",
+				"{instigator} {instigator do} absolutely nothing.",
+				"{instigator} just {instigator wait} around for a bit.",
+				"{instigator} {instigator wait} for a better moment to act."
 			]
 		},
 		{
 			"Key": "TURN_WAIT_GRAPPLED",
 			"Text": [
-				"{{instigator}} blankly {{instigator stare}} ahead of {{instigator.object}}.",
-				"{{instigator}} {{instigator do}} absolutely nothing.",
-				"{{instigator}} {{instigator hang}} limply in {{instigator.possessive}} assailant's grip.",
-				"{{instigator}} {{instigator chill}} comfortably in {{instigator.possessive}} attacker's grip.",
-				"{{instigator}} just {{instigator wait}} around for a bit.",
-				"{{instigator}} {{instigator wait}} for a better moment to act."
+				"{instigator} blankly {instigator stare} ahead of {instigator.object}.",
+				"{instigator} {instigator do} absolutely nothing.",
+				"{instigator} {instigator hang} limply in {instigator.possessive} assailant's grip.",
+				"{instigator} {instigator chill} comfortably in {instigator.possessive} attacker's grip.",
+				"{instigator} just {instigator wait} around for a bit.",
+				"{instigator} {instigator wait} for a better moment to act."
 			]
 		},
 		{
 			"Key": "VORE_EXT_STRUGGLE",
 			"Text": [
-				"{{prey}} {{prey squirm}} around helplessly in the oppressive environment, splashing slime and juices all over {{prey.object}}self.",
-				"As much as {{prey}} {{prey squirm}}, it only makes the stomach knead and churn harder around {{prey.object}}.",
-				"{{prey}} {{prey struggle}} within {{predator.aliaspossessive}} stomach by kicking and punching the walls, noisily displacing fluids.",
-				"{{prey}} {{prey punch}} and {{prey kick}} at the stomach walls surrounding {{prey.object}}, but that only makes the stomach compress some more.",
-				"{{prey}} {{prey try}} to wriggle around inside the hot, wet organ, but {{prey.subject}} {{prey be}} squeezed too tightly to do anything impressive.",
-				"{{prey}} shift around inside {{predator.aliaspossessive}} belly, kicking up some gooey liquids with lewd, organic squelches.",
-				"With a few squirms and struggles, {{prey}} {{prey manage}} to displace some air in the stomach, and the stomach gurgles noisily around {{prey}}.",
-				"{{prey}} {{prey try}} to push out with {{prey.possessive}} limbs, but the predator lets out a belch and the stomach walls collapse in on {{prey.object}} again.",
-				"{{prey}} {{prey push}} at the stomach walls, and {{predator}} {{predator shake}} {{predator.possessive}} gut in response, splashing some fluids around again.",
-				"For a moment, {{predator.aliaspossessive}} belly falls uncharacteristically quiet, before it picks up its noisy work again.",
-				"{{predator.aliaspossessive}} gut rumbles as it continues working on its contents."
+				"{prey} {prey squirm} around helplessly in the oppressive environment, splashing slime and juices all over {prey.object}self.",
+				"As much as {prey} {prey squirm}, it only makes the stomach knead and churn harder around {prey.object}.",
+				"{prey} {prey struggle} within {predator.aliaspossessive} stomach by kicking and punching the walls, noisily displacing fluids.",
+				"{prey} {prey punch} and {prey kick} at the stomach walls surrounding {prey.object}, but that only makes the stomach compress some more.",
+				"{prey} {prey try} to wriggle around inside the hot, wet organ, but {prey.subject} {prey be} squeezed too tightly to do anything impressive.",
+				"{prey} shift around inside {predator.aliaspossessive} belly, kicking up some gooey liquids with lewd, organic squelches.",
+				"With a few squirms and struggles, {prey} {prey manage} to displace some air in the stomach, and the stomach gurgles noisily around {prey}.",
+				"{prey} {prey try} to push out with {prey.possessive} limbs, but the predator lets out a belch and the stomach walls collapse in on {prey.object} again.",
+				"{prey} {prey push} at the stomach walls, and {predator} {predator shake} {predator.possessive} gut in response, splashing some fluids around again.",
+				"For a moment, {predator.aliaspossessive} belly falls uncharacteristically quiet, before it picks up its noisy work again.",
+				"{predator.aliaspossessive} gut rumbles as it continues working on its contents."
 			]
 		},
 		{
 			"Key": "VORE_LOSE",
 			"Text": [
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator attempt}} to stuff {{prey}} inside, but {{prey.subject}} {{prey bat}} away {{predator.possessive}} looming nose and {{predator}} {{predator be}} not really getting anywhere. After some struggling, {{prey}} finally {{prey overpower}} {{prey.possessive}} predator and {{prey be}} released from {{predator.namepossessive}} gullet.",
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator attempt}} to stuff {{prey}} inside, but with some effort, {{prey}} {{prey manage}} to break free from {{predator}}, pulling {{prey.object}}self out of the predator's hungry maw.",
-				"{{predator}} {{predator yawn}} widely and {{predator lunge}} forwards, but {{prey}} {{prey squirm}} {{prey.possessive}} way into an awkward position, preventing {{predator}} from engulfing {{prey.object}}. {{prey}} {{prey manage}} to push {{predator}} away from {{prey.object}}self, remaining free of {{predator.possessive}} grasp a little while longer.",
-				"{{predator}} {{predator attempt}} to swallow {{prey}}, but it seems {{prey.subject}} caught on to {{predator}}'s idea and {{prey manage}} to dodge {{predator.possessive}} advances. {{prey}} {{prey pull}} {{prey.object}}self out of {{predator.namepossessive}} maw, coated in slime but otherwise reasonably fine."
-			]
-		},
-		{
-			"Key": "VORE_LOSE_POV",
-			"Text": [
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator attempt}} to stuff {{prey}} inside, but {{prey.subject}} {{prey bat}} away {{predator.possessive}} looming nose and {{predator}} {{predator be}} not really getting anywhere. After some struggling, {{prey}} finally {{prey overpower}} {{prey.possessive}} predator and {{prey be}} released from {{predator.namepossessive}} gullet.",
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator attempt}} to stuff {{prey}} inside, but with some effort, {{prey}} {{prey manage}} to break free from {{predator}}, pulling {{prey.object}}self out of the predator's hungry maw.",
-				"{{predator}} {{predator yawn}} widely and {{predator lunge}} forwards, but {{prey}} {{prey squirm}} {{prey.possessive}} way into an awkward position, preventing {{predator}} from engulfing {{prey.object}}. {{prey}} {{prey manage}} to push {{predator}} away from {{prey.object}}self, remaining free of {{predator.possessive}} grasp a little while longer.",
-				"{{predator}} {{predator attempt}} to swallow {{prey}}, but it seems {{prey.subject}} caught on to {{predator}}'s idea and {{prey manage}} to dodge {{predator.possessive}} advances. {{prey}} {{prey pull}} {{prey.object}}self out of {{predator.namepossessive}} maw, coated in slime but otherwise reasonably fine."
+				"{predator} {predator open} {predator.possessive} maw wide and {predator attempt} to stuff {prey} inside, but {prey.subject} {prey bat} away {predator.possessive} looming nose and {predator} {predator be} not really getting anywhere. After some struggling, {prey} finally {prey overpower} {prey.possessive} predator and {prey be} released from {predator.namepossessive} gullet.",
+				"{predator} {predator open} {predator.possessive} maw wide and {predator attempt} to stuff {prey} inside, but with some effort, {prey} {prey manage} to break free from {predator}, pulling {prey.object}self out of the predator's hungry maw.",
+				"{predator} {predator yawn} widely and {predator lunge} forwards, but {prey} {prey squirm} {prey.possessive} way into an awkward position, preventing {predator} from engulfing {prey.object}. {prey} {prey manage} to push {predator} away from {prey.object}self, remaining free of {predator.possessive} grasp a little while longer.",
+				"{predator} {predator attempt} to swallow {prey}, but it seems {prey.subject} caught on to {predator}'s idea and {prey manage} to dodge {predator.possessive} advances. {prey} {prey pull} {prey.object}self out of {predator.namepossessive} maw, coated in slime but otherwise reasonably fine."
 			]
 		},
 		{
@@ -203,16 +168,16 @@
 				"The acrid air burns at your lungs as the caustic acids slowly but surely eat away at your form.",
 				"Without a thought for you, the stomach grinds inwards painfully. You wince as the slick muscles grind against you.",
 				"As much as you squirm, it only makes the stomach churn harder around you. The guts treat you like food, squeezing to press more acids against you.",
-				"The onslaught against your body doesn't seem to be letting up; you're just a snack for {{predator}} now. The insides work on you like they would any other piece of food.",
-				"{{predator}} struts about as you are digested; the guts knead at you without regard for your well-being, trying to work you into a thick soup.",
+				"The onslaught against your body doesn't seem to be letting up; you're just a snack for {predator} now. The insides work on you like they would any other piece of food.",
+				"{predator} struts about as you are digested; the guts knead at you without regard for your well-being, trying to work you into a thick soup.",
 				"With a squeeze, the digestive organ forces you to curl even tighter in the hot belly. You can feel the digestive acids coating you, ground in by the slick walls.",
 				"With a loud glorp, the stomach spills more acids onto you. You can barely keep your head above the caustic soup you're already adding to.",
-				"{{predator}} belches loudly, causing the stomach to close snugly around you. The slimy, muscular walls knead at you, rubbing acids on your skin.",
+				"{predator} belches loudly, causing the stomach to close snugly around you. The slimy, muscular walls knead at you, rubbing acids on your skin.",
 				"The warm slickness surrounds and kneads on you. The slick stomach walls squeeze you powerfully, before relaxing again.",
-				"You wince as the muscles grind against you. {{predator}} {{predator feel}} a soft gurgle as your body slowly loses form in {{predator.possessive}} belly.",
+				"You wince as the muscles grind against you. {predator} {predator feel} a soft gurgle as your body slowly loses form in {predator.possessive} belly.",
 				"Surrounded by pressing stomach walls, you're slowly rendered into a soup of churning slop. The stomach walls busily knead and churn around you.",
-				"{{predator.aliaspossessive}} stomach lets out a loud, squelching gurgle as it tirelessly works on its meal. You hear wet squelches and glorps around you as the stomach shifts.",
-				"{{predator.aliaspossessive}} gut kneads on every fiber of your body, doing its best to soften you down into mush to fuel {{predator.possessive}} next hunt."
+				"{predator.aliaspossessive} stomach lets out a loud, squelching gurgle as it tirelessly works on its meal. You hear wet squelches and glorps around you as the stomach shifts.",
+				"{predator.aliaspossessive} gut kneads on every fiber of your body, doing its best to soften you down into mush to fuel {predator.possessive} next hunt."
 			]
 		},
 		{
@@ -235,41 +200,41 @@
 			"Text": [
 				"You squirm around helplessly in the oppressive environment, splashing slime and juices all over yourself.",
 				"As much as you squirm, it only makes the stomach knead and churn harder around you.",
-				"You struggle within {{predator.aliaspossessive}} stomach by kicking and punching the walls.",
+				"You struggle within {predator.aliaspossessive} stomach by kicking and punching the walls.",
 				"You punch and kick at the stomach walls surrounding you, but that only makes the stomach compress some more.",
 				"You try to wriggle around inside the hot, wet organ, but you're squeezed too tightly to do anything impressive.",
-				"You shift around inside {{predator.aliaspossessive}} belly, kicking up some gooey liquids with lewd, organic squelches.",
+				"You shift around inside {predator.aliaspossessive} belly, kicking up some gooey liquids with lewd, organic squelches.",
 				"With a few squirms and struggles, you manage to displace some air in the stomach, and the stomach gurgles noisily around you.",
 				"You try to push out with your limbs, but the predator lets out a belch and the stomach walls collapse in on you again.",
-				"You push at the stomach walls, and {{predator}} shakes {{predator.possessive}} gut in response, splashing some fluids around again."
+				"You push at the stomach walls, and {predator} shakes {predator.possessive} gut in response, splashing some fluids around again."
 			]
 		},
 		{
 			"Key": "VORE_PREY_MOVE",
 			"Text": [
-				"{{oldpred}} melts away around {{prey}}, leaving {{prey.object}} in the stomach of {{newpred}}.",
-				"As {{oldpred}} is turned into mush, {{prey}} {{prey find}} {{prey.object}}self in the stomach of {{newpred}}.",
-				"As {{newpred}} {{newpred digest}} {{oldpred}}, {{prey}} {{prey wind}} up in {{newpred.possessive}} stomach instead.",
-				"As {{oldpred}} {{oldpred melt}} away in {{newpred}}'s belly, {{prey}} now {{prey reside}} in {{newpred.possessive}} stomach instead.",
-				"As {{newpred}}'s digestive system turns {{oldpred}} into mush, {{prey}} is left exposed as well."
+				"{oldpred} melts away around {prey}, leaving {prey.object} in the stomach of {newpred}.",
+				"As {oldpred} is turned into mush, {prey} {prey find} {prey.object}self in the stomach of {newpred}.",
+				"As {newpred} {newpred digest} {oldpred}, {prey} {prey wind} up in {newpred.possessive} stomach instead.",
+				"As {oldpred} {oldpred melt} away in {newpred}'s belly, {prey} now {prey reside} in {newpred.possessive} stomach instead.",
+				"As {newpred}'s digestive system turns {oldpred} into mush, {prey} is left exposed as well."
 			]
 		},
 		{
 			"Key": "VORE_RELEASE1_KILLED",
 			"Text": [
-				"{{prey}} {{prey emerge}} from {{predator}}",
-				"{{prey}} {{prey emerge}} from the late {{predator}}",
-				"{{prey}} {{prey crawl}} out of {{predator}}",
-				"{{prey}} {{prey climb}} out of {{predator}}",
-				"{{prey}} {{prey push}} {{prey.possessive}} way out of {{predator}}"
+				"{prey} {prey emerge} from {predator}",
+				"{prey} {prey emerge} from the late {predator}",
+				"{prey} {prey crawl} out of {predator}",
+				"{prey} {prey climb} out of {predator}",
+				"{prey} {prey push} {prey.possessive} way out of {predator}"
 			]
 		},
 		{
 			"Key": "VORE_RELEASE1_VOLUNTARY",
 			"Text": [
-				"{{prey}} is released from {{predator}}",
-				"{{prey}} is coughed up by {{predator}}",
-				"{{prey}} is spat back up {{predator}}"
+				"{prey} is released from {predator}",
+				"{prey} is coughed up by {predator}",
+				"{prey} is spat back up {predator}"
 			]
 		},
 		{
@@ -292,19 +257,10 @@
 		{
 			"Key": "VORE_WIN",
 			"Text": [
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator stuff}} {{prey.aliaspossessive}} head inside, eagerly slurping and tasting {{predator.possessive}} prey. With unrestrained greed, {{predator}} {{predator gulp}} {{prey}} down into {{predator.possessive}} belly before {{prey}} can put up any resistance.",
-				"{{predator}} {{predator yawn}} widely and {{predator engulf}} {{prey}}, breathing down {{prey.aliaspossessive}} face to give {{prey.object}} a sample of what awaits. Wasting no time, {{predator}} {{predator push}} {{prey}} down into the depths of {{predator.possessive}} gullet. As {{prey.subject}} {{prey settle}} in {{predator.possessive}} belly, {{prey.subject}} {{prey make}} a nice round bulge.",
-				"{{predator}} {{predator spread}} {{predator.possessive}} jaws and {{predator clamp}} down on {{prey}}, attempting to swallow {{prey.object}} whole. With seemingly little effort, {{predator}} {{predator swallow}} {{prey}} whole, packing {{prey.object}} away tightly into {{predator.possessive}} gut.",
-				"{{predator}} {{predator lick}} {{prey.aliaspossessive}} face, coating {{prey.object}} in warm drool before beginning to swallow {{prey.object}} whole. Ignoring any protests from {{prey}}, {{predator}} {{predator press}} {{prey.object}} tightly against {{predator.possessive}} chest as {{predator}} {{predator swallow}} {{prey.object}} alive, sending {{prey}} down into {{predator.possessive}} digestive tract before long."
-			]
-		},
-		{
-			"Key": "VORE_WIN_POV",
-			"Text": [
-				"{{predator}} {{predator open}} {{predator.possessive}} maw wide and {{predator stuff}} {{prey.aliaspossessive}} head inside, eagerly slurping and tasting {{predator.possessive}} prey. With unrestrained greed, {{predator}} {{predator gulp}} {{prey}} down into {{predator.possessive}} belly before {{prey}} can put up any resistance.",
-				"{{predator}} {{predator yawn}} widely and {{predator engulf}} {{prey}}, breathing down {{prey.aliaspossessive}} face to give {{prey.object}} a sample of what awaits. Wasting no time, {{predator}} {{predator push}} {{prey}} down into the depths of {{predator.possessive}} gullet. As {{prey.subject}} {{prey settle}} in {{predator.possessive}} belly, {{prey.subject}} {{prey make}} a nice round bulge.",
-				"{{predator}} {{predator spread}} {{predator.possessive}} jaws and {{predator clamp}} down on {{prey}}, attempting to swallow {{prey.object}} whole. With seemingly little effort, {{predator}} {{predator swallow}} {{prey}} whole, packing {{prey.object}} away tightly into {{predator.possessive}} gut.",
-				"{{predator}} {{predator lick}} {{prey.aliaspossessive}} face, coating {{prey.object}} in warm drool before beginning to swallow {{prey.object}} whole. Ignoring any protests from {{prey}}, {{predator}} {{predator press}} {{prey.object}} tightly against {{predator.possessive}} chest as {{predator}} {{predator swallow}} {{prey.object}} alive, sending {{prey}} down into {{predator.possessive}} digestive tract before long."
+				"{predator} {predator open} {predator.possessive} maw wide and {predator stuff} {prey.aliaspossessive} head inside, eagerly slurping and tasting {predator.possessive} prey. With unrestrained greed, {predator} {predator gulp} {prey} down into {predator.possessive} belly before {prey} can put up any resistance.",
+				"{predator} {predator yawn} widely and {predator engulf} {prey}, breathing down {prey.aliaspossessive} face to give {prey.object} a sample of what awaits. Wasting no time, {predator} {predator push} {prey} down into the depths of {predator.possessive} gullet. As {prey.subject} {prey settle} in {predator.possessive} belly, {prey.subject} {prey make} a nice round bulge.",
+				"{predator} {predator spread} {predator.possessive} jaws and {predator clamp} down on {prey}, attempting to swallow {prey.object} whole. With seemingly little effort, {predator} {predator swallow} {prey} whole, packing {prey.object} away tightly into {predator.possessive} gut.",
+				"{predator} {predator lick} {prey.aliaspossessive} face, coating {prey.object} in warm drool before beginning to swallow {prey.object} whole. Ignoring any protests from {prey}, {predator} {predator press} {prey.object} tightly against {predator.possessive} chest as {predator} {predator swallow} {prey.object} alive, sending {prey} down into {predator.possessive} digestive tract before long."
 			]
 		}
 	]

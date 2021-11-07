@@ -36,17 +36,17 @@ namespace Finmer.Gameplay.Combat
             int num_attacks = attack_dice.Sum();
             int num_defense = defense_dice.Sum();
 
-            // Number of hitpoints subtracted is the attack power minus the defense power
+            // Number of hit points subtracted is the attack power minus the defense power
             int damage = Math.Max(0, num_attacks - num_defense);
 
             // Pick a relevant string key for the amount of damage we're dealing
             string log_key;
             if (damage >= 5)
-                log_key = "attack_crit";
+                log_key = @"attack_crit";
             else if (damage == 0)
-                log_key = "attack_miss";
+                log_key = @"attack_miss";
             else
-                log_key = "attack_hit";
+                log_key = @"attack_hit";
 
             // Perform animation
             CombatDisplay.ResolveInfo info = new CombatDisplay.ResolveInfo
@@ -123,7 +123,7 @@ namespace Finmer.Gameplay.Combat
         public static void PerformGrappleInitiate(Participant instigator, Participant target)
         {
             // Set these characters to grappling if the instigator succeeded
-            bool success = GrappleRoll(instigator, target, "grapple_hit", "grapple_miss");
+            bool success = GrappleRoll(instigator, target, @"grapple_hit", @"grapple_miss");
             if (success)
                 instigator.Session.SetGrappling(instigator, target);
         }
@@ -136,7 +136,7 @@ namespace Finmer.Gameplay.Combat
         public static void PerformGrappleEscape(Participant instigator, Participant target)
         {
             // If the instigator wins, they were able to escape
-            bool success = GrappleRoll(instigator, target, "grapple_escape_hit", "grapple_escape_miss");
+            bool success = GrappleRoll(instigator, target, @"grapple_escape_hit", @"grapple_escape_miss");
             if (success)
                 instigator.Session.UnsetGrappling(instigator, target);
         }
@@ -152,7 +152,7 @@ namespace Finmer.Gameplay.Combat
             Debug.Assert(target.GrapplingInitiator, "Target is supposed to be the grapple initiator, but isn't");
 
             // If the instigator wins, they were able to escape
-            bool success = GrappleRoll(instigator, target, "grapple_escape_hit", "grapple_escape_miss");
+            bool success = GrappleRoll(instigator, target, @"grapple_escape_hit", @"grapple_escape_miss");
             if (success)
             {
                 // Reset the grappling session, and then create a new one where the instigator is on top (which the target used to be).
@@ -175,7 +175,7 @@ namespace Finmer.Gameplay.Combat
             instigator.Session.UnsetGrappling(instigator, target);
 
             // Print a simple message, since there is no further dice animation for this action
-            CombatDisplay.ShowSimpleMessage("grapple_pin_release", instigator, target);
+            CombatDisplay.ShowSimpleMessage(@"grapple_pin_release", instigator, target);
         }
 
         /// <summary>
@@ -237,10 +237,7 @@ namespace Finmer.Gameplay.Combat
 
             // Pick an appropriate logging key
             bool vore_successful = rounds_attack >= pred_rounds_to_win;
-            if (vore_successful)
-                info.LogKey = target.IsPlayer() ? "vore_win_pov" : "vore_win";
-            else
-                info.LogKey = target.IsPlayer() ? "vore_lose_pov" : "vore_lose";
+            info.LogKey = vore_successful ? @"vore_win" : @"vore_lose";
 
             // Perform animation
             CombatDisplay.ShowRoundResolve(info);
@@ -259,14 +256,7 @@ namespace Finmer.Gameplay.Combat
         public static void PerformSkipTurn(Participant instigator)
         {
             // Perform animation
-            if (instigator.IsGrappling())
-            {
-                CombatDisplay.ShowSimpleMessage("turn_wait_grappled", instigator);
-            }
-            else
-            {
-                CombatDisplay.ShowSimpleMessage("turn_wait", instigator);
-            }
+            CombatDisplay.ShowSimpleMessage(instigator.IsGrappling() ? @"turn_wait_grappled" : @"turn_wait", instigator);
         }
 
         /// <summary>
@@ -278,7 +268,7 @@ namespace Finmer.Gameplay.Combat
                 return;
 
             // Perform animation
-            CombatDisplay.ShowSimpleMessage("vore_pov_struggle", instigator);
+            CombatDisplay.ShowSimpleMessage(@"vore_pov_struggle", instigator);
         }
 
         /// <summary>

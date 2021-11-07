@@ -68,7 +68,7 @@ namespace Finmer.Gameplay
             // Item is a bit of a special case; because all its properties are read-only from script, we can safely discard the entire
             // instance and just save the Asset ID, then look it up in the Furball when we deserialize to re-create the same object.
             var serialized = new PropertyBag();
-            serialized.SetBytes("asset", Asset.ID.ToByteArray()); // asset ID
+            serialized.SetBytes(SaveData.k_AssetID, Asset.ID.ToByteArray()); // asset ID
             return serialized;
         }
 
@@ -103,7 +103,7 @@ namespace Finmer.Gameplay
         public static Item FromSaveGame(ScriptContext context, PropertyBag savedata)
         {
             // Read the asset file ID
-            byte[] asset_id_bytes = savedata.GetBytes("asset");
+            byte[] asset_id_bytes = savedata.GetBytes(SaveData.k_AssetID);
             if (asset_id_bytes == null || asset_id_bytes.Length != 16)
                 return null;
 

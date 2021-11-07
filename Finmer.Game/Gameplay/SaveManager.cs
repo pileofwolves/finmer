@@ -22,7 +22,7 @@ namespace Finmer.Gameplay
     {
 
         private const int k_SlotCount = 3;
-        private const byte k_SaveVersion = 3;
+        private const byte k_SaveVersion = 4;
 
         private static readonly SaveSlot[] s_Slots = new SaveSlot[k_SlotCount];
 

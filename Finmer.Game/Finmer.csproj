@@ -86,6 +86,7 @@
     <Compile Include="Gameplay\Gender.cs" />
     <Compile Include="Gameplay\ItemUtilities.cs" />
     <Compile Include="Gameplay\Journal.cs" />
+    <Compile Include="Gameplay\SaveData.cs" />
     <Compile Include="Gameplay\SceneCombat2.cs" />
     <Compile Include="Gameplay\Scripting\Combat2ScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\GameplayScriptLibrary.cs" />

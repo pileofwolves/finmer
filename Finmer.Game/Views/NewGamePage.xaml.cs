@@ -99,10 +99,10 @@ namespace Finmer.Views
         {
             // Initialize the savegame with basic defaults.
             // The scripts in content can make any other adjustments if needed (such as starting equipment).
-            m_Player.SetInt("level", 1);
-            m_Player.SetInt("timeday", 1);
-            m_Player.SetInt("timehour", 9);
-            m_Player.SetString("location", "Scene_Intro");
+            m_Player.SetInt(SaveData.k_Character_Level, 1);
+            m_Player.SetInt(SaveData.k_Player_TimeDay, 1);
+            m_Player.SetInt(SaveData.k_Player_TimeHour, 9);
+            m_Player.SetString(SaveData.k_Player_Location, "Scene_Intro");
 
             // Launch the session
             GameController.BeginNewSession(m_Player);

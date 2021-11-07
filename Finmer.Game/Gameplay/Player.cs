@@ -51,9 +51,6 @@ namespace Finmer.Gameplay
         public string CoatAdjective { get; set; }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public bool PreferEndo { get; private set; }
-
-        [ScriptableProperty(EScriptAccess.Read)]
         public int XP { get; private set; }
 
         [ScriptableProperty(EScriptAccess.Read)]
@@ -177,38 +174,37 @@ namespace Finmer.Gameplay
 
         public Player(ScriptContext context, PropertyBag template) : base(context, template)
         {
-            // Player stats
-            m_Species = template.GetString("species");
-            SpeciesPlural = template.GetString(@"species_plural");
-            CoatNoun = template.GetString(@"species_coat_n");
-            CoatAdjective = template.GetString(@"species_coat_a");
-            Location = template.GetString("location");
-            PreferEndo = template.GetBool("endo");
+            // Customization data
+            m_Species = template.GetString(SaveData.k_Player_SpeciesSingular);
+            SpeciesPlural = template.GetString(SaveData.k_Player_SpeciesPlural);
+            CoatNoun = template.GetString(SaveData.k_Player_SpeciesCoatNoun);
+            CoatAdjective = template.GetString(SaveData.k_Player_SpeciesCoatAdj);
 
-            // Progression
-            XP = template.GetInt("xp");
-            m_FeatPoints = template.GetInt("featpoints");
-            m_AbilityPoints = template.GetInt("abilitypoints");
-            m_Money = template.GetInt("money");
-            m_TotalPreySwallowed = template.GetInt("totalpreyswallowed");
-            m_TotalPreyDigested = template.GetInt("totalpreydigested");
-            m_TimeDay = template.GetInt("timeday");
-            m_TimeHour = template.GetInt("timehour");
+            // Gameplay data
+            Location = template.GetString(SaveData.k_Player_Location);
+            XP = template.GetInt(SaveData.k_Player_XP);
+            m_FeatPoints = template.GetInt(SaveData.k_Player_FeatPoints);
+            m_AbilityPoints = template.GetInt(SaveData.k_Player_AbilityPoints);
+            m_Money = template.GetInt(SaveData.k_Player_Money);
+            m_TimeDay = template.GetInt(SaveData.k_Player_TimeDay);
+            m_TimeHour = template.GetInt(SaveData.k_Player_TimeHour);
+            m_TotalPreySwallowed = template.GetInt(SaveData.k_Player_NumPreySwallowed);
+            m_TotalPreyDigested = template.GetInt(SaveData.k_Player_NumPreyDigested);
 
-            // Additional data
-            AdditionalSaveData = template.GetNestedPropertyBag("extdata") ?? new PropertyBag();
+            // Script data
+            AdditionalSaveData = template.GetNestedPropertyBag(SaveData.k_Player_ExtData) ?? new PropertyBag();
 
             // Inventory
-            int num_items = template.GetInt("invcount");
+            int num_items = template.GetInt(SaveData.k_Player_InventoryCount);
             for (var i = 0; i < num_items; i++)
             {
-                PropertyBag value = template.GetNestedPropertyBag("inv_" + i);
+                PropertyBag value = template.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Player_InventoryBase, i));
                 if (value != null)
                     Inventory.Add(Item.FromSaveGame(context, value));
             }
 
             // Journal
-            Journal = new Journal(template.GetNestedPropertyBag("journal"));
+            Journal = new Journal(template.GetNestedPropertyBag(SaveData.k_Player_Journal));
         }
 
         /// <summary>
@@ -249,35 +245,38 @@ namespace Finmer.Gameplay
         {
             PropertyBag props = base.SerializeProperties();
 
-            props.SetString("species", m_Species);
-            props.SetString(@"species_plural", SpeciesPlural);
-            props.SetString(@"species_coat_n", CoatNoun);
-            props.SetString(@"species_coat_a", CoatAdjective);
-            props.SetBool("endo", PreferEndo);
-            props.SetInt("level", Level);
-            props.SetInt("xp", XP);
-            props.SetNestedPropertyBag("extdata", AdditionalSaveData);
+            // Customization data
+            props.SetString(SaveData.k_Player_SpeciesSingular, m_Species);
+            props.SetString(SaveData.k_Player_SpeciesPlural, SpeciesPlural);
+            props.SetString(SaveData.k_Player_SpeciesCoatNoun, CoatNoun);
+            props.SetString(SaveData.k_Player_SpeciesCoatAdj, CoatAdjective);
 
-            props.SetInt("featpoints", m_FeatPoints);
-            props.SetInt("abilitypoints", m_AbilityPoints);
-            props.SetInt("money", m_Money);
-            props.SetInt("timeday", m_TimeDay);
-            props.SetInt("timehour", m_TimeHour);
-            props.SetString("location", Location);
-            props.SetString("location_nice", GameUI.Instance.Location);
-            props.SetInt("totalpreyswallowed", m_TotalPreySwallowed);
-            props.SetInt("totalpreydigested", m_TotalPreyDigested);
+            // Script data
+            props.SetNestedPropertyBag(SaveData.k_Player_ExtData, AdditionalSaveData);
 
-            props.SetString("game_version", CompileConstants.k_VersionString);
-            props.SetInt("game_rev", CompileConstants.k_VersionRevision);
+            // Gameplay data
+            props.SetString(SaveData.k_Player_Location, Location);
+            props.SetString(SaveData.k_Player_LocationPretty, GameUI.Instance.Location);
+            props.SetInt(SaveData.k_Player_XP, XP);
+            props.SetInt(SaveData.k_Player_FeatPoints, m_FeatPoints);
+            props.SetInt(SaveData.k_Player_AbilityPoints, m_AbilityPoints);
+            props.SetInt(SaveData.k_Player_Money, m_Money);
+            props.SetInt(SaveData.k_Player_TimeDay, m_TimeDay);
+            props.SetInt(SaveData.k_Player_TimeHour, m_TimeHour);
+            props.SetInt(SaveData.k_Player_NumPreySwallowed, m_TotalPreySwallowed);
+            props.SetInt(SaveData.k_Player_NumPreyDigested, m_TotalPreyDigested);
 
-            // quest journal entries
-            props.SetNestedPropertyBag("journal", Journal.SerializeProperties());
+            // Game version
+            props.SetString(SaveData.k_GameVersion, CompileConstants.k_VersionString);
+            props.SetInt(SaveData.k_GameRevision, CompileConstants.k_VersionRevision);
 
-            // equipment and inventory
-            props.SetInt("invcount", Inventory.Count);
+            // Journal
+            props.SetNestedPropertyBag(SaveData.k_Player_Journal, Journal.SerializeProperties());
+
+            // Inventory
+            props.SetInt(SaveData.k_Player_InventoryCount, Inventory.Count);
             for (var i = 0; i < Inventory.Count; i++)
-                props.SetNestedPropertyBag("inv_" + i, Inventory[i].SerializeProperties());
+                props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Player_InventoryBase, i), Inventory[i].SerializeProperties());
 
             return props;
         }

@@ -25,14 +25,14 @@ namespace Finmer.Gameplay
 
         protected GameObject(ScriptContext context, PropertyBag template) : base(context, template)
         {
-            m_Name = template.GetString("name");
-            m_Alias = template.GetString("alias");
+            m_Name = template.GetString(SaveData.k_Object_Name);
+            m_Alias = template.GetString(SaveData.k_Object_Alias);
 
             // Alias defaults to name if unspecified
             if (String.IsNullOrWhiteSpace(Alias))
                 m_Alias = m_Name;
 
-            Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString("gender", "Neuter"));
+            Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString(SaveData.k_Object_Gender, "Neuter"));
         }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
@@ -47,34 +47,34 @@ namespace Finmer.Gameplay
             }
         }
 
-        [TextProperty("object")]
+        [TextProperty(@"object")]
         public string PronounObjective { get; protected set; }
 
-        [TextProperty("subject")]
+        [TextProperty(@"subject")]
         public string PronounSubjective { get; protected set; }
 
-        [TextProperty("possessive")]
+        [TextProperty(@"possessive")]
         public string PronounPossessive { get; protected set; }
 
-        [TextProperty("object3p")]
+        [TextProperty(@"object3p")]
         public string PronounObjective3P { get; protected set; }
 
-        [TextProperty("subject3p")]
+        [TextProperty(@"subject3p")]
         public string PronounSubjective3P { get; protected set; }
 
-        [TextProperty("possessive3p")]
+        [TextProperty(@"possessive3p")]
         public string PronounPossessive3P { get; protected set; }
 
-        [TextProperty("aliaspossessive")]
+        [TextProperty(@"aliaspossessive")]
         public string AliasPossessive { get ; protected set; }
 
-        [TextProperty("namepossessive")]
+        [TextProperty(@"namepossessive")]
         public string NamePossessive { get ; protected set; }
 
         /// <summary>
         /// The UI-friendly name of this object.
         /// </summary>
-        [TextProperty("name")]
+        [TextProperty(@"name")]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public string Name
         {
@@ -90,7 +90,7 @@ namespace Finmer.Gameplay
         /// <summary>
         /// An alternate UI-friendly name for this object, usually used for text generation.
         /// </summary>
-        [TextProperty("alias")]
+        [TextProperty(@"alias")]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public string Alias
         {
@@ -110,9 +110,9 @@ namespace Finmer.Gameplay
         public override PropertyBag SerializeProperties()
         {
             var props = base.SerializeProperties();
-            props.SetString("name", Name);
-            props.SetString("alias", Alias);
-            props.SetString("gender", Gender.ToString());
+            props.SetString(SaveData.k_Object_Name, Name);
+            props.SetString(SaveData.k_Object_Alias, Alias);
+            props.SetString(SaveData.k_Object_Gender, Gender.ToString());
 
             return props;
         }

@@ -177,29 +177,29 @@ namespace Finmer.Gameplay
         protected Character(ScriptContext context, PropertyBag template) : base(context, template)
         {
             // Asset ID
-            byte[] asset_id = template.GetBytes("asset");
+            byte[] asset_id = template.GetBytes(SaveData.k_AssetID);
             if (asset_id != null)
                 Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
 
             // Core stats
-            Strength = template.GetInt("str");
-            Agility = template.GetInt("dex");
-            Body = template.GetInt("con");
-            Wits = template.GetInt("wis");
-            Flags = (ECharacterFlags)template.GetInt("flags");
-            Level = template.GetInt("level");
-            Size = (AssetCreature.ESize)template.GetInt("size", (int)AssetCreature.ESize.Medium);
-            Health = template.GetInt("health", HealthMax);
+            Strength = template.GetInt(SaveData.k_Character_Strength);
+            Agility = template.GetInt(SaveData.k_Character_Agility);
+            Body = template.GetInt(SaveData.k_Character_Body);
+            Wits = template.GetInt(SaveData.k_Character_Wits);
+            Flags = (ECharacterFlags)template.GetInt(SaveData.k_Character_Flags);
+            Level = template.GetInt(SaveData.k_Character_Level);
+            Size = (AssetCreature.ESize)template.GetInt(SaveData.k_Character_Size, (int)AssetCreature.ESize.Medium);
+            Health = template.GetInt(SaveData.k_Character_Health, HealthMax);
 
             // Combat settings
-            IsPredator = template.GetBool("predator");
-            PredatorDigests = template.GetBool("predator_digest", true);
-            PredatorFullness = template.GetFloat("predator_fullness");
+            IsPredator = template.GetBool(SaveData.k_Character_IsPredator);
+            PredatorDigests = template.GetBool(SaveData.k_Character_PredatorDigest, true);
+            PredatorFullness = template.GetFloat(SaveData.k_Character_PredatorFullness);
 
             // Load equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
             {
-                PropertyBag nested = template.GetNestedPropertyBag("eqp_" + i);
+                PropertyBag nested = template.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i));
                 if (nested != null)
                     Equipment[i] = Item.FromSaveGame(context, nested);
             }
@@ -216,22 +216,20 @@ namespace Finmer.Gameplay
 
                 // Convert the asset to a savedata template with initial settings
                 PropertyBag props = new PropertyBag();
-                props.SetBytes("asset", asset.ID.ToByteArray());
-                props.SetString("name", creature.ObjectName);
-                props.SetString("alias", creature.ObjectAlias);
-                props.SetInt("str", creature.Strength);
-                props.SetInt("dex", creature.Agility);
-                props.SetInt("con", creature.Body);
-                props.SetInt("wis", creature.Wits);
-                props.SetInt("flags", creature.Flags);
-                props.SetInt("level", creature.Level);
-                props.SetInt("size", (int)creature.Size);
-                props.SetBool("predator", creature.PredatorEnabled);
-                props.SetBool("predator_digest", creature.PredatorDigests);
-                props.SetNestedPropertyBag("eqp_0", Item.FromAsset(context, creature.Equipment[0])?.SerializeProperties());
-                props.SetNestedPropertyBag("eqp_1", Item.FromAsset(context, creature.Equipment[1])?.SerializeProperties());
-                props.SetNestedPropertyBag("eqp_2", Item.FromAsset(context, creature.Equipment[2])?.SerializeProperties());
-                props.SetNestedPropertyBag("eqp_3", Item.FromAsset(context, creature.Equipment[3])?.SerializeProperties());
+                props.SetBytes(SaveData.k_AssetID, asset.ID.ToByteArray());
+                props.SetString(SaveData.k_Object_Name, creature.ObjectName);
+                props.SetString(SaveData.k_Object_Alias, creature.ObjectAlias);
+                props.SetInt(SaveData.k_Character_Strength, creature.Strength);
+                props.SetInt(SaveData.k_Character_Agility, creature.Agility);
+                props.SetInt(SaveData.k_Character_Body, creature.Body);
+                props.SetInt(SaveData.k_Character_Wits, creature.Wits);
+                props.SetInt(SaveData.k_Character_Flags, creature.Flags);
+                props.SetInt(SaveData.k_Character_Level, creature.Level);
+                props.SetInt(SaveData.k_Character_Size, (int)creature.Size);
+                props.SetBool(SaveData.k_Character_IsPredator, creature.PredatorEnabled);
+                props.SetBool(SaveData.k_Character_PredatorDigest, creature.PredatorDigests);
+                for (var i = 0; i < k_EquipSlotCount; i++)
+                    props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i), Item.FromAsset(context, creature.Equipment[i])?.SerializeProperties());
 
                 return new Character(context, props);
             }
@@ -248,26 +246,26 @@ namespace Finmer.Gameplay
 
             // Asset ID
             if (Asset != null)
-                props.SetBytes("asset", Asset.ID.ToByteArray());
+                props.SetBytes(SaveData.k_AssetID, Asset.ID.ToByteArray());
 
             // Core stats
-            props.SetInt("str", Strength);
-            props.SetInt("dex", Agility);
-            props.SetInt("con", Body);
-            props.SetInt("wis", Wits);
-            props.SetInt("flags", (int)Flags);
-            props.SetInt("level", Level);
-            props.SetInt("size", (int)Size);
-            props.SetInt("health", Health);
+            props.SetInt(SaveData.k_Character_Strength, Strength);
+            props.SetInt(SaveData.k_Character_Agility, Agility);
+            props.SetInt(SaveData.k_Character_Body, Body);
+            props.SetInt(SaveData.k_Character_Wits, Wits);
+            props.SetInt(SaveData.k_Character_Flags, (int)Flags);
+            props.SetInt(SaveData.k_Character_Level, Level);
+            props.SetInt(SaveData.k_Character_Size, (int)Size);
+            props.SetInt(SaveData.k_Character_Health, Health);
 
             // Vore stats
-            props.SetBool("predator", IsPredator);
-            props.SetBool("predator_digest", PredatorDigests);
-            props.SetFloat("predator_fullness", PredatorFullness);
+            props.SetBool(SaveData.k_Character_IsPredator, IsPredator);
+            props.SetBool(SaveData.k_Character_PredatorDigest, PredatorDigests);
+            props.SetFloat(SaveData.k_Character_PredatorFullness, PredatorFullness);
 
             // Equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
-                props.SetNestedPropertyBag("eqp_" + i, Equipment[i]?.SerializeProperties());
+                props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i), Equipment[i]?.SerializeProperties());
 
             return props;
         }

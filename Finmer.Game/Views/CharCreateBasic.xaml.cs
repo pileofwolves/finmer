@@ -33,8 +33,8 @@ namespace Finmer.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Copy data that was already cached in the save data
-            NameInput.Text = InitialSaveData.GetString(@"name");
-            if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"gender")))
+            NameInput.Text = InitialSaveData.GetString(SaveData.k_Object_Name);
+            if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Name)))
             {
                 // Randomly select one of the genders by default
                 int gender_flip = CoreUtility.Rng.Next(2);
@@ -43,7 +43,7 @@ namespace Finmer.Views
             }
             else
             {
-                GenderInputMale.IsChecked = InitialSaveData.GetString(@"gender").Equals("Male");
+                GenderInputMale.IsChecked = InitialSaveData.GetString(SaveData.k_Object_Gender).Equals("Male");
                 GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
             }
 
@@ -54,7 +54,7 @@ namespace Finmer.Views
 
         private void txtName_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitialSaveData.SetString(@"name", NameInput.Text);
+            InitialSaveData.SetString(SaveData.k_Object_Name, NameInput.Text);
             ValidateForm();
         }
 
@@ -64,7 +64,7 @@ namespace Finmer.Views
 
             // If this option was actually ticked (it might be toggled off instead) then update the selected gender
             if (gender_option.IsChecked ?? false)
-                InitialSaveData.SetString(@"gender", (string)gender_option.Tag);
+                InitialSaveData.SetString(SaveData.k_Object_Gender, (string)gender_option.Tag);
 
             ValidateForm();
         }
@@ -72,8 +72,8 @@ namespace Finmer.Views
         private void ValidateForm()
         {
             m_CanGoNext =
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"name")) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"gender"));
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Name)) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Gender));
             OnPropertyChanged(nameof(CanGoNext));
         }
 

@@ -71,14 +71,14 @@ namespace Finmer.Gameplay
             ScriptContext = context;
 
             // Read the object ID
-            byte[] id_bytes = template.GetBytes("guid");
+            byte[] id_bytes = template.GetBytes(SaveData.k_Object_Guid);
             ID = id_bytes == null || id_bytes.Length != 16
                 ? Guid.NewGuid()
                 : new Guid(id_bytes);
 
             // Read tags
-            for (var i = 0; i < template.GetInt("tag_count"); i++)
-                Tags.Add(template.GetString("tag_" + i).ToUpperInvariant());
+            for (var i = 0; i < template.GetInt(SaveData.k_Object_TagCount); i++)
+                Tags.Add(template.GetString(SaveData.k_Object_TagBase + i).ToUpperInvariant());
 
             CacheExportedMembers();
         }
@@ -119,8 +119,14 @@ namespace Finmer.Gameplay
         public virtual PropertyBag SerializeProperties()
         {
             var output = new PropertyBag();
-            output.SetBytes("guid", ID.ToByteArray());
-            output.SetString("tags", String.Join(",", Tags));
+
+            // Object ID
+            output.SetBytes(SaveData.k_Object_Guid, ID.ToByteArray());
+
+            // Tag collection
+            output.SetInt(SaveData.k_Object_TagCount, Tags.Count);
+            for (var i = 0; i < Tags.Count; i++)
+                output.SetString(SaveData.k_Object_TagBase + i, Tags[i]);
 
             return output;
         }
@@ -199,7 +205,7 @@ namespace Finmer.Gameplay
             IntPtr native_block = LuaApi.lua_newuserdata(state, new UIntPtr(16U));
 
             // Reuse the same metatable for all ScriptableObjects
-            if (LuaApi.luaL_newmetatable(state, "ScriptableObject") == 1)
+            if (LuaApi.luaL_newmetatable(state, @"ScriptableObject") == 1)
             {
                 // If this is the first usage of the metatable, populate it with the metamethods we're interested in
                 Debug.Assert(state == ScriptContext.LuaState, "Currently expecting this to run on the main stack; otherwise this code needs changes.");

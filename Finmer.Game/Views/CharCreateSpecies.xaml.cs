@@ -34,7 +34,7 @@ namespace Finmer.Views
         private void Page_Loaded(object sender, RoutedEventArgs e)
         {
             // Populate the form
-            if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"species")))
+            if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesSingular)))
             {
                 // If no species has been selected yet, pick a random one
                 if (GameController.DebugMode)
@@ -43,10 +43,10 @@ namespace Finmer.Views
             else
             {
                 // Otherwise, restore from save data
-                SpeciesSingularInput.Text = InitialSaveData.GetString(@"species");
-                SpeciesPluralInput.Text = InitialSaveData.GetString(@"species_plural");
-                CoatNounInput.Text = InitialSaveData.GetString(@"species_coat_n");
-                CoatAdjectiveInput.Text = InitialSaveData.GetString(@"species_coat_a");
+                SpeciesSingularInput.Text = InitialSaveData.GetString(SaveData.k_Player_SpeciesSingular);
+                SpeciesPluralInput.Text = InitialSaveData.GetString(SaveData.k_Player_SpeciesPlural);
+                CoatNounInput.Text = InitialSaveData.GetString(SaveData.k_Player_SpeciesCoatNoun);
+                CoatAdjectiveInput.Text = InitialSaveData.GetString(SaveData.k_Player_SpeciesCoatAdj);
             }
 
             ValidateForm();
@@ -55,10 +55,10 @@ namespace Finmer.Views
         private void ValidateForm()
         {
             m_CanGoNext =
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"species")) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"species_plural")) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"species_coat_n")) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(@"species_coat_a"));
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesSingular)) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesPlural)) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesCoatNoun)) &&
+                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesCoatAdj));
             OnPropertyChanged(nameof(CanGoNext));
         }
 
@@ -82,25 +82,25 @@ namespace Finmer.Views
 
         private void SpeciesSingularInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitialSaveData.SetString(@"species", SpeciesSingularInput.Text);
+            InitialSaveData.SetString(SaveData.k_Player_SpeciesSingular, SpeciesSingularInput.Text);
             ValidateForm();
         }
 
         private void SpeciesPluralInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitialSaveData.SetString(@"species_plural", SpeciesPluralInput.Text);
+            InitialSaveData.SetString(SaveData.k_Player_SpeciesPlural, SpeciesPluralInput.Text);
             ValidateForm();
         }
 
         private void CoatNounInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitialSaveData.SetString(@"species_coat_n", CoatNounInput.Text);
+            InitialSaveData.SetString(SaveData.k_Player_SpeciesCoatNoun, CoatNounInput.Text);
             ValidateForm();
         }
 
         private void CoatAdjectiveInput_TextChanged(object sender, TextChangedEventArgs e)
         {
-            InitialSaveData.SetString(@"species_coat_a", CoatAdjectiveInput.Text);
+            InitialSaveData.SetString(SaveData.k_Player_SpeciesCoatAdj, CoatAdjectiveInput.Text);
             ValidateForm();
         }
 

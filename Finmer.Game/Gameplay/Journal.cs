@@ -61,10 +61,11 @@ namespace Finmer.Gameplay
         /// </summary>
         public IEnumerable<AssetJournal> GetAllQuests()
         {
-            foreach (KeyValuePair<Guid, int> pair in m_Quests)
+            foreach (var pair in m_Quests)
             {
                 var quest = GameController.Content.GetAssetByID(pair.Key) as AssetJournal;
-                if (quest == null) throw new KeyNotFoundException("No matching AssetJournal found for GUID " + pair.Key);
+                if (quest == null)
+                    throw new KeyNotFoundException("No matching AssetJournal found for GUID " + pair.Key);
 
                 yield return quest;
             }
@@ -76,13 +77,16 @@ namespace Finmer.Gameplay
         public PropertyBag SerializeProperties()
         {
             var props = new PropertyBag();
-            props.SetInt("count", m_Quests.Count);
 
+            // Entry count
+            props.SetInt(SaveData.k_Journal_Count, m_Quests.Count);
+
+            // Individual entries
             var i = 0;
-            foreach (KeyValuePair<Guid, int> pair in m_Quests)
+            foreach (var pair in m_Quests)
             {
-                props.SetBytes("guid_" + i, pair.Key.ToByteArray());
-                props.SetInt("stage_" + i, pair.Value);
+                props.SetBytes(SaveData.CombineBase(SaveData.k_Journal_EntryGuid, i), pair.Key.ToByteArray());
+                props.SetInt(SaveData.CombineBase(SaveData.k_Journal_EntryStage, i), pair.Value);
                 i++;
             }
 
@@ -91,6 +95,7 @@ namespace Finmer.Gameplay
 
         private void SetQuestStage(Guid id, int stage)
         {
+            // Add or update this quest
             if (m_Quests.ContainsKey(id))
                 m_Quests[id] = stage;
             else
@@ -99,13 +104,16 @@ namespace Finmer.Gameplay
 
         private void DeserializeProperties(PropertyBag template)
         {
+            // Ensure different states cannot mix
             m_Quests.Clear();
 
-            int count = template.GetInt("count");
+            // Read the number of entries
+            int count = template.GetInt(SaveData.k_Journal_Count);
             for (var i = 0; i < count; i++)
             {
-                var guid = new Guid(template.GetBytes("guid_" + i));
-                int stage = template.GetInt("stage_" + i);
+                // Read individual entries
+                var guid = new Guid(template.GetBytes(SaveData.CombineBase(SaveData.k_Journal_EntryGuid, i)));
+                int stage = template.GetInt(SaveData.CombineBase(SaveData.k_Journal_EntryStage, i));
 
                 m_Quests.Add(guid, stage);
             }

@@ -144,17 +144,17 @@ namespace Finmer.Gameplay
             if (saved != null)
             {
                 // Overwrite the shop's settings with things retrieved from the save file
-                ret.Title = saved.GetString("title");
-                ret.RestockInterval = saved.GetInt("restock_interval");
-                ret.RestockLastTime = saved.GetInt("restock_timestamp");
+                ret.Title = saved.GetString(SaveData.k_Shop_Title);
+                ret.RestockInterval = saved.GetInt(SaveData.k_Shop_RestockInterval);
+                ret.RestockLastTime = saved.GetInt(SaveData.k_Shop_RestockTimestamp);
 
                 // Read stock
-                int num_stock = saved.GetInt("stock_count");
+                int num_stock = saved.GetInt(SaveData.k_Shop_StockCount);
                 for (var i = 0; i < num_stock; i++)
                 {
-                    var quantity = saved.GetInt($"stock_{i}_qty");
-                    var type = saved.GetBool($"stock_{i}_unique") ? ShopItemStack.EStackType.Unique : ShopItemStack.EStackType.Regular;
-                    var item_data = saved.GetNestedPropertyBag($"stock_{i}_data");
+                    var quantity = saved.GetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i));
+                    var type = saved.GetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i)) ? ShopItemStack.EStackType.Unique : ShopItemStack.EStackType.Regular;
+                    var item_data = saved.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i));
                     ret.AddItem(Item.FromSaveGame(context, item_data), quantity, type);
                 }
 
@@ -180,18 +180,19 @@ namespace Finmer.Gameplay
             PropertyBag props = base.SerializeProperties();
 
             // Serialize metadata
-            props.SetString("title", Title);
-            props.SetBool("restock_needed", RestockRequired);
-            props.SetInt("restock_timestamp", RestockLastTime);
+            props.SetString(SaveData.k_Shop_Title, Title);
+            props.SetBool(SaveData.k_Shop_RestockRequired, RestockRequired);
+            props.SetInt(SaveData.k_Shop_RestockInterval, RestockInterval);
+            props.SetInt(SaveData.k_Shop_RestockTimestamp, RestockLastTime);
 
             // Serialize stock
-            props.SetInt("stock_count", Stock.Count);
+            props.SetInt(SaveData.k_Shop_StockCount, Stock.Count);
             for (var i = 0; i < Stock.Count; i++)
             {
                 ShopItemStack entry = Stock[i];
-                props.SetInt($"stock_{i}_qty", entry.Quantity);
-                props.SetBool($"stock_{i}_unique", entry.Type == ShopItemStack.EStackType.Unique);
-                props.SetNestedPropertyBag($"stock_{i}_data", entry.Item.SerializeProperties());
+                props.SetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i), entry.Quantity);
+                props.SetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i), entry.Type == ShopItemStack.EStackType.Unique);
+                props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i), entry.Item.SerializeProperties());
             }
 
             return props;

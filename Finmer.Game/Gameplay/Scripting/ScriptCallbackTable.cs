@@ -34,6 +34,9 @@ namespace Finmer.Gameplay.Scripting
             lua_newtable(state);
             m_TableRef = luaL_ref(state, -2);
             lua_pop(state, 1);
+
+            // Ensure this object is freed when the script context is destroyed
+            context.RegisterOwnedResource(this);
         }
 
         ~ScriptCallbackTable()
@@ -145,9 +148,12 @@ namespace Finmer.Gameplay.Scripting
 
         private void ReleaseUnmanagedResources()
         {
-            IntPtr stack = m_Context.LuaState;
+            // Only do this once
+            if (m_TableRef == -1)
+                return;
 
             // Release the internal callback table so it can be collected
+            IntPtr stack = m_Context.LuaState;
             luaL_newmetatable(stack, k_CallbackTable);
             luaL_unref(stack, -1, m_TableRef);
             lua_pop(stack, 1);

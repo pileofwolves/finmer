@@ -30,6 +30,7 @@ namespace Finmer.Gameplay.Scripting
         /// </summary>
         public IntPtr LuaState { get ; private set; }
 
+        private readonly List<WeakReference<IDisposable>> m_OwnedResources = new List<WeakReference<IDisposable>>();
         private readonly List<GCHandle> m_PinnedDelegates = new List<GCHandle>();
         private readonly Dictionary<Guid, PinnedScriptableObject> m_PinnedObjects = new Dictionary<Guid, PinnedScriptableObject>();
 
@@ -76,6 +77,14 @@ namespace Finmer.Gameplay.Scripting
         {
             ReleaseUnmanagedResources();
             GC.SuppressFinalize(this);
+        }
+
+        /// <summary>
+        /// Registers a disposable resources as being owned by the ScriptContext, such that it will be disposed of before the Lua state is released.
+        /// </summary>
+        public void RegisterOwnedResource(IDisposable resource)
+        {
+            m_OwnedResources.Add(new WeakReference<IDisposable>(resource));
         }
 
         /// <summary>
@@ -311,6 +320,11 @@ namespace Finmer.Gameplay.Scripting
 
         private void ReleaseUnmanagedResources()
         {
+            // Release owned resources
+            foreach (var resource_ref in m_OwnedResources)
+                if (resource_ref.TryGetTarget(out var resource))
+                    resource.Dispose();
+
             // Destroy the Lua state
             lua_close(LuaState);
             LuaState = IntPtr.Zero;

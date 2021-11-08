@@ -35,26 +35,24 @@ namespace Finmer.Views
             InitializeComponent();
         }
 
-        private void Tooltip_OnLoaded(object sender, RoutedEventArgs e)
+       /* private void Tooltip_OnLoaded(object sender, RoutedEventArgs e)
         {
             // Regenerate the tooltip
             if (DataContext != null)
                 CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
-        }
+        }*/
 
-        private void ItemTooltipView_OnContextchanged(object sender, DependencyPropertyChangedEventArgs e) 
+        private void ItemTooltipView_OnContextChanged(object sender, DependencyPropertyChangedEventArgs e) 
         {
-            ItemTooltipView tip = DataContext as ItemTooltipView;
-            Debug.Assert(tip != null);
-
-            if (m_CurrentTip != null && m_CurrentTip.TryGetTarget(out ItemTooltipView old_tip))
-                PropertyChangedEventManager.RemoveHandler(old_tip, Tooltip_PropertyChanged, String.Empty);
-        }
-
-        private void Tooltip_PropertyChanged(object sender, PropertyChangedEventArgs e) 
-        {
-            if (!m_CurrentTip.TryGetTarget(out ItemTooltipView tip))
+            /*ItemTooltipView tip = DataContext as ItemTooltipView;
+            if (!m_CurrentTip.TryGetTarget(out ItemTooltipView old_tip))
                 return;
+            old_tip.ItemInfoLabel.Inlines.Clear();
+
+            CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);*/
+            if (DataContext != null)
+                CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
+
         }
 
         private static void CreateTooltipContent(AssetItem asset, InlineCollection parts)

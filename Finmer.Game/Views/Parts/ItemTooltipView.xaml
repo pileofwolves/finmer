@@ -6,10 +6,9 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
-    Loaded="Tooltip_OnLoaded"
     d:DesignHeight="200" d:DesignWidth="300"
     d:DataContext="{d:DesignInstance gp:Item}"
-    DataContextChanged="ItemTooltipView_OnContextchanged">
+    DataContextChanged="ItemTooltipView_OnContextChanged">
     
     <StackPanel
         MaxWidth="300">

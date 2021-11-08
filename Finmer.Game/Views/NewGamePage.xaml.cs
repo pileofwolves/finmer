@@ -11,6 +11,7 @@ using System.Runtime.CompilerServices;
 using System.Windows;
 using Finmer.Core;
 using Finmer.Gameplay;
+using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views.Base;
 using JetBrains.Annotations;
@@ -24,14 +25,20 @@ namespace Finmer.Views
     public partial class NewGamePage : INotifyPropertyChanged
     {
 
-        private readonly PropertyBag m_Player = new PropertyBag();
+        private readonly PropertyBag m_Player;
         private CharCreateViewBase m_CurrentPage;
         private int m_Page = 1;
 
         public NewGamePage()
         {
             InitializeComponent();
+
+            // Restore the last character the user created, or create a new one if there is none
+            m_Player = UserConfig.NewGamePreset ?? new PropertyBag();
+
+            // Initialize data binding
             DataContext = this;
+
             NewGameCarousel.NavigationComplete += (sender, args) =>
             {
                 BackButton.IsHitTestVisible = true;
@@ -92,11 +99,15 @@ namespace Finmer.Views
 
         private void CurrentPage_PropertyChanged(object sender, PropertyChangedEventArgs args)
         {
-            if (args.PropertyName.Equals(nameof(CharCreateViewBase.CanGoNext))) OnPropertyChanged(nameof(CanGoNext));
+            if (args.PropertyName.Equals(nameof(CharCreateViewBase.CanGoNext)))
+                OnPropertyChanged(nameof(CanGoNext));
         }
 
         private void DoBeginGame()
         {
+            // Store this character in the user config, so the next time this menu is opened, the same settings are restored
+            UserConfig.NewGamePreset = m_Player;
+
             // Initialize the savegame with basic defaults.
             // The scripts in content can make any other adjustments if needed (such as starting equipment).
             m_Player.SetInt(SaveData.k_Character_Level, 1);

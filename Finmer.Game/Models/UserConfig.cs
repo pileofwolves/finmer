@@ -57,6 +57,11 @@ namespace Finmer.Models
         public static float Zoom { get; set; } = 1.0f;
 
         /// <summary>
+        /// The cached initial save data to be restored when opening the character creator.
+        /// </summary>
+        public static PropertyBag NewGamePreset { get; set; }
+
+        /// <summary>
         /// The desired combat animation speed.
         /// </summary>
         public static EAnimationLevel CombatAnimation { get; set; } = EAnimationLevel.Full;
@@ -89,6 +94,7 @@ namespace Finmer.Models
                         PreferScat = props.GetBool(@"scat");
                         FirstStart = props.GetBool(@"firststart");
                         Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
+                        NewGamePreset = props.GetNestedPropertyBag(@"last_character");
                         CombatAnimation = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(@"combatanim"), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
                     }
                 }
@@ -136,6 +142,7 @@ namespace Finmer.Models
             props.SetBool(@"scat", PreferScat);
             props.SetBool(@"firststart", FirstStart);
             props.SetFloat(@"zoom", Zoom);
+            props.SetNestedPropertyBag(@"last_character", NewGamePreset);
             props.SetInt(@"combatanim", (int)CombatAnimation);
             return props;
         }

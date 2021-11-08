@@ -162,12 +162,12 @@ namespace Finmer.Gameplay
                     break;
 
                 // Handle this grammar tag
-                string command = raw.Substring(index_start + 2, index_end - index_start - 2);
+                string command = raw.Substring(index_start + 1, index_end - index_start - 1);
                 string replacement = ProcessGrammarTag(command);
 
                 // Remove the raw grammar tag, and inject the generated replacement
                 Debug.Assert(replacement != null);
-                raw = raw.Remove(index_start, index_end - index_start + 2);
+                raw = raw.Remove(index_start, index_end - index_start + 1);
                 raw = raw.Insert(index_start, replacement);
                 index_end = index_start + replacement.Length;
             }

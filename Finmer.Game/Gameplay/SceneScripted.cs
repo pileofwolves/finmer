@@ -56,6 +56,12 @@ namespace Finmer.Gameplay
                 return;
             }
 
+            if (scene.Inject)
+            {
+                GameUI.Instance.Log($"ERROR: Failed to load scene '{scenefile}': The specified asset is a Patch, not a Scene.", Theme.LogColorError);
+                return;
+            }
+
             // Load the chunk
             CompiledScript script = scene.PrecompiledScript;
             if (!context.LoadScript(script, scenefile))

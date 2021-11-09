@@ -31,18 +31,16 @@ namespace Finmer.Views
             InitializeComponent();
         }
 
-        private void Tooltip_OnLoaded(object sender, RoutedEventArgs e)
+        private void ItemTooltipView_OnContextChanged(object sender, DependencyPropertyChangedEventArgs e) 
         {
-            // Regenerate the tooltip
             if (DataContext != null)
                 CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
         }
 
         private static void CreateTooltipContent(AssetItem asset, InlineCollection parts)
         {
-            // Ensure we're not duplicating the tooltip contents
-            if (parts.Count != 0)
-                return;
+            //Clear out the cached tooltip content
+            parts.Clear();
 
             // Display the item name
             parts.Add(new Bold(new Run(asset.ObjectName)));

@@ -262,13 +262,13 @@ namespace Finmer.Gameplay.Combat
         /// <summary>
         /// Perform a Prey/Struggle action.
         /// </summary>
-        public static void PerformPreyStruggle(Participant instigator)
+        public static void PerformPreyStruggle(Participant predator, Participant prey)
         {
-            if (!instigator.IsPlayer())
-                return;
-
-            // Perform animation
-            CombatDisplay.ShowSimpleMessage(@"vore_pov_struggle", instigator);
+            // Show text describing the action. Special handling for the player to use some POV messages instead.
+            if (prey.IsPlayer())
+                CombatDisplay.ShowSimpleMessage(@"vore_pov_struggle", prey);
+            else
+                CombatDisplay.ShowSimpleMessage(@"vore_ext_struggle", predator, prey);
         }
 
         /// <summary>
@@ -284,7 +284,7 @@ namespace Finmer.Gameplay.Combat
                 // Deal digestion damage to all live prey
                 var digestion_damage = character.Level + Character.GetAbilityModifier(character.Body);
                 foreach (var prey in participant.Prey)
-                    if (!prey.DigestionImmunity)
+                    if (!prey.DigestionImmunity && !prey.Character.IsDead())
                     {
                         prey.Character.Health -= digestion_damage;
 
@@ -292,10 +292,6 @@ namespace Finmer.Gameplay.Combat
                         if (prey.Character.IsDead())
                             prey.Session.NotifyParticipantKilled(participant, prey);
                     }
-
-                // Print a message indicating such (but of only one random prey, to avoid clutter when many prey are swallowed)
-                var random_prey = participant.Prey[CoreUtility.Rng.Next(participant.Prey.Count)];
-                CombatDisplay.ShowSimpleMessage("vore_ext_struggle", participant, random_prey);
             }
 
             // TODO: Count down temporary buffs

@@ -475,7 +475,7 @@ namespace Finmer.Gameplay
                     CombatLogic.PerformSkipTurn(instigator);
                     break;
                 case ECombatAction.Prey_Struggle:
-                    CombatLogic.PerformPreyStruggle(instigator);
+                    CombatLogic.PerformPreyStruggle(instigator.Predator, instigator);
                     break;
                 case ECombatAction.Prey_Submit:
                     // No action
@@ -483,6 +483,10 @@ namespace Finmer.Gameplay
                 default:
                     throw new ArgumentOutOfRangeException(nameof(action));
             }
+
+            // Avoid running any further combat logic if the combat has already ended at this point
+            if (IsCombatEnded())
+                return;
 
             // Post-turn actions
             CombatLogic.PostTurn(instigator);

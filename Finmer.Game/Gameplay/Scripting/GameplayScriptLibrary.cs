@@ -102,7 +102,14 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedSetScene(IntPtr L)
         {
             // change the scene to the specified string
-            GameController.Session.SetScene(new SceneScripted(ScriptContext.FromLua(L), luaL_checkstring(L, 1)));
+            try
+            {
+                GameController.Session.SetScene(new SceneScripted(ScriptContext.FromLua(L), luaL_checkstring(L, 1)));
+            }
+            catch (ArgumentException ex)
+            {
+                return luaL_error(L, ex.Message);
+            }
             // throw a faux error to terminate the old script
             // TODO: error has a lot of overhead, maybe we can instead yield and not register the thread for resuming
             return luaL_error(L, "ScriptStopSignal");

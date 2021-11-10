@@ -50,10 +50,20 @@ namespace Finmer.Gameplay
 
             // Find the scene asset and get its script
             AssetBase asset = GameController.Content.GetAssetByName(scenefile);
+
+            // Let's throw some exceptions if they're not proper scenes
             if (!(asset is AssetScene scene))
             {
                 GameUI.Instance.Log($"ERROR: Failed to load scene '{scenefile}': The specified asset does not exist, or is not a Scene.", Theme.LogColorError);
-                return;
+                //return;
+                throw new ArgumentException(String.Format("Failed to load scene '{0}': The specified asset does not exist, or is not a Scene.", scenefile), "scenefile");
+            }
+
+            if (scene.Inject)
+            {
+                // GameUI.Instance.Log($"ERROR: Failed to load scene '{scenefile}': The specified asset is a Patch, not a Scene.", Theme.LogColorError);
+                // return;
+                throw new ArgumentException(String.Format("Failed to load scene '{0}': The specified asset is a Patch, not a Scene", scenefile), "scenefile");
             }
 
             if (scene.Inject)

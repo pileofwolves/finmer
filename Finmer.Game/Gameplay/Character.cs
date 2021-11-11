@@ -219,6 +219,7 @@ namespace Finmer.Gameplay
                 props.SetBytes(SaveData.k_AssetID, asset.ID.ToByteArray());
                 props.SetString(SaveData.k_Object_Name, creature.ObjectName);
                 props.SetString(SaveData.k_Object_Alias, creature.ObjectAlias);
+                props.SetInt(SaveData.k_Object_Gender, (int)creature.Gender);
                 props.SetInt(SaveData.k_Character_Strength, creature.Strength);
                 props.SetInt(SaveData.k_Character_Agility, creature.Agility);
                 props.SetInt(SaveData.k_Character_Body, creature.Body);

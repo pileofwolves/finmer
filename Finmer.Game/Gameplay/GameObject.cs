@@ -32,7 +32,7 @@ namespace Finmer.Gameplay
             if (String.IsNullOrWhiteSpace(Alias))
                 m_Alias = m_Name;
 
-            Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString(SaveData.k_Object_Gender, "Ungendered"));
+            Gender = (EGender)template.GetInt(SaveData.k_Object_Gender, (int)EGender.Ungendered);
         }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
@@ -112,7 +112,7 @@ namespace Finmer.Gameplay
             var props = base.SerializeProperties();
             props.SetString(SaveData.k_Object_Name, Name);
             props.SetString(SaveData.k_Object_Alias, Alias);
-            props.SetString(SaveData.k_Object_Gender, Gender.ToString());
+            props.SetInt(SaveData.k_Object_Gender, (int)Gender);
 
             return props;
         }

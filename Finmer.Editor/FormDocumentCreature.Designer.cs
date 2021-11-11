@@ -50,6 +50,7 @@
             System.Windows.Forms.Label label9;
             System.Windows.Forms.GroupBox fraTags;
             System.Windows.Forms.GroupBox fraStringMappings;
+            this.chkAutoVorePrey = new System.Windows.Forms.CheckBox();
             this.assetEquip4 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip3 = new Finmer.Editor.AssetPickerControl();
             this.assetEquip2 = new Finmer.Editor.AssetPickerControl();
@@ -82,7 +83,6 @@
             this.clhKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhRule = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.clhNewKey = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.chkAutoVorePrey = new System.Windows.Forms.CheckBox();
             label11 = new System.Windows.Forms.Label();
             label8 = new System.Windows.Forms.Label();
             label7 = new System.Windows.Forms.Label();
@@ -218,6 +218,16 @@
             fraCombatFlags.TabIndex = 5;
             fraCombatFlags.TabStop = false;
             fraCombatFlags.Text = "Combat Settings";
+            // 
+            // chkAutoVorePrey
+            // 
+            this.chkAutoVorePrey.AutoSize = true;
+            this.chkAutoVorePrey.Location = new System.Drawing.Point(176, 144);
+            this.chkAutoVorePrey.Name = "chkAutoVorePrey";
+            this.chkAutoVorePrey.Size = new System.Drawing.Size(156, 17);
+            this.chkAutoVorePrey.TabIndex = 16;
+            this.chkAutoVorePrey.Text = "Swallowed When Defeated";
+            this.chkAutoVorePrey.UseVisualStyleBackColor = true;
             // 
             // label17
             // 
@@ -471,13 +481,13 @@
             this.cmbGender.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbGender.FormattingEnabled = true;
             this.cmbGender.Items.AddRange(new object[] {
-            "Male",
-            "Female",
-            "Neuter",
-            "Herm"});
-            this.cmbGender.Location = new System.Drawing.Point(200, 88);
+            "Male (he/him)",
+            "Female (she/her)",
+            "Neutral (they/them)",
+            "Ungendered (it/it)"});
+            this.cmbGender.Location = new System.Drawing.Point(184, 88);
             this.cmbGender.Name = "cmbGender";
-            this.cmbGender.Size = new System.Drawing.Size(96, 21);
+            this.cmbGender.Size = new System.Drawing.Size(112, 21);
             this.cmbGender.TabIndex = 30;
             // 
             // cmbSize
@@ -498,7 +508,7 @@
             // label16
             // 
             label16.AutoSize = true;
-            label16.Location = new System.Drawing.Point(200, 72);
+            label16.Location = new System.Drawing.Point(184, 72);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(45, 13);
             label16.TabIndex = 29;
@@ -509,7 +519,7 @@
             this.txtAlias.Location = new System.Drawing.Point(16, 88);
             this.txtAlias.MaxLength = 100;
             this.txtAlias.Name = "txtAlias";
-            this.txtAlias.Size = new System.Drawing.Size(176, 20);
+            this.txtAlias.Size = new System.Drawing.Size(160, 20);
             this.txtAlias.TabIndex = 1;
             // 
             // label9
@@ -733,16 +743,6 @@
             // 
             this.clhNewKey.Text = "Replacement Key";
             this.clhNewKey.Width = 105;
-            // 
-            // chkAutoVorePrey
-            // 
-            this.chkAutoVorePrey.AutoSize = true;
-            this.chkAutoVorePrey.Location = new System.Drawing.Point(176, 144);
-            this.chkAutoVorePrey.Name = "chkAutoVorePrey";
-            this.chkAutoVorePrey.Size = new System.Drawing.Size(156, 17);
-            this.chkAutoVorePrey.TabIndex = 16;
-            this.chkAutoVorePrey.Text = "Swallowed When Defeated";
-            this.chkAutoVorePrey.UseVisualStyleBackColor = true;
             // 
             // FormDocumentCreature
             // 

@@ -22,11 +22,11 @@ namespace Finmer.Gameplay
         {
             switch (gender)
             {
-                case EGender.Male:      return "him";
-                case EGender.Female:    return "her";
-                case EGender.Herm:      return "hir";
-                case EGender.Neuter:    return "it";
-                default:                throw new ArgumentOutOfRangeException(nameof(gender));
+                case EGender.Male:          return "him";
+                case EGender.Female:        return "her";
+                case EGender.Neutral:       return "them";
+                case EGender.Ungendered:    return "it";
+                default:                    throw new ArgumentOutOfRangeException(nameof(gender));
             }
         }
 
@@ -34,11 +34,11 @@ namespace Finmer.Gameplay
         {
             switch (gender)
             {
-                case EGender.Male:      return "he";
-                case EGender.Female:    return "she";
-                case EGender.Herm:      return "shi";
-                case EGender.Neuter:    return "it";
-                default:                throw new ArgumentOutOfRangeException(nameof(gender));
+                case EGender.Male:          return "he";
+                case EGender.Female:        return "she";
+                case EGender.Neutral:       return "they";
+                case EGender.Ungendered:    return "it";
+                default:                    throw new ArgumentOutOfRangeException(nameof(gender));
             }
         }
 
@@ -46,11 +46,11 @@ namespace Finmer.Gameplay
         {
             switch (gender)
             {
-                case EGender.Male:      return "his";
-                case EGender.Female:    return "her";
-                case EGender.Herm:      return "hir";
-                case EGender.Neuter:    return "its";
-                default:                throw new ArgumentOutOfRangeException(nameof(gender));
+                case EGender.Male:          return "his";
+                case EGender.Female:        return "her";
+                case EGender.Neutral:       return "their";
+                case EGender.Ungendered:    return "its";
+                default:                    throw new ArgumentOutOfRangeException(nameof(gender));
             }
         }
 

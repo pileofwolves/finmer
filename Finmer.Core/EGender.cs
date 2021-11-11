@@ -8,8 +8,8 @@
     {
         Male,
         Female,
-        Neuter,
-        Herm
+        Neutral,
+        Ungendered
     }
 
 }

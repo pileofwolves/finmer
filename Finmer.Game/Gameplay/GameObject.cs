@@ -32,7 +32,7 @@ namespace Finmer.Gameplay
             if (String.IsNullOrWhiteSpace(Alias))
                 m_Alias = m_Name;
 
-            Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString(SaveData.k_Object_Gender, "Neuter"));
+            Gender = (EGender)Enum.Parse(typeof(EGender), template.GetString(SaveData.k_Object_Gender, "Ungendered"));
         }
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]

@@ -39,10 +39,14 @@ To generate executables, open the `Finmer.sln` solution file in Visual Studio an
 
 To run the game, you'll need to prepare content package files (furballs) for the game to load:
 
-1. First run the **Finmer.Editor** program and open the Core module (located at `/Modules/Projects/Core/Core.fnproj`).
+1. Run the **Finmer.Editor** program and open the Core module (located at `/Modules/Projects/Core/Core.fnproj`).
 2. Once the project has loaded, click the Preferences button (on the Play section on the toolbar) and set the Working Directory to the repository root. This will ensure the editor knows where to find the Modules folder. You only need to do this once; the editor will save this info for the next run.
 3. Click the 'Save Module' button on the toolbar to generate furball files suitable for the game engine. They'll be placed in the Modules folder.
 4. Close the editor, and launch **Finmer.Game** to play.
+
+### Getting started
+
+Check [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info on running the project and making changes.
 
 ## PROJECT OVERVIEW
 
@@ -56,9 +60,9 @@ The project structure is as follows:
 
 ## CONTRIBUTING
 
-Issue reports and code pull requests are welcome! Please check [the contribution guidelines](.github/CONTRIBUTING.md) for more info.
+Issue reports and code pull requests are welcome! Please check [the contribution guidelines](.github/CONTRIBUTING.md) for more info and tips on getting started.
 
-PLEASE NOTE: This repository is *not* the right place to make suggestions or requests for entirely new content. Pull requests that add entirely new content (other than fixes or tweaks, of course) are not accepted at this time. If you wish to make such suggestions, you can either make it yourself using the Editor, or get in touch with me on FurAffinity or email (nuntiswolf@gmail.com) to discuss.
+PLEASE NOTE: This repository is *not* the right place to make suggestions or requests for entirely new content. Pull requests that add entirely new content (other than fixes or tweaks, of course) are not accepted at this time. If you wish to make such suggestions, please get in touch by creating an issue here, or on FurAffinity or email (nuntiswolf@gmail.com) to discuss.
 
 ## MAKING CONTENT / USING THE EDITOR
 

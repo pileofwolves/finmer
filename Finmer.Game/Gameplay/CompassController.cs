@@ -136,7 +136,7 @@ namespace Finmer.Gameplay
                     }
                     catch (ArgumentException ex) 
                     {
-                        GameUI.Instance.Log($"ERROR: Failed to load scene '{target_scene}': The specified asset does not exist, or is not a Scene.", Theme.LogColorError);
+                        GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
                     }
                 }
             }

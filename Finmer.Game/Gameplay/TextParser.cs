@@ -217,8 +217,11 @@ namespace Finmer.Gameplay
             if (command[index_split] == '.')
                 return GetProperty(context, parameter);
 
-            // Otherwise (with a space), assume verb conjugation is desired
-            return Conjugate(context.Subject.PronounSubjective, parameter);
+            // Otherwise (with a space), assume verb conjugation is desired.
+            // Use second-person perspective for the player or for gender-neutral contexts. Note that the latter results in incorrect
+            // grammar in some cases (i.e. "{foo} {foo be} nice" could resolve to "Bob are nice"), but this is currently unavoidable.
+            var is_second_person = context.Subject is Player || context.Subject.Gender == EGender.Neutral;
+            return Conjugate(is_second_person ? EPerspective.SecondPerson : EPerspective.ThirdPerson, parameter);
         }
 
         private static string GetProperty(Context context, string key)
@@ -232,50 +235,52 @@ namespace Finmer.Gameplay
             return $"{{context '{context.Subject.Name}' has no property '{key}'}}";
         }
 
-        private static string Conjugate(string article, string verb)
+        private static string Conjugate(EPerspective perspective, string verb)
         {
-            // used for shorthand, because that StringComparison enum every time is annoying
-            bool Eq(string lhs, string rhs)
-            {
-                return lhs.Equals(rhs, StringComparison.InvariantCulture);
-            }
-
-            article = article.ToLowerInvariant();
             verb = verb.ToLowerInvariant();
 
-            // in english rules for (s)he/it are the same, so this makes life easier
-            if (Eq(article, "he") || Eq(article, "she"))
-                article = "it";
+            // In English grammar, 'you' and 'they' use the same conjugations
+            bool use_plural_form = perspective == EPerspective.SecondPerson;
 
-            // irregular verbs
-            if (Eq(verb, "be"))
-            {
-                if (Eq(article, "i")) return "am";
-                if (Eq(article, "you") || Eq(article, "we") || Eq(article, "they")) return "are";
-                return "is";
-            }
+            // Irregular verbs: to be
+            if (verb.Equals("be", StringComparison.InvariantCulture))
+                return use_plural_form ? "are" : "is";
 
-            if (Eq(verb, "do")) return Eq(article, "it") ? "does" : "do";
+            // Irregular verbs: to do
+            if (verb.Equals("do", StringComparison.InvariantCulture))
+                return use_plural_form ? "do" : "does";
 
-            if (verb.EndsWith("ss", StringComparison.InvariantCulture)
-                || verb.EndsWith("o", StringComparison.InvariantCulture)
-                || verb.EndsWith("sh", StringComparison.InvariantCulture)
-                || verb.EndsWith("ch", StringComparison.InvariantCulture)
-                || verb.EndsWith("tch", StringComparison.InvariantCulture)
-                || verb.EndsWith("x", StringComparison.InvariantCulture)
-                || verb.EndsWith("zz", StringComparison.InvariantCulture))
-                return Eq(article, "it") ? verb + "es" : verb;
+            // Irregular verbs: to have
+            if (verb.Equals("have", StringComparison.InvariantCulture))
+                return use_plural_form ? "have" : "has";
 
-            // try, cry, pry, shy
-            if (verb.EndsWith("ry", StringComparison.InvariantCulture)
-                || verb.EndsWith("hy", StringComparison.InvariantCulture)
-            )
-                return Eq(article, "it") ? verb.Substring(0, verb.Length - 1) + "ies" : verb;
+            // Verbs conjugated with an additional 'e'
+            if (verb.EndsWith("ss", StringComparison.InvariantCulture) ||
+                verb.EndsWith("o", StringComparison.InvariantCulture) ||
+                verb.EndsWith("sh", StringComparison.InvariantCulture) ||
+                verb.EndsWith("ch", StringComparison.InvariantCulture) ||
+                verb.EndsWith("tch", StringComparison.InvariantCulture) ||
+                verb.EndsWith("x", StringComparison.InvariantCulture) ||
+                verb.EndsWith("zz", StringComparison.InvariantCulture))
+                return use_plural_form ? verb : verb + "es";
 
-            // default
-            if (article.Equals("it", StringComparison.InvariantCulture))
-                return verb + "s";
-            return verb;
+            // Verbs ending with 'y'
+            if (verb.EndsWith("ry", StringComparison.InvariantCulture) ||
+                verb.EndsWith("ly", StringComparison.InvariantCulture) ||
+                verb.EndsWith("hy", StringComparison.InvariantCulture))
+                return use_plural_form ? verb : verb.Substring(0, verb.Length - 1) + "ies";
+
+            // Default
+            return use_plural_form ? verb : verb + "s";
+        }
+
+        /// <summary>
+        /// Selects which perspective form to use when conjugating a verb.
+        /// </summary>
+        private enum EPerspective
+        {
+            SecondPerson,
+            ThirdPerson
         }
 
         /// <summary>
@@ -296,12 +301,12 @@ namespace Finmer.Gameplay
             /// <summary>
             /// The subject to use.
             /// </summary>
-            public GameObject Subject { get;  }
+            public GameObject Subject { get; }
 
             /// <summary>
             /// Whether this context should be kept when performing regular context cleanup between user turns.
             /// </summary>
-            public bool IsPersistent { get;  }
+            public bool IsPersistent { get; }
 
             /// <summary>
             /// Hashmap of grammar properties supported by this context.

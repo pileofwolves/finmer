@@ -10,6 +10,8 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using Finmer.Gameplay.Scripting;
+using Finmer.Models;
+using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -128,7 +130,14 @@ namespace Finmer.Gameplay
                 else
                 {
                     // This is a direct scene link, transition to the target scene
-                    m_Session.SetScene(new SceneScripted(m_Session.ScriptContext, target_scene));
+                    try
+                    {
+                        m_Session.SetScene(new SceneScripted(m_Session.ScriptContext, target_scene));
+                    }
+                    catch (ArgumentException ex) 
+                    {
+                        GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
+                    }
                 }
             }
         }

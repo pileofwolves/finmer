@@ -175,10 +175,36 @@ namespace Finmer.Gameplay
             return raw;
         }
 
+        /// <summary>
+        /// Process a single grammar tag, returning the string it should be replaced with.
+        /// </summary>
         private static string ProcessGrammarTag(string command)
         {
+            // Prefix modifier: caret means we should capitalize the first character
+            bool cap_first = false;
+            if (command.StartsWith("^", StringComparison.InvariantCulture))
+            {
+                cap_first = true;
+                command = command.Substring(1);
+            }
+
+            // Obtain the replacement string
+            string replacement = ProcessGrammarTagInternal(command);
+
+            // Handle modifiers
+            if (cap_first)
+                replacement = replacement.CapFirst();
+
+            return replacement;
+        }
+
+        /// <summary>
+        /// Process a single grammar tag that has its prefix modifiers removed.
+        /// </summary>
+        private static string ProcessGrammarTagInternal(string command)
+        {
             // Randomized expression
-            if (command.StartsWith("?"))
+            if (command.StartsWith("?", StringComparison.InvariantCulture))
             {
                 // Find candidate substrings, separated with a pipe character
                 string[] random_parts = command.Split(new [] { '|' }, StringSplitOptions.RemoveEmptyEntries);

@@ -327,6 +327,7 @@ namespace Finmer.Gameplay
                     m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
                     BeginPlayerPotentialTargetSelect(ECombatAction.Attack);
                     break;
+
                 case ECombatAction.GrappleInitiate:
                     m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
                     BeginPlayerPotentialTargetSelect(ECombatAction.GrappleInitiate);
@@ -342,6 +343,10 @@ namespace Finmer.Gameplay
                     break;
 
                 case ECombatAction.GrappleReverse:
+                    m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
+                    BeginPlayerPotentialTargetSelect(ECombatAction.GrappleReverse);
+                    break;
+
                 case ECombatAction.GrappleEscape:
                 case ECombatAction.GrappleRelease:
                     // Perform the action with the grapple partner
@@ -661,12 +666,17 @@ namespace Finmer.Gameplay
                 // Player is being pinned
                 ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
 
-                ui.AddButton(new ChoiceButtonModel
+                // IF player cannot start the grapple against larger target, make sure they cannot reverse it either.
+                var grapple_targets = GetViableGrappleTargets(m_Player);
+                if (grapple_targets.Any())
                 {
-                    Choice = (int)ECombatAction.GrappleReverse,
-                    Label = "Reverse",
-                    Tooltip = "Attempt to reverse the grapple, so you end up on top."
-                });
+                    ui.AddButton(new ChoiceButtonModel
+                    {
+                        Choice = (int)ECombatAction.GrappleReverse,
+                        Label = "Reverse",
+                        Tooltip = "Attempt to reverse the grapple, so you end up on top."
+                    });
+                }
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleEscape,

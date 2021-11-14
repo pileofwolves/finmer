@@ -343,10 +343,6 @@ namespace Finmer.Gameplay
                     break;
 
                 case ECombatAction.GrappleReverse:
-                    m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
-                    BeginPlayerPotentialTargetSelect(ECombatAction.GrappleReverse);
-                    break;
-
                 case ECombatAction.GrappleEscape:
                 case ECombatAction.GrappleRelease:
                     // Perform the action with the grapple partner

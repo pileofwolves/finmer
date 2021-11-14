@@ -174,8 +174,7 @@ namespace Finmer.Gameplay
 
         /// <summary>
         /// Returns participants that the input participant can attempt to grapple with this turn.
-        /// </summary>
-        /// 
+        /// </summary> 
         private IEnumerable<Participant> GetViableGrappleTargets(Participant opponent) 
         {
             return GetViableAttackTargets(opponent)
@@ -185,7 +184,6 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns participants that the input participant can attempt to swallow on this turn.
         /// </summary>
-        /// 
         private IEnumerable<Participant> GetViablePreyTargets(Participant predator)
         {
             // If the predator is currently grappling, the only possible prey they can touch now is their grappling opponent
@@ -662,8 +660,8 @@ namespace Finmer.Gameplay
                 // Player is being pinned
                 ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
 
-                // IF player cannot start the grapple against larger target, make sure they cannot reverse it either.
-                var grapple_targets = GetViableGrappleTargets(m_Player);
+                // If player cannot start the grapple against larger target, make sure they cannot reverse it either.
+                var grapple_targets = GetViableGrappleTargets(m_Player.GrapplingWith);
                 if (grapple_targets.Any())
                 {
                     ui.AddButton(new ChoiceButtonModel

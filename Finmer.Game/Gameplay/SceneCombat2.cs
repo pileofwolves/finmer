@@ -173,8 +173,19 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Returns participants that the input participant can attempt to grapple with this turn.
+        /// </summary>
+        /// 
+        private IEnumerable<Participant> GetViableGrappleTargets(Participant opponent) 
+        {
+            return GetViableAttackTargets(opponent)
+                .Where(prey => opponent.Character.CanGrapple(prey.Character));
+        }
+
+        /// <summary>
         /// Returns participants that the input participant can attempt to swallow on this turn.
         /// </summary>
+        /// 
         private IEnumerable<Participant> GetViablePreyTargets(Participant predator)
         {
             // If the predator is currently grappling, the only possible prey they can touch now is their grappling opponent
@@ -314,8 +325,8 @@ namespace Finmer.Gameplay
             {
                 case ECombatAction.Attack:
                 case ECombatAction.GrappleInitiate:
-                    m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
-                    BeginPlayerPotentialTargetSelect(action);
+                    m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
+                    BeginPlayerPotentialTargetSelect(ECombatAction.GrappleInitiate);
                     break;
 
                 case ECombatAction.Swallow:
@@ -532,6 +543,12 @@ namespace Finmer.Gameplay
                     Label = "Fight",
                     Tooltip = "Attack another character to deal damage."
                 });
+            }
+
+            //Grapple
+            var grapple_targets = GetViableGrappleTargets(m_Player);
+            if (grapple_targets.Any()) 
+            {
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleInitiate,

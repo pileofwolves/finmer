@@ -296,6 +296,10 @@ namespace Finmer.Gameplay
             return prey.Size <= Size;
         }
 
+        public bool CanGrapple(Character victim) 
+        {
+            return victim.Size <= Size;
+        }
     }
 
 }

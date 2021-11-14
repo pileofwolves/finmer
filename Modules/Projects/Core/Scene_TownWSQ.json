@@ -59,7 +59,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(Compass.EAST, \"Scene_TownMarket\")",
+				"ScriptAction": "AddLink(ECompass.East, \"Scene_TownMarket\")",
 				"ScriptAppear": "",
 				"Children": [
 					{

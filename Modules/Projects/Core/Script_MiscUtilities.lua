@@ -111,7 +111,7 @@ end
 function GetRandomCharacter()
     local result = Creature("CR_RandomAnthro")
     result.Alias = Text.GetString("SPECIES_ANY")
-    result.Gender = math.random(0, #Gender)
+    result.Gender = math.random(0, 2)
     return result
 end
 function GetUniqueCharacter(ident)
@@ -124,7 +124,7 @@ function GetUniqueCharacter(ident)
         ch_species = Storage.GetString(prefix .. "_species")
     else
         -- Randomize and store new settings
-        ch_gender = math.random(0, #Gender)
+        ch_gender = math.random(0, 2)
         ch_species = Text.GetString("SPECIES_ANY")
         Storage.SetFlag(prefix .. "_generated", true)
         Storage.SetNumber(prefix .. "_gender", ch_gender)

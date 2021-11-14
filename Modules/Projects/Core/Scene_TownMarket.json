@@ -48,7 +48,7 @@
 								"Key": "WakeUp_R_OK1",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TOWN_FIRST_FOX1\")\r\nSleep(4)\r\nLog(\"TOWN_FIRST_FOX2\")",
+								"ScriptAction": "Log(\"TOWN_FIRST_FOX1\")\r\nSleep(3)\r\nLog(\"TOWN_FIRST_FOX2\")",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -102,7 +102,7 @@
 																				"Key": "WakeUp_R_Leave",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE\")",
+																				"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE1\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -124,21 +124,63 @@
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
-																										"Key": "WakeUp_C_Leave3",
+																										"Key": "WakeUp_C_Leave2a",
 																										"IsState": false,
 																										"IsLink": false,
-																										"Title": "Step outside",
-																										"Tooltip": "The world is out there, waiting...",
+																										"Title": "Deny",
+																										"Tooltip": "Explain that you don't think that's the case.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "LogSplit()\r\nLog(\"TOWN_FIRST_FOX_LEAVE3\")\r\nLog(\"TOWN_MARKET_DAY\")\r\nLog(\"TOWN_MARKET\")\r\nLog(\"WELCOME\", Color.Gray)\r\nJournal.Update(\"MQ01\", 10)\r\nSetInventoryEnabled(true)",
+																										"ScriptAction": "",
 																										"ScriptAppear": "",
 																										"Children": [
 																											{
-																												"Key": "Unnamed",
+																												"Key": "WakeUp_R_Leave3",
+																												"IsState": true,
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE3\")",
+																												"ScriptAppear": "",
+																												"Children": [
+																													{
+																														"Key": "WakeUp_C_Leave3",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Step outside",
+																														"Tooltip": "The world is out there, waiting...",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": "LogSplit()\r\nLog(\"TOWN_FIRST_FOX_LEAVE4\")\r\nLog(\"TOWN_MARKET_DAY\")\r\nLog(\"TOWN_MARKET\")\r\nLog(\"WELCOME\", Color.Gray)\r\nJournal.Update(\"MQ01\", 10)\r\nSetInventoryEnabled(true)",
+																														"ScriptAppear": "",
+																														"Children": [
+																															{
+																																"Key": "Unnamed",
+																																"IsState": true,
+																																"IsLink": true,
+																																"LinkTarget": "Main",
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"Key": "WakeUp_C_Leave2b",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Avoid",
+																										"Tooltip": "Explain that, having lost your memory, you cannot be sure.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "AutoLink",
 																												"IsState": true,
 																												"IsLink": true,
-																												"LinkTarget": "Main",
+																												"LinkTarget": "WakeUp_R_Leave3",
 																												"Children": []
 																											}
 																										]
@@ -1506,7 +1548,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(Compass.NORTH, \"Scene_TownNSQ\")\r\nAddLink(Compass.WEST, \"Scene_TownWSQ\")\r\nAddLink(Compass.SOUTH, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -1533,7 +1575,7 @@
 						"ScriptAppear": "return not GetIsNight()",
 						"Children": [
 							{
-								"Key": "FishStall",
+								"Key": "R_FishStall",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "",
@@ -1560,7 +1602,7 @@
 										]
 									},
 									{
-										"Key": "FishWork",
+										"Key": "Fish_C_MQ01Setup",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Work",
@@ -1568,31 +1610,119 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "",
-										"ScriptAppear": "return not Storage.GetFlag(\"town_hall_open\")",
+										"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
 										"Children": [
 											{
-												"Key": "FishWorkResponse",
+												"Key": "Fish_R_MQ01Setup",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"town_market_fish_work\")\r\nStorage.SetFlag(\"town_hall_open\", true)\r\nJournal.Update(\"MQ01\", 20)",
+												"ScriptAction": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"Gabe\"\r\nquestgiver.Gender = EGender.Male\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")",
 												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "FishWorkExit",
+														"Key": "Fish_C_MQ01Bridge",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Bridge",
+														"Tooltip": "Ask how a trade route could just collapse like that.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Fish_R_MQ01Bridge",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Fish_C_MQ01Mayor",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Fish_C_MQ01Exit",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Fish_C_MQ01Mayor",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Acting Mayor",
+														"Tooltip": "Ask what he meant by 'acting' mayor.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "Fish_R_MQ01Mayor",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Fish_C_MQ01Bridge",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Fish_C_MQ01Exit",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Fish_C_MQ01Exit",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
 														"Tooltip": "Thank him for the information.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Log(\"TOWN_MARKET_FISH_WORK2\")",
+														"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
 														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "FishStall",
+																"LinkTarget": "R_FishStall",
 																"Children": []
 															}
 														]
@@ -1602,7 +1732,7 @@
 										]
 									},
 									{
-										"Key": "FishTalk",
+										"Key": "Fish_C_Talk",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Chat",
@@ -1613,14 +1743,14 @@
 										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "FishTalkResponse",
+												"Key": "Fish_R_Talk",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "LogRumor(\"TOWN_MARKET_FISH_TALK_RUMOR\", \"TOWN_MARKET_FISH_TALK_NO\")",
 												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "FishTalkExit",
+														"Key": "Fish_C_TalkExit",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
@@ -1631,10 +1761,10 @@
 														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
+																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "FishStall",
+																"LinkTarget": "R_FishStall",
 																"Children": []
 															}
 														]

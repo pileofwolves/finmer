@@ -31,7 +31,7 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "Log(\"town_hall_enter\")\r\nLog(\"mq01_intro\")",
-				"ScriptAppear": "return not Storage.GetFlag(\"mq01_started\")",
+				"ScriptAppear": "return Storage.GetFlag(\"mq01_available\") and not Storage.GetFlag(\"mq01_started\")",
 				"Children": [
 					{
 						"Key": "MQ01_Inquire",
@@ -224,7 +224,7 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"mq01_flirt_m\")",
-								"ScriptAppear": "return Player.Gender == Gender.Male",
+								"ScriptAppear": "return Player.Gender == EGender.Male",
 								"Children": [
 									{
 										"Key": "MQ01_Flirt_End",

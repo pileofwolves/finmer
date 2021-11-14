@@ -140,11 +140,11 @@
 		{
 			"Key": "VORE_EXT_STRUGGLE",
 			"Text": [
-				"{prey} {prey squirm} around helplessly in the oppressive environment, splashing slime and juices all over {prey.object}self.",
+				"{prey} {prey squirm} around helplessly in their oppressive environment, splashing slime and juices all over {prey.object}self.",
 				"As much as {prey} {prey squirm}, it only makes the stomach knead and churn harder around {prey.object}.",
 				"{prey} {prey struggle} within {predator.aliaspossessive} stomach by kicking and punching the walls, noisily displacing fluids.",
 				"{prey} {prey punch} and {prey kick} at the stomach walls surrounding {prey.object}, but that only makes the stomach compress some more.",
-				"{prey} {prey try} to wriggle around inside the hot, wet organ, but {prey.subject} {prey be} squeezed too tightly to do anything impressive.",
+				"{prey} {prey try} to wriggle around inside the hot, wet organ encaging you, but {prey.subject} {prey be} squeezed too tightly to do anything impressive.",
 				"{prey} shift around inside {predator.aliaspossessive} belly, kicking up some gooey liquids with lewd, organic squelches.",
 				"With a few squirms and struggles, {prey} {prey manage} to displace some air in the stomach, and the stomach gurgles noisily around {prey}.",
 				"{prey} {prey try} to push out with {prey.possessive} limbs, but the predator lets out a belch and the stomach walls collapse in on {prey.object} again.",

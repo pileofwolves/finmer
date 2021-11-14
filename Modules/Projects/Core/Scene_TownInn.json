@@ -111,7 +111,7 @@
 										"Tooltip": "Talk to the fellow behind the bar.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local key = Storage.GetFlag(\"town_inn_barkeep_first\")\r\n    and \"TOWN_INN_BARKEEP_BEGIN\"\r\n    or \"TOWN_INN_BARKEEP_BEGIN_FIRST\"\r\nStorage.SetFlag(\"town_inn_barkeep_first\", true)\r\nLogGsub(key, {bartender = barkeep})",
+										"ScriptAction": "-- Reset the bartender context for all following interactions in case it was removed\r\nText.SetContext(\"bartender\", barkeep)\r\n\r\n-- Greeting text\r\nlocal key = Storage.GetFlag(\"town_inn_barkeep_first\")\r\n    and \"TOWN_INN_BARKEEP_BEGIN\"\r\n    or \"TOWN_INN_BARKEEP_BEGIN_FIRST\"\r\nStorage.SetFlag(\"town_inn_barkeep_first\", true)\r\nLog(key)",
 										"ScriptAppear": "",
 										"Children": [
 											{
@@ -156,7 +156,7 @@
 																"Key": "BottomsUp",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- TODO: Could add some more smut here, perhaps random encounters\r\n\r\nPlayer.Money = Player.Money - drink_price\r\nLogGsub(\"town_inn_drink\", {bartender = barkeep})\r\nAdvanceTime(1)",
+																"ScriptAction": "Player.Money = Player.Money - drink_price\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -184,6 +184,136 @@
 														]
 													},
 													{
+														"Key": "InnkeepTalkMQ01Start",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Work",
+														"Tooltip": "Ask the barkeep if he knows any leads for work.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
+														"Children": [
+															{
+																"Key": "MQ01_R_Setup",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Text.SetContext(\"questgiver\", barkeep)\r\nLog(\"MQ01_SETUP1\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "MQ01_C_Bridge",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Bridge",
+																		"Tooltip": "Ask how a trade route could just collapse like that.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "MQ01_R_Bridge",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ01_C_Mayor",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ01_C_Exit",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ01_C_Mayor",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Acting Mayor",
+																		"Tooltip": "Ask what he meant by 'acting' mayor.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "MQ01_R_Mayor",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ01_C_Bridge",
+																						"Children": []
+																					},
+																					{
+																						"Key": "AutoLink",
+																						"IsState": false,
+																						"IsLink": true,
+																						"Title": "",
+																						"Tooltip": "",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"LinkTarget": "MQ01_C_Exit",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"Key": "MQ01_C_Exit",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Thank him for the information.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "InnkeepTalkRoot",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
 														"Key": "InnkeepTalkMQ01",
 														"IsState": false,
 														"IsLink": false,
@@ -198,7 +328,7 @@
 																"Key": "MQ01_GivePass",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Player:TakeItem(\"MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_free\", true)\r\n\r\nLogGsub(\"town_inn_barkeep_givepass\", {bartender = barkeep})",
+																"ScriptAction": "Player:TakeItem(\"MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_free\", true)\r\n\r\nLog(\"town_inn_barkeep_givepass\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -216,7 +346,7 @@
 																				"Key": "MQ01_DiscussDetails",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"mq01_barkeep_discuss\", {bartender = barkeep})",
+																				"ScriptAction": "Log(\"mq01_barkeep_discuss\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -227,7 +357,7 @@
 																						"Tooltip": "Thank him and take your leave.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "LogGsub(\"mq01_barkeep_thank\", {bartender = barkeep})\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
+																						"ScriptAction": "Log(\"mq01_barkeep_thank\")\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
 																						"ScriptAppear": "",
 																						"Children": [
 																							{
@@ -254,7 +384,7 @@
 																								"Key": "MQ01_TalkAboutGuy",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "LogGsub(\"MQ01_BARKEEP_ABOUTGUY\", {bartender = barkeep})",
+																								"ScriptAction": "Log(\"MQ01_BARKEEP_ABOUTGUY\")",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
@@ -298,7 +428,7 @@
 																								"Key": "MQ01_TalkAboutBridge",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "LogGsub(\"MQ01_BARKEEP_ABOUTBRIDGE\", {bartender = barkeep})",
+																								"ScriptAction": "Log(\"MQ01_BARKEEP_ABOUTBRIDGE\")",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
@@ -350,7 +480,7 @@
 																"Key": "MQ02F_Begin",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "LogGsub(\"mq02_barkeep_begin\", {barkeep=barkeep})",
+																"ScriptAction": "Log(\"mq02_barkeep_begin\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -410,7 +540,7 @@
 																				"Key": "MQ02F_R_Supplies",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_supplies\", true)\r\nLogGsub(\"mq02_barkeep_supplies\", {barkeep = barkeep})",
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_supplies\", true)\r\nLog(\"mq02_barkeep_supplies\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -476,7 +606,7 @@
 																				"Key": "MQ02F_R_Tiger",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_tiger\", true)\r\nLogGsub(\"mq02_barkeep_tiger\", {barkeep = barkeep})",
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_tiger\", true)\r\nLog(\"mq02_barkeep_tiger\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -542,7 +672,7 @@
 																				"Key": "MQ02F_R_Oliver",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_oliver\", true)\r\n\r\n-- alternate keys for outcome of Oliver scene\r\nlocal key = \"MQ02_BARKEEP_OLIVER\"\r\nif Storage.GetFlag(\"oliver_eaten\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_EATEN\"\r\nelseif Storage.GetFlag(\"oliver_dead\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_DEAD\"\r\nend\r\nLogGsub(key, {barkeep = barkeep})",
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_oliver\", true)\r\n\r\n-- alternate keys for outcome of Oliver scene\r\nlocal key = \"MQ02_BARKEEP_OLIVER\"\r\nif Storage.GetFlag(\"oliver_eaten\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_EATEN\"\r\nelseif Storage.GetFlag(\"oliver_dead\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_DEAD\"\r\nend\r\nLog(key)",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -608,7 +738,7 @@
 																				"Key": "MQ02F_R_Randall",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_randall\", true)\r\nLogGsub(\"mq02_barkeep_randall\", {barkeep = barkeep})",
+																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_randall\", true)\r\nLog(\"mq02_barkeep_randall\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -740,7 +870,7 @@
 																"Key": "InnkeepRumorEnd",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- TODO: Add actual gossip states here\r\nLogGsub(\"town_inn_rumor_none\", {bartender = barkeep})",
+																"ScriptAction": "-- TODO: Add actual gossip states here\r\nLog(\"town_inn_rumor_none\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -752,50 +882,6 @@
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"LinkTarget": "InnkeepTalkLeave",
-																		"Children": []
-																	},
-																	{
-																		"Key": "Unnamed",
-																		"IsState": false,
-																		"IsLink": true,
-																		"Title": "Unnamed",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "InnkeepTalkDrink",
-																		"Children": []
-																	},
-																	{
-																		"Key": "Unnamed",
-																		"IsState": false,
-																		"IsLink": true,
-																		"Title": "Unnamed",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "InnkeepTalkMQ01",
-																		"Children": []
-																	},
-																	{
-																		"Key": "Unnamed",
-																		"IsState": false,
-																		"IsLink": true,
-																		"Title": "Unnamed",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "InnkeepTalkRentRoom",
-																		"Children": []
-																	},
-																	{
-																		"Key": "Unnamed",
-																		"IsState": false,
-																		"IsLink": true,
-																		"Title": "Unnamed",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "InnkeepTalkGossip",
 																		"Children": []
 																	}
 																]

@@ -10,11 +10,11 @@
 		},
 		{
 			"Key": 20,
-			"Text": "You got a tip that the mayor of the town is looking for hired help. She can be found in the town hall, near the north square."
+			"Text": "You got a tip that the acting mayor of the town is looking for hired help. She can be found in the town hall, near the north square."
 		},
 		{
 			"Key": 30,
-			"Text": "The mayor instructed you to meet with Edgard, the innkeep. He should give you more info about the broken bridge and what you can do to help."
+			"Text": "The acting mayor instructed you to meet with Edgard, the innkeep. He should give you more info about the 'bridge incident' and what you can do to help."
 		}
 	]
 }

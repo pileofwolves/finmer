@@ -24,7 +24,7 @@
 		{
 			"Key": "TOWN_FIRST",
 			"Text": [
-				"You wake up with a start, gasping for breath, coughing and sputtering. Awkwardly, you brace yourself against the floor and try - and fail - to push yourself up in a vain attempt to make your head stop spinning. {player} - that's who you are. You remember... nothing... only that you are a {player.species} named {player}.\\n\\nThe moment you vaguely register the sound of approaching footsteps, an arm wraps around your shoulders. You flail in wild panic, but you hear a loud voice just above you. \"Whoa, calm down!\""
+				"You wake up with a start, gasping for breath, coughing and sputtering. In sheer defiance of your sore and aching muscles, you brace yourself against the floor, trying - and failing - to push yourself up. It doesn't help that your head won't stop spinning, either. {player.name} - that's who you are. You remember... nothing... only that you are a {player.species} named {player.name}.\\n\\nHalfway through another attempt to rise, you vaguely register the sound of approaching footsteps just as an arm wraps around your shoulders. Confused, you flail in wild panic, but you hear a loud voice just above you. \"Whoa, calm down!\""
 			]
 		},
 		{
@@ -42,61 +42,67 @@
 		{
 			"Key": "TOWN_FIRST_ASK_FOX",
 			"Text": [
-				"\"Who, me? Oh, I'm just a fox who makes a living selling the treasures of the sea. Call me Gabe.\" He chuckles heartily. Then, as he studies your features, his face takes on a more serious expression. \"I was just on my way to my market stall when I spied a {player.species} sprawled on the ground, hmm? I'd say you had a drink too many, but you don't smell of alcohol.\""
+				"\"Who, me? Oh, I'm just a fox who makes a living selling the treasures of the sea. Call me Gabe.\" He chuckles heartily. Then, as he studies your features, his face takes on a more serious expression. \"I was just on my way to set up my market stall for today when I spied a {player.species} sprawled on the ground, hmm? So naturally I checked, at least. I'd say you had a drink too many, but you don't smell of alcohol.\""
 			]
 		},
 		{
-			"Key": "TOWN_FIRST_FOX_LEAVE",
+			"Key": "TOWN_FIRST_FOX_LEAVE1",
 			"Text": [
-				"The vulpine offers you a canteen. When you stare at him with a frown, he sighs. \"Come on, it's just water.\" To prove his point, he takes a swig himself, then offers it to you again. Convinced, you press the nozzle to your lips and tilt your head. Cold, tasteless yet deliciously refreshing fluid splashes across your tongue and you greedily swallow every last drop. You had no idea your throat was this parched.\\n\\nWhen you finish a few seconds later - and the canteen is entirely drained - you wipe your lips and hand it back to the fox, who wears a bemused grin on his face."
+				"The vulpine offers you a canteen. When you stare at him with a frown, he sighs. \"Come on, it's just water.\" To prove his point, he takes a swig himself, then offers it to you again. Convinced, you press the nozzle to your lips and tilt your head. Cold, tasteless yet deliciously refreshing fluid splashes across your tongue and you greedily swallow every last drop. You had no idea your throat was this parched.\\n\\nWhen you finish a few seconds later - and the canteen is entirely drained - you wipe your face and hand it back to the fox, who wears a bemused grin on his face."
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FOX_LEAVE2",
 			"Text": [
-				"\"Right, I gotta get to work. Catch your breath for a second, you'll be fine.\" With a nod and a pat on your shoulder, the fox turns around and leaves. As you spend some time mulling over your situation, the vulpine turns the corner, looking back one more time, then vanishes from sight.\\n\\nYou're not going to find answers in here. The world is out there, waiting..."
+				"Your rescuer studies you carefully for a few quiet moments, clutching the drained canteen perhaps a tad too tightly as he considers what you told him. A flash of inspiration seems to strike him and he tilts his head just slightly. You can't help but feel a little exposed under that scrutinizing gaze. \"Say, haven't I seen you around here yesterday?\""
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FOX_LEAVE3",
 			"Text": [
-				"Carefully, you enter the marketplace, your eyes greedily taking in the blinding light. Varied sturdy buildings line the road and you see all sorts of folks going about their business. Just behind the wood and stone structures, you see trees obscuring most of the view - it seems like this town is built on the edge of a forest.\\n\\nEven while you feel a bit befuddled at the turn of events, the sun warms your face; it's a pleasant summer day. You look around and take in the sights and scents, wondering how you got here, and where to go now."
+				"Clearly unsatisfied with the answer, Gabe decides not to press the matter. His frown vanishes swiftly behind a practiced welcoming smile. \"Right, I gotta get to work. Catch your breath for a second, you'll be fine,\" he states. With a nod and a pat on your shoulder, the fox turns around and leaves. As you spend some time mulling over your situation, the vulpine turns the corner, looking back one more time as if to make sure you hadn't keeled over again, then vanishes from sight.\\n\\nYou're not going to find answers in here. Even though your head is pounding, the veil surrounding your mind is slowly subsiding and the marketplace doesn't look as obnoxiously bright anymore. The world is out there, waiting..."
+			]
+		},
+		{
+			"Key": "TOWN_FIRST_FOX_LEAVE4",
+			"Text": [
+				"Carefully, you enter the marketplace, your eyes greedily taking in the blinding light. Groggily, you study your surroundings. Varied sturdy buildings line the road and you see all sorts of folks going about their business. Just behind the wood and stone structures, you see trees obscuring most of the view - it seems like this town is built on the edge of a forest.\\n\\nEven while you feel a bit befuddled at the turn of events, the sun warms your face; it's a pleasant summer day. You look around and take in the sights and scents, wondering how you got here, and where to go now."
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FOX1",
 			"Text": [
-				"You look up and see a red fox standing over you, his arm locked under your shoulder. Maybe he's trying to help you up?\\n\\nRecognizing your confusion, he smiles, and tries to lift you again. This time, you comply."
+				"You look up and see a red fox standing over you, a concerned expression visible on his vivid orange muzzle. Maybe he's trying to help you up? Recognizing your confusion, he smiles warmly, and extends a paw as an offer to help you on your feet. This time, you comply, and steadily rise from the cold, uncomfortable cobblestones."
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FOX2",
 			"Text": [
-				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. \"There ya go,\" he says.\\n\\nAnxiously, you look around; it seems you're in a narrow alleyway between two buildings. You can see the bright sun just overhead, brightly illuminating whatever is just ahead.\\n\\n\"So,\" the vulpine begins. \"Ain't every day I find a drunk {player.species} in an alley. What's your story?\""
+				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. The gesture is not unwelcome, but does very little to settle your frazzled nerves. \"There ya go,\" he says. Anxiously, you look around; it seems you're in a narrow alleyway between two stone buildings. You can see the bright sun just overhead, bathing the immediate environs as well as whatever is just ahead in warmth.\\n\\n\"So,\" the vulpine begins. \"You look like you've been through the wringer, friend. Ain't every day I stumble across {player.speciesplural} passed out in an alley. I'm Gabe. Tell me, what's your story?\""
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FROMEAST",
 			"Text": [
-				"He humms for a bit. \"The east, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear there's all sorts of folks living there. Kinda want to go there myself.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
+				"He humms for a bit. \"The east, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear there's all sorts of folks living there. Wouldn't mind visiting the place myself, someday.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FROMNORTH",
 			"Text": [
-				"He humms for a bit. \"The far North, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear there's mostly wolves living up there, as they seem to deal best with the cold.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
+				"He humms for a bit. \"The far North, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear it's mighty frosty there, so only those dealing best with the cold stick around.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FROMSOUTH",
 			"Text": [
-				"He humms for a bit. \"The south, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear there's mostly felines and such living there, as they're more comfy in the warmer climates.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
+				"He humms for a bit. \"The south, eh? I'm but a simple trader living 'round these parts, but that's a long ways away. I hear it's quite temperate around there. Wouldn't mind that myself, I say, the days aren't getting any warmer here either.\" The fox scratches the side of his muzzle. \"'fraid I don't know much about, what'dya say, memory loss, though.\""
 			]
 		},
 		{
 			"Key": "TOWN_FIRST_FROMWHERE",
 			"Text": [
-				"As you vaguely explain that you don't know, he nods, sticking his paws into his sides. \"Hmm, so not just drunk, then? This is North Finmer. Fishing village near the north-west coast. Heard of it maybe?\" When you respond by staring at him, the fox stares at you incredulously, then tilts his head ever so slightly. \"So where did you come from, then?\""
+				"As you vaguely explain that you don't know, he nods, sticking his paws into his sides. \"Hmm, what do you mean, then? This is North Finmer, alright. Fishing village near the north-west coast. Heard of it maybe?\" When you respond by staring at him, the fox stares right back at you, incredulously, then tilts his head ever so slightly. \"So where did you come from, then?\""
 			]
 		},
 		{
@@ -126,34 +132,34 @@
 		{
 			"Key": "TOWN_HALL_EMPTY",
 			"Text": [
-				"The village hall is a small building with a fancy wooden floor. The interior is mostly empty, save for a blue banner on the wall and a few potted plants. Chairs line the right wall, stacked neatly underneath the windows. It doesn't seem like there's anyone around right now."
+				"The village hall is a cozy-looking space with a wooden floor, boards laid out in a decorative checkerboard pattern. The interior is surprisingly small for an office of such importance. A blue banner on the wall catches your eye, as well as a stocked bookshelf and a few potted plants. Chairs line the right wall, stacked neatly underneath the windows to make room for a large table in the center. It doesn't seem like there's anyone around right now."
 			]
 		},
 		{
 			"Key": "TOWN_HALL_ENTER",
 			"Text": [
-				"The village hall is a small building with a fancy wooden floor. The far wall sports a proud blue banner, and potted plants sit neatly in the corners. In the middle of the room there is a long table lined with chairs - likely serving as a meeting place of some sort."
+				"The village hall is a cozy-looking space with a wooden floor, boards laid out in a decorative checkerboard pattern. The interior is surprisingly small for an office of such importance. A blue banner on the wall catches your eye, as well as a stocked bookshelf and a few potted plants. In the center of the room there is a long table lined with chairs, likely serving as a meeting place."
 			]
 		},
 		{
 			"Key": "TOWN_INN_BARKEEP_BEGIN",
 			"Text": [
-				"You grab a barstool and sit across from the %bartender. \"What's your poison?\" he asks.",
-				"You sit down across from the %bartender and get his attention. He eyes you with casual interest.",
-				"You get comfortable at the bar. The %bartender, while washing a mug, asks \"How's the world out there?\".",
-				"You take a seat at the bar, waving to the %bartender behind the counter."
+				"You grab a barstool and sit across from {bartender}. \"What's your poison?\" he asks.",
+				"You sit down across from {bartender} and get his attention. He eyes you with casual interest.",
+				"You get comfortable at the bar. {^bartender}, while washing a mug, asks \"How's the world out there?\".",
+				"You take a seat at the bar, waving to {bartender} behind the counter."
 			]
 		},
 		{
 			"Key": "TOWN_INN_BARKEEP_BEGIN_FIRST",
 			"Text": [
-				"You grab a barstool and sit across from the %bartender. \"Ah, the %species! What can I get ya, my friend?\" he begins, turning to face you, but pausing when he meets your eyes. When you give him a quizzical stare, his face falls and he shakes his head apologetically. \"Sorry, thought I recognized you, but never mind. What'll it be?\""
+				"You grab a barstool and sit across from {bartender} who tends the place. \"Ah, it's the {player.species}! What can I get ya, my friend?\" he begins, turning to face you, but pausing when he meets your eyes. When you give him a quizzical stare, his face falls and he shakes his head apologetically. \"Sorry, thought I recognized you, but never mind. What'll it be?\""
 			]
 		},
 		{
 			"Key": "TOWN_INN_BARKEEP_GIVEPASS",
 			"Text": [
-				"You place the mayor's note on the counter and slide it forward with two fingers, saying that the snow leopardess gave it to you. The %bartender puts down a mug he was washing and snatches the slip of paper, glancing it over. \"Hmm,\" he finally says, \"Helping out with the bridge, %species? Good, we could use a paw.\""
+				"You place the mayor's note on the counter and slide it forward with two fingers, saying that the snow leopardess gave it to you. {^bartender} puts down a mug he was washing and snatches the slip of paper, glancing it over. \"Hmm,\" he finally says, \"Helping out with the bridge, {player.species}? Good, we could use a paw.\""
 			]
 		},
 		{
@@ -166,19 +172,19 @@
 		{
 			"Key": "TOWN_INN_DRINK",
 			"Text": [
-				"You slide a gold coin across the counter and the %bartender catches it. With practiced swiftness, the barkeep pours some alcohol into a mug - ale, judging by the smell - and slides it back your way within a matter of seconds. You spend a while carefully nursing your beverage while quietly watching the room. Nothing remotely interesting happens though."
+				"You slide a gold coin across the counter and {bartender} catches it. With practiced swiftness, the barkeep pours some alcohol into a mug - ale, judging by the smell - and slides it back your way within a matter of seconds. You spend a while carefully nursing your beverage while quietly watching the room. Nothing remotely interesting happens though."
 			]
 		},
 		{
 			"Key": "TOWN_INN_ENTER",
 			"Text": [
-				"As you step into the warm but dimly lit building, the %bartender behind the bar gives you a nod."
+				"As you step into the warm but dimly lit building, {bartender} behind the bar gives you a nod."
 			]
 		},
 		{
 			"Key": "TOWN_INN_ENTER_FIRST",
 			"Text": [
-				"Stepping in dimly lit building, the warmth soothes you immediately. The door falls shut behind you with a grumpy creak. A gently crackling fireplace sits close to the exit, a bar opposite with a bored %bartender - the bartender - who eyes you curiously."
+				"Stepping in dimly lit building, the warmth soothes you immediately. The door falls shut behind you with a grumpy creak. A gently crackling fireplace sits close to the exit, a bar opposite with a bored-looking {bartender.name} - the bartender - who eyes you curiously."
 			]
 		},
 		{
@@ -291,7 +297,7 @@
 		{
 			"Key": "TOWN_MARKET_FISH_FIRST",
 			"Text": [
-				"You spy a red fox shouting about his freshest fish and approach him. Clearly experienced in his line of work, he quickly spots your approach and gives you a warm but confident grin. Soon, you recognize him as the very same vulpine who was there when you woke up earlier. \"My dear %species! Feeling better, friend?\" His tail flicks behind him as he sticks his paws in his sides."
+				"You spy a red fox shouting about his freshest fish and approach him. Clearly experienced in his line of work, he quickly spots your approach and gives you a warm but confident grin. Soon, you recognize him as the very same vulpine who was there when you woke up earlier. \"My dear {player.species}! Feeling better, friend?\" His tail flicks behind him as he sticks his paws in his sides."
 			]
 		},
 		{
@@ -313,7 +319,7 @@
 			"Key": "TOWN_MARKET_FISH_LEAVE",
 			"Text": [
 				"The fox waves as you turn to depart. \"Take care, my friend.\"",
-				"The fox waves at you as you turn to leave. \"Safe travels, my dear %species.\"",
+				"The fox waves at you as you turn to leave. \"Safe travels, my dear {player.species}.\"",
 				"The fox nods at you. \"Come back anytime,\" he says, before turning to another customer."
 			]
 		},
@@ -329,18 +335,6 @@
 			"Text": [
 				"The fox leans in and says, %rumor",
 				"With a smirk on his muzzle, the fox says %rumor"
-			]
-		},
-		{
-			"Key": "TOWN_MARKET_FISH_WORK",
-			"Text": [
-				"The fox ponders your question for a second, then shrugs. \"Well, if you need work, I dunno what you're looking for specifically, but Finmer needs a paw right now.\" When you give him a puzzled look, he laughs and concedes. \"See, the bridge leading to South Finmer collapsed two days ago. 'S not good for business, I assure you. I know people are working on it, but if you feel like flexing those muscles of yours, have a chat with the mayor. She's in the town hall most days.\""
-			]
-		},
-		{
-			"Key": "TOWN_MARKET_FISH_WORK2",
-			"Text": [
-				"He simply smiles as you thank him. \"Hey, if it ends up getting fixed, you're not the only one benefitting.\""
 			]
 		},
 		{
@@ -368,7 +362,7 @@
 		{
 			"Key": "TOWN_MARKET_NIGHT",
 			"Text": [
-				"The marketplace has a somewhat eerie atmosphere now that there's no one around. The stalls are abandoned, most - but not all - of the goods having been removed before nightfall."
+				"The marketplace has a somewhat eerie atmosphere now that there's no one around, as if the pale moonlight has replaced the people themselves. The stalls are abandoned, most - but not all - of the goods having been removed before nightfall."
 			]
 		},
 		{
@@ -420,18 +414,6 @@
 			"Key": "TOWN_SMITHY_FIRST",
 			"Text": [
 				"The first thing to greet you when you step through the ornate wooden door, is a wall of heat. This smithy has its forge built partially indoors, and judging by the sheer warmth, its operator is quite busy with it. Indeed, when you close the door behind you, the vixen working the forge takes but a peek at you before she returns her attention to the metal she's smelting, wiping some sweat off her brow and on her blank, weather-worn outfit. \"A %species walks in,\" she comments dryly, never once taking her gaze away from her work."
-			]
-		},
-		{
-			"Key": "TOWN_SMITHY_WORK",
-			"Text": [
-				"The vixen ponders your question for a second, then shrugs. \"Well, if you need work, I can think of something.\" She pauses and tilts her head, almost as if assessing you. \"See, the bridge leading to South Finmer collapsed two days ago. 'S not good for business, I assure you. I know people are working on it, but if you feel like flexing those muscles of yours, have a chat with the mayor. She's in the town hall most days.\""
-			]
-		},
-		{
-			"Key": "TOWN_SMITHY_WORK2",
-			"Text": [
-				"She simply smiles as you thank her. \"Hey, if it ends up getting fixed, you're not the only one benefitting.\""
 			]
 		},
 		{

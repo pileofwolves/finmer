@@ -6,7 +6,7 @@
 		{
 			"Key": "OPENING",
 			"Text": [
-				"A powerful breeze blows past you, leaving a horrible chill crawling up your spine. Something slips from your paw. Glass shatters on the cobblestone. An immense pressure on your chest forces the air from your lungs and you wheeze, as an oppressive mist clouds your vision. Two strong paws wrap around your throat and squeeze. Overwhelmed by panic, you kick and struggle against your assailant, but your paws fail to find purchase. In only a few agonizingly long seconds, your strength fades and your thoughts blur. Unable to do anything else, you embrace the inevitable darkness..."
+				"With a flash of searing pain, your senses blur together. Something slips from your paw, shattering on the cobblestone like glass. Its familiar warmth is gone, you realize, and with it, hope. Before your senses can recover, an oppressive mist clouds your thoughts, slowing your movements. Two strong paws wrap around your throat and squeeze. Overwhelmed by panic, you kick and struggle against your assailant, but fail to find purchase. In only a few agonizingly long seconds, your strength fades and your swimming vision darkens. Unable to do anything else, you embrace the cold..."
 			]
 		},
 		{
@@ -110,13 +110,13 @@
 		{
 			"Key": "TUTORIALPROMPT",
 			"Text": [
-				"[Would you like to see the tutorial on this game's combat mechanics?]"
+				"Would you like to see the tutorial on this game's combat mechanics?"
 			]
 		},
 		{
 			"Key": "WELCOME",
 			"Text": [
-				"[You can click any of the buttons below to interact with the area and respond to things. Use the compass on the left to move around the world (if available).]\\n"
+				"WELCOME TO FINMER.\\n\\n[You can click any of the buttons below to interact with the area and respond to things. Use the compass on the left to move around the world (if available).]\\n"
 			]
 		}
 	]

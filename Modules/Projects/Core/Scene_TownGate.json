@@ -30,7 +30,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(Compass.NORTH, \"Scene_TownMarket\")\r\n--AddLink(Compass.EAST, \"Scene_CropFields\")\r\nAddLink(Compass.SOUTH, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\n--if not Storage.GetFlag(\"town_gate_first\") then\r\n    --Storage.SetFlag(\"town_gate_first\", true)\r\n    Log(\"town_gate_first\")\r\n--end\r\nLog(\"town_gate\")\r\n\r\n-- TODO: town guard or two, something like that?",
+				"ScriptAction": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")",
 				"ScriptAppear": "",
 				"Children": []
 			}

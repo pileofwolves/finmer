@@ -66,32 +66,120 @@
 						]
 					},
 					{
-						"Key": "Work",
+						"Key": "MQ01_C_Setup",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Work",
-						"Tooltip": "Ask the fox if she knows any leads for work.",
+						"Tooltip": "Ask the vixen if she knows any leads for work.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "",
-						"ScriptAppear": "return not Storage.GetFlag(\"town_hall_open\")",
+						"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
 						"Children": [
 							{
-								"Key": "WorkResponse",
+								"Key": "MQ01_R_Setup",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"town_smithy_work\")\r\nStorage.SetFlag(\"town_hall_open\", true)\r\nJournal.Update(\"MQ01\", 20)",
+								"ScriptAction": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"the smith\"\r\nquestgiver.Gender = EGender.Female\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")",
 								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "WorkExit",
+										"Key": "MQ01_C_Bridge",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Bridge",
+										"Tooltip": "Ask how a trade route could just collapse like that.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "MQ01_R_Bridge",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_C_Mayor",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_C_Exit",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "MQ01_C_Mayor",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Acting Mayor",
+										"Tooltip": "Ask what she meant by 'acting' mayor.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "MQ01_R_Mayor",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_C_Bridge",
+														"Children": []
+													},
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"Title": "",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"LinkTarget": "MQ01_C_Exit",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "MQ01_C_Exit",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
 										"Tooltip": "Thank her for the information.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Log(\"town_smithy_work2\")",
+										"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
 										"ScriptAppear": "",
 										"Children": [
 											{
@@ -119,7 +207,7 @@
 						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "ChatMQ02",
+								"Key": "Chat_R_MQ02",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Storage.SetFlag(\"town_smithy_chat_mq02\", true)\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02_ALT\")\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02\")\r\nend",
@@ -133,20 +221,20 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"LinkTarget": "Chat_Exit",
+										"LinkTarget": "Chat_C_Exit",
 										"Children": []
 									}
 								]
 							},
 							{
-								"Key": "ChatGeneral",
+								"Key": "Chat_R_General",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")",
 								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "Chat_Exit",
+										"Key": "Chat_C_Exit",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",

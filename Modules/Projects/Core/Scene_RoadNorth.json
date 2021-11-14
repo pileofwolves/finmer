@@ -30,7 +30,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"road_north\")\r\nAddLink(Compass.NORTH, \"Scene_TownGate\")\r\nAddLink(Compass.EAST, function() BeginRoadTravel(\"Scene_ForestCottage\") end)\r\nAddLink(Compass.SOUTH, TrySouthRoad)",
+				"ScriptAction": "Log(\"road_north\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.East, function() BeginRoadTravel(\"Scene_ForestCottage\") end)\r\nAddLink(ECompass.South, TrySouthRoad)",
 				"ScriptAppear": "",
 				"Children": []
 			}

@@ -81,7 +81,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(Compass.SOUTH, \"Scene_TownMarket\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "AddLink(ECompass.South, \"Scene_TownMarket\")\r\nSetInventoryEnabled(true)",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -92,7 +92,7 @@
 						"Tooltip": "Visit the town hall.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "if Storage.GetFlag(\"town_hall_open\") then\r\n    SetScene(\"Scene_TownHall\")\r\nelse\r\n    Log(\"town_hall_closed\")\r\nend",
+						"ScriptAction": "SetScene(\"Scene_TownHall\")",
 						"ScriptAppear": "",
 						"Children": []
 					},

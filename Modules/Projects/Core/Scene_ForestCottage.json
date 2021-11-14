@@ -30,7 +30,7 @@
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(Compass.WEST, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(Compass.EAST, \"Scene_Forest\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "AddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)",
 				"ScriptAppear": "",
 				"Children": [
 					{

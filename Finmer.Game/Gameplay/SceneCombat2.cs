@@ -324,6 +324,9 @@ namespace Finmer.Gameplay
             switch (action)
             {
                 case ECombatAction.Attack:
+                    m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
+                    BeginPlayerPotentialTargetSelect(ECombatAction.Attack);
+                    break;
                 case ECombatAction.GrappleInitiate:
                     m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
                     BeginPlayerPotentialTargetSelect(ECombatAction.GrappleInitiate);
@@ -545,7 +548,7 @@ namespace Finmer.Gameplay
                 });
             }
 
-            //Grapple
+            // Grapple
             var grapple_targets = GetViableGrappleTargets(m_Player);
             if (grapple_targets.Any()) 
             {

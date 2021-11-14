@@ -13,9 +13,9 @@ Please check the project's main README file for building instructions.
 - **Want to create content?** Check out the Editor Documentation (`/Modules/Projects/Documentation.html`) for info on how content modules work, what kind of assets there are, and how they interact with the game application.
 - **Want to add/change features?** Check below for project structure notes and code style guidelines.
 
-Pull requests are accepted for both code and content (though not entirely _new_ content, see README). See below for recommendations regarding code style.
+Pull requests are accepted for both code and content (though not entirely _new_ content, see README).
 
-## Running the game with developer tools
+### Running the game with developer tools
 
 Finmer has a **debug mode** that enables various diagnostics, as well as a script console that can be used to inspect, cheat or modify things as desired.
 
@@ -25,7 +25,6 @@ To activate debug mode, do either of the following:
 - Alternatively, pass the `-debug` command line option to a Release build.
 
 When in-game, a new Script Console button will appear in the panel on the left. Click it to reveal an input field. You can enter any arbitrary Lua code in this field. Refer to the Script Documentation for a list of functions and properties that you can use here. Press Enter to run your code.
-
 
 ## Working with the solution
 

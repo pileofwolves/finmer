@@ -249,6 +249,8 @@ namespace Finmer.Gameplay
                     GameUI.Instance.ClearButtons();
                     GameUI.Instance.Instruction = String.Empty;
                     GameUI.Instance.ControlsEnabled = false;
+                    if (item.Type != ESceneEvent.Link)
+                        Compass.Reset();
 
                     // Run event. Note that this must be synchronized with the main thread, because the main thread may use the Lua state
                     // directly (such as for the dev console, or when closing sessions).

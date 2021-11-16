@@ -45,7 +45,7 @@ namespace Finmer.Gameplay
             {
                 // Associate the direction with the scene name
                 m_Session.VerifyScriptThread();
-                m_Links.Add(direction, scene);
+                m_Links[direction] = scene;
             }
         }
 
@@ -59,7 +59,7 @@ namespace Finmer.Gameplay
             lock (m_Lock)
             {
                 // Add a marker link that has no direct scene target, but indicates the link is present
-                m_Links.Add(direction, null);
+                m_Links[direction] = null;
 
                 // Store the script function at the top of the script stack for later reuse
                 m_Session.VerifyScriptThread();

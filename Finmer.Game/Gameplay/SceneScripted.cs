@@ -12,8 +12,6 @@
 
 using System;
 using System.Diagnostics;
-using System.Threading;
-using System.Windows;
 using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
@@ -51,16 +49,13 @@ namespace Finmer.Gameplay
             // Find the scene asset and get its script
             AssetBase asset = GameController.Content.GetAssetByName(scenefile);
 
-            // Let's throw some exceptions if they're not proper scenes
+            // Validate that the scene exists
             if (!(asset is AssetScene scene))
-            {
                 throw new ArgumentException($"Failed to load scene '{scenefile}': The specified asset does not exist, or is not a Scene.", nameof(scenefile));
-            }
 
+            // Validate that the scene can actually be loaded
             if (scene.Inject)
-            {
                 throw new ArgumentException($"Failed to load scene '{scenefile}': The specified asset is a patch scene and cannot be loaded directly.", nameof(scenefile));
-            }
 
             // Load the chunk
             CompiledScript script = scene.PrecompiledScript;
@@ -141,12 +136,23 @@ namespace Finmer.Gameplay
 
                 // Note: there's no need to pop the error message or clean the stack at all, because we will destroy the coroutine entirely
                 Debug.Assert(lua_isstring(m_Coroutine, -1));
-                string errormsg = lua_tostring(m_Coroutine, -1);
-                if (!errormsg.Contains("ScriptStopSignal")) // Avoid printing errors for the scene switch signal (see ExportedSetScene)
-                    GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneFile}': {errormsg}", Theme.LogColorError);
+                string error_message = lua_tostring(m_Coroutine, -1);
+                GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneFile}': {error_message}", Theme.LogColorError);
             }
 
-            // Remove the thread object from the main thread's stack (it should be on the top still). This will make it eligible for GC.
+            // Remove the thread object from the main thread's stack. This will make it eligible for GC.
+            RemoveCoroutine(state);
+        }
+
+        /// <summary>
+        /// Cleans up the cached coroutine for this scene.
+        /// </summary>
+        /// <param name="state">Pointer to the Lua state of the main stack.</param>
+        private void RemoveCoroutine(IntPtr state)
+        {
+            Debug.Assert(m_Coroutine != IntPtr.Zero, "No coroutine is active, this function should not be called");
+
+            // Find the coroutine on the main thread stack
             for (int i = 1, c = lua_gettop(state); i <= c; i++)
             {
                 if (lua_type(state, i) != ELuaType.Thread || lua_tothread(state, i) != m_Coroutine)
@@ -173,7 +179,7 @@ namespace Finmer.Gameplay
         private void LaunchCoroutine(string name, int numArgs)
         {
             // This function must not be called from the main thread, because scripts expect to be able to sleep or call blocking functions
-            Debug.Assert(Thread.CurrentThread != Application.Current.Dispatcher.Thread);
+            GameController.Session.VerifyScriptThread();
 
             // If the scene is in an invalid state, just get rid of the function arguments and bail
             IntPtr state = m_Context.LuaState;
@@ -184,7 +190,7 @@ namespace Finmer.Gameplay
             }
 
             // Create a new coroutine, which will remain at the top of the main thread stack until it finishes
-            Debug.Assert(m_Coroutine == IntPtr.Zero);
+            Debug.Assert(m_Coroutine == IntPtr.Zero, "Memory leak: there is already another coroutine in progress");
             m_Coroutine = lua_newthread(state);
 
             // Move the user arguments to the thread
@@ -204,6 +210,7 @@ namespace Finmer.Gameplay
             {
                 // If not, destroy the coroutine and bail
                 lua_pop(state, 1);
+                m_Coroutine = IntPtr.Zero;
                 return;
             }
 
@@ -212,7 +219,7 @@ namespace Finmer.Gameplay
             lua_pop(m_Coroutine, 2); // remove env table and registry table
 
             // Run it
-            Debug.Assert(lua_isfunction(m_Coroutine, 1));
+            Debug.Assert(lua_isfunction(m_Coroutine, 1), "Stack rearrangement for call is broken");
             ResumeCoroutineWithArgs(numArgs);
         }
 
@@ -222,18 +229,22 @@ namespace Finmer.Gameplay
             GameController.Session.Player.Location = m_SceneFile;
 
             // Run callback
-            lua_pushnumber(m_Context.LuaState, 123.0);
-            lua_pushboolean(m_Context.LuaState, 1);
-            LaunchCoroutine("OnEnter", 2);
+            LaunchCoroutine("OnEnter", 0);
         }
 
         public override void Leave()
         {
+            // If there still is a coroutine, clean it up.
+            // This happens if SetScene() was called, for example, which interrupts this (old) script by yielding.
+            IntPtr state = m_Context.LuaState;
+            if (m_Coroutine != IntPtr.Zero)
+                RemoveCoroutine(state);
+
             // Run callback
             LaunchCoroutine("OnLeave", 0);
+            Debug.Assert(m_Coroutine == IntPtr.Zero, "Memory leak: coroutine was not cleaned up after OnLeave");
 
             // Remove this scene's environment from the environment table, so it can be collected
-            IntPtr state = m_Context.LuaState;
             luaL_newmetatable(state, k_SceneEnvsTable);
             luaL_unref(state, -1, m_SceneRef);
             lua_pop(state, 1);

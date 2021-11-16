@@ -101,7 +101,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedSetScene(IntPtr L)
         {
-            // change the scene to the specified string
+            // Load the specified scene
             try
             {
                 GameController.Session.SetScene(new SceneScripted(ScriptContext.FromLua(L), luaL_checkstring(L, 1)));
@@ -110,9 +110,10 @@ namespace Finmer.Gameplay.Scripting
             {
                 return luaL_error(L, ex.Message);
             }
-            // throw a faux error to terminate the old script
-            // TODO: error has a lot of overhead, maybe we can instead yield and not register the thread for resuming
-            return luaL_error(L, "ScriptStopSignal");
+
+            // Interrupt the current scene so control returns to the script wrapper that invoked Lua. While throwing an error
+            // would have the same effect, yielding is much faster even though we do not intend to ever return control to this thread.
+            return lua_yield(L, 0);
         }
 
         private static int ExportedJournalSet(IntPtr L)

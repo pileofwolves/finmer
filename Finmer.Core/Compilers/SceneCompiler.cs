@@ -80,7 +80,7 @@ namespace Finmer.Core.Compilers
             if (scene.ScriptEnter.HasContent())
             {
                 state.Compiler?.Compile(scene.ScriptEnter.ScriptText, $"{scene.Name}.EnterScript");
-                state.Main.AppendLine("local function _UserOnEnter()");
+                state.Main.AppendLine("function OnEnter()");
                 state.Main.AppendLine(scene.ScriptEnter.ScriptText);
                 state.Main.AppendLine("end");
             }
@@ -94,13 +94,9 @@ namespace Finmer.Core.Compilers
                 state.Main.AppendLine("end");
             }
 
-            // Write boilerplate code. In OnEnter we also need to select the first State node, so wrap the user's OnEnter function.
+            // Write boilerplate code that drives the scene.
             // In OnTurn, we run the user's chosen ChoiceFn, then run the new StateFn that rolls out of that ChoiceFn.
             state.Main.AppendLine(@"
-function OnEnter()
-    if _UserOnEnter ~= nil then _UserOnEnter() end
-end
-
 function OnTurn(choice)
     _ChoiceFns[choice]()
     _StateFns[_state]()

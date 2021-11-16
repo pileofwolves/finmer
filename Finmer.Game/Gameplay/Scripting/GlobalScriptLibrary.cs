@@ -81,9 +81,9 @@ namespace Finmer.Gameplay.Scripting
             return 0;
         }
 
-        private static int ExportedIsDebugMode(IntPtr state)
+        private static int ExportedIsDebugMode(IntPtr L)
         {
-            lua_pushboolean(state, 1);
+            lua_pushboolean(L, GameController.DebugMode ? 1 : 0);
             return 1;
         }
 

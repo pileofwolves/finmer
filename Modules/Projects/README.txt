@@ -1,4 +1,7 @@
-The following sample modules are provided:
+The following modules are provided:
+
+Core
+	Contains all official game content.
 
 Example01 - Injection Demo
 	Provides a very basic demo for the scene patching system, which enables a module to inject new content into scene assets that were originally provided by another module.

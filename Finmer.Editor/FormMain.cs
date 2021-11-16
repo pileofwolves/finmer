@@ -743,7 +743,7 @@ namespace Finmer.Editor
 
         private void rbtHelpDoc_Click(object sender, EventArgs e)
         {
-            string doc_path = Path.Combine(GetModulesFolder(), "Projects", "Documentation.html");
+            string doc_path = Path.Combine(GetModulesFolder(), "Docs", "Documentation.html");
             try
             {
                 Process.Start(doc_path);

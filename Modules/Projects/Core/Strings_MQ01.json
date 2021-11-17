@@ -4,15 +4,21 @@
 	"Name": "Strings_MQ01",
 	"Entries": [
 		{
-			"Key": "MQ01_ACCEPT1",
+			"Key": "MQ01_BARKEEP_BEGIN",
 			"Text": [
-				"\"Excellent,\" she exclaims, before snatching a small piece of paper from a drawer and scribbling something on it. The snow leopardess then hands it to you. \"Give this to Edgard at the local inn. He'll know it's from me, and will get you a room for as long as you need. As a courtesy for services rendered.\"\\n\\nThe mayor clasps her paws together. \"Now, I believe our business is concluded? I have a hunt to coordinate.\""
+				"You place the mayor's note on the counter and slide it forward with two fingers, saying that the snow leopardess gave it to you. {^bartender} puts down a mug he was washing and snatches the slip of paper, glancing it over before pocketing it. \"Hmm,\" he finally says, \"Helping out with the bridge, {player.species}? Good, we could use a paw. Or five.\""
 			]
 		},
 		{
-			"Key": "MQ01_ACCEPT2",
+			"Key": "MQ01_BARKEEP_END",
 			"Text": [
-				"You give a polite nod and turn to leave while the mayor resumes her presumably important work. The wooden door slams shut behind you, perhaps a tad more loud than strictly necessary, and the warm glow of the sunny outdoors greets you again. Absolutely nothing changed in your minute of absence."
+				"You thank the barkeep for his help and agree that you'll do what you can. In turn, he nods politely and fishes for something under the counter, then tosses a small key into your paws. \"First room on the left, upstairs. It's a reserve we keep for, well, emergencies. You can use it while you're here, mayor's treat.\" A smile cracks on {bartender}'s lips. \"She's not as cold as she seems, mind. She's just got... a lot on her plate right now.\" With that, he goes back to his routine of washing mugs.\\n\\nSo, off to the woods and into the deep it is, then. There's nothing like a good hike on a warm summer day."
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP_MESSENGER",
+			"Text": [
+				"{bartender} folds his arms. \"Right, you're going after Stip. He's a tiger, white fur, wears a blue bandana. Uhh...\" He glances away for a second and scratches himself behind his ears in thought. \"Prefers knives in a fight? Yeah, that's all I know, I think. The point is, he was a capable local and willing to help us out. We didn't really have the luxury to stand and wait until the next fully-stocked construction crew happens to waltz into town.\""
 			]
 		},
 		{
@@ -28,39 +34,15 @@
 			]
 		},
 		{
-			"Key": "MQ01_INFO_ABOUTBRIDGE",
-			"Text": [
-				"\"More info? Eh, well, it collapsed about two days ago. We sent the messenger to the carpenter the day after, but yeah, neither are here.\" The {bartender} idly taps his claws against the surface of the counter. \"Not sure what caused it though, far as I know it was pretty sturdy, even for wood. Maybe someone or something broke it. I dunno.\""
-			]
-		},
-		{
-			"Key": "MQ01_INFO_ABOUTGUY",
-			"Text": [
-				"The {bartender} folds his arms. \"He's a tiger, white fur, wears a blue bandana. Uhh...\" He glances away for a second and scratches himself behind his ears in thought. \"Prefers knives in a fight? Yeah, that's all I know, I think.\""
-			]
-		},
-		{
 			"Key": "MQ01_INFO_ACTINGMAYOR",
 			"Text": [
-				"When you broach the subject, you notice her gaze soften considerably. \"Yeah. Everyone - especially me, frankly - have to put on a brave face, but the truth is I'm worried. She was not one to just up and leave.\" Briefly, she averts her eyes. When they return to gaze into yours, the impassive cold expression seems to have returned. \"I need to get to the bottom of this madness, but I only have so many people to work with. Can you help us?\""
+				"When you broach the subject, you notice her gaze soften considerably. \"Yeah. Everyone - especially me, frankly - have to put on a brave face, but the truth is I'm worried. Mayor Iso always had her affairs in order, and she was definitely not one to just up and leave.\" Briefly, in a moment of weakness, she averts her eyes. When they return to gaze into yours, the impassively cold expression seems to have returned. \"I need to get to the bottom of this madness, but I only have so many people to work with. Can I count you among them?\""
 			]
 		},
 		{
 			"Key": "MQ01_INFO_REWARD",
 			"Text": [
-				"The white feline huffs indignantly, though you feel like she should've expected the question. \"I'm sure the wanderer-types such as yourself are swayed by gold, no? And I can throw in a free bed at the local inn. Deal?\""
-			]
-		},
-		{
-			"Key": "MQ01_INFO_THANK",
-			"Text": [
-				"You thank the barkeep for his help and say that you'll see what you can do. In turn, he nods politely and fishes for something under the counter, then tosses a small key into your paws. \"First room on the left, upstairs. You can use it while you're here, mayor's treat.\" A smile cracks on the {bartender}'s lips. \"She's not as cold as she seems, mind.\" With that, he goes back to his routine of washing mugs.\\n\\nSo, off to the woods it is, then. There's nothing like a good hike on a warm summer day."
-			]
-		},
-		{
-			"Key": "MQ01_INQUIRE",
-			"Text": [
-				"She raises an eyebrow at your inquiry. \"Work, hm?\" The leopardess ponders your question. For a moment you expect her to send you away, but instead, she sighs and makes eye contact again. \"Well, to the south, just a bit outside the gate, a storm wrecked the bridge over the river. If you're willing to lend a paw with the repairs, I'm not turning you down.\""
+				"The white feline huffs indignantly, though you feel like she should've expected the question. \"I'm sure the wanderer-types such as yourself are swayed by gold, no? And you can make use of a room at our local tavern. If I may be so frank, you look like you could use a rest. Deal?\""
 			]
 		},
 		{
@@ -72,13 +54,25 @@
 		{
 			"Key": "MQ01_INTRO2",
 			"Text": [
-				"She scratches his chin. \"I see. I'm not sure what you've heard so far, but let me get you up to speed. Call me Canbell, by the way.\"\\n\\n\"Last night, there was an explosion that seems to have rendered our primary route to South Finmer unusable. That's a big problem; even now there are traders stuck here that would have gone that way otherwise. There are some other ways around, of course, but none that are suitable for carriages and the like.\" The leopardess pauses for a moment and takes a breath. \"Now, we're handling the search for those responsible, but we need materials to perform the repairs with. Generally, we get those from a forester who lives near the woods, east of here.\""
+				"She scratches his chin. \"I see. I'm not sure what you've heard so far, but let me get you up to speed; I'll take all the help I can get right now. Call me Canbell, by the way.\"\\n\\n\"Last night, there was an explosion that seems to have rendered our primary route to South Finmer unusable. That's a big problem; even now there are traders stuck here that would have gone that way otherwise. There are some other ways around, of course, but none that are suitable for carriages and the like.\" The leopardess pauses for a moment and takes a breath. \"Now, we're handling the search for those responsible, but we need materials to perform the repairs with. Generally, we get those from a forester who lives near the woods, east of here.\""
 			]
 		},
 		{
 			"Key": "MQ01_INTRO3",
 			"Text": [
-				"Canbell's eyes wander to the wall behind you, then back to you. \"At the crack of dawn today, when we finishes assessing the damage, we sent someone his way to get the supplies we need. He has not yet returned, which concerns me - Oliver's is only an hour's walk from here, and it's almost midday.\" She nods. \"I don't know what happened, but I want you to go there, see what's going on. Might be nothing, maybe they're preparing the items together. But be prepared for trouble. You seem like a capable sort.\""
+				"Canbell's eyes wander to the wall behind you, then back to you. \"At the crack of dawn today, when we finished assessing the damage, we sent someone his way to get the supplies we need. He has not yet returned, which concerns me - Oliver's is only an hour's walk from here, and it's almost midday.\" She nods. \"I don't know what happened, but I want you to go there, see what's going on. Might be nothing, maybe they're preparing the items together. But be prepared for trouble. You seem like a capable sort.\""
+			]
+		},
+		{
+			"Key": "MQ01_INTRO4",
+			"Text": [
+				"\"Excellent,\" she exclaims, before snatching a small piece of paper from a drawer and scribbling something on it. The snow leopardess then hands it to you. \"One last thing. Talk to Edgard at the local inn. He'll know more about our missing messenger. And give this to him - he'll know it's from me, and will get you a reserve room for as long as you need. As a courtesy for services rendered.\"\\n\\nThe mayor clasps her paws together. \"Now, I believe our business is concluded? I have a hunt to coordinate.\""
+			]
+		},
+		{
+			"Key": "MQ01_INTRO5",
+			"Text": [
+				"You give a polite nod and turn to leave while the mayor resumes her presumably important work. The wooden door slams shut behind you, perhaps a tad more loud than strictly necessary, and the warm glow of the sunny outdoors greets you again. Absolutely nothing changed in your minute of absence."
 			]
 		},
 		{
@@ -96,7 +90,7 @@
 		{
 			"Key": "MQ01_SETUP1",
 			"Text": [
-				"{questgiver} ponders your question for a second, then shrugs. \"Well, if you need work, I can think of something.\" {^questgiver.subject} pauses and tilts {questgiver.possessive} head, almost as if assessing you. \"See, there's a pretty huge river between us and South Finmer. There's a bridge, but somehow it collapsed overnight. That's not good for business, I assure you. I know people are working on it, but if you feel like flexing those muscles of yours, have a chat with the acting mayor. She's in the town hall most days.\""
+				"{questgiver} ponders your question for a second, then shrugs. \"Well, if you need work, I can think of something.\" {^questgiver.subject} pauses and tilts {questgiver.possessive} head, almost as if assessing you. \"See, there's a pretty huge river between us and South Finmer. There's a bridge, but somehow it collapsed overnight. That's not good for business, I assure you. I know people are working on it, but if you feel like flexing those muscles of yours, have a chat with the acting mayor. She's in charge of the cleanup; you'll find her in the town hall most days.\""
 			]
 		},
 		{

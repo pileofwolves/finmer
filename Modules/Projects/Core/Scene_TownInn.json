@@ -150,17 +150,17 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "",
-														"ScriptAppear": "return Player.Money >= drink_price",
+														"ScriptAppear": "return Player.Money >= 1",
 														"Children": [
 															{
 																"Key": "BottomsUp",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Player.Money = Player.Money - drink_price\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
+																"ScriptAction": "Player.Money = Player.Money - 1\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
 																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "DrinkOK",
+																		"Key": "Drink_C_Exit",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
@@ -319,20 +319,20 @@
 														"IsLink": false,
 														"Title": "Show Pass",
 														"Tooltip": "Show the pass from the mayor.",
-														"Highlight": false,
+														"Highlight": true,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "",
-														"ScriptAppear": "return Player:HasItem(\"MQ01_InnPass\")",
+														"ScriptAppear": "return Player:HasItem(\"I_MQ01_InnPass\")",
 														"Children": [
 															{
-																"Key": "MQ01_GivePass",
+																"Key": "MQ01_R_GivePass",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Player:TakeItem(\"MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_free\", true)\r\n\r\nLog(\"town_inn_barkeep_givepass\")",
+																"ScriptAction": "-- Response\r\nLog(\"MQ01_BARKEEP_BEGIN\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "MQ01_AskDetails",
+																		"Key": "MQ01_C_Messenger",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
@@ -343,115 +343,49 @@
 																		"ScriptAppear": "",
 																		"Children": [
 																			{
-																				"Key": "MQ01_DiscussDetails",
+																				"Key": "MQ01_R_Messenger",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"mq01_barkeep_discuss\")",
+																				"ScriptAction": "Log(\"MQ01_BARKEEP_MESSENGER\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
-																						"Key": "MQ01_Accept",
+																						"Key": "MQ01_C_Complete1",
 																						"IsState": false,
 																						"IsLink": false,
-																						"Title": "Accept",
+																						"Title": "Continue",
 																						"Tooltip": "Thank him and take your leave.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "Log(\"mq01_barkeep_thank\")\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
-																						"ScriptAppear": "",
-																						"Children": [
-																							{
-																								"Key": "Unnamed",
-																								"IsState": true,
-																								"IsLink": true,
-																								"LinkTarget": "Main",
-																								"Children": []
-																							}
-																						]
-																					},
-																					{
-																						"Key": "MQ01_AskAboutGuy",
-																						"IsState": false,
-																						"IsLink": false,
-																						"Title": "Messenger",
-																						"Tooltip": "Ask for details about the missing messenger.",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
 																						"ScriptAction": "",
 																						"ScriptAppear": "",
 																						"Children": [
 																							{
-																								"Key": "MQ01_TalkAboutGuy",
+																								"Key": "MQ01_R_Complete1",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ01_BARKEEP_ABOUTGUY\")",
+																								"ScriptAction": "Log(\"MQ01_BARKEEP_END\")\r\n\r\n-- Exchange pass for free room\r\nPlayer:TakeItem(\"I_MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_rented_room\", true)\r\n\r\n-- Complete MQ01\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
-																										"Key": "Unnamed",
+																										"Key": "MQ01_C_Complete2",
 																										"IsState": false,
-																										"IsLink": true,
-																										"Title": "Unnamed",
+																										"IsLink": false,
+																										"Title": "Continue",
 																										"Tooltip": "",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"LinkTarget": "MQ01_Accept",
-																										"Children": []
-																									},
-																									{
-																										"Key": "Unnamed",
-																										"IsState": false,
-																										"IsLink": true,
-																										"Title": "Unnamed",
-																										"Tooltip": "",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"LinkTarget": "MQ01_AskAboutBridge",
-																										"Children": []
-																									}
-																								]
-																							}
-																						]
-																					},
-																					{
-																						"Key": "MQ01_AskAboutBridge",
-																						"IsState": false,
-																						"IsLink": false,
-																						"Title": "Bridge",
-																						"Tooltip": "Ask for more details about what happened to the bridge.",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"ScriptAction": "",
-																						"ScriptAppear": "",
-																						"Children": [
-																							{
-																								"Key": "MQ01_TalkAboutBridge",
-																								"IsState": true,
-																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ01_BARKEEP_ABOUTBRIDGE\")",
-																								"ScriptAppear": "",
-																								"Children": [
-																									{
-																										"Key": "Unnamed",
-																										"IsState": false,
-																										"IsLink": true,
-																										"Title": "Unnamed",
-																										"Tooltip": "",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"LinkTarget": "MQ01_Accept",
-																										"Children": []
-																									},
-																									{
-																										"Key": "Unnamed",
-																										"IsState": false,
-																										"IsLink": true,
-																										"Title": "Unnamed",
-																										"Tooltip": "",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"LinkTarget": "MQ01_AskAboutGuy",
-																										"Children": []
+																										"ScriptAction": "",
+																										"ScriptAppear": "",
+																										"Children": [
+																											{
+																												"Key": "Unnamed",
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Main",
+																												"Children": []
+																											}
+																										]
 																									}
 																								]
 																							}
@@ -471,7 +405,7 @@
 														"IsLink": false,
 														"Title": "Bridge Supplies",
 														"Tooltip": "Say you've got news.",
-														"Highlight": false,
+														"Highlight": true,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "",
 														"ScriptAppear": "return Storage.GetFlag(\"mq02_ambushed\") and not Storage.GetFlag(\"mq02_done\")",
@@ -802,44 +736,24 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "",
-														"ScriptAppear": "-- rooms not yet free & player hasn't rented a room already\r\nreturn not Storage.GetFlag(\"town_inn_free\") and not Storage.GetFlag(\"town_inn_rented\")",
+														"ScriptAppear": "-- Room is not yet made available\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\")",
 														"Children": [
 															{
-																"Key": "RentInfo",
+																"Key": "Rent_R_Denied",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "LogGsub(\"town_inn_rent_info\", {bartender = barkeep, price = room_price})",
+																"ScriptAction": "Log(\"TOWN_INN_RENT_DENIED\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "RentPay",
-																		"IsState": false,
-																		"IsLink": false,
-																		"Title": "Pay up",
-																		"Tooltip": "Give him money for a room.",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": "LogGsub(\"town_inn_rent_pay\", {price = room_price})\r\nStorage.SetFlag(\"town_inn_rented\", true)\r\nPlayer.Money = Player.Money - room_price",
-																		"ScriptAppear": "return Player.Money >= room_price",
-																		"Children": [
-																			{
-																				"Key": "Unnamed",
-																				"IsState": true,
-																				"IsLink": true,
-																				"LinkTarget": "Main",
-																				"Children": []
-																			}
-																		]
-																	},
-																	{
-																		"Key": "RentCancel",
+																		"Key": "Rent_C_Denied",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Never mind",
-																		"Tooltip": "Yeah, maybe later...",
+																		"Tooltip": "Oh well...",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Log(\"town_inn_rent_nope\")",
+																		"ScriptAction": "",
 																		"ScriptAppear": "",
 																		"Children": [
 																			{
@@ -1196,7 +1110,7 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "if Storage.GetFlag(\"town_inn_room_visited\") then\r\n    Log(\"town_inn_room_enter\")\r\nelse\r\n    Storage.SetFlag(\"town_inn_room_visited\", true)\r\n    Log(\"town_inn_room_enter_first\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend",
-						"ScriptAppear": "return Storage.GetFlag(\"town_inn_free\") or Storage.GetFlag(\"town_inn_rented\")",
+						"ScriptAppear": "return Storage.GetFlag(\"town_inn_rented_room\")",
 						"Children": [
 							{
 								"Key": "Room_Main",

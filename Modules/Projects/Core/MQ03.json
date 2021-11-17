@@ -2,6 +2,11 @@
 	"!Type": "AssetJournal",
 	"ID": "fb14b2b1-f0cf-474d-a311-720266f557d3",
 	"Name": "MQ03",
-	"Title": "MQ03",
-	"Stages": []
+	"Title": "Fly South",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "A key bridge on the trade route to South Finmer was destroyed last night. Pending repairs, travel is impossible."
+		}
+	]
 }

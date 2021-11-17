@@ -1,8 +1,3 @@
--- Balancing variables
--- TO BE REMOVED
-local room_price = 5
-local drink_price = 1
-
 -- On first encounter, generate a random canine species for the barkeep
 if not Storage.GetFlag("barkeep_generated") then
     Storage.SetString("barkeep_species", Text.GetString("SPECIES_CANINE"))

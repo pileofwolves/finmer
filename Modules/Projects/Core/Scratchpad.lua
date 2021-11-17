@@ -46,21 +46,4 @@ Carson:     [OC] otter, m, Club member
 Tye:        [OC] wolf-deer hybrid, m, Club member
 Phillip:    [OC] horse, m, Club member
 
-
-BACKGROUND
-----------
-
-Finmer is a fishing town split into north and south parts, a few kms apart. North is situated near a lake and dense forest. South is built on a cliffside and fishes from the sea. Primary export for both is fish and such.
-
-
-MAIN STORY
-----------
-
-South Finmer is occupied by the Red Maw, a gang of bandits who want to tightly control import/export. In response to initial disobedience and resistance, Randall (leader) destroys bridge over an important trade route leading to South Finmer (goal = set example, threaten), severely damaging commerce.
-
-Player worked together with Iso and found out about bridge destruction, tried to prevent it, but failed. Player supposedly let Iso escape safely by creating a distraction, but got caught themselves by some of Randall's followers. The goons injure the player and leave them for dead in North Finmer. Randall himself never saw the player directly (only knows about 'the %species and pantheress') and therefore does not recognize them later.
-
-Game thus opens with a vague memory of the player's last stand, as they wake up the next morning, with no memories of the last few days.
-
-
 ]]

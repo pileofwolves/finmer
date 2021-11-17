@@ -157,12 +157,6 @@
 			]
 		},
 		{
-			"Key": "TOWN_INN_BARKEEP_GIVEPASS",
-			"Text": [
-				"You place the mayor's note on the counter and slide it forward with two fingers, saying that the snow leopardess gave it to you. {^bartender} puts down a mug he was washing and snatches the slip of paper, glancing it over. \"Hmm,\" he finally says, \"Helping out with the bridge, {player.species}? Good, we could use a paw.\""
-			]
-		},
-		{
 			"Key": "TOWN_INN_BARKEEP_LEAVE",
 			"Text": [
 				"You get up from your seat.",
@@ -196,25 +190,7 @@
 		{
 			"Key": "TOWN_INN_RENT_DENIED",
 			"Text": [
-				"When you ask about a room for the night, the barkeep shakes his head. \"Sorry, full house right now.\""
-			]
-		},
-		{
-			"Key": "TOWN_INN_RENT_INFO",
-			"Text": [
-				"In response to your question, the %bartender leans over slightly towards you. You can't help but feel that you're being inspected somehow. \"It's %price gold for a room.\""
-			]
-		},
-		{
-			"Key": "TOWN_INN_RENT_NOPE",
-			"Text": [
-				"You shake your head and the barkeep simply shrugs. \"Suit yourself.\""
-			]
-		},
-		{
-			"Key": "TOWN_INN_RENT_PAY",
-			"Text": [
-				"You hand the barkeep %price coins and get a small key in return. He nods towards the stairs near the exit. \"Thanks. First one on the left. It's yours for the night.\""
+				"The barkeep shakes his head. \"Sorry, no can do. Things are busy and honestly a little messy. There are a bunch of people stuck here, so we're full up for now.\" An obviously forced smile makes its way onto {bartender}'s face. \"I suppose you picked an unfortunate time to visit.\""
 			]
 		},
 		{

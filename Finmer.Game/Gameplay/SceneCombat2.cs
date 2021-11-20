@@ -661,8 +661,7 @@ namespace Finmer.Gameplay
                 ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
 
                 // If player cannot start the grapple against larger target, make sure they cannot reverse it either.
-                var grapple_targets = GetViableGrappleTargets(m_Player.GrapplingWith);
-                if (grapple_targets.Any())
+               if(m_Player.Character.CanGrapple(m_Player.GrapplingWith.Character))
                 {
                     ui.AddButton(new ChoiceButtonModel
                     {

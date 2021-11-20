@@ -296,6 +296,14 @@ namespace Finmer.Gameplay
             return prey.Size <= Size;
         }
 
+        /// <summary>
+        /// Returns a value indicating whether a certain character can be grappled in a fight.
+        /// </summary>
+        /// <param name="victim">The character who may or may not be grabbed.</param>
+        public bool CanGrapple(Character victim) 
+        {
+            return victim.Size <= Size;
+        }
     }
 
 }

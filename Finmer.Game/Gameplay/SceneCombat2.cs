@@ -173,6 +173,15 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Returns participants that the input participant can attempt to grapple with this turn.
+        /// </summary> 
+        private IEnumerable<Participant> GetViableGrappleTargets(Participant opponent) 
+        {
+            return GetViableAttackTargets(opponent)
+                .Where(prey => opponent.Character.CanGrapple(prey.Character));
+        }
+
+        /// <summary>
         /// Returns participants that the input participant can attempt to swallow on this turn.
         /// </summary>
         private IEnumerable<Participant> GetViablePreyTargets(Participant predator)
@@ -313,9 +322,13 @@ namespace Finmer.Gameplay
             switch (action)
             {
                 case ECombatAction.Attack:
-                case ECombatAction.GrappleInitiate:
                     m_PotentialPlayerTargets = GetViableAttackTargets(m_Player).ToList();
-                    BeginPlayerPotentialTargetSelect(action);
+                    BeginPlayerPotentialTargetSelect(ECombatAction.Attack);
+                    break;
+
+                case ECombatAction.GrappleInitiate:
+                    m_PotentialPlayerTargets = GetViableGrappleTargets(m_Player).ToList();
+                    BeginPlayerPotentialTargetSelect(ECombatAction.GrappleInitiate);
                     break;
 
                 case ECombatAction.Swallow:
@@ -532,6 +545,12 @@ namespace Finmer.Gameplay
                     Label = "Fight",
                     Tooltip = "Attack another character to deal damage."
                 });
+            }
+
+            // Grapple
+            var grapple_targets = GetViableGrappleTargets(m_Player);
+            if (grapple_targets.Any()) 
+            {
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleInitiate,
@@ -641,12 +660,16 @@ namespace Finmer.Gameplay
                 // Player is being pinned
                 ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
 
-                ui.AddButton(new ChoiceButtonModel
+                // If player cannot start the grapple against larger target, make sure they cannot reverse it either.
+               if(m_Player.Character.CanGrapple(m_Player.GrapplingWith.Character))
                 {
-                    Choice = (int)ECombatAction.GrappleReverse,
-                    Label = "Reverse",
-                    Tooltip = "Attempt to reverse the grapple, so you end up on top."
-                });
+                    ui.AddButton(new ChoiceButtonModel
+                    {
+                        Choice = (int)ECombatAction.GrappleReverse,
+                        Label = "Reverse",
+                        Tooltip = "Attempt to reverse the grapple, so you end up on top."
+                    });
+                }
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleEscape,

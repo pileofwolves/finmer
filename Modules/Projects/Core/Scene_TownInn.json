@@ -814,7 +814,7 @@
 										"Tooltip": "Talk to the big fuzzy-looking taur in the corner.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "LogGsub(\"INN_FOXTAUR_APPROACH\", {partner = ftpartner})",
+										"ScriptAction": "Text.SetContext(\"partner\", ftpartner)\r\nLog(\"INN_FOXTAUR_APPROACH\")",
 										"ScriptAppear": "return not Storage.GetFlag(\"town_inn_foxtaur_arrested\")",
 										"Children": [
 											{
@@ -839,7 +839,7 @@
 																"Key": "Foxtaur_R_IntroFox",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "LogGsub(\"INN_FOXTAUR_HELLO_FOX\", {partner = ftpartner})",
+																"ScriptAction": "Log(\"INN_FOXTAUR_HELLO_FOX\")",
 																"ScriptAppear": "return Player.Species == \"fox\"",
 																"Children": [
 																	{
@@ -870,7 +870,7 @@
 																"Key": "Foxtaur_R_Intro",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "LogGsub(\"INN_FOXTAUR_HELLO\", {partner = ftpartner})",
+																"ScriptAction": "Log(\"INN_FOXTAUR_HELLO\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -888,7 +888,7 @@
 																				"Key": "Foxtaur_R_AskDrink",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ASK_DRINK\", {partner = ftpartner})\r\ntemp_getdrink = true",
+																				"ScriptAction": "Log(\"INN_FOXTAUR_ASK_DRINK\")\r\ntemp_getdrink = true",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -906,7 +906,7 @@
 																								"Key": "Foxtaur_R_DoJoin",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "LogGsub(\"INN_FOXTAUR_JOIN1\", {partner = ftpartner})\r\n\r\nif temp_getdrink == true then\r\n    -- picked the 'drink' option earlier\r\n    Log(\"INN_FOXTAUR_JOIN_DRINK\")\r\nend\r\n\r\nLog(\"INN_FOXTAUR_JOIN2\")",
+																								"ScriptAction": "Log(\"INN_FOXTAUR_JOIN1\")\r\n\r\nif temp_getdrink == true then\r\n    -- picked the 'drink' option earlier\r\n    Log(\"INN_FOXTAUR_JOIN_DRINK\")\r\nend\r\n\r\nLog(\"INN_FOXTAUR_JOIN2\")",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
@@ -1051,7 +1051,7 @@
 																				"Key": "Foxtaur_R_AskChat",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ASK_TALK\", {partner = ftpartner})",
+																				"ScriptAction": "Log(\"INN_FOXTAUR_ASK_TALK\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -1325,7 +1325,7 @@
 																				"Key": "Foxtaur_R_Arrest",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_ARREST2\", {barkeep=barkeep})",
+																				"ScriptAction": "Log(\"INN_FOXTAUR_ARREST2\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -1343,7 +1343,7 @@
 																								"Key": "Foxtaur_R_Stmt1",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "LogSplit()\r\nLogGsub(\"INN_FOXTAUR_STMT1\", {barkeep=barkeep})\r\nLog(Storage.GetFlag(\"law_ever_arrested\") and \"INN_FOXTAUR_STMT2_MET\" or \"INN_FOXTAUR_STMT2_NEW\")",
+																								"ScriptAction": "LogSplit()\r\nLog(\"INN_FOXTAUR_STMT1\")\r\nLog(Storage.GetFlag(\"law_ever_arrested\") and \"INN_FOXTAUR_STMT2_MET\" or \"INN_FOXTAUR_STMT2_NEW\")",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
@@ -1354,7 +1354,7 @@
 																										"Tooltip": "Try to relay the events as they happened.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT3_TRUE\", {ftpartner=ftpartner})\r\nStorage.SetNumber(\"law_gavin_stmt\", 1)",
+																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_TRUE\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 1)",
 																										"ScriptAppear": "",
 																										"Children": [
 																											{
@@ -1379,7 +1379,7 @@
 																																"Key": "Foxtaur_R_StmtWrap2",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT_WRAPUP2\", {barkeep=barkeep})",
+																																"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP2\")",
 																																"ScriptAppear": "",
 																																"Children": [
 																																	{
@@ -1397,7 +1397,7 @@
 																																				"Key": "Foxtaur_R_StmtWrap3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT_WRAPUP3\", {barkeep=barkeep})",
+																																				"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP3\")",
 																																				"ScriptAppear": "",
 																																				"Children": [
 																																					{
@@ -1453,7 +1453,7 @@
 																										"Tooltip": "[Lie] Describe how you saved a lady's life.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "LogGsub(\"INN_FOXTAUR_STMT3_BOAST\", {ftpartner=ftpartner})\r\nStorage.SetNumber(\"law_gavin_stmt\", 2)",
+																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_BOAST\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 2)",
 																										"ScriptAppear": "",
 																										"Children": [
 																											{

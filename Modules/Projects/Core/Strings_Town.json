@@ -12,7 +12,7 @@
 		{
 			"Key": "TOWN_ALCH_ENTER",
 			"Text": [
-				"When you enter the small shop, the old lizard looks up from his work and grins as he recognizes you. \"Ah, if it isn't the %species again! What can I do for you?\""
+				"When you enter the small shop, the old lizard looks up from his work and grins as he recognizes you. \"Ah, if it isn't the {player.species} again! What can I do for you?\""
 			]
 		},
 		{
@@ -225,7 +225,7 @@
 				"You just slept, you feel like you can do without a bed for a few minutes at least.",
 				"You just woke up, you think you should be able to withstand a few hours of uptime.",
 				"You already just slept in the same bed, you ought to be able to keep your eyes open for a bit longer.",
-				"C'mon, daylight's a-wasting. Get your %furry ass going."
+				"C'mon, daylight's a-wasting. Get your {player.furry} ass going."
 			]
 		},
 		{
@@ -239,9 +239,9 @@
 		{
 			"Key": "TOWN_INN_RUMOR_NONE",
 			"Text": [
-				"The %bartender shakes his head. \"You've bled me dry already.\"",
+				"The {bartender} shakes his head. \"You've bled me dry already.\"",
 				"The barkeep gives you a grim smile. \"Why don't you go out for a bit, and tell me what you find?\"",
-				"The %bartender grumbles a bit. \"I've got other customers to tend to. We'll talk later.\""
+				"The {bartender} grumbles a bit. \"I've got other customers to tend to. We'll talk later.\""
 			]
 		},
 		{
@@ -377,19 +377,19 @@
 		{
 			"Key": "TOWN_SMITHY_CHAT_MQ02",
 			"Text": [
-				"\"%name, was it?\" She sticks her paws in her sides, and gives a swish of her bushy, orange-furred tail. \"Hear you 'been busy. Nice job getting ol' Oliver out of that mess, I was worried something might've happened to him.\""
+				"\"{player.name}, was it?\" She sticks her paws in her sides, and gives a swish of her bushy, orange-furred tail. \"Hear you 'been busy. Nice job getting ol' Oliver out of that mess, I was worried something might've happened to him.\""
 			]
 		},
 		{
 			"Key": "TOWN_SMITHY_CHAT_MQ02_ALT",
 			"Text": [
-				"\"%name, was it?\" She sticks her paws in her sides, and gives a swish of her bushy, orange-furred tail. \"Hear you 'been busy. Nice job figuring all this out. But, listen...\" She pauses, and gives you an icy stare. \"You find the fucker that did ol' Oliver in, and you set 'im straight, yeah?\""
+				"\"{player.name}, was it?\" She sticks her paws in her sides, and gives a swish of her bushy, orange-furred tail. \"Hear you 'been busy. Nice job figuring all this out. But, listen...\" She pauses, and gives you an icy stare. \"You find the fucker that did ol' Oliver in, and you set 'im straight, yeah?\""
 			]
 		},
 		{
 			"Key": "TOWN_SMITHY_FIRST",
 			"Text": [
-				"The first thing to greet you when you step through the ornate wooden door, is a wall of heat. This smithy has its forge built partially indoors, and judging by the sheer warmth, its operator is quite busy with it. Indeed, when you close the door behind you, the vixen working the forge takes but a peek at you before she returns her attention to the metal she's smelting, wiping some sweat off her brow and on her blank, weather-worn outfit. \"A %species walks in,\" she comments dryly, never once taking her gaze away from her work."
+				"The first thing to greet you when you step through the ornate wooden door, is a wall of heat. This smithy has its forge built partially indoors, and judging by the sheer warmth, its operator is quite busy with it. Indeed, when you close the door behind you, the vixen working the forge takes but a peek at you before she returns her attention to the metal she's smelting, wiping some sweat off her brow and on her blank, weather-worn outfit. \"A {player.species} walks in,\" she comments dryly, never once taking her gaze away from her work."
 			]
 		},
 		{
@@ -406,7 +406,7 @@
 			"Text": [
 				"The air cooled off quite a bit compared to daytime.",
 				"It's a lot quieter in the town now that night has fallen.",
-				"Were it not for your %furry hide, you might have been shivering in the cool night air.",
+				"Were it not for your {player.furry} hide, you might have been shivering in the cool night air.",
 				"All the activity of the day has given way to an eerie quiet."
 			]
 		},

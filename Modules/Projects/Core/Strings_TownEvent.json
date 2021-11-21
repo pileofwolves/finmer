@@ -12,7 +12,7 @@
 		{
 			"Key": "EVENT_NAKED_ARRESTED",
 			"Text": [
-				"{guard.subject} hands {guard.possessive} halberd to {guard.possessive} partner, then confidently marches over to you and snatches you by the scruff of your neck. The {guard} forcefully pushes and pins you against the smooth and cold surface of the nearest wall, then pulls back {guard.possessive} visor. An assertive and authoritative, yet also predatory, pair of eyes meets your gaze. \"Hold still, citizen. In order to preserve public order, I am forced to... temporarily remove your presence until you come to your senses.\""
+				"{^guard.subject} hands {guard.possessive} halberd to {guard.possessive} partner, then confidently marches over to you and snatches you by the scruff of your neck. The {guard} forcefully pushes and pins you against the smooth and cold surface of the nearest wall, then pulls back {guard.possessive} visor. An assertive and authoritative, yet also predatory, pair of eyes meets your gaze. \"Hold still, citizen. In order to preserve public order, I am forced to... temporarily remove your presence until you come to your senses.\""
 			]
 		},
 		{
@@ -30,7 +30,7 @@
 		{
 			"Key": "INN_FOXTAUR_APPROACH",
 			"Text": [
-				"Carefully, you approach the taur and the anthro sitting by him. With the distance closed, you get a better look at the duo. The taur is of a vulpine species; warm, thick orange fur coats most of his body, giving way to a creamy white on his feral underbelly, all the way up to his chest. He immediately locks eyes with you, amber orbs drilling into you. His partner, a lovely-looking %partner, holds one of the foxtaur's paws cupped in her own and doesn't even react to you. You get the feeling you're interrupting."
+				"Carefully, you approach the taur and the anthro sitting by him. With the distance closed, you get a better look at the duo. The taur is of a vulpine species; warm, thick orange fur coats most of his body, giving way to a creamy white on his feral underbelly, all the way up to his chest. He immediately locks eyes with you, amber orbs drilling into you. His partner, a lovely-looking {partner}, holds one of the foxtaur's paws cupped in her own and doesn't even react to you. You get the feeling you're interrupting."
 			]
 		},
 		{
@@ -42,7 +42,7 @@
 		{
 			"Key": "INN_FOXTAUR_ARREST2",
 			"Text": [
-				"The %barkeep blinks at you, his gaze softening. \"Gavin was going to ... eat you?\" He glances down at the unconscious predator, who is unceremoniously sprawled out on the floor, revealing just how much bulk, muscle and fur is to the taur. \"Fuck. I'll have to get the town guard to help clean this mess up. Stick around for a bit, they'll probably want a statement,\" the canine says before turning and heading back down the creaky stairs, his tail flicking behind him. You decide you don't really want to stay in this room either."
+				"The {barkeep} blinks at you, his gaze softening. \"Gavin was going to ... eat you?\" He glances down at the unconscious predator, who is unceremoniously sprawled out on the floor, revealing just how much bulk, muscle and fur is to the taur. \"Fuck. I'll have to get the town guard to help clean this mess up. Stick around for a bit, they'll probably want a statement,\" the canine says before turning and heading back down the creaky stairs, his tail flicking behind him. You decide you don't really want to stay in this room either."
 			]
 		},
 		{
@@ -54,13 +54,13 @@
 		{
 			"Key": "INN_FOXTAUR_ASK_DRINK",
 			"Text": [
-				"You ask if you can join them for a drink. The %partner looks like she's about to protest, but the foxtaur interjects and gestures to the empty wooden bench next to him."
+				"You ask if you can join them for a drink. The {partner} looks like she's about to protest, but the foxtaur interjects and gestures to the empty wooden bench next to him."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_ASK_TALK",
 			"Text": [
-				"You say that you've been on the road a while, and you ask if you can join them for a spell. The %partner looks like she's about to protest, but the foxtaur interjects and gestures to the empty wooden bench next to him."
+				"You say that you've been on the road a while, and you ask if you can join them for a spell. The {partner} looks like she's about to protest, but the foxtaur interjects and gestures to the empty wooden bench next to him."
 			]
 		},
 		{
@@ -72,13 +72,13 @@
 		{
 			"Key": "INN_FOXTAUR_HELLO",
 			"Text": [
-				"The foxtaur grins as you introduce yourself. He simply answers in a gruff and reserved voice, \"And what does a %species like yourself want?\" The %partner, whom you assume to be the taur's girlfriend, finally tears her gaze away from the big guy's lustrous amber fur, and inquisitively investigates you instead."
+				"The foxtaur grins as you introduce yourself. He simply answers in a gruff and reserved voice, \"And what does a {player.species} like yourself want?\" The {partner}, whom you assume to be the taur's girlfriend, finally tears her gaze away from the big guy's lustrous amber fur, and inquisitively investigates you instead."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_HELLO_FOX",
 			"Text": [
-				"The foxtaur beams widely as you introduce yourself. \"It is wonderful to see another fox out there,\" he quips in a gruff but excited voice. \"What could I possibly do for you?\" The %partner, whom you assume to be the taur's girlfriend, finally tears her gaze away from the big guy's lustrous amber fur, and inquisitively investigates you instead."
+				"The foxtaur beams widely as you introduce yourself. \"It is wonderful to see another fox out there,\" he quips in a gruff but excited voice. \"What could I possibly do for you?\" The {partner}, whom you assume to be the taur's girlfriend, finally tears her gaze away from the big guy's lustrous amber fur, and inquisitively investigates you instead."
 			]
 		},
 		{
@@ -96,7 +96,7 @@
 		{
 			"Key": "INN_FOXTAUR_JOIN1",
 			"Text": [
-				"The foxtaur shifts slightly, making room so you can squeeze past him and sit down on the simple wooden bench next to the table. The massive vulpine himself sits on the ground, bushy tail neatly curled around his feral half, while he sticks out well above the table surface. The %partner leans in over the table and kisses the fox's nose, before she nods, gets up and walks away."
+				"The foxtaur shifts slightly, making room so you can squeeze past him and sit down on the simple wooden bench next to the table. The massive vulpine himself sits on the ground, bushy tail neatly curled around his feral half, while he sticks out well above the table surface. The {partner} leans in over the table and kisses the fox's nose, before she nods, gets up and walks away."
 			]
 		},
 		{
@@ -114,7 +114,7 @@
 		{
 			"Key": "INN_FOXTAUR_KILL_DIGESTED_POV",
 			"Text": [
-				"The taur's oppressive furnace proves its ownership of you with a few more tight squeezes and ripples. The muscular folds of flesh impatiently gurgle around you while rubbing stomach fluids into your %fur, regularly replacing the layers of slime coating you. There's nothing you can do but await your dark fate in this rank pit, and serve as fuel for this massive foxtaur. Perhaps as a final act of mercy, your light-headedness gives way to darkness, exempting you from the finer cruelties of digestion.\\n\\nGavin yawns and stretches, giving his oversized, sloshing belly a few pats and rubs. Gingerly, he sprawls out on the bed he rented, on his back, lightly curling around his massive furred gut and using both arms to gently rub his meal to sleep. It always felt incredible to digest live prey, and you were certainly no exception. As his noisy belly shifts into the next gear and begins bubbling its latest catch into chyme, the taur drifts off to sleep and thinks about what tomorrow will bring."
+				"The taur's oppressive furnace proves its ownership of you with a few more tight squeezes and ripples. The muscular folds of flesh impatiently gurgle around you while rubbing stomach fluids into your {player.fur}, regularly replacing the layers of slime coating you. There's nothing you can do but await your dark fate in this rank pit, and serve as fuel for this massive foxtaur. Perhaps as a final act of mercy, your light-headedness gives way to darkness, exempting you from the finer cruelties of digestion.\\n\\nGavin yawns and stretches, giving his oversized, sloshing belly a few pats and rubs. Gingerly, he sprawls out on the bed he rented, on his back, lightly curling around his massive furred gut and using both arms to gently rub his meal to sleep. It always felt incredible to digest live prey, and you were certainly no exception. As his noisy belly shifts into the next gear and begins bubbling its latest catch into chyme, the taur drifts off to sleep and thinks about what tomorrow will bring."
 			]
 		},
 		{
@@ -126,7 +126,7 @@
 		{
 			"Key": "INN_FOXTAUR_KILL_GENERIC_POV",
 			"Text": [
-				"Gavin lands an excellent punch right in your jaw. A soft crack follows and you stumble to the ground, dazed. Before you have time to recover and react, a massive paw stomps down in your chest, forcing the air from your lungs. The foxtaur lifts you up, holds you closely to his furry chest, and plants a long, disgustingly slimy lick on your %furry face."
+				"Gavin lands an excellent punch right in your jaw. A soft crack follows and you stumble to the ground, dazed. Before you have time to recover and react, a massive paw stomps down in your chest, forcing the air from your lungs. The foxtaur lifts you up, holds you closely to his furry chest, and plants a long, disgustingly slimy lick on your {player.furry} face."
 			]
 		},
 		{
@@ -162,7 +162,7 @@
 		{
 			"Key": "INN_FOXTAUR_POSTVORE_SCAT_POV",
 			"Text": [
-				"Some distance off the beaten path past the town, concealed by shrubbery and trees, Gavin makes his stop and spreads his two hind legs. This part - releasing his food back into the world in a rather different form - is his favorite element of the experience. As the hardened tip of the taur's turd gives way to a stunningly long flood of much smoother fox-shit, caressing his tailhole ever so gently on its way out, the hulking predator sets his mind on the delicious-looking girl he met yesterday. Drool leaks from between his ebony lips as he considers her taste, not even focusing anymore on the unfortunate digested %species he's dumping. Such is, of course, the privilege of a large predator."
+				"Some distance off the beaten path past the town, concealed by shrubbery and trees, Gavin makes his stop and spreads his two hind legs. This part - releasing his food back into the world in a rather different form - is his favorite element of the experience. As the hardened tip of the taur's turd gives way to a stunningly long flood of much smoother fox-shit, caressing his tailhole ever so gently on its way out, the hulking predator sets his mind on the delicious-looking girl he met yesterday. Drool leaks from between his ebony lips as he considers her taste, not even focusing anymore on the unfortunate digested {player.species} he's dumping. Such is, of course, the privilege of a large predator."
 			]
 		},
 		{
@@ -186,37 +186,37 @@
 		{
 			"Key": "INN_FOXTAUR_STMT_WRAPUP2",
 			"Text": [
-				"They leave the premises, suspect in tow. The canine you were speaking to steps forward to join them, but not before turning to the two of you. \"Thank you for your cooperation, citizen. We'll be asking Gavin the same questions, of course, and we'll find you if we have further need of you.\" He glares at the innkeep, and you think you see a grin split the guard's lips, thumb pointing at the creaky stairs behind him. A moment of silence is quickly broken. \"Edgard. You should get Oliver to stop by. The planks are getting worse.\"\\n\\nIn response, the %barkeep simply shrugs and chuckles, apparently having had this conversation before. \"I know, I know. But the stairs held the three of you up, did they not?\"\\n\\nThe canine snorts and shakes his head. \"Consider yourself warned. I don't want to hear of an accident.\" He then nods at you, before finally taking his leave, the door falling shut behind him."
+				"They leave the premises, suspect in tow. The canine you were speaking to steps forward to join them, but not before turning to the two of you. \"Thank you for your cooperation, citizen. We'll be asking Gavin the same questions, of course, and we'll find you if we have further need of you.\" He glares at the innkeep, and you think you see a grin split the guard's lips, thumb pointing at the creaky stairs behind him. A moment of silence is quickly broken. \"Edgard. You should get Oliver to stop by. The planks are getting worse.\"\\n\\nIn response, the {barkeep} simply shrugs and chuckles, apparently having had this conversation before. \"I know, I know. But the stairs held the three of you up, did they not?\"\\n\\nThe canine snorts and shakes his head. \"Consider yourself warned. I don't want to hear of an accident.\" He then nods at you, before finally taking his leave, the door falling shut behind him."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT_WRAPUP3",
 			"Text": [
-				"The %barkeep besides you visibly relaxes and sighs, before returning to his usual spot behind the counter, almost automatically restarting the routine of washing mugs. \"Well, that's quite enough excitement for one day, and that taur was a regular here too. Oh well...\""
+				"The {barkeep} besides you visibly relaxes and sighs, before returning to his usual spot behind the counter, almost automatically restarting the routine of washing mugs. \"Well, that's quite enough excitement for one day, and that taur was a regular here too. Oh well...\""
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT1",
 			"Text": [
-				"Downstairs, in the cozy common room, nobody else is around other than you and the rather flustered barkeep. He leaves the establishment momentarily, but not before shooting you a glare and coldly stating \"Don't go anywhere\". The eerie silence that follows lasts for less than a minute, as the old door slams open and a group of figures steps through with an authoritative air about them, the %barkeep following timidly behind them. All three guards are clad in impressively polished steel plates, carrying halberds for good measure that just barely managed to fit upright through the doorway. While Edgard is questioned by two decisively muscular felines, the third, a canine, judging by the bushy tail and perked ears, turns to face you. With the visored helmet kept securely in place, you cannot make out the exact identity of the soldier, and perhaps that is quite intentional on their part."
+				"Downstairs, in the cozy common room, nobody else is around other than you and the rather flustered barkeep. He leaves the establishment momentarily, but not before shooting you a glare and coldly stating \"Don't go anywhere\". The eerie silence that follows lasts for less than a minute, as the old door slams open and a group of figures steps through with an authoritative air about them, the {barkeep} following timidly behind them. All three guards are clad in impressively polished steel plates, carrying halberds for good measure that just barely managed to fit upright through the doorway. While Edgard is questioned by two decisively muscular felines, the third, a canine, judging by the bushy tail and perked ears, turns to face you. With the visored helmet kept securely in place, you cannot make out the exact identity of the soldier, and perhaps that is quite intentional on their part."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT2_MET",
 			"Text": [
-				"\"You again, %species? I have been told you had a run-in with the law quite recently,\" the intimidating figure begins, his right arm comfortably holding his halberd in place. You idly muse that that it might have taken him quite some practice and patience to be carrying such an unwieldy weapon with such relative ease. \"Regardless, an accusation of predation is a serious charge, so make your case,\" he demands."
+				"\"You again, {player.species}? I have been told you had a run-in with the law quite recently,\" the intimidating figure begins, his right arm comfortably holding his halberd in place. You idly muse that that it might have taken him quite some practice and patience to be carrying such an unwieldy weapon with such relative ease. \"Regardless, an accusation of predation is a serious charge, so make your case,\" he demands."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT2_NEW",
 			"Text": [
-				"\"What's going on here, %species?\" the intimidating figure begins, his right arm comfortably holding his halberd in place. You idly muse that that it might have taken him quite some practice and patience to be carrying such an unwieldy weapon with such relative ease. \"An accusation of predation is a serious charge, so make your case,\" he demands."
+				"\"What's going on here, {player.species}?\" the intimidating figure begins, his right arm comfortably holding his halberd in place. You idly muse that that it might have taken him quite some practice and patience to be carrying such an unwieldy weapon with such relative ease. \"An accusation of predation is a serious charge, so make your case,\" he demands."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT3_BOAST",
 			"Text": [
-				"You claim that you overheard Gavin and the nameless %ftpartner speak of predation, and that you stepped in to protect her, instead distracting the taur long enough for you to knock him out. The canine silently hears out your story, his gaze fixed on you impassively and his face impossible to read behind the layer of steel."
+				"You claim that you overheard Gavin and the nameless {partner} speak of predation, and that you stepped in to protect her, instead distracting the taur long enough for you to knock him out. The canine silently hears out your story, his gaze fixed on you impassively and his face impossible to read behind the layer of steel."
 			]
 		},
 		{
@@ -228,13 +228,13 @@
 		{
 			"Key": "INN_FOXTAUR_STMT3_TRUE",
 			"Text": [
-				"You do your best to illustrate the events as they had happened: from the cute %ftpartner that you might've scared off, to the apparent ruse you walked right into. The canine silently hears out your story, his gaze fixed on you impassively and his face impossible to read behind the layer of steel."
+				"You do your best to illustrate the events as they had happened: from the cute {partner} that you might've scared off, to the apparent ruse you walked right into. The canine silently hears out your story, his gaze fixed on you impassively and his face impossible to read behind the layer of steel."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_VORE_WIN_POV",
 			"Text": [
-				"Warm saliva leaks down your %fur in spades, lubricating you up nicely for the trip downwards. Gavin's two biped arms crush you into his bare, furry chest, while powerful muscles surrounding your head inevitably pull you further into the ravenous predator's embrace. The pulsating flesh surrounding your head and chest works to its fullest capacity to devour its food - you - and it performs quite adequately. Slowly but surely, through a chorus of disgusting gurgles and organic, wet squelches, you slide into the taur. The carnivore engulfs you fully, and even when your feet are slurped up and swallowed, you are still encased fully in the predator's long, slick gullet. Just as the foxtaur closes his maw, your nose breaches his stomach. Though your desire for fresh air is momentarily relieved, the rank, hot and acidic stench is not much better than when you were forced to hold your breath. The stomach is surprisingly roomy, likely owing to your predator's physiology, though once more of your body gets crammed into the tight space, that room quickly runs out. Warm, intricately folded stomach walls mold around you neatly and crush you into a tight ball. Once you are fully inside, the stomach sphincter seals shut behind you, leaving you entombed within this digestive furnace, stomach walls holding you tightly in place while liquid and thick slime dribbles down from everywhere."
+				"Warm saliva leaks down your {player.fur} in spades, lubricating you up nicely for the trip downwards. Gavin's two biped arms crush you into his bare, furry chest, while powerful muscles surrounding your head inevitably pull you further into the ravenous predator's embrace. The pulsating flesh surrounding your head and chest works to its fullest capacity to devour its food - you - and it performs quite adequately. Slowly but surely, through a chorus of disgusting gurgles and organic, wet squelches, you slide into the taur. The carnivore engulfs you fully, and even when your feet are slurped up and swallowed, you are still encased fully in the predator's long, slick gullet. Just as the foxtaur closes his maw, your nose breaches his stomach. Though your desire for fresh air is momentarily relieved, the rank, hot and acidic stench is not much better than when you were forced to hold your breath. The stomach is surprisingly roomy, likely owing to your predator's physiology, though once more of your body gets crammed into the tight space, that room quickly runs out. Warm, intricately folded stomach walls mold around you neatly and crush you into a tight ball. Once you are fully inside, the stomach sphincter seals shut behind you, leaving you entombed within this digestive furnace, stomach walls holding you tightly in place while liquid and thick slime dribbles down from everywhere."
 			]
 		},
 		{
@@ -426,7 +426,7 @@
 		{
 			"Key": "TOWN_GUARD_REGURGITATED",
 			"Text": [
-				"The {guard} helps you up on your feet, and wipes some of the goop off of you. Then {guard.subject} hands you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" {guard.subject} warns, before turning and walking away. \"You can wash up there,\" you hear {guard.object} call out, as {guard.subject} gestures off-handedly behind {guard.subject}.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
+				"The {guard} helps you up on your feet, and wipes some of the goop off of you. Then {guard.subject} {guard hand} you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" {guard.subject} {guard warn}, before turning and walking away. \"You can wash up there,\" you hear {guard.object} call out, as {guard.subject} {guard gesture} off-handedly behind {guard.object}.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
 			]
 		},
 		{

@@ -1,9 +1,9 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "796e5537-b920-4ed2-b71b-679f98d8cfbf",
-	"Name": "W_Claws6",
-	"ObjectName": "Claws",
-	"ObjectAlias": "claws",
+	"ID": "1310e6c1-154f-4b29-9904-ba2ef3c0837a",
+	"Name": "W_UnarmedBite",
+	"ObjectName": "Bite",
+	"ObjectAlias": "teeth",
 	"FlavorText": "",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",

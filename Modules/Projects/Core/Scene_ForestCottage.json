@@ -130,7 +130,7 @@
 												"Key": "CFE_EnterResponse",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")\r\nSleep(2)",
+												"ScriptAction": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")",
 												"ScriptAppear": "",
 												"Children": [
 													{
@@ -149,7 +149,7 @@
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")",
-																"ScriptAppear": "return Player.Wits >= 1",
+																"ScriptAppear": "return Player.Wits >= 4",
 																"Children": [
 																	{
 																		"Key": "CFE_Slap",
@@ -166,7 +166,7 @@
 																				"Key": "CFE_DoWakeUp",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "LogGsub(\"mq02_cot_awake\",\r\n    {floor = Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\"})",
+																				"ScriptAction": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{
@@ -356,7 +356,7 @@
 																																						"IsState": false,
 																																						"IsLink": false,
 																																						"Title": "Reason",
-																																						"Tooltip": "Ask about what he had done wrong.",
+																																						"Tooltip": "Ask about why they were there.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
 																																						"ScriptAction": "",
@@ -468,7 +468,7 @@
 																																												"Key": "Oliver1_R_End_NoHug",
 																																												"IsState": true,
 																																												"IsLink": false,
-																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END\")\r\nJournal.Update(\"SQ03\", 10)\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)\r\n\r\n-- Add Oliver's tools to the town smithy\r\nlocal shop = Shop(\"TownSmithy\")\r\nshop:AddUniqueItem(Item(\"I_OliverSupplies\"), 1)\r\nshop:Save()",
+																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END1\")\r\nJournal.Update(\"SQ03\", 10)\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)\r\n\r\n-- Add Oliver's tools to the town smithy\r\nlocal shop = Shop(\"TownSmithy\")\r\nshop:AddUniqueItem(Item(\"I_OliverSupplies\"), 1)\r\nshop:Save()",
 																																												"ScriptAppear": "",
 																																												"Children": [
 																																													{
@@ -483,11 +483,33 @@
 																																														"ScriptAppear": "",
 																																														"Children": [
 																																															{
-																																																"Key": "Unnamed",
+																																																"Key": "Oliver_R_End2",
 																																																"IsState": true,
-																																																"IsLink": true,
-																																																"LinkTarget": "CottageInside",
-																																																"Children": []
+																																																"IsLink": false,
+																																																"ScriptAction": "Log(\"MQ02_OLIVER_R_END2\")",
+																																																"ScriptAppear": "",
+																																																"Children": [
+																																																	{
+																																																		"Key": "Oliver_C_End2",
+																																																		"IsState": false,
+																																																		"IsLink": false,
+																																																		"Title": "Leave",
+																																																		"Tooltip": "Time to go.",
+																																																		"Highlight": false,
+																																																		"ButtonWidth": 1.0,
+																																																		"ScriptAction": "",
+																																																		"ScriptAppear": "",
+																																																		"Children": [
+																																																			{
+																																																				"Key": "Unnamed",
+																																																				"IsState": true,
+																																																				"IsLink": true,
+																																																				"LinkTarget": "Start",
+																																																				"Children": []
+																																																			}
+																																																		]
+																																																	}
+																																																]
 																																															}
 																																														]
 																																													}
@@ -652,7 +674,7 @@
 																														"Tooltip": "",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
-																														"ScriptAction": "local oliver = Creature(\"MQ02_Oliver\")\r\noliver.Health = oliver.HealthMax / 3\r\noliver.StruggleFatigue = 10\r\n\r\nCombat.AddCombatant(oliver)\r\nCombat.Begin()\r\n\r\nif oliver:IsDead() then\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend\r\nif oliver:IsEaten() then\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend",
+																														"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_MQ02_Oliver\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend)\r\nstate:OnCreatureKilled(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend)\r\nstate:Begin()",
 																														"ScriptAppear": "",
 																														"Children": [
 																															{
@@ -660,7 +682,7 @@
 																																"IsState": true,
 																																"IsLink": false,
 																																"ScriptAction": "Log(\"MQ02_OLIVER_FD_DIGESTED\")",
-																																"ScriptAppear": "return Storage.GetFlag(\"oliver_eaten\") and Storage.GetFlag(\"oliver_dead\")",
+																																"ScriptAppear": "return Storage.GetFlag(\"oliver_eaten\")",
 																																"Children": [
 																																	{
 																																		"Key": "Oliver1_FD_Digested2",
@@ -677,7 +699,7 @@
 																																				"Key": "Oliver1_FD_Digested3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\n\r\nif Player.PreferScat then\r\n    Sleep(5)\r\n    Log(\"MQ02_OLIVER_POSTVORE_SCAT\")\r\nend",
+																																				"ScriptAction": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\n\r\nif Player.PreferScat then\r\n    Sleep(4)\r\n    Log(\"MQ02_OLIVER_FD_DISPOSAL\")\r\nend",
 																																				"ScriptAppear": "",
 																																				"Children": [
 																																					{
@@ -695,7 +717,7 @@
 																																								"Key": "Unnamed",
 																																								"IsState": true,
 																																								"IsLink": true,
-																																								"LinkTarget": "CottageInside",
+																																								"LinkTarget": "Start",
 																																								"Children": []
 																																							}
 																																						]
@@ -705,14 +727,6 @@
 																																		]
 																																	}
 																																]
-																															},
-																															{
-																																"Key": "Oliver1_FD_Endo",
-																																"IsState": true,
-																																"IsLink": false,
-																																"ScriptAction": "LogRaw(\"<not yet implemented - contact Nuntis if you got here somehow>\")",
-																																"ScriptAppear": "return Storage.GetFlag(\"oliver_eaten\") and not Storage.GetFlag(\"oliver_dead\")",
-																																"Children": []
 																															},
 																															{
 																																"Key": "Oliver1_FD_Killed",
@@ -733,14 +747,6 @@
 																																		"Children": []
 																																	}
 																																]
-																															},
-																															{
-																																"Key": "Oliver1_FD_ErrorHdlr",
-																																"IsState": true,
-																																"IsLink": false,
-																																"ScriptAction": "error(\"broken combat state\")",
-																																"ScriptAppear": "",
-																																"Children": []
 																															}
 																														]
 																													}
@@ -804,7 +810,7 @@
 																		"Tooltip": "Wrap some cloth around the claw marks.",
 																		"Highlight": true,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.SetFlag(\"oliver_bandaged\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)",
+																		"ScriptAction": "Storage.SetFlag(\"mq02_oliver_bandaged\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)",
 																		"ScriptAppear": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")",
 																		"Children": [
 																			{
@@ -859,7 +865,7 @@
 																		"Tooltip": "Pour one of your healing potions down his throat.",
 																		"Highlight": true,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.SetFlag(\"oliver_healed\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)",
+																		"ScriptAction": "Storage.SetFlag(\"mq02_oliver_healed\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)",
 																		"ScriptAppear": "return Player:HasItem(\"U_PotionHeal1\")",
 																		"Children": [
 																			{
@@ -887,7 +893,7 @@
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)",
-																				"ScriptAppear": "return Player.Strength >= 2",
+																				"ScriptAppear": "return Player.Strength >= 5",
 																				"Children": [
 																					{
 																						"Key": "Unnamed",
@@ -1057,7 +1063,7 @@
 								"Key": "CottageInside",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nif not hasGreeted then\r\n    -- because we return to this node after Cottage_R_SQ03Handin\r\n    hasGreeted = true\r\n\r\n    -- the first time this node is visited, we just came from Oliver's intro scene\r\n    if Storage.GetFlag(\"forest_cottage_visited\") then\r\n        Log(\"forest_cottage_enter\")\r\n        if Storage.GetFlag(\"oliver_dead\") then\r\n            Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\n        else\r\n            Log(\"forest_cottage_oliver_hello\")\r\n        end\r\n    else\r\n        Storage.SetFlag(\"forest_cottage_visited\", true)\r\n    end\r\n\r\nend",
+								"ScriptAction": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nLog(\"forest_cottage_enter\")\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\nelse\r\n    Log(\"forest_cottage_oliver_hello\")\r\nend",
 								"ScriptAppear": "",
 								"Children": [
 									{

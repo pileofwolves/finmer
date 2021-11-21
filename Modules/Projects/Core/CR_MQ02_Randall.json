@@ -4,10 +4,10 @@
 	"Name": "CR_MQ02_Randall",
 	"ObjectName": "Randall",
 	"ObjectAlias": "",
-	"Strength": 3,
-	"Agility": -1,
-	"Body": 3,
-	"Wits": 0,
+	"Strength": 4,
+	"Agility": 5,
+	"Body": 5,
+	"Wits": 4,
 	"Flags": 2,
 	"Level": 4,
 	"Size": "Medium",
@@ -23,17 +23,12 @@
 	"PredatorDisposal": true,
 	"StringMappings": [
 		{
-			"Key": "VORE_HIT_POV",
-			"Rule": "NpcToPlayer",
-			"NewKey": "MQ02_RANDALL_VORE_HIT_POV"
-		},
-		{
-			"Key": "VORE_WIN_POV",
+			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
 			"NewKey": "MQ02_RANDALL_VORE_WIN_POV"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
+			"Key": "KILL_DIGESTED",
 			"Rule": "NpcToPlayer",
 			"NewKey": "MQ02_RANDALL_KILL_DIGESTED_POV"
 		},
@@ -41,6 +36,11 @@
 			"Key": "KILL_GENERIC",
 			"Rule": "PlayerToNpc",
 			"NewKey": "MQ02_RANDALL_KILL_GENERIC"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ02_RANDALL_VORE_DISPOSAL"
 		}
 	]
 }

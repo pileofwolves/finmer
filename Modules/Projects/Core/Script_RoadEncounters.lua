@@ -8,7 +8,7 @@ end
 
 function ContinueRoadTravel()
     -- to help simulate distance
-    AdvanceTime(3)
+    AdvanceTime(2)
 
     -- check how far along we are so far
     local progress = Storage.GetNumber("roadenc_state") + 1

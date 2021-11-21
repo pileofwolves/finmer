@@ -30,7 +30,7 @@
 				"Key": "ENC_MQ02Ambush",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Storage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"MQ02_Randall\")\r\ngoon1 = Creature(\"MQ02_Goon1\")\r\ngoon2 = Creature(\"MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING\")",
+				"ScriptAction": "Storage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING\")",
 				"ScriptAppear": "return Storage.GetFlag(\"mq02_road_antag_scheduled\")",
 				"Children": [
 					{
@@ -158,7 +158,7 @@
 																												"Key": "MQ02A_R_Finish",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ02_AM_FINISH\")\r\nJournal.Update(\"MQ02\", Storage.GetFlag(\"oliver_dead\") and 21 or 20)\r\n\r\nif not Storage.GetFlag(\"randall_fought\") then\r\n    Player:AwardXP(RewardXP.MQ02_EncNoViolence)\r\nend",
+																												"ScriptAction": "Log(\"MQ02_AM_FINISH\")\r\nJournal.Update(\"MQ02\", Storage.GetFlag(\"oliver_dead\") and 21 or 20)\r\n\r\nif not Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.MQ02_EncNoViolence)\r\nend",
 																												"ScriptAppear": "",
 																												"Children": [
 																													{
@@ -331,7 +331,7 @@
 																						"Tooltip": "Let the wolf swallow you, like the tasty preything you are.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "assert(randall ~= nil)\r\nStorage.SetFlag(\"randall_fought\", true)\r\nCombat.AddCombatant(randall)\r\nCombat.OnCharacterVored(function(predator, prey)\r\n    -- if the player is the one being eaten, make sure\r\n    -- they can't escape, for aesthetics\r\n    --Grammar.SetContext(\"predator\", predator)\r\n    LogRaw(randall:GetString(\"vore_hit_pov\"))\r\n    LogRaw(randall:GetString(\"vore_win_pov\"))\r\n    prey.StruggleFatigue = 999\r\nend)\r\nCombat.OnPlayerDigested(function()\r\n    PostVore(\"MQ02_RANDALL_POSTVORE_SCAT\")\r\nend)\r\nCombat.SetVored(randall, Player, true)\r\nCombat.Begin()",
+																						"ScriptAction": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()",
 																						"ScriptAppear": "",
 																						"Children": [
 																							{
@@ -415,7 +415,7 @@
 												"Key": "MQ02A_R_Stab",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "LogGsub(\"MQ02_AM_HELLO_STAB\", {weapon = Player.EquippedWeapon.Alias})\r\n\r\nStorage.SetFlag(\"randall_stabbed\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -3)\r\n--randall = Creature(\"MQ02_Randall\")\r\nrandall.Health = randall.Health * 0.65",
+												"ScriptAction": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")\r\n\r\n-- He'll remember that\r\nStorage.SetFlag(\"MQ02_RANDALL_STABBED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -3)\r\n\r\n-- Reflect the stab in the upcoming fight\r\nrandall.Health = randall.Health * 0.5",
 												"ScriptAppear": "",
 												"Children": [
 													{
@@ -426,22 +426,22 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "assert(randall ~= nil)\r\nStorage.SetFlag(\"randall_fought\", true)\r\nCombat.AddCombatant(randall)\r\nCombat.AddCombatant(goon1)\r\nCombat.AddCombatant(goon2)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(randall)\r\n    PostVore(\"MQ02_RANDALL_POSTVORE_SCAT\")\r\nend)\r\nCombat.OnCharacterVored(function(predator, prey)\r\n    -- if the player is the one being eaten, make sure\r\n    -- they can't escape, for aesthetics\r\n    if (prey == Player) then prey.StruggleFatigue = 999 end\r\nend)\r\nCombat.OnPlayerDigested(function()\r\n    PostVore(\"MQ02_RANDALL_POSTVORE_SCAT\")\r\nend)\r\nCombat.Begin()",
+														"ScriptAction": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n    end\r\nend)\r\nfight:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "MQ02A_WinFight",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "if goon1:IsEaten() or goon2:IsEaten() then\r\n    -- Alternate text if either of the goons are eaten\r\n    Log(\"MQ02_AM_WINFIGHT_NOBACKUP\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend",
+																"ScriptAction": "if Storage.GetFlag(\"MQ02_RANDALL_GOON_EATEN\") then\r\n    -- Alternate text if either of the goons are eaten\r\n    Log(\"MQ02_AM_WINFIGHT_NOBACKUP\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend",
 																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "MQ02A_C_WinChase",
 																		"IsState": false,
 																		"IsLink": false,
-																		"Title": "Chase",
-																		"Tooltip": "Run after him!",
+																		"Title": "Continue",
+																		"Tooltip": "",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": "",
@@ -451,40 +451,7 @@
 																				"Key": "MQ02A_R_WinChase",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "-- use either NAT or EQP substitutes depending on weapon\r\nlocal wtype = Player.PrimaryWeapon.WeaponType\r\nlocal wstr = wtype == WeaponType.Natural and \"NAT\" or \"EQP\"\r\n-- expand the string and insert the weapon's alias\r\nwstr = GetString(\"MQ02_AM_WINFIGHT_C_\" .. wstr)\r\n    :gsub(\"%%weapon\", Player.PrimaryWeapon.Alias)\r\n\r\nLogGsub(\"MQ02_AM_WINFIGHT_CHASE\", {thing = wstr})",
-																				"ScriptAppear": "",
-																				"Children": [
-																					{
-																						"Key": "Unnamed",
-																						"IsState": false,
-																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "MQ02A_C_Finish",
-																						"Children": []
-																					}
-																				]
-																			}
-																		]
-																	},
-																	{
-																		"Key": "MQ02A_C_WinLeave",
-																		"IsState": false,
-																		"IsLink": false,
-																		"Title": "Let him go",
-																		"Tooltip": "He'll probably die out there anyway.",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
-																		"Children": [
-																			{
-																				"Key": "MQ02A_R_WinLeave",
-																				"IsState": true,
-																				"IsLink": false,
-																				"ScriptAction": "-- use either NAT, 1H or 2H substitutes depending on weapon\r\nlocal wtype = Player.PrimaryWeapon.WeaponType\r\nlocal wstr = \"NAT\"\r\nif wtype ~= WeaponType.Natural then wstr = \"1H\" end\r\nif wtype == WeaponType.TwoHanded then wstr = \"2H\" end\r\n-- expand the string and insert the weapon's alias\r\nwstr = GetString(\"MQ02_AM_WINFIGHT_L_\" .. wstr)\r\n    :gsub(\"%%weapon\", Player.PrimaryWeapon.Alias)\r\n\r\nLogGsub(\"MQ02_AM_WINFIGHT_LETGO\", {thing = wstr})",
+																				"ScriptAction": "Log(\"MQ02_AM_WINFIGHT_LETGO\")",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{

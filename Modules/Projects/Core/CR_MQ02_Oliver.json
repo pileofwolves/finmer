@@ -4,10 +4,10 @@
 	"Name": "CR_MQ02_Oliver",
 	"ObjectName": "Oliver",
 	"ObjectAlias": "",
-	"Strength": 1,
-	"Agility": 1,
-	"Body": 1,
-	"Wits": 0,
+	"Strength": 3,
+	"Agility": 3,
+	"Body": 3,
+	"Wits": 3,
 	"Flags": 0,
 	"Level": 2,
 	"Size": "Medium",
@@ -20,24 +20,14 @@
 	"AutoVorePrey": false,
 	"StringMappings": [
 		{
-			"Key": "VORE_HIT",
-			"Rule": "PlayerToNpc",
-			"NewKey": "MQ02_OLIVER_VORE_HIT"
-		},
-		{
 			"Key": "VORE_WIN",
 			"Rule": "PlayerToNpc",
 			"NewKey": "MQ02_OLIVER_VORE_WIN"
 		},
 		{
-			"Key": "PREDPOV_DIGEST",
+			"Key": "VORE_EXT_STRUGGLE",
 			"Rule": "Always",
-			"NewKey": "MQ02_OLIVER_PREDPOV_DIGEST"
-		},
-		{
-			"Key": "PREDPOV_ENDO",
-			"Rule": "Always",
-			"NewKey": "MQ02_OLIVER_PREDPOV_DIGEST"
+			"NewKey": "MQ02_OLIVER_VORE_EXT_STRUGGLE"
 		}
 	]
 }

@@ -1,8 +1,12 @@
-function GetBridgeTimeLeft()
+local function GetBridgeTimeLeft()
     return Storage.GetNumber("bridge_repair") - GetTimeHourTotal()
 end
 
-function TrySouthRoad()
+function GoEast()
+    BeginRoadTravel("Scene_ForestCottage")
+end
+
+function GoSouth()
     if not Storage.GetFlag("mq02_done") then
         Log("bridge_broken")
         return

@@ -90,7 +90,7 @@
 								"Key": "R_StrugglePostRest",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)",
+								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)",
 								"ScriptAppear": "return Storage.GetFlag(\"forest_direwolf_sleptinside\")",
 								"Children": [
 									{
@@ -120,7 +120,7 @@
 								"Key": "R_Struggle",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"POV_STRUGGLE\")\r\nLog(\"POV_ENDO\")",
+								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"VORE_POV_ENDO\")",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -192,13 +192,13 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "",
-						"ScriptAppear": "return Player:HasItem(\"SQ01_Vial\")",
+						"ScriptAppear": "return Player:HasItem(\"I_SQ01_Vial\")",
 						"Children": [
 							{
 								"Key": "R_SQ01_UseVial",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"SQ01_Vial\")\r\nPlayer:GiveItem(\"SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
+								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -264,7 +264,7 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
 										"ScriptAppear": "",
 										"Children": [
 											{

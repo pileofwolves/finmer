@@ -1191,7 +1191,7 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "SaveGame()",
+										"ScriptAction": "SaveData.ShowSaveDialog()",
 										"ScriptAppear": "",
 										"Children": [
 											{

@@ -18,12 +18,12 @@
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
 	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
-	"PredatorDisposal": false,
+	"PredatorDisposal": true,
 	"StringMappings": [
 		{
-			"Key": "VORE_WIN_POV",
+			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
 			"NewKey": "INN_FOXTAUR_VORE_WIN_POV"
 		},
@@ -33,19 +33,24 @@
 			"NewKey": "INN_FOXTAUR_KILL_DIGESTED_POV"
 		},
 		{
-			"Key": "KILL_GENERIC_POV",
+			"Key": "KILL_GENERIC",
 			"Rule": "NpcToPlayer",
 			"NewKey": "INN_FOXTAUR_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "PlayerToNpc",
-			"NewKey": "INN_FOXTAUR_KILL_DIGESTED"
+			"Rule": "NpcToPlayer",
+			"NewKey": "INN_FOXTAUR_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "KILL_GENERIC",
 			"Rule": "PlayerToNpc",
 			"NewKey": "INN_FOXTAUR_KILL_GENERIC"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "Always",
+			"NewKey": "INN_FOXTAUR_POSTVORE_SCAT_POV"
 		}
 	]
 }

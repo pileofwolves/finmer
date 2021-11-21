@@ -10,4 +10,5 @@ local barkeep = Creature("CR_RandomAnthro")
 barkeep.Name = Storage.GetString("barkeep_species")
 barkeep.Alias = "the " .. Storage.GetString("barkeep_species")
 barkeep.Gender = EGender.Male
-local ftpartner = Storage.GetString("foxtaur_partner_species")
+local ftpartner = Creature("CR_RandomAnthro")
+ftpartner.Alias = Storage.GetString("foxtaur_partner_species")

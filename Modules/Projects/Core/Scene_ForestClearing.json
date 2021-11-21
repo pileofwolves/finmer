@@ -121,7 +121,7 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
 										"ScriptAppear": "",
 										"Children": [
 											{
@@ -321,7 +321,7 @@
 																				"Key": "SQ02_R_EatPlayerSafe",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"sq02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"SQ02_Wolf_OV\")\r\nwuff.StomachDigest = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_VORE_HIT_POV\")\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\n\r\nlocal rounds = 0\r\nCombat.AddCombatant(wuff)\r\nCombat.SetVored(wuff, Player, true)\r\nCombat.OnRoundEnd(function()\r\n    -- end combat after x rounds, by transferring to a different scene\r\n    rounds = rounds + 1\r\n    if (rounds > 4) then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")",
+																				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"sq02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_VORE_HIT_POV\")\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")",
 																				"ScriptAppear": "",
 																				"Children": []
 																			}

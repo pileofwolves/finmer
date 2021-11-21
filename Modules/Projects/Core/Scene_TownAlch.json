@@ -522,7 +522,7 @@
 																"Key": "Q01_Accepted",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"sq01_accepted\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)",
+																"ScriptAction": "Log(\"SQ01_ACCEPTED\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"I_SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)",
 																"ScriptAppear": "",
 																"Children": [
 																	{

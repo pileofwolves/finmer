@@ -1,1 +1,1 @@
-local context_wolf = Creature("SQ02_Wolf_OV")
+local context_wolf = Creature("CR_SQ02_Wolf_OV")

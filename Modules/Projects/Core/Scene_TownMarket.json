@@ -1444,7 +1444,7 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.StomachDigest = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
+														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.PredatorDigests = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{

@@ -96,7 +96,7 @@
 		{
 			"Key": "SQ02_WOLF_ENDO_BEGIN",
 			"Text": [
-				"A few minutes have passed now, and all around you is the persistent and inevitable force of stomach walls, soft but unyielding in their strength, kneading away at you and rubbing warm slime into your %fur. The air is breathable, if rather hot, shallow, and reeking of meat. Oddly enough, however, you don't actually feel like you're being digested."
+				"A few minutes have passed now, and all around you is the persistent and inevitable force of stomach walls, soft but unyielding in their strength, kneading away at you and rubbing warm slime into your {player.fur}. The air is breathable, if rather hot, shallow, and reeking of meat. Oddly enough, however, you don't actually feel like you're being digested."
 			]
 		},
 		{
@@ -150,7 +150,7 @@
 		{
 			"Key": "SQ02_WOLF_VORE_HIT_POV",
 			"Text": [
-				"The oversized canine eagerly in takes your paws and curls his long, sloppy tongue around your upper body. He pulls you forward and begins swallowing. Before you know it, your arms are held tightly by hot and wet flesh. A powerful ripple echoes through those slick throat muscles and your head and shoulders are sucked inside. While the wolf's tongue does an excellent job at giving your %fur a nice, warm drool coating, you're forced to hold your breath in the skin-tight tube."
+				"The oversized canine eagerly in takes your paws and curls his long, sloppy tongue around your upper body. He pulls you forward and begins swallowing. Before you know it, your arms are held tightly by hot and wet flesh. A powerful ripple echoes through those slick throat muscles and your head and shoulders are sucked inside. While the wolf's tongue does an excellent job at giving your {player.fur} a nice, warm drool coating, you're forced to hold your breath in the skin-tight tube."
 			]
 		},
 		{

@@ -23,7 +23,7 @@ namespace Finmer.Gameplay
     internal static class Logger
     {
 
-        internal static readonly DirectoryInfo BaseDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+        private static readonly DirectoryInfo BaseDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
 
         /// <summary>
         /// Verifies if the calling thread has permission to write a file to the application directory.
@@ -48,12 +48,12 @@ namespace Finmer.Gameplay
                 return;
 
             // Generate a base file name for the dump
-            string namebase = Path.Combine(BaseDir.FullName, "crash" + DateTime.Now.ToFileTime());
+            string base_name = Path.Combine(BaseDir.FullName, "crash" + DateTime.Now.ToFileTime());
 
             // First of all, try writing a minidump to disk, since that contains the most useful info
             try
             {
-                using (var minidump = new FileStream(namebase + ".dmp", FileMode.Create))
+                using (var minidump = new FileStream(base_name + ".dmp", FileMode.Create))
                 {
                     Minidump.Write(minidump.SafeFileHandle, Minidump.EMinidumpOptions.Normal, Minidump.EExceptionInfo.Present);
                 }
@@ -66,7 +66,7 @@ namespace Finmer.Gameplay
             // Write a text crashlog that includes a stacktrace and some game state
             try
             {
-                using (var crashlog = new StreamWriter(namebase + ".log"))
+                using (var crashlog = new StreamWriter(base_name + ".log"))
                 {
                     crashlog.WriteLine("===================================");
                     crashlog.WriteLine("EXCEPTION REPORT");
@@ -138,10 +138,9 @@ namespace Finmer.Gameplay
 
         private static void WriteSaveDataInfo(StreamWriter crashlog)
         {
-
             crashlog.WriteLine("Loaded player:");
 
-            Player player = GameController.Session.Player;
+            Player player = GameController.Session?.Player;
             if (player != null)
             {
                 // Serialize the current player as a byte stream

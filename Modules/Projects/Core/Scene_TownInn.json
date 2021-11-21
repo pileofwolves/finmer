@@ -1147,7 +1147,7 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "-- to make the save return to SavePointRoom\r\nStorage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\n\r\n-- but we don't want that if the player re-enters the inn\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAction": "-- to make the save return to SavePointRoom\r\nStorage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\n\r\n-- but we don't want that if the player re-enters the inn\r\nStorage.SetFlag(\"savepoint\", false)",
 										"ScriptAppear": "",
 										"Children": [
 											{

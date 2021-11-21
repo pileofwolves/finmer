@@ -121,7 +121,7 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveGame()\r\nStorage.SetFlag(\"savepoint\", false)",
+										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
 										"ScriptAppear": "",
 										"Children": [
 											{

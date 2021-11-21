@@ -96,7 +96,7 @@
 		{
 			"Key": "SQ02_WOLF_ENDO_BEGIN",
 			"Text": [
-				"A few minutes have passed now, and all around you is the persistent and inevitable force of stomach walls, soft but unyielding in their strength, kneading away at you and rubbing warm slime into your %fur. The air is breathable, if rather hot, shallow, and reeking of meat. Oddly enough, however, you don't actually feel like you're being digested."
+				"A few minutes have passed now, and all around you is the persistent and inevitable force of stomach walls, soft but unyielding in their strength, kneading away at you and rubbing warm slime into your {player.fur}. The air is breathable, if rather hot, shallow, and reeking of meat. Oddly enough, however, you don't actually feel like you're being digested."
 			]
 		},
 		{

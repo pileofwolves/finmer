@@ -6,7 +6,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System.Windows;
 using System.Windows.Controls;
+using Finmer.Gameplay;
 using Finmer.Utility;
 
 namespace Finmer
@@ -21,6 +23,11 @@ namespace Finmer
         public MainWindow()
         {
             InitializeComponent();
+
+            // For the regular player experience, maximize the window. We avoid this in debug mode because it
+            // can get in the way a little bit when rapidly iterating.
+            if (!GameController.DebugMode && WindowState == WindowState.Normal)
+                WindowState = WindowState.Maximized;
         }
 
         internal void Navigate(Control target, ENavigatorAnimation anim)

@@ -175,10 +175,10 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns participants that the input participant can attempt to grapple with this turn.
         /// </summary> 
-        private IEnumerable<Participant> GetViableGrappleTargets(Participant opponent) 
+        private IEnumerable<Participant> GetViableGrappleTargets(Participant initiator)
         {
-            return GetViableAttackTargets(opponent)
-                .Where(prey => opponent.Character.CanGrapple(prey.Character));
+            return GetViableAttackTargets(initiator)
+                .Where(target => initiator.Character.CanGrapple(target.Character));
         }
 
         /// <summary>
@@ -549,7 +549,7 @@ namespace Finmer.Gameplay
 
             // Grapple
             var grapple_targets = GetViableGrappleTargets(m_Player);
-            if (grapple_targets.Any()) 
+            if (grapple_targets.Any())
             {
                 ui.AddButton(new ChoiceButtonModel
                 {
@@ -661,7 +661,7 @@ namespace Finmer.Gameplay
                 ui.Instruction = $"You're being pinned down by {m_Player.GrapplingWith.Character.Name}! What will you do?";
 
                 // If player cannot start the grapple against larger target, make sure they cannot reverse it either.
-               if(m_Player.Character.CanGrapple(m_Player.GrapplingWith.Character))
+                if (m_Player.Character.CanGrapple(m_Player.GrapplingWith.Character))
                 {
                     ui.AddButton(new ChoiceButtonModel
                     {

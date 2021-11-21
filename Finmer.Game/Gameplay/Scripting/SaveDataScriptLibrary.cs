@@ -57,7 +57,7 @@ namespace Finmer.Gameplay.Scripting
             return lua_yield(state, 0);
         }
 
-        private static PropertyBag GetGlobalPropertyBag()
+        private static PropertyBag GetAdditionalSaveData()
         {
             return GameController.Session.Player.AdditionalSaveData;
         }
@@ -65,54 +65,54 @@ namespace Finmer.Gameplay.Scripting
         private static string GetNamespacedPropertyPath(string property)
         {
             // Namespace the properties set through scripts, so that they do not clash with save data set by game code
-            return "lua_" + property;
+            return @"LUA_" + property;
         }
 
         private static int ExportedStorageSetFlag(IntPtr L)
         {
             string key = GetNamespacedPropertyPath(luaL_checkstring(L, 1));
             luaL_checktype(L, 2, ELuaType.Boolean);
-            GetGlobalPropertyBag().SetBool(key, lua_toboolean(L, 2) == 1);
+            GetAdditionalSaveData().SetBool(key, lua_toboolean(L, 2) == 1);
             return 0;
         }
 
         private static int ExportedStorageSetNumber(IntPtr L)
         {
             string key = GetNamespacedPropertyPath(luaL_checkstring(L, 1));
-            GetGlobalPropertyBag().SetFloat(key, (float)luaL_checknumber(L, 2));
+            GetAdditionalSaveData().SetFloat(key, (float)luaL_checknumber(L, 2));
             return 0;
         }
 
         private static int ExportedStorageSetString(IntPtr L)
         {
             string key = GetNamespacedPropertyPath(luaL_checkstring(L, 1));
-            GetGlobalPropertyBag().SetString(key, luaL_checkstring(L, 2));
+            GetAdditionalSaveData().SetString(key, luaL_checkstring(L, 2));
             return 0;
         }
 
         private static int ExportedStorageModifyNumber(IntPtr L)
         {
             string key = GetNamespacedPropertyPath(luaL_checkstring(L, 1));
-            PropertyBag props = GetGlobalPropertyBag();
+            PropertyBag props = GetAdditionalSaveData();
             props.SetFloat(key, props.GetFloat(key) + (float)luaL_checknumber(L, 2));
             return 0;
         }
 
         private static int ExportedStorageGetNumber(IntPtr L)
         {
-            lua_pushnumber(L, GetGlobalPropertyBag().GetFloat(GetNamespacedPropertyPath(luaL_checkstring(L, 1))));
+            lua_pushnumber(L, GetAdditionalSaveData().GetFloat(GetNamespacedPropertyPath(luaL_checkstring(L, 1))));
             return 1;
         }
 
         private static int ExportedStorageGetFlag(IntPtr L)
         {
-            lua_pushboolean(L, GetGlobalPropertyBag().GetBool(GetNamespacedPropertyPath(luaL_checkstring(L, 1))) ? 1 : 0);
+            lua_pushboolean(L, GetAdditionalSaveData().GetBool(GetNamespacedPropertyPath(luaL_checkstring(L, 1))) ? 1 : 0);
             return 1;
         }
 
         private static int ExportedStorageGetString(IntPtr L)
         {
-            lua_pushstring(L, GetGlobalPropertyBag().GetString(GetNamespacedPropertyPath(luaL_checkstring(L, 1))));
+            lua_pushstring(L, GetAdditionalSaveData().GetString(GetNamespacedPropertyPath(luaL_checkstring(L, 1))));
             return 1;
         }
 

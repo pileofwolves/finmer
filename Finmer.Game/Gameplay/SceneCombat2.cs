@@ -632,6 +632,18 @@ namespace Finmer.Gameplay
                 Label = "Submit",
                 Tooltip = "Relax in your slimy embrace."
             });
+
+            // Inventory items
+            m_PotentialPlayerItems = GetUsableItems().ToList();
+            if (m_PotentialPlayerItems.Count > 0)
+            {
+                ui.AddButton(new ChoiceButtonModel
+                {
+                    Choice = (int)ECombatAction.Item,
+                    Label = "Item",
+                    Tooltip = "Use an item."
+                });
+            }
         }
 
         private void ShowUIGrappling(GameUI ui)

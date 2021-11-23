@@ -38,13 +38,13 @@
 			"Text": [
 				"Oliver notices you entering and waves cheerfully, then continues what he was doing.",
 				"The lion carpenter nods as he sees your approach, looking at you expectantly.",
-				"\"Hello, dear %species! How's the world out there?\" Oliver exclaims from the couch, looking up from his book."
+				"\"Hello, dear {player.species}! How's the world out there?\" Oliver exclaims from the couch, looking up from his book."
 			]
 		},
 		{
 			"Key": "FOREST_COTTAGE_SQ03_HANDIN",
 			"Text": [
-				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, %name! You have no idea how much this means to me!\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
+				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, {player.name}! You have no idea how much this means to me!\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
 			]
 		},
 		{

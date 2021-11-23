@@ -138,7 +138,7 @@
 		{
 			"Key": "MQ02_BARKEEP_BEGIN",
 			"Text": [
-				"When you broach the topic, the {barkeep} stops what he's doing and stares at you, expectantly waiting for an explanation."
+				"When you broach the topic, {bartender} stops what he's doing and stares at you, expectantly waiting for an explanation."
 			]
 		},
 		{
@@ -168,13 +168,13 @@
 		{
 			"Key": "MQ02_BARKEEP_RANDALL",
 			"Text": [
-				"You describe Randall -  the big, imposing wolf you met - and that he's leading some kind of movement he calls the Red Maw. Also that he goes around eating people, which is equal parts alarming and fascinating. In response to all this, the {barkeep} looks moderately horrified."
+				"You describe Randall -  the big, imposing wolf you met - and that he's leading some kind of movement he calls the Red Maw. Also that he goes around eating people, which is equal parts alarming and fascinating. In response to all this, {bartender} looks moderately horrified."
 			]
 		},
 		{
 			"Key": "MQ02_BARKEEP_SUPPLIES",
 			"Text": [
-				"You mention that the contested supplies are still at the forester's place, and they should be all done and ready for use. The {barkeep} nods. \"Nice work. I'll send a few lads to pick it up. Hopefully we can leave this mess behind us.\""
+				"You mention that the contested supplies are still at the forester's place, and they should be all done and ready for use. {^bartender} nods. \"Nice work. I'll send a few lads to pick it up. Hopefully we can leave this mess behind us.\""
 			]
 		},
 		{

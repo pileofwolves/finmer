@@ -44,7 +44,7 @@
 		{
 			"Key": "FOREST_COTTAGE_SQ03_HANDIN",
 			"Text": [
-				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, {player}! You have no idea how much this means to me!\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
+				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, {player.name}! You have no idea how much this means to me!\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
 			]
 		},
 		{

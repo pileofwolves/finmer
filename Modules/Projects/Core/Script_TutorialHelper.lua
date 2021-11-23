@@ -1,4 +1,4 @@
-function BeginGame()
+function ApplyPlayerStartingGear()
     -- Remove tutorial prey, if any
     Player.PredatorFullness = 0
     Player.TotalPreySwallowed = 0
@@ -7,6 +7,10 @@ function BeginGame()
     -- Assign starting equipment
     Player.Money = 7
     Player.EquippedArmor = Item("A_ClothArmor")
+end
+
+function BeginGame()
+    ApplyPlayerStartingGear()
 
     -- Opening text
     ClearLog()

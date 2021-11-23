@@ -72,7 +72,7 @@
 								"Key": "DBGROOT_ACT",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
+								"ScriptAction": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()",
 								"ScriptAppear": "",
 								"Children": [
 									{

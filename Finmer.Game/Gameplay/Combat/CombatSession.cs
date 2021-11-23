@@ -69,8 +69,13 @@ namespace Finmer.Gameplay.Combat
             AttachScriptCallbacks();
         }
 
+        /// <summary>
+        /// Add a Character to this combat session as a new participant.
+        /// </summary>
+        /// <param name="character">The character to register. Characters may only be registered once.</param>
         public void AddParticipant(Character character)
         {
+            Debug.Assert(Participants.All(p => p.Character != character), "Character is already registered");
             Participants.Add(new Participant(character, this));
         }
 
@@ -259,6 +264,44 @@ namespace Finmer.Gameplay.Combat
         }
 
         [ScriptableFunction]
+        protected static int ExportedIsSwallowed(IntPtr state)
+        {
+            // Retrieve and validate the participant from the stack
+            var participant = GetValidatedParticipant(state);
+
+            // Check the Participant's state
+            LuaApi.lua_pushboolean(state, participant.IsSwallowed() ? 1 : 0);
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedIsGrappling(IntPtr state)
+        {
+            // Retrieve and validate the participant from the stack
+            var participant = GetValidatedParticipant(state);
+
+            // Check the Participant's state
+            LuaApi.lua_pushboolean(state, participant.IsGrappling() ? 1 : 0);
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedGetPredator(IntPtr state)
+        {
+            // Retrieve and validate the participant from the stack
+            var participant = GetValidatedParticipant(state);
+
+            // Push the Predator field
+            var predator = participant.Predator;
+            if (predator == null)
+                LuaApi.lua_pushnil(state);
+            else
+                predator.Character.PushToLua(state);
+
+            return 1;
+        }
+
+        [ScriptableFunction]
         protected static int ExportedOnRoundEnd(IntPtr state)
         {
             // Keep the function around so the callback can find it
@@ -358,6 +401,19 @@ namespace Finmer.Gameplay.Combat
             return 0;
         }
 
+        private static Participant GetValidatedParticipant(IntPtr state)
+        {
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            var character = FromLuaNonOptional<Character>(state, 2);
+
+            // Obtain the Participant associated with a particular Character
+            var participant = self.GetParticipantForCharacter(character);
+            if (participant == null)
+                LuaApi.luaL_error(state, "creature is not a participant of this combat");
+
+            return participant;
+        }
+
         private void AttachScriptCallbacks()
         {
             OnRoundEnd += round =>
@@ -422,6 +478,9 @@ namespace Finmer.Gameplay.Combat
             };
         }
 
+        /// <summary>
+        /// Returns the Participant associated with a registered Character, or null if none exists.
+        /// </summary>
         private Participant GetParticipantForCharacter(Character character)
         {
             return Participants.FirstOrDefault(participant => participant.Character == character);

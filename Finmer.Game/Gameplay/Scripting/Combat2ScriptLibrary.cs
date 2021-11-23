@@ -8,6 +8,7 @@
 
 using System;
 using Finmer.Gameplay.Combat;
+using static Finmer.Gameplay.Scripting.LuaApi;
 
 namespace Finmer.Gameplay.Scripting
 {
@@ -26,6 +27,7 @@ namespace Finmer.Gameplay.Scripting
         {
             // CombatV2 table
             context.RegisterGlobalFunction("Combat2", ExportedNewCombat2State);
+            context.RegisterGlobalFunction("GetActiveCombat", ExportedGetActiveCombat);
         }
 
         private static int ExportedNewCombat2State(IntPtr state)
@@ -33,6 +35,23 @@ namespace Finmer.Gameplay.Scripting
             // Create a new CombatState on the caller stack (not the main thread stack!) and return it to the caller
             var combat = new CombatSession(ScriptContext.FromLua(state));
             combat.PushToLua(state);
+            return 1;
+        }
+
+        private static int ExportedGetActiveCombat(IntPtr state)
+        {
+            // Check whether the current scene is a combat scene
+            var combat_scene = GameController.Session.PeekScene() as SceneCombat2;
+            if (combat_scene == null)
+            {
+                // If not, there cannot be an active combat either
+                lua_pushnil(state);
+                return 1;
+            }
+
+            // Get the CombatSession that the scene is simulating
+            var session = combat_scene.Session;
+            session.PushToLua(state);
             return 1;
         }
 

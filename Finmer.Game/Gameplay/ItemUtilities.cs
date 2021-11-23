@@ -52,22 +52,22 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Place an item in a player's equipment slots, swapping out another item if necessary.
         /// </summary>
-        public static void EquipItem(Player player, Item equippable)
+        public static void EquipItem(Player player, Item equipable)
         {
             // Determine an appropriate slot index for the item
-            if (!GetSuitableEquipSlot(player, equippable.Asset, out int slot))
+            if (!GetSuitableEquipSlot(player, equipable.Asset, out int slot))
             {
                 // The slot is occupied; remove the old item first
                 UnequipItem(player, slot);
             }
 
             // Remove the new item from the player's inventory
-            Debug.Assert(player.Inventory.Contains(equippable));
-            player.Inventory.Remove(equippable);
+            Debug.Assert(player.Inventory.Contains(equipable));
+            player.Inventory.Remove(equipable);
 
             // Place it in the equipment slot
             Debug.Assert(player.Equipment[slot] == null);
-            player.Equipment[slot] = equippable;
+            player.Equipment[slot] = equipable;
         }
 
         /// <summary>
@@ -87,7 +87,7 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Returns an equipment slot index suitable for the specified equippable item.
+        /// Returns an equipment slot index suitable for the specified equipable item.
         /// </summary>
         /// <returns>
         /// Always writes the slot index in the slot output parameter (regardless of whether there is space). Returns true

@@ -72,9 +72,9 @@ namespace Finmer.Gameplay
         /// </summary>
         public void Reset()
         {
-            lock (m_Lock)
+            lock (m_Session.ScriptContext)
             {
-                lock (m_Session.ScriptContext)
+                lock (m_Lock)
                 {
                     m_Links.Clear();
                     m_CallbackTable.UnbindAll();
@@ -134,7 +134,7 @@ namespace Finmer.Gameplay
                     {
                         m_Session.SetScene(new SceneScripted(m_Session.ScriptContext, target_scene));
                     }
-                    catch (ArgumentException ex) 
+                    catch (ArgumentException ex)
                     {
                         GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
                     }

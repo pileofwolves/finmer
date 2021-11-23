@@ -189,6 +189,15 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Animates a short pause and scene change.
+        /// </summary>
+        public static void ShowPause()
+        {
+            Thread.Sleep(500);
+            GameUI.Instance.LogSplit();
+        }
+
+        /// <summary>
         /// Animates a simple message.
         /// </summary>
         public static void ShowSimpleMessage(string logKey, Participant instigator)

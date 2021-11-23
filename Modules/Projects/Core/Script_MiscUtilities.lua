@@ -182,6 +182,10 @@ function PostVore(scat, noscat)
         print("Called PostVore(" .. scat .. ") - this function is deprecated")
     end
 
+    -- Forward to new function
+    LogPostVore(scat, noscat)
+end
+function LogPostVore(scat, noscat)
     -- if the player disabled scat, then use the noscat msg if present, otherwise exit
     local text = Player.PreferScat and scat or noscat
     if text == nil then return end

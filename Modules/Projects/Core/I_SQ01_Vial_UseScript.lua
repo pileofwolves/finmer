@@ -1,13 +1,14 @@
--- if in a taur belly, replace with the filled vial
-if Player:IsEaten() then
-    --if Player:GetPredator():HasTag("taur") then
-        Log("sq01_vial_use")
-        Player:TakeItem("SQ01_Vial")
-        Player:GiveItem("SQ01_VialFull")
-        Journal.Update("SQ01", 20)
-    --else
-    --    Log("sq01_vial_needtaur")
-    --end
+local state = GetActiveCombat()
+assert(state ~= nil, "Item cannot be used outside combat")
+
+-- Check whether the player participant is swallowed in this combat context
+if state:IsSwallowed(Player) then
+    -- Progress quest
+    Log("SQ01_Vial_Use")
+    Player:TakeItem("I_SQ01_Vial")
+    Player:GiveItem("I_SQ01_VialFull")
+    Journal.Update("SQ01", 20)
 else
-    Log("item_cannotusehere")
+    -- Incorrect context
+    Log("ITEM_CANNOTUSEHERE")
 end

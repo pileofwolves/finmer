@@ -4,58 +4,53 @@
 	"Name": "CR_SQ01_Alchemist",
 	"ObjectName": "Jar'la",
 	"ObjectAlias": "",
-	"Strength": 1,
+	"Strength": 6,
 	"Agility": 3,
-	"Body": 2,
-	"Wits": 2,
+	"Body": 4,
+	"Wits": 4,
 	"Flags": 0,
 	"Level": 4,
 	"Size": "Medium",
 	"Gender": "Male",
-	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment1": "41fa646f-cc58-4d9f-9e90-52f7a4882474",
 	"Equipment2": "00000000-0000-0000-0000-000000000000",
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
 	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
-	"PredatorDisposal": false,
+	"PredatorDisposal": true,
 	"StringMappings": [
 		{
-			"Key": "VORE_HIT_POV",
-			"Rule": "Always",
-			"NewKey": "SQ01_ALCH_VORE_HIT_POV"
-		},
-		{
-			"Key": "VORE_WIN_POV",
-			"Rule": "Always",
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
 			"NewKey": "SQ01_ALCH_VORE_WIN_POV"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
-			"Rule": "Always",
-			"NewKey": "SQ01_ALCH_KILL_DIGESTED_POV"
+			"Key": "VORE_WIN",
+			"Rule": "PlayerToNpc",
+			"NewKey": "SQ01_ALCH_VORE_WIN"
 		},
 		{
-			"Key": "KILL_GENERIC_POV",
-			"Rule": "Always",
-			"NewKey": "SQ01_ALCH_KILL_GENERIC_POV"
-		},
-		{
-			"Key": "KILL_DIGESTED",
-			"Rule": "Always",
-			"NewKey": "SQ01_ALCH_KILL_DIGESTED"
+			"Key": "VORE_DISPOSAL",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ01_ALCH_VORE_DISPOSAL"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "SQ01_ALCH_KILL_GENERIC"
 		},
 		{
-			"Key": "VORE_WIN",
-			"Rule": "Always",
-			"NewKey": "SQ01_ALCH_VORE_WIN"
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ01_ALCH_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "SQ01_ALCH_KILL_DIGESTED"
 		}
 	]
 }

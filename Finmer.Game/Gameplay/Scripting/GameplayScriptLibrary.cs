@@ -36,6 +36,7 @@ namespace Finmer.Gameplay.Scripting
             context.RegisterGlobalFunction("GetTime", ExportedGetTime);
             context.RegisterGlobalFunction("AdvanceTime", ExportedAddTime);
             context.RegisterGlobalFunction("SetScene", ExportedSetScene);
+            context.RegisterGlobalFunction("EndGame", ExportedEndGame);
 
             // Journal table
             lua_createtable(state, 0, 2);
@@ -138,6 +139,11 @@ namespace Finmer.Gameplay.Scripting
             return 0;
         }
 
+        private static int ExportedEndGame(IntPtr L) 
+        {
+            GameController.Session.gameover = true;
+            return 0;
+        }
     }
 
 }

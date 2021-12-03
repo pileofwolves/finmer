@@ -30,11 +30,11 @@
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "--SetScene(\"Scene_TownInn\")\r\n\r\n\r\nSetInventoryEnabled(false)\r\nLog(\"welcome\", Color.Gray)\r\nLog(\"tutorialprompt\")",
+				"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"WELCOME\", Color.Gray)\r\nLog(\"TUTORIALPROMPT\")",
 				"ScriptAppear": "",
 				"Children": [
 					{
-						"Key": "TutSkip",
+						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Nah, I'm good",
@@ -46,7 +46,7 @@
 						"Children": []
 					},
 					{
-						"Key": "TutStart",
+						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Yes please!",
@@ -58,7 +58,7 @@
 						"Children": []
 					},
 					{
-						"Key": "DBGROOT",
+						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "DEBUG MENU",
@@ -69,14 +69,14 @@
 						"ScriptAppear": "return IsDebugMode()",
 						"Children": [
 							{
-								"Key": "DBGROOT_ACT",
+								"Key": "DBGROOT",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()",
 								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "DBG_SHOP",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Shop test",
@@ -90,13 +90,13 @@
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "DBGROOT_ACT",
+												"LinkTarget": "DBGROOT",
 												"Children": []
 											}
 										]
 									},
 									{
-										"Key": "DBG2",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Inn",
@@ -108,7 +108,7 @@
 										"Children": []
 									},
 									{
-										"Key": "DBG3",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to MQ02 RoadEnc",
@@ -120,7 +120,7 @@
 										"Children": []
 									},
 									{
-										"Key": "DBG4",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to MQ02 Chase Event",
@@ -132,7 +132,7 @@
 										"Children": []
 									},
 									{
-										"Key": "DBG6",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Forest Edge",
@@ -144,7 +144,7 @@
 										"Children": []
 									},
 									{
-										"Key": "DBG8",
+										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Pit",

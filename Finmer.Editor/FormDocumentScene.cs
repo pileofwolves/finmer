@@ -154,7 +154,7 @@ namespace Finmer.Editor
         {
             void AddToLinkTargetList(AssetScene.SceneNode node)
             {
-                if (!node.IsLink && node.IsState == m_SelectedNode.IsState)
+                if (!node.IsLink && node.IsState == m_SelectedNode.IsState && !String.IsNullOrWhiteSpace(node.Key))
                     cmbLinkTarget.Items.Add(node.Key);
             }
 
@@ -209,57 +209,77 @@ namespace Finmer.Editor
 
         private void UpdateNodeText(TreeNode treeNode, AssetScene.SceneNode sceneNode)
         {
-            treeNode.ForeColor = sceneNode.IsState ? Color.DarkRed : Color.DarkBlue;
+            // Alternate colors for visual clarity
+            treeNode.ForeColor = sceneNode.IsState
+                ? Color.DarkRed
+                : Color.DarkBlue;
+
             if (treeNode.Parent == null)
             {
+                // The root node has a fixed name
                 treeNode.Text = "Root";
             }
             else if (sceneNode.IsLink)
-                // link target
             {
+                // Link target
                 treeNode.Text = "--> " + sceneNode.LinkTarget;
             }
             else
             {
-                // for normal nodes, show key and display text. also, if actions script, add a mark to indicate
-                string action_mark = String.IsNullOrWhiteSpace(sceneNode.ScriptAction) ? String.Empty : " [!]";
-                treeNode.Text = sceneNode.IsState ? $"[{sceneNode.Key}]{action_mark}" : $"[{sceneNode.Key}]{action_mark} {sceneNode.Title}";
+                // For all other nodes, concatenate the node key and any prefixes
+                string default_key = sceneNode.IsState ? "..." : String.Empty;
+                string[] elements =
+                {
+                    String.IsNullOrWhiteSpace(sceneNode.Key) ? default_key : $"[{sceneNode.Key}]",
+                    sceneNode.IsState ? String.Empty : sceneNode.Title,
+                    String.IsNullOrWhiteSpace(sceneNode.ScriptAction) ? String.Empty : "(!)",
+                    String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? String.Empty : "(?)",
+                };
+                treeNode.Text = String.Join(" ", elements.Where(str => !String.IsNullOrEmpty(str)));
             }
         }
 
         private void tsbAddNode_Click(object sender, EventArgs e)
         {
-            if (m_SelectedNode.IsLink) return;
+            // Safeguard: prevent adding children to links
+            if (m_SelectedNode.IsLink)
+                return;
 
-            var newnode = new AssetScene.SceneNode
+            // Generate a new node
+            var node = new AssetScene.SceneNode
             {
-                Key = "Unnamed",
-                Title = "Unnamed",
+                Key = String.Empty,
+                Title = String.Empty,
                 IsState = !m_SelectedNode.IsState
             };
-            m_SelectedNode.Children.Add(newnode);
 
+            // Append it to the internal representation and the UI tree
             Debug.Assert(m_SelectedNode != null);
-            AddNodeToTreeView(m_SelectedTree.Nodes, newnode, true);
+            m_SelectedNode.Children.Add(node);
+            AddNodeToTreeView(m_SelectedTree.Nodes, node, true);
 
             Dirty = true;
         }
 
         private void tsbAddLink_Click(object sender, EventArgs e)
         {
-            if (m_SelectedNode.IsLink) return;
+            // Safeguard: prevent adding children to links
+            if (m_SelectedNode.IsLink)
+                return;
 
-            var newnode = new AssetScene.SceneNode
+            // Generate a new node
+            var node = new AssetScene.SceneNode
             {
-                Key = "Unnamed",
-                Title = "Unnamed",
+                Key = String.Empty,
+                Title = String.Empty,
                 IsState = !m_SelectedNode.IsState,
                 IsLink = true
             };
-            m_SelectedNode.Children.Add(newnode);
 
+            // Append it to the internal representation and the UI tree
             Debug.Assert(m_SelectedNode != null);
-            AddNodeToTreeView(m_SelectedTree.Nodes, newnode, true);
+            m_SelectedNode.Children.Add(node);
+            AddNodeToTreeView(m_SelectedTree.Nodes, node, true);
 
             Dirty = true;
         }
@@ -310,9 +330,6 @@ namespace Finmer.Editor
         private void txtNodeKey_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;
-
-            // cannot use empty string as node key
-            if (String.IsNullOrWhiteSpace(txtNodeKey.Text)) return;
 
             Dirty = true;
             m_SelectedNode.Key = txtNodeKey.Text;

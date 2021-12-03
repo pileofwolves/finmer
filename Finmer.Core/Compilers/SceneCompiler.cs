@@ -55,7 +55,8 @@ namespace Finmer.Core.Compilers
             state.TableChoiceFns.AppendLine("local _ChoiceFns = {}");
             state.TableAppearFns.AppendLine("local _AppearFns = {");
 
-            // Compile all scene nodes into subparts, starting with root (recursive). We use a Stack<> instead of raw recursion to conserve stack space.
+            // Compile all scene nodes recursively, starting with the root. Each node appends code to the various tables in CompilerState.
+            // We use a stack instead of call recursion because it's significantly faster and conserves stack space.
             state.Backlog.Push(scene.Root);
             while (state.Backlog.Count > 0)
             {
@@ -134,7 +135,7 @@ end"
         private static void CompileNode(CompilerState state, Node node)
         {
             // Basic validation
-            if (String.IsNullOrWhiteSpace(node.Key) || node.Key.Length > 32)
+            if (node.Key.Length > 32)
                 throw new SceneCompilerException($"In scene '{state.Scene.Name}': A node has an invalid key (empty or too long). This likely indicates that the module file is corrupt.");
 
             if (state.NodeNames.Contains(node.Key))
@@ -142,6 +143,22 @@ end"
 
             if (node.IsLink && node.Children.Count > 0)
                 throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' is a link, but also contains children. This likely indicates that the module file is corrupt.");
+
+            // Enqueue all children
+            foreach (Node child in node.Children)
+            {
+                // States and choices must alternate
+                if (node.IsState == child.IsState)
+                    throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains child '{child.Key}' of same node type as parent. Module file is likely corrupted. (IsState = {node.IsState})");
+
+                // If the node key is unspecified, assign a default value instead.
+                // This must be done before code is emitted for the parent node because the parent may refer to the keys of child nodes.
+                if (String.IsNullOrWhiteSpace(child.Key))
+                    child.Key = $"_AutoKey{state.NextAutoKey++}";
+
+                // Queue this child
+                state.Backlog.Push(child);
+            }
 
             // Generate an AppearFn for all concrete nodes that have one specified
             if (!String.IsNullOrWhiteSpace(node.ScriptAppear) && !node.IsLink)
@@ -162,17 +179,6 @@ end"
                 CompileStateNode(state, node);
             else
                 CompileChoiceNode(state, node);
-
-            // Recurse on all children
-            foreach (Node child in node.Children)
-            {
-                // States and choices must alternate
-                if (node.IsState == child.IsState)
-                    throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains child '{child.Key}' of same node type as parent. Module file is likely corrupted. (IsState = {node.IsState})");
-
-                // Queue this child
-                state.Backlog.Push(child);
-            }
         }
 
         /// <summary>
@@ -188,7 +194,7 @@ end"
             if (node.IsLink)
                 return;
 
-            state.TableStates.AppendLine($"{node.Key} = {state.NodeID++},");
+            state.TableStates.AppendLine($"{node.Key} = {state.NextStateID++},");
             state.TableStateFns.AppendLine($"_StateFns[_States.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
@@ -241,7 +247,7 @@ end"
             if (node.IsLink)
                 return;
 
-            state.TableChoices.AppendLine($"{node.Key} = {state.NodeID++},");
+            state.TableChoices.AppendLine($"{node.Key} = {state.NextStateID++},");
             state.TableChoiceFns.AppendLine($"_ChoiceFns[_Choices.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
@@ -296,7 +302,8 @@ end"
             public StringBuilder TableChoiceFns { get; } = new StringBuilder();
             public StringBuilder TableAppearFns { get; } = new StringBuilder();
 
-            public int NodeID { get; set; }
+            public int NextStateID { get; set; }
+            public int NextAutoKey { get; set; }
             public Stack<Node> Backlog { get; } = new Stack<Node>();
             public HashSet<string> NodeNames { get; } = new HashSet<string>();
 

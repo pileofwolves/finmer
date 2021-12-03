@@ -141,7 +141,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedEndGame(IntPtr L) 
         {
-            GameController.Session.gameover = true;
+            GameController.Session.RequestGameOver();
             return 0;
         }
     }

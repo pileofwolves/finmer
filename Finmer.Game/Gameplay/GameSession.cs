@@ -61,7 +61,7 @@ namespace Finmer.Gameplay
         private readonly Thread m_ScriptThread;
         private readonly AutoResetEvent m_ScriptWaitEvent;
         private bool m_ScriptThreadStop;
-        public bool gameover;
+        private bool m_GameOverRequested; 
 
         public GameSession(PropertyBag savedata)
         {
@@ -202,10 +202,17 @@ namespace Finmer.Gameplay
                 Player.TimeDay++;
             }
         }
+        /// <summary>
+        /// Send the request for the game to end.
+        /// </summary>
+        public void RequestGameOver() 
+        {
+            m_GameOverRequested = true;
+        }
 
         private bool IsGameOver()
         {
-            return Player.IsDead() || gameover;
+            return Player.IsDead() || m_GameOverRequested;
         }
 
         private void RunGameOver()

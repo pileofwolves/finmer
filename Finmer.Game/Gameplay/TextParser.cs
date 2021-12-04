@@ -6,6 +6,11 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+#if DEBUG
+    // Enable this define to dump TextParser state to the game log
+    //#define DEBUG_TEXT_PARSER
+#endif
+
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -205,20 +210,7 @@ namespace Finmer.Gameplay
         {
             // Randomized expression
             if (command.StartsWith("?", StringComparison.InvariantCulture))
-            {
-                // Find candidate substrings, separated with a pipe character
-                string[] random_parts = command.Split(new [] { '|' }, StringSplitOptions.RemoveEmptyEntries);
-                if (random_parts.Length >= 2)
-                {
-                    // Get rid of the ? at the start
-                    random_parts = random_parts.Skip(1).ToArray();
-
-                    // Pick a random entry
-                    return random_parts[CoreUtility.Rng.Next(random_parts.Length)];
-                }
-
-                return "{invalid randomized expression}";
-            }
+                return HandleRandomizedTag(command);
 
             // This is a context-based command; find the context key and parameter
             int index_split = command.IndexOfAny(new[] { ' ', '.' });
@@ -232,7 +224,7 @@ namespace Finmer.Gameplay
 
             // Short form: If no split is found, and only the context name is present, then assume the Alias property is desired.
             if (index_split == command.Length)
-                return GetProperty(context, "alias");
+                return HandlePropertyTag(context, command, "alias");
 
             // Get the parameter after the dot/space
             string parameter = command.Substring(index_split + 1, command.Length - index_split - 1);
@@ -241,24 +233,53 @@ namespace Finmer.Gameplay
 
             // Property access with a dot
             if (command[index_split] == '.')
-                return GetProperty(context, parameter);
+                return HandlePropertyTag(context, command, parameter);
 
             // Otherwise (with a space), assume verb conjugation is desired.
-            // Use second-person perspective for the player or for gender-neutral contexts. Note that the latter results in incorrect
-            // grammar in some cases (i.e. "{foo} {foo be} nice" could resolve to "Bob are nice"), but this is currently unavoidable.
-            var is_second_person = context.Subject is Player || context.Subject.Gender == EGender.Neutral;
-            return Conjugate(is_second_person ? EPerspective.SecondPerson : EPerspective.ThirdPerson, parameter);
+            return HandleVerbTag(context, command, parameter);
         }
 
-        private static string GetProperty(Context context, string key)
+        private static string HandleRandomizedTag(string command)
+        {
+            // Find candidate substrings, separated with a pipe character
+            string[] random_parts = command.Split(new [] { '|' }, StringSplitOptions.RemoveEmptyEntries);
+            if (random_parts.Length >= 2)
+            {
+                // Get rid of the ? at the start
+                random_parts = random_parts.Skip(1).ToArray();
+
+                // Pick a random entry
+                string selection = random_parts[CoreUtility.Rng.Next(random_parts.Length)];
+                PrintDebugInfo(command, selection);
+                return selection;
+            }
+
+            PrintDebugInfo(command, "[invalid]");
+            return "{invalid randomized expression}";
+        }
+
+        private static string HandlePropertyTag(Context context, string command, string key)
         {
             if (context.Properties.TryGetValue(key, out PropertyInfo property))
             {
                 string value = (string)property.GetValue(context.Subject);
+                PrintDebugInfo(context, command, key, value);
                 return value;
             }
 
+            PrintDebugInfo(context, command, key, "[invalid]");
             return $"{{context '{context.Subject.Name}' has no property '{key}'}}";
+        }
+
+        private static string HandleVerbTag(Context context, string command, string verb)
+        {
+            // Use second-person perspective for the player or for gender-neutral contexts. Note that the latter results in incorrect
+            // grammar in some cases (i.e. "{foo} {foo be} nice" could resolve to "Bob are nice"), but this is currently unavoidable.
+            var is_second_person = context.Subject is Player || context.Subject.Gender == EGender.Neutral;
+            var conjugated = Conjugate(is_second_person ? EPerspective.SecondPerson : EPerspective.ThirdPerson, verb);
+
+            PrintDebugInfo(context, command, "to " + verb, conjugated);
+            return conjugated;
         }
 
         private static string Conjugate(EPerspective perspective, string verb)
@@ -298,6 +319,20 @@ namespace Finmer.Gameplay
 
             // Default
             return use_plural_form ? verb : verb + "s";
+        }
+
+        [Conditional(@"DEBUG_TEXT_PARSER")]
+        private static void PrintDebugInfo(Context context, string command, string detail, string replacement)
+        {
+            string trace = $"{{ {command} (= {context.Subject.Name}, {detail}) -> {replacement} }}";
+            Models.GameUI.Instance.Log(trace, Theme.LogColorLightGray);
+        }
+
+        [Conditional(@"DEBUG_TEXT_PARSER")]
+        private static void PrintDebugInfo(string command, string replacement)
+        {
+            string trace = $"{{ {command} -> {replacement} }}";
+            Models.GameUI.Instance.Log(trace, Theme.LogColorLightGray);
         }
 
         /// <summary>

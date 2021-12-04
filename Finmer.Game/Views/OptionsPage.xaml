@@ -40,7 +40,12 @@
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
             Text="Allows explicit post-vore scat and such." />
-
+        <CheckBox
+            Content ="Enable PreySense"
+            IsChecked="{Binding PreySense, Mode=TwoWay}"/>
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Allows warnings of vore before the scene plays out."/>
         <Grid Style="{StaticResource OptionSpacer}" />
 
         <TextBlock

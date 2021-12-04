@@ -44,6 +44,26 @@ function LogGsub(key, vars, color)
     LogRaw(strval, color)
 end
 
+function PreySense(pred, style, fatal)
+    local color
+    local vtype 
+        if style == 0 then vtype = "OV" 
+        elseif style == 1 then vtype = "AV" 
+        elseif style == 2 then vtype = "CV" 
+        elseif style == 3 then vtype = "UB" 
+        end
+    local vfinal
+        if fatal then 
+            vfinal = "Fatal"
+            color = Color.Red
+        else 
+            vfinal = "Endo" 
+            color = Color.Neutral
+        end
+    LogRaw("You have that feeling in your gut...\n\n"..pred.Name..":"..vtype..", "..vfinal.."", color)
+
+end
+
 ------------------------------------------------------------------------------
 -- Clock management and querying
 ------------------------------------------------------------------------------

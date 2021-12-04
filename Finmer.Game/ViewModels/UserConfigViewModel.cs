@@ -42,6 +42,16 @@ namespace Finmer.ViewModels
             }
         }
 
+        public bool PreySense
+        {
+            get => UserConfig.PreySense;
+            set
+            {
+                UserConfig.PreySense = value;
+                OnPropertyChanged(nameof(PreySense));
+            }
+        }
+
         public float ZoomLevel => UserConfig.Zoom;
 
         public int ZoomIndex
@@ -66,7 +76,7 @@ namespace Finmer.ViewModels
             set => UserConfig.CombatAnimation = (UserConfig.EAnimationLevel)value;
         }
 
-        private UserConfigViewModel() {}
+        private UserConfigViewModel() { }
 
     }
 

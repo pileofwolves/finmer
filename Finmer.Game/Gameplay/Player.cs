@@ -95,6 +95,9 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public bool PreferScat => UserConfig.PreferScat;
 
+        [ScriptableProperty(EScriptAccess.Read)]
+        public bool PreySense => UserConfig.PreySense;
+
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int TotalPreySwallowed
         {

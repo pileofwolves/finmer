@@ -44,7 +44,7 @@ function LogGsub(key, vars, color)
     LogRaw(strval, color)
 end
 
-function PreySense(pred, style, fatal)
+function PreySense(pred, style, does_digest)
     local color
     local vtype 
         if style == 0 then vtype = "OV" 
@@ -60,7 +60,7 @@ function PreySense(pred, style, fatal)
             vfinal = "Endo" 
             color = Color.Neutral
         end
-    LogRaw("You have that feeling in your gut...\n\n"..pred.Name..":"..vtype..", "..vfinal.."", color)
+    LogRaw("You have that feeling in your gut...  "..pred.Name..":"..vtype..", "..vfinal.."", color)
 
 end
 

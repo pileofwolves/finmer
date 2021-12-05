@@ -47,6 +47,11 @@ namespace Finmer.Models
         public static bool PreferScat { get; set; } = true;
 
         /// <summary>
+        /// Indicates whether PreySense is enabled prior to vore scenes
+        /// </summary>
+        public static bool PreySense { get; set; } = false;
+
+        /// <summary>
         /// Indicates whether this is the application's first time starting up.
         /// </summary>
         public static bool FirstStart { get; set; } = true;
@@ -92,6 +97,7 @@ namespace Finmer.Models
                         // Extract properties we're interested in
                         Hyphenation = props.GetBool(@"hyph");
                         PreferScat = props.GetBool(@"scat");
+                        PreySense = props.GetBool(@"preysense");
                         FirstStart = props.GetBool(@"firststart");
                         Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
                         NewGamePreset = props.GetNestedPropertyBag(@"last_character");
@@ -140,6 +146,7 @@ namespace Finmer.Models
             props.SetString(@"game_version", CompileConstants.k_VersionString);
             props.SetBool(@"hyph", Hyphenation);
             props.SetBool(@"scat", PreferScat);
+            props.SetBool(@"preysense", PreySense);
             props.SetBool(@"firststart", FirstStart);
             props.SetFloat(@"zoom", Zoom);
             props.SetNestedPropertyBag(@"last_character", NewGamePreset);

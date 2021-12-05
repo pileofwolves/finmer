@@ -54,7 +54,7 @@ namespace Finmer.Models
         /// <summary>
         /// Indicates whether this is the application's first time starting up.
         /// </summary>
-        public static bool FirstStart { get; set; } = true;
+        public static bool FirstStart { get; set; } = false;
 
         /// <summary>
         /// The relative UI zoom multiplier.
@@ -97,7 +97,7 @@ namespace Finmer.Models
                         // Extract properties we're interested in
                         Hyphenation = props.GetBool(@"hyph");
                         PreferScat = props.GetBool(@"scat");
-                        PreySense = props.GetBool(@"prey");
+                        PreySense = props.GetBool(@"preysense");
                         FirstStart = props.GetBool(@"firststart");
                         Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
                         NewGamePreset = props.GetNestedPropertyBag(@"last_character");
@@ -146,6 +146,7 @@ namespace Finmer.Models
             props.SetString(@"game_version", CompileConstants.k_VersionString);
             props.SetBool(@"hyph", Hyphenation);
             props.SetBool(@"scat", PreferScat);
+            props.SetBool("PreySense", PreySense);
             props.SetBool(@"firststart", FirstStart);
             props.SetFloat(@"zoom", Zoom);
             props.SetNestedPropertyBag(@"last_character", NewGamePreset);

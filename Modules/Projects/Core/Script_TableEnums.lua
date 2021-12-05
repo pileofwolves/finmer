@@ -38,10 +38,10 @@ ECharacterFlags = {
 }
 
 EVoreStyle = {
-    OV              =0,
-    AV              =1,
-    CV              =2,
-    UB              =3,
+    OV              = 0,
+    AV              = 1,
+    CV              = 2,
+    UB              = 3,
 }
 -- Backwards compatibility
 Compass = ECompass

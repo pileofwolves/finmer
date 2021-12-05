@@ -45,23 +45,23 @@ function LogGsub(key, vars, color)
 end
 
 function PreySense(pred, style, does_digest)
-    if(Player.PreySense)then
-    local color
-    local vtype 
+    if Player.IsPreySenseEnabled then
+        local color
+        local vtype 
         if style == 0 then vtype = "OV" 
         elseif style == 1 then vtype = "AV" 
         elseif style == 2 then vtype = "CV" 
         elseif style == 3 then vtype = "UB" 
         end
-    local vfinal
-        if fatal then 
+        local vfinal
+        if does_digest then 
             vfinal = "Fatal"
             color = Color.Red
         else 
             vfinal = "Endo" 
             color = Color.Neutral
         end
-    LogRaw("You have that feeling in your gut...  "..pred.Name..":"..vtype..", "..vfinal.."", color)
+        LogRaw("You have that feeling in your gut...  "..pred.Name..":"..vtype..", "..vfinal.."", color)
     end
 end
 

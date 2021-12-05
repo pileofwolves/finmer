@@ -36,7 +36,7 @@
 		{
 			"Key": "MQ02_AM_BUSINESS",
 			"Text": [
-				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit I overreacted when I saw him. I thought he was there to steal my precious belongings. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose, as if to smell the air.\\n\\n\"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. Because all this-\" he says while waving a paw, \"-belongs to me. To-\" - \"The Red Maw,\" you interrupt, finishing for him while crossing your arms. You're not entirely sure why you said that, it just came naturally. Randall looks surprised, though his cocky smirk soon resurfaces. \"That's right, {player.species}. Now listen here,\" he says as he steps closer, tail swishing behind him as he tries to look menacing."
+				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Not my fault he only informed me when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts.\\n\\n\"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw. A strange feeling overcomes you, as you recognize the predator before you as the leader of the Red Maw. Not just because you heard somewhere, but because you know you have seen him before - you're just not sure where. \"Now listen here, {player.species},\" he says as he steps closer, seemingly oblivious to your realization, tail swishing behind him as he tries to look menacing."
 			]
 		},
 		{
@@ -48,13 +48,13 @@
 		{
 			"Key": "MQ02_AM_BUSINESS2_ATEOLIVER",
 			"Text": [
-				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and you're interfering.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and you're interfering. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
 			]
 		},
 		{
 			"Key": "MQ02_AM_ENDING",
 			"Text": [
-				"With his point made, Randall flashes you a cocky grin, teasingly licks his lips, then turns and leaves. \"Go on now, run that little errand for me; tell your pantheress it's all fine and dandy over here,\" he says, dismissively raising a paw as if waving to you. The husky and panther, having remained motionless until now, wait for their leader to catch up before they too turn.\\n\\nWhat a massive jerk."
+				"With his point made, Randall flashes you a cocky grin, teasingly licks his lips, then turns and leaves. \"Go on now, run that little errand for me; tell your pantheress it's all fine and dandy over here. She'll get her damn supplies, and I don't want to wait a moment longer,\" he says, dismissively raising a paw as if waving to you. The husky and tigress, having remained motionless until now, wait for their leader to catch up before they too turn.\\n\\nWhat a massive jerk."
 			]
 		},
 		{
@@ -114,7 +114,7 @@
 		{
 			"Key": "MQ02_AM_OPENING2",
 			"Text": [
-				"A large wolf with off-black fur and a crimson mane running from just above his eyes to the back of his head, approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats. A husky and a tigress, you note. Only then do you recognize the unnatural bulge on the lupine's midsection, exposing a huge dome of black fur underneath his jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its liquid contents shift.\\n\\n\"You're that little {player.species} I've been hearing about, then?\" the black wolf begins. For a moment you see his eyes flash with an unusual emotion. Confusion... recognition? It quickly vanishes, leaving behind only a cocky grin. \"Iso sent you? Of course she did, the nosy bitch.\""
+				"A large wolf with off-black fur and a crimson mane running from just above his eyes to the back of his head, approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats. A husky and a tigress, you note. Only then do you recognize the unnatural bulge on the lupine's midsection, exposing a huge dome of black fur underneath his jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its liquid contents shift.\\n\\n\"You're that little {player.species} I've been hearing about, then?\" the black wolf begins. \"Thought you might be making a mess here, so I figured I'd take a look to... safeguard my investments.\" For a moment you see his eyes flash with an unusual emotion. Confusion... recognition? It quickly vanishes, leaving behind only a cocky grin. \"But you don't seem like much. Iso sent you? Of course she did, the nosy bitch.\""
 			]
 		},
 		{
@@ -144,7 +144,7 @@
 		{
 			"Key": "MQ02_BARKEEP_END",
 			"Text": [
-				"After you wrap up your recap and lean back a bit, the barkeep mulls over the information. Finally, he makes eye contact again and nods respectfully. \"Alright, thanks for the info, and for doing this for us.\" A short pause follows as the canine scratches himself behind his ears. \"I'll have to get the town guard on this, too. Predation is highly illegal here, you see, so they'll want a hold on this... Randall guy.\" He gestures at the door behind him, leading upstairs. \"Now that we have what we need, it should be about a day or two to repair the bridge. In the mean time, stay as long as you like. I owe you that much at least.\""
+				"After you wrap up your recap and lean back a bit, the barkeep mulls over the information. Finally, he makes eye contact again and nods respectfully. \"Alright, thanks for the info, and for doing this for us.\" A short pause follows as the canine scratches himself behind his ears. \"I... I'll have to get the town guard on this, too. Predation is obviously illegal, you understand, so they'll want a hold on this... Randall guy.\" He gestures at the door behind him, leading upstairs. \"Shit, what a mess. The mayor disappears, the bridge explodes, and now there are predators around.\" {^bartender} sighs heavily. \"Anyway. Now that we have what we need, it should be about a day or two to repair the bridge. In the mean time, stay as long as you like. I owe you that much at least.\""
 			]
 		},
 		{
@@ -180,13 +180,13 @@
 		{
 			"Key": "MQ02_BARKEEP_TIGER",
 			"Text": [
-				"Grimly, you talk about the previous messenger's fate - that of a layer of fat on a big, cocky wolf. The barkeep stares for a bit, then shakes his head. \"Shit. I knew predation is a thing, but that's a little close to home...\""
+				"Grimly, you talk about the previous messenger's fate - that of a layer of fat on a big, cocky wolf. The barkeep stares for a bit, then shakes his head. \"Stip is dead? Shit. I knew predation is a thing, but that's a little close to home...\""
 			]
 		},
 		{
 			"Key": "MQ02_COT_AWAKE",
 			"Text": [
-				"All of a sudden, he sputters and coughs, twitching as he greedily sucks up the air in front of him.\\n\\nYou give him a few seconds to catch his breath as he rises from the {!floor} to his own two feet. The lion gives you an incredulous stare - a bit fearful, perhaps."
+				"All of a sudden, he sputters and coughs, twitching as he greedily sucks up the air in front of him. You give him a few seconds to catch his breath as he rises from the {!floor} to his own two feet. The lion gives you an incredulous stare - a bit fearful, perhaps."
 			]
 		},
 		{
@@ -216,7 +216,7 @@
 		{
 			"Key": "MQ02_COT_CHECK_DUMB",
 			"Text": [
-				"You kneel down by the lion, and try to figure out what's wrong with him. He's still breathing - if a bit shallowly - and looks quite battered and bruised oerall. But other than the fact that he probably needs to be tended to, it's hard to say what exactly went down here."
+				"You kneel down by the lion, and try to figure out what's wrong with him. He's still breathing just fine. Other than the fact that he clearly passed out on the floor for some reason, it's hard to say what exactly went down here."
 			]
 		},
 		{
@@ -228,7 +228,7 @@
 		{
 			"Key": "MQ02_COT_CHECK_WITS2",
 			"Text": [
-				"... Luckily, you can feel it. At least he's alive, even if his breathing is shallow. He's been bruised quite heavily though - the fur makes it difficult to see, but you noticed regardless. There are some shallow claw marks on his arms and shoulders - a tiny bit of blood but nothing to be worried about.\\n\\nThe guy has clearly been in a fight. He could probably use some help. Oddly enough, you muse, the room itself doesn't look any worse for the wear."
+				"... Luckily, you can feel it. At least he's alive, and his breathing is stable. The coarse, otherwise well-kept fur makes it difficult to see, but it looks like there are some shallow claw marks on his arms and shoulders. Nothing to worry about in the grand scheme of things. You figure the guy could use a paw, but other than clearly having been shaken by something, there is no real noteworthy injury. Oddly enough, you muse, the room itself doesn't look any worse for the wear."
 			]
 		},
 		{
@@ -240,7 +240,7 @@
 		{
 			"Key": "MQ02_COT_POTION",
 			"Text": [
-				"You snatch a tiny vial from your pack and remove the cap. Carefully, you part the lion's jaws and pour the contents inside. Anxiously, you watch and wait for the results - and you don't have to wait long. The bruises disappear right before your eyes, and for a brief moment his breathing becomes a lot more steady. Then --"
+				"You snatch a tiny vial from your pack and remove the cap. Carefully, you part the lion's jaws and pour the contents inside. Anxiously, you watch and wait for the results - and you don't have to wait long. The bruises disappear right before your eyes, and for a brief moment his breathing becomes a lot more steady. Then..."
 			]
 		},
 		{
@@ -300,7 +300,7 @@
 		{
 			"Key": "MQ02_OLIVER_R_END1",
 			"Text": [
-				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they said they were going to take the things I had in storage. Wood, some small metalwork, some of my own tools as well. They haven't yet though, I still have them stored out back. If you get back to town fast, you can tell them, send some folks to pick them up.\" A sly smirk spreads on his features. \"I'm not too afraid of that prick, I'll be fine. Oh, and if you happen across my tools, I'd love them back... I saw his goons take them while the big guy was, uh, hitting on me.\" He smiles and nods respectfully. \"Thanks, {player}. I owe you.\""
+				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they seemed pleased as punch about the things I had in storage. Wood, some small metalwork, some of my own tools as well. I think it's all still there. That freak wants the bridge repaired; I'm not sure I like the sound of that. If you get back to town fast, you can tell them, send some folks to pick them up before the next predator shows up.\" A sly smirk spreads on his features. \"I'm not too afraid of that prick, I'll be fine. Oh, and if you happen across my tools, I'd love them back... I saw his goons take them while the big guy was, uh, hitting on me.\" He smiles and nods respectfully. \"Thanks, {player}. I owe you.\""
 			]
 		},
 		{
@@ -312,13 +312,13 @@
 		{
 			"Key": "MQ02_OLIVER_R_INJURIES",
 			"Text": [
-				"The lion cautiously looks over his arm, rubbing his shoulder with his other paw to loosen it a bit. \"I-It's fine, I guess.\" A short pause follows. \"I'm, uh, Oliver. Carpenter.\" The feline looks up to you to give you the faintest of smiles. \"Sorry, I'm a mess, heh. U-usually it's a bit more ... professional than this.\""
+				"The lion cautiously looks over his arm, rubbing his shoulder with his other paw to loosen it a bit. \"It's fine, I guess.\" A short pause follows. \"I'm, uh, Oliver. Carpenter.\" The feline looks up to you to give you the faintest of smiles. \"Sorry, I'm a mess, heh. U-usually it's a bit more ... professional than this.\""
 			]
 		},
 		{
 			"Key": "MQ02_OLIVER_R_INJURIES_ALT",
 			"Text": [
-				"The lion cautiously looks over his arm, rubbing his shoulder with his other paw to loosen it a bit, inspecting the makeshift bandage you applied. He gives you an awkward smile. \"Thanks for the bandage. I-I guess you're not here to kill me, then?\" A short pause follows. \"I'm, uh, Oliver. Carpenter.\""
+				"The lion cautiously looks over his arm, rubbing his shoulder with his other paw to loosen it a bit, inspecting the makeshift bandage you applied. He gives you an awkward smile. \"Thanks for the bandage. I guess you're not here to kill me, then?\" A short pause follows. \"I'm, uh, Oliver. Carpenter. Sorry, I'm a mess, heh. U-usually it's a bit more ... professional than this.\""
 			]
 		},
 		{

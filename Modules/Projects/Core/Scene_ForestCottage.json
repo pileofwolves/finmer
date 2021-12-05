@@ -149,7 +149,7 @@
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")",
-																"ScriptAppear": "return Player.Wits >= 4",
+																"ScriptAppear": "return Player.Wits >= 5",
 																"Children": [
 																	{
 																		"Key": "CFE_Slap",
@@ -592,7 +592,7 @@
 																								"Key": "Oliver1_R_Injuries",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(Storage.GetFlag(\"oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")",
+																								"ScriptAction": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{
@@ -699,7 +699,7 @@
 																																				"Key": "Oliver1_FD_Digested3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\n\r\nif Player.PreferScat then\r\n    Sleep(4)\r\n    Log(\"MQ02_OLIVER_FD_DISPOSAL\")\r\nend",
+																																				"ScriptAction": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")",
 																																				"ScriptAppear": "",
 																																				"Children": [
 																																					{

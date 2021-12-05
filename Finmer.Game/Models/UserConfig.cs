@@ -49,12 +49,12 @@ namespace Finmer.Models
         /// <summary>
         /// Indicates whether PreySense is enabled prior to vore scenes
         /// </summary>
-        public static bool PreySense { get; set; } = true;
+        public static bool PreySense { get; set; } = false;
 
         /// <summary>
         /// Indicates whether this is the application's first time starting up.
         /// </summary>
-        public static bool FirstStart { get; set; } = false;
+        public static bool FirstStart { get; set; } = true;
 
         /// <summary>
         /// The relative UI zoom multiplier.
@@ -146,7 +146,7 @@ namespace Finmer.Models
             props.SetString(@"game_version", CompileConstants.k_VersionString);
             props.SetBool(@"hyph", Hyphenation);
             props.SetBool(@"scat", PreferScat);
-            props.SetBool("PreySense", PreySense);
+            props.SetBool(@"preysense", PreySense);
             props.SetBool(@"firststart", FirstStart);
             props.SetFloat(@"zoom", Zoom);
             props.SetNestedPropertyBag(@"last_character", NewGamePreset);

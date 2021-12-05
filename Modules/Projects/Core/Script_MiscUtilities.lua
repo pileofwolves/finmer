@@ -61,7 +61,7 @@ function PreySense(pred, style, does_digest)
             vfinal = "Endo" 
             color = Color.Neutral
         end
-        LogRaw("You have that feeling in your gut...  "..pred.Name..":"..vtype..", "..vfinal.."", color)
+        LogRaw("You have that feeling in your gut...  " ..pred.Name.. ": " ..vtype.. ", " ..vfinal.. "", color)
     end
 end
 

@@ -238,6 +238,55 @@
         <img src="https://i.imgur.com/PyM5jcB.png" style="width: 100%;">
         <figcaption>An empty Scene. The Root node is selected by default.</figcaption>
     </figure>
+	<p> For custom modules, you can have your scenes work in one of two ways.
+	<ol>	
+		<li>You can have standalone new scenes in your module, built anew from the ground-up</li>
+		<li>You can add onto current existing scenes from other established modules.</li>
+	</ol>
+	To start off with this custom mod, let's inject into the <i>Core</i> furball. Let's click on the <span class= "clicky">Inject into another Scene</span> checkbox. Next, let's select our scene that we're going to inject into from the <span class="clicky">Target Scene</span> dropdown. 
+	</p>
+	<p>Hold on, it appears as though the dropdown is blank, save for the scene we just created. Why is that? This is because we haven't actually set the <i>Core</i> furball as a reference for our scripts. To remedy this, click on the <span class="clicky">Module Settings</span> setting in the toolbar.</p><p>On the Dependencies field, you'll want to add the Core.furball file to the game. Navigate to your Modules folder and select the Core.furball file. Once that is added, you will have to save your module as its own furball file and reload it in the editor for the Core module to be properly referenced.</p>
+	<figure>
+		<img src="https://i.imgur.com/0c8M05J.png" style="width: 100%">
+		<figcaption>The Core module loaded as a dependency for our new module.</figcaption>
+	</figure>
+	<p>Welcome back. Now, if you were to head to the scene we created before, you'll find that the <span class="clicky">Target Scene</span> dropdown is now populated with all the scenes from the Core module. For the sake of this tutorial, let's say that we're going to have the player character find an ad on the town notice board. It is highly recommended that you have a second copy of the Finmer Editor open with the core module loaded so that you can see how the base game is configured to assist you.</p>
+	<p>The scene with the Notice Board is "<b>Scene_TownNSQ</b>" so we'll want to set that as our Scene to inject into. With the other editor on that scene, we see that all the other board board notices are listed as choices on the "ViewBoard" state. For more explanation about States, Choices and Links, check out the <a href="#scenes-nodes">Explanation linked below</a>. Since the ViewBoard is a state, we'll have to set the custom scene of ours to inject as a Choice. This leaves us the only two options of at the start or end as choices. Since the first choice is the back button, we do not want that buried under anything, so we'll set this scene as injecting at the end of the ViewBoard state.</p>
+	<p>Now that we have the injection linked, let's add a new node. Clicking on <span class="clicky">Add Node</span> Will immediately create a new choice right after Root. These choice nodes have a few settings to configure, and all of them are important. A list of the settings is as follows:</p>
+	<ul>
+		<li><span class="clicky">Unique Key</span> is the internal name of the node. This setting is necessary for linking other nodes to this one. You will want to give it a unique name, not shared by any other node or complications in the script can occur.</li>
+		<li><span class="clicky">Button Text</span> is the text that will appear on the button for the user to click on to push further into your script. Whatever you want the button to show, this is where you put it.</li>
+		<li><span class="clicky">Tooltip</span> is the faint text that hovers above all the buttons that acts as a subtext of what the button represents. If you want subtext over your button, this is where you place it.</li>
+		<li><span class="clicky">Highlight</span> changes the color on the button, so that when the button shows up, it's visually distinguished from all the others. You can use this if your script allows this choice after something special happened.</li>
+		<li><span class="clicky">Custom Width</span> sort of goes without much saying. If enabled, you can adjust the button to be bigger or smaller to your liking.</li>
+		<li><span class="clicky">Actions Taken</span> is the script that is run when the choice is selected. Usually the scripts for choices are saved in subsequent State nodes, but often combat instantiation occurs in the Choice script.</li>
+		<li><span class="clicky">Node Appears When</span> is script that is checked to see if the choice is even presented to the user. It is expected to start with a "return" and followed by a possible true/false statement. For example: <span class="scriptapi">return Storage.GetNumber("XQ01") ==0</span></li>
+	</ul>
+	<p>Save your module and hit either the <span class="clicky">Launch Dev Mode</span> or <span class="clicky">Launch Normally</span> buttons to load up a new game. Go through the base game until you have full control and head to the north side of town to the notice board. Read the notices on there, and if you followed this guide correctly, you'll see your button on the screen, alongside all the base game content. However, clicking on the button doesn't do much, so we'll have to add a bit more scripts, including strings to display the messages we want to show.</p>
+	<figure>
+		<img src="https://i.imgur.com/o9TlSeM.png" style="width: 100%">
+		<img src="https://i.imgur.com/JyMmeZQ.png" style="width: 100%">
+		<figcaption>Notice the "Test" button in game now.</figcaption>
+	</figure>
+	<h3>Step by step: String Tables</h3>
+	<p>The first thing that we are going to want to happen is be able to have our messages display to the screen like all the other buttons. This is done through the String Tables that are created and referenced. Like with our scene before, Click on the <span class="clicky">Add Asset</span> button and add in a new String Table asset. The default name for the new asset is more than likely going to be "NewStringTable1." While some may be okay that generic name, it's probably not in your liking. Let's change that. With the string table asset highlighted in the Asset window, click on <span class="clicky">Rename</span> in the toolbar and the asset you highlighted will be available to rename.</p>
+	<p>Now that you have your asset renamed, let's add a set to the string table. Clicking on <span class="clicky">Add Set</span> will generate a new string set to work off of. There are some important things to note about String Sets:</p>
+	<ul>
+		<li>The name of the string set will be what is called on Log methods to display messages to the screen.</li>
+		<li>The text for the string set on the righthand side of the window has numbered lines. These are not line numbers, they are different possibilities that the Log method can call. If your message exceeds the bounds of the one line, it will wrap onto the next line.</li>
+		<li>Line breaks are handled with the <span class="clicky">\n</span> string. Use that instead of the enter key to represent new lines properly.</li>
+	</ul>
+	<p>With our String Table created, and our string set named, let's get to getting the message to actually display on screen. As listed on the <a href="#sref-logging">relevant scripting API documentation</a>, the Log() method is what we use to push a message to the main screen. So, on a state node, tied directly to the choice node we made earlier, set the action taken to Log your string set. Note that the Log method is not case sensitive, so you do not need to match the exact set that you put into the string table.</p>
+	<figure>
+		<img src="https://i.imgur.com/Vz34VG0.png" style="width: 33%">
+		<img src="https://i.imgur.com/Pe86PEz.png" style="width: 33%">
+		<img src="https://i.imgur.com/PeKuYWE.png" style="width: 33%">
+		<figcaption>Notice the "Test" button in game now.</figcaption>
+	</figure>
+	<p>If everything is going right, you may notice that there are no buttons, and that the game is effectively softlocked with nothing to do. To fix this, we need to link back as the original game did. So, if we <span class="clicky">Add Link</span> to the state entry, then we have the option of choosing a choice to link back to. So, to follow with the Core Finmer module, we should link our new state to the ReturnToBoard choice. </p>
+	
+	
+	
     <h3>Projects vs. Furballs</h3>
     <p>
         When you save a project in the editor, the editor saves a number of text files along with the project file - one for each asset. These text files contain all your work as human-readable text, to enable easy integration with backup or version control systems, should you choose to use that.
@@ -245,7 +294,7 @@
     <p>
         The Editor also saves a compact <em>furball</em> file in the game's Modules folder every time you save your project. This optimized furball file is what the game actually loads, and the thing you should distribute to others should you wish to share your content. Note the difference between the two: the <em>project</em> is used by the Editor to create the final <em>furball</em> file that the game works with. The term <em>module</em> is used to refer to either of them interchangeably.
     </p>
-
+	
     <a name="strtables"><h2>About String Tables</h2></a>
     <a name="strtables-grammar"><h3>Grammar &amp; Contexts</h3></a>
     <p>

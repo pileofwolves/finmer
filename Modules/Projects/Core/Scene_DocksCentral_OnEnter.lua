@@ -1,0 +1,1 @@
+SetLocation("South Finmer, Square")

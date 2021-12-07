@@ -432,7 +432,7 @@
 																				"Key": "MQ02F_R_End",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02_done\", true)\r\nStorage.SetNumber(\"bridge_repair\", GetTimeHourTotal() + 32)\r\nLog(\"mq02_barkeep_end\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")",
+																				"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"mq02_barkeep_end\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
 																				"ScriptAppear": "",
 																				"Children": [
 																					{

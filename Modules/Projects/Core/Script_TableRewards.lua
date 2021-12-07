@@ -9,6 +9,8 @@ RewardXP = {
     MQ02_EncNoViolence = 40, -- minor compensation for XP missed by not fighting
     MQ02_ChaseComplete = 40,
 
+    MQ03_Accept = 10,
+
     SQ01_Complete = 60,
 
     -- anger + kill:    25 + 20 =   45 XP

@@ -144,7 +144,13 @@
 		{
 			"Key": "MQ02_BARKEEP_END",
 			"Text": [
-				"After you wrap up your recap and lean back a bit, the barkeep mulls over the information. Finally, he makes eye contact again and nods respectfully. \"Alright, thanks for the info, and for doing this for us.\" A short pause follows as the canine scratches himself behind his ears. \"I... I'll have to get the town guard on this, too. Predation is obviously illegal, you understand, so they'll want a hold on this... Randall guy.\" He gestures at the door behind him, leading upstairs. \"Shit, what a mess. The mayor disappears, the bridge explodes, and now there are predators around.\" {^bartender} sighs heavily. \"Anyway. Now that we have what we need, it should be about a day or two to repair the bridge. In the mean time, stay as long as you like. I owe you that much at least.\""
+				"After you wrap up your recap and lean back a bit, the barkeep mulls over the information. Finally, he makes eye contact again and nods respectfully. \"Alright, thanks for the info, and for doing this for us.\" A short pause follows as the canine scratches himself behind his ears. \"I... I'll have to get the town guard on this, too. Predation is obviously illegal, you understand, so they'll want a hold on this... Randall guy.\" {^bartender} sighs heavily and rubs his eyes, considering the situation. \"Shit, what a mess. The mayor disappears, the bridge explodes, and now there are predators around. Anyway. Now that we have what we need, it should be about a day's work to repair the bridge. I hear the damage isn't quite as catastrophic as we had initially feared, so at least there's that.\""
+			]
+		},
+		{
+			"Key": "MQ02_BARKEEP_END2",
+			"Text": [
+				"{bartender} inhales for a moment, then nods, seemingly having made up his mind. \"Okay, would you mind heading back to Canbell and update her on the situation? We'll have things sorted shortly. Just need to... figure out this whole predation bit.\" A grim realization strikes him. \"I hope Iso's alright,\" he mutters. Finally, he gestures at the door behind him, leading upstairs. \"In the mean time, that spare room is yours to use as long as you need. I owe you that much at least.\""
 			]
 		},
 		{

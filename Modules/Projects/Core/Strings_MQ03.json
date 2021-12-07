@@ -1,0 +1,217 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "66d38bea-67c3-4683-846c-946bc14f0a6b",
+	"Name": "Strings_MQ03",
+	"Entries": [
+		{
+			"Key": "MQ03_INTRO1",
+			"Text": [
+				"The familiar figure of the snow leopardess coordinating recent efforts sits in front of an end table covered with a mess of letters and paperwork. She appears to have fallen asleep while working, her head resting on her arm, quill left forgotten on the table. You consider what to do."
+			]
+		},
+		{
+			"Key": "MQ03_INTRO2",
+			"Text": [
+				"Gently nudging Canbell, she jolts awake immediately at your slightest touch. The feline frantically glances up at you, before consciously spending a moment to compose herself. Only a moment later, and with a brush of her paw to settle the frazzled fur on her muzzle, she addresses you. \"Yes?\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO3",
+			"Text": [
+				"You relate to her a shorter but similar version of what you had told Edgard. Above all, the good news is that repairs are underway. Once that is done, a lot more will become possible. As it stands, it's clear that local merchants have not been particularly pleased with the interruption to their usual schedules. Canbell simply nods, taking in the information, before deciding on a course of action. \"Good. So, {player.name}, what about you? Where are you going?\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO3_DETAIL",
+			"Text": [
+				"She huffs indignantly, glancing down at the mountain of documents before her. \"Let's just say that I'm starting to see why Iso wanted an assistant. Taking care of all the trade documents going around this place is enough of a headache. This... recent mess... is not helping things.\" A flicker of hope glimmers in her eyes as she turns to you once more. \"Speaking of, you've been gone a while. I take it you have news? Did you speak to Edgard about our situation?\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO4",
+			"Text": [
+				"A warm flicker of a smile forces its way onto the feline's tired face. \"I was hoping you'd say something like that. Listen, you've already helped us, and I have no right to ask this of you, but you've proven yourself capable and spirits know I can use a pair of eyes and ears out there.\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO4_ALT",
+			"Text": [
+				"A soft chuckle forces its way up the feline's throat. \"I had a feeling you might say something like that. Listen, you've already helped us, and I have no right to ask this of you, but you've proven yourself capable and spirits know I can use a pair of eyes and ears out there.\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO5",
+			"Text": [
+				"She stops and takes a deep breath, selecting her words carefully. \"I have... reason to believe... that Iso went south. I found some notes that I think she left for me to find. Anyway, I won't bore you with the details, but she seemed convinced there is something brewing over at the coast that demanded immediate attention. More so than, well... the duties of one in public office, clearly.\" Canbell catches herself and shakes her head almost imperceptibly. \"Now. There's a traveling merchant preparing to head to South Finmer. Would you travel with him and visit our southern friends on my behalf? I've already asked the merchant about this; he would be waiting for you. I guess now that the bridge is being repaired, you can expect him there.\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO6",
+			"Text": [
+				"\"Thank you, {player.name}.\" The acting mayor takes a moment to rise from her wooden chair, either realizing that it would be somewhat rude of her to remain seated all this time, or perhaps simply desiring a little more blood flow. She shakes paws with you, respectfully nodding. You can't help but notice her darkened eyes, clearly a result of a lack of rest. \"I wish there was more I can tell you. It really must have been important, I don't know why else Iso would just up and leave. The notes I found seemingly avoided mentioning what exactly is going on over there, so I'm afraid you're heading in blind. But it's vital that we reestablish contact with our peers and find out if they're facing similar... destruction, and predation-related trouble.\""
+			]
+		},
+		{
+			"Key": "MQ03_INTRO7",
+			"Text": [
+				"With your new goal in mind, you bid the overworked snow leopardess farewell. She gives you a smile, more genuine this time than the first time you had met. \"Take care, {player.name}. And if you find anything, let me know right away.\" Assuring her you'll do that, you leave the room and the mayor to her work."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_BOARD",
+			"Text": [
+				"The chameleon appears visibly elated. It almost appears like his skin changes ever so slightly, the color becoming more vibrant - or perhaps it is a trick of the light. \"Well then, {player.name}-{player.species}, hop on in, and we will be off!\" Needing no further encouragement, you circle around the vehicle and the lone horse, who glances at you with barely concealed disinterest, before latching on to the carriage and lifting yourself up. Once you are comfortable, Zosk glances forward once more to ensure the road is clear, then yips a command to his steed and loudly claps his hand together. On cue, the horse begins walking forwards lazily, seemingly taking a few moments to gauge the weight, then settling into a comfortable pace."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_BOARD_DECLINE",
+			"Text": [
+				"The chameleon appears confused, then becomes annoyed. \"Listen here, delay has been long enough already. Zosk needs to get going.\" He sighs. \"Fine, fine. Miss Canbell insisted that Zosk waits for {player.name}-{player.species}. Take care of your errand, but don't be long.\" With that, the merchant turns his attention to his trusty horse, continuing its grooming."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_BOARD_POKE",
+			"Text": [
+				"Zosk, the merchant who promised you a ride south, is quick to greet you once more as you approach. \"{player.name}! Time to go, yes?\" He stands next to his carriage, apparently having been inspecting the cargo."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO1",
+			"Text": [
+				"As you pass the southern gate and make your way to the roaring river nearby, you manage to make out the figures of craftsmen standing close together, animatedly gesturing and talking as if celebrating the end of a hard day of work. Indeed, when you close the distance to observe the fruits of their labor for yourself, the structure spanning the natural obstacle has clearly been restored to impeccable quality. Wooden boards and smoothly-hewn bricks have been replaced with skill, to the point that you can tell only by the slight discoloration of the older sun-soaked planks where the damage had been done."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO2",
+			"Text": [
+				"A carriage sits close by, the emerald-colored fellow driving it obviously impatient to get moving again. It appears the crew finished collecting their things by the time you arrived, so barring any further developments, the road should be open for business once more. The large horse before the vehicle appears to be just as impatient to get moving as its master, judging by its incessant padding at the dusty path. The cargo itself, seated in the uncovered cart, consists of several sealed crates and barrels, the content of which are impossible to identify from here. All in all it appears to be a relatively run-of-the-mill delivery effort, no doubt eager to get going after having been delayed thus."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO3_MET",
+			"Text": [
+				"Zosk, the familiar merchant atop his wooden cart, glances behind him and greets you with a vibrant grin. \"{player.name}! You are here!\" he shouts excitedly, \"Wonderful news!\" You find that his jubilance is infectious, so it is with mirth that you catch up, standing next to the rickety carriage he is seated upon. Now side by side, albeit with some elevation in between, the chameleon casually waves at you with a viridian-colored hand."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO3_NEW",
+			"Text": [
+				"The emerald chameleon atop a rickety wooden carriage glances behind himself, greeting you with a vibrant grin as you approach. \"Greetings, dear {player.species}!\" he shouts excitedly. \"Wonderful news!\" You find that his jubilance is infectious, so it is with mirth that you catch up, standing next to the oaken steed he is seated upon. \"Oh, but where are my manners?\" he exclaims. The lizard extends a viridian-scaled hand towards you, ogling you with a gleeful smile that you cannot identify as either genuine or malicious. \"Zosk, merchant of industrial items, at your service!\" When you clasp his hand to affirm the greeting, he nods, before withdrawing."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO4",
+			"Text": [
+				"Such pleasantries exchanged, the chameleon turns to the new wood and brick bulwark that seeks to defy one of nature's more formidable obstacles. \"And here Zosk thought he'd be waiting all week! Thank you, friends, for your hard work!\" he shouts to the craftsfolk. They return a polite wave, before returning to their own conversations. \"Oh, my client will be so pleased,\" the lizard murmurs to himself. Seemingly remembering your presence beside him, Zosk turns to you again, bulbous eyes locking on to you. That grin never leaves his face, and it would be rather unnerving were it not for the pleased tone with which he addresses you. \"Tell me, are you headed to South Finmer as well?\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO5_NO",
+			"Text": [
+				"He shakes his head, clearly expecting a different answer. \"No, no, Zosk received word from Miss Canbell herself. {player.name} is to join Zosk on the adventurous road.\" When you express confusion, he points confidently to some empty space beside himself on the carriage. \"Ride along, no problem! Zosk has space, and you have tired feet!\" You briefly eye the nondescript cargo atop the cart behind him, wondering what could be so important as to warrant immediate delivery. While South Finmer could provide for itself in some respects, some deliveries would be needed, certainly. It could be preserved foodstuff, perhaps, though you catch a faint damp odor that you cannot quite place. The merchant gets your attention again. \"So? How about it? Better than trudging along a muddy road, yes?\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_INTRO5_YES",
+			"Text": [
+				"He nods, clearly pleased with your answer. \"So it is! {player.name} will join Zosk on the adventurous road!\" When you express confusion, he points confidently to some empty space beside himself on the carriage. \"Ride along, no problem! Zosk has space, and you have tired feet!\" You briefly eye the nondescript cargo atop the cart behind him, wondering what could be so important as to warrant immediate delivery. While South Finmer could provide for itself in some respects, some deliveries would be needed, certainly. It could be preserved foodstuff, perhaps, though you catch a faint damp odor that you cannot quite place. The merchant gets your attention again. \"So? How about it? Better than trudging along a muddy road, yes?\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TALK_CARGO",
+			"Text": [
+				"Briefly, the lizard casts a sidelong glance upon you, as if amused by your innocuous question, that natural confidence never wavering, before his eyes return elsewhere. You do not sense whether he is satisfied with what he saw. \"Construction work, yes. Folks in South Finmer wish to expand, more buildings, more people. Zosk learns to not ask specifics, business is healthier that way. Client asks, Zosk delivers. Good pay, of course.\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TALK_CLIENT",
+			"Text": [
+				"Zosk grunts and frowns at you, appearing a little offended at this question. \"No, no, {player.name}-{player.species}. Zosk has carved out a little segment of the market here; Contact-friend is mine, but Zosk promises it is all quite well above board, hee-hee.\" That cheerful face you've grown accustomed to in the past hour or so returns as he nods. \"Lots of supplies they need, excavating, make new room.\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TALK_FAMILY",
+			"Text": [
+				"Your driver pauses briefly, seemingly considering your question, before answering. \"We come together every winter. Big family, warm and cozy. Set out again in spring. Better that way, Zosk does not like the cold, oho!\" He takes a deep breath, then exhales slowly, allowing silence to persist for another second or two. \"Getting cold early this year. Zosk hopes this is the last job before returning home.\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TALK_ZOSK",
+			"Text": [
+				"The chameleon grins happily, though his eyes remain fixed on the road ahead. \"Ah, Zosk comes from a long line of merchants, you see!\" He makes an odd popping noise with his mouth. \"Done this for a while, yes. Pick up things in one place, trade away in the next, always moving. My brother, Rosk; he travels around the city Stiegal now, east from here.\" He chuckles darkly. \"Rosk always said he was smarter than Zosk; just wait until he finds out how rich Zosk is getting today.\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP01",
+			"Text": [
+				"As you cross the newly restored bridge together, you find yourself holding your breath - this was the first true test of the crew's construction efforts, after all. If it had been insufficiently repaired, you'd be in for a cold dive. Zosk appears to have no such reservations, idly staring ahead while humming a tune to himself. You glance behind you to find the men and women on the repair team staring right back at you, shrinking slowly as you move away from them, and you can't help but feel a little exposed. With a jolt of the vehicle and an accompanying surge of adrenaline through your veins, the cart's wheels leave the smooth touch of hewn stone to instead settle on the well-worn dirt path on the other end of the river. That wasn't so bad after all."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP02",
+			"Text": [
+				"With a soft sigh, you settle into the hardwood paneling of the cart in an attempt to prepare for the journey. The simple bench you and your companion are seated upon does not provide any protection from the elements whatsoever, or much in the way of comfort for that matter, but at least it makes the trip south that much shorter. The thought of being able to rest your legs for once is a nice bonus, too."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP03",
+			"Text": [
+				"By the time the Great North Road has long since vanished from view, the lone dirt path takes you through a densely forested area. The flattened ground guiding the horse twists and turns regularly as it makes its way around hills or rock formations, though it is certainly well-traveled enough to be wide and clearly visible at all times. With nothing else to focus on, you find yourself making smalltalk with Zosk."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP04",
+			"Text": [
+				"A silence falls, save for the gentle rhythm of the mount's hoofs and the creaking of the cart carrying you both. You take in the environment: the trees have given way to a cliffside facing the open, untamed ocean. With a solid rock wall on one side and quite the drop down on the other, the road might even be considered slightly dangerous were it not for the fact that the path is easily wide enough to accommodate the carriage and then some. The view is of course nothing short of stunning. The setting sun casts a surreal glow over the roaring waves far below you, its gentle warmth erasing the chill that had built up during the trip through the shaded woods."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP05",
+			"Text": [
+				"Your new friend then turns to you. \"And what about {player.name}-{player.species}? How do you end up riding together with old Zosk, hmm?\" You consider the question. It is not unfair, certainly, considering he has already been gracious enough to take you along in the first place."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP06",
+			"Text": [
+				"An image flashes across your mind, then: a broken shard of a memory somehow stirred to life by the merchant's words. You see your own paws setting down a large ceramic jug under a moonlit sky, gently unsealing it to reveal a murky liquid you cannot recall the nature of, only that the thought of it sends your heart racing. Someone else sets a similar jug down next to yours, hitting the cold stones with a soft thump. It is time. Through the dim haze of recollection, you remember yourself stepping backwards, guilt and grim determination warring on your subconscious as your partner begins mixing the two fluids. You reach into your pocket to retrieve the final piece of the puzzle."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP07",
+			"Text": [
+				"Zosk nudges you in your shoulder, instantly dispelling your moment of weakness. Only a brief moment had passed. Even when you attempt to focus on your memory once more, the image remains buried like a forgotten dream: present yet just out of reach.\\n\\nYou find that your paw is lodged in your pocket - you had meant to grab something, but what exactly escapes you, until your fingers find a tiny wooden stick you do not remember having there. You pull it out, quickly recognizing it as a handful of matches. The lizard glances at you curiously, perhaps not entirely oblivious to your inner turmoil, and you sheepishly put away your findings, realizing you had not yet answered his question."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP08",
+			"Text": [
+				"The emerald-hued trader nods slowly, considering your response. Whether it had struck a chord within him, or whether he is simply thinking on a proper response, you cannot tell. \"Zosk says: always stay true to yourself,\" he declares finally. \"You will find happiness that way. Zosk knows, of course - what better way to bring joy all over than to bring things from one place to another? Also, some coin, and visit nice places, uhuh.\""
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP09",
+			"Text": [
+				"You ponder his words as your mind chases after the memory you had just rediscovered. It continues to elude you, however, and all you end up with is a vague sense of dread. The road slopes downwards, and after a few minutes of comfortable silence, the docks and fisheries of South Finmer come into view. There is plenty of activity in this trading hub, and your dour mood is soon left behind."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP10",
+			"Text": [
+				"Unlike its northern counterpart, this community does not have a prominent gate and watchtower; rather, an impressive number of homely-looking buildings sit scattered around a network of roads branching off of the main entryway into the town. Nestled neatly on an elevated plateau, it looks out on the beach and docks area, which in turn is home to several ships. It is not surprising that even from here, approaching an open marketplace-like area, the scent of the sea permeates all."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP11",
+			"Text": [
+				"You make to jump off the carriage, eager to stretch your legs after all the time spent bouncing around on the wooden cart. Your driver, seemingly used to the sensation, appears to have no such reservations and is quite content staying up there for now. Dusting yourself off, you glance around, taking in the sights. Overall, the architectural style of the village is very similar to North Finmer's - large brick and stone structures, augmented with wood - though it is decidedly smaller both in the number of homes and the number of people moving about."
+			]
+		},
+		{
+			"Key": "MQ03_RIDESOUTH_TRIP12",
+			"Text": [
+				"When you express thanks for the ride, the lizard dismissively waves a hand. \"Oh, is nothing. Zosk had business here anyway, no harm done. Also, road gets... a little lonely, sometimes.\" He flashes you a trademark grin. \"Thanks for the chats, friend. We will see each other around again, surely. But Zosk must attend to business, so farewell for now.\" With that, he claps twice just like he had done earlier, and his horse begins walking away. Soon after, they disappear around a corner, and you are left alone to wonder where to go from here."
+			]
+		}
+	]
+}

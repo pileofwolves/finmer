@@ -1,0 +1,641 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "3063766b-f21c-43d4-acd2-8c77773ed8c4",
+	"Name": "Scene_RoadCarriageRide",
+	"ScriptCustom": {
+		"ID": "39223eaf-85ad-4b9d-a06f-dd84163ace3b",
+		"Name": "3063766b-f21c-43d4-acd2-8c77773ed8c4_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "2bdd1b5a-9c15-4676-b50c-15a569eb7bde",
+		"Name": "Scene_RoadCarriageRide_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "3af26273-f10f-47e0-a576-c151a46ae72a",
+		"Name": "3063766b-f21c-43d4-acd2-8c77773ed8c4_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Tooltip": "",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"ScriptAction": "",
+		"ScriptAppear": "",
+		"Children": [
+			{
+				"Key": "Ride_Start",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP01\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP02\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP03\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "Ride_C_AskZosk",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Zosk",
+														"Tooltip": "Ask about the merchant's background.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_ZOSK\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskFamily",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskCargo",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskClient",
+																		"Children": []
+																	},
+																	{
+																		"Key": "Ride_C_AskEnd",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "That's enough for now.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "-- Discussed at least one topic\r\nreturn Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\")",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Memory",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Ride_C_AskFamily",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Family",
+														"Tooltip": "Ask whether his work lets him see his relatives.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "-- Must have asked about the guy himself first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_FAMILY\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskZosk",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskCargo",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskClient",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskEnd",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Ride_C_AskCargo",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Cargo",
+														"Tooltip": "Ask about the contents of the cart behind you.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CARGO\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskZosk",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskFamily",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskClient",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskEnd",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "Ride_C_AskClient",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Client",
+														"Tooltip": "Ask about the buyer.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "-- Must have asked about cargo first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CLIENT\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskZosk",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskFamily",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskCargo",
+																		"Children": []
+																	},
+																	{
+																		"Key": "AutoLink",
+																		"IsState": false,
+																		"IsLink": true,
+																		"Title": "",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"LinkTarget": "Ride_C_AskEnd",
+																		"Children": []
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Ride_Memory",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP04\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP05\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP06\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP07\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Don't know",
+																		"Tooltip": "Say you don't have any particular reason for traveling here.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Reflect",
+																				"Children": []
+																			}
+																		]
+																	},
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Explore",
+																		"Tooltip": "Say you felt the call of adventure. Or maybe you just like traveling.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Reflect",
+																				"Children": []
+																			}
+																		]
+																	},
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Search",
+																		"Tooltip": "Say you intend to help find the missing mayor.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Reflect",
+																				"Children": []
+																			}
+																		]
+																	},
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Jobs",
+																		"Tooltip": "Say you intend to look for work.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Reflect",
+																				"Children": []
+																			}
+																		]
+																	},
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Food",
+																		"Tooltip": "Say you wish to try the local cuisine (perhaps in more ways than one).",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Ride_Reflect",
+																				"Children": []
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Ride_Reflect",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP08\")",
+				"ScriptAppear": "",
+				"Children": [
+					{
+						"Key": "",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Tooltip": "",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "",
+						"ScriptAppear": "",
+						"Children": [
+							{
+								"Key": "",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP09\")",
+								"ScriptAppear": "",
+								"Children": [
+									{
+										"Key": "",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Tooltip": "",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "",
+										"ScriptAppear": "",
+										"Children": [
+											{
+												"Key": "",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP10\")",
+												"ScriptAppear": "",
+												"Children": [
+													{
+														"Key": "",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Tooltip": "",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "",
+														"ScriptAppear": "",
+														"Children": [
+															{
+																"Key": "",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP11\")",
+																"ScriptAppear": "",
+																"Children": [
+																	{
+																		"Key": "",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP12\")",
+																				"ScriptAppear": "",
+																				"Children": [
+																					{
+																						"Key": "",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Tooltip": "Finally, you've arrived!",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "-- Progress the main quest\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nJournal.Update(\"MQ03\", 40)\r\n\r\n-- Teleport to South Finmer\r\nSetScene(\"Scene_DocksCentral\")",
+																						"ScriptAppear": "",
+																						"Children": []
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

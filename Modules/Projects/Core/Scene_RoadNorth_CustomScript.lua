@@ -1,5 +1,5 @@
 local function GetBridgeTimeLeft()
-    return Storage.GetNumber("bridge_repair") - GetTimeHourTotal()
+    return Storage.GetNumber("BRIDGE_REPAIR_TIME") - GetTimeHourTotal()
 end
 
 function GoEast()
@@ -7,22 +7,30 @@ function GoEast()
 end
 
 function GoSouth()
-    if not Storage.GetFlag("mq02_done") then
-        Log("bridge_broken")
+    -- Bridge is out
+    if not Storage.GetFlag("MQ03_STARTED") then
+        Log("BRIDGE_BROKEN")
         return
     end
 
-    -- MQ02 bridge repair sequence
-    if not Storage.GetFlag("bridge_is_repaired") then
-        local timeLeft = GetBridgeTimeLeft()
-        if timeLeft > 8 then
-            Log("bridge_repair_long")
+    -- Bridge is being repaired
+    if not Storage.GetFlag("BRIDGE_IS_REPAIRED") then
+        local hours_left = GetBridgeTimeLeft()
+        if hours_left > 8 then
+            Log("BRIDGE_REPAIR_LONG")
         else
-            Log("bridge_repair_short")
+            Log("BRIDGE_REPAIR_SHORT")
         end
         return
     end
-    -- if bridge is repaired, start up travel to the south
-    --BeginRoadTravel("Scene_Cliffside")
-    Log("DEMO_END", Color.Highlight)
+
+    -- Bridge has been repaired, go south!
+    -- Note: the first trip south (with the carriage) doesn't go through this function; check the scene instead
+    assert(Storage.GetFlag("MQ03_RODE_SOUTH"), "bypassing carriage ride")
+    BeginRoadTravel("Scene_Cliffside")
+end
+
+-- Once MQ02 is done, we can repair the bridge
+if Storage.GetFlag("MQ03_STARTED") and GetBridgeTimeLeft() <= 0 then
+    Storage.SetFlag("BRIDGE_IS_REPAIRED", true)
 end

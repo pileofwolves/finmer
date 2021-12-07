@@ -7,6 +7,18 @@
 		{
 			"Key": 10,
 			"Text": "A key bridge on the trade route to South Finmer was destroyed last night. Pending repairs, travel is impossible."
+		},
+		{
+			"Key": 20,
+			"Text": "Acting mayor Canbell should be informed of recent developments. Visit her in the town hall."
+		},
+		{
+			"Key": 30,
+			"Text": "Acting mayor Canbell has arranged for you to travel south with a traveling merchant. Find him near the town's south gate."
+		},
+		{
+			"Key": 40,
+			"Text": "Tbd"
 		}
 	]
 }

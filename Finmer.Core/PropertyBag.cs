@@ -117,10 +117,9 @@ namespace Finmer.Core
         /// Returns a boolean value associated with a specified key.
         /// </summary>
         /// <param name="key">The key to look up.</param>
-        /// <param name="defaultValue">The default value to return if the key is absent.</param>
-        public bool GetBool(string key, bool defaultValue = false)
+        public bool GetBool(string key)
         {
-            return m_PropBool.Contains(key.ToUpperInvariant()) || defaultValue;
+            return m_PropBool.Contains(key.ToUpperInvariant());
         }
 
         /// <summary>

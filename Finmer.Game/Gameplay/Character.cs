@@ -193,7 +193,7 @@ namespace Finmer.Gameplay
 
             // Combat settings
             IsPredator = template.GetBool(SaveData.k_Character_IsPredator);
-            PredatorDigests = template.GetBool(SaveData.k_Character_PredatorDigest, true);
+            PredatorDigests = template.GetBool(SaveData.k_Character_PredatorDigest);
             PredatorFullness = template.GetFloat(SaveData.k_Character_PredatorFullness);
 
             // Load equipment

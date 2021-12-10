@@ -194,6 +194,10 @@ namespace Finmer.Gameplay
             m_TotalPreySwallowed = template.GetInt(SaveData.k_Player_NumPreySwallowed);
             m_TotalPreyDigested = template.GetInt(SaveData.k_Player_NumPreyDigested);
 
+            // Player character always digests prey
+            IsPredator = true;
+            PredatorDigests = true;
+
             // Script data
             AdditionalSaveData = template.GetNestedPropertyBag(SaveData.k_Player_ExtData) ?? new PropertyBag();
 

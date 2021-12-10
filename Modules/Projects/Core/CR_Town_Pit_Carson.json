@@ -4,15 +4,15 @@
 	"Name": "CR_Town_Pit_Carson",
 	"ObjectName": "Carson",
 	"ObjectAlias": "the otter",
-	"Strength": 1,
-	"Agility": 4,
-	"Body": 2,
-	"Wits": 3,
+	"Strength": 3,
+	"Agility": 5,
+	"Body": 3,
+	"Wits": 7,
 	"Flags": 0,
 	"Level": 3,
 	"Size": "Medium",
 	"Gender": "Male",
-	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment1": "795c79f2-ce54-4c2f-837e-d767e3c2599a",
 	"Equipment2": "00000000-0000-0000-0000-000000000000",
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
@@ -21,12 +21,12 @@
 	"StringMappings": [
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_CARSON_KILL_GENERIC"
 		},
 		{
-			"Key": "KILL_GENERIC_POV",
-			"Rule": "Always",
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_CARSON_KILL_GENERIC_POV"
 		},
 		{
@@ -36,12 +36,12 @@
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_CARSON_KILL_DIGESTED"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_CARSON_VORE_WIN"
 		}
 	]

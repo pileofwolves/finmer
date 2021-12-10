@@ -44,24 +44,34 @@ function LogGsub(key, vars, color)
     LogRaw(strval, color)
 end
 
+function LogVore(predator, prey)
+    Text.SetContext("predator", predator)
+    Text.SetContext("prey", prey)
+    Sleep(3)
+    LogRaw(prey:GetString("VORE_WIN", Player))
+end
+
+function LogPostVore(scat, noscat)
+    -- if the player disabled scat, then use the noscat msg if present, otherwise exit
+    local text = Player.PreferScat and scat or noscat
+    if text == nil then return end
+
+    Sleep(3)
+    LogSplit()
+    Log(text)
+end
+
 function PreySense(pred, style, does_digest)
     if Player.IsPreySenseEnabled then
-        local color
-        local vtype 
-        if style == 0 then vtype = "OV" 
-        elseif style == 1 then vtype = "AV" 
-        elseif style == 2 then vtype = "CV" 
-        elseif style == 3 then vtype = "UB" 
+        local vtype
+        if style == EVoreStyle.OV then vtype = "oral vore"
+        elseif style == EVoreStyle.AV then vtype = "anal vore"
+        elseif style == EVoreStyle.CV then vtype = "cock vore"
+        elseif style == EVoreStyle.UB then vtype = "unbirth"
         end
-        local vfinal
-        if does_digest then 
-            vfinal = "Fatal"
-            color = Color.Red
-        else 
-            vfinal = "Endo" 
-            color = Color.Neutral
-        end
-        LogRaw("You have that feeling in your gut...  " ..pred.Name.. ": " ..vtype.. ", " ..vfinal.. "", color)
+        local vfinal = does_digest and "fatal" or "endo"
+        local vcolor = does_digest and Color.Hostile or Color.Neutral
+        LogRaw("You have that strange feeling...  " .. pred.Name .. ": " .. vtype .. ", " .. vfinal, vcolor)
     end
 end
 
@@ -205,13 +215,4 @@ function PostVore(scat, noscat)
 
     -- Forward to new function
     LogPostVore(scat, noscat)
-end
-function LogPostVore(scat, noscat)
-    -- if the player disabled scat, then use the noscat msg if present, otherwise exit
-    local text = Player.PreferScat and scat or noscat
-    if text == nil then return end
-
-    Sleep(3)
-    LogSplit()
-    Log(text)
 end

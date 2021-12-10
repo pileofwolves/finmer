@@ -4,10 +4,10 @@
 	"Name": "CR_Town_Pit_RechFatal",
 	"ObjectName": "Rech",
 	"ObjectAlias": "the croc",
-	"Strength": 4,
-	"Agility": 0,
-	"Body": 4,
-	"Wits": 0,
+	"Strength": 5,
+	"Agility": 5,
+	"Body": 5,
+	"Wits": 4,
 	"Flags": 0,
 	"Level": 5,
 	"Size": "Medium",
@@ -23,8 +23,8 @@
 	"PredatorDisposal": false,
 	"StringMappings": [
 		{
-			"Key": "KILL_DIGESTED_POV",
-			"Rule": "Always",
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_RECH_TOKEN_KILL_DIGESTED_POV"
 		}
 	]

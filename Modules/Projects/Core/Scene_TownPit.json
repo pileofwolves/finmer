@@ -666,7 +666,7 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"TOWN_PIT_DESK_CH_DENY_BELLY\")",
-								"ScriptAppear": "return Player.StomachCount > 0",
+								"ScriptAppear": "return Player.PredatorFullness > 0.1",
 								"Children": [
 									{
 										"Key": "Entry_C_Chall_DenyOK",
@@ -944,7 +944,7 @@
 								"Key": "Entry_R_Claim_Reward",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer.Money = Player.Money + totalReward\r\nLog(\"TOWN_PIT_DESK_REWARD\")\r\nLogGsub(\"gold_get\", {num = totalReward}, Color.LightBlue)",
+								"ScriptAction": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    if IsDebugMode() then print(\"warning: entitled > #RewardGoldPit\") end\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer.Money = Player.Money + totalReward\r\nLog(\"TOWN_PIT_DESK_REWARD\")",
 								"ScriptAppear": "return Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\") < Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")",
 								"Children": [
 									{
@@ -975,7 +975,7 @@
 								"Key": "Entry_R_Claim_Annoy",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPlayer:GiveItem(\"I_PitRechToken\", true)",
+								"ScriptAction": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPlayer:GiveItem(\"I_PitRechToken\")",
 								"ScriptAppear": "-- Just one extra click is enough, because most players will be conditioned to not click the same button twice, let alone three times.\r\nreturn Storage.GetNumber(\"TOWN_PIT_CASH_BUGGED\") > 0",
 								"Children": [
 									{
@@ -1151,14 +1151,6 @@
 				]
 			},
 			{
-				"Key": "____________________",
-				"IsState": true,
-				"IsLink": false,
-				"ScriptAction": "-- this state should be unreachable\r\nerror()",
-				"ScriptAppear": "",
-				"Children": []
-			},
-			{
 				"Key": "SafeRoomEnter",
 				"IsState": true,
 				"IsLink": false,
@@ -1233,7 +1225,7 @@
 				"Key": "Op1",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_O_VULPES1\")",
+				"ScriptAction": "Log(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EVoreStyle.OV, true)",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -1280,38 +1272,9 @@
 														"Tooltip": "Dance the dance of predation.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local guy = Creature(\"Town_Pit_Vulpes\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    -- Take a different branch\r\n    -- EDIT: Why not just call EatThePreyAnyway() right here? Saves a bunch of complexity\r\n    Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", true)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+														"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_Town_Pit_Vulpes\"))\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
-															{
-																"Key": "Op1_R_FightWonNoVore",
-																"IsState": true,
-																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", false)\r\n\r\nlocal guy = Creature(\"Town_Pit_Vulpes\")\r\nEatThePreyAnyway(guy)",
-																"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP1_END_NOVORE\")",
-																"Children": [
-																	{
-																		"Key": "Op1_C_End_Vore",
-																		"IsState": false,
-																		"IsLink": false,
-																		"Title": "Continue",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
-																		"Children": [
-																			{
-																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
-																				"LinkTarget": "Op1_R_FightWon",
-																				"Children": []
-																			}
-																		]
-																	}
-																]
-															},
 															{
 																"Key": "Op1_R_FightWon",
 																"IsState": true,
@@ -1366,30 +1329,10 @@
 														]
 													},
 													{
-														"Key": "Op1_C_Dbg_Skip1",
+														"Key": "Op1_C_Dbg_Skip",
 														"IsState": false,
 														"IsLink": false,
-														"Title": "[DBG] Skip, kill",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP1_END_NOVORE\", true)",
-														"ScriptAppear": "return IsDebugMode()",
-														"Children": [
-															{
-																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
-																"LinkTarget": "Op1_R_FightWonNoVore",
-																"Children": []
-															}
-														]
-													},
-													{
-														"Key": "Op1_C_Dbg_Skip2",
-														"IsState": false,
-														"IsLink": false,
-														"Title": "[DBG] Skip, digest",
+														"Title": "[DBG] Skip",
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -1419,7 +1362,7 @@
 				"Key": "Op2",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_O_CARSON2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\n-- (No preysense because Carson is not a predator)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON2\")",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -1448,14 +1391,14 @@
 										"Tooltip": "The moment of truth.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local guy = Creature(\"Town_Pit_Carson\")\r\nlocal stop = false\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    -- Completed encounter without eating Carson, alternate dialogue\r\n    Storage.SetFlag(\"TOWN_PIT_OPP2_END_NOVORE\", true)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\n    -- WORKAROUND: Ending combat here resets the CombatManager, which will cause an enumerator invalidation\r\n    -- in OnTurn and therefore a crash. By moving this to the round end function, we're out of the offending loop, and can stop combat.\r\n    stop = true\r\n    Player.Health = 1\r\nend)\r\nCombat.OnRoundEnd(function()\r\n    if stop then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+										"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_Town_Pit_Carson\"))\r\nstate:OnCreatureKilled(function(killer, target)\r\n    if not state:IsSwallowed(target) then\r\n        -- Completed encounter without eating Carson, alternate dialogue\r\n        Storage.SetFlag(\"TOWN_PIT_OPP2_END_NOVORE\", true)\r\n    end\r\nend)\r\nstate:OnPlayerKilled(function()\r\n    -- Carson does not kill the player\r\n    Player.Health = 1\r\n    -- Manually write kill text because we just revived the player\r\n    Log(\"TOWN_PIT_O_CARSON_KILL_GENERIC_POV\")\r\n    Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\n    state:End()\r\nend)\r\nstate:Begin()",
 										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "Op2_R_FightLost",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLog(\"TOWN_PIT_O_CARSON_DEFEAT\")",
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON_DEFEAT\")",
 												"ScriptAppear": "return Storage.GetFlag(\"TOWN_PIT_OPP2_LOST\")",
 												"Children": [
 													{
@@ -1524,7 +1467,7 @@
 																"Key": "Op2_R_NV_Eat",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\nSleep(4)\r\nEatThePreyAnyway(Creature(\"Town_Pit_Carson\"))",
+																"ScriptAction": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\n\r\n-- Show gulp text\r\nlocal food = Creature(\"CR_Town_Pit_Carson\")\r\nLogVore(Player, food)\r\n\r\n-- Start a digestion sequence (with Carson already swallowed)\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(food)\r\nstate:SetVored(Player, food)\r\nstate:Begin()",
 																"ScriptAppear": "",
 																"Children": [
 																	{
@@ -1711,7 +1654,7 @@
 				"Key": "Op3",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_O_TYE2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EVoreStyle.OV, true)",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -1740,14 +1683,14 @@
 										"Tooltip": "We'll see about that.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local guy = Creature(\"Town_Pit_Tye\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    EatThePreyAnyway(guy)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+										"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_Town_Pit_Tye\"))\r\nstate:Begin()",
 										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "Op3_R_FightWon",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP3_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP3_FOUGHT\", true)\r\nStorage.SetFlag(\"TYE_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_TYE_VICTORY\")\r\nPlayer:GiveItem(\"I_PitTyePendant\", true)",
+												"ScriptAction": "Storage.SetFlag(\"TOWN_PIT_OPP3_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP3_FOUGHT\", true)\r\nStorage.SetFlag(\"TYE_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_TYE_VICTORY\")\r\nPlayer:GiveItem(\"I_PitTyePendant\")",
 												"ScriptAppear": "",
 												"Children": [
 													{
@@ -1804,7 +1747,7 @@
 				"Key": "Op4",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_O_PHILLIP2\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EVoreStyle.OV, true)",
 				"ScriptAppear": "",
 				"Children": [
 					{
@@ -1851,7 +1794,7 @@
 														"Tooltip": "Oh, you won't keep him waiting, alright...",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "-- I really should be unifying these combat scripts somewhere.\r\nlocal guy = Creature(\"Town_Pit_Phillip\")\r\nCombat.Reset()\r\nCombat.AddCombatant(guy)\r\nCombat.OnCharacterKilled(function(killer, target)\r\n    EatThePreyAnyway(guy)\r\nend)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(guy)\r\nend)\r\nCombat.Begin()",
+														"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_Town_Pit_Phillip\"))\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{

@@ -4,42 +4,42 @@
 	"Name": "CR_Town_Pit_Phillip",
 	"ObjectName": "Phillip",
 	"ObjectAlias": "the horse",
-	"Strength": 4,
-	"Agility": -1,
-	"Body": 3,
-	"Wits": 0,
+	"Strength": 8,
+	"Agility": 4,
+	"Body": 7,
+	"Wits": 5,
 	"Flags": 0,
 	"Level": 4,
 	"Size": "Medium",
 	"Gender": "Male",
-	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment1": "0be57b08-5da7-40f8-8fef-53805ba9bfa8",
 	"Equipment2": "00000000-0000-0000-0000-000000000000",
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePrey": true,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
 	"PredatorDisposal": false,
 	"StringMappings": [
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
-			"Rule": "Always",
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_PHILLIP_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_PHILLIP_VORE_WIN"
 		},
 		{
-			"Key": "VORE_WIN_POV",
-			"Rule": "Always",
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_PHILLIP_VORE_WIN_POV"
 		}
 	]

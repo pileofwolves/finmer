@@ -43,5 +43,6 @@ EVoreStyle = {
     CV              = 2,
     UB              = 3,
 }
+
 -- Backwards compatibility
 Compass = ECompass

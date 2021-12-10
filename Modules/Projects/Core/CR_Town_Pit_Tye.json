@@ -4,10 +4,10 @@
 	"Name": "CR_Town_Pit_Tye",
 	"ObjectName": "Tye",
 	"ObjectAlias": "the wolf-deer",
-	"Strength": 2,
-	"Agility": 2,
-	"Body": 2,
-	"Wits": 2,
+	"Strength": 5,
+	"Agility": 5,
+	"Body": 6,
+	"Wits": 4,
 	"Flags": 0,
 	"Level": 3,
 	"Size": "Medium",
@@ -17,29 +17,29 @@
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePrey": true,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
 	"PredatorDisposal": false,
 	"StringMappings": [
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_TYE_KILL_DIGESTED"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
-			"Rule": "Always",
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_TYE_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_TYE_VORE_WIN"
 		},
 		{
-			"Key": "VORE_WIN_POV",
-			"Rule": "Always",
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_TYE_VORE_WIN_POV"
 		}
 	]

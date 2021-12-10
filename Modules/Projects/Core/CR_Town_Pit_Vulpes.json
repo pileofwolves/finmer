@@ -4,21 +4,21 @@
 	"Name": "CR_Town_Pit_Vulpes",
 	"ObjectName": "Vulpes",
 	"ObjectAlias": "the fox",
-	"Strength": 1,
-	"Agility": 2,
-	"Body": 3,
-	"Wits": 3,
+	"Strength": 4,
+	"Agility": 6,
+	"Body": 5,
+	"Wits": 4,
 	"Flags": 0,
 	"Level": 3,
 	"Size": "Medium",
 	"Gender": "Male",
-	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment1": "b5f9289b-46c5-4e90-916b-95832ccbc584",
 	"Equipment2": "00000000-0000-0000-0000-000000000000",
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePrey": true,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
 	"PredatorDisposal": false,
 	"StringMappings": [
@@ -28,33 +28,33 @@
 			"NewKey": "TOWN_PIT_O_VULPES_MISS"
 		},
 		{
-			"Key": "KILL_GENERIC_POV",
-			"Rule": "Always",
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_VULPES_KILL_GENERIC_POV"
 		},
 		{
 			"Key": "KILL_GENERIC",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_VULPES_KILL_GENERIC"
 		},
 		{
 			"Key": "KILL_DIGESTED",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_VULPES_KILL_DIGESTED"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
-			"Rule": "Always",
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_VULPES_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_WIN",
-			"Rule": "Always",
+			"Rule": "PlayerToNpc",
 			"NewKey": "TOWN_PIT_O_VULPES_VORE_WIN"
 		},
 		{
-			"Key": "VORE_WIN_POV",
-			"Rule": "Always",
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
 			"NewKey": "TOWN_PIT_O_VULPES_VORE_WIN_POV"
 		}
 	]

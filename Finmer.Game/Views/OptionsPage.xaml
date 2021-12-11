@@ -29,23 +29,24 @@
             Style="{StaticResource TextBlockDefault}"
             Text="General" />
         <CheckBox
-            Content="Enable hyphenation in game log"
-            IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
-        <TextBlock
-            Style="{StaticResource OptionSubtitle}"
-            Text="Allows breaking and wrapping of words in the game log." />
-        <CheckBox
             Content="Enable disposal content"
             IsChecked="{Binding PreferScat, Mode=TwoWay}" />
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
-            Text="Allows explicit post-vore scat and such." />
+            Text="Allow explicit post-vore scat." />
         <CheckBox
-            Content ="Enable PreySense"
-            IsChecked="{Binding PreySense, Mode=TwoWay}"/>
+            Content="Enable preysense"
+            IsChecked="{Binding PreySense, Mode=TwoWay}" />
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
-            Text="Allows warnings of vore before the scene plays out."/>
+            Text="Display spoilers for vore scenes just before they happen." />
+        <CheckBox
+            Content="Enable hyphenation in game log"
+            IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Allow breaking and wrapping of words in the game log." />
+
         <Grid Style="{StaticResource OptionSpacer}" />
 
         <TextBlock

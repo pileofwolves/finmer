@@ -710,7 +710,7 @@
 																																						"Tooltip": "Look around the house, see if anything's worth taking.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAction": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer.Money = Player.Money + RewardGold.KillOliver",
+																																						"ScriptAction": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)",
 																																						"ScriptAppear": "",
 																																						"Children": [
 																																							{
@@ -1101,7 +1101,7 @@
 												"Key": "Cottage_R_SQ03Handin",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)\r\nPlayer.Money = Player.Money + RewardGold.SQ03",
+												"ScriptAction": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)\r\nPlayer:ModifyMoney(RewardGold.SQ03)",
 												"ScriptAppear": "",
 												"Children": [
 													{

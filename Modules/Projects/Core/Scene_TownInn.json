@@ -156,7 +156,7 @@
 																"Key": "BottomsUp",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Player.Money = Player.Money - 1\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
+																"ScriptAction": "Player:ModifyMoney(-1)\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
 																"ScriptAppear": "",
 																"Children": [
 																	{

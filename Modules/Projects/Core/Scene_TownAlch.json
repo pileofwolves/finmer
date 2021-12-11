@@ -601,7 +601,7 @@
 												"Key": "Q01_Handin3",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer.Money = Player.Money + RewardGold.SQ01",
+												"ScriptAction": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)",
 												"ScriptAppear": "",
 												"Children": [
 													{

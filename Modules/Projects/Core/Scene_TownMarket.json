@@ -490,7 +490,7 @@
 																"Key": "EvNaked_R_GetEaten",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer.Money = math.max(Player.Money - 10, 0)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
+																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer:ModifyMoney(-10)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
 																"ScriptAppear": "",
 																"Children": [
 																	{

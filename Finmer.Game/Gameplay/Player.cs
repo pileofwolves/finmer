@@ -215,15 +215,12 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Adds XP to the player's total and performs levelups if necessary.
+        /// Adds XP to the player's total and performs level-ups if necessary.
         /// </summary>
         /// <param name="amount">The amount of XP to add.</param>
-        /// <param name="announce">Whether or not to print a 'you gain ... xp' message.</param>
-        public void AwardXP(int amount, bool announce = true)
+        public void AwardXP(int amount)
         {
-            // removed, message is now printed by CombatManager.CheckKill()
-            if (announce)
-                GameUI.Instance.Log($"You gain {amount} XP.", Theme.LogColorLightGray);
+            GameUI.Instance.Log($"Gained {amount} XP.", Theme.LogColorLightGray);
             XP += amount;
 
             while (XP >= RequiredXP)
@@ -376,6 +373,26 @@ namespace Finmer.Gameplay
             var self = FromLuaNonOptional<Player>(L, 1);
             var amount = (int)LuaApi.luaL_checknumber(L, 2);
             self.AwardXP(amount);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedModifyMoney(IntPtr L)
+        {
+            var self = FromLuaNonOptional<Player>(L, 1);
+            var delta = (int)LuaApi.luaL_checknumber(L, 2);
+
+            // Ignore same-value assignments
+            if (delta == 0)
+                return 0;
+
+            // Show message describing the change
+            var suffix = (Math.Abs(delta) == 1) ? String.Empty : "s";
+            GameUI.Instance.Log($"{(delta > 0 ? "Gained" : "Lost")} {Math.Abs(delta)} coin{suffix}.", Theme.LogColorLightGray);
+
+            // Perform assignment, clamp to zero
+            self.Money = Math.Max(self.Money + delta, 0);
 
             return 0;
         }

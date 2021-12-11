@@ -821,7 +821,7 @@
 												"Key": "FoxtaurTalkRoot",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "",
+												"ScriptAction": "PreySense(Creature(\"CR_Town_Foxtaur\"), EVoreStyle.OV, true)",
 												"ScriptAppear": "",
 												"Children": [
 													{

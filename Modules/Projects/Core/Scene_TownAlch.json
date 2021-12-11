@@ -73,7 +73,7 @@
 						"Tooltip": "Have a look at the wares on display.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la's Solutions\"\r\nshop.RestockInterval = 24\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()",
+						"ScriptAction": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la's Solutions\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()",
 						"ScriptAppear": "",
 						"Children": [
 							{
@@ -401,7 +401,7 @@
 																"Key": "Q01_InvestigReply",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "local stubborn = Storage.GetNumber(\"sq01_nosy\") + 1\r\nStorage.SetNumber(\"sq01_nosy\", stubborn)\r\nLog(\"sq01_ask_why\" .. stubborn)",
+																"ScriptAction": "local stubborn = Storage.GetNumber(\"sq01_nosy\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"sq01_nosy\", stubborn)\r\nLog(\"sq01_ask_why\" .. stubborn)",
 																"ScriptAppear": "",
 																"Children": [
 																	{

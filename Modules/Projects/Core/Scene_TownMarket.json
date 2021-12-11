@@ -436,7 +436,7 @@
 				"Key": "Event_Naked",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")",
+				"ScriptAction": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")\r\n\r\nPreySense(guard, EVoreStyle.OV, false)",
 				"ScriptAppear": "return Player.EquippedArmor == nil",
 				"Children": [
 					{
@@ -483,7 +483,7 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.PredatorDigests = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
+														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.Name = \"Town Guard\"\r\nguard.PredatorDigests = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{
@@ -820,7 +820,7 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local shop = Shop(\"MarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAction": "local shop = Shop(\"TownMarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
 										"ScriptAppear": "",
 										"Children": []
 									}
@@ -854,7 +854,7 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "--Log(\"town_market_fruit_leave\")",
+										"ScriptAction": "",
 										"ScriptAppear": "",
 										"Children": [
 											{
@@ -916,7 +916,7 @@
 										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local shop = Shop(\"MarketFruit\")\r\nshop.Title = \"Fresh Foods Stand\"\r\nshop.StringGroup = \"SHOP_GENERIC_\"\r\nshop.RestockInterval = 24\r\nif shop.NeedsRestock then\r\n    shop.NeedsRestock = false\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodBread\"), -1)\r\n    shop:AddItem(Item(\"U_FoodCheese\"), -1)\r\n    shop:AddItem(Item(\"U_FoodGrapes\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ScriptAction": "local shop = Shop(\"TownMarketFruit\")\r\nshop.Title = \"Fresh Foods Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodBread\"), -1)\r\n    shop:AddItem(Item(\"U_FoodCheese\"), -1)\r\n    shop:AddItem(Item(\"U_FoodGrapes\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
 										"ScriptAppear": "",
 										"Children": []
 									}

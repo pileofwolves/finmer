@@ -148,7 +148,7 @@
 												"Key": "Pit_R_GiveToken",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")",
+												"ScriptAction": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EVoreStyle.OV, true)",
 												"ScriptAppear": "",
 												"Children": [
 													{
@@ -202,7 +202,7 @@
 																								"Key": "Pit_R_GiveToken4",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"Town_Pit_RechFatal\")\r\nCombat.AddCombatant(rech)\r\nCombat.SetVored(rech, Player, true)\r\nCombat.Begin()",
+																								"ScriptAction": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"CR_Town_Pit_RechFatal\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player, true)\r\nstate:Begin()",
 																								"ScriptAppear": "",
 																								"Children": []
 																							}
@@ -226,7 +226,7 @@
 								"Key": "Pit_R_Night",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")",
+								"ScriptAction": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")\r\n\r\n-- Preysense warning only if vore scene not already triggered\r\nif not Storage.GetFlag(\"town_pit_rech_sneaky\") then\r\n    PreySense(Creature(\"CR_Town_Pit_RechEndo\"), EVoreStyle.OV, false)\r\nend",
 								"ScriptAppear": "return GetIsNight()",
 								"Children": [
 									{
@@ -489,7 +489,7 @@
 																								"Key": "Pit_R_SneakVore2",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_VORE2\")\r\nSleep(4)\r\n\r\nlocal rounds = 1\r\nlocal rech = Creature(\"Town_Pit_RechEndo\")\r\nCombat.AddCombatant(rech)\r\nCombat.SetVored(rech, Player, true)\r\nCombat.OnRoundEnd(function(round)\r\n    Log(\"TOWN_PIT_RECH_SNEAK_WALK\" .. rounds)\r\n    rounds = rounds + 1\r\n\r\n    if rounds >= 6 then\r\n        Combat.End()\r\n    end\r\nend)\r\nCombat.Begin()",
+																								"ScriptAction": "Log(\"TOWN_PIT_RECH_SNEAK_VORE2\")\r\nSleep(4)\r\n\r\nlocal rech = Creature(\"CR_Town_Pit_RechEndo\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player, true)\r\nstate:OnRoundEnd(function(round)\r\n    Log(\"TOWN_PIT_RECH_SNEAK_WALK\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
 																								"ScriptAppear": "",
 																								"Children": [
 																									{

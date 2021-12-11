@@ -42,7 +42,7 @@
 		{
 			"Key": "INN_FOXTAUR_ARREST2",
 			"Text": [
-				"The {barkeep} blinks at you, his gaze softening. \"Gavin was going to ... eat you?\" He glances down at the unconscious predator, who is unceremoniously sprawled out on the floor, revealing just how much bulk, muscle and fur is to the taur. \"Fuck. I'll have to get the town guard to help clean this mess up. Stick around for a bit, they'll probably want a statement,\" the canine says before turning and heading back down the creaky stairs, his tail flicking behind him. You decide you don't really want to stay in this room either."
+				"The {bartender} blinks at you, his gaze softening. \"Gavin was going to ... eat you?\" He glances down at the unconscious predator, who is unceremoniously sprawled out on the floor, revealing just how much bulk, muscle and fur is to the taur. \"Fuck. I'll have to get the town guard to help clean this mess up. Stick around for a bit, they'll probably want a statement,\" the canine says before turning and heading back down the creaky stairs, his tail flicking behind him. You decide you don't really want to stay in this room either."
 			]
 		},
 		{
@@ -150,7 +150,13 @@
 		{
 			"Key": "INN_FOXTAUR_MOVE3",
 			"Text": [
-				"Six doors line the short hallway upstairs: three on the left, three on the right. Gavin introduces you to his room - the second right - and opens it for you, beckoning you to come inside. You carefully step inside, glancing around the room.\\n\\nA single bed in a wooden frame sits in the corner, right under the window overlooking the town. A small shelf with a loose book on it hangs on the wall, and an old-looking end table sits neatly next to the bed's headrest. It is, all in all, identical to the one you rented yourself."
+				"Six doors line the short hallway upstairs: three on the left, three on the right. Gavin introduces you to his room - the second right - and opens it for you, beckoning you to come inside. You carefully step inside, glancing around the room. A single bed in a wooden frame sits in the corner, right under the window overlooking the town. A small shelf with a loose book on it hangs on the wall, and an old-looking end table sits neatly next to the bed's headrest. It is, all in all, identical to the room you've been making use of yourself. Briefly, you consider that the bed might just be a tad too small for the taur to fit in comfortably."
+			]
+		},
+		{
+			"Key": "INN_FOXTAUR_MOVE3_NOROOM",
+			"Text": [
+				"Six doors line the short hallway upstairs: three on the left, three on the right. Gavin introduces you to his room - the second right - and opens it for you, beckoning you to come inside. You carefully step inside, glancing around the room. A single bed in a wooden frame sits in the corner, right under the window overlooking the town. A small shelf with a loose book on it hangs on the wall, and an old-looking end table sits neatly next to the bed's headrest. Briefly, you consider that the bed might just be a tad too small for the taur to fit in comfortably."
 			]
 		},
 		{
@@ -186,19 +192,19 @@
 		{
 			"Key": "INN_FOXTAUR_STMT_WRAPUP2",
 			"Text": [
-				"They leave the premises, suspect in tow. The canine you were speaking to steps forward to join them, but not before turning to the two of you. \"Thank you for your cooperation, citizen. We'll be asking Gavin the same questions, of course, and we'll find you if we have further need of you.\" He glares at the innkeep, and you think you see a grin split the guard's lips, thumb pointing at the creaky stairs behind him. A moment of silence is quickly broken. \"Edgard. You should get Oliver to stop by. The planks are getting worse.\"\\n\\nIn response, the {barkeep} simply shrugs and chuckles, apparently having had this conversation before. \"I know, I know. But the stairs held the three of you up, did they not?\"\\n\\nThe canine snorts and shakes his head. \"Consider yourself warned. I don't want to hear of an accident.\" He then nods at you, before finally taking his leave, the door falling shut behind him."
+				"They leave the premises, suspect in tow. The canine you were speaking to steps forward to join them, but not before turning to the two of you. \"Thank you for your cooperation, citizen. We'll be asking Gavin the same questions, of course, and we'll find you if we have further need of you.\" He glares at the innkeep, and you think you see a grin split the guard's lips, thumb pointing at the creaky stairs behind him. A moment of silence is quickly broken. \"Edgard. You should get Oliver to stop by. The planks are getting worse.\"\\n\\nIn response, {bartender} simply shrugs and chuckles, apparently having had this conversation before. \"I know, I know. But the stairs held the three of you up, did they not?\"\\n\\nThe canine snorts and shakes his head. \"Consider yourself warned. I don't want to hear of an accident.\" He then nods at you, before finally taking his leave, the door falling shut behind him."
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT_WRAPUP3",
 			"Text": [
-				"The {barkeep} besides you visibly relaxes and sighs, before returning to his usual spot behind the counter, almost automatically restarting the routine of washing mugs. \"Well, that's quite enough excitement for one day, and that taur was a regular here too. Oh well...\""
+				"{bartender} besides you visibly relaxes and sighs, before returning to his usual spot behind the counter, almost automatically restarting the routine of washing mugs. \"Well, that's quite enough excitement for one day, and that taur was a regular here too. Oh well...\""
 			]
 		},
 		{
 			"Key": "INN_FOXTAUR_STMT1",
 			"Text": [
-				"Downstairs, in the cozy common room, nobody else is around other than you and the rather flustered barkeep. He leaves the establishment momentarily, but not before shooting you a glare and coldly stating \"Don't go anywhere\". The eerie silence that follows lasts for less than a minute, as the old door slams open and a group of figures steps through with an authoritative air about them, the {barkeep} following timidly behind them. All three guards are clad in impressively polished steel plates, carrying halberds for good measure that just barely managed to fit upright through the doorway. While Edgard is questioned by two decisively muscular felines, the third, a canine, judging by the bushy tail and perked ears, turns to face you. With the visored helmet kept securely in place, you cannot make out the exact identity of the soldier, and perhaps that is quite intentional on their part."
+				"Downstairs, in the cozy common room, nobody else is around other than you and the rather flustered barkeep. He leaves the establishment momentarily, but not before shooting you a glare and coldly stating \"Don't go anywhere\". The eerie silence that follows lasts for less than a minute, as the old door slams open and a group of figures steps through with an authoritative air about them, {bartender} following timidly behind them. All three guards are clad in impressively polished steel plates, carrying halberds for good measure that just barely managed to fit upright through the doorway. While Edgard is questioned by two decisively muscular felines, the third, a canine, judging by the bushy tail and perked ears, turns to face you. With the visored helmet kept securely in place, you cannot make out the exact identity of the soldier, and perhaps that is quite intentional on their part."
 			]
 		},
 		{

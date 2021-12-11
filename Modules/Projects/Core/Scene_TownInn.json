@@ -77,7 +77,7 @@
 						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "EwwPublicInteraction",
+								"Key": "InnTalkRoot",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "SetInstruction(Text.GetString(\"town_inn_talktowho\"))",
@@ -115,14 +115,14 @@
 										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "InnkeepTalkRoot",
+												"Key": "BarkeepTalkRoot",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "",
 												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "InnkeepTalkLeave",
+														"Key": "",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Leave",
@@ -142,7 +142,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkDrink",
+														"Key": "BarkeepTalkDrink",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Drink",
@@ -171,10 +171,10 @@
 																		"ScriptAppear": "",
 																		"Children": [
 																			{
-																				"Key": "Unnamed",
+																				"Key": "AutoLink",
 																				"IsState": true,
 																				"IsLink": true,
-																				"LinkTarget": "InnkeepTalkRoot",
+																				"LinkTarget": "BarkeepTalkRoot",
 																				"Children": []
 																			}
 																		]
@@ -184,7 +184,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkMQ01Start",
+														"Key": "BarkeepTalkMQ01Start",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Work",
@@ -304,7 +304,7 @@
 																				"Key": "AutoLink",
 																				"IsState": true,
 																				"IsLink": true,
-																				"LinkTarget": "InnkeepTalkRoot",
+																				"LinkTarget": "BarkeepTalkRoot",
 																				"Children": []
 																			}
 																		]
@@ -314,7 +314,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkMQ01",
+														"Key": "BarkeepTalkMQ01",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Show Pass",
@@ -400,7 +400,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkMQ02",
+														"Key": "BarkeepTalkMQ02",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Bridge Supplies",
@@ -728,7 +728,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkRentRoom",
+														"Key": "BarkeepTalkRentRoom",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Rent a Room",
@@ -739,14 +739,14 @@
 														"ScriptAppear": "-- Room is not yet made available\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\")",
 														"Children": [
 															{
-																"Key": "Rent_R_Denied",
+																"Key": "",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"TOWN_INN_RENT_DENIED\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "Rent_C_Denied",
+																		"Key": "",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Never mind",
@@ -757,10 +757,10 @@
 																		"ScriptAppear": "",
 																		"Children": [
 																			{
-																				"Key": "Unnamed",
+																				"Key": "AutoLink",
 																				"IsState": true,
 																				"IsLink": true,
-																				"LinkTarget": "InnkeepTalkRoot",
+																				"LinkTarget": "BarkeepTalkRoot",
 																				"Children": []
 																			}
 																		]
@@ -770,7 +770,7 @@
 														]
 													},
 													{
-														"Key": "InnkeepTalkGossip",
+														"Key": "BarkeepTalkGossip",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Rumors",
@@ -781,22 +781,31 @@
 														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "InnkeepRumorEnd",
+																"Key": "",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "-- TODO: Add actual gossip states here\r\nLog(\"town_inn_rumor_none\")",
 																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "Unnamed",
+																		"Key": "",
 																		"IsState": false,
-																		"IsLink": true,
-																		"Title": "Unnamed",
+																		"IsLink": false,
+																		"Title": "Continue",
 																		"Tooltip": "",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"LinkTarget": "InnkeepTalkLeave",
-																		"Children": []
+																		"ScriptAction": "",
+																		"ScriptAppear": "",
+																		"Children": [
+																			{
+																				"Key": "AutoLink",
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "BarkeepTalkRoot",
+																				"Children": []
+																			}
+																		]
 																	}
 																]
 															}
@@ -1109,7 +1118,7 @@
 						"Tooltip": "Head up to your room.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "if Storage.GetFlag(\"town_inn_room_visited\") then\r\n    Log(\"town_inn_room_enter\")\r\nelse\r\n    Storage.SetFlag(\"town_inn_room_visited\", true)\r\n    Log(\"town_inn_room_enter_first\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend",
+						"ScriptAction": "if Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"TOWN_INN_ROOM_ENTER\")\r\nelse\r\n    Storage.SetFlag(\"TOWN_INN_ROOM_VISITED\", true)\r\n    Log(\"TOWN_INN_ROOM_ENTER_FIRST\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend",
 						"ScriptAppear": "return Storage.GetFlag(\"town_inn_rented_room\")",
 						"Children": [
 							{
@@ -1271,7 +1280,7 @@
 								"Key": "Foxtaur_R_Move1",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"INN_FOXTAUR_MOVE2\")\r\nLog(\"INN_FOXTAUR_MOVE3\")",
+								"ScriptAction": "Log(\"INN_FOXTAUR_MOVE2\")\r\n\r\nif Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"INN_FOXTAUR_MOVE3\")\r\nelse\r\n    Log(\"INN_FOXTAUR_MOVE3_NOROOM\")\r\nend",
 								"ScriptAppear": "",
 								"Children": [
 									{
@@ -1300,7 +1309,7 @@
 														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local foxbutt = Creature(\"CR_Town_Foxtaur\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(foxbutt)\r\nstate:SetGrappling(foxbutt, Player)\r\nstate:OnPlayerKilled(function()\r\n    EatThePlayerAnyway(foxbutt)\r\n    PostVore(\"INN_FOXTAUR_POSTVORE_SCAT_POV\")\r\nend)\r\nstate:Begin()",
+														"ScriptAction": "local foxbutt = Creature(\"CR_Town_Foxtaur\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(foxbutt)\r\nstate:SetGrappling(foxbutt, Player)\r\nstate:Begin()",
 														"ScriptAppear": "",
 														"Children": [
 															{

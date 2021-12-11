@@ -69,7 +69,7 @@ function PreySense(pred, style, does_digest)
         elseif style == EVoreStyle.CV then vtype = "cock vore"
         elseif style == EVoreStyle.UB then vtype = "unbirth"
         end
-        local vfinal = does_digest and "fatal" or "endo"
+        local vfinal = does_digest and "fatal" or "safe"
         local vcolor = does_digest and Color.Hostile or Color.Neutral
         LogRaw("You have that strange feeling...  " .. pred.Name .. ": " .. vtype .. ", " .. vfinal, vcolor)
     end
@@ -141,7 +141,9 @@ end
 -- returns randomly generated character, see script documentation
 function GetRandomCharacter()
     local result = Creature("CR_RandomAnthro")
-    result.Alias = Text.GetString("SPECIES_ANY")
+    local ch_species = string.lower(Text.GetString("SPECIES_ANY"))
+    result.Name = ch_species
+    result.Alias = "the " .. ch_species
     result.Gender = math.random(0, 2)
     return result
 end
@@ -156,7 +158,7 @@ function GetUniqueCharacter(ident)
     else
         -- Randomize and store new settings
         ch_gender = math.random(0, 2)
-        ch_species = Text.GetString("SPECIES_ANY")
+        ch_species = string.lower(Text.GetString("SPECIES_ANY"))
         Storage.SetFlag(prefix .. "_generated", true)
         Storage.SetNumber(prefix .. "_gender", ch_gender)
         Storage.SetString(prefix .. "_species", ch_species)
@@ -164,7 +166,8 @@ function GetUniqueCharacter(ident)
 
     -- Wrap as a Creature, so it can be used as a grammar context
     local result = Creature("CR_RandomAnthro")
-    result.Alias = ch_species
+    result.Name = ch_species
+    result.Alias = "the " .. ch_species
     result.Gender = ch_gender
     return result
 end

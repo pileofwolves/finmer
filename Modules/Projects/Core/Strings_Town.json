@@ -316,16 +316,16 @@
 		{
 			"Key": "TOWN_MARKET_FRUIT_HELLO",
 			"Text": [
-				"A {vendor} is tending the fruit stand, and {vendor.subject} greets you with a bow.",
-				"The {vendor} waves to you as you approach. \"Good to see you again, {player}!\"",
-				"The owner of the fruit stall, a {vendor}, gives you a friendly smile. \"Hello, dear {player.species}! How's the world out there?\""
+				"A {vendor.name} is tending the fruit stand, and {vendor.subject} greets you with a bow.",
+				"{vendor} waves to you as you approach. \"Good to see you again, {player}!\"",
+				"The owner of the fruit stall, a {vendor.name}, gives you a friendly smile. \"Hello, dear {player.species}! How's the world out there?\""
 			]
 		},
 		{
 			"Key": "TOWN_MARKET_FRUIT_TALK_NO",
 			"Text": [
-				"\"Come on,\" the {vendor} quips, \"I've got other customers to tend to. We'll talk later.\"",
-				"The {vendor} simply shakes {vendor.possessive} head. \"No time to chat now, sorry.\""
+				"\"Come on,\" {vendor} quips, \"I've got other customers to tend to. We'll talk later.\"",
+				"{vendor} simply shakes {vendor.possessive} head. \"No time to chat now, sorry.\""
 			]
 		},
 		{

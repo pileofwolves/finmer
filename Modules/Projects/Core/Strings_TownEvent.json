@@ -18,7 +18,7 @@
 		{
 			"Key": "EVENT_NAKED_BEGIN",
 			"Text": [
-				"A duo of heavily armored guardsmen approaches you, each holding a massive halberd in one paw. Light glints off of the polished surface of the weapons, somehow adding to the authority of the two figures. \"Halt!\" what looks to be a {guard} shouts. \"What is the meaning of this, {player.species}? You think you can just wander around naked? Have you no decency?\" one of the two asks you incredulously."
+				"A duo of heavily armored guardsmen approaches you, each holding a massive halberd in one paw. Light glints off of the polished surface of the weapons, somehow adding to the authority of the two figures. \"Halt!\" one of the two soldiers, who appears to be a {guard.name}, shouts. \"What is the meaning of this, {player.species}? You think you can just wander around naked? Have you no decency?\" the other asks you incredulously."
 			]
 		},
 		{
@@ -402,7 +402,7 @@
 		{
 			"Key": "TOWN_GUARD_POSTVORE2",
 			"Text": [
-				"\"Thanks for holding onto -urp- that, Dan,\" the voice of the guard booms around you. \"Let's go, I should take this one away.\" You can't hear anything else outside, as organic gurgles and squelches overpower most other stimuli."
+				"\"Thanks for holding onto -urp- that,\" the voice of the guard booms around you. \"Let's go, I should take this one away.\" You can't hear anything else outside, as organic gurgles and squelches overpower most other stimuli."
 			]
 		},
 		{
@@ -420,19 +420,19 @@
 		{
 			"Key": "TOWN_GUARD_POSTVORE5",
 			"Text": [
-				"As the fleshy organ appears to squeeze you into a direction, you finally realize what's going on. Your predator heaves and gags, your body being squeezed back up the skin-tight tube again. Before long, having performed the same harrowing trip in reverse, you reach the {guard}'s maw once more. The twisting tongue and rows of teeth frame your vision, the light blinding you, as you are forced further out still. The guard finishes regurgitating your sorry drool-soaked mess, and you take a few moments to breathe the cool, fresh air and recollect yourself."
+				"As the fleshy organ appears to squeeze you into a direction, you finally realize what's going on. Your predator heaves and gags, your body being squeezed back up the skin-tight tube again. Before long, having performed the same harrowing trip in reverse, you reach {guard}'s maw once more. The twisting tongue and rows of teeth frame your vision, the light blinding you, as you are forced further out still. The guard finishes regurgitating your sorry drool-soaked mess, and you take a few moments to breathe the cool, fresh air and recollect yourself."
 			]
 		},
 		{
 			"Key": "TOWN_GUARD_REGURGITATED",
 			"Text": [
-				"The {guard} helps you up on your feet, and wipes some of the goop off of you. Then {guard.subject} {guard hand} you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" {guard.subject} {guard warn}, before turning and walking away. \"You can wash up there,\" you hear {guard.object} call out, as {guard.subject} {guard gesture} off-handedly behind {guard.object}.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
+				"{guard} helps you up on your feet, and wipes some of the goop off of you. Then {guard.subject} {guard hand} you a neatly folded linen shirt. A quick glance around tells you you are right outside town, near the main gate, and just far enough off the path so as to help avoid detection. \"As tasty as you were and as enjoyable you felt in there - don't make me catch you again, or I'll do more than swallow you and impose a minor fine,\" {guard.subject} {guard warn}, before turning and walking away. \"You can wash up there,\" you hear {guard.object} call out, as {guard.subject} {guard gesture} off-handedly behind {guard.object}.\\n\\nWell. You're not sure whether to feel offended that you were swallowed, or relieved that you were let out in one piece."
 			]
 		},
 		{
 			"Key": "TOWN_GUARD_VORE_HIT_POV",
 			"Text": [
-				"The guard spreads {guard.possessive} jaws before you, dangerously sharp teeth and a slick-looking undulating tongue looming ever closer. Before you even have a chance to protest, that warm, slimy flesh makes contact with your face as your head is enveloped in the {guard}'s maw. The spongy tongue makes a few rounds over your features, completely soaking your {player.fur} in sticky drool. Then, the first swallow comes. You hear it almost more strongly than you feel it - a loud, wet glllrrrk noise accompanied by the muscles surrounding your head pulling you inevitably towards the pulsating gullet."
+				"The guard spreads {guard.possessive} jaws before you, dangerously sharp teeth and a slick-looking undulating tongue looming ever closer. Before you even have a chance to protest, that warm, slimy flesh makes contact with your face as your head is enveloped in {guard}'s maw. The spongy tongue makes a few rounds over your features, completely soaking your {player.fur} in sticky drool. Then, the first swallow comes. You hear it almost more strongly than you feel it - a loud, wet glllrrrk noise accompanied by the muscles surrounding your head pulling you inevitably towards the pulsating gullet."
 			]
 		},
 		{

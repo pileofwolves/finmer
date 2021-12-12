@@ -20,18 +20,14 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "Entrypoint",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "AddLink(ECompass.North, Wander)\r\nAddLink(ECompass.East, Wander)\r\nAddLink(ECompass.South, Wander)\r\nAddLink(ECompass.West, ExitForest)",
-				"ScriptAppear": "",
 				"Children": []
 			}
 		]

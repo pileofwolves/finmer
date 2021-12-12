@@ -3,7 +3,6 @@
 	"ID": "438aa9b2-a007-4a1d-9110-13486082b640",
 	"Name": "U_FoodFish1Cooked",
 	"ObjectName": "Cooked Fish",
-	"ObjectAlias": "",
 	"FlavorText": "While searing is a common preparation method, it is not uncommon to find folks who prefer their proteins as uncooked as the day they were caught. The difference, after all, is ultimately moot.",
 	"ItemType": "Usable",
 	"PurchaseValue": 7,

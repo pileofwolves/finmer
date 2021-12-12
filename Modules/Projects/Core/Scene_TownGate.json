@@ -20,18 +20,14 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")",
-				"ScriptAppear": "",
 				"Children": []
 			}
 		]

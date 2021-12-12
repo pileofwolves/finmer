@@ -3,8 +3,6 @@
 	"ID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
 	"Name": "AC_CharmBlock",
 	"ObjectName": "Charm of Shields",
-	"ObjectAlias": "",
-	"FlavorText": "",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
 	"EquipEffects": [

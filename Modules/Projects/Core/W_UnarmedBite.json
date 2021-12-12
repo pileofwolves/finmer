@@ -4,7 +4,6 @@
 	"Name": "W_UnarmedBite",
 	"ObjectName": "Bite",
 	"ObjectAlias": "teeth",
-	"FlavorText": "",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
 	"EquipEffects": [],

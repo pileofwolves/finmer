@@ -3,7 +3,6 @@
 	"ID": "759d503f-7304-4928-b7ef-275e7d4ef767",
 	"Name": "U_FoodFish1Raw",
 	"ObjectName": "Raw Fish",
-	"ObjectAlias": "",
 	"FlavorText": "The community of Finmer is known for its export of the marine produce. A somewhat polarizing view, perhaps, if one considers the many other trades taking place there.",
 	"ItemType": "Usable",
 	"PurchaseValue": 5,

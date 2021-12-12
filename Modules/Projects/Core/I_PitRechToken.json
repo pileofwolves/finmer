@@ -3,7 +3,6 @@
 	"ID": "40b1e4fa-1496-4eed-a8fe-d01462a9ea52",
 	"Name": "I_PitRechToken",
 	"ObjectName": "Small Token",
-	"ObjectAlias": "",
 	"FlavorText": "An old and tarnished silver coin, bearing an inscription honoring some long-dead queen. Give this to Rech at the Club; it should be meaningful for him.",
 	"ItemType": "Generic",
 	"PurchaseValue": 12,

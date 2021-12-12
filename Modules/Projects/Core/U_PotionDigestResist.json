@@ -3,7 +3,6 @@
 	"ID": "4505f0d0-d81b-402a-98fc-89951d01de84",
 	"Name": "U_PotionDigestResist",
 	"ObjectName": "Prey's Vigor",
-	"ObjectAlias": "",
 	"FlavorText": "A rare concoction, treasured by adventurers. Predation in general society is often frowned upon, but 'accidents' do happen - whether in the wilderness, or otherwise.",
 	"ItemType": "Usable",
 	"PurchaseValue": 35,

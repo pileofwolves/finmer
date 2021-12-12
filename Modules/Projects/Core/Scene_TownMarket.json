@@ -20,11 +20,8 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "WakeUp",
@@ -38,18 +35,14 @@
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Continue",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "WakeUp_R_OK1",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"TOWN_FIRST_FOX1\")\r\nSleep(3)\r\nLog(\"TOWN_FIRST_FOX2\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "WakeUp_C_Amnesia",
@@ -59,15 +52,12 @@
 										"Tooltip": "Tell him you don't know where you are, or why.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "WakeUp_R_Amnesia",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"TOWN_FIRST_FROMWHERE\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "WakeUp_C_FromNorth",
@@ -78,14 +68,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Storage.SetString(\"player_origin\", \"north\")",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "WakeUp_R_FromThere",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"TOWN_FIRST_FROM\" .. Storage.GetString(\"player_origin\"))",
-																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "WakeUp_C_Leave",
@@ -95,33 +83,26 @@
 																		"Tooltip": "Thank him and say you want a minute to breathe.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
 																				"Key": "WakeUp_R_Leave",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE1\")",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
 																						"Key": "WakeUp_C_Leave2",
 																						"IsState": false,
 																						"IsLink": false,
 																						"Title": "Continue",
-																						"Tooltip": "",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "",
-																						"ScriptAppear": "",
 																						"Children": [
 																							{
 																								"Key": "WakeUp_R_Leave2",
 																								"IsState": true,
 																								"IsLink": false,
 																								"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE2\")",
-																								"ScriptAppear": "",
 																								"Children": [
 																									{
 																										"Key": "WakeUp_C_Leave2a",
@@ -131,15 +112,12 @@
 																										"Tooltip": "Explain that you don't think that's the case.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "",
-																										"ScriptAppear": "",
 																										"Children": [
 																											{
 																												"Key": "WakeUp_R_Leave3",
 																												"IsState": true,
 																												"IsLink": false,
 																												"ScriptAction": "Log(\"TOWN_FIRST_FOX_LEAVE3\")",
-																												"ScriptAppear": "",
 																												"Children": [
 																													{
 																														"Key": "WakeUp_C_Leave3",
@@ -150,14 +128,11 @@
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"ScriptAction": "LogSplit()\r\nLog(\"TOWN_FIRST_FOX_LEAVE4\")\r\nLog(\"TOWN_MARKET_DAY\")\r\nLog(\"TOWN_MARKET\")\r\nLog(\"WELCOME\", Color.Gray)\r\nJournal.Update(\"MQ01\", 10)\r\nSetInventoryEnabled(true)",
-																														"ScriptAppear": "",
 																														"Children": [
 																															{
-																																"Key": "Unnamed",
 																																"IsState": true,
 																																"IsLink": true,
-																																"LinkTarget": "Main",
-																																"Children": []
+																																"LinkTarget": "Main"
 																															}
 																														]
 																													}
@@ -173,15 +148,11 @@
 																										"Tooltip": "Explain that, having lost your memory, you cannot be sure.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "",
-																										"ScriptAppear": "",
 																										"Children": [
 																											{
-																												"Key": "AutoLink",
 																												"IsState": true,
 																												"IsLink": true,
-																												"LinkTarget": "WakeUp_R_Leave3",
-																												"Children": []
+																												"LinkTarget": "WakeUp_R_Leave3"
 																											}
 																										]
 																									}
@@ -201,7 +172,6 @@
 																		"Tooltip": "Ask him to tell you more about this place.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
 																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_FINMER\")",
 																		"Children": [
 																			{
@@ -209,40 +179,21 @@
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_FINMER\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FINMER\", true)",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_Leave",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskFox",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskFox"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskAlley",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskAlley"
 																					}
 																				]
 																			}
@@ -256,7 +207,6 @@
 																		"Tooltip": "Ask who he is, and why he's helping you.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
 																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_FOX\")",
 																		"Children": [
 																			{
@@ -264,40 +214,21 @@
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_FOX\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FOX\", true)",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_Leave",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskFinmer",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskFinmer"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskAlley",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskAlley"
 																					}
 																				]
 																			}
@@ -311,7 +242,6 @@
 																		"Tooltip": "Ask how he managed to find you.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
 																		"ScriptAppear": "return not Storage.GetFlag(\"TOWN_FIRST_ASK_ALLEY\")",
 																		"Children": [
 																			{
@@ -319,40 +249,21 @@
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"TOWN_FIRST_ASK_ALLEY\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_ALLEY\", true)",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_Leave",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskFinmer",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskFinmer"
 																					},
 																					{
-																						"Key": "Unnamed",
 																						"IsState": false,
 																						"IsLink": true,
-																						"Title": "Unnamed",
-																						"Tooltip": "",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"LinkTarget": "WakeUp_C_AskFox",
-																						"Children": []
+																						"LinkTarget": "WakeUp_C_AskFox"
 																					}
 																				]
 																			}
@@ -371,14 +282,11 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Storage.SetString(\"player_origin\", \"east\")",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "WakeUp_R_FromThere",
-																"Children": []
+																"LinkTarget": "WakeUp_R_FromThere"
 															}
 														]
 													},
@@ -391,14 +299,11 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Storage.SetString(\"player_origin\", \"south\")",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "WakeUp_R_FromThere",
-																"Children": []
+																"LinkTarget": "WakeUp_R_FromThere"
 															}
 														]
 													}
@@ -415,18 +320,14 @@
 						"IsState": false,
 						"IsLink": false,
 						"Title": "[DBG] Skip",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
 						"ScriptAppear": "return IsDebugMode()",
 						"Children": [
 							{
-								"Key": "AutoLink",
 								"IsState": true,
 								"IsLink": true,
-								"LinkTarget": "Main",
-								"Children": []
+								"LinkTarget": "Main"
 							}
 						]
 					}
@@ -447,87 +348,69 @@
 						"Tooltip": "You'll, uh, make sure it doesn't happen again.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "EvNaked_R_Apologize",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"EVENT_NAKED_APOLOGIZE\")\r\nLog(\"EVENT_NAKED_ARRESTED\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "EvNaked_C_VoreHit",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Uhh...",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "EvNaked_R_VoreHit",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"TOWN_GUARD_VORE_HIT_POV\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "EvNaked_C_GetEaten",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Gllrrk!",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Log(\"TOWN_GUARD_VORE_WIN_POV\")\r\n\r\n-- Non-fatal\r\nguard.Name = \"Town Guard\"\r\nguard.PredatorDigests = false\r\nguard.Flags = ECharacterFlags.SkipTurns\r\n\r\n-- Start a combat with the player in the guard's belly\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(guard)\r\nstate:SetVored(guard, Player)\r\nstate:OnRoundEnd(function(round)\r\n    -- Print some sexy text and release after some rounds\r\n    Text.SetContext(\"guard\", guard)\r\n    Log(\"TOWN_GUARD_POSTVORE\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "EvNaked_R_GetEaten",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer:ModifyMoney(-10)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
-																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "EvNaked_C_Regurg",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
-																		"Tooltip": "",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
 																				"Key": "EvNaked_R_Regurg",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "-- Context was discarded (scene change) so we need to reset it now\r\nText.SetContext(\"guard\", guard)\r\n\r\nLog(\"TOWN_GUARD_REGURGITATED\")",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
 																						"Key": "EvNaked_C_ExitToGate",
 																						"IsState": false,
 																						"IsLink": false,
 																						"Title": "Continue",
-																						"Tooltip": "",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "",
-																						"ScriptAppear": "",
 																						"Children": [
 																							{
 																								"Key": "EvNaked_R_ExitToGate",
 																								"IsState": true,
 																								"IsLink": false,
 																								"ScriptAction": "SetScene(\"Scene_TownGate\")",
-																								"ScriptAppear": "",
 																								"Children": []
 																							}
 																						]
@@ -556,26 +439,17 @@
 						"Tooltip": "Make a corny sex joke.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "EvNaked_R_Defy",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"EVENT_NAKED_DEFY\")\r\nLog(\"EVENT_NAKED_ARRESTED\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "EvNaked_C_VoreHit",
-										"Children": []
+										"LinkTarget": "EvNaked_C_VoreHit"
 									}
 								]
 							}
@@ -588,7 +462,6 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "Inn",
@@ -599,7 +472,6 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_TownInn\")",
-						"ScriptAppear": "",
 						"Children": []
 					},
 					{
@@ -617,26 +489,20 @@
 								"Key": "R_FishStall",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "FishLeave",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Leave",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Log(\"town_market_fish_leave\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "Unnamed",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									},
@@ -648,7 +514,6 @@
 										"Tooltip": "Ask the fox if he knows any leads for work.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
 										"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
 										"Children": [
 											{
@@ -656,7 +521,6 @@
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"Gabe\"\r\nquestgiver.Gender = EGender.Male\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "Fish_C_MQ01Bridge",
@@ -666,37 +530,22 @@
 														"Tooltip": "Ask how a trade route could just collapse like that.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "Fish_R_MQ01Bridge",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "Fish_C_MQ01Mayor",
-																		"Children": []
+																		"LinkTarget": "Fish_C_MQ01Mayor"
 																	},
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "Fish_C_MQ01Exit",
-																		"Children": []
+																		"LinkTarget": "Fish_C_MQ01Exit"
 																	}
 																]
 															}
@@ -710,37 +559,22 @@
 														"Tooltip": "Ask what he meant by 'acting' mayor.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "Fish_R_MQ01Mayor",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "Fish_C_MQ01Bridge",
-																		"Children": []
+																		"LinkTarget": "Fish_C_MQ01Bridge"
 																	},
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "Fish_C_MQ01Exit",
-																		"Children": []
+																		"LinkTarget": "Fish_C_MQ01Exit"
 																	}
 																]
 															}
@@ -755,14 +589,11 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_FishStall",
-																"Children": []
+																"LinkTarget": "R_FishStall"
 															}
 														]
 													}
@@ -778,33 +609,25 @@
 										"Tooltip": "Ask the fox how business is.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "Fish_R_Talk",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "LogRumor(\"TOWN_MARKET_FISH_TALK_RUMOR\", \"TOWN_MARKET_FISH_TALK_NO\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "Fish_C_TalkExit",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_FishStall",
-																"Children": []
+																"LinkTarget": "R_FishStall"
 															}
 														]
 													}
@@ -817,11 +640,9 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Buy",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "local shop = Shop(\"TownMarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
-										"ScriptAppear": "",
 										"Children": []
 									}
 								]
@@ -843,26 +664,19 @@
 								"Key": "FruitStall",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "FruitLeave",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Leave",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "Unnamed",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									},
@@ -871,36 +685,27 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Chat",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "FruitTalkResponse",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLogRumor(\"TOWN_MARKET_FRUIT_TALK_RUMOR\", \"TOWN_MARKET_FRUIT_TALK_NO\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "FruitTalkExit",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "FruitStall",
-																"Children": []
+																"LinkTarget": "FruitStall"
 															}
 														]
 													}
@@ -913,11 +718,9 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Buy",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "local shop = Shop(\"TownMarketFruit\")\r\nshop.Title = \"Fresh Foods Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodBread\"), -1)\r\n    shop:AddItem(Item(\"U_FoodCheese\"), -1)\r\n    shop:AddItem(Item(\"U_FoodGrapes\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()",
-										"ScriptAppear": "",
 										"Children": []
 									}
 								]

@@ -3,7 +3,6 @@
 	"ID": "0cd84a4d-7eba-45c2-9789-72119176496c",
 	"Name": "U_FoodLemon",
 	"ObjectName": "Lemon",
-	"ObjectAlias": "",
 	"FlavorText": "An awfully sour-tasting fruit on its own, lemon is often used as a spice, or to aid with preservation of fish.",
 	"ItemType": "Generic",
 	"PurchaseValue": 1,

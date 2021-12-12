@@ -20,11 +20,8 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "SavePoint_Clearing",
@@ -34,15 +31,9 @@
 				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
 				"Children": [
 					{
-						"Key": "AutoLink",
 						"IsState": false,
 						"IsLink": true,
-						"Title": "",
-						"Tooltip": "",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"LinkTarget": "Clearing_C_Leave",
-						"Children": []
+						"LinkTarget": "Clearing_C_Leave"
 					}
 				]
 			},
@@ -61,15 +52,11 @@
 						"Tooltip": "This looks like a decent spot to set up camp.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "Clearing_R_Camp",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "Clearing_C_Sleep",
@@ -79,7 +66,6 @@
 										"Tooltip": "Sit a moment and rest.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
 										"ScriptAppear": "return canSleep",
 										"Children": [
 											{
@@ -87,25 +73,19 @@
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"forest_sleep\")\r\ncanSleep = false\r\nRest()\r\nLog(\"forest_sleep_wakeup\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "Clearing_C_SleepDone",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "Clearing_R_Camp",
-																"Children": []
+																"LinkTarget": "Clearing_R_Camp"
 															}
 														]
 													}
@@ -122,27 +102,18 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Clearing_R_Camp",
-												"Children": []
+												"LinkTarget": "Clearing_R_Camp"
 											}
 										]
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "Clearing_C_Leave",
-										"Children": []
+										"LinkTarget": "Clearing_C_Leave"
 									}
 								]
 							}
@@ -156,15 +127,12 @@
 						"Tooltip": "Leave this clearing behind.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "Clearing_R_Leave",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "SetScene(\"Scene_Forest\")",
-								"ScriptAppear": "",
 								"Children": []
 							}
 						]
@@ -176,7 +144,6 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "LogGsub(\"SQ02_OPENING\", {sun = GetIsNight() and \"sun\" or \"moon\"})",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "SQ02_C_Approach",
@@ -186,15 +153,12 @@
 						"Tooltip": "Walk forward confidently.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "SQ02_R_Approach",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"SQ02_APPROACH\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "SQ02_C_ApproachAgain",
@@ -204,33 +168,26 @@
 										"Tooltip": "Get a bit closer still.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "SQ02_R_ApproachAgain",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"SQ02_APPROACH_AGAIN\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "SQ02_C_DoCombatOV",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Uh-oh...",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "Storage.SetFlag(\"forest_direwolf_fought\", true)\r\n\r\nlocal wuff = Creature(\"SQ02_Wolf_OV\")\r\nCombat.AddCombatant(wuff)\r\nCombat.OnPlayerKilled(function()\r\n    EatThePlayerAnyway(wuff)\r\n    PostVore(\"SQ02_WOLF_POSTVORE_SCAT\", \"SQ02_WOLF_POSTVORE\")\r\nend)\r\nCombat.OnPlayerDigested(function()\r\n    PostVore(\"SQ02_WOLF_POSTVORE_SCAT\", \"SQ02_WOLF_POSTVORE\")\r\nend)\r\nCombat.Begin()",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "SQ02_R_Slay",
-																"Children": []
+																"LinkTarget": "SQ02_R_Slay"
 															}
 														]
 													}
@@ -246,15 +203,12 @@
 										"Tooltip": "Freeze right where you are, and try to not look threatening.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "SQ02_R_ApproachStop",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"SQ02_APPROACH_STOP\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "SQ02_C_OfferSelf",
@@ -264,29 +218,20 @@
 														"Tooltip": "Gently reach out and pry apart the canine's lips.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "SQ02_R_OfferSelf",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "-- first play a sequence showing the vore happening\r\nLog(\"SQ02_WOLF_VORE_WILLING\")\r\nlocal wuff = Creature(\"SQ02_Wolf_OV\")\r\nLogRaw(wuff:GetString(\"vore_hit_pov\"))\r\nLogRaw(wuff:GetString(\"vore_win_pov\"))\r\n\r\n-- then use combat system for digestion.\r\n-- note: player is not expected to survive this, so no more nodes come after this one\r\nCombat.AddCombatant(wuff)\r\nCombat.SetVored(wuff, Player, true)\r\nCombat.OnPlayerDigested(function()\r\n    PostVore(\"SQ02_WOLF_POSTVORE_SCAT\", \"SQ02_WOLF_POSTVORE\")\r\nend)\r\nCombat.Begin()",
-																"ScriptAppear": "",
 																"Children": []
 															}
 														]
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_OfferFish",
-														"Children": []
+														"LinkTarget": "SQ02_C_OfferFish"
 													},
 													{
 														"Key": "SQ02_C_Bellyrub",
@@ -296,15 +241,12 @@
 														"Tooltip": "Well, you got this close, what else did you want to do?",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "SQ02_R_Bellyrub",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"SQ02_BELLYRUB\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "SQ02_C_EndoAccept",
@@ -314,15 +256,12 @@
 																		"Tooltip": "Place your paws on the inviting-looking tongue.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
 																				"Key": "SQ02_R_EatPlayerSafe",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"sq02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_VORE_HIT_POV\")\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")",
-																				"ScriptAppear": "",
 																				"Children": []
 																			}
 																		]
@@ -336,14 +275,11 @@
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": "Log(\"SQ02_WOLF_ENDO_RUNAWAY\")",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
-																				"Key": "AutoLink",
 																				"IsState": true,
 																				"IsLink": true,
-																				"LinkTarget": "SQ02_R_EatPlayerSafe",
-																				"Children": []
+																				"LinkTarget": "SQ02_R_EatPlayerSafe"
 																			}
 																		]
 																	}
@@ -363,26 +299,17 @@
 										"Tooltip": "Slowly back away from the dire wolf.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "SQ02_R_ApproachBack",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"SQ02_APPROACH_BACK\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_DoCombatOV",
-														"Children": []
+														"LinkTarget": "SQ02_C_DoCombatOV"
 													}
 												]
 											}
@@ -396,7 +323,6 @@
 										"Tooltip": "The wolf appears to have caught on to the scent.",
 										"Highlight": true,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
 										"ScriptAppear": "return Player:HasItem(\"U_FoodFish1Raw\") or Player:HasItem(\"U_FoodFish1Cooked\")",
 										"Children": [
 											{
@@ -404,29 +330,16 @@
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "if Player:HasItem(\"U_FoodFish1Raw\") then\r\n    Player:TakeItem(\"U_FoodFish1Raw\")\r\nelse\r\n    Player:TakeItem(\"U_FoodFish1Cooked\")\r\nend\r\n\r\nLog(\"SQ02_OFFER_FISH\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_EndoAccept",
-														"Children": []
+														"LinkTarget": "SQ02_C_EndoAccept"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_R_EndoRun",
-														"Children": []
+														"LinkTarget": "SQ02_R_EndoRun"
 													}
 												]
 											}
@@ -444,8 +357,6 @@
 						"Tooltip": "[Wits] Try to approach without being detected.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "SQ02_R_SneakFail",
@@ -455,48 +366,24 @@
 								"ScriptAppear": "return Player.Wits <= 2",
 								"Children": [
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "SQ02_C_ApproachAgain",
-										"Children": []
+										"LinkTarget": "SQ02_C_ApproachAgain"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "SQ02_C_ApproachStop",
-										"Children": []
+										"LinkTarget": "SQ02_C_ApproachStop"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "SQ02_C_ApproachBack",
-										"Children": []
+										"LinkTarget": "SQ02_C_ApproachBack"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "SQ02_C_OfferFish",
-										"Children": []
+										"LinkTarget": "SQ02_C_OfferFish"
 									}
 								]
 							},
@@ -505,7 +392,6 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"SQ02_SNEAK_OK\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "SQ02_C_Slay",
@@ -515,8 +401,6 @@
 										"Tooltip": "A clean cut should do it. However grim, the townsfolk would probably appreciate it.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "SQ02_R_Slay_NoWep",
@@ -526,26 +410,14 @@
 												"ScriptAppear": "local t = Player.PrimaryWeapon.WeaponType\r\nreturn t == WeaponType.Natural",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_Slay",
-														"Children": []
+														"LinkTarget": "SQ02_C_Slay"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_SneakBellyrub",
-														"Children": []
+														"LinkTarget": "SQ02_C_SneakBellyrub"
 													}
 												]
 											},
@@ -554,18 +426,11 @@
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "LogGsub(\"SQ02_SNEAK_SLAY_OK\", {weapon = Player.PrimaryWeapon.Alias})\r\nStorage.SetNumber(\"sq02\", 2) -- can't visit this sequence again\r\n\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"SQ02_WolfHead\", true)\r\n\r\n-- stealth?\r\nif not Storage.GetFlag(\"forest_direwolf_fought\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "Clearing_C_Leave",
-														"Children": []
+														"LinkTarget": "Clearing_C_Leave"
 													}
 												]
 											}
@@ -579,37 +444,22 @@
 										"Tooltip": "Well, you got this close, what else did you want to do?",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "SQ02_R_SneakBellyrub",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"SQ02_BELLYRUB_SNEAK\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_C_EndoAccept",
-														"Children": []
+														"LinkTarget": "SQ02_C_EndoAccept"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "SQ02_R_EndoRun",
-														"Children": []
+														"LinkTarget": "SQ02_R_EndoRun"
 													}
 												]
 											}
@@ -627,15 +477,11 @@
 						"Tooltip": "[Wits] Try to get away again without being noticed.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "AutoLink",
 								"IsState": true,
 								"IsLink": true,
-								"LinkTarget": "SQ02_R_SneakFail",
-								"Children": []
+								"LinkTarget": "SQ02_R_SneakFail"
 							}
 						]
 					}

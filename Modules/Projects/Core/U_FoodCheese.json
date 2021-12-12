@@ -3,7 +3,6 @@
 	"ID": "0b60028a-f2f2-4371-b06f-4c5579cd35cd",
 	"Name": "U_FoodCheese",
 	"ObjectName": "Cheese",
-	"ObjectAlias": "",
 	"FlavorText": "A wedge of gold-colored, curdled milk. It is an uncommon product in these parts, if only because the local cuisine has not readily adopted cheeses.",
 	"ItemType": "Usable",
 	"PurchaseValue": 4,

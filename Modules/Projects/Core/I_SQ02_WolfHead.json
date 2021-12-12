@@ -3,7 +3,6 @@
 	"ID": "f96ed656-7870-4257-88a1-c504f122568c",
 	"Name": "I_SQ02_WolfHead",
 	"ObjectName": "Wolf Head",
-	"ObjectAlias": "",
 	"FlavorText": "The severed head of a dire wolf. It's frighteningly massive - almost too big and heavy for you to carry - and smells a bit. It would be best to not carry this around for too long, lest it starts decomposing.",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,

@@ -3,7 +3,6 @@
 	"ID": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
 	"Name": "U_PotionHeal1",
 	"ObjectName": "Healing Potion",
-	"ObjectAlias": "",
 	"FlavorText": "A tiny swig of bright red fluid, infused with energy that repairs injuries mere moments after imbibing. The seasoned adventurer knows to always pack one or two of these.",
 	"ItemType": "Usable",
 	"PurchaseValue": 25,

@@ -20,18 +20,14 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "-- Ensure inventory is available for the user to edit\r\nSetInventoryEnabled(true)",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "C_Launch",
@@ -42,14 +38,12 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "if numParticipants == 0 then\r\n    print(\"Cannot launch, need at least 1 participant\")\r\nelse\r\n    print(\"Launching combat \", combat)\r\n    combat:OnPlayerKilled(function()\r\n        -- Revive player, to avoid inconvenience of going through the menus again\r\n        print(\"Player died; reviving and stopping combat\")\r\n        Player.Health = 1\r\n        combat:End()\r\n    end)\r\n    combat:OnCreatureVored(function(pred, prey)\r\n        print(\"pred: \" .. pred.Name)\r\n        print(\"prey: \" .. prey.Name)\r\n    end)\r\n    combat:Begin()\r\n    print(\"Combat finished\")\r\nend",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "AutoLink",
 								"IsState": true,
 								"IsLink": true,
-								"LinkTarget": "Main",
-								"Children": []
+								"LinkTarget": "Main"
 							}
 						]
 					},
@@ -61,33 +55,25 @@
 						"Tooltip": "Add new participants to the combat",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "R_ParticipantMenu",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "C_Part__Cancel",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "[ Cancel ]",
-										"Tooltip": "",
 										"Highlight": true,
 										"ButtonWidth": 0.75,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									},
@@ -100,7 +86,6 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "if not hasPlayer then\r\n    hasPlayer = true\r\n    AddParticipant(Player)\r\nelse\r\n    print(\"Player already added\")\r\nend",
-										"ScriptAppear": "",
 										"Children": []
 									},
 									{
@@ -112,25 +97,18 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "next_is_ally = false",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "R_Part_Add",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "SetInstruction(\"Okay, now select which creature to use as \" .. (next_is_ally and \"ally\" or \"enemy\") .. \"...\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "C_Part__Cancel",
-														"Children": []
+														"LinkTarget": "C_Part__Cancel"
 													},
 													{
 														"Key": "C_Part_TestOppEasy",
@@ -141,14 +119,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
@@ -161,14 +137,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
@@ -181,14 +155,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
@@ -201,14 +173,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.Name = \"Easy Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
@@ -221,14 +191,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.Name = \"Medium Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
@@ -241,14 +209,12 @@
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.Name = \"Hard Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "AutoLink",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "R_ParticipantMenu",
-																"Children": []
+																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													}
@@ -265,14 +231,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "next_is_ally = true",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_Part_Add",
-												"Children": []
+												"LinkTarget": "R_Part_Add"
 											}
 										]
 									},
@@ -281,7 +245,6 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Pit - Vulpes",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Vulpes\"))",
@@ -291,8 +254,7 @@
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_ParticipantMenu",
-												"Children": []
+												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
@@ -301,7 +263,6 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Pit - Carson",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Carson\"))",
@@ -311,8 +272,7 @@
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_ParticipantMenu",
-												"Children": []
+												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
@@ -321,7 +281,6 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Pit - Tye",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Tye\"))",
@@ -331,8 +290,7 @@
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_ParticipantMenu",
-												"Children": []
+												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
@@ -341,7 +299,6 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Pit - Phillip",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Phillip\"))",
@@ -351,8 +308,7 @@
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_ParticipantMenu",
-												"Children": []
+												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									}
@@ -368,26 +324,17 @@
 						"Tooltip": "Adjust player stats",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "R_CheatMenu",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Part__Cancel",
-										"Children": []
+										"LinkTarget": "C_Part__Cancel"
 									},
 									{
 										"Key": "C_Cheat_Str",
@@ -398,14 +345,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Player.Strength = Player.Strength + 1\r\nprint(\"Player now has \" .. Player.Strength .. \" Strength\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
@@ -418,14 +363,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Player.Agility = Player.Agility + 1\r\nprint(\"Player now has \" .. Player.Agility .. \" Agility\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
@@ -438,14 +381,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Player.Body = Player.Body + 1\r\nprint(\"Player now has \" .. Player.Body .. \" Body\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
@@ -458,14 +399,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Player.Wits = Player.Wits + 1\r\nprint(\"Player now has \" .. Player.Wits .. \" Wits\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
@@ -478,14 +417,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Rest()",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
@@ -498,14 +435,12 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "local function AddUnique(name)\r\n    if not Player:HasItem(name) then\r\n        Player:GiveItem(name)\r\n    end\r\nend\r\n\r\nAddUnique(\"A_ClothArmor\")\r\nAddUnique(\"A_LeatherArmor\")\r\nAddUnique(\"AC_CharmBlock\")\r\nAddUnique(\"AC_CharmBody\")\r\nAddUnique(\"AC_CharmFight\")\r\nAddUnique(\"W_Dagger\")\r\nAddUnique(\"W_SwordSteel\")\r\nAddUnique(\"W_SwordSilver\")\r\nAddUnique(\"U_PotionHeal1\")",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_CheatMenu",
-												"Children": []
+												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									}
@@ -522,14 +457,12 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "-- Overwrite the state with a new one, to ditch all of the user's changes\r\nResetCombat()",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "AutoLink",
 								"IsState": true,
 								"IsLink": true,
-								"LinkTarget": "Main",
-								"Children": []
+								"LinkTarget": "Main"
 							}
 						]
 					},
@@ -538,7 +471,6 @@
 						"IsState": false,
 						"IsLink": false,
 						"Title": "[ Exit ]",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_Intro\")",

@@ -3,7 +3,6 @@
 	"ID": "2ccd5fdb-bfc1-42d0-b5f0-08c609a8b6ba",
 	"Name": "A_ClothArmor",
 	"ObjectName": "Tunic",
-	"ObjectAlias": "",
 	"FlavorText": "Basic traveler's clothing, providing some modest cover from the sun.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Armor",

@@ -3,7 +3,6 @@
 	"ID": "7678c3fd-5f12-4a72-9e0a-16d43615741e",
 	"Name": "I_MQ01_InnPass",
 	"ObjectName": "Mayor's Pass",
-	"ObjectAlias": "",
 	"FlavorText": "A small piece of writing given to you by the mayor. The scribbles are completely indecipherable, but the innkeep should know what to do with it.",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,

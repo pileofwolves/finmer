@@ -3,7 +3,6 @@
 	"ID": "25e514dd-9375-4527-a6af-188b439db489",
 	"Name": "I_SQ01_VialFull",
 	"ObjectName": "Filled Vial",
-	"ObjectAlias": "",
 	"FlavorText": "A small vial filled with fluids from someone's digestive system. Maybe it's best not to think about where you got it, and what - or who - it has touched before.",
 	"ItemType": "Generic",
 	"PurchaseValue": 0,

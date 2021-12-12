@@ -20,52 +20,40 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"WELCOME\", Color.Gray)\r\nLog(\"TUTORIALPROMPT\")",
-				"ScriptAppear": "",
 				"Children": [
 					{
-						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Nah, I'm good",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "BeginGame()",
-						"ScriptAppear": "",
 						"Children": []
 					},
 					{
-						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Yes please!",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_Tutorial\")",
-						"ScriptAppear": "",
 						"Children": []
 					},
 					{
-						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "DEBUG MENU",
 						"Tooltip": "Here be dragons",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
 						"ScriptAppear": "return IsDebugMode()",
 						"Children": [
 							{
@@ -73,66 +61,50 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()",
-								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Shop test",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "-- Give the player some random items\r\nif not Player:HasItem(\"I_PitInvite\") then Player:GiveItem(\"I_PitInvite\") end\r\nif not Player:HasItem(\"U_FoodBread\") then Player:GiveItem(\"U_FoodBread\") end\r\nif not Player:HasItem(\"I_SQ01_Vial\") then Player:GiveItem(\"I_SQ01_Vial\") end\r\nif not Player:HasItem(\"A_LeatherArmor\") then Player:GiveItem(\"A_LeatherArmor\") end\r\nif not Player:HasItem(\"A_ClothArmor\") then Player:GiveItem(\"A_ClothArmor\") end\r\n\r\n-- Launch shop\r\nlocal shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.RestockInterval = 24\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"U_FoodGrapes\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "DBGROOT",
-												"Children": []
+												"LinkTarget": "DBGROOT"
 											}
 										]
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Inn",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"town_first\", true)\r\nSetScene(\"Scene_TownInn\")",
-										"ScriptAppear": "",
 										"Children": []
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to MQ02 RoadEnc",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
-										"ScriptAppear": "",
 										"Children": []
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to MQ02 Chase Event",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_done\", true)\r\nSetScene(\"Scene_TownMarket\")",
-										"ScriptAppear": "",
 										"Children": []
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Forest Edge",
@@ -140,11 +112,9 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq01_done\", true)\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
-										"ScriptAppear": "",
 										"Children": []
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Go to Pit",
@@ -152,7 +122,6 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"town_pit_unlocked\", true)\r\nSetScene(\"Scene_TownPit\")",
-										"ScriptAppear": "",
 										"Children": []
 									}
 								]

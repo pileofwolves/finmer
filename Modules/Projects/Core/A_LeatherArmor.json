@@ -3,7 +3,6 @@
 	"ID": "228f276d-9d4f-47d6-a879-da7eb5d955b9",
 	"Name": "A_LeatherArmor",
 	"ObjectName": "Leather Tunic",
-	"ObjectAlias": "",
 	"FlavorText": "A tough leather cuirass, fashioned of hardened animal hide. Commonly worn to help shield oneself from the harsh Northern climate.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Armor",

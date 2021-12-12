@@ -20,11 +20,8 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "SQ04_Opening",
@@ -41,33 +38,25 @@
 						"Tooltip": "Well, that was weird.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "SQ04_OpeningEnd",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"TOWN_NSQ_PITOPEN_END\")\r\nPlayer:GiveItem(\"I_PitInvite\", true)\r\nJournal.Update(\"SQ04\", 10)",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "SQ04_C_OpeningEnd",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									}
@@ -82,7 +71,6 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "AddLink(ECompass.South, \"Scene_TownMarket\")\r\nSetInventoryEnabled(true)",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "Hall",
@@ -93,7 +81,6 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_TownHall\")",
-						"ScriptAppear": "",
 						"Children": []
 					},
 					{
@@ -105,32 +92,24 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "Log(\"TOWN_NOTICE_OPEN\")",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "ViewBoard",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "Board_Close",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "(Back)",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "Unnamed",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									},
@@ -142,33 +121,25 @@
 										"Tooltip": "This notice describes recent changes to Finmer, whatever that means.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "Board_R_Changelog",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_CHANGELOG\")\r\nLog(\"NOTICE__MEME\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "ReturnToBoard",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
-														"Tooltip": "",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "Unnamed",
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "ViewBoard",
-																"Children": []
+																"LinkTarget": "ViewBoard"
 															}
 														]
 													}
@@ -184,7 +155,6 @@
 										"Tooltip": "This notice details a dire wolf, and calls for it to be slain.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
 										"ScriptAppear": "return Storage.GetNumber(\"sq02\") == 0",
 										"Children": [
 											{
@@ -192,18 +162,11 @@
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_SQ02_KICKOFF\")\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "ReturnToBoard",
-														"Children": []
+														"LinkTarget": "ReturnToBoard"
 													}
 												]
 											}

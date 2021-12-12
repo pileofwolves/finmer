@@ -4,7 +4,6 @@
 	"Name": "W_UnarmedPunch",
 	"ObjectName": "Fists",
 	"ObjectAlias": "fists",
-	"FlavorText": "",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
 	"EquipEffects": [],

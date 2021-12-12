@@ -20,18 +20,13 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "Leave",
@@ -42,7 +37,6 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
-						"ScriptAppear": "",
 						"Children": []
 					},
 					{
@@ -54,14 +48,11 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "local shop = Shop(\"TownSmithy\")\r\nshop.Title = \"North Finmer Smithy\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"A_LeatherArmor\"), math.random(1, 2))\r\n    shop:AddItem(Item(\"W_Dagger\"), math.random(1, 4))\r\n    shop:AddItem(Item(\"W_SwordSteel\"), math.random(1, 2))\r\n    if math.random(0, 1) == 1 then\r\n        shop:AddItem(Item(\"W_SwordSilver\"), 1)\r\n    end\r\nend\r\nshop:Show()\r\nshop:Save()",
-						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "AutoLink",
 								"IsState": true,
 								"IsLink": true,
-								"LinkTarget": "Main",
-								"Children": []
+								"LinkTarget": "Main"
 							}
 						]
 					},
@@ -73,7 +64,6 @@
 						"Tooltip": "Ask the vixen if she knows any leads for work.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
 						"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
 						"Children": [
 							{
@@ -81,7 +71,6 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"the smith\"\r\nquestgiver.Gender = EGender.Female\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "MQ01_C_Bridge",
@@ -91,37 +80,22 @@
 										"Tooltip": "Ask how a trade route could just collapse like that.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "MQ01_R_Bridge",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "MQ01_C_Mayor",
-														"Children": []
+														"LinkTarget": "MQ01_C_Mayor"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "MQ01_C_Exit",
-														"Children": []
+														"LinkTarget": "MQ01_C_Exit"
 													}
 												]
 											}
@@ -135,37 +109,22 @@
 										"Tooltip": "Ask what she meant by 'acting' mayor.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "MQ01_R_Mayor",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "MQ01_C_Bridge",
-														"Children": []
+														"LinkTarget": "MQ01_C_Bridge"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "MQ01_C_Exit",
-														"Children": []
+														"LinkTarget": "MQ01_C_Exit"
 													}
 												]
 											}
@@ -180,14 +139,11 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									}
@@ -203,8 +159,6 @@
 						"Tooltip": "Talk for a spell.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "Chat_R_MQ02",
@@ -214,15 +168,9 @@
 								"ScriptAppear": "return Storage.GetFlag(\"mq02_done\") and not Storage.GetFlag(\"town_smithy_chat_mq02\")",
 								"Children": [
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "Chat_C_Exit",
-										"Children": []
+										"LinkTarget": "Chat_C_Exit"
 									}
 								]
 							},
@@ -231,25 +179,19 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "Chat_C_Exit",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "Main",
-												"Children": []
+												"LinkTarget": "Main"
 											}
 										]
 									}

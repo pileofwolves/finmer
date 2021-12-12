@@ -20,11 +20,8 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "MQ01_Intro",
@@ -41,33 +38,26 @@
 						"Tooltip": "Explain that you were told you can find work here.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "MQ01_R_Intro2",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"MQ01_INTRO2\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "MQ01_C_Intro3",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "MQ01_R_Intro3",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"MQ01_INTRO3\")\r\nJournal.Update(\"MQ03\", 10)",
-												"ScriptAppear": "",
 												"Children": [
 													{
 														"Key": "MQ01_C_Intro4",
@@ -77,33 +67,26 @@
 														"Tooltip": "Take the job.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "MQ01_R_Intro4",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ01_INTRO4\")\r\nPlayer:GiveItem(\"I_MQ01_InnPass\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "MQ01_C_Intro5",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Leave",
-																		"Tooltip": "",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
 																				"Key": "MQ01_R_Intro5",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"MQ01_INTRO5\")\r\n\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nJournal.Update(\"MQ01\", 30)\r\n\r\nSetScene(\"Scene_TownNSQ\")",
-																				"ScriptAppear": "",
 																				"Children": []
 																			}
 																		]
@@ -120,37 +103,22 @@
 														"Tooltip": "Ask her what's in it for you. This sounds dangerous.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "MQ01_R_Reward",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ01_INFO_REWARD\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "MQ01_C_Intro4",
-																		"Children": []
+																		"LinkTarget": "MQ01_C_Intro4"
 																	},
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "MQ01_C_ActingMayor",
-																		"Children": []
+																		"LinkTarget": "MQ01_C_ActingMayor"
 																	}
 																]
 															}
@@ -164,37 +132,22 @@
 														"Tooltip": "Ask her how she became acting mayor.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
 																"Key": "MQ01_R_ActingMayor",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ01_INFO_ACTINGMAYOR\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "MQ01_C_Intro4",
-																		"Children": []
+																		"LinkTarget": "MQ01_C_Intro4"
 																	},
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "MQ01_C_Reward",
-																		"Children": []
+																		"LinkTarget": "MQ01_C_Reward"
 																	}
 																]
 															}
@@ -218,22 +171,17 @@
 				"ScriptAppear": "return Storage.GetFlag(\"MQ02_DONE\") and not Storage.GetFlag(\"MQ03_STARTED\")",
 				"Children": [
 					{
-						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Wake her",
 						"Tooltip": "Try giving her a poke.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"MQ03_INTRO2\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "MQ03_C_Intro3",
@@ -243,90 +191,64 @@
 										"Tooltip": "Update Canbell on the current situation.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"MQ03_INTRO3\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Open",
 														"Tooltip": "Say you'd be willing to help.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ03_INTRO4\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
 																		"Key": "MQ03_C_Intro5",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
-																		"Tooltip": "",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "",
-																		"ScriptAppear": "",
 																		"Children": [
 																			{
-																				"Key": "",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "Log(\"MQ03_INTRO5\")",
-																				"ScriptAppear": "",
 																				"Children": [
 																					{
-																						"Key": "",
 																						"IsState": false,
 																						"IsLink": false,
 																						"Title": "Accept",
 																						"Tooltip": "Say you'll go look for Iso.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "",
-																						"ScriptAppear": "",
 																						"Children": [
 																							{
-																								"Key": "",
 																								"IsState": true,
 																								"IsLink": false,
 																								"ScriptAction": "Log(\"MQ03_INTRO6\")",
-																								"ScriptAppear": "",
 																								"Children": [
 																									{
-																										"Key": "",
 																										"IsState": false,
 																										"IsLink": false,
 																										"Title": "Continue",
-																										"Tooltip": "",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "",
-																										"ScriptAppear": "",
 																										"Children": [
 																											{
-																												"Key": "",
 																												"IsState": true,
 																												"IsLink": false,
 																												"ScriptAction": "Log(\"MQ03_INTRO7\")\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetNumber(\"BRIDGE_REPAIR_TIME\", GetTimeHourTotal() + 12)\r\nPlayer:AwardXP(RewardXP.MQ03_Accept)\r\nJournal.Update(\"MQ03\", 30)",
-																												"ScriptAppear": "",
 																												"Children": [
 																													{
-																														"Key": "",
 																														"IsState": false,
 																														"IsLink": false,
 																														"Title": "Leave",
@@ -334,7 +256,6 @@
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
-																														"ScriptAppear": "",
 																														"Children": []
 																													}
 																												]
@@ -354,33 +275,22 @@
 														]
 													},
 													{
-														"Key": "",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Reserved",
 														"Tooltip": "Say you're not really sure.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "",
-														"ScriptAppear": "",
 														"Children": [
 															{
-																"Key": "",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"MQ03_INTRO4_ALT\")",
-																"ScriptAppear": "",
 																"Children": [
 																	{
-																		"Key": "AutoLink",
 																		"IsState": false,
 																		"IsLink": true,
-																		"Title": "",
-																		"Tooltip": "",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"LinkTarget": "MQ03_C_Intro5",
-																		"Children": []
+																		"LinkTarget": "MQ03_C_Intro5"
 																	}
 																]
 															}
@@ -391,33 +301,22 @@
 										]
 									},
 									{
-										"Key": "",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Sleep",
 										"Tooltip": "Ask her if she's alright.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"MQ03_INTRO3_DETAIL\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "MQ03_C_Intro3",
-														"Children": []
+														"LinkTarget": "MQ03_C_Intro3"
 													}
 												]
 											}
@@ -428,22 +327,17 @@
 						]
 					},
 					{
-						"Key": "",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "Come back later.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
-								"Key": "",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
-								"ScriptAppear": "",
 								"Children": []
 							}
 						]
@@ -465,15 +359,12 @@
 						"Tooltip": "You're here for the reward, so...",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "SQ02_R_Explain",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"SQ02_WolfHead\")\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nJournal.Close(\"SQ02\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "SQ02_C_Leave",
@@ -484,7 +375,6 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
-										"ScriptAppear": "",
 										"Children": []
 									}
 								]
@@ -498,7 +388,6 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "Log(\"town_hall_empty\")",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "Leave",
@@ -509,7 +398,6 @@
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
-						"ScriptAppear": "",
 						"Children": []
 					}
 				]

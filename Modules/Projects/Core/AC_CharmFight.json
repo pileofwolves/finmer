@@ -3,8 +3,6 @@
 	"ID": "01d5d8e7-edf4-48da-b293-54aed0e2a05e",
 	"Name": "AC_CharmFight",
 	"ObjectName": "Charm of Swords",
-	"ObjectAlias": "",
-	"FlavorText": "",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
 	"EquipEffects": [

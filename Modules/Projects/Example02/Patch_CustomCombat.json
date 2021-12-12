@@ -15,15 +15,13 @@
 		"Name": "11a6076b-6854-414c-8874-b7430c506b48_LeaveScript"
 	},
 	"IsPatch": true,
-	"InjectMode": 3,
+	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "ab250357-19c3-4e27-9c8f-505e01f329af",
 	"InjectTargetNode": "Start",
 	"Root": {
 		"Key": "Root",
 		"IsState": true,
 		"IsLink": false,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "GoToCustomCombat",
@@ -33,15 +31,12 @@
 				"Tooltip": "Open the custom combat debug tool",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
-				"ScriptAction": "",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "GoToCustomCombat_R",
 						"IsState": true,
 						"IsLink": false,
 						"ScriptAction": "SetScene(\"Scene_CustomCombat\")",
-						"ScriptAppear": "",
 						"Children": []
 					}
 				]

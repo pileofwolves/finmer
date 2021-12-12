@@ -20,18 +20,12 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
-				"Key": "",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "",
-				"ScriptAppear": "",
 				"Children": []
 			}
 		]

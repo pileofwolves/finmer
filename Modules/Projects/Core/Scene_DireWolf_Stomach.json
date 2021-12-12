@@ -20,11 +20,8 @@
 		"IsState": false,
 		"IsLink": false,
 		"Title": "Root",
-		"Tooltip": "",
 		"Highlight": false,
 		"ButtonWidth": 1.0,
-		"ScriptAction": "",
-		"ScriptAppear": "",
 		"Children": [
 			{
 				"Key": "SavePoint_Stomach",
@@ -34,37 +31,19 @@
 				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
 				"Children": [
 					{
-						"Key": "AutoLink",
 						"IsState": false,
 						"IsLink": true,
-						"Title": "",
-						"Tooltip": "",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"LinkTarget": "C_Struggle",
-						"Children": []
+						"LinkTarget": "C_Struggle"
 					},
 					{
-						"Key": "AutoLink",
 						"IsState": false,
 						"IsLink": true,
-						"Title": "",
-						"Tooltip": "",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"LinkTarget": "C_Submit",
-						"Children": []
+						"LinkTarget": "C_Submit"
 					},
 					{
-						"Key": "AutoLink",
 						"IsState": false,
 						"IsLink": true,
-						"Title": "",
-						"Tooltip": "",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"LinkTarget": "C_SQ01_UseVial",
-						"Children": []
+						"LinkTarget": "C_SQ01_UseVial"
 					}
 				]
 			},
@@ -73,7 +52,6 @@
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", false)\r\nJournal.Close(\"SQ02\")\r\nLog(\"SQ02_WOLF_ENDO_BEGIN\")",
-				"ScriptAppear": "",
 				"Children": [
 					{
 						"Key": "C_Struggle",
@@ -83,8 +61,6 @@
 						"Tooltip": "Push and kick around!",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "R_StrugglePostRest",
@@ -101,15 +77,12 @@
 										"Tooltip": "Ugh... so much drool...",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "R_GetSpatUp",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "SetScene(\"Scene_ForestCottage\")",
-												"ScriptAppear": "",
 												"Children": []
 											}
 										]
@@ -121,51 +94,26 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"VORE_POV_ENDO\")",
-								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Struggle",
-										"Children": []
+										"LinkTarget": "C_Struggle"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Submit",
-										"Children": []
+										"LinkTarget": "C_Submit"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_SQ01_UseVial",
-										"Children": []
+										"LinkTarget": "C_SQ01_UseVial"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Sleep",
-										"Children": []
+										"LinkTarget": "C_Sleep"
 									}
 								]
 							}
@@ -176,10 +124,8 @@
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Unnamed",
-						"Tooltip": "",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
 						"ScriptAppear": "-- TODO: Removed, because it's kinda synonymous with Sleep\r\nreturn false",
 						"Children": []
 					},
@@ -191,7 +137,6 @@
 						"Tooltip": "Scoop up some of the stomach fluids.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
 						"ScriptAppear": "return Player:HasItem(\"I_SQ01_Vial\")",
 						"Children": [
 							{
@@ -199,40 +144,21 @@
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
-								"ScriptAppear": "",
 								"Children": [
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Struggle",
-										"Children": []
+										"LinkTarget": "C_Struggle"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Submit",
-										"Children": []
+										"LinkTarget": "C_Submit"
 									},
 									{
-										"Key": "AutoLink",
 										"IsState": false,
 										"IsLink": true,
-										"Title": "",
-										"Tooltip": "",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"LinkTarget": "C_Sleep",
-										"Children": []
+										"LinkTarget": "C_Sleep"
 									}
 								]
 							}
@@ -246,15 +172,12 @@
 						"Tooltip": "It is oddly reassuring that an apex predator is keeping you safe.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "",
-						"ScriptAppear": "",
 						"Children": [
 							{
 								"Key": "R_Sleep",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_ENDO_SLEEP\")\r\n\r\nRest()",
-								"ScriptAppear": "",
 								"Children": [
 									{
 										"Key": "C_SleepSave",
@@ -265,14 +188,11 @@
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
-										"ScriptAppear": "",
 										"Children": [
 											{
-												"Key": "AutoLink",
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "R_AwakeAfterSleep",
-												"Children": []
+												"LinkTarget": "R_AwakeAfterSleep"
 											}
 										]
 									},
@@ -281,51 +201,29 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
-										"Tooltip": "",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "",
-										"ScriptAppear": "",
 										"Children": [
 											{
 												"Key": "R_AwakeAfterSleep",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
-												"ScriptAppear": "",
 												"Children": [
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "C_Struggle",
-														"Children": []
+														"LinkTarget": "C_Struggle"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "C_Submit",
-														"Children": []
+														"LinkTarget": "C_Submit"
 													},
 													{
-														"Key": "AutoLink",
 														"IsState": false,
 														"IsLink": true,
-														"Title": "",
-														"Tooltip": "",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"LinkTarget": "C_SQ01_UseVial",
-														"Children": []
+														"LinkTarget": "C_SQ01_UseVial"
 													}
 												]
 											}

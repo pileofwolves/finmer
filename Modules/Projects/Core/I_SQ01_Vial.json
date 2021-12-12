@@ -3,7 +3,6 @@
 	"ID": "334a8b21-ea88-4d8d-a2b3-4c16418775e3",
 	"Name": "I_SQ01_Vial",
 	"ObjectName": "Vial",
-	"ObjectAlias": "",
 	"FlavorText": "A small vial given to you by Finmer's local alchemist. You're supposed to fill it with the slime and enzymes found in a stomach. Yikes.",
 	"ItemType": "Usable",
 	"PurchaseValue": 0,

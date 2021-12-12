@@ -62,7 +62,7 @@ namespace Finmer.Core.Assets
             outstream.WriteBooleanProperty("IsPatch", Inject);
             if (Inject)
             {
-                outstream.WriteByteProperty("InjectMode", (byte)InjectMode);
+                outstream.WriteEnumProperty("InjectMode", InjectMode);
                 outstream.WriteGuidProperty("InjectTargetScene", InjectScene);
                 outstream.WriteStringProperty("InjectTargetNode", InjectNode);
             }
@@ -108,7 +108,11 @@ namespace Finmer.Core.Assets
             Inject = instream.ReadBooleanProperty("IsPatch");
             if (Inject)
             {
-                InjectMode = (ESceneInjectMode)instream.ReadByteProperty("InjectMode");
+                if (version <= 14)
+                    InjectMode = (ESceneInjectMode)instream.ReadByteProperty("InjectMode");
+                else
+                    InjectMode = instream.ReadEnumProperty<ESceneInjectMode>("InjectMode");
+
                 InjectScene = instream.ReadGuidProperty("InjectTargetScene");
                 InjectNode = instream.ReadStringProperty("InjectTargetNode");
             }
@@ -183,7 +187,7 @@ namespace Finmer.Core.Assets
                 outstream.WriteBooleanProperty("IsLink", IsLink);
 
                 // Choice node settings
-                if (!IsState)
+                if (!IsState && !IsLink)
                 {
                     outstream.WriteStringProperty("Title", Title);
                     outstream.WriteStringProperty("Tooltip", Tooltip);
@@ -201,17 +205,17 @@ namespace Finmer.Core.Assets
                 {
                     outstream.WriteStringProperty("ScriptAction", ScriptAction);
                     outstream.WriteStringProperty("ScriptAppear", ScriptAppear);
-                }
 
-                // Recursively serialize child nodes
-                outstream.BeginArray("Children", Children.Count);
-                foreach (SceneNode child in Children)
-                {
-                    outstream.BeginObject();
-                    child.Serialize(outstream);
-                    outstream.EndObject();
+                    // Recursively serialize child nodes
+                    outstream.BeginArray("Children", Children.Count);
+                    foreach (SceneNode child in Children)
+                    {
+                        outstream.BeginObject();
+                        child.Serialize(outstream);
+                        outstream.EndObject();
+                    }
+                    outstream.EndArray();
                 }
-                outstream.EndArray();
             }
 
             public void Deserialize(IFurballContentReader instream, int version)
@@ -222,15 +226,12 @@ namespace Finmer.Core.Assets
                 IsLink = instream.ReadBooleanProperty("IsLink");
 
                 // Choice node settings
-                if (!IsState)
+                if (!IsState && !IsLink)
                 {
                     Title = instream.ReadStringProperty("Title");
                     Tooltip = instream.ReadStringProperty("Tooltip");
                     Highlight = instream.ReadBooleanProperty("Highlight");
                     ButtonWidth = instream.ReadFloatProperty("ButtonWidth");
-
-                    if (version <= 7)
-                        ButtonWidth = 1.0f;
                 }
 
                 // Link node settings
@@ -245,21 +246,25 @@ namespace Finmer.Core.Assets
                     ScriptAppear = instream.ReadStringProperty("ScriptAppear");
                 }
 
-                // Recursively deserialize child nodes
-                Children.Clear();
-                for (int child_count = instream.BeginArray("Children"); child_count > 0; child_count--)
+                // Links do not have child nodes as of version 15
+                if (version <= 14 || !IsLink)
                 {
-                    instream.BeginObject();
+                    // Recursively deserialize child nodes
+                    Children.Clear();
+                    for (int child_count = instream.BeginArray("Children"); child_count > 0; child_count--)
                     {
-                        // Read this child node
-                        var child = new SceneNode();
-                        child.Deserialize(instream, version);
-                        child.Parent = this;
-                        Children.Add(child);
+                        instream.BeginObject();
+                        {
+                            // Read this child node
+                            var child = new SceneNode();
+                            child.Deserialize(instream, version);
+                            child.Parent = this;
+                            Children.Add(child);
+                        }
+                        instream.EndObject();
                     }
-                    instream.EndObject();
+                    instream.EndArray();
                 }
-                instream.EndArray();
             }
 
         }

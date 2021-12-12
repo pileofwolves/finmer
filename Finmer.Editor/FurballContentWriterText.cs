@@ -77,6 +77,10 @@ namespace Finmer.Editor
 
         public void WriteStringProperty(string key, string value)
         {
+            // Skip writing empty values, to help reduce file size. They will be interpreted as empty strings by the reader.
+            if (String.IsNullOrEmpty(value))
+                return;
+
             m_Stream.WritePropertyName(key);
             m_Stream.WriteValue(value);
         }

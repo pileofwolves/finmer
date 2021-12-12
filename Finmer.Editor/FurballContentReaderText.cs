@@ -113,7 +113,15 @@ namespace Finmer.Editor
             try
             {
                 Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                return (string)CurrentToken[key];
+
+                // String properties may be omitted from the document, to help reduce file size.
+                // In that case, they are interpreted as empty strings.
+                JToken element = CurrentToken[key];
+                if (element == null)
+                    return String.Empty;
+
+                // Property is present; convert it to a string
+                return (string)element;
             }
             catch (Exception ex)
             {

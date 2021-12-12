@@ -49,7 +49,8 @@ namespace Finmer.Core.Serialization
         {
             // Key and enum type are ignored, since the file stores only the raw integer value.
             // There doesn't seem to be an easy way to cast an int to a generic enum, so we kinda have to force the compiler's paw here.
-            return (TEnum)(object)m_Stream.ReadInt32();
+            var value = m_Stream.ReadInt32();
+            return (TEnum)Enum.ToObject(typeof(TEnum), value);
         }
 
         public Guid ReadGuidProperty(string key)

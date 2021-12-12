@@ -113,7 +113,7 @@ namespace Finmer.Core.Serialization
                     }
                 }
             }
-            catch (IOException ex)
+            catch (Exception ex)
             {
                 throw new FurballIOException(ex.Message, ex);
             }
@@ -177,7 +177,7 @@ namespace Finmer.Core.Serialization
                     case 4:                     return new AssetScript();
                     case 5:                     return new AssetFeat();
                     case 6:                     return new AssetJournal();
-                    default:                    throw new ArgumentException(nameof(typeid));
+                    default:                    return null;
                 }
             }
 
@@ -196,7 +196,7 @@ namespace Finmer.Core.Serialization
                     case AssetScript _:         return 4;
                     case AssetFeat _:           return 5;
                     case AssetJournal _:        return 6;
-                    default:                    throw new ArgumentException(nameof(asset));
+                    default:                    throw new ArgumentException("Unknown AssetBase specialization.", nameof(asset));
                 }
             }
 

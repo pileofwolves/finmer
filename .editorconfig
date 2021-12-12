@@ -13,6 +13,10 @@ dotnet_diagnostic.IDE0019.severity = none
 # Justification: Matter of preference. ReSharper has a few rules codified in the DotSettings file to deal with this.
 dotnet_diagnostic.IDE0049.severity = none
 
+# IDE0055: Fix formatting
+# Justification: False-positives.
+dotnet_diagnostic.IDE0055.severity = none
+
 # IDE1006: Naming Styles
 # Justification: ReSharper takes care of this, and has some abbreviations configured so they aren't flagged.
 dotnet_diagnostic.IDE1006.severity = none

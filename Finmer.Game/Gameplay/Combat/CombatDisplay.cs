@@ -236,6 +236,10 @@ namespace Finmer.Gameplay.Combat
         {
             TextParser.SetContext("instigator", instigator.Character, false);
 
+            // If the character has a predator, make sure that context is available as well
+            if (instigator.IsSwallowed())
+                TextParser.SetContext("predator", instigator.Predator.Character, false);
+
             string new_key = TextParser.EvaluateStringMappings(key, instigator.Character);
             GameUI.Instance.Log(GameController.Content.GetAndParseString(new_key), Theme.LogColorDefault);
         }

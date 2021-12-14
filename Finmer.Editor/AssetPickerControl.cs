@@ -107,9 +107,9 @@ namespace Finmer.Editor
             if (selected_asset == null)
             {
                 // Link could not be resolved; asset was deleted or unloaded
-                lblAssetName.LinkColor = Color.OrangeRed;
+                lblAssetName.LinkColor = Color.DarkRed;
                 lblAssetName.LinkBehavior = LinkBehavior.NeverUnderline;
-                lblAssetName.Text = m_SelectedAssetGuid.ToString();
+                lblAssetName.Text = $"Broken link ({m_SelectedAssetGuid.ToString().Substring(0, 8)})";
             }
             else
             {

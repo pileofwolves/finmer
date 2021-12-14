@@ -38,13 +38,14 @@ namespace Finmer.Editor
             this.lblAssetName.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.lblAssetName.AutoEllipsis = true;
             this.lblAssetName.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
             this.lblAssetName.Location = new System.Drawing.Point(24, 0);
             this.lblAssetName.Name = "lblAssetName";
             this.lblAssetName.Size = new System.Drawing.Size(168, 24);
             this.lblAssetName.TabIndex = 1;
             this.lblAssetName.TabStop = true;
-            this.lblAssetName.Text = "label1";
+            this.lblAssetName.Text = "Asset";
             this.lblAssetName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblAssetName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAssetName_LinkClicked);
             // 

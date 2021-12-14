@@ -148,13 +148,18 @@ namespace Finmer.Gameplay
             var target_scene = GameController.Content.GetAssetByID(patch.InjectScene) as AssetScene;
             if (target_scene == null)
                 throw new SceneCompilerException(
-                    $"Scene '{patch.Name}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
+                    $"Patch '{patch.Name}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
+
+            // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
+            if (target_scene == patch)
+                throw new SceneCompilerException(
+                    $"Patch '{patch.Name}' requested injection into itself. This is not supported.");
 
             // Find the anchor node the patch should be added to
             AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectNode);
             if (target_node == null)
                 throw new SceneCompilerException(
-                    $"Scene '{patch.Name}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
+                    $"Patch '{patch.Name}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
 
             // Find the injection point (target parent node) and the index at which to insert our patch
             AssetScene.SceneNode insert_parent;
@@ -178,7 +183,7 @@ namespace Finmer.Gameplay
                     insert_index = insert_parent.Children.Count;
                     break;
                 default:
-                    throw new SceneCompilerException($"Scene '{patch.Name}' requested invalid injection mode. Module file is likely corrupt.");
+                    throw new SceneCompilerException($"Patch '{patch.Name}' requested invalid injection mode. Module file is likely corrupt.");
             }
 
             // Insert the patch nodes into the target scene

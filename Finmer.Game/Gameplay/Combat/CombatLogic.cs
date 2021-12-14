@@ -255,6 +255,10 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         public static void PerformSkipTurn(Participant instigator)
         {
+            // Skip writing text for NPCs that can't do anything, looks better
+            if (!instigator.IsPlayer())
+                return;
+
             // Perform animation
             CombatDisplay.ShowSimpleMessage(instigator.IsGrappling() ? @"turn_wait_grappled" : @"turn_wait", instigator);
         }
@@ -342,6 +346,7 @@ namespace Finmer.Gameplay.Combat
                 // Proceed with having the player swallow the target
                 Debug.Assert(!victim.IsPlayer() && victim != predator);
                 session.SetVored(predator, victim);
+                CombatDisplay.ShowSimpleMessage(@"kill_generic", predator, victim);
                 CombatDisplay.ShowSimpleMessage(@"vore_win", predator, victim);
 
                 return;
@@ -360,6 +365,7 @@ namespace Finmer.Gameplay.Combat
                 // Proceed with having the predator swallow the player
                 Debug.Assert(victim != predator);
                 session.SetVored(predator, victim);
+                CombatDisplay.ShowSimpleMessage(@"kill_generic", predator, victim);
                 CombatDisplay.ShowSimpleMessage(@"vore_win", predator, victim);
             }
         }

@@ -52,7 +52,6 @@
             this.cmbInjectTargetMode = new System.Windows.Forms.ComboBox();
             this.cmbInjectTargetNode = new System.Windows.Forms.ComboBox();
             this.lblInjectTargetNode = new System.Windows.Forms.Label();
-            this.cmbInjectTargetScene = new System.Windows.Forms.ComboBox();
             this.lblInjectTargetScene = new System.Windows.Forms.Label();
             this.chkRootInject = new System.Windows.Forms.CheckBox();
             this.lblRootInfo = new System.Windows.Forms.Label();
@@ -76,6 +75,7 @@
             this.scriptAction = new ScintillaNET.Scintilla();
             this.tbpScriptAppear = new System.Windows.Forms.TabPage();
             this.scriptAppear = new ScintillaNET.Scintilla();
+            this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -313,10 +313,10 @@
             // 
             // pnlInjectionSettings
             // 
+            this.pnlInjectionSettings.Controls.Add(this.assetInjectTargetScene);
             this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetMode);
             this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetNode);
             this.pnlInjectionSettings.Controls.Add(this.lblInjectTargetNode);
-            this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetScene);
             this.pnlInjectionSettings.Controls.Add(this.lblInjectTargetScene);
             this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 72);
             this.pnlInjectionSettings.Name = "pnlInjectionSettings";
@@ -356,15 +356,6 @@
             this.lblInjectTargetNode.Size = new System.Drawing.Size(77, 13);
             this.lblInjectTargetNode.TabIndex = 4;
             this.lblInjectTargetNode.Text = "Injection Point:";
-            // 
-            // cmbInjectTargetScene
-            // 
-            this.cmbInjectTargetScene.FormattingEnabled = true;
-            this.cmbInjectTargetScene.Location = new System.Drawing.Point(0, 24);
-            this.cmbInjectTargetScene.Name = "cmbInjectTargetScene";
-            this.cmbInjectTargetScene.Size = new System.Drawing.Size(184, 21);
-            this.cmbInjectTargetScene.TabIndex = 3;
-            this.cmbInjectTargetScene.TextChanged += new System.EventHandler(this.cmbInjectTargetScene_TextChanged);
             // 
             // lblInjectTargetScene
             // 
@@ -627,6 +618,16 @@
             this.scriptAppear.TabIndex = 1;
             this.scriptAppear.TextChanged += new System.EventHandler(this.scriptAppear_TextChanged);
             // 
+            // assetInjectTargetScene
+            // 
+            this.assetInjectTargetScene.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
+            this.assetInjectTargetScene.Location = new System.Drawing.Point(0, 24);
+            this.assetInjectTargetScene.Name = "assetInjectTargetScene";
+            this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
+            this.assetInjectTargetScene.TabIndex = 3;
+            this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
+            // 
             // FormDocumentScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -710,8 +711,8 @@
         private System.Windows.Forms.Panel pnlInjectionSettings;
         private System.Windows.Forms.ComboBox cmbInjectTargetNode;
         private System.Windows.Forms.Label lblInjectTargetNode;
-        private System.Windows.Forms.ComboBox cmbInjectTargetScene;
         private System.Windows.Forms.Label lblInjectTargetScene;
         private System.Windows.Forms.ComboBox cmbInjectTargetMode;
+        private AssetPickerControl assetInjectTargetScene;
     }
 }

@@ -52,29 +52,19 @@ namespace Finmer.Editor
             AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
             trvNodes.ExpandAll();
 
-            // set up injection point panel
-            List<AssetScene> all_scenes = GetAllScenes().ToList();
+            // Set up patch settings panel
             chkRootInject.Checked = m_Scene.Inject;
             cmbInjectTargetMode.SelectedIndex = (int)m_Scene.InjectMode;
-            cmbInjectTargetScene.Text = all_scenes.FirstOrDefault(other => other.ID == m_Scene.InjectScene)?.Name ?? String.Empty;
+            assetInjectTargetScene.SelectedGuid = m_Scene.InjectScene;
             cmbInjectTargetNode.Text = m_Scene.InjectNode;
-
-            // populate injection point comboboxes
-            all_scenes.Select(other => other.Name).ForEach(name => cmbInjectTargetScene.Items.Add(name));
             UpdateInjectionNodeList();
         }
 
         public override void Flush()
         {
             base.Flush();
-            // TODO
-            UpdateScriptButtonIcons();
-        }
 
-        private static IEnumerable<AssetScene> GetAllScenes()
-        {
-            return Program.ActiveFurball.Assets.OfType<AssetScene>()
-                .Union(Program.ActiveDependencies.Assets.OfType<AssetScene>());
+            UpdateScriptButtonIcons();
         }
 
         private void trvNodes_AfterSelect(object sender, TreeViewEventArgs e)
@@ -174,9 +164,9 @@ namespace Finmer.Editor
         {
             cmbInjectTargetNode.Items.Clear();
 
-            IEnumerable<AssetScene> all_scenes = GetAllScenes();
-            AssetScene target_scene = all_scenes.FirstOrDefault(other => other.Name.Equals(cmbInjectTargetScene.Text));
-            if (target_scene == null) return;
+            AssetScene target_scene = assetInjectTargetScene.SelectedAsset as AssetScene;
+            if (target_scene == null)
+                return;
 
             // populate the node combobox with the nodes of the selected target scene
             m_SceneInject = target_scene;
@@ -561,11 +551,18 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
-        private void cmbInjectTargetScene_TextChanged(object sender, EventArgs e)
+        private void assetInjectTargetScene_SelectedAssetChanged(object sender, EventArgs e)
         {
-            if (m_SkipDirtyUpdates || String.IsNullOrEmpty(cmbInjectTargetScene.Text)) return;
+            if (m_SkipDirtyUpdates)
+                return;
 
-            UpdateInjectionNodeList();
+            // Update the list of possible injection target nodes
+            if (assetInjectTargetScene.SelectedGuid == Guid.Empty)
+                // If no scene is selected, we have no node list either
+                cmbInjectTargetNode.Items.Clear();
+            else
+                // Otherwise, refresh the node list
+                UpdateInjectionNodeList();
         }
 
         private void cmbInjectTargetNode_TextChanged(object sender, EventArgs e)

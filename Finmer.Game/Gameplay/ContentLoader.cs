@@ -136,18 +136,18 @@ namespace Finmer.Gameplay
             var target_scene = GameController.Content.GetAssetByID(patch.InjectScene) as AssetScene;
             if (target_scene == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
 
             // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
             if (target_scene == patch)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' requested injection into itself. This is not supported.");
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into itself. This is not supported.");
 
             // Find the anchor node the patch should be added to
             AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectNode);
             if (target_node == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
 
             // Find the injection point (target parent node) and the index at which to insert our patch
             AssetScene.SceneNode insert_parent;
@@ -171,7 +171,7 @@ namespace Finmer.Gameplay
                     insert_index = insert_parent.Children.Count;
                     break;
                 default:
-                    throw new SceneCompilerException($"Patch '{patch.Name}' requested invalid injection mode. Module file is likely corrupt.");
+                    throw new SceneCompilerException($"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested invalid injection mode. Module file is likely corrupt.");
             }
 
             // Insert the patch nodes into the target scene
@@ -208,7 +208,7 @@ namespace Finmer.Gameplay
                     }
                     catch (InvalidDataException ex)
                     {
-                        throw new LoaderException($"Failed to compile script '{script.Name}': {ex.Message}", ex);
+                        throw new LoaderException($"Failed to compile script '{script.Name}' in module '{script.SourceModuleName}': {ex.Message}", ex);
                     }
                 }
             }
@@ -219,12 +219,12 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void CompileScenes()
         {
-            try
+            using (var script_compiler = new ScriptCompiler())
             {
-                using (var script_compiler = new ScriptCompiler())
+                var all_scenes = GameController.Content.GetAssetsByType<AssetScene>();
+                foreach (var scene in all_scenes)
                 {
-                    var all_scenes = GameController.Content.GetAssetsByType<AssetScene>();
-                    foreach (var scene in all_scenes)
+                    try
                     {
                         // Convert the scene graph into a Lua script, and precompile the Lua script as well
                         if (!scene.Inject)
@@ -236,15 +236,15 @@ namespace Finmer.Gameplay
                         scene.ScriptLeave = null;
                         scene.ScriptCustom = null;
                     }
+                    catch (InvalidDataException ex)
+                    {
+                        throw new LoaderException($"Failed to compile scene '{scene.Name}' in module '{scene.SourceModuleName}':\r\n\r\n{ex.Message}", ex);
+                    }
+                    catch (SceneCompilerException ex)
+                    {
+                        throw new LoaderException($"Failed to build scene '{scene.Name}' in module '{scene.SourceModuleName}':\r\n\r\n{ex.Message}", ex);
+                    }
                 }
-            }
-            catch (InvalidDataException ex)
-            {
-                throw new LoaderException("Script compiler error: " + ex.Message, ex);
-            }
-            catch (SceneCompilerException ex)
-            {
-                throw new LoaderException("Scene compiler error: " + ex.Message, ex);
             }
         }
 

@@ -44,7 +44,7 @@ namespace Finmer.Core.Compilers
             // Custom script goes at the top, so it is available globally
             if (scene.ScriptCustom.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptCustom.ScriptText, $"{scene.Name}.CustomScript");
+                state.Compiler?.Compile(scene.ScriptCustom.ScriptText, "CustomScript");
                 state.Main.AppendLine(scene.ScriptCustom.ScriptText);
             }
 
@@ -80,7 +80,7 @@ namespace Finmer.Core.Compilers
             // Copy OnEnter script
             if (scene.ScriptEnter.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptEnter.ScriptText, $"{scene.Name}.EnterScript");
+                state.Compiler?.Compile(scene.ScriptEnter.ScriptText, "EnterScript");
                 state.Main.AppendLine("function OnEnter()");
                 state.Main.AppendLine(scene.ScriptEnter.ScriptText);
                 state.Main.AppendLine("end");
@@ -89,7 +89,7 @@ namespace Finmer.Core.Compilers
             // Copy OnLeave script
             if (scene.ScriptLeave.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptLeave.ScriptText, $"{scene.Name}.LeaveScript");
+                state.Compiler?.Compile(scene.ScriptLeave.ScriptText, "LeaveScript");
                 state.Main.AppendLine("function OnLeave()");
                 state.Main.AppendLine(scene.ScriptLeave.ScriptText);
                 state.Main.AppendLine("end");
@@ -136,20 +136,20 @@ end"
         {
             // Basic validation
             if (node.Key.Length > 32)
-                throw new SceneCompilerException($"In scene '{state.Scene.Name}': A node has an invalid key (empty or too long). This likely indicates that the module file is corrupt.");
+                throw new SceneCompilerException("A node has an invalid key (empty or too long). This likely indicates that the module file is corrupt.");
 
             if (state.NodeNames.Contains(node.Key))
-                throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node key '{node.Key}' is used more than once.");
+                throw new SceneCompilerException($"Node key '{node.Key}' is used more than once.");
 
             if (node.IsLink && node.Children.Count > 0)
-                throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' is a link, but also contains children. This likely indicates that the module file is corrupt.");
+                throw new SceneCompilerException($"Node '{node.Key}' is a link, but also contains children. This likely indicates that the module file is corrupt.");
 
             // Enqueue all children
             foreach (Node child in node.Children)
             {
                 // States and choices must alternate
                 if (node.IsState == child.IsState)
-                    throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains child '{child.Key}' of same node type as parent. Module file is likely corrupted. (IsState = {node.IsState})");
+                    throw new SceneCompilerException($"Node '{node.Key}' contains child '{child.Key}' of same node type as parent. Module file is likely corrupted. (IsState = {node.IsState})");
 
                 // If the node key is unspecified, assign a default value instead.
                 // This must be done before code is emitted for the parent node because the parent may refer to the keys of child nodes.
@@ -163,7 +163,7 @@ end"
             // Generate an AppearFn for all concrete nodes that have one specified
             if (!String.IsNullOrWhiteSpace(node.ScriptAppear) && !node.IsLink)
             {
-                state.Compiler?.Compile(node.ScriptAppear, $"{state.Scene.Name}.{node.Key}.AppearsWhen");
+                state.Compiler?.Compile(node.ScriptAppear, $"{node.Key}/AppearsWhen");
                 state.TableAppearFns.Append(node.Key);
                 state.TableAppearFns.AppendLine(" = function()");
                 state.TableAppearFns.AppendLine(node.ScriptAppear);
@@ -200,7 +200,7 @@ end"
             // Inject the user's 'Actions Taken' script if it's non-empty
             if (!String.IsNullOrWhiteSpace(node.ScriptAction))
             {
-                state.Compiler?.Compile(node.ScriptAction, $"{state.Scene.Name}.{node.Key}.Action");
+                state.Compiler?.Compile(node.ScriptAction, $"{node.Key}/ActionsTaken");
                 state.TableStateFns.AppendLine(node.ScriptAction);
             }
 
@@ -218,10 +218,10 @@ end"
                     link_target = FindNodeByKey(state, link_target_key);
 
                     if (link_target == null)
-                        throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains a link to '{link_target_key}' but no such node exists");
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but no such node exists");
 
                     if (link_target.IsState)
-                        throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains a link to '{link_target_key}' but the link target type does not match (You cannot link to a state from another state.)");
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but the link target type does not match (You cannot link to a state from another state.)");
                 }
 
                 // Emit a call to the 'Appears When' test, then the AddButton call if it passes.
@@ -253,7 +253,7 @@ end"
             // Inject the user's 'Actions Taken' script if it's non-empty
             if (!String.IsNullOrWhiteSpace(node.ScriptAction))
             {
-                state.Compiler?.Compile(node.ScriptAction, $"{state.Scene.Name}.{node.Key}.Action");
+                state.Compiler?.Compile(node.ScriptAction, $"{node.Key}/ActionsTaken");
                 state.TableChoiceFns.AppendLine(node.ScriptAction);
             }
 
@@ -269,10 +269,10 @@ end"
                     Node link_target = FindNodeByKey(state, child.LinkTarget);
 
                     if (link_target == null)
-                        throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains a link to '{child.LinkTarget}' but no such node exists");
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{child.LinkTarget}' but no such node exists");
 
                     if (!link_target.IsState)
-                        throw new SceneCompilerException($"In scene '{state.Scene.Name}': Node '{node.Key}' contains a link to '{child.LinkTarget}' but the link target type does not match (You cannot link to a choice from another choice.)");
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{child.LinkTarget}' but the link target type does not match (You cannot link to a choice from another choice.)");
                 }
 
                 string child_key = child.IsLink ? child.LinkTarget : child.Key;

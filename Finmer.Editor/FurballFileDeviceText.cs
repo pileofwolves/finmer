@@ -73,7 +73,9 @@ namespace Finmer.Editor
                     // Read all asset files
                     foreach (FileInfo asset_file in asset_files)
                     {
-                        output.Assets.Add(ReadAssetFromFile(asset_file, project_version));
+                        var asset = ReadAssetFromFile(asset_file, project_version);
+                        asset.SourceModuleName = file.Name;
+                        output.Assets.Add(asset);
                     }
 
                     return output;

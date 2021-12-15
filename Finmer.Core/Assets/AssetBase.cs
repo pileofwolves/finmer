@@ -29,6 +29,11 @@ namespace Finmer.Core.Assets
         public string Name { get; set; } = String.Empty;
 
         /// <summary>
+        /// Gets or sets the name of the module this asset was loaded from.
+        /// </summary>
+        public string SourceModuleName { get; set; } = String.Empty;
+
+        /// <summary>
         /// Save the asset to a stream.
         /// </summary>
         public virtual void Serialize(IFurballContentWriter outstream)

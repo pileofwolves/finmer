@@ -31,7 +31,7 @@ namespace Finmer.Core.Serialization
                 using (var instream = new BinaryReader(file_stream, Encoding.UTF8, true))
                 {
                     // Read basic configuration
-                    var ret = new Furball
+                    var output = new Furball
                     {
                         Metadata = ReadHeaderFromStream(instream, out int file_version)
                     };
@@ -43,7 +43,7 @@ namespace Finmer.Core.Serialization
                     // Read dependencies list
                     for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
                     {
-                        ret.Dependencies.Add(new FurballDependency
+                        output.Dependencies.Add(new FurballDependency
                         {
                             ID = new Guid(instream.ReadBytes(16)),
                             FileNameHint = instream.ReadString()
@@ -53,10 +53,12 @@ namespace Finmer.Core.Serialization
                     // Read asset blobs
                     for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
                     {
-                        ret.Assets.Add(ReadAssetFromStream(instream, file_version));
+                        var asset = ReadAssetFromStream(instream, file_version);
+                        asset.SourceModuleName = file.Name;
+                        output.Assets.Add(asset);
                     }
 
-                    return ret;
+                    return output;
                 }
             }
             catch (IOException ex)

@@ -161,7 +161,7 @@ namespace Finmer.Gameplay
         public int NumGrappleDice => Math.Max(Agility, 1);
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int NumSwallowDice => Math.Max(Strength, 1);
+        public int NumSwallowDice => Math.Max(Body, 1);
 
         [ScriptableProperty(EScriptAccess.Read)]
         public int NumStruggleDice => Math.Max(Agility, 1);

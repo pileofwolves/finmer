@@ -36,6 +36,14 @@ namespace Finmer.Gameplay
             Debug.Assert(asset.ID != Guid.Empty, "Asset has no Guid");
             Debug.Assert(!String.IsNullOrEmpty(asset.Name), "Asset has no name");
 
+            // Validate that the UUID is unique
+            if (m_GuidMap.ContainsKey(asset.ID))
+                throw new DuplicateContentException($"Duplicate asset ID '{asset.ID}' found. All asset IDs must be unique.");
+
+            // Validate that the name is unique
+            if (m_NameMap.ContainsKey(asset.Name))
+                throw new DuplicateContentException($"Duplicate asset name '{asset.Name}' found. All asset names must be unique.");
+
             // Special handling for string tables: merge them into the main table instead of registering them,
             // since we don't need the individual table at runtime, only the full, merged collection.
             if (asset is AssetStringTable string_table)

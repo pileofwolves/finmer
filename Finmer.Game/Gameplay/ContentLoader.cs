@@ -10,7 +10,6 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Runtime.Serialization;
 using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Core.Compilers;
@@ -19,21 +18,6 @@ using Finmer.Gameplay.Scripting;
 
 namespace Finmer.Gameplay
 {
-
-    /// <summary>
-    /// Represents an exception thrown when loading of game content fails.
-    /// </summary>
-    [Serializable]
-    public sealed class LoaderException : ApplicationException
-    {
-
-        private LoaderException(SerializationInfo info, StreamingContext context) : base(info, context) {}
-
-        public LoaderException(string message) : base(message) {}
-
-        public LoaderException(string message, Exception inner) : base(message, inner) {}
-
-    }
 
     /// <summary>
     /// Represents a utility for loading and preparing all game content.
@@ -114,9 +98,13 @@ namespace Finmer.Gameplay
                         throw new LoaderException($"Missing dependency: {dependency.ID}, possibly named '{dependency.FileNameHint}'");
                 }
             }
+            catch (DuplicateContentException ex)
+            {
+                throw new LoaderException("Some modules are incompatible with each other:\r\n" + ex.Message, ex);
+            }
             catch (IOException ex)
             {
-                throw new LoaderException("A disk read error occurred: " + ex.Message, ex);
+                throw new LoaderException("A disk read error occurred:\r\n" + ex.Message, ex);
             }
         }
 

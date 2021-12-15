@@ -80,6 +80,7 @@
     <Compile Include="Gameplay\Combat\EDieFace.cs" />
     <Compile Include="Gameplay\Combat\Participant.cs" />
     <Compile Include="Gameplay\CompassController.cs" />
+    <Compile Include="Gameplay\ContentExceptions.cs" />
     <Compile Include="Gameplay\ECompassDirection.cs" />
     <Compile Include="Gameplay\ContentStore.cs" />
     <Compile Include="Gameplay\GameSession.cs" />

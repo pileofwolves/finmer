@@ -494,7 +494,7 @@ namespace Finmer.Editor
                     {
                         IsLink = true,
                         IsState = source_sn.IsState,
-                        Key = "AutoLink",
+                        Key = String.Empty,
                         LinkTarget = source_sn.Key
                     };
                     target_sn.Children.Add(link);

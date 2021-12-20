@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>Finmer Editor Reference</title>
+    <title>Finmer Editor - Module Tutorial</title>
     <style type="text/css">
         body {
             font-family: sans-serif;
@@ -62,6 +62,9 @@
             font-family: Consolas, monospace;
             background-color: #454040;
             border-radius: 3px;
+        }
+        figcaption {
+            color: #A0A0A0;
         }
         .clicky {
             display: inline;
@@ -163,85 +166,106 @@
 </head>
 <body>
     <div class="main">
-    <h1>Finmer - Example Tutorial</h1>
+    <h1>Finmer - Example Module Tutorial</h1>
     <h2>Preface</h2>
     <p>
-        Hello and welcome to this portion of the guide. Here, we'll be making a sample module to show off everything that the editor can do for creating add-ons for Finmer to tweak/create your own adventures! Now, a few things to note when following along:
+        Welcome to the module tutorial. We will be making a small sample module to show off all the important features of the game and editor, to help you get started with creating your own adventures for Finmer! A few things to note:
     </p>
     <ul>
-        <li>First, it helps to have another copy of the editor loaded with the Core module so that you know where best to insert your edits for injections and the like.</li>
-        <li>Second, you'll want to keep the documentation page handy for reference towards API calls.</li>
-        <li>Third, this guide assumes that you have already browsed the main documentation page about the editor layout and all asset types, so there won't be any additional explanation. For more information about the asset types and/or perusing the editor, please see the respective categories on the main documentation page.</li>
+        <li>Keep the main documentation page handy to use as reference for the editor and script functions.</li>
+        <li>It may be useful to have another copy of the editor loaded with the Core module so that you can easily see where best to fit your edits and the like.</li>
+        <li>This guide assumes that you have already browsed the main documentation page about the editor layout and all asset types. For more information about the asset types and/or perusing the editor, please see the respective categories on the main documentation page.</li>
     </ul>
     <p>
         So, without further ado, let's dive in and get started!
     </p>
-    <h2>Part 1: Introduction</h2>
+    <h2>Part 1: An Unassuming Job Notice</h2>
     <p>
-        There isn't a good (or bad) adventure or quest that doesn't start off in some way or another! So, we need some way to start our quest off. Since we don't have anything yet to branch off of, we'll need to reference the original Core module somehow. This is done in the Module Settings menu. Here, we need to add Core.furball as a dependency so that we can call and reference all the scenes, assets, etc. from Core in order to apply our mod seamlessly. Under the Dependencies menu, click on the Add... button and locate Core.furball on your computer. Once that module is loaded, save your module and reload it. Now you have Core.furball as a dependency, and can properly reference its assets in your own mod.</p>
-		<p>Now that we have Core referenced, we need somewhere to junction off of to start our quest. Thankfully the north side of town has a handy Notice Board that we can insert our own quest onto and still have it work. With our editor opened and Core.furball set as a depedency, let's create a new scene. The asset by default would have a name like &quot;NewScene1&quot; or similar. If we highlight that asset and hit the &quot;Rename&quot; button on the <em>Assets</em> portion of the toolbar, then we'll auomatically be set to rename the scene to how we want. Let's set the name of this scene to be &quot;Notice Injection.&quot;
+        All adventures start somewhere! So, we need some way to start our quest off. Since we don't have anything yet to branch off of, we'll need to reference the original Core module, so that we can import and use all its content in our mod. This is done in the <span class="clicky">Module Settings</span> menu. Here, we need to add Core.furball as a dependency so that we can call and reference all the scenes, assets, etc. from Core in order to apply our mod seamlessly. Under the Dependencies menu, click on the <span class="clicky">Add</span> button and locate Core.furball on your computer. Once that module is loaded, save your module and then reload the editor (such as by reopening your project)..
+    </p>
+    <!-- TODO This could use an image -->
+    <p>
+        Now that we have Core referenced, we need somewhere to junction off of to start our quest. The north side of town has a handy Notice Board that is an excellent spot for inserting our own quest. With the editor opened and Core set as a dependency, let's create a new scene by clicking <span class="clicky">Add Asset</span> on the toolbar, then click <span class="clicky">Scene</span>.
+    </p>
+    <p>
+        The new scene will have a name like &quot;NewScene1&quot;. Highlight that asset and hit the <span class="clicky">Rename</span> button on the <em>Assets</em> portion of the toolbar, then enter a decent name. This scene will be used to add our custom notice to the town's notice board, so let's use <code>TQ01_Patch_NoticeBoard</code>.
     </p>
     <figure>
-        <img src="https://i.imgur.com/REKy0IV.png" style="width: 20%">
-        <figcaption>An awesome mod has but simple beginnings...</figcaption>
+        <!-- TODO UPDATE IMAGE -->
+        <img src="https://i.imgur.com/REKy0IV.png">
+        <figcaption>An awesome mod has but humble beginnings...</figcaption>
     </figure>
     <p>
-        Now, with our Root anchor selected, let's set it to be an injection to a pre-existing scene in the core module. After clicking on the checkbox, a couple more submenus open up. For the Target Scene, we're going to use <span class="clicky">Scene_TownNSQ</span>, the Injection Point will be <span class="clicky">inside, at the end (as Choices)</span> on the <span class="clicky">ViewBoard</span> node. This will insert our mod as an aadditional notice on the board; a very simple and realistic start to our new quest.
+        Now, select the Root node, and check the <span class="clicky">Inject into another Scene</span> box. This marks the scene as a <strong>patch</strong>, meaning it will change content in another scene - in our case, the notice board. After ticking the checkbox, a couple more submenus open up. For the Target Scene, we're going to use <code>Scene_TownNSQ</code>. The Injection Point will be <span class="clicky">inside, at the end (as Choices)</span> on the <code>ViewBoard</code> node. This setup will ensure that any choice nodes we add to this patch, will be added onto the notice board. A very simple and reasonable start to our new quest.
     </p>
     <p>
-        Alright, now let's start with the content! First things first, with Root still selected, <em>Add a Node</em> to the scene through the button. Notice how the first node we get is a choice node, just like the root injection said it would be. Let's the configure the choice to something to entice a player to want to pick up our quest. Use the key settings below:
+        Let's start with the content! First things first, with Root still selected, click <span class="clicky">Add Node</span>. Observe how the first node we get is a choice node, just as we configured on the Root node. Let's set up the new button to entice a player to pick up our quest. On the new choice node, apply the following settings:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Notice</div>
         <div><span class="property">Button Text:</span>Wanted: Strong Labor</div>
-        <div><span class="property">Tooltip:</span>A Help Wanted ad. Of sorts...</div>
+        <div><span class="property">Tooltip:</span>A 'help wanted' request, of sorts...</div>
     </div>
-    <p>
-        Alright, if following along, the node should have itself populated as such:</p>
     <figure>
-        <img src="https://i.imgur.com/qtXZ1kS.png" style="width:20%">
-        <figcaption>All values filled as such</figcaption>
+        <!-- TODO UPDATE IMAGE -->
+        <img src="https://i.imgur.com/qtXZ1kS.png">
+        <figcaption>Your choice node should look like this.</figcaption>
     </figure>
     <p>
-        Ok, next, let's add another node onto this choice, which results in a state node. this will be the resulting node after our choice, and what transitions us to the next choice, lest the game softlock on us. Let's give it a Unique Key of &quot;TQ01_Start&quot;. We'll save the actions taken in this state for a little later. so, with our state node configured, let's <em>Add a Link</em> to the node. For this link, we're going to link back to the <span class="clicky">ReturnToBoard</span> node. Now, let's spin the game up by <span class="clicky">launching dev mode</span>, and see our button located on the Notice Board.
+        Next, add another node onto this choice node (with the choice selected, click <span class="clicky">Add Node</span> again), which results in a state node. This will transition us to the next set of choices. Let's give it a Unique Key of <code>TQ01_Start</code>. We will also need some script logic on the Actions Taken tab, but we'll get back to that later. So, with our state node configured and selected, click <span class="clicky">Add Link</span>. Then, on the link, set its Link Target Node to <code>ReturnToBoard</code>. This will ensure that when the player reaches this state, we provide a button that takes them back to the main notice board, lest the game soft-locks.
     </p>
     <figure>
-        <img src="https://i.imgur.com/EPUaKpd.png" style="width: 100%">
+        <img src="https://i.imgur.com/41zEwxl.png">
+        <figcaption>Link nodes are fairly straightforward.</figcaption>
+    </figure>
+    <p>
+        Now, let's spin the game up by clicking <span class="clicky">Launch Dev Mode</span> on the main toolbar. Visit the notice board in North Finmer, and check out our new button in action!
+    </p>
+    <figure>
+        <img src="https://i.imgur.com/EPUaKpd.png">
         <figcaption>Like it always belonged there!</figcaption>
     </figure>
     <p>
-        So yay, our button appearaed successfully, and when we click it we get the prompt to continue and do it all over again. Now while this may prove mildly entertaining for the first ten or so seconds, we need more meat for our quest than this. to start off, we need the button to do something, like print a message to the screen. So, configure the new state node's Actions Taken to be as such:
+        Nice, our button appeared successfully. When we click it, we get a prompt to continue, and then we can do it all over again. This is a start, but obviously we need more meat for our quest than this. To start off, we need the button to do something, like print a message on the screen. So, go back to our <code>TQ01_Start</code> node, and configure its Actions Taken script to be as such:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Notice</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log("TQ01_NOTICE")
+            Log(&quot;TQ01_NOTICE&quot;)
         </div></div>
     </div>
     <p>
-        So that our node should now look something like this:
+        It should now look like this:
     </p>
     <figure>
-        <img src="https://i.imgur.com/zvUDpuW.png" style="width:80%">
+        <img src="https://i.imgur.com/zvUDpuW.png">
         <figcaption>State nodes differ from choices significantly.</figcaption>
     </figure>
     <p>
-        Create a new String Table asset, give it some relevant name. For this tutorial, we'll go with &quot;TQ01_Strings.&quot; On our new Table, we'll <em>Add a Set</em> and give it a name, how about &quot;TQ01_NOTICE.&quot; So, for the string that encompasses that set, you can put whatever you feel like an ad for hired muscle would entail. For this tutorial, we'll go with ........... There, now we have ourselves a string to print to the screen.
+        Next, we will write the actual text that will be shown to the player.
+    </p>
+    <p>
+        Create a new String Table asset and give it a name. For this tutorial, we'll go with <code>TQ01_Strings</code>. In our new String Table, click <span class="clicky">Add Set</span> and call it <code>TQ01_NOTICE</code>. Then, in the big input field for that new string set, you can put whatever you feel like an ad for hired muscle would entail. Something like this:
     </p>
     <p>
         <code>TQ01_NOTICE</code>:
     </p>
     <div class="game-string">
-        A message is tacked haphazardly to the notice board: &quot;To all able-bodied adventurers within the town of North Finmer, if you are looking for a quick few coins, I have a deal for you. Meet me in the inn for more details.  -Tobias O. Natobi&quot;\n\nHmm… Seems valid enough.
+        A message is tacked haphazardly to the notice board: &quot;To all able-bodied adventurers: if you are looking for a few quick coins, I have a deal for you. Meet me in the local inn for more details.  -Tobias O. Natobi&quot;\n\nHmm… Seems valid enough.
     </div>
     <p>
-        With that string ready for printing, let's go back to our scene. On the TQ01_Start node, let's add an action for Logging our string to the screen. Following the APi guide, we should have a script that looks like <span class="clicky">Log(&quot;TQ01_NOTICE&quot;)</span>. Now, if we save the module and play it, we'll see that message printed to the screen when we hit the button. While that's all well and good, we can do a little more with our project here. First, let's get a journal going to keep track of everything that we do on this adventure of ours. Create a Journal asset, and name it something relevant. For this tutorial, we're going with <span class="clicky">TQ01</span> as the journal name. Let's put the summary as &quot;Hired Help&quot; and start with an entry 0. For the text, put something indicating that the player is interested in getting more information about the quest. For this tutorial, we'll use the string
+        Note the <code>\n</code> snippets near the end of the string - all instances of <code>\n</code> will be converted by the game to a line break.
+    </p>
+    <p>
+        With that string ready to go, let's go back to our scene. Take a look again at the <code>TQ01_Start</code> node. The <code>Log(&quot;TQ01_NOTICE&quot;)</code> script that we added earlier will grab the string that we just wrote (<code>TQ01_NOTICE</code>) and print it on the game screen. Now, if we save the module and play it, we'll see that message printed to the screen when we hit the button.
+    </p>
+    <p>
+        While that's all well and good, we can do a little more with our project here. First, let's get a journal going to keep track of everything that we do on this adventure of ours. Create a new Journal asset. For this tutorial, we'll call the asset <span class="clicky">TQ01</span>. Set the Journal's summary to &quot;Hired Help&quot; and add an entry with ID 0. For the text, write something indicating that the player is interested in getting more information about the quest. For example:
     </p>
     <div class="game-string">
-        A notice on the aptly named notice board has you to talk to a Tobias within the inn. Find him and see what he wants.
+        A notice on the aptly-named notice board requested that you find a 'Tobias' in the inn. Find him and see what he wants.
     </div>
     <p>
-        Now, we're going to want two things to happen. First, we'll want to call our new journal script to add the entry to our journal, and we'll want to make sure we cannot start this quest again when we do it the first time. We'll need to make some changes to our previous nodes. Adjust the following nodes accordingly:
+        Now, we're going to want two things to happen. First, when the player views the notice, we'll want to add the entry to our journal. Second, we'll want to make sure we cannot start this quest again when we've already viewed the notice once. We'll need to make some changes to our previous nodes. Adjust the following nodes accordingly:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Notice</div>
@@ -261,34 +285,27 @@
         The nodes should now look as such:
     </p>
     <figure>
-        <img src="https://i.imgur.com/A5mT63i.png" style="width:80%">
-        <figcaption>TQ01_Notice with everything placed properly</figcaption>
+        <img src="https://i.imgur.com/A5mT63i.png">
+        <figcaption>Final settings for TQ01_Notice</figcaption>
     </figure>
     <figure>
-        <img src="https://i.imgur.com/M6vYtK6.png" style="width:80%">
-        <figcaption>TQ01_Start with everything set correctly.</figcaption>
+        <img src="https://i.imgur.com/M6vYtK6.png">
+        <figcaption>Final settings for TQ01_Start</figcaption>
     </figure>
     <p>
-        To finalize this injection, add a link node to the TQ01_Start. All we'll do here is link back to ReturnToBoard on the Scene_TownNSQ scene. All that node should have on it should look like this:
+        Congratulations, you now have a starting point for a new quest! This completes the first part of the tutorial. Next, we will provide exposition for the quest.
     </p>
-    <figure>
-        <img src="https://i.imgur.com/41zEwxl.png" style="width:20%">
-        <figcaption>Link nodes are fairly simple and straightforward</figcaption>
-    </figure>
+    <h2>Part 2: Gathering Information</h2>
     <p>
-        thus, that completes the first part of the tutorial, now we need to provide exposition towards the quest and how to handle it going forward.
-    </p>
-    <h2>Part 2: Information</h2>
-    <p>
-        Ok, we have our board done, now let's start working on making our character to provide the rest of the quest! To start let's make another scene. Rename it to something relevant, like &quot;Innjection&quot; [Aren't I clever?] And we're going to want to inject the scene into another, specifically the Scene_TownInn. Now, we're going to want to inject as choices at the end of the InnTalkRoot node. For the node, we're going to want to set the node for our introduction. Set the choice node as such:
+        The quest start is ready to go; now let's make a character who provides the player with information on the rest of the quest! To start, add another scene asset. Rename it to <code>TQ01_Patch_Inn</code>. Mark it as a patch, and target <code>Scene_TownInn</code>. We'll want to inject as choices at the end of the <code>InnTalkRoot</code> node. Finally, add a choice node to this patch with the following settings:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Tobias</div>
         <div><span class="property">Button Text:</span>Dingo</div>
-        <div><span class="property">Tooltip:</span>The Dingo on the bench</div>
+        <div><span class="property">Tooltip:</span>The dingo on the bench</div>
     </div>
     <p>
-        For the general layout of our conversation, we're going to go with Tobias asking if we're here for the notice, introducing ourselves, and having him explain the situation before we ask questions. To start, we're going to add a node off of the choice node we just made, then another pair of choice/state nodes from that. First state node, as such:
+        For the general layout of our conversation, we're going to go with Tobias asking whether we're here for the notice, introducing ourselves, and having him explain the situation before we ask questions. To start, we're going to add a node off of the choice node we just made, then another pair of choice/state nodes from that. The first state node:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Tobias_Meet</div>
@@ -314,7 +331,7 @@
         </div></div>
     </div>
     <p>
-        Now, let's go back to our TQ01_Strings table and add a couple more sets. Add in the sets and strings as follows:
+        Now, let's go back to our <code>TQ01_Strings</code> table and add a couple more sets, to give the scene nodes we just created some actual text to work with. Add in the sets and strings as follows:
     </p>
     <p>
         <code>TQ01_MEET</code>:
@@ -329,14 +346,14 @@
         &quot;{player.name}, eh? Well, you seem like someone who knows how to handle themselves.&quot; Tobias pulls out a rough sketch of some intricate design. &quot;This is a pendant that's been passed down through my family for generations. When my father died, it belonged to me. However, a false friend of mine made off with it, probably to sell it for a pretty coin. I need you to track him down, and retrieve this pendant for me.&quot;
     </div>
     <p>
-        Ok, we have our basic introduction, now it's time for the questions to come. Some good things to ask are: Some info about this friend, where we could find them, and what's in it for us for helping Tobias. Let's create some choices to ask these questions. Create three choice nodes off of TQ01_Tobias_Explain with these values:
+        Now that we have our basic introduction, it's time for the player to ask some detailed questions. Some topics to discuss: the identity of this friend, where we could find them, and what's in it for us for helping Tobias. Let's create some choices to ask these questions. Create three choice nodes off of <code>TQ01_Tobias_Explain</code> with these values:
     <p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Choice_Friend</div>
         <div><span class="property">Button Text:</span>Friend</div>
         <div><span class="property">Tooltip:</span>Ask about this &quot;friend&quot;.</div>
         <div><span class="property">Appears When:</span><div class="game-script">
-            return not Storage.GetFlag(&quot;TQ01_Friend&quot;)
+            return not Storage.GetFlag(&quot;TQ01_DISCUSSED_FRIEND&quot;)
         </div></div>
     </div>
     <div class="scene-node">
@@ -344,7 +361,7 @@
         <div><span class="property">Button Text:</span>Location</div>
         <div><span class="property">Tooltip:</span>Where you might be able to find the thief.</div>
         <div><span class="property">Appears When:</span><div class="game-script">
-            return not Storage.GetFlag(&quot;TQ01_Location&quot;)
+            return not Storage.GetFlag(&quot;TQ01_DISCUSSED_LOCATION&quot;)
         </div></div>
     </div>
     <div class="scene-node">
@@ -352,38 +369,38 @@
         <div><span class="property">Button Text:</span>Reward</div>
         <div><span class="property">Tooltip:</span>What you can expect for helping out.</div>
         <div><span class="property">Appears When:</span><div class="game-script">
-            return not Storage.GetFlag(&quot;TQ01_Reward&quot;)
+            return not Storage.GetFlag(&quot;TQ01_DISCUSSED_REWARD&quot;)
         </div></div>
     </div>
     <p>
-        The special appearance script is so we can only select the choice once. Now, let's set up state nodes as children to our choce nodes. Set the following children state nodes to:
+        The 'Appears When' scripts ensures that the player can only select each choice once. Add new state nodes to the three choices we just created, one for each choice:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Choice_Friend</div>
         <div><span class="property">Parent:</span>TQ01_Expo_Friend</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Info_Friend&quot;)<br />
-            Storage.SetFlag(&quot;TQ01_Friend&quot;, true)
+            Log(&quot;TQ01_INFO_FRIEND&quot;)<br />
+            Storage.SetFlag(&quot;TQ01_DISCUSSED_FRIEND&quot;, true)
         </div></div>
     </div>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Choice_Location</div>
         <div><span class="property">Parent:</span>TQ01_Expo_Location</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Info_Location&quot;)<br />
-            Storage.SetFlag(&quot;TQ01_Location&quot;, true)
+            Log(&quot;TQ01_INFO_LOCATION&quot;)<br />
+            Storage.SetFlag(&quot;TQ01_DISCUSSED_LOCATION&quot;, true)
         </div></div>
     </div>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Choice_Reward</div>
         <div><span class="property">Parent:</span>TQ01_Expo_Reward</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Info_Reward&quot;)<br />
-            Storage.SetFlag(&quot;TQ01_Reward&quot;, true)
+            Log(&quot;TQ01_INFO_REWARD&quot;)<br />
+            Storage.SetFlag(&quot;TQ01_DISCUSSED_REWARD&quot;, true)
         </div></div>
     </div>
     <p>
-        Ok, now that we have our script calls, let's head back to our TQ01_Strings string table and add the following entries and messages:
+        With the scripts ready, let's head back to our <code>TQ01_Strings</code> string table and add the following entries:
     </p>
     <p>
         <code>TQ01_INFO_FRIEND</code>:
@@ -401,29 +418,37 @@
         <code>TQ01_INFO_REWARD</code>:
     </p>
     <div class="game-string">
-        The Dingo sighs, &quot;Shoulda known you'd ask that. Look, dad also left a bit of an inheritance, If you bring the pendant back to me, I'll give you a fair sum in return. If the rodent has already sold the pendant, I'll cover the cost to get it back.&quot;
+        The dingo sighs, &quot;Shoulda known you'd ask that. Look, dad also left a bit of an inheritance, If you bring the pendant back to me, I'll give you a fair sum in return. If the rodent has already sold the pendant, I'll cover the cost to get it back.&quot;
     </div>
     <p>
-        Now, to keep the conversation contained, we'll need to link back to all of our other nodes. So on each state node, add a link back to the other choices. Now the conversation can loop from one topic to another:
+        Now, to keep the conversation contained, we'll need to link back to all of our other nodes. So on each state node, add a link back to the other two choices. Now the conversation can loop from one topic to another:
     </p>
     <figure>
-        <img src="https://i.imgur.com/BR0Q78Y.png" style="width:20%">
-        <img src="https://i.imgur.com/unduZS3.png" style="width:20%">
-        <img src="https://i.imgur.com/6iz4We2.png" style="width:20%">
-        <figcaption>Only add the links to nodes that aren't related to the one we're linking from</figcaption>
+        <img src="https://i.imgur.com/BR0Q78Y.png">
+        <img src="https://i.imgur.com/unduZS3.png">
+        <img src="https://i.imgur.com/6iz4We2.png">
+        <figcaption><strong>Tip</strong>: You can make a link quickly by right-clicking on the link target, then dragging it to the node where the link should be, and releasing. So for example, right-click <code>TQ01_Choice_Location</code> and drag it to <code>TQ01_Expo_Reward</code>.</figcaption>
     </figure>
     <p>
-        So TQ01_Expo_Friend will have links to Expo_Location and Expo_Reward, TQ01_Expo_Location will link to Expo_Friend and Expo_Reward, TQ01_Expo_Reward to Expo_Friend and Expo_Location. We're going to want the conversation to end eventually, so we need an end choice to wrap the conversation up. Let's create another topic as such:
+        So, your links so far should look like this:
+    </p>
+    <ul>
+        <li><code>TQ01_Expo_Friend</code> links to <code>TQ01_Choice_Location</code> and <code>TQ01_Choice_Reward</code></li>
+        <li><code>TQ01_Expo_Location</code> links to <code>TQ01_Choice_Friend</code> and <code>TQ01_Choice_Reward</code></li>
+        <li><code>TQ01_Expo_Reward</code> links to <code>TQ01_Choice_Friend</code> and <code>TQ01_Choice_Location</code>.</li>
+    </ul>
+    <p>
+        Finally, we'll want the conversation to end eventually, so we need a final choice node to wrap up the conversation. Let's create another topic as such:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Choice_End</div>
-        <div><span class="property">Button Text:</span>Finish up</div>
+        <div><span class="property">Button Text:</span>Accept</div>
         <div><span class="property">Tooltip:</span>That should be everything for now.</div>
         <div><span class="property">Appears When:</span><div class="game-script">
             return
-            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_Reward&quot;) and
-            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_Location&quot;) and
-            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_Friend&quot;)
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_DISCUSSED_FRIEND&quot;) and
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_DISCUSSED_LOCATION&quot;) and
+            <br />&nbsp;&nbsp;&nbsp;&nbsp;Storage.GetFlag(&quot;TQ01_DISCUSSED_REWARD&quot;)
         </div></div>
     </div>
     <p>
@@ -432,12 +457,12 @@
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Wrapup</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Wrapup&quot;)<br />
+            Log(&quot;TQ01_WRAPUP&quot;)<br />
             Journal.Update(&quot;TQ01&quot;, 1)
         </div></div>
     </div>
     <p>
-        Now, add another choice to say goodbye and wrap the conversation up fully:
+        Add another choice to say goodbye and wrap the conversation up fully:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Tobias1_Goodbye</div>
@@ -445,7 +470,10 @@
         <div><span class="property">Tooltip:</span>Tell him you'll get the job done.</div>
     </div>
     <p>
-        Last, a link back to Main for the scene. We'll also want to add link nodes to all our info topics to point to TQ01_Choice_End as well. Add the following to the TQ01_Strings table:
+        Lastly, there should be a link back to <code>Main</code>, to ensure the player can actually return to the inn and continue playing. You'll also want to link to your new <code>TQ01_Choice_End</code> node from all three investigation options, to ensure that the 'Accept' button shows up as soon as the player finishes asking about all three topics, regardless of the order in which they were discussed.
+    </p>
+    <p>
+        Add the following to the <code>TQ01_Strings</code> table:
     </p>
     <p>
         <code>TQ01_WRAPUP</code>:
@@ -454,62 +482,58 @@
         With a nod, you stand up from the bench. &quot;Please hurry back,&quot; Tobias says, &quot;that pendant means a lot to me and my family.&quot;
     </div>
     <p>
-        Now, on our TQ01 journal, let's add an entry 1. Let's add the string as such: -------------------- We'll want to make sure we can only do this conversation once, so we'll adjust the TQ01_Tobias node by adding to the <b>Appears</b> side of the node. The node should now look like this:
+        Open up the <code>TQ01</code> journal asset again. Let's add a new entry with ID 1, with text that indicates the player has accepted the quest, like so:
     </p>
     <div class="game-string">
         Tobias instructed me to look for Theo to the west side of the town. I should see about heading that way when I'm able.
     </div>
+    <p>
+        Back in the <code>TQ01_Patch_Inn</code> scene: To ensure the player can only view this conversation once, we'll adjust the <code>TQ01_Tobias</code> node by adding to the 'Appears When' script. The node should now look like this:
+    </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Tobias</div>
         <div><span class="property">Button Text:</span>Dingo</div>
-        <div><span class="property">Tooltip:</span>The Dingo on the bench</div>
+        <div><span class="property">Tooltip:</span>The dingo on the bench</div>
         <div><span class="property">Appears When:</span><div class="game-script">
             return Storage.GetNumber(&quot;TQ01&quot;) == 1
         </div></div>
     </div>
     <p>
-        And, we'll want to adjust the TQ01_Wrapup node too to update said number:
+        Likewise, we need to adjust the <code>TQ01_Wrapup</code> node too, in order to change the number that the <code>TQ01_Tobias</code> node is checking for:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Wrapup</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
             Log(&quot;TQ01_Wrapup&quot;)<br />
             Journal.Update(&quot;TQ01&quot;, 1)<br />
-            Storage.SetNumber(&quot;TQ01&quot;,2)
+            Storage.SetNumber(&quot;TQ01&quot;, 2)
         </div></div>
     </div>
+    <!-- TODO Image of the final scene graph would be nice -->
     <p>
-        We're now ready to start heading out of the town to the west to look for Theo and retrieve the pendant for Tobias.
+        That wraps up the investigation portion of the quest. The player can now visit the inn and discuss the quest with Tobias. We're now ready to start heading out of the town to the west to look for Theo and retrieve the missing pendant.
     </p>
-    <h2>Part 3: Solution</h2>
+    <h2>Part 3: The Campsite</h2>
     <p>
-        We had set the area to look for Theo to be west of town, so we'll need to add onto the directions at the crossroads south of Finmer. Let's create a new scene, make it an injection into Scene_RoadNorth. But, we're injecting as states before Main, instead of choices after it. Since we don't normally have a westbound direction, we'll have to copy the old scene script and add in our script to it. With our new state node, let's set the new state node to:
-    </p>
-    <!-- TBD -->
-    <span class="editorcode">
-        <b>Unique</b>:Main2
-        <br><b>Actions</b>:
-        <br>Log(&quot;road_north&quot;)
-        <br>AddLink(ECompass.North, &quot;Scene_TownGate&quot;)
-        <br>AddLink(ECompass.East, GoEast)
-        <br>AddLink(ECompass.South, GoSouth)
-        <br>AddLink(ECompass.West, &quot;TQ01_Hideout&quot;)
-        <br><b>Appears</b>:return Storage.GetFlag(&quot;TQ01_Hideout&quot;)
-    </span>
-    <p>
-        We're also gonna want this to only trigger when the thief's hideout is known and active, hence the script in the Appears section. We'll also want to toggle the TQ01_Hideout flag once the player begins looking outside the town, so let's modify the TQ01_Wrapup node in our Innjection scene again:
+        Tobias mentioned the area to look for Theo would be west of town, so we'll add on to the directions at the crossroads south of Finmer. Create another patch - let's call it <code>TQ01_Patch_RoadNorth</code>. Configure it to be an injection into <code>Scene_RoadNorth</code>. This time, we'll inject <span class="clicky">before (as States)</span> with the injection point set to <code>Main</code>, instead of as choices like we did before. Since the base game does not normally have a westbound direction here, we'll have to copy the old scene script and add in our script to it. Add a state node to our blank scene and configure it like so:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Wrapup</div>
+        <div><span class="property">Key:</span>TQ01_Main</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Wrapup&quot;)<br />
-            Journal.Update(&quot;TQ01&quot;, 1)<br />
-            Storage.SetNumber(&quot;TQ01&quot;,2)<br />
-            Storage.SetFlag(&quot;TQ01_Hideout&quot;, true)
+            Log(&quot;ROAD_NORTH&quot;)<br />
+            AddLink(ECompass.North, &quot;Scene_TownGate&quot;)<br />
+            AddLink(ECompass.West, &quot;TQ01_Scene_Hideout&quot;) -- This adds a west-bound link for our quest<br />
+            AddLink(ECompass.East, GoEast)
+        </div></div>
+        <div><span class="property">Appears When:</span><div class="game-script">
+            return Storage.GetNumber(&quot;TQ01&quot;) == 2
         </div></div>
     </div>
     <p>
-        Now, we'll create a new scene, naming it TQ01_Hideout just like we set in the script for Main2. If we don't match the scene, it will not link properly, and we could experience errors in the script. So, with the scene created, add a node from Root. The new State node should be:
+        Since we only want to activate this patch and show the westbound link when the thief's hideout is known and active, we have an 'Appears When' script set up to check that the quest is in the right state. Remember, we previously configured the <code>TQ01_Wrapup</code> node in our <code>TQ01_Patch_Inn</code> scene to update the <code>TQ01</code> variable as soon as the player accepts the quest, hence this script will activate from now on.
+    </p>
+    <p>
+        Now, we'll create a new scene, naming it <code>TQ01_Scene_Hideout</code> (the same name we used in <code>TQ01_Main</code>'s script). As before, add the first state from the Root node, like so:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Hideout</div>
@@ -518,13 +542,13 @@
         </div></div>
     </div>
     <p>
-        On the TQ01_Strings table, let's add the following entry:
+        Add the following entry to our <code>TQ01_Strings</code> string table:
     </p>
     <p>
         <code>TQ01_HIDEOUT</code>:
     </p>
     <div class="game-string">
-        A fair trek from the main road, and you encounter what looks like a makeshift encampment. A tattered bedroll and dilapidated firepit stand out most, as does a prone figure lying on the ground.
+        A fair trek from the main road, you encounter what looks like a makeshift encampment. A tattered bedroll and dilapidated firepit stand out most, as does a prone figure lying on the ground.
     </div>
     <p>
         We see a prone figure on the ground, so let's make a choice node to approach them. Build the node as such:
@@ -535,7 +559,7 @@
         <div><span class="property">Tooltip:</span>Approach the prone individual.</div>
     </div>
     <p>
-        And on that node, let's make a new state node:
+        And on that node, add a new state node:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Approach_Log</div>
@@ -544,7 +568,7 @@
         </div></div>
     </div>
     <p>
-        And the subsequent StringTable entry:
+        The accompanying string table entry:
     </p>
     <p>
         <code>TQ01_APPROACH</code>:
@@ -553,45 +577,48 @@
         You begin to walk over to the prone individual, calling to get their attention. They seem to ignore your shouts, and it's only until you get up to the body itself that you find out why. Cuts, gouges and lacerations cover the rat's body, and a pool of blood ebbs out from the corpse. Theo seems to have been attacked and killed.
     </div>
     <p>
-        Huh, Theo's already dead. Well, saves us some of the effort. But, we should see if he still has the pendant on him, as well as see if we can identify just what did him in. Let's make a choice node to investigate Theo by configuring it as such:
+        Huh, Theo seems to be a goner. Well, that saves us some effort. We should see if he still has the pendant on him. Let's add a choice node to investigate his body:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Invest</div>
+        <div><span class="property">Key:</span>TQ01_Investigate</div>
         <div><span class="property">Button Text:</span>Investigate</div>
         <div><span class="property">Tooltip:</span>Investigate the body, see what happened.</div>
     </div>
     <p>
-        For a little bit of character customization weight, we should make it that the more attentive player characters are able to identify the cause for the wounds on Theo's body. We'll make two different state nodes as children from TQ01_Invest, and theyll be created as such:
+        For a little bit of character customization weight, we should make it so that the more attentive player characters are able to identify the cause for the wounds on Theo's body. We'll make two different state nodes as children from the <code>TQ01_Investigate</code> choice node:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_InvestPass</div>
+        <div><span class="property">Key:</span>TQ01_InvestigatePass</div>
+        <div><span class="property">Actions Taken:</span><div class="game-script">
+            Log(&quot;TQ01_INVESTIGATEWIT&quot;)
+        </div></div>
         <div><span class="property">Appears When:</span><div class="game-script">
-            return Player.Wits > 4
-        </div></div>
-        <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_InvestWit&quot;)
+            return Player.Wits >= 5
         </div></div>
     </div>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_InvestFail</div>
+        <div><span class="property">Key:</span>TQ01_InvestigateFail</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_InvestLowWit&quot;)
+            Log(&quot;TQ01_INVESTIGATELOWWIT&quot;)
         </div></div>
     </div>
     <p>
-        The code with the most specific requirements to trigger has to be the first node, as that's the first one checked by the program. If the low wit is the first node, it will always trigger as it's designed to fire at any setting and status, unlike the one where it checks the player's Wit attribute. Now, let's add the respective entries to the stringtable:
+        As explained in the main documentation, the game checks states in order, from top to bottom. The first one to 'pass' is the one that will be selected. Hence, the node with the most specific requirements to trigger should be the first. If the low-wits state is the first child, it would always be chosen since it does not have an 'Appears When' script. Instead, if the high-wits state is first, it will be checked first. If its 'Appears When' script does not pass, then the game selects the low-wits state, providing us with the conversation branch we're looking for.
     </p>
     <p>
-        <code>TQ01_INVESTWIT</code>:
+        The string table entries for the above two nodes:
+    </p>
+    <p>
+        <code>TQ01_INVESTIGATEWIT</code>:
     </p>
     <div class="game-string">
-        Looking a bit deeper into the wounds, you're able to see that they are bite and claw marks. Moderate sized animal, possibly dog or wolf from the looks of it. And it was more than just one going after Theo. This poor rat was a victim of an animal attack, and didn't survive the onslaught.
+        Looking a bit deeper into the wounds, you're able to see that they are bite and claw marks. The aggressor would have to be a medium-sized animal, possibly a local predator from the looks of it. Clearly, there were more than just one going after Theo. This poor rat was a victim of an animal attack, and didn't survive the onslaught.
     </div>
     <p>
-        <code>TQ01_INVESTLOWWIT</code>:
+        <code>TQ01_INVESTIGATELOWWIT</code>:
     </p>
     <div class="game-string">
-        These wounds appear all over Theo's body, no rhyme or reason to where they were located. You cannot really determine what caused these injuries, but nevertheless he died because of them.
+        These wounds appear all over Theo's body, with no rhyme or reason to where they were located. You cannot reliably determine what caused these injuries, but nevertheless they clearly proved to be his demise.
     </div>
     <p>
         With our state nodes created, let's link off one of them and create a new choice node. Build it as follows:
@@ -602,48 +629,54 @@
         <div><span class="property">Tooltip:</span>Search Theo's corpse for the pendant.</div>
     </div>
     <p>
-        Whichever state node you did not make that choice node a child of, you'll want to make a link node to point to TQ01_Search to bring the script to follow the same path. With that properly linked, add another state node off of TQ01_Search and build it accordingly:
+        We just branched the conversation with our Wits check, but we now want the two paths to converge again. In whichever of the two state nodes you did not add <code>TQ01_Search</code>, you'll want to make a link to point to <code>TQ01_Search</code> to get the scene to follow the same path again. With that properly linked, add another state node off of <code>TQ01_Search</code> and build it accordingly:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Pendant_Get</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Search&quot;)<br />
+            Log(&quot;TQ01_SEARCH&quot;)<br />
             Player:ModifyMoney(5)<br />
-            Player:GiveItem(&quot;TQ01_Pendant&quot;)
+            Player:GiveItem(&quot;TQ01_I_Pendant&quot;)
         </div></div>
     </div>
     <p>
-        The GiveItem function requires an Item argument passed to it in order to work, so let's get it in the editor. Add a new asset, this time an Item. Rename the asset to TQ01_Pendant to match the script and build the rest of it as such:
+        <code>TQ01_SEARCH</code>:
+    </p>
+    <div class="game-string" style="background: red;">
+        Missing text
+    </div>
+    <p>
+        The <code>GiveItem</code> function requires an Item argument passed to it in order to work, so let's get that set up in the editor. Add a new asset, this time an Item. Rename the asset to <code>TQ01_I_Pendant</code> to match the script and build the rest of it as such:
     </p>
     <div class="asset">
         <div><span class="property">Item Name:</span>Pendant</div>
         <div><span class="property">Type:</span>Generic</div>
         <div><span class="property">Value:</span>65</div>
-        <div><span class="property">Quest Item:</span>[Checked]</div>
+        <div><span class="property">Quest Item:</span>&#10004;</div>
         <div><span class="property">Flavor Text:</span><div class="game-string">
             A pendant for the Natobi family. There's probably a very complex backstory behind this trinket, but who honestly wants to hear all of it?
         </div></div>
     </div>
     <p>
-        For note, quest items do not require a value, since they cannot be sold, but we're doing so for aesthetic purposes. Ok, so we've added our pendant item, as well as a bit of loose change that Theo had in his pockets. Now we can return to Tobais with the pendant in hand and collect our reward. However, this doesn't seem like a fulfilling quest. We should add something more to make the quest seem like a real task instead of a chore. Let's spruce things up by adding some combat. After TQ01_Pendant_Get, make a new choice node as such:
+        Note: quest items do not require a value, since they can never be sold, but we're doing so for aesthetic purposes. If you prefer, you can also set the item's value to zero, which will hide the item value from its in-game tooltip (and also prevents non-quest items from being sold).
+    </p>
+    <p>
+        So we've added our pendant item, as well as a bit of loose change that Theo had in his pockets. Now we can return to Tobias with the pendant in hand and collect our reward. However, this doesn't seem like a fulfilling quest. We should add something more to make the quest seem like a real task instead of a chore. Let's spruce things up by adding some combat. After <code>TQ01_Pendant_Get</code>, make a new choice node as such:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Fight_Cont</div>
-        <div><span class="property">Button Text:</span>Search</div>
+        <div><span class="property">Button Text:</span>Continue</div>
         <div><span class="property">Tooltip:</span>Time to return to Tobias.</div>
     </div>
     <p>
-        Then a subsequent state node as such:
+        Followed by a state:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Fight</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_fight_Lead&quot;)
+            Log(&quot;TQ01_FIGHT_LEAD&quot;)
         </div></div>
     </div>
-    <p>
-        For the String Table:
-    </p>
     <p>
         <code>TQ01_FIGHT_LEAD</code>:
     </p>
@@ -651,56 +684,62 @@
         However, as soon as you get up, you hear a low growl from behind you. You spin around to find a lone wolf staring you down. Gray fur matted up, this wolf looks a bit rough, but why is it taking you on alone? Either way, it snarls menacingly and charges at you!
     </div>
     <p>
-        A ha! A sudden, unprovoked fight! Now we're talking. The way that the Finmer program handles characters in fights is through Creature assets to store combat information relating to characters. So, for this fight, we'll need to make a new asset, rename it to TQ01_Wolf and build it up as such:
+        A-ha! A sudden, unprovoked fight! Now we're talking. Finmer handles participants in fights using Creature assets. These store combat-related information like stats. So, for this fight, add a Creature asset and rename it to <code>TQ01_CR_Wolf</code>. Configure it like so:
     </p>
     <div class="asset">
         <div><span class="property">Creature Name:</span>Lone Wolf</div>
         <div><span class="property">Alias:</span>the wolf</div>
-        <div><span class="property">Gender:</span>Male</div>
+        <div><span class="property">Gender:</span>Ungendered</div>
         <div><span class="property">Level:</span>2</div>
         <div><span class="property">Size:</span>Medium</div>
         <div><span class="property">Strength:</span>2</div>
         <div><span class="property">Agility:</span>3</div>
         <div><span class="property">Body:</span>4</div>
         <div><span class="property">Wits:</span>3</div>
-        <div><span class="property">Is Predator:</span>[Checked]</div>
-        <div><span class="property">Digests Prey:</span>[Checked]</div>
+        <div><span class="property">Is Predator:</span>&#10004;</div>
+        <div><span class="property">Digests Prey:</span>&#10004;</div>
     </div>
     <p>
-        Now, let's make a Choice node off of TQ01_Fight and configure it like so:
+        Next, make a choice node off of <code>TQ01_Fight</code> and configure it like so:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Fight_Start</div>
         <div><span class="property">Button Text:</span>Uh-oh!</div>
         <div><span class="property">Tooltip:</span>And you thought this would be a simple job...</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            local wolf = Creature(&quot;TQ01_Wolf&quot;)<br />
+            local wolf = Creature(&quot;TQ01_CR_Wolf&quot;)<br />
             fight = Combat2()<br />
             fight:AddParticipant(Player)<br />
             fight:AddParticipant(wolf)<br />
-            fight:OnCreatureVored(function(predator,prey)<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;if prey~= Player then<br />
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Storage.SetFlag(&quot;TQ01_Wolf_nom&quot;, true)<br />
+            fight:OnCreatureVored(function(predator, prey)<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;if predator == Player then<br />
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Storage.SetFlag(&quot;TQ01_WOLF_NOM&quot;, true)<br />
             &nbsp;&nbsp;&nbsp;&nbsp;end<br />
             end)<br />
             fight:Begin()
         </div></div>
     </div>
     <p>
-        Notce how we put the fight script in the choice node instead of stae nodes like everything else? This is because subsequent state nodes are only for when the fight is over and certain states are achieved, such as the player devouring the enemy to win the fight. We have to manually add all participants into the battle, and then set all the special script callbacks such as when a creature is consumed by another. We have a special flag for when the player devours the wolf to win, so let's apply that to our subsequent state nodes. Create two new State nodes after TQ01_Fight_Start, and configure them as such:
+        Noticed how we put this fight script in the choice node instead of state nodes like everything else? This is because subsequent state nodes will branch based on how exactly the fight ended, such as the player devouring the enemy to win the fight (or not).
+    </p>
+    <p>
+        We have to add all participants into the battle individually, and then configure a callback for when a creature is devoured by another. If the player is the one doing the eating, we set a special flag. We can later check whether this flag was set in order to branch off in the scene. Let's apply that now. Create two new state nodes in <code>TQ01_Fight_Start</code>:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Fight_Nom_Win</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_fight_finish_nom&quot;)<br />
+            Log(&quot;TQ01_FIGHT_FINISH_NOM&quot;)<br />
             FoodComa()<br />
-            Log(&quot;TQ01_fight_finish_nom2&quot;)
+            Log(&quot;TQ01_FIGHT_FINISH_NOM2&quot;)
+        </div></div>
+        <div><span class="property">Appears When:</span><div class="game-script">
+            return Storage.GetFlag(&quot;TQ01_WOLF_NOM&quot;)
         </div></div>
     </div>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Fight_Win</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Fight_finish&quot;)
+            Log(&quot;TQ01_FIGHT_FINISH&quot;)
         </div></div>
     </div>
     <p>
@@ -725,91 +764,103 @@
         Cleaning off your knuckles, you stare at the wolf's prone figure. Unmoving, it won't be coming back from that one anytime soon. Anyway, you begin your trek back to the town to return the pendant.
     </div>
     <p>
-        As far as FoodComa(), that script is defined within Core.furball and handles the resting off the player's meal. Now, we should finish up the scene. On one of the two state nodes, create a new choice node, built like this:
+        As for the <code>FoodComa()</code> function - that function is defined within the Core module and provides a convenience tool for simulating the player resting off their meal. Now, we should finish up the scene. On one of the two state nodes, create a new choice node:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_To_Road</div>
         <div><span class="property">Button Text:</span>Continue</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Storage.SetFlag(&quot;TQ01_hideout&quot;, false)<br />
+            Storage.SetNumber(&quot;TQ01&quot;, 3)<br />
             Journal.Update(&quot;TQ01&quot;, 2)<br />
             SetScene(&quot;Scene_RoadNorth&quot;)
         </div></div>
     </div>
     <p>
-        This kicks us back to the road, and the setting TQ01_hideout to false keeps us from going back to the campsite again. While the adventuring side of us is disappointed, this would allow other mods to make use of the west direction later on and not conflict. Now, let's add the last entry to our journal for the quest, ID 2. The test should go something along these lines: <span class="scriptapi">After fighting off a wolf, you now have the Pendant that Tobias was looking for. You should return to him for the reward.</span>So, now we can begin heading back to Tobias and get our payment.
+        <strong>Caution:</strong> Ensure that your <code>SetScene</code> call is the last one in the script. <code>SetScene</code> will terminate the script immediately, so any code coming after it will not be evaluated.
+    </p>
+    <p>
+        This kicks us back to the road, and updating the <code>TQ01</code> variable will prevent the player from going back to the campsite again. Now, let's add the last entry to our journal for the quest, with ID 2. The entry should indicate that the item was retrieved:
+    </p>
+    <div class="game-string">
+        After fighting off a wolf, you now have the Pendant that Tobias was looking for. You should return to him for the reward.
+    </div>
+    <p>
+        Let's head back to Tobias and wrap up this adventure.
     </p>
     <h2>Part 4: Conclusion</h2>
     <p>
-        So, now we need to find Tobias and return the item to him. He had implied that he would still be located at the inn, so we can still use the Innjection scene we created to add a new entry. Off of Root, create another choice node, this one now set up like:
+        We need to find Tobias and return the item to him. He had suggested that he would still be located at the inn, so we can still use the <code>TQ01_Patch_Inn</code> scene we created to add a new entry. Off of Root, create another choice node, this one now set up like:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Tobias_Done</div>
         <div><span class="property">Button Text:</span>Tobias</div>
         <div><span class="property">Tooltip:</span>Report your success to Tobias.</div>
         <div><span class="property">Appears When:</span><div class="game-script">
-            return Storage.GetFlag(&quot;TQ01_Done&quot;)
+            return Storage.GetNumber(&quot;TQ01&quot;) == 3
         </div></div>
     </div>
     <p>
-        We only want Tobias to show when we complete his quest, so go back to TQ01_To_Road and add in the respective Action to the node so it ends up like this:
+        Observe how we ensure that the <code>TQ01</code> variable was set to 3, which is done by the <code>TQ01_To_Road</code> node. We only want Tobias to show when we complete his quest.
     </p>
-    <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_To_Road</div>
-        <div><span class="property">Button Text:</span>Continue</div>
-        <div><span class="property">Actions Taken:</span><div class="game-script">
-            Storage.SetFlag(&quot;TQ01_hideout&quot;, false)<br />
-            Storage.SetFlag(&quot;TQ01_Done&quot;, true)<br />
-            Journal.Update(&quot;TQ01&quot;, 2)<br />
-            SetScene(&quot;Scene_RoadNorth&quot;)
-        </div></div>
-    </div>
     <p>
-        Notice that the new SetFlag script is placed <i>before</i> the SetScene one, SetScene has to be the last script called if you're going to use it, or else all subsequent code will be skipped over in the transition. Now, let's finish the quest up. Create a new state node off of TQ01_Tobias_Done as such:
+        Now, let's finish the quest up. Create a new state node off of <code>TQ01_Tobias_Done</code>:
     </p>
     <div class="scene-node">
         <div><span class="property">Key:</span>TQ01_Toby_Finish</div>
         <div><span class="property">Button Text:</span>Continue</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
-            Log(&quot;TQ01_Completion&quot;)<br />
-            Storage.SetFlag(&quot;TQ01_Done&quot;,false)<br />
+            -- Print message<br />
+            Log(&quot;TQ01_COMPLETION&quot;)<br />
+            <br />
+            -- Prevent player from completing the quest again<br />
+            Storage.SetNumber(&quot;TQ01&quot;, 4)<br />
+            <br />
+            -- Remove the journal entry and the quest item<br />
             Journal.Close(&quot;TQ01&quot;)<br />
+            Player:TakeItem(&quot;TQ01_I_Pendant&quot;)<br />
+            <br />
+            -- Grant rewards<br />
             Player:ModifyMoney(55)<br />
-            Player:TakeItem(&quot;TQ01_Pendant&quot;)<br />
             Player:AwardXP(50)
         </div></div>
     </div>
     <p>
-        We close out the journal, remove the pendant from our inventory, get paid, and go on our way. Let's just wrap it up with a simple choice node, then a subsequent link node back to Main on Scene_TownInn. The choice node built like this:
+        <code>TQ01_COMPLETION</code>:
+    </p>
+    <div class="game-string" style="background: red;">
+        Missing text
+    </div>
+    <p>
+        We close out the journal, remove the pendant from our inventory, get paid, and go on our way. Like the investigation conversation, let's wrap it up with a simple choice node, followed by a link back to <code>Main</code>. The choice node built like this:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_finale</div>
+        <div><span class="property">Key:</span>TQ01_Finale</div>
         <div><span class="property">Button Text:</span>Continue</div>
         <div><span class="property">Tooltip:</span>And that's that!</div>
     </div>
     <p>
-        Congratulations! You just made your own module to use alongside the Core for Finmer. However, we can put a bit more personality into our module. Go back to the TQ01_Wolf creature asset. Notice the String Mappings field? This is to overwrite the normal default strings for combat that the game generates on its own. Let's create a new String Table asset, rename it to TQ01_Combat. Add the following entries to that stringlist:
+        There is one last thing we can do to add bit more personality to our quest. Go back to the <code>TQ01_CR_Wolf</code> creature asset. Notice the String Mappings field? This feature lets you 'override' the default combat-related strings that the game will use when this creature is used in combat. Let's create a new String Table asset, called <code>TQ01_Combat</code>. Add the following entries to that table:
     </p>
     <p>
-        <code>TQWOLF_DIGEST</code>:
+        <code>TQ01_WOLF_DIGEST</code>:
     </p>
     <div class="game-string">
         The wolf tries to call out to its pack from within your stomach, but the churning and groaning from within drowns its final words out.
     </div>
     <p>
-        <code>TQWOLF_DIGEST_POV</code>:
+        <code>TQ01_WOLF_DIGEST_POV</code>:
     </p>
     <div class="game-string">
         A resounding belch from the wolf signifies the last of your available air. The victorious canine saunters over the the abandoned campsite and flops down on its side, curling up beside its distended stomach to fall asleep. You, however, are far less comfortable. With your dwindling energy and air, you pass out within the caustic confines of the wolf's stomach.
     </div>
     <p>
-        <code>TQWOLF_KILL</code>:
+        <code>TQ01_WOLF_KILL</code>:
     </p>
     <div class="game-string">
-        A good, solid hit on the wolf, and you hear a sickening crack as the canine collapses on the ground.
+        You manage to land a good, solid hit on the wolf, and you hear a sickening crack as the canine collapses on the ground.
     </div>
     <p>
-        <code>TQWOLF_STRUGGLE</code>:
+        <code>TQ01_WOLF_STRUGGLE</code>:
     </p>
     <div class="game-string">
         The wolf frantically fights to escape your stomach, though it seems to be of no avail.
@@ -818,33 +869,37 @@
         The wolf whines and whimpers in its desperate attempt to free itself from your belly.
     </div>
     <p>
-        The multiple strings in TQWOLF_STRUGGLE allows for randomization of messages playing. With our strings created, let's add some string remapping to the Wolf asset. Create the mappings as such:
+        Notice how <code>TQ01_WOLF_STRUGGLE</code> has multiple strings. Enter each one on a new line. This allows for randomization of messages playing: the game will automatically select a random one from this string set whenever <code>TQ01_WOLF_STRUGGLE</code> is used. With our strings created, let's add some string remapping to the wolf creature. Create three string mappings like so:
     </p>
     <div class="asset">
         <div><span class="property">String Used:</span>VORE_EXT_STRUGGLE</div>
         <div><span class="property">Situation:</span>Player on NPC</div>
-        <div><span class="property">Replacement:</span>TQWOLF_STRUGGLE</div>
+        <div><span class="property">Replacement:</span>TQ01_WOLF_STRUGGLE</div>
     </div>
     <div class="asset">
         <div><span class="property">String Used:</span>KILL_DIGESTED</div>
         <div><span class="property">Situation:</span>Player on NPC</div>
-        <div><span class="property">Replacement:</span>TQWOLF_DIGEST</div>
+        <div><span class="property">Replacement:</span>TQ01_WOLF_DIGEST</div>
     </div>
     <div class="asset">
         <div><span class="property">String Used:</span>KILL_GENERIC</div>
         <div><span class="property">Situation:</span>Player on NPC</div>
-        <div><span class="property">Replacement:</span>TQWOLF_KILL</div>
+        <div><span class="property">Replacement:</span>TQ01_WOLF_KILL</div>
     </div>
     <div class="asset">
         <div><span class="property">String Used:</span>KILL_DIGESTED</div>
         <div><span class="property">Situation:</span>NPC on Player</div>
-        <div><span class="property">Replacement:</span>TQWOLF_DIGEST_POV</div>
+        <div><span class="property">Replacement:</span>TQ01_WOLF_DIGEST_POV</div>
     </div>
     <p>
-        Now we should have some special text play when we win the fight and/or devour the wolf to win. In the event that the wolf eats us, we'll also have something special play as well.
+        Now we have some special text shown when the player wins the fight and/or devour the wolf to win. In the event that the wolf eats the player, we'll also have a dedicated string mapping to cover that situation.
+    </p>
+    <h2>Final words</h2>
+    <p>
+        Congratulations! You now have a fully-functional quest that plugs in neatly alongside Finmer's base game. 
     </p>
     <p>
-        So, we have completed our own module, made a new quest, got into a fight, and saved the day, in a sense. A job well done. We've also utilized the main functions and asset types for the editor, so you should be experienced enough to start making your own modules with your own adventures! Have fun, and do get creative in your designs!
+        In this guide, we have covered how to make a new quest: the player will gather information, get into a fight, and save the day. A job well done. We have demonstrated the various asset types and features of the editor. Hopefully, you now have some familiarity with the editor and a feel for how to set things up. From here, you can easily add more content to your new quest, or adjust it for a different setting or location. Have fun, and be creative!
     </p>
     <div class="footer"><p>This game was developed by Nuntis the Wolf and released under GPL3/CC4-BY-SA-NC (see README.md for details).<br/><a href="https://github.com/pileofwolves/finmer" target="_blank" rel="noopener">Browse or fork the project on GitHub!</a></p></div>
     </div>

@@ -27,7 +27,7 @@
 				"Key": "TQ01_Hideout",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TQ01_Hideout\")",
+				"ScriptAction": "Log(\"TQ01_HIDEOUT\")",
 				"Children": [
 					{
 						"Key": "TQ01_Approach",
@@ -42,7 +42,7 @@
 								"Key": "TQ01_Approach_Log",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TQ01_Approach\")",
+								"ScriptAction": "Log(\"TQ01_APPROACH\")",
 								"Children": [
 									{
 										"Key": "TQ01_Investigate",
@@ -57,6 +57,7 @@
 												"Key": "TQ01_InvestigatePass",
 												"IsState": true,
 												"IsLink": false,
+												"ScriptAction": "Log(\"TQ01_INVESTIGATEWIT\")",
 												"ScriptAppear": "return Player.Wits >= 5",
 												"Children": [
 													{
@@ -71,6 +72,7 @@
 												"Key": "TQ01_InvestigateFail",
 												"IsState": true,
 												"IsLink": false,
+												"ScriptAction": "Log(\"TQ01_INVESTIGATELOWWIT\")",
 												"Children": [
 													{
 														"Key": "TQ01_Search",

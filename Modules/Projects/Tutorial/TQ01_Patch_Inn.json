@@ -138,8 +138,7 @@
 												"Tooltip": "What you can expect for helping out.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
-												"ScriptAction": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")",
-												"ScriptAppear": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")\r\n",
+												"ScriptAppear": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")",
 												"Children": [
 													{
 														"Key": "TQ01_Expo_Reward",

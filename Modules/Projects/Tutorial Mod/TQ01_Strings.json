@@ -1,0 +1,109 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "152041aa-da41-4573-aedd-13a5d6819927",
+	"Name": "TQ01_Strings",
+	"Entries": [
+		{
+			"Key": "TQ01_APPROACH",
+			"Text": [
+				"You begin to walk over to the prone individual, calling to get their attention. They seem to ignore your shouts, and it's only until you get up to the body itself that you find out why. Cuts, gouges and lacerations cover the rat's body, and a pool of blood ebbs out from the corpse. Theo seems to have been attacked and killed."
+			]
+		},
+		{
+			"Key": "TQ01_COMPLETION",
+			"Text": [
+				"\"You found it? Wonderful! Let me see!\" You pull the pendant out for the dingo to investigate. You see him sigh in relief. \"Ahh, perfect. Thanks again {player.name}, I really appreciate it. Here, as agreed, a fair payment, for services rendered.\" Tobias slides a purse of coin to you, to which you're quick to pocket it. \"And now, our business is concluded, and I shall now take my leave. Take care in this world, {player.name}, and I hope to see you soon.\""
+			]
+		},
+		{
+			"Key": "TQ01_EXPLAIN",
+			"Text": [
+				"\"{player.name}, eh? Well, you seem like someone who knows how to handle themselves.\" Tobias pulls out a rough sketch of some intricate design. \"This is a pendant that's been passed down through my family for generations. When my father died, it belonged to me. However, a false friend of mine made off with it, probably to sell it for a pretty coin. I need you to track him down, and retrieve this pendant for me.\""
+			]
+		},
+		{
+			"Key": "TQ01_FIGHT_FINISH",
+			"Text": [
+				"Cleaning off your knuckles, you stare at the wolf's prone figure. Unmoving, it won't be coming back from that one anytime soon. Anyway, you begin your trek back to the town to return the pendant."
+			]
+		},
+		{
+			"Key": "TQ01_FIGHT_FINISH_NOM",
+			"Text": [
+				"The wolf's gone quiet in your stomach for some time now. A couple pushes and prods into your {player.species}-gut does not evoke a response from the canine, though the glorps and burbles from your stomach are enough evidence you need to know the wolf is finished. Lethargy soon builds up within you, and you find a cozy spot to rest while sleep overtakes you."
+			]
+		},
+		{
+			"Key": "TQ01_FIGHT_FINISH_NOM2",
+			"Text": [
+				"When you reawaken, your gut has shrunk down significantly, to the point where nobody would be the wiser that you consumed an entire animal whole and kicking. You get back onto the path towards the town."
+			]
+		},
+		{
+			"Key": "TQ01_FIGHT_LEAD",
+			"Text": [
+				"However, as soon as you get up, you hear a low growl from behind you. You spin around to find a lone wolf staring you down. Gray fur matted up, this wolf looks a bit rough, but why is it taking you on alone? Either way, it snarls menacingly and charges at you!"
+			]
+		},
+		{
+			"Key": "TQ01_HIDEOUT",
+			"Text": [
+				"A fair trek from the main road, you encounter what looks like a makeshift encampment. A tattered bedroll and dilapidated firepit stand out most, as does a prone figure lying on the ground."
+			]
+		},
+		{
+			"Key": "TQ01_INFO_FRIEND",
+			"Text": [
+				"\"Theo. He's a rat, and I mean that in every sense of the word. Dad always said he was untrustworthy, but somehow I kept believing my father was too harsh on him. Guess the old man was right again, after all.\""
+			]
+		},
+		{
+			"Key": "TQ01_INFO_LOCATION",
+			"Text": [
+				"\"I don't know where exactly he might be, but I bet the rodent is somewhere to the west of town. Probably has a hideout or something he's camped in.\""
+			]
+		},
+		{
+			"Key": "TQ01_INFO_REWARD",
+			"Text": [
+				"The dingo sighs, \"Shoulda known you'd ask that. Look, dad also left a bit of an inheritance, If you bring the pendant back to me, I'll give you a fair sum in return. If the rodent has already sold the pendant, I'll cover the cost to get it back.\""
+			]
+		},
+		{
+			"Key": "TQ01_INVESTIGATELOWWIT",
+			"Text": [
+				"These wounds appear all over Theo's body, with no rhyme or reason to where they were located. You cannot reliably determine what caused these injuries, but nevertheless they clearly proved to be his demise."
+			]
+		},
+		{
+			"Key": "TQ01_INVESTIGATEWIT",
+			"Text": [
+				"Looking a bit deeper into the wounds, you're able to see that they are bite and claw marks. The aggressor would have to be a medium-sized animal, possibly a local predator from the looks of it. Clearly, there were more than just one going after Theo. This poor rat was a victim of an animal attack, and didn't survive the onslaught."
+			]
+		},
+		{
+			"Key": "TQ01_MEET",
+			"Text": [
+				"You sit beside the dingo at the bench, staring at the wall ahead. Out of the corner of your eye, you catch the dingo turn to face you. \"You here about the notice?\" he softly utters. You nod, to which the canid smiles slightly. \"No need to act so suspicious, there's nothing shady going on here. Tobias Natobi, pleasure to make your acquaintance.\""
+			]
+		},
+		{
+			"Key": "TQ01_NOTICE",
+			"Text": [
+				"A message is tacked haphazardly to the notice board: \"To all able-bodied adventurers: if you are looking for a few quick coins, I have a deal for you. Meet me in the local inn for more details. -Tobias O. Natobi\"\\n\\nHmm… Seems valid enough."
+			]
+		},
+		{
+			"Key": "TQ01_SEARCH",
+			"Text": [
+				"Well, nothing you can do to save the rat, so time to look for what you came to get. You pat down his pockets, trying to find where he kept the stolen pendant, if he still had it. You do find a couple coins hidden in his coat, and the pendant tucked into the folds of his pants. Seems it's still in good condition, nothing dented, scratched or broken. Tobias will want this back as soon as possible."
+			]
+		},
+		{
+			"Key": "TQ01_WRAPUP",
+			"Text": [
+				"With a nod, you stand up from the bench. \"Please hurry back,\" Tobias says, \"that pendant means a lot to me and my family.\""
+			]
+		}
+	]
+}

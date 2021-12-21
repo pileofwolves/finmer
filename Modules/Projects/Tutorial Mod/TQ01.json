@@ -1,0 +1,20 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "8dee0929-981c-4562-85d0-4752e755cc3c",
+	"Name": "TQ01",
+	"Title": "Hired Help",
+	"Stages": [
+		{
+			"Key": 0,
+			"Text": "A notice on the aptly-named notice board requested that you find a 'Tobias' in the inn. Find him and see what he wants."
+		},
+		{
+			"Key": 1,
+			"Text": "Tobias instructed me to look for Theo to the west side of the town. I should see about heading that way when I'm able."
+		},
+		{
+			"Key": 2,
+			"Text": "After fighting off a wolf, you now have the Pendant that Tobias was looking for. You should return to him for the reward."
+		}
+	]
+}

@@ -1,0 +1,170 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "062b100c-1f16-494e-b451-81128f6ddaaa",
+	"Name": "TQ01_Scene_Hideout",
+	"ScriptCustom": {
+		"ID": "8aae301f-ea50-4088-a6a6-9f1e106d369a",
+		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "919cd3f2-5e5b-46dc-b2ae-015152a8ce41",
+		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_EnterScript"
+	},
+	"ScriptLeave": {
+		"ID": "3ac0918c-318a-4e2f-a668-d76e72cef3b0",
+		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"Key": "TQ01_Hideout",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TQ01_Hideout\")",
+				"Children": [
+					{
+						"Key": "TQ01_Approach",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Approach",
+						"Tooltip": "Approach the prone individual.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "TQ01_Approach_Log",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Log(\"TQ01_Approach\")",
+								"Children": [
+									{
+										"Key": "TQ01_Investigate",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Investigate",
+										"Tooltip": "Investigate the body, see what happened.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "TQ01_InvestigatePass",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAppear": "return Player.Wits >= 5",
+												"Children": [
+													{
+														"Key": "AutoLink",
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "TQ01_Search"
+													}
+												]
+											},
+											{
+												"Key": "TQ01_InvestigateFail",
+												"IsState": true,
+												"IsLink": false,
+												"Children": [
+													{
+														"Key": "TQ01_Search",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Search",
+														"Tooltip": "Search Theo's corpse for the pendant.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"Key": "TQ01_Pendant_Get",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "Log(\"TQ01_SEARCH\")\r\nPlayer:ModifyMoney(5)\r\nPlayer:GiveItem(\"TQ01_I_Pendant\")",
+																"Children": [
+																	{
+																		"Key": "TQ01_Fight_Cont",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Time to return to Tobias.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"Key": "TQ01_Fight",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": "Log(\"TQ01_FIGHT_LEAD\")",
+																				"Children": [
+																					{
+																						"Key": "TQ01_Fight_Start",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Uh-oh!",
+																						"Tooltip": "And you thought this would be a simple job...",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": "local wolf = Creature(\"TQ01_CR_Wolf\")\r\nfight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(wolf)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"TQ01_WOLF_NOM\", true)\r\n    end\r\nend)\r\nfight:Begin()",
+																						"Children": [
+																							{
+																								"Key": "TQ01_Fight_Nom_Win",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TQ01_FIGHT_FINISH_NOM\")\r\nFoodComa()\r\nLog(\"TQ01_FIGHT_FINISH_NOM2\")",
+																								"ScriptAppear": "return Storage.GetFlag(\"TQ01_WOLF_NOM\")",
+																								"Children": [
+																									{
+																										"Key": "AutoLink",
+																										"IsState": false,
+																										"IsLink": true,
+																										"LinkTarget": "TQ01_To_Road"
+																									}
+																								]
+																							},
+																							{
+																								"Key": "TQ01_Fight_Win",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": "Log(\"TQ01_FIGHT_FINISH\")",
+																								"Children": [
+																									{
+																										"Key": "TQ01_To_Road",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": "Storage.SetNumber(\"TQ01\", 3)\r\nJournal.Update(\"TQ01\", 2)\r\nSetScene(\"Scene_RoadNorth\")",
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

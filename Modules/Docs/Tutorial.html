@@ -181,9 +181,12 @@
     </p>
     <h2>Part 1: An Unassuming Job Notice</h2>
     <p>
-        All adventures start somewhere! So, we need some way to start our quest off. Since we don't have anything yet to branch off of, we'll need to reference the original Core module, so that we can import and use all its content in our mod. This is done in the <span class="clicky">Module Settings</span> menu. Here, we need to add Core.furball as a dependency so that we can call and reference all the scenes, assets, etc. from Core in order to apply our mod seamlessly. Under the Dependencies menu, click on the <span class="clicky">Add</span> button and locate Core.furball on your computer. Once that module is loaded, save your module and then reload the editor (such as by reopening your project)..
+        All adventures start somewhere! So, we need some way to start our quest off. Since we don't have anything yet to branch off of, we'll need to reference the original Core module, so that we can import and use all its content in our mod. This is done in the <span class="clicky">Module Settings</span> menu. Here, we need to add Core.furball as a dependency so that we can call and reference all the scenes, assets, etc. from Core in order to apply our mod seamlessly. Under the Dependencies menu, click on the <span class="clicky">Add</span> button and locate Core.furball on your computer. Once that module is loaded, save your module and then reload the editor (such as by reopening your project).
     </p>
-    <!-- TODO This could use an image -->
+    <figure>
+        <img src="https://i.imgur.com/aeLDtdh.png">
+        <figcaption>Our mod is dependent on the base game.</figcaption>
+    </figure>
     <p>
         Now that we have Core referenced, we need somewhere to junction off of to start our quest. The north side of town has a handy Notice Board that is an excellent spot for inserting our own quest. With the editor opened and Core set as a dependency, let's create a new scene by clicking <span class="clicky">Add Asset</span> on the toolbar, then click <span class="clicky">Scene</span>.
     </p>
@@ -191,8 +194,7 @@
         The new scene will have a name like &quot;NewScene1&quot;. Highlight that asset and hit the <span class="clicky">Rename</span> button on the <em>Assets</em> portion of the toolbar, then enter a decent name. This scene will be used to add our custom notice to the town's notice board, so let's use <code>TQ01_Patch_NoticeBoard</code>.
     </p>
     <figure>
-        <!-- TODO UPDATE IMAGE -->
-        <img src="https://i.imgur.com/REKy0IV.png">
+        <img src="https://i.imgur.com/BqKlTf4.png">
         <figcaption>An awesome mod has but humble beginnings...</figcaption>
     </figure>
     <p>
@@ -207,8 +209,7 @@
         <div><span class="property">Tooltip:</span>A 'help wanted' request, of sorts...</div>
     </div>
     <figure>
-        <!-- TODO UPDATE IMAGE -->
-        <img src="https://i.imgur.com/qtXZ1kS.png">
+        <img src="https://i.imgur.com/UV0g86D.png">
         <figcaption>Your choice node should look like this.</figcaption>
     </figure>
     <p>
@@ -237,7 +238,7 @@
         It should now look like this:
     </p>
     <figure>
-        <img src="https://i.imgur.com/zvUDpuW.png">
+        <img src="https://i.imgur.com/V80KvIz.png">
         <figcaption>State nodes differ from choices significantly.</figcaption>
     </figure>
     <p>
@@ -285,11 +286,11 @@
         The nodes should now look as such:
     </p>
     <figure>
-        <img src="https://i.imgur.com/A5mT63i.png">
+        <img src="https://i.imgur.com/bP7U2iv.png">
         <figcaption>Final settings for TQ01_Notice</figcaption>
     </figure>
     <figure>
-        <img src="https://i.imgur.com/M6vYtK6.png">
+        <img src="https://i.imgur.com/lteXjc4.png">
         <figcaption>Final settings for TQ01_Start</figcaption>
     </figure>
     <p>
@@ -376,24 +377,24 @@
         The 'Appears When' scripts ensures that the player can only select each choice once. Add new state nodes to the three choices we just created, one for each choice:
     </p>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Choice_Friend</div>
-        <div><span class="property">Parent:</span>TQ01_Expo_Friend</div>
+        <div><span class="property">Parent:</span>TQ01_Choice_Friend</div>
+        <div><span class="property">Key:</span>TQ01_Expo_Friend</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
             Log(&quot;TQ01_INFO_FRIEND&quot;)<br />
             Storage.SetFlag(&quot;TQ01_DISCUSSED_FRIEND&quot;, true)
         </div></div>
     </div>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Choice_Location</div>
-        <div><span class="property">Parent:</span>TQ01_Expo_Location</div>
+        <div><span class="property">Parent:</span>TQ01_Choice_Location</div>
+        <div><span class="property">Key:</span>TQ01_Expo_Location</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
             Log(&quot;TQ01_INFO_LOCATION&quot;)<br />
             Storage.SetFlag(&quot;TQ01_DISCUSSED_LOCATION&quot;, true)
         </div></div>
     </div>
     <div class="scene-node">
-        <div><span class="property">Key:</span>TQ01_Choice_Reward</div>
-        <div><span class="property">Parent:</span>TQ01_Expo_Reward</div>
+        <div><span class="property">Parent:</span>TQ01_Choice_Reward</div>
+        <div><span class="property">Key:</span>TQ01_Expo_Reward</div>
         <div><span class="property">Actions Taken:</span><div class="game-script">
             Log(&quot;TQ01_INFO_REWARD&quot;)<br />
             Storage.SetFlag(&quot;TQ01_DISCUSSED_REWARD&quot;, true)
@@ -424,9 +425,9 @@
         Now, to keep the conversation contained, we'll need to link back to all of our other nodes. So on each state node, add a link back to the other two choices. Now the conversation can loop from one topic to another:
     </p>
     <figure>
-        <img src="https://i.imgur.com/BR0Q78Y.png">
-        <img src="https://i.imgur.com/unduZS3.png">
-        <img src="https://i.imgur.com/6iz4We2.png">
+        <img src="https://i.imgur.com/DoARpEq.png">
+        <img src="https://i.imgur.com/BMdsiLs.png">
+        <img src="https://i.imgur.com/4JriW9u.png">
         <figcaption><strong>Tip</strong>: You can make a link quickly by right-clicking on the link target, then dragging it to the node where the link should be, and releasing. So for example, right-click <code>TQ01_Choice_Location</code> and drag it to <code>TQ01_Expo_Reward</code>.</figcaption>
     </figure>
     <p>
@@ -509,7 +510,10 @@
             Storage.SetNumber(&quot;TQ01&quot;, 2)
         </div></div>
     </div>
-    <!-- TODO Image of the final scene graph would be nice -->
+    <figure>
+        <img src="https://i.imgur.com/pJa8RGZ.png">
+        <figcaption>TQ01_Patch_Inn all filled out.</figcaption>
+    </figure>
     <p>
         That wraps up the investigation portion of the quest. The player can now visit the inn and discuss the quest with Tobias. We're now ready to start heading out of the town to the west to look for Theo and retrieve the missing pendant.
     </p>
@@ -642,8 +646,8 @@
     <p>
         <code>TQ01_SEARCH</code>:
     </p>
-    <div class="game-string" style="background: red;">
-        Missing text
+    <div class="game-string">
+        Well, nothing you can do to save the rat, so time to look for what you came to get. You pat down his pockets, trying to find where he kept the stolen pendant, if he still had it. You do find a couple coins hidden in his coat, and the pendant tucked into the folds of his pants. Seems it's still in good condition, nothing dented, scratched or broken. Tobias will want this back as soon as possible.
     </div>
     <p>
         The <code>GiveItem</code> function requires an Item argument passed to it in order to work, so let's get that set up in the editor. Add a new asset, this time an Item. Rename the asset to <code>TQ01_I_Pendant</code> to match the script and build the rest of it as such:
@@ -775,6 +779,10 @@
             SetScene(&quot;Scene_RoadNorth&quot;)
         </div></div>
     </div>
+	<figure>
+        <img src="https://i.imgur.com/kmhnE4u.png">
+        <figcaption>TQ01_Scene_Hideout all laid out.</figcaption>
+    </figure>
     <p>
         <strong>Caution:</strong> Ensure that your <code>SetScene</code> call is the last one in the script. <code>SetScene</code> will terminate the script immediately, so any code coming after it will not be evaluated.
     </p>
@@ -827,8 +835,8 @@
     <p>
         <code>TQ01_COMPLETION</code>:
     </p>
-    <div class="game-string" style="background: red;">
-        Missing text
+    <div class="game-string">
+        &quot;You found it? Wonderful! Let me see!&quot; You pull the pendant out for the dingo to investigate. You see him sigh in relief. &quot;Ahh, perfect. Thanks again {player.name}, I really appreciate it. Here, as agreed, a fair payment, for services rendered.&quot; Tobias slides a purse of coin to you, to which you're quick to pocket it. &quot;And now, our business is concluded, and I shall now take my leave. Take care in this world, {player.name}, and I hope to see you soon.&quot;
     </div>
     <p>
         We close out the journal, remove the pendant from our inventory, get paid, and go on our way. Like the investigation conversation, let's wrap it up with a simple choice node, followed by a link back to <code>Main</code>. The choice node built like this:
@@ -838,6 +846,10 @@
         <div><span class="property">Button Text:</span>Continue</div>
         <div><span class="property">Tooltip:</span>And that's that!</div>
     </div>
+	<figure>
+        <img src="https://i.imgur.com/nDx3SFI.png">
+        <figcaption>Our TQ01_Patch_Inn scene, with the final bit added.</figcaption>
+    </figure>
     <p>
         There is one last thing we can do to add bit more personality to our quest. Go back to the <code>TQ01_CR_Wolf</code> creature asset. Notice the String Mappings field? This feature lets you 'override' the default combat-related strings that the game will use when this creature is used in combat. Let's create a new String Table asset, called <code>TQ01_Combat</code>. Add the following entries to that table:
     </p>

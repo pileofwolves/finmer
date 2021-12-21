@@ -1,0 +1,53 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a",
+	"Name": "TQ01_Patch_NoticeBoard",
+	"ScriptCustom": {
+		"ID": "e58498b1-6d1c-466c-887f-91f2b41916d2",
+		"Name": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "9a1e07fc-e9e8-417a-981d-bd38f93e8224",
+		"Name": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a_EnterScript"
+	},
+	"ScriptLeave": {
+		"ID": "be5cf0a7-ca4a-4dfa-ad68-98f5399ac87d",
+		"Name": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a_LeaveScript"
+	},
+	"IsPatch": true,
+	"InjectMode": "InsideAtEnd",
+	"InjectTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
+	"InjectTargetNode": "ViewBoard",
+	"Root": {
+		"Key": "Root",
+		"IsState": true,
+		"IsLink": false,
+		"Children": [
+			{
+				"Key": "TQ01_Notice",
+				"IsState": false,
+				"IsLink": false,
+				"Title": "Wanted: Strong Labor",
+				"Tooltip": "A 'help wanted' request, of sorts...",
+				"Highlight": false,
+				"ButtonWidth": 1.0,
+				"ScriptAppear": "return Storage.GetNumber(\"TQ01\") == 0",
+				"Children": [
+					{
+						"Key": "TQ01_Start",
+						"IsState": true,
+						"IsLink": false,
+						"ScriptAction": "Log(\"TQ01_NOTICE\")\r\nStorage.SetNumber(\"TQ01\", 1)\r\nJournal.Update(\"TQ01\", 0)",
+						"Children": [
+							{
+								"IsState": false,
+								"IsLink": true,
+								"LinkTarget": "ReturnToBoard"
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

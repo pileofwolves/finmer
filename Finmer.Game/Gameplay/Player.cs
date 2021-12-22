@@ -348,7 +348,7 @@ namespace Finmer.Gameplay
             // Instantiate the item and give it to the player
             Item item = Item.FromAsset(ScriptContext.FromLua(L), item_name);
             if (item==null)
-                return LuaApi.luaL_error(L, "Item not found.");
+                return LuaApi.luaL_error(L, $"Failed to load item '{item_name}'");
             self.AddItem(item);
 
             // Display announcement

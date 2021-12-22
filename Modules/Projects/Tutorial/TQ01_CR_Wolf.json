@@ -1,0 +1,46 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "257235b2-2595-47f1-afce-c19557422492",
+	"Name": "TQ01_CR_Wolf",
+	"ObjectName": "Lone Wolf",
+	"ObjectAlias": "the wolf",
+	"Strength": 2,
+	"Agility": 3,
+	"Body": 4,
+	"Wits": 3,
+	"Flags": 0,
+	"Level": 2,
+	"Size": "Medium",
+	"Gender": "Ungendered",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": false,
+	"PredatorDigests": true,
+	"PredatorDisposal": false,
+	"StringMappings": [
+		{
+			"Key": "VORE_EXT_STRUGGLE",
+			"Rule": "PlayerToNpc",
+			"NewKey": "TQ01_WOLF_STRUGGLE"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "TQ01_WOLF_DIGEST"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "TQ01_WOLF_KILL"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "TQ01_WOLF_DIGEST_POV"
+		}
+	]
+}

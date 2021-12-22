@@ -50,6 +50,11 @@
 			"Key": "KILL_DIGESTED",
 			"Rule": "PlayerToNpc",
 			"NewKey": "SQ01_ALCH_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ01_ALCH_KILL_GENERIC_POV"
 		}
 	]
 }

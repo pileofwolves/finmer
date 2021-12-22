@@ -10,9 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using Finmer.Core;
+using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
+using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -40,6 +41,11 @@ namespace Finmer.Gameplay
         private const int k_ScriptStackSize = 128 * 1024;
 
         /// <summary>
+        /// The name of the default scene asset to load when save data does not provide one (i.e. a new game).
+        /// </summary>
+        private const string k_DefaultSceneName = @"Scene_Intro";
+
+        /// <summary>
         /// The Player object associated with this session.
         /// </summary>
         public Player Player { get; }
@@ -61,13 +67,13 @@ namespace Finmer.Gameplay
         private readonly Thread m_ScriptThread;
         private readonly AutoResetEvent m_ScriptWaitEvent;
         private bool m_ScriptThreadStop;
-        private bool m_GameOverRequested; 
+        private bool m_GameOverRequested;
 
-        public GameSession(PropertyBag savedata)
+        public GameSession(GameSnapshot snapshot)
         {
             // Initialize the session
             Compass = new CompassController(this);
-            Player = new Player(ScriptContext, savedata);
+            Player = new Player(ScriptContext, snapshot.PlayerData);
 
             // Allow scripts to access the player object as a global variable
             ScriptContext.PinObjectAsGlobal(Player, "Player");
@@ -79,6 +85,24 @@ namespace Finmer.Gameplay
                 IsBackground = true
             };
             m_ScriptThread.Start();
+
+            // Bind player grammar context
+            TextParser.ClearAllContexts();
+            TextParser.SetContext("player", Player, true);
+
+            // Run global scripts
+            foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
+                if (ScriptContext.LoadScript(script.PrecompiledScript, script.Name))
+                    ScriptContext.RunProtectedCall(0, 0);
+
+            // Check if we have write perms
+            if (!Logger.HasWritePermission())
+                GameUI.Instance.Log("Warning: It looks like the game does not have permission to write files to the app " +
+                    "directory. This means that you cannot save your game.\r\n", Theme.LogColorError);
+
+            // Create the initial scene
+            var initial_scene = GetRestoreScene(snapshot);
+            PushScene(new SceneScripted(ScriptContext, initial_scene));
         }
 
         public void Dispose()
@@ -202,10 +226,11 @@ namespace Finmer.Gameplay
                 Player.TimeDay++;
             }
         }
+
         /// <summary>
         /// Send the request for the game to end.
         /// </summary>
-        public void RequestGameOver() 
+        public void RequestGameOver()
         {
             m_GameOverRequested = true;
         }
@@ -297,6 +322,23 @@ namespace Finmer.Gameplay
                     GameUI.Instance.ControlsEnabled = true;
                 }
             }
+        }
+
+        private static AssetScene GetRestoreScene(GameSnapshot snapshot)
+        {
+            // Grab the GUID of the scene to restore
+            var scene_bytes = snapshot.SceneData.GetBytes(SaveData.k_System_CurrentSceneID);
+            if (scene_bytes == null)
+            {
+                // Save data does not include a scene GUID; fall back to the default initial scene
+                return (AssetScene)GameController.Content.GetAssetByName(k_DefaultSceneName);
+            }
+
+            // Find this asset
+            var asset_id = new Guid(scene_bytes);
+            var restore_scene = GameController.Content.GetAssetByID(asset_id) as AssetScene;
+
+            return restore_scene;
         }
 
         /// <summary>

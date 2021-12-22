@@ -22,7 +22,6 @@ namespace Finmer.Gameplay
     {
 
         private const int k_SlotCount = 3;
-        private const byte k_SaveVersion = 4;
 
         private static readonly SaveSlot[] s_Slots = new SaveSlot[k_SlotCount];
 
@@ -52,7 +51,7 @@ namespace Finmer.Gameplay
                 {
                     // Verify version
                     byte version = reader.ReadByte();
-                    if (version != k_SaveVersion)
+                    if (version != SaveData.k_FileVersion)
                         throw new InvalidDataException("Incompatible save version " + version);
 
                     // Skip the header, which will have been validated by CacheSlot().
@@ -81,7 +80,7 @@ namespace Finmer.Gameplay
                 {
                     // Write the save version, and the short save info, as header
                     description = DescribeSaveFile(savedata);
-                    writer.Write(k_SaveVersion);
+                    writer.Write(SaveData.k_FileVersion);
                     writer.Write(description);
 
                     // Write dependencies list
@@ -129,8 +128,8 @@ namespace Finmer.Gameplay
                     {
                         // Check version number
                         byte version = reader.ReadByte();
-                        if (version != k_SaveVersion)
-                            return new SaveSlot($"Incompatible save version:\r\nfile is v{version}, but expected v{k_SaveVersion}");
+                        if (version != SaveData.k_FileVersion)
+                            return new SaveSlot($"Incompatible save version:\r\nfile is v{version}, but expected v{SaveData.k_FileVersion}");
 
                         // Obtain the info string
                         var slot = new SaveSlot

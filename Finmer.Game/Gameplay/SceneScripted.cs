@@ -28,38 +28,39 @@ namespace Finmer.Gameplay
     internal sealed class SceneScripted : Scene
     {
 
-        private const string k_SceneEnvsTable = "SceneEnvs";
+        private const string k_SceneRegistryTable = @"SceneEnvs";
 
         private readonly ScriptContext m_Context;
-        private readonly string m_SceneFile;
+        private readonly AssetScene m_SceneAsset;
+        private readonly string m_SceneName;
         private readonly int m_SceneRef;
 
         private IntPtr m_Coroutine = IntPtr.Zero;
         private bool m_HasError = true;
 
-        public SceneScripted(ScriptContext context, string scenefile)
+        public SceneScripted(ScriptContext context, string filename)
+            : this(context, GameController.Content.GetAssetByName(filename) as AssetScene
+                ?? throw new ArgumentException($"Failed to load scene '{filename}': The specified asset does not exist, or is not a Scene.", nameof(filename))) {}
+
+        public SceneScripted(ScriptContext context, AssetScene scene)
         {
+            // Set up basic state
             m_Context = context;
-            m_SceneFile = scenefile;
+            m_SceneAsset = scene ?? throw new ArgumentNullException(nameof(scene));
+            m_SceneName = scene.Name;
 
 #if LUA_TIMINGS
             var sw = Stopwatch.StartNew();
 #endif
 
-            // Find the scene asset and get its script
-            AssetBase asset = GameController.Content.GetAssetByName(scenefile);
-
-            // Validate that the scene exists
-            if (!(asset is AssetScene scene))
-                throw new ArgumentException($"Failed to load scene '{scenefile}': The specified asset does not exist, or is not a Scene.", nameof(scenefile));
-
             // Validate that the scene can actually be loaded
             if (scene.Inject)
-                throw new ArgumentException($"Failed to load scene '{scenefile}': The specified asset is a patch scene and cannot be loaded directly.", nameof(scenefile));
+                throw new ArgumentException($"Failed to load scene '{m_SceneName}': The specified asset is a patch scene and cannot be loaded directly.", nameof(m_SceneName));
 
             // Load the chunk
+            // TODO: Use ScriptExceptions here
             CompiledScript script = scene.PrecompiledScript;
-            if (!context.LoadScript(script, scenefile))
+            if (!context.LoadScript(script, m_SceneName))
                 return;
 
 #if LUA_TIMINGS
@@ -70,7 +71,7 @@ namespace Finmer.Gameplay
             // Prepare a sandbox environment for the script. We will override the __index metamethod to refer to the real global environment,
             // but not the __newindex metamethod so scripts can modify their environment as they like. Essentially, this makes _G read-only.
             IntPtr state = context.LuaState;
-            luaL_newmetatable(state, k_SceneEnvsTable);
+            luaL_newmetatable(state, k_SceneRegistryTable);
             lua_createtable(state, 0, 1);
 
             // Make the built-in '_G' variable refer to the scene-specific environment, instead of the global environment. Note that users can
@@ -104,7 +105,7 @@ namespace Finmer.Gameplay
 
 #if LUA_TIMINGS
             sw.Stop();
-            GameUI.Instance.Log($"Timings for {scenefile}: {time_comp + time_sandbox + sw.Elapsed.TotalMilliseconds:F2} ms total: Load = {time_comp:F2} ms, Sandboxing = {time_sandbox:F2} ms, Run = {sw.Elapsed.TotalMilliseconds:F2} ms", Theme.LogColorDarkCyan);
+            GameUI.Instance.Log($"Timings for {m_SceneName}: {time_comp + time_sandbox + sw.Elapsed.TotalMilliseconds:F2} ms total: Load = {time_comp:F2} ms, Sandboxing = {time_sandbox:F2} ms, Run = {sw.Elapsed.TotalMilliseconds:F2} ms", Theme.LogColorDarkCyan);
 #endif
 
             // All done, the scene is ready!
@@ -137,7 +138,7 @@ namespace Finmer.Gameplay
                 // Note: there's no need to pop the error message or clean the stack at all, because we will destroy the coroutine entirely
                 Debug.Assert(lua_isstring(m_Coroutine, -1));
                 string error_message = lua_tostring(m_Coroutine, -1);
-                GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneFile}': {error_message}", Theme.LogColorError);
+                GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneName}': {error_message}", Theme.LogColorError);
             }
 
             // Remove the thread object from the main thread's stack. This will make it eligible for GC.
@@ -201,7 +202,7 @@ namespace Finmer.Gameplay
             }
 
             // Retrieve the scene environment from the registry, so we can access its globals
-            luaL_newmetatable(m_Coroutine, k_SceneEnvsTable);
+            luaL_newmetatable(m_Coroutine, k_SceneRegistryTable);
             lua_rawgeti(m_Coroutine, -1, m_SceneRef);
             lua_getfield(m_Coroutine, -1, name);
 
@@ -225,9 +226,6 @@ namespace Finmer.Gameplay
 
         public override void Enter()
         {
-            // Update player location for scripts
-            GameController.Session.Player.Location = m_SceneFile;
-
             // Run callback
             LaunchCoroutine("OnEnter", 0);
         }
@@ -245,7 +243,7 @@ namespace Finmer.Gameplay
             Debug.Assert(m_Coroutine == IntPtr.Zero, "Memory leak: coroutine was not cleaned up after OnLeave");
 
             // Remove this scene's environment from the environment table, so it can be collected
-            luaL_newmetatable(state, k_SceneEnvsTable);
+            luaL_newmetatable(state, k_SceneRegistryTable);
             luaL_unref(state, -1, m_SceneRef);
             lua_pop(state, 1);
         }

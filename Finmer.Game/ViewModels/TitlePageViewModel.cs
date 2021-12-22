@@ -92,7 +92,7 @@ namespace Finmer.ViewModels
             }
 
             // Launch the session using the save data
-            GameController.BeginNewSession(slot_data);
+            GameController.BeginNewSession(new GameSnapshot(slot_data, new PropertyBag()));
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }
 

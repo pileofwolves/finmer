@@ -113,10 +113,10 @@ namespace Finmer.Views
             m_Player.SetInt(SaveData.k_Character_Level, 1);
             m_Player.SetInt(SaveData.k_Player_TimeDay, 1);
             m_Player.SetInt(SaveData.k_Player_TimeHour, 9);
-            m_Player.SetString(SaveData.k_Player_Location, "Scene_Intro");
 
             // Launch the session
-            GameController.BeginNewSession(m_Player);
+            GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag());
+            GameController.BeginNewSession(save_data);
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }
 

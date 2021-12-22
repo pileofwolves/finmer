@@ -131,6 +131,21 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Creates and returns a snapshot of the GameSession, that can be used to restore the session state later.
+        /// </summary>
+        public GameSnapshot CaptureSnapshot()
+        {
+            // Serialize the Player state, which contains all game state and script save data
+            var player_save_data = Player.SerializeProperties();
+
+            // Serialize any additional data about the current scene
+            Debug.Assert(m_SceneStack.Count == 1, "Save data does not support stacked scenes");
+            var scene_save_data = PeekScene().CaptureState();
+
+            return new GameSnapshot(player_save_data, scene_save_data);
+        }
+
+        /// <summary>
         /// Replaces the topmost scene on the scene stack with another one.
         /// </summary>
         /// <param name="scene"></param>

@@ -110,11 +110,11 @@ namespace Finmer.ViewModels
             IsConfirmPopupOpen = false;
 
             // Get a snapshot of the player
-            PropertyBag save_data = GameController.Session.Player.SerializeProperties();
+            var snapshot = GameController.Session.CaptureSnapshot();
             try
             {
                 // Save it to disk
-                SaveManager.Save(m_SelectedSlot, save_data);
+                SaveManager.Save(m_SelectedSlot, snapshot);
                 GameUI.Instance.Log("Game saved!", Theme.LogColorLightGray);
             }
             catch (UnauthorizedAccessException)

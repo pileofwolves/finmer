@@ -90,9 +90,6 @@ namespace Finmer.Gameplay
         }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public string Location { get; set; }
-
-        [ScriptableProperty(EScriptAccess.Read)]
         public bool PreferScat => UserConfig.PreferScat;
 
         [ScriptableProperty(EScriptAccess.Read)]
@@ -184,7 +181,6 @@ namespace Finmer.Gameplay
             CoatAdjective = template.GetString(SaveData.k_Player_SpeciesCoatAdj);
 
             // Gameplay data
-            Location = template.GetString(SaveData.k_Player_Location);
             XP = template.GetInt(SaveData.k_Player_XP);
             m_FeatPoints = template.GetInt(SaveData.k_Player_FeatPoints);
             m_AbilityPoints = template.GetInt(SaveData.k_Player_AbilityPoints);
@@ -259,8 +255,6 @@ namespace Finmer.Gameplay
             props.SetNestedPropertyBag(SaveData.k_Player_ExtData, AdditionalSaveData);
 
             // Gameplay data
-            props.SetString(SaveData.k_Player_Location, Location);
-            props.SetString(SaveData.k_Player_LocationPretty, GameUI.Instance.Location);
             props.SetInt(SaveData.k_Player_XP, XP);
             props.SetInt(SaveData.k_Player_FeatPoints, m_FeatPoints);
             props.SetInt(SaveData.k_Player_AbilityPoints, m_AbilityPoints);

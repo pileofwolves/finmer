@@ -53,7 +53,7 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedSetInvEnabled(IntPtr L)
         {
             luaL_checktype(L, 1, ELuaType.Boolean);
-            GameUI.Instance.InventoryEnabled = lua_toboolean(L, 1) == 1;
+            GameUI.Instance.InventoryEnabled = lua_toboolean(L, 1);
             return 0;
         }
 
@@ -65,7 +65,7 @@ namespace Finmer.Gameplay.Scripting
                 Choice = (int)luaL_checknumber(L, 1),
                 Label = luaL_checkstring(L, 2),
                 Tooltip = lua_tostring(L, 3),
-                Highlight = lua_toboolean(L, 4) == 1,
+                Highlight = lua_toboolean(L, 4),
                 Width = (lua_type(L, 5) == ELuaType.Number) ? (float)lua_tonumber(L, 5) : 1.0f
             };
 

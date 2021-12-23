@@ -160,7 +160,8 @@ namespace Finmer.Gameplay.Scripting
 
         public static bool lua_isnoneornil(IntPtr L, int index)
         {
-            return lua_type(L, index) == ELuaType.Nil || lua_type(L, index) == ELuaType.None;
+            ELuaType slot_type = lua_type(L, index);
+            return slot_type == ELuaType.Nil || slot_type == ELuaType.None;
         }
 
         public static bool lua_istable(IntPtr L, int index)
@@ -175,7 +176,8 @@ namespace Finmer.Gameplay.Scripting
 
         public static bool lua_isuserdata(IntPtr L, int index)
         {
-            return lua_type(L, index) == ELuaType.Userdata || lua_type(L, index) == ELuaType.LightUserdata;
+            ELuaType slot_type = lua_type(L, index);
+            return slot_type == ELuaType.Userdata || slot_type == ELuaType.LightUserdata;
         }
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
@@ -210,7 +212,7 @@ namespace Finmer.Gameplay.Scripting
         }
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        public static extern void lua_pushboolean(IntPtr L, int b);
+        public static extern void lua_pushboolean(IntPtr L, [MarshalAs(UnmanagedType.Bool)] bool value);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         private static extern void lua_pushcclosure(IntPtr L, lua_CFunction fn, int n);
@@ -247,7 +249,8 @@ namespace Finmer.Gameplay.Scripting
         public static extern void lua_pushvalue(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        public static extern int lua_rawequal(IntPtr L, int index1, int index2);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool lua_rawequal(IntPtr L, int index1, int index2);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern void lua_rawget(IntPtr L, int index);
@@ -294,7 +297,8 @@ namespace Finmer.Gameplay.Scripting
         public static extern int lua_status(IntPtr L);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        public static extern int lua_toboolean(IntPtr L, int index);
+        [return: MarshalAs(UnmanagedType.Bool)]
+        public static extern bool lua_toboolean(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern lua_CFunction lua_tocfunction(IntPtr L, int index);

@@ -55,7 +55,7 @@ namespace Finmer.Gameplay.Scripting
                 switch (type)
                 {
                     case ELuaType.Boolean:
-                        output.Append($": {(lua_toboolean(state, i) == 1 ? "true" : "false")}");
+                        output.Append($": {(lua_toboolean(state, i) ? "true" : "false")}");
                         break;
 
                     case ELuaType.Number:

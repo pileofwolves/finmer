@@ -334,7 +334,7 @@ namespace Finmer.Gameplay
 
             // Look for this item in the player's inventory
             bool found = self.Inventory.Any(item => item.Asset.Name.Equals(item_name, StringComparison.InvariantCultureIgnoreCase));
-            LuaApi.lua_pushboolean(L, found ? 1 : 0);
+            LuaApi.lua_pushboolean(L, found);
 
             return 1;
         }
@@ -364,7 +364,7 @@ namespace Finmer.Gameplay
             var item_name = LuaApi.luaL_checkstring(L, 2);
 
             // Attempt to remove the first matching item from the player inventory
-            LuaApi.lua_pushboolean(L, self.TakeItem(item_name) ? 1 : 0);
+            LuaApi.lua_pushboolean(L, self.TakeItem(item_name));
 
             return 1;
         }

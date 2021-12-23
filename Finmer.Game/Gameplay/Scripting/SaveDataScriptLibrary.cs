@@ -72,7 +72,7 @@ namespace Finmer.Gameplay.Scripting
         {
             string key = GetNamespacedPropertyPath(luaL_checkstring(L, 1));
             luaL_checktype(L, 2, ELuaType.Boolean);
-            GetAdditionalSaveData().SetBool(key, lua_toboolean(L, 2) == 1);
+            GetAdditionalSaveData().SetBool(key, lua_toboolean(L, 2));
             return 0;
         }
 
@@ -106,7 +106,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedStorageGetFlag(IntPtr L)
         {
-            lua_pushboolean(L, GetAdditionalSaveData().GetBool(GetNamespacedPropertyPath(luaL_checkstring(L, 1))) ? 1 : 0);
+            lua_pushboolean(L, GetAdditionalSaveData().GetBool(GetNamespacedPropertyPath(luaL_checkstring(L, 1))));
             return 1;
         }
 

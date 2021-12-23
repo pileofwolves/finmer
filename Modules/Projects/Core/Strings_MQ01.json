@@ -22,18 +22,6 @@
 			]
 		},
 		{
-			"Key": "MQ01_FLIRT_F",
-			"Text": [
-				"The vaguest outline of a smile creeps onto her face. \"Thanks, I guess. Not too bad yourself.\" She straightens her posture a bit. \"What do you need?\""
-			]
-		},
-		{
-			"Key": "MQ01_FLIRT_M",
-			"Text": [
-				"Her nostrils flare as she sighs, glaring at you. \"Men are always the same, hmm?\" She points at the door behind you. \"If you're just here to waste my time, sod off.\""
-			]
-		},
-		{
 			"Key": "MQ01_INFO_ACTINGMAYOR",
 			"Text": [
 				"When you broach the subject, you notice her gaze soften considerably. \"Yeah. Everyone - especially me, frankly - have to put on a brave face, but the truth is I'm worried. Mayor Iso always had her affairs in order, and she was definitely not one to just up and leave.\" Briefly, in a moment of weakness, she averts her eyes. When they return to gaze into yours, the impassively cold expression seems to have returned. \"I need to get to the bottom of this madness, but I only have so many people to work with. Can I count you among them?\""

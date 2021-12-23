@@ -4,18 +4,6 @@
 	"Name": "Strings_Misc",
 	"Entries": [
 		{
-			"Key": "DEMO_END",
-			"Text": [
-				"You've reached the end of the main story content available at this time. Be sure to explore North Finmer for things and sidequests that you might've missed.\\n\\nMore is coming; this story is not over. Please leave a comment and let me know what you did or didn't like, that'd really help me.\\n\\nTHANK YOU for playing! <3"
-			]
-		},
-		{
-			"Key": "GOLD_GET",
-			"Text": [
-				"You receive %num coins."
-			]
-		},
-		{
 			"Key": "ITEM_CANNOTUSE",
 			"Text": [
 				"You can't use this item right now."
@@ -31,12 +19,6 @@
 			"Key": "NYI",
 			"Text": [
 				"There's a card here with an odd message on it, about how this area is 'not yet implemented'. Weird. Maybe you should come back some other time."
-			]
-		},
-		{
-			"Key": "RUMOR",
-			"Text": [
-				"<this is not implemented>"
 			]
 		},
 		{
@@ -104,12 +86,6 @@
 				"lion",
 				"panther",
 				"tiger"
-			]
-		},
-		{
-			"Key": "TIP_BELLY_CAPACITY",
-			"Text": [
-				"< Tip: Prey that you're currently digesting (if any) is listed in your Character Sheet, under the vore-related stats. And they might kick a bit. >"
 			]
 		},
 		{

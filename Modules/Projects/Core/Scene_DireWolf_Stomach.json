@@ -38,11 +38,6 @@
 					{
 						"IsState": false,
 						"IsLink": true,
-						"LinkTarget": "C_Submit"
-					},
-					{
-						"IsState": false,
-						"IsLink": true,
 						"LinkTarget": "C_SQ01_UseVial"
 					}
 				]
@@ -103,11 +98,6 @@
 									{
 										"IsState": false,
 										"IsLink": true,
-										"LinkTarget": "C_Submit"
-									},
-									{
-										"IsState": false,
-										"IsLink": true,
 										"LinkTarget": "C_SQ01_UseVial"
 									},
 									{
@@ -118,16 +108,6 @@
 								]
 							}
 						]
-					},
-					{
-						"Key": "C_Submit",
-						"IsState": false,
-						"IsLink": false,
-						"Title": "Unnamed",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"ScriptAppear": "-- TODO: Removed, because it's kinda synonymous with Sleep\r\nreturn false",
-						"Children": []
 					},
 					{
 						"Key": "C_SQ01_UseVial",
@@ -143,17 +123,12 @@
 								"Key": "R_SQ01_UseVial",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
+								"ScriptAction": "Log(\"SQ01_VIAL_USE\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
 								"Children": [
 									{
 										"IsState": false,
 										"IsLink": true,
 										"LinkTarget": "C_Struggle"
-									},
-									{
-										"IsState": false,
-										"IsLink": true,
-										"LinkTarget": "C_Submit"
 									},
 									{
 										"IsState": false,
@@ -214,11 +189,6 @@
 														"IsState": false,
 														"IsLink": true,
 														"LinkTarget": "C_Struggle"
-													},
-													{
-														"IsState": false,
-														"IsLink": true,
-														"LinkTarget": "C_Submit"
 													},
 													{
 														"IsState": false,

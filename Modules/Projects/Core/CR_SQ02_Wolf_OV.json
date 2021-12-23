@@ -4,10 +4,10 @@
 	"Name": "CR_SQ02_Wolf_OV",
 	"ObjectName": "Dire Wolf",
 	"ObjectAlias": "the wolf",
-	"Strength": 3,
-	"Agility": 2,
-	"Body": 4,
-	"Wits": -4,
+	"Strength": 10,
+	"Agility": 5,
+	"Body": 10,
+	"Wits": 2,
 	"Flags": 0,
 	"Level": 3,
 	"Size": "Huge",
@@ -18,24 +18,39 @@
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
 	"AutoVorePrey": false,
-	"AutoVorePredator": false,
+	"AutoVorePredator": true,
 	"PredatorDigests": true,
-	"PredatorDisposal": false,
+	"PredatorDisposal": true,
 	"StringMappings": [
 		{
-			"Key": "VORE_HIT_POV",
-			"Rule": "NpcToPlayer",
-			"NewKey": "SQ02_WOLF_VORE_HIT_POV"
-		},
-		{
-			"Key": "VORE_WIN_POV",
+			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
 			"NewKey": "SQ02_WOLF_VORE_WIN_POV"
 		},
 		{
-			"Key": "KILL_DIGESTED_POV",
+			"Key": "KILL_DIGESTED",
 			"Rule": "NpcToPlayer",
 			"NewKey": "SQ02_WOLF_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_VORE_DISPOSAL"
+		},
+		{
+			"Key": "VORE_DISPOSAL_CLEAN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_VORE_DISPOSAL_CLEAN"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_KILL_GENERIC_POV"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "SQ02_WOLF_KILL_GENERIC"
 		}
 	]
 }

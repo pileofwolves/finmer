@@ -549,7 +549,7 @@ namespace Finmer.Editor
                 // If node is a link node, jump to the node it's linked to.
                 var search_key = link_node_sn.LinkTarget;
                 var matching_node = GetTreeNodeByKey(search_key);
-                if(matching_node != null)
+                if (matching_node != null)
                     trvNodes.SelectedNode = matching_node;
             }
         }

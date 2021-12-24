@@ -539,13 +539,15 @@ namespace Finmer.Editor
             return null;
         }
 
-        private void trvLink_DoubleClick(object sender, TreeNodeMouseClickEventArgs e) 
+        private void trvNodes_Link_DoubleClick(object sender, TreeNodeMouseClickEventArgs e) 
         {
-            var lnknode = e.Node;
-            var lnknode_sn = (AssetScene.SceneNode)lnknode.Tag;
-            if (lnknode_sn.IsLink)
+            //Find the type of node that is double-clicked on, and see if it's a link node
+            var link_node = e.Node;
+            var link_node_sn = (AssetScene.SceneNode)link_node.Tag;
+            if (link_node_sn.IsLink)
             {
-                var search_key = lnknode_sn.LinkTarget;
+                //If node is a link node, jump to the node it's linked to.
+                var search_key = link_node_sn.LinkTarget;
                 var matching_node = GetTreeNodeByKey(search_key);
                 trvNodes.SelectedNode = matching_node;
             }

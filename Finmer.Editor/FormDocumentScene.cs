@@ -510,6 +510,47 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
+        public TreeNode GetTreeNodeByKey(string key) 
+        {
+            //Prepare stack with root TreeNodes in it
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            foreach (TreeNode root_node in trvNodes.Nodes)
+                stack.Push(root_node);
+
+            // Flood-fill down the tree until the requested node is found
+            while (stack.Count > 0)
+            {
+                TreeNode node = stack.Pop();
+                var node_sn = (AssetScene.SceneNode)node.Tag;
+
+                // Links do not have keys
+                if (node_sn.IsLink)
+                    continue;
+
+                // Is this the node we're looking for?
+                if (node_sn.Key.Equals(key))
+                    return node;
+
+                // Recursively examine the node's children
+                foreach (TreeNode child in node.Nodes)
+                    stack.Push(child);
+            }
+
+            return null;
+        }
+
+        private void trvLink_DoubleClick(object sender, TreeNodeMouseClickEventArgs e) 
+        {
+            var lnknode = e.Node;
+            var lnknode_sn = (AssetScene.SceneNode)lnknode.Tag;
+            if (lnknode_sn.IsLink)
+            {
+                var search_key = lnknode_sn.LinkTarget;
+                var matching_node = GetTreeNodeByKey(search_key);
+                trvNodes.SelectedNode = matching_node;
+            }
+        }
+
         private void trvNodes_DragOver(object sender, DragEventArgs e)
         {
             var source = e.Data.GetData(typeof(TreeNode)) as TreeNode;

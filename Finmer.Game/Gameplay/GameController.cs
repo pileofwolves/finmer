@@ -56,6 +56,7 @@ namespace Finmer.Gameplay
             // Set up the new gameplay session
             Session?.Dispose();
             Session = new GameSession(snapshot);
+            Session.Start();
         }
 
         /// <summary>

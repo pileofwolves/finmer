@@ -30,6 +30,12 @@ namespace Finmer.Gameplay
 
         private const string k_SceneRegistryTable = @"SceneEnvs";
 
+        private const string k_ScriptCallbackEnter = @"OnEnter";
+        private const string k_ScriptCallbackLeave = @"OnLeave";
+        private const string k_ScriptCallbackTurn = @"OnTurn";
+        private const string k_ScriptCallbackCaptureState = @"_CaptureState";
+        private const string k_ScriptCallbackRestoreState = @"_RestoreState";
+
         private readonly ScriptContext m_Context;
         private readonly AssetScene m_SceneAsset;
         private readonly string m_SceneName;
@@ -227,7 +233,7 @@ namespace Finmer.Gameplay
         public override void Enter()
         {
             // Run callback
-            LaunchCoroutine("OnEnter", 0);
+            LaunchCoroutine(k_ScriptCallbackEnter, 0);
         }
 
         public override void Leave()
@@ -239,7 +245,7 @@ namespace Finmer.Gameplay
                 RemoveCoroutine(state);
 
             // Run callback
-            LaunchCoroutine("OnLeave", 0);
+            LaunchCoroutine(k_ScriptCallbackLeave, 0);
             Debug.Assert(m_Coroutine == IntPtr.Zero, "Memory leak: coroutine was not cleaned up after OnLeave");
 
             // Remove this scene's environment from the environment table, so it can be collected
@@ -259,7 +265,44 @@ namespace Finmer.Gameplay
 
             // Otherwise, start a new one by running
             lua_pushnumber(m_Context.LuaState, choice);
-            LaunchCoroutine("OnTurn", 1);
+            LaunchCoroutine(k_ScriptCallbackTurn, 1);
+        }
+
+        public override PropertyBag CaptureState()
+        {
+            IntPtr state = m_Context.LuaState;
+
+            // Retrieve the scene environment from the registry, so we can access its globals
+            luaL_newmetatable(state, k_SceneRegistryTable);
+            lua_rawgeti(state, -1, m_SceneRef);
+
+            // Run the utility function that returns the state value
+            lua_getfield(state, -1, k_ScriptCallbackCaptureState);
+            Debug.Assert(lua_isfunction(state, -1), "State capture utility missing");
+            lua_call(state, 0, 1);
+
+            // Read the return value
+            Debug.Assert(lua_isnumber(state, -1), "State capture utility returned bad value");
+            var output = new PropertyBag();
+            output.SetInt(SaveData.k_System_CurrentSceneState, (int)lua_tonumber(state, -1));
+
+            // Restore the stack (state value + scene table + registry table = 3)
+            lua_pop(state, 3);
+
+            // Store the scene asset GUID as well, so the loader knows which scene to load
+            output.SetBytes(SaveData.k_System_CurrentSceneID, m_SceneAsset.ID.ToByteArray());
+
+            return output;
+        }
+
+        public override void RestoreState(PropertyBag input)
+        {
+            // Push the state value onto the stack
+            IntPtr state = m_Context.LuaState;
+            lua_pushnumber(state, input.GetInt(SaveData.k_System_CurrentSceneState));
+
+            // Call the restore utility. Note that this will synchronously invoke the appropriate State function as well.
+            LaunchCoroutine(k_ScriptCallbackRestoreState, 1);
         }
 
     }

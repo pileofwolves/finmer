@@ -199,7 +199,7 @@ namespace Finmer.Gameplay.Scripting
         public static extern UIntPtr lua_objlen(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        public static extern int lua_call(IntPtr L, int nargs, int nresults);
+        public static extern void lua_call(IntPtr L, int nargs, int nresults);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern int lua_pcall(IntPtr L, int nargs, int nresults, int errfunc);

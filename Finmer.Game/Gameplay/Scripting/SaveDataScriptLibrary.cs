@@ -8,6 +8,7 @@
 
 using System;
 using Finmer.Core;
+using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views;
 using static Finmer.Gameplay.Scripting.LuaApi;
@@ -30,8 +31,10 @@ namespace Finmer.Gameplay.Scripting
             IntPtr state = context.LuaState;
 
             // SaveData table
-            lua_createtable(state, 0, 1);
+            lua_createtable(state, 0, 4);
             context.RegisterFunction("ShowSaveDialog", ExportedSaveGame);
+            context.RegisterFunction("IsRestoringGame", ExportedIsRestoringGame);
+            context.RegisterFunction("TakeCheckpoint", ExportedTakeCheckpoint);
             lua_setglobal(state, "SaveData");
 
             // Storage table
@@ -48,6 +51,11 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedSaveGame(IntPtr state)
         {
+            // Ignore save data requests if we're restarting a game, in order to prevent the same save dialog that was
+            // shown when the save data was created, from showing up again right after loading.
+            if (GameController.Session.IsRestoringGame)
+                return 0;
+
             GameController.Window.Dispatcher.Invoke(delegate
             {
                 GameController.Window.Navigate(new SaveGamePage(), ENavigatorAnimation.SlideLeft);
@@ -55,6 +63,27 @@ namespace Finmer.Gameplay.Scripting
 
             // Pause the script so it can be resumed once the user closes the dialog
             return lua_yield(state, 0);
+        }
+
+        private static int ExportedIsRestoringGame(IntPtr state)
+        {
+            lua_pushboolean(state, GameController.Session.IsRestoringGame ? 1 : 0);
+            return 1;
+        }
+
+        private static int ExportedTakeCheckpoint(IntPtr state)
+        {
+            // Note: Making a checkpoint is always allowed, even when restoring save data, since a newly created
+            // GameSession does not inherit its predecessor's GameSnapshot, so we have to make a new one anyway.
+
+            // Update the cached checkpoint for the current session
+            var session = GameController.Session;
+            session.LastCheckpoint = session.CaptureSnapshot();
+
+            // Notify the user
+            GameUI.Instance.Log("Checkpoint reached.", Theme.LogColorLightGray);
+
+            return 0;
         }
 
         private static PropertyBag GetAdditionalSaveData()

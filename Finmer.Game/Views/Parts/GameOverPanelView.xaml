@@ -47,11 +47,24 @@
                 </Setter>
             </Style>
         </Grid.Style>
-        <Button Grid.Column="0"
-            Content="Exit to Menu"
+        <StackPanel
             VerticalAlignment="Bottom"
-            Click="ReturnToMenu_OnClick"
-            Margin="32,2,32,30"
-            Height="35" />
+            Margin="30,2,30,30">
+            <StackPanel.DataContext>
+                <vm:GameOverPanelViewModel />
+            </StackPanel.DataContext>
+            <StackPanel.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Margin" Value="0,4" />
+                    <Setter Property="Height" Value="35" />
+                </Style>
+            </StackPanel.Resources>
+            <Button
+                Content="Reload Last Checkpoint"
+                Command="{Binding ReloadCommand}" />
+            <Button
+                Content="Exit to Menu"
+                Command="{Binding ExitCommand}" />
+        </StackPanel>
     </Grid>
 </UserControl>

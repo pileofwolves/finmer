@@ -9,6 +9,7 @@
 using System;
 using System.Text;
 using System.Windows.Media;
+using JetBrains.Annotations;
 using static Finmer.Gameplay.Scripting.LuaApi;
 
 namespace Finmer.Gameplay.Scripting
@@ -40,47 +41,52 @@ namespace Finmer.Gameplay.Scripting
         /// Returns a string containing an overview of the contents of the specified Lua stack.
         /// </summary>
         /// <param name="state">The Lua stack to examine. May be the main thread, or a coroutine.</param>
+        [UsedImplicitly]
         public static string lua_stackdump(IntPtr state)
         {
             var output = new StringBuilder();
-
             int count = lua_gettop(state);
             for (int i = 1; i <= count; i++)
             {
                 // Write a line identifying the value type at this stack index
-                var type = lua_type(state, i);
-                output.Append($"{i:D2}: {lua_typename(state, type)}");
-
-                // Show some detailed info for objects we can easily query from here without side effects
-                switch (type)
-                {
-                    case ELuaType.Boolean:
-                        output.Append($": {(lua_toboolean(state, i) == 1 ? "true" : "false")}");
-                        break;
-
-                    case ELuaType.Number:
-                        output.Append($": {lua_tonumber(state, i)}");
-                        break;
-
-                    case ELuaType.String:
-                        output.Append($": {lua_tostring(state, i)}");
-                        break;
-
-                    case ELuaType.Userdata:
-                    case ELuaType.LightUserdata:
-                        output.Append($": {lua_touserdata(state, i)}");
-                        break;
-
-                    case ELuaType.Thread:
-                        output.Append($": {lua_tothread(state, i)}");
-                        break;
-                }
-
-                // End entry
-                output.AppendLine();
+                output.AppendLine($"[{i:D02}] {lua_describe(state, i)}");
             }
 
             return output.ToString();
+        }
+
+        /// <summary>
+        /// Returns a string describing the type and value of the specified Lua stack slot.
+        /// </summary>
+        /// <param name="state">The Lua stack to examine. May be the main thread, or a coroutine.</param>
+        /// <param name="i">The stack index.</param>
+        [UsedImplicitly]
+        public static string lua_describe(IntPtr state, int i)
+        {
+            var type = lua_type(state, i);
+            var typename = lua_typename(state, type);
+
+            switch (type)
+            {
+                case ELuaType.Boolean:
+                    return $"{typename}: {(lua_toboolean(state, i) == 1 ? "true" : "false")}";
+
+                case ELuaType.Number:
+                    return $"{typename}: {lua_tonumber(state, i):F3}";
+
+                case ELuaType.String:
+                    return $"{typename}: \"{lua_tostring(state, i)}\"";
+
+                case ELuaType.Userdata:
+                case ELuaType.LightUserdata:
+                case ELuaType.Thread:
+                case ELuaType.Table:
+                case ELuaType.Function:
+                    return $"{typename}: 0x{lua_topointer(state, i).ToString("X16")}";
+
+                default:
+                    return typename;
+            }
         }
 
     }

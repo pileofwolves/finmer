@@ -282,9 +282,8 @@ namespace Finmer.Gameplay
             lua_call(state, 0, 1);
 
             // Read the return value
-            Debug.Assert(lua_isnumber(state, -1), "State capture utility returned bad value");
             var output = new PropertyBag();
-            output.SetInt(SaveData.k_System_CurrentSceneState, (int)lua_tonumber(state, -1));
+            output.SetString(SaveData.k_System_CurrentSceneState, lua_tostring(state, -1));
 
             // Restore the stack (state value + scene table + registry table = 3)
             lua_pop(state, 3);
@@ -299,7 +298,7 @@ namespace Finmer.Gameplay
         {
             // Push the state value onto the stack
             IntPtr state = m_Context.LuaState;
-            lua_pushnumber(state, input.GetInt(SaveData.k_System_CurrentSceneState));
+            lua_pushstring(state, input.GetString(SaveData.k_System_CurrentSceneState));
 
             // Call the restore utility. Note that this will synchronously invoke the appropriate State function as well.
             LaunchCoroutine(k_ScriptCallbackRestoreState, 1);

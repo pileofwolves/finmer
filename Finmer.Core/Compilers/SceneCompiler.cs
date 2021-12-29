@@ -99,10 +99,12 @@ namespace Finmer.Core.Compilers
             // In OnTurn, we run the user's chosen ChoiceFn, then run the new StateFn that rolls out of that ChoiceFn.
             state.Main.AppendLine(@"
 function _CaptureState()
-    return _state
+    for k, v in pairs(_States) do
+        if v == _state then return k end
+    end
 end
-function _RestoreState(value)
-    _state = value
+function _RestoreState(state_name)
+    _state = _States[state_name]
     _StateFns[_state]()
 end
 function OnTurn(choice)

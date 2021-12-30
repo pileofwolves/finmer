@@ -27,10 +27,16 @@ namespace Finmer.Gameplay
         /// </summary>
         public PropertyBag SceneData { get; }
 
-        public GameSnapshot(PropertyBag player, PropertyBag scene)
+        /// <summary>
+        /// Snapshot of user interface state.
+        /// </summary>
+        public PropertyBag InterfaceData { get; }
+
+        public GameSnapshot(PropertyBag player, PropertyBag scene, PropertyBag ui)
         {
             PlayerData = player;
             SceneData = scene;
+            InterfaceData = ui;
         }
 
     }

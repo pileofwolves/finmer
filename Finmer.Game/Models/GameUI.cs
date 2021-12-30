@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.ObjectModel;
+using System.Linq;
 using System.Windows;
 using System.Windows.Media;
 using System.Windows.Threading;
@@ -181,6 +182,64 @@ namespace Finmer.Models
         public static void Reset()
         {
             s_Inst = new GameUI();
+        }
+
+        /// <summary>
+        /// Write data representing this instance to an output save data object.
+        /// </summary>
+        public PropertyBag CaptureState()
+        {
+            var output = new PropertyBag();
+
+            // Store basic data
+            output.SetString(SaveData.k_UI_Location, Location);
+            output.SetString(SaveData.k_UI_Instruction, Instruction);
+            output.SetBool(SaveData.k_UI_InventoryEnabled, InventoryEnabled);
+
+            // Find the last few log messages (skipping entries that have no text content)
+            const int k_LogMessageCount = 16;
+            var filtered_messages = Messages.Where(entry => !entry.IsBar).ToArray();
+            var desired_message_count = Math.Min(filtered_messages.Length, k_LogMessageCount);
+            var last_messages = filtered_messages.Skip(filtered_messages.Length - desired_message_count).ToArray();
+
+            // Store those log messages so they can be displayed when reloading
+            output.SetInt(SaveData.k_UI_LogSnippet_Count, last_messages.Length);
+            for (int i = 0; i < last_messages.Length; i++)
+            {
+                var message = last_messages[i];
+                output.SetString(SaveData.CombineBase(SaveData.k_UI_LogSnippet_Base, i), message.Text);
+            }
+
+            return output;
+        }
+
+        /// <summary>
+        /// Overwrite state of this instance with data previously captured by CaptureState().
+        /// </summary>
+        public void RestoreState(PropertyBag input)
+        {
+            Dispatcher.VerifyAccess();
+
+            // Restore basic data
+            Location = input.GetString(SaveData.k_UI_Location);
+            Instruction = input.GetString(SaveData.k_UI_Instruction);
+            InventoryEnabled = input.GetBool(SaveData.k_UI_InventoryEnabled);
+
+            // Restore log messages
+            Messages.Clear();
+            for (int i = 0, c = input.GetInt(SaveData.k_UI_LogSnippet_Count); i < c; i++)
+            {
+                var message = input.GetString(SaveData.CombineBase(SaveData.k_UI_LogSnippet_Base, i));
+                var model = new LogMessageModel
+                {
+                    Text = message,
+                    TextColor = Theme.LogColorLightGray,
+                    TextStyle = Theme.TextBlockDefault,
+                    IsBar = false
+                };
+
+                Messages.Add(model);
+            }
         }
 
         /// <summary>

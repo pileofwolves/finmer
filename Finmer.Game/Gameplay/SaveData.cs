@@ -22,8 +22,13 @@ namespace Finmer.Gameplay
         public const string k_AssetID = @"asset";
 
         public const string k_System_CurrentSceneID = @"scene_guid";
-        public const string k_System_CurrentScenePrettyName = @"scene_pretty";
         public const string k_System_CurrentSceneState = @"scene_state";
+
+        public const string k_UI_Location = @"ui_location";
+        public const string k_UI_Instruction = @"ui_instruction";
+        public const string k_UI_InventoryEnabled = @"ui_inv";
+        public const string k_UI_LogSnippet_Count = @"log_count";
+        public const string k_UI_LogSnippet_Base = @"log_";
 
         public const string k_Object_Guid = @"guid";
         public const string k_Object_Name = @"name";

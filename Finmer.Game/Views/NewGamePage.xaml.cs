@@ -115,7 +115,7 @@ namespace Finmer.Views
             m_Player.SetInt(SaveData.k_Player_TimeHour, 9);
 
             // Launch the session
-            GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag());
+            GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag(), new PropertyBag());
             GameController.BeginNewSession(save_data);
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }

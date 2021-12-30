@@ -62,7 +62,8 @@ namespace Finmer.Gameplay
                     // Deserialize stream
                     var player_data = PropertyBag.FromStream(reader);
                     var scene_data = PropertyBag.FromStream(reader);
-                    return new GameSnapshot(player_data, scene_data);
+                    var ui_data = PropertyBag.FromStream(reader);
+                    return new GameSnapshot(player_data, scene_data, ui_data);
                 }
             }
         }
@@ -93,6 +94,7 @@ namespace Finmer.Gameplay
                     // Write the actual save data
                     snapshot.PlayerData.Serialize(writer);
                     snapshot.SceneData.Serialize(writer);
+                    snapshot.InterfaceData.Serialize(writer);
                 }
             }
 
@@ -174,14 +176,14 @@ namespace Finmer.Gameplay
 
             // Describe the player data
             var player = snapshot.PlayerData;
-            text.AppendFormat("{0}  -  Lv {1} {2} {3}",
+            text.AppendFormat("{0}  -  Lv {1} {2}",
                 player.GetString(SaveData.k_Object_Name),
                 player.GetInt(SaveData.k_Character_Level),
-                player.GetString(SaveData.k_Object_Gender),
                 player.GetString(SaveData.k_Player_SpeciesSingular).CapFirst());
 
             // Describe the scene data
-            text.Append(snapshot.SceneData.GetString(SaveData.k_System_CurrentScenePrettyName));
+            text.AppendLine();
+            text.Append(snapshot.InterfaceData.GetString(SaveData.k_UI_Location));
 
             return text.ToString();
         }

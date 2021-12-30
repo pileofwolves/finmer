@@ -82,6 +82,8 @@ namespace Finmer.Gameplay
 
         public GameSession(GameSnapshot snapshot)
         {
+            Debug.Assert(GameController.Session == null, "This class manipulates singletons, so there should be only one instance");
+
             // Initialize the session
             Compass = new CompassController(this);
             Player = new Player(ScriptContext, snapshot.PlayerData);
@@ -92,6 +94,10 @@ namespace Finmer.Gameplay
             // Bind player grammar context
             TextParser.ClearAllContexts();
             TextParser.SetContext("player", Player, true);
+
+            // Restore UI state
+            GameUI.Reset();
+            GameUI.Instance.RestoreState(snapshot.InterfaceData);
 
             // Run global scripts
             foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
@@ -117,6 +123,7 @@ namespace Finmer.Gameplay
         /// </summary>
         public void Start()
         {
+            Debug.Assert(GameController.Session == this, "This class manipulates singletons, so there should be only one instance");
             m_ScriptThread.Start();
         }
 
@@ -150,14 +157,14 @@ namespace Finmer.Gameplay
         /// </summary>
         public GameSnapshot CaptureSnapshot()
         {
-            // Serialize the Player state, which contains all game state and script save data
-            var player_save_data = Player.SerializeProperties();
-
-            // Serialize any additional data about the current scene
             Debug.Assert(m_SceneStack.Count == 1, "Save data does not support stacked scenes");
-            var scene_save_data = PeekScene().CaptureState();
 
-            return new GameSnapshot(player_save_data, scene_save_data);
+            // Serialize all different types of data to create a save data object
+            return new GameSnapshot(
+                Player.SerializeProperties(),
+                PeekScene().CaptureState(),
+                GameUI.Instance.CaptureState()
+            );
         }
 
         /// <summary>

@@ -25,7 +25,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Represents a scene with functionality implemented in Lua scripts.
     /// </summary>
-    internal sealed class SceneScripted : Scene
+    internal sealed class SceneScripted : Scene, ISaveable
     {
 
         private const string k_SceneRegistryTable = @"SceneEnvs";
@@ -268,7 +268,7 @@ namespace Finmer.Gameplay
             LaunchCoroutine(k_ScriptCallbackTurn, 1);
         }
 
-        public override PropertyBag CaptureState()
+        public PropertyBag Serialize()
         {
             IntPtr state = m_Context.LuaState;
 
@@ -294,7 +294,7 @@ namespace Finmer.Gameplay
             return output;
         }
 
-        public override void RestoreState(PropertyBag input)
+        public void Deserialize(PropertyBag input)
         {
             // Push the state value onto the stack
             IntPtr state = m_Context.LuaState;

@@ -97,7 +97,7 @@ namespace Finmer.Gameplay
 
             // Restore UI state
             GameUI.Reset();
-            GameUI.Instance.RestoreState(snapshot.InterfaceData);
+            GameUI.Instance.Deserialize(snapshot.InterfaceData);
 
             // Run global scripts
             foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
@@ -157,13 +157,15 @@ namespace Finmer.Gameplay
         /// </summary>
         public GameSnapshot CaptureSnapshot()
         {
+            // We're expecting save data to only be created while regular gameplay scenes are active
             Debug.Assert(m_SceneStack.Count == 1, "Save data does not support stacked scenes");
+            SceneScripted current_scene = (SceneScripted)PeekScene();
 
             // Serialize all different types of data to create a save data object
             return new GameSnapshot(
                 Player.SerializeProperties(),
-                PeekScene().CaptureState(),
-                GameUI.Instance.CaptureState()
+                current_scene.Serialize(),
+                GameUI.Instance.Serialize()
             );
         }
 
@@ -392,7 +394,7 @@ namespace Finmer.Gameplay
                 m_SceneStack.Push(restored_scene);
 
                 // Restore state and run the next state function (as if it were the initial turn)
-                restored_scene.RestoreState(snapshot.SceneData);
+                restored_scene.Deserialize(snapshot.SceneData);
             }
         }
 

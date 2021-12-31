@@ -23,7 +23,7 @@ namespace Finmer.Models
     /// <summary>
     /// Contains global UI state as managed by gameplay code.
     /// </summary>
-    public class GameUI : BaseProp
+    public class GameUI : BaseProp, ISaveable
     {
 
         private static GameUI s_Inst;
@@ -184,10 +184,7 @@ namespace Finmer.Models
             s_Inst = new GameUI();
         }
 
-        /// <summary>
-        /// Write data representing this instance to an output save data object.
-        /// </summary>
-        public PropertyBag CaptureState()
+        public PropertyBag Serialize()
         {
             var output = new PropertyBag();
 
@@ -213,10 +210,7 @@ namespace Finmer.Models
             return output;
         }
 
-        /// <summary>
-        /// Overwrite state of this instance with data previously captured by CaptureState().
-        /// </summary>
-        public void RestoreState(PropertyBag input)
+        public void Deserialize(PropertyBag input)
         {
             Dispatcher.VerifyAccess();
 

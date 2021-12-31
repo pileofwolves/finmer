@@ -34,22 +34,6 @@ namespace Finmer.Gameplay
         /// <param name="choice">Choice button number, as set by ChoiceButtonModel.Choice</param>
         public abstract void Turn(int choice);
 
-        /// <summary>
-        /// Capture the state of the scene into a PropertyBag that describes it.
-        /// </summary>
-        public virtual PropertyBag CaptureState()
-        {
-            throw new NotSupportedException();
-        }
-
-        /// <summary>
-        /// Restore scene state that was previously captured by CaptureState().
-        /// </summary>
-        public virtual void RestoreState(PropertyBag input)
-        {
-            throw new NotSupportedException();
-        }
-
     }
 
 }

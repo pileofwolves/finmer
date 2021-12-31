@@ -24,20 +24,6 @@
 		"ButtonWidth": 1.0,
 		"Children": [
 			{
-				"Key": "SavePoint_Room",
-				"IsState": true,
-				"IsLink": false,
-				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)",
-				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
-				"Children": [
-					{
-						"IsState": false,
-						"IsLink": true,
-						"LinkTarget": "Room_C_Leave"
-					}
-				]
-			},
-			{
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
@@ -866,12 +852,24 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "-- to make the save return to SavePointRoom\r\nStorage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\n\r\n-- but we don't want that if the player re-enters the inn\r\nStorage.SetFlag(\"savepoint\", false)",
 										"Children": [
 											{
+												"Key": "SavePoint_Room",
 												"IsState": true,
-												"IsLink": true,
-												"LinkTarget": "Room_Main"
+												"IsLink": false,
+												"ScriptAction": "SaveData.ShowSaveDialog()",
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Room_C_Leave"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Room_C_Sleep"
+													}
+												]
 											}
 										]
 									},
@@ -894,7 +892,7 @@
 													{
 														"IsState": false,
 														"IsLink": true,
-														"LinkTarget": "Foxtaur_C_Leave"
+														"LinkTarget": "Room_C_Leave"
 													},
 													{
 														"IsState": false,

@@ -24,30 +24,6 @@
 		"ButtonWidth": 1.0,
 		"Children": [
 			{
-				"Key": "SavePoint_Stomach",
-				"IsState": true,
-				"IsLink": false,
-				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
-				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
-				"Children": [
-					{
-						"IsState": false,
-						"IsLink": true,
-						"LinkTarget": "C_Struggle"
-					},
-					{
-						"IsState": false,
-						"IsLink": true,
-						"LinkTarget": "C_Submit"
-					},
-					{
-						"IsState": false,
-						"IsLink": true,
-						"LinkTarget": "C_SQ01_UseVial"
-					}
-				]
-			},
-			{
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
@@ -103,11 +79,6 @@
 									{
 										"IsState": false,
 										"IsLink": true,
-										"LinkTarget": "C_Submit"
-									},
-									{
-										"IsState": false,
-										"IsLink": true,
 										"LinkTarget": "C_SQ01_UseVial"
 									},
 									{
@@ -118,16 +89,6 @@
 								]
 							}
 						]
-					},
-					{
-						"Key": "C_Submit",
-						"IsState": false,
-						"IsLink": false,
-						"Title": "Unnamed",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"ScriptAppear": "-- TODO: Removed, because it's kinda synonymous with Sleep\r\nreturn false",
-						"Children": []
 					},
 					{
 						"Key": "C_SQ01_UseVial",
@@ -149,11 +110,6 @@
 										"IsState": false,
 										"IsLink": true,
 										"LinkTarget": "C_Struggle"
-									},
-									{
-										"IsState": false,
-										"IsLink": true,
-										"LinkTarget": "C_Submit"
 									},
 									{
 										"IsState": false,
@@ -187,12 +143,24 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"savepoint\", true)\r\nSaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"savepoint\", false)",
 										"Children": [
 											{
+												"Key": "SavePoint_Stomach",
 												"IsState": true,
-												"IsLink": true,
-												"LinkTarget": "R_AwakeAfterSleep"
+												"IsLink": false,
+												"ScriptAction": "SaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "C_Struggle"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "C_SQ01_UseVial"
+													}
+												]
 											}
 										]
 									},
@@ -214,11 +182,6 @@
 														"IsState": false,
 														"IsLink": true,
 														"LinkTarget": "C_Struggle"
-													},
-													{
-														"IsState": false,
-														"IsLink": true,
-														"LinkTarget": "C_Submit"
 													},
 													{
 														"IsState": false,

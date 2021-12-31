@@ -461,7 +461,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)\r\n\r\n-- Take a checkpoint if the player leaves town and comes back\r\nif Storage.GetNumber(\"TOWN_CHECKPOINT_TIME\") ~= GetTimeHourTotal() then\r\n    Storage.SetNumber(\"TOWN_CHECKPOINT_TIME\", GetTimeHourTotal())\r\n    SaveData.TakeCheckpoint()\r\nend",
 				"Children": [
 					{
 						"Key": "Inn",

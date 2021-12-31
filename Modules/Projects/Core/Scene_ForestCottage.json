@@ -27,7 +27,7 @@
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "if not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)",
 				"Children": [
 					{
 						"Key": "EnterCottage",

@@ -84,7 +84,9 @@
     <Compile Include="Gameplay\ECompassDirection.cs" />
     <Compile Include="Gameplay\ContentStore.cs" />
     <Compile Include="Gameplay\GameSession.cs" />
+    <Compile Include="Gameplay\GameSnapshot.cs" />
     <Compile Include="Gameplay\Gender.cs" />
+    <Compile Include="Gameplay\ISaveable.cs" />
     <Compile Include="Gameplay\ItemUtilities.cs" />
     <Compile Include="Gameplay\Journal.cs" />
     <Compile Include="Gameplay\SaveData.cs" />
@@ -121,6 +123,7 @@
     <Compile Include="ViewModels\CombatStateViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveViewModel.cs" />
     <Compile Include="ViewModels\CombatResolveParticipantViewModel.cs" />
+    <Compile Include="ViewModels\GameOverPanelViewModel.cs" />
     <Compile Include="ViewModels\JournalItemViewModel.cs" />
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />

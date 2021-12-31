@@ -9,6 +9,7 @@
 using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using JetBrains.Annotations;
 
 // ReSharper disable MemberCanBePrivate.Global
 // ReSharper disable UnusedMember.Global
@@ -201,7 +202,7 @@ namespace Finmer.Gameplay.Scripting
         public static extern UIntPtr lua_objlen(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        public static extern int lua_call(IntPtr L, int nargs, int nresults);
+        public static extern void lua_call(IntPtr L, int nargs, int nresults);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern int lua_pcall(IntPtr L, int nargs, int nresults, int errfunc);
@@ -333,7 +334,7 @@ namespace Finmer.Gameplay.Scripting
         public static extern ELuaType lua_type(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
-        [return: MarshalAs(UnmanagedType.LPStr)]
+        [return: MarshalAs(UnmanagedType.CustomMarshaler, MarshalTypeRef = typeof(StringCopyMarshaller))]
         public static extern string lua_typename(IntPtr L, ELuaType type);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
@@ -435,6 +436,50 @@ namespace Finmer.Gameplay.Scripting
 
             [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
             public static extern IntPtr LoadLibrary(string dllToLoad);
+
+        }
+
+        /// <summary>
+        /// P/Invoke marshaller that copies returned ANSI string (const char*) into a managed string, without
+        /// taking ownership of the native buffer (like UnmanagedType.LPStr does).
+        /// </summary>
+        private sealed class StringCopyMarshaller : ICustomMarshaler
+        {
+
+            private static StringCopyMarshaller s_Instance;
+
+#pragma warning disable IDE0060 // Remove unused parameter
+            [UsedImplicitly]
+            public static ICustomMarshaler GetInstance([UsedImplicitly] string cookie)
+            {
+                return s_Instance ?? (s_Instance = new StringCopyMarshaller());
+            }
+#pragma warning restore IDE0060 // Remove unused parameter
+
+            public object MarshalNativeToManaged(IntPtr pNativeData)
+            {
+                return Marshal.PtrToStringAnsi(pNativeData);
+            }
+
+            public IntPtr MarshalManagedToNative(object ManagedObj)
+            {
+                throw new NotSupportedException();
+            }
+
+            public void CleanUpNativeData(IntPtr pNativeData)
+            {
+                // No cleanup required
+            }
+
+            public void CleanUpManagedData(object ManagedObj)
+            {
+                throw new NotSupportedException();
+            }
+
+            public int GetNativeDataSize()
+            {
+                return -1;
+            }
 
         }
 

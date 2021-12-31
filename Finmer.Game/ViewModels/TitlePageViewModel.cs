@@ -77,12 +77,12 @@ namespace Finmer.ViewModels
         private void OnLoadGame(object args)
         {
             int slot_index = (int)args;
-            PropertyBag slot_data;
+            GameSnapshot snapshot;
 
             try
             {
                 // Read the stored save data
-                slot_data = SaveManager.LoadSaveFile(slot_index);
+                snapshot = SaveManager.LoadSaveFile(slot_index);
             }
             catch
             {
@@ -92,7 +92,7 @@ namespace Finmer.ViewModels
             }
 
             // Launch the session using the save data
-            GameController.BeginNewSession(slot_data);
+            GameController.BeginNewSession(snapshot);
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }
 

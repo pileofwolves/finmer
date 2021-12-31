@@ -8,9 +8,7 @@
 
 using System.Collections.Generic;
 using Finmer.Core;
-using Finmer.Core.Assets;
 using Finmer.Models;
-using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -49,33 +47,13 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Activate a new GameSession using the provided save data.
         /// </summary>
-        /// <param name="saveData">Save data with which to create the player object.</param>
-        public static void BeginNewSession(PropertyBag saveData)
+        /// <param name="snapshot">Save data with which to reconstruct the game.</param>
+        public static void BeginNewSession(GameSnapshot snapshot)
         {
-            // Reset UI
-            GameUI.Reset();
-
             // Set up the new gameplay session
             Session?.Dispose();
-            Session = new GameSession(saveData);
-
-            // Bind player grammar context
-            TextParser.ClearAllContexts();
-            TextParser.SetContext("player", Session.Player, true);
-
-            // Run global scripts
-            var script_context = Session.ScriptContext;
-            foreach (var script in Content.GetAssetsByType<AssetScript>())
-                if (script_context.LoadScript(script.PrecompiledScript, script.Name))
-                    script_context.RunProtectedCall(0, 0);
-
-            // Check if we have write perms
-            if (!Logger.HasWritePermission())
-                GameUI.Instance.Log("Warning: It looks like the game does not have permission to write files to the app " +
-                    "directory. This means that you cannot save your game.\r\n", Theme.LogColorError);
-
-            // Create the initial scene
-            Session.PushScene(new SceneScripted(script_context, Session.Player.Location));
+            Session = new GameSession(snapshot);
+            Session.Start();
         }
 
         /// <summary>

@@ -43,21 +43,21 @@
 						"IsLink": false,
 						"Title": "Yes please!",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 1.25,
 						"ScriptAction": "SetScene(\"Scene_Tutorial\")",
 						"Children": []
 					},
 					{
 						"IsState": false,
 						"IsLink": false,
-						"Title": "DEBUG MENU",
+						"Title": "Debug Menu",
 						"Tooltip": "Here be dragons",
-						"Highlight": false,
+						"Highlight": true,
 						"ButtonWidth": 1.0,
 						"ScriptAppear": "return IsDebugMode()",
 						"Children": [
 							{
-								"Key": "DBGROOT",
+								"Key": "DebugMenu",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()",
@@ -65,64 +65,206 @@
 									{
 										"IsState": false,
 										"IsLink": false,
-										"Title": "Shop test",
+										"Title": "(Back)",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"ScriptAction": "-- Give the player some random items\r\nif not Player:HasItem(\"I_PitInvite\") then Player:GiveItem(\"I_PitInvite\") end\r\nif not Player:HasItem(\"U_FoodBread\") then Player:GiveItem(\"U_FoodBread\") end\r\nif not Player:HasItem(\"I_SQ01_Vial\") then Player:GiveItem(\"I_SQ01_Vial\") end\r\nif not Player:HasItem(\"A_LeatherArmor\") then Player:GiveItem(\"A_LeatherArmor\") end\r\nif not Player:HasItem(\"A_ClothArmor\") then Player:GiveItem(\"A_ClothArmor\") end\r\n\r\n-- Launch shop\r\nlocal shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.RestockInterval = 24\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"U_FoodGrapes\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
+										"ButtonWidth": 0.6,
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": true,
-												"LinkTarget": "DBGROOT"
+												"LinkTarget": "Start"
 											}
 										]
 									},
 									{
 										"IsState": false,
 										"IsLink": false,
-										"Title": "Go to Inn",
+										"Title": "Teleports",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"town_first\", true)\r\nSetScene(\"Scene_TownInn\")",
-										"Children": []
+										"Children": [
+											{
+												"IsState": true,
+												"IsLink": false,
+												"Children": [
+													{
+														"Key": "DebugSubMenuBack",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "(Back)",
+														"Highlight": false,
+														"ButtonWidth": 0.6,
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "DebugMenu"
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to Inn",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"town_first\", true)\r\nSetScene(\"Scene_TownInn\")",
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to MQ02 RoadEnc",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to MQ02 Chase Event",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_done\", true)\r\nSetScene(\"Scene_TownMarket\")",
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to Forest Edge",
+														"Tooltip": "For testing SQ02 / MQ02",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq01_done\", true)\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to Pit",
+														"Tooltip": "Level 3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"town_pit_unlocked\", true)\r\nSetScene(\"Scene_TownPit\")",
+														"Children": []
+													}
+												]
+											}
+										]
 									},
 									{
 										"IsState": false,
 										"IsLink": false,
-										"Title": "Go to MQ02 RoadEnc",
+										"Title": "System Tests",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
-										"Children": []
-									},
-									{
-										"IsState": false,
-										"IsLink": false,
-										"Title": "Go to MQ02 Chase Event",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_done\", true)\r\nSetScene(\"Scene_TownMarket\")",
-										"Children": []
-									},
-									{
-										"IsState": false,
-										"IsLink": false,
-										"Title": "Go to Forest Edge",
-										"Tooltip": "For testing SQ02 / MQ02",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq01_done\", true)\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
-										"Children": []
-									},
-									{
-										"IsState": false,
-										"IsLink": false,
-										"Title": "Go to Pit",
-										"Tooltip": "Level 3",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"town_pit_unlocked\", true)\r\nSetScene(\"Scene_TownPit\")",
-										"Children": []
+										"Children": [
+											{
+												"Key": "SysTestsRoot",
+												"IsState": true,
+												"IsLink": false,
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "DebugSubMenuBack"
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Shop test",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "-- Give the player some random items\r\nif not Player:HasItem(\"I_PitInvite\") then Player:GiveItem(\"I_PitInvite\") end\r\nif not Player:HasItem(\"U_FoodBread\") then Player:GiveItem(\"U_FoodBread\") end\r\nif not Player:HasItem(\"I_SQ01_Vial\") then Player:GiveItem(\"I_SQ01_Vial\") end\r\nif not Player:HasItem(\"A_LeatherArmor\") then Player:GiveItem(\"A_LeatherArmor\") end\r\nif not Player:HasItem(\"A_ClothArmor\") then Player:GiveItem(\"A_ClothArmor\") end\r\n\r\n-- Launch shop\r\nlocal shop = Shop(\"Test\")\r\nshop.Title = \"Magickal Potion Shoppe\"\r\nshop.RestockInterval = 24\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionDigestResist\"))\r\n    shop:AddItem(Item(\"AC_CharmFight\"))\r\n    shop:AddItem(Item(\"U_FoodGrapes\"))\r\n    shop:AddItem(Item(\"A_LeatherArmor\"))\r\nend\r\nshop:Show()\r\nshop:Save()",
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "DebugMenu"
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Save Game (Checkpoint)",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogRaw(\"Capturing checkpoint...\")\r\nSaveData.TakeCheckpoint()",
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Continue from checkpoint.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "SysTestsRoot"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Save Game (Choice)",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "LogRaw(\"Capturing Save A\")\r\nSaveData.ShowSaveDialog()\r\nLogRaw(\"Restoring Save A\")",
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Start"
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Save Game (State)",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": "LogRaw(\"Capturing Save B\")\r\nSaveData.ShowSaveDialog()\r\nLogRaw(\"Restoring Save B\")",
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Tooltip": "Continue from save data.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "Start"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
 									}
 								]
 							}

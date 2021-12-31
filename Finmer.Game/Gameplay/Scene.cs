@@ -6,6 +6,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using Finmer.Core;
+
 namespace Finmer.Gameplay
 {
 
@@ -18,12 +21,12 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Callback fired when the scene becomes the active scene.
         /// </summary>
-        public virtual void Enter() { }
+        public virtual void Enter() {}
 
         /// <summary>
         /// Callback fired when the scene is no longer the active scene.
         /// </summary>
-        public virtual void Leave() { }
+        public virtual void Leave() {}
 
         /// <summary>
         /// Callback fired in response to user input.

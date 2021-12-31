@@ -22,7 +22,6 @@ namespace Finmer.Gameplay
     {
 
         private const int k_SlotCount = 3;
-        private const byte k_SaveVersion = 4;
 
         private static readonly SaveSlot[] s_Slots = new SaveSlot[k_SlotCount];
 
@@ -36,10 +35,10 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Returns the <seealso cref="PropertyBag" /> stored in the specified save slot, if any.
+        /// Returns the save data stored in the specified slot, or null if none exists.
         /// </summary>
         /// <param name="slot">The save slot index (zero-based).</param>
-        public static PropertyBag LoadSaveFile(int slot)
+        public static GameSnapshot LoadSaveFile(int slot)
         {
             string filename = GetSaveFileName(slot);
             if (!File.Exists(filename))
@@ -52,7 +51,7 @@ namespace Finmer.Gameplay
                 {
                     // Verify version
                     byte version = reader.ReadByte();
-                    if (version != k_SaveVersion)
+                    if (version != SaveData.k_FileVersion)
                         throw new InvalidDataException("Incompatible save version " + version);
 
                     // Skip the header, which will have been validated by CacheSlot().
@@ -61,7 +60,10 @@ namespace Finmer.Gameplay
                     reader.ReadBytes(num_modules * 16);
 
                     // Deserialize stream
-                    return PropertyBag.FromStream(reader);
+                    var player_data = PropertyBag.FromStream(reader);
+                    var scene_data = PropertyBag.FromStream(reader);
+                    var ui_data = PropertyBag.FromStream(reader);
+                    return new GameSnapshot(player_data, scene_data, ui_data);
                 }
             }
         }
@@ -70,8 +72,8 @@ namespace Finmer.Gameplay
         /// Writes a save file to disk.
         /// </summary>
         /// <param name="slot">The zero-based save slot, range is [0, k_SlotCount).</param>
-        /// <param name="savedata">The <seealso cref="PropertyBag" /> containing the save data.</param>
-        public static void Save(int slot, PropertyBag savedata)
+        /// <param name="snapshot">The <seealso cref="PropertyBag" /> containing the save data.</param>
+        public static void Save(int slot, GameSnapshot snapshot)
         {
             string filename = GetSaveFileName(slot);
             string description;
@@ -80,8 +82,8 @@ namespace Finmer.Gameplay
                 using (var writer = new BinaryWriter(file, Encoding.UTF8, true))
                 {
                     // Write the save version, and the short save info, as header
-                    description = DescribeSaveFile(savedata);
-                    writer.Write(k_SaveVersion);
+                    description = DescribeSaveFile(snapshot);
+                    writer.Write(SaveData.k_FileVersion);
                     writer.Write(description);
 
                     // Write dependencies list
@@ -90,7 +92,9 @@ namespace Finmer.Gameplay
                         writer.Write(module.ID.ToByteArray());
 
                     // Write the actual save data
-                    savedata.Serialize(writer);
+                    snapshot.PlayerData.Serialize(writer);
+                    snapshot.SceneData.Serialize(writer);
+                    snapshot.InterfaceData.Serialize(writer);
                 }
             }
 
@@ -129,8 +133,8 @@ namespace Finmer.Gameplay
                     {
                         // Check version number
                         byte version = reader.ReadByte();
-                        if (version != k_SaveVersion)
-                            return new SaveSlot($"Incompatible save version:\r\nfile is v{version}, but expected v{k_SaveVersion}");
+                        if (version != SaveData.k_FileVersion)
+                            return new SaveSlot($"Incompatible save version:\r\nfile is v{version}, but expected v{SaveData.k_FileVersion}");
 
                         // Obtain the info string
                         var slot = new SaveSlot
@@ -165,13 +169,23 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns a string describing a saved game.
         /// </summary>
-        /// <param name="data">The <seealso cref="Player" /> to check.</param>
-        private static string DescribeSaveFile(PropertyBag data)
+        /// <param name="snapshot">The <seealso cref="Player" /> to check.</param>
+        private static string DescribeSaveFile(GameSnapshot snapshot)
         {
-            var sb = new StringBuilder();
-            sb.AppendLine($"{data.GetString("name")}  -  Lv {data.GetInt("level")} {data.GetString("gender")} {data.GetString("species").CapFirst()}");
-            sb.Append(data.GetString("location_nice"));
-            return sb.ToString();
+            var text = new StringBuilder();
+
+            // Describe the player data
+            var player = snapshot.PlayerData;
+            text.AppendFormat("{0}  -  Lv {1} {2}",
+                player.GetString(SaveData.k_Object_Name),
+                player.GetInt(SaveData.k_Character_Level),
+                player.GetString(SaveData.k_Player_SpeciesSingular).CapFirst());
+
+            // Describe the scene data
+            text.AppendLine();
+            text.Append(snapshot.InterfaceData.GetString(SaveData.k_UI_Location));
+
+            return text.ToString();
         }
 
         /// <summary>

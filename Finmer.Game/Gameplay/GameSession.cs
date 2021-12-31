@@ -10,9 +10,10 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
-using Finmer.Core;
+using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
+using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -40,6 +41,11 @@ namespace Finmer.Gameplay
         private const int k_ScriptStackSize = 128 * 1024;
 
         /// <summary>
+        /// The name of the default scene asset to load when save data does not provide one (i.e. a new game).
+        /// </summary>
+        private const string k_DefaultSceneName = @"Scene_Intro";
+
+        /// <summary>
         /// The Player object associated with this session.
         /// </summary>
         public Player Player { get; }
@@ -54,30 +60,70 @@ namespace Finmer.Gameplay
         /// </summary>
         public CompassController Compass { get; }
 
+        /// <summary>
+        /// The last checkpoint that was captured during this game, or null if unavailable.
+        /// </summary>
+        public GameSnapshot LastCheckpoint { get; set; }
+
+        /// <summary>
+        /// Indicates whether this session has not yet completed a full turn cycle (i.e. the game is being started).
+        /// </summary>
+        public bool IsRestoringGame { get; private set; } = true;
+
         private readonly Queue<SceneEvent> m_EventQueue = new Queue<SceneEvent>();
         private readonly object m_EventQueueLock = new object();
-
         private readonly Stack<Scene> m_SceneStack = new Stack<Scene>();
         private readonly Thread m_ScriptThread;
         private readonly AutoResetEvent m_ScriptWaitEvent;
-        private bool m_ScriptThreadStop;
-        private bool m_GameOverRequested; 
 
-        public GameSession(PropertyBag savedata)
+        private GameSnapshot m_RestoreSnapshot;
+        private bool m_ScriptThreadStop;
+        private bool m_GameOverRequested;
+
+        public GameSession(GameSnapshot snapshot)
         {
+            Debug.Assert(GameController.Session == null, "This class manipulates singletons, so there should be only one instance");
+
             // Initialize the session
             Compass = new CompassController(this);
-            Player = new Player(ScriptContext, savedata);
+            Player = new Player(ScriptContext, snapshot.PlayerData);
 
             // Allow scripts to access the player object as a global variable
             ScriptContext.PinObjectAsGlobal(Player, "Player");
 
-            // Launch the script thread
+            // Bind player grammar context
+            TextParser.ClearAllContexts();
+            TextParser.SetContext("player", Player, true);
+
+            // Restore UI state
+            GameUI.Reset();
+            GameUI.Instance.Deserialize(snapshot.InterfaceData);
+
+            // Run global scripts
+            foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
+                if (ScriptContext.LoadScript(script.PrecompiledScript, script.Name))
+                    ScriptContext.RunProtectedCall(0, 0);
+
+            // Check if we have write perms
+            if (!Logger.HasWritePermission())
+                GameUI.Instance.Log("Warning: It looks like the game does not have permission to write files to the app " +
+                    "directory. This means that you cannot save your game.\r\n", Theme.LogColorError);
+
+            // Prepare the script thread (but do not launch it yet)
+            m_RestoreSnapshot = snapshot;
             m_ScriptWaitEvent = new AutoResetEvent(false);
             m_ScriptThread = new Thread(ScriptThreadWorker, k_ScriptStackSize)
             {
                 IsBackground = true
             };
+        }
+
+        /// <summary>
+        /// Launch the script thread for this GameSession. Should be called after the Session global has been assigned.
+        /// </summary>
+        public void Start()
+        {
+            Debug.Assert(GameController.Session == this, "This class manipulates singletons, so there should be only one instance");
             m_ScriptThread.Start();
         }
 
@@ -104,6 +150,23 @@ namespace Finmer.Gameplay
         public void VerifyScriptThread()
         {
             Debug.Assert(Thread.CurrentThread == m_ScriptThread, "This function must be executed on the script thread");
+        }
+
+        /// <summary>
+        /// Creates and returns a snapshot of the GameSession, that can be used to restore the session state later.
+        /// </summary>
+        public GameSnapshot CaptureSnapshot()
+        {
+            // We're expecting save data to only be created while regular gameplay scenes are active
+            Debug.Assert(m_SceneStack.Count == 1, "Save data does not support stacked scenes");
+            SceneScripted current_scene = (SceneScripted)PeekScene();
+
+            // Serialize all different types of data to create a save data object
+            return new GameSnapshot(
+                Player.SerializeProperties(),
+                current_scene.Serialize(),
+                GameUI.Instance.Serialize()
+            );
         }
 
         /// <summary>
@@ -202,10 +265,11 @@ namespace Finmer.Gameplay
                 Player.TimeDay++;
             }
         }
+
         /// <summary>
         /// Send the request for the game to end.
         /// </summary>
-        public void RequestGameOver() 
+        public void RequestGameOver()
         {
             m_GameOverRequested = true;
         }
@@ -227,6 +291,12 @@ namespace Finmer.Gameplay
 
         private void ScriptThreadWorker()
         {
+            // Restore saved scene data. Note that we do this on the script thread because restoring may lead to invoking state node
+            // functions and the like, which may sleep or perform complicated processing, and the main thread (UI) should not block.
+            RestoreScene(m_RestoreSnapshot);
+            m_RestoreSnapshot = null;
+
+            // Main loop
             while (true)
             {
                 // Wait for a signal to resume work
@@ -287,6 +357,9 @@ namespace Finmer.Gameplay
                         }
                     }
 
+                    // We've now completed a full turn
+                    IsRestoringGame = false;
+
                     // Skip all further scene events if the game has ended
                     if (IsGameOver())
                     {
@@ -296,6 +369,32 @@ namespace Finmer.Gameplay
 
                     GameUI.Instance.ControlsEnabled = true;
                 }
+            }
+        }
+
+        private void RestoreScene(GameSnapshot snapshot)
+        {
+            // Grab the GUID of the scene to restore
+            var scene_bytes = snapshot.SceneData.GetBytes(SaveData.k_System_CurrentSceneID);
+            if (scene_bytes == null)
+            {
+                // Save data does not include a scene GUID; fall back to the default initial scene
+                var initial_scene = (AssetScene)GameController.Content.GetAssetByName(k_DefaultSceneName);
+                PushScene(new SceneScripted(ScriptContext, initial_scene));
+            }
+            else
+            {
+                // Find this asset in content
+                var asset_id = new Guid(scene_bytes);
+                var asset = (AssetScene)GameController.Content.GetAssetByID(asset_id);
+
+                // Add this scene onto the stack.
+                // Note that we do not use PushScene() here, since that queues Enter and Turn events which we do not want.
+                var restored_scene = new SceneScripted(ScriptContext, asset);
+                m_SceneStack.Push(restored_scene);
+
+                // Restore state and run the next state function (as if it were the initial turn)
+                restored_scene.Deserialize(snapshot.SceneData);
             }
         }
 

@@ -6,10 +6,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Windows;
-using Finmer.Gameplay;
-using Finmer.Utility;
-
 namespace Finmer.Views
 {
 
@@ -22,15 +18,6 @@ namespace Finmer.Views
         public GameOverPanelView()
         {
             InitializeComponent();
-        }
-
-        private void ReturnToMenu_OnClick(object sender, RoutedEventArgs e)
-        {
-            // Destroy the current game session so it can be GCed
-            GameController.ExitSession();
-
-            // Go to the main menu
-            GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
         }
 
     }

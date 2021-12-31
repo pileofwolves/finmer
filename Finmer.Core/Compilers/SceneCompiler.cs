@@ -98,6 +98,15 @@ namespace Finmer.Core.Compilers
             // Write boilerplate code that drives the scene.
             // In OnTurn, we run the user's chosen ChoiceFn, then run the new StateFn that rolls out of that ChoiceFn.
             state.Main.AppendLine(@"
+function _CaptureState()
+    for k, v in pairs(_States) do
+        if v == _state then return k end
+    end
+end
+function _RestoreState(state_name)
+    _state = _States[state_name]
+    _StateFns[_state]()
+end
 function OnTurn(choice)
     _ChoiceFns[choice]()
     _StateFns[_state]()

@@ -259,7 +259,6 @@ namespace Finmer.Models
                     Text = text.CapFirst(),
                     TextColor = color,
                     TextStyle = Theme.TextBlockDefault,
-                    Margin = new Thickness(0, 0, 0, 10),
                     IsBar = false
                 };
 

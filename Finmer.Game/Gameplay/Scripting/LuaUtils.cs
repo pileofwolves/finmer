@@ -65,11 +65,11 @@ namespace Finmer.Gameplay.Scripting
         {
             var type = lua_type(state, i);
             var typename = lua_typename(state, type);
-
+  
             switch (type)
             {
                 case ELuaType.Boolean:
-                    return $"{typename}: {(lua_toboolean(state, i) == 1 ? "true" : "false")}";
+                    return $"{typename}: {(lua_toboolean(state, i) ? "true" : "false")}";
 
                 case ELuaType.Number:
                     return $"{typename}: {lua_tonumber(state, i):F3}";

@@ -51,7 +51,7 @@ namespace Finmer.Gameplay.Scripting
             // Parse arguments
             var key = luaL_checkstring(state, 1);
             var context = ScriptableObject.FromLuaNonOptional<GameObject>(state, 2);
-            var persist = lua_toboolean(state, 3) == 1; // Optional
+            var persist = lua_toboolean(state, 3); // Optional
 
             // Register the grammar context
             TextParser.SetContext(key, context, persist);

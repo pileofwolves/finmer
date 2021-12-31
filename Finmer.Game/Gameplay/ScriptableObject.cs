@@ -270,7 +270,7 @@ namespace Finmer.Gameplay
         {
             ScriptableObject lhs = FromLua(L, 1);
             ScriptableObject rhs = FromLua(L, 2);
-            LuaApi.lua_pushboolean(L, lhs.ID == rhs.ID ? 1 : 0);
+            LuaApi.lua_pushboolean(L, lhs.ID == rhs.ID);
 
             return 1;
         }
@@ -392,7 +392,7 @@ namespace Finmer.Gameplay
         protected static int ExportedHasTag(IntPtr state)
         {
             var self = FromLua(state, 1);
-            LuaApi.lua_pushboolean(state, self.HasTag(LuaApi.luaL_checkstring(state, 2)) ? 1 : 0);
+            LuaApi.lua_pushboolean(state, self.HasTag(LuaApi.luaL_checkstring(state, 2)));
             return 1;
         }
 
@@ -412,7 +412,7 @@ namespace Finmer.Gameplay
 
         private static int LuaMarshalBoolean(IntPtr state, object input)
         {
-            LuaApi.lua_pushboolean(state, (bool)input ? 1 : 0);
+            LuaApi.lua_pushboolean(state, (bool)input);
             return 1;
         }
 
@@ -436,7 +436,7 @@ namespace Finmer.Gameplay
 
         private static object LuaUnmarshalBoolean(IntPtr state, int index)
         {
-            return LuaApi.lua_toboolean(state, index) != 0;
+            return LuaApi.lua_toboolean(state, index);
         }
 
         private static object LuaUnmarshalInt(IntPtr state, int index)

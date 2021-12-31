@@ -270,7 +270,7 @@ namespace Finmer.Gameplay.Combat
             var participant = GetValidatedParticipant(state);
 
             // Check the Participant's state
-            LuaApi.lua_pushboolean(state, participant.IsSwallowed() ? 1 : 0);
+            LuaApi.lua_pushboolean(state, participant.IsSwallowed());
             return 1;
         }
 
@@ -281,7 +281,7 @@ namespace Finmer.Gameplay.Combat
             var participant = GetValidatedParticipant(state);
 
             // Check the Participant's state
-            LuaApi.lua_pushboolean(state, participant.IsGrappling() ? 1 : 0);
+            LuaApi.lua_pushboolean(state, participant.IsGrappling());
             return 1;
         }
 

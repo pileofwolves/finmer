@@ -83,7 +83,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedIsDebugMode(IntPtr L)
         {
-            lua_pushboolean(L, GameController.DebugMode ? 1 : 0);
+            lua_pushboolean(L, GameController.DebugMode);
             return 1;
         }
 

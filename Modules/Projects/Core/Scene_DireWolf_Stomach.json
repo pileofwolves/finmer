@@ -104,7 +104,7 @@
 								"Key": "R_SQ01_UseVial",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "-- TODO: Can we invoke the item function here?\r\n\r\nLog(\"sq01_vial_use\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
+								"ScriptAction": "Log(\"SQ01_VIAL_USE\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
 								"Children": [
 									{
 										"IsState": false,

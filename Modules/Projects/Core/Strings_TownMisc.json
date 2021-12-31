@@ -46,61 +46,6 @@
 			]
 		},
 		{
-			"Key": "SHOP_GENERIC_BOUGHT",
-			"Text": [
-				"\"Thank you for your continued patronage.\"",
-				"\"You've received quite a bargain. I can expect to make no profit off the deal.\"",
-				"\"Thank you kindly!\"",
-				"\"Thank you. Can I do anything else for you?\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_BUY",
-			"Text": [
-				"\"For that {item}, I ask only {item.value} coins.\"",
-				"\"For you, friend, that'll be {item.value} coins.\"",
-				"\"How does {item.value} coins sound for that?\"",
-				"\"A fine choice. What do you say to {item.value} coins?\"",
-				"\"A {item}, of course. How's {item.value} coins?\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_CANNOT_AFFORD",
-			"Text": [
-				"\"Sorry, friend, it looks like you're a little light there.\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_CANNOT_SELL",
-			"Text": [
-				"\"Oh, no, I can't buy that {item}. Sorry.\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_HELLO",
-			"Text": [
-				"\"How may I help?\"",
-				"\"What can I do for you?\"",
-				"\"What'll it be?\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_SELL",
-			"Text": [
-				"\"Hmm, for your {item}, how about this?\"",
-				"\"Would this be an acceptable offer?\""
-			]
-		},
-		{
-			"Key": "SHOP_GENERIC_SOLD",
-			"Text": [
-				"\"Thank you for your continued patronage.\"",
-				"\"You've received quite a bargain. I can expect to make no profit off the deal.\"",
-				"\"Thank you kindly!\"",
-				"\"Thank you. Can I do anything else for you?\""
-			]
-		},
-		{
 			"Key": "TOWN_NIGHTLOCK",
 			"Text": [
 				"The door is locked. You should probably come back later.",

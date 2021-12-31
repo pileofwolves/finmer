@@ -348,8 +348,8 @@
 				"Key": "SQ02_Handin",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"town_hall_enter\")\r\nLog(\"SQ02_TOWNHALL_ENTER\")",
-				"ScriptAppear": "return Player:HasItem(\"SQ02_WolfHead\")",
+				"ScriptAction": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"SQ02_TOWNHALL_ENTER\")",
+				"ScriptAppear": "return Player:HasItem(\"I_SQ02_WolfTrophy\")",
 				"Children": [
 					{
 						"Key": "SQ02_C_Explain",
@@ -364,7 +364,7 @@
 								"Key": "SQ02_R_Explain",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"SQ02_WolfHead\")\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nJournal.Close(\"SQ02\")",
+								"ScriptAction": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"I_SQ02_WolfTrophy\")\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nJournal.Close(\"SQ02\")",
 								"Children": [
 									{
 										"Key": "SQ02_C_Leave",

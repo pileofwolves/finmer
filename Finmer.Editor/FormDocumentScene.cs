@@ -510,6 +510,50 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
+        private TreeNode GetTreeNodeByKey(string key) 
+        {
+            // Prepare stack with root TreeNodes in it
+            Stack<TreeNode> stack = new Stack<TreeNode>();
+            foreach (TreeNode root_node in trvNodes.Nodes)
+                stack.Push(root_node);
+
+            // Flood-fill down the tree until the requested node is found
+            while (stack.Count > 0)
+            {
+                TreeNode node = stack.Pop();
+                var node_sn = (AssetScene.SceneNode)node.Tag;
+
+                // Links do not have keys
+                if (node_sn.IsLink)
+                    continue;
+
+                // Is this the node we're looking for?
+                if (node_sn.Key.Equals(key))
+                    return node;
+
+                // Recursively examine the node's children
+                foreach (TreeNode child in node.Nodes)
+                    stack.Push(child);
+            }
+
+            return null;
+        }
+
+        private void trvNodes_NodeMouseDoubleClick(object sender, TreeNodeMouseClickEventArgs e) 
+        {
+            // Find the type of node that is double-clicked on, and see if it's a link node
+            var link_node = e.Node;
+            var link_node_sn = (AssetScene.SceneNode)link_node.Tag;
+            if (link_node_sn.IsLink)
+            {
+                // If node is a link node, jump to the node it's linked to.
+                var search_key = link_node_sn.LinkTarget;
+                var matching_node = GetTreeNodeByKey(search_key);
+                if (matching_node != null)
+                    trvNodes.SelectedNode = matching_node;
+            }
+        }
+
         private void trvNodes_DragOver(object sender, DragEventArgs e)
         {
             var source = e.Data.GetData(typeof(TreeNode)) as TreeNode;

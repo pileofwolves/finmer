@@ -67,7 +67,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedIsRestoringGame(IntPtr state)
         {
-            lua_pushboolean(state, GameController.Session.IsRestoringGame ? 1 : 0);
+            lua_pushboolean(state, GameController.Session.IsRestoringGame);
             return 1;
         }
 

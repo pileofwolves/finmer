@@ -448,11 +448,13 @@ namespace Finmer.Gameplay.Scripting
 
             private static StringCopyMarshaller s_Instance;
 
+#pragma warning disable IDE0060 // Remove unused parameter
             [UsedImplicitly]
             public static ICustomMarshaler GetInstance([UsedImplicitly] string cookie)
             {
                 return s_Instance ?? (s_Instance = new StringCopyMarshaller());
             }
+#pragma warning restore IDE0060 // Remove unused parameter
 
             public object MarshalNativeToManaged(IntPtr pNativeData)
             {

@@ -65,7 +65,7 @@ namespace Finmer.Gameplay.Scripting
         {
             var type = lua_type(state, i);
             var typename = lua_typename(state, type);
-  
+
             switch (type)
             {
                 case ELuaType.Boolean:

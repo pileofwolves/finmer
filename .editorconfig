@@ -17,6 +17,10 @@ dotnet_diagnostic.IDE0049.severity = none
 # Justification: False-positives.
 dotnet_diagnostic.IDE0055.severity = none
 
+# IDE0079: Remove unnecessary suppression
+# Justification: False-positive. This warning may incorrectly be shown if some of the code inspection plugins are not installed.
+dotnet_diagnostic.IDE0079.severity = none
+
 # IDE1006: Naming Styles
 # Justification: ReSharper takes care of this, and has some abbreviations configured so they aren't flagged.
 dotnet_diagnostic.IDE1006.severity = none

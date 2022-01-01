@@ -195,10 +195,8 @@ namespace Finmer.Core.Assets
                 instream.EndObject();
             }
 
-            // Icon data (Was changed from byte array attribute to attachment file in format version 9)
-            InventoryIcon = version >= 9
-                ? instream.ReadAttachment(GetIconAttachmentName())
-                : instream.ReadByteArrayProperty("InventoryIcon");
+            // Icon data
+            InventoryIcon = instream.ReadAttachment(GetIconAttachmentName());
         }
 
         /// <summary>

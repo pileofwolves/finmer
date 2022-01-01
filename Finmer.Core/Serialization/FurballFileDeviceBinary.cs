@@ -36,10 +36,6 @@ namespace Finmer.Core.Serialization
                         Metadata = ReadHeaderFromStream(instream, out int file_version)
                     };
 
-                    // NextAssetNumber (deprecated in V8)
-                    if (file_version <= 7)
-                        instream.ReadInt32();
-
                     // Read dependencies list
                     for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
                     {
@@ -130,7 +126,7 @@ namespace Finmer.Core.Serialization
 
             // Verify file version
             fileVersion = instream.ReadByte();
-            if (fileVersion != k_LatestVersion && fileVersion != 7)
+            if (fileVersion != k_LatestVersion)
                 throw new FurballInvalidHeaderException($"Incompatible asset package file version (got version {fileVersion}, expected version {k_LatestVersion})");
 
             return new FurballMetadata

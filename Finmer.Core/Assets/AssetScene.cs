@@ -77,13 +77,6 @@ namespace Finmer.Core.Assets
         {
             base.Deserialize(instream, version);
 
-            if (version <= 7)
-            {
-                // Read the scene node tree recursively
-                Root = new SceneNode();
-                Root.Deserialize(instream, version);
-            }
-
             // Read scene scripts
             instream.BeginObject("ScriptCustom");
             {
@@ -108,23 +101,16 @@ namespace Finmer.Core.Assets
             Inject = instream.ReadBooleanProperty("IsPatch");
             if (Inject)
             {
-                if (version <= 14)
-                    InjectMode = (ESceneInjectMode)instream.ReadByteProperty("InjectMode");
-                else
-                    InjectMode = instream.ReadEnumProperty<ESceneInjectMode>("InjectMode");
-
+                InjectMode = instream.ReadEnumProperty<ESceneInjectMode>("InjectMode");
                 InjectScene = instream.ReadGuidProperty("InjectTargetScene");
                 InjectNode = instream.ReadStringProperty("InjectTargetNode");
             }
 
-            if (version > 7)
-            {
-                // Read the scene node tree recursively
-                instream.BeginObject("Root");
-                Root = new SceneNode();
-                Root.Deserialize(instream, version);
-                instream.EndObject();
-            }
+            // Read the scene node tree recursively
+            instream.BeginObject("Root");
+            Root = new SceneNode();
+            Root.Deserialize(instream, version);
+            instream.EndObject();
         }
 
         /// <summary>

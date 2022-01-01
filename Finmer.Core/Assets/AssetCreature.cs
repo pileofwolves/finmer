@@ -176,36 +176,16 @@ namespace Finmer.Core.Assets
             Gender = instream.ReadEnumProperty<EGender>("Gender");
 
             // Equipment links
-            if (version >= 11)
-            {
-                Equipment[0] = instream.ReadGuidProperty("Equipment1");
-                Equipment[1] = instream.ReadGuidProperty("Equipment2");
-                Equipment[2] = instream.ReadGuidProperty("Equipment3");
-                Equipment[3] = instream.ReadGuidProperty("Equipment4");
-            }
+            Equipment[0] = instream.ReadGuidProperty("Equipment1");
+            Equipment[1] = instream.ReadGuidProperty("Equipment2");
+            Equipment[2] = instream.ReadGuidProperty("Equipment3");
+            Equipment[3] = instream.ReadGuidProperty("Equipment4");
 
             // Vore stats
             PredatorEnabled = instream.ReadBooleanProperty("IsPredator");
-
-            // Auto-vore prey property is included as of v13
-            if (version >= 13)
-                AutoSwallowedByPlayer = instream.ReadBooleanProperty("AutoVorePrey");
-
-            if (PredatorEnabled && version <= 10)
+            AutoSwallowedByPlayer = instream.ReadBooleanProperty("AutoVorePrey");
+            if (PredatorEnabled)
             {
-                // Version 10
-                PredatorDigests = instream.ReadBooleanProperty("DigestsPrey");
-            }
-            else if (PredatorEnabled && version <= 12)
-            {
-                // Version 11/12
-                PredatorDigests = instream.ReadBooleanProperty("PredatorDigests");
-                PredatorDisposal = instream.ReadBooleanProperty("PredatorDisposal");
-                AutoSwallowPlayer = instream.ReadBooleanProperty("PredatorAlwaysSwallowPlayer");
-            }
-            else if (PredatorEnabled)
-            {
-                // Version 13
                 AutoSwallowPlayer = instream.ReadBooleanProperty("AutoVorePredator");
                 PredatorDigests = instream.ReadBooleanProperty("PredatorDigests");
                 PredatorDisposal = instream.ReadBooleanProperty("PredatorDisposal");

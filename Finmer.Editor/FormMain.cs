@@ -476,6 +476,7 @@ namespace Finmer.Editor
             };
             Program.ActiveDependencies = new Furball();
 
+            m_Filename = null;
             UpdateWindowTitle();
         }
 

@@ -341,10 +341,12 @@ namespace Finmer.Gameplay.Scripting
         /// <summary>
         /// Helper class that maintains a reference count for ScriptableObjects.
         /// </summary>
-        private class PinnedScriptableObject
+        private sealed class PinnedScriptableObject
         {
+
             public ScriptableObject m_Object;
             public int m_RefCount;
+
         }
 
     }

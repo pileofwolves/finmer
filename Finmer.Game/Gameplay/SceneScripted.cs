@@ -1,6 +1,6 @@
 ﻿/*
  * FINMER - Interactive Text Adventure
- * Copyright (C) 2019-2021 Nuntis the Wolf.
+ * Copyright (C) 2019-2022 Nuntis the Wolf.
  *
  * Licensed under the GNU General Public License v3.0 (GPL3). See LICENSE.md for details.
  * SPDX-License-Identifier: GPL-3.0-only
@@ -61,7 +61,7 @@ namespace Finmer.Gameplay
 
             // Validate that the scene can actually be loaded
             if (scene.Inject)
-                throw new ArgumentException($"Failed to load scene '{m_SceneName}': The specified asset is a patch scene and cannot be loaded directly.", nameof(m_SceneName));
+                throw new ArgumentException($"Failed to load scene '{m_SceneName}': The specified asset is a patch scene and cannot be loaded directly.", nameof(scene));
 
             // Load the chunk
             // TODO: Use ScriptExceptions here

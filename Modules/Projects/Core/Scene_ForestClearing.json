@@ -41,7 +41,7 @@
 				"Key": "SQ02_Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Text.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, true)",
+				"ScriptAction": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, true)",
 				"ScriptAppear": "return Storage.GetNumber(\"SQ02\") == 1",
 				"Children": [
 					{

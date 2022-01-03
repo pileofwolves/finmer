@@ -37,6 +37,10 @@ dotnet_diagnostic.S1199.severity = none
 # Justification: Matter of preference; I think have an 'EFooFlags' enum is very useful to visibly denote its purpose / mark it as a bitfield.
 dotnet_diagnostic.S2344.severity = none
 
+# S3267: Loops should be simplified with "LINQ" expressions
+# Justification: If you need a foreach, use a foreach. I don't understand this insistence on overcomplicating things.
+dotnet_diagnostic.S3267.severity = none
+
 # S3881: Fix this implementation of 'IDisposable' to conform to the dispose pattern
 # Justification: False positives.
 dotnet_diagnostic.S3881.severity = none

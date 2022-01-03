@@ -1,6 +1,6 @@
 ﻿/*
  * FINMER - Interactive Text Adventure
- * Copyright (C) 2019-2021 Nuntis the Wolf.
+ * Copyright (C) 2019-2022 Nuntis the Wolf.
  *
  * Licensed under the GNU General Public License v3.0 (GPL3). See LICENSE.md for details.
  * SPDX-License-Identifier: GPL-3.0-only
@@ -44,19 +44,11 @@ namespace Finmer.Core.Assets
         {
             base.Deserialize(instream, version);
 
-            if (version >= 9)
-            {
-                // Look for an attachment file
-                byte[] source_utf8 = instream.ReadAttachment(GetScriptAttachmentName());
+            // Look for an attachment file
+            byte[] source_utf8 = instream.ReadAttachment(GetScriptAttachmentName());
 
-                // Convert the UTF-8 bytestream to a string, or fall back on an empty script if the attachment was unavailable
-                ScriptText = (source_utf8 != null) ? Encoding.UTF8.GetString(source_utf8) : String.Empty;
-            }
-            else
-            {
-                // V8 file format: read as string property
-                ScriptText = instream.ReadStringProperty("Source");
-            }
+            // Convert the UTF-8 bytestream to a string, or fall back on an empty script if the attachment was unavailable
+            ScriptText = (source_utf8 != null) ? Encoding.UTF8.GetString(source_utf8) : String.Empty;
         }
 
         /// <summary>

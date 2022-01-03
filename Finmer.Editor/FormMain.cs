@@ -281,6 +281,17 @@ namespace Finmer.Editor
             // Present a save dialog
             if (dlgSave.ShowDialog() != DialogResult.OK)
                 return false;
+                
+            // Pull the directory we're saving in, see if there's any other finmer projects already there.
+            string save_path = Path.GetDirectoryName(dlgSave.FileName);
+            string[] file_entries = Directory.GetFiles(save_path, "*.fnproj");
+            if (file_entries.Any(name => !name.Equals(dlgSave.FileName)))
+            {
+                // Alert user that saving here will delete unused json files in the directory, have them acknowledge that fact before continuing.
+                DialogResult dr = MessageBox.Show("The selected folder contains another Finmer project. This is not supported by the Editor: files from the other project will be overwritten and/or deleted. Continuing anyway may cause unrecoverable data loss. Are you sure you wish to proceed?", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+                if (dr == DialogResult.No)
+                    return false;
+            }
 
             // Keep the selected filename around so we can save to it in the future
             m_Filename = dlgSave.FileName;

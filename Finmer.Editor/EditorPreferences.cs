@@ -21,7 +21,11 @@ namespace Finmer.Editor
     {
 
         private const uint k_ConfigMagic = 0xF1CF0001;
+#if DEBUG
+        private const string k_ConfigFileName = "EditorDbg.sav";
+#else
         private const string k_ConfigFileName = "Editor.sav";
+#endif
 
         /// <summary>
         /// Path to the executable to launch when starting the game.

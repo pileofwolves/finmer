@@ -62,6 +62,10 @@ namespace Finmer.Gameplay
 
         public void AddItem(Item item, int quantity, ShopItemStack.EStackType type)
         {
+            // Prevent adding empty stacks
+            if (quantity < 1)
+                return;
+
             // If the item is not unique, we can try merging it with an existing stack
             if (type != ShopItemStack.EStackType.Unique)
             {

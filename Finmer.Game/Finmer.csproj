@@ -518,6 +518,11 @@
     <Resource Include="Resources\UI\MenuButtonGitHub.png" />
     <Resource Include="Resources\UI\MenuButtonKofi.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\UI\HUDCharSheet.png" />
+    <Resource Include="Resources\UI\HUDExitToMenu.png" />
+    <Resource Include="Resources\UI\HUDScriptConsole.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

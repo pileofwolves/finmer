@@ -29,6 +29,16 @@ namespace Finmer.Views
             DataContext = new MainPageViewModel();
         }
 
+        private void ExitButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Destroy the gameplay session
+            GameController.ExitSession();
+
+            // Return to the title screen
+            ExitConfirmPopup.IsOpen = false;
+            GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
+        }
+
         private void SheetButton_Click(object sender, RoutedEventArgs e)
         {
             GameController.Window.Navigate(new CharSheetPage(), ENavigatorAnimation.SlideLeft);

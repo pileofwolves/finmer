@@ -208,6 +208,9 @@
     <Compile Include="Views\Parts\ItemIconView.xaml.cs">
       <DependentUpon>ItemIconView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Parts\MainPageNavButtonsView.xaml.cs">
+      <DependentUpon>MainPageNavButtonsView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parts\ShopItemListView.xaml.cs">
       <DependentUpon>ShopItemListView.xaml</DependentUpon>
     </Compile>
@@ -365,6 +368,10 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Include="Views\Parts\ItemIconView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\MainPageNavButtonsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

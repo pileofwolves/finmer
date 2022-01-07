@@ -10,6 +10,9 @@
     mc:Ignorable="d"
     d:DesignHeight="600" d:DesignWidth="1000"
     d:DataContext="{d:DesignInstance vm:MainPageViewModel}">
+    <UserControl.DataContext>
+        <vm:MainPageViewModel />
+    </UserControl.DataContext>
     <UserControl.Resources>
         <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -53,76 +56,9 @@
             </StackPanel>
 
             <!-- Player control buttons -->
-            <UniformGrid
-                Rows="1"
+            <v:MainPageNavButtonsView
                 Margin="0,1"
-                DockPanel.Dock="Top">
-                <UniformGrid.Resources>
-                    <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
-                        <Setter Property="Margin" Value="2,0" />
-                        <Setter Property="Height" Value="42" />
-                    </Style>
-                </UniformGrid.Resources>
-                <ToggleButton
-                    ToolTip="Exit to Menu">
-                    <ToggleButton.Content>
-                        <Grid>
-                            <Image
-                                Source="/Finmer;component/Resources/UI/HUDExitToMenu.png"
-                                Margin="0,-2,0,0"
-                                Stretch="None" />
-                            <Popup
-                                x:Name="ExitConfirmPopup"
-                                StaysOpen="False"
-                                MaxWidth="200"
-                                IsOpen="{Binding IsChecked, RelativeSource={RelativeSource FindAncestor, AncestorType=ToggleButton}, Mode=TwoWay}">
-                                <Border
-                                    Style="{StaticResource PopupBorderStyle}">
-                                    <StackPanel
-                                        Orientation="Vertical"
-                                        Margin="8">
-                                        <TextBlock
-                                            Style="{StaticResource TextBlockDefault}"
-                                            Margin="0,0,0,8"
-                                            TextWrapping="Wrap"
-                                            Text="Exit to menu? All unsaved progress will be lost." />
-                                        <Button
-                                            Content="Exit"
-                                            Click="ExitButton_Click"
-                                            Width="100"
-                                            Height="35" />
-                                    </StackPanel>
-                                </Border>
-                            </Popup>
-                        </Grid>
-                    </ToggleButton.Content>
-                </ToggleButton>
-                <Button
-                    Visibility="{Binding UI.IsScriptConsoleEnabled, Converter={StaticResource BooleanToVisibilityConverter}}"
-                    IsEnabled="{Binding UI.ControlsEnabled}"
-                    IsHitTestVisible="{Binding IsEnabled, RelativeSource={RelativeSource Self}}"
-                    ToolTip="Toggle Developer Script Console"
-                    Click="ConsoleButton_Click">
-                    <Button.Content>
-                        <Image
-                            Source="/Finmer;component/Resources/UI/HUDScriptConsole.png"
-                            Margin="0,-2,0,0"
-                            Stretch="None" />
-                    </Button.Content>
-                </Button>
-                <Button
-                    IsEnabled="{Binding UI.InventoryEnabled}"
-                    IsHitTestVisible="{Binding IsEnabled, RelativeSource={RelativeSource Self}}"
-                    ToolTip="View Character Sheet"
-                    Click="SheetButton_Click">
-                    <Button.Content>
-                        <Image
-                            Source="/Finmer;component/Resources/UI/HUDCharSheet.png"
-                            Margin="0,-2,0,0"
-                            Stretch="None" />
-                    </Button.Content>
-                </Button>
-            </UniformGrid>
+                DockPanel.Dock="Top" />
 
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                 <!-- Current location -->

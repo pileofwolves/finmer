@@ -10,12 +10,12 @@ namespace Finmer.Views
 {
 
     /// <summary>
-    /// Interaction logic for MainPage.xaml
+    /// Interaction logic for MainPageNavButtonsView.xaml
     /// </summary>
-    public partial class MainPage
+    public partial class MainPageNavButtonsView
     {
 
-        public MainPage()
+        public MainPageNavButtonsView()
         {
             InitializeComponent();
         }

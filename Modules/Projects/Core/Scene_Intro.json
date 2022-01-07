@@ -108,7 +108,7 @@
 														"Title": "Go to Inn",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"town_first\", true)\r\nSetScene(\"Scene_TownInn\")",
+														"ScriptAction": "SetTimeHour(2)\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true) -- Technically a sequence break, but useful for testing\r\nSetScene(\"Scene_TownInn\")",
 														"Children": []
 													},
 													{
@@ -117,16 +117,25 @@
 														"Title": "Go to MQ02 RoadEnc",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
+														"ScriptAction": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")",
 														"Children": []
 													},
 													{
 														"IsState": false,
 														"IsLink": false,
-														"Title": "Go to MQ02 Chase Event",
+														"Title": "Go to MQ02 Done",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq02_done\", true)\r\nSetScene(\"Scene_TownMarket\")",
+														"ScriptAction": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nSetScene(\"Scene_TownMarket\")",
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to MQ03 Port",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nStorage.SetFlag(\"BRIDGE_IS_REPAIRED\", true)\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_PortCentral\")",
 														"Children": []
 													},
 													{
@@ -136,7 +145,7 @@
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Storage.SetFlag(\"town_first\", true)\r\nStorage.SetFlag(\"mq01_done\", true)\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
+														"ScriptAction": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetNumber(\"SQ02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")",
 														"Children": []
 													},
 													{
@@ -146,7 +155,7 @@
 														"Tooltip": "Level 3",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"town_pit_unlocked\", true)\r\nSetScene(\"Scene_TownPit\")",
+														"ScriptAction": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"TOWN_PIT_UNLOCKED\", true)\r\nSetScene(\"Scene_TownPit\")",
 														"Children": []
 													}
 												]

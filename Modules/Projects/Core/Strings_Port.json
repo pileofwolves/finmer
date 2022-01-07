@@ -1,0 +1,58 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"ID": "5b836eeb-5a3e-419c-ba1e-6dd1876edb87",
+	"Name": "Strings_Port",
+	"Entries": [
+		{
+			"Key": "PORT_CENTRAL_ENTER",
+			"Text": [
+				"A mix of business and residential buildings sit around an open town square, a handful of paths twisting away in all directions towards more houses. It appears the town has grown organically over time and was not exactly built with a future-proof layout in mind. From here, you can go west to the docks area, and east to leave town."
+			]
+		},
+		{
+			"Key": "PORT_DOCKS_ENTER",
+			"Text": [
+				"The beach area near the port is largely covered with brick and stone docks, occasional wooden piers and walkways stretching out over the waters beyond. Several nearby buildings serve the port as loading platforms, depots or trading posts. The docks are quite calm today, with only a single ship moored in port. From here, you can go east to return to the residential area."
+			]
+		},
+		{
+			"Key": "PORT_DOCKS_ENTER_FIRST",
+			"Text": [
+				"You find yourself drawn to the beating heart of this community: the harbor. Despite the town's significantly smaller stature as compared to their neighbor, South Finmer is not found wanting when it comes to its facilities as a seaport. The town is well-known as a quick access point for transporting goods onto or from the Great North Road, and the moderately impressive harbor area reflects this status appropriately."
+			]
+		},
+		{
+			"Key": "PORT_GATE_ENTER",
+			"Text": [
+				"The well-trodden dirt road connecting the port to the Great North Road starts here. Just behind you sits the coastal town of South Finmer, with the glow of {!sun}light reflecting off of the ocean waves just beyond. From here, you can hike back up the cliffside trail to North Finmer, or go west to enter the harbor town."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_BROWSE",
+			"Text": [
+				"The stoat idly scratches at his ear. \"Anything else I can do for you?\"",
+				"With a soft sigh and a stretch, Pat moves some things around on the shelves, while keeping an ear out for any further requests you might have.",
+				"With agility that is surprising for his age, Pat hops off his chair and wanders around the store."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_ENTER",
+			"Text": [
+				"Pat nods at you as you step into his shop once more, the cozy interior of the well-stocked room quite the contrast to the chilly outside world. \"Good to see you again, {player.name}.\"",
+				"As you enter the town's general store, the weary stoat behind the counter wakes with a start, before quickly composing himself as if he's used to it. \"What can I do for you?\" he states simply."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_ENTER_FIRST",
+			"Text": [
+				"As you make your way into the small, cozy store, a wall of comfortable heat blasts away the autumn chill that had managed to prickle your skin. A small bell, suspended to the doorframe, rings when the dark wooden door touches it, rousing an elderly-looking stoat from his nap. Entirely nonplussed, his gaze locks on you briefly, before he composes himself and waves a paw. \"Don't let the cold in!\" he rumbles, his voice like an ancient oak. Sheepishly, you reach behind you to close the entryway, the door falling shut with a tired moan. The stoat briefly rubs his eyes, then adjusts his glasses, smiling warmly. \"Welcome, friend. Haven't seen you around before, I think? I'm Pat, humble proprietor of this store.\""
+			]
+		},
+		{
+			"Key": "PORT_SHOP_ENTER_FIRST2",
+			"Text": [
+				"Pat humms at your response, before nodding slowly. \"Pleased to make your acquiantance, then, {player.name}. What can this fellow do for you today?\""
+			]
+		}
+	]
+}

@@ -1,0 +1,34 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "a7316363-9645-491d-919d-43bf997cc3c7",
+	"Name": "Scene_PortTavern",
+	"ScriptCustom": {
+		"ID": "e348ee20-cf79-435f-b9bb-9877c1c43e8a",
+		"Name": "a7316363-9645-491d-919d-43bf997cc3c7_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "df19e5e5-e3fc-4f72-a661-50369f3e3a86",
+		"Name": "Scene_PortTavern_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "85ffc2d9-f0b3-4132-83fd-5b1f9c494d70",
+		"Name": "a7316363-9645-491d-919d-43bf997cc3c7_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "-- The Snout and Thorn",
+				"Children": []
+			}
+		]
+	}
+}

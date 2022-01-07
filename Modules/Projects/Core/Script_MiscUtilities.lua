@@ -134,6 +134,17 @@ function Rest()
     Player.Health = Player.HealthMax
 end
 
+function TimedCheckpoint(id)
+    local now = GetTimeHourTotal()
+    id = "_TIMED_CHECKPOINT_" .. id
+
+    -- Take a checkpoint if the game clock advanced since the last time this function was called
+    if Storage.GetNumber(id) ~= now then
+        Storage.SetNumber(id, now)
+        SaveData.TakeCheckpoint()
+    end
+end
+
 ------------------------------------------------------------------------------
 -- Game randomization
 ------------------------------------------------------------------------------

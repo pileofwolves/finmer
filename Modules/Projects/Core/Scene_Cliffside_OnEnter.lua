@@ -1,0 +1,1 @@
+SetLocation("Cliffside Rest")

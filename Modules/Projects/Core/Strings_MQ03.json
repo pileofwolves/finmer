@@ -84,7 +84,7 @@
 		{
 			"Key": "MQ03_RIDESOUTH_INTRO2",
 			"Text": [
-				"A carriage sits close by, the emerald-colored fellow driving it obviously impatient to get moving again. It appears the crew finished collecting their things by the time you arrived, so barring any further developments, the road should be open for business once more. The large horse before the vehicle appears to be just as impatient to get moving as its master, judging by its incessant padding at the dusty path. The cargo itself, seated in the uncovered cart, consists of several sealed crates and barrels, the content of which are impossible to identify from here. All in all it appears to be a relatively run-of-the-mill delivery effort, no doubt eager to get going after having been delayed thus."
+				"A carriage sits close by, the emerald-colored fellow driving it obviously impatient to get moving again. It appears the crew finished collecting their things by the time you arrived, so barring any further developments, the road should be open for business once more. The large horse before the vehicle appears to be just as impatient to get moving as its master, judging by its incessant pawing at the dusty path. The cargo itself, seated in the uncovered cart, consists of several sealed crates and barrels, the content of which are impossible to identify from here. All in all it appears to be a relatively run-of-the-mill delivery effort, no doubt eager to get going after having been delayed thus."
 			]
 		},
 		{
@@ -96,7 +96,7 @@
 		{
 			"Key": "MQ03_RIDESOUTH_INTRO3_NEW",
 			"Text": [
-				"The emerald chameleon atop a rickety wooden carriage glances behind himself, greeting you with a vibrant grin as you approach. \"Greetings, dear {player.species}!\" he shouts excitedly. \"Wonderful news!\" You find that his jubilance is infectious, so it is with mirth that you catch up, standing next to the oaken steed he is seated upon. \"Oh, but where are my manners?\" he exclaims. The lizard extends a viridian-scaled hand towards you, ogling you with a gleeful smile that you cannot identify as either genuine or malicious. \"Zosk, merchant of industrial items, at your service!\" When you clasp his hand to affirm the greeting, he nods, before withdrawing."
+				"The emerald chameleon atop the rickety wooden carriage glances behind himself, greeting you with a vibrant grin as you approach. \"Greetings, dear {player.species}!\" he shouts excitedly. \"Wonderful news!\" You find that his jubilance is infectious, so it is with mirth that you catch up, standing next to the oaken steed he is seated upon. \"Oh, but where are my manners?\" he exclaims. The lizard extends a viridian-scaled hand towards you, ogling you with a gleeful smile that you cannot identify as either genuine or malicious. \"Zosk, merchant of industrial items, at your service!\" When you clasp his hand to affirm the greeting, he nods, before withdrawing."
 			]
 		},
 		{

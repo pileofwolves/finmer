@@ -1,0 +1,35 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1",
+	"Name": "Scene_PortGate",
+	"ScriptCustom": {
+		"ID": "f0d35d14-1da8-491e-80a1-90449d920e4c",
+		"Name": "Scene_PortGate_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "cf21baeb-5266-4e75-9e2d-21b80165d270",
+		"Name": "Scene_PortGate_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "4ab1c29b-4161-4e70-a9dc-a4cb64cf7ee8",
+		"Name": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"PORT_GATE_ENTER\")\r\nAddLink(ECompass.West, \"Scene_PortCentral\")\r\nAddLink(ECompass.North, GoNorth)",
+				"Children": []
+			}
+		]
+	}
+}

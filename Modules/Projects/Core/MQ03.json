@@ -14,11 +14,11 @@
 		},
 		{
 			"Key": 30,
-			"Text": "Acting mayor Canbell has arranged for you to travel south with a traveling merchant. Find him near the town's south gate."
+			"Text": "Acting mayor Canbell has arranged for you to travel south with a traveling merchant. Wait for repairs to finish, then find him near the town's south gate."
 		},
 		{
 			"Key": 40,
-			"Text": "Tbd"
+			"Text": "You arrived in South Finmer, the last known location of Mayor Iso. Find her to learn more about recent events."
 		}
 	]
 }

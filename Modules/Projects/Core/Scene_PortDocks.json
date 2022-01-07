@@ -1,0 +1,35 @@
+﻿{
+	"!Type": "AssetScene",
+	"ID": "e6b01216-c0e8-4438-9da3-8f3587458706",
+	"Name": "Scene_PortDocks",
+	"ScriptCustom": {
+		"ID": "f42f5607-194c-49d1-aaa1-f4bc30abfb33",
+		"Name": "e6b01216-c0e8-4438-9da3-8f3587458706_CustomScript"
+	},
+	"ScriptEnter": {
+		"ID": "33f722fd-14b9-44ac-90b6-a34c0e41d27c",
+		"Name": "Scene_PortDocks_OnEnter"
+	},
+	"ScriptLeave": {
+		"ID": "f5d6a14f-fd34-41ed-98d9-002cff0f0d28",
+		"Name": "e6b01216-c0e8-4438-9da3-8f3587458706_LeaveScript"
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "AddLink(ECompass.East, \"Scene_PortCentral\")",
+				"Children": []
+			}
+		]
+	}
+}

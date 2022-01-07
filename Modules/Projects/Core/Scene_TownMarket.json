@@ -382,7 +382,7 @@
 																"Key": "EvNaked_R_GetEaten",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer:ModifyMoney(-10)\r\nif not Player:HasItem(\"A_ClothArmor\") then\r\n    Player:GiveItem(\"A_ClothArmor\", true)\r\nend",
+																"ScriptAction": "-- Take a fine, and make sure the player has clothes now\r\nPlayer:ModifyMoney(-10)\r\nPlayer.EquippedArmor = Item(\"A_ClothArmor\")\r\n\r\n-- Remove clothes in the inventory to prevent farming them\r\nif Player:HasItem(\"A_ClothArmor\") then\r\n    Player:TakeItem(\"A_ClothArmor\")\r\nend",
 																"Children": [
 																	{
 																		"Key": "EvNaked_C_Regurg",

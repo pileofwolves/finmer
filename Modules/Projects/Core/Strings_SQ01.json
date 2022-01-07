@@ -120,7 +120,7 @@
 		{
 			"Key": "SQ01_INTRO",
 			"Text": [
-				"\"Hmm? Oh, yes.\" He picks up the book and shows the cover to you for a moment. It reads 'Mystical Solutions', an odd title, but perhaps to be expected in a shop such as this one. \"I'm researching some new interesting formulae. I ran out of ingredients to experiment with, though, so I'm simply reviewing the book for now. Name's Jar'la, by the way.\""
+				"\"Hmm? Oh, yes.\" He picks up the book and shows the cover to you for a moment. It reads 'Mystical Solutions', an odd title, but perhaps to be expected in a shop such as this one. \"I'm researching some new interesting formulae. I ran out of ingredients to experiment with, though, so I'm simply reviewing the book for now.\""
 			]
 		},
 		{
@@ -163,12 +163,6 @@
 			"Key": "SQ01_STEAL_AFTER_DEATH",
 			"Text": [
 				"Before you leave, you snatch a few things off of the late alchemist's desk. He's got no more use for them anyway, right? You take a few vials that you recognize as wound-healing solutions, and a few random vials and tools that just look interesting."
-			]
-		},
-		{
-			"Key": "SQ01_VIAL_NEEDTAUR",
-			"Text": [
-				"There's plenty of stomach slime around for you to collect, but you remember the alchemist's words: it had to be from a taur. Maybe try getting eaten by someone else?"
 			]
 		},
 		{

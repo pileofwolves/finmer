@@ -10,6 +10,13 @@
 			]
 		},
 		{
+			"Key": "TOWN_ALCH_BROWSE",
+			"Text": [
+				"The scaled fellow regards you with a spark of curiosity. \"So, will that be all?\"",
+				"Jar'la nods at you, casually tapping his desk with a claw. \"Anything else?\""
+			]
+		},
+		{
 			"Key": "TOWN_ALCH_ENTER",
 			"Text": [
 				"When you enter the small shop, the old lizard looks up from his work and grins as he recognizes you. \"Ah, if it isn't the {player.species} again! What can I do for you?\""
@@ -19,6 +26,12 @@
 			"Key": "TOWN_ALCH_ENTER_FIRST",
 			"Text": [
 				"The moment you step through the door, your nose is assaulted by an overload of thick scents - sweet, sour, musty, and a few you don't recognize. Plain curtains cover the windows, leaving the room lit only by a handful of candles. Bookshelves line the walls, and through an open door at the back you can see some alchemical apparatus bubbling away. Behind the counter sits a well-aged lizard, a small pair of glasses resting atop his browned nose as he studies a tome of some sort. When he notices your entrance, he quickly snaps it shut and gives you a friendly smile. \"Welcome, traveler! I don't think we've met before.\""
+			]
+		},
+		{
+			"Key": "TOWN_ALCH_STOLENGOODS",
+			"Text": [
+				"Jar'la raises an eyebrow. \"Ah, Edgard mentioned that to you, did he?\" He sighs. \"Well, it's true. Two large containers had vanished when I opened my shop this morning.\" He gestures to the corner of the room, at the conspicious gap in between shelves where something must have once been. \"Someone must have broken in, but there are no signs of forced entry, which has me confused.\" He ponders this for a moment, as if revisiting conclusions he already considered several times today. \"The two liquids form an explosive compound when mixed. It was intended for mining purposes, but, well, I suspect that my work had a paw in last night's unfortunate accident, which has me a little ashamed. So let us leave it at that.\""
 			]
 		},
 		{

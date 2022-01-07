@@ -246,10 +246,10 @@
 																"Key": "MQ01_R_GivePass",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- Response\r\nLog(\"MQ01_BARKEEP_BEGIN\")",
+																"ScriptAction": "Log(\"MQ01_BARKEEP1\")",
 																"Children": [
 																	{
-																		"Key": "MQ01_C_Messenger",
+																		"Key": "MQ01_C_GivePass2",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
@@ -257,38 +257,56 @@
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"Key": "MQ01_R_Messenger",
+																				"Key": "MQ01_R_GivePass2",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ01_BARKEEP_MESSENGER\")",
+																				"ScriptAction": "Log(\"MQ01_BARKEEP2\")",
 																				"Children": [
 																					{
-																						"Key": "MQ01_C_Complete1",
+																						"Key": "MQ01_C_Messenger",
 																						"IsState": false,
 																						"IsLink": false,
 																						"Title": "Continue",
-																						"Tooltip": "Thank him and take your leave.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"Key": "MQ01_R_Complete1",
+																								"Key": "MQ01_R_Messenger",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ01_BARKEEP_END\")\r\n\r\n-- Exchange pass for free room\r\nPlayer:TakeItem(\"I_MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_rented_room\", true)\r\n\r\n-- Complete MQ01\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
+																								"ScriptAction": "Log(\"MQ01_BARKEEP3\")",
 																								"Children": [
 																									{
-																										"Key": "MQ01_C_Complete2",
+																										"Key": "MQ01_C_Complete1",
 																										"IsState": false,
 																										"IsLink": false,
 																										"Title": "Continue",
+																										"Tooltip": "Thank him and take your leave.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"Key": "MQ01_R_Complete1",
 																												"IsState": true,
-																												"IsLink": true,
-																												"LinkTarget": "Main"
+																												"IsLink": false,
+																												"ScriptAction": "Log(\"MQ01_BARKEEP4\")\r\n\r\n-- Exchange pass for free room\r\nPlayer:TakeItem(\"I_MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_rented_room\", true)\r\n\r\n-- Complete MQ01\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
+																												"Children": [
+																													{
+																														"Key": "MQ01_C_Complete2",
+																														"IsState": false,
+																														"IsLink": false,
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"IsState": true,
+																																"IsLink": true,
+																																"LinkTarget": "Main"
+																															}
+																														]
+																													}
+																												]
 																											}
 																										]
 																									}

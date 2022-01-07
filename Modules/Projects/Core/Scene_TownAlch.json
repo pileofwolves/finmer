@@ -60,7 +60,7 @@
 						"Tooltip": "Have a look at the wares on display.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la's Solutions\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()",
+						"ScriptAction": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()\r\n\r\nLog(\"TOWN_ALCH_BROWSE\")",
 						"Children": [
 							{
 								"Key": "Shop",
@@ -71,7 +71,43 @@
 						]
 					},
 					{
-						"Key": "Q01_Intro1",
+						"Key": "MQ01_C_StolenGoods",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Stolen Supplies",
+						"Tooltip": "Ask about the compounds that were stolen last night.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": "-- Can ask about this once Edgard mentions the stolen goods\r\nreturn Storage.GetFlag(\"MQ01_DONE\") and not Storage.GetFlag(\"TOWN_INN_TALK_STOLENGOODS\")",
+						"Children": [
+							{
+								"Key": "MQ01_R_StolenGoods",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.SetFlag(\"TOWN_INN_TALK_STOLENGOODS\", true)\r\nLog(\"TOWN_ALCH_STOLENGOODS\")",
+								"Children": [
+									{
+										"Key": "MQ01_C_StolenGoods2",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": "-- Bridge back to main\r\nLog(\"TOWN_ALCH_BROWSE\")",
+										"Children": [
+											{
+												"IsState": true,
+												"IsLink": true,
+												"LinkTarget": "Main"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "SQ01_C_Intro",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Book",
@@ -81,13 +117,13 @@
 						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 0",
 						"Children": [
 							{
-								"Key": "Q01_Info1",
+								"Key": "SQ01_R_Intro",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"sq01_intro\")",
 								"Children": [
 									{
-										"Key": "Q01_Reject1",
+										"Key": "SQ01_C_Decline",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Back",
@@ -96,7 +132,7 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"Key": "Q01_Rejected1",
+												"Key": "SQ01_R_Decline",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"sq01_rejected\")",
@@ -116,7 +152,7 @@
 										]
 									},
 									{
-										"Key": "Q01_OfferHelp",
+										"Key": "SQ01_C_Intro2",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Offer Help",
@@ -125,13 +161,13 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"Key": "Q01_Info2",
+												"Key": "SQ01_R_Intro2",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"sq01_confirm\")",
 												"Children": [
 													{
-														"Key": "Q01_Reject2",
+														"Key": "SQ01_C_Decline2",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Back Out",
@@ -140,7 +176,7 @@
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"Key": "Q01_Rejected2",
+																"Key": "SQ01_R_Decline2",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"sq01_rejected_alt\")",
@@ -160,7 +196,7 @@
 														]
 													},
 													{
-														"Key": "Q01_BeNosy",
+														"Key": "SQ01_C_DiscussNosy",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Investigate",
@@ -172,12 +208,12 @@
 															{
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "Q01_InvestigReply"
+																"LinkTarget": "SQ01_R_DiscussNosy"
 															}
 														]
 													},
 													{
-														"Key": "Q01_BeReallyNosy",
+														"Key": "SQ01_C_DiscussNosy2",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Investigate",
@@ -187,14 +223,14 @@
 														"ScriptAppear": "return Storage.GetNumber(\"sq01_nosy\") > 0",
 														"Children": [
 															{
-																"Key": "Q01_TooNosy",
+																"Key": "SQ01_R_TooNosy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"sq01_ask_why\" .. Storage.GetNumber(\"sq01_nosy\") + 1)",
-																"ScriptAppear": "-- player won't stop asking...\r\nreturn Storage.GetNumber(\"sq01_nosy\") >= 4",
+																"ScriptAction": "Log(\"SQ01_ASK_WHY\" .. Storage.GetNumber(\"SQ01_NOSY\") + 1)",
+																"ScriptAppear": "-- player won't stop asking...\r\nreturn Storage.GetNumber(\"SQ01_NOSY\") >= 4",
 																"Children": [
 																	{
-																		"Key": "Q01_BeginFight",
+																		"Key": "SQ01_BeginFight",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Uh-oh...",
@@ -313,37 +349,37 @@
 																]
 															},
 															{
-																"Key": "Q01_InvestigReply",
+																"Key": "SQ01_R_DiscussNosy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "local stubborn = Storage.GetNumber(\"sq01_nosy\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"sq01_nosy\", stubborn)\r\nLog(\"sq01_ask_why\" .. stubborn)",
+																"ScriptAction": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)",
 																"Children": [
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_Reject2"
+																		"LinkTarget": "SQ01_C_Decline2"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_BeReallyNosy"
+																		"LinkTarget": "SQ01_C_DiscussNosy2"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_AskReward"
+																		"LinkTarget": "SQ01_C_DiscussReward"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_Accept"
+																		"LinkTarget": "SQ01_C_Accept"
 																	}
 																]
 															}
 														]
 													},
 													{
-														"Key": "Q01_AskReward",
+														"Key": "SQ01_C_DiscussReward",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Reward",
@@ -352,7 +388,7 @@
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"Key": "Q01_TellReward",
+																"Key": "SQ01_R_DiscussReward",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"sq01_ask_reward\")",
@@ -360,29 +396,29 @@
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_Reject2"
+																		"LinkTarget": "SQ01_C_Decline2"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_BeNosy"
+																		"LinkTarget": "SQ01_C_DiscussNosy"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_BeReallyNosy"
+																		"LinkTarget": "SQ01_C_DiscussNosy2"
 																	},
 																	{
 																		"IsState": false,
 																		"IsLink": true,
-																		"LinkTarget": "Q01_Accept"
+																		"LinkTarget": "SQ01_C_Accept"
 																	}
 																]
 															}
 														]
 													},
 													{
-														"Key": "Q01_Accept",
+														"Key": "SQ01_C_Accept",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Accept",
@@ -391,13 +427,13 @@
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"Key": "Q01_Accepted",
+																"Key": "SQ01_R_Accept",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": "Log(\"SQ01_ACCEPTED\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"I_SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)",
 																"Children": [
 																	{
-																		"Key": "Q01_AcceptReturn",
+																		"Key": "SQ01_C_Accept2",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Continue",
@@ -424,23 +460,23 @@
 						]
 					},
 					{
-						"Key": "Q01_Handin",
+						"Key": "SQ01_C_Handin",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Give Vial",
 						"Tooltip": "Say you did as he asked.",
-						"Highlight": false,
+						"Highlight": true,
 						"ButtonWidth": 1.0,
 						"ScriptAppear": "return Storage.GetNumber(\"SQ01\") == 1 and Player:HasItem(\"I_SQ01_VialFull\")",
 						"Children": [
 							{
-								"Key": "Q01_Handin1",
+								"Key": "SQ01_R_Handin",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"SQ01_HANDIN1\")",
 								"Children": [
 									{
-										"Key": "Q01_Handin2",
+										"Key": "SQ01_C_Handin2",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
@@ -448,13 +484,13 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"Key": "Q01_Handin3",
+												"Key": "SQ01_R_Handin2",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)",
 												"Children": [
 													{
-														"Key": "Q01_Handin4",
+														"Key": "SQ01_C_Handin3",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Continue",
@@ -477,24 +513,24 @@
 						]
 					},
 					{
-						"Key": "Q01_CollectReward",
+						"Key": "SQ01_C_Reward",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Sample",
 						"Tooltip": "Ask about the sample you were promised.",
-						"Highlight": false,
+						"Highlight": true,
 						"ButtonWidth": 1.0,
 						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 2 and not Storage.GetFlag(\"sq01_collected_sample\")",
 						"Children": [
 							{
-								"Key": "Q01_Reward_NotReady",
+								"Key": "SQ01_R_Reward_Wait",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Log(\"SQ01_REWARD_NOTREADY\")",
 								"ScriptAppear": "return Storage.GetNumber(\"town_alch_reward\") > GetTimeHourTotal()",
 								"Children": [
 									{
-										"Key": "Q01_Reward_Close1",
+										"Key": "SQ01_C_Reward_Close",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
@@ -511,7 +547,7 @@
 								]
 							},
 							{
-								"Key": "Q01_Reward_Ready",
+								"Key": "SQ01_R_Reward_Ready",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")",
@@ -519,7 +555,7 @@
 									{
 										"IsState": false,
 										"IsLink": true,
-										"LinkTarget": "Q01_Reward_Close1"
+										"LinkTarget": "SQ01_C_Reward_Close"
 									}
 								]
 							}

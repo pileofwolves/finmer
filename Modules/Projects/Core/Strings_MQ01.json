@@ -4,21 +4,27 @@
 	"Name": "Strings_MQ01",
 	"Entries": [
 		{
-			"Key": "MQ01_BARKEEP_BEGIN",
+			"Key": "MQ01_BARKEEP1",
 			"Text": [
 				"You place the mayor's note on the counter and slide it forward with two fingers, saying that the snow leopardess gave it to you. {^bartender} puts down a mug he was washing and snatches the slip of paper, glancing it over before pocketing it. \"Hmm,\" he finally says, \"Helping out with the bridge, {player.species}? Good, we could use a paw. Or five.\""
 			]
 		},
 		{
-			"Key": "MQ01_BARKEEP_END",
+			"Key": "MQ01_BARKEEP2",
 			"Text": [
-				"You thank the barkeep for his help and agree that you'll do what you can. In turn, he nods politely and fishes for something under the counter, then tosses a small key into your paws. \"First room on the left, upstairs. It's a reserve we keep for, well, emergencies. You can use it while you're here, mayor's treat.\" A smile cracks on {bartender}'s lips. \"She's not as cold as she seems, mind. She's just got... a lot on her plate right now.\" With that, he goes back to his routine of washing mugs.\\n\\nSo, off to the woods and into the deep it is, then. There's nothing like a good hike on a warm summer day."
+				"A sigh and a scratch of the muzzle follow as the barkeep considers his words. \"I just heard this from the guard heading the investigation. If the explosion that woke up half the town wasn't evidence enough, Jar'la - our local alchemist - mentioned some compounds were stolen from his shop last night. His exact phrasing was 'highly volatile when combined', which has me concerned. But that seems to be consistent with our running theory that this incident was far from accidental. I just don't understand why.\""
 			]
 		},
 		{
-			"Key": "MQ01_BARKEEP_MESSENGER",
+			"Key": "MQ01_BARKEEP3",
 			"Text": [
-				"{bartender} folds his arms. \"Right, you're going after Stip. He's a tiger, white fur, wears a blue bandana. Uhh...\" He glances away for a second and scratches himself behind his ears in thought. \"Prefers knives in a fight? Yeah, that's all I know, I think. The point is, he was a capable local and willing to help us out. We didn't really have the luxury to stand and wait until the next fully-stocked construction crew happens to waltz into town.\""
+				"{bartender} folds his arms. \"Anyway, you're going after Stip. He's a tiger, white fur, wears a blue bandana. Uhh...\" He glances away for a second and scratches himself behind his ears in thought. \"Prefers knives in a fight? Yeah, that's all I know, I think. The point is, he was a capable local and willing to help us out. We didn't really have the luxury to stand and wait until the next fully-stocked construction crew happens to waltz into town.\""
+			]
+		},
+		{
+			"Key": "MQ01_BARKEEP4",
+			"Text": [
+				"You thank the barkeep for his help and agree that you'll do what you can. In turn, he nods politely and fishes for something under the counter, then tosses a small key into your paws. \"First room on the left, upstairs. It's a reserve we keep for, well, emergencies. You can use it while you're here, mayor's treat.\" A smile cracks on {bartender}'s lips. \"She's not as cold as she seems, mind. She's just got... a lot on her plate right now.\" With that, he goes back to his routine of washing mugs.\\n\\nSo, off to the woods and into the deep it is, then. There's nothing like a good hike on a warm summer day."
 			]
 		},
 		{

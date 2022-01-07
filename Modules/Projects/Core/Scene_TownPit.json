@@ -24,32 +24,6 @@
 		"ButtonWidth": 1.0,
 		"Children": [
 			{
-				"Key": "SavePoint",
-				"IsState": true,
-				"IsLink": false,
-				"ScriptAction": "Storage.SetFlag(\"savepoint\", false)\r\nSetInventoryEnabled(true)\r\n\r\nif Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend",
-				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
-				"Children": [
-					{
-						"Key": "SafeRoom_Leave",
-						"IsState": false,
-						"IsLink": false,
-						"Title": "Leave",
-						"Tooltip": "Return to the common room.",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"ScriptAction": "Log(\"TOWN_PIT_SLEEPROOM_LEAVE\")",
-						"Children": [
-							{
-								"IsState": true,
-								"IsLink": true,
-								"LinkTarget": "Entry"
-							}
-						]
-					}
-				]
-			},
-			{
 				"Key": "Entry_RefuseReturn",
 				"IsState": true,
 				"IsLink": false,
@@ -457,7 +431,7 @@
 				"Key": "Entry",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_ENTER\")\r\nSetLocation(\"The Club\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": "SetLocation(\"The Club\")\r\nSetInventoryEnabled(true)\r\nTimedCheckpoint(\"TOWN_PIT\")\r\nLog(\"TOWN_PIT_ENTER\")",
 				"Children": [
 					{
 						"Key": "Entry_C_Leave",
@@ -833,13 +807,13 @@
 				]
 			},
 			{
-				"Key": "SafeRoomEnter",
+				"Key": "SafeRoom",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": "Log(\"TOWN_PIT_SLEEPROOM_ENTER_2\")",
 				"Children": [
 					{
-						"Key": "SafeRoomEnter_C",
+						"Key": "SafeRoom_C_Enter",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Continue",
@@ -847,29 +821,36 @@
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"Key": "SafeRoom",
+								"Key": "SafeRoom_R_Enter",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": "SetLocation(\"The Club, Break Room\")\r\nStorage.SetFlag(\"savepoint\", true)\r\n\r\nif not Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_SLEEPROOM_SLEEP\")\r\nend\r\n\r\nFoodComa()\r\nLog(\"TOWN_PIT_SLEEPROOM_SAVE\", Color.LightGray)",
 								"Children": [
 									{
-										"Key": "SafeRoom_Save",
+										"Key": "SafeRoom_C_Save",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Save",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "SaveData.ShowSaveDialog()",
 										"Children": [
 											{
+												"Key": "SafeRoom_R_Save",
 												"IsState": true,
-												"IsLink": true,
-												"LinkTarget": "SavePoint"
+												"IsLink": false,
+												"ScriptAction": "SaveData.ShowSaveDialog()\r\n\r\nif Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend",
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "SafeRoom_C_Leave"
+													}
+												]
 											}
 										]
 									},
 									{
-										"Key": "SafeRoom_Continue",
+										"Key": "SafeRoom_C_Sleep",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
@@ -877,9 +858,28 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"Key": "SafeRoom_R_Sleep",
 												"IsState": true,
-												"IsLink": true,
-												"LinkTarget": "SavePoint"
+												"IsLink": false,
+												"ScriptAction": "if Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend",
+												"Children": [
+													{
+														"Key": "SafeRoom_C_Leave",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Leave",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Log(\"TOWN_PIT_SLEEPROOM_LEAVE\")\r\nLogSplit()",
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Entry"
+															}
+														]
+													}
+												]
 											}
 										]
 									}
@@ -893,7 +893,7 @@
 				"Key": "Op1",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EVoreStyle.OV, true)",
+				"ScriptAction": "SaveData.TakeCheckpoint()\r\nLog(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EVoreStyle.OV, true)",
 				"Children": [
 					{
 						"Key": "Op1_C_1",
@@ -948,13 +948,13 @@
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"Key": "SafeRoomFirst",
+																				"Key": "Op1_R_ToRoom",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": "LogSplit()\r\nLog(\"TOWN_PIT_SLEEPROOM_FIRST\")",
 																				"Children": [
 																					{
-																						"Key": "SafeRoomFirst_C_OK",
+																						"Key": "Op1_C_ToRoom2",
 																						"IsState": false,
 																						"IsLink": false,
 																						"Title": "Continue",
@@ -964,7 +964,7 @@
 																							{
 																								"IsState": true,
 																								"IsLink": true,
-																								"LinkTarget": "SafeRoom"
+																								"LinkTarget": "SafeRoom_R_Enter"
 																							}
 																						]
 																					}
@@ -1006,7 +1006,7 @@
 				"Key": "Op2",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\n-- (No preysense because Carson is not a predator)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON2\")",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\n-- (No preysense because Carson is not a predator)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON2\")",
 				"Children": [
 					{
 						"Key": "Op2_C_1",
@@ -1212,7 +1212,7 @@
 															{
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "SafeRoomEnter"
+																"LinkTarget": "SafeRoom"
 															}
 														]
 													}
@@ -1246,7 +1246,7 @@
 				"Key": "Op3",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EVoreStyle.OV, true)",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EVoreStyle.OV, true)",
 				"Children": [
 					{
 						"Key": "Op3_C_1",
@@ -1289,7 +1289,7 @@
 															{
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "SafeRoomEnter"
+																"LinkTarget": "SafeRoom"
 															}
 														]
 													}
@@ -1323,7 +1323,7 @@
 				"Key": "Op4",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EVoreStyle.OV, true)",
+				"ScriptAction": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EVoreStyle.OV, true)",
 				"Children": [
 					{
 						"Key": "Op4_C_1",

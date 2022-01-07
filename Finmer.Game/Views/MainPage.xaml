@@ -17,112 +17,130 @@
         <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
     </UserControl.Resources>
-    <Grid MaxWidth="1200">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="240" />
-            <ColumnDefinition Width="*" />
-        </Grid.ColumnDefinitions>
+    <Grid>
+        <!-- Background sky colors -->
+        <v:MainPageBackgroundView>
+            <v:MainPageBackgroundView.Timestamps>
+                <v:SkyColorStop TimeOfDay="0" Color="#0C0807" />
+                <v:SkyColorStop TimeOfDay="4" Color="#0C0807" />
+                <v:SkyColorStop TimeOfDay="7" Color="#8D5147" />
+                <v:SkyColorStop TimeOfDay="12" Color="#7976C7" />
+                <v:SkyColorStop TimeOfDay="16" Color="#A9A6A1" />
+                <v:SkyColorStop TimeOfDay="18" Color="#A03513" />
+                <v:SkyColorStop TimeOfDay="20" Color="#68160A" />
+            </v:MainPageBackgroundView.Timestamps>
+        </v:MainPageBackgroundView>
 
-        <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
+        <!-- Main page content -->
+        <Grid
+            HorizontalAlignment="Center"
+            MaxWidth="1200">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="240" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+
+            <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
             Margin="12"
             LastChildFill="True">
-            <!-- Player statistics overview -->
-            <StackPanel DockPanel.Dock="Top" Orientation="Vertical"
+                <!-- Player statistics overview -->
+                <StackPanel DockPanel.Dock="Top" Orientation="Vertical"
                 DataContext="{Binding Player}"
                 d:DataContext="{d:DesignData Source=../Models/DesignData/SamplePlayer.xaml}">
-                <StackPanel.Resources>
-                    <Style TargetType="v:ColoredBar">
-                        <Setter Property="HorizontalAlignment" Value="Center" />
-                        <Setter Property="VerticalAlignment" Value="Top" />
-                        <Setter Property="Height" Value="30" />
-                        <Setter Property="Width" Value="200" />
-                    </Style>
-                </StackPanel.Resources>
+                    <StackPanel.Resources>
+                        <Style TargetType="v:ColoredBar">
+                            <Setter Property="HorizontalAlignment" Value="Center" />
+                            <Setter Property="VerticalAlignment" Value="Top" />
+                            <Setter Property="Height" Value="30" />
+                            <Setter Property="Width" Value="200" />
+                        </Style>
+                    </StackPanel.Resources>
 
-                <!-- Player overview -->
-                <TextBlock DockPanel.Dock="Top" Text="{Binding Name}" HorizontalAlignment="Center" Style="{StaticResource TextBlockLarge}" />
-                <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}">
+                    <!-- Player overview -->
+                    <TextBlock DockPanel.Dock="Top" Text="{Binding Name}" HorizontalAlignment="Center" Style="{StaticResource TextBlockLarge}" />
+                    <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}">
                     <Run>Level</Run>
                     <Run Text="{Binding Level, Mode=OneWay}" />
                     <Run Text="{Binding Species, Mode=OneWay, Converter={StaticResource StringCapFirstConverter}}" />
-                </TextBlock>
+                    </TextBlock>
 
-                <v:ColoredBar DockPanel.Dock="Top" Margin="0,16,0,0" InnerColor="#9a2020" OuterColor="#402020" ValueFormat="{}{0} / {2} HP" Minimum="0" Maximum="{Binding HealthMax}" Value="{Binding Health}" />
-                <v:ColoredBar DockPanel.Dock="Top" Margin="0,8,0,24" InnerColor="#5a5ab0" OuterColor="#202030" ValueFormat="{}{0} / {2} XP" Minimum="0" Maximum="{Binding RequiredXP}" Value="{Binding XP}" />
-            </StackPanel>
+                    <v:ColoredBar DockPanel.Dock="Top" Margin="0,16,0,0" InnerColor="#9a2020" OuterColor="#402020" ValueFormat="{}{0} / {2} HP" Minimum="0" Maximum="{Binding HealthMax}" Value="{Binding Health}" />
+                    <v:ColoredBar DockPanel.Dock="Top" Margin="0,8,0,24" InnerColor="#5a5ab0" OuterColor="#202030" ValueFormat="{}{0} / {2} XP" Minimum="0" Maximum="{Binding RequiredXP}" Value="{Binding XP}" />
+                </StackPanel>
 
-            <!-- Player control buttons -->
-            <v:MainPageNavButtonsView
+                <!-- Player control buttons -->
+                <v:MainPageNavButtonsView
                 Margin="0,1"
                 DockPanel.Dock="Top" />
 
-            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
-                <!-- Current location -->
-                <TextBlock Margin="0,0,0,16"
+                <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
+                    <!-- Current location -->
+                    <TextBlock Margin="0,0,0,16"
                     Text="{Binding UI.Location}"
                     Height="22"
                     Width="Auto"
                     HorizontalAlignment="Center"
                     Style="{StaticResource TextBlockDefault}" />
 
-                <!-- Clock widget -->
-                <v:ClockWidgetView
+                    <!-- Clock widget -->
+                    <v:ClockWidgetView
                     DataContext="{Binding Player}"
                     Margin="0,0,0,20" />
 
-                <!-- Compass grid -->
-                <v:CompassGridView
+                    <!-- Compass grid -->
+                    <v:CompassGridView
                     HorizontalAlignment="Center"
                     IsEnabled="{Binding UI.ControlsEnabled}"
                     Margin="0,0,0,10" />
-            </StackPanel>
-        </DockPanel>
+                </StackPanel>
+            </DockPanel>
 
-        <!-- Game Log -->
-        <v:LogView
+            <!-- Game Log -->
+            <v:LogView
             Grid.Column="1"
             Grid.Row="0"
             MessageSource="{Binding UI.Messages}"
             Margin="12" />
 
-        <!-- Combat panels -->
-        <v:CombatantPanelView
+            <!-- Combat panels -->
+            <v:CombatantPanelView
             Grid.Column="0"
             Grid.Row="0"
             Grid.RowSpan="2"
             DataContext="{Binding UI}"
             IsHitTestVisible="{Binding IsInCombat}" />
-        <Grid
+            <Grid
             Grid.Column="1"
             Grid.Row="0"
             Visibility="{Binding UI.IsInCombat, Converter={StaticResource BooleanToVisibilityConverter}}">
-            <Grid
+                <Grid
                 Visibility="{Binding UI.CombatStateViewModel.IsResolveVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
-                <v:CombatResolvePanelView
+                    <v:CombatResolvePanelView
                     Width="600"
                     VerticalAlignment="Bottom"
                     DataContext="{Binding UI.CombatStateViewModel.CombatResolveViewModel}"
                     Margin="0,0,0,80" />
+                </Grid>
             </Grid>
-        </Grid>
 
-        <!-- Choice panel -->
-        <v:ChoicePanelView
+            <!-- Choice panel -->
+            <v:ChoicePanelView
             Grid.Column="1"
             Grid.Row="1"
             Margin="5,5,5,10" />
 
-        <!-- Game over panel / System buttons -->
-        <v:GameOverPanelView
+            <!-- Game over panel / System buttons -->
+            <v:GameOverPanelView
             Grid.Column="0"
             Grid.Row="0"
             Grid.RowSpan="2"
             VerticalAlignment="Bottom"
             HorizontalAlignment="Stretch"
             Height="320" />
+        </Grid>
     </Grid>
 </UserControl>

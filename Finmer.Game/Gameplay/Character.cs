@@ -304,6 +304,33 @@ namespace Finmer.Gameplay
         {
             return victim.Size <= Size;
         }
+
+        [ScriptableFunction]
+        protected static int ExportedIsDead(IntPtr L)
+        {
+            var self = FromLuaNonOptional<Character>(L, 1);
+            LuaApi.lua_pushboolean(L, self.IsDead());
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedCanSwallow(IntPtr L)
+        {
+            var lhs = FromLuaNonOptional<Character>(L, 1);
+            var rhs = FromLuaNonOptional<Character>(L, 2);
+            LuaApi.lua_pushboolean(L, lhs.CanSwallow(rhs));
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedCanGrapple(IntPtr L)
+        {
+            var lhs = FromLuaNonOptional<Character>(L, 1);
+            var rhs = FromLuaNonOptional<Character>(L, 2);
+            LuaApi.lua_pushboolean(L, lhs.CanGrapple(rhs));
+            return 1;
+        }
+
     }
 
 }

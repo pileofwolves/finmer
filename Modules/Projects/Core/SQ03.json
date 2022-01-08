@@ -2,11 +2,11 @@
 	"!Type": "AssetJournal",
 	"ID": "5d644207-48e3-4d2b-a426-c696ea44a5f0",
 	"Name": "SQ03",
-	"Title": "SQ03 (Toolbox)",
+	"Title": "A Hammer in Need",
 	"Stages": [
 		{
 			"Key": 10,
-			"Text": "Oliver mentioned that his specialized tools and equipment were stolen, and that he'd be indebted to you if you managed to find them somewhere."
+			"Text": "Oliver mentioned that his specialized work tools need replacement. Purchase them from Pat in South Finmer, then return them to the carpenter."
 		}
 	]
 }

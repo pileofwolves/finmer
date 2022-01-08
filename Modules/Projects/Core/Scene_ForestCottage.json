@@ -352,7 +352,7 @@
 																																												"Key": "Oliver1_R_End_NoHug",
 																																												"IsState": true,
 																																												"IsLink": false,
-																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END1\")\r\nJournal.Update(\"SQ03\", 10)\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)\r\n\r\n-- Add Oliver's tools to the town smithy\r\nlocal shop = Shop(\"TownSmithy\")\r\nshop:AddUniqueItem(Item(\"I_OliverSupplies\"), 1)\r\nshop:Save()",
+																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)",
 																																												"Children": [
 																																													{
 																																														"Key": "Oliver1_C_End_NoHug",
@@ -361,27 +361,44 @@
 																																														"Title": "Continue",
 																																														"Highlight": false,
 																																														"ButtonWidth": 1.0,
-																																														"ScriptAction": "-- quite a big scene just happened\r\nAdvanceTime(1)",
 																																														"Children": [
 																																															{
-																																																"Key": "Oliver_R_End2",
+																																																"Key": "Oliver1_R_End1B",
 																																																"IsState": true,
 																																																"IsLink": false,
-																																																"ScriptAction": "Log(\"MQ02_OLIVER_R_END2\")",
+																																																"ScriptAction": "Log(\"MQ02_OLIVER_R_END1B\")\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)",
 																																																"Children": [
 																																																	{
-																																																		"Key": "Oliver_C_End2",
+																																																		"Key": "Oliver1_C_End1B",
 																																																		"IsState": false,
 																																																		"IsLink": false,
-																																																		"Title": "Leave",
-																																																		"Tooltip": "Time to go.",
+																																																		"Title": "Continue",
 																																																		"Highlight": false,
 																																																		"ButtonWidth": 1.0,
 																																																		"Children": [
 																																																			{
+																																																				"Key": "Oliver_R_End2",
 																																																				"IsState": true,
-																																																				"IsLink": true,
-																																																				"LinkTarget": "Start"
+																																																				"IsLink": false,
+																																																				"ScriptAction": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)",
+																																																				"Children": [
+																																																					{
+																																																						"Key": "Oliver_C_End2",
+																																																						"IsState": false,
+																																																						"IsLink": false,
+																																																						"Title": "Leave",
+																																																						"Tooltip": "Time to go.",
+																																																						"Highlight": false,
+																																																						"ButtonWidth": 1.0,
+																																																						"Children": [
+																																																							{
+																																																								"IsState": true,
+																																																								"IsLink": true,
+																																																								"LinkTarget": "Start"
+																																																							}
+																																																						]
+																																																					}
+																																																				]
 																																																			}
 																																																		]
 																																																	}
@@ -819,16 +836,16 @@
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Give Tools",
-										"Tooltip": "You have the guy's things - he'll want them back!",
-										"Highlight": false,
+										"Tooltip": "You have the items he had asked for.",
+										"Highlight": true,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return Player:HasItem(\"I_OliverSupplies\")",
+										"ScriptAppear": "return Player:HasItem(\"I_SQ03_OliverSupplies\")",
 										"Children": [
 											{
 												"Key": "Cottage_R_SQ03Handin",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)\r\nPlayer:ModifyMoney(RewardGold.SQ03)",
+												"ScriptAction": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)",
 												"Children": [
 													{
 														"Key": "Cottage_C_SQ03Exit",

@@ -306,7 +306,13 @@
 		{
 			"Key": "MQ02_OLIVER_R_END1",
 			"Text": [
-				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they seemed pleased as punch about the things I had in storage. Wood, some small metalwork, some of my own tools as well. I think it's all still there. That freak wants the bridge repaired; I'm not sure I like the sound of that. If you get back to town fast, you can tell them, send some folks to pick them up before the next predator shows up.\" A sly smirk spreads on his features. \"I'm not too afraid of that prick, I'll be fine. Oh, and if you happen across my tools, I'd love them back... I saw his goons take them while the big guy was, uh, hitting on me.\" He smiles and nods respectfully. \"Thanks, {player}. I owe you.\""
+				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they seemed pleased as punch about the things I had in storage. Wood, some small metalwork, some of my own tools as well. I think it's all still there. That freak wants the bridge repaired; I'm not sure I like the sound of that, but at least I figure that means he doesn't want to steal or break anything. If you get back to town fast, you can tell them, send some folks to pick them up before the next predator shows up.\" A sly smirk spreads on his features. \"I'm not too afraid of that prick, I'll be fine.\""
+			]
+		},
+		{
+			"Key": "MQ02_OLIVER_R_END1B",
+			"Text": [
+				"Something occurs to him, and he reaches out with a paw, before reconsidering. \"Oh, there's something else. I know I don't really... have the right to ask anything of you, but since you're looking into all this, you're probably getting around a lot more than I am.\" The lion pauses, before deciding to continue with his request. \"If you happen to visit South Finmer and you have some time to spare, would you mind picking up some replacement carpentry tools for me at Pat's place? They wear out, you see. I'll reimburse you plus extra for your trouble.\" He smiles and nods respectfully. \"Thanks, {player.name}. I owe you.\""
 			]
 		},
 		{

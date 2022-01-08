@@ -49,8 +49,10 @@ namespace Finmer.Gameplay
         /// <param name="snapshot">Save data with which to reconstruct the game.</param>
         public static void BeginNewSession(GameSnapshot snapshot)
         {
+            // Ensure the old session is removed first
+            ExitSession();
+
             // Set up the new gameplay session
-            Session?.Dispose();
             Session = new GameSession(snapshot);
             Session.Start();
         }

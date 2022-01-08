@@ -8,7 +8,6 @@
 
 using System.Collections.Generic;
 using Finmer.Core;
-using Finmer.Models;
 
 namespace Finmer.Gameplay
 {

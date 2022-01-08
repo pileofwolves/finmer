@@ -9,7 +9,6 @@
 using System;
 using System.IO;
 using System.Windows.Input;
-using Finmer.Core;
 using Finmer.Gameplay;
 using Finmer.Models;
 using Finmer.Utility;

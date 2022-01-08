@@ -7,7 +7,6 @@
  */
 
 using System.Windows.Input;
-using Finmer.Core;
 using Finmer.Gameplay;
 using Finmer.Utility;
 using Finmer.Views;

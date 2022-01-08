@@ -12,13 +12,15 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using System.Windows.Media;
-using System.Windows.Media.Animation;
 using Finmer.Gameplay;
 using JetBrains.Annotations;
 
 namespace Finmer.Views
 {
 
+    /// <summary>
+    /// Represents a sky color associated with a particular time of day.
+    /// </summary>
     public sealed class SkyColorStop : DependencyObject
     {
 
@@ -35,7 +37,7 @@ namespace Finmer.Views
             "TimeOfDay", typeof(int), typeof(SkyColorStop), new PropertyMetadata(default(int)));
 
         /// <summary>
-        /// .
+        /// The background color.
         /// </summary>
         public Color Color
         {
@@ -44,7 +46,7 @@ namespace Finmer.Views
         }
 
         /// <summary>
-        /// .
+        /// The time of day, expressed as hours on a 24-hr clock [0-23].
         /// </summary>
         public int TimeOfDay
         {
@@ -53,10 +55,10 @@ namespace Finmer.Views
         }
     }
 
-    public sealed class SkyColorStopCollection : List<SkyColorStop>
-    {
-        //
-    }
+    /// <summary>
+    /// Helper class for exposing a collection of SkyColorStops to XAML.
+    /// </summary>
+    public sealed class SkyColorStopCollection : List<SkyColorStop> { }
 
     /// <summary>
     /// Interaction logic for MainPageBackgroundView.xaml
@@ -81,6 +83,9 @@ namespace Finmer.Views
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        /// <summary>
+        /// Computes and returns the sky color that is appropriate for the current time of day.
+        /// </summary>
         public Color CurrentSkyColor => GetCurrentSkyColor();
 
         private readonly WeakReference<Player> m_Player;
@@ -113,14 +118,10 @@ namespace Finmer.Views
             if (DesignerProperties.GetIsInDesignMode(this))
                 return Color.FromRgb(119, 117, 210);
 
-            // Cache the collection as a local once
+            // Ensure we have at least two colors to work with
             var stops = Timestamps;
-
-            // Gracefully handle the edge cases where we cannot do any interpolation
-            if (stops.Count == 0)
-                return new Color();
-            if (stops.Count == 1)
-                return stops[0].Color;
+            if (stops.Count < 2)
+                throw new InvalidOperationException("MainPageBackgroundView must have at least two sky colors to interpolate between");
 
             // We have colors to interpolate between. Find the stop that the clock has just passed.
             int current_hour = GetCurrentHour();
@@ -134,12 +135,11 @@ namespace Finmer.Views
                 index2 = 0;
 
             // Calculate the interpolation coefficient between the two colors
-            int tn = current_hour;
             int t1 = stops[index1].TimeOfDay;
             int t2 = stops[index2].TimeOfDay;
             if (t1 > t2)
                 t2 += 24;
-            float color_delta = (tn - t1) / (float)(t2 - t1);
+            float color_delta = (current_hour - t1) / (float)(t2 - t1);
 
             // Calculate the normalized sRGB color values for both stops
             Color c1 = stops[index1].Color;

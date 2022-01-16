@@ -45,12 +45,31 @@
             </Grid.ColumnDefinitions>
 
             <DockPanel Grid.Column="0" Grid.Row="0" Grid.RowSpan="2"
-            Margin="12"
-            LastChildFill="True">
+                Margin="12"
+                RenderTransformOrigin="0.5,0.5"
+                LastChildFill="True">
+                <DockPanel.RenderTransform>
+                    <ScaleTransform />
+                </DockPanel.RenderTransform>
+                <DockPanel.Style>
+                    <Style TargetType="{x:Type DockPanel}">
+                        <Style.Triggers>
+                            <!-- Hide the main controls when entering combat, so we don't have to do any background overlaying hacks for the combat UI -->
+                            <DataTrigger Binding="{Binding UI.IsInCombat}" Value="True">
+                                <DataTrigger.EnterActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MainPageControlsHide}" />
+                                </DataTrigger.EnterActions>
+                                <DataTrigger.ExitActions>
+                                    <BeginStoryboard Storyboard="{StaticResource MainPageControlsShow}" />
+                                </DataTrigger.ExitActions>
+                            </DataTrigger>
+                        </Style.Triggers>
+                    </Style>
+                </DockPanel.Style>
                 <!-- Player statistics overview -->
                 <StackPanel DockPanel.Dock="Top" Orientation="Vertical"
-                DataContext="{Binding Player}"
-                d:DataContext="{d:DesignData Source=../Models/DesignData/SamplePlayer.xaml}">
+                    DataContext="{Binding Player}"
+                    d:DataContext="{d:DesignData Source=../Models/DesignData/SamplePlayer.xaml}">
                     <StackPanel.Resources>
                         <Style TargetType="v:ColoredBar">
                             <Setter Property="HorizontalAlignment" Value="Center" />
@@ -61,86 +80,109 @@
                     </StackPanel.Resources>
 
                     <!-- Player overview -->
-                    <TextBlock DockPanel.Dock="Top" Text="{Binding Name}" HorizontalAlignment="Center" Style="{StaticResource TextBlockLarge}" />
-                    <TextBlock DockPanel.Dock="Top" HorizontalAlignment="Center" Style="{StaticResource TextBlockDefault}">
-                    <Run>Level</Run>
-                    <Run Text="{Binding Level, Mode=OneWay}" />
-                    <Run Text="{Binding Species, Mode=OneWay, Converter={StaticResource StringCapFirstConverter}}" />
+                    <TextBlock
+                        DockPanel.Dock="Top"
+                        Text="{Binding Name}"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource TextBlockLarge}" />
+                    <TextBlock
+                        DockPanel.Dock="Top"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource TextBlockDefault}">
+                        <Run>Level</Run>
+                        <Run Text="{Binding Level, Mode=OneWay}" />
+                        <Run Text="{Binding Species, Mode=OneWay, Converter={StaticResource StringCapFirstConverter}}" />
                     </TextBlock>
 
-                    <v:ColoredBar DockPanel.Dock="Top" Margin="0,16,0,0" InnerColor="#9a2020" OuterColor="#402020" ValueFormat="{}{0} / {2} HP" Minimum="0" Maximum="{Binding HealthMax}" Value="{Binding Health}" />
-                    <v:ColoredBar DockPanel.Dock="Top" Margin="0,8,0,24" InnerColor="#5a5ab0" OuterColor="#202030" ValueFormat="{}{0} / {2} XP" Minimum="0" Maximum="{Binding RequiredXP}" Value="{Binding XP}" />
+                    <v:ColoredBar
+                        DockPanel.Dock="Top"
+                        Margin="0,16,0,0"
+                        InnerColor="#9a2020"
+                        OuterColor="#402020"
+                        ValueFormat="{}{0} / {2} HP"
+                        Minimum="0"
+                        Maximum="{Binding HealthMax}"
+                        Value="{Binding Health}" />
+                    <v:ColoredBar
+                        DockPanel.Dock="Top"
+                        Margin="0,8,0,24"
+                        InnerColor="#5a5ab0"
+                        OuterColor="#202030"
+                        ValueFormat="{}{0} / {2} XP"
+                        Minimum="0"
+                        Maximum="{Binding RequiredXP}"
+                        Value="{Binding XP}" />
                 </StackPanel>
 
                 <!-- Player control buttons -->
                 <v:MainPageNavButtonsView
-                Margin="0,1"
-                DockPanel.Dock="Top" />
+                    Margin="0,1"
+                    DockPanel.Dock="Top" />
 
                 <StackPanel Orientation="Vertical" VerticalAlignment="Bottom">
                     <!-- Current location -->
                     <TextBlock Margin="0,0,0,16"
-                    Text="{Binding UI.Location}"
-                    Height="22"
-                    Width="Auto"
-                    HorizontalAlignment="Center"
-                    Style="{StaticResource TextBlockDefault}" />
+                        Text="{Binding UI.Location}"
+                        Height="22"
+                        Width="Auto"
+                        HorizontalAlignment="Center"
+                        Style="{StaticResource TextBlockDefault}" />
 
                     <!-- Clock widget -->
                     <v:ClockWidgetView
-                    DataContext="{Binding Player}"
-                    Margin="0,0,0,20" />
+                        DataContext="{Binding Player}"
+                        Margin="0,0,0,20" />
 
                     <!-- Compass grid -->
                     <v:CompassGridView
-                    HorizontalAlignment="Center"
-                    IsEnabled="{Binding UI.ControlsEnabled}"
-                    Margin="0,0,0,10" />
+                        HorizontalAlignment="Center"
+                        IsEnabled="{Binding UI.ControlsEnabled}"
+                        Margin="0,0,0,10" />
                 </StackPanel>
             </DockPanel>
 
             <!-- Game Log -->
             <v:LogView
-            Grid.Column="1"
-            Grid.Row="0"
-            MessageSource="{Binding UI.Messages}"
-            Margin="12" />
+                Grid.Column="1"
+                Grid.Row="0"
+                MessageSource="{Binding UI.Messages}"
+                Margin="12" />
 
             <!-- Combat panels -->
             <v:CombatantPanelView
-            Grid.Column="0"
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            DataContext="{Binding UI}"
-            IsHitTestVisible="{Binding IsInCombat}" />
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                DataContext="{Binding UI}"
+                IsHitTestVisible="{Binding IsInCombat}" />
             <Grid
-            Grid.Column="1"
-            Grid.Row="0"
-            Visibility="{Binding UI.IsInCombat, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Grid.Column="1"
+                Grid.Row="0"
+                Visibility="{Binding UI.IsInCombat, Converter={StaticResource BooleanToVisibilityConverter}}">
                 <Grid
-                Visibility="{Binding UI.CombatStateViewModel.IsResolveVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+                    Visibility="{Binding UI.CombatStateViewModel.IsResolveVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <v:CombatResolvePanelView
-                    Width="600"
-                    VerticalAlignment="Bottom"
-                    DataContext="{Binding UI.CombatStateViewModel.CombatResolveViewModel}"
-                    Margin="0,0,0,80" />
+                        Width="600"
+                        VerticalAlignment="Bottom"
+                        DataContext="{Binding UI.CombatStateViewModel.CombatResolveViewModel}"
+                        Margin="0,0,0,80" />
                 </Grid>
             </Grid>
 
             <!-- Choice panel -->
             <v:ChoicePanelView
-            Grid.Column="1"
-            Grid.Row="1"
-            Margin="5,5,5,10" />
+                Grid.Column="1"
+                Grid.Row="1"
+                Margin="5,5,5,10" />
 
             <!-- Game over panel / System buttons -->
             <v:GameOverPanelView
-            Grid.Column="0"
-            Grid.Row="0"
-            Grid.RowSpan="2"
-            VerticalAlignment="Bottom"
-            HorizontalAlignment="Stretch"
-            Height="320" />
+                Grid.Column="0"
+                Grid.Row="0"
+                Grid.RowSpan="2"
+                VerticalAlignment="Bottom"
+                HorizontalAlignment="Stretch"
+                Height="320" />
         </Grid>
     </Grid>
 </UserControl>

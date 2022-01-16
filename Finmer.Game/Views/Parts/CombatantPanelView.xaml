@@ -9,15 +9,19 @@
     mc:Ignorable="d"
     d:DesignHeight="450" d:DesignWidth="240"
     d:DataContext="{d:DesignInstance m:GameUI}">
-    <Grid Background="{StaticResource BackgroundBrush}" Margin="12">
+    <Grid Margin="12">
         <Grid.Style>
             <Style TargetType="{x:Type Grid}">
+                <Style.Setters>
+                    <!-- Ensure the panel is invisible when the page is first shown -->
+                    <Setter Property="Opacity" Value="0" />
+                </Style.Setters>
                 <Style.Triggers>
                     <!-- Sliding animation when opening and closing panel -->
                     <DataTrigger Binding="{Binding IsInCombat}" Value="True">
                         <DataTrigger.EnterActions>
                             <!-- Enter animation -->
-                            <BeginStoryboard>
+                            <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
                                 <Storyboard>
                                     <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
@@ -26,15 +30,18 @@
                                             <CubicEase EasingMode="EaseOut" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation
+                                    <DoubleAnimation
                                         Storyboard.TargetProperty="Opacity"
-                                        EasingFunction="{StaticResource SlideEasingIn}"
-                                        From="0" To="1" Duration="{StaticResource SlideDuration}" />-->
+                                        From="0" To="1" Duration="0:0:1">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseOut" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
                         </DataTrigger.EnterActions>
                         <DataTrigger.ExitActions>
-                            <BeginStoryboard>
+                            <BeginStoryboard HandoffBehavior="SnapshotAndReplace">
                                 <Storyboard>
                                     <DoubleAnimation
                                         Storyboard.TargetProperty="RenderTransform.(TranslateTransform.X)"
@@ -44,11 +51,14 @@
                                             <BackEase Amplitude="0.22" EasingMode="EaseIn" />
                                         </DoubleAnimation.EasingFunction>
                                     </DoubleAnimation>
-                                    <!--<DoubleAnimation
+                                    <DoubleAnimation
                                         Storyboard.TargetProperty="Opacity"
-                                        EasingFunction="{StaticResource SlideEasingOut}"
-                                        BeginTime="0:0:1"
-                                        From="1" To="0" Duration="{StaticResource SlideDuration}" />-->
+                                        BeginTime="0:0:1.15"
+                                        From="1" To="0" Duration="0:0:0.5">
+                                        <DoubleAnimation.EasingFunction>
+                                            <CubicEase EasingMode="EaseIn" />
+                                        </DoubleAnimation.EasingFunction>
+                                    </DoubleAnimation>
                                 </Storyboard>
                             </BeginStoryboard>
                         </DataTrigger.ExitActions>
@@ -57,7 +67,7 @@
             </Style>
         </Grid.Style>
         <Grid.RenderTransform>
-            <TranslateTransform X="-500" />
+            <TranslateTransform X="-250" />
         </Grid.RenderTransform>
 
         <!-- Combatants list -->

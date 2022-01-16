@@ -1313,4 +1313,52 @@
         <Setter Property="Template" Value="{StaticResource HorizontalSlider}" />
     </Style>
 
+    <!-- Animation templates -->
+    <Storyboard x:Key="MainPageControlsHide">
+        <DoubleAnimation
+            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+            From="1" To="0.9" Duration="0:0:0.45">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation
+            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+            From="1" To="0.9" Duration="0:0:0.45">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            From="1" To="0" Duration="0:0:0.5">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+    <Storyboard x:Key="MainPageControlsShow" BeginTime="0:0:1.5">
+        <DoubleAnimation
+            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleX)"
+            To="1" Duration="0:0:0.5">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation
+            Storyboard.TargetProperty="RenderTransform.(ScaleTransform.ScaleY)"
+            To="1" Duration="0:0:0.5">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+        <DoubleAnimation
+            Storyboard.TargetProperty="Opacity"
+            To="1" Duration="0:0:0.5">
+            <DoubleAnimation.EasingFunction>
+                <CubicEase EasingMode="EaseOut" />
+            </DoubleAnimation.EasingFunction>
+        </DoubleAnimation>
+    </Storyboard>
+
 </ResourceDictionary>

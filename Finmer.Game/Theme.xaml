@@ -709,7 +709,14 @@
 
                         <Trigger Property="IsChecked" Value="False">
                             <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
-                            <Setter Property="Background" Value="{StaticResource BrightBackgroundBrush}" />
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonNormalColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonNormalColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">

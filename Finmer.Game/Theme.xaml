@@ -465,8 +465,10 @@
                             </Grid.RowDefinitions>
                             <Rectangle
                                 Grid.Row="0"
+                                x:Name="ButtonGlowTop"
                                 Margin="-4,-4,-4,0"
                                 IsHitTestVisible="False"
+                                Visibility="Hidden"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
@@ -478,8 +480,10 @@
                             </Rectangle>
                             <Rectangle
                                 Grid.Row="2"
+                                x:Name="ButtonGlowBottom"
                                 Margin="-4,0,-4,-4"
                                 IsHitTestVisible="False"
+                                Visibility="Hidden"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
@@ -500,6 +504,8 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsEnabled" Value="True">
+                            <Setter TargetName="ButtonGlowTop" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ButtonGlowBottom" Property="Visibility" Value="Visible" />
                             <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
                             <Setter Property="Background">
                                 <Setter.Value>
@@ -661,8 +667,10 @@
                             </Grid.RowDefinitions>
                             <Rectangle
                                 Grid.Row="0"
+                                x:Name="ButtonGlowTop"
                                 Margin="-4,-4,-4,0"
                                 IsHitTestVisible="False"
+                                Visibility="Hidden"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
@@ -674,8 +682,10 @@
                             </Rectangle>
                             <Rectangle
                                 Grid.Row="2"
+                                x:Name="ButtonGlowBottom"
                                 Margin="-4,0,-4,-4"
                                 IsHitTestVisible="False"
+                                Visibility="Hidden"
                                 RadiusX="4"
                                 RadiusY="2">
                                 <Rectangle.Fill>
@@ -695,6 +705,20 @@
                         </Grid>
                     </Border>
                     <ControlTemplate.Triggers>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter TargetName="ButtonGlowTop" Property="Visibility" Value="Visible" />
+                            <Setter TargetName="ButtonGlowBottom" Property="Visibility" Value="Visible" />
+                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
+                            <Setter Property="Background">
+                                <Setter.Value>
+                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
+                                        <GradientStop Color="{StaticResource ButtonNormalColor}" Offset="0" />
+                                        <GradientStop Color="{StaticResource ButtonNormalColorAlt}" Offset="1" />
+                                    </LinearGradientBrush>
+                                </Setter.Value>
+                            </Setter>
+                        </Trigger>
+
                         <Trigger Property="IsChecked" Value="True">
                             <Setter Property="Background" TargetName="Root">
                                 <Setter.Value>
@@ -705,18 +729,6 @@
                                 </Setter.Value>
                             </Setter>
                             <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
-                        </Trigger>
-
-                        <Trigger Property="IsChecked" Value="False">
-                            <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}" />
-                            <Setter Property="Background">
-                                <Setter.Value>
-                                    <LinearGradientBrush StartPoint="0,0" EndPoint="0,1">
-                                        <GradientStop Color="{StaticResource ButtonNormalColor}" Offset="0" />
-                                        <GradientStop Color="{StaticResource ButtonNormalColorAlt}" Offset="1" />
-                                    </LinearGradientBrush>
-                                </Setter.Value>
-                            </Setter>
                         </Trigger>
 
                         <Trigger Property="IsPressed" Value="True">

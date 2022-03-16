@@ -29,9 +29,11 @@ namespace Finmer.Core.Assets
 
         public SceneNode Root { get; set; }
 
-        public AssetScript ScriptCustom { get; set; }
-        public AssetScript ScriptEnter { get; set; }
-        public AssetScript ScriptLeave { get; set; }
+        public ScriptData ScriptCustom { get; set; }
+
+        public ScriptData ScriptEnter { get; set; }
+
+        public ScriptData ScriptLeave { get; set; }
 
         /// <summary>
         /// Precompiled script that represents the entire scene (all nodes and nested scripts), or null if unavailable.
@@ -48,15 +50,9 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Custom scene scripts
-            outstream.BeginObject("ScriptCustom");
-            ScriptCustom.Serialize(outstream);
-            outstream.EndObject();
-            outstream.BeginObject("ScriptEnter");
-            ScriptEnter.Serialize(outstream);
-            outstream.EndObject();
-            outstream.BeginObject("ScriptLeave");
-            ScriptLeave.Serialize(outstream);
-            outstream.EndObject();
+            outstream.WriteNestedObjectProperty("ScriptCustom", ScriptCustom);
+            outstream.WriteNestedObjectProperty("ScriptEnter", ScriptEnter);
+            outstream.WriteNestedObjectProperty("ScriptLeave", ScriptLeave);
 
             // Patching settings
             outstream.WriteBooleanProperty("IsPatch", Inject);
@@ -78,24 +74,42 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Read scene scripts
-            instream.BeginObject("ScriptCustom");
+            if (version >= 16)
             {
-                ScriptCustom = new AssetScript();
-                ScriptCustom.Deserialize(instream, version);
+                ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>("ScriptCustom", version);
+                ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>("ScriptEnter", version);
+                ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>("ScriptLeave", version);
             }
-            instream.EndObject();
-            instream.BeginObject("ScriptEnter");
+            else
             {
-                ScriptEnter = new AssetScript();
-                ScriptEnter.Deserialize(instream, version);
+                // V15 backwards compatibility
+                instream.BeginObject("ScriptCustom");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptCustom = new ScriptDataExternal();
+                    ScriptCustom.Deserialize(instream, version);
+                }
+                instream.EndObject();
+                instream.BeginObject("ScriptEnter");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptEnter = new ScriptDataExternal();
+                    ScriptEnter.Deserialize(instream, version);
+                }
+                instream.EndObject();
+                instream.BeginObject("ScriptLeave");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptLeave = new ScriptDataExternal();
+                    ScriptLeave.Deserialize(instream, version);
+                }
+                instream.EndObject();
+
+                // Update script names to new standards
+                ScriptCustom.Name = Name + "_Custom";
+                ScriptEnter.Name = Name + "_Enter";
+                ScriptLeave.Name = Name + "_Leave";
             }
-            instream.EndObject();
-            instream.BeginObject("ScriptLeave");
-            {
-                ScriptLeave = new AssetScript();
-                ScriptLeave.Deserialize(instream, version);
-            }
-            instream.EndObject();
 
             // Read modding/injection settings
             Inject = instream.ReadBooleanProperty("IsPatch");
@@ -156,8 +170,8 @@ namespace Finmer.Core.Assets
             public bool IsLink { get; set; }
             public string LinkTarget { get; set; } = String.Empty;
 
-            public string ScriptAction { get; set; } = String.Empty;
-            public string ScriptAppear { get; set; } = String.Empty;
+            public ScriptData ScriptAction { get; set; }
+            public ScriptData ScriptAppear { get; set; }
 
             public bool Highlight { get; set; }
             public float ButtonWidth { get; set; } = 1.0f;
@@ -189,8 +203,8 @@ namespace Finmer.Core.Assets
                 // Generic node settings
                 else
                 {
-                    outstream.WriteStringProperty("ScriptAction", ScriptAction);
-                    outstream.WriteStringProperty("ScriptAppear", ScriptAppear);
+                    outstream.WriteNestedObjectProperty("ScriptAction", ScriptAction);
+                    outstream.WriteNestedObjectProperty("ScriptAppear", ScriptAppear);
 
                     // Recursively serialize child nodes
                     outstream.BeginArray("Children", Children.Count);
@@ -228,8 +242,31 @@ namespace Finmer.Core.Assets
                 // Generic node settings
                 else
                 {
-                    ScriptAction = instream.ReadStringProperty("ScriptAction");
-                    ScriptAppear = instream.ReadStringProperty("ScriptAppear");
+                    if (version >= 16)
+                    {
+                        ScriptAction = instream.ReadNestedObjectProperty<ScriptData>("ScriptAction", version);
+                        ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>("ScriptAppear", version);
+                    }
+                    else
+                    {
+                        // V15 backwards compatibility: convert raw strings to inline script objects
+                        var text = instream.ReadStringProperty("ScriptAction");
+                        if (!String.IsNullOrEmpty(text))
+                        {
+                            ScriptAction = new ScriptDataInline
+                            {
+                                ScriptText = text
+                            };
+                        }
+                        text = instream.ReadStringProperty("ScriptAppear");
+                        if (!String.IsNullOrEmpty(text))
+                        {
+                            ScriptAppear = new ScriptDataInline
+                            {
+                                ScriptText = text
+                            };
+                        }
+                    }
                 }
 
                 // Links do not have child nodes as of version 15

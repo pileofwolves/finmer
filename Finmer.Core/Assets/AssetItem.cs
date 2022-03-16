@@ -143,10 +143,7 @@ namespace Finmer.Core.Assets
                 outstream.WriteBooleanProperty("CanUseInField", CanUseInField);
                 outstream.WriteBooleanProperty("CanUseInBattle", CanUseInBattle);
                 outstream.WriteStringProperty("UseDescription", UseDescription);
-
-                outstream.BeginObject("UseScript");
-                UseScript.Serialize(outstream);
-                outstream.EndObject();
+                outstream.WriteNestedObjectProperty("UseScript", UseScript);
             }
 
             // Icon data
@@ -189,10 +186,18 @@ namespace Finmer.Core.Assets
                 UseDescription = instream.ReadStringProperty("UseDescription");
 
                 // Attached scripts
-                instream.BeginObject("UseScript");
-                UseScript = new AssetScript();
-                UseScript.Deserialize(instream, version);
-                instream.EndObject();
+                if (version >= 16)
+                {
+                    UseScript = instream.ReadNestedObjectProperty<AssetScript>("UseScript", version);
+                }
+                else
+                {
+                    // V15 backwards compatibility
+                    instream.BeginObject("UseScript");
+                    UseScript = new AssetScript();
+                    UseScript.Deserialize(instream, version);
+                    instream.EndObject();
+                }
             }
 
             // Icon data

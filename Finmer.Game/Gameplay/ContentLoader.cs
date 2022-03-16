@@ -201,10 +201,7 @@ namespace Finmer.Gameplay
                     try
                     {
                         // Compile the script, so we can cache the binary form (which is much faster to load in the future)
-                        script.PrecompiledScript = script_compiler.Compile(script.ScriptText, script.Name);
-
-                        // Discard the original script source, to save a little bit of memory
-                        script.ScriptText = null;
+                        script.PrecompiledScript = script_compiler.Compile(script.GetScriptText(), script.Name);
                     }
                     catch (InvalidDataException ex)
                     {

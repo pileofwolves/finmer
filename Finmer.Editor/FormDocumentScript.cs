@@ -26,8 +26,9 @@ namespace Finmer.Editor
         {
             ScintillaHelper.Setup(scintilla);
 
+            // TODO
             var script = (AssetScript)Asset;
-            scintilla.Text = script.ScriptText;
+            //scintilla.Text = script.GetScriptText();
             scintilla.EmptyUndoBuffer();
             m_Ready = true;
         }
@@ -43,10 +44,8 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
+            // TODO
             base.Flush();
-
-            var script = (AssetScript)Asset;
-            script.ScriptText = scintilla.Text;
         }
 
     }

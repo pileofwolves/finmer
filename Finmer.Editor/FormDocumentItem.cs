@@ -108,16 +108,6 @@ namespace Finmer.Editor
             // Show/hide the appropriate UI bits
             fraEquipment.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
             fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
-
-            // If the item is now Usable, but its UseScript was optimized away, restore it now
-            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable && item.UseScript == null)
-            {
-                item.UseScript = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = item.Name + "_UseScript"
-                };
-            }
         }
 
         private void UpdateIcon(byte[] newImage)

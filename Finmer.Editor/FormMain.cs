@@ -636,21 +636,6 @@ namespace Finmer.Editor
                 {
                     Key = "Root",
                     Title = "Root"
-                },
-                ScriptCustom = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_CustomScript"
-                },
-                ScriptEnter = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_EnterScript"
-                },
-                ScriptLeave = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_LeaveScript"
                 }
             };
             RegisterNewAsset(asset);
@@ -662,12 +647,7 @@ namespace Finmer.Editor
             var asset = new AssetItem
             {
                 Name = GetUniqueAssetName("NewItem"),
-                ID = asset_guid,
-                UseScript = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_UseScript"
-                }
+                ID = asset_guid
             };
             RegisterNewAsset(asset);
         }

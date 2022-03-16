@@ -15,7 +15,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Represents a single asset that can be loaded by the game.
     /// </summary>
-    public abstract class AssetBase
+    public abstract class AssetBase : IFurballSerializable
     {
 
         /// <summary>

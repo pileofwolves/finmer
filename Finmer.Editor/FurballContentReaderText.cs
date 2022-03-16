@@ -149,6 +149,36 @@ namespace Finmer.Editor
             }
         }
 
+        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
+        {
+            try
+            {
+                Debug.Assert(CurrentToken.Type == JTokenType.Object);
+                JToken value = CurrentToken[key];
+
+                // Handle null values properly; the asset may be absent
+                if (value == null || value.Type == JTokenType.Null)
+                    return null;
+
+                // Otherwise, recursively deserialize the asset
+                Debug.Assert(value.Type == JTokenType.Object);
+                m_TokenStack.Push(value);
+                var asset = AssetSerializer.DeserializeAsset(this, version);
+                m_TokenStack.Pop();
+
+                // Validate the type of the deserialized object
+                if (!(asset is TExpected expected))
+                    // Error handling here to remove boilerplate from callers
+                    throw new InvalidDataException("Nested asset is unexpected type");
+
+                return expected;
+            }
+            catch (Exception ex)
+            {
+                throw new FurballInvalidAssetException($"Cannot read nested asset {key} at path {CurrentToken.Path}", ex);
+            }
+        }
+
         public string ReadStringValue()
         {
             // Read the value of the next array element as a string

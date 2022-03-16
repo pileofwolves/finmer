@@ -42,10 +42,11 @@ namespace Finmer.Core.Compilers
             state.Main.AppendLine("local _state = 0");
 
             // Custom script goes at the top, so it is available globally
-            if (scene.ScriptCustom.HasContent())
+            if (scene.ScriptCustom != null && scene.ScriptCustom.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptCustom.ScriptText, "CustomScript");
-                state.Main.AppendLine(scene.ScriptCustom.ScriptText);
+                var text = scene.ScriptCustom.GetScriptText();
+                state.Compiler?.Compile(text, "CustomScript");
+                state.Main.AppendLine(text);
             }
 
             // Write headers for each subsection
@@ -78,20 +79,22 @@ namespace Finmer.Core.Compilers
             state.Main.Append(state.TableChoiceFns);
 
             // Copy OnEnter script
-            if (scene.ScriptEnter.HasContent())
+            if (scene.ScriptEnter != null && scene.ScriptEnter.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptEnter.ScriptText, "EnterScript");
+                var text = scene.ScriptEnter.GetScriptText();
+                state.Compiler?.Compile(text, "EnterScript");
                 state.Main.AppendLine("function OnEnter()");
-                state.Main.AppendLine(scene.ScriptEnter.ScriptText);
+                state.Main.AppendLine(text);
                 state.Main.AppendLine("end");
             }
 
             // Copy OnLeave script
-            if (scene.ScriptLeave.HasContent())
+            if (scene.ScriptLeave != null && scene.ScriptLeave.HasContent())
             {
-                state.Compiler?.Compile(scene.ScriptLeave.ScriptText, "LeaveScript");
+                var text = scene.ScriptLeave.GetScriptText();
+                state.Compiler?.Compile(text, "LeaveScript");
                 state.Main.AppendLine("function OnLeave()");
-                state.Main.AppendLine(scene.ScriptLeave.ScriptText);
+                state.Main.AppendLine(text);
                 state.Main.AppendLine("end");
             }
 
@@ -170,12 +173,13 @@ end"
             }
 
             // Generate an AppearFn for all concrete nodes that have one specified
-            if (!String.IsNullOrWhiteSpace(node.ScriptAppear) && !node.IsLink)
+            if (node.ScriptAppear != null && node.ScriptAppear.HasContent() && !node.IsLink)
             {
-                state.Compiler?.Compile(node.ScriptAppear, $"{node.Key}/AppearsWhen");
+                var script_text = node.ScriptAppear.GetScriptText();
+                state.Compiler?.Compile(script_text, $"{node.Key}/AppearsWhen");
                 state.TableAppearFns.Append(node.Key);
                 state.TableAppearFns.AppendLine(" = function()");
-                state.TableAppearFns.AppendLine(node.ScriptAppear);
+                state.TableAppearFns.AppendLine(script_text);
                 state.TableAppearFns.AppendLine("end,");
             }
 
@@ -207,10 +211,11 @@ end"
             state.TableStateFns.AppendLine($"_StateFns[_States.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
-            if (!String.IsNullOrWhiteSpace(node.ScriptAction))
+            if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
             {
-                state.Compiler?.Compile(node.ScriptAction, $"{node.Key}/ActionsTaken");
-                state.TableStateFns.AppendLine(node.ScriptAction);
+                var script_text = node.ScriptAction.GetScriptText();
+                state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
+                state.TableStateFns.AppendLine(script_text);
             }
 
             // Emit AddButton calls (wrapped in CanAppear tests) for all child Choices of this State
@@ -260,10 +265,11 @@ end"
             state.TableChoiceFns.AppendLine($"_ChoiceFns[_Choices.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
-            if (!String.IsNullOrWhiteSpace(node.ScriptAction))
+            if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
             {
-                state.Compiler?.Compile(node.ScriptAction, $"{node.Key}/ActionsTaken");
-                state.TableChoiceFns.AppendLine(node.ScriptAction);
+                var script_text = node.ScriptAction.GetScriptText();
+                state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
+                state.TableChoiceFns.AppendLine(script_text);
             }
 
             // Emit tests for all child States. We go over all child States until we find a passing one, which then becomes the next State.

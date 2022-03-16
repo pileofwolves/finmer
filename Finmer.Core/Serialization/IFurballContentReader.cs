@@ -70,6 +70,13 @@ namespace Finmer.Core.Serialization
         byte[] ReadByteArrayProperty(string key);
 
         /// <summary>
+        /// Recursively deserializes a nested asset, or returns null if it is unset.
+        /// </summary>
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        /// <param name="version">Furball file format version that the object is expected to be stored in.</param>
+        TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable;
+
+        /// <summary>
         /// Reads a raw string token from the stream, such as an array element.
         /// </summary>
         string ReadStringValue();

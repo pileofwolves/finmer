@@ -94,8 +94,8 @@ namespace Finmer.Editor
             txtNodeTitle.Text = m_SelectedNode.Title;
             txtNodeTooltip.Text = m_SelectedNode.Tooltip;
             cmbLinkTarget.Text = m_SelectedNode.LinkTarget;
-            scriptAction.Text = m_SelectedNode.ScriptAction;
-            scriptAppear.Text = m_SelectedNode.ScriptAppear;
+            //scriptAction.Text = m_SelectedNode.ScriptAction; // TODO
+            //scriptAppear.Text = m_SelectedNode.ScriptAppear;
             scriptAction.EmptyUndoBuffer();
             scriptAppear.EmptyUndoBuffer();
 
@@ -122,14 +122,16 @@ namespace Finmer.Editor
 
         private void UpdateNodeImage(TreeNode treeNode, AssetScene.SceneNode sceneNode)
         {
+            bool has_appear_script = sceneNode.ScriptAppear != null && sceneNode.ScriptAppear.HasContent();
+
             if (treeNode.Parent == null)
                 treeNode.ImageKey = "node-root";
             else if (sceneNode.IsLink)
                 treeNode.ImageKey = "node-link";
             else if (sceneNode.IsState)
-                treeNode.ImageKey = String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? "node-state" : "node-state-alt";
+                treeNode.ImageKey = has_appear_script ? "node-state-alt" : "node-state";
             else
-                treeNode.ImageKey = String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? "node-option" : "node-option-alt";
+                treeNode.ImageKey = has_appear_script ? "node-option-alt" : "node-option";
 
             treeNode.SelectedImageKey = treeNode.ImageKey;
         }
@@ -222,8 +224,8 @@ namespace Finmer.Editor
                 {
                     String.IsNullOrWhiteSpace(sceneNode.Key) ? default_key : $"[{sceneNode.Key}]",
                     sceneNode.IsState ? String.Empty : sceneNode.Title,
-                    String.IsNullOrWhiteSpace(sceneNode.ScriptAction) ? String.Empty : "(!)",
-                    String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? String.Empty : "(?)",
+                    (sceneNode.ScriptAction != null && sceneNode.ScriptAction.HasContent()) ? "(!)" : String.Empty,
+                    (sceneNode.ScriptAppear != null && sceneNode.ScriptAppear.HasContent()) ? "(?)" : String.Empty,
                 };
                 treeNode.Text = String.Join(" ", elements.Where(str => !String.IsNullOrEmpty(str)));
             }
@@ -355,20 +357,20 @@ namespace Finmer.Editor
 
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptCustom.Name = m_Scene.Name + "_CustomScript";
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom);
+            m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
+            // TODO
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptEnter.Name = m_Scene.Name + "_OnEnter";
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter);
+            m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
+            // TODO
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptLeave.Name = m_Scene.Name + "_OnLeave";
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave);
+            m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
+            // TODO
         }
 
         private void scriptAction_TextChanged(object sender, EventArgs e)
@@ -376,7 +378,7 @@ namespace Finmer.Editor
             if (m_SkipDirtyUpdates) return;
 
             Dirty = true;
-            m_SelectedNode.ScriptAction = scriptAction.Text;
+            //m_SelectedNode.ScriptAction = scriptAction.Text; // TODO
         }
 
         private void scriptAppear_TextChanged(object sender, EventArgs e)
@@ -384,7 +386,7 @@ namespace Finmer.Editor
             if (m_SkipDirtyUpdates) return;
 
             Dirty = true;
-            m_SelectedNode.ScriptAppear = scriptAppear.Text;
+            //m_SelectedNode.ScriptAppear = scriptAppear.Text; // TODO
             UpdateNodeImage(m_SelectedTree, m_SelectedNode);
         }
 

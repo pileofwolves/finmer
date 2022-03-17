@@ -17,13 +17,8 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Contains a Lua script that is stored as an external file attachment.
     /// </summary>
-    public sealed class ScriptDataExternal : ScriptData
+    public sealed class ScriptDataExternal : ScriptDataInline
     {
-
-        /// <summary>
-        /// Gets or sets the script contents.
-        /// </summary>
-        public string ScriptText { get; set; } = String.Empty;
 
         public override void Serialize(IFurballContentWriter outstream)
         {
@@ -43,16 +38,6 @@ namespace Finmer.Core.Assets
 
             // Convert the UTF-8 bytestream to a string, or fall back on an empty script if the attachment was unavailable
             ScriptText = (source_utf8 != null) ? Encoding.UTF8.GetString(source_utf8) : String.Empty;
-        }
-
-        public override string GetScriptText()
-        {
-            return ScriptText;
-        }
-
-        public override bool HasContent()
-        {
-            return !String.IsNullOrWhiteSpace(ScriptText);
         }
 
         /// <summary>

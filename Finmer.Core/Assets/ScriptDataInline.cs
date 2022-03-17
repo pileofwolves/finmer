@@ -15,7 +15,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Contains a Lua script that is stored as an inline code snippet.
     /// </summary>
-    public sealed class ScriptDataInline : ScriptData
+    public class ScriptDataInline : ScriptData
     {
 
         private const string k_DefaultInlineScriptName = "InlineScript";

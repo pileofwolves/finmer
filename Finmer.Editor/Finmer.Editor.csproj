@@ -170,6 +170,25 @@
     <Compile Include="RibbonColorTableCustom.cs" />
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
+    <Compile Include="ScriptEditor\IScriptEditorContainer.cs" />
+    <Compile Include="ScriptEditor\VisualScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\VisualScriptEditor.Designer.cs">
+      <DependentUpon>VisualScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\RawScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\RawScriptEditor.Designer.cs">
+      <DependentUpon>RawScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\ScriptEditorHost.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\ScriptEditorHost.Designer.cs">
+      <DependentUpon>ScriptEditorHost.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="AssetPickerBrowser.resx">
       <DependentUpon>AssetPickerBrowser.cs</DependentUpon>
     </EmbeddedResource>
@@ -236,6 +255,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\VisualScriptEditor.resx">
+      <DependentUpon>VisualScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\RawScriptEditor.resx">
+      <DependentUpon>RawScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\ScriptEditorHost.resx">
+      <DependentUpon>ScriptEditorHost.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -332,6 +360,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FinmerIcon.ico" />
+    <None Include="Resources\arrow-circle-225-left.png" />
+    <None Include="Resources\arrow-circle-225.png" />
     <None Include="Resources\tags-label.png" />
     <None Include="Resources\bug--play.png" />
     <None Include="Resources\folder-import.png" />

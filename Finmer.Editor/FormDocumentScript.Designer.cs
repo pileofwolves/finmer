@@ -27,34 +27,35 @@
 		/// </summary>
 		private void InitializeComponent()
 		{
-			this.scintilla = new ScintillaNET.Scintilla();
-			this.SuspendLayout();
-			// 
-			// scintilla
-			// 
-			this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
-			this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-			this.scintilla.Location = new System.Drawing.Point(0, 0);
-			this.scintilla.Name = "scintilla";
-			this.scintilla.Size = new System.Drawing.Size(284, 261);
-			this.scintilla.TabIndex = 0;
-			this.scintilla.TextChanged += new System.EventHandler(this.scintilla_TextChanged);
-			// 
-			// frmDocumentScript
-			// 
-			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(284, 261);
-			this.Controls.Add(this.scintilla);
-			this.Name = "frmDocumentScript";
-			this.Text = "frmDocumentScript";
-			this.Load += new System.EventHandler(this.FormDocumentScript_Load);
-			this.ResumeLayout(false);
+            this.scriptEditorHost = new Finmer.Editor.ScriptEditorHost();
+            this.SuspendLayout();
+            // 
+            // scriptEditorHost
+            // 
+            this.scriptEditorHost.AllowExternalScript = true;
+            this.scriptEditorHost.AllowInlineScript = false;
+            this.scriptEditorHost.AllowVisualScript = false;
+            this.scriptEditorHost.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scriptEditorHost.Location = new System.Drawing.Point(0, 0);
+            this.scriptEditorHost.Name = "scriptEditorHost";
+            this.scriptEditorHost.Size = new System.Drawing.Size(284, 261);
+            this.scriptEditorHost.TabIndex = 0;
+            // 
+            // FormDocumentScript
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(284, 261);
+            this.Controls.Add(this.scriptEditorHost);
+            this.Name = "FormDocumentScript";
+            this.Text = "frmDocumentScript";
+            this.Load += new System.EventHandler(this.FormDocumentScript_Load);
+            this.ResumeLayout(false);
 
 		}
 
-		#endregion
+        #endregion
 
-		private ScintillaNET.Scintilla scintilla;
-	}
+        private ScriptEditorHost scriptEditorHost;
+    }
 }

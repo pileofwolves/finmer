@@ -15,7 +15,7 @@ namespace Finmer.Editor
     public partial class FormDocumentScript : AssetWindow
     {
 
-        private bool m_Ready;
+        private ScriptDataWrapper m_Wrapper;
 
         public FormDocumentScript()
         {
@@ -24,28 +24,33 @@ namespace Finmer.Editor
 
         private void FormDocumentScript_Load(object sender, EventArgs e)
         {
-            ScintillaHelper.Setup(scintilla);
+            AssetScript script = (AssetScript)Asset;
 
-            // TODO
-            var script = (AssetScript)Asset;
-            //scintilla.Text = script.GetScriptText();
-            scintilla.EmptyUndoBuffer();
-            m_Ready = true;
+            // If the script asset doesn't have an assigned script container yet, create one now
+            if (script.Contents == null)
+                script.Contents = new ScriptDataExternal { Name = Asset.Name };
+
+            // Create a dummy script wrapper. Script assets are always of type ScriptDataExternal, but to simplify the editor
+            // infrastructure, we hide this detail from the script editor mechanism.
+            m_Wrapper = ScriptDataWrapper.EnsureWrapped(script.Contents);
+
+            // Configure the editor host
+            scriptEditorHost.SetScript(m_Wrapper);
+            scriptEditorHost.Dirty += ScriptEditorHost_Dirty;
         }
 
-        private void scintilla_TextChanged(object sender, EventArgs e)
+        private void ScriptEditorHost_Dirty(object sender, EventArgs e)
         {
-            // Avoid marking the asset as dirty if we're still initializing
-            if (!m_Ready)
-                return;
-
+            // Pass the notification up to the AssetWindow
             Dirty = true;
         }
 
         public override void Flush()
         {
-            // TODO
             base.Flush();
+
+            // Flush the script editor
+            scriptEditorHost.Flush();
         }
 
     }

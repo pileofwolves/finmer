@@ -65,6 +65,10 @@
     <Compile Include="AssetPickerControl.Designer.cs">
       <DependentUpon>AssetPickerControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="AssetDummy.cs" />
+    <Compile Include="EditorWindow.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="AssetWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,11 +124,17 @@
     <Compile Include="FormDocumentScene.Designer.cs">
       <DependentUpon>FormDocumentScene.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDocumentScript.cs">
+    <Compile Include="FormDocumentScriptNested.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FormDocumentScript.Designer.cs">
-      <DependentUpon>FormDocumentScript.cs</DependentUpon>
+    <Compile Include="FormDocumentScriptNested.Designer.cs">
+      <DependentUpon>FormDocumentScriptNested.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormDocumentScriptExternal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDocumentScriptExternal.Designer.cs">
+      <DependentUpon>FormDocumentScriptExternal.cs</DependentUpon>
     </Compile>
     <Compile Include="FormDocumentStringTable.cs">
       <SubType>Form</SubType>
@@ -224,8 +234,11 @@
     <EmbeddedResource Include="FormDocumentScene.resx">
       <DependentUpon>FormDocumentScene.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDocumentScript.resx">
-      <DependentUpon>FormDocumentScript.cs</DependentUpon>
+    <EmbeddedResource Include="FormDocumentScriptNested.resx">
+      <DependentUpon>FormDocumentScriptNested.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormDocumentScriptExternal.resx">
+      <DependentUpon>FormDocumentScriptExternal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormDocumentStringTable.resx">
       <DependentUpon>FormDocumentStringTable.cs</DependentUpon>

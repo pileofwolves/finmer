@@ -96,9 +96,21 @@ namespace Finmer.Editor
         private void cmdEditUseScript_Click(object sender, EventArgs e)
         {
             var item = (AssetItem)Asset;
-            item.UseScript.Name = item.Name + "_UseScript";
 
-            Program.MainForm.OpenAssetEditor(item.UseScript);
+            // Ensure the UseScript is valid
+            if (item.UseScript == null)
+                item.UseScript = new AssetScript
+                {
+                    ID = Guid.NewGuid(),
+                    Name = item.Name + "_Use"
+                };
+
+            // Ensure the UseScript is wrapped so that the editor window can replace its subtype
+            var wrapper = ScriptDataWrapper.EnsureWrapped(item.UseScript.Contents);
+            item.UseScript.Contents = wrapper;
+
+            // Open it
+            Program.MainForm.OpenAssetEditor(wrapper);
         }
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)

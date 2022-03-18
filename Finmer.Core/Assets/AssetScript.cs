@@ -21,7 +21,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Container for the script data represented by this standalone asset.
         /// </summary>
-        public ScriptDataExternal Contents { get; set; }
+        public ScriptData Contents { get; set; }
 
         /// <summary>
         /// Binary precompiled version of the script, or null if unavailable.
@@ -49,7 +49,7 @@ namespace Finmer.Core.Assets
 
             if (version >= 16)
             {
-                Contents = instream.ReadNestedObjectProperty<ScriptDataExternal>("Contents", version);
+                Contents = instream.ReadNestedObjectProperty<ScriptData>("Contents", version);
             }
             else
             {

@@ -12,17 +12,20 @@ using Finmer.Core.Assets;
 namespace Finmer.Editor
 {
 
-    public partial class FormDocumentScript : AssetWindow
+    /// <summary>
+    /// Asset editor window that supports editing of ScriptDataExternal.
+    /// </summary>
+    public partial class FormDocumentScriptExternal : AssetWindow
     {
 
         private ScriptDataWrapper m_Wrapper;
 
-        public FormDocumentScript()
+        public FormDocumentScriptExternal()
         {
             InitializeComponent();
         }
 
-        private void FormDocumentScript_Load(object sender, EventArgs e)
+        private void FormDocumentScriptExternal_Load(object sender, EventArgs e)
         {
             AssetScript script = (AssetScript)Asset;
 

@@ -87,6 +87,10 @@ namespace Finmer.Core.Serialization
         /// </summary>
         private static EAssetType IdentifyAsset(IFurballSerializable asset)
         {
+            // Unwrap script wrappers
+            if (asset is ScriptDataWrapper wrapper)
+                asset = wrapper.Wrapped;
+
             switch (asset)
             {
                 case AssetScene _:                  return EAssetType.AssetScene;
@@ -94,11 +98,11 @@ namespace Finmer.Core.Serialization
                 case AssetCreature _:               return EAssetType.AssetCreature;
                 case AssetStringTable _:            return EAssetType.AssetStringTable;
                 case AssetScript _:                 return EAssetType.AssetScript;
+                case AssetFeat _:                   return EAssetType.AssetFeat;
+                case AssetJournal _:                return EAssetType.AssetJournal;
                 case ScriptDataExternal _:          return EAssetType.ScriptDataExternal;
                 case ScriptDataInline _:            return EAssetType.ScriptDataInline;
                 case ScriptDataVisual _:            return EAssetType.ScriptDataVisual;
-                case AssetFeat _:                   return EAssetType.AssetFeat;
-                case AssetJournal _:                return EAssetType.AssetJournal;
                 default:                            throw new FurballUnknownAssetException("Unknown asset class");
             }
         }

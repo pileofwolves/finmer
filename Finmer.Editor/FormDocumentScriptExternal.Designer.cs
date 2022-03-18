@@ -1,6 +1,6 @@
 ﻿namespace Finmer.Editor
 {
-	partial class FormDocumentScript
+	partial class FormDocumentScriptExternal
 	{
 		/// <summary>
 		/// Required designer variable.
@@ -41,15 +41,15 @@
             this.scriptEditorHost.Size = new System.Drawing.Size(284, 261);
             this.scriptEditorHost.TabIndex = 0;
             // 
-            // FormDocumentScript
+            // FormDocumentScriptExternal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.Controls.Add(this.scriptEditorHost);
-            this.Name = "FormDocumentScript";
-            this.Text = "frmDocumentScript";
-            this.Load += new System.EventHandler(this.FormDocumentScript_Load);
+            this.Name = "FormDocumentScriptExternal";
+            this.Text = "Script";
+            this.Load += new System.EventHandler(this.FormDocumentScriptExternal_Load);
             this.ResumeLayout(false);
 
 		}

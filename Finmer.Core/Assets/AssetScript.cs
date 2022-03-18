@@ -19,6 +19,16 @@ namespace Finmer.Core.Assets
     {
 
         /// <summary>
+        /// Describes which editor controls are relevant for a script.
+        /// </summary>
+        public enum EScriptType
+        {
+            Action,
+            Condition,
+            ExternalOnly
+        }
+
+        /// <summary>
         /// Container for the script data represented by this standalone asset.
         /// </summary>
         public ScriptData Contents { get; set; }
@@ -27,6 +37,11 @@ namespace Finmer.Core.Assets
         /// Binary precompiled version of the script, or null if unavailable.
         /// </summary>
         public CompiledScript PrecompiledScript { get; set; }
+
+        /// <summary>
+        /// The type of editor controls to show for this script.
+        /// </summary>
+        public EScriptType EditorType { get; set; } = EScriptType.ExternalOnly;
 
         /// <summary>
         /// Returns the Lua script text contained by this asset, or an empty string if unset.

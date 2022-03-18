@@ -79,10 +79,13 @@ namespace Finmer.Editor
             Debug.Assert(AllowInlineScript);
             Debug.Assert(!(m_Wrapper.Wrapped is ScriptDataInline));
 
+            if (!ConfirmConvertWarning())
+                return;
+
             // Instantiate a new script that copies the target script's content
             var replacement = new ScriptDataInline
             {
-                Name = m_Wrapper.Wrapped.Name,
+                Name = m_Wrapper.Name,
                 ScriptText = m_Wrapper.GetScriptText()
             };
 
@@ -95,10 +98,13 @@ namespace Finmer.Editor
             Debug.Assert(AllowExternalScript);
             Debug.Assert(!(m_Wrapper.Wrapped is ScriptDataExternal));
 
+            if (!ConfirmConvertWarning())
+                return;
+
             // Instantiate a new script that copies the target script's content
             var replacement = new ScriptDataExternal
             {
-                Name = m_Wrapper.Wrapped.Name,
+                Name = m_Wrapper.Name,
                 ScriptText = m_Wrapper.GetScriptText()
             };
 
@@ -111,11 +117,14 @@ namespace Finmer.Editor
             Debug.Assert(AllowVisualScript);
             Debug.Assert(!(m_Wrapper.Wrapped is ScriptDataVisual));
 
+            if (!ConfirmConvertWarning())
+                return;
+
             // Instantiate an empty visual script
             // (We currently have no reasonable way of converting a Lua script to its node graph equivalent)
             var replacement = new ScriptDataVisual
             {
-                Name = m_Wrapper.Wrapped.Name
+                Name = m_Wrapper.Name
             };
 
             m_Wrapper.Wrapped = replacement;
@@ -133,6 +142,10 @@ namespace Finmer.Editor
             // Instantiate a new one
             switch (m_Wrapper.Wrapped)
             {
+                case null:
+                    m_ClientEditor = new NullScriptEditor(this);
+                    break;
+
                 case ScriptDataInline wrapped:
                     m_ClientEditor = new RawScriptEditor(this, wrapped);
                     break;
@@ -150,6 +163,17 @@ namespace Finmer.Editor
             m_ClientEditor.Dock = DockStyle.Fill;
 
             ResumeLayout();
+        }
+
+        private bool ConfirmConvertWarning()
+        {
+            // If there is no script to begin with, then there is no data to convert
+            if (m_Wrapper.Wrapped == null)
+                return true;
+
+            // Otherwise, show a data loss warning
+            var dr = MessageBox.Show("Converting the script to a different type is a destructive operation and cannot be undone. Are you sure you wish to proceed?", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
+            return dr == DialogResult.Yes;
         }
 
     }

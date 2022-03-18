@@ -181,6 +181,12 @@
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
     <Compile Include="ScriptEditor\IScriptEditorContainer.cs" />
+    <Compile Include="ScriptEditor\NullScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\NullScriptEditor.Designer.cs">
+      <DependentUpon>NullScriptEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\VisualScriptEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -268,6 +274,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\NullScriptEditor.resx">
+      <DependentUpon>NullScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\VisualScriptEditor.resx">
       <DependentUpon>VisualScriptEditor.cs</DependentUpon>
     </EmbeddedResource>

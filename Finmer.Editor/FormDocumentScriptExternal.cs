@@ -33,9 +33,9 @@ namespace Finmer.Editor
             if (script.Contents == null)
                 script.Contents = new ScriptDataExternal { Name = Asset.Name };
 
-            // Create a dummy script wrapper. Script assets are always of type ScriptDataExternal, but to simplify the editor
-            // infrastructure, we hide this detail from the script editor mechanism.
+            // Wrap the script to ensure we can modify its subtype
             m_Wrapper = ScriptDataWrapper.EnsureWrapped(script.Contents);
+            script.Contents = m_Wrapper;
 
             // Configure the editor host
             scriptEditorHost.SetScript(m_Wrapper);
@@ -51,6 +51,10 @@ namespace Finmer.Editor
         public override void Flush()
         {
             base.Flush();
+
+            // Update the script name, in case it was changed
+            m_Wrapper.Name = Name;
+            m_Wrapper.Wrapped.Name = Name;
 
             // Flush the script editor
             scriptEditorHost.Flush();

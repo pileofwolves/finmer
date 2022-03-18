@@ -198,10 +198,30 @@ namespace Finmer.Core.Assets
                     UseScript.Deserialize(instream, version);
                     instream.EndObject();
                 }
+
+                // If there is no UseScript object, instantiate one now
+                if (UseScript == null)
+                    UseScript = new AssetScript
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = GetUseScriptName()
+                    };
+
+                // Assign the script's purpose
+                UseScript.EditorType = AssetScript.EScriptType.Action;
             }
 
             // Icon data
             InventoryIcon = instream.ReadAttachment(GetIconAttachmentName());
+        }
+
+        /// <summary>
+        /// Returns the name that the UseScript should have. Used to reduce code duplication.
+        /// </summary>
+        /// <returns></returns>
+        public string GetUseScriptName()
+        {
+            return Name + "_Use";
         }
 
         /// <summary>

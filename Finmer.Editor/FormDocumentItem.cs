@@ -89,6 +89,10 @@ namespace Finmer.Editor
             item.CanUseInField = chkUseField.Checked;
             item.CanUseInBattle = chkUseBattle.Checked;
 
+            // Update UseScript name
+            if (item.UseScript != null)
+                item.UseScript.Name = item.GetUseScriptName();
+
             // Inventory icon
             item.InventoryIcon = m_IconBytes;
         }
@@ -97,16 +101,9 @@ namespace Finmer.Editor
         {
             var item = (AssetItem)Asset;
 
-            // Ensure the UseScript is valid
-            if (item.UseScript == null)
-                item.UseScript = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = item.Name + "_Use"
-                };
-
             // Ensure the UseScript is wrapped so that the editor window can replace its subtype
             var wrapper = ScriptDataWrapper.EnsureWrapped(item.UseScript.Contents);
+            wrapper.Name = item.GetUseScriptName();
             item.UseScript.Contents = wrapper;
 
             // Open it
@@ -120,6 +117,18 @@ namespace Finmer.Editor
             // Show/hide the appropriate UI bits
             fraEquipment.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
             fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
+
+            // Configure Usable items
+            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable)
+            {
+                // If there is no UseScript object, instantiate one now
+                if (item.UseScript == null)
+                    item.UseScript = new AssetScript
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = item.GetUseScriptName()
+                    };
+            }
         }
 
         private void UpdateIcon(byte[] newImage)

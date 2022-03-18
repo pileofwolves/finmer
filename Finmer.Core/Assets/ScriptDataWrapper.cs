@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.Assets
@@ -39,12 +40,12 @@ namespace Finmer.Core.Assets
 
         public override string GetScriptText()
         {
-            return Wrapped.GetScriptText();
+            return Wrapped?.GetScriptText() ?? String.Empty;
         }
 
         public override bool HasContent()
         {
-            return Wrapped.HasContent();
+            return Wrapped != null && Wrapped.HasContent();
         }
 
         public static ScriptDataWrapper EnsureWrapped(ScriptData data)
@@ -56,7 +57,7 @@ namespace Finmer.Core.Assets
             // Otherwise, create a new wrapper
             return new ScriptDataWrapper(data)
             {
-                Name = data.Name
+                Name = data?.Name ?? String.Empty
             };
         }
 

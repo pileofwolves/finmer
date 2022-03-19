@@ -166,6 +166,9 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\FormScriptNode.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="FormStringMappingEdit.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -180,12 +183,25 @@
     <Compile Include="RibbonColorTableCustom.cs" />
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
+    <Compile Include="ScriptEditor\FormScriptNodeLuaSnippet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeLuaSnippet.Designer.cs">
+      <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\IScriptEditorContainer.cs" />
     <Compile Include="ScriptEditor\NullScriptEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ScriptEditor\NullScriptEditor.Designer.cs">
       <DependentUpon>NullScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\ScriptNodeFormMapper.cs" />
+    <Compile Include="ScriptEditor\FormVisualScriptCommandPalette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormVisualScriptCommandPalette.Designer.cs">
+      <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\VisualScriptEditor.cs">
       <SubType>UserControl</SubType>
@@ -274,8 +290,14 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeLuaSnippet.resx">
+      <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\NullScriptEditor.resx">
       <DependentUpon>NullScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormVisualScriptCommandPalette.resx">
+      <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\VisualScriptEditor.resx">
       <DependentUpon>VisualScriptEditor.cs</DependentUpon>

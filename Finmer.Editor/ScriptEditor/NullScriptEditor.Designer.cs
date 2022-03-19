@@ -29,29 +29,30 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.GroupBox groupBox;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label label1;
+            this.groupBox = new System.Windows.Forms.GroupBox();
             this.cmdCreateRaw = new System.Windows.Forms.Button();
             this.cmdCreateVisual = new System.Windows.Forms.Button();
-            groupBox = new System.Windows.Forms.GroupBox();
+            this.lblEmptyNotice = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
-            groupBox.SuspendLayout();
+            this.groupBox.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox
             // 
-            groupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
-            groupBox.Controls.Add(label2);
-            groupBox.Controls.Add(this.cmdCreateRaw);
-            groupBox.Controls.Add(label1);
-            groupBox.Controls.Add(this.cmdCreateVisual);
-            groupBox.Location = new System.Drawing.Point(16, 16);
-            groupBox.Name = "groupBox";
-            groupBox.Size = new System.Drawing.Size(224, 200);
-            groupBox.TabIndex = 0;
-            groupBox.TabStop = false;
+            this.groupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.groupBox.Controls.Add(label2);
+            this.groupBox.Controls.Add(this.cmdCreateRaw);
+            this.groupBox.Controls.Add(label1);
+            this.groupBox.Controls.Add(this.cmdCreateVisual);
+            this.groupBox.Location = new System.Drawing.Point(16, 16);
+            this.groupBox.Name = "groupBox";
+            this.groupBox.Size = new System.Drawing.Size(224, 200);
+            this.groupBox.TabIndex = 0;
+            this.groupBox.TabStop = false;
+            this.groupBox.Visible = false;
             // 
             // label2
             // 
@@ -60,6 +61,14 @@ namespace Finmer.Editor
             label2.Size = new System.Drawing.Size(192, 32);
             label2.TabIndex = 3;
             label2.Text = "Write Lua script code directly. Recommended for advanced users.";
+            // 
+            // label1
+            // 
+            label1.Location = new System.Drawing.Point(16, 64);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(192, 32);
+            label1.TabIndex = 1;
+            label1.Text = "Visually arrange bite-sized commands. Recommended for most users.";
             // 
             // cmdCreateRaw
             // 
@@ -75,14 +84,6 @@ namespace Finmer.Editor
             this.cmdCreateRaw.UseVisualStyleBackColor = true;
             this.cmdCreateRaw.Click += new System.EventHandler(this.cmdCreateRaw_Click);
             // 
-            // label1
-            // 
-            label1.Location = new System.Drawing.Point(16, 64);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(192, 32);
-            label1.TabIndex = 1;
-            label1.Text = "Visually arrange bite-sized commands. Recommended for most users.";
-            // 
             // cmdCreateVisual
             // 
             this.cmdCreateVisual.Enabled = false;
@@ -97,14 +98,27 @@ namespace Finmer.Editor
             this.cmdCreateVisual.UseVisualStyleBackColor = true;
             this.cmdCreateVisual.Click += new System.EventHandler(this.cmdCreateVisual_Click);
             // 
+            // lblEmptyNotice
+            // 
+            this.lblEmptyNotice.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEmptyNotice.Location = new System.Drawing.Point(0, 0);
+            this.lblEmptyNotice.Name = "lblEmptyNotice";
+            this.lblEmptyNotice.Size = new System.Drawing.Size(256, 232);
+            this.lblEmptyNotice.TabIndex = 1;
+            this.lblEmptyNotice.Text = "This script is empty.\r\n\r\nMove your mouse here to create one!";
+            this.lblEmptyNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblEmptyNotice.MouseEnter += new System.EventHandler(this.lblEmptyNotice_MouseEnter);
+            // 
             // NullScriptEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(groupBox);
+            this.Controls.Add(this.groupBox);
+            this.Controls.Add(this.lblEmptyNotice);
             this.Name = "NullScriptEditor";
             this.Size = new System.Drawing.Size(258, 233);
-            groupBox.ResumeLayout(false);
+            this.MouseLeave += new System.EventHandler(this.NullScriptEditor_MouseLeave);
+            this.groupBox.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -113,5 +127,7 @@ namespace Finmer.Editor
 
         private System.Windows.Forms.Button cmdCreateVisual;
         private System.Windows.Forms.Button cmdCreateRaw;
+        private System.Windows.Forms.Label lblEmptyNotice;
+        private System.Windows.Forms.GroupBox groupBox;
     }
 }

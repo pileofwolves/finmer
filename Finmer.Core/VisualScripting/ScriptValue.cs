@@ -10,8 +10,8 @@ namespace Finmer.Core.VisualScripting
 {
 
     /// <summary>
-    /// Represents an executable command script node.
+    /// Represents a value transformer script node.
     /// </summary>
-    public abstract class ScriptCommand : ScriptNode {}
+    public abstract class ScriptValue : ScriptNode {}
 
 }

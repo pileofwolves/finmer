@@ -6,7 +6,10 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System.Collections.Generic;
+using System.Text;
 using Finmer.Core.Serialization;
+using Finmer.Core.VisualScripting;
 
 namespace Finmer.Core.Assets
 {
@@ -17,24 +20,42 @@ namespace Finmer.Core.Assets
     public sealed class ScriptDataVisual : ScriptData
     {
 
+        /// <summary>
+        /// The collection of nodes that make up this script.
+        /// </summary>
+        public List<ScriptNode> Nodes { get; } = new List<ScriptNode>();
+
         public override string GetScriptText()
         {
-            throw new System.NotImplementedException();
+            var output = new StringBuilder();
+
+            // Recursively allow each node to emit Lua code into the output
+            foreach (var node in Nodes)
+                node.EmitLua(output);
+
+            return output.ToString();
         }
 
         public override bool HasContent()
         {
-            throw new System.NotImplementedException();
+            return Nodes.Count > 0;
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            throw new System.NotImplementedException();
+            // Write node array
+            outstream.BeginArray("Nodes", Nodes.Count);
+            foreach (var node in Nodes)
+                outstream.WriteNestedObjectProperty(null, node);
+            outstream.EndArray();
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            throw new System.NotImplementedException();
+            // Recursively deserialize each of the nodes in the node array
+            for (int i = 0, count = instream.BeginArray("Nodes"); i < count; i++)
+                Nodes.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
+            instream.EndArray();
         }
 
     }

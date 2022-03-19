@@ -48,6 +48,24 @@ namespace Finmer.Editor
                 m_Host.ConvertToInline();
         }
 
+        private void NullScriptEditor_MouseLeave(object sender, System.EventArgs e)
+        {
+            // If the cursor is still inside the script editor control, don't hide the popup menu
+            if (ClientRectangle.Contains(PointToClient(Cursor.Position)))
+                return;
+
+            lblEmptyNotice.Visible = true;
+            groupBox.Visible = false;
+        }
+
+        private void lblEmptyNotice_MouseEnter(object sender, System.EventArgs e)
+        {
+            // Replace empty notice with a popup-like menu
+            // This is done to reduce visual clutter; the script creation menu is quite busy on the eye.
+            lblEmptyNotice.Visible = false;
+            groupBox.Visible = true;
+        }
+
     }
 
 }

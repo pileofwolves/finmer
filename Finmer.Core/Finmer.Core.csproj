@@ -95,6 +95,10 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandInlineSnippet.cs" />
+    <Compile Include="VisualScripting\ScriptCommandContainer.cs" />
+    <Compile Include="VisualScripting\ScriptNode.cs" />
+    <Compile Include="VisualScripting\ScriptValue.cs" />
     <Compile Include="VisualScripting\ScriptCommand.cs" />
   </ItemGroup>
   <ItemGroup>

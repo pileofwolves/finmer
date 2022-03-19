@@ -6,6 +6,11 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Linq.Expressions;
+using System.Reflection;
 using Finmer.Core.Assets;
 
 namespace Finmer.Core.Serialization
@@ -17,21 +22,29 @@ namespace Finmer.Core.Serialization
     public static class AssetSerializer
     {
 
-        /// <summary>
-        /// Identifies the derived type of an asset.
-        /// </summary>
-        private enum EAssetType
+        private static readonly Dictionary<string, Func<IFurballSerializable>> s_NameToObjectMap;
+
+        static AssetSerializer()
         {
-            AssetScene,
-            AssetItem,
-            AssetCreature,
-            AssetStringTable,
-            AssetScript,
-            AssetFeat,
-            AssetJournal,
-            ScriptDataExternal,
-            ScriptDataInline,
-            ScriptDataVisual,
+            s_NameToObjectMap = new Dictionary<string, Func<IFurballSerializable>>();
+
+            // Discover all IFurballSerializable types in this assembly
+            var assembly = Assembly.GetCallingAssembly();
+            var furball_types = assembly.GetExportedTypes()
+                .Where(t => !t.IsAbstract && typeof(IFurballSerializable).IsAssignableFrom(t))
+                .Where(t => t != typeof(ScriptDataWrapper)); // Explicitly excluded, not meant to be serialized
+
+            // Register those types
+            foreach (var type in furball_types)
+            {
+                // Advanced wizardry: dynamically compile a lambda that will produce a new instance of the input type when called.
+                // This is much, much faster than using Activator.CreateInstance() to produce instances.
+                var ctor = Expression.Lambda<Func<IFurballSerializable>>(
+                    Expression.New(type.GetConstructor(Type.EmptyTypes))).Compile();
+
+                // Store the type
+                s_NameToObjectMap.Add(type.Name, ctor);
+            }
         }
 
         /// <summary>
@@ -40,7 +53,7 @@ namespace Finmer.Core.Serialization
         public static IFurballSerializable DeserializeAsset(IFurballContentReader instream, int version)
         {
             // Instantiate the asset itself
-            var type = instream.ReadEnumProperty<EAssetType>(@"!Type");
+            var type = instream.ReadStringProperty(@"!Type");
             var asset = InstantiateAsset(type);
 
             // Read its data from stream
@@ -55,7 +68,7 @@ namespace Finmer.Core.Serialization
         public static void SerializeAsset(IFurballContentWriter outstream, IFurballSerializable asset)
         {
             // Write the type identifier to the stream
-            outstream.WriteEnumProperty(@"!Type", IdentifyAsset(asset));
+            outstream.WriteStringProperty(@"!Type", IdentifyAsset(asset));
 
             // Write asset contents
             asset.Serialize(outstream);
@@ -64,47 +77,27 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Factory function that instantiates an asset object based on its type ID.
         /// </summary>
-        private static IFurballSerializable InstantiateAsset(EAssetType type)
+        private static IFurballSerializable InstantiateAsset(string typeName)
         {
-            switch (type)
-            {
-                case EAssetType.AssetScene:         return new AssetScene();
-                case EAssetType.AssetItem:          return new AssetItem();
-                case EAssetType.AssetCreature:      return new AssetCreature();
-                case EAssetType.AssetStringTable:   return new AssetStringTable();
-                case EAssetType.AssetScript:        return new AssetScript();
-                case EAssetType.ScriptDataExternal: return new ScriptDataExternal();
-                case EAssetType.ScriptDataInline:   return new ScriptDataInline();
-                case EAssetType.ScriptDataVisual:   return new ScriptDataVisual();
-                case EAssetType.AssetFeat:          return new AssetFeat();
-                case EAssetType.AssetJournal:       return new AssetJournal();
-                default:                            throw new FurballUnknownAssetException("Unknown asset type ID");
-            }
+            // Find the constructor that will produce an instance of the desired asset
+            if (s_NameToObjectMap.TryGetValue(typeName, out var ctor))
+                return ctor();
+
+            throw new FurballUnknownAssetException("Unknown asset type ID");
         }
 
         /// <summary>
         /// Given an asset instance, returns the value that must be passed to InstantiateAsset() to return a new instance of the same type.
         /// </summary>
-        private static EAssetType IdentifyAsset(IFurballSerializable asset)
+        private static string IdentifyAsset(IFurballSerializable asset)
         {
             // Unwrap script wrappers
             if (asset is ScriptDataWrapper wrapper)
                 asset = wrapper.Wrapped;
 
-            switch (asset)
-            {
-                case AssetScene _:                  return EAssetType.AssetScene;
-                case AssetItem _:                   return EAssetType.AssetItem;
-                case AssetCreature _:               return EAssetType.AssetCreature;
-                case AssetStringTable _:            return EAssetType.AssetStringTable;
-                case AssetScript _:                 return EAssetType.AssetScript;
-                case AssetFeat _:                   return EAssetType.AssetFeat;
-                case AssetJournal _:                return EAssetType.AssetJournal;
-                case ScriptDataExternal _:          return EAssetType.ScriptDataExternal;
-                case ScriptDataInline _:            return EAssetType.ScriptDataInline;
-                case ScriptDataVisual _:            return EAssetType.ScriptDataVisual;
-                default:                            throw new FurballUnknownAssetException("Unknown asset class");
-            }
+            // Simply return the name of the object's type. We don't perform any further checks or lookups here since we assume
+            // that, as it is derived from IFurballSerializable, at deserialization time the type is present in the ctor lookup table.
+            return asset.GetType().Name;
         }
 
     }

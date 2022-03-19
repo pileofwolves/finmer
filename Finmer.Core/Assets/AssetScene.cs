@@ -203,8 +203,8 @@ namespace Finmer.Core.Assets
                 // Generic node settings
                 else
                 {
-                    outstream.WriteNestedObjectProperty("ScriptAction", ScriptAction);
-                    outstream.WriteNestedObjectProperty("ScriptAppear", ScriptAppear);
+                    outstream.WriteNestedScriptProperty("ScriptAction", ScriptAction);
+                    outstream.WriteNestedScriptProperty("ScriptAppear", ScriptAppear);
 
                     // Recursively serialize child nodes
                     outstream.BeginArray("Children", Children.Count);

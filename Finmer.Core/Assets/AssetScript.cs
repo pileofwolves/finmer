@@ -55,7 +55,7 @@ namespace Finmer.Core.Assets
         {
             base.Serialize(outstream);
 
-            outstream.WriteNestedObjectProperty("Contents", Contents);
+            outstream.WriteNestedScriptProperty("Contents", Contents);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)

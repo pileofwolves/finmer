@@ -61,6 +61,27 @@ namespace Finmer.Core.Assets
             };
         }
 
+
+    }
+
+    /// <summary>
+    /// Provides extension methods related to script serialization.
+    /// </summary>
+    public static class ScriptDataExtensionMethods
+    {
+
+        /// <summary>
+        /// Helper for writing a nested script object property only if the script is not empty.
+        /// </summary>
+        public static void WriteNestedScriptProperty(this IFurballContentWriter outstream, string key, ScriptData data)
+        {
+            // If the script is empty, then don't bother serializing it at all
+            if (data != null && !data.HasContent())
+                data = null;
+
+            outstream.WriteNestedObjectProperty(key, data);
+        }
+
     }
 
 }

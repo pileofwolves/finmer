@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.IO;
+using System;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -14,40 +14,39 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Command that injects a user-specified raw and unfiltered block of Lua code into the output.
+    /// Command that does not emit any code, and serves only as an administrative tool for the user.
     /// </summary>
-    public sealed class CommandInlineSnippet : ScriptCommand
+    public sealed class CommandComment : ScriptCommand
     {
 
         /// <summary>
-        /// The Lua code to add to the output script.
+        /// The body text of the comment.
         /// </summary>
-        public string Snippet { get; set; }
+        public string Comment { get; set; } = String.Empty;
 
         public override string GetEditorDescription()
         {
-            // Return the first line of the script
-            return "Lua: " + new StringReader(Snippet).ReadLine() + " ...";
+            return "Comment: " + Comment;
         }
 
         public override EColor GetEditorColor()
         {
-            return EColor.Code;
+            return EColor.Comment;
         }
 
         public override void EmitLua(StringBuilder output)
         {
-            output.AppendLine(Snippet);
+            // No code to emit
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteStringProperty("Snippet", Snippet);
+            outstream.WriteStringProperty("Comment", Comment);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Snippet = instream.ReadStringProperty("Snippet");
+            Comment = instream.ReadStringProperty("Comment");
         }
 
     }

@@ -183,6 +183,24 @@
     <Compile Include="RibbonColorTableCustom.cs" />
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
+    <Compile Include="ScriptEditor\FormScriptNodeComment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeComment.Designer.cs">
+      <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeSingleInt.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeSingleInt.Designer.cs">
+      <DependentUpon>FormScriptNodeSingleInt.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeSingleFloat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeSingleFloat.Designer.cs">
+      <DependentUpon>FormScriptNodeSingleFloat.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\FormScriptNodeLuaSnippet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -290,6 +308,15 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeComment.resx">
+      <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeSingleInt.resx">
+      <DependentUpon>FormScriptNodeSingleInt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeSingleFloat.resx">
+      <DependentUpon>FormScriptNodeSingleFloat.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLuaSnippet.resx">
       <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
     </EmbeddedResource>

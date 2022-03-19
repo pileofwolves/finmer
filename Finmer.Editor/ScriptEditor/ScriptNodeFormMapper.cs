@@ -22,7 +22,9 @@ namespace Finmer.Editor
 
         private static readonly Dictionary<Type, Func<FormScriptNode>> s_NodeMap = new Dictionary<Type, Func<FormScriptNode>>
         {
-            { typeof(CommandInlineSnippet),         () => new FormScriptNodeLuaSnippet() }
+            { typeof(CommandComment),               () => new FormScriptNodeComment() },
+            { typeof(CommandSleep),                 () => new FormScriptNodeSingleFloat() },
+            { typeof(CommandInlineSnippet),         () => new FormScriptNodeLuaSnippet() },
         };
 
         /// <summary>

@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptNodeLuaSnippet
+    partial class FormScriptNodeSingleInt
     {
         /// <summary>
         /// Required designer variable.
@@ -29,30 +29,31 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            this.scintilla = new ScintillaNET.Scintilla();
+            System.Windows.Forms.Label label1;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.nudValue = new System.Windows.Forms.NumericUpDown();
+            label1 = new System.Windows.Forms.Label();
+            ((System.ComponentModel.ISupportInitialize)(this.nudValue)).BeginInit();
             this.SuspendLayout();
             // 
-            // scintilla
+            // label1
             // 
-            this.scintilla.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.scintilla.Location = new System.Drawing.Point(0, 0);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(496, 312);
-            this.scintilla.TabIndex = 0;
-            this.scintilla.Text = "scintilla1";
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 16);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(58, 13);
+            label1.TabIndex = 3;
+            label1.Text = "Parameter:";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(232, 328);
+            this.cmdAccept.Location = new System.Drawing.Point(54, 97);
             this.cmdAccept.Name = "cmdAccept";
-            this.cmdAccept.Size = new System.Drawing.Size(120, 32);
+            this.cmdAccept.Size = new System.Drawing.Size(121, 32);
             this.cmdAccept.TabIndex = 1;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
@@ -65,41 +66,51 @@ namespace Finmer.Editor
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(360, 328);
+            this.cmdCancel.Location = new System.Drawing.Point(182, 97);
             this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(120, 32);
+            this.cmdCancel.Size = new System.Drawing.Size(121, 32);
             this.cmdCancel.TabIndex = 2;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // FormScriptNodeLuaSnippet
+            // nudValue
+            // 
+            this.nudValue.Location = new System.Drawing.Point(16, 32);
+            this.nudValue.Name = "nudValue";
+            this.nudValue.Size = new System.Drawing.Size(120, 20);
+            this.nudValue.TabIndex = 4;
+            this.nudValue.ThousandsSeparator = true;
+            // 
+            // FormScriptNodeSingleInt
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(497, 377);
+            this.ClientSize = new System.Drawing.Size(320, 146);
+            this.Controls.Add(this.nudValue);
+            this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
-            this.Controls.Add(this.scintilla);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptNodeLuaSnippet";
+            this.Name = "FormScriptNodeSingleInt";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Inline Lua Script";
-            this.Load += new System.EventHandler(this.FormScriptNodeLuaSnippet_Load);
+            this.Text = "Edit Single Int32";
+            this.Load += new System.EventHandler(this.FormScriptNodeSingleInt_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.nudValue)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private ScintillaNET.Scintilla scintilla;
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
+        private System.Windows.Forms.NumericUpDown nudValue;
     }
 }

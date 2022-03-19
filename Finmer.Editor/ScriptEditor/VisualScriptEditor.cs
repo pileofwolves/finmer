@@ -89,21 +89,21 @@ namespace Finmer.Editor
             foreach (ScriptNode node in nodes)
             {
                 // Add node
-                AddItemToTree(node.GetEditorDescription(), node.GetEditorColor(), node);
+                AddItemToTree(indent_prefix + node.GetEditorDescription(), node.GetEditorColor(), node);
 
                 // If this node is itself a container for nodes, we need to recurse
                 if (node is ScriptCommandContainer container)
                 {
                     // Add the first set of nodes
                     RebuildNodeTreeFromCollection(container.Subgroup1, indentLevel + 1);
-                    AddItemToTree(container.GetEditorSubgroup1Suffix(), node.GetEditorColor(), null);
+                    AddItemToTree(indent_prefix + container.GetEditorSubgroup1Suffix(), node.GetEditorColor(), null);
 
                     // The second subgroup may or may not be present
                     if (container.IsSubgroup2Enabled())
                     {
                         // Add the second set of nodes
                         RebuildNodeTreeFromCollection(container.Subgroup2, indentLevel + 1);
-                        AddItemToTree(container.GetEditorSubgroup2Suffix(), node.GetEditorColor(), null);
+                        AddItemToTree(indent_prefix + container.GetEditorSubgroup2Suffix(), node.GetEditorColor(), null);
                     }
                 }
             }
@@ -135,7 +135,7 @@ namespace Finmer.Editor
                 case ScriptNode.EColor.System:              return Color.DimGray;
                 case ScriptNode.EColor.Code:                return Color.Gray;
                 case ScriptNode.EColor.Comment:             return Color.ForestGreen;
-                case ScriptNode.EColor.FlowControl:         return Color.DodgerBlue;
+                case ScriptNode.EColor.FlowControl:         return Color.RoyalBlue;
                 case ScriptNode.EColor.SceneControl:        return Color.DarkRed;
                 case ScriptNode.EColor.Global:              return Color.DarkSlateBlue;
                 case ScriptNode.EColor.SaveData:            return Color.DarkSlateGray;
@@ -160,6 +160,11 @@ namespace Finmer.Editor
                     // This is a node we can edit
                     using (FormScriptNode editor_form = ScriptNodeFormMapper.CreateEditorForm(node))
                     {
+                        // If this node cannot be edited, there's nothing more to do
+                        if (editor_form == null)
+                            return;
+
+                        // Display the node edit dialog
                         if (editor_form.ShowDialog(this) == DialogResult.OK)
                             // Update the node
                             selected_item.Text = node.GetEditorDescription();
@@ -187,6 +192,18 @@ namespace Finmer.Editor
                     break;
                 }
             }
+        }
+
+        private void lsvNodes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // Must have a selection to open
+            if (lsvNodes.SelectedItems.Count != 1)
+                return;
+
+            // If the node is a dummy - not a script node, nor a new node placeholder - then the user can't select it
+            ListViewItem selected_item = lsvNodes.SelectedItems[0];
+            if (selected_item.Tag == null)
+                lsvNodes.SelectedItems.Clear();
         }
 
         /// <summary>

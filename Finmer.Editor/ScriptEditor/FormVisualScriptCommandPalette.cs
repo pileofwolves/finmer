@@ -63,6 +63,35 @@ namespace Finmer.Editor
             AddScriptNode(new CommandInlineSnippet());
         }
 
+        private void cmdFlowIf_Click(object sender, System.EventArgs e)
+        {
+            // TODO
+        }
+
+        private void cmdFlowLoop_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLoop());
+        }
+
+        private void cmdFlowLoopBreak_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLoopBreak());
+        }
+
+        private void cmdFlowExit_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandExitScript());
+        }
+
+        private void cmdFlowSleep_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSleep());
+        }
+
+        private void cmdFlowComment_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandComment());
+        }
     }
 
 }

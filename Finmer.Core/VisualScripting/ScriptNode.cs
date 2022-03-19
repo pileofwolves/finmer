@@ -49,9 +49,9 @@ namespace Finmer.Core.VisualScripting
         /// </summary>
         public abstract void EmitLua(StringBuilder output);
 
-        public abstract void Serialize(IFurballContentWriter outstream);
+        public virtual void Serialize(IFurballContentWriter outstream) {}
 
-        public abstract void Deserialize(IFurballContentReader instream, int version);
+        public virtual void Deserialize(IFurballContentReader instream, int version) {}
 
     }
 

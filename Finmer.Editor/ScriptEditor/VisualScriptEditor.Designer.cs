@@ -66,6 +66,7 @@ namespace Finmer.Editor
             this.lsvNodes.TabIndex = 1;
             this.lsvNodes.UseCompatibleStateImageBehavior = false;
             this.lsvNodes.View = System.Windows.Forms.View.Details;
+            this.lsvNodes.SelectedIndexChanged += new System.EventHandler(this.lsvNodes_SelectedIndexChanged);
             this.lsvNodes.DoubleClick += new System.EventHandler(this.lsvNodes_DoubleClick);
             // 
             // clhImplicitHeader

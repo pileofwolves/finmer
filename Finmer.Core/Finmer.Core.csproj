@@ -95,7 +95,14 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandComment.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandSleep.cs" />
     <Compile Include="VisualScripting\Nodes\CommandInlineSnippet.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandExitScript.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLoopBreak.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLoop.cs" />
+    <Compile Include="VisualScripting\ScriptCommandSingleFloat.cs" />
+    <Compile Include="VisualScripting\ScriptCommandSingleInt.cs" />
     <Compile Include="VisualScripting\ScriptCommandContainer.cs" />
     <Compile Include="VisualScripting\ScriptNode.cs" />
     <Compile Include="VisualScripting\ScriptValue.cs" />

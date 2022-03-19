@@ -45,8 +45,6 @@ namespace Finmer.Editor
         private void FormDocumentScene_Load(object sender, EventArgs e)
         {
             m_Scene = (AssetScene)Asset;
-            ScintillaHelper.Setup(scriptAction);
-            ScintillaHelper.Setup(scriptAppear);
 
             UpdateScriptButtonIcons();
             AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
@@ -63,6 +61,11 @@ namespace Finmer.Editor
         public override void Flush()
         {
             base.Flush();
+
+            // Ensure script names are up-to-date with the asset name
+            m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
+            m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
+            m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
 
             UpdateScriptButtonIcons();
         }
@@ -94,10 +97,14 @@ namespace Finmer.Editor
             txtNodeTitle.Text = m_SelectedNode.Title;
             txtNodeTooltip.Text = m_SelectedNode.Tooltip;
             cmbLinkTarget.Text = m_SelectedNode.LinkTarget;
-            //scriptAction.Text = m_SelectedNode.ScriptAction; // TODO
-            //scriptAppear.Text = m_SelectedNode.ScriptAppear;
-            scriptAction.EmptyUndoBuffer();
-            scriptAppear.EmptyUndoBuffer();
+
+            // Set up the script editor tabs
+            var wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAction);
+            m_SelectedNode.ScriptAction = wrapper;
+            scriptAction.SetScript(wrapper);
+            wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAppear);
+            m_SelectedNode.ScriptAppear = wrapper;
+            scriptAppear.SetScript(wrapper);
 
             chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
             chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;
@@ -157,9 +164,9 @@ namespace Finmer.Editor
 
         private void UpdateScriptButtonIcons()
         {
-            tsbScriptCustom.Image = m_Scene.ScriptCustom.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptEnter.Image = m_Scene.ScriptEnter.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptLeave.Image = m_Scene.ScriptLeave.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptCustom.Image   = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptEnter.Image    = m_Scene.ScriptEnter != null && m_Scene.ScriptEnter.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptLeave.Image    = m_Scene.ScriptLeave != null && m_Scene.ScriptLeave.HasContent() ? Resources.script_code : Resources.plus;
         }
 
         private void UpdateInjectionNodeList()
@@ -357,37 +364,20 @@ namespace Finmer.Editor
 
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
-            // TODO
+            m_Scene.ScriptCustom = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptCustom);
+            Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom);
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
-            // TODO
+            m_Scene.ScriptEnter = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptEnter);
+            Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter);
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
-            // TODO
-        }
-
-        private void scriptAction_TextChanged(object sender, EventArgs e)
-        {
-            if (m_SkipDirtyUpdates) return;
-
-            Dirty = true;
-            //m_SelectedNode.ScriptAction = scriptAction.Text; // TODO
-        }
-
-        private void scriptAppear_TextChanged(object sender, EventArgs e)
-        {
-            if (m_SkipDirtyUpdates) return;
-
-            Dirty = true;
-            //m_SelectedNode.ScriptAppear = scriptAppear.Text; // TODO
-            UpdateNodeImage(m_SelectedTree, m_SelectedNode);
+            m_Scene.ScriptLeave = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptLeave);
+            Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave);
         }
 
         private void tsbMoveUp_Click(object sender, EventArgs e)

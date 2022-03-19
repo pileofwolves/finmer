@@ -28,6 +28,11 @@
 		private void InitializeComponent()
 		{
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.Label lblInjectTargetNode;
+            System.Windows.Forms.Label lblInjectTargetScene;
+            System.Windows.Forms.Label lblRootInfo;
+            System.Windows.Forms.Label lblNodeTooltip;
+            System.Windows.Forms.Label lblNodeTitle;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentScene));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbAddNode = new System.Windows.Forms.ToolStripButton();
@@ -49,21 +54,17 @@
             this.splitNodeSettings = new System.Windows.Forms.SplitContainer();
             this.pnlRootNodeSettings = new System.Windows.Forms.Panel();
             this.pnlInjectionSettings = new System.Windows.Forms.Panel();
+            this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
             this.cmbInjectTargetMode = new System.Windows.Forms.ComboBox();
             this.cmbInjectTargetNode = new System.Windows.Forms.ComboBox();
-            this.lblInjectTargetNode = new System.Windows.Forms.Label();
-            this.lblInjectTargetScene = new System.Windows.Forms.Label();
             this.chkRootInject = new System.Windows.Forms.CheckBox();
-            this.lblRootInfo = new System.Windows.Forms.Label();
             this.pnlGeneralNodeSettings = new System.Windows.Forms.Panel();
             this.pnlChoiceNodeSettings = new System.Windows.Forms.Panel();
             this.nudCustomWidth = new System.Windows.Forms.NumericUpDown();
             this.chkChoiceHighlight = new System.Windows.Forms.CheckBox();
             this.chkCustomWidth = new System.Windows.Forms.CheckBox();
             this.txtNodeTitle = new System.Windows.Forms.TextBox();
-            this.lblNodeTooltip = new System.Windows.Forms.Label();
             this.txtNodeTooltip = new System.Windows.Forms.TextBox();
-            this.lblNodeTitle = new System.Windows.Forms.Label();
             this.optTypeNode = new System.Windows.Forms.RadioButton();
             this.txtNodeKey = new System.Windows.Forms.TextBox();
             this.optTypeLink = new System.Windows.Forms.RadioButton();
@@ -72,10 +73,14 @@
             this.cmbLinkTarget = new System.Windows.Forms.ComboBox();
             this.scriptTabs = new System.Windows.Forms.TabControl();
             this.tbpScriptAction = new System.Windows.Forms.TabPage();
-            this.scriptAction = new ScintillaNET.Scintilla();
+            this.scriptAction = new Finmer.Editor.ScriptEditorHost();
             this.tbpScriptAppear = new System.Windows.Forms.TabPage();
-            this.scriptAppear = new ScintillaNET.Scintilla();
-            this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
+            this.scriptAppear = new Finmer.Editor.ScriptEditorHost();
+            lblInjectTargetNode = new System.Windows.Forms.Label();
+            lblInjectTargetScene = new System.Windows.Forms.Label();
+            lblRootInfo = new System.Windows.Forms.Label();
+            lblNodeTooltip = new System.Windows.Forms.Label();
+            lblNodeTitle = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -94,6 +99,51 @@
             this.tbpScriptAction.SuspendLayout();
             this.tbpScriptAppear.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // lblInjectTargetNode
+            // 
+            lblInjectTargetNode.AutoSize = true;
+            lblInjectTargetNode.Location = new System.Drawing.Point(0, 56);
+            lblInjectTargetNode.Name = "lblInjectTargetNode";
+            lblInjectTargetNode.Size = new System.Drawing.Size(77, 13);
+            lblInjectTargetNode.TabIndex = 4;
+            lblInjectTargetNode.Text = "Injection Point:";
+            // 
+            // lblInjectTargetScene
+            // 
+            lblInjectTargetScene.AutoSize = true;
+            lblInjectTargetScene.Location = new System.Drawing.Point(0, 8);
+            lblInjectTargetScene.Name = "lblInjectTargetScene";
+            lblInjectTargetScene.Size = new System.Drawing.Size(75, 13);
+            lblInjectTargetScene.TabIndex = 2;
+            lblInjectTargetScene.Text = "Target Scene:";
+            // 
+            // lblRootInfo
+            // 
+            lblRootInfo.Enabled = false;
+            lblRootInfo.Location = new System.Drawing.Point(8, 8);
+            lblRootInfo.Name = "lblRootInfo";
+            lblRootInfo.Size = new System.Drawing.Size(184, 40);
+            lblRootInfo.TabIndex = 0;
+            lblRootInfo.Text = "The Root node is the starting point of the scene and can\'t be edited.";
+            // 
+            // lblNodeTooltip
+            // 
+            lblNodeTooltip.AutoSize = true;
+            lblNodeTooltip.Location = new System.Drawing.Point(8, 56);
+            lblNodeTooltip.Name = "lblNodeTooltip";
+            lblNodeTooltip.Size = new System.Drawing.Size(42, 13);
+            lblNodeTooltip.TabIndex = 5;
+            lblNodeTooltip.Text = "Tooltip:";
+            // 
+            // lblNodeTitle
+            // 
+            lblNodeTitle.AutoSize = true;
+            lblNodeTitle.Location = new System.Drawing.Point(8, 8);
+            lblNodeTitle.Name = "lblNodeTitle";
+            lblNodeTitle.Size = new System.Drawing.Size(65, 13);
+            lblNodeTitle.TabIndex = 8;
+            lblNodeTitle.Text = "Button Text:";
             // 
             // toolStrip
             // 
@@ -180,9 +230,9 @@
             this.tsbScriptCustom.Image = global::Finmer.Editor.Properties.Resources.script_code;
             this.tsbScriptCustom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbScriptCustom.Name = "tsbScriptCustom";
-            this.tsbScriptCustom.Size = new System.Drawing.Size(99, 22);
-            this.tsbScriptCustom.Text = "CustomScript";
-            this.tsbScriptCustom.ToolTipText = "Edit Custom Script";
+            this.tsbScriptCustom.Size = new System.Drawing.Size(102, 22);
+            this.tsbScriptCustom.Text = "Custom Script";
+            this.tsbScriptCustom.ToolTipText = "Edit Custom Scene Script Header";
             this.tsbScriptCustom.Click += new System.EventHandler(this.tsbScriptCustom_Click);
             // 
             // tsbScriptEnter
@@ -191,9 +241,9 @@
             this.tsbScriptEnter.Image = global::Finmer.Editor.Properties.Resources.script_code;
             this.tsbScriptEnter.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbScriptEnter.Name = "tsbScriptEnter";
-            this.tsbScriptEnter.Size = new System.Drawing.Size(84, 22);
-            this.tsbScriptEnter.Text = "EnterScript";
-            this.tsbScriptEnter.ToolTipText = "Edit OnEnter Script";
+            this.tsbScriptEnter.Size = new System.Drawing.Size(87, 22);
+            this.tsbScriptEnter.Text = "Enter Script";
+            this.tsbScriptEnter.ToolTipText = "Edit Scene Enter Script";
             this.tsbScriptEnter.Click += new System.EventHandler(this.tsbScriptEnter_Click);
             // 
             // tsbScriptLeave
@@ -202,9 +252,9 @@
             this.tsbScriptLeave.Image = global::Finmer.Editor.Properties.Resources.script_code;
             this.tsbScriptLeave.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbScriptLeave.Name = "tsbScriptLeave";
-            this.tsbScriptLeave.Size = new System.Drawing.Size(87, 22);
-            this.tsbScriptLeave.Text = "LeaveScript";
-            this.tsbScriptLeave.ToolTipText = "Edit OnLeave Script";
+            this.tsbScriptLeave.Size = new System.Drawing.Size(90, 22);
+            this.tsbScriptLeave.Text = "Leave Script";
+            this.tsbScriptLeave.ToolTipText = "Edit Scene Leave Script";
             this.tsbScriptLeave.Click += new System.EventHandler(this.tsbScriptLeave_Click);
             // 
             // toolStripSeparator2
@@ -265,9 +315,9 @@
             this.trvNodes.TabIndex = 0;
             this.trvNodes.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvNodes_ItemDrag);
             this.trvNodes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvNodes_AfterSelect);
+            this.trvNodes.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvNodes_NodeMouseDoubleClick);
             this.trvNodes.DragDrop += new System.Windows.Forms.DragEventHandler(this.trvNodes_DragDrop);
             this.trvNodes.DragOver += new System.Windows.Forms.DragEventHandler(this.trvNodes_DragOver);
-            this.trvNodes.NodeMouseDoubleClick += new System.Windows.Forms.TreeNodeMouseClickEventHandler(this.trvNodes_NodeMouseDoubleClick);
             // 
             // imlNodeIcons
             // 
@@ -305,7 +355,7 @@
             // 
             this.pnlRootNodeSettings.Controls.Add(this.pnlInjectionSettings);
             this.pnlRootNodeSettings.Controls.Add(this.chkRootInject);
-            this.pnlRootNodeSettings.Controls.Add(this.lblRootInfo);
+            this.pnlRootNodeSettings.Controls.Add(lblRootInfo);
             this.pnlRootNodeSettings.Location = new System.Drawing.Point(8, 6);
             this.pnlRootNodeSettings.Name = "pnlRootNodeSettings";
             this.pnlRootNodeSettings.Size = new System.Drawing.Size(200, 258);
@@ -317,13 +367,23 @@
             this.pnlInjectionSettings.Controls.Add(this.assetInjectTargetScene);
             this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetMode);
             this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetNode);
-            this.pnlInjectionSettings.Controls.Add(this.lblInjectTargetNode);
-            this.pnlInjectionSettings.Controls.Add(this.lblInjectTargetScene);
+            this.pnlInjectionSettings.Controls.Add(lblInjectTargetNode);
+            this.pnlInjectionSettings.Controls.Add(lblInjectTargetScene);
             this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 72);
             this.pnlInjectionSettings.Name = "pnlInjectionSettings";
             this.pnlInjectionSettings.Size = new System.Drawing.Size(184, 152);
             this.pnlInjectionSettings.TabIndex = 3;
             this.pnlInjectionSettings.Visible = false;
+            // 
+            // assetInjectTargetScene
+            // 
+            this.assetInjectTargetScene.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
+            this.assetInjectTargetScene.Location = new System.Drawing.Point(0, 24);
+            this.assetInjectTargetScene.Name = "assetInjectTargetScene";
+            this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
+            this.assetInjectTargetScene.TabIndex = 3;
+            this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
             // 
             // cmbInjectTargetMode
             // 
@@ -349,24 +409,6 @@
             this.cmbInjectTargetNode.TabIndex = 5;
             this.cmbInjectTargetNode.TextChanged += new System.EventHandler(this.cmbInjectTargetNode_TextChanged);
             // 
-            // lblInjectTargetNode
-            // 
-            this.lblInjectTargetNode.AutoSize = true;
-            this.lblInjectTargetNode.Location = new System.Drawing.Point(0, 56);
-            this.lblInjectTargetNode.Name = "lblInjectTargetNode";
-            this.lblInjectTargetNode.Size = new System.Drawing.Size(77, 13);
-            this.lblInjectTargetNode.TabIndex = 4;
-            this.lblInjectTargetNode.Text = "Injection Point:";
-            // 
-            // lblInjectTargetScene
-            // 
-            this.lblInjectTargetScene.AutoSize = true;
-            this.lblInjectTargetScene.Location = new System.Drawing.Point(0, 8);
-            this.lblInjectTargetScene.Name = "lblInjectTargetScene";
-            this.lblInjectTargetScene.Size = new System.Drawing.Size(75, 13);
-            this.lblInjectTargetScene.TabIndex = 2;
-            this.lblInjectTargetScene.Text = "Target Scene:";
-            // 
             // chkRootInject
             // 
             this.chkRootInject.AutoSize = true;
@@ -377,15 +419,6 @@
             this.chkRootInject.Text = "Inject into another Scene";
             this.chkRootInject.UseVisualStyleBackColor = true;
             this.chkRootInject.CheckedChanged += new System.EventHandler(this.chkRootInject_CheckedChanged);
-            // 
-            // lblRootInfo
-            // 
-            this.lblRootInfo.Enabled = false;
-            this.lblRootInfo.Location = new System.Drawing.Point(8, 8);
-            this.lblRootInfo.Name = "lblRootInfo";
-            this.lblRootInfo.Size = new System.Drawing.Size(184, 40);
-            this.lblRootInfo.TabIndex = 0;
-            this.lblRootInfo.Text = "The Root node is the starting point of the scene and can\'t be edited.";
             // 
             // pnlGeneralNodeSettings
             // 
@@ -408,9 +441,9 @@
             this.pnlChoiceNodeSettings.Controls.Add(this.chkChoiceHighlight);
             this.pnlChoiceNodeSettings.Controls.Add(this.chkCustomWidth);
             this.pnlChoiceNodeSettings.Controls.Add(this.txtNodeTitle);
-            this.pnlChoiceNodeSettings.Controls.Add(this.lblNodeTooltip);
+            this.pnlChoiceNodeSettings.Controls.Add(lblNodeTooltip);
             this.pnlChoiceNodeSettings.Controls.Add(this.txtNodeTooltip);
-            this.pnlChoiceNodeSettings.Controls.Add(this.lblNodeTitle);
+            this.pnlChoiceNodeSettings.Controls.Add(lblNodeTitle);
             this.pnlChoiceNodeSettings.Location = new System.Drawing.Point(0, 80);
             this.pnlChoiceNodeSettings.Name = "pnlChoiceNodeSettings";
             this.pnlChoiceNodeSettings.Size = new System.Drawing.Size(208, 168);
@@ -478,15 +511,6 @@
             this.txtNodeTitle.TabIndex = 3;
             this.txtNodeTitle.TextChanged += new System.EventHandler(this.txtNodeTitle_TextChanged);
             // 
-            // lblNodeTooltip
-            // 
-            this.lblNodeTooltip.AutoSize = true;
-            this.lblNodeTooltip.Location = new System.Drawing.Point(8, 56);
-            this.lblNodeTooltip.Name = "lblNodeTooltip";
-            this.lblNodeTooltip.Size = new System.Drawing.Size(42, 13);
-            this.lblNodeTooltip.TabIndex = 5;
-            this.lblNodeTooltip.Text = "Tooltip:";
-            // 
             // txtNodeTooltip
             // 
             this.txtNodeTooltip.Location = new System.Drawing.Point(8, 72);
@@ -495,15 +519,6 @@
             this.txtNodeTooltip.Size = new System.Drawing.Size(192, 20);
             this.txtNodeTooltip.TabIndex = 4;
             this.txtNodeTooltip.TextChanged += new System.EventHandler(this.txtNodeTooltip_TextChanged);
-            // 
-            // lblNodeTitle
-            // 
-            this.lblNodeTitle.AutoSize = true;
-            this.lblNodeTitle.Location = new System.Drawing.Point(8, 8);
-            this.lblNodeTitle.Name = "lblNodeTitle";
-            this.lblNodeTitle.Size = new System.Drawing.Size(65, 13);
-            this.lblNodeTitle.TabIndex = 8;
-            this.lblNodeTitle.Text = "Button Text:";
             // 
             // optTypeNode
             // 
@@ -590,13 +605,14 @@
             // 
             // scriptAction
             // 
-            this.scriptAction.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scriptAction.AllowExternalScript = false;
+            this.scriptAction.AllowInlineScript = true;
+            this.scriptAction.AllowVisualScript = true;
             this.scriptAction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAction.Location = new System.Drawing.Point(3, 3);
             this.scriptAction.Name = "scriptAction";
             this.scriptAction.Size = new System.Drawing.Size(452, 236);
-            this.scriptAction.TabIndex = 1;
-            this.scriptAction.TextChanged += new System.EventHandler(this.scriptAction_TextChanged);
+            this.scriptAction.TabIndex = 0;
             // 
             // tbpScriptAppear
             // 
@@ -606,28 +622,19 @@
             this.tbpScriptAppear.Padding = new System.Windows.Forms.Padding(3);
             this.tbpScriptAppear.Size = new System.Drawing.Size(458, 242);
             this.tbpScriptAppear.TabIndex = 1;
-            this.tbpScriptAppear.Text = "Node Appears When";
+            this.tbpScriptAppear.Text = "Appears When";
             this.tbpScriptAppear.UseVisualStyleBackColor = true;
             // 
             // scriptAppear
             // 
-            this.scriptAppear.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.scriptAppear.AllowExternalScript = false;
+            this.scriptAppear.AllowInlineScript = true;
+            this.scriptAppear.AllowVisualScript = true;
             this.scriptAppear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAppear.Location = new System.Drawing.Point(3, 3);
             this.scriptAppear.Name = "scriptAppear";
             this.scriptAppear.Size = new System.Drawing.Size(452, 236);
-            this.scriptAppear.TabIndex = 1;
-            this.scriptAppear.TextChanged += new System.EventHandler(this.scriptAppear_TextChanged);
-            // 
-            // assetInjectTargetScene
-            // 
-            this.assetInjectTargetScene.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
-            this.assetInjectTargetScene.Location = new System.Drawing.Point(0, 24);
-            this.assetInjectTargetScene.Name = "assetInjectTargetScene";
-            this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
-            this.assetInjectTargetScene.TabIndex = 3;
-            this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
+            this.scriptAppear.TabIndex = 0;
             // 
             // FormDocumentScene
             // 
@@ -675,7 +682,6 @@
 		private System.Windows.Forms.RadioButton optTypeLink;
 		private System.Windows.Forms.RadioButton optTypeNode;
 		private System.Windows.Forms.ComboBox cmbLinkTarget;
-		private System.Windows.Forms.Label lblLinkTarget;
 		private System.Windows.Forms.ToolStripButton tsbAddNode;
 		private System.Windows.Forms.ToolStripButton tsbRemoveNode;
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -684,14 +690,9 @@
 		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton tsbExpand;
 		private System.Windows.Forms.ToolStripButton tsbCollapse;
-		private System.Windows.Forms.TabControl scriptTabs;
 		private System.Windows.Forms.TabPage tbpScriptAction;
-		private ScintillaNET.Scintilla scriptAction;
 		private System.Windows.Forms.TabPage tbpScriptAppear;
-		private ScintillaNET.Scintilla scriptAppear;
 		private System.Windows.Forms.TextBox txtNodeTooltip;
-		private System.Windows.Forms.Label lblNodeTooltip;
-		private System.Windows.Forms.Label lblNodeKey;
 		private System.Windows.Forms.ImageList imlNodeIcons;
 		private System.Windows.Forms.TextBox txtNodeKey;
 		private System.Windows.Forms.ToolStripButton tsbScriptCustom;
@@ -699,7 +700,6 @@
 		private System.Windows.Forms.ToolStripButton tsbMoveUp;
 		private System.Windows.Forms.ToolStripButton tsbMoveDown;
 		private System.Windows.Forms.TextBox txtNodeTitle;
-		private System.Windows.Forms.Label lblNodeTitle;
 		private System.Windows.Forms.ToolStripButton tsbAddLink;
 		private System.Windows.Forms.Panel pnlChoiceNodeSettings;
 		private System.Windows.Forms.NumericUpDown nudCustomWidth;
@@ -707,13 +707,15 @@
 		private System.Windows.Forms.CheckBox chkCustomWidth;
         private System.Windows.Forms.Panel pnlRootNodeSettings;
         private System.Windows.Forms.CheckBox chkRootInject;
-        private System.Windows.Forms.Label lblRootInfo;
         private System.Windows.Forms.Panel pnlGeneralNodeSettings;
         private System.Windows.Forms.Panel pnlInjectionSettings;
         private System.Windows.Forms.ComboBox cmbInjectTargetNode;
-        private System.Windows.Forms.Label lblInjectTargetNode;
-        private System.Windows.Forms.Label lblInjectTargetScene;
         private System.Windows.Forms.ComboBox cmbInjectTargetMode;
         private AssetPickerControl assetInjectTargetScene;
+        private ScriptEditorHost scriptAction;
+        private ScriptEditorHost scriptAppear;
+        private System.Windows.Forms.TabControl scriptTabs;
+        private System.Windows.Forms.Label lblNodeKey;
+        private System.Windows.Forms.Label lblLinkTarget;
     }
 }

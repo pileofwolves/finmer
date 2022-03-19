@@ -149,12 +149,25 @@ namespace Finmer.Editor
             }
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable
         {
             try
             {
-                Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                JToken value = CurrentToken[key];
+                // Find the token to read from
+                JToken value;
+                if (key != null)
+                {
+                    // Grab named tokens by key
+                    value = CurrentToken[key];
+                }
+                else
+                {
+                    // The value we want to read from is the next token
+                    value = m_CurrentArrayElement;
+
+                    // Update array element pointer so it references the element that comes after the one we just pushed
+                    m_CurrentArrayElement = m_CurrentArrayElement.Next;
+                }
 
                 // Handle null values properly; the asset may be absent
                 if (value == null || value.Type == JTokenType.Null)

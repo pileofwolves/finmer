@@ -12,24 +12,24 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for a module-maker-facing comment that does not emit any Lua code.
+    /// Node editor form for a player equipment slot selector.
     /// </summary>
-    public partial class FormScriptNodeComment : FormScriptNode
+    public partial class FormScriptValuePlayerEquip : FormScriptNode
     {
 
-        public FormScriptNodeComment()
+        public FormScriptValuePlayerEquip()
         {
             InitializeComponent();
         }
 
-        private void FormScriptNodeComment_Load(object sender, System.EventArgs e)
+        private void FormScriptValuePlayerEquip_Load(object sender, System.EventArgs e)
         {
-            txtComment.Text = ((CommandComment)Node).Comment;
+            cmbSlot.SelectedIndex = (int)((ValuePlayerEquipment)Node).Slot;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((CommandComment)Node).Comment = txtComment.Text;
+            ((ValuePlayerEquipment)Node).Slot = (ValuePlayerEquipment.ESlot)cmbSlot.SelectedIndex;
         }
 
     }

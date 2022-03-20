@@ -12,24 +12,28 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for a module-maker-facing comment that does not emit any Lua code.
+    /// Node editor form for a branch node.
     /// </summary>
-    public partial class FormScriptNodeComment : FormScriptNode
+    public partial class FormScriptNodeIf : FormScriptNode
     {
 
-        public FormScriptNodeComment()
+        public FormScriptNodeIf()
         {
             InitializeComponent();
         }
 
-        private void FormScriptNodeComment_Load(object sender, System.EventArgs e)
+        private void FormScriptNodeIf_Load(object sender, System.EventArgs e)
         {
-            txtComment.Text = ((CommandComment)Node).Comment;
+            var branch = (CommandIf)Node;
+            condition.Value = branch.Condition;
+            chkElse.Checked = branch.HasElseBranch;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((CommandComment)Node).Comment = txtComment.Text;
+            var branch = (CommandIf)Node;
+            branch.Condition = condition.Value;
+            branch.HasElseBranch = chkElse.Checked;
         }
 
     }

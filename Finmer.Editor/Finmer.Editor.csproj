@@ -183,6 +183,36 @@
     <Compile Include="RibbonColorTableCustom.cs" />
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
+    <Compile Include="ScriptEditor\FormScriptValueCompare.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValueCompare.Designer.cs">
+      <DependentUpon>FormScriptValueCompare.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerItem.Designer.cs">
+      <DependentUpon>FormScriptValuePlayerItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerEquip.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerEquip.Designer.cs">
+      <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptValuePlayerStat.Designer.cs">
+      <DependentUpon>FormScriptValuePlayerStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeIf.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeIf.Designer.cs">
+      <DependentUpon>FormScriptNodeIf.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\FormScriptNodeComment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -207,6 +237,12 @@
     <Compile Include="ScriptEditor\FormScriptNodeLuaSnippet.Designer.cs">
       <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\FormVisualScriptValuePalette.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormVisualScriptValuePalette.Designer.cs">
+      <DependentUpon>FormVisualScriptValuePalette.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\IScriptEditorContainer.cs" />
     <Compile Include="ScriptEditor\NullScriptEditor.cs">
       <SubType>UserControl</SubType>
@@ -220,6 +256,12 @@
     </Compile>
     <Compile Include="ScriptEditor\FormVisualScriptCommandPalette.Designer.cs">
       <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\ScriptValueHost.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\ScriptValueHost.Designer.cs">
+      <DependentUpon>ScriptValueHost.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\VisualScriptEditor.cs">
       <SubType>UserControl</SubType>
@@ -308,6 +350,21 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\FormScriptValueCompare.resx">
+      <DependentUpon>FormScriptValueCompare.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerItem.resx">
+      <DependentUpon>FormScriptValuePlayerItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerEquip.resx">
+      <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerStat.resx">
+      <DependentUpon>FormScriptValuePlayerStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeIf.resx">
+      <DependentUpon>FormScriptNodeIf.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeComment.resx">
       <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
     </EmbeddedResource>
@@ -320,11 +377,17 @@
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLuaSnippet.resx">
       <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormVisualScriptValuePalette.resx">
+      <DependentUpon>FormVisualScriptValuePalette.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\NullScriptEditor.resx">
       <DependentUpon>NullScriptEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormVisualScriptCommandPalette.resx">
       <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\ScriptValueHost.resx">
+      <DependentUpon>ScriptValueHost.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\VisualScriptEditor.resx">
       <DependentUpon>VisualScriptEditor.cs</DependentUpon>

@@ -168,7 +168,6 @@ namespace Finmer.Editor
             // 
             // cmdFlowIf
             // 
-            this.cmdFlowIf.Enabled = false;
             this.cmdFlowIf.Location = new System.Drawing.Point(16, 24);
             this.cmdFlowIf.Name = "cmdFlowIf";
             this.cmdFlowIf.Size = new System.Drawing.Size(176, 24);
@@ -618,6 +617,7 @@ namespace Finmer.Editor
             // 
             // cmdCancel
             // 
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
             this.cmdCancel.Location = new System.Drawing.Point(536, 512);
             this.cmdCancel.Name = "cmdCancel";

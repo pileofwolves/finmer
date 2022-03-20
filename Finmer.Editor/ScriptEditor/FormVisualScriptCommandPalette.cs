@@ -65,7 +65,7 @@ namespace Finmer.Editor
 
         private void cmdFlowIf_Click(object sender, System.EventArgs e)
         {
-            // TODO
+            AddScriptNode(new CommandIf());
         }
 
         private void cmdFlowLoop_Click(object sender, System.EventArgs e)

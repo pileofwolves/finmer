@@ -12,24 +12,24 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for a module-maker-facing comment that does not emit any Lua code.
+    /// Node editor form for selecting a player primary stat.
     /// </summary>
-    public partial class FormScriptNodeComment : FormScriptNode
+    public partial class FormScriptValuePlayerStat : FormScriptNode
     {
 
-        public FormScriptNodeComment()
+        public FormScriptValuePlayerStat()
         {
             InitializeComponent();
         }
 
-        private void FormScriptNodeComment_Load(object sender, System.EventArgs e)
+        private void FormScriptValuePlayerStat_Load(object sender, System.EventArgs e)
         {
-            txtComment.Text = ((CommandComment)Node).Comment;
+            cmbStat.SelectedIndex = (int)((ValuePlayerStat)Node).Stat;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((CommandComment)Node).Comment = txtComment.Text;
+            ((ValuePlayerStat)Node).Stat = (ValuePlayerStat.EStat)cmbStat.SelectedIndex;
         }
 
     }

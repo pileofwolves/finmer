@@ -95,6 +95,7 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLog.cs" />
     <Compile Include="VisualScripting\Nodes\CommandComment.cs" />
     <Compile Include="VisualScripting\Nodes\CommandIf.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSleep.cs" />

@@ -34,6 +34,7 @@ namespace Finmer.Editor
             System.Windows.Forms.GroupBox groupBox2;
             System.Windows.Forms.GroupBox groupBox6;
             System.Windows.Forms.GroupBox groupBox4;
+            System.Windows.Forms.GroupBox groupBox5;
             this.cmdLogicCompare = new System.Windows.Forms.Button();
             this.cmdLogicOr = new System.Windows.Forms.Button();
             this.cmdLogicAnd = new System.Windows.Forms.Button();
@@ -58,16 +59,19 @@ namespace Finmer.Editor
             this.cmdSceneShop = new System.Windows.Forms.Button();
             this.cmdSceneCombat = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdLiteral = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
             groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
             groupBox1.SuspendLayout();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -251,7 +255,7 @@ namespace Finmer.Editor
             groupBox2.Controls.Add(this.button2);
             groupBox2.Controls.Add(this.button3);
             groupBox2.Controls.Add(this.button4);
-            groupBox2.Location = new System.Drawing.Point(240, 16);
+            groupBox2.Location = new System.Drawing.Point(240, 96);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(208, 136);
             groupBox2.TabIndex = 5;
@@ -299,7 +303,7 @@ namespace Finmer.Editor
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
             groupBox6.Enabled = false;
-            groupBox6.Location = new System.Drawing.Point(240, 320);
+            groupBox6.Location = new System.Drawing.Point(240, 400);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
             groupBox6.TabIndex = 10;
@@ -322,7 +326,7 @@ namespace Finmer.Editor
             groupBox4.Controls.Add(this.cmdSceneShop);
             groupBox4.Controls.Add(this.cmdSceneCombat);
             groupBox4.Enabled = false;
-            groupBox4.Location = new System.Drawing.Point(240, 168);
+            groupBox4.Location = new System.Drawing.Point(240, 248);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new System.Drawing.Size(208, 136);
             groupBox4.TabIndex = 11;
@@ -369,7 +373,7 @@ namespace Finmer.Editor
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(312, 464);
+            this.cmdCancel.Location = new System.Drawing.Point(312, 480);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
             this.cmdCancel.TabIndex = 0;
@@ -379,12 +383,33 @@ namespace Finmer.Editor
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(this.cmdLiteral);
+            groupBox5.Location = new System.Drawing.Point(240, 16);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new System.Drawing.Size(208, 64);
+            groupBox5.TabIndex = 11;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Literal";
+            // 
+            // cmdLiteral
+            // 
+            this.cmdLiteral.Location = new System.Drawing.Point(16, 24);
+            this.cmdLiteral.Name = "cmdLiteral";
+            this.cmdLiteral.Size = new System.Drawing.Size(176, 24);
+            this.cmdLiteral.TabIndex = 6;
+            this.cmdLiteral.Text = "Exact Value";
+            this.cmdLiteral.UseVisualStyleBackColor = true;
+            this.cmdLiteral.Click += new System.EventHandler(this.cmdLiteral_Click);
+            // 
             // FormVisualScriptValuePalette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(464, 520);
+            this.ClientSize = new System.Drawing.Size(464, 535);
+            this.Controls.Add(groupBox5);
             this.Controls.Add(groupBox4);
             this.Controls.Add(groupBox6);
             this.Controls.Add(groupBox2);
@@ -404,6 +429,7 @@ namespace Finmer.Editor
             groupBox2.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -433,5 +459,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdSceneCombatStop;
         private System.Windows.Forms.Button cmdSceneShop;
         private System.Windows.Forms.Button cmdSceneCombat;
+        private System.Windows.Forms.Button cmdLiteral;
     }
 }

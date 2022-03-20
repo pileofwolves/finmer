@@ -128,6 +128,11 @@ namespace Finmer.Editor
             AddScriptNode(new ValuePlayerLevel());
         }
 
+        private void cmdLiteral_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ValueLiteral());
+        }
+
     }
 
 }

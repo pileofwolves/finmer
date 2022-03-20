@@ -7,6 +7,7 @@
  */
 
 using System;
+using System.Globalization;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -59,7 +60,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         {
             switch (LiteralType)
             {
-                case ELiteralType.Number:       return $"{NumberValue:F1}";
+                case ELiteralType.Number:       return String.Format(CultureInfo.InvariantCulture, "{0:F1}", NumberValue);
                 case ELiteralType.String:       return $"\"{StringValue}\"";
                 case ELiteralType.Boolean:      return BooleanValue ? "true" : "false";
                 case ELiteralType.Nil:          return "nil";
@@ -72,7 +73,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             switch (LiteralType)
             {
                 case ELiteralType.Number:
-                    output.AppendFormat("{0:F5}", NumberValue);
+                    output.AppendFormat(CultureInfo.InvariantCulture, "{0:F5}", NumberValue);
                     break;
                 case ELiteralType.String:
                     output.AppendFormat("\"{0}\"", StringValue);

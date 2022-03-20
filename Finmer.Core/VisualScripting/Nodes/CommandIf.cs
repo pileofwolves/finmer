@@ -58,7 +58,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 output.AppendLine("else");
 
                 // Emit alternate body
-                foreach (var node in Subgroup1)
+                foreach (var node in Subgroup2)
                     node.EmitLua(output);
             }
 

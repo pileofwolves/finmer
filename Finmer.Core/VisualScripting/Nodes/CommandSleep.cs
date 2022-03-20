@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Globalization;
 using System.Text;
 
 namespace Finmer.Core.VisualScripting.Nodes
@@ -19,7 +21,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription()
         {
-            return $"Sleep {Value:F1} sec";
+            return String.Format(CultureInfo.InvariantCulture, "Sleep {0:F1} sec", Value);
         }
 
         public override EColor GetEditorColor()
@@ -29,7 +31,8 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output)
         {
-            output.AppendLine($"Sleep({Value:F5})");
+            output.AppendFormat(CultureInfo.InvariantCulture, "Sleep({0:F5})", Value);
+            output.AppendLine();
         }
 
         public override string GetEditorWindowTitle()

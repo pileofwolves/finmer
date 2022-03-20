@@ -92,6 +92,12 @@ namespace Finmer.Editor
         {
             AddScriptNode(new CommandComment());
         }
+
+        private void cmdUILog_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLog());
+        }
+
     }
 
 }

@@ -494,6 +494,7 @@ namespace Finmer.Editor
             // 
             // cmdUISetInventoryEnabled
             // 
+            this.cmdUISetInventoryEnabled.Enabled = false;
             this.cmdUISetInventoryEnabled.Location = new System.Drawing.Point(16, 120);
             this.cmdUISetInventoryEnabled.Name = "cmdUISetInventoryEnabled";
             this.cmdUISetInventoryEnabled.Size = new System.Drawing.Size(176, 24);
@@ -503,6 +504,7 @@ namespace Finmer.Editor
             // 
             // cmdUIAddLink
             // 
+            this.cmdUIAddLink.Enabled = false;
             this.cmdUIAddLink.Location = new System.Drawing.Point(16, 96);
             this.cmdUIAddLink.Name = "cmdUIAddLink";
             this.cmdUIAddLink.Size = new System.Drawing.Size(176, 24);
@@ -512,6 +514,7 @@ namespace Finmer.Editor
             // 
             // cmdUISetLocation
             // 
+            this.cmdUISetLocation.Enabled = false;
             this.cmdUISetLocation.Location = new System.Drawing.Point(16, 168);
             this.cmdUISetLocation.Name = "cmdUISetLocation";
             this.cmdUISetLocation.Size = new System.Drawing.Size(176, 24);
@@ -521,6 +524,7 @@ namespace Finmer.Editor
             // 
             // cmdUISetInstruction
             // 
+            this.cmdUISetInstruction.Enabled = false;
             this.cmdUISetInstruction.Location = new System.Drawing.Point(16, 144);
             this.cmdUISetInstruction.Name = "cmdUISetInstruction";
             this.cmdUISetInstruction.Size = new System.Drawing.Size(176, 24);
@@ -530,6 +534,7 @@ namespace Finmer.Editor
             // 
             // cmdUIClearLog
             // 
+            this.cmdUIClearLog.Enabled = false;
             this.cmdUIClearLog.Location = new System.Drawing.Point(16, 72);
             this.cmdUIClearLog.Name = "cmdUIClearLog";
             this.cmdUIClearLog.Size = new System.Drawing.Size(176, 24);
@@ -545,9 +550,11 @@ namespace Finmer.Editor
             this.cmdUILog.TabIndex = 6;
             this.cmdUILog.Text = "Show Message";
             this.cmdUILog.UseVisualStyleBackColor = true;
+            this.cmdUILog.Click += new System.EventHandler(this.cmdUILog_Click);
             // 
             // cmdUILogSplit
             // 
+            this.cmdUILogSplit.Enabled = false;
             this.cmdUILogSplit.Location = new System.Drawing.Point(16, 48);
             this.cmdUILogSplit.Name = "cmdUILogSplit";
             this.cmdUILogSplit.Size = new System.Drawing.Size(176, 24);

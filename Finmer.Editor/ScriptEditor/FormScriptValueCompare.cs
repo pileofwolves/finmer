@@ -12,7 +12,7 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for a player equipment slot selector.
+    /// Node editor form for an object comparison.
     /// </summary>
     public partial class FormScriptValueCompare : FormScriptNode
     {

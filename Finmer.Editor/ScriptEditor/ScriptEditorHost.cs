@@ -71,7 +71,7 @@ namespace Finmer.Editor
         /// </summary>
         public void Flush()
         {
-            ((IScriptEditor)m_ClientEditor).Flush();
+            ((IScriptEditor)m_ClientEditor)?.Flush();
         }
 
         public void ConvertToInline()

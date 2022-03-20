@@ -62,10 +62,17 @@ namespace Finmer.Editor
         {
             base.Flush();
 
+            // Ensure any previous script editor changes are committed
+            scriptAction.Flush();
+            scriptAppear.Flush();
+
             // Ensure script names are up-to-date with the asset name
-            m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
-            m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
-            m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
+            if (m_Scene.ScriptCustom != null)
+                m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
+            if (m_Scene.ScriptEnter != null)
+                m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
+            if (m_Scene.ScriptLeave != null)
+                m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
 
             UpdateScriptButtonIcons();
         }
@@ -73,6 +80,10 @@ namespace Finmer.Editor
         private void trvNodes_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (m_SkipTreeSelect) return;
+
+            // Ensure any previous script editor changes are committed
+            scriptAction.Flush();
+            scriptAppear.Flush();
 
             var tag = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
             splitNodeSettings.Visible = tag != null;
@@ -102,9 +113,11 @@ namespace Finmer.Editor
             var wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAction);
             m_SelectedNode.ScriptAction = wrapper;
             scriptAction.SetScript(wrapper);
+            scriptAction.Dirty += (o, arg) => Dirty = true;
             wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAppear);
             m_SelectedNode.ScriptAppear = wrapper;
             scriptAppear.SetScript(wrapper);
+            scriptAppear.Dirty += (o, arg) => Dirty = true;
 
             chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
             chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;

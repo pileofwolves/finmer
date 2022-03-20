@@ -31,9 +31,12 @@ namespace Finmer.Editor
         {
             System.Windows.Forms.ToolStrip toolStrip;
             System.Windows.Forms.ColumnHeader clhImplicitHeader;
-            this.lsvNodes = new System.Windows.Forms.ListView();
             this.tsbConvertExternal = new System.Windows.Forms.ToolStripButton();
             this.tsbConvertInline = new System.Windows.Forms.ToolStripButton();
+            this.lsvNodes = new System.Windows.Forms.ListView();
+            this.tsbDeleteNode = new System.Windows.Forms.ToolStripButton();
+            this.tsbMoveUp = new System.Windows.Forms.ToolStripButton();
+            this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
             toolStrip = new System.Windows.Forms.ToolStrip();
             clhImplicitHeader = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             toolStrip.SuspendLayout();
@@ -43,35 +46,15 @@ namespace Finmer.Editor
             // 
             toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbConvertExternal,
-            this.tsbConvertInline});
+            this.tsbConvertInline,
+            this.tsbDeleteNode,
+            this.tsbMoveUp,
+            this.tsbMoveDown});
             toolStrip.Location = new System.Drawing.Point(0, 0);
             toolStrip.Name = "toolStrip";
             toolStrip.Size = new System.Drawing.Size(475, 25);
             toolStrip.TabIndex = 0;
             toolStrip.Text = "toolStrip1";
-            // 
-            // lsvNodes
-            // 
-            this.lsvNodes.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.lsvNodes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            clhImplicitHeader});
-            this.lsvNodes.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lsvNodes.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lsvNodes.FullRowSelect = true;
-            this.lsvNodes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lsvNodes.HideSelection = false;
-            this.lsvNodes.Location = new System.Drawing.Point(0, 25);
-            this.lsvNodes.Name = "lsvNodes";
-            this.lsvNodes.Size = new System.Drawing.Size(475, 286);
-            this.lsvNodes.TabIndex = 1;
-            this.lsvNodes.UseCompatibleStateImageBehavior = false;
-            this.lsvNodes.View = System.Windows.Forms.View.Details;
-            this.lsvNodes.SelectedIndexChanged += new System.EventHandler(this.lsvNodes_SelectedIndexChanged);
-            this.lsvNodes.DoubleClick += new System.EventHandler(this.lsvNodes_DoubleClick);
-            // 
-            // clhImplicitHeader
-            // 
-            clhImplicitHeader.Width = 400;
             // 
             // tsbConvertExternal
             // 
@@ -97,6 +80,63 @@ namespace Finmer.Editor
             this.tsbConvertInline.Visible = false;
             this.tsbConvertInline.Click += new System.EventHandler(this.tsbConvertInline_Click);
             // 
+            // clhImplicitHeader
+            // 
+            clhImplicitHeader.Width = 400;
+            // 
+            // lsvNodes
+            // 
+            this.lsvNodes.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.lsvNodes.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            clhImplicitHeader});
+            this.lsvNodes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lsvNodes.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lsvNodes.FullRowSelect = true;
+            this.lsvNodes.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lsvNodes.HideSelection = false;
+            this.lsvNodes.Location = new System.Drawing.Point(0, 25);
+            this.lsvNodes.Name = "lsvNodes";
+            this.lsvNodes.Size = new System.Drawing.Size(475, 286);
+            this.lsvNodes.TabIndex = 1;
+            this.lsvNodes.UseCompatibleStateImageBehavior = false;
+            this.lsvNodes.View = System.Windows.Forms.View.Details;
+            this.lsvNodes.SelectedIndexChanged += new System.EventHandler(this.lsvNodes_SelectedIndexChanged);
+            this.lsvNodes.DoubleClick += new System.EventHandler(this.lsvNodes_DoubleClick);
+            this.lsvNodes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvNodes_KeyDown);
+            // 
+            // tsbDeleteNode
+            // 
+            this.tsbDeleteNode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbDeleteNode.Enabled = false;
+            this.tsbDeleteNode.Image = global::Finmer.Editor.Properties.Resources.cross_script;
+            this.tsbDeleteNode.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbDeleteNode.Name = "tsbDeleteNode";
+            this.tsbDeleteNode.Size = new System.Drawing.Size(23, 22);
+            this.tsbDeleteNode.Text = "Delete Command";
+            this.tsbDeleteNode.Click += new System.EventHandler(this.tsbDeleteNode_Click);
+            // 
+            // tsbMoveUp
+            // 
+            this.tsbMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbMoveUp.Enabled = false;
+            this.tsbMoveUp.Image = global::Finmer.Editor.Properties.Resources.arrow_090;
+            this.tsbMoveUp.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMoveUp.Name = "tsbMoveUp";
+            this.tsbMoveUp.Size = new System.Drawing.Size(23, 22);
+            this.tsbMoveUp.Text = "Move Up";
+            this.tsbMoveUp.Click += new System.EventHandler(this.tsbMoveUp_Click);
+            // 
+            // tsbMoveDown
+            // 
+            this.tsbMoveDown.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbMoveDown.Enabled = false;
+            this.tsbMoveDown.Image = global::Finmer.Editor.Properties.Resources.arrow_270;
+            this.tsbMoveDown.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbMoveDown.Name = "tsbMoveDown";
+            this.tsbMoveDown.Size = new System.Drawing.Size(23, 22);
+            this.tsbMoveDown.Text = "Move Down";
+            this.tsbMoveDown.Click += new System.EventHandler(this.tsbMoveDown_Click);
+            // 
             // VisualScriptEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -117,5 +157,8 @@ namespace Finmer.Editor
         private System.Windows.Forms.ToolStripButton tsbConvertExternal;
         private System.Windows.Forms.ToolStripButton tsbConvertInline;
         private System.Windows.Forms.ListView lsvNodes;
+        private System.Windows.Forms.ToolStripButton tsbDeleteNode;
+        private System.Windows.Forms.ToolStripButton tsbMoveUp;
+        private System.Windows.Forms.ToolStripButton tsbMoveDown;
     }
 }

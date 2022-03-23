@@ -56,6 +56,10 @@ namespace Finmer.Editor
             assetInjectTargetScene.SelectedGuid = m_Scene.InjectScene;
             cmbInjectTargetNode.Text = m_Scene.InjectNode;
             UpdateInjectionNodeList();
+
+            // Mark the asset as dirty when the user changes node scripts
+            scriptAction.Dirty += (o, arg) => Dirty = true;
+            scriptAppear.Dirty += (o, arg) => Dirty = true;
         }
 
         public override void Flush()
@@ -113,11 +117,9 @@ namespace Finmer.Editor
             var wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAction);
             m_SelectedNode.ScriptAction = wrapper;
             scriptAction.SetScript(wrapper);
-            scriptAction.Dirty += (o, arg) => Dirty = true;
             wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAppear);
             m_SelectedNode.ScriptAppear = wrapper;
             scriptAppear.SetScript(wrapper);
-            scriptAppear.Dirty += (o, arg) => Dirty = true;
 
             chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
             chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;

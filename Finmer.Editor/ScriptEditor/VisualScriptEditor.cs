@@ -22,6 +22,11 @@ namespace Finmer.Editor
     public partial class VisualScriptEditor : UserControl, IScriptEditor
     {
 
+        private static readonly Brush k_RowBackgroundBrush1 = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
+        private static readonly Brush k_RowBackgroundBrush2 = new SolidBrush(Color.FromArgb(255, 228, 236, 242));
+        private static readonly Brush k_RowHoverBrush2 = new SolidBrush(Color.FromArgb(255, 215, 222, 229));
+        private static readonly Brush k_RowFocusBrush2 = new SolidBrush(Color.FromArgb(255, 5, 124, 245));
+
         private readonly ScriptEditorHost m_Host;
         private readonly ScriptDataVisual m_ScriptData;
 
@@ -83,65 +88,61 @@ namespace Finmer.Editor
 
         private void RebuildNodeTreeFromCollection(List<ScriptNode> nodes, int indentLevel)
         {
-            // Prepare a string to prefix to all nodes, to represent the nesting level
-            string indent_prefix = GetIndentString(indentLevel);
-
             // Emit tree items for all nodes
             foreach (ScriptNode node in nodes)
             {
                 // Add node
-                AddItemToTree(indent_prefix + node.GetEditorDescription(), node.GetEditorColor(), new TreeItemTag { m_Node = node, m_Parent = nodes });
+                AddItemToTree(node.GetEditorDescription(), node.GetEditorColor(), new TreeItemTag { m_Node = node, m_Parent = nodes }, indentLevel);
 
                 // If this node is itself a container for nodes, we need to recurse
                 if (node is ScriptCommandContainer container)
                 {
                     // Add the first set of nodes
                     RebuildNodeTreeFromCollection(container.Subgroup1, indentLevel + 1);
-                    AddItemToTree(indent_prefix + container.GetEditorSubgroup1Suffix(), node.GetEditorColor(), null);
+                    AddItemToTree(container.GetEditorSubgroup1Suffix(), node.GetEditorColor(), null, indentLevel);
 
                     // The second subgroup may or may not be present
                     if (container.IsSubgroup2Enabled())
                     {
                         // Add the second set of nodes
                         RebuildNodeTreeFromCollection(container.Subgroup2, indentLevel + 1);
-                        AddItemToTree(indent_prefix + container.GetEditorSubgroup2Suffix(), node.GetEditorColor(), null);
+                        AddItemToTree(container.GetEditorSubgroup2Suffix(), node.GetEditorColor(), null, indentLevel);
                     }
                 }
             }
 
             // Placeholder node that allows for injecting new elements
-            AddItemToTree(indent_prefix + "[ Add new... ]", ScriptNode.EColor.System, new TreeItemTag { m_Destination = nodes });
+            AddItemToTree("[ Add... ]", ScriptNode.EColor.System, new TreeItemTag { m_Destination = nodes }, indentLevel);
         }
 
-        private void AddItemToTree(string text, ScriptNode.EColor color, object tag)
+        private void AddItemToTree(string text, ScriptNode.EColor color, object tag, int indent)
         {
             var placeholder = new ListViewItem
             {
                 Text = text,
                 ForeColor = ConvertColor(color),
-                Tag = tag
+                Tag = tag,
+                IndentCount = indent
             };
             lsvNodes.Items.Add(placeholder);
-        }
-
-        private static string GetIndentString(int indentLevel)
-        {
-            return indentLevel == 0 ? String.Empty : new string(' ', indentLevel * 5);
         }
 
         private static Color ConvertColor(ScriptNode.EColor color)
         {
             switch (color)
             {
-                case ScriptNode.EColor.System:              return Color.DimGray;
-                case ScriptNode.EColor.Code:                return Color.Gray;
+                case ScriptNode.EColor.System:              return Color.FromArgb(255, 128, 128, 128);
+                case ScriptNode.EColor.Code:                return Color.FromArgb(255, 64, 64, 64);
                 case ScriptNode.EColor.Comment:             return Color.ForestGreen;
-                case ScriptNode.EColor.FlowControl:         return Color.RoyalBlue;
-                case ScriptNode.EColor.SceneControl:        return Color.DarkRed;
-                case ScriptNode.EColor.Global:              return Color.DarkSlateBlue;
-                case ScriptNode.EColor.SaveData:            return Color.DarkSlateGray;
-                case ScriptNode.EColor.Player:              return Color.DarkGoldenrod;
-                case ScriptNode.EColor.Journal:             return Color.SaddleBrown;
+                case ScriptNode.EColor.FlowControl:         return Color.FromArgb(255, 40, 67, 204);
+                case ScriptNode.EColor.Message:             return Color.FromArgb(255, 109, 14, 155);
+                case ScriptNode.EColor.SceneControl:        return Color.FromArgb(255, 67, 145, 255);
+                case ScriptNode.EColor.SaveData:            return Color.FromArgb(255, 5, 129, 131);
+                case ScriptNode.EColor.Player:              return Color.FromArgb(255, 144, 3, 11);
+                case ScriptNode.EColor.Journal:             return Color.FromArgb(255, 165, 139, 57);
+                case ScriptNode.EColor.Variable:            return Color.FromArgb(255, 198, 23, 38);
+                case ScriptNode.EColor.Sleep:               return Color.FromArgb(255, 230, 24, 81);
+                case ScriptNode.EColor.Combat:              return Color.FromArgb(255, 166, 19, 220);
                 default:                                    throw new ArgumentOutOfRangeException(nameof(color), color, null);
             }
         }
@@ -287,6 +288,40 @@ namespace Finmer.Editor
             // If Delete is pressed, act as if the toolbar button was clicked
             if (e.KeyCode == Keys.Delete && tsbDeleteNode.Enabled)
                 tsbDeleteNode_Click(sender, e);
+        }
+
+        private void lsvNodes_Resize(object sender, EventArgs e)
+        {
+            clhImplicitHeader.Width = lsvNodes.ClientSize.Width;
+        }
+
+        private void lsvNodes_DrawItem(object sender, DrawListViewItemEventArgs e)
+        {
+            // Pick a brush for the background
+            Brush back_brush;
+            if (e.Item.Selected)
+                back_brush = k_RowFocusBrush2;
+            else if (e.Item.Tag != null && lsvNodes.RectangleToScreen(e.Bounds).Contains(Cursor.Position))
+                back_brush = k_RowHoverBrush2;
+            else if (e.ItemIndex % 2 == 0)
+                back_brush = k_RowBackgroundBrush1; // Alternating colors for regular rows
+            else
+                back_brush = k_RowBackgroundBrush2;
+
+            // Draw the background
+            e.Graphics.FillRectangle(back_brush, e.Bounds);
+
+            // Offset text slightly to the left, for aesthetics
+            var text_offset = e.Item.IndentCount * 28 + 2;
+            var text_bounds = e.Bounds;
+            text_bounds.X += text_offset;
+            text_bounds.Width -= text_offset;
+
+            // Make selected text a different color, for readability against the dark background
+            var text_color = e.Item.Selected ? Color.White : e.Item.ForeColor;
+
+            // Draw text
+            TextRenderer.DrawText(e.Graphics, e.Item.Text, e.Item.Font, text_bounds, text_color, TextFormatFlags.Left | TextFormatFlags.VerticalCenter);
         }
 
         /// <summary>

@@ -26,7 +26,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override EColor GetEditorColor()
         {
-            return EColor.FlowControl;
+            return EColor.Sleep;
         }
 
         public override void EmitLua(StringBuilder output)

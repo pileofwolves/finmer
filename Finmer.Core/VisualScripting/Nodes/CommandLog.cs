@@ -36,7 +36,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override EColor GetEditorColor()
         {
-            return EColor.System;
+            return EColor.Message;
         }
 
         public override void EmitLua(StringBuilder output)

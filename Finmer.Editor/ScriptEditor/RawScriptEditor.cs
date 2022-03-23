@@ -28,6 +28,13 @@ namespace Finmer.Editor
 
             m_Host = host;
             m_ScriptData = script;
+
+            // Initialize the editor. Note: This MUST be done in the constructor, instead of in the Load handler, because
+            // Load will only be raised when the control actually becomes visible, and this may not happen if this control
+            // is used in a tabbed/tiered context and the user may or may not ever open these tabs.
+            ScintillaHelper.Setup(scintilla, true);
+            scintilla.Text = m_ScriptData.ScriptText;
+            scintilla.EmptyUndoBuffer();
         }
 
         public void Flush()
@@ -37,11 +44,6 @@ namespace Finmer.Editor
 
         private void RawScriptEditor_Load(object sender, EventArgs e)
         {
-            // Initialize the editor
-            ScintillaHelper.Setup(scintilla, true);
-            scintilla.Text = m_ScriptData.ScriptText;
-            scintilla.EmptyUndoBuffer();
-
             // Hook up the change event now that programmatic text changes are finished
             scintilla.TextChanged += scintilla_TextChanged;
             UpdateToolbarButtons();

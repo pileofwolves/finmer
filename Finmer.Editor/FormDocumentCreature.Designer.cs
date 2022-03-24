@@ -556,70 +556,70 @@
             // nudWis
             // 
             this.nudWis.Location = new System.Drawing.Point(208, 184);
-            this.nudWis.Maximum = new decimal(new int[] {
-            50,
+            this.nudWis.Minimum = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.nudWis.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
             this.nudWis.Name = "nudWis";
             this.nudWis.Size = new System.Drawing.Size(56, 20);
             this.nudWis.TabIndex = 13;
+            this.nudWis.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // nudCon
             // 
             this.nudCon.Location = new System.Drawing.Point(144, 184);
-            this.nudCon.Maximum = new decimal(new int[] {
-            50,
+            this.nudCon.Minimum = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.nudCon.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
             this.nudCon.Name = "nudCon";
             this.nudCon.Size = new System.Drawing.Size(56, 20);
             this.nudCon.TabIndex = 12;
+            this.nudCon.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // nudDex
             // 
             this.nudDex.Location = new System.Drawing.Point(80, 184);
-            this.nudDex.Maximum = new decimal(new int[] {
-            50,
+            this.nudDex.Minimum = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.nudDex.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
             this.nudDex.Name = "nudDex";
             this.nudDex.Size = new System.Drawing.Size(56, 20);
             this.nudDex.TabIndex = 11;
+            this.nudDex.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // nudStr
             // 
             this.nudStr.Location = new System.Drawing.Point(16, 184);
-            this.nudStr.Maximum = new decimal(new int[] {
-            50,
+            this.nudStr.Minimum = new decimal(new int[] {
+            3,
             0,
             0,
             0});
-            this.nudStr.Minimum = new decimal(new int[] {
-            50,
-            0,
-            0,
-            -2147483648});
             this.nudStr.Name = "nudStr";
             this.nudStr.Size = new System.Drawing.Size(56, 20);
             this.nudStr.TabIndex = 10;
+            this.nudStr.Value = new decimal(new int[] {
+            3,
+            0,
+            0,
+            0});
             // 
             // txtGuid
             // 

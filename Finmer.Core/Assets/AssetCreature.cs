@@ -41,22 +41,22 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// The creature's Strength combat stat.
         /// </summary>
-        public int Strength { get; set; }
+        public int Strength { get; set; } = 3;
 
         /// <summary>
         /// The creature's Agility combat stat.
         /// </summary>
-        public int Agility { get; set; }
+        public int Agility { get; set; } = 3;
 
         /// <summary>
         /// The creature's Body combat stat.
         /// </summary>
-        public int Body { get; set; }
+        public int Body { get; set; } = 3;
 
         /// <summary>
         /// The creature's Wits combat stat.
         /// </summary>
-        public int Wits { get; set; }
+        public int Wits { get; set; } = 3;
 
         /// <summary>
         /// Bitflags of type ECharacterFlags.

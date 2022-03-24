@@ -286,7 +286,7 @@ namespace Finmer.Gameplay.Combat
             if (participant.Prey.Count != 0 && character.PredatorDigests)
             {
                 // Deal digestion damage to all live prey
-                var digestion_damage = character.Level + Character.GetAbilityModifier(character.Body);
+                var digestion_damage = Math.Max(character.Level + Character.GetAbilityModifier(character.Body), 1);
                 foreach (var prey in participant.Prey)
                     if (!prey.DigestionImmunity && !prey.Character.IsDead())
                     {

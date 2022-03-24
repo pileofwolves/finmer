@@ -42,7 +42,7 @@ namespace Finmer.Editor
             this.cmdAccept.Location = new System.Drawing.Point(120, 152);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -57,7 +57,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(248, 151);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -72,7 +72,7 @@ namespace Finmer.Editor
             this.txtComment.Multiline = true;
             this.txtComment.Name = "txtComment";
             this.txtComment.Size = new System.Drawing.Size(351, 119);
-            this.txtComment.TabIndex = 3;
+            this.txtComment.TabIndex = 1;
             // 
             // FormScriptNodeComment
             // 

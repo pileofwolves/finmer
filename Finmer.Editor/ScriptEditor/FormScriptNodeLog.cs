@@ -27,6 +27,9 @@ namespace Finmer.Editor
             var node = (CommandLog)Node;
             txtMessage.Text = node.Text;
             chkRaw.Checked = node.IsRaw;
+
+            // Force text header and multiline state to update
+            chkRaw_CheckedChanged(sender, e);
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
@@ -43,6 +46,7 @@ namespace Finmer.Editor
 
         private void chkRaw_CheckedChanged(object sender, System.EventArgs e)
         {
+            lblHeader.Text = chkRaw.Checked ? "Message Text:" : "String Table Key:";
             txtMessage.Multiline = chkRaw.Checked;
         }
 

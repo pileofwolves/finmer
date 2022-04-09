@@ -23,7 +23,7 @@ namespace Finmer.Editor
     {
 
         private static readonly Brush k_RowBackgroundBrush1 = new SolidBrush(Color.FromArgb(255, 255, 255, 255));
-        private static readonly Brush k_RowBackgroundBrush2 = new SolidBrush(Color.FromArgb(255, 228, 236, 242));
+        private static readonly Brush k_RowBackgroundBrush2 = new SolidBrush(Color.FromArgb(255, 232, 239, 244));
         private static readonly Brush k_RowHoverBrush2 = new SolidBrush(Color.FromArgb(255, 215, 222, 229));
         private static readonly Brush k_RowFocusBrush2 = new SolidBrush(Color.FromArgb(255, 5, 124, 245));
 

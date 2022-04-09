@@ -107,27 +107,27 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Serialize(IFurballContentWriter outstream)
         {
+            outstream.WriteEnumProperty("Mode", Mode);
+            outstream.WriteBooleanProperty("Operand", Operand);
+            outstream.WriteBooleanProperty("HasElseBranch", HasElseBranch);
+
             outstream.BeginArray("Conditions", Conditions.Count);
             foreach (var condition in Conditions)
                 outstream.WriteNestedObjectProperty(null, condition);
             outstream.EndArray();
-
-            outstream.WriteEnumProperty("Mode", Mode);
-            outstream.WriteBooleanProperty("Operand", Operand);
-            outstream.WriteBooleanProperty("HasElseBranch", HasElseBranch);
 
             base.Serialize(outstream);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            for (int i = 0, c = instream.BeginArray("Conditions"); i < c; i++)
-                Conditions.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null, version));
-            instream.EndArray();
-
             Mode = instream.ReadEnumProperty<EConditionMode>("Mode");
             Operand = instream.ReadBooleanProperty("Operand");
             HasElseBranch = instream.ReadBooleanProperty("HasElseBranch");
+
+            for (int i = 0, c = instream.BeginArray("Conditions"); i < c; i++)
+                Conditions.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null, version));
+            instream.EndArray();
 
             base.Deserialize(instream, version);
         }

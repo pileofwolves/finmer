@@ -62,11 +62,11 @@ namespace Finmer.Editor
         private void cmdConditionRemove_Click(object sender, System.EventArgs e)
         {
             // As a fail-safe, validate selection again
-            if (lsvConditions.SelectedIndices.Count != 1)
+            int index = lsvConditions.SelectedIndex;
+            if (index == -1)
                 return;
 
             // Delete selection
-            int index = lsvConditions.SelectedIndices[0];
             lsvConditions.Items.RemoveAt(index);
             m_Node.Conditions.RemoveAt(index);
 
@@ -77,18 +77,18 @@ namespace Finmer.Editor
 
         private void lsvConditions_SelectedIndexChanged(object sender, System.EventArgs e)
         {
-            bool has_selection = lsvConditions.SelectedItems.Count == 1;
+            bool has_selection = lsvConditions.SelectedIndex != -1;
             cmdConditionRemove.Enabled = has_selection;
         }
 
         private void lsvConditions_DoubleClick(object sender, System.EventArgs e)
         {
             // Must have a selection to open
-            if (lsvConditions.SelectedItems.Count != 1)
+            var selected_item = lsvConditions.SelectedItem;
+            if (selected_item == null)
                 return;
 
             // Check what actions we can perform with this tree item
-            var selected_item = lsvConditions.SelectedItems[0];
             var tag = selected_item.Tag as ScriptNode;
             if (tag != null)
             {
@@ -118,6 +118,7 @@ namespace Finmer.Editor
             lsvConditions.Items.Add(new ListViewItem
             {
                 Text = condition.GetEditorDescription(),
+                ForeColor = BandedListView.ConvertColor(condition.GetEditorColor()),
                 Tag = condition
             });
 

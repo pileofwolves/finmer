@@ -66,6 +66,12 @@
       <DependentUpon>AssetPickerControl.cs</DependentUpon>
     </Compile>
     <Compile Include="AssetDummy.cs" />
+    <Compile Include="BandedListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BandedListView.Designer.cs">
+      <DependentUpon>BandedListView.cs</DependentUpon>
+    </Compile>
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -283,6 +289,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="AssetWindow.resx">
       <DependentUpon>AssetWindow.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="BandedListView.resx">
+      <DependentUpon>BandedListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="EquipEffects\FormEffectEditorSingleDelta.resx">
       <DependentUpon>FormEffectEditorSingleDelta.cs</DependentUpon>

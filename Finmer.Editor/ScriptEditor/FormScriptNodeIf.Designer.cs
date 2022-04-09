@@ -33,7 +33,6 @@ namespace Finmer.Editor
             System.Windows.Forms.Panel pnlMode;
             System.Windows.Forms.Panel pnlOperand;
             System.Windows.Forms.Label label3;
-            System.Windows.Forms.ColumnHeader columnHeader1;
             this.optModeAll = new System.Windows.Forms.RadioButton();
             this.optModeAny = new System.Windows.Forms.RadioButton();
             this.optOperandTrue = new System.Windows.Forms.RadioButton();
@@ -41,14 +40,13 @@ namespace Finmer.Editor
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.chkElse = new System.Windows.Forms.CheckBox();
-            this.lsvConditions = new System.Windows.Forms.ListView();
             this.cmdConditionAdd = new System.Windows.Forms.Button();
             this.cmdConditionRemove = new System.Windows.Forms.Button();
+            this.lsvConditions = new Finmer.Editor.BandedListView();
             label2 = new System.Windows.Forms.Label();
             pnlMode = new System.Windows.Forms.Panel();
             pnlOperand = new System.Windows.Forms.Panel();
             label3 = new System.Windows.Forms.Label();
-            columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             pnlMode.SuspendLayout();
             pnlOperand.SuspendLayout();
             this.SuspendLayout();
@@ -169,22 +167,6 @@ namespace Finmer.Editor
             this.chkElse.Text = "Has \'Else\' Branch";
             this.chkElse.UseVisualStyleBackColor = true;
             // 
-            // lsvConditions
-            // 
-            this.lsvConditions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            columnHeader1});
-            this.lsvConditions.FullRowSelect = true;
-            this.lsvConditions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
-            this.lsvConditions.HideSelection = false;
-            this.lsvConditions.Location = new System.Drawing.Point(16, 96);
-            this.lsvConditions.Name = "lsvConditions";
-            this.lsvConditions.Size = new System.Drawing.Size(432, 136);
-            this.lsvConditions.TabIndex = 10;
-            this.lsvConditions.UseCompatibleStateImageBehavior = false;
-            this.lsvConditions.View = System.Windows.Forms.View.Details;
-            this.lsvConditions.SelectedIndexChanged += new System.EventHandler(this.lsvConditions_SelectedIndexChanged);
-            this.lsvConditions.DoubleClick += new System.EventHandler(this.lsvConditions_DoubleClick);
-            // 
             // cmdConditionAdd
             // 
             this.cmdConditionAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -214,9 +196,16 @@ namespace Finmer.Editor
             this.cmdConditionRemove.UseVisualStyleBackColor = true;
             this.cmdConditionRemove.Click += new System.EventHandler(this.cmdConditionRemove_Click);
             // 
-            // columnHeader1
+            // lsvConditions
             // 
-            columnHeader1.Width = 400;
+            this.lsvConditions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.lsvConditions.Location = new System.Drawing.Point(16, 96);
+            this.lsvConditions.Name = "lsvConditions";
+            this.lsvConditions.SelectedIndex = -1;
+            this.lsvConditions.Size = new System.Drawing.Size(432, 136);
+            this.lsvConditions.TabIndex = 16;
+            this.lsvConditions.SelectedIndexChanged += new System.EventHandler(this.lsvConditions_SelectedIndexChanged);
+            this.lsvConditions.ItemDoubleClick += new System.EventHandler(this.lsvConditions_DoubleClick);
             // 
             // FormScriptNodeIf
             // 
@@ -225,12 +214,12 @@ namespace Finmer.Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(464, 360);
+            this.Controls.Add(this.lsvConditions);
             this.Controls.Add(this.cmdConditionRemove);
             this.Controls.Add(this.cmdConditionAdd);
             this.Controls.Add(label3);
             this.Controls.Add(pnlOperand);
             this.Controls.Add(pnlMode);
-            this.Controls.Add(this.lsvConditions);
             this.Controls.Add(label2);
             this.Controls.Add(this.chkElse);
             this.Controls.Add(this.cmdCancel);
@@ -259,10 +248,10 @@ namespace Finmer.Editor
         private System.Windows.Forms.CheckBox chkElse;
         private System.Windows.Forms.RadioButton optModeAll;
         private System.Windows.Forms.RadioButton optModeAny;
-        private System.Windows.Forms.ListView lsvConditions;
         private System.Windows.Forms.RadioButton optOperandTrue;
         private System.Windows.Forms.RadioButton optOperandFalse;
         private System.Windows.Forms.Button cmdConditionAdd;
         private System.Windows.Forms.Button cmdConditionRemove;
+        private BandedListView lsvConditions;
     }
 }

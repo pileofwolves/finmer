@@ -39,6 +39,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             return $"Player {Stat} {base.GetEditorDescription()}";
         }
 
+        public override EColor GetEditorColor()
+        {
+            return EColor.Player;
+        }
+
         public override void Serialize(IFurballContentWriter outstream)
         {
             base.Serialize(outstream);

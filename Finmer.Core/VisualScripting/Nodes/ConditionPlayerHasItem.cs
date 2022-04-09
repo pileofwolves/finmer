@@ -34,6 +34,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             return "Player Has Item " + ItemName;
         }
 
+        public override EColor GetEditorColor()
+        {
+            return EColor.Player;
+        }
+
         public override void EmitLua(StringBuilder output)
         {
             output.Append("Player:HasItem(\"");

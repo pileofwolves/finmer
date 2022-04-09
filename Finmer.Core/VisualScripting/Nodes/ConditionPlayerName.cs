@@ -22,6 +22,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             return "Player Name";
         }
 
+        public override EColor GetEditorColor()
+        {
+            return EColor.Player;
+        }
+
         public override void EmitLua(StringBuilder output)
         {
             output.Append("Player.Name");

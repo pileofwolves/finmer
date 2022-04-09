@@ -20,6 +20,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             return "Player Health " + base.GetEditorDescription();
         }
 
+        public override EColor GetEditorColor()
+        {
+            return EColor.Player;
+        }
+
         protected override string GetLeftOperandExpression()
         {
             return "Player.Health";

@@ -6,27 +6,23 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Text;
-
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value transformer that performs a boolean NOT.
+    /// Script condition that tests the player's level.
     /// </summary>
-    public sealed class ValueNot : ScriptValueSingleOperand
+    public sealed class ConditionPlayerLevel : ScriptConditionNumberComparison
     {
 
         public override string GetEditorDescription()
         {
-            return $"Not {Operand.GetEditorDescription()}";
+            return "Player Level " + base.GetEditorDescription();
         }
 
-        public override void EmitLua(StringBuilder output)
+        protected override string GetLeftOperandExpression()
         {
-            output.Append("not (");
-            Operand.EmitLua(output);
-            output.Append(')');
+            return "Player.Level";
         }
 
     }

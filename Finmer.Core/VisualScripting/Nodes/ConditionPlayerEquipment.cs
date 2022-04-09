@@ -14,7 +14,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     /// <summary>
     /// Script value that returns an equipped item.
     /// </summary>
-    public sealed class ValuePlayerEquipment : ScriptValue
+    public sealed class ConditionPlayerEquipment : ScriptCondition
     {
 
         /// <summary>

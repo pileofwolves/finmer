@@ -12,7 +12,7 @@ namespace Finmer.Core.VisualScripting
     /// <summary>
     /// Represents a value transformer script node.
     /// </summary>
-    public abstract class ScriptValue : ScriptNode
+    public abstract class ScriptCondition : ScriptNode
     {
 
         public override EColor GetEditorColor()

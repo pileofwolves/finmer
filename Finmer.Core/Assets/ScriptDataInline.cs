@@ -27,8 +27,6 @@ namespace Finmer.Core.Assets
 
         public ScriptDataInline()
         {
-            // Ensure the asset details are blank, since this is not a standalone asset
-            // (Admittedly a little hacky, but this is the best way to fit this in the asset serialization
             Name = k_DefaultInlineScriptName;
         }
 

@@ -16,20 +16,20 @@ namespace Finmer.Editor
     /// <summary>
     /// Represents a palette form from which the user can select a script value.
     /// </summary>
-    public partial class FormVisualScriptValuePalette : Form
+    public partial class FormVisualScriptConditionPalette : Form
     {
 
         /// <summary>
         /// The node that was newly created through this palette form, or null if not (yet) set.
         /// </summary>
-        public ScriptValue NewNode { get; private set; }
+        public ScriptCondition NewNode { get; private set; }
 
-        public FormVisualScriptValuePalette()
+        public FormVisualScriptConditionPalette()
         {
             InitializeComponent();
         }
 
-        private void AddScriptNode(ScriptValue node)
+        private void TryConfigureScriptNode(ScriptCondition node)
         {
             // Open the edit dialog so this node can be initially configured
             using (var editor_form = ScriptNodeFormMapper.CreateEditorForm(node))
@@ -58,79 +58,54 @@ namespace Finmer.Editor
             Close();
         }
 
-        private void cmdLogicCompare_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ValueCompare());
-        }
-
-        private void cmdLogicNot_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ValueNot());
-        }
-
-        private void cmdLogicAnd_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ValueAnd());
-        }
-
-        private void cmdLogicOr_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ValueOr());
-        }
-
         private void cmdPlayerGetName_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerName());
+            TryConfigureScriptNode(new ConditionPlayerName());
         }
 
         private void cmdPlayerGetSpecies_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerSpecies());
+            TryConfigureScriptNode(new ConditionPlayerSpecies());
         }
 
         private void cmdPlayerGetStat_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerStat());
+            TryConfigureScriptNode(new ConditionPlayerStat());
         }
 
         private void cmdPlayerGetSize_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerSize());
+            TryConfigureScriptNode(new ConditionPlayerSize());
         }
 
         private void cmdPlayerGetHealth_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerHealth());
+            TryConfigureScriptNode(new ConditionPlayerHealth());
         }
 
         private void cmdPlayerGetMaxHealth_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerHealthMax());
+            TryConfigureScriptNode(new ConditionPlayerHealthMax());
         }
 
         private void cmdPlayerGetMoney_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerMoney());
+            TryConfigureScriptNode(new ConditionPlayerMoney());
         }
 
         private void cmdPlayerGetEquipment_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerEquipment());
+            TryConfigureScriptNode(new ConditionPlayerEquipment());
         }
 
         private void cmdPlayerHasItem_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerHasItem());
+            TryConfigureScriptNode(new ConditionPlayerHasItem());
         }
 
         private void cmdPlayerGetLevel_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ValuePlayerLevel());
-        }
-
-        private void cmdLiteral_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ValueLiteral());
+            TryConfigureScriptNode(new ConditionPlayerLevel());
         }
 
     }

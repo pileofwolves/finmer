@@ -27,11 +27,9 @@ namespace Finmer.Editor
             { typeof(CommandSleep),                 () => new FormScriptNodeSingleFloat() },
             { typeof(CommandLog),                   () => new FormScriptNodeLog() },
             { typeof(CommandInlineSnippet),         () => new FormScriptNodeLuaSnippet() },
-            { typeof(ValueCompare),                 () => new FormScriptValueCompare() },
-            { typeof(ValueLiteral),                 () => new FormScriptValueLiteral() },
-            { typeof(ValuePlayerEquipment),         () => new FormScriptValuePlayerEquip() },
-            { typeof(ValuePlayerHasItem),           () => new FormScriptValuePlayerItem() },
-            { typeof(ValuePlayerStat),              () => new FormScriptValuePlayerStat() },
+            { typeof(ConditionPlayerEquipment),     () => new FormScriptValuePlayerEquip() },
+            { typeof(ConditionPlayerHasItem),       () => new FormScriptValuePlayerItem() },
+            { typeof(ConditionPlayerStat),          () => new FormScriptValuePlayerStat() },
         };
 
         /// <summary>

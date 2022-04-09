@@ -12,19 +12,19 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player's max health.
+    /// Script value that returns the player character species name.
     /// </summary>
-    public sealed class ValuePlayerHealthMax : ScriptValue
+    public sealed class ConditionPlayerSpecies : ScriptCondition
     {
 
         public override string GetEditorDescription()
         {
-            return "Player Max Health";
+            return "Player Species";
         }
 
         public override void EmitLua(StringBuilder output)
         {
-            output.Append("Player.HealthMax");
+            output.Append("Player.Species");
         }
 
     }

@@ -24,12 +24,12 @@ namespace Finmer.Editor
 
         private void FormScriptValuePlayerStat_Load(object sender, System.EventArgs e)
         {
-            cmbStat.SelectedIndex = (int)((ValuePlayerStat)Node).Stat;
+            cmbStat.SelectedIndex = (int)((ConditionPlayerStat)Node).Stat;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((ValuePlayerStat)Node).Stat = (ValuePlayerStat.EStat)cmbStat.SelectedIndex;
+            ((ConditionPlayerStat)Node).Stat = (ConditionPlayerStat.EStat)cmbStat.SelectedIndex;
         }
 
     }

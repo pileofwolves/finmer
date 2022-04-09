@@ -24,13 +24,13 @@ namespace Finmer.Editor
 
         private void FormScriptValuePlayerItem_Load(object sender, System.EventArgs e)
         {
-            var node = (ValuePlayerHasItem)Node;
+            var node = (ConditionPlayerHasItem)Node;
             asset.SelectedGuid = node.Item;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            var node = (ValuePlayerHasItem)Node;
+            var node = (ConditionPlayerHasItem)Node;
             node.Item = asset.SelectedGuid;
             node.ItemName = asset.SelectedAsset?.Name ?? "Unknown";
         }

@@ -29,29 +29,113 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label2;
+            System.Windows.Forms.Panel pnlMode;
+            System.Windows.Forms.Panel pnlOperand;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.ColumnHeader columnHeader1;
+            this.optModeAll = new System.Windows.Forms.RadioButton();
+            this.optModeAny = new System.Windows.Forms.RadioButton();
+            this.optOperandTrue = new System.Windows.Forms.RadioButton();
+            this.optOperandFalse = new System.Windows.Forms.RadioButton();
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.condition = new Finmer.Editor.ScriptValueHost();
             this.chkElse = new System.Windows.Forms.CheckBox();
-            label1 = new System.Windows.Forms.Label();
+            this.lsvConditions = new System.Windows.Forms.ListView();
+            this.cmdConditionAdd = new System.Windows.Forms.Button();
+            this.cmdConditionRemove = new System.Windows.Forms.Button();
+            label2 = new System.Windows.Forms.Label();
+            pnlMode = new System.Windows.Forms.Panel();
+            pnlOperand = new System.Windows.Forms.Panel();
+            label3 = new System.Windows.Forms.Label();
+            columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            pnlMode.SuspendLayout();
+            pnlOperand.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // label2
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 16);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(54, 13);
-            label1.TabIndex = 3;
-            label1.Text = "Condition:";
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 248);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(14, 13);
+            label2.TabIndex = 9;
+            label2.Text = "is";
+            // 
+            // pnlMode
+            // 
+            pnlMode.Controls.Add(this.optModeAll);
+            pnlMode.Controls.Add(this.optModeAny);
+            pnlMode.Location = new System.Drawing.Point(16, 32);
+            pnlMode.Name = "pnlMode";
+            pnlMode.Size = new System.Drawing.Size(176, 56);
+            pnlMode.TabIndex = 11;
+            // 
+            // optModeAll
+            // 
+            this.optModeAll.AutoSize = true;
+            this.optModeAll.Location = new System.Drawing.Point(8, 8);
+            this.optModeAll.Name = "optModeAll";
+            this.optModeAll.Size = new System.Drawing.Size(121, 17);
+            this.optModeAll.TabIndex = 7;
+            this.optModeAll.Text = "ALL of the following:";
+            this.optModeAll.UseVisualStyleBackColor = true;
+            // 
+            // optModeAny
+            // 
+            this.optModeAny.AutoSize = true;
+            this.optModeAny.Location = new System.Drawing.Point(8, 32);
+            this.optModeAny.Name = "optModeAny";
+            this.optModeAny.Size = new System.Drawing.Size(124, 17);
+            this.optModeAny.TabIndex = 8;
+            this.optModeAny.Text = "ANY of the following:";
+            this.optModeAny.UseVisualStyleBackColor = true;
+            // 
+            // pnlOperand
+            // 
+            pnlOperand.Controls.Add(this.optOperandTrue);
+            pnlOperand.Controls.Add(this.optOperandFalse);
+            pnlOperand.Location = new System.Drawing.Point(32, 240);
+            pnlOperand.Name = "pnlOperand";
+            pnlOperand.Size = new System.Drawing.Size(160, 56);
+            pnlOperand.TabIndex = 12;
+            // 
+            // optOperandTrue
+            // 
+            this.optOperandTrue.AutoSize = true;
+            this.optOperandTrue.Location = new System.Drawing.Point(8, 8);
+            this.optOperandTrue.Name = "optOperandTrue";
+            this.optOperandTrue.Size = new System.Drawing.Size(43, 17);
+            this.optOperandTrue.TabIndex = 7;
+            this.optOperandTrue.Text = "true";
+            this.optOperandTrue.UseVisualStyleBackColor = true;
+            // 
+            // optOperandFalse
+            // 
+            this.optOperandFalse.AutoSize = true;
+            this.optOperandFalse.Location = new System.Drawing.Point(8, 32);
+            this.optOperandFalse.Name = "optOperandFalse";
+            this.optOperandFalse.Size = new System.Drawing.Size(47, 17);
+            this.optOperandFalse.TabIndex = 8;
+            this.optOperandFalse.Text = "false";
+            this.optOperandFalse.UseVisualStyleBackColor = true;
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(16, 16);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(140, 13);
+            label3.TabIndex = 13;
+            label3.Text = "Run the contained actions if";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
+            this.cmdAccept.Enabled = false;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(88, 135);
+            this.cmdAccept.Location = new System.Drawing.Point(200, 312);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 1;
@@ -66,7 +150,7 @@ namespace Finmer.Editor
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(216, 134);
+            this.cmdCancel.Location = new System.Drawing.Point(328, 311);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 2;
@@ -75,23 +159,64 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // condition
-            // 
-            this.condition.Location = new System.Drawing.Point(16, 32);
-            this.condition.Name = "condition";
-            this.condition.Size = new System.Drawing.Size(320, 32);
-            this.condition.TabIndex = 4;
-            this.condition.Value = null;
-            // 
             // chkElse
             // 
             this.chkElse.AutoSize = true;
-            this.chkElse.Location = new System.Drawing.Point(16, 88);
+            this.chkElse.Location = new System.Drawing.Point(24, 320);
             this.chkElse.Name = "chkElse";
             this.chkElse.Size = new System.Drawing.Size(109, 17);
             this.chkElse.TabIndex = 5;
             this.chkElse.Text = "Has \'Else\' Branch";
             this.chkElse.UseVisualStyleBackColor = true;
+            // 
+            // lsvConditions
+            // 
+            this.lsvConditions.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            columnHeader1});
+            this.lsvConditions.FullRowSelect = true;
+            this.lsvConditions.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
+            this.lsvConditions.HideSelection = false;
+            this.lsvConditions.Location = new System.Drawing.Point(16, 96);
+            this.lsvConditions.Name = "lsvConditions";
+            this.lsvConditions.Size = new System.Drawing.Size(432, 136);
+            this.lsvConditions.TabIndex = 10;
+            this.lsvConditions.UseCompatibleStateImageBehavior = false;
+            this.lsvConditions.View = System.Windows.Forms.View.Details;
+            this.lsvConditions.SelectedIndexChanged += new System.EventHandler(this.lsvConditions_SelectedIndexChanged);
+            this.lsvConditions.DoubleClick += new System.EventHandler(this.lsvConditions_DoubleClick);
+            // 
+            // cmdConditionAdd
+            // 
+            this.cmdConditionAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdConditionAdd.Image = global::Finmer.Editor.Properties.Resources.plus;
+            this.cmdConditionAdd.Location = new System.Drawing.Point(264, 56);
+            this.cmdConditionAdd.Name = "cmdConditionAdd";
+            this.cmdConditionAdd.Size = new System.Drawing.Size(88, 28);
+            this.cmdConditionAdd.TabIndex = 14;
+            this.cmdConditionAdd.Text = "Add";
+            this.cmdConditionAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdConditionAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdConditionAdd.UseVisualStyleBackColor = true;
+            this.cmdConditionAdd.Click += new System.EventHandler(this.cmdConditionAdd_Click);
+            // 
+            // cmdConditionRemove
+            // 
+            this.cmdConditionRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmdConditionRemove.Enabled = false;
+            this.cmdConditionRemove.Image = global::Finmer.Editor.Properties.Resources.minus;
+            this.cmdConditionRemove.Location = new System.Drawing.Point(360, 56);
+            this.cmdConditionRemove.Name = "cmdConditionRemove";
+            this.cmdConditionRemove.Size = new System.Drawing.Size(88, 28);
+            this.cmdConditionRemove.TabIndex = 15;
+            this.cmdConditionRemove.Text = "Remove";
+            this.cmdConditionRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdConditionRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdConditionRemove.UseVisualStyleBackColor = true;
+            this.cmdConditionRemove.Click += new System.EventHandler(this.cmdConditionRemove_Click);
+            // 
+            // columnHeader1
+            // 
+            columnHeader1.Width = 400;
             // 
             // FormScriptNodeIf
             // 
@@ -99,10 +224,15 @@ namespace Finmer.Editor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(352, 183);
+            this.ClientSize = new System.Drawing.Size(464, 360);
+            this.Controls.Add(this.cmdConditionRemove);
+            this.Controls.Add(this.cmdConditionAdd);
+            this.Controls.Add(label3);
+            this.Controls.Add(pnlOperand);
+            this.Controls.Add(pnlMode);
+            this.Controls.Add(this.lsvConditions);
+            this.Controls.Add(label2);
             this.Controls.Add(this.chkElse);
-            this.Controls.Add(this.condition);
-            this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -114,6 +244,10 @@ namespace Finmer.Editor
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Conditional Branch";
             this.Load += new System.EventHandler(this.FormScriptNodeIf_Load);
+            pnlMode.ResumeLayout(false);
+            pnlMode.PerformLayout();
+            pnlOperand.ResumeLayout(false);
+            pnlOperand.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -122,7 +256,13 @@ namespace Finmer.Editor
         #endregion
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
-        private ScriptValueHost condition;
         private System.Windows.Forms.CheckBox chkElse;
+        private System.Windows.Forms.RadioButton optModeAll;
+        private System.Windows.Forms.RadioButton optModeAny;
+        private System.Windows.Forms.ListView lsvConditions;
+        private System.Windows.Forms.RadioButton optOperandTrue;
+        private System.Windows.Forms.RadioButton optOperandFalse;
+        private System.Windows.Forms.Button cmdConditionAdd;
+        private System.Windows.Forms.Button cmdConditionRemove;
     }
 }

@@ -12,19 +12,19 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player's health.
+    /// Script value that returns the player character name.
     /// </summary>
-    public sealed class ValuePlayerHealth : ScriptValue
+    public sealed class ConditionPlayerName : ScriptCondition
     {
 
         public override string GetEditorDescription()
         {
-            return "Player Health";
+            return "Player Name";
         }
 
         public override void EmitLua(StringBuilder output)
         {
-            output.Append("Player.Health");
+            output.Append("Player.Name");
         }
 
     }

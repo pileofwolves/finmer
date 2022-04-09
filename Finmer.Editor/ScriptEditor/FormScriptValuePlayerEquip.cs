@@ -24,12 +24,12 @@ namespace Finmer.Editor
 
         private void FormScriptValuePlayerEquip_Load(object sender, System.EventArgs e)
         {
-            cmbSlot.SelectedIndex = (int)((ValuePlayerEquipment)Node).Slot;
+            cmbSlot.SelectedIndex = (int)((ConditionPlayerEquipment)Node).Slot;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((ValuePlayerEquipment)Node).Slot = (ValuePlayerEquipment.ESlot)cmbSlot.SelectedIndex;
+            ((ConditionPlayerEquipment)Node).Slot = (ConditionPlayerEquipment.ESlot)cmbSlot.SelectedIndex;
         }
 
     }

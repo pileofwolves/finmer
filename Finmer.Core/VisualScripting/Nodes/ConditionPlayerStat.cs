@@ -13,9 +13,9 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns one of the player's primary stats.
+    /// Script condition that tests one of the player's primary stats.
     /// </summary>
-    public sealed class ValuePlayerStat : ScriptValue
+    public sealed class ConditionPlayerStat : ScriptConditionNumberComparison
     {
 
         /// <summary>
@@ -36,23 +36,24 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription()
         {
-            return "Player " + Stat;
-        }
-
-        public override void EmitLua(StringBuilder output)
-        {
-            output.Append("Player.");
-            output.Append(Stat.ToString());
+            return $"Player {Stat} {base.GetEditorDescription()}";
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
+            base.Serialize(outstream);
             outstream.WriteEnumProperty("Stat", Stat);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
+            base.Deserialize(instream, version);
             Stat = instream.ReadEnumProperty<EStat>("Stat");
+        }
+
+        protected override string GetLeftOperandExpression()
+        {
+            return "Player." + Stat;
         }
 
     }

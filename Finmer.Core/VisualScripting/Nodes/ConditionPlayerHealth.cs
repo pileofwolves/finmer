@@ -6,25 +6,23 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Text;
-
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player's level.
+    /// Script condition that tests the player's health.
     /// </summary>
-    public sealed class ValuePlayerLevel : ScriptValue
+    public sealed class ConditionPlayerHealth : ScriptConditionNumberComparison
     {
 
         public override string GetEditorDescription()
         {
-            return "Player Level";
+            return "Player Health " + base.GetEditorDescription();
         }
 
-        public override void EmitLua(StringBuilder output)
+        protected override string GetLeftOperandExpression()
         {
-            output.Append("Player.Level");
+            return "Player.Health";
         }
 
     }

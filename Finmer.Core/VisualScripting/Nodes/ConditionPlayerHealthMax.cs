@@ -6,25 +6,23 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Text;
-
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player's size class.
+    /// Script condition that tests the player's max health.
     /// </summary>
-    public sealed class ValuePlayerSize : ScriptValue
+    public sealed class ConditionPlayerHealthMax : ScriptConditionNumberComparison
     {
 
         public override string GetEditorDescription()
         {
-            return "Player Size";
+            return "Player Max Health " + base.GetEditorDescription();
         }
 
-        public override void EmitLua(StringBuilder output)
+        protected override string GetLeftOperandExpression()
         {
-            output.Append("Player.Size");
+            return "Player.HealthMax";
         }
 
     }

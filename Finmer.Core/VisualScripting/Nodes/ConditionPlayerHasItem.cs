@@ -16,7 +16,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     /// <summary>
     /// Script value that returns a boolean indicating whether the player has a specified item.
     /// </summary>
-    public sealed class ValuePlayerHasItem : ScriptValue
+    public sealed class ConditionPlayerHasItem : ScriptCondition
     {
 
         /// <summary>

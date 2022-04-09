@@ -6,25 +6,23 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Text;
-
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player's money total.
+    /// Script condition that tests the player's size class.
     /// </summary>
-    public sealed class ValuePlayerMoney : ScriptValue
+    public sealed class ConditionPlayerSize : ScriptConditionNumberComparison
     {
 
         public override string GetEditorDescription()
         {
-            return "Money";
+            return "Player Size " + base.GetEditorDescription();
         }
 
-        public override void EmitLua(StringBuilder output)
+        protected override string GetLeftOperandExpression()
         {
-            output.Append("Player.Money");
+            return "Player.Size";
         }
 
     }

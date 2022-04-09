@@ -6,6 +6,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -19,9 +22,28 @@ namespace Finmer.Core.VisualScripting.Nodes
     {
 
         /// <summary>
+        /// Describes the conjunction mode for combining multiple conditions.
+        /// </summary>
+        public enum EConditionMode
+        {
+            All,
+            Any
+        }
+
+        /// <summary>
         /// The condition that controls whether the block is executed.
         /// </summary>
-        public ScriptValue Condition { get; set; }
+        public List<ScriptCondition> Conditions { get; set; } = new List<ScriptCondition>();
+
+        /// <summary>
+        /// Describes how multiple conditions should be combined.
+        /// </summary>
+        public EConditionMode Mode { get; set; } = EConditionMode.All;
+
+        /// <summary>
+        /// The right-hand operand of each of the condition comparisons.
+        /// </summary>
+        public bool Operand { get; set; } = true;
 
         /// <summary>
         /// Whether this conditional branch has an else branch.
@@ -30,7 +52,8 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription()
         {
-            return $"If {Condition?.GetEditorDescription() ?? "[ Not configured ]"}:";
+            string join_word = (Mode == EConditionMode.All) ? " And " : " Or ";
+            return $"If {(Operand ? String.Empty : "Not ")}{String.Join(join_word, Conditions.Select(c => c.GetEditorDescription()))}:";
         }
 
         public override EColor GetEditorColor()
@@ -41,12 +64,28 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void EmitLua(StringBuilder output)
         {
             // Must have a condition configured
-            if (Condition == null)
+            if (Conditions.Count == 0)
                 throw new FurballInvalidScriptNodeException("Conditional branch has no condition");
 
-            // Emit condition
+            // Emit the branch statement
             output.Append("if ");
-            Condition.EmitLua(output);
+            for (var i = 0; i < Conditions.Count; i++)
+            {
+                var condition = Conditions[i];
+
+                // Join different conditions with an appropriate operator
+                if (i != 0)
+                    output.Append(Mode == EConditionMode.All ? " and " : " or ");
+
+                // Emit inverter
+                output.Append('(');
+                if (!Operand)
+                    output.Append("not ");
+
+                // Emit condition
+                condition.EmitLua(output);
+                output.Append(')');
+            }
             output.AppendLine(" then");
 
             // Emit conditional body
@@ -68,7 +107,13 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteNestedObjectProperty("Condition", Condition);
+            outstream.BeginArray("Conditions", Conditions.Count);
+            foreach (var condition in Conditions)
+                outstream.WriteNestedObjectProperty(null, condition);
+            outstream.EndArray();
+
+            outstream.WriteEnumProperty("Mode", Mode);
+            outstream.WriteBooleanProperty("Operand", Operand);
             outstream.WriteBooleanProperty("HasElseBranch", HasElseBranch);
 
             base.Serialize(outstream);
@@ -76,7 +121,12 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Condition = instream.ReadNestedObjectProperty<ScriptValue>("Condition", version);
+            for (int i = 0, c = instream.BeginArray("Conditions"); i < c; i++)
+                Conditions.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null, version));
+            instream.EndArray();
+
+            Mode = instream.ReadEnumProperty<EConditionMode>("Mode");
+            Operand = instream.ReadBooleanProperty("Operand");
             HasElseBranch = instream.ReadBooleanProperty("HasElseBranch");
 
             base.Deserialize(instream, version);

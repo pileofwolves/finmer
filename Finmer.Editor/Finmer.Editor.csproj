@@ -207,6 +207,12 @@
     <Compile Include="ScriptEditor\FormScriptValuePlayerEquip.Designer.cs">
       <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\FormScriptCondNumberComp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptCondNumberComp.Designer.cs">
+      <DependentUpon>FormScriptCondNumberComp.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\FormScriptValuePlayerStat.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -361,6 +367,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerEquip.resx">
       <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\FormScriptCondNumberComp.resx">
+      <DependentUpon>FormScriptCondNumberComp.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerStat.resx">
       <DependentUpon>FormScriptValuePlayerStat.cs</DependentUpon>

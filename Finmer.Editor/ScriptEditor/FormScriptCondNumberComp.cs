@@ -7,36 +7,33 @@
  */
 
 using Finmer.Core.VisualScripting;
-using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for selecting a player primary stat.
+    /// Node editor form for configuring a number comparison.
     /// </summary>
-    public partial class FormScriptValuePlayerStat : FormScriptNode
+    public partial class FormScriptCondNumberComp : FormScriptNode
     {
 
-        public FormScriptValuePlayerStat()
+        public FormScriptCondNumberComp()
         {
             InitializeComponent();
         }
 
-        private void FormScriptValuePlayerStat_Load(object sender, System.EventArgs e)
+        private void FormScriptCondNumberComp_Load(object sender, System.EventArgs e)
         {
-            var node = (ConditionPlayerStat)Node;
+            var node = (ScriptConditionNumberComparison)Node;
             cmbOperator.SelectedIndex = (int)node.Operator;
             nudOperand.Value = (decimal)node.Operand;
-            cmbStat.SelectedIndex = (int)node.Stat;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            var node = (ConditionPlayerStat)Node;
+            var node = (ScriptConditionNumberComparison)Node;
             node.Operator = (ScriptConditionNumberComparison.ECompareMode)cmbOperator.SelectedIndex;
             node.Operand = (float)nudOperand.Value;
-            node.Stat = (ConditionPlayerStat.EStat)cmbStat.SelectedIndex;
         }
 
     }

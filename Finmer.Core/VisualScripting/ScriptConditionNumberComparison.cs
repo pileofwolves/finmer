@@ -45,7 +45,7 @@ namespace Finmer.Core.VisualScripting
 
         public override string GetEditorDescription()
         {
-            string right = String.Format(CultureInfo.InvariantCulture, "{0:F2}", Operand);
+            string right = String.Format(CultureInfo.InvariantCulture, "{0:F0}", Operand);
             switch (Operator)
             {
                 case ECompareMode.Equal:                return $"Equals {right}";

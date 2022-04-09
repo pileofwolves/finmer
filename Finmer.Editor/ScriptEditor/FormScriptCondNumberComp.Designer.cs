@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptValuePlayerStat
+    partial class FormScriptCondNumberComp
     {
         /// <summary>
         /// Required designer variable.
@@ -33,9 +33,8 @@ namespace Finmer.Editor
             System.Windows.Forms.Label label2;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.cmbStat = new System.Windows.Forms.ComboBox();
-            this.nudOperand = new System.Windows.Forms.NumericUpDown();
             this.cmbOperator = new System.Windows.Forms.ComboBox();
+            this.nudOperand = new System.Windows.Forms.NumericUpDown();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).BeginInit();
@@ -46,9 +45,18 @@ namespace Finmer.Editor
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(29, 13);
+            label1.Size = new System.Drawing.Size(51, 13);
             label1.TabIndex = 3;
-            label1.Text = "Stat:";
+            label1.Text = "Operator:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(120, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(90, 13);
+            label2.TabIndex = 5;
+            label2.Text = "Compare to what:";
             // 
             // cmdAccept
             // 
@@ -79,49 +87,6 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // cmbStat
-            // 
-            this.cmbStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbStat.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbStat.FormattingEnabled = true;
-            this.cmbStat.Items.AddRange(new object[] {
-            "Strength",
-            "Agility",
-            "Body",
-            "Wits"});
-            this.cmbStat.Location = new System.Drawing.Point(16, 32);
-            this.cmbStat.Name = "cmbStat";
-            this.cmbStat.Size = new System.Drawing.Size(112, 23);
-            this.cmbStat.TabIndex = 4;
-            // 
-            // nudOperand
-            // 
-            this.nudOperand.DecimalPlaces = 2;
-            this.nudOperand.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudOperand.Location = new System.Drawing.Point(208, 32);
-            this.nudOperand.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nudOperand.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nudOperand.Name = "nudOperand";
-            this.nudOperand.Size = new System.Drawing.Size(128, 23);
-            this.nudOperand.TabIndex = 10;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(208, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(90, 13);
-            label2.TabIndex = 9;
-            label2.Text = "Compare to what:";
-            // 
             // cmbOperator
             // 
             this.cmbOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -134,12 +99,31 @@ namespace Finmer.Editor
             "≤",
             ">",
             "≥"});
-            this.cmbOperator.Location = new System.Drawing.Point(136, 32);
+            this.cmbOperator.Location = new System.Drawing.Point(16, 32);
             this.cmbOperator.Name = "cmbOperator";
-            this.cmbOperator.Size = new System.Drawing.Size(64, 23);
-            this.cmbOperator.TabIndex = 8;
+            this.cmbOperator.Size = new System.Drawing.Size(88, 23);
+            this.cmbOperator.TabIndex = 4;
             // 
-            // FormScriptValuePlayerStat
+            // nudOperand
+            // 
+            this.nudOperand.DecimalPlaces = 2;
+            this.nudOperand.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nudOperand.Location = new System.Drawing.Point(120, 32);
+            this.nudOperand.Maximum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            0});
+            this.nudOperand.Minimum = new decimal(new int[] {
+            999999,
+            0,
+            0,
+            -2147483648});
+            this.nudOperand.Name = "nudOperand";
+            this.nudOperand.Size = new System.Drawing.Size(216, 23);
+            this.nudOperand.TabIndex = 6;
+            // 
+            // FormScriptCondNumberComp
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -149,19 +133,18 @@ namespace Finmer.Editor
             this.Controls.Add(this.nudOperand);
             this.Controls.Add(label2);
             this.Controls.Add(this.cmbOperator);
-            this.Controls.Add(this.cmbStat);
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptValuePlayerStat";
+            this.Name = "FormScriptCondNumberComp";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Player Primary Stat";
-            this.Load += new System.EventHandler(this.FormScriptValuePlayerStat_Load);
+            this.Text = "Number Comparison";
+            this.Load += new System.EventHandler(this.FormScriptCondNumberComp_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -171,8 +154,7 @@ namespace Finmer.Editor
         #endregion
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.ComboBox cmbStat;
-        private System.Windows.Forms.NumericUpDown nudOperand;
         private System.Windows.Forms.ComboBox cmbOperator;
+        private System.Windows.Forms.NumericUpDown nudOperand;
     }
 }

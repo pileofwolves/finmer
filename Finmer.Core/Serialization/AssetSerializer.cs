@@ -8,9 +8,11 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+using System.Text;
 using Finmer.Core.Assets;
 
 namespace Finmer.Core.Serialization
@@ -72,6 +74,32 @@ namespace Finmer.Core.Serialization
 
             // Write asset contents
             asset.Serialize(outstream);
+        }
+
+        /// <summary>
+        /// Create and return a deep copy of a serializable object.
+        /// </summary>
+        public static TAsset DuplicateAsset<TAsset>(TAsset input) where TAsset : IFurballSerializable
+        {
+            using (var ms = new MemoryStream())
+            {
+                // Write a serialized representation of the asset
+                using (var writer = new BinaryWriter(ms, Encoding.UTF8, true))
+                {
+                    var serializer = new FurballContentWriterBinary(writer);
+                    SerializeAsset(serializer, input);
+                }
+
+                // Seek back to the start of the stream, so we can read the data that was just written
+                ms.Seek(0, SeekOrigin.Begin);
+
+                // Read the serialized asset as if it's a new object, thus effectively duplicating it
+                using (var reader = new BinaryReader(ms, Encoding.UTF8, true))
+                {
+                    var deserializer = new FurballContentReaderBinary(reader);
+                    return (TAsset)DeserializeAsset(deserializer, FurballFileDevice.k_LatestVersion);
+                }
+            }
         }
 
         /// <summary>

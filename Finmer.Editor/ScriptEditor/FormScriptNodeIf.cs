@@ -8,6 +8,7 @@
 
 using System.Linq;
 using System.Windows.Forms;
+using Finmer.Core.Serialization;
 using Finmer.Core.VisualScripting;
 using Finmer.Core.VisualScripting.Nodes;
 
@@ -29,22 +30,27 @@ namespace Finmer.Editor
 
         private void FormScriptNodeIf_Load(object sender, System.EventArgs e)
         {
-            m_Node = (CommandIf)Node;
+            // Make a copy of the node so we can freely edit the conditions array
+            m_Node = AssetSerializer.DuplicateAsset((CommandIf)Node);
 
+            // Populate UI
             optModeAll.Checked = m_Node.Mode == CommandIf.EConditionMode.All;
             optModeAny.Checked = m_Node.Mode == CommandIf.EConditionMode.Any;
             optOperandTrue.Checked = m_Node.Operand;
             optOperandFalse.Checked = !m_Node.Operand;
             chkElse.Checked = m_Node.HasElseBranch;
-
             RebuildConditionList();
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
+            // Copy UI state back to the node
             m_Node.Mode = optModeAll.Checked ? CommandIf.EConditionMode.All : CommandIf.EConditionMode.Any;
             m_Node.Operand = optOperandTrue.Checked;
             m_Node.HasElseBranch = chkElse.Checked;
+
+            // Return the edited node to the caller
+            Node = m_Node;
         }
 
         private void cmdConditionAdd_Click(object sender, System.EventArgs e)

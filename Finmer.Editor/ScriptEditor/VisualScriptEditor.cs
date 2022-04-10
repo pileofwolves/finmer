@@ -132,7 +132,8 @@ namespace Finmer.Editor
                 if (tag.m_Node != null)
                 {
                     // This is a node we can edit
-                    using (FormScriptNode editor_form = ScriptNodeFormMapper.CreateEditorForm(tag.m_Node))
+                    var old_node = tag.m_Node;
+                    using (FormScriptNode editor_form = ScriptNodeFormMapper.CreateEditorForm(old_node))
                     {
                         // If this node cannot be edited, there's nothing more to do
                         if (editor_form == null)
@@ -141,7 +142,21 @@ namespace Finmer.Editor
                         // Display the node edit dialog
                         if (editor_form.ShowDialog(this) == DialogResult.OK)
                         {
+                            // If the form replaced the node with a different instance, replace the old one in the parent tree
+                            if (!Object.ReferenceEquals(old_node, editor_form.Node))
+                            {
+                                var index = tag.m_Parent.IndexOf(old_node);
+                                if (index != -1)
+                                {
+                                    tag.m_Parent.RemoveAt(index);
+                                    tag.m_Parent.Insert(index, editor_form.Node);
+                                }
+                            }
+
+                            // Refresh the tree visualization
                             RebuildNodeTree();
+
+                            // Allow saving
                             m_Host.MarkDirty();
                         }
                     }

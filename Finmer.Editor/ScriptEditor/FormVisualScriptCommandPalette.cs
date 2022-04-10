@@ -41,14 +41,15 @@ namespace Finmer.Editor
                     var dr = editor_form.ShowDialog();
                     if (dr != DialogResult.OK)
                         return;
+
                 }
+
+                // Keep track of the created node
+                NewNode = editor_form?.Node ?? node;
             }
 
-            // Otherwise, the user finished setting up the new node, and we can add it to the tree
-            NewNode = node;
-            DialogResult = DialogResult.OK;
-
             // All done, close and notify the script editor that we're done
+            DialogResult = DialogResult.OK;
             Close();
         }
 

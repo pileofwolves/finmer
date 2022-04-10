@@ -30,13 +30,16 @@ namespace Finmer.Editor
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label label2;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmbOperator = new System.Windows.Forms.ComboBox();
             this.nudOperand = new System.Windows.Forms.NumericUpDown();
+            this.optModeLiteral = new System.Windows.Forms.RadioButton();
+            this.optModeNumberVar = new System.Windows.Forms.RadioButton();
+            this.txtNumberVar = new System.Windows.Forms.TextBox();
+            this.txtLua = new System.Windows.Forms.TextBox();
+            this.optModeInlineLua = new System.Windows.Forms.RadioButton();
             label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).BeginInit();
             this.SuspendLayout();
             // 
@@ -45,25 +48,16 @@ namespace Finmer.Editor
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(51, 13);
+            label1.Size = new System.Drawing.Size(65, 13);
             label1.TabIndex = 3;
-            label1.Text = "Operator:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(120, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(90, 13);
-            label2.TabIndex = 5;
-            label2.Text = "Compare to what:";
+            label1.Text = "Comparison:";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(88, 135);
+            this.cmdAccept.Location = new System.Drawing.Point(136, 232);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 1;
@@ -78,7 +72,7 @@ namespace Finmer.Editor
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(216, 134);
+            this.cmdCancel.Location = new System.Drawing.Point(264, 231);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 2;
@@ -101,14 +95,15 @@ namespace Finmer.Editor
             "≥"});
             this.cmbOperator.Location = new System.Drawing.Point(16, 32);
             this.cmbOperator.Name = "cmbOperator";
-            this.cmbOperator.Size = new System.Drawing.Size(88, 23);
+            this.cmbOperator.Size = new System.Drawing.Size(56, 23);
             this.cmbOperator.TabIndex = 4;
             // 
             // nudOperand
             // 
             this.nudOperand.DecimalPlaces = 2;
+            this.nudOperand.Enabled = false;
             this.nudOperand.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudOperand.Location = new System.Drawing.Point(120, 32);
+            this.nudOperand.Location = new System.Drawing.Point(104, 40);
             this.nudOperand.Maximum = new decimal(new int[] {
             999999,
             0,
@@ -123,15 +118,73 @@ namespace Finmer.Editor
             this.nudOperand.Size = new System.Drawing.Size(216, 23);
             this.nudOperand.TabIndex = 6;
             // 
+            // optModeLiteral
+            // 
+            this.optModeLiteral.AutoSize = true;
+            this.optModeLiteral.Location = new System.Drawing.Point(96, 16);
+            this.optModeLiteral.Name = "optModeLiteral";
+            this.optModeLiteral.Size = new System.Drawing.Size(82, 17);
+            this.optModeLiteral.TabIndex = 7;
+            this.optModeLiteral.TabStop = true;
+            this.optModeLiteral.Text = "Exact Value";
+            this.optModeLiteral.UseVisualStyleBackColor = true;
+            this.optModeLiteral.CheckedChanged += new System.EventHandler(this.optModeLiteral_CheckedChanged);
+            // 
+            // optModeNumberVar
+            // 
+            this.optModeNumberVar.AutoSize = true;
+            this.optModeNumberVar.Location = new System.Drawing.Point(96, 80);
+            this.optModeNumberVar.Name = "optModeNumberVar";
+            this.optModeNumberVar.Size = new System.Drawing.Size(103, 17);
+            this.optModeNumberVar.TabIndex = 8;
+            this.optModeNumberVar.TabStop = true;
+            this.optModeNumberVar.Text = "Number Variable";
+            this.optModeNumberVar.UseVisualStyleBackColor = true;
+            this.optModeNumberVar.CheckedChanged += new System.EventHandler(this.optModeNumberVar_CheckedChanged);
+            // 
+            // txtNumberVar
+            // 
+            this.txtNumberVar.Enabled = false;
+            this.txtNumberVar.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtNumberVar.Location = new System.Drawing.Point(104, 104);
+            this.txtNumberVar.Name = "txtNumberVar";
+            this.txtNumberVar.Size = new System.Drawing.Size(280, 22);
+            this.txtNumberVar.TabIndex = 9;
+            // 
+            // txtLua
+            // 
+            this.txtLua.Enabled = false;
+            this.txtLua.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtLua.Location = new System.Drawing.Point(104, 168);
+            this.txtLua.Name = "txtLua";
+            this.txtLua.Size = new System.Drawing.Size(280, 22);
+            this.txtLua.TabIndex = 11;
+            // 
+            // optModeInlineLua
+            // 
+            this.optModeInlineLua.AutoSize = true;
+            this.optModeInlineLua.Location = new System.Drawing.Point(96, 144);
+            this.optModeInlineLua.Name = "optModeInlineLua";
+            this.optModeInlineLua.Size = new System.Drawing.Size(73, 17);
+            this.optModeInlineLua.TabIndex = 10;
+            this.optModeInlineLua.TabStop = true;
+            this.optModeInlineLua.Text = "Lua Script";
+            this.optModeInlineLua.UseVisualStyleBackColor = true;
+            this.optModeInlineLua.CheckedChanged += new System.EventHandler(this.optModeInlineLua_CheckedChanged);
+            // 
             // FormScriptCondNumberComp
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(352, 183);
+            this.ClientSize = new System.Drawing.Size(400, 280);
+            this.Controls.Add(this.txtLua);
+            this.Controls.Add(this.optModeInlineLua);
+            this.Controls.Add(this.txtNumberVar);
+            this.Controls.Add(this.optModeNumberVar);
+            this.Controls.Add(this.optModeLiteral);
             this.Controls.Add(this.nudOperand);
-            this.Controls.Add(label2);
             this.Controls.Add(this.cmbOperator);
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
@@ -156,5 +209,10 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.ComboBox cmbOperator;
         private System.Windows.Forms.NumericUpDown nudOperand;
+        private System.Windows.Forms.RadioButton optModeLiteral;
+        private System.Windows.Forms.RadioButton optModeNumberVar;
+        private System.Windows.Forms.TextBox txtNumberVar;
+        private System.Windows.Forms.TextBox txtLua;
+        private System.Windows.Forms.RadioButton optModeInlineLua;
     }
 }

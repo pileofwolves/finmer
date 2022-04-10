@@ -21,9 +21,19 @@ namespace Finmer.Core.VisualScripting
     {
 
         /// <summary>
+        /// Describes the type of the right operand.
+        /// </summary>
+        public enum EOperandMode
+        {
+            Literal,
+            Variable,
+            Script
+        }
+
+        /// <summary>
         /// Describes how two operands should be compared.
         /// </summary>
-        public enum ECompareMode
+        public enum EOperator
         {
             Equal,
             NotEqual,
@@ -34,27 +44,50 @@ namespace Finmer.Core.VisualScripting
         }
 
         /// <summary>
-        /// The comparison mode to be used for this node.
+        /// The type of right operand used in the comparison.
         /// </summary>
-        public ECompareMode Operator { get; set; } = ECompareMode.Equal;
+        public EOperandMode OperandMode { get; set; } = EOperandMode.Literal;
 
         /// <summary>
-        /// The right-hand operand of the comparison.
+        /// The comparison mode to be used for this node.
         /// </summary>
-        public float Operand { get; set; }
+        public EOperator Operator { get; set; } = EOperator.Equal;
+
+        /// <summary>
+        /// The right-hand operand of the comparison. Valid if OperandMode is Literal.
+        /// </summary>
+        public float OperandLiteral { get; set; }
+
+        /// <summary>
+        /// The right-hand operand of the comparison. Valid if OperandMode is Variable or Script.
+        /// </summary>
+        public string OperandText { get; set; } = String.Empty;
 
         public override string GetEditorDescription()
         {
-            string right = String.Format(CultureInfo.InvariantCulture, "{0:F0}", Operand);
+            string right;
+            switch (OperandMode)
+            {
+                case EOperandMode.Literal:
+                    right = String.Format(CultureInfo.InvariantCulture, "{0:F0}", OperandLiteral);
+                    break;
+                case EOperandMode.Variable:
+                case EOperandMode.Script:
+                    right = OperandText;
+                    break;
+                default:
+                    throw new InvalidOperationException();
+            }
+
             switch (Operator)
             {
-                case ECompareMode.Equal:                return $"Equals {right}";
-                case ECompareMode.NotEqual:             return $"Not Equals {right}";
-                case ECompareMode.Lesser:               return $"< {right}";
-                case ECompareMode.LesserOrEqual:        return $"<= {right}";
-                case ECompareMode.Greater:              return $"> {right}";
-                case ECompareMode.GreaterOrEqual:       return $">= {right}";
-                default:                                throw new ArgumentOutOfRangeException();
+                case EOperator.Equal:                   return $"Equals {right}";
+                case EOperator.NotEqual:                return $"Not Equals {right}";
+                case EOperator.Lesser:                  return $"< {right}";
+                case EOperator.LesserOrEqual:           return $"<= {right}";
+                case EOperator.Greater:                 return $"> {right}";
+                case EOperator.GreaterOrEqual:          return $">= {right}";
+                default:                                throw new InvalidOperationException();
             }
         }
 
@@ -66,29 +99,52 @@ namespace Finmer.Core.VisualScripting
             // Emit operator
             switch (Operator)
             {
-                case ECompareMode.Equal:                output.Append(" == ");      break;
-                case ECompareMode.NotEqual:             output.Append(" ~= ");      break;
-                case ECompareMode.Lesser:               output.Append(" < ");       break;
-                case ECompareMode.LesserOrEqual:        output.Append(" <= ");      break;
-                case ECompareMode.Greater:              output.Append(" > ");       break;
-                case ECompareMode.GreaterOrEqual:       output.Append(" >= ");      break;
+                case EOperator.Equal:                   output.Append(" == ");      break;
+                case EOperator.NotEqual:                output.Append(" ~= ");      break;
+                case EOperator.Lesser:                  output.Append(" < ");       break;
+                case EOperator.LesserOrEqual:           output.Append(" <= ");      break;
+                case EOperator.Greater:                 output.Append(" > ");       break;
+                case EOperator.GreaterOrEqual:          output.Append(" >= ");      break;
                 default:                                throw new ArgumentOutOfRangeException();
             }
 
             // Emit right-hand operand
-            output.AppendFormat(CultureInfo.InvariantCulture, "{0:F5}", Operand);
+            switch (OperandMode)
+            {
+                case EOperandMode.Literal:
+                    output.AppendFormat(CultureInfo.InvariantCulture, "{0:F5}", OperandLiteral);
+                    break;
+
+                case EOperandMode.Variable:
+                    output.AppendFormat(CultureInfo.InvariantCulture, "Storage.GetNumber(\"{0}\")", OperandText);
+                    break;
+
+                case EOperandMode.Script:
+                    output.Append(OperandText);
+                    break;
+            }
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
+            outstream.WriteEnumProperty("OperandMode", OperandMode);
             outstream.WriteEnumProperty("Operator", Operator);
-            outstream.WriteFloatProperty("Operand", Operand);
+
+            if (OperandMode == EOperandMode.Literal)
+                outstream.WriteFloatProperty("OperandLiteral", OperandLiteral);
+            else
+                outstream.WriteStringProperty("OperandText", OperandText);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Operator = instream.ReadEnumProperty<ECompareMode>("Operator");
-            Operand = instream.ReadFloatProperty("Operand");
+            OperandMode = instream.ReadEnumProperty<EOperandMode>("OperandMode");
+            Operator = instream.ReadEnumProperty<EOperator>("Operator");
+
+            if (OperandMode == EOperandMode.Literal)
+                OperandLiteral = instream.ReadFloatProperty("OperandLiteral");
+            else
+                OperandText = instream.ReadStringProperty("OperandText");
         }
 
         /// <summary>

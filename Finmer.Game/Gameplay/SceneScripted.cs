@@ -60,7 +60,7 @@ namespace Finmer.Gameplay
 #endif
 
             // Validate that the scene can actually be loaded
-            if (scene.Inject)
+            if (scene.IsPatch)
                 throw new ArgumentException($"Failed to load scene '{m_SceneName}': The specified asset is a patch scene and cannot be loaded directly.", nameof(scene));
 
             // Load the chunk

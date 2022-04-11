@@ -55,7 +55,7 @@ namespace Finmer.Core.Assets
         {
             base.Serialize(outstream);
 
-            outstream.WriteNestedScriptProperty("Contents", Contents);
+            outstream.WriteNestedScriptProperty(nameof(Contents), Contents);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
@@ -64,7 +64,7 @@ namespace Finmer.Core.Assets
 
             if (version >= 16)
             {
-                Contents = instream.ReadNestedObjectProperty<ScriptData>("Contents", version);
+                Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
             }
             else
             {

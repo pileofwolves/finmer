@@ -115,15 +115,15 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Core stats
-            outstream.WriteStringProperty("ObjectName", ObjectName);
-            outstream.WriteStringProperty("ObjectAlias", ObjectAlias);
-            outstream.WriteStringProperty("FlavorText", FlavorText);
-            outstream.WriteEnumProperty("ItemType", ItemType);
+            outstream.WriteStringProperty(nameof(ObjectName), ObjectName);
+            outstream.WriteStringProperty(nameof(ObjectAlias), ObjectAlias);
+            outstream.WriteStringProperty(nameof(FlavorText), FlavorText);
+            outstream.WriteEnumProperty(nameof(ItemType), ItemType);
             if (ItemType == EItemType.Equipable)
             {
                 // Save equip slot setting only for equipable items
-                outstream.WriteEnumProperty("EquipSlot", EquipSlot);
-                outstream.BeginArray("EquipEffects", EquipEffects.Count);
+                outstream.WriteEnumProperty(nameof(EquipSlot), EquipSlot);
+                outstream.BeginArray(nameof(EquipEffects), EquipEffects.Count);
                 foreach (var effect in EquipEffects)
                 {
                     // Serialize each equip effect
@@ -133,17 +133,17 @@ namespace Finmer.Core.Assets
                 }
                 outstream.EndArray();
             }
-            outstream.WriteInt32Property("PurchaseValue", PurchaseValue);
-            outstream.WriteBooleanProperty("IsQuestItem", IsQuestItem);
+            outstream.WriteInt32Property(nameof(PurchaseValue), PurchaseValue);
+            outstream.WriteBooleanProperty(nameof(IsQuestItem), IsQuestItem);
 
             // Usable item data
             if (ItemType == EItemType.Usable)
             {
-                outstream.WriteBooleanProperty("IsConsumable", IsConsumable);
-                outstream.WriteBooleanProperty("CanUseInField", CanUseInField);
-                outstream.WriteBooleanProperty("CanUseInBattle", CanUseInBattle);
-                outstream.WriteStringProperty("UseDescription", UseDescription);
-                outstream.WriteNestedObjectProperty("UseScript", UseScript);
+                outstream.WriteBooleanProperty(nameof(IsConsumable), IsConsumable);
+                outstream.WriteBooleanProperty(nameof(CanUseInField), CanUseInField);
+                outstream.WriteBooleanProperty(nameof(CanUseInBattle), CanUseInBattle);
+                outstream.WriteStringProperty(nameof(UseDescription), UseDescription);
+                outstream.WriteNestedObjectProperty(nameof(UseScript), UseScript);
             }
 
             // Icon data
@@ -155,16 +155,17 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Core stats
-            ObjectName = instream.ReadStringProperty("ObjectName");
-            ObjectAlias = instream.ReadStringProperty("ObjectAlias");
-            FlavorText = instream.ReadStringProperty("FlavorText");
-            ItemType = instream.ReadEnumProperty<EItemType>("ItemType");
+            ObjectName = instream.ReadStringProperty(nameof(ObjectName));
+            ObjectAlias = instream.ReadStringProperty(nameof(ObjectAlias));
+            FlavorText = instream.ReadStringProperty(nameof(FlavorText));
+            ItemType = instream.ReadEnumProperty<EItemType>(nameof(ItemType));
             if (ItemType == EItemType.Equipable)
             {
-                EquipSlot = instream.ReadEnumProperty<EEquipSlot>("EquipSlot");
-                for (int count = instream.BeginArray("EquipEffects"); count > 0; count--)
+                EquipSlot = instream.ReadEnumProperty<EEquipSlot>(nameof(EquipSlot));
+                for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
                 {
                     // Read each equip effect
+                    // TODO: Replace BuffFactory with AssetSerializer
                     instream.BeginObject();
                     var effect_type_name = instream.ReadStringProperty("!Type");
                     var effect_instance = BuffFactory.CreateInstance(effect_type_name);
@@ -174,21 +175,21 @@ namespace Finmer.Core.Assets
                 }
                 instream.EndArray();
             }
-            PurchaseValue = instream.ReadInt32Property("PurchaseValue");
-            IsQuestItem = instream.ReadBooleanProperty("IsQuestItem");
+            PurchaseValue = instream.ReadInt32Property(nameof(PurchaseValue));
+            IsQuestItem = instream.ReadBooleanProperty(nameof(IsQuestItem));
 
             // Usable item data
             if (ItemType == EItemType.Usable)
             {
-                IsConsumable = instream.ReadBooleanProperty("IsConsumable");
-                CanUseInField = instream.ReadBooleanProperty("CanUseInField");
-                CanUseInBattle = instream.ReadBooleanProperty("CanUseInBattle");
-                UseDescription = instream.ReadStringProperty("UseDescription");
+                IsConsumable = instream.ReadBooleanProperty(nameof(IsConsumable));
+                CanUseInField = instream.ReadBooleanProperty(nameof(CanUseInField));
+                CanUseInBattle = instream.ReadBooleanProperty(nameof(CanUseInBattle));
+                UseDescription = instream.ReadStringProperty(nameof(UseDescription));
 
                 // Attached scripts
                 if (version >= 16)
                 {
-                    UseScript = instream.ReadNestedObjectProperty<AssetScript>("UseScript", version);
+                    UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript), version);
                 }
                 else
                 {

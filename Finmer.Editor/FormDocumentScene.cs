@@ -51,10 +51,10 @@ namespace Finmer.Editor
             trvNodes.ExpandAll();
 
             // Set up patch settings panel
-            chkRootInject.Checked = m_Scene.Inject;
+            chkRootInject.Checked = m_Scene.IsPatch;
             cmbInjectTargetMode.SelectedIndex = (int)m_Scene.InjectMode;
-            assetInjectTargetScene.SelectedGuid = m_Scene.InjectScene;
-            cmbInjectTargetNode.Text = m_Scene.InjectNode;
+            assetInjectTargetScene.SelectedGuid = m_Scene.InjectTargetScene;
+            cmbInjectTargetNode.Text = m_Scene.InjectTargetNode;
             UpdateInjectionNodeList();
 
             // Mark the asset as dirty when the user changes node scripts
@@ -199,7 +199,7 @@ namespace Finmer.Editor
 
             // update the scene data
             if (m_SkipDirtyUpdates) return;
-            m_Scene.InjectScene = target_scene.ID;
+            m_Scene.InjectTargetScene = target_scene.ID;
             Dirty = true;
         }
 
@@ -598,7 +598,7 @@ namespace Finmer.Editor
 
             if (m_SkipDirtyUpdates) return;
 
-            m_Scene.Inject = inject;
+            m_Scene.IsPatch = inject;
             Dirty = true;
         }
 
@@ -620,7 +620,7 @@ namespace Finmer.Editor
         {
             if (m_SkipDirtyUpdates) return;
 
-            m_Scene.InjectNode = cmbInjectTargetNode.Text;
+            m_Scene.InjectTargetNode = cmbInjectTargetNode.Text;
             Dirty = true;
         }
 

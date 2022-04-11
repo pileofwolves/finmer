@@ -117,7 +117,7 @@ namespace Finmer.Gameplay
             {
                 // Find all scene patches and inject them
                 foreach (AssetScene scene in GameController.Content.GetAssetsByType<AssetScene>())
-                    if (scene.Inject)
+                    if (scene.IsPatch)
                         InjectScenePatch(scene);
             }
             catch (SceneCompilerException ex)
@@ -133,10 +133,10 @@ namespace Finmer.Gameplay
         private static void InjectScenePatch(AssetScene patch)
         {
             // Find the target scene
-            var target_scene = GameController.Content.GetAssetByID(patch.InjectScene) as AssetScene;
+            var target_scene = GameController.Content.GetAssetByID(patch.InjectTargetScene) as AssetScene;
             if (target_scene == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target scene with GUID {patch.InjectScene}, but no such scene was found.");
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target scene with GUID {patch.InjectTargetScene}, but no such scene was found.");
 
             // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
             if (target_scene == patch)
@@ -144,10 +144,10 @@ namespace Finmer.Gameplay
                     $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into itself. This is not supported.");
 
             // Find the anchor node the patch should be added to
-            AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectNode);
+            AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectTargetNode);
             if (target_node == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectNode}', but no such node was found.");
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectTargetNode}', but no such node was found.");
 
             // Find the injection point (target parent node) and the index at which to insert our patch
             AssetScene.SceneNode insert_parent;
@@ -224,7 +224,7 @@ namespace Finmer.Gameplay
                     try
                     {
                         // Convert the scene graph into a Lua script, and precompile the Lua script as well
-                        if (!scene.Inject)
+                        if (!scene.IsPatch)
                             SceneCompiler.Compile(script_compiler, scene);
 
                         // Discard the scene graph since it is no longer needed and will just take up space

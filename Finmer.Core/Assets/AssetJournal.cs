@@ -46,10 +46,10 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Write metadata
-            outstream.WriteStringProperty("Title", Title);
+            outstream.WriteStringProperty(nameof(Title), Title);
 
             // Write all quest stages
-            outstream.BeginArray("Stages", Stages.Count);
+            outstream.BeginArray(nameof(Stages), Stages.Count);
             foreach (QuestStage stage in Stages)
             {
                 outstream.BeginObject();
@@ -65,11 +65,11 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Read metadata
-            Title = instream.ReadStringProperty("Title");
+            Title = instream.ReadStringProperty(nameof(Title));
 
             // Read stages
             Stages.Clear();
-            for (int count = instream.BeginArray("Stages"); count > 0; count--)
+            for (int count = instream.BeginArray(nameof(Stages)); count > 0; count--)
             {
                 instream.BeginObject();
                 QuestStage stage = new QuestStage

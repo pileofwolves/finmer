@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptValuePlayerStat
+    partial class FormScriptCondPlayerStat
     {
         /// <summary>
         /// Required designer variable.
@@ -199,7 +199,7 @@ namespace Finmer.Editor
             label2.TabIndex = 18;
             label2.Text = "Compare against:";
             // 
-            // FormScriptValuePlayerStat
+            // FormScriptCondPlayerStat
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -221,12 +221,12 @@ namespace Finmer.Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptValuePlayerStat";
+            this.Name = "FormScriptCondPlayerStat";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Player Primary Stat";
-            this.Load += new System.EventHandler(this.FormScriptValuePlayerStat_Load);
+            this.Load += new System.EventHandler(this.FormScriptCondPlayerStat_Load);
             ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

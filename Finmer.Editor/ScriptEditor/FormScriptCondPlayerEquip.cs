@@ -14,15 +14,15 @@ namespace Finmer.Editor
     /// <summary>
     /// Node editor form for a player equipment slot selector.
     /// </summary>
-    public partial class FormScriptValuePlayerEquip : FormScriptNode
+    public partial class FormScriptCondPlayerEquip : FormScriptNode
     {
 
-        public FormScriptValuePlayerEquip()
+        public FormScriptCondPlayerEquip()
         {
             InitializeComponent();
         }
 
-        private void FormScriptValuePlayerEquip_Load(object sender, System.EventArgs e)
+        private void FormScriptCondPlayerEquip_Load(object sender, System.EventArgs e)
         {
             cmbSlot.SelectedIndex = (int)((ConditionPlayerEquipment)Node).Slot;
         }

@@ -15,15 +15,15 @@ namespace Finmer.Editor
     /// <summary>
     /// Node editor form for selecting a player primary stat.
     /// </summary>
-    public partial class FormScriptValuePlayerStat : FormScriptNode
+    public partial class FormScriptCondPlayerStat : FormScriptNode
     {
 
-        public FormScriptValuePlayerStat()
+        public FormScriptCondPlayerStat()
         {
             InitializeComponent();
         }
 
-        private void FormScriptValuePlayerStat_Load(object sender, System.EventArgs e)
+        private void FormScriptCondPlayerStat_Load(object sender, System.EventArgs e)
         {
             var node = (ConditionPlayerStat)Node;
             cmbStat.SelectedIndex = (int)node.Stat;

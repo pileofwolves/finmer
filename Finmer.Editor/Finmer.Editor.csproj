@@ -195,17 +195,17 @@
     <Compile Include="ScriptEditor\FormScriptNodeLog.Designer.cs">
       <DependentUpon>FormScriptNodeLog.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerItem.cs">
+    <Compile Include="ScriptEditor\FormScriptCondPlayerItem.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerItem.Designer.cs">
-      <DependentUpon>FormScriptValuePlayerItem.cs</DependentUpon>
+    <Compile Include="ScriptEditor\FormScriptCondPlayerItem.Designer.cs">
+      <DependentUpon>FormScriptCondPlayerItem.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerEquip.cs">
+    <Compile Include="ScriptEditor\FormScriptCondPlayerEquip.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerEquip.Designer.cs">
-      <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
+    <Compile Include="ScriptEditor\FormScriptCondPlayerEquip.Designer.cs">
+      <DependentUpon>FormScriptCondPlayerEquip.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\FormScriptCondNumberComp.cs">
       <SubType>Form</SubType>
@@ -213,11 +213,11 @@
     <Compile Include="ScriptEditor\FormScriptCondNumberComp.Designer.cs">
       <DependentUpon>FormScriptCondNumberComp.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerStat.cs">
+    <Compile Include="ScriptEditor\FormScriptCondPlayerStat.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptValuePlayerStat.Designer.cs">
-      <DependentUpon>FormScriptValuePlayerStat.cs</DependentUpon>
+    <Compile Include="ScriptEditor\FormScriptCondPlayerStat.Designer.cs">
+      <DependentUpon>FormScriptCondPlayerStat.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\FormScriptNodeIf.cs">
       <SubType>Form</SubType>
@@ -362,17 +362,17 @@
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLog.resx">
       <DependentUpon>FormScriptNodeLog.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerItem.resx">
-      <DependentUpon>FormScriptValuePlayerItem.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\FormScriptCondPlayerItem.resx">
+      <DependentUpon>FormScriptCondPlayerItem.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerEquip.resx">
-      <DependentUpon>FormScriptValuePlayerEquip.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\FormScriptCondPlayerEquip.resx">
+      <DependentUpon>FormScriptCondPlayerEquip.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptCondNumberComp.resx">
       <DependentUpon>FormScriptCondNumberComp.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\FormScriptValuePlayerStat.resx">
-      <DependentUpon>FormScriptValuePlayerStat.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\FormScriptCondPlayerStat.resx">
+      <DependentUpon>FormScriptCondPlayerStat.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeIf.resx">
       <DependentUpon>FormScriptNodeIf.cs</DependentUpon>

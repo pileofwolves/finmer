@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptValuePlayerItem
+    partial class FormScriptCondPlayerItem
     {
         /// <summary>
         /// Required designer variable.
@@ -83,7 +83,7 @@ namespace Finmer.Editor
             this.asset.Size = new System.Drawing.Size(320, 24);
             this.asset.TabIndex = 4;
             // 
-            // FormScriptValuePlayerItem
+            // FormScriptCondPlayerItem
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -97,12 +97,12 @@ namespace Finmer.Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptValuePlayerItem";
+            this.Name = "FormScriptCondPlayerItem";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Player Has Item";
-            this.Load += new System.EventHandler(this.FormScriptValuePlayerItem_Load);
+            this.Load += new System.EventHandler(this.FormScriptCondPlayerItem_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

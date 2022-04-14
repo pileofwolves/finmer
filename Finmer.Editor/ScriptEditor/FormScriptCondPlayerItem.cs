@@ -14,15 +14,15 @@ namespace Finmer.Editor
     /// <summary>
     /// Node editor form for a player inventory item selector.
     /// </summary>
-    public partial class FormScriptValuePlayerItem : FormScriptNode
+    public partial class FormScriptCondPlayerItem : FormScriptNode
     {
 
-        public FormScriptValuePlayerItem()
+        public FormScriptCondPlayerItem()
         {
             InitializeComponent();
         }
 
-        private void FormScriptValuePlayerItem_Load(object sender, System.EventArgs e)
+        private void FormScriptCondPlayerItem_Load(object sender, System.EventArgs e)
         {
             var node = (ConditionPlayerHasItem)Node;
             asset.SelectedGuid = node.Item;

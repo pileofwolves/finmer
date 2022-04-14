@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptValuePlayerEquip
+    partial class FormScriptCondPlayerEquip
     {
         /// <summary>
         /// Required designer variable.
@@ -87,7 +87,7 @@ namespace Finmer.Editor
             this.cmbSlot.Size = new System.Drawing.Size(320, 21);
             this.cmbSlot.TabIndex = 4;
             // 
-            // FormScriptValuePlayerEquip
+            // FormScriptCondPlayerEquip
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -101,12 +101,12 @@ namespace Finmer.Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptValuePlayerEquip";
+            this.Name = "FormScriptCondPlayerEquip";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Player Equipment";
-            this.Load += new System.EventHandler(this.FormScriptValuePlayerEquip_Load);
+            this.Load += new System.EventHandler(this.FormScriptCondPlayerEquip_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -31,9 +31,9 @@ namespace Finmer.Editor
             { typeof(ConditionPlayerHealthMax),     () => new FormScriptCondNumberComp() },
             { typeof(ConditionPlayerLevel),         () => new FormScriptCondNumberComp() },
             { typeof(ConditionPlayerMoney),         () => new FormScriptCondNumberComp() },
-            { typeof(ConditionPlayerEquipment),     () => new FormScriptValuePlayerEquip() },
-            { typeof(ConditionPlayerHasItem),       () => new FormScriptValuePlayerItem() },
-            { typeof(ConditionPlayerStat),          () => new FormScriptValuePlayerStat() },
+            { typeof(ConditionPlayerEquipment),     () => new FormScriptCondPlayerEquip() },
+            { typeof(ConditionPlayerHasItem),       () => new FormScriptCondPlayerItem() },
+            { typeof(ConditionPlayerStat),          () => new FormScriptCondPlayerStat() },
         };
 
         /// <summary>

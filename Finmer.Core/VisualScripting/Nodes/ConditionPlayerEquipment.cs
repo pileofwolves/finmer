@@ -7,6 +7,7 @@
  */
 
 using System.Text;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Core.VisualScripting.Nodes
 {
@@ -43,7 +44,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.Player;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             output.Append("Player.Equipped");
             output.Append(Slot.ToString());

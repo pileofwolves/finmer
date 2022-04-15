@@ -7,6 +7,7 @@
  */
 
 using System.Text;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Core.VisualScripting.Nodes
 {
@@ -27,7 +28,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.FlowControl;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             output.AppendLine("break");
         }

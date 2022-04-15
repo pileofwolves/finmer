@@ -85,8 +85,7 @@ namespace Finmer.Editor
             // Instantiate a new script that copies the target script's content
             var replacement = new ScriptDataInline
             {
-                Name = m_Wrapper.Name,
-                ScriptText = m_Wrapper.GetScriptText()
+                Name = m_Wrapper.Name
             };
 
             m_Wrapper.Wrapped = replacement;
@@ -104,8 +103,7 @@ namespace Finmer.Editor
             // Instantiate a new script that copies the target script's content
             var replacement = new ScriptDataExternal
             {
-                Name = m_Wrapper.Name,
-                ScriptText = m_Wrapper.GetScriptText()
+                Name = m_Wrapper.Name
             };
 
             m_Wrapper.Wrapped = replacement;

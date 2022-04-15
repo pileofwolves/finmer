@@ -91,7 +91,7 @@ namespace Finmer.Core.VisualScripting
             }
         }
 
-        public sealed override void EmitLua(StringBuilder output)
+        public sealed override void EmitLua(StringBuilder output, IContentStore content)
         {
             // Emit left-hand operand
             output.Append(GetLeftOperandExpression());

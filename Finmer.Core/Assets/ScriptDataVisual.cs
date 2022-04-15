@@ -25,13 +25,13 @@ namespace Finmer.Core.Assets
         /// </summary>
         public List<ScriptNode> Nodes { get; } = new List<ScriptNode>();
 
-        public override string GetScriptText()
+        public override string GetScriptText(IContentStore content)
         {
             var output = new StringBuilder();
 
             // Recursively allow each node to emit Lua code into the output
             foreach (var node in Nodes)
-                node.EmitLua(output);
+                node.EmitLua(output, content);
 
             return output.ToString();
         }

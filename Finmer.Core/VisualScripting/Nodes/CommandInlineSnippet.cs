@@ -35,7 +35,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.Code;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             output.AppendLine(Snippet);
         }

@@ -25,7 +25,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Returns the Lua script text represented by this container.
         /// </summary>
-        public abstract string GetScriptText();
+        public abstract string GetScriptText(IContentStore content);
 
         /// <summary>
         /// Returns true if the script has meaningful content (i.e. not empty) and should be compiled.

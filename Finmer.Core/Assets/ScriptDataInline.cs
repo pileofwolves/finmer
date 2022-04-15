@@ -47,7 +47,7 @@ namespace Finmer.Core.Assets
             ScriptText = instream.ReadStringProperty("Script");
         }
 
-        public override string GetScriptText()
+        public override string GetScriptText(IContentStore content)
         {
             return ScriptText;
         }

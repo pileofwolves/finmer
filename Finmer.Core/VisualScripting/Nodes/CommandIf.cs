@@ -61,7 +61,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.FlowControl;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             // Must have a condition configured
             if (Conditions.Count == 0)
@@ -83,14 +83,14 @@ namespace Finmer.Core.VisualScripting.Nodes
                     output.Append("not ");
 
                 // Emit condition
-                condition.EmitLua(output);
+                condition.EmitLua(output, content);
                 output.Append(')');
             }
             output.AppendLine(" then");
 
             // Emit conditional body
             foreach (var node in Subgroup1)
-                node.EmitLua(output);
+                node.EmitLua(output, content);
 
             if (HasElseBranch)
             {
@@ -98,7 +98,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
                 // Emit alternate body
                 foreach (var node in Subgroup2)
-                    node.EmitLua(output);
+                    node.EmitLua(output, content);
             }
 
             // Emit end

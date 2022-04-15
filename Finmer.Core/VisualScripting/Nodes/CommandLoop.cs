@@ -30,14 +30,14 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.FlowControl;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             // Emit loop header
             output.AppendLine("while true do");
 
             // Emit loop body
             foreach (var node in Subgroup1)
-                node.EmitLua(output);
+                node.EmitLua(output, content);
 
             // Emit end
             output.AppendLine("end");

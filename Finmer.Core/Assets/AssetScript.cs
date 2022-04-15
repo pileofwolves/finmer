@@ -21,6 +21,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Describes which editor controls are relevant for a script.
         /// </summary>
+        [Obsolete]
         public enum EScriptType
         {
             Action,
@@ -41,15 +42,8 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// The type of editor controls to show for this script.
         /// </summary>
+        [Obsolete]
         public EScriptType EditorType { get; set; } = EScriptType.ExternalOnly;
-
-        /// <summary>
-        /// Returns the Lua script text contained by this asset, or an empty string if unset.
-        /// </summary>
-        public string GetScriptText()
-        {
-            return Contents?.GetScriptText() ?? String.Empty;
-        }
 
         public override void Serialize(IFurballContentWriter outstream)
         {

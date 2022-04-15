@@ -39,7 +39,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.Player;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             output.Append("Player:HasItem(\"");
             output.Append(ItemName);

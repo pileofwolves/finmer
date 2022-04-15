@@ -39,7 +39,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             return EColor.Message;
         }
 
-        public override void EmitLua(StringBuilder output)
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
             output.Append(IsRaw ? "LogRaw(\"" : "Log(\"");
             output.Append(Text);

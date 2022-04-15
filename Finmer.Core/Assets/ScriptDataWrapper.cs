@@ -38,9 +38,9 @@ namespace Finmer.Core.Assets
             Wrapped.Deserialize(instream, version);
         }
 
-        public override string GetScriptText()
+        public override string GetScriptText(IContentStore content)
         {
-            return Wrapped?.GetScriptText() ?? String.Empty;
+            return Wrapped?.GetScriptText(content) ?? String.Empty;
         }
 
         public override bool HasContent()

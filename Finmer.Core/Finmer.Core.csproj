@@ -87,6 +87,7 @@
     <Compile Include="Compilers\SceneCompilerException.cs" />
     <Compile Include="Serialization\FurballContentReaderBinary.cs" />
     <Compile Include="Serialization\FurballContentWriterBinary.cs" />
+    <Compile Include="Serialization\IContentStore.cs" />
     <Compile Include="Serialization\IFurballSerializable.cs" />
     <Compile Include="Serialization\IFurballContentWriter.cs" />
     <Compile Include="Serialization\IFurballContentReader.cs" />

@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
+using Finmer.Core.Serialization;
 using Node = Finmer.Core.Assets.AssetScene.SceneNode;
 
 namespace Finmer.Core.Compilers
@@ -27,13 +28,15 @@ namespace Finmer.Core.Compilers
         /// <summary>
         /// Compiles the given Scene asset and saves the Lua script representing it.
         /// </summary>
-        /// <param name="compiler">A Lua script compiler, used for verifying syntax.</param>
         /// <param name="scene">The scene asset to compile.</param>
-        public static void Compile(IScriptCompiler compiler, AssetScene scene)
+        /// <param name="compiler">A Lua script compiler, used for verifying syntax.</param>
+        /// <param name="content"></param>
+        public static void Compile(AssetScene scene, IScriptCompiler compiler, IContentStore content)
         {
             var state = new CompilerState
             {
                 Compiler = compiler,
+                Content = content,
                 Scene = scene
             };
 
@@ -44,7 +47,7 @@ namespace Finmer.Core.Compilers
             // Custom script goes at the top, so it is available globally
             if (scene.ScriptCustom != null && scene.ScriptCustom.HasContent())
             {
-                var text = scene.ScriptCustom.GetScriptText();
+                var text = scene.ScriptCustom.GetScriptText(content);
                 state.Compiler?.Compile(text, "CustomScript");
                 state.Main.AppendLine(text);
             }
@@ -81,7 +84,7 @@ namespace Finmer.Core.Compilers
             // Copy OnEnter script
             if (scene.ScriptEnter != null && scene.ScriptEnter.HasContent())
             {
-                var text = scene.ScriptEnter.GetScriptText();
+                var text = scene.ScriptEnter.GetScriptText(content);
                 state.Compiler?.Compile(text, "EnterScript");
                 state.Main.AppendLine("function OnEnter()");
                 state.Main.AppendLine(text);
@@ -91,7 +94,7 @@ namespace Finmer.Core.Compilers
             // Copy OnLeave script
             if (scene.ScriptLeave != null && scene.ScriptLeave.HasContent())
             {
-                var text = scene.ScriptLeave.GetScriptText();
+                var text = scene.ScriptLeave.GetScriptText(content);
                 state.Compiler?.Compile(text, "LeaveScript");
                 state.Main.AppendLine("function OnLeave()");
                 state.Main.AppendLine(text);
@@ -175,7 +178,7 @@ end"
             // Generate an AppearFn for all concrete nodes that have one specified
             if (node.ScriptAppear != null && node.ScriptAppear.HasContent() && !node.IsLink)
             {
-                var script_text = node.ScriptAppear.GetScriptText();
+                var script_text = node.ScriptAppear.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/AppearsWhen");
                 state.TableAppearFns.Append(node.Key);
                 state.TableAppearFns.AppendLine(" = function()");
@@ -213,7 +216,7 @@ end"
             // Inject the user's 'Actions Taken' script if it's non-empty
             if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
             {
-                var script_text = node.ScriptAction.GetScriptText();
+                var script_text = node.ScriptAction.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
                 state.TableStateFns.AppendLine(script_text);
             }
@@ -267,7 +270,7 @@ end"
             // Inject the user's 'Actions Taken' script if it's non-empty
             if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
             {
-                var script_text = node.ScriptAction.GetScriptText();
+                var script_text = node.ScriptAction.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
                 state.TableChoiceFns.AppendLine(script_text);
             }
@@ -323,6 +326,7 @@ end"
             public HashSet<string> NodeNames { get; } = new HashSet<string>();
 
             public IScriptCompiler Compiler { get; set; }
+            public IContentStore Content { get; set; }
 
         }
 

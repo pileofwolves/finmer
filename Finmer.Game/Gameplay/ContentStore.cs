@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Finmer.Core;
 using Finmer.Core.Assets;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Gameplay
 {
@@ -18,7 +19,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Represents a storage for game assets, optimized for fast lookups.
     /// </summary>
-    public class ContentStore
+    public class ContentStore : IContentStore
     {
 
         private const int k_DefaultCapacity = 128;
@@ -86,6 +87,14 @@ namespace Finmer.Gameplay
                 return output;
 
             return null;
+        }
+
+        /// <summary>
+        /// Look up an asset by its unique GUID, as assigned by the editor. Returns the cast asset if found, or null if not found.
+        /// </summary>
+        public TAsset GetAssetByID<TAsset>(Guid id) where TAsset : AssetBase
+        {
+            return GetAssetByID(id) as TAsset;
         }
 
         /// <summary>

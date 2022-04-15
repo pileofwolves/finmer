@@ -187,8 +187,9 @@ namespace Finmer.Gameplay
             using (var script_compiler = new ScriptCompiler())
             {
                 // Find all script assets in content
-                var global_scripts = GameController.Content.GetAssetsByType<AssetScript>();
-                var item_scripts = GameController.Content.GetAssetsByType<AssetItem>()
+                var content = GameController.Content;
+                var global_scripts = content.GetAssetsByType<AssetScript>();
+                var item_scripts = content.GetAssetsByType<AssetItem>()
                     .Where(item => item.ItemType == AssetItem.EItemType.Usable)
                     .Select(item => item.UseScript);
 
@@ -201,7 +202,8 @@ namespace Finmer.Gameplay
                     try
                     {
                         // Compile the script, so we can cache the binary form (which is much faster to load in the future)
-                        script.PrecompiledScript = script_compiler.Compile(script.GetScriptText(), script.Name);
+                        var script_body = script.Contents?.GetScriptText(content) ?? String.Empty;
+                        script.PrecompiledScript = script_compiler.Compile(script_body, script.Name);
                     }
                     catch (InvalidDataException ex)
                     {
@@ -218,14 +220,15 @@ namespace Finmer.Gameplay
         {
             using (var script_compiler = new ScriptCompiler())
             {
-                var all_scenes = GameController.Content.GetAssetsByType<AssetScene>();
+                var content = GameController.Content;
+                var all_scenes = content.GetAssetsByType<AssetScene>();
                 foreach (var scene in all_scenes)
                 {
                     try
                     {
                         // Convert the scene graph into a Lua script, and precompile the Lua script as well
                         if (!scene.IsPatch)
-                            SceneCompiler.Compile(script_compiler, scene);
+                            SceneCompiler.Compile(scene, script_compiler, content);
 
                         // Discard the scene graph since it is no longer needed and will just take up space
                         scene.Root = null;

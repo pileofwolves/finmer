@@ -50,7 +50,7 @@ namespace Finmer.Core.VisualScripting
         /// <summary>
         /// Generate Lua code for this node.
         /// </summary>
-        public abstract void EmitLua(StringBuilder output);
+        public abstract void EmitLua(StringBuilder output, IContentStore content);
 
         public virtual void Serialize(IFurballContentWriter outstream) {}
 

@@ -36,6 +36,15 @@ namespace Finmer.Editor
             label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 16);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(30, 13);
+            label1.TabIndex = 3;
+            label1.Text = "Item:";
+            // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -65,18 +74,9 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 16);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(30, 13);
-            label1.TabIndex = 3;
-            label1.Text = "Item:";
-            // 
             // asset
             // 
-            this.asset.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
+            this.asset.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
             this.asset.Location = new System.Drawing.Point(16, 32);
             this.asset.Name = "asset";
             this.asset.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");

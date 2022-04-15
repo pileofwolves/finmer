@@ -8,6 +8,7 @@
 
 using System;
 using System.Text;
+using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.VisualScripting.Nodes
@@ -22,16 +23,16 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// The item to check for.
         /// </summary>
-        public Guid Item { get; set; } = Guid.Empty;
+        public Guid ItemGuid { get; set; } = Guid.Empty;
 
         /// <summary>
         /// The name of the item.
         /// </summary>
-        public string ItemName { get; set; } = String.Empty;
+        public string ItemDisplayName { get; set; } = String.Empty;
 
         public override string GetEditorDescription()
         {
-            return "Player Has Item " + ItemName;
+            return "Player Has Item " + ItemDisplayName;
         }
 
         public override EColor GetEditorColor()
@@ -41,21 +42,25 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
+            var item = content.GetAssetByID<AssetItem>(ItemGuid);
+            if (item == null)
+                throw new FurballInvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
+
             output.Append("Player:HasItem(\"");
-            output.Append(ItemName);
+            output.Append(item.Name);
             output.Append("\")");
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteGuidProperty("Item", Item);
-            outstream.WriteStringProperty("ItemName", ItemName);
+            outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
+            outstream.WriteStringProperty(nameof(ItemDisplayName), ItemDisplayName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Item = instream.ReadGuidProperty("Item");
-            ItemName = instream.ReadStringProperty("ItemName");
+            ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
+            ItemDisplayName = instream.ReadStringProperty(nameof(ItemDisplayName));
         }
 
     }

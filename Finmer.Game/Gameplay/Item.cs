@@ -23,8 +23,20 @@ namespace Finmer.Gameplay
     public class Item : GameObject
     {
 
+        /// <summary>
+        /// Returns the item asset that describes the behavior of this item instance.
+        /// </summary>
         public AssetItem Asset { get; }
 
+        /// <summary>
+        /// Returns the item asset's assigned name. Enables scripts to test equality between Item objects.
+        /// </summary>
+        [ScriptableProperty(EScriptAccess.Read)]
+        public string AssetName => Asset.Name;
+
+        /// <summary>
+        /// Returns the inventory icon that was configured for this item.
+        /// </summary>
         public BitmapImage Image
         {
             get

@@ -32,7 +32,7 @@ namespace Finmer.Editor
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.cmbSlot = new System.Windows.Forms.ComboBox();
+            this.asset = new Finmer.Editor.AssetPickerControl();
             this.SuspendLayout();
             // 
             // cmdAccept
@@ -69,23 +69,18 @@ namespace Finmer.Editor
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(81, 13);
+            this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 3;
-            this.label1.Text = "Equipment Slot:";
+            this.label1.Text = "Equipped Item:";
             // 
-            // cmbSlot
+            // asset
             // 
-            this.cmbSlot.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbSlot.FormattingEnabled = true;
-            this.cmbSlot.Items.AddRange(new object[] {
-            "Weapon",
-            "Armor",
-            "Accessory 1",
-            "Accessory 2"});
-            this.cmbSlot.Location = new System.Drawing.Point(16, 32);
-            this.cmbSlot.Name = "cmbSlot";
-            this.cmbSlot.Size = new System.Drawing.Size(320, 21);
-            this.cmbSlot.TabIndex = 4;
+            this.asset.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
+            this.asset.Location = new System.Drawing.Point(16, 32);
+            this.asset.Name = "asset";
+            this.asset.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.asset.Size = new System.Drawing.Size(320, 24);
+            this.asset.TabIndex = 5;
             // 
             // FormScriptCondPlayerEquip
             // 
@@ -94,7 +89,7 @@ namespace Finmer.Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(352, 183);
-            this.Controls.Add(this.cmbSlot);
+            this.Controls.Add(this.asset);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
@@ -116,6 +111,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.ComboBox cmbSlot;
+        private AssetPickerControl asset;
     }
 }

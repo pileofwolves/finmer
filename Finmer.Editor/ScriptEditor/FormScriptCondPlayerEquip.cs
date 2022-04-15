@@ -24,12 +24,15 @@ namespace Finmer.Editor
 
         private void FormScriptCondPlayerEquip_Load(object sender, System.EventArgs e)
         {
-            cmbSlot.SelectedIndex = (int)((ConditionPlayerEquipment)Node).Slot;
+            var node = (ConditionPlayerEquipment)Node;
+            asset.SelectedGuid = node.ItemGuid;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((ConditionPlayerEquipment)Node).Slot = (ConditionPlayerEquipment.ESlot)cmbSlot.SelectedIndex;
+            var node = (ConditionPlayerEquipment)Node;
+            node.ItemGuid = asset.SelectedGuid;
+            node.ItemDisplayName = asset.SelectedAsset?.Name ?? "[Unknown]";
         }
 
     }

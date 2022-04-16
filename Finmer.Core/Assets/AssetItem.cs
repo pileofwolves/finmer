@@ -202,11 +202,10 @@ namespace Finmer.Core.Assets
 
                 // If there is no UseScript object, instantiate one now
                 if (UseScript == null)
-                    UseScript = new AssetScript
-                    {
-                        ID = Guid.NewGuid(),
-                        Name = GetUseScriptName()
-                    };
+                    UseScript = new AssetScript { ID = Guid.NewGuid() };
+
+                // Ensure the script is named
+                UseScript.Name = GetUseScriptName();
 
                 // Assign the script's purpose
                 UseScript.EditorType = AssetScript.EScriptType.Action;

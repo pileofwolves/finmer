@@ -79,6 +79,14 @@ namespace Finmer.Core.Assets
                 ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
                 ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
                 ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
+
+                // Assign script names
+                if (ScriptCustom != null)
+                    ScriptCustom.Name = Name + "_Custom";
+                if (ScriptEnter != null)
+                    ScriptEnter.Name = Name + "_Enter";
+                if (ScriptLeave != null)
+                    ScriptLeave.Name = Name + "_Leave";
             }
             else
             {
@@ -246,6 +254,12 @@ namespace Finmer.Core.Assets
                     {
                         ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
                         ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
+
+                        // Assign script names
+                        if (ScriptAction != null)
+                            ScriptAction.Name = Key + "/Actions";
+                        if (ScriptAppear != null)
+                            ScriptAppear.Name = Key + "/AppearsWhen";
                     }
                     else
                     {
@@ -255,6 +269,7 @@ namespace Finmer.Core.Assets
                         {
                             ScriptAction = new ScriptDataInline
                             {
+                                Name = Key + "/Actions",
                                 ScriptText = text
                             };
                         }
@@ -263,6 +278,7 @@ namespace Finmer.Core.Assets
                         {
                             ScriptAppear = new ScriptDataInline
                             {
+                                Name = Key + "/AppearsWhen",
                                 ScriptText = text
                             };
                         }

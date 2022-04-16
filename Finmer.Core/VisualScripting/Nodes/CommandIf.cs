@@ -65,7 +65,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         {
             // Must have a condition configured
             if (Conditions.Count == 0)
-                throw new FurballInvalidScriptNodeException("Conditional branch has no condition");
+                throw new InvalidScriptNodeException("Conditional branch has no condition");
 
             // Emit the branch statement
             output.Append("if ");

@@ -44,7 +44,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         {
             var item = content.GetAssetByID<AssetItem>(ItemGuid);
             if (item == null)
-                throw new FurballInvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
+                throw new InvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
 
             output.Append("Player:HasItem(\"");
             output.Append(item.Name);

@@ -45,9 +45,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             // Locate and validate the linked item asset
             var item = content.GetAssetByID<AssetItem>(ItemGuid);
             if (item == null)
-                throw new FurballInvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
+                throw new InvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
             if (item.ItemType != AssetItem.EItemType.Equipable)
-                throw new FurballInvalidScriptNodeException($"Item '{item.Name}' is used in an ConditionPlayerEquipment, but is not Equipable");
+                throw new InvalidScriptNodeException($"Item '{item.Name}' is used in an ConditionPlayerEquipment, but is not Equipable");
 
             // Emit code to check the slot fields as appropriate for the target item
             switch (item.EquipSlot)

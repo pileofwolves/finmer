@@ -205,7 +205,7 @@ namespace Finmer.Gameplay
                         var script_body = script.Contents?.GetScriptText(content) ?? String.Empty;
                         script.PrecompiledScript = script_compiler.Compile(script_body, script.Name);
                     }
-                    catch (InvalidDataException ex)
+                    catch (ScriptCompilationException ex)
                     {
                         throw new LoaderException($"Failed to compile script '{script.Name}' in module '{script.SourceModuleName}': {ex.Message}", ex);
                     }
@@ -235,10 +235,6 @@ namespace Finmer.Gameplay
                         scene.ScriptEnter = null;
                         scene.ScriptLeave = null;
                         scene.ScriptCustom = null;
-                    }
-                    catch (InvalidDataException ex)
-                    {
-                        throw new LoaderException($"Failed to compile scene '{scene.Name}' in module '{scene.SourceModuleName}':\r\n\r\n{ex.Message}", ex);
                     }
                     catch (SceneCompilerException ex)
                     {

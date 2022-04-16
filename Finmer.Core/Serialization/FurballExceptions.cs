@@ -71,21 +71,6 @@ namespace Finmer.Core.Serialization
     }
 
     /// <summary>
-    /// The exception that is thrown when a visual script is broken.
-    /// </summary>
-    [Serializable]
-    public sealed class FurballInvalidScriptNodeException : FurballException
-    {
-
-        private FurballInvalidScriptNodeException(SerializationInfo info, StreamingContext context) : base(info, context) {}
-
-        public FurballInvalidScriptNodeException(string message) : base(message) {}
-
-        public FurballInvalidScriptNodeException(string message, Exception innerException) : base(message, innerException) {}
-
-    }
-
-    /// <summary>
     /// The exception that is thrown when a module file contains an unknown asset type.
     /// </summary>
     [Serializable]

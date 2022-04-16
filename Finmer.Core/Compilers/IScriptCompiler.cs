@@ -20,7 +20,8 @@ namespace Finmer.Core.Compilers
         /// </summary>
         /// <param name="body">The contents of the script.</param>
         /// <param name="name">A name used to identify this script for debugging.</param>
-        CompiledScript Compile( string body, string name);
+        /// <exception cref="ScriptCompilationException">Throws if script cannot be compiled.</exception>
+        CompiledScript Compile(string body, string name);
 
     }
 

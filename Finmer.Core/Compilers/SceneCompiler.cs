@@ -14,6 +14,7 @@ using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
+using Finmer.Core.VisualScripting;
 using Node = Finmer.Core.Assets.AssetScene.SceneNode;
 
 namespace Finmer.Core.Compilers
@@ -30,7 +31,8 @@ namespace Finmer.Core.Compilers
         /// </summary>
         /// <param name="scene">The scene asset to compile.</param>
         /// <param name="compiler">A Lua script compiler, used for verifying syntax.</param>
-        /// <param name="content"></param>
+        /// <param name="content">Interface for resolving links to assets.</param>
+        /// <exception cref="SceneCompilerException">Throws if any part of scene compilation failed.</exception>
         public static void Compile(AssetScene scene, IScriptCompiler compiler, IContentStore content)
         {
             var state = new CompilerState
@@ -40,70 +42,72 @@ namespace Finmer.Core.Compilers
                 Scene = scene
             };
 
-            // Upvalues go first, to ensure references are actually compiled as upvalues and not global lookups.
-            // Note: We prefix all identifiers with an underscore to prevent name clashes with user-defined code.
-            state.Main.AppendLine("local _state = 0");
-
-            // Custom script goes at the top, so it is available globally
-            if (scene.ScriptCustom != null && scene.ScriptCustom.HasContent())
+            try
             {
-                var text = scene.ScriptCustom.GetScriptText(content);
-                state.Compiler?.Compile(text, "CustomScript");
-                state.Main.AppendLine(text);
-            }
+                // Upvalues go first, to ensure references are actually compiled as upvalues and not global lookups.
+                // Note: We prefix all identifiers with an underscore to prevent name clashes with user-defined code.
+                state.Main.AppendLine("local _state = 0");
 
-            // Write headers for each subsection
-            state.TableStates.AppendLine("local _States = {");
-            state.TableChoices.AppendLine("local _Choices = {");
-            state.TableStateFns.AppendLine("local _StateFns = {}");
-            state.TableChoiceFns.AppendLine("local _ChoiceFns = {}");
-            state.TableAppearFns.AppendLine("local _AppearFns = {");
+                // Custom script goes at the top, so it is available globally
+                if (scene.ScriptCustom != null && scene.ScriptCustom.HasContent())
+                {
+                    var text = scene.ScriptCustom.GetScriptText(content);
+                    state.Compiler?.Compile(text, "CustomScript");
+                    state.Main.AppendLine(text);
+                }
 
-            // Compile all scene nodes recursively, starting with the root. Each node appends code to the various tables in CompilerState.
-            // We use a stack instead of call recursion because it's significantly faster and conserves stack space.
-            state.Backlog.Push(scene.Root);
-            while (state.Backlog.Count > 0)
-            {
-                Node node = state.Backlog.Pop();
-                CompileNode(state, node);
-            }
+                // Write headers for each subsection
+                state.TableStates.AppendLine("local _States = {");
+                state.TableChoices.AppendLine("local _Choices = {");
+                state.TableStateFns.AppendLine("local _StateFns = {}");
+                state.TableChoiceFns.AppendLine("local _ChoiceFns = {}");
+                state.TableAppearFns.AppendLine("local _AppearFns = {");
 
-            // Close subsections
-            state.TableStates.AppendLine("}");
-            state.TableChoices.AppendLine("}");
-            state.TableAppearFns.AppendLine("}");
-            state.TableAppearFns.AppendLine("local function _CanAppear(key) return _AppearFns[key] == nil or _AppearFns[key]() == true end");
+                // Compile all scene nodes recursively, starting with the root. Each node appends code to the various tables in CompilerState.
+                // We use a stack instead of call recursion because it's significantly faster and conserves stack space.
+                state.Backlog.Push(scene.Root);
+                while (state.Backlog.Count > 0)
+                {
+                    Node node = state.Backlog.Pop();
+                    CompileNode(state, node);
+                }
 
-            // Merge all subsections into the main script
-            state.Main.Append(state.TableStates); // States/Choices tables first, so they become upvalues for the other functions
-            state.Main.Append(state.TableChoices);
-            state.Main.Append(state.TableAppearFns);
-            state.Main.Append(state.TableStateFns);
-            state.Main.Append(state.TableChoiceFns);
+                // Close subsections
+                state.TableStates.AppendLine("}");
+                state.TableChoices.AppendLine("}");
+                state.TableAppearFns.AppendLine("}");
+                state.TableAppearFns.AppendLine("local function _CanAppear(key) return _AppearFns[key] == nil or _AppearFns[key]() == true end");
 
-            // Copy OnEnter script
-            if (scene.ScriptEnter != null && scene.ScriptEnter.HasContent())
-            {
-                var text = scene.ScriptEnter.GetScriptText(content);
-                state.Compiler?.Compile(text, "EnterScript");
-                state.Main.AppendLine("function OnEnter()");
-                state.Main.AppendLine(text);
-                state.Main.AppendLine("end");
-            }
+                // Merge all subsections into the main script
+                state.Main.Append(state.TableStates); // States/Choices tables first, so they become upvalues for the other functions
+                state.Main.Append(state.TableChoices);
+                state.Main.Append(state.TableAppearFns);
+                state.Main.Append(state.TableStateFns);
+                state.Main.Append(state.TableChoiceFns);
 
-            // Copy OnLeave script
-            if (scene.ScriptLeave != null && scene.ScriptLeave.HasContent())
-            {
-                var text = scene.ScriptLeave.GetScriptText(content);
-                state.Compiler?.Compile(text, "LeaveScript");
-                state.Main.AppendLine("function OnLeave()");
-                state.Main.AppendLine(text);
-                state.Main.AppendLine("end");
-            }
+                // Copy OnEnter script
+                if (scene.ScriptEnter != null && scene.ScriptEnter.HasContent())
+                {
+                    var text = scene.ScriptEnter.GetScriptText(content);
+                    state.Compiler?.Compile(text, "EnterScript");
+                    state.Main.AppendLine("function OnEnter()");
+                    state.Main.AppendLine(text);
+                    state.Main.AppendLine("end");
+                }
 
-            // Write boilerplate code that drives the scene.
-            // In OnTurn, we run the user's chosen ChoiceFn, then run the new StateFn that rolls out of that ChoiceFn.
-            state.Main.AppendLine(@"
+                // Copy OnLeave script
+                if (scene.ScriptLeave != null && scene.ScriptLeave.HasContent())
+                {
+                    var text = scene.ScriptLeave.GetScriptText(content);
+                    state.Compiler?.Compile(text, "LeaveScript");
+                    state.Main.AppendLine("function OnLeave()");
+                    state.Main.AppendLine(text);
+                    state.Main.AppendLine("end");
+                }
+
+                // Write boilerplate code that drives the scene.
+                // In OnTurn, we run the user's chosen ChoiceFn, then run the new StateFn that rolls out of that ChoiceFn.
+                state.Main.AppendLine(@"
 function _CaptureState()
     for k, v in pairs(_States) do
         if v == _state then return k end
@@ -117,11 +121,17 @@ function OnTurn(choice)
     _ChoiceFns[choice]()
     _StateFns[_state]()
 end"
-            );
+                );
 
-            // Compile and return the finished script
-            var complete_script = state.Main.ToString();
-            scene.PrecompiledScript = compiler.Compile(complete_script, scene.Name);
+                // Compile and return the finished script
+                var complete_script = state.Main.ToString();
+                scene.PrecompiledScript = compiler.Compile(complete_script, scene.Name);
+            }
+            catch (ScriptCompilationException ex)
+            {
+                // Add context info and rethrow as a SceneCompilerException, so client has to handle only one type
+                throw new SceneCompilerException("Script compilation error: " + ex.Message, ex);
+            }
         }
 
         /// <summary>
@@ -296,8 +306,8 @@ end"
                 string child_key = child.IsLink ? child.LinkTarget : child.Key;
 
                 // Omit the _CanAppear call for the last child, since there must always be one passing State
-                state.TableChoiceFns.AppendLine(child == last 
-                    ? $"_state = _States.{child_key}" 
+                state.TableChoiceFns.AppendLine(child == last
+                    ? $"_state = _States.{child_key}"
                     : $"if _CanAppear(\"{child_key}\") then _state = _States.{child_key} return end");
             }
 

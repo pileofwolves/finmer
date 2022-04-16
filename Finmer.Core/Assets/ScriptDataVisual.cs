@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using System.Text;
+using Finmer.Core.Compilers;
 using Finmer.Core.Serialization;
 using Finmer.Core.VisualScripting;
 
@@ -29,9 +30,17 @@ namespace Finmer.Core.Assets
         {
             var output = new StringBuilder();
 
-            // Recursively allow each node to emit Lua code into the output
-            foreach (var node in Nodes)
-                node.EmitLua(output, content);
+            try
+            {
+                // Recursively allow each node to emit Lua code into the output
+                foreach (var node in Nodes)
+                    node.EmitLua(output, content);
+            }
+            catch (InvalidScriptNodeException ex)
+            {
+                // Add more information to the exception, then rethrow it
+                throw new ScriptCompilationException($"In script '{Name}': {ex.Message}", ex);
+            }
 
             return output.ToString();
         }

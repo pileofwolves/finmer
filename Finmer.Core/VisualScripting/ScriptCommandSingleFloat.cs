@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Globalization;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.VisualScripting
@@ -18,9 +20,29 @@ namespace Finmer.Core.VisualScripting
     {
 
         /// <summary>
-        /// The float value configured for this node.
+        /// Describes the type of the right operand.
         /// </summary>
-        public float Value { get; set; }
+        public enum EOperandMode
+        {
+            Literal,
+            Variable,
+            Script
+        }
+
+        /// <summary>
+        /// The type of right operand used in the comparison.
+        /// </summary>
+        public EOperandMode OperandMode { get; set; } = EOperandMode.Literal;
+
+        /// <summary>
+        /// The right-hand operand of the comparison. Valid if OperandMode is Literal.
+        /// </summary>
+        public float OperandLiteral { get; set; }
+
+        /// <summary>
+        /// The right-hand operand of the comparison. Valid if OperandMode is Variable or Script.
+        /// </summary>
+        public string OperandText { get; set; } = String.Empty;
 
         /// <summary>
         /// Returns the editor window title appropriate for this node.
@@ -29,12 +51,56 @@ namespace Finmer.Core.VisualScripting
 
         public sealed override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteFloatProperty("Value", Value);
+            outstream.WriteEnumProperty(nameof(OperandMode), OperandMode);
+
+            if (OperandMode == EOperandMode.Literal)
+                outstream.WriteFloatProperty(nameof(OperandLiteral), OperandLiteral);
+            else
+                outstream.WriteStringProperty(nameof(OperandText), OperandText);
         }
 
-        public sealed override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Value = instream.ReadFloatProperty("Value");
+            OperandMode = instream.ReadEnumProperty<EOperandMode>(nameof(OperandMode));
+
+            if (OperandMode == EOperandMode.Literal)
+                OperandLiteral = instream.ReadFloatProperty(nameof(OperandLiteral));
+            else
+                OperandText = instream.ReadStringProperty(nameof(OperandText));
+        }
+
+        protected string GetOperandDescription()
+        {
+            switch (OperandMode)
+            {
+                case EOperandMode.Literal:
+                    return OperandLiteral.ToString("F2", CultureInfo.InvariantCulture);
+
+                case EOperandMode.Variable:
+                case EOperandMode.Script:
+                    return OperandText;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(OperandMode));
+            }
+        }
+
+        protected string GetOperandLuaSnippet()
+        {
+            switch (OperandMode)
+            {
+                case EOperandMode.Literal:
+                    return OperandLiteral.ToString("F5", CultureInfo.InvariantCulture);
+
+                case EOperandMode.Variable:
+                    return String.Format(CultureInfo.InvariantCulture, "Storage.GetNumber(\"{0}\")", OperandText);
+
+                case EOperandMode.Script:
+                    return OperandText;
+
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(OperandMode));
+            }
         }
 
     }

@@ -42,7 +42,6 @@ namespace Finmer.Editor
             this.cmdPlayerGetHealth = new System.Windows.Forms.Button();
             this.cmdPlayerGetEquipment = new System.Windows.Forms.Button();
             this.cmdPlayerGetMoney = new System.Windows.Forms.Button();
-            this.cmdPlayerGetSize = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
@@ -73,17 +72,16 @@ namespace Finmer.Editor
             groupBox3.Controls.Add(this.cmdPlayerGetHealth);
             groupBox3.Controls.Add(this.cmdPlayerGetEquipment);
             groupBox3.Controls.Add(this.cmdPlayerGetMoney);
-            groupBox3.Controls.Add(this.cmdPlayerGetSize);
             groupBox3.Location = new System.Drawing.Point(16, 16);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(208, 280);
+            groupBox3.Size = new System.Drawing.Size(208, 256);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Player";
             // 
             // cmdPlayerGetMaxHealth
             // 
-            this.cmdPlayerGetMaxHealth.Location = new System.Drawing.Point(16, 144);
+            this.cmdPlayerGetMaxHealth.Location = new System.Drawing.Point(16, 120);
             this.cmdPlayerGetMaxHealth.Name = "cmdPlayerGetMaxHealth";
             this.cmdPlayerGetMaxHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerGetMaxHealth.TabIndex = 12;
@@ -113,7 +111,7 @@ namespace Finmer.Editor
             // 
             // cmdPlayerGetLevel
             // 
-            this.cmdPlayerGetLevel.Location = new System.Drawing.Point(16, 240);
+            this.cmdPlayerGetLevel.Location = new System.Drawing.Point(16, 216);
             this.cmdPlayerGetLevel.Name = "cmdPlayerGetLevel";
             this.cmdPlayerGetLevel.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerGetLevel.TabIndex = 7;
@@ -133,7 +131,7 @@ namespace Finmer.Editor
             // 
             // cmdPlayerHasItem
             // 
-            this.cmdPlayerHasItem.Location = new System.Drawing.Point(16, 216);
+            this.cmdPlayerHasItem.Location = new System.Drawing.Point(16, 192);
             this.cmdPlayerHasItem.Name = "cmdPlayerHasItem";
             this.cmdPlayerHasItem.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerHasItem.TabIndex = 5;
@@ -143,7 +141,7 @@ namespace Finmer.Editor
             // 
             // cmdPlayerGetHealth
             // 
-            this.cmdPlayerGetHealth.Location = new System.Drawing.Point(16, 120);
+            this.cmdPlayerGetHealth.Location = new System.Drawing.Point(16, 96);
             this.cmdPlayerGetHealth.Name = "cmdPlayerGetHealth";
             this.cmdPlayerGetHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerGetHealth.TabIndex = 4;
@@ -153,7 +151,7 @@ namespace Finmer.Editor
             // 
             // cmdPlayerGetEquipment
             // 
-            this.cmdPlayerGetEquipment.Location = new System.Drawing.Point(16, 192);
+            this.cmdPlayerGetEquipment.Location = new System.Drawing.Point(16, 168);
             this.cmdPlayerGetEquipment.Name = "cmdPlayerGetEquipment";
             this.cmdPlayerGetEquipment.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerGetEquipment.TabIndex = 3;
@@ -163,23 +161,13 @@ namespace Finmer.Editor
             // 
             // cmdPlayerGetMoney
             // 
-            this.cmdPlayerGetMoney.Location = new System.Drawing.Point(16, 168);
+            this.cmdPlayerGetMoney.Location = new System.Drawing.Point(16, 144);
             this.cmdPlayerGetMoney.Name = "cmdPlayerGetMoney";
             this.cmdPlayerGetMoney.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerGetMoney.TabIndex = 2;
             this.cmdPlayerGetMoney.Text = "Money";
             this.cmdPlayerGetMoney.UseVisualStyleBackColor = true;
             this.cmdPlayerGetMoney.Click += new System.EventHandler(this.cmdPlayerGetMoney_Click);
-            // 
-            // cmdPlayerGetSize
-            // 
-            this.cmdPlayerGetSize.Location = new System.Drawing.Point(16, 96);
-            this.cmdPlayerGetSize.Name = "cmdPlayerGetSize";
-            this.cmdPlayerGetSize.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetSize.TabIndex = 1;
-            this.cmdPlayerGetSize.Text = "Size";
-            this.cmdPlayerGetSize.UseVisualStyleBackColor = true;
-            this.cmdPlayerGetSize.Click += new System.EventHandler(this.cmdPlayerGetSize_Click);
             // 
             // groupBox2
             // 
@@ -224,7 +212,7 @@ namespace Finmer.Editor
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(240, 296);
+            groupBox6.Location = new System.Drawing.Point(16, 288);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
             groupBox6.TabIndex = 10;
@@ -293,7 +281,7 @@ namespace Finmer.Editor
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(312, 392);
+            this.cmdCancel.Location = new System.Drawing.Point(312, 336);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
             this.cmdCancel.TabIndex = 0;
@@ -308,7 +296,7 @@ namespace Finmer.Editor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(464, 442);
+            this.ClientSize = new System.Drawing.Size(464, 384);
             this.Controls.Add(groupBox4);
             this.Controls.Add(groupBox6);
             this.Controls.Add(groupBox2);
@@ -332,7 +320,6 @@ namespace Finmer.Editor
 
         #endregion
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.Button cmdPlayerGetSize;
         private System.Windows.Forms.Button cmdPlayerGetMoney;
         private System.Windows.Forms.Button cmdPlayerGetEquipment;
         private System.Windows.Forms.Button cmdPlayerGetHealth;

@@ -24,15 +24,63 @@ namespace Finmer.Editor
 
         private void FormScriptNodeSingleFloat_Load(object sender, System.EventArgs e)
         {
-            var command = (ScriptCommandSingleFloat)Node;
-            nudValue.Value = (decimal)command.Value;
+            var node = (ScriptCommandSingleFloat)Node;
 
-            Text = command.GetEditorWindowTitle();
+            switch (node.OperandMode)
+            {
+                case ScriptCommandSingleFloat.EOperandMode.Literal:
+                    optModeLiteral.Checked = true;
+                    nudOperand.Value = (decimal)node.OperandLiteral;
+                    break;
+
+                case ScriptCommandSingleFloat.EOperandMode.Variable:
+                    optModeNumberVar.Checked = true;
+                    txtNumberVar.Text = node.OperandText;
+                    break;
+
+                case ScriptCommandSingleFloat.EOperandMode.Script:
+                    optModeInlineLua.Checked = true;
+                    txtLua.Text = node.OperandText;
+                    break;
+            }
+
+            Text = node.GetEditorWindowTitle();
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((ScriptCommandSingleFloat)Node).Value = (float)nudValue.Value;
+            var node = (ScriptCommandSingleFloat)Node;
+
+            if (optModeLiteral.Checked)
+            {
+                node.OperandMode = ScriptCommandSingleFloat.EOperandMode.Literal;
+                node.OperandLiteral = (float)nudOperand.Value;
+            }
+            else if (optModeNumberVar.Checked)
+            {
+                node.OperandMode = ScriptCommandSingleFloat.EOperandMode.Variable;
+                node.OperandText = txtNumberVar.Text.ToUpperInvariant();
+            }
+            else if (optModeInlineLua.Checked)
+            {
+                node.OperandMode = ScriptCommandSingleFloat.EOperandMode.Script;
+                node.OperandText = txtLua.Text;
+            }
+        }
+
+        private void optModeLiteral_CheckedChanged(object sender, System.EventArgs e)
+        {
+            nudOperand.Enabled = optModeLiteral.Checked;
+        }
+
+        private void optModeNumberVar_CheckedChanged(object sender, System.EventArgs e)
+        {
+            txtNumberVar.Enabled = optModeNumberVar.Checked;
+        }
+
+        private void optModeInlineLua_CheckedChanged(object sender, System.EventArgs e)
+        {
+            txtLua.Enabled = optModeInlineLua.Checked;
         }
 
     }

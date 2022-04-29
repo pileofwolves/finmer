@@ -22,7 +22,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription()
         {
-            return String.Format(CultureInfo.InvariantCulture, "Sleep {0:F1} sec", Value);
+            return String.Format(CultureInfo.InvariantCulture, "Sleep {0} sec", GetOperandDescription());
         }
 
         public override EColor GetEditorColor()
@@ -32,7 +32,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.AppendFormat(CultureInfo.InvariantCulture, "Sleep({0:F5})", Value);
+            output.AppendFormat(CultureInfo.InvariantCulture, "Sleep({0})", GetOperandLuaSnippet());
             output.AppendLine();
         }
 

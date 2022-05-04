@@ -1,0 +1,12 @@
+﻿{
+	"!Type": "AssetJournal",
+	"ID": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+	"Name": "MQ04",
+	"Title": "Partner in Crime",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "Find the hideout of the Red Maw gang."
+		}
+	]
+}

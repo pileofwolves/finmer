@@ -2,7 +2,7 @@
 	"!Type": "AssetJournal",
 	"ID": "fb14b2b1-f0cf-474d-a311-720266f557d3",
 	"Name": "MQ03",
-	"Title": "Fly South",
+	"Title": "Servant of the People",
 	"Stages": [
 		{
 			"Key": 10,
@@ -18,7 +18,15 @@
 		},
 		{
 			"Key": 40,
-			"Text": "You arrived in South Finmer, the last known location of Mayor Iso. Find her to learn more about recent events."
+			"Text": "You arrived in South Finmer, the last known location of Mayor Iso. Find her."
+		},
+		{
+			"Key": 41,
+			"Text": "After asking around, your leads on Iso are running thin. Perhaps some time in South Finmer's local tavern might let you overhear something."
+		},
+		{
+			"Key": 50,
+			"Text": "Iso will visit the local healer in South Finmer after sundown. Make sure you're there."
 		}
 	]
 }

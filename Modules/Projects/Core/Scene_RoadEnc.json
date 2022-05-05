@@ -336,7 +336,7 @@
 														"Title": "Let's roll",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n    end\r\nend)\r\nfight:Begin()",
+														"ScriptAction": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        -- Dialogue changes if any goon got gulped\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n\r\n        -- The tigress in particular, comes up in MQ03\r\n        if prey == goon2 then\r\n            Storage.SetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\", true)\r\n        end\r\n    end\r\nend)\r\nfight:Begin()",
 														"Children": [
 															{
 																"Key": "MQ02A_WinFight",

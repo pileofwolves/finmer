@@ -1,0 +1,1 @@
+SetLocation("A Dinky Alleyway")

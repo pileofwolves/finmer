@@ -42,7 +42,7 @@
 		{
 			"Key": "MQ03_INTRO5",
 			"Text": [
-				"She stops and takes a deep breath, selecting her words carefully. \"I have... reason to believe... that Iso went south. I found some notes that I think she left for me to find. Anyway, I won't bore you with the details, but she seemed convinced there is something brewing over at the coast that demanded immediate attention. More so than, well... the duties of one in public office, clearly.\" Canbell catches herself and shakes her head almost imperceptibly. \"Now. There's a traveling merchant preparing to head to South Finmer. Would you travel with him and visit our southern friends on my behalf? I've already asked the merchant about this; he would be waiting for you. I guess now that the bridge is being repaired, you can expect him there.\""
+				"She stops and takes a deep breath, selecting her words carefully. \"I have... reason to believe... that Iso went south. I found some notes that I think she left for me to find. Anyway, I won't bore you with the details, but she seemed convinced there is something brewing over at the coast that demanded immediate attention. More so than, well... the duties of one in public office, clearly.\" Canbell catches herself and shakes her head almost imperceptibly. \"Now. There's a traveling merchant preparing to head to South Finmer. Would you travel with him and visit our southern friends on my behalf? I've already asked the merchant about this; he would be waiting for you. When repairs on the bridge have finally finished, you can expect him there.\""
 			]
 		},
 		{
@@ -211,6 +211,180 @@
 			"Key": "MQ03_RIDESOUTH_TRIP12",
 			"Text": [
 				"When you express thanks for the ride, the lizard dismissively waves a hand. \"Oh, is nothing. Zosk had business here anyway, no harm done. Also, road gets... a little lonely, sometimes.\" He flashes you a trademark grin. \"Thanks for the chats, friend. We will see each other around again, surely. But Zosk must attend to business, so farewell for now.\" With that, he claps twice just like he had done earlier, and his horse begins walking away. Soon after, they disappear around a corner, and you are left alone to wonder where to go from here."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT1",
+			"Text": [
+				"You decide to settle at one of the wooden tables lining the wall. Years of spills have clearly taken their toll on the quality of the timber, but in a way it adds to the character of the tavern. With the dark of night outside the window making it nigh impossible to see just how much time you're wasting, you find it is easy to lose yourself in your thoughts. Indeed, the path that had brought you here was a strange one, and you find yourself reconsidering your memories - or apparent lack thereof. You must have come from somewhere; surely you had a task or goal in mind when visiting that strange town along the Great North Road."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT2",
+			"Text": [
+				"As you spend the time lost in thought, quietly nursing your mug all to yourself, you begin to take note of a pair of eyes burning a hole in your skull. Perhaps you are not quite as alone in the tavern as you had at first anticipated. You turn your head ever so slightly, trying not to be overly obvious as a white fox, leaning against the far wall of the establishment, enters your view. You make eye contact, rendering your attempt at subterfuge moot, as he stares at you blankly."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT3",
+			"Text": [
+				"For whatever reason, the fox turns to leave, making for the tavern's back exit. Then, without warning, another paw materializes on the back of your head, forcefully and painfully slamming your face into the bar's wooden countertop. Your assailant leans close enough for you to feel their breath on your ear. \"Well, aren't you a curious {player.species},\" she whispers in a mockingly sweet voice."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT4_DEFAULT",
+			"Text": [
+				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, continuing to address you as if you were a disobedient cub. \"It seems you did not receive the message. I shall repeat it for you. And you will be a good {player.boy} and follow me, quietly. Now.\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT4_EATEN",
+			"Text": [
+				"\"The boss did tell you to piss off, and look where that got you.\" The paw clutching your head pulls back, allowing you turn and see just who you are dealing with. A rust and white furred husky flashes a toothy grin, as she leans in a little too close for comfort. \"Normally he'd send Sahro to take care of this, but since you just had to go and do the cute tigress in, I'll have to take care of you instead.\" The chubby canine sighs. \"I loved her, but since she's now on your waistline, I suppose it's only fair I get a little bit of her back from you.\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT4_HIT",
+			"Text": [
+				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, before slamming you right back into the countertop, leaving you groaning and with a nosebleed. \"That was for punching me last time, little shit. You got me once, and it won't happen again. Now, the boss has a message for you. You're going to be a good {player.boy} and follow me, quietly.\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT5_RESIST",
+			"Text": [
+				"With unprecedented force, you launch yourself backwards from the countertop and right into {assailant}. She is not quite fast enough to react, and you scramble into a run for the back door, accidentally (or luckily) managing to kick her in the chest, too. As you slam through the far exit in an adrenaline-fueled haze, you fail to notice in time the club sailing right for the side of your face. It seems the fox had been waiting for you, and the crushing impact of the blunt weapon with your temple sends you sprawling to the street, stars spinning across your blurred vision. The two assailants are quick to take advantage of your vulnerability."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT5_WHY",
+			"Text": [
+				"{assailant} groans, visibly grinding her teeth. \"Unbelievable. You're still doing it - asking too many questions. I'd tell you it's going to get you in hot water some day, but it seems you'll be in hot water very soon, so to speak.\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT5_WHY2",
+			"Text": [
+				"She proceeds to grab you by the shoulders and drag you out of the bar stool with surprising force. In a brief moment of panic, you notice that the tavern is conspicuously empty other than the two of you, so no-one seems to be around to lend a paw to your precarious situation. Before you can mount much of a resistance against the burly woman, {assailant} has already pushed you through the back door and into the dinky alleyway beyond."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_EVENT6",
+			"Text": [
+				"Before long, {assailant} grabs you by the shoulders and pushes you up against the brick wall of the tavern, both as an attempt to stagger and intimidate. The white-furred fox hovers closely behind her, seemingly uncertain and waiting for a command. She licks her lips in a vain attempt to get rid of the drool that is leaking from her maw, as she stares into the core of your being and sees only a wriggling meal to subdue. \"Finally, some good food. Toby, this one is all mine, you'd better not interfere.\" The snowy vulpine snorts in acknowledgement, and you think you spot disappointment on his muzzle, as your would-be predator spreads her jaws wide. You'll need to think of something fast."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE1",
+			"Text": [
+				"You really need the information, since you've run out of credible leads, and the one link that had fallen into your lap and likely had solid intel, is now stewing in your stomach. Luckily, it takes little effort to get the tod to cooperate; all it takes is rubbing your swollen gut against his face for a bit. \"W-wait, wait!\" he stammers, even tearing up under the perceived mental pressure. \"Don't eat me!\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE2_AMBER",
+			"Text": [
+				"The vulpine blinks, clearly not having expected this line of conversation. \"W-What?\" he stammers, before a loud grruuuurrgle below him shakes him into action. \"R-rare orange shiny gem-thingies. It's real magic, proper-like, you know? You can do things. I-I never seen it, but they say you can walk through walls.\" Toby apparently intends to leave it at that, but your dissatisfied, piercing stare convinces him otherwise. \"I-I thought it was just a legend, but it really exists. The boss p-promised us a share of the stuff as payment... I just wanted to sell it...\" He trails off."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE2_ISO",
+			"Text": [
+				"He fidgets for a bit, staring at you with big, bewildered eyes. \"Y-you're looking for Iso, right? Boss says he found her. S'posed to visit the healer tomorrow, after sundown. I dunno what for, but she's going to be ambushed, that's for sure.\" Toby clearly struggles to think of anything else to add when it's clear that you're waiting for him to divulge more information, but doesn't appear to come up with something of note."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE2_PC",
+			"Text": [
+				"Your catch shakes his head nervously. \"N-No, you p-probably woke up in an alley, right? It was me. That night, after everything went to hell, *he* told me to make sure you were... taken care of.\" He swallows and sighs, pausing briefly in recollection. \"But I couldn't do it. Knew there'd probably be consequences for winging it. I just couldn't. I burned an amber shard, instead. Knocked you right out. Thought that was good enough. Boss believed it... at the time. L-look, I saved your life, right? Any one of them would've just gulped you instead. S-so maybe you could... return the favor?\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE2_RANDALL",
+			"Text": [
+				"\"R-Randall!\" the snow-furred fox squeaks. \"He said he'd dish out amber to anyone who takes care of some dirty work for him. I only found his crew e-eats people when I was stuck there!\" A drop of fluid leaks from his face, though you cannot discern whether it is sweat or a tear. \"Don't eat me, please! I'll go! I'll leave town. I have to, they'll find me! And... and... eat me, like...\" His eyes bulge as he stares at your {player.furry} midsection, its occupant choosing this exact unfortunate moment to shift, reinforcing the fox's fears."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE2_WHO",
+			"Text": [
+				"Shrinking away under your harsh gaze, this young fellow apparently named Toby is clearly in way over his head. That much is obvious - but you demand details regardless. \"She and I were here to find you. Boss-man says you're a threat.\" Exasperated and sweating, he bites his lip. \"I need the money, okay? I gotta take care of...\" He trails off, ears folding back to his skull. \"Ah, shit, it doesn't matter... But listen, I didn't realize it was you, of all people! I'm sorry, I thought you left!\""
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE3",
+			"Text": [
+				"You've extracted all the information you're going to get out of this poor, terrified vulpine. And the good news is, you have a new lead; you just have to chase it down before your supposed enemy does the same. An interesting realization, that you have a clear opposing force in the matter - and they'd see you reduced to a bulge. You were lucky enough to get the upper hand this time, but would that luck hold out?"
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE4",
+			"Text": [
+				"A sniff draws your attention back to the witness you've pressed against your swollen gut, and you consider what to do. On the one paw, the guy may have simply been in the wrong place at the wrong time and truly intends to bail out of this town given the opportunity. On the other, you have no way of knowing whether he's telling the truth; he could be waiting to run back to his cronies at the Red Maw to plan the next hit on you. He is a witness of your recent predation crime and therefore by definition a threat, but you're already full with prey. Removing him the old-fashioned way would be a messy affair indeed. Beady azure eyes drill into yours as you mull over your options."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE5_KILL",
+			"Text": [
+				"As cruel as it is, you are left with no choice: this is a matter of which one of you lives, and you intend to see this tale through. Before Toby fully realizes your murderous intent, your paw is already clasped around his face. You're too full to solve this problem with your digestive system, so a messier approach is required. Much like how your attacker had done just a few minutes ago, you slam the tod into the brick wall, then once more when he panics and kicks about. One sickening crunch and a pained gasp later, the snow-furred fox falls limp and the spark leaves his tear-stained eyes. You release the body, which crashes to the floor. It's probably best to get out of here before the weight of this hideous predicament catches up with you."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE5_SPARE",
+			"Text": [
+				"You judge the snow-furred fox to not be a threat by any stretch of the imagination - nor would you be able to pack him away if he were, given your gut is stuffed as it is. With a half-hearted shove you push Toby away from yourself. He stumbles backwards but maintains his balance, staring at you with mild disbelief, before he recovers enough to realize your intent. \"T-Thank you!\" Taking another step backwards, as if afraid that you might change your mind, he nods, a spark shining in his tear-stained eyes. \"You won't see me again, I promise! I'll do better!\" With that, he turns tail and runs off into the night. What a curious fellow - you hope that the youngster was indeed only caught up in this mess because he had no idea what he was really in for."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE6",
+			"Text": [
+				"Now that only the wet, organic groaning and squelching of your digestive system in action remains, you consider that this course of action was perhaps not the wisest: you'll be hauling this noisy, prey-filled gut around for a little while. The sheer ecstasy of predation, however, is a reward in and of itself. Luckily, it is late at night, and no-one else is around to observe your little escapade. Sticking to the cover of the dimly lit alleyway, you waddle over to the nearby beachfront - one of the perks of a coastal town - while fluids in your gut noisily slosh and splash with every step. Your occupant doesn't protest against the mistreatment, but by now your stomach walls are probably already starting to grind her into mush. Crashing down behind a small-ish dune for a modest amount of cover, you should be out of the immediate view long enough to sleep off the worst of your midnight meal. With a paw resting on your distended stomach, you go out like a light..."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE7",
+			"Text": [
+				"The early morning sun rouses you from your slumber, along with a slight back pain that is an inevitable consequence of snoring on the beach. You're lucky the weather is fair and nobody spotted you quietly digesting some hapless prey, but at least your gut's shrunk enough by now that you should be able to move about freely."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE7_DISPOSAL",
+			"Text": [
+				"Free enough, at least, to relieve the mounting pressure on your lower digestive system. It seems that the first batch of processed {!assailant_species} is, at last, ready for release. With the practiced experience of a clear-cut carnivore such as yourself, you lower your rump so it hovers just above the soft sand. Your tail ring widens as chunks of {player.species}-shit are expelled from your system. The logs form a messy pile, the volume and the occasional tuft of stained fur remaining as the only hints that what you're squeezing out of your bowels used to be a living creature. Some solace can be taken in the fact that she would have done the same to you, though. With a sigh you didn't know you had been holding in, you finish up, kicking some sand over the pile of processed waste in an attempt to cover it up."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_FINALE8",
+			"Text": [
+				"You give your belly a light shake, sloshing about its soupy contents. The worst part of the digestive process seems to be over, but this preything's presence will be bothering you for a little while longer, it seems. And what a rude bunch those two goons were - you figure it's probably a solid idea to follow their trail. If they get the jump on you again, next time you might not be so lucky. You have a new time and place to chase down: you haven't been able to find Iso so far, but now you know she will visit the local temple after sundown. That might be good enough. For now, at least, you have the stellar view of the sunrise over the waters of South Finmer to behold as you contemplate your (mis)fortune."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_PRED_KILL_DIGESTED",
+			"Text": [
+				"With the situation under control, you allow your free paw to roam around on your distorted belly. As the muffled cries of displeasure quickly turn from colorful threats to fearful pleading, your food slowly settling for good over the span of several minutes, you decide to deal with the one remaining accomplice. The fox squeaks and seems to shrink under your predatory gaze, as if fearful you might devour him with your eyes alone."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_PRED_KILL_DIGESTED_POV",
+			"Text": [
+				"{assailant} pats her gut, pleased as punch with her latest catch. A cute little {player.species} would be no match for her stomach, quite adept at melting struggling prey. Indeed, the layer of pudge on her frame has quite the sinister origin, what with the number of people who have passed her jaws and spent the rest of their lives stewing and sloshing about in the very same fleshy tomb that you now occupied. If anything, she mused, you should be proud you will add to the figure of such a beautiful {!assailant_species}. Ah, such are the benefits of having a ravenous predator as an employer. As long as one stays out of his way, being able to swallow and digest the occasional meddler without fear of repercussions (other than a layer of fat) is certainly one of the perks of the job. Now then, this dumb {player.species} has been dealt with in a manner that the boss would certainly consider most appropriate. {^assailant} will have to report this success tomorrow - but for now, she can spend the night with one paw rubbing away at her churning stomach."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_PRED_VORE_DISPOSAL",
+			"Text": [
+				"Awakening with a swollen stomach is not at all an uncommon occurrence for {assailant}, and though her prey is long gone by now, she has one last matter of business to attend to before returning to the communal hideout. On her early-morning walk on the beach, with no-one around to observe her freakishly swollen, sloshing belly, she squats and lifts her tail, so as to take care of the other part that comes with food. Her anus spreads, releasing chunk after chunk of steaming shit. What used to be a {player.species} is now reduced to a brown pile in the sand, thoughtlessly squeezed through that puckering tailhole like so many unlucky meals before you. Finishing up, {assailant} sighs with relief as the immediate pressure on her bowels is removed. As she kicks some sand over her droppings in a token attempt to cover it from view, she confidently strides away, already looking forward to spending all day digesting the rest of her meal."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_PRED_VORE_WIN",
+			"Text": [
+				"Through some stroke of luck, you manage to part your jaws at just the right time as {assailant} lunges for you. Instead of achieving her desired effect, she ends up plunging her muzzle right into your own, and you immediately swallow for good measure. The shock wears off for both of you a moment later, but it's already too late - her furry head is lodged in your slimy gullet, and the muscular tube is not accustomed to letting things go. With nothing else to do but capitalize on your victory before it takes a turn for the worse, you greedily take swallow after swallow. Your prey's arms flail around and beat against you, but the effort is not enough to dislodge her from your carnivorous grip. Eventually her arms are pinned against her sides as you continue to devour her, speeding things along. Though the shirt and shorts she wears dampen the flavor of her fur, the sheer feeling of fullness that overcomes you as the pudgy preything begins to settle is worth the trouble. As you slurp up {assailant.aliaspossessive} tail and footpaws, your meal making quite the racket inside of you, your gaze comes to rest on her accomplice. The fox, who had been petrified up until now, attempts to back off immediately. With a single paw, you manage to snatch the terrified vulpine by his wrist, keeping him from fleeing the scene, as your attention turns to the angry wriggling in your midsection."
+			]
+		},
+		{
+			"Key": "MQ03_TAVERN_PRED_VORE_WIN_POV",
+			"Text": [
+				"Stunned by the bruises on your head and the inability to get a proper breather, you are left dazed as {assailant} pushes all of your face into the back of her maw. Only once your nose breaches the slimy gullet and the first swallow squeezes your muzzle, do you realize the literal depth of your predicament. By then, however, you've already crossed the point of no return. Your predator wastes little time in dealing with you - apparently she has been looking forward to devouring you for quite some time. Though you cannot see, encased by wet muscles as you are, you can feel the muscular tube widening around you to accommodate the larger prey, before caving in again with crushing pressure, driving you ever deeper into {assailant.aliaspossessive} hot, sour guts. These swallows repeat many times, each wave of peristalsis forcing you a little deeper into this digestive system that will be your home. As you slide smoothly into the furnace-like organ with only a heartbeat and a cacophony of wet squelches and gurgles for company, the vile air inside her stomach leaves you dazed once more. Your feet and tail join you soon enough, and with a final torrent of slime squeezing through the stomach sphincter, you are sealed inside."
 			]
 		}
 	]

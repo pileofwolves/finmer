@@ -1,0 +1,51 @@
+﻿{
+	"!Type": "AssetCreature",
+	"ID": "4397dd95-6f0a-496d-8457-79f754467756",
+	"Name": "CR_MQ03_Pred1",
+	"ObjectName": "Sahro",
+	"ObjectAlias": "the tigress",
+	"Strength": 4,
+	"Agility": 5,
+	"Body": 5,
+	"Wits": 6,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Medium",
+	"Gender": "Female",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": true,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ03_TAVERN_PRED_KILL_DIGESTED"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ03_TAVERN_PRED_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "Always",
+			"NewKey": "MQ03_TAVERN_PRED_VORE_DISPOSAL"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ03_TAVERN_PRED_VORE_WIN"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ03_TAVERN_PRED_VORE_WIN_POV"
+		}
+	]
+}

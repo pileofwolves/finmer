@@ -1,1 +1,0 @@
-SetLocation("South Finmer, Square")

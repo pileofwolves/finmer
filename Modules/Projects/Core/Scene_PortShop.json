@@ -72,6 +72,77 @@
 					{
 						"IsState": false,
 						"IsLink": false,
+						"Title": "Iso",
+						"Tooltip": "Ask if he has seen Mayor Iso recently.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": "return not Storage.GetFlag(\"PORT_SHOP_ASK_ISO\")",
+						"Children": [
+							{
+								"Key": "MQ03_R_TalkIso",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": "Storage.SetFlag(\"PORT_SHOP_ASK_ISO\", true)\r\nStorage.ModifyNumber(\"MQ03_ISO_GOSSIP\", 1)\r\nLog(\"PORT_SHOP_TALK_ISO\")",
+								"Children": [
+									{
+										"Key": "MQ03_C_TalkIsoMiss",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Missing",
+										"Tooltip": "Explain that she has disappeared a few days ago.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "MQ03_R_TalkIsoMiss",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"PORT_SHOP_TALK_ISO_MISSING\")",
+												"Children": [
+													{
+														"Key": "MQ03_C_TalkIsoEnd",
+														"IsState": false,
+														"IsLink": false,
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": "Log(\"PORT_SHOP_BROWSE\")",
+														"Children": []
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "MQ03_C_TalkIsoMeet",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Meeting",
+										"Tooltip": "Explain that you were to meet her here.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "MQ03_R_TalkIsoMeet",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": "Log(\"PORT_SHOP_TALK_ISO_EXPECT\")",
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "MQ03_C_TalkIsoEnd"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"IsState": false,
+						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "Time to go.",
 						"Highlight": false,

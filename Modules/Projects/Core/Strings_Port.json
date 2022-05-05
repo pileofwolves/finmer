@@ -53,6 +53,24 @@
 			"Text": [
 				"Pat humms at your response, before nodding slowly. \"Pleased to make your acquiantance, then, {player.name}. What can this fellow do for you today?\""
 			]
+		},
+		{
+			"Key": "PORT_SHOP_TALK_ISO",
+			"Text": [
+				"In response, the stoat studies you for several moments, apparently a little surprised with this question. \"You mean Iso as in the mayor of North Finmer? You're in the wrong town then, friend,\" he states simply."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TALK_ISO_EXPECT",
+			"Text": [
+				"At this, the shopkeep chuckles lightly. \"Well, unfortunately, I haven't seen her in a little while. She used to drop by sometimes when she was in town. Always polite and focused, even when she had a million things going on.\" His eyes widen, and he shakes his head, appearing apologetic. \"Er, sorry, I digress.\""
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TALK_ISO_MISSING",
+			"Text": [
+				"At this, the shopkeep's eyes widen. \"Missing? Missing how?\" He scratches the back of his head, before sticking his paws in his sides, chewing on his lip a little. \"Hmm, I'd heard something about a disappearance today, but I thought they were talking about someone else. Well, that is alarming.\" Pat shakes his head. \"Sorry, I don't know. But I hope she turns up soon, then.\""
+			]
 		}
 	]
 }

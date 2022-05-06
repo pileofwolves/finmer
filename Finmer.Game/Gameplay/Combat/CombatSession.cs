@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using Finmer.Core;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 
@@ -211,7 +212,7 @@ namespace Finmer.Gameplay.Combat
             }
 
             // If the victim was an enemy, award XP to the player
-            if (!victim_character.IsAlly)
+            if (!victim_character.IsAlly && !victim_character.Flags.HasFlag(ECharacterFlags.NoXP))
             {
                 // Store the XP for later, so we can award it all at once at the end of the combat. This prevents the player from
                 // leveling up mid-combat, which looks odd and doesn't help the player since they can't spend points yet anyway.

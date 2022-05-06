@@ -163,22 +163,34 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Return all hostile participants that are not dead and not otherwise occupied by another participant.
+        /// </summary>
+        /// <param name="attacker">The Participant from whose perspective other Participants are evaluated.</param>
+        private IEnumerable<Participant> GetLiveUnoccupiedOpponents(Participant attacker)
+        {
+            return GetLiveOpponents(attacker).Where(candidate =>
+                !candidate.IsGrappling() &&
+                !candidate.IsSwallowed());
+        }
+
+        /// <summary>
         /// Returns participants that the input participant can attack on this turn.
         /// </summary>
         private IEnumerable<Participant> GetViableAttackTargets(Participant attacker)
         {
-            return GetLiveOpponents(attacker)
-                .Where(candidate => !candidate.IsGrappling())
-                .Where(candidate => !candidate.IsSwallowed());
+            return GetLiveUnoccupiedOpponents(attacker)
+                .Where(candidate => !candidate.Character.Flags.HasFlag(ECharacterFlags.NoFight));
         }
 
         /// <summary>
         /// Returns participants that the input participant can attempt to grapple with this turn.
-        /// </summary> 
+        /// </summary>
         private IEnumerable<Participant> GetViableGrappleTargets(Participant initiator)
         {
-            return GetViableAttackTargets(initiator)
-                .Where(target => initiator.Character.CanGrapple(target.Character));
+            return GetLiveUnoccupiedOpponents(initiator)
+                .Where(candidate =>
+                    !candidate.Character.Flags.HasFlag(ECharacterFlags.NoGrapple) &&
+                    initiator.Character.CanGrapple(candidate.Character));
         }
 
         /// <summary>
@@ -191,8 +203,10 @@ namespace Finmer.Gameplay
                 return new List<Participant> { predator.GrapplingWith };
 
             // Otherwise, anyone will do
-            return GetViableAttackTargets(predator)
-                .Where(prey => predator.Character.CanSwallow(prey.Character));
+            return GetLiveUnoccupiedOpponents(predator)
+                .Where(candidate =>
+                    !candidate.Character.Flags.HasFlag(ECharacterFlags.NoPrey) &&
+                    predator.Character.CanSwallow(candidate.Character));
         }
 
         /// <summary>
@@ -214,6 +228,10 @@ namespace Finmer.Gameplay
             // If swallowed, characters can't do anything
             if (ai.IsSwallowed())
                 return new CombatAction(ECombatAction.Prey_Struggle, null);
+
+            // If the character is configured to skip their turns, do so
+            if (ai.Character.Flags.HasFlag(ECharacterFlags.SkipTurns))
+                return new CombatAction(ECombatAction.SkipTurn, null);
 
             // Handling grapples
             if (ai.IsGrappling())

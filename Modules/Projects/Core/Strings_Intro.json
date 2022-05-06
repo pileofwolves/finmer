@@ -18,9 +18,9 @@
 		{
 			"Key": "TDUMMY_ATTACK_HIT",
 			"Text": [
-				"You slash away at the dummy, dealing %damage damage. You're sure it deserved that.",
-				"You strike at the dummy, dealing %damage damage.",
-				"With a majestic leap followed by a dead-on blow, you deal %damage damage."
+				"You slash away at the dummy, dealing {!damage} damage. You're sure it deserved that.",
+				"You strike at the dummy, dealing {!damage} damage.",
+				"With a majestic leap followed by a dead-on blow, you deal {!damage} damage."
 			]
 		},
 		{
@@ -48,69 +48,75 @@
 			]
 		},
 		{
-			"Key": "TUTORIAL1",
+			"Key": "TUTORIAL_NOTE_DICE",
 			"Text": [
-				"The sun beams down on your face, a light breeze rustling the grass in the field. It's a good day for some training, you muse.\\n\\nYour instructor, a %instructor, looks up from %instrhis clipboard and glances you over, seemingly gauging your aptitude. %instrHe mumbles something along the lines of \"it'll have to do\". A soft sigh follows before %instrhe continues. \"Pick up that practice weapon from over there and we'll begin.\""
+				"DICE: When attacking, you roll Attack Dice equal to your Strength stat, while your opponent rolls Defence Dice equal to their Agility stat. You deal damage equal to your total Attack minus their Defence."
 			]
 		},
 		{
-			"Key": "TUTORIAL2",
+			"Key": "TUTORIAL_NOTE_GRAPPLE",
 			"Text": [
-				"\\n\"This combat system borrows heavily from D&D, so if you're familiar with that, you should hopefully feel more or less at home,\" %instrhe states, gesturing at a rather rickety and beaten scarecrow on the other side of the field. \"Let's see how good you are at this.\""
+				"GRAPPLING: You can enter hand-to-hand fights with most characters. Like with attacking, you must roll more Grapple Dice (based on Agility) than your opponent. When grappled, the target cannot do anything other than trying to escape, and it makes swallowing them easier."
 			]
 		},
 		{
-			"Key": "TUTORIAL3",
+			"Key": "TUTORIAL_NOTE_ROUNDS1",
 			"Text": [
-				"\\nROUNDS: A fight is played out in rounds. Each round, you can take one action - attacking something, or using an item, for example - and your opponents can do the same.\\n"
+				"ROUNDS: A fight is played out in rounds. Each round, you can take one action - attacking something, or using an item, for example - and your opponents can do the same."
 			]
 		},
 		{
-			"Key": "TUTORIAL4",
+			"Key": "TUTORIAL_NOTE_ROUNDS2",
 			"Text": [
 				"Click one of the buttons below to take an action. Try hitting the scarecrow."
 			]
 		},
 		{
-			"Key": "TUTORIAL5",
+			"Key": "TUTORIAL_NOTE_VORE1",
+			"Text": [
+				"SWALLOWING: To swallow another character, you must win three rounds of dice in a row. The predator rolls dice based on their Body stat; the prey uses their Agility. The higher number wins. If the predator is grappling their prey, the prey loses 2 dice."
+			]
+		},
+		{
+			"Key": "TUTORIAL_NOTE_VORE2",
+			"Text": [
+				"DIGESTION: When a character is in another character's stomach, they'll take digestion damage each round, until they die or get out some other way. Prey cannot free themselves, but others may sometimes be able to help."
+			]
+		},
+		{
+			"Key": "TUTORIAL_PROMPT",
+			"Text": [
+				"Would you like to see the tutorial on this game's combat mechanics?\\n\\n(Returning players from Update 1: things have changed, take a look!)"
+			]
+		},
+		{
+			"Key": "TUTORIAL_TALK1",
+			"Text": [
+				"The holler of your instructor, a {instructor.name}, pulls you from your daydream. {^instructor.subject} looks up from {instructor.possessive} clipboard and glances you over, seemingly gauging your aptitude. A judgment is filed - something along the lines of \"it'll have to do\". A soft sigh follows before {instructor.subject} continues. \"Pick up that practice weapon from over there and we'll begin.\""
+			]
+		},
+		{
+			"Key": "TUTORIAL_TALK2",
+			"Text": [
+				"\"Fights in the Continent usually work with dice,\" {instructor.subject} explains dryly. \"If you roll more attacks than your opponent rolls defences, you'll deal damage.\" With the practiced, nonchalant experience of an instructor who's been at this for a little while, {instructor} gestures at a rather rickety and beaten scarecrow on the other side of the field. \"Give it a try.\""
+			]
+		},
+		{
+			"Key": "TUTORIAL_TALK3",
 			"Text": [
 				"Nice! Normally, your opponents will be trying to hit you back on their turn, of course, but this dummy can't do anything of the sort. Try finishing off this dummy and we'll move on to something else."
 			]
 		},
 		{
-			"Key": "TUTORIAL6",
+			"Key": "TUTORIAL_TALK4",
 			"Text": [
-				"\\n\"Good, that's one less training dummy in this world,\" the %instructor says. %instrHe points at a person further off to your side. It seems difficult to discern who or what they are, almost as if you are supposed to fill in the blanks yourself. \"Now, let's look at something more interesting.\""
+				"Your instructor appears satisfied with your progress, though you find it difficult to read {instructor.object}. \"Good, one less training dummy to worry about,\" {instructor} says. {^instructor.subject} points at a person further off to your side. It seems difficult to discern who or what they are, almost as if you are supposed to fill in the blanks yourself. \"Now, let's look at something more interesting.\""
 			]
 		},
 		{
-			"Key": "TUTORIAL7",
+			"Key": "TUTORIAL_TALK5",
 			"Text": [
-				"\\nGRAPPLING: On your turn, you can enter a hand-to-hand fight with one other character. This is referred to as grappling. Other characters can grapple you as well. Most actions during grappling require you to win an opposed grapple check (based on strength and size). If it fails, you can't do anything that turn. Try starting a grapple with your target."
-			]
-		},
-		{
-			"Key": "TUTORIAL8",
-			"Text": [
-				"\\nSWALLOWING: When a character attempts to swallow another, the predator makes a swallow check, opposed by the prey's struggle check. The predator needs to win twice in a row to gobble up their prey. Pinning your prey before swallowing it gives the prey a -4 penalty to their check. Give it a try."
-			]
-		},
-		{
-			"Key": "TUTORIAL9",
-			"Text": [
-				"\\nNice work. That preything will be %species-fat before long. Gurgle up your prey to finish this tutorial.\\n\\nDIGESTION: When a character is in another character's stomach, each round they'll take digestion damage, until they die or get out somehow. Prey cannot free themselves, but others might be able to."
-			]
-		},
-		{
-			"Key": "TUTORIAL9B",
-			"Text": [
-				"\\nNice work. Your prey will be kept safely inside your belly, until you decide to release them - or they squirm their way out. When all opponents have been swallowed, you can simply end combat by clicking Leave.\\n\\nESCAPING: The prey can try to escape by making a struggle check - at a penalty - against the predator's swallow check. If the prey wins, they manage to escape the predator's guts, and the pair end up grappling again. The prey's struggle penalty starts at -2 after being swallowed, and increases by 1 for each round that the character spends being swallowed."
-			]
-		},
-		{
-			"Key": "TUTORIALPROMPT",
-			"Text": [
-				"Would you like to see the tutorial on this game's combat mechanics?"
+				"\"Hm, well done,\" {instructor} compliments, jotting down some notes on {instructor.possessive} clipboard before. \"You are certainly a quick study, for a {player.species}. Dare I say you even look good with some prey on your midsection.\" {^instructor.subject} snorts, clicking {instructor.possessive} pen a few times. \"Watch your back, {player.name}, and choose your allies carefully. I will let you have your dream back now.\""
 			]
 		},
 		{

@@ -24,13 +24,12 @@
 		"ButtonWidth": 1.0,
 		"Children": [
 			{
-				"Key": "Text1",
+				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- TODO: this is really old, predating Finmer itself... could probably replace gsubs with Text.SetContext\r\nLogGsub(\"tutorial1\",\r\n    {instructor = instr_s,\r\n    instrhis = instr_g.Possessive,\r\n    instrhe = instr_g.Subject,\r\n    instrHe = CapFirst(instr_g.Subject)})",
+				"ScriptAction": "Text.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK1\")",
 				"Children": [
 					{
-						"Key": "Continue1",
 						"IsState": false,
 						"IsLink": false,
 						"Title": "Continue",
@@ -38,13 +37,11 @@
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"Key": "Text2",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "LogGsub(\"tutorial2\",\r\n    {instrhe = instr_g.Subject})",
+								"ScriptAction": "Log(\"TUTORIAL_TALK2\")",
 								"Children": [
 									{
-										"Key": "Continue2",
 										"IsState": false,
 										"IsLink": false,
 										"Title": "Continue",
@@ -52,46 +49,56 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"Key": "Fight1",
 												"IsState": true,
-												"IsLink": false,
-												"ScriptAction": "trainingdummy = Creature(\"TrainingDummy1\")\r\nLog(\"tutorial3\", tutcolor)\r\nLog(\"tutorial4\", tutcolor)\r\nCombat.AddCombatant(trainingdummy)\r\nCombat.OnRoundEnd(function()\r\n    if trainingdummy.Health == trainingdummy.HealthMax then\r\n        -- keep repeating \"try hitting it\" until that actually happens\r\n        Log(\"tutorial4\", tutcolor)\r\n    elseif not fight1_hitConfirmed then\r\n        -- \"nice!\"\r\n        fight1_hitConfirmed = true\r\n        Log(\"tutorial5\", tutcolor)\r\n    end\r\nend)\r\nCombat.OnCombatEnd(function()\r\n    Sleep(0.1)\r\n    LogGsub(\"tutorial6\",\r\n        {instructor = instr_s,\r\n        instrhis = instr_g.Possessive,\r\n        instrhe = instr_g.Subject,\r\n        instrHe = CapFirst(instr_g.Subject)})\r\nend)\r\nCombat.Begin(false)",
-												"Children": [
-													{
-														"Key": "Continue3",
-														"IsState": false,
-														"IsLink": false,
-														"Title": "Continue",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"Children": [
-															{
-																"Key": "Fight2",
-																"IsState": true,
-																"IsLink": false,
-																"ScriptAction": "trainingdummy = Creature(\"TrainingDummy2\")\r\nLog(\"tutorial7\", tutcolor)\r\nCombat.AddCombatant(trainingdummy)\r\nCombat.OnRoundEnd(function()\r\n    if (not fight2_grappled) and trainingdummy:IsGrappling(Player) then\r\n        -- vore tutorial\r\n        fight2_grappled = true\r\n        Log(\"tutorial8\", tutcolor)\r\n    end\r\n    if (not fight2_swallowed) and trainingdummy:IsEatenBy(Player) then\r\n        -- digestion tutorial\r\n        fight2_swallowed = true\r\n        Log(Player.EndoOnly and \"tutorial9b\" or \"tutorial9\", tutcolor)\r\n    end\r\nend)\r\nCombat.Begin(false)",
-																"Children": [
-																	{
-																		"Key": "Exit",
-																		"IsState": false,
-																		"IsLink": false,
-																		"Title": "Finish",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": "BeginGame()",
-																		"Children": []
-																	}
-																]
-															}
-														]
-													}
-												]
+												"IsLink": true,
+												"LinkTarget": "Fight_Regular"
 											}
 										]
 									}
 								]
 							}
 						]
+					}
+				]
+			},
+			{
+				"Key": "Fight_Regular",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TUTORIAL_NOTE_ROUNDS1\", tutorial_color)\r\nLog(\"TUTORIAL_NOTE_ROUNDS2\", tutorial_color)\r\n\r\nlocal note_hit = false\r\nlocal dummy = Creature(\"CR_TrainingDummy1\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(dummy)\r\nfight:OnRoundEnd(function(round)\r\n    -- Once the dummy takes damage, show a quip\r\n    if dummy.Health ~= dummy.HealthMax and not note_hit then\r\n        note_hit = true\r\n        Log(\"TUTORIAL_TALK3\", tutorial_color)\r\n    end\r\nend)\r\nfight:OnCreatureKilled(function(killer, victim)\r\n    -- Ensure the hit text is displayed even if the dummy is OHKO'd\r\n    if victim == dummy and not note_hit then\r\n        Log(\"TUTORIAL_TALK3\", tutorial_color)\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\nSleep(1)\r\nText.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK4\")",
+				"Children": [
+					{
+						"Key": "Continue3",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "Fight_Vore"
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Fight_Vore",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": "Log(\"TUTORIAL_NOTE_GRAPPLE\", tutorial_color)\r\n\r\nlocal note_swallow = false\r\nlocal note_digest = false\r\nlocal dummy = Creature(\"CR_TrainingDummy2\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(dummy)\r\nfight:OnRoundEnd(function(round)\r\n    if (not note_swallow) and fight:IsGrappling(Player) then\r\n        -- Tutorial note\r\n        note_swallow = true\r\n        Log(\"TUTORIAL_NOTE_VORE1\", tutorial_color)\r\n        -- Enable swallowing\r\n        dummy.Flags = dummy.Flags - ECharacterFlags.NoPrey\r\n    end\r\n    if (not note_digest) and fight:GetPredator(dummy) == Player then\r\n        -- Tutorial note\r\n        note_digest = true\r\n        Log(\"TUTORIAL_NOTE_VORE2\", tutorial_color)\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\nSleep(1)\r\nText.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK5\")",
+				"Children": [
+					{
+						"Key": "Exit",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Finish",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": "BeginGame()",
+						"Children": []
 					}
 				]
 			}

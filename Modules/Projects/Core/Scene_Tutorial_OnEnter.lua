@@ -1,6 +1,3 @@
---ClearLog()
---Player.ClearItems()
---Player.GiveItem("practicesword")
---Player.EquipItem("practicesword")
-SetLocation("A Clearing", false)
+SetLocation("")
 SetInventoryEnabled(false)
+ClearLog()

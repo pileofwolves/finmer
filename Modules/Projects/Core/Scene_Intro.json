@@ -27,7 +27,7 @@
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"WELCOME\", Color.Gray)\r\nLog(\"TUTORIALPROMPT\")",
+				"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"WELCOME\", Color.Gray)\r\nLog(\"TUTORIAL_PROMPT\")",
 				"Children": [
 					{
 						"IsState": false,

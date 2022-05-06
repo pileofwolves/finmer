@@ -155,7 +155,7 @@ function GetRandomCharacter()
     local ch_species = string.lower(Text.GetString("SPECIES_ANY"))
     result.Name = ch_species
     result.Alias = "the " .. ch_species
-    result.Gender = math.random(0, 2)
+    result.Gender = math.random(0, 1)
     return result
 end
 function GetUniqueCharacter(ident)

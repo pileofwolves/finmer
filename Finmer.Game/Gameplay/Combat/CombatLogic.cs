@@ -269,10 +269,7 @@ namespace Finmer.Gameplay.Combat
         public static void PerformPreyStruggle(Participant predator, Participant prey)
         {
             // Show text describing the action. Special handling for the player to use some POV messages instead.
-            if (prey.IsPlayer())
-                CombatDisplay.ShowSimpleMessage(@"vore_pov_struggle", prey, predator);
-            else
-                CombatDisplay.ShowSimpleMessage(@"vore_ext_struggle", predator, prey);
+            CombatDisplay.ShowSimpleMessage(prey.IsPlayer() ? @"vore_pov_struggle" : @"vore_ext_struggle", predator, prey);
         }
 
         /// <summary>

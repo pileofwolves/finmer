@@ -14,7 +14,6 @@ using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
-using Finmer.Core.VisualScripting;
 using Node = Finmer.Core.Assets.AssetScene.SceneNode;
 
 namespace Finmer.Core.Compilers

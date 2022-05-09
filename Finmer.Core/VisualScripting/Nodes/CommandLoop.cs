@@ -7,7 +7,6 @@
  */
 
 using System;
-using System.IO;
 using System.Text;
 using Finmer.Core.Serialization;
 

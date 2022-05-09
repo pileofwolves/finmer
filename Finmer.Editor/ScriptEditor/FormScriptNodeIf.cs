@@ -6,10 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Linq;
-using System.Windows.Forms;
-using Finmer.Core.Serialization;
-using Finmer.Core.VisualScripting;
+using System;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -28,108 +25,27 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptNodeIf_Load(object sender, System.EventArgs e)
+        private void FormScriptNodeIf_Load(object sender, EventArgs e)
         {
-            // Make a copy of the node so we can freely edit the conditions array
-            m_Node = AssetSerializer.DuplicateAsset((CommandIf)Node);
-
             // Populate UI
-            optModeAll.Checked = m_Node.Mode == CommandIf.EConditionMode.All;
-            optModeAny.Checked = m_Node.Mode == CommandIf.EConditionMode.Any;
-            optOperandTrue.Checked = m_Node.Operand;
-            optOperandFalse.Checked = !m_Node.Operand;
+            m_Node = (CommandIf)Node;
+            cgeBranch.SetGroup(m_Node.Condition);
             chkElse.Checked = m_Node.HasElseBranch;
-            RebuildConditionList();
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             // Copy UI state back to the node
-            m_Node.Mode = optModeAll.Checked ? CommandIf.EConditionMode.All : CommandIf.EConditionMode.Any;
-            m_Node.Operand = optOperandTrue.Checked;
+            m_Node.Condition = cgeBranch.Group;
             m_Node.HasElseBranch = chkElse.Checked;
 
             // Return the edited node to the caller
             Node = m_Node;
         }
 
-        private void cmdConditionAdd_Click(object sender, System.EventArgs e)
+        private void cgeBranch_GroupValidityChanged(bool valid)
         {
-            using (var picker = new FormVisualScriptConditionPalette())
-            {
-                if (picker.ShowDialog() != DialogResult.OK)
-                    return;
-
-                m_Node.Conditions.Add(picker.NewNode);
-                AddConditionToView(picker.NewNode);
-            }
-        }
-
-        private void cmdConditionRemove_Click(object sender, System.EventArgs e)
-        {
-            // As a fail-safe, validate selection again
-            int index = lsvConditions.SelectedIndex;
-            if (index == -1)
-                return;
-
-            // Delete selection
-            lsvConditions.Items.RemoveAt(index);
-            m_Node.Conditions.RemoveAt(index);
-
-            // Update button state
-            cmdConditionRemove.Enabled = false;
-            cmdAccept.Enabled = m_Node.Conditions.Any();
-        }
-
-        private void lsvConditions_SelectedIndexChanged(object sender, System.EventArgs e)
-        {
-            bool has_selection = lsvConditions.SelectedIndex != -1;
-            cmdConditionRemove.Enabled = has_selection;
-        }
-
-        private void lsvConditions_DoubleClick(object sender, System.EventArgs e)
-        {
-            // Must have a selection to open
-            var selected_item = lsvConditions.SelectedItem;
-            if (selected_item == null)
-                return;
-
-            // Check what actions we can perform with this tree item
-            var tag = selected_item.Tag as ScriptNode;
-            if (tag != null)
-            {
-                using (FormScriptNode editor_form = ScriptNodeFormMapper.CreateEditorForm(tag))
-                {
-                    // If this node cannot be edited, there's nothing more to do
-                    if (editor_form == null)
-                        return;
-
-                    // Display the node edit dialog
-                    if (editor_form.ShowDialog(this) == DialogResult.OK)
-                        RebuildConditionList();
-                }
-            }
-        }
-
-        private void RebuildConditionList()
-        {
-            lsvConditions.Items.Clear();
-
-            foreach (var condition in m_Node.Conditions)
-                AddConditionToView(condition);
-        }
-
-        private void AddConditionToView(ScriptCondition condition)
-        {
-            lsvConditions.Items.Add(new ListViewItem
-            {
-                Text = condition.GetEditorDescription(),
-                ForeColor = BandedListView.ConvertColor(condition.GetEditorColor()),
-                Tag = condition
-            });
-
-            // If any condition is added to the view, then the branch must also have a condition, and is therefore valid
-            cmdAccept.Enabled = true;
+            cmdAccept.Enabled = valid;
         }
 
     }

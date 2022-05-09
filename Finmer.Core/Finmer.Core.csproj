@@ -48,6 +48,7 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Assets\ScriptDataVisualCondition.cs" />
     <Compile Include="Assets\ScriptDataWrapper.cs" />
     <Compile Include="Assets\ScriptDataInline.cs" />
     <Compile Include="Assets\ScriptDataVisual.cs" />
@@ -117,6 +118,7 @@
     <Compile Include="VisualScripting\ScriptCommandSingleFloat.cs" />
     <Compile Include="VisualScripting\ScriptCommandSingleInt.cs" />
     <Compile Include="VisualScripting\ScriptCommandContainer.cs" />
+    <Compile Include="VisualScripting\ScriptConditionGroup.cs" />
     <Compile Include="VisualScripting\ScriptNode.cs" />
     <Compile Include="VisualScripting\ScriptConditionNumberComparison.cs" />
     <Compile Include="VisualScripting\ScriptCondition.cs" />

@@ -29,94 +29,13 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label2;
-            System.Windows.Forms.Panel pnlMode;
-            System.Windows.Forms.Panel pnlOperand;
             System.Windows.Forms.Label label3;
-            this.optModeAll = new System.Windows.Forms.RadioButton();
-            this.optModeAny = new System.Windows.Forms.RadioButton();
-            this.optOperandTrue = new System.Windows.Forms.RadioButton();
-            this.optOperandFalse = new System.Windows.Forms.RadioButton();
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.chkElse = new System.Windows.Forms.CheckBox();
-            this.cmdConditionAdd = new System.Windows.Forms.Button();
-            this.cmdConditionRemove = new System.Windows.Forms.Button();
-            this.lsvConditions = new Finmer.Editor.BandedListView();
-            label2 = new System.Windows.Forms.Label();
-            pnlMode = new System.Windows.Forms.Panel();
-            pnlOperand = new System.Windows.Forms.Panel();
+            this.cgeBranch = new Finmer.Editor.ConditionGroupEditor();
             label3 = new System.Windows.Forms.Label();
-            pnlMode.SuspendLayout();
-            pnlOperand.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 248);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(14, 13);
-            label2.TabIndex = 9;
-            label2.Text = "is";
-            // 
-            // pnlMode
-            // 
-            pnlMode.Controls.Add(this.optModeAll);
-            pnlMode.Controls.Add(this.optModeAny);
-            pnlMode.Location = new System.Drawing.Point(16, 32);
-            pnlMode.Name = "pnlMode";
-            pnlMode.Size = new System.Drawing.Size(176, 56);
-            pnlMode.TabIndex = 11;
-            // 
-            // optModeAll
-            // 
-            this.optModeAll.AutoSize = true;
-            this.optModeAll.Location = new System.Drawing.Point(8, 8);
-            this.optModeAll.Name = "optModeAll";
-            this.optModeAll.Size = new System.Drawing.Size(121, 17);
-            this.optModeAll.TabIndex = 7;
-            this.optModeAll.Text = "ALL of the following:";
-            this.optModeAll.UseVisualStyleBackColor = true;
-            // 
-            // optModeAny
-            // 
-            this.optModeAny.AutoSize = true;
-            this.optModeAny.Location = new System.Drawing.Point(8, 32);
-            this.optModeAny.Name = "optModeAny";
-            this.optModeAny.Size = new System.Drawing.Size(124, 17);
-            this.optModeAny.TabIndex = 8;
-            this.optModeAny.Text = "ANY of the following:";
-            this.optModeAny.UseVisualStyleBackColor = true;
-            // 
-            // pnlOperand
-            // 
-            pnlOperand.Controls.Add(this.optOperandTrue);
-            pnlOperand.Controls.Add(this.optOperandFalse);
-            pnlOperand.Location = new System.Drawing.Point(32, 240);
-            pnlOperand.Name = "pnlOperand";
-            pnlOperand.Size = new System.Drawing.Size(160, 56);
-            pnlOperand.TabIndex = 12;
-            // 
-            // optOperandTrue
-            // 
-            this.optOperandTrue.AutoSize = true;
-            this.optOperandTrue.Location = new System.Drawing.Point(8, 8);
-            this.optOperandTrue.Name = "optOperandTrue";
-            this.optOperandTrue.Size = new System.Drawing.Size(43, 17);
-            this.optOperandTrue.TabIndex = 7;
-            this.optOperandTrue.Text = "true";
-            this.optOperandTrue.UseVisualStyleBackColor = true;
-            // 
-            // optOperandFalse
-            // 
-            this.optOperandFalse.AutoSize = true;
-            this.optOperandFalse.Location = new System.Drawing.Point(8, 32);
-            this.optOperandFalse.Name = "optOperandFalse";
-            this.optOperandFalse.Size = new System.Drawing.Size(47, 17);
-            this.optOperandFalse.TabIndex = 8;
-            this.optOperandFalse.Text = "false";
-            this.optOperandFalse.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -167,45 +86,13 @@ namespace Finmer.Editor
             this.chkElse.Text = "Has \'Else\' Branch";
             this.chkElse.UseVisualStyleBackColor = true;
             // 
-            // cmdConditionAdd
+            // cgeBranch
             // 
-            this.cmdConditionAdd.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdConditionAdd.Image = global::Finmer.Editor.Properties.Resources.plus;
-            this.cmdConditionAdd.Location = new System.Drawing.Point(264, 56);
-            this.cmdConditionAdd.Name = "cmdConditionAdd";
-            this.cmdConditionAdd.Size = new System.Drawing.Size(88, 28);
-            this.cmdConditionAdd.TabIndex = 14;
-            this.cmdConditionAdd.Text = "Add";
-            this.cmdConditionAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cmdConditionAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cmdConditionAdd.UseVisualStyleBackColor = true;
-            this.cmdConditionAdd.Click += new System.EventHandler(this.cmdConditionAdd_Click);
-            // 
-            // cmdConditionRemove
-            // 
-            this.cmdConditionRemove.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.cmdConditionRemove.Enabled = false;
-            this.cmdConditionRemove.Image = global::Finmer.Editor.Properties.Resources.minus;
-            this.cmdConditionRemove.Location = new System.Drawing.Point(360, 56);
-            this.cmdConditionRemove.Name = "cmdConditionRemove";
-            this.cmdConditionRemove.Size = new System.Drawing.Size(88, 28);
-            this.cmdConditionRemove.TabIndex = 15;
-            this.cmdConditionRemove.Text = "Remove";
-            this.cmdConditionRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cmdConditionRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cmdConditionRemove.UseVisualStyleBackColor = true;
-            this.cmdConditionRemove.Click += new System.EventHandler(this.cmdConditionRemove_Click);
-            // 
-            // lsvConditions
-            // 
-            this.lsvConditions.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.lsvConditions.Location = new System.Drawing.Point(16, 96);
-            this.lsvConditions.Name = "lsvConditions";
-            this.lsvConditions.SelectedIndex = -1;
-            this.lsvConditions.Size = new System.Drawing.Size(432, 136);
-            this.lsvConditions.TabIndex = 16;
-            this.lsvConditions.SelectedIndexChanged += new System.EventHandler(this.lsvConditions_SelectedIndexChanged);
-            this.lsvConditions.ItemDoubleClick += new System.EventHandler(this.lsvConditions_DoubleClick);
+            this.cgeBranch.Location = new System.Drawing.Point(16, 32);
+            this.cgeBranch.Name = "cgeBranch";
+            this.cgeBranch.Size = new System.Drawing.Size(432, 272);
+            this.cgeBranch.TabIndex = 14;
+            this.cgeBranch.GroupValidityChanged += new System.Action<bool>(this.cgeBranch_GroupValidityChanged);
             // 
             // FormScriptNodeIf
             // 
@@ -214,13 +101,8 @@ namespace Finmer.Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(464, 360);
-            this.Controls.Add(this.lsvConditions);
-            this.Controls.Add(this.cmdConditionRemove);
-            this.Controls.Add(this.cmdConditionAdd);
+            this.Controls.Add(this.cgeBranch);
             this.Controls.Add(label3);
-            this.Controls.Add(pnlOperand);
-            this.Controls.Add(pnlMode);
-            this.Controls.Add(label2);
             this.Controls.Add(this.chkElse);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
@@ -233,10 +115,6 @@ namespace Finmer.Editor
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Conditional Branch";
             this.Load += new System.EventHandler(this.FormScriptNodeIf_Load);
-            pnlMode.ResumeLayout(false);
-            pnlMode.PerformLayout();
-            pnlOperand.ResumeLayout(false);
-            pnlOperand.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -246,12 +124,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.CheckBox chkElse;
-        private System.Windows.Forms.RadioButton optModeAll;
-        private System.Windows.Forms.RadioButton optModeAny;
-        private System.Windows.Forms.RadioButton optOperandTrue;
-        private System.Windows.Forms.RadioButton optOperandFalse;
-        private System.Windows.Forms.Button cmdConditionAdd;
-        private System.Windows.Forms.Button cmdConditionRemove;
-        private BandedListView lsvConditions;
+        private ConditionGroupEditor cgeBranch;
     }
 }

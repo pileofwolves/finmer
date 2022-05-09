@@ -172,6 +172,12 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\ConditionGroupEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\ConditionGroupEditor.Designer.cs">
+      <DependentUpon>ConditionGroupEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\FormScriptNode.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -359,6 +365,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\ConditionGroupEditor.resx">
+      <DependentUpon>ConditionGroupEditor.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLog.resx">
       <DependentUpon>FormScriptNodeLog.cs</DependentUpon>
     </EmbeddedResource>

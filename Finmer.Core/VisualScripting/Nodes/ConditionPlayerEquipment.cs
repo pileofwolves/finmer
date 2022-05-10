@@ -53,23 +53,23 @@ namespace Finmer.Core.VisualScripting.Nodes
             switch (item.EquipSlot)
             {
                 case AssetItem.EEquipSlot.Weapon:
-                    output.Append("(Player.EquippedWeapon and Player.EquippedWeapon.AssetName) == \"");
+                    output.Append("(Player.EquippedWeapon and Player.EquippedWeapon.AssetName == \"");
                     output.Append(item.Name);
                     output.Append("\")");
                     break;
 
                 case AssetItem.EEquipSlot.Armor:
-                    output.Append("(Player.EquippedArmor and Player.EquippedArmor.AssetName) == \"");
+                    output.Append("(Player.EquippedArmor and Player.EquippedArmor.AssetName == \"");
                     output.Append(item.Name);
                     output.Append("\")");
                     break;
 
                 case AssetItem.EEquipSlot.Accessory:
                     // Need to check both equipment slots, so join them with a logical OR
-                    output.Append("((Player.EquippedAccessory1 and Player.EquippedAccessory1.AssetName) == \"");
+                    output.Append("((Player.EquippedAccessory1 and Player.EquippedAccessory1.AssetName == \"");
                     output.Append(item.Name);
                     output.Append("\") or ");
-                    output.Append("(Player.EquippedAccessory2 and Player.EquippedAccessory2.AssetName) == \"");
+                    output.Append("(Player.EquippedAccessory2 and Player.EquippedAccessory2.AssetName == \"");
                     output.Append(item.Name);
                     output.Append("\"))");
                     break;

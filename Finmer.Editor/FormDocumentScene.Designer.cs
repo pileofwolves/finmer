@@ -607,7 +607,8 @@
             // 
             this.scriptAction.AllowExternalScript = false;
             this.scriptAction.AllowInlineScript = true;
-            this.scriptAction.AllowVisualScript = true;
+            this.scriptAction.AllowVisualActionScript = true;
+            this.scriptAction.AllowVisualConditionScript = false;
             this.scriptAction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAction.Location = new System.Drawing.Point(3, 3);
             this.scriptAction.Name = "scriptAction";
@@ -629,7 +630,8 @@
             // 
             this.scriptAppear.AllowExternalScript = false;
             this.scriptAppear.AllowInlineScript = true;
-            this.scriptAppear.AllowVisualScript = true;
+            this.scriptAppear.AllowVisualActionScript = false;
+            this.scriptAppear.AllowVisualConditionScript = true;
             this.scriptAppear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAppear.Location = new System.Drawing.Point(3, 3);
             this.scriptAppear.Name = "scriptAppear";

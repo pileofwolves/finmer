@@ -275,11 +275,17 @@
     <Compile Include="ScriptEditor\FormVisualScriptCommandPalette.Designer.cs">
       <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\VisualScriptEditor.cs">
+    <Compile Include="ScriptEditor\VisualConditionScriptEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\VisualScriptEditor.Designer.cs">
-      <DependentUpon>VisualScriptEditor.cs</DependentUpon>
+    <Compile Include="ScriptEditor\VisualConditionScriptEditor.Designer.cs">
+      <DependentUpon>VisualConditionScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\VisualActionScriptEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\VisualActionScriptEditor.Designer.cs">
+      <DependentUpon>VisualActionScriptEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\RawScriptEditor.cs">
       <SubType>UserControl</SubType>
@@ -407,8 +413,12 @@
     <EmbeddedResource Include="ScriptEditor\FormVisualScriptCommandPalette.resx">
       <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\VisualScriptEditor.resx">
-      <DependentUpon>VisualScriptEditor.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\VisualConditionScriptEditor.resx">
+      <DependentUpon>VisualConditionScriptEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\VisualActionScriptEditor.resx">
+      <DependentUpon>VisualActionScriptEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\RawScriptEditor.resx">
       <DependentUpon>RawScriptEditor.cs</DependentUpon>

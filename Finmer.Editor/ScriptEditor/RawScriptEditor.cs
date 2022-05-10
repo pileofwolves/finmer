@@ -59,7 +59,7 @@ namespace Finmer.Editor
         {
             tsbUndo.Enabled = scintilla.CanUndo;
             tsbRedo.Enabled = scintilla.CanRedo;
-            tsbConvertVisual.Visible = m_Host.AllowVisualScript;
+            tsbConvertVisual.Visible = m_Host.AllowVisualActionScript || m_Host.AllowVisualConditionScript;
         }
 
         private void tsbUndo_Click(object sender, EventArgs e)

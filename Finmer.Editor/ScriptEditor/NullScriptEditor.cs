@@ -24,7 +24,7 @@ namespace Finmer.Editor
             InitializeComponent();
 
             m_Host = host;
-            cmdCreateVisual.Enabled = host.AllowVisualScript;
+            cmdCreateVisual.Enabled = host.AllowVisualActionScript || host.AllowVisualConditionScript;
             cmdCreateRaw.Enabled = host.AllowInlineScript || host.AllowExternalScript;
         }
 

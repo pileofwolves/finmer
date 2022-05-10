@@ -18,7 +18,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Contains a Lua script that is built using modular, visually arranged nodes.
     /// </summary>
-    public sealed class ScriptDataVisual : ScriptData
+    public sealed class ScriptDataVisualAction : ScriptData
     {
 
         /// <summary>

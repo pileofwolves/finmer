@@ -42,11 +42,20 @@ namespace Finmer.Editor
         /// Configures which script subtypes the user is allowed to transform the contained script into.
         /// </summary>
         [Browsable(true)]
-        public bool AllowVisualScript { get; set; } = false;
+        public bool AllowVisualActionScript { get; set; } = false;
+
+        /// <summary>
+        /// Configures which script subtypes the user is allowed to transform the contained script into.
+        /// </summary>
+        [Browsable(true)]
+        public bool AllowVisualConditionScript { get; set; } = false;
 
         public ScriptEditorHost()
         {
             InitializeComponent();
+
+            // Cannot support both types of visual script in the same host
+            Debug.Assert(!AllowVisualActionScript || !AllowVisualConditionScript);
         }
 
         /// <summary>
@@ -112,18 +121,16 @@ namespace Finmer.Editor
 
         public void ConvertToVisual()
         {
-            Debug.Assert(AllowVisualScript);
-            Debug.Assert(!(m_Wrapper.Wrapped is ScriptDataVisual));
+            Debug.Assert(AllowVisualActionScript || AllowVisualConditionScript);
+            Debug.Assert(!(m_Wrapper.Wrapped is ScriptDataVisualAction));
 
             if (!ConfirmConvertWarning())
                 return;
 
             // Instantiate an empty visual script
-            // (We currently have no reasonable way of converting a Lua script to its node graph equivalent)
-            var replacement = new ScriptDataVisual
-            {
-                Name = m_Wrapper.Name
-            };
+            var replacement = AllowVisualActionScript
+                ? (ScriptData)new ScriptDataVisualAction { Name = m_Wrapper.Name }
+                : new ScriptDataVisualCondition { Name = m_Wrapper.Name };
 
             m_Wrapper.Wrapped = replacement;
             PrepareClientEditor();
@@ -148,8 +155,12 @@ namespace Finmer.Editor
                     m_ClientEditor = new RawScriptEditor(this, wrapped);
                     break;
 
-                case ScriptDataVisual wrapped:
-                    m_ClientEditor = new VisualScriptEditor(this, wrapped);
+                case ScriptDataVisualAction wrapped:
+                    m_ClientEditor = new VisualActionScriptEditor(this, wrapped);
+                    break;
+
+                case ScriptDataVisualCondition wrapped:
+                    m_ClientEditor = new VisualConditionScriptEditor(this, wrapped);
                     break;
 
                 default:

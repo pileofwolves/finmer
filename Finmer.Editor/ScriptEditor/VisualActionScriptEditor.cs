@@ -16,15 +16,15 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Represents an editor interface for a raw (text-based) Lua script.
+    /// Represents an editor interface for a ScriptDataVisualAction object.
     /// </summary>
-    public partial class VisualScriptEditor : UserControl, IScriptEditor
+    public partial class VisualActionScriptEditor : UserControl, IScriptEditor
     {
 
         private readonly ScriptEditorHost m_Host;
-        private readonly ScriptDataVisual m_ScriptData;
+        private readonly ScriptDataVisualAction m_ScriptData;
 
-        public VisualScriptEditor(ScriptEditorHost host, ScriptDataVisual script)
+        public VisualActionScriptEditor(ScriptEditorHost host, ScriptDataVisualAction script)
         {
             InitializeComponent();
 

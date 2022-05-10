@@ -34,7 +34,8 @@
             // 
             this.scriptEditorHost.AllowExternalScript = true;
             this.scriptEditorHost.AllowInlineScript = false;
-            this.scriptEditorHost.AllowVisualScript = false;
+            this.scriptEditorHost.AllowVisualActionScript = false;
+            this.scriptEditorHost.AllowVisualConditionScript = false;
             this.scriptEditorHost.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptEditorHost.Location = new System.Drawing.Point(0, 0);
             this.scriptEditorHost.Name = "scriptEditorHost";

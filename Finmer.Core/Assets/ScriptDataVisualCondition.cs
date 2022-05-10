@@ -46,8 +46,7 @@ namespace Finmer.Core.Assets
 
         public override bool HasContent()
         {
-            // Always emit the return statement. ScriptConditionGroup will throw if there are no conditions.
-            return true;
+            return Condition.Tests.Count != 0;
         }
 
         public override void Serialize(IFurballContentWriter outstream)

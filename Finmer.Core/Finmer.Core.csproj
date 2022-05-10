@@ -51,7 +51,7 @@
     <Compile Include="Assets\ScriptDataVisualCondition.cs" />
     <Compile Include="Assets\ScriptDataWrapper.cs" />
     <Compile Include="Assets\ScriptDataInline.cs" />
-    <Compile Include="Assets\ScriptDataVisual.cs" />
+    <Compile Include="Assets\ScriptDataVisualAction.cs" />
     <Compile Include="Assets\ScriptData.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />

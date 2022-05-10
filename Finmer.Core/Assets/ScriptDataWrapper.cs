@@ -30,11 +30,16 @@ namespace Finmer.Core.Assets
 
         public override void Serialize(IFurballContentWriter outstream)
         {
+            // Ensure the wrapped script has its name assigned properly
+            Wrapped.Name = this.Name;
+
+            // Forward the serialization call
             Wrapped.Serialize(outstream);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
+            // Forward deserialization call
             Wrapped.Deserialize(instream, version);
         }
 

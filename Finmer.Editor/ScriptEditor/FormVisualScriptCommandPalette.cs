@@ -99,6 +99,11 @@ namespace Finmer.Editor
             AddScriptNode(new CommandLog());
         }
 
+        private void cmdUIAddLink_Click(object sender, System.EventArgs e)
+        {
+            // TODO: Larger refactor to make compass links part of the scene graph
+        }
+
     }
 
 }

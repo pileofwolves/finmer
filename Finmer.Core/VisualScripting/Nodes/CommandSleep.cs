@@ -17,12 +17,17 @@ namespace Finmer.Core.VisualScripting.Nodes
     /// <summary>
     /// Command that pauses the script for a number of seconds.
     /// </summary>
-    public sealed class CommandSleep : ScriptCommandSingleFloat
+    public sealed class CommandSleep : ScriptNode
     {
+
+        /// <summary>
+        /// The number of seconds to sleep.
+        /// </summary>
+        public ValueWrapperFloat Seconds { get; set; } = new ValueWrapperFloat();
 
         public override string GetEditorDescription()
         {
-            return String.Format(CultureInfo.InvariantCulture, "Sleep {0} sec", GetOperandDescription());
+            return String.Format(CultureInfo.InvariantCulture, "Sleep {0} seconds", Seconds.GetOperandDescription());
         }
 
         public override EColor GetEditorColor()
@@ -32,13 +37,18 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.AppendFormat(CultureInfo.InvariantCulture, "Sleep({0})", GetOperandLuaSnippet());
+            output.AppendFormat(CultureInfo.InvariantCulture, "Sleep({0})", Seconds.GetOperandLuaSnippet());
             output.AppendLine();
         }
 
-        public override string GetEditorWindowTitle()
+        public override void Serialize(IFurballContentWriter outstream)
         {
-            return "Sleep";
+            Seconds.Serialize(outstream);
+        }
+
+        public override void Deserialize(IFurballContentReader instream, int version)
+        {
+            Seconds.Deserialize(instream, version);
         }
 
     }

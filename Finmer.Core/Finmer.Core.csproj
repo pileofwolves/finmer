@@ -97,9 +97,12 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLogClear.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLogSplit.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLog.cs" />
     <Compile Include="VisualScripting\Nodes\CommandComment.cs" />
     <Compile Include="VisualScripting\Nodes\CommandIf.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandSetInventoryEnabled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSleep.cs" />
     <Compile Include="VisualScripting\Nodes\CommandInlineSnippet.cs" />
     <Compile Include="VisualScripting\Nodes\CommandExitScript.cs" />
@@ -115,8 +118,10 @@
     <Compile Include="VisualScripting\Nodes\ConditionPlayerStat.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerSpecies.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerName.cs" />
-    <Compile Include="VisualScripting\ScriptCommandSingleFloat.cs" />
-    <Compile Include="VisualScripting\ScriptCommandSingleInt.cs" />
+    <Compile Include="VisualScripting\ValueWrapperString.cs" />
+    <Compile Include="VisualScripting\ValueWrapperBool.cs" />
+    <Compile Include="VisualScripting\ValueWrapperFloat.cs" />
+    <Compile Include="VisualScripting\ValueWrapperInt.cs" />
     <Compile Include="VisualScripting\ScriptCommandContainer.cs" />
     <Compile Include="VisualScripting\ScriptConditionGroup.cs" />
     <Compile Include="VisualScripting\ScriptNode.cs" />

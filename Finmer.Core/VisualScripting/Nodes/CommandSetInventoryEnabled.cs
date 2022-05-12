@@ -7,6 +7,7 @@
  */
 
 using System;
+using System.Globalization;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -14,49 +15,40 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Command that adds text to the game log.
+    /// Command that wraps SetInventoryEnabled().
     /// </summary>
-    public sealed class CommandLog : ScriptCommand
+    public sealed class CommandSetInventoryEnabled : ScriptCommand
     {
 
         /// <summary>
-        /// The message text or string table key.
+        /// Gets or sets the wrapped parameter for this command.
         /// </summary>
-        public string Text { get; set; } = String.Empty;
-
-        /// <summary>
-        /// Indicates whether this is a raw text message (i.e. not a string table key).
-        /// </summary>
-        public bool IsRaw { get; set; } = false;
+        public ValueWrapperBool Value { get; set; } = new ValueWrapperBool();
 
         public override string GetEditorDescription()
         {
-            return "Log: " + Text;
+            return String.Format(CultureInfo.InvariantCulture, "Set Character Sheet Enabled to {0}", Value.GetOperandDescription());
         }
 
         public override EColor GetEditorColor()
         {
-            return EColor.Message;
+            return EColor.SceneControl;
         }
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.Append(IsRaw ? "LogRaw(\"" : "Log(\"");
-            output.Append(CoreUtility.EscapeLuaString(Text));
-            output.Append("\")");
+            output.AppendFormat(CultureInfo.InvariantCulture, "SetInventoryEnabled({0})", Value.GetOperandLuaSnippet());
             output.AppendLine();
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteStringProperty("Text", Text);
-            outstream.WriteBooleanProperty("IsRaw", IsRaw);
+            Value.Serialize(outstream);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            Text = instream.ReadStringProperty("Text");
-            IsRaw = instream.ReadBooleanProperty("IsRaw");
+            Value.Deserialize(instream, version);
         }
 
     }

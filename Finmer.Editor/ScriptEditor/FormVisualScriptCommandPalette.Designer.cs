@@ -64,7 +64,6 @@ namespace Finmer.Editor
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
             this.cmdDataModifyNumber = new System.Windows.Forms.Button();
-            this.cmdDataSetLocal = new System.Windows.Forms.Button();
             this.cmdDataSetString = new System.Windows.Forms.Button();
             this.cmdDataSetNumber = new System.Windows.Forms.Button();
             this.cmdDataSetFlag = new System.Windows.Forms.Button();
@@ -399,67 +398,57 @@ namespace Finmer.Editor
             // groupBox5
             // 
             groupBox5.Controls.Add(this.cmdDataModifyNumber);
-            groupBox5.Controls.Add(this.cmdDataSetLocal);
             groupBox5.Controls.Add(this.cmdDataSetString);
             groupBox5.Controls.Add(this.cmdDataSetNumber);
             groupBox5.Controls.Add(this.cmdDataSetFlag);
             groupBox5.Enabled = false;
             groupBox5.Location = new System.Drawing.Point(464, 120);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(208, 160);
+            groupBox5.Size = new System.Drawing.Size(208, 136);
             groupBox5.TabIndex = 9;
             groupBox5.TabStop = false;
             groupBox5.Text = "Data Storage";
             // 
             // cmdDataModifyNumber
             // 
-            this.cmdDataModifyNumber.Location = new System.Drawing.Point(16, 120);
+            this.cmdDataModifyNumber.Location = new System.Drawing.Point(16, 96);
             this.cmdDataModifyNumber.Name = "cmdDataModifyNumber";
             this.cmdDataModifyNumber.Size = new System.Drawing.Size(176, 24);
             this.cmdDataModifyNumber.TabIndex = 9;
-            this.cmdDataModifyNumber.Text = "Adjust Persistent Number";
+            this.cmdDataModifyNumber.Text = "Adjust Number Variable";
             this.cmdDataModifyNumber.UseVisualStyleBackColor = true;
-            // 
-            // cmdDataSetLocal
-            // 
-            this.cmdDataSetLocal.Location = new System.Drawing.Point(16, 24);
-            this.cmdDataSetLocal.Name = "cmdDataSetLocal";
-            this.cmdDataSetLocal.Size = new System.Drawing.Size(176, 24);
-            this.cmdDataSetLocal.TabIndex = 8;
-            this.cmdDataSetLocal.Text = "Set Local Variable";
-            this.cmdDataSetLocal.UseVisualStyleBackColor = true;
             // 
             // cmdDataSetString
             // 
-            this.cmdDataSetString.Location = new System.Drawing.Point(16, 96);
+            this.cmdDataSetString.Location = new System.Drawing.Point(16, 72);
             this.cmdDataSetString.Name = "cmdDataSetString";
             this.cmdDataSetString.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetString.TabIndex = 7;
-            this.cmdDataSetString.Text = "Set Persistent String";
+            this.cmdDataSetString.Text = "Set String Variable";
             this.cmdDataSetString.UseVisualStyleBackColor = true;
             // 
             // cmdDataSetNumber
             // 
-            this.cmdDataSetNumber.Location = new System.Drawing.Point(16, 72);
+            this.cmdDataSetNumber.Location = new System.Drawing.Point(16, 48);
             this.cmdDataSetNumber.Name = "cmdDataSetNumber";
             this.cmdDataSetNumber.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetNumber.TabIndex = 6;
-            this.cmdDataSetNumber.Text = "Set Persistent Number";
+            this.cmdDataSetNumber.Text = "Set Number Variable";
             this.cmdDataSetNumber.UseVisualStyleBackColor = true;
             // 
             // cmdDataSetFlag
             // 
-            this.cmdDataSetFlag.Location = new System.Drawing.Point(16, 48);
+            this.cmdDataSetFlag.Location = new System.Drawing.Point(16, 24);
             this.cmdDataSetFlag.Name = "cmdDataSetFlag";
             this.cmdDataSetFlag.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetFlag.TabIndex = 1;
-            this.cmdDataSetFlag.Text = "Set Persistent Flag";
+            this.cmdDataSetFlag.Text = "Set Flag Variable";
             this.cmdDataSetFlag.UseVisualStyleBackColor = true;
             // 
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(464, 400);
+            groupBox6.Location = new System.Drawing.Point(464, 376);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
             groupBox6.TabIndex = 9;
@@ -511,6 +500,7 @@ namespace Finmer.Editor
             this.cmdUIAddLink.TabIndex = 10;
             this.cmdUIAddLink.Text = "Add Compass Link";
             this.cmdUIAddLink.UseVisualStyleBackColor = true;
+            this.cmdUIAddLink.Click += new System.EventHandler(this.cmdUIAddLink_Click);
             // 
             // cmdUISetLocation
             // 
@@ -567,7 +557,7 @@ namespace Finmer.Editor
             groupBox8.Controls.Add(this.cmdTextSetContext);
             groupBox8.Controls.Add(this.cmdTextSetVariable);
             groupBox8.Enabled = false;
-            groupBox8.Location = new System.Drawing.Point(464, 296);
+            groupBox8.Location = new System.Drawing.Point(464, 272);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new System.Drawing.Size(208, 88);
             groupBox8.TabIndex = 9;
@@ -610,7 +600,7 @@ namespace Finmer.Editor
             this.cmdSaveDialog.Name = "cmdSaveDialog";
             this.cmdSaveDialog.Size = new System.Drawing.Size(176, 24);
             this.cmdSaveDialog.TabIndex = 6;
-            this.cmdSaveDialog.Text = "Save Game";
+            this.cmdSaveDialog.Text = "Open Save Menu";
             this.cmdSaveDialog.UseVisualStyleBackColor = true;
             // 
             // cmdSaveCheckpoint
@@ -619,7 +609,7 @@ namespace Finmer.Editor
             this.cmdSaveCheckpoint.Name = "cmdSaveCheckpoint";
             this.cmdSaveCheckpoint.Size = new System.Drawing.Size(176, 24);
             this.cmdSaveCheckpoint.TabIndex = 1;
-            this.cmdSaveCheckpoint.Text = "Autosave";
+            this.cmdSaveCheckpoint.Text = "Save Checkpoint";
             this.cmdSaveCheckpoint.UseVisualStyleBackColor = true;
             // 
             // cmdCancel
@@ -700,7 +690,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdPlayerSetName;
         private System.Windows.Forms.Button cmdJournalUpdate;
         private System.Windows.Forms.Button cmdJournalClose;
-        private System.Windows.Forms.Button cmdDataSetLocal;
         private System.Windows.Forms.Button cmdDataSetString;
         private System.Windows.Forms.Button cmdDataSetNumber;
         private System.Windows.Forms.Button cmdDataSetFlag;

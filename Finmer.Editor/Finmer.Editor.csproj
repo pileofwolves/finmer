@@ -172,10 +172,16 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\ConditionGroupEditor.cs">
+    <Compile Include="ScriptEditor\FormScriptNodeSleep.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\FormScriptNodeSleep.Designer.cs">
+      <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ConditionGroupEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\ConditionGroupEditor.Designer.cs">
+    <Compile Include="ScriptEditor\Parts\ConditionGroupEditor.Designer.cs">
       <DependentUpon>ConditionGroupEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\FormScriptNode.cs">
@@ -237,18 +243,6 @@
     <Compile Include="ScriptEditor\FormScriptNodeComment.Designer.cs">
       <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\FormScriptNodeSingleInt.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScriptEditor\FormScriptNodeSingleInt.Designer.cs">
-      <DependentUpon>FormScriptNodeSingleInt.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ScriptEditor\FormScriptNodeSingleFloat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ScriptEditor\FormScriptNodeSingleFloat.Designer.cs">
-      <DependentUpon>FormScriptNodeSingleFloat.cs</DependentUpon>
-    </Compile>
     <Compile Include="ScriptEditor\FormScriptNodeLuaSnippet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -267,6 +261,30 @@
     </Compile>
     <Compile Include="ScriptEditor\NullScriptEditor.Designer.cs">
       <DependentUpon>NullScriptEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueBoolEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueBoolEditor.Designer.cs">
+      <DependentUpon>ScriptValueBoolEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueFloatEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueFloatEditor.Designer.cs">
+      <DependentUpon>ScriptValueFloatEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueIntEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueIntEditor.Designer.cs">
+      <DependentUpon>ScriptValueIntEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueStringEditor.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Parts\ScriptValueStringEditor.Designer.cs">
+      <DependentUpon>ScriptValueStringEditor.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\ScriptNodeFormMapper.cs" />
     <Compile Include="ScriptEditor\FormVisualScriptCommandPalette.cs">
@@ -371,7 +389,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="ScriptEditor\ConditionGroupEditor.resx">
+    <EmbeddedResource Include="ScriptEditor\FormScriptNodeSleep.resx">
+      <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Parts\ConditionGroupEditor.resx">
       <DependentUpon>ConditionGroupEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLog.resx">
@@ -395,12 +416,6 @@
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeComment.resx">
       <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\FormScriptNodeSingleInt.resx">
-      <DependentUpon>FormScriptNodeSingleInt.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\FormScriptNodeSingleFloat.resx">
-      <DependentUpon>FormScriptNodeSingleFloat.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormScriptNodeLuaSnippet.resx">
       <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
     </EmbeddedResource>
@@ -412,6 +427,19 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormVisualScriptCommandPalette.resx">
       <DependentUpon>FormVisualScriptCommandPalette.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Parts\ScriptValueBoolEditor.resx">
+      <DependentUpon>ScriptValueBoolEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Parts\ScriptValueFloatEditor.resx">
+      <DependentUpon>ScriptValueFloatEditor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Parts\ScriptValueIntEditor.resx">
+      <DependentUpon>ScriptValueIntEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Parts\ScriptValueStringEditor.resx">
+      <DependentUpon>ScriptValueStringEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\VisualConditionScriptEditor.resx">
       <DependentUpon>VisualConditionScriptEditor.cs</DependentUpon>

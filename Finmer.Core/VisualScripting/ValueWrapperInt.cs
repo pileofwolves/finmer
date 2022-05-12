@@ -16,7 +16,7 @@ namespace Finmer.Core.VisualScripting
     /// <summary>
     /// Represents an executable command script node with a single integer parameter.
     /// </summary>
-    public abstract class ScriptCommandSingleInt : ScriptNode
+    public sealed class ValueWrapperInt : IFurballSerializable
     {
 
         /// <summary>
@@ -44,12 +44,7 @@ namespace Finmer.Core.VisualScripting
         /// </summary>
         public string OperandText { get; set; } = String.Empty;
 
-        /// <summary>
-        /// Returns the editor window title appropriate for this node.
-        /// </summary>
-        public abstract string GetEditorWindowTitle();
-
-        public sealed override void Serialize(IFurballContentWriter outstream)
+        public void Serialize(IFurballContentWriter outstream)
         {
             outstream.WriteEnumProperty(nameof(OperandMode), OperandMode);
 
@@ -59,7 +54,7 @@ namespace Finmer.Core.VisualScripting
                 outstream.WriteStringProperty(nameof(OperandText), OperandText);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream, int version)
         {
             OperandMode = instream.ReadEnumProperty<EOperandMode>(nameof(OperandMode));
 
@@ -69,7 +64,7 @@ namespace Finmer.Core.VisualScripting
                 OperandText = instream.ReadStringProperty(nameof(OperandText));
         }
 
-        protected string GetOperandDescription()
+        public string GetOperandDescription()
         {
             switch (OperandMode)
             {
@@ -85,7 +80,7 @@ namespace Finmer.Core.VisualScripting
             }
         }
 
-        protected string GetOperandLuaSnippet()
+        public string GetOperandLuaSnippet()
         {
             switch (OperandMode)
             {

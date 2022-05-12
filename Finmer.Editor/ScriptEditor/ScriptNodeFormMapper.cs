@@ -24,7 +24,7 @@ namespace Finmer.Editor
         {
             { typeof(CommandIf),                    () => new FormScriptNodeIf() },
             { typeof(CommandComment),               () => new FormScriptNodeComment() },
-            { typeof(CommandSleep),                 () => new FormScriptNodeSingleFloat() },
+            { typeof(CommandSleep),                 () => new FormScriptNodeSleep() },
             { typeof(CommandLog),                   () => new FormScriptNodeLog() },
             { typeof(CommandInlineSnippet),         () => new FormScriptNodeLuaSnippet() },
             { typeof(ConditionPlayerHealth),        () => new FormScriptCondNumberComp() },

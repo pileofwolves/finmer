@@ -134,14 +134,6 @@ end"
         }
 
         /// <summary>
-        /// Escapes a string so that it can be safely inserted into Lua code.
-        /// </summary>
-        private static string EscapeLuaString(string unescaped)
-        {
-            return unescaped.Replace(@"\", @"\\").Replace(@"""", @"\""");
-        }
-
-        /// <summary>
         /// Finds the node in the scene graph with the specified key.
         /// </summary>
         /// <param name="state">A reference to the scene undergoing compilation.</param>
@@ -253,7 +245,7 @@ end"
                 // Emit a call to the 'Appears When' test, then the AddButton call if it passes.
                 string formatted_button_width = String.Format(CultureInfo.InvariantCulture, "{0:F3}", link_target.ButtonWidth);
                 state.TableStateFns.Append($"if _CanAppear(\"{link_target.Key}\") then ");
-                state.TableStateFns.Append($"AddButton(_Choices.{link_target.Key}, \"{EscapeLuaString(link_target.Title)}\", \"{EscapeLuaString(link_target.Tooltip)}\", {(link_target.Highlight ? "true" : "false")}, {formatted_button_width})");
+                state.TableStateFns.Append($"AddButton(_Choices.{link_target.Key}, \"{CoreUtility.EscapeLuaString(link_target.Title)}\", \"{CoreUtility.EscapeLuaString(link_target.Tooltip)}\", {(link_target.Highlight ? "true" : "false")}, {formatted_button_width})");
                 state.TableStateFns.AppendLine(" end");
             }
 

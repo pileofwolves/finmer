@@ -33,6 +33,14 @@ namespace Finmer.Core
             return new string(ca);
         }
 
+        /// <summary>
+        /// Escapes a string so that it can be safely inserted into Lua code.
+        /// </summary>
+        public static string EscapeLuaString(string unescaped)
+        {
+            return unescaped.Replace(@"\", @"\\").Replace(@"""", @"\""");
+        }
+
     }
 
 }

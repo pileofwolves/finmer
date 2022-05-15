@@ -39,7 +39,7 @@ namespace Finmer.Editor
                 return new ValueWrapperFloat
                 {
                     OperandMode = ValueWrapperFloat.EOperandMode.Variable,
-                    OperandText = txtNumberVar.Text
+                    OperandText = txtNumberVar.Text.ToUpperInvariant()
                 };
             }
             else

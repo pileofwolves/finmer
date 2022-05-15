@@ -98,6 +98,7 @@
             // chkLiteral
             // 
             this.chkLiteral.AutoSize = true;
+            this.chkLiteral.Enabled = false;
             this.chkLiteral.Location = new System.Drawing.Point(8, 24);
             this.chkLiteral.Name = "chkLiteral";
             this.chkLiteral.Size = new System.Drawing.Size(76, 17);

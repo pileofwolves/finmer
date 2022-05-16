@@ -24,11 +24,15 @@ namespace Finmer.Core.Serialization
     public static class AssetSerializer
     {
 
-        private static readonly Dictionary<string, Func<IFurballSerializable>> s_NameToObjectMap;
+        private static readonly Dictionary<string, Func<IFurballSerializable>> s_NameToCtorMap;
+        private static readonly Dictionary<int, Func<IFurballSerializable>> s_HashToCtorMap;
+
+        private const string k_FurballObjectTypeKey = @"!Type";
 
         static AssetSerializer()
         {
-            s_NameToObjectMap = new Dictionary<string, Func<IFurballSerializable>>();
+            s_NameToCtorMap = new Dictionary<string, Func<IFurballSerializable>>();
+            s_HashToCtorMap = new Dictionary<int, Func<IFurballSerializable>>();
 
             // Discover all IFurballSerializable types in this assembly
             var assembly = Assembly.GetCallingAssembly();
@@ -41,11 +45,13 @@ namespace Finmer.Core.Serialization
             {
                 // Advanced wizardry: dynamically compile a lambda that will produce a new instance of the input type when called.
                 // This is much, much faster than using Activator.CreateInstance() to produce instances.
-                var ctor = Expression.Lambda<Func<IFurballSerializable>>(
-                    Expression.New(type.GetConstructor(Type.EmptyTypes))).Compile();
+                var ctor = type.GetConstructor(Type.EmptyTypes) ?? throw new InvalidOperationException();
+                var lambda = Expression.Lambda<Func<IFurballSerializable>>(
+                    Expression.New(ctor)).Compile();
 
                 // Store the type
-                s_NameToObjectMap.Add(type.Name, ctor);
+                s_NameToCtorMap.Add(type.Name, lambda);
+                s_HashToCtorMap.Add(ComputeTypeHash(type), lambda);
             }
         }
 
@@ -54,9 +60,21 @@ namespace Finmer.Core.Serialization
         /// </summary>
         public static IFurballSerializable DeserializeAsset(IFurballContentReader instream, int version)
         {
-            // Instantiate the asset itself
-            var type = instream.ReadStringProperty(@"!Type");
-            var asset = InstantiateAsset(type);
+            // Obtain the ctor for this object
+            // Admittedly doing this explicit type check is a hack, but since the type ID is internal to AssetSerializer to begin
+            // with, it shouldn't be a stretch to also have it decide how exactly the type ID ought to be serialized.
+            Func<IFurballSerializable> constructor;
+            if (instream is FurballContentReaderBinary binary)
+                s_HashToCtorMap.TryGetValue(binary.ReadInt32Property(k_FurballObjectTypeKey), out constructor);
+            else
+                s_NameToCtorMap.TryGetValue(instream.ReadStringProperty(k_FurballObjectTypeKey), out constructor);
+
+            // Validate that the type is known
+            if (constructor == null)
+                throw new FurballUnknownAssetException("Unknown asset type ID");
+
+            // Instantiate the object
+            var asset = constructor();
 
             // Read its data from stream
             asset.Deserialize(instream, version);
@@ -69,8 +87,15 @@ namespace Finmer.Core.Serialization
         /// </summary>
         public static void SerializeAsset(IFurballContentWriter outstream, IFurballSerializable asset)
         {
+            // Unwrap script wrappers
+            while (asset is ScriptDataWrapper wrapper)
+                asset = wrapper.Wrapped;
+
             // Write the type identifier to the stream
-            outstream.WriteStringProperty(@"!Type", IdentifyAsset(asset));
+            if (outstream is FurballContentWriterBinary binary)
+                binary.WriteInt32Property(k_FurballObjectTypeKey, ComputeTypeHash(asset.GetType()));
+            else
+                outstream.WriteStringProperty(k_FurballObjectTypeKey, asset.GetType().Name);
 
             // Write asset contents
             asset.Serialize(outstream);
@@ -103,29 +128,27 @@ namespace Finmer.Core.Serialization
         }
 
         /// <summary>
-        /// Factory function that instantiates an asset object based on its type ID.
+        /// Returns a stable (deterministic) 32-bit hash given an input Type.
         /// </summary>
-        private static IFurballSerializable InstantiateAsset(string typeName)
+        private static int ComputeTypeHash(Type type)
         {
-            // Find the constructor that will produce an instance of the desired asset
-            if (s_NameToObjectMap.TryGetValue(typeName, out var ctor))
-                return ctor();
+            // Managed hash implementation taken mostly from .NET's String.GetHashCode (but stable across versions)
+            unchecked
+            {
+                var input = type.Name;
+                int hash1 = 5381;
+                int hash2 = hash1;
 
-            throw new FurballUnknownAssetException("Unknown asset type ID");
-        }
+                for (int i = 0; i < input.Length && input[i] != '\0'; i += 2)
+                {
+                    hash1 = ((hash1 << 5) + hash1) ^ input[i];
+                    if (i == input.Length - 1 || input[i + 1] == '\0')
+                        break;
+                    hash2 = ((hash2 << 5) + hash2) ^ input[i + 1];
+                }
 
-        /// <summary>
-        /// Given an asset instance, returns the value that must be passed to InstantiateAsset() to return a new instance of the same type.
-        /// </summary>
-        private static string IdentifyAsset(IFurballSerializable asset)
-        {
-            // Unwrap script wrappers
-            if (asset is ScriptDataWrapper wrapper)
-                asset = wrapper.Wrapped;
-
-            // Simply return the name of the object's type. We don't perform any further checks or lookups here since we assume
-            // that, as it is derived from IFurballSerializable, at deserialization time the type is present in the ctor lookup table.
-            return asset.GetType().Name;
+                return hash1 + (hash2 * 1566083941);
+            }
         }
 
     }

@@ -54,13 +54,11 @@ namespace Finmer.Editor
             this.cmdPlayerSetName = new System.Windows.Forms.Button();
             this.cmdPlayerAddAbilityPoints = new System.Windows.Forms.Button();
             this.cmdPlayerAddXP = new System.Windows.Forms.Button();
-            this.cmdPlayerRemoveItem = new System.Windows.Forms.Button();
             this.cmdPlayerSetStat = new System.Windows.Forms.Button();
             this.cmdPlayerAddItem = new System.Windows.Forms.Button();
             this.cmdPlayerSetHealth = new System.Windows.Forms.Button();
             this.cmdPlayerSetEquipment = new System.Windows.Forms.Button();
             this.cmdPlayerSetMoney = new System.Windows.Forms.Button();
-            this.cmdPlayerSetSize = new System.Windows.Forms.Button();
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
             this.cmdDataModifyNumber = new System.Windows.Forms.Button();
@@ -242,29 +240,27 @@ namespace Finmer.Editor
             groupBox3.Controls.Add(this.cmdPlayerSetName);
             groupBox3.Controls.Add(this.cmdPlayerAddAbilityPoints);
             groupBox3.Controls.Add(this.cmdPlayerAddXP);
-            groupBox3.Controls.Add(this.cmdPlayerRemoveItem);
             groupBox3.Controls.Add(this.cmdPlayerSetStat);
             groupBox3.Controls.Add(this.cmdPlayerAddItem);
             groupBox3.Controls.Add(this.cmdPlayerSetHealth);
             groupBox3.Controls.Add(this.cmdPlayerSetEquipment);
             groupBox3.Controls.Add(this.cmdPlayerSetMoney);
-            groupBox3.Controls.Add(this.cmdPlayerSetSize);
-            groupBox3.Enabled = false;
             groupBox3.Location = new System.Drawing.Point(16, 208);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(208, 336);
+            groupBox3.Size = new System.Drawing.Size(208, 280);
             groupBox3.TabIndex = 8;
             groupBox3.TabStop = false;
             groupBox3.Text = "Player";
             // 
             // cmdPlayerRestoreHealth
             // 
-            this.cmdPlayerRestoreHealth.Location = new System.Drawing.Point(16, 144);
+            this.cmdPlayerRestoreHealth.Location = new System.Drawing.Point(16, 120);
             this.cmdPlayerRestoreHealth.Name = "cmdPlayerRestoreHealth";
             this.cmdPlayerRestoreHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerRestoreHealth.TabIndex = 12;
             this.cmdPlayerRestoreHealth.Text = "Restore All Health";
             this.cmdPlayerRestoreHealth.UseVisualStyleBackColor = true;
+            this.cmdPlayerRestoreHealth.Click += new System.EventHandler(this.cmdPlayerRestoreHealth_Click);
             // 
             // cmdPlayerSetSpecies
             // 
@@ -274,6 +270,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetSpecies.TabIndex = 11;
             this.cmdPlayerSetSpecies.Text = "Change Species";
             this.cmdPlayerSetSpecies.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetSpecies.Click += new System.EventHandler(this.cmdPlayerSetSpecies_Click);
             // 
             // cmdPlayerSetName
             // 
@@ -283,33 +280,27 @@ namespace Finmer.Editor
             this.cmdPlayerSetName.TabIndex = 10;
             this.cmdPlayerSetName.Text = "Change Name";
             this.cmdPlayerSetName.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetName.Click += new System.EventHandler(this.cmdPlayerSetName_Click);
             // 
             // cmdPlayerAddAbilityPoints
             // 
-            this.cmdPlayerAddAbilityPoints.Location = new System.Drawing.Point(16, 288);
+            this.cmdPlayerAddAbilityPoints.Location = new System.Drawing.Point(16, 240);
             this.cmdPlayerAddAbilityPoints.Name = "cmdPlayerAddAbilityPoints";
             this.cmdPlayerAddAbilityPoints.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddAbilityPoints.TabIndex = 9;
             this.cmdPlayerAddAbilityPoints.Text = "Add Ability Points";
             this.cmdPlayerAddAbilityPoints.UseVisualStyleBackColor = true;
+            this.cmdPlayerAddAbilityPoints.Click += new System.EventHandler(this.cmdPlayerAddAbilityPoints_Click);
             // 
             // cmdPlayerAddXP
             // 
-            this.cmdPlayerAddXP.Location = new System.Drawing.Point(16, 264);
+            this.cmdPlayerAddXP.Location = new System.Drawing.Point(16, 216);
             this.cmdPlayerAddXP.Name = "cmdPlayerAddXP";
             this.cmdPlayerAddXP.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddXP.TabIndex = 8;
             this.cmdPlayerAddXP.Text = "Add XP";
             this.cmdPlayerAddXP.UseVisualStyleBackColor = true;
-            // 
-            // cmdPlayerRemoveItem
-            // 
-            this.cmdPlayerRemoveItem.Location = new System.Drawing.Point(16, 240);
-            this.cmdPlayerRemoveItem.Name = "cmdPlayerRemoveItem";
-            this.cmdPlayerRemoveItem.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerRemoveItem.TabIndex = 7;
-            this.cmdPlayerRemoveItem.Text = "Remove Item";
-            this.cmdPlayerRemoveItem.UseVisualStyleBackColor = true;
+            this.cmdPlayerAddXP.Click += new System.EventHandler(this.cmdPlayerAddXP_Click);
             // 
             // cmdPlayerSetStat
             // 
@@ -319,51 +310,47 @@ namespace Finmer.Editor
             this.cmdPlayerSetStat.TabIndex = 6;
             this.cmdPlayerSetStat.Text = "Change Primary Stat";
             this.cmdPlayerSetStat.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetStat.Click += new System.EventHandler(this.cmdPlayerSetStat_Click);
             // 
             // cmdPlayerAddItem
             // 
-            this.cmdPlayerAddItem.Location = new System.Drawing.Point(16, 216);
+            this.cmdPlayerAddItem.Location = new System.Drawing.Point(16, 192);
             this.cmdPlayerAddItem.Name = "cmdPlayerAddItem";
             this.cmdPlayerAddItem.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddItem.TabIndex = 5;
-            this.cmdPlayerAddItem.Text = "Add Item";
+            this.cmdPlayerAddItem.Text = "Add/Remove Item";
             this.cmdPlayerAddItem.UseVisualStyleBackColor = true;
+            this.cmdPlayerAddItem.Click += new System.EventHandler(this.cmdPlayerAddItem_Click);
             // 
             // cmdPlayerSetHealth
             // 
-            this.cmdPlayerSetHealth.Location = new System.Drawing.Point(16, 120);
+            this.cmdPlayerSetHealth.Location = new System.Drawing.Point(16, 96);
             this.cmdPlayerSetHealth.Name = "cmdPlayerSetHealth";
             this.cmdPlayerSetHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetHealth.TabIndex = 4;
             this.cmdPlayerSetHealth.Text = "Change Health";
             this.cmdPlayerSetHealth.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetHealth.Click += new System.EventHandler(this.cmdPlayerSetHealth_Click);
             // 
             // cmdPlayerSetEquipment
             // 
-            this.cmdPlayerSetEquipment.Location = new System.Drawing.Point(16, 192);
+            this.cmdPlayerSetEquipment.Location = new System.Drawing.Point(16, 168);
             this.cmdPlayerSetEquipment.Name = "cmdPlayerSetEquipment";
             this.cmdPlayerSetEquipment.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetEquipment.TabIndex = 3;
             this.cmdPlayerSetEquipment.Text = "Change Equipment";
             this.cmdPlayerSetEquipment.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetEquipment.Click += new System.EventHandler(this.cmdPlayerSetEquipment_Click);
             // 
             // cmdPlayerSetMoney
             // 
-            this.cmdPlayerSetMoney.Location = new System.Drawing.Point(16, 168);
+            this.cmdPlayerSetMoney.Location = new System.Drawing.Point(16, 144);
             this.cmdPlayerSetMoney.Name = "cmdPlayerSetMoney";
             this.cmdPlayerSetMoney.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetMoney.TabIndex = 2;
             this.cmdPlayerSetMoney.Text = "Change Money";
             this.cmdPlayerSetMoney.UseVisualStyleBackColor = true;
-            // 
-            // cmdPlayerSetSize
-            // 
-            this.cmdPlayerSetSize.Location = new System.Drawing.Point(16, 96);
-            this.cmdPlayerSetSize.Name = "cmdPlayerSetSize";
-            this.cmdPlayerSetSize.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerSetSize.TabIndex = 1;
-            this.cmdPlayerSetSize.Text = "Change Size";
-            this.cmdPlayerSetSize.UseVisualStyleBackColor = true;
+            this.cmdPlayerSetMoney.Click += new System.EventHandler(this.cmdPlayerSetMoney_Click);
             // 
             // groupBox4
             // 
@@ -483,13 +470,13 @@ namespace Finmer.Editor
             // 
             // cmdUISetInventoryEnabled
             // 
-            this.cmdUISetInventoryEnabled.Enabled = false;
             this.cmdUISetInventoryEnabled.Location = new System.Drawing.Point(16, 120);
             this.cmdUISetInventoryEnabled.Name = "cmdUISetInventoryEnabled";
             this.cmdUISetInventoryEnabled.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetInventoryEnabled.TabIndex = 11;
             this.cmdUISetInventoryEnabled.Text = "Set Character Sheet Enabled";
             this.cmdUISetInventoryEnabled.UseVisualStyleBackColor = true;
+            this.cmdUISetInventoryEnabled.Click += new System.EventHandler(this.cmdUISetInventoryEnabled_Click);
             // 
             // cmdUIAddLink
             // 
@@ -504,33 +491,33 @@ namespace Finmer.Editor
             // 
             // cmdUISetLocation
             // 
-            this.cmdUISetLocation.Enabled = false;
             this.cmdUISetLocation.Location = new System.Drawing.Point(16, 168);
             this.cmdUISetLocation.Name = "cmdUISetLocation";
             this.cmdUISetLocation.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetLocation.TabIndex = 9;
             this.cmdUISetLocation.Text = "Set Location Text";
             this.cmdUISetLocation.UseVisualStyleBackColor = true;
+            this.cmdUISetLocation.Click += new System.EventHandler(this.cmdUISetLocation_Click);
             // 
             // cmdUISetInstruction
             // 
-            this.cmdUISetInstruction.Enabled = false;
             this.cmdUISetInstruction.Location = new System.Drawing.Point(16, 144);
             this.cmdUISetInstruction.Name = "cmdUISetInstruction";
             this.cmdUISetInstruction.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetInstruction.TabIndex = 8;
             this.cmdUISetInstruction.Text = "Set Instruction Text";
             this.cmdUISetInstruction.UseVisualStyleBackColor = true;
+            this.cmdUISetInstruction.Click += new System.EventHandler(this.cmdUISetInstruction_Click);
             // 
             // cmdUIClearLog
             // 
-            this.cmdUIClearLog.Enabled = false;
             this.cmdUIClearLog.Location = new System.Drawing.Point(16, 72);
             this.cmdUIClearLog.Name = "cmdUIClearLog";
             this.cmdUIClearLog.Size = new System.Drawing.Size(176, 24);
             this.cmdUIClearLog.TabIndex = 7;
             this.cmdUIClearLog.Text = "Clear Message Log";
             this.cmdUIClearLog.UseVisualStyleBackColor = true;
+            this.cmdUIClearLog.Click += new System.EventHandler(this.cmdUIClearLog_Click);
             // 
             // cmdUILog
             // 
@@ -544,13 +531,13 @@ namespace Finmer.Editor
             // 
             // cmdUILogSplit
             // 
-            this.cmdUILogSplit.Enabled = false;
             this.cmdUILogSplit.Location = new System.Drawing.Point(16, 48);
             this.cmdUILogSplit.Name = "cmdUILogSplit";
             this.cmdUILogSplit.Size = new System.Drawing.Size(176, 24);
             this.cmdUILogSplit.TabIndex = 1;
             this.cmdUILogSplit.Text = "Show Horizontal Bar";
             this.cmdUILogSplit.UseVisualStyleBackColor = true;
+            this.cmdUILogSplit.Click += new System.EventHandler(this.cmdUILogSplit_Click);
             // 
             // groupBox8
             // 
@@ -616,7 +603,7 @@ namespace Finmer.Editor
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(536, 512);
+            this.cmdCancel.Location = new System.Drawing.Point(536, 488);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
             this.cmdCancel.TabIndex = 0;
@@ -631,7 +618,7 @@ namespace Finmer.Editor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(688, 560);
+            this.ClientSize = new System.Drawing.Size(688, 544);
             this.Controls.Add(groupBox9);
             this.Controls.Add(groupBox8);
             this.Controls.Add(groupBox7);
@@ -681,9 +668,7 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdPlayerSetHealth;
         private System.Windows.Forms.Button cmdPlayerSetEquipment;
         private System.Windows.Forms.Button cmdPlayerSetMoney;
-        private System.Windows.Forms.Button cmdPlayerSetSize;
         private System.Windows.Forms.Button cmdPlayerAddXP;
-        private System.Windows.Forms.Button cmdPlayerRemoveItem;
         private System.Windows.Forms.Button cmdPlayerAddAbilityPoints;
         private System.Windows.Forms.Button cmdPlayerRestoreHealth;
         private System.Windows.Forms.Button cmdPlayerSetSpecies;

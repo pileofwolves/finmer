@@ -172,6 +172,78 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetEquipment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetItem.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetItem.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetItem.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetInstruction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetInstruction.Designer.cs">
+      <DependentUpon>FormScriptCmdSetInstruction.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetInvEnabled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetInvEnabled.Designer.cs">
+      <DependentUpon>FormScriptCmdSetInvEnabled.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetLocation.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetLocation.Designer.cs">
+      <DependentUpon>FormScriptCmdSetLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddAP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddAP.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerAddAP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetHealth.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetHealth.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetHealth.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetMoney.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetMoney.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetMoney.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetName.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetName.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetName.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetSpecies.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetSpecies.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetSpecies.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetStat.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetStat.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerSetStat.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddXP.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddXP.Designer.cs">
+      <DependentUpon>FormScriptCmdPlayerAddXP.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptNodeSleep.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -389,6 +461,45 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.resx">
+      <DependentUpon>FormScriptCmdPlayerSetEquipment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetItem.resx">
+      <DependentUpon>FormScriptCmdPlayerSetItem.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSetInstruction.resx">
+      <DependentUpon>FormScriptCmdSetInstruction.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSetInvEnabled.resx">
+      <DependentUpon>FormScriptCmdSetInvEnabled.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSetLocation.resx">
+      <DependentUpon>FormScriptCmdSetLocation.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddAP.resx">
+      <DependentUpon>FormScriptCmdPlayerAddAP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetHealth.resx">
+      <DependentUpon>FormScriptCmdPlayerSetHealth.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetMoney.resx">
+      <DependentUpon>FormScriptCmdPlayerSetMoney.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetName.resx">
+      <DependentUpon>FormScriptCmdPlayerSetName.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetSpecies.resx">
+      <DependentUpon>FormScriptCmdPlayerSetSpecies.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetStat.resx">
+      <DependentUpon>FormScriptCmdPlayerSetStat.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddXP.resx">
+      <DependentUpon>FormScriptCmdPlayerAddXP.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeSleep.resx">
       <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>
     </EmbeddedResource>

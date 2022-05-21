@@ -99,9 +99,84 @@ namespace Finmer.Editor
             AddScriptNode(new CommandLog());
         }
 
+        private void cmdUILogSplit_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLogSplit());
+        }
+
+        private void cmdUIClearLog_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLogClear());
+        }
+
         private void cmdUIAddLink_Click(object sender, System.EventArgs e)
         {
             // TODO: Larger refactor to make compass links part of the scene graph
+        }
+
+        private void cmdUISetInstruction_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSetInstruction());
+        }
+
+        private void cmdUISetInventoryEnabled_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSetInventoryEnabled());
+        }
+
+        private void cmdUISetLocation_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSetLocation());
+        }
+
+        private void cmdPlayerSetName_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetName());
+        }
+
+        private void cmdPlayerSetSpecies_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetSpecies());
+        }
+
+        private void cmdPlayerSetStat_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetStat());
+        }
+
+        private void cmdPlayerSetHealth_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetHealth());
+        }
+
+        private void cmdPlayerRestoreHealth_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerHealAll());
+        }
+
+        private void cmdPlayerSetMoney_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetMoney());
+        }
+
+        private void cmdPlayerSetEquipment_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetEquipment());
+        }
+
+        private void cmdPlayerAddItem_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerSetItem());
+        }
+
+        private void cmdPlayerAddXP_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerAddXP());
+        }
+
+        private void cmdPlayerAddAbilityPoints_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPlayerAddAP());
         }
 
     }

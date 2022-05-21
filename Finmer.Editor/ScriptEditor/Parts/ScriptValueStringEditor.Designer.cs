@@ -76,10 +76,10 @@
             this.optModeVar.AutoSize = true;
             this.optModeVar.Location = new System.Drawing.Point(0, 64);
             this.optModeVar.Name = "optModeVar";
-            this.optModeVar.Size = new System.Drawing.Size(103, 17);
+            this.optModeVar.Size = new System.Drawing.Size(93, 17);
             this.optModeVar.TabIndex = 3;
             this.optModeVar.TabStop = true;
-            this.optModeVar.Text = "Number Variable";
+            this.optModeVar.Text = "String Variable";
             this.optModeVar.UseVisualStyleBackColor = true;
             this.optModeVar.CheckedChanged += new System.EventHandler(this.optModeNumberVar_CheckedChanged);
             // 

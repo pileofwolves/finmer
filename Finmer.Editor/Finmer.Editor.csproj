@@ -172,6 +172,12 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.Designer.cs">
+      <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -243,6 +249,18 @@
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddXP.Designer.cs">
       <DependentUpon>FormScriptCmdPlayerAddXP.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetScene.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSetScene.Designer.cs">
+      <DependentUpon>FormScriptCmdSetScene.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdShop.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdShop.Designer.cs">
+      <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptNodeSleep.cs">
       <SubType>Form</SubType>
@@ -461,6 +479,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.resx">
+      <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.resx">
       <DependentUpon>FormScriptCmdPlayerSetEquipment.cs</DependentUpon>
     </EmbeddedResource>
@@ -499,6 +520,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerAddXP.resx">
       <DependentUpon>FormScriptCmdPlayerAddXP.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSetScene.resx">
+      <DependentUpon>FormScriptCmdSetScene.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdShop.resx">
+      <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeSleep.resx">
       <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>

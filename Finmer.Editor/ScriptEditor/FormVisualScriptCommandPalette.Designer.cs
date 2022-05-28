@@ -180,7 +180,6 @@ namespace Finmer.Editor
             groupBox2.Controls.Add(this.cmdSceneEndGame);
             groupBox2.Controls.Add(this.cmdSceneShop);
             groupBox2.Controls.Add(this.cmdSceneCombat);
-            groupBox2.Enabled = false;
             groupBox2.Location = new System.Drawing.Point(240, 240);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(208, 160);
@@ -196,6 +195,7 @@ namespace Finmer.Editor
             this.cmdSceneSetScene.TabIndex = 6;
             this.cmdSceneSetScene.Text = "Change Scene";
             this.cmdSceneSetScene.UseVisualStyleBackColor = true;
+            this.cmdSceneSetScene.Click += new System.EventHandler(this.cmdSceneSetScene_Click);
             // 
             // cmdSceneCombatStop
             // 
@@ -205,6 +205,7 @@ namespace Finmer.Editor
             this.cmdSceneCombatStop.TabIndex = 4;
             this.cmdSceneCombatStop.Text = "Stop Combat";
             this.cmdSceneCombatStop.UseVisualStyleBackColor = true;
+            this.cmdSceneCombatStop.Click += new System.EventHandler(this.cmdSceneCombatStop_Click);
             // 
             // cmdSceneEndGame
             // 
@@ -214,6 +215,7 @@ namespace Finmer.Editor
             this.cmdSceneEndGame.TabIndex = 3;
             this.cmdSceneEndGame.Text = "End Game (Game Over)";
             this.cmdSceneEndGame.UseVisualStyleBackColor = true;
+            this.cmdSceneEndGame.Click += new System.EventHandler(this.cmdSceneEndGame_Click);
             // 
             // cmdSceneShop
             // 
@@ -223,6 +225,7 @@ namespace Finmer.Editor
             this.cmdSceneShop.TabIndex = 2;
             this.cmdSceneShop.Text = "Open Shop";
             this.cmdSceneShop.UseVisualStyleBackColor = true;
+            this.cmdSceneShop.Click += new System.EventHandler(this.cmdSceneShop_Click);
             // 
             // cmdSceneCombat
             // 
@@ -232,6 +235,7 @@ namespace Finmer.Editor
             this.cmdSceneCombat.TabIndex = 1;
             this.cmdSceneCombat.Text = "Begin Combat";
             this.cmdSceneCombat.UseVisualStyleBackColor = true;
+            this.cmdSceneCombat.Click += new System.EventHandler(this.cmdSceneCombat_Click);
             // 
             // groupBox3
             // 

@@ -97,6 +97,9 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandEndGame.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLogClear.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLogSplit.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLog.cs" />
@@ -115,6 +118,8 @@
     <Compile Include="VisualScripting\Nodes\CommandSetInstruction.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetInventoryEnabled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetLocation.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandSetScene.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandShop.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSleep.cs" />
     <Compile Include="VisualScripting\Nodes\CommandInlineSnippet.cs" />
     <Compile Include="VisualScripting\Nodes\CommandExitScript.cs" />

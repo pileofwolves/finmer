@@ -179,6 +179,31 @@ namespace Finmer.Editor
             AddScriptNode(new CommandPlayerAddAP());
         }
 
+        private void cmdSceneSetScene_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSetScene());
+        }
+
+        private void cmdSceneCombat_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandCombatBegin());
+        }
+
+        private void cmdSceneCombatStop_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandCombatEnd());
+        }
+
+        private void cmdSceneShop_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandShop());
+        }
+
+        private void cmdSceneEndGame_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandEndGame());
+        }
+
     }
 
 }

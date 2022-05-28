@@ -59,7 +59,8 @@ namespace Finmer.Core.Assets
             if (version >= 16)
             {
                 Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
-                Contents.Name = Name;
+                if (Contents != null)
+                    Contents.Name = Name;
             }
             else
             {

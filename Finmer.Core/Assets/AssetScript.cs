@@ -6,7 +6,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.Assets
@@ -19,17 +18,6 @@ namespace Finmer.Core.Assets
     {
 
         /// <summary>
-        /// Describes which editor controls are relevant for a script.
-        /// </summary>
-        [Obsolete]
-        public enum EScriptType
-        {
-            Action,
-            Condition,
-            ExternalOnly
-        }
-
-        /// <summary>
         /// Container for the script data represented by this standalone asset.
         /// </summary>
         public ScriptData Contents { get; set; }
@@ -38,12 +26,6 @@ namespace Finmer.Core.Assets
         /// Binary precompiled version of the script, or null if unavailable.
         /// </summary>
         public CompiledScript PrecompiledScript { get; set; }
-
-        /// <summary>
-        /// The type of editor controls to show for this script.
-        /// </summary>
-        [Obsolete]
-        public EScriptType EditorType { get; set; } = EScriptType.ExternalOnly;
 
         public override void Serialize(IFurballContentWriter outstream)
         {

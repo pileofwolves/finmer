@@ -206,9 +206,6 @@ namespace Finmer.Core.Assets
 
                 // Ensure the script is named
                 UseScript.Name = GetUseScriptName();
-
-                // Assign the script's purpose
-                UseScript.EditorType = AssetScript.EScriptType.Action;
             }
 
             // Icon data

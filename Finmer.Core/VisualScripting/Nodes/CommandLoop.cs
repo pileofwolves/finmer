@@ -6,7 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
+using System.Collections.Generic;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -18,6 +18,12 @@ namespace Finmer.Core.VisualScripting.Nodes
     /// </summary>
     public sealed class CommandLoop : ScriptCommandContainer
     {
+
+        /// <summary>
+        /// The nested nodes that form the loop body.
+        /// </summary>
+
+        public List<ScriptNode> LoopBody { get; set; } = new List<ScriptNode>();
 
         public override string GetEditorDescription()
         {
@@ -35,27 +41,32 @@ namespace Finmer.Core.VisualScripting.Nodes
             output.AppendLine("while true do");
 
             // Emit loop body
-            foreach (var node in Subgroup1)
+            foreach (var node in LoopBody)
                 node.EmitLua(output, content);
 
             // Emit end
             output.AppendLine("end");
         }
 
-        public override string GetEditorSubgroup1Suffix()
+        public override void Serialize(IFurballContentWriter outstream)
         {
-            return "Repeat Above";
+            SerializeSubgroup(outstream, nameof(LoopBody), LoopBody);
+            base.Serialize(outstream);
         }
 
-        public override string GetEditorSubgroup2Suffix()
+        public override void Deserialize(IFurballContentReader instream, int version)
         {
-            throw new NotSupportedException();
+            LoopBody = DeserializeSubgroup(instream, version, nameof(LoopBody));
+            base.Deserialize(instream, version);
         }
 
-        public override bool IsSubgroup2Enabled()
+        public override IEnumerable<Subgroup> GetSubgroups()
         {
-            // The loop command only ever has one loop body
-            return false;
+            yield return new Subgroup
+            {
+                EditorSuffix = "Repeat Above",
+                Nodes = LoopBody
+            };
         }
 
     }

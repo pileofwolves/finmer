@@ -81,16 +81,18 @@ namespace Finmer.Editor
                 // If this node is itself a container for nodes, we need to recurse
                 if (node is ScriptCommandContainer container)
                 {
-                    // Add the first set of nodes
-                    RebuildNodeTreeFromCollection(container.Subgroup1, indentLevel + 1);
-                    AddItemToTree(container.GetEditorSubgroup1Suffix(), node.GetEditorColor(), null, indentLevel);
-
-                    // The second subgroup may or may not be present
-                    if (container.IsSubgroup2Enabled())
+                    foreach (var subgroup in container.GetSubgroups())
                     {
-                        // Add the second set of nodes
-                        RebuildNodeTreeFromCollection(container.Subgroup2, indentLevel + 1);
-                        AddItemToTree(container.GetEditorSubgroup2Suffix(), node.GetEditorColor(), null, indentLevel);
+                        // Display the group prefix
+                        if (!String.IsNullOrEmpty(subgroup.EditorPrefix))
+                            AddItemToTree(subgroup.EditorPrefix, node.GetEditorColor(), null, indentLevel);
+
+                        // Recurse through the node tree
+                        RebuildNodeTreeFromCollection(subgroup.Nodes, indentLevel + 1);
+
+                        // Display the group suffix
+                        if (!String.IsNullOrEmpty(subgroup.EditorSuffix))
+                            AddItemToTree(subgroup.EditorSuffix, node.GetEditorColor(), null, indentLevel);
                     }
                 }
             }

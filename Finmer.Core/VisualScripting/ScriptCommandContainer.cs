@@ -13,73 +13,65 @@ namespace Finmer.Core.VisualScripting
 {
 
     /// <summary>
-    /// Represents a ScriptCommand that contains up to two groups of nested nodes.
+    /// Represents a ScriptCommand that contains groups of nested nodes.
     /// </summary>
     public abstract class ScriptCommandContainer : ScriptCommand
     {
 
         /// <summary>
-        /// The first set of nested nodes.
+        /// Describes a nested group of nodes.
         /// </summary>
-        public List<ScriptNode> Subgroup1 { get; } = new List<ScriptNode>();
+        public struct Subgroup
+        {
+
+            /// <summary>
+            /// String to display in front of the group in the editor, or null if it should be omitted.
+            /// </summary>
+            public string EditorPrefix { get; set; }
+
+            /// <summary>
+            /// String to display after the group in the editor, or null if it should be omitted.
+            /// </summary>
+            public string EditorSuffix { get; set; }
+
+            /// <summary>
+            /// The collection of nodes comprising this group.
+            /// </summary>
+            public List<ScriptNode> Nodes { get; set; }
+
+        }
 
         /// <summary>
-        /// The second set of nested nodes.
+        /// Returns all valid subgroups for this node.
         /// </summary>
-        public List<ScriptNode> Subgroup2 { get; } = new List<ScriptNode>();
+        public abstract IEnumerable<Subgroup> GetSubgroups();
 
-        public override void Serialize(IFurballContentWriter outstream)
+        /// <summary>
+        /// Helper method for writing a subgroup to an output stream.
+        /// </summary>
+        protected void SerializeSubgroup(IFurballContentWriter outstream, string key, List<ScriptNode> nodes)
         {
-            // Write the nested nodes
-            outstream.BeginArray("Subgroup", Subgroup1.Count);
-            foreach (var node in Subgroup1)
+            outstream.BeginArray(key, nodes.Count);
+            foreach (var node in nodes)
                 outstream.WriteNestedObjectProperty(null, node);
             outstream.EndArray();
-
-            // Write the optional second group of nested nodes
-            if (IsSubgroup2Enabled())
-            {
-                outstream.BeginArray("Subgroup2", Subgroup2.Count);
-                foreach (var node in Subgroup2)
-                    outstream.WriteNestedObjectProperty(null, node);
-                outstream.EndArray();
-            }
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        /// <summary>
+        /// Helper method for reading a subgroup from an input stream that was written using SerializeSubgroup().
+        /// </summary>
+        protected List<ScriptNode> DeserializeSubgroup(IFurballContentReader instream, int version, string key)
         {
-            // Reset state, in case it was populated already
-            Subgroup1.Clear();
-            Subgroup2.Clear();
+            var count = instream.BeginArray(key);
+            var output = new List<ScriptNode>(count);
 
             // Read the nested nodes
-            for (int i = 0, count = instream.BeginArray("Subgroup"); i < count; i++)
-                Subgroup1.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
+            for (int i = 0; i < count; i++)
+                output.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
             instream.EndArray();
 
-            // Read the optional second group of nested nodes
-            if (IsSubgroup2Enabled())
-            {
-                for (int i = 0, count = instream.BeginArray("Subgroup2"); i < count; i++)
-                    Subgroup2.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
-                instream.EndArray();
-            }
+            return output;
         }
-
-        /// <summary>
-        /// Returns the label to insert in between the two subgroups in the editor.
-        /// </summary>
-        public abstract string GetEditorSubgroup1Suffix();
-
-        /// <summary>
-        /// Returns the label to insert after subgroup 2 in the editor.
-        /// </summary>
-        public abstract string GetEditorSubgroup2Suffix();
-
-        /// <summary>
-        /// Indicates whether subgroup 2 is in use at all.
-        /// </summary>
-        public abstract bool IsSubgroup2Enabled();
 
     }
 

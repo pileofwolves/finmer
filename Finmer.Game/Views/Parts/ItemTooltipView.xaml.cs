@@ -11,6 +11,7 @@ using Finmer.Core.Buffs;
 using Finmer.Gameplay;
 using Finmer.Utility;
 using System;
+using System.ComponentModel;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -33,6 +34,10 @@ namespace Finmer.Views
 
         private void ItemTooltipView_OnContextChanged(object sender, DependencyPropertyChangedEventArgs e) 
         {
+            // This function is called from the XAML designer; ignore the callback in that case
+            if (DesignerProperties.GetIsInDesignMode(this))
+                return;
+
             if (DataContext != null)
                 CreateTooltipContent(((Item)DataContext).Asset, ItemInfoLabel.Inlines);
         }

@@ -96,7 +96,7 @@
 				"{prey} stops moving inside {predator}, having succumbed to digestion and reduced to nutrition. {predator.aliaspossessive} stomach glorps and groans lewdly as it begins pumping the remains of {prey} further into {predator.possessive} digestive tract.",
 				"{predator.aliaspossessive} stomach groans as {prey} {prey be} rendered down into a thick soup; {prey.possessive} remains soon flow deeper into {predator.aliaspossessive} body to be absorbed.",
 				"{predator.aliaspossessive} stomach lets out a lewd glorp as the muscles eagerly grind {prey} into a warm pulp. {prey.aliaspossessive} body loses form in {predator.possessive} belly; {prey} {prey be} nothing but a soup of churning slop now.",
-				"{prey.aliaspossessive} struggles cease as {predator.aliaspossessive} digestive onslaught becomes too much for {prey.object} to handle. {predator} {predator feel} something shifting as {prey} succumbs to {predator.aliaspossessive} digestive system, which noisily breaks {prey} apart into soft slurry."
+				"{prey.aliaspossessive} struggles cease as {predator.aliaspossessive} digestive onslaught becomes too much for {prey.object} to handle. {^predator} {predator feel} something shifting as {prey} succumbs to {predator.aliaspossessive} digestive system, which noisily breaks {prey} apart into soft slurry."
 			]
 		},
 		{
@@ -145,7 +145,7 @@
 				"{prey} {prey struggle} within {predator.aliaspossessive} stomach by kicking and punching the walls, noisily displacing fluids.",
 				"{prey} {prey punch} and {prey kick} at the stomach walls surrounding {prey.object}, but that only makes the stomach compress some more.",
 				"{prey} {prey try} to wriggle around inside the hot, wet organ encaging you, but {prey.subject} {prey be} squeezed too tightly to do anything impressive.",
-				"{prey} shift around inside {predator.aliaspossessive} belly, kicking up some gooey liquids with lewd, organic squelches.",
+				"{prey} {prey shift} around inside {predator.aliaspossessive} belly, kicking up some gooey liquids with lewd, organic squelches.",
 				"With a few squirms and struggles, {prey} {prey manage} to displace some air in the stomach, and the stomach gurgles noisily around {prey}.",
 				"{prey} {prey try} to push out with {prey.possessive} limbs, but the predator lets out a belch and the stomach walls collapse in on {prey.object} again.",
 				"{prey} {prey push} at the stomach walls, and {predator} {predator shake} {predator.possessive} gut in response, splashing some fluids around again.",

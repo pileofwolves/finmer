@@ -98,7 +98,7 @@
 		{
 			"Key": "TUTORIAL_TALK2",
 			"Text": [
-				"\"Fights in the Continent usually work with dice,\" {instructor.subject} explains dryly. \"If you roll more attacks than your opponent rolls defences, you'll deal damage.\" With the practiced, nonchalant experience of an instructor who's been at this for a little while, {instructor} gestures at a rather rickety and beaten scarecrow on the other side of the field. \"Give it a try.\""
+				"\"Fights in the Reaches usually work with dice,\" {instructor.subject} explains dryly. \"If you roll more attacks than your opponent rolls defences, you'll deal damage.\" With the practiced, nonchalant experience of an instructor who's been at this for a little while, {instructor} gestures at a rather rickety and beaten scarecrow on the other side of the field. \"Give it a try.\""
 			]
 		},
 		{

@@ -6,10 +6,12 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:cv="clr-namespace:Finmer.Converters"
     mc:Ignorable="d"
     d:DesignHeight="300" d:DesignWidth="300">
     <ListBox.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cv:ShopStackQuantityVisibilityConverter x:Key="ShopStackQuantityVisibilityConverter" />
         <Style TargetType="ListBoxItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -27,10 +29,20 @@
                             </Border.Style>
                             <StackPanel Orientation="Vertical">
                                 <!-- Item icon and name -->
-                                <StackPanel Orientation="Horizontal">
+                                <DockPanel
+                                    LastChildFill="True">
                                     <v:ItemIconView
+                                        DockPanel.Dock="Left"
                                         DataContext="{Binding Item}"
                                         Margin="2" />
+                                    <!-- Stock quantity -->
+                                    <TextBlock
+                                        DockPanel.Dock="Right"
+                                        Visibility="{Binding Converter={StaticResource ShopStackQuantityVisibilityConverter}}"
+                                        Style="{StaticResource TextBlockDefault}"
+                                        Text="{Binding Quantity, StringFormat='x {0}'}"
+                                        VerticalAlignment="Center">
+                                    </TextBlock>
                                     <StackPanel
                                         Orientation="Vertical"
                                         VerticalAlignment="Center"
@@ -50,7 +62,7 @@
                                                 Style="{StaticResource TextBlockDefault}" />
                                         </StackPanel>
                                     </StackPanel>
-                                </StackPanel>
+                                </DockPanel>
 
                                 <!-- Item actions -->
                                 <ContentControl

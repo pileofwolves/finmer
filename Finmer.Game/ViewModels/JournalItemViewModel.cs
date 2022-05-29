@@ -17,7 +17,21 @@ namespace Finmer.ViewModels
     internal sealed class JournalItemViewModel : BaseProp
     {
 
+        private string m_JournalTitle = String.Empty;
         private string m_JournalEntry = String.Empty;
+
+        /// <summary>
+        /// Specifies the journal title.
+        /// </summary>
+        public string JournalTitle
+        {
+            get => m_JournalTitle;
+            set
+            {
+                m_JournalTitle = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Specifies the text contents of the journal entry.

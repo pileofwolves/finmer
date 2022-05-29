@@ -40,6 +40,7 @@ namespace Finmer.ViewModels
 
                     yield return new JournalItemViewModel
                     {
+                        JournalTitle = quest.Title,
                         JournalEntry = text_stage
                     };
                 }

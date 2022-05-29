@@ -24,7 +24,7 @@ namespace Finmer.Views
             InitializeComponent();
 
             // Randomize the rotation on each item, so it looks less repetitive
-            Rotator.Angle = (CoreUtility.Rng.NextDouble() * 2.0 - 1.0) * k_RotationMax;
+            RotateRoot.Angle = (CoreUtility.Rng.NextDouble() * 1.5 - 1.0) * k_RotationMax;
         }
 
     }

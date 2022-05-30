@@ -42,7 +42,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override string GetEditorDescription()
         {
             return ValueOperation == EOperation.Add
-                ? String.Format(CultureInfo.InvariantCulture, "Add {0} to Player Money", Value.GetOperandDescription())
+                ? String.Format(CultureInfo.InvariantCulture, "Modify Player Money by {0}", Value.GetOperandDescription())
                 : String.Format(CultureInfo.InvariantCulture, "Set Player Money to {0}", Value.GetOperandDescription());
         }
 
@@ -53,12 +53,12 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.Append("Player.Money = ");
+            output.AppendFormat(CultureInfo.InvariantCulture,
+                ValueOperation == EOperation.Add
+                    ? "Player:ModifyMoney({0})"
+                    : "Player.Money = {0}",
+                Value.GetOperandLuaSnippet());
 
-            if (ValueOperation == EOperation.Add)
-                output.Append("Player.Money + ");
-
-            output.AppendFormat(CultureInfo.InvariantCulture, "{0}", Value.GetOperandLuaSnippet());
             output.AppendLine();
         }
 

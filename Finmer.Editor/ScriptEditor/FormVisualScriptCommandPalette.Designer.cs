@@ -61,7 +61,6 @@ namespace Finmer.Editor
             this.cmdPlayerSetMoney = new System.Windows.Forms.Button();
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
-            this.cmdDataModifyNumber = new System.Windows.Forms.Button();
             this.cmdDataSetString = new System.Windows.Forms.Button();
             this.cmdDataSetNumber = new System.Windows.Forms.Button();
             this.cmdDataSetFlag = new System.Windows.Forms.Button();
@@ -389,26 +388,15 @@ namespace Finmer.Editor
             // 
             // groupBox5
             // 
-            groupBox5.Controls.Add(this.cmdDataModifyNumber);
             groupBox5.Controls.Add(this.cmdDataSetString);
             groupBox5.Controls.Add(this.cmdDataSetNumber);
             groupBox5.Controls.Add(this.cmdDataSetFlag);
-            groupBox5.Enabled = false;
             groupBox5.Location = new System.Drawing.Point(464, 120);
             groupBox5.Name = "groupBox5";
-            groupBox5.Size = new System.Drawing.Size(208, 136);
+            groupBox5.Size = new System.Drawing.Size(208, 112);
             groupBox5.TabIndex = 9;
             groupBox5.TabStop = false;
-            groupBox5.Text = "Data Storage";
-            // 
-            // cmdDataModifyNumber
-            // 
-            this.cmdDataModifyNumber.Location = new System.Drawing.Point(16, 96);
-            this.cmdDataModifyNumber.Name = "cmdDataModifyNumber";
-            this.cmdDataModifyNumber.Size = new System.Drawing.Size(176, 24);
-            this.cmdDataModifyNumber.TabIndex = 9;
-            this.cmdDataModifyNumber.Text = "Adjust Number Variable";
-            this.cmdDataModifyNumber.UseVisualStyleBackColor = true;
+            groupBox5.Text = "Variables";
             // 
             // cmdDataSetString
             // 
@@ -418,6 +406,7 @@ namespace Finmer.Editor
             this.cmdDataSetString.TabIndex = 7;
             this.cmdDataSetString.Text = "Set String Variable";
             this.cmdDataSetString.UseVisualStyleBackColor = true;
+            this.cmdDataSetString.Click += new System.EventHandler(this.cmdDataSetString_Click);
             // 
             // cmdDataSetNumber
             // 
@@ -427,6 +416,7 @@ namespace Finmer.Editor
             this.cmdDataSetNumber.TabIndex = 6;
             this.cmdDataSetNumber.Text = "Set Number Variable";
             this.cmdDataSetNumber.UseVisualStyleBackColor = true;
+            this.cmdDataSetNumber.Click += new System.EventHandler(this.cmdDataSetNumber_Click);
             // 
             // cmdDataSetFlag
             // 
@@ -436,11 +426,12 @@ namespace Finmer.Editor
             this.cmdDataSetFlag.TabIndex = 1;
             this.cmdDataSetFlag.Text = "Set Flag Variable";
             this.cmdDataSetFlag.UseVisualStyleBackColor = true;
+            this.cmdDataSetFlag.Click += new System.EventHandler(this.cmdDataSetFlag_Click);
             // 
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(464, 376);
+            groupBox6.Location = new System.Drawing.Point(464, 352);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
             groupBox6.TabIndex = 9;
@@ -548,8 +539,7 @@ namespace Finmer.Editor
             // 
             groupBox8.Controls.Add(this.cmdTextSetContext);
             groupBox8.Controls.Add(this.cmdTextSetVariable);
-            groupBox8.Enabled = false;
-            groupBox8.Location = new System.Drawing.Point(464, 272);
+            groupBox8.Location = new System.Drawing.Point(464, 248);
             groupBox8.Name = "groupBox8";
             groupBox8.Size = new System.Drawing.Size(208, 88);
             groupBox8.TabIndex = 9;
@@ -564,6 +554,7 @@ namespace Finmer.Editor
             this.cmdTextSetContext.TabIndex = 6;
             this.cmdTextSetContext.Text = "Set Grammar Context";
             this.cmdTextSetContext.UseVisualStyleBackColor = true;
+            this.cmdTextSetContext.Click += new System.EventHandler(this.cmdTextSetContext_Click);
             // 
             // cmdTextSetVariable
             // 
@@ -573,12 +564,12 @@ namespace Finmer.Editor
             this.cmdTextSetVariable.TabIndex = 1;
             this.cmdTextSetVariable.Text = "Set Grammar Variable";
             this.cmdTextSetVariable.UseVisualStyleBackColor = true;
+            this.cmdTextSetVariable.Click += new System.EventHandler(this.cmdTextSetVariable_Click);
             // 
             // groupBox9
             // 
             groupBox9.Controls.Add(this.cmdSaveDialog);
             groupBox9.Controls.Add(this.cmdSaveCheckpoint);
-            groupBox9.Enabled = false;
             groupBox9.Location = new System.Drawing.Point(464, 16);
             groupBox9.Name = "groupBox9";
             groupBox9.Size = new System.Drawing.Size(208, 88);
@@ -594,6 +585,7 @@ namespace Finmer.Editor
             this.cmdSaveDialog.TabIndex = 6;
             this.cmdSaveDialog.Text = "Open Save Menu";
             this.cmdSaveDialog.UseVisualStyleBackColor = true;
+            this.cmdSaveDialog.Click += new System.EventHandler(this.cmdSaveDialog_Click);
             // 
             // cmdSaveCheckpoint
             // 
@@ -603,12 +595,13 @@ namespace Finmer.Editor
             this.cmdSaveCheckpoint.TabIndex = 1;
             this.cmdSaveCheckpoint.Text = "Save Checkpoint";
             this.cmdSaveCheckpoint.UseVisualStyleBackColor = true;
+            this.cmdSaveCheckpoint.Click += new System.EventHandler(this.cmdSaveCheckpoint_Click);
             // 
             // cmdCancel
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(536, 488);
+            this.cmdCancel.Location = new System.Drawing.Point(536, 472);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
             this.cmdCancel.TabIndex = 0;
@@ -623,7 +616,7 @@ namespace Finmer.Editor
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(688, 544);
+            this.ClientSize = new System.Drawing.Size(688, 528);
             this.Controls.Add(groupBox9);
             this.Controls.Add(groupBox8);
             this.Controls.Add(groupBox7);
@@ -691,7 +684,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdUISetLocation;
         private System.Windows.Forms.Button cmdUISetInstruction;
         private System.Windows.Forms.Button cmdUIClearLog;
-        private System.Windows.Forms.Button cmdDataModifyNumber;
         private System.Windows.Forms.Button cmdTextSetContext;
         private System.Windows.Forms.Button cmdTextSetVariable;
         private System.Windows.Forms.Button cmdSaveDialog;

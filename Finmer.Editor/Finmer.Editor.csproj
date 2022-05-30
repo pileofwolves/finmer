@@ -178,6 +178,18 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.Designer.cs">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.Designer.cs">
+      <DependentUpon>FormScriptCmdGrammarContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarVariable.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarVariable.Designer.cs">
+      <DependentUpon>FormScriptCmdGrammarVariable.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalClose.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -273,6 +285,24 @@
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdShop.Designer.cs">
       <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetFlag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetFlag.Designer.cs">
+      <DependentUpon>FormScriptCmdVarSetFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetNum.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetNum.Designer.cs">
+      <DependentUpon>FormScriptCmdVarSetNum.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetStr.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetStr.Designer.cs">
+      <DependentUpon>FormScriptCmdVarSetStr.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptNodeSleep.cs">
       <SubType>Form</SubType>
@@ -494,6 +524,12 @@
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.resx">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.resx">
+      <DependentUpon>FormScriptCmdGrammarContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdGrammarVariable.resx">
+      <DependentUpon>FormScriptCmdGrammarVariable.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdJournalClose.resx">
       <DependentUpon>FormScriptCmdJournalClose.cs</DependentUpon>
     </EmbeddedResource>
@@ -544,6 +580,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdShop.resx">
       <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdVarSetFlag.resx">
+      <DependentUpon>FormScriptCmdVarSetFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdVarSetNum.resx">
+      <DependentUpon>FormScriptCmdVarSetNum.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdVarSetStr.resx">
+      <DependentUpon>FormScriptCmdVarSetStr.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeSleep.resx">
       <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>

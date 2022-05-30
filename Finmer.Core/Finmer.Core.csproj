@@ -100,6 +100,8 @@
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
     <Compile Include="VisualScripting\Nodes\CommandEndGame.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandGrammarSetContext.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandGrammarSetVariable.cs" />
     <Compile Include="VisualScripting\Nodes\CommandJournalClose.cs" />
     <Compile Include="VisualScripting\Nodes\CommandJournalUpdate.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLogClear.cs" />
@@ -117,6 +119,8 @@
     <Compile Include="VisualScripting\Nodes\CommandPlayerSetName.cs" />
     <Compile Include="VisualScripting\Nodes\CommandPlayerSetSpecies.cs" />
     <Compile Include="VisualScripting\Nodes\CommandPlayerSetStat.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandSaveCheckpoint.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandSaveDialog.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetInstruction.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetInventoryEnabled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetLocation.cs" />
@@ -127,6 +131,9 @@
     <Compile Include="VisualScripting\Nodes\CommandExitScript.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLoopBreak.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLoop.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandVarSetFlag.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandVarSetNumber.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandVarSetString.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerLevel.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerHasItem.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerEquipment.cs" />

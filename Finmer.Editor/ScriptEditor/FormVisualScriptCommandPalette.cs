@@ -214,6 +214,41 @@ namespace Finmer.Editor
             AddScriptNode(new CommandJournalClose());
         }
 
+        private void cmdSaveDialog_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSaveDialog());
+        }
+
+        private void cmdSaveCheckpoint_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandSaveCheckpoint());
+        }
+
+        private void cmdDataSetFlag_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandVarSetFlag());
+        }
+
+        private void cmdDataSetNumber_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandVarSetNumber());
+        }
+
+        private void cmdDataSetString_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandVarSetString());
+        }
+
+        private void cmdTextSetContext_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandGrammarSetContext());
+        }
+
+        private void cmdTextSetVariable_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandGrammarSetVariable());
+        }
+
     }
 
 }

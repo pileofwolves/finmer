@@ -12,25 +12,26 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for a raw Lua code snippet.
+    /// Node editor form for CommandSleep.
     /// </summary>
-    public partial class FormScriptNodeLuaSnippet : FormScriptNode
+    public partial class FormScriptCmdSleep : FormScriptNode
     {
 
-        public FormScriptNodeLuaSnippet()
+        public FormScriptCmdSleep()
         {
             InitializeComponent();
         }
 
-        private void FormScriptNodeLuaSnippet_Load(object sender, System.EventArgs e)
+        private void FormScriptNodeSleep_Load(object sender, System.EventArgs e)
         {
-            ScintillaHelper.Setup(scintilla);
-            scintilla.Text = ((CommandInlineSnippet)Node).Snippet;
+            var node = (CommandSleep)Node;
+            valSeconds.SetValue(node.Seconds);
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            ((CommandInlineSnippet)Node).Snippet = scintilla.Text;
+            var node = (CommandSleep)Node;
+            node.Seconds = valSeconds.GetValue();
         }
 
     }

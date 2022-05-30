@@ -15,12 +15,12 @@ namespace Finmer.Editor
     /// <summary>
     /// Node editor form for a branch node.
     /// </summary>
-    public partial class FormScriptNodeIf : FormScriptNode
+    public partial class FormScriptCmdIf : FormScriptNode
     {
 
         private CommandIf m_Node;
 
-        public FormScriptNodeIf()
+        public FormScriptCmdIf()
         {
             InitializeComponent();
         }

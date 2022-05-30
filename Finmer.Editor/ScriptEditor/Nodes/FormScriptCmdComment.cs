@@ -12,26 +12,24 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for CommandSleep.
+    /// Node editor form for a module-maker-facing comment that does not emit any Lua code.
     /// </summary>
-    public partial class FormScriptNodeSleep : FormScriptNode
+    public partial class FormScriptCmdComment : FormScriptNode
     {
 
-        public FormScriptNodeSleep()
+        public FormScriptCmdComment()
         {
             InitializeComponent();
         }
 
-        private void FormScriptNodeSleep_Load(object sender, System.EventArgs e)
+        private void FormScriptNodeComment_Load(object sender, System.EventArgs e)
         {
-            var node = (CommandSleep)Node;
-            valSeconds.SetValue(node.Seconds);
+            txtComment.Text = ((CommandComment)Node).Comment;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            var node = (CommandSleep)Node;
-            node.Seconds = valSeconds.GetValue();
+            ((CommandComment)Node).Comment = txtComment.Text;
         }
 
     }

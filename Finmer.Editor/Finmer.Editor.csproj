@@ -304,11 +304,11 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetStr.Designer.cs">
       <DependentUpon>FormScriptCmdVarSetStr.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeSleep.cs">
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSleep.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeSleep.Designer.cs">
-      <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdSleep.Designer.cs">
+      <DependentUpon>FormScriptCmdSleep.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\Parts\ConditionGroupEditor.cs">
       <SubType>UserControl</SubType>
@@ -333,11 +333,11 @@
     <Compile Include="RibbonColorTableCustom.cs" />
     <Compile Include="ScintillaHelper.cs" />
     <Compile Include="EditorPreferences.cs" />
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeLog.cs">
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLog.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeLog.Designer.cs">
-      <DependentUpon>FormScriptNodeLog.cs</DependentUpon>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLog.Designer.cs">
+      <DependentUpon>FormScriptCmdLog.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCondPlayerItem.cs">
       <SubType>Form</SubType>
@@ -363,23 +363,23 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCondPlayerStat.Designer.cs">
       <DependentUpon>FormScriptCondPlayerStat.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeIf.cs">
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdIf.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeIf.Designer.cs">
-      <DependentUpon>FormScriptNodeIf.cs</DependentUpon>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdIf.Designer.cs">
+      <DependentUpon>FormScriptCmdIf.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeComment.cs">
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdComment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeComment.Designer.cs">
-      <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdComment.Designer.cs">
+      <DependentUpon>FormScriptCmdComment.cs</DependentUpon>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeLuaSnippet.cs">
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLuaSnippet.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ScriptEditor\Nodes\FormScriptNodeLuaSnippet.Designer.cs">
-      <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLuaSnippet.Designer.cs">
+      <DependentUpon>FormScriptCmdLuaSnippet.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\FormVisualScriptConditionPalette.cs">
       <SubType>Form</SubType>
@@ -590,14 +590,14 @@
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdVarSetStr.resx">
       <DependentUpon>FormScriptCmdVarSetStr.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeSleep.resx">
-      <DependentUpon>FormScriptNodeSleep.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSleep.resx">
+      <DependentUpon>FormScriptCmdSleep.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Parts\ConditionGroupEditor.resx">
       <DependentUpon>ConditionGroupEditor.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeLog.resx">
-      <DependentUpon>FormScriptNodeLog.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdLog.resx">
+      <DependentUpon>FormScriptCmdLog.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondPlayerItem.resx">
       <DependentUpon>FormScriptCondPlayerItem.cs</DependentUpon>
@@ -611,14 +611,14 @@
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondPlayerStat.resx">
       <DependentUpon>FormScriptCondPlayerStat.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeIf.resx">
-      <DependentUpon>FormScriptNodeIf.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdIf.resx">
+      <DependentUpon>FormScriptCmdIf.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeComment.resx">
-      <DependentUpon>FormScriptNodeComment.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdComment.resx">
+      <DependentUpon>FormScriptCmdComment.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptNodeLuaSnippet.resx">
-      <DependentUpon>FormScriptNodeLuaSnippet.cs</DependentUpon>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdLuaSnippet.resx">
+      <DependentUpon>FormScriptCmdLuaSnippet.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\FormVisualScriptConditionPalette.resx">
       <DependentUpon>FormVisualScriptConditionPalette.cs</DependentUpon>

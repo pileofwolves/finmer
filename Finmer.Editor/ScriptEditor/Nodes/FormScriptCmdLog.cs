@@ -14,10 +14,10 @@ namespace Finmer.Editor
     /// <summary>
     /// Node editor form for a log message.
     /// </summary>
-    public partial class FormScriptNodeLog : FormScriptNode
+    public partial class FormScriptCmdLog : FormScriptNode
     {
 
-        public FormScriptNodeLog()
+        public FormScriptCmdLog()
         {
             InitializeComponent();
         }

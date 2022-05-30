@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptNodeComment
+    partial class FormScriptCmdComment
     {
         /// <summary>
         /// Required designer variable.
@@ -86,7 +86,7 @@ namespace Finmer.Editor
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptNodeComment";
+            this.Name = "FormScriptCmdComment";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

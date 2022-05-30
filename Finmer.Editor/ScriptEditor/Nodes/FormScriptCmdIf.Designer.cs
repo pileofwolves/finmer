@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormScriptNodeIf
+    partial class FormScriptCmdIf
     {
         /// <summary>
         /// Required designer variable.
@@ -109,7 +109,7 @@ namespace Finmer.Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptNodeIf";
+            this.Name = "FormScriptCmdIf";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

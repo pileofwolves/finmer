@@ -360,7 +360,6 @@ namespace Finmer.Editor
             // 
             groupBox4.Controls.Add(this.cmdJournalUpdate);
             groupBox4.Controls.Add(this.cmdJournalClose);
-            groupBox4.Enabled = false;
             groupBox4.Location = new System.Drawing.Point(240, 416);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new System.Drawing.Size(208, 88);
@@ -376,6 +375,7 @@ namespace Finmer.Editor
             this.cmdJournalUpdate.TabIndex = 6;
             this.cmdJournalUpdate.Text = "Add/Update Quest";
             this.cmdJournalUpdate.UseVisualStyleBackColor = true;
+            this.cmdJournalUpdate.Click += new System.EventHandler(this.cmdJournalUpdate_Click);
             // 
             // cmdJournalClose
             // 
@@ -385,6 +385,7 @@ namespace Finmer.Editor
             this.cmdJournalClose.TabIndex = 1;
             this.cmdJournalClose.Text = "Remove Quest";
             this.cmdJournalClose.UseVisualStyleBackColor = true;
+            this.cmdJournalClose.Click += new System.EventHandler(this.cmdJournalClose_Click);
             // 
             // groupBox5
             // 

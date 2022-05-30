@@ -178,6 +178,18 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.Designer.cs">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalClose.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalClose.Designer.cs">
+      <DependentUpon>FormScriptCmdJournalClose.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalUpdate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalUpdate.Designer.cs">
+      <DependentUpon>FormScriptCmdJournalUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -481,6 +493,12 @@
     </Compile>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.resx">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdJournalClose.resx">
+      <DependentUpon>FormScriptCmdJournalClose.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdJournalUpdate.resx">
+      <DependentUpon>FormScriptCmdJournalUpdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.resx">
       <DependentUpon>FormScriptCmdPlayerSetEquipment.cs</DependentUpon>

@@ -100,6 +100,8 @@
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
     <Compile Include="VisualScripting\Nodes\CommandEndGame.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandJournalClose.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandJournalUpdate.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLogClear.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLogSplit.cs" />
     <Compile Include="VisualScripting\Nodes\CommandLog.cs" />

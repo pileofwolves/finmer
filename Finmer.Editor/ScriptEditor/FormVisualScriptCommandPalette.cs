@@ -204,6 +204,16 @@ namespace Finmer.Editor
             AddScriptNode(new CommandEndGame());
         }
 
+        private void cmdJournalUpdate_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandJournalUpdate());
+        }
+
+        private void cmdJournalClose_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandJournalClose());
+        }
+
     }
 
 }

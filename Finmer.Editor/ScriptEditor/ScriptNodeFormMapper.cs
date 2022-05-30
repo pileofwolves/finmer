@@ -42,6 +42,8 @@ namespace Finmer.Editor
             { typeof(CommandSetScene),              () => new FormScriptCmdSetScene() },
             { typeof(CommandCombatBegin),           () => new FormScriptCmdCombatBegin() },
             { typeof(CommandShop),                  () => new FormScriptCmdShop() },
+            { typeof(CommandJournalClose),          () => new FormScriptCmdJournalClose() },
+            { typeof(CommandJournalUpdate),         () => new FormScriptCmdJournalUpdate() },
             { typeof(ConditionPlayerHealth),        () => new FormScriptCondNumberComp() },
             { typeof(ConditionPlayerHealthMax),     () => new FormScriptCondNumberComp() },
             { typeof(ConditionPlayerLevel),         () => new FormScriptCondNumberComp() },

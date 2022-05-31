@@ -37,11 +37,10 @@ namespace Finmer.Core.Buffs
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            base.Serialize(outstream);
             outstream.WriteInt32Property("Delta", Delta);
         }
 
-        public override void Deserialize(IFurballContentReader instream)
+        public override void Deserialize(IFurballContentReader instream, int version)
         {
             Delta = instream.ReadInt32Property("Delta");
         }

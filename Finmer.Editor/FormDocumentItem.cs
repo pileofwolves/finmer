@@ -190,7 +190,7 @@ namespace Finmer.Editor
         {
             // Create a new list entry that represents this effect
             var buff_item = new ListViewItem();
-            buff_item.SubItems.Add(buff.GetDescription());
+            buff_item.SubItems.Add(buff.GetEditorDescription());
             buff_item.Text = buff.GetIcon().ToString();
             buff_item.Tag = buff;
             lsvEquipEffects.Items.Add(buff_item);
@@ -232,7 +232,7 @@ namespace Finmer.Editor
                 // Make a copy of the buff and store it in the list item
                 var new_buff = form.CopyBuff();
                 item.SubItems.Clear();
-                item.SubItems.Add(new_buff.GetDescription());
+                item.SubItems.Add(new_buff.GetEditorDescription());
                 item.Text = new_buff.GetIcon().ToString();
                 item.Tag = new_buff;
 

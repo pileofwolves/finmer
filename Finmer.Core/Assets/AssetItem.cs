@@ -127,9 +127,7 @@ namespace Finmer.Core.Assets
                 foreach (var effect in EquipEffects)
                 {
                     // Serialize each equip effect
-                    outstream.BeginObject();
-                    effect.Serialize(outstream);
-                    outstream.EndObject();
+                    outstream.WriteNestedObjectProperty(null, effect);
                 }
                 outstream.EndArray();
             }
@@ -165,13 +163,8 @@ namespace Finmer.Core.Assets
                 for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
                 {
                     // Read each equip effect
-                    // TODO: Replace BuffFactory with AssetSerializer
-                    instream.BeginObject();
-                    var effect_type_name = instream.ReadStringProperty("!Type");
-                    var effect_instance = BuffFactory.CreateInstance(effect_type_name);
-                    effect_instance.Deserialize(instream);
+                    var effect_instance = instream.ReadNestedObjectProperty<Buff>(null, version);
                     EquipEffects.Add(effect_instance);
-                    instream.EndObject();
                 }
                 instream.EndArray();
             }

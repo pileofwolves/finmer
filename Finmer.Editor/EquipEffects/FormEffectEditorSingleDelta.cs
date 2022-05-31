@@ -7,6 +7,7 @@
  */
 
 using Finmer.Core.Buffs;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Editor
 {
@@ -27,7 +28,7 @@ namespace Finmer.Editor
 
         public override Buff CopyBuff()
         {
-            var copy = (SingleDeltaBuff)SourceBuff.Clone();
+            var copy = (SingleDeltaBuff)AssetSerializer.DuplicateAsset(SourceBuff);
             copy.Delta = (int)nudDelta.Value;
 
             return copy;

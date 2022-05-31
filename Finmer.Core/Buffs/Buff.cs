@@ -14,7 +14,7 @@ namespace Finmer.Core.Buffs
     /// <summary>
     /// Represents a special condition that affects a Character, positive or negative.
     /// </summary>
-    public abstract class Buff
+    public abstract class Buff : IFurballSerializable
     {
 
         /// <summary>
@@ -33,11 +33,6 @@ namespace Finmer.Core.Buffs
         public abstract EBuffIcon GetIcon();
 
         /// <summary>
-        /// Instantiates a new copy of this buff object.
-        /// </summary>
-        public abstract Buff Clone();
-
-        /// <summary>
         /// Describes how this buff affects the player.
         /// </summary>
         public abstract EImpact GetImpact();
@@ -45,20 +40,11 @@ namespace Finmer.Core.Buffs
         /// <summary>
         /// Gets an unlocalized human-readable description of the buff, for editor display.
         /// </summary>
-        public abstract string GetDescription();
+        public abstract string GetEditorDescription();
 
-        /// <summary>
-        /// Writes the state of this instance to a content stream.
-        /// </summary>
-        public virtual void Serialize(IFurballContentWriter outstream)
-        {
-            outstream.WriteStringProperty("!Type", GetType().Name);
-        }
+        public virtual void Serialize(IFurballContentWriter outstream) {}
 
-        /// <summary>
-        /// Read and populate the state of this instance from a content stream.
-        /// </summary>
-        public abstract void Deserialize(IFurballContentReader instream);
+        public virtual void Deserialize(IFurballContentReader instream, int version) {}
 
     }
 

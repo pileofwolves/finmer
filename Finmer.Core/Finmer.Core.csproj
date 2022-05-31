@@ -68,7 +68,6 @@
     <Compile Include="Bindings\EBindingType.cs" />
     <Compile Include="Bindings\LiteralBinding.cs" />
     <Compile Include="Buffs\Buff.cs" />
-    <Compile Include="Buffs\BuffFactory.cs" />
     <Compile Include="Buffs\BuffSpecializations.cs" />
     <Compile Include="Buffs\DiceBuffs.cs" />
     <Compile Include="Buffs\EBuffIcon.cs" />

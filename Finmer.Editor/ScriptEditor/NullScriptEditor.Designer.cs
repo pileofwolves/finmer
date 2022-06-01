@@ -58,6 +58,15 @@ namespace Finmer.Editor
             label1.TabIndex = 1;
             label1.Text = "Visually arrange bite-sized commands. Recommended for most users.";
             // 
+            // label3
+            // 
+            label3.ForeColor = System.Drawing.Color.Maroon;
+            label3.Location = new System.Drawing.Point(16, 92);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(192, 32);
+            label3.TabIndex = 4;
+            label3.Text = "Warning: This feature is new and highly experimental. Expect bugs.";
+            // 
             // groupBox
             // 
             this.groupBox.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -104,6 +113,7 @@ namespace Finmer.Editor
             // lblEmptyNotice
             // 
             this.lblEmptyNotice.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.lblEmptyNotice.ForeColor = System.Drawing.SystemColors.ControlDark;
             this.lblEmptyNotice.Location = new System.Drawing.Point(0, 0);
             this.lblEmptyNotice.Name = "lblEmptyNotice";
             this.lblEmptyNotice.Size = new System.Drawing.Size(256, 256);
@@ -111,15 +121,6 @@ namespace Finmer.Editor
             this.lblEmptyNotice.Text = "This script is empty.\r\n\r\nMove your mouse here to create one!";
             this.lblEmptyNotice.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.lblEmptyNotice.MouseEnter += new System.EventHandler(this.lblEmptyNotice_MouseEnter);
-            // 
-            // label3
-            // 
-            label3.ForeColor = System.Drawing.Color.Maroon;
-            label3.Location = new System.Drawing.Point(16, 92);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(192, 32);
-            label3.TabIndex = 4;
-            label3.Text = "Warning: This feature is new and highly experimental. Expect bugs.";
             // 
             // NullScriptEditor
             // 

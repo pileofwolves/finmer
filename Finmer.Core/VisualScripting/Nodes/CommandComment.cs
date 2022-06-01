@@ -26,7 +26,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription()
         {
-            return "Comment: " + Comment;
+            return "-- " + Comment;
         }
 
         public override EColor GetEditorColor()

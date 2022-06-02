@@ -29,7 +29,7 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCmdCombatBegin_Load(object sender, System.EventArgs e)
+        private void FormScriptCmdCombatBegin_Load(object sender, EventArgs e)
         {
             var node = (CommandCombatBegin)Node;
 
@@ -62,7 +62,7 @@ namespace Finmer.Editor
             chkCallbackCR.Checked = node.CallbackCreatureReleased != null;
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             var node = (CommandCombatBegin)Node;
 
@@ -82,7 +82,7 @@ namespace Finmer.Editor
             node.CallbackCreatureReleased = chkCallbackCR.Checked ? (node.CallbackCreatureReleased ?? new List<ScriptNode>()) : null;
         }
 
-        private void lsvNpcs_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void lsvNpcs_SelectedIndexChanged(object sender, EventArgs e)
         {
             // If item is deselected, reset the participant editing UI
             if (lsvNpcs.SelectedItems.Count != 1)

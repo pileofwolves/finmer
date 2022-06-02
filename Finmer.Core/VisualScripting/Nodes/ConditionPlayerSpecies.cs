@@ -28,7 +28,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Whether the comparison should be case-sensitive.
         /// </summary>
-        public bool IsCaseSensitive { get; set; } = false;
+        public bool IsCaseSensitive { get; set; }
 
         public override string GetEditorDescription()
         {

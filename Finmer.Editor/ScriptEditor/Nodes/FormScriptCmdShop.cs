@@ -27,7 +27,7 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCmdPlayerSetItem_Load(object sender, System.EventArgs e)
+        private void FormScriptCmdPlayerSetItem_Load(object sender, EventArgs e)
         {
             var node = (CommandShop)Node;
 
@@ -56,7 +56,7 @@ namespace Finmer.Editor
             }
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             var node = (CommandShop)Node;
 
@@ -71,12 +71,12 @@ namespace Finmer.Editor
                 node.Merchandise.Add((Guid)item.Tag, (int)item.SubItems[1].Tag);
         }
 
-        private void nudRestockInterval_ValueChanged(object sender, System.EventArgs e)
+        private void nudRestockInterval_ValueChanged(object sender, EventArgs e)
         {
             lblRestockNote.Text = nudRestockInterval.Value == 0 ? "(never)" : "in-game hours";
         }
 
-        private void lsvMerch_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void lsvMerch_SelectedIndexChanged(object sender, EventArgs e)
         {
             bool has_selection = lsvMerch.SelectedItems.Count == 1;
             pnlMerchEdit.Enabled = has_selection;
@@ -92,7 +92,7 @@ namespace Finmer.Editor
             }
         }
 
-        private void cmdItemAdd_Click(object sender, System.EventArgs e)
+        private void cmdItemAdd_Click(object sender, EventArgs e)
         {
             var item = new ListViewItem
             {

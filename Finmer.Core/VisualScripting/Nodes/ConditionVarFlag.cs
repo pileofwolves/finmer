@@ -9,7 +9,6 @@
 using System;
 using System.Globalization;
 using System.Text;
-using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
 
 namespace Finmer.Core.VisualScripting.Nodes

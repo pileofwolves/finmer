@@ -27,7 +27,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Indicates whether this is a raw text message (i.e. not a string table key).
         /// </summary>
-        public bool IsRaw { get; set; } = false;
+        public bool IsRaw { get; set; }
 
         public override string GetEditorDescription()
         {

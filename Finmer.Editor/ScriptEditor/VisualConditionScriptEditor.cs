@@ -7,10 +7,8 @@
  */
 
 using System;
-using System.Collections.Generic;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
-using Finmer.Core.VisualScripting;
 
 namespace Finmer.Editor
 {

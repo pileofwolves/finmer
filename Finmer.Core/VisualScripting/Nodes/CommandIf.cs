@@ -29,7 +29,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Whether this conditional branch has an else branch.
         /// </summary>
-        public bool HasElseBranch { get; set; } = false;
+        public bool HasElseBranch { get; set; }
 
         public List<ScriptNode> MainSubgroup { get; set; } = new List<ScriptNode>();
 

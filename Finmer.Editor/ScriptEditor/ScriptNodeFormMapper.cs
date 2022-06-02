@@ -56,6 +56,13 @@ namespace Finmer.Editor
             { typeof(ConditionPlayerEquipment),     () => new FormScriptCondPlayerEquip() },
             { typeof(ConditionPlayerHasItem),       () => new FormScriptCondPlayerItem() },
             { typeof(ConditionPlayerStat),          () => new FormScriptCondPlayerStat() },
+            { typeof(ConditionVarFlag),             () => new FormScriptCondVarFlag() },
+            { typeof(ConditionVarNumber),           () => new FormScriptCondVarNumber() },
+            { typeof(ConditionVarString),           () => new FormScriptCondVarString() },
+            { typeof(ConditionInlineSnippet),       () => new FormScriptCondLuaSnippet() },
+            { typeof(ConditionCombatParDead),       () => new FormScriptCondCombatParDead() },
+            { typeof(ConditionCombatParGrappling),  () => new FormScriptCondCombatParGrp() },
+            { typeof(ConditionCombatParSwallowed),  () => new FormScriptCondCombatParSwl() },
         };
 
         /// <summary>

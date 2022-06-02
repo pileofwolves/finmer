@@ -1,7 +1,7 @@
-﻿
-namespace Finmer.Editor
+﻿namespace Finmer.Editor
 {
-    partial class FormScriptCondNumberComp
+
+    partial class FormScriptCondVarNumber
     {
         /// <summary>
         /// Required designer variable.
@@ -29,29 +29,31 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label label2;
+            this.label1 = new System.Windows.Forms.Label();
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmbOperator = new System.Windows.Forms.ComboBox();
             this.sveRhs = new Finmer.Editor.ScriptValueFloatEditor();
-            label1 = new System.Windows.Forms.Label();
+            this.txtVarName = new System.Windows.Forms.TextBox();
+            label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 16);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(65, 13);
-            label1.TabIndex = 3;
-            label1.Text = "Comparison:";
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 72);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(65, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Comparison:";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(136, 232);
+            this.cmdAccept.Location = new System.Drawing.Point(96, 280);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 1;
@@ -66,7 +68,7 @@ namespace Finmer.Editor
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(264, 231);
+            this.cmdCancel.Location = new System.Drawing.Point(224, 279);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 2;
@@ -87,39 +89,58 @@ namespace Finmer.Editor
             "≤",
             ">",
             "≥"});
-            this.cmbOperator.Location = new System.Drawing.Point(16, 32);
+            this.cmbOperator.Location = new System.Drawing.Point(16, 88);
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(56, 23);
             this.cmbOperator.TabIndex = 4;
             // 
             // sveRhs
             // 
-            this.sveRhs.Location = new System.Drawing.Point(96, 16);
+            this.sveRhs.Location = new System.Drawing.Point(96, 72);
             this.sveRhs.Name = "sveRhs";
-            this.sveRhs.Size = new System.Drawing.Size(288, 192);
+            this.sveRhs.Size = new System.Drawing.Size(248, 192);
             this.sveRhs.TabIndex = 5;
             // 
-            // FormScriptCondNumberComp
+            // txtVarName
+            // 
+            this.txtVarName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVarName.Location = new System.Drawing.Point(16, 32);
+            this.txtVarName.Name = "txtVarName";
+            this.txtVarName.Size = new System.Drawing.Size(328, 22);
+            this.txtVarName.TabIndex = 16;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(79, 13);
+            label2.TabIndex = 15;
+            label2.Text = "Variable Name:";
+            // 
+            // FormScriptCondVarNumber
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(400, 280);
+            this.ClientSize = new System.Drawing.Size(360, 328);
+            this.Controls.Add(this.txtVarName);
+            this.Controls.Add(label2);
             this.Controls.Add(this.sveRhs);
             this.Controls.Add(this.cmbOperator);
-            this.Controls.Add(label1);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormScriptCondNumberComp";
+            this.Name = "FormScriptCondVarNumber";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Number Comparison";
-            this.Load += new System.EventHandler(this.FormScriptCondNumberComp_Load);
+            this.Load += new System.EventHandler(this.FormScriptCondVarNumber_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -130,5 +151,8 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.ComboBox cmbOperator;
         private ScriptValueFloatEditor sveRhs;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox txtVarName;
     }
+
 }

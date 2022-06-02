@@ -6,28 +6,31 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System.Text;
+using Finmer.Core.Serialization;
+
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script condition that tests the player's size class.
+    /// Script condition that tests whether the combat system is currently running.
     /// </summary>
-    public sealed class ConditionPlayerSize : ScriptConditionNumberComparison
+    public sealed class ConditionCombatActive : ScriptCondition
     {
 
         public override string GetEditorDescription()
         {
-            return "Player Size " + base.GetEditorDescription();
+            return "Combat Is Active";
         }
 
         public override EColor GetEditorColor()
         {
-            return EColor.Player;
+            return EColor.Combat;
         }
 
-        protected override string GetLeftOperandExpression()
+        public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            return "Player.Size";
+            output.Append("GetActiveCombat() ~= nil");
         }
 
     }

@@ -29,7 +29,7 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void TryConfigureScriptNode(ScriptCondition node)
+        private void AddScriptNode(ScriptCondition node)
         {
             // Open the edit dialog so this node can be initially configured
             using (var editor_form = ScriptNodeFormMapper.CreateEditorForm(node))
@@ -60,52 +60,87 @@ namespace Finmer.Editor
 
         private void cmdPlayerGetName_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerName());
+            AddScriptNode(new ConditionPlayerName());
         }
 
         private void cmdPlayerGetSpecies_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerSpecies());
+            AddScriptNode(new ConditionPlayerSpecies());
         }
 
         private void cmdPlayerGetStat_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerStat());
-        }
-
-        private void cmdPlayerGetSize_Click(object sender, System.EventArgs e)
-        {
-            TryConfigureScriptNode(new ConditionPlayerSize());
+            AddScriptNode(new ConditionPlayerStat());
         }
 
         private void cmdPlayerGetHealth_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerHealth());
+            AddScriptNode(new ConditionPlayerHealth());
         }
 
         private void cmdPlayerGetMaxHealth_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerHealthMax());
+            AddScriptNode(new ConditionPlayerHealthMax());
         }
 
         private void cmdPlayerGetMoney_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerMoney());
+            AddScriptNode(new ConditionPlayerMoney());
         }
 
         private void cmdPlayerGetEquipment_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerEquipment());
+            AddScriptNode(new ConditionPlayerEquipment());
         }
 
         private void cmdPlayerHasItem_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerHasItem());
+            AddScriptNode(new ConditionPlayerHasItem());
         }
 
         private void cmdPlayerGetLevel_Click(object sender, System.EventArgs e)
         {
-            TryConfigureScriptNode(new ConditionPlayerLevel());
+            AddScriptNode(new ConditionPlayerLevel());
+        }
+
+        private void cmdAdvLuaScript_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionInlineSnippet());
+        }
+
+        private void cmdVarFlag_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionVarFlag());
+        }
+
+        private void cmdVarNum_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionVarNumber());
+        }
+
+        private void cmdVarStr_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionVarString());
+        }
+
+        private void cmdCombatActive_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionCombatActive());
+        }
+
+        private void cmdCombatDead_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionCombatParDead());
+        }
+
+        private void cmdCombatGrappling_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionCombatParGrappling());
+        }
+
+        private void cmdCombatSwallowed_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionCombatParSwallowed());
         }
 
     }

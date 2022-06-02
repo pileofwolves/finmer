@@ -35,15 +35,9 @@ namespace Finmer.Editor
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmbStat = new System.Windows.Forms.ComboBox();
             this.cmbOperator = new System.Windows.Forms.ComboBox();
-            this.txtLua = new System.Windows.Forms.TextBox();
-            this.optModeInlineLua = new System.Windows.Forms.RadioButton();
-            this.txtNumberVar = new System.Windows.Forms.TextBox();
-            this.optModeNumberVar = new System.Windows.Forms.RadioButton();
-            this.optModeLiteral = new System.Windows.Forms.RadioButton();
-            this.nudOperand = new System.Windows.Forms.NumericUpDown();
+            this.sveRhs = new Finmer.Editor.ScriptValueFloatEditor();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -54,6 +48,15 @@ namespace Finmer.Editor
             label1.Size = new System.Drawing.Size(66, 13);
             label1.TabIndex = 3;
             label1.Text = "Primary Stat:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 72);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(65, 13);
+            label2.TabIndex = 18;
+            label2.Text = "Comparison:";
             // 
             // cmdAccept
             // 
@@ -116,88 +119,12 @@ namespace Finmer.Editor
             this.cmbOperator.Size = new System.Drawing.Size(64, 23);
             this.cmbOperator.TabIndex = 8;
             // 
-            // txtLua
+            // sveRhs
             // 
-            this.txtLua.Enabled = false;
-            this.txtLua.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtLua.Location = new System.Drawing.Point(104, 240);
-            this.txtLua.Name = "txtLua";
-            this.txtLua.Size = new System.Drawing.Size(280, 22);
-            this.txtLua.TabIndex = 17;
-            // 
-            // optModeInlineLua
-            // 
-            this.optModeInlineLua.AutoSize = true;
-            this.optModeInlineLua.Location = new System.Drawing.Point(96, 216);
-            this.optModeInlineLua.Name = "optModeInlineLua";
-            this.optModeInlineLua.Size = new System.Drawing.Size(73, 17);
-            this.optModeInlineLua.TabIndex = 16;
-            this.optModeInlineLua.TabStop = true;
-            this.optModeInlineLua.Text = "Lua Script";
-            this.optModeInlineLua.UseVisualStyleBackColor = true;
-            this.optModeInlineLua.CheckedChanged += new System.EventHandler(this.optModeInlineLua_CheckedChanged);
-            // 
-            // txtNumberVar
-            // 
-            this.txtNumberVar.Enabled = false;
-            this.txtNumberVar.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNumberVar.Location = new System.Drawing.Point(104, 176);
-            this.txtNumberVar.Name = "txtNumberVar";
-            this.txtNumberVar.Size = new System.Drawing.Size(280, 22);
-            this.txtNumberVar.TabIndex = 15;
-            // 
-            // optModeNumberVar
-            // 
-            this.optModeNumberVar.AutoSize = true;
-            this.optModeNumberVar.Location = new System.Drawing.Point(96, 152);
-            this.optModeNumberVar.Name = "optModeNumberVar";
-            this.optModeNumberVar.Size = new System.Drawing.Size(103, 17);
-            this.optModeNumberVar.TabIndex = 14;
-            this.optModeNumberVar.TabStop = true;
-            this.optModeNumberVar.Text = "Number Variable";
-            this.optModeNumberVar.UseVisualStyleBackColor = true;
-            this.optModeNumberVar.CheckedChanged += new System.EventHandler(this.optModeNumberVar_CheckedChanged);
-            // 
-            // optModeLiteral
-            // 
-            this.optModeLiteral.AutoSize = true;
-            this.optModeLiteral.Location = new System.Drawing.Point(96, 88);
-            this.optModeLiteral.Name = "optModeLiteral";
-            this.optModeLiteral.Size = new System.Drawing.Size(82, 17);
-            this.optModeLiteral.TabIndex = 13;
-            this.optModeLiteral.TabStop = true;
-            this.optModeLiteral.Text = "Exact Value";
-            this.optModeLiteral.UseVisualStyleBackColor = true;
-            this.optModeLiteral.CheckedChanged += new System.EventHandler(this.optModeLiteral_CheckedChanged);
-            // 
-            // nudOperand
-            // 
-            this.nudOperand.DecimalPlaces = 2;
-            this.nudOperand.Enabled = false;
-            this.nudOperand.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nudOperand.Location = new System.Drawing.Point(104, 112);
-            this.nudOperand.Maximum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            0});
-            this.nudOperand.Minimum = new decimal(new int[] {
-            999999,
-            0,
-            0,
-            -2147483648});
-            this.nudOperand.Name = "nudOperand";
-            this.nudOperand.Size = new System.Drawing.Size(216, 23);
-            this.nudOperand.TabIndex = 12;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 72);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(89, 13);
-            label2.TabIndex = 18;
-            label2.Text = "Compare against:";
+            this.sveRhs.Location = new System.Drawing.Point(96, 80);
+            this.sveRhs.Name = "sveRhs";
+            this.sveRhs.Size = new System.Drawing.Size(295, 198);
+            this.sveRhs.TabIndex = 19;
             // 
             // FormScriptCondPlayerStat
             // 
@@ -206,13 +133,8 @@ namespace Finmer.Editor
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(401, 345);
+            this.Controls.Add(this.sveRhs);
             this.Controls.Add(label2);
-            this.Controls.Add(this.txtLua);
-            this.Controls.Add(this.optModeInlineLua);
-            this.Controls.Add(this.txtNumberVar);
-            this.Controls.Add(this.optModeNumberVar);
-            this.Controls.Add(this.optModeLiteral);
-            this.Controls.Add(this.nudOperand);
             this.Controls.Add(this.cmbOperator);
             this.Controls.Add(this.cmbStat);
             this.Controls.Add(label1);
@@ -227,7 +149,6 @@ namespace Finmer.Editor
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Player Primary Stat";
             this.Load += new System.EventHandler(this.FormScriptCondPlayerStat_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudOperand)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -238,11 +159,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.ComboBox cmbStat;
         private System.Windows.Forms.ComboBox cmbOperator;
-        private System.Windows.Forms.TextBox txtLua;
-        private System.Windows.Forms.RadioButton optModeInlineLua;
-        private System.Windows.Forms.TextBox txtNumberVar;
-        private System.Windows.Forms.RadioButton optModeNumberVar;
-        private System.Windows.Forms.RadioButton optModeLiteral;
-        private System.Windows.Forms.NumericUpDown nudOperand;
+        private ScriptValueFloatEditor sveRhs;
     }
 }

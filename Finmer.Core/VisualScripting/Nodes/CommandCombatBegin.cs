@@ -75,7 +75,12 @@ namespace Finmer.Core.VisualScripting.Nodes
 
             // Add player
             if (IncludePlayer)
+            {
+                // Emit a local variable that creators can use to easily refer to the PC
+                output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Player", GetParticipantVariableName("player"));
+                output.AppendLine();
                 output.AppendLine("_combat:AddParticipant(Player)");
+            }
 
             // Add AI participants
             foreach (var pair in Participants)
@@ -86,10 +91,10 @@ namespace Finmer.Core.VisualScripting.Nodes
                     throw new InvalidScriptNodeException($"Could not find a Creature asset with ID {pair.Value} (participant \"{pair.Key}\")");
 
                 // Add them as a local variable and participant
-                var variable_name = pair.Key.ToLowerInvariant();
-                output.AppendFormat(CultureInfo.InvariantCulture, "local _par_{0} = Creature(\"{1}\")", variable_name, creature.Name);
+                var variable_name = GetParticipantVariableName(pair.Key);
+                output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Creature(\"{1}\")", variable_name, creature.Name);
                 output.AppendLine();
-                output.AppendFormat(CultureInfo.InvariantCulture, "_combat:AddParticipant(_par_{0})", variable_name);
+                output.AppendFormat(CultureInfo.InvariantCulture, "_combat:AddParticipant({0})", variable_name);
                 output.AppendLine();
             }
 
@@ -194,6 +199,14 @@ namespace Finmer.Core.VisualScripting.Nodes
                     Nodes = CallbackCreatureReleased
                 };
             }
+        }
+
+        /// <summary>
+        /// Returns a Lua local variable name identifying a participant, given a unique participant key.
+        /// </summary>
+        internal static string GetParticipantVariableName(string id)
+        {
+            return "_par_" + id.ToLowerInvariant();
         }
 
         private void SerializeOptionalSubgroup(IFurballContentWriter outstream, string name, List<ScriptNode> nodes)

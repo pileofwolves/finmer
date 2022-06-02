@@ -310,6 +310,48 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdSleep.Designer.cs">
       <DependentUpon>FormScriptCmdSleep.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParDead.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParDead.Designer.cs">
+      <DependentUpon>FormScriptCondCombatParDead.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParGrp.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParGrp.Designer.cs">
+      <DependentUpon>FormScriptCondCombatParGrp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParSwl.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondCombatParSwl.Designer.cs">
+      <DependentUpon>FormScriptCondCombatParSwl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondLuaSnippet.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondLuaSnippet.Designer.cs">
+      <DependentUpon>FormScriptCondLuaSnippet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarFlag.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarFlag.Designer.cs">
+      <DependentUpon>FormScriptCondVarFlag.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarNumber.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarNumber.Designer.cs">
+      <DependentUpon>FormScriptCondVarNumber.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarString.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCondVarString.Designer.cs">
+      <DependentUpon>FormScriptCondVarString.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Parts\ConditionGroupEditor.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -592,6 +634,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdSleep.resx">
       <DependentUpon>FormScriptCmdSleep.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondCombatParDead.resx">
+      <DependentUpon>FormScriptCondCombatParDead.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondCombatParGrp.resx">
+      <DependentUpon>FormScriptCondCombatParGrp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondCombatParSwl.resx">
+      <DependentUpon>FormScriptCondCombatParSwl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondLuaSnippet.resx">
+      <DependentUpon>FormScriptCondLuaSnippet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondVarFlag.resx">
+      <DependentUpon>FormScriptCondVarFlag.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondVarNumber.resx">
+      <DependentUpon>FormScriptCondVarNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCondVarString.resx">
+      <DependentUpon>FormScriptCondVarString.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Parts\ConditionGroupEditor.resx">
       <DependentUpon>ConditionGroupEditor.cs</DependentUpon>

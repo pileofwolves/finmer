@@ -7,32 +7,34 @@
  */
 
 using Finmer.Core.VisualScripting;
+using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Node editor form for ScriptConditionNumberComparison.
+    /// Node editor form for ConditionVarNumber.
     /// </summary>
-    public partial class FormScriptCondNumberComp : FormScriptNode
+    public partial class FormScriptCondVarNumber : FormScriptNode
     {
 
-        public FormScriptCondNumberComp()
+        public FormScriptCondVarNumber()
         {
             InitializeComponent();
         }
 
-        private void FormScriptCondNumberComp_Load(object sender, System.EventArgs e)
+        private void FormScriptCondVarNumber_Load(object sender, System.EventArgs e)
         {
-            var node = (ScriptConditionNumberComparison)Node;
-
+            var node = (ConditionVarNumber)Node;
+            txtVarName.Text = node.VariableName;
             cmbOperator.SelectedIndex = (int)node.Operator;
             sveRhs.SetValue(node.RightOperand);
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
-            var node = (ScriptConditionNumberComparison)Node;
+            var node = (ConditionVarNumber)Node;
+            node.VariableName = txtVarName.Text.ToUpperInvariant();
             node.Operator = (ScriptConditionNumberComparison.EOperator)cmbOperator.SelectedIndex;
             node.RightOperand = sveRhs.GetValue();
         }

@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Globalization;
 using System.Text;
 using Finmer.Core.Serialization;
 
@@ -13,14 +15,24 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Script value that returns the player character species name.
+    /// Script condition that tests the player character species name.
     /// </summary>
     public sealed class ConditionPlayerSpecies : ScriptCondition
     {
 
+        /// <summary>
+        /// The right-hand operand to test the player name against.
+        /// </summary>
+        public ValueWrapperString Comparison { get; set; } = new ValueWrapperString();
+
+        /// <summary>
+        /// Whether the comparison should be case-sensitive.
+        /// </summary>
+        public bool IsCaseSensitive { get; set; } = false;
+
         public override string GetEditorDescription()
         {
-            return "Player Species";
+            return $"Player Species Equals {Comparison.GetOperandDescription()}";
         }
 
         public override EColor GetEditorColor()
@@ -30,7 +42,20 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.Append("Player.Species");
+            string ci_wrap = IsCaseSensitive ? String.Empty : "string.lower";
+            output.AppendFormat(CultureInfo.InvariantCulture, "{0}(Player.Species) == {0}({1})", ci_wrap, Comparison.GetOperandLuaSnippet());
+        }
+
+        public override void Serialize(IFurballContentWriter outstream)
+        {
+            Comparison.Serialize(outstream);
+            outstream.WriteBooleanProperty(nameof(IsCaseSensitive), IsCaseSensitive);
+        }
+
+        public override void Deserialize(IFurballContentReader instream, int version)
+        {
+            Comparison.Deserialize(instream, version);
+            IsCaseSensitive = instream.ReadBooleanProperty(nameof(IsCaseSensitive));
         }
 
     }

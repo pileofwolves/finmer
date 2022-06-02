@@ -21,16 +21,6 @@ namespace Finmer.Core.VisualScripting
     {
 
         /// <summary>
-        /// Describes the type of the right operand.
-        /// </summary>
-        public enum EOperandMode
-        {
-            Literal,
-            Variable,
-            Script
-        }
-
-        /// <summary>
         /// Describes how two operands should be compared.
         /// </summary>
         public enum EOperator
@@ -44,40 +34,18 @@ namespace Finmer.Core.VisualScripting
         }
 
         /// <summary>
-        /// The type of right operand used in the comparison.
-        /// </summary>
-        public EOperandMode OperandMode { get; set; } = EOperandMode.Literal;
-
-        /// <summary>
         /// The comparison mode to be used for this node.
         /// </summary>
         public EOperator Operator { get; set; } = EOperator.Equal;
 
         /// <summary>
-        /// The right-hand operand of the comparison. Valid if OperandMode is Literal.
+        /// The right-hand side of the comparison.
         /// </summary>
-        public float OperandLiteral { get; set; }
-
-        /// <summary>
-        /// The right-hand operand of the comparison. Valid if OperandMode is Variable or Script.
-        /// </summary>
-        public string OperandText { get; set; } = String.Empty;
+        public ValueWrapperFloat RightOperand { get; set; } = new ValueWrapperFloat();
 
         public override string GetEditorDescription()
         {
-            string right;
-            switch (OperandMode)
-            {
-                case EOperandMode.Literal:
-                    right = String.Format(CultureInfo.InvariantCulture, "{0:F0}", OperandLiteral);
-                    break;
-                case EOperandMode.Variable:
-                case EOperandMode.Script:
-                    right = OperandText;
-                    break;
-                default:
-                    throw new InvalidOperationException();
-            }
+            string right = RightOperand.GetOperandDescription();
 
             switch (Operator)
             {
@@ -109,42 +77,19 @@ namespace Finmer.Core.VisualScripting
             }
 
             // Emit right-hand operand
-            switch (OperandMode)
-            {
-                case EOperandMode.Literal:
-                    output.AppendFormat(CultureInfo.InvariantCulture, "{0:F5}", OperandLiteral);
-                    break;
-
-                case EOperandMode.Variable:
-                    output.AppendFormat(CultureInfo.InvariantCulture, "Storage.GetNumber(\"{0}\")", OperandText);
-                    break;
-
-                case EOperandMode.Script:
-                    output.Append(OperandText);
-                    break;
-            }
+            output.Append(RightOperand.GetOperandLuaSnippet());
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteEnumProperty("OperandMode", OperandMode);
-            outstream.WriteEnumProperty("Operator", Operator);
-
-            if (OperandMode == EOperandMode.Literal)
-                outstream.WriteFloatProperty("OperandLiteral", OperandLiteral);
-            else
-                outstream.WriteStringProperty("OperandText", OperandText);
+            outstream.WriteEnumProperty(nameof(Operator), Operator);
+            RightOperand.Serialize(outstream);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
-            OperandMode = instream.ReadEnumProperty<EOperandMode>("OperandMode");
-            Operator = instream.ReadEnumProperty<EOperator>("Operator");
-
-            if (OperandMode == EOperandMode.Literal)
-                OperandLiteral = instream.ReadFloatProperty("OperandLiteral");
-            else
-                OperandText = instream.ReadStringProperty("OperandText");
+            Operator = instream.ReadEnumProperty<EOperator>(nameof(Operator));
+            RightOperand.Deserialize(instream, version);
         }
 
         /// <summary>

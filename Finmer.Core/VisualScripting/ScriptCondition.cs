@@ -10,16 +10,8 @@ namespace Finmer.Core.VisualScripting
 {
 
     /// <summary>
-    /// Represents a value transformer script node.
+    /// Represents a script node that evaluates a boolean value.
     /// </summary>
-    public abstract class ScriptCondition : ScriptNode
-    {
-
-        public override EColor GetEditorColor()
-        {
-            return EColor.System;
-        }
-
-    }
+    public abstract class ScriptCondition : ScriptNode {}
 
 }

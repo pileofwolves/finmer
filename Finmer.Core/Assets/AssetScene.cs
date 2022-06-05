@@ -50,9 +50,9 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Custom scene scripts
-            outstream.WriteNestedObjectProperty(nameof(ScriptCustom), ScriptCustom);
-            outstream.WriteNestedObjectProperty(nameof(ScriptEnter), ScriptEnter);
-            outstream.WriteNestedObjectProperty(nameof(ScriptLeave), ScriptLeave);
+            outstream.WriteNestedScriptProperty(nameof(ScriptCustom), ScriptCustom);
+            outstream.WriteNestedScriptProperty(nameof(ScriptEnter), ScriptEnter);
+            outstream.WriteNestedScriptProperty(nameof(ScriptLeave), ScriptLeave);
 
             // Patching settings
             outstream.WriteBooleanProperty(nameof(IsPatch), IsPatch);

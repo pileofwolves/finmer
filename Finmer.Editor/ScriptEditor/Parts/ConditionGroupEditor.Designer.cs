@@ -54,7 +54,7 @@ namespace Finmer.Editor
             pnlOperand.Location = new System.Drawing.Point(16, 224);
             pnlOperand.Name = "pnlOperand";
             pnlOperand.Size = new System.Drawing.Size(160, 56);
-            pnlOperand.TabIndex = 19;
+            pnlOperand.TabIndex = 4;
             // 
             // optOperandTrue
             // 
@@ -62,7 +62,7 @@ namespace Finmer.Editor
             this.optOperandTrue.Location = new System.Drawing.Point(8, 8);
             this.optOperandTrue.Name = "optOperandTrue";
             this.optOperandTrue.Size = new System.Drawing.Size(43, 17);
-            this.optOperandTrue.TabIndex = 7;
+            this.optOperandTrue.TabIndex = 0;
             this.optOperandTrue.Text = "true";
             this.optOperandTrue.UseVisualStyleBackColor = true;
             this.optOperandTrue.CheckedChanged += new System.EventHandler(this.optOperandTrue_CheckedChanged);
@@ -73,7 +73,7 @@ namespace Finmer.Editor
             this.optOperandFalse.Location = new System.Drawing.Point(8, 32);
             this.optOperandFalse.Name = "optOperandFalse";
             this.optOperandFalse.Size = new System.Drawing.Size(47, 17);
-            this.optOperandFalse.TabIndex = 8;
+            this.optOperandFalse.TabIndex = 1;
             this.optOperandFalse.Text = "false";
             this.optOperandFalse.UseVisualStyleBackColor = true;
             // 
@@ -84,7 +84,7 @@ namespace Finmer.Editor
             pnlMode.Location = new System.Drawing.Point(0, 0);
             pnlMode.Name = "pnlMode";
             pnlMode.Size = new System.Drawing.Size(176, 56);
-            pnlMode.TabIndex = 18;
+            pnlMode.TabIndex = 0;
             // 
             // optModeAll
             // 
@@ -92,7 +92,7 @@ namespace Finmer.Editor
             this.optModeAll.Location = new System.Drawing.Point(8, 8);
             this.optModeAll.Name = "optModeAll";
             this.optModeAll.Size = new System.Drawing.Size(121, 17);
-            this.optModeAll.TabIndex = 7;
+            this.optModeAll.TabIndex = 0;
             this.optModeAll.Text = "ALL of the following:";
             this.optModeAll.UseVisualStyleBackColor = true;
             this.optModeAll.CheckedChanged += new System.EventHandler(this.optModeAll_CheckedChanged);
@@ -103,7 +103,7 @@ namespace Finmer.Editor
             this.optModeAny.Location = new System.Drawing.Point(8, 32);
             this.optModeAny.Name = "optModeAny";
             this.optModeAny.Size = new System.Drawing.Size(124, 17);
-            this.optModeAny.TabIndex = 8;
+            this.optModeAny.TabIndex = 1;
             this.optModeAny.Text = "ANY of the following:";
             this.optModeAny.UseVisualStyleBackColor = true;
             // 
@@ -125,7 +125,7 @@ namespace Finmer.Editor
             this.cmdConditionRemove.Location = new System.Drawing.Point(352, 32);
             this.cmdConditionRemove.Name = "cmdConditionRemove";
             this.cmdConditionRemove.Size = new System.Drawing.Size(88, 28);
-            this.cmdConditionRemove.TabIndex = 21;
+            this.cmdConditionRemove.TabIndex = 2;
             this.cmdConditionRemove.Text = "Remove";
             this.cmdConditionRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdConditionRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -139,7 +139,7 @@ namespace Finmer.Editor
             this.cmdConditionAdd.Location = new System.Drawing.Point(256, 32);
             this.cmdConditionAdd.Name = "cmdConditionAdd";
             this.cmdConditionAdd.Size = new System.Drawing.Size(88, 28);
-            this.cmdConditionAdd.TabIndex = 20;
+            this.cmdConditionAdd.TabIndex = 1;
             this.cmdConditionAdd.Text = "Add";
             this.cmdConditionAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdConditionAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -156,7 +156,7 @@ namespace Finmer.Editor
             this.lsvConditions.Name = "lsvConditions";
             this.lsvConditions.SelectedIndex = -1;
             this.lsvConditions.Size = new System.Drawing.Size(448, 152);
-            this.lsvConditions.TabIndex = 22;
+            this.lsvConditions.TabIndex = 3;
             this.lsvConditions.SelectedIndexChanged += new System.EventHandler(this.lsvConditions_SelectedIndexChanged);
             this.lsvConditions.ItemDoubleClick += new System.EventHandler(this.lsvConditions_ItemDoubleClick);
             // 

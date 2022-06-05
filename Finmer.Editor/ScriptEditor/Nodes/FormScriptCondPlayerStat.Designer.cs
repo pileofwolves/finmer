@@ -46,7 +46,7 @@ namespace Finmer.Editor
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(66, 13);
-            label1.TabIndex = 3;
+            label1.TabIndex = 0;
             label1.Text = "Primary Stat:";
             // 
             // label2
@@ -55,7 +55,7 @@ namespace Finmer.Editor
             label2.Location = new System.Drawing.Point(16, 72);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(65, 13);
-            label2.TabIndex = 18;
+            label2.TabIndex = 2;
             label2.Text = "Comparison:";
             // 
             // cmdAccept
@@ -66,7 +66,7 @@ namespace Finmer.Editor
             this.cmdAccept.Location = new System.Drawing.Point(137, 297);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 5;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,7 +81,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(265, 296);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 6;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,7 +100,7 @@ namespace Finmer.Editor
             this.cmbStat.Location = new System.Drawing.Point(16, 32);
             this.cmbStat.Name = "cmbStat";
             this.cmbStat.Size = new System.Drawing.Size(368, 23);
-            this.cmbStat.TabIndex = 4;
+            this.cmbStat.TabIndex = 1;
             // 
             // cmbOperator
             // 
@@ -117,14 +117,14 @@ namespace Finmer.Editor
             this.cmbOperator.Location = new System.Drawing.Point(16, 88);
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(64, 23);
-            this.cmbOperator.TabIndex = 8;
+            this.cmbOperator.TabIndex = 3;
             // 
             // sveRhs
             // 
             this.sveRhs.Location = new System.Drawing.Point(96, 80);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(295, 198);
-            this.sveRhs.TabIndex = 19;
+            this.sveRhs.TabIndex = 4;
             // 
             // FormScriptCondPlayerStat
             // 

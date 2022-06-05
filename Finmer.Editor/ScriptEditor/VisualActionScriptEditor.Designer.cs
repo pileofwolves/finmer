@@ -51,7 +51,7 @@ namespace Finmer.Editor
             toolStrip.Location = new System.Drawing.Point(0, 0);
             toolStrip.Name = "toolStrip";
             toolStrip.Size = new System.Drawing.Size(475, 25);
-            toolStrip.TabIndex = 0;
+            toolStrip.TabIndex = 1;
             toolStrip.Text = "toolStrip1";
             // 
             // tsbConvertExternal
@@ -113,17 +113,17 @@ namespace Finmer.Editor
             // 
             // lsvNodes
             // 
-            this.lsvNodes.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.lsvNodes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lsvNodes.Location = new System.Drawing.Point(0, 25);
             this.lsvNodes.Name = "lsvNodes";
+            this.lsvNodes.SelectedIndex = -1;
             this.lsvNodes.Size = new System.Drawing.Size(475, 286);
-            this.lsvNodes.TabIndex = 1;
+            this.lsvNodes.TabIndex = 0;
             this.lsvNodes.SelectedIndexChanged += new System.EventHandler(this.lsvNodes_SelectedIndexChanged);
             this.lsvNodes.ItemDoubleClick += new System.EventHandler(this.lsvNodes_DoubleClick);
             this.lsvNodes.KeyDown += new System.Windows.Forms.KeyEventHandler(this.lsvNodes_KeyDown);
             // 
-            // VisualScriptEditor
+            // VisualActionScriptEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;

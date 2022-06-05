@@ -43,7 +43,7 @@ namespace Finmer.Editor
             label3.Location = new System.Drawing.Point(16, 16);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(140, 13);
-            label3.TabIndex = 13;
+            label3.TabIndex = 0;
             label3.Text = "Run the contained actions if";
             // 
             // cmdAccept
@@ -55,7 +55,7 @@ namespace Finmer.Editor
             this.cmdAccept.Location = new System.Drawing.Point(200, 312);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 3;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -70,7 +70,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(328, 311);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 4;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -82,7 +82,7 @@ namespace Finmer.Editor
             this.chkElse.Location = new System.Drawing.Point(24, 320);
             this.chkElse.Name = "chkElse";
             this.chkElse.Size = new System.Drawing.Size(109, 17);
-            this.chkElse.TabIndex = 5;
+            this.chkElse.TabIndex = 2;
             this.chkElse.Text = "Has \'Else\' Branch";
             this.chkElse.UseVisualStyleBackColor = true;
             // 
@@ -91,10 +91,10 @@ namespace Finmer.Editor
             this.cgeBranch.Location = new System.Drawing.Point(16, 32);
             this.cgeBranch.Name = "cgeBranch";
             this.cgeBranch.Size = new System.Drawing.Size(432, 272);
-            this.cgeBranch.TabIndex = 14;
+            this.cgeBranch.TabIndex = 1;
             this.cgeBranch.GroupValidityChanged += new System.Action<bool>(this.cgeBranch_GroupValidityChanged);
             // 
-            // FormScriptNodeIf
+            // FormScriptCmdIf
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

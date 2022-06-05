@@ -42,7 +42,7 @@
             label2.Location = new System.Drawing.Point(16, 16);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(107, 13);
-            label2.TabIndex = 10;
+            label2.TabIndex = 0;
             label2.Text = "Switch to this Scene:";
             // 
             // cmdAccept
@@ -53,7 +53,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 96);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -68,7 +68,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 95);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,7 +81,7 @@
             this.apcScene.Name = "apcScene";
             this.apcScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcScene.Size = new System.Drawing.Size(288, 24);
-            this.apcScene.TabIndex = 11;
+            this.apcScene.TabIndex = 1;
             // 
             // FormScriptCmdSetScene
             // 

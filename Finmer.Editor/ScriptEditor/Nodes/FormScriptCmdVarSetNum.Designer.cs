@@ -45,6 +45,33 @@
             label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 72);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(56, 13);
+            label1.TabIndex = 2;
+            label1.Text = "Operation:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(79, 13);
+            label2.TabIndex = 0;
+            label2.Text = "Variable Name:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new System.Drawing.Point(16, 136);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(97, 13);
+            label3.TabIndex = 7;
+            label3.Text = "with / to this value:";
+            // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -53,7 +80,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 376);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 9;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -68,20 +95,11 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 375);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 10;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 72);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(56, 13);
-            label1.TabIndex = 24;
-            label1.Text = "Operation:";
             // 
             // txtContextName
             // 
@@ -89,16 +107,7 @@
             this.txtContextName.Location = new System.Drawing.Point(16, 32);
             this.txtContextName.Name = "txtContextName";
             this.txtContextName.Size = new System.Drawing.Size(288, 22);
-            this.txtContextName.TabIndex = 23;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(79, 13);
-            label2.TabIndex = 22;
-            label2.Text = "Variable Name:";
+            this.txtContextName.TabIndex = 1;
             // 
             // optModeMul
             // 
@@ -106,7 +115,7 @@
             this.optModeMul.Location = new System.Drawing.Point(80, 96);
             this.optModeMul.Name = "optModeMul";
             this.optModeMul.Size = new System.Drawing.Size(60, 17);
-            this.optModeMul.TabIndex = 27;
+            this.optModeMul.TabIndex = 4;
             this.optModeMul.TabStop = true;
             this.optModeMul.Text = "Multiply";
             this.optModeMul.UseVisualStyleBackColor = true;
@@ -117,7 +126,7 @@
             this.optModeAdd.Location = new System.Drawing.Point(24, 96);
             this.optModeAdd.Name = "optModeAdd";
             this.optModeAdd.Size = new System.Drawing.Size(44, 17);
-            this.optModeAdd.TabIndex = 26;
+            this.optModeAdd.TabIndex = 3;
             this.optModeAdd.TabStop = true;
             this.optModeAdd.Text = "Add";
             this.optModeAdd.UseVisualStyleBackColor = true;
@@ -127,7 +136,7 @@
             this.sveValue.Location = new System.Drawing.Point(16, 160);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
-            this.sveValue.TabIndex = 28;
+            this.sveValue.TabIndex = 8;
             // 
             // optModeDiv
             // 
@@ -135,7 +144,7 @@
             this.optModeDiv.Location = new System.Drawing.Point(144, 96);
             this.optModeDiv.Name = "optModeDiv";
             this.optModeDiv.Size = new System.Drawing.Size(55, 17);
-            this.optModeDiv.TabIndex = 29;
+            this.optModeDiv.TabIndex = 5;
             this.optModeDiv.TabStop = true;
             this.optModeDiv.Text = "Divide";
             this.optModeDiv.UseVisualStyleBackColor = true;
@@ -146,19 +155,10 @@
             this.optModeSet.Location = new System.Drawing.Point(208, 96);
             this.optModeSet.Name = "optModeSet";
             this.optModeSet.Size = new System.Drawing.Size(41, 17);
-            this.optModeSet.TabIndex = 30;
+            this.optModeSet.TabIndex = 6;
             this.optModeSet.TabStop = true;
             this.optModeSet.Text = "Set";
             this.optModeSet.UseVisualStyleBackColor = true;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(16, 136);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(97, 13);
-            label3.TabIndex = 31;
-            label3.Text = "with / to this value:";
             // 
             // FormScriptCmdVarSetNum
             // 

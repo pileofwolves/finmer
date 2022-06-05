@@ -44,7 +44,7 @@
             label2.Location = new System.Drawing.Point(16, 48);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(91, 13);
-            label2.TabIndex = 10;
+            label2.TabIndex = 5;
             label2.Text = "the following item:";
             // 
             // cmdAccept
@@ -82,7 +82,7 @@
             this.optModeAdd.Location = new System.Drawing.Point(16, 16);
             this.optModeAdd.Name = "optModeAdd";
             this.optModeAdd.Size = new System.Drawing.Size(44, 17);
-            this.optModeAdd.TabIndex = 6;
+            this.optModeAdd.TabIndex = 1;
             this.optModeAdd.TabStop = true;
             this.optModeAdd.Text = "Add";
             this.optModeAdd.UseVisualStyleBackColor = true;
@@ -93,7 +93,7 @@
             this.optModeRemove.Location = new System.Drawing.Point(72, 16);
             this.optModeRemove.Name = "optModeRemove";
             this.optModeRemove.Size = new System.Drawing.Size(65, 17);
-            this.optModeRemove.TabIndex = 7;
+            this.optModeRemove.TabIndex = 2;
             this.optModeRemove.TabStop = true;
             this.optModeRemove.Text = "Remove";
             this.optModeRemove.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             this.apcItem.Name = "apcItem";
             this.apcItem.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcItem.Size = new System.Drawing.Size(288, 24);
-            this.apcItem.TabIndex = 11;
+            this.apcItem.TabIndex = 0;
             // 
             // FormScriptCmdPlayerSetItem
             // 

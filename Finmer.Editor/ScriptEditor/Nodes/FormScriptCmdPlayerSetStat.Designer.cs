@@ -41,6 +41,24 @@
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 48);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(66, 13);
+            label1.TabIndex = 3;
+            label1.Text = "Primary Stat:";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 104);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(37, 13);
+            label2.TabIndex = 4;
+            label2.Text = "Value:";
+            // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -49,7 +67,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 336);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 6;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -64,7 +82,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 335);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 7;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -76,7 +94,7 @@
             this.optModeAdd.Location = new System.Drawing.Point(16, 16);
             this.optModeAdd.Name = "optModeAdd";
             this.optModeAdd.Size = new System.Drawing.Size(44, 17);
-            this.optModeAdd.TabIndex = 6;
+            this.optModeAdd.TabIndex = 1;
             this.optModeAdd.TabStop = true;
             this.optModeAdd.Text = "Add";
             this.optModeAdd.UseVisualStyleBackColor = true;
@@ -87,7 +105,7 @@
             this.optModeSet.Location = new System.Drawing.Point(72, 16);
             this.optModeSet.Name = "optModeSet";
             this.optModeSet.Size = new System.Drawing.Size(41, 17);
-            this.optModeSet.TabIndex = 7;
+            this.optModeSet.TabIndex = 2;
             this.optModeSet.TabStop = true;
             this.optModeSet.Text = "Set";
             this.optModeSet.UseVisualStyleBackColor = true;
@@ -104,34 +122,16 @@
             this.cmbStat.Location = new System.Drawing.Point(16, 64);
             this.cmbStat.Name = "cmbStat";
             this.cmbStat.Size = new System.Drawing.Size(288, 21);
-            this.cmbStat.TabIndex = 8;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 48);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(66, 13);
-            label1.TabIndex = 9;
-            label1.Text = "Primary Stat:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 104);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(37, 13);
-            label2.TabIndex = 10;
-            label2.Text = "Value:";
+            this.cmbStat.TabIndex = 0;
             // 
             // sveValue
             // 
             this.sveValue.Location = new System.Drawing.Point(16, 128);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
-            this.sveValue.TabIndex = 11;
+            this.sveValue.TabIndex = 5;
             // 
-            // FormScriptCmdSetPlayerStat
+            // FormScriptCmdPlayerSetStat
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

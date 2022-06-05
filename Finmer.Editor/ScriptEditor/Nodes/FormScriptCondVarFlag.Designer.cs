@@ -39,21 +39,13 @@
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // txtVarName
-            // 
-            this.txtVarName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtVarName.Location = new System.Drawing.Point(16, 32);
-            this.txtVarName.Name = "txtVarName";
-            this.txtVarName.Size = new System.Drawing.Size(320, 22);
-            this.txtVarName.TabIndex = 11;
-            // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(61, 13);
-            label1.TabIndex = 10;
+            label1.TabIndex = 0;
             label1.Text = "Flag Name:";
             // 
             // label2
@@ -62,15 +54,23 @@
             label2.Location = new System.Drawing.Point(16, 72);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(85, 13);
-            label2.TabIndex = 12;
+            label2.TabIndex = 2;
             label2.Text = "Expected Value:";
+            // 
+            // txtVarName
+            // 
+            this.txtVarName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtVarName.Location = new System.Drawing.Point(16, 32);
+            this.txtVarName.Name = "txtVarName";
+            this.txtVarName.Size = new System.Drawing.Size(320, 22);
+            this.txtVarName.TabIndex = 1;
             // 
             // sveRhs
             // 
             this.sveRhs.Location = new System.Drawing.Point(16, 96);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(320, 192);
-            this.sveRhs.TabIndex = 13;
+            this.sveRhs.TabIndex = 3;
             // 
             // cmdAccept
             // 
@@ -80,7 +80,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(88, 304);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 4;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -95,7 +95,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(216, 303);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

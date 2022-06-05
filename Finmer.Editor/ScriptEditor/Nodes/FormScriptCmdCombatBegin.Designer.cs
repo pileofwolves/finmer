@@ -110,7 +110,7 @@
             this.txtNpcName.Location = new System.Drawing.Point(16, 40);
             this.txtNpcName.Name = "txtNpcName";
             this.txtNpcName.Size = new System.Drawing.Size(248, 22);
-            this.txtNpcName.TabIndex = 6;
+            this.txtNpcName.TabIndex = 0;
             this.txtNpcName.TextChanged += new System.EventHandler(this.txtNpcName_TextChanged);
             // 
             // apcNpcAsset
@@ -120,7 +120,7 @@
             this.apcNpcAsset.Name = "apcNpcAsset";
             this.apcNpcAsset.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcNpcAsset.Size = new System.Drawing.Size(248, 24);
-            this.apcNpcAsset.TabIndex = 8;
+            this.apcNpcAsset.TabIndex = 1;
             this.apcNpcAsset.SelectedAssetChanged += new System.EventHandler(this.apcNpcAsset_SelectedAssetChanged);
             // 
             // label2
@@ -148,7 +148,7 @@
             this.cmdNpcRemove.Location = new System.Drawing.Point(312, 32);
             this.cmdNpcRemove.Name = "cmdNpcRemove";
             this.cmdNpcRemove.Size = new System.Drawing.Size(32, 32);
-            this.cmdNpcRemove.TabIndex = 4;
+            this.cmdNpcRemove.TabIndex = 2;
             this.cmdNpcRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdNpcRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdNpcRemove.UseVisualStyleBackColor = true;
@@ -160,7 +160,7 @@
             this.cmdNpcAdd.Location = new System.Drawing.Point(272, 32);
             this.cmdNpcAdd.Name = "cmdNpcAdd";
             this.cmdNpcAdd.Size = new System.Drawing.Size(32, 32);
-            this.cmdNpcAdd.TabIndex = 3;
+            this.cmdNpcAdd.TabIndex = 1;
             this.cmdNpcAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdNpcAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdNpcAdd.UseVisualStyleBackColor = true;
@@ -179,7 +179,7 @@
             this.lsvNpcs.MultiSelect = false;
             this.lsvNpcs.Name = "lsvNpcs";
             this.lsvNpcs.Size = new System.Drawing.Size(328, 136);
-            this.lsvNpcs.TabIndex = 2;
+            this.lsvNpcs.TabIndex = 0;
             this.lsvNpcs.UseCompatibleStateImageBehavior = false;
             this.lsvNpcs.View = System.Windows.Forms.View.Details;
             this.lsvNpcs.SelectedIndexChanged += new System.EventHandler(this.lsvNpcs_SelectedIndexChanged);
@@ -275,7 +275,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(128, 504);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 0;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -290,7 +290,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(256, 503);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 1;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -71,7 +71,7 @@ namespace Finmer.Editor
             this.lblHeader.Location = new System.Drawing.Point(16, 16);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(42, 13);
-            this.lblHeader.TabIndex = 3;
+            this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Header";
             // 
             // txtMessage
@@ -98,7 +98,7 @@ namespace Finmer.Editor
             this.chkRaw.UseVisualStyleBackColor = true;
             this.chkRaw.CheckedChanged += new System.EventHandler(this.chkRaw_CheckedChanged);
             // 
-            // FormScriptNodeLog
+            // FormScriptCmdLog
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

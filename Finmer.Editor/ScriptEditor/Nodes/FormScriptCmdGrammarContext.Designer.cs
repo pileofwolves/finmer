@@ -45,8 +45,17 @@
             label2.Location = new System.Drawing.Point(16, 16);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(77, 13);
-            label2.TabIndex = 12;
+            label2.TabIndex = 0;
             label2.Text = "Context Name:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 72);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(96, 13);
+            label1.TabIndex = 2;
+            label1.Text = "Creature to Assign:";
             // 
             // cmdAccept
             // 
@@ -56,7 +65,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 168);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 4;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -71,7 +80,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 167);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -84,16 +93,7 @@
             this.apcCreature.Name = "apcCreature";
             this.apcCreature.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcCreature.Size = new System.Drawing.Size(288, 24);
-            this.apcCreature.TabIndex = 13;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 72);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(96, 13);
-            label1.TabIndex = 14;
-            label1.Text = "Creature to Assign:";
+            this.apcCreature.TabIndex = 3;
             // 
             // txtContextName
             // 
@@ -101,7 +101,7 @@
             this.txtContextName.Location = new System.Drawing.Point(16, 32);
             this.txtContextName.Name = "txtContextName";
             this.txtContextName.Size = new System.Drawing.Size(288, 22);
-            this.txtContextName.TabIndex = 15;
+            this.txtContextName.TabIndex = 1;
             // 
             // FormScriptCmdGrammarContext
             // 

@@ -39,6 +39,24 @@
             label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(77, 13);
+            label2.TabIndex = 0;
+            label2.Text = "Context Name:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new System.Drawing.Point(16, 72);
+            label1.Name = "label1";
+            label1.Size = new System.Drawing.Size(97, 13);
+            label1.TabIndex = 2;
+            label1.Text = "Replacement Text:";
+            // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -47,7 +65,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 304);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 4;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -62,7 +80,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 303);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -74,32 +92,14 @@
             this.txtContextName.Location = new System.Drawing.Point(16, 32);
             this.txtContextName.Name = "txtContextName";
             this.txtContextName.Size = new System.Drawing.Size(288, 22);
-            this.txtContextName.TabIndex = 17;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(77, 13);
-            label2.TabIndex = 16;
-            label2.Text = "Context Name:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new System.Drawing.Point(16, 72);
-            label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(97, 13);
-            label1.TabIndex = 18;
-            label1.Text = "Replacement Text:";
+            this.txtContextName.TabIndex = 1;
             // 
             // sveValue
             // 
             this.sveValue.Location = new System.Drawing.Point(16, 96);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
-            this.sveValue.TabIndex = 19;
+            this.sveValue.TabIndex = 3;
             // 
             // FormScriptCmdGrammarVariable
             // 

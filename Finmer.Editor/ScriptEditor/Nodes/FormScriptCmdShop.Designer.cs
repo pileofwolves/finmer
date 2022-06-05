@@ -79,7 +79,7 @@
             groupBox1.Location = new System.Drawing.Point(320, 16);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(288, 176);
-            groupBox1.TabIndex = 5;
+            groupBox1.TabIndex = 1;
             groupBox1.TabStop = false;
             groupBox1.Text = "Configuration";
             // 
@@ -98,7 +98,7 @@
             this.txtKey.Location = new System.Drawing.Point(16, 40);
             this.txtKey.Name = "txtKey";
             this.txtKey.Size = new System.Drawing.Size(256, 22);
-            this.txtKey.TabIndex = 3;
+            this.txtKey.TabIndex = 1;
             // 
             // nudRestockInterval
             // 
@@ -145,7 +145,7 @@
             label2.Location = new System.Drawing.Point(16, 72);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(99, 13);
-            label2.TabIndex = 0;
+            label2.TabIndex = 2;
             label2.Text = "Shopkeeper Name:";
             // 
             // groupBox2
@@ -157,7 +157,7 @@
             groupBox2.Location = new System.Drawing.Point(16, 16);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(288, 304);
-            groupBox2.TabIndex = 6;
+            groupBox2.TabIndex = 0;
             groupBox2.TabStop = false;
             groupBox2.Text = "Merchandise";
             // 
@@ -168,7 +168,7 @@
             this.cmdItemRemove.Location = new System.Drawing.Point(120, 264);
             this.cmdItemRemove.Name = "cmdItemRemove";
             this.cmdItemRemove.Size = new System.Drawing.Size(104, 32);
-            this.cmdItemRemove.TabIndex = 6;
+            this.cmdItemRemove.TabIndex = 3;
             this.cmdItemRemove.Text = "Remove Item";
             this.cmdItemRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdItemRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -185,7 +185,7 @@
             this.pnlMerchEdit.Location = new System.Drawing.Point(8, 200);
             this.pnlMerchEdit.Name = "pnlMerchEdit";
             this.pnlMerchEdit.Size = new System.Drawing.Size(272, 56);
-            this.pnlMerchEdit.TabIndex = 4;
+            this.pnlMerchEdit.TabIndex = 1;
             // 
             // nudMerchQty
             // 
@@ -197,7 +197,7 @@
             0});
             this.nudMerchQty.Name = "nudMerchQty";
             this.nudMerchQty.Size = new System.Drawing.Size(56, 20);
-            this.nudMerchQty.TabIndex = 6;
+            this.nudMerchQty.TabIndex = 3;
             this.nudMerchQty.ValueChanged += new System.EventHandler(this.nudMerchQty_ValueChanged);
             // 
             // label6
@@ -216,7 +216,7 @@
             this.apcMerchAsset.Name = "apcMerchAsset";
             this.apcMerchAsset.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcMerchAsset.Size = new System.Drawing.Size(200, 24);
-            this.apcMerchAsset.TabIndex = 1;
+            this.apcMerchAsset.TabIndex = 0;
             this.apcMerchAsset.SelectedAssetChanged += new System.EventHandler(this.apcMerchAsset_SelectedAssetChanged);
             // 
             // label5
@@ -225,7 +225,7 @@
             label5.Location = new System.Drawing.Point(8, 8);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(30, 13);
-            label5.TabIndex = 0;
+            label5.TabIndex = 1;
             label5.Text = "Item:";
             // 
             // lsvMerch
@@ -241,7 +241,7 @@
             this.lsvMerch.MultiSelect = false;
             this.lsvMerch.Name = "lsvMerch";
             this.lsvMerch.Size = new System.Drawing.Size(272, 184);
-            this.lsvMerch.TabIndex = 3;
+            this.lsvMerch.TabIndex = 0;
             this.lsvMerch.UseCompatibleStateImageBehavior = false;
             this.lsvMerch.View = System.Windows.Forms.View.Details;
             this.lsvMerch.SelectedIndexChanged += new System.EventHandler(this.lsvMerch_SelectedIndexChanged);
@@ -262,7 +262,7 @@
             this.cmdItemAdd.Location = new System.Drawing.Point(8, 264);
             this.cmdItemAdd.Name = "cmdItemAdd";
             this.cmdItemAdd.Size = new System.Drawing.Size(104, 32);
-            this.cmdItemAdd.TabIndex = 5;
+            this.cmdItemAdd.TabIndex = 2;
             this.cmdItemAdd.Text = "Add Item";
             this.cmdItemAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdItemAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -277,7 +277,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(360, 288);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -292,7 +292,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(488, 287);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

@@ -45,7 +45,7 @@ namespace Finmer.Editor
             toolStrip.Location = new System.Drawing.Point(0, 0);
             toolStrip.Name = "toolStrip";
             toolStrip.Size = new System.Drawing.Size(475, 25);
-            toolStrip.TabIndex = 0;
+            toolStrip.TabIndex = 1;
             toolStrip.Text = "toolStrip1";
             // 
             // tsbConvertExternal
@@ -79,7 +79,7 @@ namespace Finmer.Editor
             this.cgeBranch.Name = "cgeBranch";
             this.cgeBranch.Padding = new System.Windows.Forms.Padding(8);
             this.cgeBranch.Size = new System.Drawing.Size(475, 286);
-            this.cgeBranch.TabIndex = 1;
+            this.cgeBranch.TabIndex = 0;
             // 
             // VisualConditionScriptEditor
             // 

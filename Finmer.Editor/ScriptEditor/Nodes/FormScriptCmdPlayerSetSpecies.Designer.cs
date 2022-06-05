@@ -51,7 +51,7 @@
             lblHeader.Location = new System.Drawing.Point(16, 16);
             lblHeader.Name = "lblHeader";
             lblHeader.Size = new System.Drawing.Size(77, 13);
-            lblHeader.TabIndex = 3;
+            lblHeader.TabIndex = 0;
             lblHeader.Text = "Singular Noun:";
             // 
             // label1
@@ -60,7 +60,7 @@
             label1.Location = new System.Drawing.Point(16, 72);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(65, 13);
-            label1.TabIndex = 6;
+            label1.TabIndex = 2;
             label1.Text = "Plural Noun:";
             // 
             // label2
@@ -69,7 +69,7 @@
             label2.Location = new System.Drawing.Point(16, 128);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(61, 13);
-            label2.TabIndex = 8;
+            label2.TabIndex = 4;
             label2.Text = "Coat Noun:";
             // 
             // label3
@@ -78,7 +78,7 @@
             label3.Location = new System.Drawing.Point(16, 184);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(79, 13);
-            label3.TabIndex = 10;
+            label3.TabIndex = 6;
             label3.Text = "Coat Adjective:";
             // 
             // cmdAccept
@@ -89,7 +89,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 256);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 8;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -104,7 +104,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 255);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(120, 33);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 9;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -118,7 +118,7 @@
             this.txtSingular.Location = new System.Drawing.Point(16, 32);
             this.txtSingular.Name = "txtSingular";
             this.txtSingular.Size = new System.Drawing.Size(288, 22);
-            this.txtSingular.TabIndex = 5;
+            this.txtSingular.TabIndex = 1;
             // 
             // txtPlural
             // 
@@ -128,7 +128,7 @@
             this.txtPlural.Location = new System.Drawing.Point(16, 88);
             this.txtPlural.Name = "txtPlural";
             this.txtPlural.Size = new System.Drawing.Size(288, 22);
-            this.txtPlural.TabIndex = 7;
+            this.txtPlural.TabIndex = 3;
             // 
             // txtCoatNoun
             // 
@@ -138,7 +138,7 @@
             this.txtCoatNoun.Location = new System.Drawing.Point(16, 144);
             this.txtCoatNoun.Name = "txtCoatNoun";
             this.txtCoatNoun.Size = new System.Drawing.Size(288, 22);
-            this.txtCoatNoun.TabIndex = 9;
+            this.txtCoatNoun.TabIndex = 5;
             // 
             // txtCoatAdjective
             // 
@@ -148,7 +148,7 @@
             this.txtCoatAdjective.Location = new System.Drawing.Point(16, 200);
             this.txtCoatAdjective.Name = "txtCoatAdjective";
             this.txtCoatAdjective.Size = new System.Drawing.Size(288, 22);
-            this.txtCoatAdjective.TabIndex = 11;
+            this.txtCoatAdjective.TabIndex = 7;
             // 
             // FormScriptCmdPlayerSetSpecies
             // 

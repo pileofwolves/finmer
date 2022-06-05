@@ -75,7 +75,7 @@ namespace Finmer.Editor
             groupBox3.Location = new System.Drawing.Point(16, 16);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new System.Drawing.Size(208, 256);
-            groupBox3.TabIndex = 8;
+            groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Player";
             // 
@@ -84,7 +84,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetMaxHealth.Location = new System.Drawing.Point(16, 120);
             this.cmdPlayerGetMaxHealth.Name = "cmdPlayerGetMaxHealth";
             this.cmdPlayerGetMaxHealth.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetMaxHealth.TabIndex = 12;
+            this.cmdPlayerGetMaxHealth.TabIndex = 4;
             this.cmdPlayerGetMaxHealth.Text = "Max Health";
             this.cmdPlayerGetMaxHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerGetMaxHealth.Click += new System.EventHandler(this.cmdPlayerGetMaxHealth_Click);
@@ -95,7 +95,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetSpecies.Location = new System.Drawing.Point(16, 48);
             this.cmdPlayerGetSpecies.Name = "cmdPlayerGetSpecies";
             this.cmdPlayerGetSpecies.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetSpecies.TabIndex = 11;
+            this.cmdPlayerGetSpecies.TabIndex = 1;
             this.cmdPlayerGetSpecies.Text = "Species";
             this.cmdPlayerGetSpecies.UseVisualStyleBackColor = true;
             this.cmdPlayerGetSpecies.Click += new System.EventHandler(this.cmdPlayerGetSpecies_Click);
@@ -106,7 +106,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetName.Location = new System.Drawing.Point(16, 24);
             this.cmdPlayerGetName.Name = "cmdPlayerGetName";
             this.cmdPlayerGetName.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetName.TabIndex = 10;
+            this.cmdPlayerGetName.TabIndex = 0;
             this.cmdPlayerGetName.Text = "Name";
             this.cmdPlayerGetName.UseVisualStyleBackColor = true;
             this.cmdPlayerGetName.Click += new System.EventHandler(this.cmdPlayerGetName_Click);
@@ -116,7 +116,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetLevel.Location = new System.Drawing.Point(16, 216);
             this.cmdPlayerGetLevel.Name = "cmdPlayerGetLevel";
             this.cmdPlayerGetLevel.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetLevel.TabIndex = 7;
+            this.cmdPlayerGetLevel.TabIndex = 8;
             this.cmdPlayerGetLevel.Text = "Level";
             this.cmdPlayerGetLevel.UseVisualStyleBackColor = true;
             this.cmdPlayerGetLevel.Click += new System.EventHandler(this.cmdPlayerGetLevel_Click);
@@ -126,7 +126,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetStat.Location = new System.Drawing.Point(16, 72);
             this.cmdPlayerGetStat.Name = "cmdPlayerGetStat";
             this.cmdPlayerGetStat.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetStat.TabIndex = 6;
+            this.cmdPlayerGetStat.TabIndex = 2;
             this.cmdPlayerGetStat.Text = "Primary Stat";
             this.cmdPlayerGetStat.UseVisualStyleBackColor = true;
             this.cmdPlayerGetStat.Click += new System.EventHandler(this.cmdPlayerGetStat_Click);
@@ -136,7 +136,7 @@ namespace Finmer.Editor
             this.cmdPlayerHasItem.Location = new System.Drawing.Point(16, 192);
             this.cmdPlayerHasItem.Name = "cmdPlayerHasItem";
             this.cmdPlayerHasItem.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerHasItem.TabIndex = 5;
+            this.cmdPlayerHasItem.TabIndex = 7;
             this.cmdPlayerHasItem.Text = "Item";
             this.cmdPlayerHasItem.UseVisualStyleBackColor = true;
             this.cmdPlayerHasItem.Click += new System.EventHandler(this.cmdPlayerHasItem_Click);
@@ -146,7 +146,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetHealth.Location = new System.Drawing.Point(16, 96);
             this.cmdPlayerGetHealth.Name = "cmdPlayerGetHealth";
             this.cmdPlayerGetHealth.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetHealth.TabIndex = 4;
+            this.cmdPlayerGetHealth.TabIndex = 3;
             this.cmdPlayerGetHealth.Text = "Health";
             this.cmdPlayerGetHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerGetHealth.Click += new System.EventHandler(this.cmdPlayerGetHealth_Click);
@@ -156,7 +156,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetEquipment.Location = new System.Drawing.Point(16, 168);
             this.cmdPlayerGetEquipment.Name = "cmdPlayerGetEquipment";
             this.cmdPlayerGetEquipment.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetEquipment.TabIndex = 3;
+            this.cmdPlayerGetEquipment.TabIndex = 6;
             this.cmdPlayerGetEquipment.Text = "Equipment";
             this.cmdPlayerGetEquipment.UseVisualStyleBackColor = true;
             this.cmdPlayerGetEquipment.Click += new System.EventHandler(this.cmdPlayerGetEquipment_Click);
@@ -166,7 +166,7 @@ namespace Finmer.Editor
             this.cmdPlayerGetMoney.Location = new System.Drawing.Point(16, 144);
             this.cmdPlayerGetMoney.Name = "cmdPlayerGetMoney";
             this.cmdPlayerGetMoney.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetMoney.TabIndex = 2;
+            this.cmdPlayerGetMoney.TabIndex = 5;
             this.cmdPlayerGetMoney.Text = "Money";
             this.cmdPlayerGetMoney.UseVisualStyleBackColor = true;
             this.cmdPlayerGetMoney.Click += new System.EventHandler(this.cmdPlayerGetMoney_Click);
@@ -179,7 +179,7 @@ namespace Finmer.Editor
             groupBox2.Location = new System.Drawing.Point(240, 16);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(208, 112);
-            groupBox2.TabIndex = 5;
+            groupBox2.TabIndex = 2;
             groupBox2.TabStop = false;
             groupBox2.Text = "Variables";
             // 
@@ -188,7 +188,7 @@ namespace Finmer.Editor
             this.cmdVarStr.Location = new System.Drawing.Point(16, 72);
             this.cmdVarStr.Name = "cmdVarStr";
             this.cmdVarStr.Size = new System.Drawing.Size(176, 24);
-            this.cmdVarStr.TabIndex = 3;
+            this.cmdVarStr.TabIndex = 2;
             this.cmdVarStr.Text = "String Variable";
             this.cmdVarStr.UseVisualStyleBackColor = true;
             this.cmdVarStr.Click += new System.EventHandler(this.cmdVarStr_Click);
@@ -198,7 +198,7 @@ namespace Finmer.Editor
             this.cmdVarNum.Location = new System.Drawing.Point(16, 48);
             this.cmdVarNum.Name = "cmdVarNum";
             this.cmdVarNum.Size = new System.Drawing.Size(176, 24);
-            this.cmdVarNum.TabIndex = 2;
+            this.cmdVarNum.TabIndex = 1;
             this.cmdVarNum.Text = "Number Variable";
             this.cmdVarNum.UseVisualStyleBackColor = true;
             this.cmdVarNum.Click += new System.EventHandler(this.cmdVarNum_Click);
@@ -208,7 +208,7 @@ namespace Finmer.Editor
             this.cmdVarFlag.Location = new System.Drawing.Point(16, 24);
             this.cmdVarFlag.Name = "cmdVarFlag";
             this.cmdVarFlag.Size = new System.Drawing.Size(176, 24);
-            this.cmdVarFlag.TabIndex = 1;
+            this.cmdVarFlag.TabIndex = 0;
             this.cmdVarFlag.Text = "Flag Variable";
             this.cmdVarFlag.UseVisualStyleBackColor = true;
             this.cmdVarFlag.Click += new System.EventHandler(this.cmdVarFlag_Click);
@@ -219,7 +219,7 @@ namespace Finmer.Editor
             groupBox6.Location = new System.Drawing.Point(16, 288);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
-            groupBox6.TabIndex = 10;
+            groupBox6.TabIndex = 1;
             groupBox6.TabStop = false;
             groupBox6.Text = "Advanced";
             // 
@@ -228,7 +228,7 @@ namespace Finmer.Editor
             this.cmdAdvLuaScript.Location = new System.Drawing.Point(16, 24);
             this.cmdAdvLuaScript.Name = "cmdAdvLuaScript";
             this.cmdAdvLuaScript.Size = new System.Drawing.Size(176, 24);
-            this.cmdAdvLuaScript.TabIndex = 6;
+            this.cmdAdvLuaScript.TabIndex = 0;
             this.cmdAdvLuaScript.Text = "Lua Script";
             this.cmdAdvLuaScript.UseVisualStyleBackColor = true;
             this.cmdAdvLuaScript.Click += new System.EventHandler(this.cmdAdvLuaScript_Click);
@@ -242,7 +242,7 @@ namespace Finmer.Editor
             groupBox4.Location = new System.Drawing.Point(240, 144);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new System.Drawing.Size(208, 136);
-            groupBox4.TabIndex = 11;
+            groupBox4.TabIndex = 3;
             groupBox4.TabStop = false;
             groupBox4.Text = "Combat";
             // 
@@ -251,7 +251,7 @@ namespace Finmer.Editor
             this.cmdCombatActive.Location = new System.Drawing.Point(16, 24);
             this.cmdCombatActive.Name = "cmdCombatActive";
             this.cmdCombatActive.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatActive.TabIndex = 6;
+            this.cmdCombatActive.TabIndex = 0;
             this.cmdCombatActive.Text = "Is Combat Active";
             this.cmdCombatActive.UseVisualStyleBackColor = true;
             this.cmdCombatActive.Click += new System.EventHandler(this.cmdCombatActive_Click);
@@ -261,7 +261,7 @@ namespace Finmer.Editor
             this.cmdCombatGrappling.Location = new System.Drawing.Point(16, 72);
             this.cmdCombatGrappling.Name = "cmdCombatGrappling";
             this.cmdCombatGrappling.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatGrappling.TabIndex = 4;
+            this.cmdCombatGrappling.TabIndex = 2;
             this.cmdCombatGrappling.Text = "Is Participant Grappling";
             this.cmdCombatGrappling.UseVisualStyleBackColor = true;
             this.cmdCombatGrappling.Click += new System.EventHandler(this.cmdCombatGrappling_Click);
@@ -271,7 +271,7 @@ namespace Finmer.Editor
             this.cmdCombatSwallowed.Location = new System.Drawing.Point(16, 96);
             this.cmdCombatSwallowed.Name = "cmdCombatSwallowed";
             this.cmdCombatSwallowed.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatSwallowed.TabIndex = 2;
+            this.cmdCombatSwallowed.TabIndex = 3;
             this.cmdCombatSwallowed.Text = "Is Participant Swallowed";
             this.cmdCombatSwallowed.UseVisualStyleBackColor = true;
             this.cmdCombatSwallowed.Click += new System.EventHandler(this.cmdCombatSwallowed_Click);
@@ -293,7 +293,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(312, 336);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
-            this.cmdCancel.TabIndex = 0;
+            this.cmdCancel.TabIndex = 4;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;

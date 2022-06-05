@@ -30,10 +30,10 @@ namespace Finmer.Editor
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
-            this.scintilla = new ScintillaNET.Scintilla();
             this.tsbUndo = new System.Windows.Forms.ToolStripButton();
             this.tsbRedo = new System.Windows.Forms.ToolStripButton();
             this.tsbConvertVisual = new System.Windows.Forms.ToolStripButton();
+            this.scintilla = new ScintillaNET.Scintilla();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -46,17 +46,8 @@ namespace Finmer.Editor
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(475, 25);
-            this.toolStrip.TabIndex = 0;
+            this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
-            // 
-            // scintilla
-            // 
-            this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintilla.Location = new System.Drawing.Point(0, 25);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(475, 286);
-            this.scintilla.TabIndex = 1;
             // 
             // tsbUndo
             // 
@@ -88,6 +79,15 @@ namespace Finmer.Editor
             this.tsbConvertVisual.Text = "Convert to Visual Script";
             this.tsbConvertVisual.Visible = false;
             this.tsbConvertVisual.Click += new System.EventHandler(this.tsbConvertVisual_Click);
+            // 
+            // scintilla
+            // 
+            this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintilla.Location = new System.Drawing.Point(0, 25);
+            this.scintilla.Name = "scintilla";
+            this.scintilla.Size = new System.Drawing.Size(475, 286);
+            this.scintilla.TabIndex = 0;
             // 
             // RawScriptEditor
             // 

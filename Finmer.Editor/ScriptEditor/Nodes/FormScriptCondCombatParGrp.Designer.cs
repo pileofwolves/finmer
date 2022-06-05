@@ -45,7 +45,7 @@
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(91, 13);
-            label1.TabIndex = 8;
+            label1.TabIndex = 0;
             label1.Text = "Participant Name:";
             // 
             // label2
@@ -54,7 +54,7 @@
             label2.Location = new System.Drawing.Point(16, 72);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(163, 13);
-            label2.TabIndex = 10;
+            label2.TabIndex = 2;
             label2.Text = "(Optional) Grapple Partner Name:";
             // 
             // cmdAccept
@@ -65,7 +65,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(88, 160);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 4;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -80,7 +80,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(216, 159);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -92,7 +92,7 @@
             this.txtNpcName.Location = new System.Drawing.Point(16, 32);
             this.txtNpcName.Name = "txtNpcName";
             this.txtNpcName.Size = new System.Drawing.Size(320, 22);
-            this.txtNpcName.TabIndex = 9;
+            this.txtNpcName.TabIndex = 1;
             // 
             // txtPartnerName
             // 
@@ -100,7 +100,7 @@
             this.txtPartnerName.Location = new System.Drawing.Point(16, 88);
             this.txtPartnerName.Name = "txtPartnerName";
             this.txtPartnerName.Size = new System.Drawing.Size(320, 22);
-            this.txtPartnerName.TabIndex = 11;
+            this.txtPartnerName.TabIndex = 3;
             // 
             // FormScriptCondCombatParGrp
             // 

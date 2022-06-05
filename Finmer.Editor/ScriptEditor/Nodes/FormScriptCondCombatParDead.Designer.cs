@@ -42,7 +42,7 @@
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(91, 13);
-            label1.TabIndex = 3;
+            label1.TabIndex = 0;
             label1.Text = "Participant Name:";
             // 
             // cmdAccept
@@ -53,7 +53,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(88, 135);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -68,7 +68,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(216, 134);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -80,7 +80,7 @@
             this.txtNpcName.Location = new System.Drawing.Point(16, 32);
             this.txtNpcName.Name = "txtNpcName";
             this.txtNpcName.Size = new System.Drawing.Size(320, 22);
-            this.txtNpcName.TabIndex = 7;
+            this.txtNpcName.TabIndex = 1;
             // 
             // FormScriptCondCombatParDead
             // 

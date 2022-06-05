@@ -41,7 +41,7 @@
             this.lblHeader.Location = new System.Drawing.Point(16, 16);
             this.lblHeader.Name = "lblHeader";
             this.lblHeader.Size = new System.Drawing.Size(70, 13);
-            this.lblHeader.TabIndex = 3;
+            this.lblHeader.TabIndex = 0;
             this.lblHeader.Text = "Player Name:";
             // 
             // cmdAccept
@@ -52,7 +52,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 256);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -67,7 +67,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 255);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -81,9 +81,9 @@
             this.sveValue.Location = new System.Drawing.Point(16, 40);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
-            this.sveValue.TabIndex = 5;
+            this.sveValue.TabIndex = 1;
             // 
-            // FormScriptCmdSetPlayerName
+            // FormScriptCmdPlayerSetName
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);

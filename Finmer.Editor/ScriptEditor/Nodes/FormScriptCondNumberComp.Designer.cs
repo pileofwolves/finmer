@@ -43,7 +43,7 @@ namespace Finmer.Editor
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(65, 13);
-            label1.TabIndex = 3;
+            label1.TabIndex = 0;
             label1.Text = "Comparison:";
             // 
             // cmdAccept
@@ -54,7 +54,7 @@ namespace Finmer.Editor
             this.cmdAccept.Location = new System.Drawing.Point(136, 232);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 3;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -69,7 +69,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(264, 231);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 4;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -90,14 +90,14 @@ namespace Finmer.Editor
             this.cmbOperator.Location = new System.Drawing.Point(16, 32);
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(56, 23);
-            this.cmbOperator.TabIndex = 4;
+            this.cmbOperator.TabIndex = 1;
             // 
             // sveRhs
             // 
             this.sveRhs.Location = new System.Drawing.Point(96, 16);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(288, 192);
-            this.sveRhs.TabIndex = 5;
+            this.sveRhs.TabIndex = 2;
             // 
             // FormScriptCondNumberComp
             // 

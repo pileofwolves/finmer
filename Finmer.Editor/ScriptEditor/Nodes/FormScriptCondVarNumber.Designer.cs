@@ -39,13 +39,22 @@
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(79, 13);
+            label2.TabIndex = 0;
+            label2.Text = "Variable Name:";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 72);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(65, 13);
-            this.label1.TabIndex = 3;
+            this.label1.TabIndex = 2;
             this.label1.Text = "Comparison:";
             // 
             // cmdAccept
@@ -56,7 +65,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(96, 280);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 1;
+            this.cmdAccept.TabIndex = 5;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -71,7 +80,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(224, 279);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 2;
+            this.cmdCancel.TabIndex = 6;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -92,14 +101,14 @@
             this.cmbOperator.Location = new System.Drawing.Point(16, 88);
             this.cmbOperator.Name = "cmbOperator";
             this.cmbOperator.Size = new System.Drawing.Size(56, 23);
-            this.cmbOperator.TabIndex = 4;
+            this.cmbOperator.TabIndex = 3;
             // 
             // sveRhs
             // 
             this.sveRhs.Location = new System.Drawing.Point(96, 72);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(248, 192);
-            this.sveRhs.TabIndex = 5;
+            this.sveRhs.TabIndex = 4;
             // 
             // txtVarName
             // 
@@ -107,16 +116,7 @@
             this.txtVarName.Location = new System.Drawing.Point(16, 32);
             this.txtVarName.Name = "txtVarName";
             this.txtVarName.Size = new System.Drawing.Size(328, 22);
-            this.txtVarName.TabIndex = 16;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(79, 13);
-            label2.TabIndex = 15;
-            label2.Text = "Variable Name:";
+            this.txtVarName.TabIndex = 1;
             // 
             // FormScriptCondVarNumber
             // 

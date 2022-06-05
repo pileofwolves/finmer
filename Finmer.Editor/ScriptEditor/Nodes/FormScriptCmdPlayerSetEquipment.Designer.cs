@@ -45,7 +45,7 @@
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(97, 13);
-            label1.TabIndex = 9;
+            label1.TabIndex = 0;
             label1.Text = "Set Equipment Slot";
             // 
             // label2
@@ -54,7 +54,7 @@
             label2.Location = new System.Drawing.Point(16, 72);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(81, 13);
-            label2.TabIndex = 10;
+            label2.TabIndex = 2;
             label2.Text = "to the following:";
             // 
             // cmdAccept
@@ -65,7 +65,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 152);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 4;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -80,7 +80,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 151);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -98,7 +98,7 @@
             this.cmbSlot.Location = new System.Drawing.Point(16, 32);
             this.cmbSlot.Name = "cmbSlot";
             this.cmbSlot.Size = new System.Drawing.Size(288, 21);
-            this.cmbSlot.TabIndex = 8;
+            this.cmbSlot.TabIndex = 1;
             // 
             // apcItem
             // 
@@ -107,7 +107,7 @@
             this.apcItem.Name = "apcItem";
             this.apcItem.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcItem.Size = new System.Drawing.Size(288, 24);
-            this.apcItem.TabIndex = 11;
+            this.apcItem.TabIndex = 3;
             // 
             // FormScriptCmdPlayerSetEquipment
             // 

@@ -36,6 +36,15 @@
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new System.Drawing.Point(16, 16);
+            label2.Name = "label2";
+            label2.Size = new System.Drawing.Size(178, 13);
+            label2.TabIndex = 0;
+            label2.Text = "Remove this Quest from the Journal:";
+            // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
@@ -44,7 +53,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 128);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 2;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -59,7 +68,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 127);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -72,16 +81,7 @@
             this.apcJournal.Name = "apcJournal";
             this.apcJournal.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcJournal.Size = new System.Drawing.Size(288, 24);
-            this.apcJournal.TabIndex = 13;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 16);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(178, 13);
-            label2.TabIndex = 12;
-            label2.Text = "Remove this Quest from the Journal:";
+            this.apcJournal.TabIndex = 1;
             // 
             // FormScriptCmdJournalClose
             // 

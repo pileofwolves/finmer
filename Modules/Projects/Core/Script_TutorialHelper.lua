@@ -7,6 +7,7 @@ function ApplyPlayerStartingGear()
     -- Assign starting equipment
     Player.Money = 7
     Player.EquippedArmor = Item("A_ClothArmor")
+    Player.EquippedAccessory1 = Item("AC_IsoRing")
 end
 
 function BeginGame()

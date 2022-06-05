@@ -30,6 +30,7 @@ RewardXP = {
 }
 
 RewardGold = {
+    MQ02_Complete = 40,
     KillOliver = 25,
     SQ01 = 80,
     SQ02 = 70,

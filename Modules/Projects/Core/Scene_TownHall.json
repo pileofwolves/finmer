@@ -246,7 +246,7 @@
 																											{
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ03_INTRO7\")\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetNumber(\"BRIDGE_REPAIR_TIME\", GetTimeHourTotal() + 12)\r\nPlayer:AwardXP(RewardXP.MQ03_Accept)\r\nJournal.Update(\"MQ03\", 30)",
+																												"ScriptAction": "Log(\"MQ03_INTRO7\")\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetNumber(\"BRIDGE_REPAIR_TIME\", GetTimeHourTotal() + 12)\r\nPlayer:ModifyMoney(RewardGold.MQ02_Complete)\r\nPlayer:AwardXP(RewardXP.MQ03_Accept)\r\nJournal.Update(\"MQ03\", 30)",
 																												"Children": [
 																													{
 																														"IsState": false,

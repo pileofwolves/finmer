@@ -45,24 +45,38 @@ namespace Finmer.Editor
         private void FormDocumentScene_Load(object sender, EventArgs e)
         {
             m_Scene = (AssetScene)Asset;
-            ScintillaHelper.Setup(scriptAction);
-            ScintillaHelper.Setup(scriptAppear);
 
             UpdateScriptButtonIcons();
             AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
             trvNodes.ExpandAll();
 
             // Set up patch settings panel
-            chkRootInject.Checked = m_Scene.Inject;
+            chkRootInject.Checked = m_Scene.IsPatch;
             cmbInjectTargetMode.SelectedIndex = (int)m_Scene.InjectMode;
-            assetInjectTargetScene.SelectedGuid = m_Scene.InjectScene;
-            cmbInjectTargetNode.Text = m_Scene.InjectNode;
+            assetInjectTargetScene.SelectedGuid = m_Scene.InjectTargetScene;
+            cmbInjectTargetNode.Text = m_Scene.InjectTargetNode;
             UpdateInjectionNodeList();
+
+            // Mark the asset as dirty when the user changes node scripts
+            scriptAction.Dirty += (o, arg) => Dirty = true;
+            scriptAppear.Dirty += (o, arg) => Dirty = true;
         }
 
         public override void Flush()
         {
             base.Flush();
+
+            // Ensure any previous script editor changes are committed
+            scriptAction.Flush();
+            scriptAppear.Flush();
+
+            // Ensure script names are up-to-date with the asset name
+            if (m_Scene.ScriptCustom != null)
+                m_Scene.ScriptCustom.Name = m_Scene.Name + "_Custom";
+            if (m_Scene.ScriptEnter != null)
+                m_Scene.ScriptEnter.Name = m_Scene.Name + "_Enter";
+            if (m_Scene.ScriptLeave != null)
+                m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
 
             UpdateScriptButtonIcons();
         }
@@ -70,6 +84,10 @@ namespace Finmer.Editor
         private void trvNodes_AfterSelect(object sender, TreeViewEventArgs e)
         {
             if (m_SkipTreeSelect) return;
+
+            // Ensure any previous script editor changes are committed
+            scriptAction.Flush();
+            scriptAppear.Flush();
 
             var tag = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
             splitNodeSettings.Visible = tag != null;
@@ -94,10 +112,14 @@ namespace Finmer.Editor
             txtNodeTitle.Text = m_SelectedNode.Title;
             txtNodeTooltip.Text = m_SelectedNode.Tooltip;
             cmbLinkTarget.Text = m_SelectedNode.LinkTarget;
-            scriptAction.Text = m_SelectedNode.ScriptAction;
-            scriptAppear.Text = m_SelectedNode.ScriptAppear;
-            scriptAction.EmptyUndoBuffer();
-            scriptAppear.EmptyUndoBuffer();
+
+            // Set up the script editor tabs
+            var wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAction);
+            m_SelectedNode.ScriptAction = wrapper;
+            scriptAction.SetScript(wrapper);
+            wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAppear);
+            m_SelectedNode.ScriptAppear = wrapper;
+            scriptAppear.SetScript(wrapper);
 
             chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
             chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;
@@ -122,14 +144,16 @@ namespace Finmer.Editor
 
         private void UpdateNodeImage(TreeNode treeNode, AssetScene.SceneNode sceneNode)
         {
+            bool has_appear_script = sceneNode.ScriptAppear != null && sceneNode.ScriptAppear.HasContent();
+
             if (treeNode.Parent == null)
                 treeNode.ImageKey = "node-root";
             else if (sceneNode.IsLink)
                 treeNode.ImageKey = "node-link";
             else if (sceneNode.IsState)
-                treeNode.ImageKey = String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? "node-state" : "node-state-alt";
+                treeNode.ImageKey = has_appear_script ? "node-state-alt" : "node-state";
             else
-                treeNode.ImageKey = String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? "node-option" : "node-option-alt";
+                treeNode.ImageKey = has_appear_script ? "node-option-alt" : "node-option";
 
             treeNode.SelectedImageKey = treeNode.ImageKey;
         }
@@ -155,9 +179,9 @@ namespace Finmer.Editor
 
         private void UpdateScriptButtonIcons()
         {
-            tsbScriptCustom.Image = m_Scene.ScriptCustom.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptEnter.Image = m_Scene.ScriptEnter.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptLeave.Image = m_Scene.ScriptLeave.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptCustom.Image   = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptEnter.Image    = m_Scene.ScriptEnter != null && m_Scene.ScriptEnter.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptLeave.Image    = m_Scene.ScriptLeave != null && m_Scene.ScriptLeave.HasContent() ? Resources.script_code : Resources.plus;
         }
 
         private void UpdateInjectionNodeList()
@@ -175,7 +199,7 @@ namespace Finmer.Editor
 
             // update the scene data
             if (m_SkipDirtyUpdates) return;
-            m_Scene.InjectScene = target_scene.ID;
+            m_Scene.InjectTargetScene = target_scene.ID;
             Dirty = true;
         }
 
@@ -222,8 +246,8 @@ namespace Finmer.Editor
                 {
                     String.IsNullOrWhiteSpace(sceneNode.Key) ? default_key : $"[{sceneNode.Key}]",
                     sceneNode.IsState ? String.Empty : sceneNode.Title,
-                    String.IsNullOrWhiteSpace(sceneNode.ScriptAction) ? String.Empty : "(!)",
-                    String.IsNullOrWhiteSpace(sceneNode.ScriptAppear) ? String.Empty : "(?)",
+                    (sceneNode.ScriptAction != null && sceneNode.ScriptAction.HasContent()) ? "(!)" : String.Empty,
+                    (sceneNode.ScriptAppear != null && sceneNode.ScriptAppear.HasContent()) ? "(?)" : String.Empty,
                 };
                 treeNode.Text = String.Join(" ", elements.Where(str => !String.IsNullOrEmpty(str)));
             }
@@ -355,37 +379,20 @@ namespace Finmer.Editor
 
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptCustom.Name = m_Scene.Name + "_CustomScript";
+            m_Scene.ScriptCustom = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptCustom);
             Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom);
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptEnter.Name = m_Scene.Name + "_OnEnter";
+            m_Scene.ScriptEnter = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptEnter);
             Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter);
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
-            m_Scene.ScriptLeave.Name = m_Scene.Name + "_OnLeave";
+            m_Scene.ScriptLeave = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptLeave);
             Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave);
-        }
-
-        private void scriptAction_TextChanged(object sender, EventArgs e)
-        {
-            if (m_SkipDirtyUpdates) return;
-
-            Dirty = true;
-            m_SelectedNode.ScriptAction = scriptAction.Text;
-        }
-
-        private void scriptAppear_TextChanged(object sender, EventArgs e)
-        {
-            if (m_SkipDirtyUpdates) return;
-
-            Dirty = true;
-            m_SelectedNode.ScriptAppear = scriptAppear.Text;
-            UpdateNodeImage(m_SelectedTree, m_SelectedNode);
         }
 
         private void tsbMoveUp_Click(object sender, EventArgs e)
@@ -591,7 +598,7 @@ namespace Finmer.Editor
 
             if (m_SkipDirtyUpdates) return;
 
-            m_Scene.Inject = inject;
+            m_Scene.IsPatch = inject;
             Dirty = true;
         }
 
@@ -613,7 +620,7 @@ namespace Finmer.Editor
         {
             if (m_SkipDirtyUpdates) return;
 
-            m_Scene.InjectNode = cmbInjectTargetNode.Text;
+            m_Scene.InjectTargetNode = cmbInjectTargetNode.Text;
             Dirty = true;
         }
 

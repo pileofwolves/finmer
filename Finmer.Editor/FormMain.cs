@@ -31,7 +31,8 @@ namespace Finmer.Editor
         private readonly TreeNode m_NodeScripts;
         private readonly TreeNode m_NodeTexts;
 
-        private readonly Dictionary<Guid, AssetWindow> m_OpenWindows = new Dictionary<Guid, AssetWindow>();
+        private readonly Dictionary<IFurballSerializable, EditorWindow> m_OpenWindows = new Dictionary<IFurballSerializable, EditorWindow>();
+        private IFurballSerializable m_ProjectSettingsKey;
 
         private bool m_Dirty;
         private string m_Filename;
@@ -60,25 +61,26 @@ namespace Finmer.Editor
             m_NodeScripts = trvAssetList.Nodes.Add("Scripts", "Scripts", 0);
         }
 
-        public void OpenAssetEditor(AssetBase asset)
+        public void OpenAssetEditor(IFurballSerializable data)
         {
             // TODO: Prevent opening dependencies, since they cannot be edited while a different project is opened
 
             // If asset is already open, focus the window instead of making a new one
-            if (m_OpenWindows.ContainsKey(asset.ID))
+            if (m_OpenWindows.TryGetValue(data, out var open_window))
             {
-                m_OpenWindows[asset.ID].Show();
+                open_window.Show();
                 return;
             }
 
             // Create an appropriate editor window for the asset type
-            AssetWindow window = CreateAssetWindow(asset);
-            window.Asset = asset;
-            window.Closed += (o, args) => m_OpenWindows.Remove(window.Asset.ID);
+            EditorWindow window = CreateEditorWindow(data);
+
+            // Ensure the opened-window association is removed when the window is closed
+            window.Closed += (o, args) => m_OpenWindows.Remove(data);
 
             // Dock and display the window
             window.Show(dockPanel, DockState.Document);
-            m_OpenWindows.Add(asset.ID, window);
+            m_OpenWindows.Add(data, window);
         }
 
         public void MarkDirty()
@@ -106,18 +108,19 @@ namespace Finmer.Editor
             return base.ProcessCmdKey(ref msg, keyData);
         }
 
-        private AssetWindow CreateAssetWindow(AssetBase asset)
+        private EditorWindow CreateEditorWindow(IFurballSerializable data)
         {
-            switch (asset)
+            switch (data)
             {
-                case AssetScene _:          return new FormDocumentScene();
-                case AssetItem _:           return new FormDocumentItem();
-                case AssetCreature _:       return new FormDocumentCreature();
-                case AssetStringTable _:    return new FormDocumentStringTable();
-                case AssetScript _:         return new FormDocumentScript();
-                case AssetFeat _:           return new FormDocumentFeat();
-                case AssetJournal _:        return new FormDocumentJournal();
-                default:                    throw new ArgumentException(nameof(asset));
+                case AssetScene asset:          return new FormDocumentScene                { Asset = asset };
+                case AssetItem asset:           return new FormDocumentItem                 { Asset = asset };
+                case AssetCreature asset:       return new FormDocumentCreature             { Asset = asset };
+                case AssetStringTable asset:    return new FormDocumentStringTable          { Asset = asset };
+                case AssetScript asset:         return new FormDocumentScriptExternal       { Asset = asset };
+                case AssetFeat asset:           return new FormDocumentFeat                 { Asset = asset };
+                case AssetJournal asset:        return new FormDocumentJournal              { Asset = asset };
+                case ScriptDataWrapper script:  return new FormDocumentScriptNested       { ScriptWrapper = script };
+                default:                        throw new ArgumentException(nameof(data));
             }
         }
 
@@ -129,7 +132,7 @@ namespace Finmer.Editor
         private void ClearUI()
         {
             // Close all windows
-            List<AssetWindow> window_list_clone = m_OpenWindows.Values.ToList();
+            List<EditorWindow> window_list_clone = m_OpenWindows.Values.ToList();
             window_list_clone.ForEach(window =>
             {
                 // Prevent save confirmation dialog from showing up
@@ -137,6 +140,7 @@ namespace Finmer.Editor
                 window.Close();
             });
             m_OpenWindows.Clear();
+            m_ProjectSettingsKey = new AssetDummy();
 
             // Remove all tree nodes for assets
             m_NodeScenes.Nodes.Clear();
@@ -244,7 +248,7 @@ namespace Finmer.Editor
                 return SaveAs();
 
             // Make sure editor windows commit any changes
-            foreach (AssetWindow window in m_OpenWindows.Values)
+            foreach (EditorWindow window in m_OpenWindows.Values)
                 window.Flush();
 
             try
@@ -564,18 +568,17 @@ namespace Finmer.Editor
         private void rbtPakSettings_Click(object sender, EventArgs e)
         {
             // If settings window is already open, focus the window instead of making a new one
-            Guid module_id = Program.ActiveFurball.Metadata.ID;
-            if (m_OpenWindows.ContainsKey(module_id))
+            if (m_OpenWindows.ContainsKey(m_ProjectSettingsKey))
             {
-                m_OpenWindows[module_id].Show();
+                m_OpenWindows[m_ProjectSettingsKey].Show();
                 return;
             }
 
             // Otherwise, create a new one
             var window = new FormDocumentProject(Program.ActiveFurball);
-            window.Closed += (o, args) => m_OpenWindows.Remove(module_id);
+            window.Closed += (o, args) => m_OpenWindows.Remove(m_ProjectSettingsKey);
             window.Show(dockPanel, DockState.Document);
-            m_OpenWindows.Add(module_id, window);
+            m_OpenWindows.Add(m_ProjectSettingsKey, window);
         }
 
         private void rbtPlayDev_Click(object sender, EventArgs e)
@@ -636,21 +639,6 @@ namespace Finmer.Editor
                 {
                     Key = "Root",
                     Title = "Root"
-                },
-                ScriptCustom = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_CustomScript"
-                },
-                ScriptEnter = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_EnterScript"
-                },
-                ScriptLeave = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_LeaveScript"
                 }
             };
             RegisterNewAsset(asset);
@@ -662,12 +650,7 @@ namespace Finmer.Editor
             var asset = new AssetItem
             {
                 Name = GetUniqueAssetName("NewItem"),
-                ID = asset_guid,
-                UseScript = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = asset_guid + "_UseScript"
-                }
+                ID = asset_guid
             };
             RegisterNewAsset(asset);
         }
@@ -739,7 +722,7 @@ namespace Finmer.Editor
 
             // close asset editor windows
             m_OpenWindows
-                .Where(pair => pair.Key == asset.ID)
+                .Where(pair => pair.Key == asset)
                 .ForEach(pair =>
                 {
                     pair.Value.Dirty = false; // prevent save popup
@@ -817,8 +800,8 @@ namespace Finmer.Editor
             e.Node.Text = e.Label;
 
             // If window was open, update the window title
-            if (m_OpenWindows.ContainsKey(asset.ID))
-                m_OpenWindows[asset.ID].UpdateText();
+            if (m_OpenWindows.TryGetValue(asset, out var open_window))
+                open_window.UpdateText();
 
             // Allow saving
             MarkDirty();

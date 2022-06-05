@@ -82,6 +82,20 @@ namespace Finmer.Core.Serialization
             }
         }
 
+        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
+        {
+            // The input asset may be null; in that case indicate that in the stream and exit
+            if (value == null)
+            {
+                m_Stream.Write(false);
+                return;
+            }
+
+            // Recursively serialize the asset
+            m_Stream.Write(true);
+            AssetSerializer.SerializeAsset(this, value);
+        }
+
         public void WriteStringValue(string value)
         {
             m_Stream.Write(value);

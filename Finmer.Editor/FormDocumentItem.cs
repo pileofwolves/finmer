@@ -89,6 +89,10 @@ namespace Finmer.Editor
             item.CanUseInField = chkUseField.Checked;
             item.CanUseInBattle = chkUseBattle.Checked;
 
+            // Update UseScript name
+            if (item.UseScript != null)
+                item.UseScript.Name = item.GetUseScriptName();
+
             // Inventory icon
             item.InventoryIcon = m_IconBytes;
         }
@@ -96,9 +100,14 @@ namespace Finmer.Editor
         private void cmdEditUseScript_Click(object sender, EventArgs e)
         {
             var item = (AssetItem)Asset;
-            item.UseScript.Name = item.Name + "_UseScript";
 
-            Program.MainForm.OpenAssetEditor(item.UseScript);
+            // Ensure the UseScript is wrapped so that the editor window can replace its subtype
+            var wrapper = ScriptDataWrapper.EnsureWrapped(item.UseScript.Contents);
+            wrapper.Name = item.GetUseScriptName();
+            item.UseScript.Contents = wrapper;
+
+            // Open it
+            Program.MainForm.OpenAssetEditor(wrapper);
         }
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)
@@ -109,14 +118,16 @@ namespace Finmer.Editor
             fraEquipment.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
             fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
 
-            // If the item is now Usable, but its UseScript was optimized away, restore it now
-            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable && item.UseScript == null)
+            // Configure Usable items
+            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable)
             {
-                item.UseScript = new AssetScript
-                {
-                    ID = Guid.NewGuid(),
-                    Name = item.Name + "_UseScript"
-                };
+                // If there is no UseScript object, instantiate one now
+                if (item.UseScript == null)
+                    item.UseScript = new AssetScript
+                    {
+                        ID = Guid.NewGuid(),
+                        Name = item.GetUseScriptName()
+                    };
             }
         }
 
@@ -179,7 +190,7 @@ namespace Finmer.Editor
         {
             // Create a new list entry that represents this effect
             var buff_item = new ListViewItem();
-            buff_item.SubItems.Add(buff.GetDescription());
+            buff_item.SubItems.Add(buff.GetEditorDescription());
             buff_item.Text = buff.GetIcon().ToString();
             buff_item.Tag = buff;
             lsvEquipEffects.Items.Add(buff_item);
@@ -221,7 +232,7 @@ namespace Finmer.Editor
                 // Make a copy of the buff and store it in the list item
                 var new_buff = form.CopyBuff();
                 item.SubItems.Clear();
-                item.SubItems.Add(new_buff.GetDescription());
+                item.SubItems.Add(new_buff.GetEditorDescription());
                 item.Text = new_buff.GetIcon().ToString();
                 item.Tag = new_buff;
 

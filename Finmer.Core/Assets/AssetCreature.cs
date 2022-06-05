@@ -118,16 +118,16 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Core stats
-            outstream.WriteStringProperty("ObjectName", ObjectName);
-            outstream.WriteStringProperty("ObjectAlias", ObjectAlias);
-            outstream.WriteInt32Property("Strength", Strength);
-            outstream.WriteInt32Property("Agility", Agility);
-            outstream.WriteInt32Property("Body", Body);
-            outstream.WriteInt32Property("Wits", Wits);
-            outstream.WriteInt32Property("Flags", Flags);
-            outstream.WriteInt32Property("Level", Level);
-            outstream.WriteEnumProperty("Size", Size);
-            outstream.WriteEnumProperty("Gender", Gender);
+            outstream.WriteStringProperty(nameof(ObjectName), ObjectName);
+            outstream.WriteStringProperty(nameof(ObjectAlias), ObjectAlias);
+            outstream.WriteInt32Property(nameof(Strength), Strength);
+            outstream.WriteInt32Property(nameof(Agility), Agility);
+            outstream.WriteInt32Property(nameof(Body), Body);
+            outstream.WriteInt32Property(nameof(Wits), Wits);
+            outstream.WriteInt32Property(nameof(Flags), Flags);
+            outstream.WriteInt32Property(nameof(Level), Level);
+            outstream.WriteEnumProperty(nameof(Size), Size);
+            outstream.WriteEnumProperty(nameof(Gender), Gender);
 
             // Equipment links
             outstream.WriteGuidProperty("Equipment1", Equipment[0]);
@@ -164,16 +164,16 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Core stats
-            ObjectName = instream.ReadStringProperty("ObjectName");
-            ObjectAlias = instream.ReadStringProperty("ObjectAlias");
-            Strength = instream.ReadInt32Property("Strength");
-            Agility = instream.ReadInt32Property("Agility");
-            Body = instream.ReadInt32Property("Body");
-            Wits = instream.ReadInt32Property("Wits");
-            Flags = instream.ReadInt32Property("Flags");
-            Level = instream.ReadInt32Property("Level");
-            Size = instream.ReadEnumProperty<ESize>("Size");
-            Gender = instream.ReadEnumProperty<EGender>("Gender");
+            ObjectName = instream.ReadStringProperty(nameof(ObjectName));
+            ObjectAlias = instream.ReadStringProperty(nameof(ObjectAlias));
+            Strength = instream.ReadInt32Property(nameof(Strength));
+            Agility = instream.ReadInt32Property(nameof(Agility));
+            Body = instream.ReadInt32Property(nameof(Body));
+            Wits = instream.ReadInt32Property(nameof(Wits));
+            Flags = instream.ReadInt32Property(nameof(Flags));
+            Level = instream.ReadInt32Property(nameof(Level));
+            Size = instream.ReadEnumProperty<ESize>(nameof(Size));
+            Gender = instream.ReadEnumProperty<EGender>(nameof(Gender));
 
             // Equipment links
             Equipment[0] = instream.ReadGuidProperty("Equipment1");

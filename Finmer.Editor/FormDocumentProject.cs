@@ -44,6 +44,11 @@ namespace Finmer.Editor
             };
         }
 
+        protected override string GetWindowTitle()
+        {
+            return "Module Settings";
+        }
+
         private void FormDocumentProject_Load(object sender, EventArgs e)
         {
             // Populate UI

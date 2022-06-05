@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
 using Finmer.Core;
+using Finmer.Core.Compilers;
 using Finmer.Models;
 using Finmer.Utility;
 using static Finmer.Gameplay.Scripting.LuaApi;
@@ -262,10 +263,10 @@ namespace Finmer.Gameplay.Scripting
             if (luaL_loadbuffer(LuaState, body, new UIntPtr(unchecked((ulong)body.Length)), chunkname) != 0)
             {
                 // An error occurred
-                string message = $"Failed to compile Lua script {chunkname}: {lua_tostring(LuaState, -1)}";
+                string message = $"In script {chunkname}: {lua_tostring(LuaState, -1)}";
                 lua_pop(LuaState, 1);
 
-                throw new InvalidDataException(message);
+                throw new ScriptCompilationException(message);
             }
 
             int WriteChunk(IntPtr _, IntPtr chunkPtr, UIntPtr chunkLen, IntPtr userdata)

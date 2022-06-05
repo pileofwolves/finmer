@@ -91,6 +91,22 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
+        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
+        {
+            // The input asset may be null; in that case omit the property entirely, for brevity. The reader will interpret this as null.
+            if (value == null)
+                return;
+
+            // Key is optional (if we're writing an array)
+            if (key != null)
+                m_Stream.WritePropertyName(key);
+
+            // Serialize the nested asset as an object token
+            m_Stream.WriteStartObject();
+            AssetSerializer.SerializeAsset(this, value);
+            m_Stream.WriteEndObject();
+        }
+
         public void WriteStringValue(string value)
         {
             m_Stream.WriteValue(value);

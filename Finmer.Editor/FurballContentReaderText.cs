@@ -43,7 +43,7 @@ namespace Finmer.Editor
                 Debug.Assert(CurrentToken.Type == JTokenType.Object);
                 return (bool)CurrentToken[key];
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read boolean {key} at path {CurrentToken.Path}", ex);
             }
@@ -56,7 +56,7 @@ namespace Finmer.Editor
                 Debug.Assert(CurrentToken.Type == JTokenType.Object);
                 return (byte)CurrentToken[key];
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read byte {key} at path {CurrentToken.Path}", ex);
             }
@@ -69,7 +69,7 @@ namespace Finmer.Editor
                 Debug.Assert(CurrentToken.Type == JTokenType.Object);
                 return (int)CurrentToken[key];
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read int {key} at path {CurrentToken.Path}", ex);
             }
@@ -82,7 +82,7 @@ namespace Finmer.Editor
                 Debug.Assert(CurrentToken.Type == JTokenType.Object);
                 return (float)CurrentToken[key];
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read float {key} at path {CurrentToken.Path}", ex);
             }
@@ -123,7 +123,7 @@ namespace Finmer.Editor
                 // Property is present; convert it to a string
                 return (string)element;
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read string {key} at path {CurrentToken.Path}", ex);
             }
@@ -143,9 +143,52 @@ namespace Finmer.Editor
                 // Otherwise, deserialize the byte array
                 return (byte[])value;
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read byte array {key} at path {CurrentToken.Path}", ex);
+            }
+        }
+
+        public TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable
+        {
+            try
+            {
+                // Find the token to read from
+                JToken value;
+                if (key != null)
+                {
+                    // Grab named tokens by key
+                    value = CurrentToken[key];
+                }
+                else
+                {
+                    // The value we want to read from is the next token
+                    value = m_CurrentArrayElement;
+
+                    // Update array element pointer so it references the element that comes after the one we just pushed
+                    m_CurrentArrayElement = m_CurrentArrayElement.Next;
+                }
+
+                // Handle null values properly; the asset may be absent
+                if (value == null || value.Type == JTokenType.Null)
+                    return null;
+
+                // Otherwise, recursively deserialize the asset
+                Debug.Assert(value.Type == JTokenType.Object);
+                m_TokenStack.Push(value);
+                var asset = AssetSerializer.DeserializeAsset(this, version);
+                m_TokenStack.Pop();
+
+                // Validate the type of the deserialized object
+                if (!(asset is TExpected expected))
+                    // Error handling here to remove boilerplate from callers
+                    throw new InvalidDataException("Nested asset is unexpected type");
+
+                return expected;
+            }
+            catch (Exception ex) when (!(ex is FurballException))
+            {
+                throw new FurballInvalidAssetException($"Cannot read nested asset {key} at path {CurrentToken.Path}", ex);
             }
         }
 
@@ -174,7 +217,7 @@ namespace Finmer.Editor
                 // Otherwise, read and return the file contents
                 return File.ReadAllBytes(attachment_path);
             }
-            catch (Exception ex)
+            catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballIOException($"Failed to read the attachment file '{key}'", ex);
             }

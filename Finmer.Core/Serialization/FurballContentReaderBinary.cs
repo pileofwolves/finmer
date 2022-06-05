@@ -72,6 +72,22 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadBytes(length);
         }
 
+        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
+        {
+            // A single byte indicates whether the asset is null or not
+            bool is_present = m_Stream.ReadBoolean();
+            if (!is_present)
+                return null;
+
+            // It is present, so recursively deserialize it
+            var asset = AssetSerializer.DeserializeAsset(this, version);
+            if (!(asset is TExpected expected))
+                // Error handling here to remove boilerplate from callers
+                throw new FurballInvalidAssetException($"Unexpected nested asset type in property '{key}'");
+
+            return expected;
+        }
+
         public string ReadStringValue()
         {
             return m_Stream.ReadString();

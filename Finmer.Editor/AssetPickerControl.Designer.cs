@@ -44,7 +44,6 @@ namespace Finmer.Editor
             this.lblAssetName.Name = "lblAssetName";
             this.lblAssetName.Size = new System.Drawing.Size(168, 24);
             this.lblAssetName.TabIndex = 1;
-            this.lblAssetName.TabStop = true;
             this.lblAssetName.Text = "Asset";
             this.lblAssetName.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.lblAssetName.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lblAssetName_LinkClicked);

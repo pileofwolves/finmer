@@ -287,6 +287,17 @@ namespace Finmer.Gameplay.Combat
         }
 
         [ScriptableFunction]
+        protected static int ExportedIsGrappleInitiator(IntPtr state)
+        {
+            // Retrieve and validate the participant from the stack
+            var participant = GetValidatedParticipant(state);
+
+            // Check the Participant's state
+            LuaApi.lua_pushboolean(state, participant.GrapplingInitiator);
+            return 1;
+        }
+
+        [ScriptableFunction]
         protected static int ExportedGetPredator(IntPtr state)
         {
             // Retrieve and validate the participant from the stack
@@ -298,6 +309,22 @@ namespace Finmer.Gameplay.Combat
                 LuaApi.lua_pushnil(state);
             else
                 predator.Character.PushToLua(state);
+
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedGetGrapplingWith(IntPtr state)
+        {
+            // Retrieve and validate the participant from the stack
+            var participant = GetValidatedParticipant(state);
+
+            // Push the GrapplingWith field
+            var grapple_partner = participant.GrapplingWith;
+            if (grapple_partner == null)
+                LuaApi.lua_pushnil(state);
+            else
+                grapple_partner.Character.PushToLua(state);
 
             return 1;
         }

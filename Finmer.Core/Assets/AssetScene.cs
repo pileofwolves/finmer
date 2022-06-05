@@ -29,46 +29,42 @@ namespace Finmer.Core.Assets
 
         public SceneNode Root { get; set; }
 
-        public AssetScript ScriptCustom { get; set; }
-        public AssetScript ScriptEnter { get; set; }
-        public AssetScript ScriptLeave { get; set; }
+        public ScriptData ScriptCustom { get; set; }
+
+        public ScriptData ScriptEnter { get; set; }
+
+        public ScriptData ScriptLeave { get; set; }
 
         /// <summary>
         /// Precompiled script that represents the entire scene (all nodes and nested scripts), or null if unavailable.
         /// </summary>
         public CompiledScript PrecompiledScript { get; set; }
 
-        public bool Inject { get; set; }
+        public bool IsPatch { get; set; }
         public ESceneInjectMode InjectMode { get; set; } = ESceneInjectMode.AfterTarget;
-        public Guid InjectScene { get; set; } = Guid.Empty;
-        public string InjectNode { get; set; } = String.Empty;
+        public Guid InjectTargetScene { get; set; } = Guid.Empty;
+        public string InjectTargetNode { get; set; } = String.Empty;
 
         public override void Serialize(IFurballContentWriter outstream)
         {
             base.Serialize(outstream);
 
             // Custom scene scripts
-            outstream.BeginObject("ScriptCustom");
-            ScriptCustom.Serialize(outstream);
-            outstream.EndObject();
-            outstream.BeginObject("ScriptEnter");
-            ScriptEnter.Serialize(outstream);
-            outstream.EndObject();
-            outstream.BeginObject("ScriptLeave");
-            ScriptLeave.Serialize(outstream);
-            outstream.EndObject();
+            outstream.WriteNestedObjectProperty(nameof(ScriptCustom), ScriptCustom);
+            outstream.WriteNestedObjectProperty(nameof(ScriptEnter), ScriptEnter);
+            outstream.WriteNestedObjectProperty(nameof(ScriptLeave), ScriptLeave);
 
             // Patching settings
-            outstream.WriteBooleanProperty("IsPatch", Inject);
-            if (Inject)
+            outstream.WriteBooleanProperty(nameof(IsPatch), IsPatch);
+            if (IsPatch)
             {
-                outstream.WriteEnumProperty("InjectMode", InjectMode);
-                outstream.WriteGuidProperty("InjectTargetScene", InjectScene);
-                outstream.WriteStringProperty("InjectTargetNode", InjectNode);
+                outstream.WriteEnumProperty(nameof(InjectMode), InjectMode);
+                outstream.WriteGuidProperty(nameof(InjectTargetScene), InjectTargetScene);
+                outstream.WriteStringProperty(nameof(InjectTargetNode), InjectTargetNode);
             }
 
             // Scene node hierarchy
-            outstream.BeginObject("Root");
+            outstream.BeginObject(nameof(Root));
             Root.Serialize(outstream);
             outstream.EndObject();
         }
@@ -78,32 +74,58 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Read scene scripts
-            instream.BeginObject("ScriptCustom");
+            if (version >= 16)
             {
-                ScriptCustom = new AssetScript();
-                ScriptCustom.Deserialize(instream, version);
+                ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
+                ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
+                ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
+
+                // Assign script names
+                if (ScriptCustom != null)
+                    ScriptCustom.Name = Name + "_Custom";
+                if (ScriptEnter != null)
+                    ScriptEnter.Name = Name + "_Enter";
+                if (ScriptLeave != null)
+                    ScriptLeave.Name = Name + "_Leave";
             }
-            instream.EndObject();
-            instream.BeginObject("ScriptEnter");
+            else
             {
-                ScriptEnter = new AssetScript();
-                ScriptEnter.Deserialize(instream, version);
+                // V15 backwards compatibility
+                instream.BeginObject("ScriptCustom");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptCustom = new ScriptDataExternal();
+                    ScriptCustom.Deserialize(instream, version);
+                }
+                instream.EndObject();
+                instream.BeginObject("ScriptEnter");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptEnter = new ScriptDataExternal();
+                    ScriptEnter.Deserialize(instream, version);
+                }
+                instream.EndObject();
+                instream.BeginObject("ScriptLeave");
+                {
+                    instream.ReadGuidProperty("ID"); // Skip property
+                    ScriptLeave = new ScriptDataExternal();
+                    ScriptLeave.Deserialize(instream, version);
+                }
+                instream.EndObject();
+
+                // Update script names to new standards
+                ScriptCustom.Name = Name + "_Custom";
+                ScriptEnter.Name = Name + "_Enter";
+                ScriptLeave.Name = Name + "_Leave";
             }
-            instream.EndObject();
-            instream.BeginObject("ScriptLeave");
-            {
-                ScriptLeave = new AssetScript();
-                ScriptLeave.Deserialize(instream, version);
-            }
-            instream.EndObject();
 
             // Read modding/injection settings
-            Inject = instream.ReadBooleanProperty("IsPatch");
-            if (Inject)
+            IsPatch = instream.ReadBooleanProperty(nameof(IsPatch));
+            if (IsPatch)
             {
-                InjectMode = instream.ReadEnumProperty<ESceneInjectMode>("InjectMode");
-                InjectScene = instream.ReadGuidProperty("InjectTargetScene");
-                InjectNode = instream.ReadStringProperty("InjectTargetNode");
+                InjectMode = instream.ReadEnumProperty<ESceneInjectMode>(nameof(InjectMode));
+                InjectTargetScene = instream.ReadGuidProperty(nameof(InjectTargetScene));
+                InjectTargetNode = instream.ReadStringProperty(nameof(InjectTargetNode));
             }
 
             // Read the scene node tree recursively
@@ -156,8 +178,8 @@ namespace Finmer.Core.Assets
             public bool IsLink { get; set; }
             public string LinkTarget { get; set; } = String.Empty;
 
-            public string ScriptAction { get; set; } = String.Empty;
-            public string ScriptAppear { get; set; } = String.Empty;
+            public ScriptData ScriptAction { get; set; }
+            public ScriptData ScriptAppear { get; set; }
 
             public bool Highlight { get; set; }
             public float ButtonWidth { get; set; } = 1.0f;
@@ -168,32 +190,32 @@ namespace Finmer.Core.Assets
             public void Serialize(IFurballContentWriter outstream)
             {
                 // Core metadata
-                outstream.WriteStringProperty("Key", Key);
-                outstream.WriteBooleanProperty("IsState", IsState);
-                outstream.WriteBooleanProperty("IsLink", IsLink);
+                outstream.WriteStringProperty(nameof(Key), Key);
+                outstream.WriteBooleanProperty(nameof(IsState), IsState);
+                outstream.WriteBooleanProperty(nameof(IsLink), IsLink);
 
                 // Choice node settings
                 if (!IsState && !IsLink)
                 {
-                    outstream.WriteStringProperty("Title", Title);
-                    outstream.WriteStringProperty("Tooltip", Tooltip);
-                    outstream.WriteBooleanProperty("Highlight", Highlight);
-                    outstream.WriteFloatProperty("ButtonWidth", ButtonWidth);
+                    outstream.WriteStringProperty(nameof(Title), Title);
+                    outstream.WriteStringProperty(nameof(Tooltip), Tooltip);
+                    outstream.WriteBooleanProperty(nameof(Highlight), Highlight);
+                    outstream.WriteFloatProperty(nameof(ButtonWidth), ButtonWidth);
                 }
 
                 // Link node settings
                 if (IsLink)
                 {
-                    outstream.WriteStringProperty("LinkTarget", LinkTarget);
+                    outstream.WriteStringProperty(nameof(LinkTarget), LinkTarget);
                 }
                 // Generic node settings
                 else
                 {
-                    outstream.WriteStringProperty("ScriptAction", ScriptAction);
-                    outstream.WriteStringProperty("ScriptAppear", ScriptAppear);
+                    outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
+                    outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
 
                     // Recursively serialize child nodes
-                    outstream.BeginArray("Children", Children.Count);
+                    outstream.BeginArray(nameof(Children), Children.Count);
                     foreach (SceneNode child in Children)
                     {
                         outstream.BeginObject();
@@ -207,29 +229,60 @@ namespace Finmer.Core.Assets
             public void Deserialize(IFurballContentReader instream, int version)
             {
                 // Core metadata
-                Key = instream.ReadStringProperty("Key");
-                IsState = instream.ReadBooleanProperty("IsState");
-                IsLink = instream.ReadBooleanProperty("IsLink");
+                Key = instream.ReadStringProperty(nameof(Key));
+                IsState = instream.ReadBooleanProperty(nameof(IsState));
+                IsLink = instream.ReadBooleanProperty(nameof(IsLink));
 
                 // Choice node settings
                 if (!IsState && !IsLink)
                 {
-                    Title = instream.ReadStringProperty("Title");
-                    Tooltip = instream.ReadStringProperty("Tooltip");
-                    Highlight = instream.ReadBooleanProperty("Highlight");
-                    ButtonWidth = instream.ReadFloatProperty("ButtonWidth");
+                    Title = instream.ReadStringProperty(nameof(Title));
+                    Tooltip = instream.ReadStringProperty(nameof(Tooltip));
+                    Highlight = instream.ReadBooleanProperty(nameof(Highlight));
+                    ButtonWidth = instream.ReadFloatProperty(nameof(ButtonWidth));
                 }
 
                 // Link node settings
                 if (IsLink)
                 {
-                    LinkTarget = instream.ReadStringProperty("LinkTarget");
+                    LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
                 }
                 // Generic node settings
                 else
                 {
-                    ScriptAction = instream.ReadStringProperty("ScriptAction");
-                    ScriptAppear = instream.ReadStringProperty("ScriptAppear");
+                    if (version >= 16)
+                    {
+                        ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
+                        ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
+
+                        // Assign script names
+                        if (ScriptAction != null)
+                            ScriptAction.Name = Key + "/Actions";
+                        if (ScriptAppear != null)
+                            ScriptAppear.Name = Key + "/AppearsWhen";
+                    }
+                    else
+                    {
+                        // V15 backwards compatibility: convert raw strings to inline script objects
+                        var text = instream.ReadStringProperty(nameof(ScriptAction));
+                        if (!String.IsNullOrEmpty(text))
+                        {
+                            ScriptAction = new ScriptDataInline
+                            {
+                                Name = Key + "/Actions",
+                                ScriptText = text
+                            };
+                        }
+                        text = instream.ReadStringProperty(nameof(ScriptAppear));
+                        if (!String.IsNullOrEmpty(text))
+                        {
+                            ScriptAppear = new ScriptDataInline
+                            {
+                                Name = Key + "/AppearsWhen",
+                                ScriptText = text
+                            };
+                        }
+                    }
                 }
 
                 // Links do not have child nodes as of version 15
@@ -237,7 +290,7 @@ namespace Finmer.Core.Assets
                 {
                     // Recursively deserialize child nodes
                     Children.Clear();
-                    for (int child_count = instream.BeginArray("Children"); child_count > 0; child_count--)
+                    for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)
                     {
                         instream.BeginObject();
                         {

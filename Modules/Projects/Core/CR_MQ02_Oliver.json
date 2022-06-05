@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "bc1a3ca9-d85b-40aa-99d8-82b1ca76985e",
-	"Name": "CR_MQ02_Oliver",
+	"AssetID": "bc1a3ca9-d85b-40aa-99d8-82b1ca76985e",
+	"AssetName": "CR_MQ02_Oliver",
 	"ObjectName": "Oliver",
 	"Strength": 3,
 	"Agility": 3,

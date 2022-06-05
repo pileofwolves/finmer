@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "35013658-0d1f-4f8f-9fe9-5619f8d76676",
-	"Name": "CR_MQ02_Goon2",
+	"AssetID": "35013658-0d1f-4f8f-9fe9-5619f8d76676",
+	"AssetName": "CR_MQ02_Goon2",
 	"ObjectName": "Tigress",
 	"ObjectAlias": "the tigress",
 	"Strength": 3,

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "b7127d73-bb37-4396-905d-b5e2464a28f0",
-	"Name": "I_PitInvite",
+	"AssetID": "b7127d73-bb37-4396-905d-b5e2464a28f0",
+	"AssetName": "I_PitInvite",
 	"ObjectName": "Ominous Letter",
 	"FlavorText": "\"Greetings, predator,\r\n\r\nWord of your involvement in a recent disappearance has reached us. Instead of simply denouncing such activities, however, we would like to extend an invitation to you, and offer an opportunity to further develop your talents.\r\n\r\nIf you are interested in feasting once more, find us after dark in the western neighborhood.\"",
 	"ItemType": "Generic",

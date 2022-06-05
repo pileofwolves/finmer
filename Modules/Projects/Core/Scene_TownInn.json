@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
-	"Name": "Scene_TownInn",
+	"AssetID": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
+	"AssetName": "Scene_TownInn",
 	"ScriptCustom": {
-		"ID": "8fc3cde0-8fdd-4719-83b1-4a475944dee6",
-		"Name": "Scene_TownInn_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownInn_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "21f01211-786d-4302-bf3c-5ee0050f0d7a",
-		"Name": "Scene_TownInn_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "27a53955-4b63-4d8e-a0d6-d4190e966606",
-		"Name": "Scene_TownInn_OnLeave"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownInn_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +23,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SetInventoryEnabled(true)\r\n\r\n-- Saving tip when halfway through MQ01\r\nif not Storage.GetFlag(\"TIP_SAVE_AT_INN\") and Player:HasItem(\"I_MQ01_InnPass\") then\r\n    Storage.SetFlag(\"TIP_SAVE_AT_INN\", true)\r\n    Log(\"TIP_SAVE_AT_INN\", Color.Highlight)\r\nend",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetInventoryEnabled(true)\r\n\r\n-- Saving tip when halfway through MQ01\r\nif not Storage.GetFlag(\"TIP_SAVE_AT_INN\") and Player:HasItem(\"I_MQ01_InnPass\") then\r\n    Storage.SetFlag(\"TIP_SAVE_AT_INN\", true)\r\n    Log(\"TIP_SAVE_AT_INN\", Color.Highlight)\r\nend"
+				},
 				"Children": [
 					{
 						"Key": "Leave",
@@ -37,7 +36,10 @@
 						"Tooltip": "Bail!",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_TownMarket\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_TownMarket\")"
+						},
 						"Children": []
 					},
 					{
@@ -48,13 +50,19 @@
 						"Tooltip": "Exchange words with other living things.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetInventoryEnabled(false)",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetInventoryEnabled(false)"
+						},
 						"Children": [
 							{
 								"Key": "InnTalkRoot",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetInstruction(Text.GetString(\"town_inn_talktowho\"))",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "SetInstruction(Text.GetString(\"town_inn_talktowho\"))"
+								},
 								"Children": [
 									{
 										"Key": "TalkCancel",
@@ -80,7 +88,10 @@
 										"Tooltip": "Talk to the fellow behind the bar.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "-- Reset the bartender context for all following interactions in case it was removed\r\nText.SetContext(\"bartender\", barkeep)\r\n\r\n-- Greeting text\r\nlocal key = Storage.GetFlag(\"town_inn_barkeep_first\")\r\n    and \"TOWN_INN_BARKEEP_BEGIN\"\r\n    or \"TOWN_INN_BARKEEP_BEGIN_FIRST\"\r\nStorage.SetFlag(\"town_inn_barkeep_first\", true)\r\nLog(key)",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- Reset the bartender context for all following interactions in case it was removed\r\nText.SetContext(\"bartender\", barkeep)\r\n\r\n-- Greeting text\r\nlocal key = Storage.GetFlag(\"town_inn_barkeep_first\")\r\n    and \"TOWN_INN_BARKEEP_BEGIN\"\r\n    or \"TOWN_INN_BARKEEP_BEGIN_FIRST\"\r\nStorage.SetFlag(\"town_inn_barkeep_first\", true)\r\nLog(key)"
+										},
 										"Children": [
 											{
 												"Key": "BarkeepTalkRoot",
@@ -93,7 +104,10 @@
 														"Title": "Leave",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Log(\"town_inn_barkeep_leave\")",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"town_inn_barkeep_leave\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
@@ -110,13 +124,19 @@
 														"Tooltip": "Buy a drink and spend some time at the bar.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return Player.Money >= 1",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return Player.Money >= 1"
+														},
 														"Children": [
 															{
 																"Key": "BottomsUp",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Player:ModifyMoney(-1)\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Player:ModifyMoney(-1)\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)"
+																},
 																"Children": [
 																	{
 																		"Key": "Drink_C_Exit",
@@ -145,13 +165,19 @@
 														"Tooltip": "Ask the barkeep if he knows any leads for work.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return not Storage.GetFlag(\"mq01_available\")"
+														},
 														"Children": [
 															{
 																"Key": "MQ01_R_Setup",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Text.SetContext(\"questgiver\", barkeep)\r\nLog(\"MQ01_SETUP1\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Text.SetContext(\"questgiver\", barkeep)\r\nLog(\"MQ01_SETUP1\")"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ01_C_Bridge",
@@ -166,7 +192,10 @@
 																				"Key": "MQ01_R_Bridge",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ01_SETUP_BRIDGE\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -195,7 +224,10 @@
 																				"Key": "MQ01_R_Mayor",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ01_SETUP_MAYOR\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -219,7 +251,10 @@
 																		"Tooltip": "Thank him for the information.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)"
+																		},
 																		"Children": [
 																			{
 																				"IsState": true,
@@ -240,13 +275,19 @@
 														"Tooltip": "Show the pass from the mayor.",
 														"Highlight": true,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return Player:HasItem(\"I_MQ01_InnPass\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return Player:HasItem(\"I_MQ01_InnPass\")"
+														},
 														"Children": [
 															{
 																"Key": "MQ01_R_GivePass",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ01_BARKEEP1\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ01_BARKEEP1\")"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ01_C_GivePass2",
@@ -260,7 +301,10 @@
 																				"Key": "MQ01_R_GivePass2",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ01_BARKEEP2\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ01_BARKEEP2\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ01_C_Messenger",
@@ -274,7 +318,10 @@
 																								"Key": "MQ01_R_Messenger",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ01_BARKEEP3\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ01_BARKEEP3\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "MQ01_C_Complete1",
@@ -289,7 +336,10 @@
 																												"Key": "MQ01_R_Complete1",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ01_BARKEEP4\")\r\n\r\n-- Exchange pass for free room\r\nPlayer:TakeItem(\"I_MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_rented_room\", true)\r\n\r\n-- Complete MQ01\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ01_BARKEEP4\")\r\n\r\n-- Exchange pass for free room\r\nPlayer:TakeItem(\"I_MQ01_InnPass\")\r\nStorage.SetFlag(\"town_inn_rented_room\", true)\r\n\r\n-- Complete MQ01\r\nStorage.SetFlag(\"mq01_done\", true)\r\nPlayer:AwardXP(RewardXP.MQ01_Complete)\r\nJournal.Close(\"MQ01\")\r\nJournal.Update(\"MQ02\", 10)"
+																												},
 																												"Children": [
 																													{
 																														"Key": "MQ01_C_Complete2",
@@ -330,13 +380,19 @@
 														"Tooltip": "Say you've got news.",
 														"Highlight": true,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return Storage.GetFlag(\"mq02_ambushed\") and not Storage.GetFlag(\"mq02_done\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return Storage.GetFlag(\"mq02_ambushed\") and not Storage.GetFlag(\"mq02_done\")"
+														},
 														"Children": [
 															{
 																"Key": "MQ02F_Begin",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"mq02_barkeep_begin\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"mq02_barkeep_begin\")"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ02F_C_End",
@@ -346,13 +402,19 @@
 																		"Tooltip": "That's all you know right now.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "return\r\n    Storage.GetFlag(\"mq02f_discuss_supplies\") and\r\n    Storage.GetFlag(\"mq02f_discuss_tiger\") and\r\n    Storage.GetFlag(\"mq02f_discuss_oliver\") and\r\n    Storage.GetFlag(\"mq02f_discuss_randall\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return\r\n    Storage.GetFlag(\"mq02f_discuss_supplies\") and\r\n    Storage.GetFlag(\"mq02f_discuss_tiger\") and\r\n    Storage.GetFlag(\"mq02f_discuss_oliver\") and\r\n    Storage.GetFlag(\"mq02f_discuss_randall\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02F_R_End",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ02F_C_End2",
@@ -366,7 +428,10 @@
 																								"Key": "MQ02F_R_End2",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END2\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END2\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)"
+																								},
 																								"Children": [
 																									{
 																										"Key": "MQ02F_C_End3",
@@ -398,13 +463,19 @@
 																		"Tooltip": "Say where the supplies are.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_supplies\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"mq02f_discuss_supplies\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02F_R_Supplies",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_supplies\", true)\r\nLog(\"mq02_barkeep_supplies\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"mq02f_discuss_supplies\", true)\r\nLog(\"mq02_barkeep_supplies\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -438,13 +509,19 @@
 																		"Tooltip": "Explain what happened to the first messenger.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_tiger\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"mq02f_discuss_tiger\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02F_R_Tiger",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_tiger\", true)\r\nLog(\"mq02_barkeep_tiger\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"mq02f_discuss_tiger\", true)\r\nLog(\"mq02_barkeep_tiger\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -478,13 +555,19 @@
 																		"Tooltip": "Explain what happened to Oliver.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_oliver\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"mq02f_discuss_oliver\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02F_R_Oliver",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_oliver\", true)\r\n\r\n-- alternate keys for outcome of Oliver scene\r\nlocal key = \"MQ02_BARKEEP_OLIVER\"\r\nif Storage.GetFlag(\"oliver_eaten\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_EATEN\"\r\nelseif Storage.GetFlag(\"oliver_dead\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_DEAD\"\r\nend\r\nLog(key)",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"mq02f_discuss_oliver\", true)\r\n\r\n-- alternate keys for outcome of Oliver scene\r\nlocal key = \"MQ02_BARKEEP_OLIVER\"\r\nif Storage.GetFlag(\"oliver_eaten\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_EATEN\"\r\nelseif Storage.GetFlag(\"oliver_dead\") then\r\n    key = \"MQ02_BARKEEP_OLIVER_DEAD\"\r\nend\r\nLog(key)"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -518,13 +601,19 @@
 																		"Tooltip": "Talk about the cocky wolf you met.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "return not Storage.GetFlag(\"mq02f_discuss_randall\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"mq02f_discuss_randall\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02F_R_Randall",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"mq02f_discuss_randall\", true)\r\nLog(\"mq02_barkeep_randall\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"mq02f_discuss_randall\", true)\r\nLog(\"mq02_barkeep_randall\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -562,12 +651,18 @@
 														"Tooltip": "Ask about a bed for the night.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "-- Room is not yet made available, and also player is not about to get a free room\r\n-- (hide this option in the latter case because it's very confusing for the player)\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\") and not Player:HasItem(\"I_MQ01_InnPass\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- Room is not yet made available, and also player is not about to get a free room\r\n-- (hide this option in the latter case because it's very confusing for the player)\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\") and not Player:HasItem(\"I_MQ01_InnPass\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"TOWN_INN_RENT_DENIED\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"TOWN_INN_RENT_DENIED\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -600,7 +695,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- TODO: Add actual gossip states here\r\nLog(\"town_inn_rumor_none\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "-- TODO: Add actual gossip states here\r\nLog(\"town_inn_rumor_none\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -632,14 +730,23 @@
 										"Tooltip": "Talk to the big fuzzy-looking taur in the corner.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Text.SetContext(\"partner\", ftpartner)\r\nLog(\"INN_FOXTAUR_APPROACH\")",
-										"ScriptAppear": "return not Storage.GetFlag(\"town_inn_foxtaur_arrested\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Text.SetContext(\"partner\", ftpartner)\r\nLog(\"INN_FOXTAUR_APPROACH\")"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"town_inn_foxtaur_arrested\")"
+										},
 										"Children": [
 											{
 												"Key": "FoxtaurTalkRoot",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "PreySense(Creature(\"CR_Town_Foxtaur\"), EVoreStyle.OV, true)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "PreySense(Creature(\"CR_Town_Foxtaur\"), EVoreStyle.OV, true)"
+												},
 												"Children": [
 													{
 														"Key": "Foxtaur_C_Intro",
@@ -654,8 +761,14 @@
 																"Key": "Foxtaur_R_IntroFox",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"INN_FOXTAUR_HELLO_FOX\")",
-																"ScriptAppear": "return Player.Species == \"fox\"",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"INN_FOXTAUR_HELLO_FOX\")"
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "return Player.Species == \"fox\""
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -673,7 +786,10 @@
 																"Key": "Foxtaur_R_Intro",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"INN_FOXTAUR_HELLO\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"INN_FOXTAUR_HELLO\")"
+																},
 																"Children": [
 																	{
 																		"Key": "Foxtaur_C_AskDrink",
@@ -687,7 +803,10 @@
 																				"Key": "Foxtaur_R_AskDrink",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"INN_FOXTAUR_ASK_DRINK\")\r\ntemp_getdrink = true",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"INN_FOXTAUR_ASK_DRINK\")\r\ntemp_getdrink = true"
+																				},
 																				"Children": [
 																					{
 																						"Key": "Foxtaur_C_DoJoin",
@@ -701,7 +820,10 @@
 																								"Key": "Foxtaur_R_DoJoin",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"INN_FOXTAUR_JOIN1\")\r\n\r\nif temp_getdrink == true then\r\n    -- picked the 'drink' option earlier\r\n    Log(\"INN_FOXTAUR_JOIN_DRINK\")\r\nend\r\n\r\nLog(\"INN_FOXTAUR_JOIN2\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"INN_FOXTAUR_JOIN1\")\r\n\r\nif temp_getdrink == true then\r\n    -- picked the 'drink' option earlier\r\n    Log(\"INN_FOXTAUR_JOIN_DRINK\")\r\nend\r\n\r\nLog(\"INN_FOXTAUR_JOIN2\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "Foxtaur_C_Apologize",
@@ -715,7 +837,10 @@
 																												"Key": "Foxtaur_R_Apologize",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"INN_FOXTAUR_JOIN_APOLOGIZE\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"INN_FOXTAUR_JOIN_APOLOGIZE\")"
+																												},
 																												"Children": [
 																													{
 																														"IsState": false,
@@ -743,7 +868,10 @@
 																												"Key": "Foxtaur_R_WantChat",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"INN_FOXTAUR_ASK_CHAT\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"INN_FOXTAUR_ASK_CHAT\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "Foxtaur_C_GoUpstairs",
@@ -776,7 +904,10 @@
 																												"Key": "Foxtaur_R_WantWork",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"INN_FOXTAUR_ASK_WORK\")\r\ntemp_foxtaurwork = true",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"INN_FOXTAUR_ASK_WORK\")\r\ntemp_foxtaurwork = true"
+																												},
 																												"Children": [
 																													{
 																														"IsState": false,
@@ -807,7 +938,10 @@
 																				"Key": "Foxtaur_R_AskChat",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"INN_FOXTAUR_ASK_TALK\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"INN_FOXTAUR_ASK_TALK\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -854,8 +988,14 @@
 						"Tooltip": "Head up to your room.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "if Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"TOWN_INN_ROOM_ENTER\")\r\nelse\r\n    Storage.SetFlag(\"TOWN_INN_ROOM_VISITED\", true)\r\n    Log(\"TOWN_INN_ROOM_ENTER_FIRST\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend",
-						"ScriptAppear": "return Storage.GetFlag(\"town_inn_rented_room\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "if Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"TOWN_INN_ROOM_ENTER\")\r\nelse\r\n    Storage.SetFlag(\"TOWN_INN_ROOM_VISITED\", true)\r\n    Log(\"TOWN_INN_ROOM_ENTER_FIRST\")\r\n    Log(\"TOWN_INN_ROOM_ENTER_SAVE\", Color.Highlight)\r\nend"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetFlag(\"town_inn_rented_room\")"
+						},
 						"Children": [
 							{
 								"Key": "Room_Main",
@@ -870,7 +1010,10 @@
 										"Tooltip": "Go back to the common room.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Log(\"town_inn_room_leave\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"town_inn_room_leave\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
@@ -892,7 +1035,10 @@
 												"Key": "SavePoint_Room",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "SaveData.ShowSaveDialog()\r\n\r\n-- Welcome-back text when loading game\r\nif SaveData.IsRestoringGame() then\r\n    Log(\"TOWN_INN_SAVEPOINT_ENTER\")\r\nend",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "SaveData.ShowSaveDialog()\r\n\r\n-- Welcome-back text when loading game\r\nif SaveData.IsRestoringGame() then\r\n    Log(\"TOWN_INN_SAVEPOINT_ENTER\")\r\nend"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -921,8 +1067,14 @@
 												"Key": "Room_R_SleepCannot",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"town_inn_room_nosleep\")",
-												"ScriptAppear": "return not Storage.GetFlag(\"town_inn_cansleep\")\r\n\r\n--[[\r\n-- the rent flag was reset if we slept, so use that to prevent sleeping twice.\r\n-- also can't sleep during the day.\r\nlocal hour = GetTimeHour()\r\nlocal sleepytime = hour < 6 or hour > 19\r\nreturn not sleepytime --and not Storage.GetFlag(\"town_inn_rented\")\r\n]]",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"town_inn_room_nosleep\")"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return not Storage.GetFlag(\"town_inn_cansleep\")\r\n\r\n--[[\r\n-- the rent flag was reset if we slept, so use that to prevent sleeping twice.\r\n-- also can't sleep during the day.\r\nlocal hour = GetTimeHour()\r\nlocal sleepytime = hour < 6 or hour > 19\r\nreturn not sleepytime --and not Storage.GetFlag(\"town_inn_rented\")\r\n]]"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -945,7 +1097,10 @@
 												"Key": "Room_R_Sleep",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"town_inn_room_sleep\")\r\nStorage.SetFlag(\"town_inn_rented\", false)\r\nStorage.SetFlag(\"town_inn_cansleep\", false)\r\nRest()",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"town_inn_room_sleep\")\r\nStorage.SetFlag(\"town_inn_rented\", false)\r\nStorage.SetFlag(\"town_inn_cansleep\", false)\r\nRest()"
+												},
 												"Children": [
 													{
 														"Key": "RoomDoSleepEnd",
@@ -977,7 +1132,10 @@
 				"Key": "Foxtaur_Private",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"INN_FOXTAUR_MOVE_AGREE\")\r\nLog(\"INN_FOXTAUR_MOVE1\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"INN_FOXTAUR_MOVE_AGREE\")\r\nLog(\"INN_FOXTAUR_MOVE1\")"
+				},
 				"Children": [
 					{
 						"Key": "Foxtaur_C_Move1",
@@ -991,7 +1149,10 @@
 								"Key": "Foxtaur_R_Move1",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"INN_FOXTAUR_MOVE2\")\r\n\r\nif Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"INN_FOXTAUR_MOVE3\")\r\nelse\r\n    Log(\"INN_FOXTAUR_MOVE3_NOROOM\")\r\nend",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"INN_FOXTAUR_MOVE2\")\r\n\r\nif Storage.GetFlag(\"TOWN_INN_ROOM_VISITED\") then\r\n    Log(\"INN_FOXTAUR_MOVE3\")\r\nelse\r\n    Log(\"INN_FOXTAUR_MOVE3_NOROOM\")\r\nend"
+								},
 								"Children": [
 									{
 										"Key": "Foxtaur_C_Move2",
@@ -1005,7 +1166,10 @@
 												"Key": "Foxtaur_R_Move2",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"INN_FOXTAUR_MOVE4\")\r\nLog((temp_foxtaurwork == true)\r\n    and \"INN_FOXTAUR_REVEAL_WORK\"\r\n    or \"INN_FOXTAUR_REVEAL_CHAT\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"INN_FOXTAUR_MOVE4\")\r\nLog((temp_foxtaurwork == true)\r\n    and \"INN_FOXTAUR_REVEAL_WORK\"\r\n    or \"INN_FOXTAUR_REVEAL_CHAT\")"
+												},
 												"Children": [
 													{
 														"Key": "Foxtaur_C_Battle",
@@ -1014,13 +1178,19 @@
 														"Title": "Uh-oh...",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local foxbutt = Creature(\"CR_Town_Foxtaur\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(foxbutt)\r\nstate:SetGrappling(foxbutt, Player)\r\nstate:Begin()",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local foxbutt = Creature(\"CR_Town_Foxtaur\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(foxbutt)\r\nstate:SetGrappling(foxbutt, Player)\r\nstate:Begin()"
+														},
 														"Children": [
 															{
 																"Key": "Foxtaur_R_BattleWon",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- TODO: assuming player can't actually eat the taur due to size.\r\n-- so this doesn't handle vore scenarios at all.\r\n\r\nStorage.SetFlag(\"town_inn_foxtaur_arrested\", true)\r\nLog(\"INN_FOXTAUR_ARREST1\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "-- TODO: assuming player can't actually eat the taur due to size.\r\n-- so this doesn't handle vore scenarios at all.\r\n\r\nStorage.SetFlag(\"town_inn_foxtaur_arrested\", true)\r\nLog(\"INN_FOXTAUR_ARREST1\")"
+																},
 																"Children": [
 																	{
 																		"Key": "Foxtaur_C_Arrest",
@@ -1034,7 +1204,10 @@
 																				"Key": "Foxtaur_R_Arrest",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"INN_FOXTAUR_ARREST2\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"INN_FOXTAUR_ARREST2\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "Foxtaur_C_Arrest2",
@@ -1049,7 +1222,10 @@
 																								"Key": "Foxtaur_R_Stmt1",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "LogSplit()\r\nLog(\"INN_FOXTAUR_STMT1\")\r\nLog(Storage.GetFlag(\"law_ever_arrested\") and \"INN_FOXTAUR_STMT2_MET\" or \"INN_FOXTAUR_STMT2_NEW\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "LogSplit()\r\nLog(\"INN_FOXTAUR_STMT1\")\r\nLog(Storage.GetFlag(\"law_ever_arrested\") and \"INN_FOXTAUR_STMT2_MET\" or \"INN_FOXTAUR_STMT2_NEW\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "Foxtaur_C_Stmt_True",
@@ -1059,13 +1235,19 @@
 																										"Tooltip": "Try to relay the events as they happened.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_TRUE\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 1)",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "Log(\"INN_FOXTAUR_STMT3_TRUE\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 1)"
+																										},
 																										"Children": [
 																											{
 																												"Key": "Foxtaur_R_StmtWrap1",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP1\")\r\nStorage.SetFlag(\"law_gavin_arrested\", true)",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"INN_FOXTAUR_STMT_WRAPUP1\")\r\nStorage.SetFlag(\"law_gavin_arrested\", true)"
+																												},
 																												"Children": [
 																													{
 																														"Key": "Foxtaur_C_StmtWrap2",
@@ -1079,7 +1261,10 @@
 																																"Key": "Foxtaur_R_StmtWrap2",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP2\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"INN_FOXTAUR_STMT_WRAPUP2\")"
+																																},
 																																"Children": [
 																																	{
 																																		"Key": "Foxtaur_C_StmtWrap3",
@@ -1093,7 +1278,10 @@
 																																				"Key": "Foxtaur_R_StmtWrap3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "Log(\"INN_FOXTAUR_STMT_WRAPUP3\")",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "Log(\"INN_FOXTAUR_STMT_WRAPUP3\")"
+																																				},
 																																				"Children": [
 																																					{
 																																						"IsState": false,
@@ -1130,7 +1318,10 @@
 																										"Tooltip": "[Lie] Describe how you saved a lady's life.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_BOAST\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 2)",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "Log(\"INN_FOXTAUR_STMT3_BOAST\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 2)"
+																										},
 																										"Children": [
 																											{
 																												"IsState": true,
@@ -1147,7 +1338,10 @@
 																										"Tooltip": "Try to alleviate the charge of predation against the taur.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "Log(\"INN_FOXTAUR_STMT3_DOWNPLAY\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 3)",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "Log(\"INN_FOXTAUR_STMT3_DOWNPLAY\")\r\nStorage.SetNumber(\"law_gavin_stmt\", 3)"
+																										},
 																										"Children": [
 																											{
 																												"IsState": true,
@@ -1175,7 +1369,10 @@
 														"Title": "[DBG] Skip Battle",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return IsDebugMode()",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return IsDebugMode()"
+														},
 														"Children": [
 															{
 																"IsState": true,

@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "a9464ffe-0d38-415e-8849-af439cf25f43",
-	"Name": "Script_TableRewards"
+	"AssetID": "a9464ffe-0d38-415e-8849-af439cf25f43",
+	"AssetName": "Script_TableRewards",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_TableRewards"
+	}
 }

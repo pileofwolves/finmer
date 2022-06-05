@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "ab8156c9-bdce-41a2-be64-2818742cae0b",
-	"Name": "Strings_TownMisc",
+	"AssetID": "ab8156c9-bdce-41a2-be64-2818742cae0b",
+	"AssetName": "Strings_TownMisc",
 	"Entries": [
 		{
 			"Key": "BRIDGE_BROKEN",

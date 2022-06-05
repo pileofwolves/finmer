@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "1310e6c1-154f-4b29-9904-ba2ef3c0837a",
-	"Name": "W_UnarmedBite",
+	"AssetID": "1310e6c1-154f-4b29-9904-ba2ef3c0837a",
+	"AssetName": "W_UnarmedBite",
 	"ObjectName": "Bite",
 	"ObjectAlias": "teeth",
 	"ItemType": "Equipable",

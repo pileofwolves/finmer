@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "2c137b53-d7b6-446d-badd-355858ea3d0c",
-	"Name": "CR_Town_Pit_Vulpes",
+	"AssetID": "2c137b53-d7b6-446d-badd-355858ea3d0c",
+	"AssetName": "CR_Town_Pit_Vulpes",
 	"ObjectName": "Vulpes",
 	"ObjectAlias": "the fox",
 	"Strength": 4,

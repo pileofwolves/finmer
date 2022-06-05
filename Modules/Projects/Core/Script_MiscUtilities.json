@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "4bd32ad0-9b4a-41f8-8929-0d94e84d52af",
-	"Name": "Script_MiscUtilities"
+	"AssetID": "4bd32ad0-9b4a-41f8-8929-0d94e84d52af",
+	"AssetName": "Script_MiscUtilities",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_MiscUtilities"
+	}
 }

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "baef8361-87cb-460d-80a5-6d8e4bca404a",
-	"Name": "I_SQ01_AlchSupplies",
+	"AssetID": "baef8361-87cb-460d-80a5-6d8e4bca404a",
+	"AssetName": "I_SQ01_AlchSupplies",
 	"ObjectName": "Alchemical Supplies",
 	"FlavorText": "A modest collection of flasks, herbs and filled vials you can't identify. Given the right buyer, it should fetch a good price.",
 	"ItemType": "Generic",

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetJournal",
-	"ID": "8dee0929-981c-4562-85d0-4752e755cc3c",
-	"Name": "TQ01",
+	"AssetID": "8dee0929-981c-4562-85d0-4752e755cc3c",
+	"AssetName": "TQ01",
 	"Title": "Hired Help",
 	"Stages": [
 		{

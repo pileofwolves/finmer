@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
-	"Name": "Scene_RoadNorth",
+	"AssetID": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
+	"AssetName": "Scene_RoadNorth",
 	"ScriptCustom": {
-		"ID": "c42131d7-f7df-4ffa-8cca-315eddfca078",
-		"Name": "Scene_RoadNorth_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RoadNorth_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "18c0964f-4cdb-47b2-b55e-a7b8320e6c4a",
-		"Name": "Scene_RoadNorth_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "24b2c6d9-c179-4650-8b3f-260d01b8f786",
-		"Name": "Scene_RoadNorth_OnLeave"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RoadNorth_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,8 +23,14 @@
 				"Key": "MQ03_Carriage",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- This dialogue only happens once\r\nStorage.SetFlag(\"MQ03_CARRIAGE_INTRO\", true)\r\n\r\nLog(\"MQ03_RIDESOUTH_INTRO1\")",
-				"ScriptAppear": "-- Show after bridge is repaired, and do this only once\r\nreturn Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") and not Storage.GetFlag(\"MQ03_CARRIAGE_INTRO\") ",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "-- This dialogue only happens once\r\nStorage.SetFlag(\"MQ03_CARRIAGE_INTRO\", true)\r\n\r\nLog(\"MQ03_RIDESOUTH_INTRO1\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "-- Show after bridge is repaired, and do this only once\r\nreturn Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") and not Storage.GetFlag(\"MQ03_CARRIAGE_INTRO\") "
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -40,7 +42,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO2\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_RIDESOUTH_INTRO2\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -53,8 +58,14 @@
 												"Key": "MQ03_Ride_MetZosk",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO3_MET\")",
-												"ScriptAppear": "return Storage.GetFlag(\"TOWN_INN_ZOSK_MET\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_RIDESOUTH_INTRO3_MET\")"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return Storage.GetFlag(\"TOWN_INN_ZOSK_MET\")"
+												},
 												"Children": [
 													{
 														"Key": "MQ03_Ride_AskBoard",
@@ -67,7 +78,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO4\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_RIDESOUTH_INTRO4\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -80,7 +94,10 @@
 																			{
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO5_YES\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_RIDESOUTH_INTRO5_YES\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ03_Ride_BoardNow",
@@ -94,7 +111,10 @@
 																							{
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_RIDESOUTH_BOARD\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_RIDESOUTH_BOARD\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -103,7 +123,10 @@
 																										"Tooltip": "Off we go!",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "SetScene(\"Scene_RoadCarriageRide\")",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "SetScene(\"Scene_RoadCarriageRide\")"
+																										},
 																										"Children": []
 																									}
 																								]
@@ -122,7 +145,10 @@
 																							{
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_RIDESOUTH_BOARD_DECLINE\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_RIDESOUTH_BOARD_DECLINE\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -157,7 +183,10 @@
 																			{
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO5_NO\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_RIDESOUTH_INTRO5_NO\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -183,7 +212,10 @@
 												"Key": "MQ03_Ride_NewZosk",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_RIDESOUTH_INTRO3_NEW\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_RIDESOUTH_INTRO3_NEW\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -204,7 +236,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.East, GoEast)\r\n\r\n-- If the player can go south for the first time, they must travel with the carriage\r\nif not Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") or Storage.GetFlag(\"MQ03_RODE_SOUTH\") then\r\n    AddLink(ECompass.South, GoSouth)\r\nend",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.East, GoEast)\r\n\r\n-- If the player can go south for the first time, they must travel with the carriage\r\nif not Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") or Storage.GetFlag(\"MQ03_RODE_SOUTH\") then\r\n    AddLink(ECompass.South, GoSouth)\r\nend"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -213,12 +248,18 @@
 						"Tooltip": "Talk to Zosk about riding south.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") and not Storage.GetFlag(\"MQ03_RODE_SOUTH\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") and not Storage.GetFlag(\"MQ03_RODE_SOUTH\")"
+						},
 						"Children": [
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_RIDESOUTH_BOARD_POKE\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_RIDESOUTH_BOARD_POKE\")"
+								},
 								"Children": [
 									{
 										"IsState": false,

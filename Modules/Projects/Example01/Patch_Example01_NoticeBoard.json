@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "8f5d239d-a48f-474e-99a4-784ea6519e70",
-	"Name": "Patch_Example01_NoticeBoard",
-	"ScriptCustom": {
-		"ID": "ca9e68f4-2ec5-4480-9064-99f226f822f8",
-		"Name": "8f5d239d-a48f-474e-99a4-784ea6519e70_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "12856204-1b99-4456-b52c-874bf7b2515c",
-		"Name": "8f5d239d-a48f-474e-99a4-784ea6519e70_EnterScript"
-	},
-	"ScriptLeave": {
-		"ID": "3d29cacc-03fd-4000-96e8-7aeaec3d6667",
-		"Name": "8f5d239d-a48f-474e-99a4-784ea6519e70_LeaveScript"
-	},
+	"AssetID": "8f5d239d-a48f-474e-99a4-784ea6519e70",
+	"AssetName": "Patch_Example01_NoticeBoard",
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
@@ -36,7 +24,10 @@
 						"Key": "Board_R_Example01",
 						"IsState": true,
 						"IsLink": false,
-						"ScriptAction": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_EXAMPLE01\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_EXAMPLE01\")"
+						},
 						"Children": [
 							{
 								"Key": "Unnamed",

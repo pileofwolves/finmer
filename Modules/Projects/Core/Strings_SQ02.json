@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "175dbff5-66cf-40ee-bcb9-72371b20b82c",
-	"Name": "Strings_SQ02",
+	"AssetID": "175dbff5-66cf-40ee-bcb9-72371b20b82c",
+	"AssetName": "Strings_SQ02",
 	"Entries": [
 		{
 			"Key": "SQ02_ABANDONED",

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "3612d1f1-d12c-40c0-8424-3e54a1ca2ca2",
-	"Name": "CR_MQ02_Randall",
+	"AssetID": "3612d1f1-d12c-40c0-8424-3e54a1ca2ca2",
+	"AssetName": "CR_MQ02_Randall",
 	"ObjectName": "Randall",
 	"Strength": 4,
 	"Agility": 5,

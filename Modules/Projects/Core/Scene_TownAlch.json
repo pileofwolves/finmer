@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "997b304e-0de9-407b-9600-a3b796cbabe2",
-	"Name": "Scene_TownAlch",
-	"ScriptCustom": {
-		"ID": "df843c61-bcd5-444f-bf52-a92282fb1e33",
-		"Name": "Scene_TownAlch_CustomScript"
-	},
+	"AssetID": "997b304e-0de9-407b-9600-a3b796cbabe2",
+	"AssetName": "Scene_TownAlch",
 	"ScriptEnter": {
-		"ID": "536e3639-b0a6-4442-9e21-c9a59f810f7f",
-		"Name": "Scene_TownAlch_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "2257a6cc-d2cb-4fcb-bca2-ca31ea21b350",
-		"Name": "997b304e-0de9-407b-9600-a3b796cbabe2_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownAlch_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,8 +19,14 @@
 				"Key": "Abandoned",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "if Storage.GetFlag(\"town_alch_stolen\") then\r\n    -- this is not the player's first visit to the now-empty place\r\n    Log(\"town_alch_abandoned\")\r\nend",
-				"ScriptAppear": "return Storage.GetFlag(\"town_alch_dead\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "if Storage.GetFlag(\"town_alch_stolen\") then\r\n    -- this is not the player's first visit to the now-empty place\r\n    Log(\"town_alch_abandoned\")\r\nend"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"town_alch_dead\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -49,7 +47,10 @@
 						"Title": "Leave",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_TownWSQ\")"
+						},
 						"Children": []
 					},
 					{
@@ -60,7 +61,10 @@
 						"Tooltip": "Have a look at the wares on display.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()\r\n\r\nLog(\"TOWN_ALCH_BROWSE\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()\r\n\r\nLog(\"TOWN_ALCH_BROWSE\")"
+						},
 						"Children": [
 							{
 								"Key": "Shop",
@@ -78,13 +82,19 @@
 						"Tooltip": "Ask about the compounds that were stolen last night.",
 						"Highlight": true,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "-- Can ask about this once Edgard mentions the stolen goods\r\nreturn Storage.GetFlag(\"MQ01_DONE\") and not Storage.GetFlag(\"TOWN_INN_TALK_STOLENGOODS\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Can ask about this once Edgard mentions the stolen goods\r\nreturn Storage.GetFlag(\"MQ01_DONE\") and not Storage.GetFlag(\"TOWN_INN_TALK_STOLENGOODS\")"
+						},
 						"Children": [
 							{
 								"Key": "MQ01_R_StolenGoods",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Storage.SetFlag(\"TOWN_INN_TALK_STOLENGOODS\", true)\r\nLog(\"TOWN_ALCH_STOLENGOODS\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Storage.SetFlag(\"TOWN_INN_TALK_STOLENGOODS\", true)\r\nLog(\"TOWN_ALCH_STOLENGOODS\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ01_C_StolenGoods2",
@@ -93,7 +103,10 @@
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "-- Bridge back to main\r\nLog(\"TOWN_ALCH_BROWSE\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- Bridge back to main\r\nLog(\"TOWN_ALCH_BROWSE\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
@@ -114,13 +127,19 @@
 						"Tooltip": "Ask about the book he was just reading.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 0",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"sq01\") == 0"
+						},
 						"Children": [
 							{
 								"Key": "SQ01_R_Intro",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"sq01_intro\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"sq01_intro\")"
+								},
 								"Children": [
 									{
 										"Key": "SQ01_C_Decline",
@@ -135,7 +154,10 @@
 												"Key": "SQ01_R_Decline",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"sq01_rejected\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"sq01_rejected\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -164,7 +186,10 @@
 												"Key": "SQ01_R_Intro2",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"sq01_confirm\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"sq01_confirm\")"
+												},
 												"Children": [
 													{
 														"Key": "SQ01_C_Decline2",
@@ -179,7 +204,10 @@
 																"Key": "SQ01_R_Decline2",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"sq01_rejected_alt\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"sq01_rejected_alt\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -203,7 +231,10 @@
 														"Tooltip": "Ask him why he would need such a thing.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return Storage.GetNumber(\"sq01_nosy\") == 0",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return Storage.GetNumber(\"sq01_nosy\") == 0"
+														},
 														"Children": [
 															{
 																"IsState": true,
@@ -220,14 +251,23 @@
 														"Tooltip": "Press him futher...",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return Storage.GetNumber(\"sq01_nosy\") > 0",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return Storage.GetNumber(\"sq01_nosy\") > 0"
+														},
 														"Children": [
 															{
 																"Key": "SQ01_R_TooNosy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"SQ01_ASK_WHY\" .. Storage.GetNumber(\"SQ01_NOSY\") + 1)",
-																"ScriptAppear": "-- player won't stop asking...\r\nreturn Storage.GetNumber(\"SQ01_NOSY\") >= 4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"SQ01_ASK_WHY\" .. Storage.GetNumber(\"SQ01_NOSY\") + 1)"
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "-- player won't stop asking...\r\nreturn Storage.GetNumber(\"SQ01_NOSY\") >= 4"
+																},
 																"Children": [
 																	{
 																		"Key": "SQ01_BeginFight",
@@ -236,13 +276,19 @@
 																		"Title": "Uh-oh...",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "-- Start a fight with the alchemist\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_SQ01_Alchemist\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    if prey ~= Player then\r\n        Storage.SetFlag(\"TOWN_ALCH_EATEN\", true)\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- If the player survives the encounter, then the alchemist must have died\r\nStorage.SetFlag(\"TOWN_ALCH_DEAD\", true)",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "-- Start a fight with the alchemist\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_SQ01_Alchemist\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    if prey ~= Player then\r\n        Storage.SetFlag(\"TOWN_ALCH_EATEN\", true)\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- If the player survives the encounter, then the alchemist must have died\r\nStorage.SetFlag(\"TOWN_ALCH_DEAD\", true)"
+																		},
 																		"Children": [
 																			{
 																				"Key": "FightWon_AteGuy",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAppear": "return Storage.GetFlag(\"TOWN_ALCH_EATEN\")",
+																				"ScriptAppear": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "return Storage.GetFlag(\"TOWN_ALCH_EATEN\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "FightWon_C_SleepOff",
@@ -256,7 +302,10 @@
 																								"Key": "FightWon_R_SleepOff",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "FoodComa()\r\nLogPostVore(\"SQ01_POSTVORE_SCAT\", \"SQ01_POSTVORE_NOSCAT\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "FoodComa()\r\nLogPostVore(\"SQ01_POSTVORE_SCAT\", \"SQ01_POSTVORE_NOSCAT\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "FightWon_C_Loot",
@@ -271,7 +320,10 @@
 																												"Key": "FightWon_R_Loot",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Storage.SetFlag(\"town_alch_stolen\", true)\r\nLog(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_SQ01_AlchSupplies\")\r\nPlayer:GiveItem(\"I_Amber01\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Storage.SetFlag(\"town_alch_stolen\", true)\r\nLog(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_SQ01_AlchSupplies\")\r\nPlayer:GiveItem(\"I_Amber01\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "FightWon_C_ToAbandon",
@@ -315,7 +367,10 @@
 																								"Key": "FightWon_R_Swallow",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"SQ01_ALCH_EAT_ANYWAY\")\r\nSleep(3)\r\nLog(\"SQ01_ALCH_KILL_DIGESTED\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"SQ01_ALCH_EAT_ANYWAY\")\r\nSleep(3)\r\nLog(\"SQ01_ALCH_KILL_DIGESTED\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -333,7 +388,10 @@
 																						"Title": "Leave him",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "Log(\"SQ01_ALCH_LEAVE_BEHIND\")\r\nSleep(2)",
+																						"ScriptAction": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "Log(\"SQ01_ALCH_LEAVE_BEHIND\")\r\nSleep(2)"
+																						},
 																						"Children": [
 																							{
 																								"IsState": true,
@@ -352,7 +410,10 @@
 																"Key": "SQ01_R_DiscussNosy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -391,7 +452,10 @@
 																"Key": "SQ01_R_DiscussReward",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"sq01_ask_reward\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"sq01_ask_reward\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -430,7 +494,10 @@
 																"Key": "SQ01_R_Accept",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"SQ01_ACCEPTED\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"I_SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"SQ01_ACCEPTED\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"I_SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)"
+																},
 																"Children": [
 																	{
 																		"Key": "SQ01_C_Accept2",
@@ -467,13 +534,19 @@
 						"Tooltip": "Say you did as he asked.",
 						"Highlight": true,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return Storage.GetNumber(\"SQ01\") == 1 and Player:HasItem(\"I_SQ01_VialFull\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"SQ01\") == 1 and Player:HasItem(\"I_SQ01_VialFull\")"
+						},
 						"Children": [
 							{
 								"Key": "SQ01_R_Handin",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ01_HANDIN1\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ01_HANDIN1\")"
+								},
 								"Children": [
 									{
 										"Key": "SQ01_C_Handin2",
@@ -487,7 +560,10 @@
 												"Key": "SQ01_R_Handin2",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)"
+												},
 												"Children": [
 													{
 														"Key": "SQ01_C_Handin3",
@@ -520,14 +596,23 @@
 						"Tooltip": "Ask about the sample you were promised.",
 						"Highlight": true,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return Storage.GetNumber(\"sq01\") == 2 and not Storage.GetFlag(\"sq01_collected_sample\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"sq01\") == 2 and not Storage.GetFlag(\"sq01_collected_sample\")"
+						},
 						"Children": [
 							{
 								"Key": "SQ01_R_Reward_Wait",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ01_REWARD_NOTREADY\")",
-								"ScriptAppear": "return Storage.GetNumber(\"town_alch_reward\") > GetTimeHourTotal()",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ01_REWARD_NOTREADY\")"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Storage.GetNumber(\"town_alch_reward\") > GetTimeHourTotal()"
+								},
 								"Children": [
 									{
 										"Key": "SQ01_C_Reward_Close",
@@ -550,7 +635,10 @@
 								"Key": "SQ01_R_Reward_Ready",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")"
+								},
 								"Children": [
 									{
 										"IsState": false,

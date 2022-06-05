@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "c6a565f3-d3d1-420e-85af-9a1156890bb7",
-	"Name": "CR_SQ02_Wolf_OV",
+	"AssetID": "c6a565f3-d3d1-420e-85af-9a1156890bb7",
+	"AssetName": "CR_SQ02_Wolf_OV",
 	"ObjectName": "Dire Wolf",
 	"ObjectAlias": "the wolf",
 	"Strength": 10,

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetJournal",
-	"ID": "91d32e80-0d61-45d3-8d5f-a6f810689849",
-	"Name": "MQ04",
+	"AssetID": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+	"AssetName": "MQ04",
 	"Title": "Partner in Crime",
 	"Stages": [
 		{

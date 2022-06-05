@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "144b2054-982c-4f0a-9755-722e19c1fc20",
-	"Name": "TQ01_Patch_Inn",
-	"ScriptCustom": {
-		"ID": "44d8d672-358a-4518-9506-ee85547bddc9",
-		"Name": "144b2054-982c-4f0a-9755-722e19c1fc20_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "721cc75e-9a7b-4dd4-95c0-30bb4df9f3fa",
-		"Name": "144b2054-982c-4f0a-9755-722e19c1fc20_EnterScript"
-	},
-	"ScriptLeave": {
-		"ID": "5d90e44d-0877-4878-abc7-44f07fd50c90",
-		"Name": "144b2054-982c-4f0a-9755-722e19c1fc20_LeaveScript"
-	},
+	"AssetID": "144b2054-982c-4f0a-9755-722e19c1fc20",
+	"AssetName": "TQ01_Patch_Inn",
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
@@ -31,13 +19,19 @@
 				"Tooltip": "The dingo on the bench.",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
-				"ScriptAppear": "return Storage.GetNumber(\"TQ01\") == 1",
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetNumber(\"TQ01\") == 1"
+				},
 				"Children": [
 					{
 						"Key": "TQ01_Tobias_Meet",
 						"IsState": true,
 						"IsLink": false,
-						"ScriptAction": "Log(\"TQ01_MEET\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"TQ01_MEET\")"
+						},
 						"Children": [
 							{
 								"Key": "TQ01_Continue",
@@ -52,7 +46,10 @@
 										"Key": "TQ01_Tobias_Explain",
 										"IsState": true,
 										"IsLink": false,
-										"ScriptAction": "Log(\"TQ01_EXPLAIN\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"TQ01_EXPLAIN\")"
+										},
 										"Children": [
 											{
 												"Key": "TQ01_Choice_Friend",
@@ -62,13 +59,19 @@
 												"Tooltip": "Ask about this \"friend\".",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
-												"ScriptAppear": "return not Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\")",
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\")"
+												},
 												"Children": [
 													{
 														"Key": "TQ01_Expo_Friend",
 														"IsState": true,
 														"IsLink": false,
-														"ScriptAction": "Log(\"TQ01_INFO_FRIEND\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_FRIEND\", true)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"TQ01_INFO_FRIEND\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_FRIEND\", true)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -100,13 +103,19 @@
 												"Tooltip": "Where you might be able to find the thief.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
-												"ScriptAppear": "return not Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\")\r\n",
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\")\r\n"
+												},
 												"Children": [
 													{
 														"Key": "TQ01_Expo_Location",
 														"IsState": true,
 														"IsLink": false,
-														"ScriptAction": "Log(\"TQ01_INFO_LOCATION\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_LOCATION\", true)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"TQ01_INFO_LOCATION\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_LOCATION\", true)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -138,13 +147,19 @@
 												"Tooltip": "What you can expect for helping out.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
-												"ScriptAppear": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")",
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+												},
 												"Children": [
 													{
 														"Key": "TQ01_Expo_Reward",
 														"IsState": true,
 														"IsLink": false,
-														"ScriptAction": "Log(\"TQ01_INFO_REWARD\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_REWARD\", true)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"TQ01_INFO_REWARD\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_REWARD\", true)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -176,13 +191,19 @@
 												"Tooltip": "That should be everything for now.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
-												"ScriptAppear": "return\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")",
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+												},
 												"Children": [
 													{
 														"Key": "TQ01_Wrapup",
 														"IsState": true,
 														"IsLink": false,
-														"ScriptAction": "Log(\"TQ01_WRAPUP\")\r\nJournal.Update(\"TQ01\", 1)\r\nStorage.SetNumber(\"TQ01\", 2)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"TQ01_WRAPUP\")\r\nJournal.Update(\"TQ01\", 1)\r\nStorage.SetNumber(\"TQ01\", 2)"
+														},
 														"Children": [
 															{
 																"Key": "TQ01_Tobias1_Goodbye",
@@ -220,13 +241,19 @@
 				"Tooltip": "Report your success to Tobias.",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
-				"ScriptAppear": "return Storage.GetNumber(\"TQ01\") == 3",
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetNumber(\"TQ01\") == 3"
+				},
 				"Children": [
 					{
 						"Key": "TQ01_Toby_Finish",
 						"IsState": true,
 						"IsLink": false,
-						"ScriptAction": "-- Print message\r\nLog(\"TQ01_COMPLETION\")\r\n\r\n-- Prevent player from completing the quest again\r\nStorage.SetNumber(\"TQ01\", 4)\r\n\r\n-- Remove the journal entry and the quest item\r\nJournal.Close(\"TQ01\")\r\nPlayer:TakeItem(\"TQ01_I_Pendant\")\r\n\r\n-- Grant rewards\r\nPlayer:ModifyMoney(55)\r\nPlayer:AwardXP(50)",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Print message\r\nLog(\"TQ01_COMPLETION\")\r\n\r\n-- Prevent player from completing the quest again\r\nStorage.SetNumber(\"TQ01\", 4)\r\n\r\n-- Remove the journal entry and the quest item\r\nJournal.Close(\"TQ01\")\r\nPlayer:TakeItem(\"TQ01_I_Pendant\")\r\n\r\n-- Grant rewards\r\nPlayer:ModifyMoney(55)\r\nPlayer:AwardXP(50)"
+						},
 						"Children": [
 							{
 								"Key": "TQ01_Finale",

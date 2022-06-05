@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "64e8ded0-491e-4685-9ef8-74be18163eb7",
-	"Name": "Strings_Intro",
+	"AssetID": "64e8ded0-491e-4685-9ef8-74be18163eb7",
+	"AssetName": "Strings_Intro",
 	"Entries": [
 		{
 			"Key": "OPENING",

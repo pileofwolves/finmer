@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "a7f5aa9c-7a8a-474e-bb91-09fc1151e3d9",
-	"Name": "Strings_Combat",
+	"AssetID": "a7f5aa9c-7a8a-474e-bb91-09fc1151e3d9",
+	"AssetName": "Strings_Combat",
 	"Entries": [
 		{
 			"Key": "ATTACK_CRIT",

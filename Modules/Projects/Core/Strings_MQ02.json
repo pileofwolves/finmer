@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "7ab1643d-6459-4e84-87bb-6827c70eaa65",
-	"Name": "Strings_MQ02",
+	"AssetID": "7ab1643d-6459-4e84-87bb-6827c70eaa65",
+	"AssetName": "Strings_MQ02",
 	"Entries": [
 		{
 			"Key": "FOREST_COTTAGE_APPROACH",

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "9373aa4a-3c09-4050-b6ae-b77b0eb2d4f6",
-	"Name": "Strings_SQ01",
+	"AssetID": "9373aa4a-3c09-4050-b6ae-b77b0eb2d4f6",
+	"AssetName": "Strings_SQ01",
 	"Entries": [
 		{
 			"Key": "SQ01_ACCEPTED",

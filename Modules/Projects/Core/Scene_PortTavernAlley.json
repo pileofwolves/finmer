@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "e610ac6b-025b-4181-9e31-c04d391c4ce8",
-	"Name": "Scene_PortTavernAlley",
-	"ScriptCustom": {
-		"ID": "ac13ae8d-00c4-4ccd-a6b5-51a05819cea1",
-		"Name": "e610ac6b-025b-4181-9e31-c04d391c4ce8_CustomScript"
-	},
+	"AssetID": "e610ac6b-025b-4181-9e31-c04d391c4ce8",
+	"AssetName": "Scene_PortTavernAlley",
 	"ScriptEnter": {
-		"ID": "640069c8-bace-42ad-88fd-88c3284cbf1e",
-		"Name": "Scene_PortTavernAlley_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "04897c96-b76b-45b3-bdba-c6787ca55762",
-		"Name": "e610ac6b-025b-4181-9e31-c04d391c4ce8_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_PortTavernAlley_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +19,10 @@
 				"Key": "MQ03_Event6",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SaveData.TakeCheckpoint()\r\nMQ03_SetupAssailantContext()\r\nLog(\"MQ03_TAVERN_EVENT6\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint()\r\nMQ03_SetupAssailantContext()\r\nLog(\"MQ03_TAVERN_EVENT6\")"
+				},
 				"Children": [
 					{
 						"Key": "MQ03_DoFight",
@@ -36,12 +31,18 @@
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "local _, pred = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(pred)\r\nfight:SetGrappling(pred, Player)\r\nfight:Begin()",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "local _, pred = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(pred)\r\nfight:SetGrappling(pred, Player)\r\nfight:Begin()"
+						},
 						"Children": [
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_TAVERN_FINALE1\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_TAVERN_FINALE1\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ03_C_Who",
@@ -51,12 +52,18 @@
 										"Tooltip": "Ask him who he is and why he is after you.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_WHO\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_WHO\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE2_WHO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_WHO\", true)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE2_WHO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_WHO\", true)"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -95,12 +102,18 @@
 										"Tooltip": "Ask what he knows you from.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "-- Must ask about Toby first so he mentions he knows the PC\r\nreturn Storage.GetFlag(\"MQ03_TAVERN_EVENT_WHO\") and not Storage.GetFlag(\"MQ03_TAVERN_EVENT_PC\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- Must ask about Toby first so he mentions he knows the PC\r\nreturn Storage.GetFlag(\"MQ03_TAVERN_EVENT_WHO\") and not Storage.GetFlag(\"MQ03_TAVERN_EVENT_PC\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE2_PC\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_PC\", true)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE2_PC\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_PC\", true)"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -139,12 +152,18 @@
 										"Tooltip": "Ask who sent him and the predator after you.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_RANDALL\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_RANDALL\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE2_RANDALL\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_RANDALL\", true)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE2_RANDALL\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_RANDALL\", true)"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -183,12 +202,18 @@
 										"Tooltip": "Ask what he knows about Mayor Iso.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_ISO\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"MQ03_TAVERN_EVENT_ISO\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE2_ISO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_ISO\", true)\r\nJournal.Update(\"MQ03\", 50)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE2_ISO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_ISO\", true)\r\nJournal.Update(\"MQ03\", 50)"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -227,12 +252,18 @@
 										"Tooltip": "Ask what this 'amber' substance is.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "-- Toby must've mentioned amber at least once\r\nreturn (Storage.GetFlag(\"MQ03_TAVERN_EVENT_RANDALL\")\r\n    or Storage.GetFlag(\"MQ03_TAVERN_EVENT_PC\"))\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT_AMBER\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- Toby must've mentioned amber at least once\r\nreturn (Storage.GetFlag(\"MQ03_TAVERN_EVENT_RANDALL\")\r\n    or Storage.GetFlag(\"MQ03_TAVERN_EVENT_PC\"))\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT_AMBER\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE2_AMBER\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_AMBER\", true)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE2_AMBER\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_AMBER\", true)"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -271,12 +302,18 @@
 										"Tooltip": "You've heard enough.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "-- Must ask about Iso, so player has a new lead to follow\r\nreturn Storage.GetFlag(\"MQ03_TAVERN_EVENT_ISO\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- Must ask about Iso, so player has a new lead to follow\r\nreturn Storage.GetFlag(\"MQ03_TAVERN_EVENT_ISO\")"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE3\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_FINALE3\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -288,7 +325,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_TAVERN_FINALE4\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_TAVERN_FINALE4\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -302,7 +342,10 @@
 																				"Key": "MQ03_R_Spare",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"MQ03_TOBY_SPARED\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_SPARE\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"MQ03_TOBY_SPARED\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_SPARE\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ03_C_EventWrapup",
@@ -315,7 +358,10 @@
 																							{
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_TAVERN_FINALE6\")\r\nFoodComa()",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_TAVERN_FINALE6\")\r\nFoodComa()"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -327,7 +373,10 @@
 																											{
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.PreferScat then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.PreferScat then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend"
+																												},
 																												"Children": [
 																													{
 																														"IsState": false,
@@ -339,7 +388,10 @@
 																															{
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"MQ03_TAVERN_FINALE8\")\r\nSetScene(\"Scene_PortDocks\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ03_TAVERN_FINALE8\")\r\nSetScene(\"Scene_PortDocks\")"
+																																},
 																																"Children": []
 																															}
 																														]
@@ -368,7 +420,10 @@
 																				"Key": "MQ03_R_Kill",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"TOBY_DEAD\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_KILL\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"TOBY_DEAD\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_KILL\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,

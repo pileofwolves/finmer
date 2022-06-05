@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "111a396b-1dd0-4f77-bd6e-21068d548ed2",
-	"Name": "TQ01_Combat",
+	"AssetID": "111a396b-1dd0-4f77-bd6e-21068d548ed2",
+	"AssetName": "TQ01_Combat",
 	"Entries": [
 		{
 			"Key": "TQ01_WOLF_DIGEST",

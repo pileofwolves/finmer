@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "3063766b-f21c-43d4-acd2-8c77773ed8c4",
-	"Name": "Scene_RoadCarriageRide",
-	"ScriptCustom": {
-		"ID": "39223eaf-85ad-4b9d-a06f-dd84163ace3b",
-		"Name": "3063766b-f21c-43d4-acd2-8c77773ed8c4_CustomScript"
-	},
+	"AssetID": "3063766b-f21c-43d4-acd2-8c77773ed8c4",
+	"AssetName": "Scene_RoadCarriageRide",
 	"ScriptEnter": {
-		"ID": "2bdd1b5a-9c15-4676-b50c-15a569eb7bde",
-		"Name": "Scene_RoadCarriageRide_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "3af26273-f10f-47e0-a576-c151a46ae72a",
-		"Name": "3063766b-f21c-43d4-acd2-8c77773ed8c4_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RoadCarriageRide_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +19,10 @@
 				"Key": "Ride_Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP01\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"MQ03_RIDESOUTH_TRIP01\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -39,7 +34,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP02\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_RIDESOUTH_TRIP02\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -51,7 +49,10 @@
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP03\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_RIDESOUTH_TRIP03\")"
+												},
 												"Children": [
 													{
 														"Key": "Ride_C_AskZosk",
@@ -61,12 +62,18 @@
 														"Tooltip": "Ask about the merchant's background.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_ZOSK\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_ZOSK\")"
+																},
 																"Children": [
 																	{
 																		"Key": "AutoLink",
@@ -94,7 +101,10 @@
 																		"Tooltip": "That's enough for now.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAppear": "-- Discussed at least one topic\r\nreturn Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\")",
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "-- Discussed at least one topic\r\nreturn Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")\r\n    or Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "AutoLink",
@@ -116,12 +126,18 @@
 														"Tooltip": "Ask whether his work lets him see his relatives.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "-- Must have asked about the guy himself first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- Must have asked about the guy himself first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_FAMILY\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_FAMILY\")"
+																},
 																"Children": [
 																	{
 																		"Key": "AutoLink",
@@ -159,12 +175,18 @@
 														"Tooltip": "Ask about the contents of the cart behind you.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CARGO\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CARGO\")"
+																},
 																"Children": [
 																	{
 																		"Key": "AutoLink",
@@ -202,12 +224,18 @@
 														"Tooltip": "Ask about the buyer.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "-- Must have asked about cargo first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- Must have asked about cargo first\r\nreturn not Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\") and Storage.GetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\")"
+														},
 														"Children": [
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CLIENT\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CLIENT\")"
+																},
 																"Children": [
 																	{
 																		"Key": "AutoLink",
@@ -251,7 +279,10 @@
 				"Key": "Ride_Memory",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP04\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"MQ03_RIDESOUTH_TRIP04\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -263,7 +294,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP05\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_RIDESOUTH_TRIP05\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -275,7 +309,10 @@
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP06\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_RIDESOUTH_TRIP06\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -287,7 +324,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP07\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_RIDESOUTH_TRIP07\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -387,7 +427,10 @@
 				"Key": "Ride_Reflect",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP08\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"MQ03_RIDESOUTH_TRIP08\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -399,7 +442,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP09\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_RIDESOUTH_TRIP09\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -411,7 +457,10 @@
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP10\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_RIDESOUTH_TRIP10\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -423,7 +472,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP11\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_RIDESOUTH_TRIP11\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -435,7 +487,10 @@
 																			{
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_RIDESOUTH_TRIP12\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_RIDESOUTH_TRIP12\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -444,7 +499,10 @@
 																						"Tooltip": "Finally, you've arrived!",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "-- Progress the main quest\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nJournal.Update(\"MQ03\", 40)\r\n\r\n-- Teleport to South Finmer\r\nSetScene(\"Scene_PortCentral\")",
+																						"ScriptAction": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "-- Progress the main quest\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nJournal.Update(\"MQ03\", 40)\r\n\r\n-- Teleport to South Finmer\r\nSetScene(\"Scene_PortCentral\")"
+																						},
 																						"Children": []
 																					}
 																				]

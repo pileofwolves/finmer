@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "b74ebcf9-e9d5-4e01-8877-902dbd3006c8",
-	"Name": "CR_Town_Foxtaur",
+	"AssetID": "b74ebcf9-e9d5-4e01-8877-902dbd3006c8",
+	"AssetName": "CR_Town_Foxtaur",
 	"ObjectName": "Foxtaur",
 	"ObjectAlias": "the taur",
 	"Strength": 8,

@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "a7316363-9645-491d-919d-43bf997cc3c7",
-	"Name": "Scene_PortTavern",
-	"ScriptCustom": {
-		"ID": "e348ee20-cf79-435f-b9bb-9877c1c43e8a",
-		"Name": "a7316363-9645-491d-919d-43bf997cc3c7_CustomScript"
-	},
+	"AssetID": "a7316363-9645-491d-919d-43bf997cc3c7",
+	"AssetName": "Scene_PortTavern",
 	"ScriptEnter": {
-		"ID": "df19e5e5-e3fc-4f72-a661-50369f3e3a86",
-		"Name": "Scene_PortTavern_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "85ffc2d9-f0b3-4132-83fd-5b1f9c494d70",
-		"Name": "a7316363-9645-491d-919d-43bf997cc3c7_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_PortTavern_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -36,7 +28,10 @@
 						"Tooltip": "You've got other places to be.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_PortCentral\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_PortCentral\")"
+						},
 						"Children": []
 					},
 					{
@@ -52,8 +47,14 @@
 								"Key": "MQ03_EventStart",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_TAVERN_EVENT1\")\r\nSetInventoryEnabled(false)\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nSetTimeHour(20)",
-								"ScriptAppear": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") >= 3\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_TAVERN_EVENT1\")\r\nSetInventoryEnabled(false)\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nSetTimeHour(20)"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") >= 3\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -66,7 +67,10 @@
 												"Key": "MQ03_Event2",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_TAVERN_EVENT2\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_TAVERN_EVENT2\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -79,7 +83,10 @@
 																"Key": "MQ03_Event3",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_TAVERN_EVENT3\")\r\n\r\n-- Set up context for the pred\r\nMQ03_SetupAssailantContext()",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_TAVERN_EVENT3\")\r\n\r\n-- Set up context for the pred\r\nMQ03_SetupAssailantContext()"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -92,8 +99,14 @@
 																				"Key": "MQ03_Event4_Eaten",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_TAVERN_EVENT4_EATEN\")",
-																				"ScriptAppear": "-- Player swallowed Sahro during MQ02\r\nreturn Storage.GetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_TAVERN_EVENT4_EATEN\")"
+																				},
+																				"ScriptAppear": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "-- Player swallowed Sahro during MQ02\r\nreturn Storage.GetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ03_Event5_C_Why",
@@ -108,7 +121,10 @@
 																								"Key": "MQ03_Event5_R_Why",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_TAVERN_EVENT5_WHY\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_TAVERN_EVENT5_WHY\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -121,7 +137,10 @@
 																												"Key": "MQ03_Event5_R_Why2",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ03_TAVERN_EVENT5_WHY2\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ03_TAVERN_EVENT5_WHY2\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "MQ03_Event_ToAlley",
@@ -130,7 +149,10 @@
 																														"Title": "Uh-oh",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
-																														"ScriptAction": "SetScene(\"Scene_PortTavernAlley\")",
+																														"ScriptAction": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "SetScene(\"Scene_PortTavernAlley\")"
+																														},
 																														"Children": []
 																													}
 																												]
@@ -170,7 +192,10 @@
 																								"Key": "MQ03_Event5_R_Resist",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_TAVERN_EVENT5_RESIST\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_TAVERN_EVENT5_RESIST\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -187,8 +212,14 @@
 																				"Key": "MQ03_Event4_Hit",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_TAVERN_EVENT4_HIT\")",
-																				"ScriptAppear": "-- Player attacked Randall during MQ02, which means\r\n-- Sahro must have been knocked out also.\r\nreturn Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_TAVERN_EVENT4_HIT\")"
+																				},
+																				"ScriptAppear": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "-- Player attacked Randall during MQ02, which means\r\n-- Sahro must have been knocked out also.\r\nreturn Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -211,7 +242,10 @@
 																				"Key": "MQ03_Event4_Default",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_TAVERN_EVENT4_DEFAULT\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_TAVERN_EVENT4_DEFAULT\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,

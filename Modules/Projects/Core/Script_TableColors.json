@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "81629b4b-3381-42f8-a19d-21969e242fbb",
-	"Name": "Script_TableColors"
+	"AssetID": "81629b4b-3381-42f8-a19d-21969e242fbb",
+	"AssetName": "Script_TableColors",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_TableColors"
+	}
 }

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "70bdfecc-1366-4245-8e7a-07cc105230a4",
-	"Name": "CR_Test_MedOpponent",
+	"AssetID": "70bdfecc-1366-4245-8e7a-07cc105230a4",
+	"AssetName": "CR_Test_MedOpponent",
 	"ObjectName": "Medium Opponent",
 	"Strength": 6,
 	"Agility": 6,

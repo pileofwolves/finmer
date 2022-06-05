@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "a26050f3-7c62-4f1c-bbb1-be6d3087bc72",
-	"Name": "Strings_TownPit",
+	"AssetID": "a26050f3-7c62-4f1c-bbb1-be6d3087bc72",
+	"AssetName": "Strings_TownPit",
 	"Entries": [
 		{
 			"Key": "TOWN_NSQ_PITOPEN_BEGIN",

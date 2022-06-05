@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "ed630092-2d61-419d-ac36-df1c77845026",
-	"Name": "Scene_TownHall",
-	"ScriptCustom": {
-		"ID": "b56418d5-be87-469a-bac7-85e887ea4b66",
-		"Name": "Scene_TownHall_CustomScript"
-	},
+	"AssetID": "ed630092-2d61-419d-ac36-df1c77845026",
+	"AssetName": "Scene_TownHall",
 	"ScriptEnter": {
-		"ID": "aed794cb-a1d5-4fa1-9189-7f5fc005555a",
-		"Name": "Scene_TownHall_OnEnter"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownHall_Enter"
 	},
 	"ScriptLeave": {
-		"ID": "7491312f-247b-45e3-9f85-35ff0887e19c",
-		"Name": "Scene_TownHall_OnLeave"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownHall_Leave"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,8 +23,14 @@
 				"Key": "MQ01_Intro",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"MQ01_INTRO1\")",
-				"ScriptAppear": "return Storage.GetFlag(\"MQ01_AVAILABLE\") and not Storage.GetFlag(\"MQ01_STARTED\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"MQ01_INTRO1\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"MQ01_AVAILABLE\") and not Storage.GetFlag(\"MQ01_STARTED\")"
+				},
 				"Children": [
 					{
 						"Key": "MQ01_C_Intro2",
@@ -43,7 +45,10 @@
 								"Key": "MQ01_R_Intro2",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ01_INTRO2\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ01_INTRO2\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ01_C_Intro3",
@@ -57,7 +62,10 @@
 												"Key": "MQ01_R_Intro3",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ01_INTRO3\")\r\nJournal.Update(\"MQ03\", 10)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ01_INTRO3\")\r\nJournal.Update(\"MQ03\", 10)"
+												},
 												"Children": [
 													{
 														"Key": "MQ01_C_Intro4",
@@ -72,7 +80,10 @@
 																"Key": "MQ01_R_Intro4",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ01_INTRO4\")\r\nPlayer:GiveItem(\"I_MQ01_InnPass\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ01_INTRO4\")\r\nPlayer:GiveItem(\"I_MQ01_InnPass\")"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ01_C_Intro5",
@@ -86,7 +97,10 @@
 																				"Key": "MQ01_R_Intro5",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ01_INTRO5\")\r\n\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nJournal.Update(\"MQ01\", 30)\r\n\r\nSetScene(\"Scene_TownNSQ\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ01_INTRO5\")\r\n\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nJournal.Update(\"MQ01\", 30)\r\n\r\nSetScene(\"Scene_TownNSQ\")"
+																				},
 																				"Children": []
 																			}
 																		]
@@ -108,7 +122,10 @@
 																"Key": "MQ01_R_Reward",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ01_INFO_REWARD\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ01_INFO_REWARD\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -137,7 +154,10 @@
 																"Key": "MQ01_R_ActingMayor",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ01_INFO_ACTINGMAYOR\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ01_INFO_ACTINGMAYOR\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -167,8 +187,14 @@
 				"Key": "MQ03_Intro",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"MQ03_INTRO1\")",
-				"ScriptAppear": "return Storage.GetFlag(\"MQ02_DONE\") and not Storage.GetFlag(\"MQ03_STARTED\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"MQ03_INTRO1\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"MQ02_DONE\") and not Storage.GetFlag(\"MQ03_STARTED\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -181,7 +207,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ03_INTRO2\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ03_INTRO2\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ03_C_Intro3",
@@ -195,7 +224,10 @@
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_INTRO3\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_INTRO3\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -208,7 +240,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_INTRO4\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_INTRO4\")"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ03_C_Intro5",
@@ -221,7 +256,10 @@
 																			{
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ03_INTRO5\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ03_INTRO5\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -234,7 +272,10 @@
 																							{
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ03_INTRO6\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ03_INTRO6\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -246,7 +287,10 @@
 																											{
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ03_INTRO7\")\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetNumber(\"BRIDGE_REPAIR_TIME\", GetTimeHourTotal() + 12)\r\nPlayer:ModifyMoney(RewardGold.MQ02_Complete)\r\nPlayer:AwardXP(RewardXP.MQ03_Accept)\r\nJournal.Update(\"MQ03\", 30)",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ03_INTRO7\")\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetNumber(\"BRIDGE_REPAIR_TIME\", GetTimeHourTotal() + 12)\r\nPlayer:ModifyMoney(RewardGold.MQ02_Complete)\r\nPlayer:AwardXP(RewardXP.MQ03_Accept)\r\nJournal.Update(\"MQ03\", 30)"
+																												},
 																												"Children": [
 																													{
 																														"IsState": false,
@@ -255,7 +299,10 @@
 																														"Tooltip": "Take your leave.",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
-																														"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+																														"ScriptAction": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "SetScene(\"Scene_TownNSQ\")"
+																														},
 																														"Children": []
 																													}
 																												]
@@ -285,7 +332,10 @@
 															{
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ03_INTRO4_ALT\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ03_INTRO4_ALT\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -311,7 +361,10 @@
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ03_INTRO3_DETAIL\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ03_INTRO3_DETAIL\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -337,7 +390,10 @@
 							{
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "SetScene(\"Scene_TownNSQ\")"
+								},
 								"Children": []
 							}
 						]
@@ -348,8 +404,14 @@
 				"Key": "SQ02_Handin",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"SQ02_TOWNHALL_ENTER\")",
-				"ScriptAppear": "return Player:HasItem(\"I_SQ02_WolfTrophy\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"TOWN_HALL_ENTER\")\r\nLog(\"SQ02_TOWNHALL_ENTER\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Player:HasItem(\"I_SQ02_WolfTrophy\")"
+				},
 				"Children": [
 					{
 						"Key": "SQ02_C_Explain",
@@ -364,7 +426,10 @@
 								"Key": "SQ02_R_Explain",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"I_SQ02_WolfTrophy\")\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nJournal.Close(\"SQ02\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"I_SQ02_WolfTrophy\")\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nJournal.Close(\"SQ02\")"
+								},
 								"Children": [
 									{
 										"Key": "SQ02_C_Leave",
@@ -374,7 +439,10 @@
 										"Tooltip": "Time to take your leave.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "SetScene(\"Scene_TownNSQ\")"
+										},
 										"Children": []
 									}
 								]
@@ -387,7 +455,10 @@
 				"Key": "Empty",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"town_hall_empty\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"town_hall_empty\")"
+				},
 				"Children": [
 					{
 						"Key": "Leave",
@@ -397,7 +468,10 @@
 						"Tooltip": "Go outside, nothing to see here.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_TownNSQ\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_TownNSQ\")"
+						},
 						"Children": []
 					}
 				]

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "795c79f2-ce54-4c2f-837e-d767e3c2599a",
-	"Name": "W_Dagger",
+	"AssetID": "795c79f2-ce54-4c2f-837e-d767e3c2599a",
+	"AssetName": "W_Dagger",
 	"ObjectName": "Dagger",
 	"ObjectAlias": "dagger",
 	"FlavorText": "A small iron blade - though its size belies its power. Knives and daggers are well known for their roles in the creation and destruction of kings and kingdoms alike.",

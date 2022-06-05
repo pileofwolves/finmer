@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "0be57b08-5da7-40f8-8fef-53805ba9bfa8",
-	"Name": "W_UnarmedPunch",
+	"AssetID": "0be57b08-5da7-40f8-8fef-53805ba9bfa8",
+	"AssetName": "W_UnarmedPunch",
 	"ObjectName": "Fists",
 	"ObjectAlias": "fists",
 	"ItemType": "Equipable",

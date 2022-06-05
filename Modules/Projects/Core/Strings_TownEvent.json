@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "14b3e269-ba67-4f93-9c1a-a29b8b3fd6c1",
-	"Name": "Strings_TownEvent",
+	"AssetID": "14b3e269-ba67-4f93-9c1a-a29b8b3fd6c1",
+	"AssetName": "Strings_TownEvent",
 	"Entries": [
 		{
 			"Key": "EVENT_NAKED_APOLOGIZE",

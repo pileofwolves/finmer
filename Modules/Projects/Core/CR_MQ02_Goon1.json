@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "6467d21a-55f0-4a01-8f83-4a9352f479f1",
-	"Name": "CR_MQ02_Goon1",
+	"AssetID": "6467d21a-55f0-4a01-8f83-4a9352f479f1",
+	"AssetName": "CR_MQ02_Goon1",
 	"ObjectName": "Husky",
 	"ObjectAlias": "the husky",
 	"Strength": 3,

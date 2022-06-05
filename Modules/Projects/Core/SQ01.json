@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetJournal",
-	"ID": "024488cf-046f-4bd1-b490-13991010338b",
-	"Name": "SQ01",
+	"AssetID": "024488cf-046f-4bd1-b490-13991010338b",
+	"AssetName": "SQ01",
 	"Title": "Hazardous Occupation",
 	"Stages": [
 		{

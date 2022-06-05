@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "885b2cbf-be29-4fee-b085-5977cd6a4cf7",
-	"Name": "Scene_TownSmithy",
-	"ScriptCustom": {
-		"ID": "8fc8f2c9-3b4a-4f1b-b4a8-17e95e3b6e97",
-		"Name": "Scene_TownSmithy_CustomScript"
-	},
+	"AssetID": "885b2cbf-be29-4fee-b085-5977cd6a4cf7",
+	"AssetName": "Scene_TownSmithy",
 	"ScriptEnter": {
-		"ID": "3164f09c-684b-4cdd-baaa-0e1a7c77d392",
-		"Name": "Scene_TownSmithy_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "5d08dc95-bf03-4703-ace1-908bccb3e573",
-		"Name": "885b2cbf-be29-4fee-b085-5977cd6a4cf7_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownSmithy_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -36,7 +28,10 @@
 						"Tooltip": "Leave the busy fellow to his work.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_TownWSQ\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_TownWSQ\")"
+						},
 						"Children": []
 					},
 					{
@@ -47,7 +42,10 @@
 						"Tooltip": "Have a look at what's in stock.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "local shop = Shop(\"TownSmithy\")\r\nshop.Title = \"North Finmer Smithy\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"A_LeatherArmor\"), math.random(1, 2))\r\n    shop:AddItem(Item(\"W_Dagger\"), math.random(1, 4))\r\n    shop:AddItem(Item(\"W_SwordSteel\"), math.random(1, 2))\r\n    if math.random(0, 1) == 1 then\r\n        shop:AddItem(Item(\"W_SwordSilver\"), 1)\r\n    end\r\nend\r\nshop:Show()\r\nshop:Save()",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "local shop = Shop(\"TownSmithy\")\r\nshop.Title = \"North Finmer Smithy\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"A_LeatherArmor\"), math.random(1, 2))\r\n    shop:AddItem(Item(\"W_Dagger\"), math.random(1, 4))\r\n    shop:AddItem(Item(\"W_SwordSteel\"), math.random(1, 2))\r\n    if math.random(0, 1) == 1 then\r\n        shop:AddItem(Item(\"W_SwordSilver\"), 1)\r\n    end\r\nend\r\nshop:Show()\r\nshop:Save()"
+						},
 						"Children": [
 							{
 								"IsState": true,
@@ -64,13 +62,19 @@
 						"Tooltip": "Ask the vixen if she knows any leads for work.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return not Storage.GetFlag(\"mq01_available\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return not Storage.GetFlag(\"mq01_available\")"
+						},
 						"Children": [
 							{
 								"Key": "MQ01_R_Setup",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"the smith\"\r\nquestgiver.Gender = EGender.Female\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"the smith\"\r\nquestgiver.Gender = EGender.Female\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ01_C_Bridge",
@@ -85,7 +89,10 @@
 												"Key": "MQ01_R_Bridge",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ01_SETUP_BRIDGE\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ01_SETUP_BRIDGE\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -114,7 +121,10 @@
 												"Key": "MQ01_R_Mayor",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ01_SETUP_MAYOR\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ01_SETUP_MAYOR\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -138,7 +148,10 @@
 										"Tooltip": "Thank her for the information.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"MQ01_SETUP2\")\r\nStorage.SetFlag(\"mq01_available\", true)\r\nJournal.Update(\"MQ01\", 20)"
+										},
 										"Children": [
 											{
 												"IsState": true,
@@ -164,8 +177,14 @@
 								"Key": "Chat_R_MQ02",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Storage.SetFlag(\"town_smithy_chat_mq02\", true)\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02_ALT\")\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02\")\r\nend",
-								"ScriptAppear": "return Storage.GetFlag(\"mq02_done\") and not Storage.GetFlag(\"town_smithy_chat_mq02\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Storage.SetFlag(\"town_smithy_chat_mq02\", true)\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02_ALT\")\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02\")\r\nend"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Storage.GetFlag(\"mq02_done\") and not Storage.GetFlag(\"town_smithy_chat_mq02\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -178,7 +197,10 @@
 								"Key": "Chat_R_General",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")"
+								},
 								"Children": [
 									{
 										"Key": "Chat_C_Exit",

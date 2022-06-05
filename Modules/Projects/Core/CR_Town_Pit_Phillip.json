@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "217681a6-e59f-4ca6-aee2-10eeed0d40da",
-	"Name": "CR_Town_Pit_Phillip",
+	"AssetID": "217681a6-e59f-4ca6-aee2-10eeed0d40da",
+	"AssetName": "CR_Town_Pit_Phillip",
 	"ObjectName": "Phillip",
 	"ObjectAlias": "the horse",
 	"Strength": 8,

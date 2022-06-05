@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "11a6076b-6854-414c-8874-b7430c506b48",
-	"Name": "Patch_CustomCombat",
-	"ScriptCustom": {
-		"ID": "216cfe34-4d7d-4f26-865e-f465f32f64b3",
-		"Name": "11a6076b-6854-414c-8874-b7430c506b48_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "2dfe3e2c-e63e-4518-800f-575a7e500d5d",
-		"Name": "11a6076b-6854-414c-8874-b7430c506b48_EnterScript"
-	},
-	"ScriptLeave": {
-		"ID": "ef05f5bc-a49a-4669-b026-74bb03f6f840",
-		"Name": "11a6076b-6854-414c-8874-b7430c506b48_LeaveScript"
-	},
+	"AssetID": "11a6076b-6854-414c-8874-b7430c506b48",
+	"AssetName": "Patch_CustomCombat",
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "ab250357-19c3-4e27-9c8f-505e01f329af",
@@ -36,7 +24,10 @@
 						"Key": "GoToCustomCombat_R",
 						"IsState": true,
 						"IsLink": false,
-						"ScriptAction": "SetScene(\"Scene_CustomCombat\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_CustomCombat\")"
+						},
 						"Children": []
 					}
 				]

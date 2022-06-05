@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "a2ad6475-3f1f-4fe4-b6ae-4f082a42438f",
-	"Name": "CR_RandomAnthro",
+	"AssetID": "a2ad6475-3f1f-4fe4-b6ae-4f082a42438f",
+	"AssetName": "CR_RandomAnthro",
 	"ObjectName": "Person",
 	"Strength": 0,
 	"Agility": 0,

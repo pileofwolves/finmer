@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "0bc511a2-d15b-46c2-bbc5-418db9bf36c0",
-	"Name": "CR_Town_Pit_Tye",
+	"AssetID": "0bc511a2-d15b-46c2-bbc5-418db9bf36c0",
+	"AssetName": "CR_Town_Pit_Tye",
 	"ObjectName": "Tye",
 	"ObjectAlias": "the wolf-deer",
 	"Strength": 5,

@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "0a1575cb-f99e-4ca1-9558-dffbdfcb1c28",
-	"Name": "Scene_RoadEnc",
-	"ScriptCustom": {
-		"ID": "92554a09-e797-4015-91a2-2283ac57c057",
-		"Name": "Scene_RoadEnc_CustomScript"
-	},
+	"AssetID": "0a1575cb-f99e-4ca1-9558-dffbdfcb1c28",
+	"AssetName": "Scene_RoadEnc",
 	"ScriptEnter": {
-		"ID": "345170f4-d484-464c-b2b3-bd4153fd841b",
-		"Name": "Scene_RoadEnc_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "a57ec2c6-d15f-48bd-a1dd-09a05cfeaa30",
-		"Name": "0a1575cb-f99e-4ca1-9558-dffbdfcb1c28_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RoadEnc_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,8 +19,14 @@
 				"Key": "ENC_MQ02Ambush",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(randall, EVoreStyle.OV, true)",
-				"ScriptAppear": "return Storage.GetFlag(\"mq02_road_antag_scheduled\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(randall, EVoreStyle.OV, true)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"mq02_road_antag_scheduled\")"
+				},
 				"Children": [
 					{
 						"Key": "MQ02A_C_Opening2",
@@ -42,7 +40,10 @@
 								"Key": "MQ02A_R_Opening2",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"MQ02_AM_OPENING2\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ02_AM_OPENING2\")"
+								},
 								"Children": [
 									{
 										"Key": "MQ02A_C_Opening3",
@@ -56,7 +57,10 @@
 												"Key": "MQ02A_R_Opening3",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"MQ02_AM_OPENING3\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ02_AM_OPENING3\")"
+												},
 												"Children": [
 													{
 														"Key": "MQ02A_C_HelloNice",
@@ -71,7 +75,10 @@
 																"Key": "MQ02A_R_HelloNice",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ02_AM_HELLO_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", -1)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ02A_C_Business",
@@ -85,7 +92,10 @@
 																				"Key": "MQ02A_R_Business1",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ02_AM_BUSINESS1\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_BUSINESS1\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ02A_C_Business1B",
@@ -99,7 +109,10 @@
 																								"Key": "MQ02A_R_Business2",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ02_AM_BUSINESS2\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_AM_BUSINESS2\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "MQ02A_C_Business3",
@@ -113,8 +126,14 @@
 																												"Key": "MQ02A_R_Business3B",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ02_AM_BUSINESS3B\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)",
-																												"ScriptAppear": "return Storage.GetFlag(\"oliver_eaten\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_BUSINESS3B\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)"
+																												},
+																												"ScriptAppear": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "return Storage.GetFlag(\"oliver_eaten\")"
+																												},
 																												"Children": [
 																													{
 																														"IsState": false,
@@ -127,7 +146,10 @@
 																												"Key": "MQ02A_R_Business3",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ02_AM_BUSINESS3\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_BUSINESS3\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "MQ02A_C_Ending",
@@ -141,7 +163,10 @@
 																																"Key": "MQ02A_R_Ending",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"MQ02_AM_ENDING\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_AM_ENDING\")"
+																																},
 																																"Children": [
 																																	{
 																																		"Key": "MQ02A_C_Finish",
@@ -155,7 +180,10 @@
 																																				"Key": "MQ02A_R_Finish",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "Log(\"MQ02_AM_FINISH\")\r\nJournal.Update(\"MQ02\", Storage.GetFlag(\"oliver_dead\") and 21 or 20)\r\n\r\nif not Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.MQ02_EncNoViolence)\r\nend",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "Log(\"MQ02_AM_FINISH\")\r\nJournal.Update(\"MQ02\", Storage.GetFlag(\"oliver_dead\") and 21 or 20)\r\n\r\nif not Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.MQ02_EncNoViolence)\r\nend"
+																																				},
 																																				"Children": [
 																																					{
 																																						"IsState": false,
@@ -199,7 +227,10 @@
 																"Key": "MQ02A_R_HelloNotNice",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ02_AM_HELLO_NOT_NICE\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_NOT_NICE\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -218,13 +249,19 @@
 														"Tooltip": "This guy is who Oliver warned you about. Ask him about his prey.",
 														"Highlight": true,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "-- did Oliver warn the player about Randall?\r\nreturn Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- did Oliver warn the player about Randall?\r\nreturn Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")"
+														},
 														"Children": [
 															{
 																"Key": "MQ02A_R_HelloAccuse",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"MQ02_AM_HELLO_REALLY_NOT_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_REALLY_NOT_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ02A_C_HelloPush",
@@ -239,7 +276,10 @@
 																				"Key": "MQ02A_R_HelloPush",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ02_AM_HELLO_SHOVE\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_SHOVE\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -263,7 +303,10 @@
 																				"Key": "MQ02A_R_HelloLick",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ02_AM_HELLO_LICK\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_LICK\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -283,7 +326,10 @@
 																								"Key": "MQ02A_R_Bellyrub",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ02_AM_BELLYRUB\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_AM_BELLYRUB\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "MQ02A_C_WillingVore",
@@ -293,13 +339,19 @@
 																										"Tooltip": "Let the wolf swallow you, like the tasty preything you are.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()"
+																										},
 																										"Children": [
 																											{
 																												"Key": "MQ02A_R_Dummy1",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "-- you're not supposed to be able to win the willing vore fight\r\nerror()",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "-- you're not supposed to be able to win the willing vore fight\r\nerror()"
+																												},
 																												"Children": []
 																											}
 																										]
@@ -325,7 +377,10 @@
 																				"Key": "MQ02A_R_HelloPunch",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.ModifyNumber(\"rep_randall\", -2)",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.ModifyNumber(\"rep_randall\", -2)"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -353,13 +408,19 @@
 														"Tooltip": "Quickly try to stab him with your light weapon.",
 														"Highlight": true,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "local ty = Player.EquippedWeapon\r\nreturn ty ~= nil and ty.WeaponType == WeaponType.LIGHT",
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "local ty = Player.EquippedWeapon\r\nreturn ty ~= nil and ty.WeaponType == WeaponType.LIGHT"
+														},
 														"Children": [
 															{
 																"Key": "MQ02A_R_Stab",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")\r\n\r\n-- He'll remember that\r\nStorage.SetFlag(\"MQ02_RANDALL_STABBED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -3)\r\n\r\n-- Reflect the stab in the upcoming fight\r\nrandall.Health = randall.Health * 0.5",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")\r\n\r\n-- He'll remember that\r\nStorage.SetFlag(\"MQ02_RANDALL_STABBED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -3)\r\n\r\n-- Reflect the stab in the upcoming fight\r\nrandall.Health = randall.Health * 0.5"
+																},
 																"Children": [
 																	{
 																		"Key": "MQ02A_BeginFight",
@@ -368,13 +429,19 @@
 																		"Title": "Let's roll",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        -- Dialogue changes if any goon got gulped\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n\r\n        -- The tigress in particular, comes up in MQ03\r\n        if prey == goon2 then\r\n            Storage.SetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\", true)\r\n        end\r\n    end\r\nend)\r\nfight:Begin()",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        -- Dialogue changes if any goon got gulped\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n\r\n        -- The tigress in particular, comes up in MQ03\r\n        if prey == goon2 then\r\n            Storage.SetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\", true)\r\n        end\r\n    end\r\nend)\r\nfight:Begin()"
+																		},
 																		"Children": [
 																			{
 																				"Key": "MQ02A_WinFight",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "if Storage.GetFlag(\"MQ02_RANDALL_GOON_EATEN\") then\r\n    -- Alternate text if either of the goons are eaten\r\n    Log(\"MQ02_AM_WINFIGHT_NOBACKUP\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "if Storage.GetFlag(\"MQ02_RANDALL_GOON_EATEN\") then\r\n    -- Alternate text if either of the goons are eaten\r\n    Log(\"MQ02_AM_WINFIGHT_NOBACKUP\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend"
+																				},
 																				"Children": [
 																					{
 																						"Key": "MQ02A_C_WinChase",
@@ -388,7 +455,10 @@
 																								"Key": "MQ02A_R_WinChase",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ02_AM_WINFIGHT_LETGO\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_AM_WINFIGHT_LETGO\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -421,7 +491,10 @@
 				"Key": "ENC_None",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"ROAD_NO_ENC\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"ROAD_NO_ENC\")"
+				},
 				"Children": [
 					{
 						"Key": "GoNextEncounter",
@@ -430,7 +503,10 @@
 						"Title": "Move on",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "ContinueRoadTravel()",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "ContinueRoadTravel()"
+						},
 						"Children": []
 					}
 				]

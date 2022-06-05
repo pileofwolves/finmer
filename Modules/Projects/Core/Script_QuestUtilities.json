@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "bd2fc091-6946-4774-b198-84235fe72f6b",
-	"Name": "Script_QuestUtilities"
+	"AssetID": "bd2fc091-6946-4774-b198-84235fe72f6b",
+	"AssetName": "Script_QuestUtilities",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_QuestUtilities"
+	}
 }

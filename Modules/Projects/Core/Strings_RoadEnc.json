@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "422b28ef-0677-49f6-9741-461253c984eb",
-	"Name": "Strings_RoadEnc",
+	"AssetID": "422b28ef-0677-49f6-9741-461253c984eb",
+	"AssetName": "Strings_RoadEnc",
 	"Entries": [
 		{
 			"Key": "ROAD_NO_ENC",

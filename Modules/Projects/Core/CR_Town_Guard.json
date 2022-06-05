@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "8fa747e9-e675-4fa8-86a4-8e1c8bd279b7",
-	"Name": "CR_Town_Guard",
+	"AssetID": "8fa747e9-e675-4fa8-86a4-8e1c8bd279b7",
+	"AssetName": "CR_Town_Guard",
 	"ObjectName": "Town Guard",
 	"ObjectAlias": "<REPLACE ME>",
 	"Strength": 2,

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "257235b2-2595-47f1-afce-c19557422492",
-	"Name": "TQ01_CR_Wolf",
+	"AssetID": "257235b2-2595-47f1-afce-c19557422492",
+	"AssetName": "TQ01_CR_Wolf",
 	"ObjectName": "Lone Wolf",
 	"ObjectAlias": "the wolf",
 	"Strength": 2,

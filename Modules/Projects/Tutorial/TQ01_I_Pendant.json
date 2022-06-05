@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
-	"Name": "TQ01_I_Pendant",
+	"AssetID": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
+	"AssetName": "TQ01_I_Pendant",
 	"ObjectName": "Pendant",
 	"FlavorText": "A pendant for the Natobi family. There's probably a very complex backstory behind this trinket, but who honestly wants to hear all of it?",
 	"ItemType": "Generic",

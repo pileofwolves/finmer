@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "8bd05185-f23d-43ac-bb88-300df2b54acc",
-	"Name": "Scene_ForestClearing",
+	"AssetID": "8bd05185-f23d-43ac-bb88-300df2b54acc",
+	"AssetName": "Scene_ForestClearing",
 	"ScriptCustom": {
-		"ID": "9af934a4-2810-46b0-be9f-4a7e1ee1b3c3",
-		"Name": "Scene_ForestClearing_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_ForestClearing_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "5aec94ec-a624-4419-82ec-ae69bfae3130",
-		"Name": "Scene_ForestClearing_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "696c79fc-ffce-4696-9910-400ed64a67e7",
-		"Name": "Scene_ForestClearing_OnLeave"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_ForestClearing_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,8 +23,14 @@
 				"Key": "SavePoint_Clearing",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"FOREST_CLEARING_SAVEPOINT\")\r\nStorage.SetFlag(\"savepoint\", false)",
-				"ScriptAppear": "return Storage.GetFlag(\"savepoint\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"FOREST_CLEARING_SAVEPOINT\")\r\nStorage.SetFlag(\"savepoint\", false)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"savepoint\")"
+				},
 				"Children": [
 					{
 						"IsState": false,
@@ -41,8 +43,14 @@
 				"Key": "SQ02_Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, true)",
-				"ScriptAppear": "return Storage.GetNumber(\"SQ02\") == 1",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, true)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetNumber(\"SQ02\") == 1"
+				},
 				"Children": [
 					{
 						"Key": "SQ02_C_Approach",
@@ -57,7 +65,10 @@
 								"Key": "SQ02_R_Approach",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ02_APPROACH\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ02_APPROACH\")"
+								},
 								"Children": [
 									{
 										"Key": "SQ02_C_ApproachAgain",
@@ -72,7 +83,10 @@
 												"Key": "SQ02_R_ApproachAgain",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ02_APPROACH_AGAIN\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ02_APPROACH_AGAIN\")"
+												},
 												"Children": [
 													{
 														"Key": "SQ02_C_DoCombatOV",
@@ -81,7 +95,10 @@
 														"Title": "Uh-oh...",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "Storage.SetFlag(\"SQ02_DIREWOLF_FOUGHT\", true)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_SQ02_Wolf_OV\"))\r\nstate:Begin()",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Storage.SetFlag(\"SQ02_DIREWOLF_FOUGHT\", true)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_SQ02_Wolf_OV\"))\r\nstate:Begin()"
+														},
 														"Children": [
 															{
 																"Key": "fggd",
@@ -108,7 +125,10 @@
 												"Key": "SQ02_R_ApproachStop",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ02_APPROACH_STOP\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ02_APPROACH_STOP\")"
+												},
 												"Children": [
 													{
 														"Key": "SQ02_C_OfferSelf",
@@ -123,7 +143,10 @@
 																"Key": "SQ02_R_OfferSelf",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "-- First play a sequence showing the vore happening\r\nLog(\"SQ02_WOLF_VORE_WILLING\")\r\nSleep(3)\r\nLog(\"SQ02_WOLF_VORE_WIN_POV\")\r\n\r\n-- Then use combat system to simulate digestion.\r\n-- Note: player is not expected to survive this, so no more nodes come after this one\r\nlocal awoo = Creature(\"CR_SQ02_Wolf_OV\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(awoo)\r\nstate:SetVored(awoo, Player)\r\nstate:Begin()",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "-- First play a sequence showing the vore happening\r\nLog(\"SQ02_WOLF_VORE_WILLING\")\r\nSleep(3)\r\nLog(\"SQ02_WOLF_VORE_WIN_POV\")\r\n\r\n-- Then use combat system to simulate digestion.\r\n-- Note: player is not expected to survive this, so no more nodes come after this one\r\nlocal awoo = Creature(\"CR_SQ02_Wolf_OV\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(awoo)\r\nstate:SetVored(awoo, Player)\r\nstate:Begin()"
+																},
 																"Children": []
 															}
 														]
@@ -146,7 +169,10 @@
 																"Key": "SQ02_R_Bellyrub",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"SQ02_BELLYRUB\")\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, false)",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"SQ02_BELLYRUB\")\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, false)"
+																},
 																"Children": [
 																	{
 																		"Key": "SQ02_C_EndoAccept",
@@ -161,7 +187,10 @@
 																				"Key": "SQ02_R_EatPlayerSafe",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")"
+																				},
 																				"Children": []
 																			}
 																		]
@@ -174,7 +203,10 @@
 																		"Tooltip": "Get away from this dangerous predator.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Log(\"SQ02_WOLF_ENDO_RUNAWAY\")",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"SQ02_WOLF_ENDO_RUNAWAY\")"
+																		},
 																		"Children": [
 																			{
 																				"IsState": true,
@@ -204,7 +236,10 @@
 												"Key": "SQ02_R_ApproachBack",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ02_APPROACH_BACK\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ02_APPROACH_BACK\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -223,13 +258,19 @@
 										"Tooltip": "The wolf appears to have caught on to the scent of your backpack.",
 										"Highlight": true,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return Player:HasItem(\"U_FoodFish1Raw\") or Player:HasItem(\"U_FoodFish1Cooked\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return Player:HasItem(\"U_FoodFish1Raw\") or Player:HasItem(\"U_FoodFish1Cooked\")"
+										},
 										"Children": [
 											{
 												"Key": "SQ02_R_OfferFish",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "if Player:HasItem(\"U_FoodFish1Raw\") then\r\n    Player:TakeItem(\"U_FoodFish1Raw\")\r\nelse\r\n    Player:TakeItem(\"U_FoodFish1Cooked\")\r\nend\r\n\r\nLog(\"SQ02_OFFER_FISH\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "if Player:HasItem(\"U_FoodFish1Raw\") then\r\n    Player:TakeItem(\"U_FoodFish1Raw\")\r\nelse\r\n    Player:TakeItem(\"U_FoodFish1Cooked\")\r\nend\r\n\r\nLog(\"SQ02_OFFER_FISH\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -262,8 +303,14 @@
 								"Key": "SQ02_R_SneakFail",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ02_SNEAK_FAIL\")",
-								"ScriptAppear": "return Player.Wits < 6",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ02_SNEAK_FAIL\")"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Player.Wits < 6"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -291,7 +338,10 @@
 								"Key": "SQ02_R_SneakCloser",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ02_SNEAK_OK\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ02_SNEAK_OK\")"
+								},
 								"Children": [
 									{
 										"Key": "SQ02_C_Slay",
@@ -306,8 +356,14 @@
 												"Key": "SQ02_R_Slay_NoWep",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ02_SNEAK_SLAY_NOWEAPON\")",
-												"ScriptAppear": "return Player.EquippedWeapon == nil",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ02_SNEAK_SLAY_NOWEAPON\")"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return Player.EquippedWeapon == nil"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -325,7 +381,10 @@
 												"Key": "SQ02_R_Slay",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"SQ02_SNEAK_SLAY_OK\")\r\n\r\n-- Progress the quest\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"SQ02_SNEAK_SLAY_OK\")\r\n\r\n-- Progress the quest\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -349,7 +408,10 @@
 												"Key": "SQ02_R_SneakBellyrub",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"SQ02_BELLYRUB_SNEAK\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"SQ02_BELLYRUB_SNEAK\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -391,7 +453,10 @@
 				"Key": "Abandoned",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Text.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_ABANDONED\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Text.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_ABANDONED\")"
+				},
 				"Children": [
 					{
 						"Key": "Clearing_C_Camp",
@@ -415,12 +480,18 @@
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return not has_slept_in_clearing",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not has_slept_in_clearing"
+										},
 										"Children": [
 											{
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "has_slept_in_clearing = true\r\nSaveData.ShowSaveDialog()",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "has_slept_in_clearing = true\r\nSaveData.ShowSaveDialog()"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -454,7 +525,10 @@
 												"Key": "Clearing_R_Sleep",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"FOREST_SLEEP\")\r\nRest()\r\nLog(\"FOREST_SLEEP_WAKEUP\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"FOREST_SLEEP\")\r\nRest()\r\nLog(\"FOREST_SLEEP_WAKEUP\")"
+												},
 												"Children": [
 													{
 														"Key": "AutoLink",
@@ -494,7 +568,10 @@
 								"Key": "Clearing_R_Leave",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetScene(\"Scene_Forest\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "SetScene(\"Scene_Forest\")"
+								},
 								"Children": []
 							}
 						]

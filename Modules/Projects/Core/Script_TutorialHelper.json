@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "f06b2b30-4c52-456f-9788-681b632468e6",
-	"Name": "Script_TutorialHelper"
+	"AssetID": "f06b2b30-4c52-456f-9788-681b632468e6",
+	"AssetName": "Script_TutorialHelper",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_TutorialHelper"
+	}
 }

@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "e13adba2-36df-4bb6-bb08-d45eecc27594",
-	"Name": "Scene_PortCentral",
-	"ScriptCustom": {
-		"ID": "2bc24022-4a14-444f-a54f-15c315dde107",
-		"Name": "e13adba2-36df-4bb6-bb08-d45eecc27594_CustomScript"
-	},
+	"AssetID": "e13adba2-36df-4bb6-bb08-d45eecc27594",
+	"AssetName": "Scene_PortCentral",
 	"ScriptEnter": {
-		"ID": "01a51067-a488-4e93-9358-1990a4189a38",
-		"Name": "Scene_PortCentral_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "89d22118-3499-4441-86b4-bd57591d3242",
-		"Name": "e13adba2-36df-4bb6-bb08-d45eecc27594_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_PortCentral_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +19,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "TimedCheckpoint(\"PORT_CENTRAL\")\r\nLog(\"PORT_CENTRAL_ENTER\")\r\n\r\nAddLink(ECompass.East, \"Scene_PortGate\")\r\nAddLink(ECompass.West, \"Scene_PortDocks\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "TimedCheckpoint(\"PORT_CENTRAL\")\r\nLog(\"PORT_CENTRAL_ENTER\")\r\n\r\nAddLink(ECompass.East, \"Scene_PortGate\")\r\nAddLink(ECompass.West, \"Scene_PortDocks\")"
+				},
 				"Children": [
 					{
 						"Key": "C_Tavern",
@@ -36,7 +31,10 @@
 						"Title": "Tavern",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_PortTavern\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_PortTavern\")"
+						},
 						"Children": []
 					},
 					{
@@ -46,7 +44,10 @@
 						"Title": "General Store",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_PortShop\")",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_PortShop\")"
+						},
 						"Children": []
 					}
 				]

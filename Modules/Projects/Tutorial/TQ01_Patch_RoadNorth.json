@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "3e0c96ff-4469-4fdb-8a49-161a3112571d",
-	"Name": "TQ01_Patch_RoadNorth",
-	"ScriptCustom": {
-		"ID": "ddaeb103-0565-4346-8b28-43dfacaa5a79",
-		"Name": "3e0c96ff-4469-4fdb-8a49-161a3112571d_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "ee276271-2182-4ef1-84d4-b238c054aff7",
-		"Name": "3e0c96ff-4469-4fdb-8a49-161a3112571d_EnterScript"
-	},
-	"ScriptLeave": {
-		"ID": "ced22840-f050-43e2-b486-2ea64937df5d",
-		"Name": "3e0c96ff-4469-4fdb-8a49-161a3112571d_LeaveScript"
-	},
+	"AssetID": "3e0c96ff-4469-4fdb-8a49-161a3112571d",
+	"AssetName": "TQ01_Patch_RoadNorth",
 	"IsPatch": true,
 	"InjectMode": "BeforeTarget",
 	"InjectTargetScene": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
@@ -30,8 +18,14 @@
 				"Key": "TQ01_Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.West, \"TQ01_Scene_Hideout\") -- This adds a west-bound link for our quest\r\nAddLink(ECompass.East, GoEast)",
-				"ScriptAppear": "return Storage.GetNumber(\"TQ01\") == 2",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.West, \"TQ01_Scene_Hideout\") -- This adds a west-bound link for our quest\r\nAddLink(ECompass.East, GoEast)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetNumber(\"TQ01\") == 2"
+				},
 				"Children": []
 			}
 		]

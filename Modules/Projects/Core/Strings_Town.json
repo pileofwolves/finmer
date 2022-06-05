@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "a92079fe-cd5d-4b35-9526-582c91d1d817",
-	"Name": "Strings_Town",
+	"AssetID": "a92079fe-cd5d-4b35-9526-582c91d1d817",
+	"AssetName": "Strings_Town",
 	"Entries": [
 		{
 			"Key": "TOWN_ALCH_ABANDONED",

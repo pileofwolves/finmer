@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "66f65198-ff19-4fd9-a039-52cbe6f14c2b",
-	"Name": "CR_TrainingDummy1",
+	"AssetID": "66f65198-ff19-4fd9-a039-52cbe6f14c2b",
+	"AssetName": "CR_TrainingDummy1",
 	"ObjectName": "Training Dummy",
 	"ObjectAlias": "the dummy",
 	"Strength": 3,

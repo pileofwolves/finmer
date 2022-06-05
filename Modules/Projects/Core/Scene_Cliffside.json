@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "7e30f031-d32a-453a-8d51-25e3b83f1327",
-	"Name": "Scene_Cliffside",
-	"ScriptCustom": {
-		"ID": "646fb65d-94f7-401c-b94c-377452f216e1",
-		"Name": "7e30f031-d32a-453a-8d51-25e3b83f1327_CustomScript"
-	},
+	"AssetID": "7e30f031-d32a-453a-8d51-25e3b83f1327",
+	"AssetName": "Scene_Cliffside",
 	"ScriptEnter": {
-		"ID": "30d6e3a2-2949-486a-bb3a-67b6cca5ed34",
-		"Name": "Scene_Cliffside_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "9feb862e-d1ad-4163-8929-91a625bb03dd",
-		"Name": "7e30f031-d32a-453a-8d51-25e3b83f1327_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_Cliffside_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +19,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")\r\n\r\n-- Travel to either of the towns from here\r\nAddLink(ECompass.North, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.South, function() BeginRoadTravel(\"Scene_PortGate\") end)",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")\r\n\r\n-- Travel to either of the towns from here\r\nAddLink(ECompass.North, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.South, function() BeginRoadTravel(\"Scene_PortGate\") end)"
+				},
 				"Children": []
 			}
 		]

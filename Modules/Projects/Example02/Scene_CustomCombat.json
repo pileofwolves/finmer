@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "66e5b9b0-39f9-4be5-98cb-8987f73a5ce3",
-	"Name": "Scene_CustomCombat",
+	"AssetID": "66e5b9b0-39f9-4be5-98cb-8987f73a5ce3",
+	"AssetName": "Scene_CustomCombat",
 	"ScriptCustom": {
-		"ID": "490761e6-55dd-4718-9d0a-793e72cc3226",
-		"Name": "Scene_CustomCombat_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_CustomCombat_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "cdfbd0c2-e644-473e-a5aa-1eaa3b7c9881",
-		"Name": "Scene_CustomCombat_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "cf02874b-8bfe-4232-9d15-a3cfdb3c7210",
-		"Name": "66e5b9b0-39f9-4be5-98cb-8987f73a5ce3_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_CustomCombat_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +23,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "-- Ensure inventory is available for the user to edit\r\nSetInventoryEnabled(true)",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "-- Ensure inventory is available for the user to edit\r\nSetInventoryEnabled(true)"
+				},
 				"Children": [
 					{
 						"Key": "C_Launch",
@@ -37,7 +36,10 @@
 						"Tooltip": "FIGHT!",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "if numParticipants == 0 then\r\n    print(\"Cannot launch, need at least 1 participant\")\r\nelse\r\n    print(\"Launching combat \", combat)\r\n    combat:OnPlayerKilled(function()\r\n        -- Revive player, to avoid inconvenience of going through the menus again\r\n        print(\"Player died; reviving and stopping combat\")\r\n        Player.Health = 1\r\n        combat:End()\r\n    end)\r\n    combat:OnCreatureVored(function(pred, prey)\r\n        print(\"pred: \" .. pred.Name)\r\n        print(\"prey: \" .. prey.Name)\r\n    end)\r\n    combat:Begin()\r\n    print(\"Combat finished\")\r\nend",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "if numParticipants == 0 then\r\n    print(\"Cannot launch, need at least 1 participant\")\r\nelse\r\n    print(\"Launching combat \", combat)\r\n    combat:OnPlayerKilled(function()\r\n        -- Revive player, to avoid inconvenience of going through the menus again\r\n        print(\"Player died; reviving and stopping combat\")\r\n        Player.Health = 1\r\n        combat:End()\r\n    end)\r\n    combat:OnCreatureVored(function(pred, prey)\r\n        print(\"pred: \" .. pred.Name)\r\n        print(\"prey: \" .. prey.Name)\r\n    end)\r\n    combat:Begin()\r\n    print(\"Combat finished\")\r\nend"
+						},
 						"Children": [
 							{
 								"Key": "AutoLink",
@@ -85,7 +87,10 @@
 										"Tooltip": "Add the player character",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "if not hasPlayer then\r\n    hasPlayer = true\r\n    AddParticipant(Player)\r\nelse\r\n    print(\"Player already added\")\r\nend",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "if not hasPlayer then\r\n    hasPlayer = true\r\n    AddParticipant(Player)\r\nelse\r\n    print(\"Player already added\")\r\nend"
+										},
 										"Children": []
 									},
 									{
@@ -96,13 +101,19 @@
 										"Tooltip": "Add an enemy participant",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "next_is_ally = false",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "next_is_ally = false"
+										},
 										"Children": [
 											{
 												"Key": "R_Part_Add",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "SetInstruction(\"Okay, now select which creature to use as \" .. (next_is_ally and \"ally\" or \"enemy\") .. \"...\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "SetInstruction(\"Okay, now select which creature to use as \" .. (next_is_ally and \"ally\" or \"enemy\") .. \"...\")"
+												},
 												"Children": [
 													{
 														"Key": "AutoLink",
@@ -118,7 +129,10 @@
 														"Tooltip": "Level 1, with all stats set to 4",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -136,7 +150,10 @@
 														"Tooltip": "Level 3, with all stats set to 6",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -154,7 +171,10 @@
 														"Tooltip": "Level 5, with all stats set to 8",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.IsAlly = next_is_ally\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -172,7 +192,10 @@
 														"Tooltip": "Predator, Level 1, with all stats set to 4",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.Name = \"Easy Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_EasyOpponent\")\r\nanthro.Name = \"Easy Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -190,7 +213,10 @@
 														"Tooltip": "Predator, Level 3, with all stats set to 6",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.Name = \"Medium Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_MedOpponent\")\r\nanthro.Name = \"Medium Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -208,7 +234,10 @@
 														"Tooltip": "Predator, Level 5, with all stats set to 8",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.Name = \"Hard Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)",
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "local anthro = Creature(\"CR_Test_HardOpponent\")\r\nanthro.Name = \"Hard Predator\"\r\nanthro.IsAlly = next_is_ally\r\nanthro.IsPredator = true\r\nanthro.PredatorDigests = true\r\nAddParticipant(anthro)"
+														},
 														"Children": [
 															{
 																"Key": "AutoLink",
@@ -230,7 +259,10 @@
 										"Tooltip": "Add a friendly participant",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "next_is_ally = true",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "next_is_ally = true"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -247,8 +279,14 @@
 										"Title": "Pit - Vulpes",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Vulpes\"))",
-										"ScriptAppear": "return not isPublicCombatDemo",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "AddParticipant(Creature(\"CR_Town_Pit_Vulpes\"))"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not isPublicCombatDemo"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -265,8 +303,14 @@
 										"Title": "Pit - Carson",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Carson\"))",
-										"ScriptAppear": "return not isPublicCombatDemo",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "AddParticipant(Creature(\"CR_Town_Pit_Carson\"))"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not isPublicCombatDemo"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -283,8 +327,14 @@
 										"Title": "Pit - Tye",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Tye\"))",
-										"ScriptAppear": "return not isPublicCombatDemo",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "AddParticipant(Creature(\"CR_Town_Pit_Tye\"))"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not isPublicCombatDemo"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -301,8 +351,14 @@
 										"Title": "Pit - Phillip",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "AddParticipant(Creature(\"CR_Town_Pit_Phillip\"))",
-										"ScriptAppear": "return not isPublicCombatDemo",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "AddParticipant(Creature(\"CR_Town_Pit_Phillip\"))"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not isPublicCombatDemo"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -344,7 +400,10 @@
 										"Tooltip": "Add 1 Strength to the player",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Player.Strength = Player.Strength + 1\r\nprint(\"Player now has \" .. Player.Strength .. \" Strength\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Player.Strength = Player.Strength + 1\r\nprint(\"Player now has \" .. Player.Strength .. \" Strength\")"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -362,7 +421,10 @@
 										"Tooltip": "Add 1 Agility to the player",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Player.Agility = Player.Agility + 1\r\nprint(\"Player now has \" .. Player.Agility .. \" Agility\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Player.Agility = Player.Agility + 1\r\nprint(\"Player now has \" .. Player.Agility .. \" Agility\")"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -380,7 +442,10 @@
 										"Tooltip": "Add 1 Body to the player",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Player.Body = Player.Body + 1\r\nprint(\"Player now has \" .. Player.Body .. \" Body\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Player.Body = Player.Body + 1\r\nprint(\"Player now has \" .. Player.Body .. \" Body\")"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -398,7 +463,10 @@
 										"Tooltip": "Add 1 Wits to the player",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Player.Wits = Player.Wits + 1\r\nprint(\"Player now has \" .. Player.Wits .. \" Wits\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Player.Wits = Player.Wits + 1\r\nprint(\"Player now has \" .. Player.Wits .. \" Wits\")"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -416,7 +484,10 @@
 										"Tooltip": "Fully heal player as if rested",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "Rest()",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Rest()"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -434,7 +505,10 @@
 										"Tooltip": "Add various weapons/armor to inventory",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "local function AddUnique(name)\r\n    if not Player:HasItem(name) then\r\n        Player:GiveItem(name)\r\n    end\r\nend\r\n\r\nAddUnique(\"A_ClothArmor\")\r\nAddUnique(\"A_LeatherArmor\")\r\nAddUnique(\"AC_CharmBlock\")\r\nAddUnique(\"AC_CharmBody\")\r\nAddUnique(\"AC_CharmFight\")\r\nAddUnique(\"W_Dagger\")\r\nAddUnique(\"W_SwordSteel\")\r\nAddUnique(\"W_SwordSilver\")\r\nAddUnique(\"U_PotionHeal1\")",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "local function AddUnique(name)\r\n    if not Player:HasItem(name) then\r\n        Player:GiveItem(name)\r\n    end\r\nend\r\n\r\nAddUnique(\"A_ClothArmor\")\r\nAddUnique(\"A_LeatherArmor\")\r\nAddUnique(\"AC_CharmBlock\")\r\nAddUnique(\"AC_CharmBody\")\r\nAddUnique(\"AC_CharmFight\")\r\nAddUnique(\"W_Dagger\")\r\nAddUnique(\"W_SwordSteel\")\r\nAddUnique(\"W_SwordSilver\")\r\nAddUnique(\"U_PotionHeal1\")"
+										},
 										"Children": [
 											{
 												"Key": "AutoLink",
@@ -456,7 +530,10 @@
 						"Tooltip": "Reset all combat state changes (removing all participants)",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "-- Overwrite the state with a new one, to ditch all of the user's changes\r\nResetCombat()",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Overwrite the state with a new one, to ditch all of the user's changes\r\nResetCombat()"
+						},
 						"Children": [
 							{
 								"Key": "AutoLink",
@@ -473,8 +550,14 @@
 						"Title": "[ Exit ]",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAction": "SetScene(\"Scene_Intro\")",
-						"ScriptAppear": "return not isPublicCombatDemo",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "SetScene(\"Scene_Intro\")"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return not isPublicCombatDemo"
+						},
 						"Children": []
 					}
 				]

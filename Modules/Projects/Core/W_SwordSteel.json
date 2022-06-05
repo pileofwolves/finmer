@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "84275343-9229-4009-8bfc-c75f90236086",
-	"Name": "W_SwordSteel",
+	"AssetID": "84275343-9229-4009-8bfc-c75f90236086",
+	"AssetName": "W_SwordSteel",
 	"ObjectName": "Steel Sword",
 	"ObjectAlias": "sword",
 	"FlavorText": "Balanced and versatile, the standard steel longsword is good for both stabbing and slashing. While a little heavier to wield, it also allowing parrying of incoming blows with respectable efficiency.",

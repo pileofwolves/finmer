@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "408e9a16-32c1-403e-b2c0-65b6856cc426",
-	"Name": "A_TrainingDummy",
+	"AssetID": "408e9a16-32c1-403e-b2c0-65b6856cc426",
+	"AssetName": "A_TrainingDummy",
 	"ItemType": "Equipable",
 	"EquipSlot": "Armor",
 	"EquipEffects": [

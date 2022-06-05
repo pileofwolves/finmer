@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "0b60028a-f2f2-4371-b06f-4c5579cd35cd",
-	"Name": "U_FoodCheese",
+	"AssetID": "0b60028a-f2f2-4371-b06f-4c5579cd35cd",
+	"AssetName": "U_FoodCheese",
 	"ObjectName": "Cheese",
 	"FlavorText": "A wedge of gold-colored, curdled milk. It is an uncommon product in these parts, if only because the local cuisine has not readily adopted cheeses.",
 	"ItemType": "Usable",
@@ -12,7 +12,12 @@
 	"CanUseInBattle": true,
 	"UseDescription": "Heal 10% HP.",
 	"UseScript": {
-		"ID": "ac0282a2-1625-44c9-a904-106f854708ef",
-		"Name": "U_FoodCheese_UseScript"
+		"!Type": "AssetScript",
+		"AssetID": "ac0282a2-1625-44c9-a904-106f854708ef",
+		"AssetName": "U_FoodCheese_Use",
+		"Contents": {
+			"!Type": "ScriptDataExternal",
+			"Name": "U_FoodCheese_Use"
+		}
 	}
 }

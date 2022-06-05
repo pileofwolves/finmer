@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "152041aa-da41-4573-aedd-13a5d6819927",
-	"Name": "TQ01_Strings",
+	"AssetID": "152041aa-da41-4573-aedd-13a5d6819927",
+	"AssetName": "TQ01_Strings",
 	"Entries": [
 		{
 			"Key": "TQ01_APPROACH",

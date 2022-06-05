@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "9424541d-3712-4dc7-8c30-5934d1581317",
-	"Name": "AC_IsoRing",
+	"AssetID": "9424541d-3712-4dc7-8c30-5934d1581317",
+	"AssetName": "AC_IsoRing",
 	"ObjectName": "Curious Ring",
 	"FlavorText": "A small silver ring with intricate amber patterns engraved on the outside. You feel you've never seen the like before, but then how did it end up on your finger?",
 	"ItemType": "Equipable",

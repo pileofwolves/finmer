@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "09a922d6-c348-490a-960b-9095199ae5e9",
-	"Name": "CR_TrainingDummy2",
+	"AssetID": "09a922d6-c348-490a-960b-9095199ae5e9",
+	"AssetName": "CR_TrainingDummy2",
 	"ObjectName": "Prey",
 	"ObjectAlias": "the prey",
 	"Strength": 3,

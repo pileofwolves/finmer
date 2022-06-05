@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "5b836eeb-5a3e-419c-ba1e-6dd1876edb87",
-	"Name": "Strings_Port",
+	"AssetID": "5b836eeb-5a3e-419c-ba1e-6dd1876edb87",
+	"AssetName": "Strings_Port",
 	"Entries": [
 		{
 			"Key": "PORT_CENTRAL_ENTER",

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "f96ed656-7870-4257-88a1-c504f122568c",
-	"Name": "I_SQ02_WolfTrophy",
+	"AssetID": "f96ed656-7870-4257-88a1-c504f122568c",
+	"AssetName": "I_SQ02_WolfTrophy",
 	"ObjectName": "Dire Wolf Trophy",
 	"FlavorText": "A huge, furry ear that once belonged to an apex predator. It is easily large enough to fill your paw. Also, it smells a little bit.",
 	"ItemType": "Generic",

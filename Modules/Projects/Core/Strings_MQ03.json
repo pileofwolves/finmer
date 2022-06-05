@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "66d38bea-67c3-4683-846c-946bc14f0a6b",
-	"Name": "Strings_MQ03",
+	"AssetID": "66d38bea-67c3-4683-846c-946bc14f0a6b",
+	"AssetName": "Strings_MQ03",
 	"Entries": [
 		{
 			"Key": "MQ03_INTRO1",

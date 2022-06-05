@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
-	"Name": "U_PotionHeal1",
+	"AssetID": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
+	"AssetName": "U_PotionHeal1",
 	"ObjectName": "Healing Potion",
 	"FlavorText": "A tiny swig of bright red fluid, infused with energy that repairs injuries mere moments after imbibing. The seasoned adventurer knows to always pack one or two of these.",
 	"ItemType": "Usable",
@@ -12,7 +12,12 @@
 	"CanUseInBattle": true,
 	"UseDescription": "Restore all Health.",
 	"UseScript": {
-		"ID": "43cffb55-ce77-4ca4-b8f4-a69a0a0152e5",
-		"Name": "U_PotionHeal1_UseScript"
+		"!Type": "AssetScript",
+		"AssetID": "43cffb55-ce77-4ca4-b8f4-a69a0a0152e5",
+		"AssetName": "U_PotionHeal1_Use",
+		"Contents": {
+			"!Type": "ScriptDataExternal",
+			"Name": "U_PotionHeal1_Use"
+		}
 	}
 }

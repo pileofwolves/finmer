@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "bbaa5a79-e49b-4942-9e77-d37ab961e251",
-	"Name": "Scratchpad"
+	"AssetID": "bbaa5a79-e49b-4942-9e77-d37ab961e251",
+	"AssetName": "Scratchpad",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scratchpad"
+	}
 }

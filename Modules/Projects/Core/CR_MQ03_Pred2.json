@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "faeb4850-2ec9-483f-acc7-67ce5398d812",
-	"Name": "CR_MQ03_Pred2",
+	"AssetID": "faeb4850-2ec9-483f-acc7-67ce5398d812",
+	"AssetName": "CR_MQ03_Pred2",
 	"ObjectName": "Mia",
 	"ObjectAlias": "the husky",
 	"Strength": 6,

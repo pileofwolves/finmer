@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "3476c303-554a-4651-8952-aac9c1a8f329",
-	"Name": "I_Amber01",
+	"AssetID": "3476c303-554a-4651-8952-aac9c1a8f329",
+	"AssetName": "I_Amber01",
 	"ObjectName": "Amber Fragments",
 	"FlavorText": "While the exact reason is a strangely well-guarded secret, even trace amounts of true amber are of interest to those who would claim some degree of mastery over the unnatural arts.",
 	"ItemType": "Generic",

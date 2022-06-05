@@ -1,18 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "d16bc6e5-acc7-4bba-81ab-130555fe0c70",
-	"Name": "Scene_ForestCottage",
-	"ScriptCustom": {
-		"ID": "13113f5b-4861-4600-99c7-b100618ebb2c",
-		"Name": "d16bc6e5-acc7-4bba-81ab-130555fe0c70_CustomScript"
-	},
+	"AssetID": "d16bc6e5-acc7-4bba-81ab-130555fe0c70",
+	"AssetName": "Scene_ForestCottage",
 	"ScriptEnter": {
-		"ID": "6c41d621-3738-4312-a0f8-ad930bd0aa58",
-		"Name": "Scene_ForestCottage_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "9acc979c-7d94-427a-9c69-3bb85f7de050",
-		"Name": "d16bc6e5-acc7-4bba-81ab-130555fe0c70_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_ForestCottage_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +19,10 @@
 				"Key": "Start",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "if not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "if not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)"
+				},
 				"Children": [
 					{
 						"Key": "EnterCottage",
@@ -42,8 +37,14 @@
 								"Key": "CottageFirstEntry",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetInventoryEnabled(false)\r\nLog(\"forest_cottage_approach\")",
-								"ScriptAppear": "return not Storage.GetFlag(\"forest_cottage_entry_first\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "SetInventoryEnabled(false)\r\nLog(\"forest_cottage_approach\")"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return not Storage.GetFlag(\"forest_cottage_entry_first\")"
+								},
 								"Children": [
 									{
 										"Key": "CFE_Leave",
@@ -74,7 +75,10 @@
 												"Key": "CFE_DoKnock",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "-- no answer\r\nLog(\"forest_cottage_knock1\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock2\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock3\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "-- no answer\r\nLog(\"forest_cottage_knock1\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock2\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock3\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -103,7 +107,10 @@
 												"Key": "CFE_EnterResponse",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")"
+												},
 												"Children": [
 													{
 														"Key": "CFE_CheckOnGuy",
@@ -118,8 +125,14 @@
 																"Key": "CFE_CheckWitsy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")",
-																"ScriptAppear": "return Player.Wits >= 5",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")"
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "return Player.Wits >= 5"
+																},
 																"Children": [
 																	{
 																		"Key": "CFE_Slap",
@@ -129,13 +142,19 @@
 																		"Tooltip": "Give his face a good slap.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Storage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)"
+																		},
 																		"Children": [
 																			{
 																				"Key": "CFE_DoWakeUp",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "Oliver1_C_Who",
@@ -150,7 +169,10 @@
 																								"Key": "Oliver1_R_Who",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ02_OLIVER_R_WHO\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_OLIVER_R_WHO\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "Oliver1_C_Spill1",
@@ -164,7 +186,10 @@
 																												"Key": "Oliver1_R_Spill1",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL1\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_OLIVER_R_SPILL1\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "Oliver1_C_Spill2a",
@@ -179,7 +204,10 @@
 																																"Key": "Oliver1_R_Spill2",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL2\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL2\")"
+																																},
 																																"Children": [
 																																	{
 																																		"Key": "Oliver1_C_Spill3",
@@ -193,7 +221,10 @@
 																																				"Key": "Oliver1_R_Spill3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL3\")",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "Log(\"MQ02_OLIVER_R_SPILL3\")"
+																																				},
 																																				"Children": [
 																																					{
 																																						"Key": "Oliver1_C_Spill_Wolf",
@@ -203,13 +234,19 @@
 																																						"Tooltip": "Ask about the big wolf. What did he look like?",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")",
+																																						"ScriptAppear": {
+																																							"!Type": "ScriptDataInline",
+																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")"
+																																						},
 																																						"Children": [
 																																							{
 																																								"Key": "Oliver1_R_Spill_Wolf",
 																																								"IsState": true,
 																																								"IsLink": false,
-																																								"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL_WOLF\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataInline",
+																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WOLF\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)"
+																																								},
 																																								"Children": [
 																																									{
 																																										"IsState": false,
@@ -238,13 +275,19 @@
 																																						"Tooltip": "Ask about the stomach and the live prey.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_PREY\")",
+																																						"ScriptAppear": {
+																																							"!Type": "ScriptDataInline",
+																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_PREY\")"
+																																						},
 																																						"Children": [
 																																							{
 																																								"Key": "Oliver1_R_Spill_Prey",
 																																								"IsState": true,
 																																								"IsLink": false,
-																																								"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL_PREY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_PREY\", true)",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataInline",
+																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_PREY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_PREY\", true)"
+																																								},
 																																								"Children": [
 																																									{
 																																										"IsState": false,
@@ -273,13 +316,19 @@
 																																						"Tooltip": "Ask about why they were there.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WHY\")",
+																																						"ScriptAppear": {
+																																							"!Type": "ScriptDataInline",
+																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WHY\")"
+																																						},
 																																						"Children": [
 																																							{
 																																								"Key": "Oliver1_R_Spill_Why",
 																																								"IsState": true,
 																																								"IsLink": false,
-																																								"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL_WHY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WHY\", true)",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataInline",
+																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WHY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WHY\", true)"
+																																								},
 																																								"Children": [
 																																									{
 																																										"IsState": false,
@@ -313,7 +362,10 @@
 																																								"Key": "Oliver1_R_Spill4",
 																																								"IsState": true,
 																																								"IsLink": false,
-																																								"ScriptAction": "Log(\"MQ02_OLIVER_R_SPILL4\")",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataInline",
+																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL4\")"
+																																								},
 																																								"Children": [
 																																									{
 																																										"Key": "Oliver1_C_End1",
@@ -328,8 +380,14 @@
 																																												"Key": "Oliver1_R_End_Hug",
 																																												"IsState": true,
 																																												"IsLink": false,
-																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END_HUG\")\r\nSleep(1)",
-																																												"ScriptAppear": "return Storage.GetNumber(\"rep_oliver\") >= 2",
+																																												"ScriptAction": {
+																																													"!Type": "ScriptDataInline",
+																																													"Script": "Log(\"MQ02_OLIVER_R_END_HUG\")\r\nSleep(1)"
+																																												},
+																																												"ScriptAppear": {
+																																													"!Type": "ScriptDataInline",
+																																													"Script": "return Storage.GetNumber(\"rep_oliver\") >= 2"
+																																												},
 																																												"Children": [
 																																													{
 																																														"Key": "Oliver1_C_End_Hug",
@@ -352,7 +410,10 @@
 																																												"Key": "Oliver1_R_End_NoHug",
 																																												"IsState": true,
 																																												"IsLink": false,
-																																												"ScriptAction": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)",
+																																												"ScriptAction": {
+																																													"!Type": "ScriptDataInline",
+																																													"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)"
+																																												},
 																																												"Children": [
 																																													{
 																																														"Key": "Oliver1_C_End_NoHug",
@@ -366,7 +427,10 @@
 																																																"Key": "Oliver1_R_End1B",
 																																																"IsState": true,
 																																																"IsLink": false,
-																																																"ScriptAction": "Log(\"MQ02_OLIVER_R_END1B\")\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)",
+																																																"ScriptAction": {
+																																																	"!Type": "ScriptDataInline",
+																																																	"Script": "Log(\"MQ02_OLIVER_R_END1B\")\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)"
+																																																},
 																																																"Children": [
 																																																	{
 																																																		"Key": "Oliver1_C_End1B",
@@ -380,7 +444,10 @@
 																																																				"Key": "Oliver_R_End2",
 																																																				"IsState": true,
 																																																				"IsLink": false,
-																																																				"ScriptAction": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)",
+																																																				"ScriptAction": {
+																																																					"!Type": "ScriptDataInline",
+																																																					"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
+																																																				},
 																																																				"Children": [
 																																																					{
 																																																						"Key": "Oliver_C_End2",
@@ -470,13 +537,19 @@
 																						"Tooltip": "Ask about his injuries specifically. Who did that?",
 																						"Highlight": true,
 																						"ButtonWidth": 1.0,
-																						"ScriptAppear": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")",
+																						"ScriptAppear": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
+																						},
 																						"Children": [
 																							{
 																								"Key": "Oliver1_R_Injuries",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")"
+																								},
 																								"Children": [
 																									{
 																										"IsState": false,
@@ -500,7 +573,10 @@
 																								"Key": "Oliver1_R_What",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"MQ02_OLIVER_R_WHAT\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_OLIVER_R_WHAT\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "Oliver1_C_Reassure",
@@ -531,7 +607,10 @@
 																												"Key": "Oliver1_BeginCombat",
 																												"IsState": true,
 																												"IsLink": false,
-																												"ScriptAction": "Log(\"MQ02_OLIVER_R_AGGRAVATE\")",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_OLIVER_R_AGGRAVATE\")"
+																												},
 																												"Children": [
 																													{
 																														"Key": "Oliver1_CombatDone",
@@ -540,14 +619,23 @@
 																														"Title": "Uh-oh...",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
-																														"ScriptAction": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_MQ02_Oliver\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend)\r\nstate:OnCreatureKilled(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend)\r\nstate:Begin()",
+																														"ScriptAction": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_MQ02_Oliver\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend)\r\nstate:OnCreatureKilled(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend)\r\nstate:Begin()"
+																														},
 																														"Children": [
 																															{
 																																"Key": "Oliver1_FD_Digested",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"MQ02_OLIVER_FD_DIGESTED\")",
-																																"ScriptAppear": "return Storage.GetFlag(\"oliver_eaten\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_FD_DIGESTED\")"
+																																},
+																																"ScriptAppear": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "return Storage.GetFlag(\"oliver_eaten\")"
+																																},
 																																"Children": [
 																																	{
 																																		"Key": "Oliver1_FD_Digested2",
@@ -561,7 +649,10 @@
 																																				"Key": "Oliver1_FD_Digested3",
 																																				"IsState": true,
 																																				"IsLink": false,
-																																				"ScriptAction": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")"
+																																				},
 																																				"Children": [
 																																					{
 																																						"Key": "Oliver1_FD_ToHome",
@@ -571,7 +662,10 @@
 																																						"Tooltip": "Look around the house, see if anything's worth taking.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAction": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)",
+																																						"ScriptAction": {
+																																							"!Type": "ScriptDataInline",
+																																							"Script": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)"
+																																						},
 																																						"Children": [
 																																							{
 																																								"IsState": true,
@@ -590,8 +684,14 @@
 																																"Key": "Oliver1_FD_Killed",
 																																"IsState": true,
 																																"IsLink": false,
-																																"ScriptAction": "Log(\"MQ02_OLIVER_FD_KILLED\")",
-																																"ScriptAppear": "return Storage.GetFlag(\"oliver_dead\")",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_FD_KILLED\")"
+																																},
+																																"ScriptAppear": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "return Storage.GetFlag(\"oliver_dead\")"
+																																},
 																																"Children": [
 																																	{
 																																		"IsState": false,
@@ -638,7 +738,10 @@
 																		"Tooltip": "Splash some water from your canteen on his face.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Log(\"mq02_cot_soberup\")\r\nSleep(3)",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"mq02_cot_soberup\")\r\nSleep(3)"
+																		},
 																		"Children": [
 																			{
 																				"IsState": true,
@@ -655,14 +758,23 @@
 																		"Tooltip": "Wrap some cloth around the claw marks.",
 																		"Highlight": true,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.SetFlag(\"mq02_oliver_bandaged\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)",
-																		"ScriptAppear": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Storage.SetFlag(\"mq02_oliver_bandaged\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)"
+																		},
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "CFE_DoBandage",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"mq02_cot_awake_bandage\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"mq02_cot_awake_bandage\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -691,8 +803,14 @@
 																		"Tooltip": "Pour one of your healing potions down his throat.",
 																		"Highlight": true,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.SetFlag(\"mq02_oliver_healed\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)",
-																		"ScriptAppear": "return Player:HasItem(\"U_PotionHeal1\")",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Storage.SetFlag(\"mq02_oliver_healed\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
+																		},
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Player:HasItem(\"U_PotionHeal1\")"
+																		},
 																		"Children": [
 																			{
 																				"IsState": true,
@@ -709,15 +827,27 @@
 																		"Tooltip": "[Strength] Pick him up and put him on the couch.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": "Storage.SetFlag(\"mq02_cot_triedcarry\", true)",
-																		"ScriptAppear": "return not Storage.GetFlag(\"mq02_cot_triedcarry\")",
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Storage.SetFlag(\"mq02_cot_triedcarry\", true)"
+																		},
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"mq02_cot_triedcarry\")"
+																		},
 																		"Children": [
 																			{
 																				"Key": "CFE_CarryOK",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)",
-																				"ScriptAppear": "return Player.Strength >= 5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)"
+																				},
+																				"ScriptAppear": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "return Player.Strength >= 5"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -745,7 +875,10 @@
 																				"Key": "CFE_CarryFail",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"mq02_cot_carry_fail\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"mq02_cot_carry_fail\")"
+																				},
 																				"Children": [
 																					{
 																						"IsState": false,
@@ -777,7 +910,10 @@
 																"Key": "CFE_CheckNotSoWitsy",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"mq02_cot_check_dumb\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"mq02_cot_check_dumb\")"
+																},
 																"Children": [
 																	{
 																		"IsState": false,
@@ -813,7 +949,10 @@
 								"Key": "CottageInside",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nLog(\"forest_cottage_enter\")\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\nelse\r\n    Log(\"forest_cottage_oliver_hello\")\r\nend",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nLog(\"forest_cottage_enter\")\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\nelse\r\n    Log(\"forest_cottage_oliver_hello\")\r\nend"
+								},
 								"Children": [
 									{
 										"Key": "Cottage_Leave",
@@ -822,7 +961,10 @@
 										"Title": "Leave",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": "hasGreeted = false",
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "hasGreeted = false"
+										},
 										"Children": [
 											{
 												"IsState": true,
@@ -839,13 +981,19 @@
 										"Tooltip": "You have the items he had asked for.",
 										"Highlight": true,
 										"ButtonWidth": 1.0,
-										"ScriptAppear": "return Player:HasItem(\"I_SQ03_OliverSupplies\")",
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return Player:HasItem(\"I_SQ03_OliverSupplies\")"
+										},
 										"Children": [
 											{
 												"Key": "Cottage_R_SQ03Handin",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
+												},
 												"Children": [
 													{
 														"Key": "Cottage_C_SQ03Exit",

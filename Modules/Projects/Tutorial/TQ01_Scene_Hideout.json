@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "062b100c-1f16-494e-b451-81128f6ddaaa",
-	"Name": "TQ01_Scene_Hideout",
-	"ScriptCustom": {
-		"ID": "8aae301f-ea50-4088-a6a6-9f1e106d369a",
-		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "919cd3f2-5e5b-46dc-b2ae-015152a8ce41",
-		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_EnterScript"
-	},
-	"ScriptLeave": {
-		"ID": "3ac0918c-318a-4e2f-a668-d76e72cef3b0",
-		"Name": "062b100c-1f16-494e-b451-81128f6ddaaa_LeaveScript"
-	},
+	"AssetID": "062b100c-1f16-494e-b451-81128f6ddaaa",
+	"AssetName": "TQ01_Scene_Hideout",
 	"IsPatch": false,
 	"Root": {
 		"Key": "Root",
@@ -27,7 +15,10 @@
 				"Key": "TQ01_Hideout",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Log(\"TQ01_HIDEOUT\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"TQ01_HIDEOUT\")"
+				},
 				"Children": [
 					{
 						"Key": "TQ01_Approach",
@@ -42,7 +33,10 @@
 								"Key": "TQ01_Approach_Log",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"TQ01_APPROACH\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"TQ01_APPROACH\")"
+								},
 								"Children": [
 									{
 										"Key": "TQ01_Investigate",
@@ -57,8 +51,14 @@
 												"Key": "TQ01_InvestigatePass",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"TQ01_INVESTIGATEWIT\")",
-												"ScriptAppear": "return Player.Wits >= 5",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"TQ01_INVESTIGATEWIT\")"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return Player.Wits >= 5"
+												},
 												"Children": [
 													{
 														"Key": "AutoLink",
@@ -72,7 +72,10 @@
 												"Key": "TQ01_InvestigateFail",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Log(\"TQ01_INVESTIGATELOWWIT\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"TQ01_INVESTIGATELOWWIT\")"
+												},
 												"Children": [
 													{
 														"Key": "TQ01_Search",
@@ -87,7 +90,10 @@
 																"Key": "TQ01_Pendant_Get",
 																"IsState": true,
 																"IsLink": false,
-																"ScriptAction": "Log(\"TQ01_SEARCH\")\r\nPlayer:ModifyMoney(5)\r\nPlayer:GiveItem(\"TQ01_I_Pendant\")",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"TQ01_SEARCH\")\r\nPlayer:ModifyMoney(5)\r\nPlayer:GiveItem(\"TQ01_I_Pendant\")"
+																},
 																"Children": [
 																	{
 																		"Key": "TQ01_Fight_Cont",
@@ -102,7 +108,10 @@
 																				"Key": "TQ01_Fight",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Log(\"TQ01_FIGHT_LEAD\")",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"TQ01_FIGHT_LEAD\")"
+																				},
 																				"Children": [
 																					{
 																						"Key": "TQ01_Fight_Start",
@@ -112,14 +121,23 @@
 																						"Tooltip": "And you thought this would be a simple job...",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
-																						"ScriptAction": "local wolf = Creature(\"TQ01_CR_Wolf\")\r\nfight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(wolf)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"TQ01_WOLF_NOM\", true)\r\n    end\r\nend)\r\nfight:Begin()",
+																						"ScriptAction": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "local wolf = Creature(\"TQ01_CR_Wolf\")\r\nfight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(wolf)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"TQ01_WOLF_NOM\", true)\r\n    end\r\nend)\r\nfight:Begin()"
+																						},
 																						"Children": [
 																							{
 																								"Key": "TQ01_Fight_Nom_Win",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"TQ01_FIGHT_FINISH_NOM\")\r\nFoodComa()\r\nLog(\"TQ01_FIGHT_FINISH_NOM2\")",
-																								"ScriptAppear": "return Storage.GetFlag(\"TQ01_WOLF_NOM\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"TQ01_FIGHT_FINISH_NOM\")\r\nFoodComa()\r\nLog(\"TQ01_FIGHT_FINISH_NOM2\")"
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "return Storage.GetFlag(\"TQ01_WOLF_NOM\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "AutoLink",
@@ -133,7 +151,10 @@
 																								"Key": "TQ01_Fight_Win",
 																								"IsState": true,
 																								"IsLink": false,
-																								"ScriptAction": "Log(\"TQ01_FIGHT_FINISH\")",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"TQ01_FIGHT_FINISH\")"
+																								},
 																								"Children": [
 																									{
 																										"Key": "TQ01_To_Road",
@@ -142,7 +163,10 @@
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": "Storage.SetNumber(\"TQ01\", 3)\r\nJournal.Update(\"TQ01\", 2)\r\nSetScene(\"Scene_RoadNorth\")",
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "Storage.SetNumber(\"TQ01\", 3)\r\nJournal.Update(\"TQ01\", 2)\r\nSetScene(\"Scene_RoadNorth\")"
+																										},
 																										"Children": []
 																									}
 																								]

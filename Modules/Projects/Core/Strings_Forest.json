@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "173a4e95-0687-4f5d-b72e-485765819701",
-	"Name": "Strings_Forest",
+	"AssetID": "173a4e95-0687-4f5d-b72e-485765819701",
+	"AssetName": "Strings_Forest",
 	"Entries": [
 		{
 			"Key": "FOREST_CLEARING_SAVEPOINT",

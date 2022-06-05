@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "678a693f-9f5a-4739-b72e-d63453ee5d20",
-	"Name": "Strings_Misc",
+	"AssetID": "678a693f-9f5a-4739-b72e-d63453ee5d20",
+	"AssetName": "Strings_Misc",
 	"Entries": [
 		{
 			"Key": "ITEM_CANNOTUSE",

@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "a56dc882-f82e-4192-a1a6-6f325cb8b63e",
-	"Name": "Scene_DireWolf_Stomach",
+	"AssetID": "a56dc882-f82e-4192-a1a6-6f325cb8b63e",
+	"AssetName": "Scene_DireWolf_Stomach",
 	"ScriptCustom": {
-		"ID": "223086a6-e84a-4efb-b4f6-bb59d90d9c6c",
-		"Name": "Scene_DireWolf_Stomach_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_DireWolf_Stomach_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "9b891c31-1d9d-4483-a2b6-86a206e5e447",
-		"Name": "Scene_DireWolf_Stomach_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "a94b8345-0abe-47d1-8aa2-2c6dd5cce685",
-		"Name": "a56dc882-f82e-4192-a1a6-6f325cb8b63e_LeaveScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_DireWolf_Stomach_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +23,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", false)\r\nJournal.Close(\"SQ02\")\r\nLog(\"SQ02_WOLF_ENDO_BEGIN\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", false)\r\nJournal.Close(\"SQ02\")\r\nLog(\"SQ02_WOLF_ENDO_BEGIN\")"
+				},
 				"Children": [
 					{
 						"Key": "C_Struggle",
@@ -42,8 +41,14 @@
 								"Key": "R_StrugglePostRest",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)",
-								"ScriptAppear": "return Storage.GetFlag(\"forest_direwolf_sleptinside\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Storage.GetFlag(\"forest_direwolf_sleptinside\")"
+								},
 								"Children": [
 									{
 										"Key": "C_GetSpatUp",
@@ -58,7 +63,10 @@
 												"Key": "R_GetSpatUp",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "SetScene(\"Scene_ForestCottage\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "SetScene(\"Scene_ForestCottage\")"
+												},
 												"Children": []
 											}
 										]
@@ -69,7 +77,10 @@
 								"Key": "R_Struggle",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"VORE_POV_ENDO\")",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"VORE_POV_ENDO\")"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -98,13 +109,19 @@
 						"Tooltip": "Scoop up some of the stomach fluids.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
-						"ScriptAppear": "return Player:HasItem(\"I_SQ01_Vial\")",
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Player:HasItem(\"I_SQ01_Vial\")"
+						},
 						"Children": [
 							{
 								"Key": "R_SQ01_UseVial",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Log(\"SQ01_VIAL_USE\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"SQ01_VIAL_USE\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)"
+								},
 								"Children": [
 									{
 										"IsState": false,
@@ -133,7 +150,10 @@
 								"Key": "R_Sleep",
 								"IsState": true,
 								"IsLink": false,
-								"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_ENDO_SLEEP\")\r\n\r\nRest()",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_ENDO_SLEEP\")\r\n\r\nRest()"
+								},
 								"Children": [
 									{
 										"Key": "C_SleepSave",
@@ -148,7 +168,10 @@
 												"Key": "SavePoint_Stomach",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "SaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "SaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")"
+												},
 												"Children": [
 													{
 														"IsState": false,
@@ -176,7 +199,10 @@
 												"Key": "R_AwakeAfterSleep",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")"
+												},
 												"Children": [
 													{
 														"IsState": false,

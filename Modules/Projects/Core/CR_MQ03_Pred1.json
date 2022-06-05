@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "4397dd95-6f0a-496d-8457-79f754467756",
-	"Name": "CR_MQ03_Pred1",
+	"AssetID": "4397dd95-6f0a-496d-8457-79f754467756",
+	"AssetName": "CR_MQ03_Pred1",
 	"ObjectName": "Sahro",
 	"ObjectAlias": "the tigress",
 	"Strength": 4,

@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
-	"Name": "AC_CharmBlock",
+	"AssetID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
+	"AssetName": "AC_CharmBlock",
 	"ObjectName": "Charm of Shields",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",

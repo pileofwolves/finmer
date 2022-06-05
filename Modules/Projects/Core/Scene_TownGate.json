@@ -1,19 +1,7 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "b9679eeb-2f51-4b30-8206-e42fde7353a8",
-	"Name": "Scene_TownGate",
-	"ScriptCustom": {
-		"ID": "122d5c91-dd62-4717-93f3-7184a6b0bc48",
-		"Name": "Scene_TownGate_CustomScript"
-	},
-	"ScriptEnter": {
-		"ID": "9f886877-7725-4404-8c7f-d4b1df076307",
-		"Name": "Scene_TownGate_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "92c1ad4b-837d-4d23-9e9e-fb6dc2b764de",
-		"Name": "Scene_TownGate_OnLeave"
-	},
+	"AssetID": "b9679eeb-2f51-4b30-8206-e42fde7353a8",
+	"AssetName": "Scene_TownGate",
 	"IsPatch": false,
 	"Root": {
 		"Key": "Root",
@@ -27,7 +15,10 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")"
+				},
 				"Children": []
 			}
 		]

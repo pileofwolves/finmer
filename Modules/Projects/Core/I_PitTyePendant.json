@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "90e45c15-1329-4d5f-8dcd-f58b37351010",
-	"Name": "I_PitTyePendant",
+	"AssetID": "90e45c15-1329-4d5f-8dcd-f58b37351010",
+	"AssetName": "I_PitTyePendant",
 	"ObjectName": "Silver Pendant",
 	"FlavorText": "A simple, worn silver disc hung from a string. It served as a luck charm for someone once, and now it has found its way into your paws.",
 	"ItemType": "Generic",

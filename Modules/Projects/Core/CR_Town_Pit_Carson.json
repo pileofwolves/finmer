@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetCreature",
-	"ID": "46b9a549-5608-4829-9afa-db94351ba0fe",
-	"Name": "CR_Town_Pit_Carson",
+	"AssetID": "46b9a549-5608-4829-9afa-db94351ba0fe",
+	"AssetName": "CR_Town_Pit_Carson",
 	"ObjectName": "Carson",
 	"ObjectAlias": "the otter",
 	"Strength": 3,

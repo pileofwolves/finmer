@@ -1,5 +1,9 @@
 ﻿{
 	"!Type": "AssetScript",
-	"ID": "a5932240-62ad-4b67-8e48-6ee5e4631146",
-	"Name": "Script_TableEnums"
+	"AssetID": "a5932240-62ad-4b67-8e48-6ee5e4631146",
+	"AssetName": "Script_TableEnums",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_TableEnums"
+	}
 }

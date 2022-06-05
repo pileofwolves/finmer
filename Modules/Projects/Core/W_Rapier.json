@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetItem",
-	"ID": "b5f9289b-46c5-4e90-916b-95832ccbc584",
-	"Name": "W_Rapier",
+	"AssetID": "b5f9289b-46c5-4e90-916b-95832ccbc584",
+	"AssetName": "W_Rapier",
 	"ObjectName": "Rapier",
 	"ObjectAlias": "rapier",
 	"FlavorText": "A somewhat unusual weapon designed for rapid thrusting attacks, while maintaining a healthy distance from one's opponent. Fencing is an elegant if somewhat foreign sport that usually involves such rapiers.",

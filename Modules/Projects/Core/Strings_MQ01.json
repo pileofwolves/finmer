@@ -1,7 +1,7 @@
 ﻿{
 	"!Type": "AssetStringTable",
-	"ID": "879c7e5e-c7b8-4460-abb4-2aecd5fb74f3",
-	"Name": "Strings_MQ01",
+	"AssetID": "879c7e5e-c7b8-4460-abb4-2aecd5fb74f3",
+	"AssetName": "Strings_MQ01",
 	"Entries": [
 		{
 			"Key": "MQ01_BARKEEP1",

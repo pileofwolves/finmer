@@ -1,18 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
-	"ID": "d93a8b96-ed74-4de1-9f57-5f404f9ea351",
-	"Name": "Scene_Forest",
+	"AssetID": "d93a8b96-ed74-4de1-9f57-5f404f9ea351",
+	"AssetName": "Scene_Forest",
 	"ScriptCustom": {
-		"ID": "64ea5ccf-49d5-4d16-bf88-b4af6404afc3",
-		"Name": "Scene_Forest_CustomScript"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_Forest_Custom"
 	},
 	"ScriptEnter": {
-		"ID": "fb9dc73e-8d35-4ac1-a854-9d69fdd4f2f7",
-		"Name": "Scene_Forest_OnEnter"
-	},
-	"ScriptLeave": {
-		"ID": "82afb240-b091-4f6d-aa66-fccddc5bc93a",
-		"Name": "Scene_Forest_OnLeave"
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_Forest_Enter"
 	},
 	"IsPatch": false,
 	"Root": {
@@ -27,7 +23,10 @@
 				"Key": "Entrypoint",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "AddLink(ECompass.North, Wander)\r\nAddLink(ECompass.East, Wander)\r\nAddLink(ECompass.South, Wander)\r\nAddLink(ECompass.West, ExitForest)",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.North, Wander)\r\nAddLink(ECompass.East, Wander)\r\nAddLink(ECompass.South, Wander)\r\nAddLink(ECompass.West, ExitForest)"
+				},
 				"Children": []
 			}
 		]

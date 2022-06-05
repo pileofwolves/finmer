@@ -215,13 +215,13 @@
 		{
 			"Key": "TOWN_INN_ROOM_ENTER_FIRST",
 			"Text": [
-				"You ascend the creaky wooden staircase and, after taking stock of the short hallway with a few doors, you take the first door on the left. The room you rented is quite small - there's just a bed, a nightstand and a window. The sheets appear to be clean. Being a traveler, though, you're used to sleeping under the stars, so the definitely bed is an improvement to begin with."
+				"You ascend the creaky wooden staircase and, after taking stock of the short hallway with a few doors, you take the first door on the left. The room you've been given is quite small - there's just a bed, a nightstand and a window. It is enough: being one of traveling inclination, you're used to sleeping on the road and under the stars, so the fresh sheets are certainly an improvement."
 			]
 		},
 		{
 			"Key": "TOWN_INN_ROOM_ENTER_SAVE",
 			"Text": [
-				"<You can save your game in some safe places like this inn room. Click the Save option below to do so.>"
+				"< You can save your game in some safe places like this inn room. Click the Save option below to do so. >"
 			]
 		},
 		{

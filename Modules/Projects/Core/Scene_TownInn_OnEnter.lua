@@ -3,12 +3,6 @@ SetLocation("Town, Inn")
 -- Set up the bartender context
 Text.SetContext("bartender", barkeep)
 
--- if loading save, don't tell the player they just entered the inn
-if Storage.GetFlag("savepoint") then
-    Log("TOWN_INN_SAVEPOINT_ENTER")
-    return
-end
-
 -- long/detailed message on first visit, short version afterwards
 if Storage.GetFlag("town_inn_visited") then
     Log("town_inn_enter")

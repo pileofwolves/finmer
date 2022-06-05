@@ -93,6 +93,12 @@
 			"Text": [
 				"< Tip: Some options may be highlighted in blue. This means that they were unlocked earlier, or are shown because of some special reason. Keep in mind, however, that they're not necessarily better than other options. >"
 			]
+		},
+		{
+			"Key": "TIP_SAVE_AT_INN",
+			"Text": [
+				"< You can save your progress at some safe, private places. Speak with Edgard, the bartender, to get a room in this inn. >"
+			]
 		}
 	]
 }

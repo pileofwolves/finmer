@@ -34,27 +34,33 @@
 			]
 		},
 		{
-			"Key": "MQ02_AM_BUSINESS",
+			"Key": "MQ02_AM_BUSINESS1",
 			"Text": [
-				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Not my fault he only informed me when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts.\\n\\n\"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw. A strange feeling of vertigo overcomes you, as you recognize the predator before you as the leader of the Red Maw. Not just because you heard somewhere, but because you know you have seen him before - you're just not sure where. \"Now listen here, {player.species},\" he says as he steps closer, seemingly oblivious to your realization, tail swishing behind him as he tries to look menacing."
+				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Hmm, I do get a possessive streak sometimes, I dare say. Not my fault he only informed me of his, ah, benign intentions, when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts. \"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw."
 			]
 		},
 		{
 			"Key": "MQ02_AM_BUSINESS2",
 			"Text": [
-				"\"I don't care who you think you are, or what that idiot of a lion told you back there. Poor kid keeled right over when I belched in his face, hah! But I want things to go my way here, and you're interfering.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"A strange feeling of vertigo overcomes you, as you recognize the predator before you as the leader of some kind of movement called the Red Maw. Not just because you heard somewhere, but because you know you have seen him before - and the thought of it sends your heart racing with a sense of dread you cannot reconcile with your lack of memories. \"Now listen here, {player.species},\" he says as he steps closer, seemingly oblivious to your realization, tail swishing behind him as he tries to look menacing."
 			]
 		},
 		{
-			"Key": "MQ02_AM_BUSINESS2_ATEOLIVER",
+			"Key": "MQ02_AM_BUSINESS3",
 			"Text": [
-				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and you're interfering. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"\"I don't care who you think you are, or what that idiot of a lion told you back there. Poor kid keeled right over when I belched in his face, hah! But I want things to go my way here, and I don't like things I can't control.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+			]
+		},
+		{
+			"Key": "MQ02_AM_BUSINESS3B",
+			"Text": [
+				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and I don't like things I can't control. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
 			]
 		},
 		{
 			"Key": "MQ02_AM_ENDING",
 			"Text": [
-				"With his point made, Randall flashes you a cocky grin, teasingly licks his lips, then turns and leaves. \"Go on now, run that little errand for me; tell your pantheress it's all fine and dandy over here. She'll get her damn supplies, and I don't want to wait a moment longer,\" he says, dismissively raising a paw as if waving to you. The husky and tigress, having remained motionless until now, wait for their leader to catch up before they too turn.\\n\\nWhat a massive jerk."
+				"With his point made, Randall flashes you a cocky grin, teasingly licks his lips, then turns and leaves. \"Go on now, run that little errand for me; tell your pantheress it's all fine and dandy over here. She'll get her damn supplies, and I don't want to wait a moment longer,\" he says, dismissively raising a paw as if waving to you. The husky and tigress, having remained motionless until now, wait for their leader to catch up before they too turn. What a massive jerk."
 			]
 		},
 		{
@@ -106,7 +112,7 @@
 			]
 		},
 		{
-			"Key": "MQ02_AM_OPENING",
+			"Key": "MQ02_AM_OPENING1",
 			"Text": [
 				"As soon as you turn the corner, three figures emerge from the dense forestry surrounding you. They appear to have been waiting there the entire time - what for, you cannot say. Having already taken notice of your approach, one of the fellows confidently strides forward, the other two remaining where they are, eyeing you with mild disinterest."
 			]
@@ -114,7 +120,13 @@
 		{
 			"Key": "MQ02_AM_OPENING2",
 			"Text": [
-				"A large wolf with off-black fur and a crimson mane running from just above his eyes to the back of his head, approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats. A husky and a tigress, you note. Only then do you recognize the unnatural bulge on the lupine's midsection, exposing a huge dome of black fur underneath his jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its liquid contents shift.\\n\\n\"You're that little {player.species} I've been hearing about, then?\" the black wolf begins. \"Thought you might be making a mess here, so I figured I'd take a look to... safeguard my investments.\" For a moment you see his eyes flash with an unusual emotion. Confusion... recognition? It quickly vanishes, leaving behind only a cocky grin. \"But you don't seem like much. Iso sent you? Of course she did, the nosy bitch.\""
+				"A large wolf with off-black fur and a crimson mane running from just above his eyes to the back of his head, approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats. A husky and a tigress, you note. Only then do you finally recognize the unnatural bulge on the lupine's midsection, exposing a huge dome of black fur underneath his jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its liquid contents shift."
+			]
+		},
+		{
+			"Key": "MQ02_AM_OPENING3",
+			"Text": [
+				"\"Well now, I was not expecting the next messenger to be a scrawny {player.species}.\" the black wolf begins. \"Don't mind me, I am merely here to... safeguard my investments.\" For a moment you see his eyes flash with an unusual emotion. Confusion... recognition? It quickly vanishes, leaving behind only a cocky grin. \"But you don't seem like much of an issue. Iso sent you? Of course she did, the nosy bitch.\""
 			]
 		},
 		{

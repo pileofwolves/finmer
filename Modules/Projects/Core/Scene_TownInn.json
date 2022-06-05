@@ -27,7 +27,7 @@
 				"Key": "Main",
 				"IsState": true,
 				"IsLink": false,
-				"ScriptAction": "SetInventoryEnabled(true)",
+				"ScriptAction": "SetInventoryEnabled(true)\r\n\r\n-- Saving tip when halfway through MQ01\r\nif not Storage.GetFlag(\"TIP_SAVE_AT_INN\") and Player:HasItem(\"I_MQ01_InnPass\") then\r\n    Storage.SetFlag(\"TIP_SAVE_AT_INN\", true)\r\n    Log(\"TIP_SAVE_AT_INN\", Color.Highlight)\r\nend",
 				"Children": [
 					{
 						"Key": "Leave",
@@ -352,7 +352,7 @@
 																				"Key": "MQ02F_R_End",
 																				"IsState": true,
 																				"IsLink": false,
-																				"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"mq02_barkeep_end\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
+																				"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
 																				"Children": [
 																					{
 																						"Key": "MQ02F_C_End2",
@@ -363,9 +363,26 @@
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"Key": "MQ02F_R_End2",
 																								"IsState": true,
-																								"IsLink": true,
-																								"LinkTarget": "Main"
+																								"IsLink": false,
+																								"ScriptAction": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END2\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)",
+																								"Children": [
+																									{
+																										"Key": "MQ02F_C_End3",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "Main"
+																											}
+																										]
+																									}
+																								]
 																							}
 																						]
 																					}
@@ -545,7 +562,7 @@
 														"Tooltip": "Ask about a bed for the night.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAppear": "-- Room is not yet made available\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\")",
+														"ScriptAppear": "-- Room is not yet made available, and also player is not about to get a free room\r\n-- (hide this option in the latter case because it's very confusing for the player)\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\") and not Player:HasItem(\"I_MQ01_InnPass\")",
 														"Children": [
 															{
 																"IsState": true,
@@ -875,7 +892,7 @@
 												"Key": "SavePoint_Room",
 												"IsState": true,
 												"IsLink": false,
-												"ScriptAction": "SaveData.ShowSaveDialog()",
+												"ScriptAction": "SaveData.ShowSaveDialog()\r\n\r\n-- Welcome-back text when loading game\r\nif SaveData.IsRestoringGame() then\r\n    Log(\"TOWN_INN_SAVEPOINT_ENTER\")\r\nend",
 												"Children": [
 													{
 														"IsState": false,

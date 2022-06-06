@@ -49,7 +49,7 @@ namespace Finmer.Models
         /// <summary>
         /// Indicates whether PreySense is enabled prior to vore scenes
         /// </summary>
-        public static bool PreySense { get; set; } = false;
+        public static bool PreySense { get; set; }
 
         /// <summary>
         /// Indicates whether this is the application's first time starting up.

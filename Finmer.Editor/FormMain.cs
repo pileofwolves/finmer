@@ -286,8 +286,8 @@ namespace Finmer.Editor
             if (dlgSave.ShowDialog() != DialogResult.OK)
                 return false;
                 
-            // Pull the directory we're saving in, see if there's any other finmer projects already there.
-            string save_path = Path.GetDirectoryName(dlgSave.FileName);
+            // Check if there are any other Finmer project files in the directory we're saving this project to
+            string save_path = Path.GetDirectoryName(dlgSave.FileName) ?? String.Empty;
             string[] file_entries = Directory.GetFiles(save_path, "*.fnproj");
             if (file_entries.Any(name => !name.Equals(dlgSave.FileName)))
             {

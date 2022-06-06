@@ -23,7 +23,7 @@ namespace Finmer.Gameplay
     internal static class Logger
     {
 
-        private static readonly DirectoryInfo BaseDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
+        private static readonly DirectoryInfo s_BaseDir = new DirectoryInfo(AppDomain.CurrentDomain.BaseDirectory);
 
         /// <summary>
         /// Verifies if the calling thread has permission to write a file to the application directory.
@@ -31,7 +31,7 @@ namespace Finmer.Gameplay
         public static bool HasWritePermission()
         {
             var permission_set = new PermissionSet(PermissionState.Unrestricted);
-            var write_permission = new FileIOPermission(FileIOPermissionAccess.Write, BaseDir.FullName);
+            var write_permission = new FileIOPermission(FileIOPermissionAccess.Write, s_BaseDir.FullName);
             permission_set.AddPermission(write_permission);
 
             return permission_set.IsSubsetOf(AppDomain.CurrentDomain.PermissionSet);
@@ -48,7 +48,7 @@ namespace Finmer.Gameplay
                 return;
 
             // Generate a base file name for the dump
-            string base_name = Path.Combine(BaseDir.FullName, "crash" + DateTime.Now.ToFileTime());
+            string base_name = Path.Combine(s_BaseDir.FullName, "crash" + DateTime.Now.ToFileTime());
 
             // First of all, try writing a minidump to disk, since that contains the most useful info
             try

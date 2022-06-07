@@ -52,10 +52,6 @@ namespace Finmer.Editor
         {
             base.Flush();
 
-            // Update the script name, in case it was changed
-            m_Wrapper.Name = Name;
-            m_Wrapper.Wrapped.Name = Name;
-
             // Flush the script editor
             scriptEditorHost.Flush();
         }

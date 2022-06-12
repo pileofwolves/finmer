@@ -17,7 +17,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetInventoryEnabled(false)\r\nClearLog()\r\nLog(\"WELCOME\", Color.Gray)\r\nLog(\"TUTORIAL_PROMPT\")"
+					"Script": "SetInventoryEnabled(false)\r\nClearLog()\r\nLog(\"TUTORIAL_PROMPT\")"
 				},
 				"Children": [
 					{

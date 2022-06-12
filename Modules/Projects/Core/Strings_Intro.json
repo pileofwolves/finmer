@@ -74,13 +74,13 @@
 		{
 			"Key": "TUTORIAL_NOTE_VORE1",
 			"Text": [
-				"SWALLOWING: To swallow another character, you must win three rounds of dice in a row. The predator rolls dice based on their Body stat; the prey uses their Agility. The higher number wins. If the predator is grappling their prey, the prey loses 2 dice."
+				"SWALLOWING: To swallow another character, you must win three rounds of dice in a row. The predator rolls dice based on their Body stat; the prey uses their Agility. The higher number wins. If the predator is grappling their prey - as you are now - the prey loses 2 dice."
 			]
 		},
 		{
 			"Key": "TUTORIAL_NOTE_VORE2",
 			"Text": [
-				"DIGESTION: When a character is in another character's stomach, they'll take digestion damage each round, until they die or get out some other way. Prey cannot free themselves, but others may sometimes be able to help."
+				"DIGESTION: When a character is in another character's stomach, they'll take digestion damage each round, until they die. Swallowed prey cannot free themselves, but sometimes others may be able to help, and rarely, a predator might be a friend..."
 			]
 		},
 		{
@@ -116,7 +116,7 @@
 		{
 			"Key": "TUTORIAL_TALK5",
 			"Text": [
-				"\"Hm, well done,\" {instructor} compliments, jotting down some notes on {instructor.possessive} clipboard before. \"You are certainly a quick study, for a {player.species}. Dare I say you even look good with some prey on your midsection.\" {^instructor.subject} snorts, clicking {instructor.possessive} pen a few times. \"Watch your back, {player.name}, and choose your allies carefully. I will let you have your dream back now.\""
+				"\"Hm, well done,\" {instructor} compliments, jotting down some notes on {instructor.possessive} clipboard before flipping to a different page. \"You are certainly a quick study, for a {player.species}. Dare I say you even look good with some prey on your midsection.\" {^instructor.subject} snorts, clicking {instructor.possessive} pen a few times. \"Watch your back, {player.name}, and choose your allies carefully. I will let you have your dream back now.\""
 			]
 		},
 		{

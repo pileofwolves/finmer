@@ -745,7 +745,7 @@
 												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "PreySense(Creature(\"CR_Town_Foxtaur\"), EVoreStyle.OV, true)"
+													"Script": "PreySense(Creature(\"CR_Town_Foxtaur\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 												},
 												"Children": [
 													{

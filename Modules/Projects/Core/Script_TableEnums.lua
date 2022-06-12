@@ -37,12 +37,5 @@ ECharacterFlags = {
     SkipTurns       = 16,
 }
 
-EVoreStyle = {
-    OV              = 0,
-    AV              = 1,
-    CV              = 2,
-    UB              = 3,
-}
-
 -- Backwards compatibility
 Compass = ECompass

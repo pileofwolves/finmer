@@ -412,7 +412,7 @@
 																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EVoreStyle.OV, true)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)"
+																	"Script": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)"
 																},
 																"Children": [
 																	{

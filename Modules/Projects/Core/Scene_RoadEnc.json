@@ -21,7 +21,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(randall, EVoreStyle.OV, true)"
+					"Script": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(randall, EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",

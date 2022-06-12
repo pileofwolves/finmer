@@ -392,7 +392,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")\r\n\r\nPreySense(guard, EVoreStyle.OV, false)"
+					"Script": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")\r\n\r\nPreySense(guard, EPreySenseType.OralVore, EPreySenseType.Endo)\r\n"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",

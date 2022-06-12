@@ -1049,7 +1049,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\nLog(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EVoreStyle.OV, true)"
+					"Script": "SaveData.TakeCheckpoint()\r\nLog(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{
@@ -1468,7 +1468,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EVoreStyle.OV, true)"
+					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{
@@ -1560,7 +1560,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EVoreStyle.OV, true)"
+					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{

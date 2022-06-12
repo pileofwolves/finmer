@@ -45,7 +45,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, true)"
+					"Script": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EPreySenseType.OralVore, EPreySenseType.EndoOrFatal)"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
@@ -97,7 +97,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"SQ02_DIREWOLF_FOUGHT\", true)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_SQ02_Wolf_OV\"))\r\nstate:Begin()"
+															"Script": "Storage.SetFlag(\"SQ02_DIREWOLF_FOUGHT\", true)\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nPreySense(wuff, EPreySenseType.OralVore, EPreySenseType.DigestionFatal)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:Begin()"
 														},
 														"Children": [
 															{
@@ -171,7 +171,7 @@
 																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "Log(\"SQ02_BELLYRUB\")\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EVoreStyle.OV, false)"
+																	"Script": "Log(\"SQ02_BELLYRUB\")\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EPreySenseType.OralVore, EPreySenseType.Endo)"
 																},
 																"Children": [
 																	{

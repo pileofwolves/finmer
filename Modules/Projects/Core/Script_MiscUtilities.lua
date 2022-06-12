@@ -61,18 +61,48 @@ function LogPostVore(scat, noscat)
     Log(text)
 end
 
-function PreySense(pred, style, does_digest)
-    if Player.IsPreySenseEnabled then
-        local vtype
-        if style == EVoreStyle.OV then vtype = "oral vore"
-        elseif style == EVoreStyle.AV then vtype = "anal vore"
-        elseif style == EVoreStyle.CV then vtype = "cock vore"
-        elseif style == EVoreStyle.UB then vtype = "unbirth"
-        end
-        local vfinal = does_digest and "fatal" or "safe"
-        local vcolor = does_digest and Color.Hostile or Color.Neutral
-        LogRaw("You have that strange feeling...  " .. pred.Name .. ": " .. vtype .. ", " .. vfinal, vcolor)
+EPreySenseType = {
+    OralVore            = 0,
+    AnalVore            = 1,
+    CockVore            = 2,
+    Unbirth             = 3,
+    Endo                = 4,
+    EndoOrFatal         = 5,
+    DigestionReform     = 6,
+    DigestionFatal      = 7,
+}
+
+function PreySense(pred, ...)
+    -- Skip if Preysense is not enabled
+    if not Player.IsPreySenseEnabled then return end
+
+    -- Map each Preysense type to a description
+    local descriptions = {
+        [EPreySenseType.OralVore]           = "oral vore",
+        [EPreySenseType.AnalVore]           = "anal vore",
+        [EPreySenseType.CockVore]           = "cock vore",
+        [EPreySenseType.Unbirth]            = "unbirth",
+        [EPreySenseType.Endo]               = "safe",
+        [EPreySenseType.EndoOrFatal]        = "either safe or fatal",
+        [EPreySenseType.DigestionReform]    = "digestion, reformation",
+        [EPreySenseType.DigestionFatal]     = "digestion, fatal",
+    }
+
+    -- Convert input Preysense types to text, per the mapping
+    local is_fatal = false
+    local types_num = {...}
+    local types_text = {}
+    for i, v in ipairs(types_num) do
+        table.insert(types_text, descriptions[v])
+        is_fatal = is_fatal or (v == EPreySenseType.DigestionFatal)
     end
+
+    -- Concatenate all type descriptions together, then prefix with pred name
+    local types_merged = table.concat(types_text, ", ")
+    local final_string = table.concat{ "Your prey-senses are tingling... ", pred.Name, ": ", types_merged }
+
+    -- Display string
+    LogRaw(final_string, is_fatal and Color.Hostile or Color.Neutral)
 end
 
 ------------------------------------------------------------------------------

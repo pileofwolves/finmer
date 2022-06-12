@@ -32,7 +32,7 @@ namespace Finmer.Editor
             // Initialize the editor. Note: This MUST be done in the constructor, instead of in the Load handler, because
             // Load will only be raised when the control actually becomes visible, and this may not happen if this control
             // is used in a tabbed/tiered context and the user may or may not ever open these tabs.
-            ScintillaHelper.Setup(scintilla);
+            ScintillaHelper.Setup(scintilla, ScintillaHelper.EScintillaStyle.Lua);
             scintilla.Text = m_ScriptData.ScriptText;
             scintilla.EmptyUndoBuffer();
         }

@@ -24,7 +24,7 @@ namespace Finmer.Editor
 
         private void FormScriptNodeLuaSnippet_Load(object sender, System.EventArgs e)
         {
-            ScintillaHelper.Setup(scintilla);
+            ScintillaHelper.Setup(scintilla, ScintillaHelper.EScintillaStyle.Lua);
             scintilla.Text = ((ConditionInlineSnippet)Node).Snippet;
         }
 

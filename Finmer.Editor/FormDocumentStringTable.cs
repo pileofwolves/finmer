@@ -30,7 +30,7 @@ namespace Finmer.Editor
 
         private void FormDocumentStringTable_Load(object sender, EventArgs e)
         {
-            ScintillaHelper.Setup(scintilla, false);
+            ScintillaHelper.Setup(scintilla, ScintillaHelper.EScintillaStyle.PlainText);
 
             // Populate the list control with the table's entries
             m_Table = ((AssetStringTable)Asset).Table.GetTableDeepCopy();

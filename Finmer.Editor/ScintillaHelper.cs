@@ -12,38 +12,59 @@ using ScintillaNET;
 namespace Finmer.Editor
 {
 
+    /// <summary>
+    /// Utility for configuring a Scintilla instance at runtime.
+    /// </summary>
     internal static class ScintillaHelper
     {
 
-        internal static void Setup(Scintilla scintilla, bool lua = true)
+        /// <summary>
+        /// Describes the language on display in the Scintilla editor.
+        /// </summary>
+        internal enum EScintillaStyle
         {
-            // misc setitngs
+            PlainText,
+            Lua
+        }
+
+        /// <summary>
+        /// Configure the specified Scintilla editor.
+        /// </summary>
+        internal static void Setup(Scintilla scintilla, EScintillaStyle style)
+        {
+            // Basic visual configuration
             scintilla.WrapMode = WrapMode.Word;
             scintilla.WrapIndentMode = WrapIndentMode.Indent;
-            scintilla.WrapVisualFlags = WrapVisualFlags.Margin;
-
+            scintilla.WrapVisualFlags = WrapVisualFlags.End;
             scintilla.CaretLineVisible = true;
             scintilla.CaretLineBackColor = Color.LightSkyBlue;
             scintilla.CaretLineBackColorAlpha = 32;
 
+            // Multi-selection configuration
+            scintilla.AdditionalSelectionTyping = true;
+            scintilla.MultiPaste = MultiPaste.Each;
+
+            // Show line numbers
             scintilla.Margins[0].Type = MarginType.Number;
             scintilla.Margins[0].Width = 32;
 
-            // set up default style
+            // Default plain-text style
             scintilla.StyleResetDefault();
-            scintilla.Styles[Style.Default].Font = "Consolas";
+            scintilla.Styles[Style.Default].Font = @"Consolas";
             scintilla.Styles[Style.Default].Size = 10;
             scintilla.Styles[Style.Default].ForeColor = Color.Black;
 
-            if (!lua) return;
+            // If the editor is for Lua code, then additional styling is needed
+            if (style == EScintillaStyle.PlainText)
+                return;
 
-            // set up keyword lists
+            // Configure keyword lists
             scintilla.Lexer = Lexer.Lua;
-            scintilla.SetKeywords(0, "and break do else elseif end false for function if in local nil not or repeat return then true until while");
-            scintilla.SetKeywords(1, "assert collectgarbage error getmetatable ipairs next pairs pcall print rawequal rawget rawset require select setmetatable tonumber tostring type unpack xpcall coroutine.create coroutine.resume coroutine.running coroutine.status coroutine.wrap coroutine.yield math.abs math.acos math.asin math.atan math.atan2 math.ceil math.cos math.cosh math.deg math.exp math.floor math.fmod math.frexp math.huge math.ldexp math.log math.log10 math.max math.min math.modf math.pi math.pow math.rad math.random math.sin math.sinh math.sqrt math.tan math.tanh string.byte string.char string.dump string.find string.format string.gmatch string.gsub string.len string.lower string.match string.rep string.reverse string.sub string.upper table.concat table.insert table.maxn table.remove table.sort");
-            scintilla.SetKeywords(2, "Log LogRaw LogGsub LogSplit ClearLog SaveGame GetString AdvanceTime GetTime Sleep SaveGame SetScene SetInstruction SetLocation SetButtonWidth SetInventoryEnabled AddButton AddLink Creature Item Shop Storage.SetFlag Storage.SetNumber Storage.SetString Storage.ModifyNumber Storage.GetFlag Storage.GetNumber Storage.GetString Player AddTag RemoveTag HasTag IsGrappling IsEaten IsEatenBy GetGrappler GetPredator HasItem GiveItem TakeItem AwardXP Combat.Begin Combat.End Combat.Reset Combat.Interrupt Combat.Resume Combat.AddCombatant Combat.SetVored Combat.SetGrappling Combat.SetPinned Combat.OnRoundEnd Combat.OnCombatEnd Combat.OnCharacterKilled Combat.OnCharacterVored Combat.OnCharacterDigested Combat.OnCharacterReleased Combat.OnPlayerKilled Combat.OnPlayerDigested Journal.Update Journal.Close Text.SetGlobalSubstitute Text.SetContext");
+            scintilla.SetKeywords(0, @"and break do else elseif end false for function if in local nil not or repeat return then true until while");
+            scintilla.SetKeywords(1, @"assert collectgarbage error getmetatable ipairs next pairs pcall print rawequal rawget rawset require select setmetatable tonumber tostring type unpack xpcall coroutine.create coroutine.resume coroutine.running coroutine.status coroutine.wrap coroutine.yield math.abs math.acos math.asin math.atan math.atan2 math.ceil math.cos math.cosh math.deg math.exp math.floor math.fmod math.frexp math.huge math.ldexp math.log math.log10 math.max math.min math.modf math.pi math.pow math.rad math.random math.sin math.sinh math.sqrt math.tan math.tanh string.byte string.char string.dump string.find string.format string.gmatch string.gsub string.len string.lower string.match string.rep string.reverse string.sub string.upper table.concat table.insert table.maxn table.remove table.sort");
+            scintilla.SetKeywords(2, @"AddButton AddLink AddParticipant AddTag AdvanceTime AwardXP Begin CanGrapple CanSwallow ClearLog Combat2 Creature End EndGame GetActiveCombat GetGrappler GetGrapplingWith GetPredator GetPredator GetTime GiveItem HasItem HasTag IsDead IsDebugMode IsGrappleInitiator IsGrappling IsSwallowed Item Journal.Close Journal.Update Log LogRaw LogSplit ModifyMoney OnCombatEnd OnCreatureKilled OnCreatureReleased OnCreatureVored OnPlayerKilled OnRoundEnd Player RemoveTag SaveData.IsRestoringGame SaveData.ShowSaveDialog SaveData.TakeCheckpoint SetButtonWidth SetGrappling SetInstruction SetInventoryEnabled SetLocation SetScene SetVored Shop Sleep Storage.GetFlag Storage.GetNumber Storage.GetString Storage.ModifyNumber Storage.SetFlag Storage.SetNumber Storage.SetString TakeItem Text.GetString Text.SetContext Text.SetVariable UnsetGrappling UnsetVored");
 
-            // apply special colorations to some objects
+            // Configure syntax highlighting
             scintilla.StyleClearAll();
             scintilla.Styles[Style.Lua.Comment].ForeColor = Color.ForestGreen;
             scintilla.Styles[Style.Lua.CommentLine].ForeColor = Color.ForestGreen;

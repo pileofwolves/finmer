@@ -557,7 +557,7 @@
             // 
             this.nudWis.Location = new System.Drawing.Point(208, 184);
             this.nudWis.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -574,7 +574,7 @@
             // 
             this.nudCon.Location = new System.Drawing.Point(144, 184);
             this.nudCon.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -591,7 +591,7 @@
             // 
             this.nudDex.Location = new System.Drawing.Point(80, 184);
             this.nudDex.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});
@@ -608,7 +608,7 @@
             // 
             this.nudStr.Location = new System.Drawing.Point(16, 184);
             this.nudStr.Minimum = new decimal(new int[] {
-            3,
+            1,
             0,
             0,
             0});

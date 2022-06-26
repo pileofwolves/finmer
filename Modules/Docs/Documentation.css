@@ -1,0 +1,205 @@
+body {
+    font-family: sans-serif;
+    font-size: 12pt;
+    background: #323232;
+    color: #efefef;
+    margin-bottom: 80px;
+}
+.main {
+    display: block;
+    margin: 0 auto 0 auto;
+    width: 75%;
+    min-width: 600px;
+    max-width: 1000px;
+}
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    background-color: #292929;
+}
+.footer p {
+    display: block;
+    width: 50%;
+    min-width: 800px;
+    color: #909090;
+    margin-left: auto;
+    margin-right: auto;
+}
+p, li {
+    /* Slightly more pleasant reading */
+    line-height: 125%;
+}
+li {
+    padding-bottom: 5px;
+}
+h1 {
+    display: block;
+    font-weight: bold;
+}
+h2 {
+    display: block;
+    color: rgb(255, 212, 177);
+    border-top: 2px solid rgb(255, 212, 177);
+    margin-top: 32px;
+    padding-top: 12px;
+}
+h3 {
+    display: block;
+    border-top: 1px dashed rgb(255, 212, 177);
+    color: rgb(255, 212, 177);
+    padding: 10px  0px 0px 12px;
+}
+h3::before {
+    content: '\2022\00A0';
+}
+h4 {
+    display: block;
+    color: rgb(255, 212, 177);
+}
+a[href] {
+    color: rgb(116, 165, 255);
+}
+code {
+    font-family: Consolas, monospace;
+    background-color: #454040;
+    border-radius: 3px;
+}
+figcaption {
+    color: #A0A0A0;
+}
+.clicky {
+    display: inline;
+    padding: 1px 4px 1px 4px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    background-color: #454040;
+}
+.scriptapi {
+    display: block;
+    min-width: 500px;
+    width: 75%;
+    margin: 8px 1px 12px 1px;
+    padding: 5px;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+.editorcode {
+    display: inline-block;
+    padding: 1px 4px 1px 4px;
+    border: 1px solid #808080;
+    border-radius: 4px;
+    background-color: red;
+}
+.game-string, .game-script {
+    display: block;
+    margin: 2px;
+    padding: 5px;
+    border: 1px dashed #808080;
+}
+.game-script {
+    font-family: Consolas, monospace;
+    font-size: 0.9em;
+}
+.game-string {
+    font-style: italic;
+    margin-left: 2em;
+    padding: 8px;
+}
+.scene-node, .asset {
+    display: flex;
+    flex-flow: column nowrap;
+    margin-bottom: 1em;
+    padding: 8px;
+    border: 1px dashed #808080;
+    border-radius: 4px;
+    background-color: #454040;
+}
+.scene-node .property, .asset .property {
+    display: inline-block;
+    font-weight: bold;
+    width: 8em;
+}
+.scriptapi .title {
+    font-size: 14pt;
+    font-family: monospace;
+    font-weight: bold;
+}
+.scriptapi .title .syntax {
+    color: #858585;
+}
+.scriptapi .desc {
+    margin-top: 16px;
+}
+
+/* Custom ul format for the argument list, to keep it compact */
+.scriptapi li {
+    display: block;
+    margin-left: 72px;
+}
+.scriptapi .input, .scriptapi .output, .scriptapi .type {
+    display: inline;
+    margin: 0;
+    padding: 0;
+    color: #a0a0a0;
+    list-style-type: none;
+}
+.scriptapi .type::before {
+    content: 'Type:';
+    float: left;
+}
+.scriptapi .input::before {
+    content: 'Input:';
+    float: left;
+}
+.scriptapi .output::before {
+    content: 'Output:';
+    float: left;
+}
+
+/* Table of contents */
+.toc ol {
+    counter-reset: item;
+    list-style-type: none;
+}
+.toc li:before {
+    content: counters(item, ".") ". ";
+    counter-increment: item;
+}
+
+/* Table of definitions */
+.window-defs {
+    border-collapse: collapse;
+}
+.window-defs tr {
+    border-bottom: 1px dashed #5e5e5e;
+    padding: 10px;
+}
+.window-defs th {
+    width: 9em;
+    padding-top: 6px;
+    text-align: left;
+    vertical-align: top;
+    font-weight: bold;
+}
+.window-defs td {
+    display: block;
+}
+.window-defs td:first-of-type {
+    padding-top: 6px;
+    margin-top: 0;
+}
+.window-defs td:last-of-type {
+    margin-bottom: 6px;
+}
+.window-defs td ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+.window-defs td ul > li > strong {
+    display: inline-block;
+    width: 10em;
+}

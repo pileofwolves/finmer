@@ -3,166 +3,7 @@
 <head>
     <meta charset="utf-8">
     <title>Finmer Editor - Module Tutorial</title>
-    <style type="text/css">
-        body {
-            font-family: sans-serif;
-            font-size: 12pt;
-            background: #323232;
-            color: #efefef;
-            margin-bottom: 80px;
-        }
-        .main {
-            display: block;
-            margin: 0 auto 0 auto;
-            width: 60%;
-            min-width: 500px;
-            max-width: 1000px;
-        }
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            text-align: center;
-            background-color: #292929;
-        }
-        .footer p {
-            display: block;
-            width: 50%;
-            min-width: 800px;
-            color: #909090;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        p, li {
-            /* Slightly more pleasant reading */
-            line-height: 125%;
-        }
-        li {
-            padding-bottom: 5px;
-        }
-        h2 {
-            color: rgb(255, 212, 177);
-            border-top: 2px solid rgb(255, 212, 177);
-            margin-top: 32px;
-            padding-top: 12px;
-        }
-        h3 {
-            border-top: 1px dashed rgb(255, 212, 177);
-            color: rgb(255, 212, 177);
-            padding: 10px  0px 0px 12px;
-        }
-        h3::before {
-            content: '\2022\00A0';
-        }
-        a[href] {
-            color: rgb(116, 165, 255);
-        }
-        code {
-            font-family: Consolas, monospace;
-            background-color: #454040;
-            border-radius: 3px;
-        }
-        figcaption {
-            color: #A0A0A0;
-        }
-        .clicky {
-            display: inline;
-            padding: 1px 4px 1px 4px;
-            border: 1px solid #808080;
-            border-radius: 4px;
-            background-color: #454040;
-        }
-        .scriptapi {
-            display: block;
-            min-width: 500px;
-            width: 75%;
-            margin: 8px 1px 12px 1px;
-            padding: 5px;
-            border: 1px solid #808080;
-            border-radius: 5px;
-        }
-        .editorcode {
-            display: inline-block;
-            padding: 1px 4px 1px 4px;
-            border: 1px solid #808080;
-            border-radius: 4px;
-            background-color: red;
-        }
-        .game-string, .game-script {
-            display: block;
-            margin: 2px;
-            padding: 5px;
-            border: 1px dashed #808080;
-        }
-        .game-script {
-            font-family: Consolas, monospace;
-            font-size: 0.9em;
-        }
-        .game-string {
-            font-style: italic;
-            margin-left: 2em;
-            padding: 8px;
-        }
-        .scene-node, .asset {
-            display: flex;
-            flex-flow: column nowrap;
-            margin-bottom: 1em;
-            padding: 8px;
-            border: 1px dashed #808080;
-            border-radius: 4px;
-            background-color: #454040;
-        }
-        .scene-node .property, .asset .property {
-            display: inline-block;
-            font-weight: bold;
-            width: 8em;
-        }
-        .scriptapi .title {
-            font-size: 14pt;
-            font-family: monospace;
-            font-weight: bold;
-        }
-        .scriptapi .title .syntax {
-            color: #858585;
-        }
-        .scriptapi .desc {
-            margin-top: 16px;
-        }
-        /* Custom ul format for the argument list, to keep it compact */
-        .scriptapi li {
-            display: block;
-            margin-left: 72px;
-        }
-        .scriptapi .input, .scriptapi .output, .scriptapi .type {
-            display: inline;
-            margin: 0;
-            padding: 0;
-            color: #a0a0a0;
-            list-style-type: none;
-        }
-        .scriptapi .type:before {
-            content: 'Type:';
-            float: left;
-        }
-        .scriptapi .input:before {
-            content: 'Input:';
-            float: left;
-        }
-        .scriptapi .output:before {
-            content: 'Output:';
-            float: left;
-        }
-        /* Table of contents */
-        .toc ol {
-            counter-reset: item;
-            list-style-type: none;
-        }
-        .toc li:before {
-            content: counters(item, ".") ". ";
-            counter-increment: item;
-        }
-    </style>
+    <link rel="stylesheet" href="./Documentation.css" />
 </head>
 <body>
     <div class="main">
@@ -194,11 +35,18 @@
         Now that we have Core referenced, we need somewhere to junction off of to start our quest. The north side of town has a handy Notice Board that is an excellent spot for inserting our own quest. With the editor opened and Core set as a dependency, let's create a new scene by clicking <span class="clicky">Add Asset</span> on the toolbar, then click <span class="clicky">Scene</span>.
     </p>
     <p>
-        The new scene will have a name like &quot;NewScene1&quot;. Highlight that asset and hit the <span class="clicky">Rename</span> button on the <em>Assets</em> portion of the toolbar, then enter a decent name. This scene will be used to add our custom notice to the town's notice board, so let's use <code>TQ01_Patch_NoticeBoard</code>.
+        The new scene will have a name like &quot;NewScene1&quot;. Highlight that asset and hit the <span class="clicky">Rename</span> button on the <em>Assets</em> portion of the toolbar, then enter a decent name. You can also press <span class="clicky">F2</span> on your keyboard as a shortcut for <span class="clicky">Rename</span>. This scene will be used to add our custom notice to the town's notice board, so let's use <code>TQ01_Patch_NoticeBoard</code>.
+    </p>
+    <p style="background: red;">
+        TODO: These images need to be combined / updated for V16 layout
     </p>
     <figure>
         <img src="https://i.imgur.com/BqKlTf4.png">
         <figcaption>An awesome mod has but humble beginnings...</figcaption>
+    </figure>
+    <figure>
+        <img src="https://i.imgur.com/PyM5jcB.png" style="width: 100%;">
+        <figcaption>An empty Scene. The Root node is selected by default.</figcaption>
     </figure>
     <p>
         Now, select the Root node, and check the <span class="clicky">Inject into another Scene</span> box. This marks the scene as a <strong>patch</strong>, meaning it will change content in another scene - in our case, the notice board. After ticking the checkbox, a couple more submenus open up. For the Target Scene, we're going to use <code>Scene_TownNSQ</code>. The Injection Point will be <span class="clicky">inside, at the end (as Choices)</span> on the <code>ViewBoard</code> node. This setup will ensure that any choice nodes we add to this patch, will be added onto the notice board. A very simple and reasonable start to our new quest.

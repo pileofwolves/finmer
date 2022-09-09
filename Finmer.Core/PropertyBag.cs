@@ -9,7 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace Finmer.Core
@@ -234,17 +233,6 @@ namespace Finmer.Core
 
                 SetBytes("__nestedpb_" + key, ms.ToArray());
             }
-        }
-
-        /// <summary>
-        /// Returns a list of table keys that have the specified prefix.
-        /// </summary>
-        /// <param name="prefix">The prefix to look up.</param>
-        public IEnumerable<KeyValuePair<string, string>> GetKeysByPrefix(string prefix)
-        {
-            prefix = prefix.ToUpperInvariant();
-            return m_PropString
-                .Where(prop => prop.Key.StartsWith(prefix));
         }
 
         /// <summary>

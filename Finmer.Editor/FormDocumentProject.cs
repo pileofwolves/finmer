@@ -97,7 +97,7 @@ namespace Finmer.Editor
             // Find text in string tables
             foreach (AssetStringTable table in m_Furball.Assets.OfType<AssetStringTable>())
             {
-                Dictionary<string, List<string>> dictionary = table.Table.GetTable();
+                Dictionary<string, List<string>> dictionary = table.Table.GetDictionary();
                 IEnumerable<string> text_entries = dictionary.SelectMany(pair => pair.Value);
                 total += CountWords(text_entries);
             }

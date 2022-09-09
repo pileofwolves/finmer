@@ -26,7 +26,7 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Get the collection of string table entries
-            Dictionary<string, List<string>> entries = Table.GetTable();
+            Dictionary<string, List<string>> entries = Table.GetDictionary();
 
             // Alphabetically sort the keys, to ensure they are laid out deterministically. This is useful for source control,
             // since this will ensure that different memory layouts will not cause unnecessarily big file deltas.

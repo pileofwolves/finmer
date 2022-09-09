@@ -8,7 +8,7 @@
 
 using System.Collections.Generic;
 using System.Linq;
-using Table = System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>;
+using TDictionary = System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>;
 
 namespace Finmer.Core
 {
@@ -19,22 +19,14 @@ namespace Finmer.Core
     public sealed class StringTable
     {
 
-        private readonly Table m_Table;
+        private readonly TDictionary m_Table;
 
         /// <summary>
         /// Constructs an empty StringTable.
         /// </summary>
         public StringTable()
         {
-            m_Table = new Table();
-        }
-
-        /// <summary>
-        /// Constructs a StringTable that uses a pre-existing dictionary.
-        /// </summary>
-        public StringTable(Table table)
-        {
-            m_Table = table;
+            m_Table = new TDictionary();
         }
 
         /// <summary>
@@ -71,26 +63,9 @@ namespace Finmer.Core
         /// <summary>
         /// Returns a shallow copy of the internal dictionary.
         /// </summary>
-        public Table GetTable()
+        public TDictionary GetDictionary()
         {
             return m_Table;
-        }
-
-        /// <summary>
-        /// Returns a deep copy of the internal dictionary, meaning that changes to the returned copy do not affect the original.
-        /// </summary>
-        public Table GetTableDeepCopy()
-        {
-            Table copy = new Table(m_Table.Count);
-            foreach (KeyValuePair<string, List<string>> pair in m_Table)
-            {
-                // Create a deep copy of the List and add it to the new dictionary
-                List<string> listcopy = new List<string>(pair.Value.Count);
-                pair.Value.ForEach(listcopy.Add);
-                copy.Add(pair.Key, listcopy);
-            }
-
-            return copy;
         }
 
         /// <summary>
@@ -106,20 +81,13 @@ namespace Finmer.Core
         }
 
         /// <summary>
-        /// Removes all records from the StringTable.
-        /// </summary>
-        public void Clear()
-        {
-            m_Table.Clear();
-        }
-
-        /// <summary>
         /// Returns a string that gives an overview of this table.
         /// </summary>
         public override string ToString()
         {
             return $"{m_Table.Count} tables, {m_Table.Sum(item => item.Value.Count)} total entries";
         }
+
     }
 
 }

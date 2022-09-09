@@ -9,8 +9,8 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Finmer.Core;
 using Finmer.Core.Assets;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Editor
 {
@@ -21,7 +21,8 @@ namespace Finmer.Editor
         private string m_EditingKey;
         private bool m_IgnoreDirtiedText;
 
-        private Dictionary<string, List<string>> m_Table;
+        private AssetStringTable m_AssetStringTable;
+        private Dictionary<string, List<string>> m_RawDictionary;
 
         public FormDocumentStringTable()
         {
@@ -32,9 +33,12 @@ namespace Finmer.Editor
         {
             ScintillaHelper.Setup(scintilla, ScintillaHelper.EScintillaStyle.PlainText);
 
+            // Duplicate the source asset so we can safely modify it in-memory
+            m_AssetStringTable = AssetSerializer.DuplicateAsset((AssetStringTable)Asset);
+            m_RawDictionary = m_AssetStringTable.Table.GetDictionary();
+
             // Populate the list control with the table's entries
-            m_Table = ((AssetStringTable)Asset).Table.GetTableDeepCopy();
-            m_Table.Keys.ForEach(key => lstKeys.Items.Add(key));
+            m_RawDictionary.Keys.ForEach(key => lstKeys.Items.Add(key));
             lstKeys.Sort();
         }
 
@@ -42,8 +46,12 @@ namespace Finmer.Editor
         {
             base.Flush();
 
+            // Ensure the cached copy is updated with the last user edits
             FlushSelected();
-            ((AssetStringTable)Asset).Table = new StringTable(m_Table);
+
+            // Commit a new copy of the asset to the module
+            var copy = AssetSerializer.DuplicateAsset(m_AssetStringTable);
+            ((AssetStringTable)Asset).Table = copy.Table;
         }
 
         private void FlushSelected()
@@ -52,7 +60,7 @@ namespace Finmer.Editor
                 return;
 
             // Replace the contents of the list with data from the form
-            var list = m_Table[m_EditingKey];
+            var list = m_RawDictionary[m_EditingKey];
             list.Clear();
             list.AddRange(scintilla.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));
         }
@@ -68,7 +76,7 @@ namespace Finmer.Editor
 
             // Check for uniqueness of the key
             string new_key = e.Label.ToUpperInvariant();
-            if (m_Table.ContainsKey(new_key))
+            if (m_RawDictionary.ContainsKey(new_key))
             {
                 MessageBox.Show("The table key must be unique, please try something else.", "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
@@ -81,8 +89,8 @@ namespace Finmer.Editor
             lstKeys.Sort();
 
             // Move the list to the new key
-            m_Table.Add(new_key, m_Table[old_key]);
-            m_Table.Remove(old_key);
+            m_RawDictionary.Add(new_key, m_RawDictionary[old_key]);
+            m_RawDictionary.Remove(old_key);
 
             // Update the editing key to match, if we happen to be editing that same key
             if (old_key.Equals(m_EditingKey))
@@ -100,10 +108,10 @@ namespace Finmer.Editor
             {
                 name_number++;
                 key = "UNTITLED" + name_number;
-            } while (m_Table.ContainsKey(key));
+            } while (m_RawDictionary.ContainsKey(key));
 
             // Add a new table entry for the new key
-            m_Table.Add(key, new List<string>());
+            m_RawDictionary.Add(key, new List<string>());
 
             // Add a new list item and immediately mark it for editing so the user can type a better name
             ListViewItem item = lstKeys.Items.Add(key);
@@ -124,7 +132,7 @@ namespace Finmer.Editor
                 return;
 
             lstKeys.Items.Remove(lstKeys.SelectedItems[0]);
-            m_Table.Remove(m_EditingKey);
+            m_RawDictionary.Remove(m_EditingKey);
 
             m_EditingKey = null;
             scintilla.Visible = false;
@@ -149,7 +157,7 @@ namespace Finmer.Editor
             // Show new set (and avoid marking asset as dirty while we're updating the text shown in the text control)
             m_IgnoreDirtiedText = true;
             m_EditingKey = lstKeys.SelectedItems[0].Text;
-            scintilla.Text = String.Join(Environment.NewLine, m_Table[m_EditingKey]);
+            scintilla.Text = String.Join(Environment.NewLine, m_RawDictionary[m_EditingKey]);
 
             // Wipe the undo/redo buffer to avoid awkward UX where the user can "undo" to the previous string set
             scintilla.EmptyUndoBuffer();

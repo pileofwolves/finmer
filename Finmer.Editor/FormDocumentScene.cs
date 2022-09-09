@@ -13,6 +13,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
+using Finmer.Core.Serialization;
 using Finmer.Editor.Properties;
 
 namespace Finmer.Editor
@@ -44,7 +45,8 @@ namespace Finmer.Editor
 
         private void FormDocumentScene_Load(object sender, EventArgs e)
         {
-            m_Scene = (AssetScene)Asset;
+            // Duplicate the asset we're going to be editing, so that we can safely modify the copy in-place while still allowing changes to be discarded
+            m_Scene = AssetSerializer.DuplicateAsset((AssetScene)Asset);
 
             UpdateScriptButtonIcons();
             AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
@@ -79,6 +81,9 @@ namespace Finmer.Editor
                 m_Scene.ScriptLeave.Name = m_Scene.Name + "_Leave";
 
             UpdateScriptButtonIcons();
+
+            // Commit the changes by updating the asset represented by this editor window with a new snapshot
+            Asset = AssetSerializer.DuplicateAsset(m_Scene);
         }
 
         private void trvNodes_AfterSelect(object sender, TreeViewEventArgs e)
@@ -194,7 +199,10 @@ namespace Finmer.Editor
 
             // populate the node combobox with the nodes of the selected target scene
             m_SceneInject = target_scene;
-            target_scene.Root.Children.Traverse(node => node.Children).Where(node => node.IsState && !node.IsLink && !String.IsNullOrEmpty(node.Key)).Select(node => node.Key)
+            target_scene.Root.Children
+                .Traverse(node => node.Children)
+                .Where(node => node.IsState && !node.IsLink && !String.IsNullOrEmpty(node.Key))
+                .Select(node => node.Key)
                 .ForEach(name => cmbInjectTargetNode.Items.Add(name));
 
             // update the scene data

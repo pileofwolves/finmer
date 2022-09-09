@@ -49,9 +49,8 @@ namespace Finmer.Editor
             // Ensure the cached copy is updated with the last user edits
             FlushSelected();
 
-            // Commit a new copy of the asset to the module
-            var copy = AssetSerializer.DuplicateAsset(m_AssetStringTable);
-            ((AssetStringTable)Asset).Table = copy.Table;
+            // Commit the changes by updating the asset represented by this editor window with a new snapshot
+            Asset = AssetSerializer.DuplicateAsset(m_AssetStringTable);
         }
 
         private void FlushSelected()

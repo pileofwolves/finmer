@@ -247,10 +247,32 @@ namespace Finmer.Editor
             if (m_Filename == null)
                 return SaveAs();
 
-            // Make sure editor windows commit any changes
+            // Update asset table with latest changes
             foreach (EditorWindow window in m_OpenWindows.Values)
+            {
+                // Make sure editor windows commit any changes
                 window.Flush();
 
+                // Asset windows are allowed to replace their contained asset instance, in which case we may need to replace the one referenced by the module.
+                if (window is AssetWindow asset_window)
+                {
+                    // Find the asset represented by this editor window
+                    var new_asset = asset_window.Asset;
+                    var old_asset = Program.ActiveFurball.GetAssetByID(new_asset.ID);
+                    Debug.Assert(old_asset != null, "Asset ID changes are not supported");
+
+                    // If the window still points to the same asset object, we do not need to replace anything
+                    if (ReferenceEquals(new_asset, old_asset))
+                        continue;
+
+                    // Otherwise, the old asset must be removed, so it can be replaced with the editor window's newly created asset
+                    var assets = Program.ActiveFurball.Assets;
+                    assets.Remove(old_asset);
+                    assets.Add(new_asset);
+                }
+            }
+
+            // Commit the module to disk
             try
             {
                 // Save a text version of the module

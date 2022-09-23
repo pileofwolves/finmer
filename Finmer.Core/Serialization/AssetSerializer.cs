@@ -87,15 +87,16 @@ namespace Finmer.Core.Serialization
         /// </summary>
         public static void SerializeAsset(IFurballContentWriter outstream, IFurballSerializable asset)
         {
-            // Unwrap script wrappers
-            while (asset is ScriptDataWrapper wrapper)
-                asset = wrapper.Wrapped;
+            // Unwrap script wrappers, so we only write the type ID of the innermost wrapped script
+            IFurballSerializable unwrapped_type = asset;
+            while (unwrapped_type is ScriptDataWrapper wrapper)
+                unwrapped_type = wrapper.Wrapped;
 
             // Write the type identifier to the stream
             if (outstream is FurballContentWriterBinary binary)
-                binary.WriteInt32Property(k_FurballObjectTypeKey, ComputeTypeHash(asset.GetType()));
+                binary.WriteInt32Property(k_FurballObjectTypeKey, ComputeTypeHash(unwrapped_type.GetType()));
             else
-                outstream.WriteStringProperty(k_FurballObjectTypeKey, asset.GetType().Name);
+                outstream.WriteStringProperty(k_FurballObjectTypeKey, unwrapped_type.GetType().Name);
 
             // Write asset contents
             asset.Serialize(outstream);

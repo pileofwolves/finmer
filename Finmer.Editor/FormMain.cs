@@ -61,7 +61,7 @@ namespace Finmer.Editor
             m_NodeScripts = trvAssetList.Nodes.Add("Scripts", "Scripts", 0);
         }
 
-        public void OpenAssetEditor(IFurballSerializable data)
+        public EditorWindow OpenAssetEditor(IFurballSerializable data)
         {
             // TODO: Prevent opening dependencies, since they cannot be edited while a different project is opened
 
@@ -69,7 +69,7 @@ namespace Finmer.Editor
             if (m_OpenWindows.TryGetValue(data, out var open_window))
             {
                 open_window.Show();
-                return;
+                return open_window;
             }
 
             // Create an appropriate editor window for the asset type
@@ -81,6 +81,8 @@ namespace Finmer.Editor
             // Dock and display the window
             window.Show(dockPanel, DockState.Document);
             m_OpenWindows.Add(data, window);
+
+            return window;
         }
 
         public void MarkDirty()
@@ -260,6 +262,7 @@ namespace Finmer.Editor
                     var new_asset = asset_window.Asset;
                     var old_asset = Program.ActiveFurball.GetAssetByID(new_asset.ID);
                     Debug.Assert(old_asset != null, "Asset ID changes are not supported");
+                    Debug.Assert(old_asset.Name.Equals(new_asset.Name, StringComparison.InvariantCulture), "Asset name changes must be copied by window");
 
                     // If the window still points to the same asset object, we do not need to replace anything
                     if (ReferenceEquals(new_asset, old_asset))

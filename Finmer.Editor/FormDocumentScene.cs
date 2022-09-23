@@ -35,6 +35,10 @@ namespace Finmer.Editor
         private int m_SelectedTreeIndex;
         private int m_SelectedTreeMaxIndex;
 
+        private WeakReference<EditorWindow> m_ScriptEditorEnter;
+        private WeakReference<EditorWindow> m_ScriptEditorLeave;
+        private WeakReference<EditorWindow> m_ScriptEditorCustom;
+
         private bool m_SkipDirtyUpdates = true;
         private bool m_SkipTreeSelect;
 
@@ -66,11 +70,22 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Ensure any previous script editor changes are committed
             scriptAction.Flush();
             scriptAppear.Flush();
+
+            // Ensure scene scripts are committed, since the serialization of the scene asset depends on it
+            // These are weak references so that this scene editor doesn't keep the script editors alive after the user closes them
+            if (m_ScriptEditorEnter != null && m_ScriptEditorEnter.TryGetTarget(out var enter_script_window))
+                enter_script_window.Flush();
+            if (m_ScriptEditorLeave != null && m_ScriptEditorLeave.TryGetTarget(out var leave_script_window))
+                leave_script_window.Flush();
+            if (m_ScriptEditorCustom != null && m_ScriptEditorCustom.TryGetTarget(out var custom_script_window))
+                custom_script_window.Flush();
+
+            // Force the new asset to take on the old asset's name - this can only be changed outside the editor window, so if the user
+            // changed this after the editor window made a copy of the source asset, the name would be overwritten with the old one.
+            m_Scene.Name = Asset.Name;
 
             // Ensure script names are up-to-date with the asset name
             if (m_Scene.ScriptCustom != null)
@@ -84,6 +99,8 @@ namespace Finmer.Editor
 
             // Commit the changes by updating the asset represented by this editor window with a new snapshot
             Asset = AssetSerializer.DuplicateAsset(m_Scene);
+
+            base.Flush();
         }
 
         private void trvNodes_AfterSelect(object sender, TreeViewEventArgs e)
@@ -388,19 +405,19 @@ namespace Finmer.Editor
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptCustom = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptCustom);
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom);
+            m_ScriptEditorCustom = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom));
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptEnter = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptEnter);
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter);
+            m_ScriptEditorEnter = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter));
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptLeave = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptLeave);
-            Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave);
+            m_ScriptEditorLeave = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave));
         }
 
         private void tsbMoveUp_Click(object sender, EventArgs e)

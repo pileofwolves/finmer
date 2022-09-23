@@ -44,13 +44,17 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Ensure the cached copy is updated with the last user edits
             FlushSelected();
 
+            // Force the new asset to take on the old asset's name - this can only be changed outside the editor window, so if the user
+            // changed this after the editor window made a copy of the source asset, the name would be overwritten with the old one.
+            m_AssetStringTable.Name = Asset.Name;
+
             // Commit the changes by updating the asset represented by this editor window with a new snapshot
             Asset = AssetSerializer.DuplicateAsset(m_AssetStringTable);
+
+            base.Flush();
         }
 
         private void FlushSelected()

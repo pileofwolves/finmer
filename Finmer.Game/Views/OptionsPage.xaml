@@ -27,13 +27,25 @@
 
         <TextBlock
             Style="{StaticResource TextBlockDefault}"
-            Text="General" />
+            Text="Gameplay" />
         <CheckBox
-            Content="Enable disposal content"
+            Content="Enable Explorer Mode"
+            IsChecked="{Binding ExplorerMode, Mode=TwoWay}" />
+        <TextBlock
+            Style="{StaticResource OptionSubtitle}"
+            Text="Simplify combat, focus on story. Requires starting new game!" />
+
+        <Grid Style="{StaticResource OptionSpacer}" />
+
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Text="Presentation" />
+        <CheckBox
+            Content="Enable explicit disposal content"
             IsChecked="{Binding PreferScat, Mode=TwoWay}" />
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
-            Text="Allow explicit post-vore scat." />
+            Text="Show explicit post-vore scat scenes." />
         <CheckBox
             Content="Enable preysense"
             IsChecked="{Binding PreySense, Mode=TwoWay}" />

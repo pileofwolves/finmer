@@ -8,6 +8,11 @@ function ApplyPlayerStartingGear()
     Player.Money = 7
     Player.EquippedArmor = Item("A_ClothArmor")
     Player.EquippedAccessory1 = Item("AC_IsoRing")
+
+    -- If Explorer Mode is on, give the player a 'cheating' ring
+    if Player.IsExplorerModeEnabled then
+        Player.EquippedAccessory2 = Item("AC_ExplorerModeRing")
+    end
 end
 
 function BeginGame()

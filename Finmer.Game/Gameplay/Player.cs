@@ -95,6 +95,9 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public bool IsPreySenseEnabled => UserConfig.PreySense;
 
+        [ScriptableProperty(EScriptAccess.Read)]
+        public bool IsExplorerModeEnabled => UserConfig.ExplorerMode;
+
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int TotalPreySwallowed
         {

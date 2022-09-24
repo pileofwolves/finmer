@@ -1,0 +1,21 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "68f2bf4a-7125-4432-b474-54847dd738f7",
+	"AssetName": "AC_ExplorerModeRing",
+	"ObjectName": "Explorer's Ring",
+	"FlavorText": "A strange curiosity that might be of use when traversing the unfamiliar dangers of distant lands, and discovering the stories that such places have to tell.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "BuffAttackDice",
+			"Delta": 5
+		},
+		{
+			"!Type": "BuffDefenseDice",
+			"Delta": 5
+		}
+	],
+	"PurchaseValue": 0,
+	"IsQuestItem": true
+}

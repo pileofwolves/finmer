@@ -52,6 +52,16 @@ namespace Finmer.ViewModels
             }
         }
 
+        public bool ExplorerMode
+        {
+            get => UserConfig.ExplorerMode;
+            set
+            {
+                UserConfig.ExplorerMode = value;
+                OnPropertyChanged();
+            }
+        }
+
         public float ZoomLevel => UserConfig.Zoom;
 
         public int ZoomIndex

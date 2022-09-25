@@ -14,36 +14,6 @@ end
 -- Log utilities
 ------------------------------------------------------------------------------
 
--- handles drawing a random rumor on a global cooldown
-function LogRumor(success, fail, vars, color)
-    vars = vars or {}
-    -- TODO: Temporarily disabled rumor system, until I actually know some rumors to write.
-    -- Need more content for that.
-    if true --[[Storage.GetNumber("next_rumor") > GetTimeHourTotal()]] then
-        LogGsub(fail, vars, color)
-    else
-        -- pull a random rumor and show it
-        vars["rumor"] = Text.GetString("RUMOR")
-        LogGsub(success, vars, color)
-        -- cooldown
-        Storage.SetNumber("next_rumor", GetTimeHourTotal() + 1)
-    end
-end
-
-function LogGsub(key, vars, color)
-    -- Deprecation warning
-    if IsDebugMode() then
-        print("Called LogGsub(" .. key .. "), this function is deprecated")
-    end
-
-    local strval = Text.GetString(key)
-    assert(type(vars) == "table")
-    for k, v in pairs(vars) do
-        strval = string.gsub(strval, "%%" .. k, v)
-    end
-    LogRaw(strval, color)
-end
-
 function LogVore(predator, prey)
     Text.SetContext("predator", predator)
     Text.SetContext("prey", prey)
@@ -211,52 +181,4 @@ function GetUniqueCharacter(ident)
     result.Alias = "the " .. ch_species
     result.Gender = ch_gender
     return result
-end
-
-------------------------------------------------------------------------------
--- Combat callback utilities
-------------------------------------------------------------------------------
-
--- Meant to be used from a Combat.OnPlayerKilled callback, to force a vore scene
--- despite the player being defeated through non-vore combat actions
-function EatThePlayerAnyway(predator)
-    -- Deprecation warning - replace with PredatorAlwaysSwallowPlayer
-    if IsDebugMode() then
-        print("Called EatThePlayerAnyway - this function is deprecated")
-    end
-
-    Text.SetContext("predator", predator)
-    Text.SetContext("prey", Player)
-    Sleep(2)
-    LogRaw(predator:GetString("vore_hit_pov"))
-    Sleep(3)
-    LogRaw(predator:GetString("vore_win_pov"))
-    Sleep(2)
-    LogRaw(predator:GetString("kill_digested_pov"))
-end
-function EatThePreyAnyway(prey)
-    -- Deprecation warning - this should be replaced by a new flag like PreyAlwaysSwallowedOnDefeat
-    if IsDebugMode() then
-        print("Called EatThePreyAnyway - this function is deprecated")
-    end
-
-    -- As EatThePlayerAnyway(), but from player POV
-    Text.SetContext("predator", Player)
-    Text.SetContext("prey", prey)
-    Combat.SetVored(Player, prey, true)
-    Sleep(2)
-    LogRaw(prey:GetString("VORE_HIT", Player))
-    Sleep(3)
-    LogRaw(prey:GetString("VORE_WIN", Player))
-    Sleep(2)
-    LogRaw(prey:GetString("KILL_DIGESTED", Player))
-end
-function PostVore(scat, noscat)
-    -- Deprecation warning
-    if IsDebugMode() then
-        print("Called PostVore(" .. scat .. ") - this function is deprecated")
-    end
-
-    -- Forward to new function
-    LogPostVore(scat, noscat)
 end

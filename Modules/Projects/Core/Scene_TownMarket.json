@@ -726,7 +726,7 @@
 												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "LogRumor(\"TOWN_MARKET_FISH_TALK_RUMOR\", \"TOWN_MARKET_FISH_TALK_NO\")"
+													"Script": "Log(\"TOWN_MARKET_FISH_TALK_NO\")"
 												},
 												"Children": [
 													{
@@ -816,7 +816,7 @@
 												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLogRumor(\"TOWN_MARKET_FRUIT_TALK_RUMOR\", \"TOWN_MARKET_FRUIT_TALK_NO\")"
+													"Script": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLog(\"TOWN_MARKET_FRUIT_TALK_NO\")"
 												},
 												"Children": [
 													{

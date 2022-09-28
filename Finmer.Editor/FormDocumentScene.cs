@@ -76,11 +76,11 @@ namespace Finmer.Editor
 
             // Ensure scene scripts are committed, since the serialization of the scene asset depends on it
             // These are weak references so that this scene editor doesn't keep the script editors alive after the user closes them
-            if (m_ScriptEditorEnter != null && m_ScriptEditorEnter.TryGetTarget(out var enter_script_window))
+            if (m_ScriptEditorEnter != null && m_ScriptEditorEnter.TryGetTarget(out var enter_script_window) && !enter_script_window.IsDisposed)
                 enter_script_window.Flush();
-            if (m_ScriptEditorLeave != null && m_ScriptEditorLeave.TryGetTarget(out var leave_script_window))
+            if (m_ScriptEditorLeave != null && m_ScriptEditorLeave.TryGetTarget(out var leave_script_window) && !leave_script_window.IsDisposed)
                 leave_script_window.Flush();
-            if (m_ScriptEditorCustom != null && m_ScriptEditorCustom.TryGetTarget(out var custom_script_window))
+            if (m_ScriptEditorCustom != null && m_ScriptEditorCustom.TryGetTarget(out var custom_script_window) && !custom_script_window.IsDisposed)
                 custom_script_window.Flush();
 
             // Force the new asset to take on the old asset's name - this can only be changed outside the editor window, so if the user

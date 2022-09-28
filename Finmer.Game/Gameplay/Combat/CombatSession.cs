@@ -204,7 +204,7 @@ namespace Finmer.Gameplay.Combat
 
                 // Optional disposal scene if available and enabled by the user
                 var predator_asset = killer.Character.Asset;
-                if (predator_asset != null && predator_asset.PredatorDisposal && UserConfig.PreferScat)
+                if (predator_asset != null && predator_asset.PredatorDisposal && UserConfig.AllowExplicitDisposal)
                 {
                     CombatDisplay.ShowPause();
                     CombatDisplay.ShowSimpleMessage(@"vore_disposal", killer, victim);

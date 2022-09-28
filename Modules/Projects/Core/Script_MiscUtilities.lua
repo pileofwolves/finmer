@@ -23,7 +23,7 @@ end
 
 function LogPostVore(scat, noscat)
     -- if the player disabled scat, then use the noscat msg if present, otherwise exit
-    local text = Player.PreferScat and scat or noscat
+    local text = Player.IsExplicitDisposalEnabled and scat or noscat
     if text == nil then return end
 
     Sleep(3)

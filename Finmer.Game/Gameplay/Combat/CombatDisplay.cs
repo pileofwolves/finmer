@@ -146,7 +146,7 @@ namespace Finmer.Gameplay.Combat
         public static void ShowRoundResolve(ResolveInfo settings)
         {
             // Skip animation if they were disabled entirely
-            bool has_animation = UserConfig.CombatAnimation != UserConfig.EAnimationLevel.Disabled;
+            bool has_animation = UserConfig.CombatSpeed != UserConfig.EAnimationLevel.Disabled;
             if (has_animation)
             {
                 // Prepare the contents of the viewmodel
@@ -164,7 +164,7 @@ namespace Finmer.Gameplay.Combat
                     const int k_SleepShortMain = 1450;
                     const int k_SleepShortPart = 950;
                     int sleep_time;
-                    if (UserConfig.CombatAnimation == UserConfig.EAnimationLevel.Full)
+                    if (UserConfig.CombatSpeed == UserConfig.EAnimationLevel.Full)
                         sleep_time = settings.Rounds.Count > 1 ? k_SleepLongPart : k_SleepLongMain;
                     else
                         sleep_time = settings.Rounds.Count > 1 ? k_SleepShortPart : k_SleepShortMain;

@@ -90,10 +90,14 @@ namespace Finmer.Gameplay
         }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public bool PreferScat => UserConfig.PreferScat;
+        [Obsolete("Backwards compatibility only; use 'IsExplicitDisposalEnabled' instead")]
+        public bool PreferScat => IsExplicitDisposalEnabled;
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public bool IsPreySenseEnabled => UserConfig.PreySense;
+        public bool IsExplicitDisposalEnabled => UserConfig.AllowExplicitDisposal;
+
+        [ScriptableProperty(EScriptAccess.Read)]
+        public bool IsPreySenseEnabled => UserConfig.AllowPreySense;
 
         [ScriptableProperty(EScriptAccess.Read)]
         public bool IsExplorerModeEnabled => UserConfig.ExplorerMode;

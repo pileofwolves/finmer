@@ -375,7 +375,7 @@
 																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
-																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.PreferScat then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend"
+																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend"
 																												},
 																												"Children": [
 																													{

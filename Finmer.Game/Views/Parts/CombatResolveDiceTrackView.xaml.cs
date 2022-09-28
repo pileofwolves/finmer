@@ -33,7 +33,7 @@ namespace Finmer.Views
         private void Grid_Loaded(object sender, RoutedEventArgs e)
         {
             // Skip playing the dice animation if the animation speed is not set to Full
-            if (UserConfig.CombatAnimation != UserConfig.EAnimationLevel.Full)
+            if (UserConfig.CombatSpeed != UserConfig.EAnimationLevel.Full)
                 return;
 
             // Make the die invisible to start, so there's no flickering when the delayed animation starts

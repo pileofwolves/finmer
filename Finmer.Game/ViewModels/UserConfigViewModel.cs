@@ -22,32 +22,22 @@ namespace Finmer.ViewModels
 
         public static UserConfigViewModel Instance => s_Inst ?? (s_Inst = new UserConfigViewModel());
 
-        public bool Hyphenation
-        {
-            get => UserConfig.Hyphenation;
-            set
-            {
-                UserConfig.Hyphenation = value;
-                OnPropertyChanged(nameof(Hyphenation));
-            }
-        }
-
         public bool PreferScat
         {
-            get => UserConfig.PreferScat;
+            get => UserConfig.AllowExplicitDisposal;
             set
             {
-                UserConfig.PreferScat = value;
+                UserConfig.AllowExplicitDisposal = value;
                 OnPropertyChanged(nameof(PreferScat));
             }
         }
 
         public bool PreySense
         {
-            get => UserConfig.PreySense;
+            get => UserConfig.AllowPreySense;
             set
             {
-                UserConfig.PreySense = value;
+                UserConfig.AllowPreySense = value;
                 OnPropertyChanged(nameof(PreySense));
             }
         }
@@ -62,19 +52,19 @@ namespace Finmer.ViewModels
             }
         }
 
-        public float ZoomLevel => UserConfig.Zoom;
+        public float ZoomLevel => UserConfig.ZoomFactor;
 
         public int ZoomIndex
         {
             get
             {
-                float clamped = Math.Min(Math.Max(UserConfig.Zoom, UserConfig.k_Zoom_Min), UserConfig.k_Zoom_Max);
+                float clamped = Math.Min(Math.Max(UserConfig.ZoomFactor, UserConfig.k_Zoom_Min), UserConfig.k_Zoom_Max);
                 float based = clamped - 1.0f;
                 return (int)Math.Round(based / 0.1f);
             }
             set
             {
-                UserConfig.Zoom = value * 0.1f + UserConfig.k_Zoom_Min;
+                UserConfig.ZoomFactor = value * 0.1f + UserConfig.k_Zoom_Min;
                 OnPropertyChanged(nameof(ZoomIndex));
                 OnPropertyChanged(nameof(ZoomLevel));
             }
@@ -82,8 +72,8 @@ namespace Finmer.ViewModels
 
         public int CombatAnimation
         {
-            get => (int)UserConfig.CombatAnimation;
-            set => UserConfig.CombatAnimation = (UserConfig.EAnimationLevel)value;
+            get => (int)UserConfig.CombatSpeed;
+            set => UserConfig.CombatSpeed = (UserConfig.EAnimationLevel)value;
         }
 
         private UserConfigViewModel() { }

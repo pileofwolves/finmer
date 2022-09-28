@@ -34,22 +34,17 @@ namespace Finmer.Models
         public const float k_Zoom_Max = 1.5f;
 
         private const uint k_ConfigMagic = 0xF1CF0001;
-        private const string k_ConfigFileName = "Settings.sav";
-
-        /// <summary>
-        /// Indicates whether word breaking is enabled in the game log.
-        /// </summary>
-        public static bool Hyphenation { get; set; } = true;
+        private const string k_ConfigFileName = @"Settings.sav";
 
         /// <summary>
         /// Indicates whether explicit disposal content is enabled.
-        /// </summary>
-        public static bool PreferScat { get; set; } = true;
+        /// </summary>f
+        public static bool AllowExplicitDisposal { get; set; } = true;
 
         /// <summary>
         /// Indicates whether PreySense is enabled prior to vore scenes
         /// </summary>
-        public static bool PreySense { get; set; }
+        public static bool AllowPreySense { get; set; }
 
         /// <summary>
         /// Indicates whether the player desires a decreased focus on combat, and heightened focus on story.
@@ -64,7 +59,7 @@ namespace Finmer.Models
         /// <summary>
         /// The relative UI zoom multiplier.
         /// </summary>
-        public static float Zoom { get; set; } = 1.0f;
+        public static float ZoomFactor { get; set; } = 1.0f;
 
         /// <summary>
         /// The cached initial save data to be restored when opening the character creator.
@@ -74,7 +69,7 @@ namespace Finmer.Models
         /// <summary>
         /// The desired combat animation speed.
         /// </summary>
-        public static EAnimationLevel CombatAnimation { get; set; } = EAnimationLevel.Full;
+        public static EAnimationLevel CombatSpeed { get; set; } = EAnimationLevel.Full;
 
         /// <summary>
         /// Load user settings from disk, overwriting any cached settings.
@@ -100,14 +95,13 @@ namespace Finmer.Models
                         PropertyBag props = PropertyBag.FromStream(instream);
 
                         // Extract properties we're interested in
-                        Hyphenation = props.GetBool(@"hyph");
-                        PreferScat = props.GetBool(@"scat");
-                        PreySense = props.GetBool(@"preysense");
+                        AllowExplicitDisposal = props.GetBool(nameof(AllowExplicitDisposal));
+                        AllowPreySense = props.GetBool(nameof(AllowPreySense));
                         ExplorerMode = props.GetBool(nameof(ExplorerMode));
-                        FirstStart = props.GetBool(@"firststart");
-                        Zoom = Math.Min(Math.Max(props.GetFloat(@"zoom"), k_Zoom_Min), k_Zoom_Max);
-                        NewGamePreset = props.GetNestedPropertyBag(@"last_character");
-                        CombatAnimation = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(@"combatanim"), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
+                        FirstStart = props.GetBool(nameof(FirstStart));
+                        ZoomFactor = Math.Min(Math.Max(props.GetFloat(nameof(ZoomFactor)), k_Zoom_Min), k_Zoom_Max);
+                        NewGamePreset = props.GetNestedPropertyBag(nameof(NewGamePreset));
+                        CombatSpeed = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(nameof(CombatSpeed)), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
                     }
                 }
             }
@@ -150,14 +144,13 @@ namespace Finmer.Models
         {
             var props = new PropertyBag();
             props.SetString(@"game_version", CompileConstants.k_VersionString);
-            props.SetBool(@"hyph", Hyphenation);
-            props.SetBool(@"scat", PreferScat);
-            props.SetBool(@"preysense", PreySense);
+            props.SetBool(nameof(AllowExplicitDisposal), AllowExplicitDisposal);
+            props.SetBool(nameof(AllowPreySense), AllowPreySense);
             props.SetBool(nameof(ExplorerMode), ExplorerMode);
-            props.SetBool(@"firststart", FirstStart);
-            props.SetFloat(@"zoom", Zoom);
-            props.SetNestedPropertyBag(@"last_character", NewGamePreset);
-            props.SetInt(@"combatanim", (int)CombatAnimation);
+            props.SetBool(nameof(FirstStart), FirstStart);
+            props.SetFloat(nameof(ZoomFactor), ZoomFactor);
+            props.SetNestedPropertyBag(nameof(NewGamePreset), NewGamePreset);
+            props.SetInt(nameof(CombatSpeed), (int)CombatSpeed);
             return props;
         }
 

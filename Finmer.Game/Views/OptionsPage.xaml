@@ -52,12 +52,6 @@
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
             Text="Display spoilers for vore scenes just before they happen." />
-        <CheckBox
-            Content="Enable hyphenation in game log"
-            IsChecked="{Binding Hyphenation, Mode=TwoWay}" />
-        <TextBlock
-            Style="{StaticResource OptionSubtitle}"
-            Text="Allow breaking and wrapping of words in the game log." />
 
         <Grid Style="{StaticResource OptionSpacer}" />
 

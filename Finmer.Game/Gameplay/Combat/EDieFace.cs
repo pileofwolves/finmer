@@ -15,17 +15,26 @@ namespace Finmer.Gameplay.Combat
     public enum EDieFace
     {
         Empty,
-        Attack,
-        AttackCritical,
-        Defense,
-        DefenseCritical,
-        Grapple,
-        Generic1,
-        Generic2,
-        Generic3,
-        Generic4,
-        Generic5,
-        Generic6
+        AlliedAttack,
+        AlliedAttackCritical,
+        AlliedDefense,
+        AlliedDefenseCritical,
+        AlliedGeneric1,
+        AlliedGeneric2,
+        AlliedGeneric3,
+        AlliedGeneric4,
+        AlliedGeneric5,
+        AlliedGeneric6,
+        HostileAttack,
+        HostileAttackCritical,
+        HostileDefense,
+        HostileDefenseCritical,
+        HostileGeneric1,
+        HostileGeneric2,
+        HostileGeneric3,
+        HostileGeneric4,
+        HostileGeneric5,
+        HostileGeneric6,
     }
 
 }

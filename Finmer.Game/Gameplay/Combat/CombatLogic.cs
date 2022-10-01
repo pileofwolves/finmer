@@ -61,8 +61,8 @@ namespace Finmer.Gameplay.Combat
                     {
                         OffenseTotal = num_attacks,
                         DefenseTotal = num_defense,
-                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.CombatAttack),
-                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.CombatDefense)
+                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.CombatAttack, instigator.Character.IsAlly),
+                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.CombatDefense, target.Character.IsAlly)
                     }
                 }
             };
@@ -105,8 +105,8 @@ namespace Finmer.Gameplay.Combat
                     {
                         OffenseTotal = num_attacks,
                         DefenseTotal = num_defense,
-                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Grapple),
-                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Grapple)
+                        OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Grapple, instigator.Character.IsAlly),
+                        DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Grapple, target.Character.IsAlly)
                     }
                 }
             };
@@ -226,8 +226,8 @@ namespace Finmer.Gameplay.Combat
                     DefenseTotal = num_defense,
                     OffenseRoundsWon = rounds_attack,
                     DefenseRoundsWon = rounds_defend,
-                    OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Vore),
-                    DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Vore)
+                    OffenseDice = ConvertRollToDieFaces(attack_dice, ERollType.Vore, instigator.Character.IsAlly),
+                    DefenseDice = ConvertRollToDieFaces(defense_dice, ERollType.Vore, target.Character.IsAlly)
                 });
 
                 // Break loop if either character has won the contest
@@ -418,9 +418,9 @@ namespace Finmer.Gameplay.Combat
             switch (roll)
             {
                 case 1:
-                    return EDieFace.Attack;
+                    return EDieFace.AlliedAttack;
                 case 2:
-                    return EDieFace.AttackCritical;
+                    return EDieFace.AlliedAttackCritical;
                 default:
                     return EDieFace.Empty;
             }
@@ -434,9 +434,9 @@ namespace Finmer.Gameplay.Combat
             switch (roll)
             {
                 case 1:
-                    return EDieFace.Defense;
+                    return EDieFace.AlliedDefense;
                 case 2:
-                    return EDieFace.DefenseCritical;
+                    return EDieFace.AlliedDefenseCritical;
                 default:
                     return EDieFace.Empty;
             }
@@ -448,7 +448,7 @@ namespace Finmer.Gameplay.Combat
         private static EDieFace ConvertD6ToDieFace(int roll)
         {
             Debug.Assert(roll >= 1 && roll <= 6);
-            return EDieFace.Generic1 + (roll - 1);
+            return EDieFace.AlliedGeneric1 + (roll - 1);
         }
 
         /// <summary>
@@ -456,7 +456,8 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         /// <param name="rolls">The rolls to convert.</param>
         /// <param name="action">The type of action that was performed.</param>
-        private static List<EDieFace> ConvertRollToDieFaces(IReadOnlyCollection<int> rolls, ERollType action)
+        /// <param name="allied">Whether the dice should represent an allied participant, or, if false, a hostile participant.</param>
+        private static List<EDieFace> ConvertRollToDieFaces(IReadOnlyCollection<int> rolls, ERollType action, bool allied)
         {
             List<EDieFace> faces = new List<EDieFace>(rolls.Count);
 
@@ -482,6 +483,12 @@ namespace Finmer.Gameplay.Combat
                         throw new ArgumentOutOfRangeException(nameof(action));
                 }
             }
+
+            // If the dice represent a hostile participant, shift the selected icons to match
+            if (!allied)
+                for (int i = 0; i < faces.Count; i++)
+                    if (faces[i] != EDieFace.Empty)
+                        faces[i] += (int)EDieFace.HostileAttack - 1;
 
             return faces;
         }

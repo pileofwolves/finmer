@@ -272,6 +272,11 @@ namespace Finmer.Editor
                     var assets = Program.ActiveFurball.Assets;
                     assets.Remove(old_asset);
                     assets.Add(new_asset);
+
+                    // Replace the reference on the asset tree node, so we won't re-open the old asset later
+                    var tree_node = FindAssetTreeNode(old_asset);
+                    if (tree_node != null)
+                        tree_node.Tag = new_asset;
                 }
             }
 
@@ -475,6 +480,26 @@ namespace Finmer.Editor
         private bool IsAssetNameUnique(string name)
         {
             return Program.ActiveFurball.GetAssetByName(name) == null && Program.ActiveDependencies.GetAssetByName(name) == null;
+        }
+
+        private TreeNode FindAssetTreeNodeInGroup(TreeNodeCollection collection, AssetBase asset)
+        {
+            foreach (TreeNode node in collection)
+                if (node.Tag == asset)
+                    return node;
+
+            return null;
+        }
+
+        private TreeNode FindAssetTreeNode(AssetBase asset)
+        {
+            return FindAssetTreeNodeInGroup(m_NodeCreatures.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeFeats.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeItems.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeJournals.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeScenes.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeScripts.Nodes, asset)
+                ?? FindAssetTreeNodeInGroup(m_NodeTexts.Nodes, asset);
         }
 
         private void frmMain_Load(object sender, EventArgs e)

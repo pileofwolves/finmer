@@ -107,10 +107,10 @@ namespace Finmer.Views
             switch (style)
             {
                 case EDiceStyle.Attack:
-                    return EDieFace.Attack;
+                    return EDieFace.AlliedAttack;
 
                 case EDiceStyle.Defense:
-                    return EDieFace.Defense;
+                    return EDieFace.AlliedDefense;
 
                 default:
                     throw new ArgumentException(nameof(style));

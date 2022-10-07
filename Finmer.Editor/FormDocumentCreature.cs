@@ -213,7 +213,12 @@ namespace Finmer.Editor
         {
             // Add a blank string mapping to the list
             ListViewItem item = new ListViewItem();
-            PopulateStringMappingView(item, new StringMapping());
+            PopulateStringMappingView(item, new StringMapping
+            {
+                Key = String.Empty,
+                NewKey = String.Empty,
+                Rule = StringMapping.ERule.Always
+            });
             lsvStringMappings.Items.Add(item);
 
             // Mark the module as changed

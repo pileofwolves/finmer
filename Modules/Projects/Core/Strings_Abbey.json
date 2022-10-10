@@ -1,0 +1,229 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "24c97a90-6f54-49f5-ab8f-0cc8a3c69dd6",
+	"AssetName": "Strings_Abbey",
+	"Entries": [
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS",
+			"Text": [
+				"At the end of a mostly-disintegrated path of what you presume was once packed gravel, you can view the residential area in earnest. One larger buildings sits in the center, an old oak tree growing through a hole in the roof. A handful of small, presumably single-person homes are scattered around it, built as the need arose for them. Almost all have collapsed completely or have crumbled enough to leave their interiors fully exposed to the elements. It is eerily quiet."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_BEDS",
+			"Text": [
+				"You search the few beds that have remained surprisingly intact considering the room's state of exposure. The crevices and corners of the wooden walls and floors are absolutely choked with mold, and you try your best to avoid them. There is only crumbling wood and rotted cotton, and you come up empty-pawed once more. It would seem that searching this place is a waste of time."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_BEDS_WITS",
+			"Text": [
+				"You search the few beds that have remained surprisingly intact considering the room's state of exposure. The crevices and corners of the wooden walls and floors are absolutely choked with mold, and you try your best to avoid them. There is only crumbling wood and rotted cotton, and you are about to give up, until your keen Wits take note of something shiny underneath collapsed end table. You pocket the find."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_MAIN",
+			"Text": [
+				"Cautiously, you step through the open doorway into the main barracks, the door long since having been torn from its hinges. With most of the roof and walls intact, a fair number of items have been spared the worst of exposure, though not much is left of the floor boards and beds that sit near the tree that grows straight through the building, light filtering in through the ceiling. Otherwise, the room looks spartan in design - whether this is because things have been taken, or because of a lifestyle, you know not. It will take some time to search this room."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_OUTSIDE",
+			"Text": [
+				"Despite the number of holes in the building, the atmosphere inside still feels stuffy, and so it is that you are glad to step back outside and fill your lungs with cool, fresh air."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_RESUME",
+			"Text": [
+				"You continue looking around, perhaps there is more to find still."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_SHELVES",
+			"Text": [
+				"A handful of wooden shelves bolted to a wall had presumably once held some items of value or interest, though now nothing is left but dust and junk. You reach up to the top shelf to find a spinning globe bearing a map of the world. As you grasp and lift the surprisingly heavy item - apparently it is made of brass - your fingers slip on the dust and you instead knock it over. The impact is enough to destabilize the rotten planks and the whole thing collapses, wood splinters and a very heavy globe crashing to the floor in a cloud of dust."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_SIDE",
+			"Text": [
+				"After making a round around the ruins, you find only a single home that is intact enough to warrant attention. As you push the heavy wooden door open and step inside, your foot immediately crushes through the thoroughly rotted floor boards with a loud snap. Luckily there are no surprises lurking underneath. The single-room apartment-like space once featured a bed, desk and chair. If there were any decorations, they have since disappeared. Unfortunately, there is nothing interesting to be found between the crumbling furniture and the rotted mattress, and so you leave."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_BARRACKS_TREE",
+			"Text": [
+				"You step around the impressively large oak tree a few times. It appears that, over time, the growth has more or less obliterated whatever parts of the weakened structure were in the way, and now it proudly protrudes from the building's ceiling. There's nothing of interest here."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_CHAPEL",
+			"Text": [
+				"Considering the complex's age, the chapel remains surprisingly intact. It has fallen into severe disrepair, but is still standing. The interior is relatively modest for the kind of building; a wide open space with a central pathway leading to the altar, lined by wooden pews on either side. Leaves and foliage crawl through and wind around broken windows, and decorations have been stolen or disintegrated, but otherwise the room remains very recognizable. A marble statue of some manner of revered person hugs the right wall, though with large chunks of the statue missing - not least of which the head - it is impossible to determine who it might have depicted. This place carried a lot of meaning to a lot of people, and you cannot help but feel like you are trespassing."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_CHAPEL_ALTAR",
+			"Text": [
+				"At the far end of the room, a raised platform with a lectern would have been the place from which congregations were held. Embellished glyphs and faded icons that you do not recognize line the lectern as well as the chapel's back wall. You approach the platform, but as soon as you try and step up on it, the steps just collapse under your weight. It seems the wood rot is extensive. Luckily the fall is trivial, since the platform is right above the flagstone floor, but you do lose your balance and smack onto the moist planks. Ouch."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_CHAPEL_PEWS",
+			"Text": [
+				"On either side of the room are rows of small benches, once meant for the people attending services in this chapel. The craftsmanship on these is excellent, as evidenced by the fact that they are all almost entirely intact, ignoring relatively minor visual blemishes or overgrowths. You are most certainly not the first looter to visit this place in the however-many years it has stood abandoned; it appears the place is picked clean."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_CHAPEL_RESUME",
+			"Text": [
+				"You continue looking around, perhaps there is more to find still."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_CHAPEL_STATUE",
+			"Text": [
+				"The crumbling block of marble on the right side of the room, behind a set of pews, must have once depicted a person, or perhaps a concept, of interest to this society. Who or what, whether he, she, or they, the carving has been lost to time. Even as you rack your brain for relevant religious iconography in these lands, you come up empty. Strangely, adorning the dust, cobwebs and moss of the statue, are several coins, laid out in plain view. You wonder how in the world these have not been taken before, until you realize they have been placed recently. The stamping on the coin faces is current; not dated as you would expect of a ruin such as this. You pocket the currency. How peculiar."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_COURTYARD",
+			"Text": [
+				"You return to the faded courtyard, reclaimed by nature. Sun-bleached flagstones form a circular path surrounding an impressive, if long-defunct, marble fountain. Smaller moss-covered cobblestone paths branch off from the central ring in many directions, each leading to a nearby building. There is a tall chapel dead ahead, perhaps a gathering place. The smattering of mostly-collapsed houses to its right may have served a residential purpose. There is also a cluster of buildings on the left."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_COURTYARD_FIRST",
+			"Text": [
+				"Through the passage of time, there is little left of the courtyard. Sun-bleached flagstones form a circular path surrounding an impressive, if long-defunct, marble fountain. Smaller moss-covered cobblestone paths branch off from the central ring in many directions, each leading to a nearby building. Considering the exceptionally withered state of the complex, it is difficult to ascertain the original function and importance of the abbey's structures, though you surmise the tall chapel dead ahead may have been a gathering place, and the smattering of mostly-collapsed houses to its right may have served a residential purpose. The cluster of buildings on the left are not as simple to divine."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_INTRO",
+			"Text": [
+				"At the prime of its lifespan, Dalsida Abbey must have been a sight to behold. While the original purpose of the strange complex deep in the woods is lost to time, the crumbling ruins have many stories to tell for those who look close enough. That is, if you would manage to find anything that has not yet been picked clean by the throng of scavengers that has preceded you. Located on hilly terrain that provides a modest overlook over the surrounding forest, the monastery beckons you forward, a reprieve from the endless trees. A collapsed archway serves as the old entry to an overgrown courtyard, surrounded by a somewhat loose collection of brick buildings. Other than the crunching sounds of your feet on layers of soil and shrubbery, the silence is deafening."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_WORKSHOP",
+			"Text": [
+				"Countless shelves line the walls of the small library you stepped into, loose bookshelves breaking up the open space to form aisles. Not all of the woodwork has survived the years, and it is abundantly clear that you will be hard-pressed to find intact, readable works of literature in this room. At the far end of the room is a smaller space that may have served as a study annex."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_WORKSHOP_FIRST",
+			"Text": [
+				"As soon as you enter the two connected buildings, you understand their intended purpose. This was once a workshop of sorts; a place of learning and study. That makes sense, of course, considering the abbey's religious roots. The room you are in right now is a small library. Countless shelves line the walls, loose bookshelves breaking up the open space to form aisles. Not all of the woodwork has survived the years, and it is abundantly clear that you will be hard-pressed to find intact, readable works of literature in this room. At the far end of the room is a smaller space that may have served as a study annex."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_WORKSHOP_LIBRARY",
+			"Text": [
+				"You weave between the aisles of bookshelves, looking for anything out of the ordinary. Regrettably, the damp air, exposure to the elements what with a hole or two in the roof, and an incredible length of time, has deteriorated the library's contents to the point of uselessness. That is, until you slip on a patch of particularly slick moss, and tip over a particularly damaged bookshelf in your attempt to balance yourself. The rotted boards literally disintegrate as the whole thing slams into the floor, sending wood chips, moisture, dust and crumbling parchment flying."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_WORKSHOP_RESUME",
+			"Text": [
+				"You continue looking around, perhaps there is more to find still."
+			]
+		},
+		{
+			"Key": "ABBEY_EXPLORE_WORKSHOP_STUDY",
+			"Text": [
+				"The library's annex is a small, cozy room with two desks sat against the walls opposite of each other. A huge hole in the ceiling must have once been an impressive stained glass skylight, judging by the damaged frames, though little is actually left of the decoration. On one of the desks, buried under a pile of ruined tomes, you find a mostly-intact hard-bound book, miraculously protected from the elements in its shell of sacrificial parchment. You flip through the hand-written pages, and although the script is one you do not recognize, the pages contain images, and those transcend the language barrier. From what you can glean, the author appears to examine the history, or perhaps the story, of some kind of distant shore, and how it relates to the planet as a whole. Most curious. You place the find in your pack."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_CAUGHT",
+			"Text": [
+				"Two meaty paws slam down on your shoulders, forcing you to the cold floor beneath with a dull crash. The giant feline's head, black-furred and grinning maliciously, looms close, blowing hot, stale breaths over your face. Streams of warm, sticky drool leak from the creature's lips, splashing right on your face, as it is apparently unable to keep itself from gloating. \"I'd expected a little more from you. I'm tempted to let you run around a little more, get a good chase going...\" The predator lets those words hang in the air for a few moments, before it applies more pressure to your aching shoulders and a low electric current makes your muscles tingle and twitch. Dark amusement flickers across its short, blue-furred muzzle, its star-tipped tail swishing back and forth. \"But I'm starving, and trespassers in my home don't get second chances.\" And with that, its maw parts."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_CHASE_HIDE",
+			"Text": [
+				"Given the lack of time on your paws, you dive behind one of the many collapsed buildings, peering around the wall's corner with half an eye. With some luck, you might be able to keep it distracted and break away at the right moment. That is, until the beast casually steps out of the building it had so graciously been waiting in, and begins walking straight at you, as if your cover did not exist. \"Come on, snack, you have to do a little bit better than that,\" it snorts, closing the distance between you and it within seconds, and your heart sinks. Standing over you, you fully grasp just how imposing the beast is - almost as tall as you would be standing upright, and that is on all fours. More than big enough to subdue you, of course. An ominous rumble from its midsection snaps you out of your reverie."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_CHASE_INITIAL",
+			"Text": [
+				"At the count of twenty-seven, your brain manages to unfreeze itself, and you bolt out of the room, into the cool outside air beyond. The strange cat behind you snorts audibly, having stopped counting, leaving your adrenaline-fueled sensibilities to take over. And so, with a strict time limit imposed on you, the question presents itself: what now?"
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_CHASE_RUNAWAY",
+			"Text": [
+				"Fueled by the desperate desire to put as much distance between yourself and the slobbering monster as physically possible, you make a mad dash for the woods surrounding the abbey. The sprint downhill is relatively simple, and before long, trees are whizzing by as you run, aching legs entirely ignored. That is, until something massive crashes into you. The very same predator, of course. The two of you tumble for a brief moment as momentum runs out, before you are pinned under a veritable mountain of muscle and fur, the beast grinning triumphantly at its prospective meal. Standing over you, you fully grasp just how imposing the beast is - almost as tall as you would be standing upright, and that is on all fours. More than big enough to subdue you, of course. An ominous rumble from its midsection snaps you out of your reverie."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_INTRO_STAY",
+			"Text": [
+				"Despite the clear threat before you, you stay nailed to the floor. The creature takes note of this fact, and stops counting. Instead, a wicked smirk spreads on its muzzle. \"Accepted your fate then, snack?\" it taunts. \"I would've preferred a good chase, but food is food.\" Ropes of slobber leak from its lips as it speaks, splattering on the floor beneath. With a lick of its lips to wipe the excess drool, the massive feline rises to all fours and slowly walks over to you, letting each step sink in. You have nowhere to go, and the both of you know it. Once it reaches you, you fully grasp just how imposing the beast is - almost as tall as you are, and that is on all fours. More than big enough to subdue you, of course. An ominous rumble from its midsection snaps you out of your reverie."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_INTRO1",
+			"Text": [
+				"Sitting patiently on the ceramic floor tiles in front of you is a massive feline of some sort. Its thick black fur coat makes for decent camouflage, were it not for the light blue mask-like pattern on its face betraying its amused grin. Red pupils stare into yours, a primal hunger clearly on display when the huge cat licks its lips. Four muscular legs appear ready to spring into action. Its long black tail, tipped with a curiously golden-colored star, flicks twice, as the creature drinks in your form. Most impressive of all, however, is the fact that tiny arcs of lightning spark off the creature, dissipating into the stone and casting small, eerie glows. \"They always look so surprised when I show up,\" it taunts, voice barely more than a deceptively cunning growl. While it blocks the exit out of the room, it appears content to sit, for now."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_INTRO2",
+			"Text": [
+				"The giant feline's grin grows ever wider, its yellow-furred ears twitching. A strand of drool leaks from its ebony lips, dripping on the grime-coated floor beneath, making the predator's intent fairly obvious. It stretches out its front paws, electricity sparking everywhere, before returning to its neatly seated position. \"Run, snack. I'll give you a thirty second head-start,\" it declares. As if to prove its point, the black-furred cat rises to all fours, and takes a tauntingly slow step sideways, stretching each of its legs in the movement as if having just awoken. Then, it sits back down, grin never fading. The doorway is indeed clear, though you feel you should be careful to not approach the creature too closely, if only to keep distance from those strange lightning discharges. \"Twenty-nine...\""
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_KILL_DIGESTED_POV",
+			"Text": [
+				"Try as you might, you are simply no match for an apex predator of this size and bulk. For every twitch you make, every attempt at pushing outwards, the stomach walls collapse inwards aggressively, forcing you back into a tight ball of meat. The electric cat's guts are tight - distressingly so. But that is to be expected, of course; the digestive system is not an environment living things are meant to experience. A flat surface presses into your side, somehow removing even more available wiggling room. The beast must've found a secure place to rest, and is now happily dozing while you are processed like the nameless meal you are. With each rolling wave of pressure, fresh acid is rubbed into your {player.fur}, flesh slowly singing and sloughing away in exchange. The organ surrounding you, controlling your every move and breath, was working hard to grind you into nutritious slop to serve the predator, to become one with the chyme that coats you. Your tiny world flips upside down, the stomach gurgling and hot, sticky fluids splashing everywhere, as your host rolls over to lie on its other side - whether it did so because it felt more comfortable, or simply to mess with you, you know not. Your wavering attention soon returns to the crushing waves of muscular pressure as mechanical digestion sets in fully. The caustic furnace compresses you tighter and tighter, and as you lose consciousness, you cannot help but feel at least a little impressed with what magnificent creature you would be fueling - your killer, your end. Even if you would not be around to see the pudge you would leave behind, at least the feline would take good care of you, and it is with this thought that you succumb to the onslaught of flesh and chyme."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_NOISE1",
+			"Text": [
+				"That sure made a lot of noise. Good thing no-one else is around in this crumbling ruin of a building. You wonder - quietly, this time - how many others before you have wasted their time picking through these damp, overgrown skeletons of buildings."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_NOISE2",
+			"Text": [
+				"As the noise reverberates through the quiet ruins of the abbey for a brief moment, before deathly silence returns, you cannot shake the feeling that you are being watched. Clearly, you are alone, however. Perhaps the paranoia has its roots in the fact that you are, in a way, trespassing."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_NOISE3",
+			"Text": [
+				"Something clatters to the floor behind you. Not at all an unexpected event, considering the state of disrepair of your surroundings, yet your reflexes do the thinking for you and you spin around on the spot. Though dimly lit as the room is, your heart skips a beat as you recognize the outline of another creature, just an arm's length or two away, staring."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_VORE_DISPOSAL",
+			"Text": [
+				"Some distance away from the hill of the abandoned monastery, a monstrously large cat is pawing at the forest floor, kicking up soil, twigs and dry leaves as it digs a hole. Its doughy, swaying potbelly betrays the size of its latest prize. From processing large meals like {player.speciesplural} comes an important consequence, and the feline found itself waking up with an urgent need. Satisfied with the makeshift pit, the predator turns around, moves its star-tipped tail out of the way, and applies pressure to its colon. With practiced ease, the anus relaxes, spilling out one thick log of digested prey after the other. The warm, foul mass begins piling up, though in its haste to relieve the pressure on its tailhole, the electric cat had underestimated just how deep it ought to dig. The small pit overflows slightly, but ultimately, the predator cares not. If anything, the mound of shit would serve to mark its territory. With its meal passed, the feline's anus tightens once more, and with a shake of its mane, the predator is on its way, returning to the fortress it had claimed as its home, already sniffing out the next delicious intruder to devour. Another day, another meal."
+			]
+		},
+		{
+			"Key": "ABBEY_LUXRAY_VORE_WIN_POV",
+			"Text": [
+				"Presented with a drooling wide open maw before you, you find yourself unable to look away as that pulsating fleshy abyss draws closer. Hot, acrid air replaces the cool touch of the outside world when your muzzle is enveloped in the apex predator's embrace, muffling all sound with flesh and drool. Only a few brief moments are spent savoring your taste, literally rubbing in your new status as food, before the swallows begin. The beast devours you greedily, forcing your head and shoulders down its gullet without spending so much as a second actually tasting your features. It pushes you down into the floor with its muzzle, allowing its slick, slimy gullet to take you in as you are pinned in place. With over half of your body crammed down its throat, the massive feline lifts its head up, taking you along with it. Your feet leave the ground, your center of gravity somehow shifts even further down, and the predator begins tossing you in its maw like a ravenous animal scarfing down its meal quickly to prevent escape. The shifts noisily displace fluids and air all around you, each toss creating a new vacuum below you that you easily slip into with a wet squelch. Torrents of saliva rush past your ears as you finally breach the giant animal's stomach. Even without any light, you can tell the digestive organ is surprisingly cramped for a creature of this size - it would accommodate you, but certainly not comfortably. As you are dumped inside with recklessly greedy swallows and slurps, the stomach walls are busily preparing for the arrival of fresh food. The walls are slick with slime, fluids dribbling from between the folds of flesh, the chamber already churning away at nothing in particular - though you would fill that void. Soon enough, your feet slide free from the tight stomach sphincter, and with a crass belch on the part of your captor, the sac of hot flesh collapses around you immediately. \"Urrrrp... right where you belong,\" the taunting voice of the electric cat booms. \"Now be a good little prey and die for me.\""
+			]
+		},
+		{
+			"Key": "ABBEY_PASS_ENTER",
+			"Text": [
+				"The winding dirt trail takes you through dense trees, the ground sloping almost the entire way. In this autumnal season, the unmaintained road is almost completely covered in dead leaves and twigs, and you find yourself losing and having to retrace your steps more than once. The path connects South Finmer to the old abandoned monastery beyond - going west from here would take you back to civilization; north leads to the hilly overlook of the abbey."
+			]
+		},
+		{
+			"Key": "ABBEY_PASS_ENTER_FIRST",
+			"Text": [
+				"The forest path known as Dalsida Pass is known to lead to an old monastery of some kind, atop a hilly overlook. It is a somewhat erroneous moniker since the route is not actually a mountain pass, though because of how expansive these woods are, the name stuck regardless. The winding dirt trail takes you through dense trees, the ground gently sloping upwards. In this autumnal season, the unmaintained road is almost completely covered in dead leaves and twigs, and you find yourself losing and having to retrace your steps more than once. It is peaceful, and were it not for the sound of leaves crunching under your feet, your intrusion would go undetected. It is not much farther to the abandoned monastery from here."
+			]
+		}
+	]
+}

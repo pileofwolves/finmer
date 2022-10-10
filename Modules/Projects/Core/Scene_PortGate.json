@@ -25,7 +25,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "Log(\"PORT_GATE_ENTER\")\r\nAddLink(ECompass.West, \"Scene_PortCentral\")\r\nAddLink(ECompass.North, GoNorth)"
+					"Script": "Log(\"PORT_GATE_ENTER\")\r\nAddLink(ECompass.West, \"Scene_PortCentral\")\r\nAddLink(ECompass.East, GoEast)\r\nAddLink(ECompass.North, GoNorth)"
 				},
 				"Children": []
 			}

@@ -1,0 +1,41 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "9173c650-feea-4e4a-8984-9e7cc0db5f6c",
+	"AssetName": "CR_AbbeyLuxray",
+	"ObjectName": "Strange Feline",
+	"ObjectAlias": "the cat",
+	"Strength": 7,
+	"Agility": 5,
+	"Body": 7,
+	"Wits": 3,
+	"Flags": 2,
+	"Level": 5,
+	"Size": "Large",
+	"Gender": "Ungendered",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "ABBEY_LUXRAY_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "NpcToPlayer",
+			"NewKey": "ABBEY_LUXRAY_VORE_DISPOSAL"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "ABBEY_LUXRAY_VORE_WIN_POV"
+		}
+	]
+}

@@ -1,0 +1,83 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "037d2cce-911d-4ccf-86c2-065547c4d64a",
+	"AssetName": "Scene_DalsidaPass",
+	"ScriptEnter": {
+		"!Type": "ScriptDataVisualAction",
+		"Nodes": [
+			{
+				"!Type": "CommandSetLocation",
+				"OperandMode": "Literal",
+				"OperandText": "Dalsida Pass"
+			},
+			{
+				"!Type": "CommandSetInventoryEnabled",
+				"OperandMode": "Literal",
+				"OperandLiteral": true
+			},
+			{
+				"!Type": "CommandSaveCheckpoint"
+			}
+		]
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "ABBEY_PASS_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "ABBEY_PASS_ENTER",
+									"IsRaw": false
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "ABBEY_PASS_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "ABBEY_PASS_ENTER_FIRST",
+									"IsRaw": false
+								}
+							]
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "AddLink(ECompass.West, function()\r\n    BeginRoadTravel(\"Scene_PortGate\")\r\nend)\r\nAddLink(ECompass.North, \"Scene_DalsidaAbbey\")"
+						}
+					]
+				},
+				"Children": []
+			}
+		]
+	}
+}

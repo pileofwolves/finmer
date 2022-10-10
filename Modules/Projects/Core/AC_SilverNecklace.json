@@ -1,0 +1,12 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "be726ae7-1194-4306-8bd9-c2dffa61a94e",
+	"AssetName": "AC_SilverNecklace",
+	"ObjectName": "Silver Necklace",
+	"FlavorText": "A decorated piece of jewellery. The metal has long since oxidized, removing the lustrous shine that silver is known for, though that is nothing a smith cannot fix. It should fetch a decent price.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [],
+	"PurchaseValue": 28,
+	"IsQuestItem": false
+}

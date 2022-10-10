@@ -175,7 +175,19 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Player:AwardXP(300)\r\nPlayer:GiveItem(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"TOWN_PIT_UNLOCKED\", true)\r\nSetScene(\"Scene_TownPit\")"
+															"Script": "Player:AwardXP(300)\r\nPlayer.EquippedWeapon = Item(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"TOWN_PIT_UNLOCKED\", true)\r\nSetScene(\"Scene_TownPit\")"
+														},
+														"Children": []
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Go to Abbey",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Player:AwardXP(300)\r\nPlayer.EquippedWeapon = Item(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nStorage.SetFlag(\"BRIDGE_IS_REPAIRED\", true)\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_DalsidaAbbey\")"
 														},
 														"Children": []
 													}

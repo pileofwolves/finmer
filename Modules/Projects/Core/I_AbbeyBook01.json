@@ -1,0 +1,10 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "b5225d74-e3fb-4561-bc60-d80be316335f",
+	"AssetName": "I_AbbeyBook01",
+	"ObjectName": "Old History Book",
+	"FlavorText": "A book that chronicles the legend of a distant Shore. While deteriorated, it is largely intact - though written in a language you do not recognize. Perhaps someone else may be interested in this antique.",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": true
+}

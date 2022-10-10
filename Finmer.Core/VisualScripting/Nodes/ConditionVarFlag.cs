@@ -42,7 +42,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.AppendFormat(CultureInfo.InvariantCulture, "Storage.GetNumber(\"{0}\") == {1}", VariableName, Operand.GetOperandLuaSnippet());
+            output.AppendFormat(CultureInfo.InvariantCulture, "Storage.GetFlag(\"{0}\") == {1}", VariableName, Operand.GetOperandLuaSnippet());
         }
 
         public override void Serialize(IFurballContentWriter outstream)

@@ -283,7 +283,7 @@
 																			{
 																				"IsState": true,
 																				"IsLink": true,
-																				"LinkTarget": "Luxray_Intro"
+																				"LinkTarget": "Gryphon_Intro"
 																			},
 																			{
 																				"IsState": true,
@@ -393,7 +393,7 @@
 															{
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "Luxray_Intro"
+																"LinkTarget": "Gryphon_Intro"
 															},
 															{
 																"IsState": true,
@@ -627,7 +627,7 @@
 															{
 																"IsState": true,
 																"IsLink": true,
-																"LinkTarget": "Luxray_Intro"
+																"LinkTarget": "Gryphon_Intro"
 															},
 															{
 																"IsState": true,
@@ -686,7 +686,7 @@
 				]
 			},
 			{
-				"Key": "Luxray_Intro",
+				"Key": "Gryphon_Intro",
 				"IsState": true,
 				"IsLink": false,
 				"ScriptAction": {
@@ -707,7 +707,7 @@
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"Key": "Luxray_R_Intro1",
+								"Key": "Gryphon_R_Intro1",
 								"IsState": true,
 								"IsLink": false,
 								"ScriptAction": {
@@ -715,7 +715,7 @@
 									"Nodes": [
 										{
 											"!Type": "CommandLog",
-											"Text": "ABBEY_LUXRAY_INTRO1",
+											"Text": "ABBEY_GRYPHON_INTRO1",
 											"IsRaw": false
 										}
 									]
@@ -729,7 +729,7 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"Key": "Luxray_R_Intro2",
+												"Key": "Gryphon_R_Intro2",
 												"IsState": true,
 												"IsLink": false,
 												"ScriptAction": {
@@ -737,14 +737,14 @@
 													"Nodes": [
 														{
 															"!Type": "CommandLog",
-															"Text": "ABBEY_LUXRAY_INTRO2",
+															"Text": "ABBEY_GRYPHON_INTRO2",
 															"IsRaw": false
 														}
 													]
 												},
 												"Children": [
 													{
-														"Key": "Luxray_C_Stay",
+														"Key": "Gryphon_C_Stay",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Stay",
@@ -753,7 +753,7 @@
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"Key": "Luxray_R_Stay",
+																"Key": "Gryphon_R_Stay",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": {
@@ -761,14 +761,14 @@
 																	"Nodes": [
 																		{
 																			"!Type": "CommandLog",
-																			"Text": "ABBEY_LUXRAY_INTRO_STAY",
+																			"Text": "ABBEY_GRYPHON_INTRO_STAY",
 																			"IsRaw": false
 																		}
 																	]
 																},
 																"Children": [
 																	{
-																		"Key": "Luxray_C_Caught",
+																		"Key": "Gryphon_C_Caught",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Caught!",
@@ -784,7 +784,7 @@
 																					"Nodes": [
 																						{
 																							"!Type": "CommandLog",
-																							"Text": "ABBEY_LUXRAY_CAUGHT",
+																							"Text": "ABBEY_GRYPHON_CAUGHT",
 																							"IsRaw": false
 																						}
 																					]
@@ -802,7 +802,7 @@
 																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"ABBEY_LUXRAY_VORE_WIN_POV\")\r\nSleep(3)\r\n\r\nlocal combat = Combat2()\r\nlocal pred = Creature(\"CR_AbbeyLuxray\")\r\ncombat:AddParticipant(Player)\r\ncombat:AddParticipant(pred)\r\ncombat:SetVored(pred, Player)\r\ncombat:Begin()"
+																									"Script": "Log(\"ABBEY_GRYPHON_VORE_WIN_POV\")\r\nSleep(3)\r\n\r\nlocal combat = Combat2()\r\nlocal pred = Creature(\"CR_AbbeyGryphon\")\r\ncombat:AddParticipant(Player)\r\ncombat:AddParticipant(pred)\r\ncombat:SetVored(pred, Player)\r\ncombat:Begin()"
 																								},
 																								"Children": []
 																							}
@@ -817,7 +817,7 @@
 														]
 													},
 													{
-														"Key": "Luxray_C_Run",
+														"Key": "Gryphon_C_Run",
 														"IsState": false,
 														"IsLink": false,
 														"Title": "Run",
@@ -826,7 +826,7 @@
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"Key": "Luxray_R_Run",
+																"Key": "Gryphon_R_Run",
 																"IsState": true,
 																"IsLink": false,
 																"ScriptAction": {
@@ -834,14 +834,14 @@
 																	"Nodes": [
 																		{
 																			"!Type": "CommandLog",
-																			"Text": "ABBEY_LUXRAY_CHASE_INITIAL",
+																			"Text": "ABBEY_GRYPHON_CHASE_INITIAL",
 																			"IsRaw": false
 																		}
 																	]
 																},
 																"Children": [
 																	{
-																		"Key": "Luxray_C_RunStraight",
+																		"Key": "Gryphon_C_RunStraight",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Keep going!",
@@ -850,7 +850,7 @@
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"Key": "Luxray_R_RunStraight",
+																				"Key": "Gryphon_R_RunStraight",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": {
@@ -858,7 +858,7 @@
 																					"Nodes": [
 																						{
 																							"!Type": "CommandLog",
-																							"Text": "ABBEY_LUXRAY_CHASE_RUNAWAY",
+																							"Text": "ABBEY_GRYPHON_CHASE_RUNAWAY",
 																							"IsRaw": false
 																						}
 																					]
@@ -867,14 +867,14 @@
 																					{
 																						"IsState": false,
 																						"IsLink": true,
-																						"LinkTarget": "Luxray_C_Caught"
+																						"LinkTarget": "Gryphon_C_Caught"
 																					}
 																				]
 																			}
 																		]
 																	},
 																	{
-																		"Key": "Luxray_C_RunHide",
+																		"Key": "Gryphon_C_RunHide",
 																		"IsState": false,
 																		"IsLink": false,
 																		"Title": "Hide!",
@@ -883,7 +883,7 @@
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"Key": "Luxray_R_RunHide",
+																				"Key": "Gryphon_R_RunHide",
 																				"IsState": true,
 																				"IsLink": false,
 																				"ScriptAction": {
@@ -891,7 +891,7 @@
 																					"Nodes": [
 																						{
 																							"!Type": "CommandLog",
-																							"Text": "ABBEY_LUXRAY_CHASE_HIDE",
+																							"Text": "ABBEY_GRYPHON_CHASE_HIDE",
 																							"IsRaw": false
 																						}
 																					]
@@ -900,7 +900,7 @@
 																					{
 																						"IsState": false,
 																						"IsLink": true,
-																						"LinkTarget": "Luxray_C_Caught"
+																						"LinkTarget": "Gryphon_C_Caught"
 																					}
 																				]
 																			}

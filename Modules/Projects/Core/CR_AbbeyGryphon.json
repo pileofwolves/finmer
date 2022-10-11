@@ -1,9 +1,9 @@
 ﻿{
 	"!Type": "AssetCreature",
 	"AssetID": "9173c650-feea-4e4a-8984-9e7cc0db5f6c",
-	"AssetName": "CR_AbbeyLuxray",
-	"ObjectName": "Strange Feline",
-	"ObjectAlias": "the cat",
+	"AssetName": "CR_AbbeyGryphon",
+	"ObjectName": "Gryphon",
+	"ObjectAlias": "the gryphon",
 	"Strength": 7,
 	"Agility": 5,
 	"Body": 7,
@@ -25,17 +25,17 @@
 		{
 			"Key": "KILL_DIGESTED",
 			"Rule": "NpcToPlayer",
-			"NewKey": "ABBEY_LUXRAY_KILL_DIGESTED_POV"
+			"NewKey": "ABBEY_GRYPHON_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_DISPOSAL",
 			"Rule": "NpcToPlayer",
-			"NewKey": "ABBEY_LUXRAY_VORE_DISPOSAL"
+			"NewKey": "ABBEY_GRYPHON_VORE_DISPOSAL"
 		},
 		{
 			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
-			"NewKey": "ABBEY_LUXRAY_VORE_WIN_POV"
+			"NewKey": "ABBEY_GRYPHON_VORE_WIN_POV"
 		}
 	]
 }

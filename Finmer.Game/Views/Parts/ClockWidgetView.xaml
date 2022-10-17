@@ -22,7 +22,7 @@
                 Source="/Finmer;component/Resources/UI/Clock.png"
                 Width="150"
                 Height="150"
-                Stretch="None"
+                Stretch="Fill"
                 RenderTransformOrigin="0.5,0.5">
                 <Image.Triggers>
                     <EventTrigger RoutedEvent="Binding.TargetUpdated">

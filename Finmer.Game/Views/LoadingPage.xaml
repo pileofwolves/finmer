@@ -38,12 +38,6 @@
             Visibility="{Binding ShowSpinner, Converter={StaticResource BooleanToVisibilityConverter}}"
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
-            <TextBlock
-                Style="{StaticResource TextBlockLargest}"
-                HorizontalAlignment="Center"
-                Margin="0,0,0,20">
-                Loading...
-            </TextBlock>
             <Image
                 Source="/Finmer;component/Resources/UI/LoadingSpinner.png"
                 Stretch="None">
@@ -57,7 +51,7 @@
                                 <DoubleAnimation
                                     Storyboard.TargetProperty="(Image.RenderTransform).(RotateTransform.Angle)"
                                     To="-360"
-                                    Duration="0:0:0.75"
+                                    Duration="0:0:0.6"
                                     RepeatBehavior="Forever" />
                             </Storyboard>
                         </BeginStoryboard>

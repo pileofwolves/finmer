@@ -14,6 +14,10 @@
     </UserControl.Resources>
     <Grid Width="150" Height="75" Margin="0,0,0,24">
         <!-- Rotating clock graphic -->
+        <Grid.OpacityMask>
+            <ImageBrush
+                ImageSource="/Finmer;component/Resources/UI/ClockAlpha.png" />
+        </Grid.OpacityMask>
         <Grid Height="150">
             <Grid.Clip>
                 <RectangleGeometry Rect="0, 0, 150, 75" />
@@ -45,13 +49,5 @@
                 </Image.RenderTransform>
             </Image>
         </Grid>
-        <!-- Day number -->
-        <TextBlock
-            Text="{Binding TimeDay}"
-            Style="{StaticResource TextBlockLarge}"
-            RenderTransformOrigin="0.5,0.5"
-            HorizontalAlignment="Center"
-            VerticalAlignment="Bottom"
-            Margin="0,0,0,-6" />
     </Grid>
 </UserControl>

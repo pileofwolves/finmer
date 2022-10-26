@@ -71,7 +71,7 @@
                 <!-- Armor -->
                 <Image
                     Grid.Column="0"
-                    Grid.Row="0"
+                    Grid.Row="1"
                     Source="/Finmer;component/Resources/UI/StatDefense.png"
                     Stretch="None"
                     HorizontalAlignment="Left"
@@ -79,14 +79,14 @@
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
                 <v:SimpleDiceTrack
                     Grid.Column="1"
-                    Grid.Row="0"
+                    Grid.Row="1"
                     DiceStyle="Defense"
                     DiceCount="{Binding NumDefenseDice}" />
 
                 <!-- Offense -->
                 <Image
                     Grid.Column="0"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Source="/Finmer;component/Resources/UI/StatOffense.png"
                     Stretch="None"
                     HorizontalAlignment="Left"
@@ -94,7 +94,7 @@
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
                 <StackPanel
                     Grid.Column="1"
-                    Grid.Row="1"
+                    Grid.Row="0"
                     Orientation="Vertical">
                     <v:SimpleDiceTrack
                         DiceStyle="Attack"
@@ -232,13 +232,6 @@
                         <Image Source="/Finmer;component/Resources/UI/Money.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
                         <TextBlock Style="{StaticResource TextBlockDefault}">
                             <Run Text="{Binding Money, Mode=OneWay}" />
-                        </TextBlock>
-                    </StackPanel>
-                    <!-- Item count -->
-                    <StackPanel Orientation="Horizontal" Grid.Column="1">
-                        <Image Source="/Finmer;component/Resources/UI/StatInventory.png" Stretch="None" Margin="0,0,8,0" RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                        <TextBlock Style="{StaticResource TextBlockDefault}">
-                            <Run Text="{Binding Inventory.Count, Mode=OneWay}" /> item(s)
                         </TextBlock>
                     </StackPanel>
                 </Grid>

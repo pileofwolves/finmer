@@ -484,7 +484,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-    <Resource Include="Resources\Fonts\NunitoSans-Regular.ttf" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Finmer.Core\Finmer.Core.csproj">
@@ -497,8 +496,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="FinmerIcon.ico" />
-  </ItemGroup>
-  <ItemGroup>
     <Resource Include="Resources\Dice\AlliedAttack1.png" />
     <Resource Include="Resources\Dice\AlliedAttack2.png" />
     <Resource Include="Resources\Dice\AlliedDefense1.png" />
@@ -510,6 +507,7 @@
     <Resource Include="Resources\Dice\AlliedGeneric5.png" />
     <Resource Include="Resources\Dice\AlliedGeneric6.png" />
     <Resource Include="Resources\Dice\BackGenericD6.png" />
+    <Resource Include="Resources\Dice\Empty.png" />
     <Resource Include="Resources\Dice\EnemyAttack1.png" />
     <Resource Include="Resources\Dice\EnemyAttack2.png" />
     <Resource Include="Resources\Dice\EnemyDefense1.png" />
@@ -520,10 +518,12 @@
     <Resource Include="Resources\Dice\EnemyGeneric4.png" />
     <Resource Include="Resources\Dice\EnemyGeneric5.png" />
     <Resource Include="Resources\Dice\EnemyGeneric6.png" />
-    <Resource Include="Resources\Dice\Empty.png" />
+    <Resource Include="Resources\Fonts\NunitoSans-Regular.ttf" />
     <Resource Include="Resources\UI\Clock.png" />
+    <Resource Include="Resources\UI\ClockAlpha.png" />
     <Resource Include="Resources\UI\HUDCharSheet.png" />
     <Resource Include="Resources\UI\HUDExitToMenu.png" />
+    <Resource Include="Resources\UI\HUDJournal.png" />
     <Resource Include="Resources\UI\HUDScriptConsole.png" />
     <Resource Include="Resources\UI\LoadingSpinner.png" />
     <Resource Include="Resources\UI\MenuButtonFA.png" />
@@ -535,7 +535,6 @@
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
     <Resource Include="Resources\UI\StatDefense.png" />
-    <Resource Include="Resources\UI\StatInventory.png" />
     <Resource Include="Resources\UI\StatOffense.png" />
     <Resource Include="Resources\UI\StatPrimary.png" />
     <Resource Include="Resources\UI\StatVore.png" />

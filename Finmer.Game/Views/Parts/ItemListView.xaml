@@ -18,6 +18,7 @@
                             x:Name="Border"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch"
+                            ToolTipService.ShowDuration="60000"
                             d:DataContext="{d:DesignInstance gp:Item}">
                             <Border.Style>
                                 <Style TargetType="Border">

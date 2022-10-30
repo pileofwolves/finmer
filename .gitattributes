@@ -12,4 +12,4 @@
 External/* linguist-vendored
 
 # Language analysis: exclude documentation
-Modules/Projects/Documentation.html linguist-documentation
+Modules/Docs/* linguist-documentation

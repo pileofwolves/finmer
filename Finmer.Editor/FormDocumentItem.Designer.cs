@@ -52,7 +52,6 @@
             this.cmdEquipEffectRemove = new System.Windows.Forms.Button();
             this.lsvEquipEffects = new System.Windows.Forms.ListView();
             this.clhEquipEffectTitle = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.clhEquipEffectDetails = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.cmdEquipEffectAdd = new System.Windows.Forms.Button();
             this.cmbEquipSlot = new System.Windows.Forms.ComboBox();
             this.fraUsable = new System.Windows.Forms.GroupBox();
@@ -71,6 +70,12 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectStatHP = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectDiceGrapple = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectDiceStruggle = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectDiceSwallow = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectCustomText = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label18 = new System.Windows.Forms.Label();
             label17 = new System.Windows.Forms.Label();
@@ -329,10 +334,10 @@
             // lsvEquipEffects
             // 
             this.lsvEquipEffects.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.clhEquipEffectTitle,
-            this.clhEquipEffectDetails});
+            this.clhEquipEffectTitle});
             this.lsvEquipEffects.FullRowSelect = true;
             this.lsvEquipEffects.GridLines = true;
+            this.lsvEquipEffects.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.None;
             this.lsvEquipEffects.HideSelection = false;
             this.lsvEquipEffects.Location = new System.Drawing.Point(8, 112);
             this.lsvEquipEffects.Name = "lsvEquipEffects";
@@ -346,12 +351,7 @@
             // clhEquipEffectTitle
             // 
             this.clhEquipEffectTitle.Text = "Effect";
-            this.clhEquipEffectTitle.Width = 120;
-            // 
-            // clhEquipEffectDetails
-            // 
-            this.clhEquipEffectDetails.Text = "Overview";
-            this.clhEquipEffectDetails.Width = 160;
+            this.clhEquipEffectTitle.Width = 250;
             // 
             // cmdEquipEffectAdd
             // 
@@ -475,17 +475,23 @@
             this.toolStripMenuItem2,
             this.mnuEffectDiceAttack,
             this.mnuEffectDiceDefense,
+            this.mnuEffectDiceGrapple,
+            this.mnuEffectDiceSwallow,
+            this.mnuEffectDiceStruggle,
             this.toolStripSeparator1,
             this.toolStripMenuItem1,
-            this.mnuEffectStatHP});
+            this.mnuEffectStatHP,
+            this.toolStripSeparator2,
+            this.miscToolStripMenuItem,
+            this.mnuEffectCustomText});
             this.mnuEquipEffectAdd.Name = "mnuEquipEffectAdd";
-            this.mnuEquipEffectAdd.Size = new System.Drawing.Size(143, 120);
+            this.mnuEquipEffectAdd.Size = new System.Drawing.Size(181, 258);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Enabled = false;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Dice:";
             // 
             // mnuEffectDiceAttack
@@ -505,13 +511,13 @@
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(139, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(142, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Stats:";
             // 
             // mnuEffectStatHP
@@ -520,6 +526,46 @@
             this.mnuEffectStatHP.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectStatHP.Text = "Health";
             this.mnuEffectStatHP.Click += new System.EventHandler(this.mnuEffectStatHP_Click);
+            // 
+            // mnuEffectDiceGrapple
+            // 
+            this.mnuEffectDiceGrapple.Name = "mnuEffectDiceGrapple";
+            this.mnuEffectDiceGrapple.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectDiceGrapple.Text = "Grapple Dice";
+            this.mnuEffectDiceGrapple.Click += new System.EventHandler(this.mnuEffectDiceGrapple_Click);
+            // 
+            // mnuEffectDiceStruggle
+            // 
+            this.mnuEffectDiceStruggle.Name = "mnuEffectDiceStruggle";
+            this.mnuEffectDiceStruggle.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectDiceStruggle.Text = "Struggle Dice";
+            this.mnuEffectDiceStruggle.Click += new System.EventHandler(this.mnuEffectDiceStruggle_Click);
+            // 
+            // mnuEffectDiceSwallow
+            // 
+            this.mnuEffectDiceSwallow.Name = "mnuEffectDiceSwallow";
+            this.mnuEffectDiceSwallow.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectDiceSwallow.Text = "Swallow Dice";
+            this.mnuEffectDiceSwallow.Click += new System.EventHandler(this.mnuEffectDiceSwallow_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // miscToolStripMenuItem
+            // 
+            this.miscToolStripMenuItem.Enabled = false;
+            this.miscToolStripMenuItem.Name = "miscToolStripMenuItem";
+            this.miscToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.miscToolStripMenuItem.Text = "Misc:";
+            // 
+            // mnuEffectCustomText
+            // 
+            this.mnuEffectCustomText.Name = "mnuEffectCustomText";
+            this.mnuEffectCustomText.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectCustomText.Text = "Custom Text";
+            this.mnuEffectCustomText.Click += new System.EventHandler(this.mnuEffectCustomText_Click);
             // 
             // FormDocumentItem
             // 
@@ -579,6 +625,11 @@
         private System.Windows.Forms.Button cmdEquipEffectRemove;
         private System.Windows.Forms.ListView lsvEquipEffects;
         private System.Windows.Forms.ColumnHeader clhEquipEffectTitle;
-        private System.Windows.Forms.ColumnHeader clhEquipEffectDetails;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectDiceGrapple;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectDiceSwallow;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectDiceStruggle;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem miscToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectCustomText;
     }
 }

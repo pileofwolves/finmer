@@ -13,6 +13,7 @@ using System.IO;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 using Finmer.Core.Buffs;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Editor
 {
@@ -189,10 +190,11 @@ namespace Finmer.Editor
         private void AddEquipEffect(Buff buff, bool isUserAction = true)
         {
             // Create a new list entry that represents this effect
-            var buff_item = new ListViewItem();
-            buff_item.SubItems.Add(buff.GetEditorDescription());
-            buff_item.Text = buff.GetIcon().ToString();
-            buff_item.Tag = buff;
+            var buff_item = new ListViewItem
+            {
+                Text = buff.GetEditorDescription(),
+                Tag = buff
+            };
             lsvEquipEffects.Items.Add(buff_item);
 
             // Mark asset as having changed
@@ -205,6 +207,9 @@ namespace Finmer.Editor
             {
                 case SingleDeltaBuff _:
                     return new FormEffectEditorSingleDelta();
+
+                case BuffCustomTooltipText _:
+                    return new FormEffectEditorCustomText();
 
                 default:
                     throw new ArgumentException(nameof(buff));
@@ -223,18 +228,16 @@ namespace Finmer.Editor
 
             using (var form = CreateEquipEffectEditor(buff))
             {
-                form.SourceBuff = buff;
+                // Make a copy of the buff, so the editor form can edit it safely
+                form.BuffInstance = AssetSerializer.DuplicateAsset(buff);
 
                 // Save result only if user clicked OK
                 if (form.ShowDialog() != DialogResult.OK)
                     return;
 
-                // Make a copy of the buff and store it in the list item
-                var new_buff = form.CopyBuff();
-                item.SubItems.Clear();
-                item.SubItems.Add(new_buff.GetEditorDescription());
-                item.Text = new_buff.GetIcon().ToString();
-                item.Tag = new_buff;
+                // Update list item
+                item.Text = form.BuffInstance.GetEditorDescription();
+                item.Tag = form.BuffInstance;
 
                 // Mark the asset as having changed
                 Dirty = true;
@@ -282,9 +285,29 @@ namespace Finmer.Editor
             AddEquipEffect(new BuffDefenseDice());
         }
 
+        private void mnuEffectDiceGrapple_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffGrappleDice());
+        }
+
+        private void mnuEffectDiceSwallow_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffSwallowDice());
+        }
+
+        private void mnuEffectDiceStruggle_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffStruggleDice());
+        }
+
         private void mnuEffectStatHP_Click(object sender, EventArgs e)
         {
             AddEquipEffect(new BuffHealth());
+        }
+
+        private void mnuEffectCustomText_Click(object sender, EventArgs e)
+        {
+            AddEquipEffect(new BuffCustomTooltipText());
         }
 
     }

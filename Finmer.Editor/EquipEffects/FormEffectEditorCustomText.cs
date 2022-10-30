@@ -11,24 +11,24 @@ using Finmer.Core.Buffs;
 namespace Finmer.Editor
 {
 
-    public partial class FormEffectEditorSingleDelta : BaseEffectEditor
+    public partial class FormEffectEditorCustomText : BaseEffectEditor
     {
 
-        public FormEffectEditorSingleDelta()
+        public FormEffectEditorCustomText()
         {
             InitializeComponent();
         }
 
-        private void FormEffectEditorSingleDelta_Load(object sender, System.EventArgs e)
+        private void FormEffectEditorCustomText_Load(object sender, System.EventArgs e)
         {
-            var inst = (SingleDeltaBuff)BuffInstance;
-            nudDelta.Value = inst.Delta;
+            var inst = (BuffCustomTooltipText)BuffInstance;
+            txtTooltip.Text = inst.TooltipText;
         }
 
         private void cmdOK_Click(object sender, System.EventArgs e)
         {
-            var inst = (SingleDeltaBuff)BuffInstance;
-            inst.Delta = (int)nudDelta.Value;
+            var inst = (BuffCustomTooltipText)BuffInstance;
+            inst.TooltipText = txtTooltip.Text;
         }
 
     }

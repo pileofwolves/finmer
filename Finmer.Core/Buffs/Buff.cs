@@ -28,11 +28,6 @@ namespace Finmer.Core.Buffs
         }
 
         /// <summary>
-        /// Describes this buff.
-        /// </summary>
-        public abstract EBuffIcon GetIcon();
-
-        /// <summary>
         /// Describes how this buff affects the player.
         /// </summary>
         public abstract EImpact GetImpact();

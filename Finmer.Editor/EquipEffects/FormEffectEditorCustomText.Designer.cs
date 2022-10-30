@@ -1,7 +1,7 @@
 ﻿
 namespace Finmer.Editor
 {
-    partial class FormEffectEditorSingleDelta
+    partial class FormEffectEditorCustomText
     {
         /// <summary>
         /// Required designer variable.
@@ -32,9 +32,8 @@ namespace Finmer.Editor
             System.Windows.Forms.Label lblDelta;
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
-            this.nudDelta = new System.Windows.Forms.NumericUpDown();
+            this.txtTooltip = new System.Windows.Forms.TextBox();
             lblDelta = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.nudDelta)).BeginInit();
             this.SuspendLayout();
             // 
             // lblDelta
@@ -42,12 +41,13 @@ namespace Finmer.Editor
             lblDelta.AutoSize = true;
             lblDelta.Location = new System.Drawing.Point(16, 16);
             lblDelta.Name = "lblDelta";
-            lblDelta.Size = new System.Drawing.Size(67, 13);
+            lblDelta.Size = new System.Drawing.Size(174, 13);
             lblDelta.TabIndex = 5;
-            lblDelta.Text = "Modification:";
+            lblDelta.Text = "Additional text shown in item tooltip:";
             // 
             // cmdCancel
             // 
+            this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
             this.cmdCancel.Location = new System.Drawing.Point(176, 112);
@@ -61,6 +61,7 @@ namespace Finmer.Editor
             // 
             // cmdOK
             // 
+            this.cmdOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdOK.Image = global::Finmer.Editor.Properties.Resources.tick;
             this.cmdOK.Location = new System.Drawing.Point(56, 112);
@@ -73,43 +74,38 @@ namespace Finmer.Editor
             this.cmdOK.UseVisualStyleBackColor = true;
             this.cmdOK.Click += new System.EventHandler(this.cmdOK_Click);
             // 
-            // nudDelta
+            // txtTooltip
             // 
-            this.nudDelta.Location = new System.Drawing.Point(16, 32);
-            this.nudDelta.Maximum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            0});
-            this.nudDelta.Minimum = new decimal(new int[] {
-            9999,
-            0,
-            0,
-            -2147483648});
-            this.nudDelta.Name = "nudDelta";
-            this.nudDelta.Size = new System.Drawing.Size(272, 20);
-            this.nudDelta.TabIndex = 6;
+            this.txtTooltip.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtTooltip.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTooltip.Location = new System.Drawing.Point(16, 32);
+            this.txtTooltip.Multiline = true;
+            this.txtTooltip.Name = "txtTooltip";
+            this.txtTooltip.Size = new System.Drawing.Size(272, 64);
+            this.txtTooltip.TabIndex = 7;
             // 
-            // FormEffectEditorSingleDelta
+            // FormEffectEditorCustomText
             // 
             this.AcceptButton = this.cmdOK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(305, 161);
-            this.Controls.Add(this.nudDelta);
+            this.Controls.Add(this.txtTooltip);
             this.Controls.Add(lblDelta);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdOK);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FormEffectEditorSingleDelta";
+            this.MinimumSize = new System.Drawing.Size(321, 200);
+            this.Name = "FormEffectEditorCustomText";
+            this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Edit Equipment Effect";
-            this.Load += new System.EventHandler(this.FormEffectEditorSingleDelta_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.nudDelta)).EndInit();
+            this.Text = "Edit Custom Text";
+            this.Load += new System.EventHandler(this.FormEffectEditorCustomText_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -119,6 +115,6 @@ namespace Finmer.Editor
 
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.Button cmdOK;
-        private System.Windows.Forms.NumericUpDown nudDelta;
+        private System.Windows.Forms.TextBox txtTooltip;
     }
 }

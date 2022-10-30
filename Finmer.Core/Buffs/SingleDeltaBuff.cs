@@ -12,19 +12,6 @@ namespace Finmer.Core.Buffs
 {
 
     /// <summary>
-    /// Represents a Buff that lasts a limited number of combat turns.
-    /// </summary>
-    public abstract class VolatileBuff : Buff
-    {
-
-        /// <summary>
-        /// Number of combat turns remaining before this buff disappears.
-        /// </summary>
-        public int TurnsRemaining { get; set; }
-
-    }
-
-    /// <summary>
     /// Represents a buff that applies a simple delta value to a variable.
     /// </summary>
     public abstract class SingleDeltaBuff : Buff

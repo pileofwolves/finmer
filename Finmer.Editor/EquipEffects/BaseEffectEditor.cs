@@ -6,37 +6,22 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
 using System.Windows.Forms;
 using Finmer.Core.Buffs;
 
 namespace Finmer.Editor
 {
 
+    /// <summary>
+    /// Base class for equipment effect editor forms.
+    /// </summary>
     public class BaseEffectEditor : Form
     {
 
-        private Buff m_SourceBuff;
-
-        public Buff SourceBuff
-        {
-            get => m_SourceBuff;
-            set
-            {
-                m_SourceBuff = value;
-                LoadBuff();
-            }
-        }
-
-        protected virtual void LoadBuff()
-        {
-            throw new NotSupportedException();
-        }
-
-        public virtual Buff CopyBuff()
-        {
-            throw new NotSupportedException();
-        }
+        /// <summary>
+        /// The buff object that is being edited by this form.
+        /// </summary>
+        public Buff BuffInstance { get; set; }
 
     }
 

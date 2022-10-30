@@ -15,14 +15,9 @@ namespace Finmer.Core.Buffs
     public sealed class BuffAttackDice : SingleDeltaBuff
     {
 
-        public override EBuffIcon GetIcon()
-        {
-            return Delta >= 0 ? EBuffIcon.IncreasedAttack : EBuffIcon.DecreasedAttack;
-        }
-
         public override string GetEditorDescription()
         {
-            return $"{Delta:+#;-#;0} Dice";
+            return $"{Delta:+#;-#;0} Attack Dice";
         }
 
     }
@@ -33,14 +28,48 @@ namespace Finmer.Core.Buffs
     public sealed class BuffDefenseDice : SingleDeltaBuff
     {
 
-        public override EBuffIcon GetIcon()
+        public override string GetEditorDescription()
         {
-            return Delta >= 0 ? EBuffIcon.IncreasedDefense : EBuffIcon.DecreasedDefense;
+            return $"{Delta:+#;-#;0} Defense Dice";
         }
+
+    }
+
+    /// <summary>
+    /// Modifies the number of grapple dice a character has in combat.
+    /// </summary>
+    public sealed class BuffGrappleDice : SingleDeltaBuff
+    {
 
         public override string GetEditorDescription()
         {
-            return $"{Delta:+#;-#;0} Dice";
+            return $"{Delta:+#;-#;0} Grapple Dice";
+        }
+
+    }
+
+    /// <summary>
+    /// Modifies the number of swallow dice a character has in combat.
+    /// </summary>
+    public sealed class BuffSwallowDice : SingleDeltaBuff
+    {
+
+        public override string GetEditorDescription()
+        {
+            return $"{Delta:+#;-#;0} Swallow Dice";
+        }
+
+    }
+
+    /// <summary>
+    /// Modifies the number of struggle dice a character has in combat.
+    /// </summary>
+    public sealed class BuffStruggleDice : SingleDeltaBuff
+    {
+
+        public override string GetEditorDescription()
+        {
+            return $"{Delta:+#;-#;0} Struggle Dice";
         }
 
     }

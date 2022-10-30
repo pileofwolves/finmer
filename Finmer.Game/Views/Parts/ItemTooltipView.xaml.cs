@@ -144,19 +144,23 @@ namespace Finmer.Views
             switch (effect)
             {
                 case BuffAttackDice effect_attack:
-                    // Show a dice track indicating the added/removed dice
-                    var track_attack = new SimpleDiceTrack();
-                    track_attack.DiceCount = effect_attack.Delta;
-                    track_attack.DiceStyle = SimpleDiceTrack.EDiceStyle.Attack;
-                    parts.Add(CreateBuffContainer(effect, $"{effect_attack.Delta:+#;-#;0} Attack Dice", track_attack));
+                    DescribeEquipmentBuffDiceTrack(parts, effect_attack, SimpleDiceTrack.EDiceStyle.Attack, "Attack Dice");
                     break;
 
                 case BuffDefenseDice effect_defense:
-                    // Show a dice track indicating the added/removed dice
-                    var track_defense = new SimpleDiceTrack();
-                    track_defense.DiceCount = effect_defense.Delta;
-                    track_defense.DiceStyle = SimpleDiceTrack.EDiceStyle.Defense;
-                    parts.Add(CreateBuffContainer(effect, $"{effect_defense.Delta:+#;-#;0} Defense Dice", track_defense));
+                    DescribeEquipmentBuffDiceTrack(parts, effect_defense, SimpleDiceTrack.EDiceStyle.Defense, "Defense Dice");
+                    break;
+
+                case BuffGrappleDice effect_grapple:
+                    DescribeEquipmentBuffDiceTrack(parts, effect_grapple, SimpleDiceTrack.EDiceStyle.D6, "Grapple Dice");
+                    break;
+
+                case BuffSwallowDice effect_swallow:
+                    DescribeEquipmentBuffDiceTrack(parts, effect_swallow, SimpleDiceTrack.EDiceStyle.D6, "Swallow Dice");
+                    break;
+
+                case BuffStruggleDice effect_struggle:
+                    DescribeEquipmentBuffDiceTrack(parts, effect_struggle, SimpleDiceTrack.EDiceStyle.D6, "Struggle Dice");
                     break;
 
                 case BuffHealth effect_health:
@@ -169,7 +173,22 @@ namespace Finmer.Views
                     };
                     parts.Add(CreateBuffContainer(effect, $"{effect_health.Delta:+#;-#;0} Health", info));
                     break;
+
+                case BuffCustomTooltipText effect_text:
+                    parts.Add(CreateBuffContainer(effect, effect_text.TooltipText, null));
+                    break;
             }
+        }
+
+        private static void DescribeEquipmentBuffDiceTrack(InlineCollection parts, SingleDeltaBuff buff, SimpleDiceTrack.EDiceStyle style, string label)
+        {
+            // Show a dice track indicating the added/removed dice
+            var track = new SimpleDiceTrack
+            {
+                DiceCount = buff.Delta,
+                DiceStyle = style
+            };
+            parts.Add(CreateBuffContainer(buff, $"{buff.Delta:+#;-#;0} {label}", track));
         }
 
         private static UIElement CreateBuffContainer(Buff buff, string description, UIElement child)

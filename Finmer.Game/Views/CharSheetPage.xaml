@@ -68,21 +68,6 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
 
-                <!-- Armor -->
-                <Image
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Source="/Finmer;component/Resources/UI/StatDefense.png"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <v:SimpleDiceTrack
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    DiceStyle="Defense"
-                    DiceCount="{Binding NumDefenseDice}" />
-
                 <!-- Offense -->
                 <Image
                     Grid.Column="0"
@@ -96,9 +81,35 @@
                     Grid.Column="1"
                     Grid.Row="0"
                     Orientation="Vertical">
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="Attack Dice" />
                     <v:SimpleDiceTrack
+                        Margin="0,0,0,12"
                         DiceStyle="Attack"
                         DiceCount="{Binding NumAttackDice}" />
+                </StackPanel>
+
+                <!-- Armor -->
+                <Image
+                    Grid.Column="0"
+                    Grid.Row="1"
+                    Source="/Finmer;component/Resources/UI/StatDefense.png"
+                    Stretch="None"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Top"
+                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="1"
+                    Orientation="Vertical">
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="Defense Dice" />
+                    <v:SimpleDiceTrack
+                        Margin="0,0,0,12"
+                        DiceStyle="Defense"
+                        DiceCount="{Binding NumDefenseDice}" />
                 </StackPanel>
 
                 <!-- Vore -->
@@ -110,24 +121,29 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <Grid Grid.Column="1" Grid.Row="2" Margin="0,0,0,15">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="*" />
-                    </Grid.ColumnDefinitions>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto" />
-                        <RowDefinition Height="Auto" />
-                    </Grid.RowDefinitions>
-                    <TextBlock Grid.Column="0" Grid.Row="0" Style="{StaticResource TextBlockDefault}">
-                        Example stat 1:<LineBreak />
-                        Example stat 2:
-                    </TextBlock>
-                    <TextBlock Grid.Column="1" Grid.Row="0" Style="{StaticResource TextBlockDefault}">
-                        + 4<LineBreak />
-                        + 1
-                    </TextBlock>
-                </Grid>
+                <StackPanel
+                    Grid.Column="1"
+                    Grid.Row="2">
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="Grapple Dice" />
+                    <v:SimpleDiceTrack
+                        DiceStyle="D6"
+                        DiceCount="{Binding NumGrappleDice}" />
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="Swallow Dice" />
+                    <v:SimpleDiceTrack
+                        DiceStyle="D6"
+                        DiceCount="{Binding NumSwallowDice}" />
+                    <TextBlock
+                        Style="{StaticResource TextBlockDefault}"
+                        Text="Struggle Dice" />
+                    <v:SimpleDiceTrack
+                        Margin="0,0,0,12"
+                        DiceStyle="D6"
+                        DiceCount="{Binding NumStruggleDice}" />
+                </StackPanel>
 
                 <!-- Abilities -->
                 <Image

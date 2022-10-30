@@ -28,7 +28,8 @@ namespace Finmer.Views
         public enum EDiceStyle
         {
             Attack,
-            Defense
+            Defense,
+            D6
         }
 
         /// <summary>
@@ -111,6 +112,9 @@ namespace Finmer.Views
 
                 case EDiceStyle.Defense:
                     return EDieFace.AlliedDefense;
+
+                case EDiceStyle.D6:
+                    return EDieFace.AlliedGeneric6;
 
                 default:
                     throw new ArgumentException(nameof(style));

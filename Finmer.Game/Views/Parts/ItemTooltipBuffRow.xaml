@@ -12,16 +12,18 @@
         Margin="16,2,0,2">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="105" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
         <TextBlock
             Grid.Column="0"
+            Grid.ColumnSpan="2"
             HorizontalAlignment="Left"
             VerticalAlignment="Center"
+            TextWrapping="Wrap"
             Style="{StaticResource TextBlockDefault}"
             Text="{Binding RowLabel}">
             <TextBlock.Foreground>
-                <SolidColorBrush Color="{Binding RowImpactColor}"></SolidColorBrush>
+                <SolidColorBrush Color="{Binding RowImpactColor}" />
             </TextBlock.Foreground>
         </TextBlock>
         <ContentControl

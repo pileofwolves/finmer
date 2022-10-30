@@ -53,6 +53,12 @@ namespace Finmer.ViewModels
 
         public int NumDefenseDice => Player.NumDefenseDice;
 
+        public int NumGrappleDice => Player.NumGrappleDice;
+
+        public int NumSwallowDice => Player.NumSwallowDice;
+
+        public int NumStruggleDice => Player.NumStruggleDice;
+
         public int Level => Player.Level;
 
         public int XP => Player.XP;
@@ -90,6 +96,8 @@ namespace Finmer.ViewModels
 
             // Take away the point
             Player.AbilityPoints--;
+            OnPropertyChanged(nameof(AbilityPoints));
+            OnPropertyChanged(nameof(AbilityPointVisibility));
 
             // Increase the stat of choice
             switch (stat_index)
@@ -100,8 +108,8 @@ namespace Finmer.ViewModels
                 case 3:     Player.Wits++;          OnPropertyChanged(nameof(Wits));            break;
             }
 
-            OnPropertyChanged(nameof(AbilityPoints));
-            OnPropertyChanged(nameof(AbilityPointVisibility));
+            // Increasing an ability will have changed the dice totals
+            RefreshDiceReadouts();
         }
 
         private void UseItem(object arg)
@@ -115,8 +123,6 @@ namespace Finmer.ViewModels
                     // Equip the item, potentially swapping it with another
                     ItemUtilities.EquipItem(Player, item);
                     OnPropertyChanged(nameof(Equipment));
-                    OnPropertyChanged(nameof(NumAttackDice));
-                    OnPropertyChanged(nameof(NumDefenseDice));
                     break;
 
                 case AssetItem.EItemType.Usable:
@@ -130,6 +136,7 @@ namespace Finmer.ViewModels
 
             // Refresh the cached copy for the view
             RefreshInventory();
+            RefreshDiceReadouts();
         }
 
         private void DropItem(object arg)
@@ -155,8 +162,7 @@ namespace Finmer.ViewModels
 
             // Make sure to update the equipment readouts
             OnPropertyChanged(nameof(Equipment));
-            OnPropertyChanged(nameof(NumAttackDice));
-            OnPropertyChanged(nameof(NumDefenseDice));
+            RefreshDiceReadouts();
 
             // Refresh the cached copy for the view
             RefreshInventory();
@@ -168,6 +174,15 @@ namespace Finmer.ViewModels
             // So instead, we'll just allocate a new container entirely, copying the player's inventory into it.
             Inventory = new List<Item>(Player.Inventory);
             OnPropertyChanged(nameof(Inventory));
+        }
+
+        private void RefreshDiceReadouts()
+        {
+            OnPropertyChanged(nameof(NumAttackDice));
+            OnPropertyChanged(nameof(NumDefenseDice));
+            OnPropertyChanged(nameof(NumGrappleDice));
+            OnPropertyChanged(nameof(NumSwallowDice));
+            OnPropertyChanged(nameof(NumStruggleDice));
         }
 
     }

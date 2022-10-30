@@ -158,13 +158,13 @@ namespace Finmer.Gameplay
         public int NumDefenseDice => Math.Max(Agility + CumulativeBuffs.OfType<BuffDefenseDice>().Sum(buff => buff.Delta), 1);
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int NumGrappleDice => Math.Max(Agility, 1);
+        public int NumGrappleDice => Math.Max(Strength + CumulativeBuffs.OfType<BuffGrappleDice>().Sum(buff => buff.Delta), 1);
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int NumSwallowDice => Math.Max(Body, 1);
+        public int NumSwallowDice => Math.Max(Body + CumulativeBuffs.OfType<BuffSwallowDice>().Sum(buff => buff.Delta), 1);
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int NumStruggleDice => Math.Max(Agility, 1);
+        public int NumStruggleDice => Math.Max(Agility + CumulativeBuffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta), 1);
 
         public AssetCreature Asset { get; }
 

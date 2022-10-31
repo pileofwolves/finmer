@@ -28,7 +28,7 @@ namespace Finmer.ViewModels
             set
             {
                 UserConfig.AllowExplicitDisposal = value;
-                OnPropertyChanged(nameof(PreferScat));
+                OnPropertyChanged();
             }
         }
 
@@ -38,7 +38,7 @@ namespace Finmer.ViewModels
             set
             {
                 UserConfig.AllowPreySense = value;
-                OnPropertyChanged(nameof(PreySense));
+                OnPropertyChanged();
             }
         }
 
@@ -65,7 +65,7 @@ namespace Finmer.ViewModels
             set
             {
                 UserConfig.ZoomFactor = value * 0.1f + UserConfig.k_Zoom_Min;
-                OnPropertyChanged(nameof(ZoomIndex));
+                OnPropertyChanged();
                 OnPropertyChanged(nameof(ZoomLevel));
             }
         }

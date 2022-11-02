@@ -100,6 +100,12 @@ namespace Finmer.Gameplay.Combat
             predator.UpdateDisplay();
             prey.UpdateDisplay();
 
+            // Increment Swallow count if the player ate victim
+            if (predator.Character is Player player)
+            {
+                player.TotalPreySwallowed++;
+            }
+
             // Run script callback
             OnCharacterVored?.Invoke(predator, prey);
         }
@@ -201,6 +207,11 @@ namespace Finmer.Gameplay.Combat
                 // This was a vore kill
                 Debug.Assert(victim.Predator == killer);
                 CombatDisplay.ShowSimpleMessage(@"kill_digested", killer, victim);
+                // Increment Digest count if the player ate victim
+                if (killer.Character is Player player)
+                {
+                    player.TotalPreySwallowed++;
+                }
 
                 // Optional disposal scene if available and enabled by the user
                 var predator_asset = killer.Character.Asset;

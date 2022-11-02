@@ -210,7 +210,7 @@ namespace Finmer.Gameplay.Combat
                 // Increment Digest count if the player ate victim
                 if (killer.Character is Player player)
                 {
-                    player.TotalPreySwallowed++;
+                    player.TotalPreyDigested++;
                 }
 
                 // Optional disposal scene if available and enabled by the user

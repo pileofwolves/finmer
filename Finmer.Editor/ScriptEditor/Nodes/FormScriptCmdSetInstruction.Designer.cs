@@ -97,6 +97,7 @@
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(336, 343);
             this.Name = "FormScriptCmdSetInstruction";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

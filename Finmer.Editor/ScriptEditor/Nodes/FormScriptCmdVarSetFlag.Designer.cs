@@ -88,6 +88,8 @@
             // 
             // txtContextName
             // 
+            this.txtContextName.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.txtContextName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtContextName.Location = new System.Drawing.Point(16, 32);
             this.txtContextName.Name = "txtContextName";
@@ -96,6 +98,9 @@
             // 
             // sveValue
             // 
+            this.sveValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sveValue.Location = new System.Drawing.Point(16, 96);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
@@ -116,6 +121,7 @@
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(336, 399);
             this.Name = "FormScriptCmdVarSetFlag";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

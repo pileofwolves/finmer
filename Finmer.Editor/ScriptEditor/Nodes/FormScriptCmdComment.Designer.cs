@@ -74,7 +74,7 @@ namespace Finmer.Editor
             this.txtComment.Size = new System.Drawing.Size(351, 119);
             this.txtComment.TabIndex = 1;
             // 
-            // FormScriptNodeComment
+            // FormScriptCmdComment
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,6 +86,7 @@ namespace Finmer.Editor
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(400, 239);
             this.Name = "FormScriptCmdComment";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

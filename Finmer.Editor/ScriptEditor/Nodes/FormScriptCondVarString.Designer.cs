@@ -117,6 +117,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(368, 391);
             this.Name = "FormScriptCondVarString";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

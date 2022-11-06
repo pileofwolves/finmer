@@ -85,6 +85,7 @@
             this.Controls.Add(this.scintilla);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(513, 416);
             this.Name = "FormScriptCondLuaSnippet";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

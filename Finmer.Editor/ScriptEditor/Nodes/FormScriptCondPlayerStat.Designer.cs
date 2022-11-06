@@ -89,6 +89,8 @@ namespace Finmer.Editor
             // 
             // cmbStat
             // 
+            this.cmbStat.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.cmbStat.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbStat.Font = new System.Drawing.Font("Consolas", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbStat.FormattingEnabled = true;
@@ -121,6 +123,9 @@ namespace Finmer.Editor
             // 
             // sveRhs
             // 
+            this.sveRhs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sveRhs.Location = new System.Drawing.Point(96, 80);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(295, 198);
@@ -140,9 +145,9 @@ namespace Finmer.Editor
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(417, 384);
             this.Name = "FormScriptCondPlayerStat";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

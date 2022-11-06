@@ -94,6 +94,7 @@
             this.Controls.Add(label2);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FormScriptCmdSetScene";

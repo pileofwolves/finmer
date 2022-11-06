@@ -96,6 +96,9 @@
             // 
             // sveValue
             // 
+            this.sveValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sveValue.Location = new System.Drawing.Point(16, 96);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
@@ -116,6 +119,7 @@
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(336, 399);
             this.Name = "FormScriptCmdVarSetStr";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

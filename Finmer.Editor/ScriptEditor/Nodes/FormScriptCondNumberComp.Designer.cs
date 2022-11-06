@@ -94,6 +94,9 @@ namespace Finmer.Editor
             // 
             // sveRhs
             // 
+            this.sveRhs.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.sveRhs.Location = new System.Drawing.Point(96, 16);
             this.sveRhs.Name = "sveRhs";
             this.sveRhs.Size = new System.Drawing.Size(288, 192);
@@ -114,6 +117,7 @@ namespace Finmer.Editor
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(416, 319);
             this.Name = "FormScriptCondNumberComp";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

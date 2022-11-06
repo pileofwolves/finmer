@@ -97,6 +97,7 @@ namespace Finmer.Editor
             this.Controls.Add(this.cmdAccept);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(337, 349);
             this.Name = "FormScriptCmdSleep";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

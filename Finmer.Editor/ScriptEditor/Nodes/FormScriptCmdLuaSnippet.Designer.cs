@@ -74,7 +74,7 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // FormScriptNodeLuaSnippet
+            // FormScriptCmdLuaSnippet
             // 
             this.AcceptButton = this.cmdAccept;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -86,6 +86,7 @@ namespace Finmer.Editor
             this.Controls.Add(this.scintilla);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
+            this.MinimumSize = new System.Drawing.Size(513, 416);
             this.Name = "FormScriptCmdLuaSnippet";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;

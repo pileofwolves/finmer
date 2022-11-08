@@ -31,7 +31,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public int Stage { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return $"Update Quest {JournalGuid} to Stage {Stage}";
         }

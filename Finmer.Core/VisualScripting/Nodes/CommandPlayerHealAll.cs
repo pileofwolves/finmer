@@ -18,7 +18,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class CommandPlayerHealAll : ScriptCommand
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Restore Player Health";
         }

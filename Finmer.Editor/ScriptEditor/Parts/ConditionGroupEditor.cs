@@ -129,7 +129,7 @@ namespace Finmer.Editor
         {
             lsvConditions.Items.Add(new ListViewItem
             {
-                Text = condition.GetEditorDescription(),
+                Text = condition.GetEditorDescription(Program.LoadedContent),
                 ForeColor = BandedListView.ConvertColor(condition.GetEditorColor()),
                 Tag = condition
             });

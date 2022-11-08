@@ -18,7 +18,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class CommandExitScript : ScriptCommand
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Terminate Script";
         }

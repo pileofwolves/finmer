@@ -6,6 +6,8 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core.Serialization;
+
 namespace Finmer.Core.VisualScripting.Nodes
 {
 
@@ -15,9 +17,9 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class ConditionPlayerHealthMax : ScriptConditionNumberComparison
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
-            return "Player Max Health " + base.GetEditorDescription();
+            return "Player Max Health " + base.GetEditorDescription(content);
         }
 
         public override EColor GetEditorColor()

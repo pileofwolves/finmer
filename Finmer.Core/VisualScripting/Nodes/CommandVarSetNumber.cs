@@ -46,7 +46,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperFloat Value { get; set; } = new ValueWrapperFloat();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             switch (ValueOperation)
             {

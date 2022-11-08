@@ -18,7 +18,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class CommandEndGame : ScriptCommand
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "End Game";
         }

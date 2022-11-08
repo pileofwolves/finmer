@@ -25,14 +25,13 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Guid ItemGuid { get; set; } = Guid.Empty;
 
-        /// <summary>
-        /// The name of the item.
-        /// </summary>
-        public string ItemDisplayName { get; set; } = String.Empty;
-
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
-            return "Player Has Item " + ItemDisplayName;
+            // Resolve the item UUID to obtain its name
+            AssetItem item = content.GetAssetByID<AssetItem>(ItemGuid);
+            string item_name = item?.Name ?? ItemGuid.ToString();
+
+            return "Player Has Item " + item_name;
         }
 
         public override EColor GetEditorColor()
@@ -54,13 +53,11 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Serialize(IFurballContentWriter outstream)
         {
             outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
-            outstream.WriteStringProperty(nameof(ItemDisplayName), ItemDisplayName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
-            ItemDisplayName = instream.ReadStringProperty(nameof(ItemDisplayName));
         }
 
     }

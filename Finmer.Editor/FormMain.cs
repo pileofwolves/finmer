@@ -345,9 +345,11 @@ namespace Finmer.Editor
                 loading_window.Show(this);
                 Application.DoEvents();
 
-                var device = new FurballFileDeviceText();
+                // Configure content store
+                Program.LoadedContent = new EditorContentStore();
 
-                // load new data
+                // Load project from disk
+                var device = new FurballFileDeviceText();
                 try
                 {
                     loading_window.SetLabel("Unpacking module...");
@@ -530,6 +532,7 @@ namespace Finmer.Editor
             ClearUI();
 
             // Prepare an empty project
+            Program.LoadedContent = new EditorContentStore();
             Program.ActiveFurball = new Furball
             {
                 Metadata = new FurballMetadata

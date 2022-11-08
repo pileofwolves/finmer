@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperFloat Seconds { get; set; } = new ValueWrapperFloat();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Sleep {0} seconds", Seconds.GetOperandDescription());
         }

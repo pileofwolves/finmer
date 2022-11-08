@@ -9,6 +9,7 @@
 using System;
 using System.Globalization;
 using System.Windows.Forms;
+using Finmer.Core.Assets;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -41,7 +42,7 @@ namespace Finmer.Editor
             {
                 var item = new ListViewItem
                 {
-                    Text = pair.Key.ToString(),
+                    Text = DescribeItemLink(pair.Key),
                     Tag = pair.Key,
                     SubItems =
                     {
@@ -96,7 +97,7 @@ namespace Finmer.Editor
         {
             var item = new ListViewItem
             {
-                Text = "[unset]",
+                Text = DescribeItemLink(Guid.Empty),
                 Tag = Guid.Empty,
                 Selected = true,
                 SubItems =
@@ -123,7 +124,7 @@ namespace Finmer.Editor
                 return;
 
             m_SelectedItem.Tag = apcMerchAsset.SelectedGuid;
-            m_SelectedItem.Text = apcMerchAsset.SelectedAsset?.Name ?? "[unknown]";
+            m_SelectedItem.Text = DescribeItemLink(apcMerchAsset.SelectedGuid);
         }
 
         private void nudMerchQty_ValueChanged(object sender, EventArgs e)
@@ -140,6 +141,17 @@ namespace Finmer.Editor
         private static string DescribeQuantity(int quantity)
         {
             return quantity == 0 ? "\u221E" : quantity.ToString(CultureInfo.InvariantCulture);
+        }
+
+        private static string DescribeItemLink(Guid guid)
+        {
+            // Return a descriptive label for unset links
+            if (guid == Guid.Empty)
+                return "[empty]";
+
+            // Use the item name if found, otherwise use the UUID
+            return Program.LoadedContent.GetAssetByID<AssetItem>(guid)?.Name
+                ?? guid.ToString();
         }
 
     }

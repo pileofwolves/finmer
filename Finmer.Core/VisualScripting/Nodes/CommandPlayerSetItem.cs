@@ -27,11 +27,6 @@ namespace Finmer.Core.VisualScripting.Nodes
         public Guid ItemGuid { get; set; } = Guid.Empty;
 
         /// <summary>
-        /// The cached name of the item (for display purposes).
-        /// </summary>
-        public string ItemName { get; set; } = String.Empty;
-
-        /// <summary>
         /// Whether to add the item (true) or remove it (false).
         /// </summary>
         public bool Add { get; set; } = true;
@@ -39,13 +34,17 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Whether to suppress the item addition message.
         /// </summary>
-        public bool Quiet { get; set; } = false;
+        public bool Quiet { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
+            // Resolve the item UUID to obtain its name
+            AssetItem item = content.GetAssetByID<AssetItem>(ItemGuid);
+            string item_name = item?.Name ?? ItemGuid.ToString();
+
             return Add
-                ? String.Format(CultureInfo.InvariantCulture, "Add {0} to Inventory", ItemName)
-                : String.Format(CultureInfo.InvariantCulture, "Remove {0} from Inventory", ItemName);
+                ? String.Format(CultureInfo.InvariantCulture, "Add {0} to Inventory", item_name)
+                : String.Format(CultureInfo.InvariantCulture, "Remove {0} from Inventory", item_name);
         }
 
         public override EColor GetEditorColor()
@@ -70,7 +69,6 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Serialize(IFurballContentWriter outstream)
         {
             outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
-            outstream.WriteStringProperty(nameof(ItemName), ItemName);
             outstream.WriteBooleanProperty(nameof(Add), Add);
 
             if (Add)
@@ -80,7 +78,6 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
-            ItemName = instream.ReadStringProperty(nameof(ItemName));
             Add = instream.ReadBooleanProperty(nameof(Add));
 
             if (Add)

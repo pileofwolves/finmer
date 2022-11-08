@@ -30,7 +30,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public bool IsCaseSensitive { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return $"Player Species Equals {Comparison.GetOperandDescription()}";
         }

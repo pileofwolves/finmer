@@ -57,7 +57,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public List<ScriptNode> CallbackCreatureReleased { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Start Combat with {0} Participants", Participants.Count + (IncludePlayer ? 1 : 0));
         }

@@ -29,7 +29,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public bool IsRaw { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Log: " + Text;
         }

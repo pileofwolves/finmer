@@ -31,7 +31,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string SceneName { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Switch to Scene '{0}'", SceneName);
         }

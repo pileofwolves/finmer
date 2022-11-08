@@ -35,10 +35,10 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public List<ScriptNode> ElseSubgroup { get; set; } = new List<ScriptNode>();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             string join_word = (Condition.Mode == ScriptConditionGroup.EConditionMode.All) ? " And " : " Or ";
-            return $"If {(Condition.Operand ? String.Empty : "Not ")}{String.Join(join_word, Condition.Tests.Select(c => c.GetEditorDescription()))}:";
+            return $"If {(Condition.Operand ? String.Empty : "Not ")}{String.Join(join_word, Condition.Tests.Select(c => c.GetEditorDescription(content)))}:";
         }
 
         public override EColor GetEditorColor()

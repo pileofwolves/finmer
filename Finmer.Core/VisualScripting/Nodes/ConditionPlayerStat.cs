@@ -33,9 +33,9 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public EStat Stat { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
-            return $"Player {Stat} {base.GetEditorDescription()}";
+            return $"Player {Stat} {base.GetEditorDescription(content)}";
         }
 
         public override EColor GetEditorColor()

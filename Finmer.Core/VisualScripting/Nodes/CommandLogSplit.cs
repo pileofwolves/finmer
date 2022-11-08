@@ -18,7 +18,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class CommandLogSplit : ScriptCommand
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Log Horizontal Bar";
         }

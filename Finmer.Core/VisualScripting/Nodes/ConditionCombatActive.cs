@@ -18,7 +18,7 @@ namespace Finmer.Core.VisualScripting.Nodes
     public sealed class ConditionCombatActive : ScriptCondition
     {
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Combat Is Active";
         }

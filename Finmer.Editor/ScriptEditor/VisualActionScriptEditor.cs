@@ -76,7 +76,7 @@ namespace Finmer.Editor
             foreach (ScriptNode node in nodes)
             {
                 // Add node
-                AddItemToTree(node.GetEditorDescription(), node.GetEditorColor(), new TreeItemTag { m_Node = node, m_Parent = nodes }, indentLevel);
+                AddItemToTree(node.GetEditorDescription(Program.LoadedContent), node.GetEditorColor(), new TreeItemTag { m_Node = node, m_Parent = nodes }, indentLevel);
 
                 // If this node is itself a container for nodes, we need to recurse
                 if (node is ScriptCommandContainer container)

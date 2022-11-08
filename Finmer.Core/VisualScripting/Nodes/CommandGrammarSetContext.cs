@@ -31,7 +31,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Guid CreatureGuid { get; set; } = Guid.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return $"Set Grammar Context {VariableName} to {CreatureGuid}";
         }

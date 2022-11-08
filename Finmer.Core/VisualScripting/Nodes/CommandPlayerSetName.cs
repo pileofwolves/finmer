@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperString Value { get; set; } = new ValueWrapperString();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Change Player Name to {0}", Value.GetOperandDescription());
         }

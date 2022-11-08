@@ -40,7 +40,8 @@ namespace Finmer.Core.VisualScripting
         /// <summary>
         /// Returns a human-readable description of this node, including configured settings.
         /// </summary>
-        public abstract string GetEditorDescription();
+        /// <param name="content"></param>
+        public abstract string GetEditorDescription(IContentStore content);
 
         /// <summary>
         /// Returns the color to apply to the node in the editor.

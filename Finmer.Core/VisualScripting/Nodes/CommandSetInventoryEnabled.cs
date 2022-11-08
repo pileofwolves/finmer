@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperBool Value { get; set; } = new ValueWrapperBool();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Set Character Sheet Enabled to {0}", Value.GetOperandDescription());
         }

@@ -40,7 +40,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string CoatAdjective { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Change Player Species to '{0}'", Singular);
         }

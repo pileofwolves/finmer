@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public List<ScriptNode> LoopBody { get; set; } = new List<ScriptNode>();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Loop:";
         }

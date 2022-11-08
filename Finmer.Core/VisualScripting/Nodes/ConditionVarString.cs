@@ -30,7 +30,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperString Operand { get; set; } = new ValueWrapperString();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return $"Variable {VariableName} Equals {Operand.GetOperandDescription()}";
         }

@@ -42,7 +42,7 @@ namespace Finmer.Core.VisualScripting
         /// </summary>
         public ValueWrapperFloat RightOperand { get; set; } = new ValueWrapperFloat();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             string right = RightOperand.GetOperandDescription();
 

@@ -39,7 +39,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public ValueWrapperInt Value { get; set; } = new ValueWrapperInt();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return ValueOperation == EOperation.Add
                 ? String.Format(CultureInfo.InvariantCulture, "Modify Player Money by {0}", Value.GetOperandDescription())

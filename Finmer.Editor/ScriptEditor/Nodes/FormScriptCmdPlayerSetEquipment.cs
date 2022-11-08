@@ -34,7 +34,6 @@ namespace Finmer.Editor
             var node = (CommandPlayerSetEquipment)Node;
             node.EquipSlot = (CommandPlayerSetEquipment.ESlot)cmbSlot.SelectedIndex;
             node.ItemGuid = apcItem.SelectedGuid;
-            node.ItemName = apcItem.SelectedAsset?.Name ?? "[unknown]";
         }
 
     }

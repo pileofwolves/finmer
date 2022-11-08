@@ -38,7 +38,6 @@ namespace Finmer.Editor
             node.Add = optModeAdd.Checked;
             node.Quiet = !chkAnnounce.Checked;
             node.ItemGuid = apcItem.SelectedGuid;
-            node.ItemName = apcItem.SelectedAsset?.Name ?? "[unknown]";
         }
 
         private void optModeAdd_CheckedChanged(object sender, System.EventArgs e)

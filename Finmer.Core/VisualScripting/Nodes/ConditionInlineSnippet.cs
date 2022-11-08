@@ -23,7 +23,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string Snippet { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return Snippet;
         }

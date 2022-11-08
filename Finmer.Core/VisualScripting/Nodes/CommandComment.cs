@@ -24,7 +24,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string Comment { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "-- " + Comment;
         }

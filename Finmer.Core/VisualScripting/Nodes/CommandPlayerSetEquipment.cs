@@ -42,16 +42,15 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Guid ItemGuid { get; set; } = Guid.Empty;
 
-        /// <summary>
-        /// The cached name of the item (for display purposes).
-        /// </summary>
-        public string ItemName { get; set; } = String.Empty;
-
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
+            // Resolve the item UUID to obtain its name
+            AssetItem item = content.GetAssetByID<AssetItem>(ItemGuid);
+            string item_name = item?.Name ?? ItemGuid.ToString();
+
             return ItemGuid == Guid.Empty
                 ? String.Format(CultureInfo.InvariantCulture, "Remove Equipped {0}", EquipSlot)
-                : String.Format(CultureInfo.InvariantCulture, "Set Equipped {0} to {1}", EquipSlot, ItemName);
+                : String.Format(CultureInfo.InvariantCulture, "Set Equipped {0} to {1}", EquipSlot, item_name);
         }
 
         public override EColor GetEditorColor()
@@ -79,14 +78,12 @@ namespace Finmer.Core.VisualScripting.Nodes
         {
             outstream.WriteEnumProperty(nameof(EquipSlot), EquipSlot);
             outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
-            outstream.WriteStringProperty(nameof(ItemName), ItemName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             EquipSlot = instream.ReadEnumProperty<ESlot>(nameof(EquipSlot));
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
-            ItemName = instream.ReadStringProperty(nameof(ItemName));
         }
 
     }

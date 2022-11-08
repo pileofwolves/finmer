@@ -24,9 +24,9 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string VariableName { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
-            return String.Format(CultureInfo.InvariantCulture, "Variable {0} {1}", VariableName, base.GetEditorDescription());
+            return String.Format(CultureInfo.InvariantCulture, "Variable {0} {1}", VariableName, base.GetEditorDescription(content));
         }
 
         public override EColor GetEditorColor()

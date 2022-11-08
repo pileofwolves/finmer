@@ -42,7 +42,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Dictionary<Guid, int> Merchandise { get; set; } = new Dictionary<Guid, int>();
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.Format(CultureInfo.InvariantCulture, "Open Shop '{0}'", Key);
         }

@@ -32,7 +32,6 @@ namespace Finmer.Editor
         {
             var node = (ConditionPlayerHasItem)Node;
             node.ItemGuid = asset.SelectedGuid;
-            node.ItemDisplayName = asset.SelectedAsset?.Name ?? "[Unknown]";
         }
 
     }

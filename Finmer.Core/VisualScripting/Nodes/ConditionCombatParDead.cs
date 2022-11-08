@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string ParticipantName { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return $"Participant '{ParticipantName}' Is Dead";
         }

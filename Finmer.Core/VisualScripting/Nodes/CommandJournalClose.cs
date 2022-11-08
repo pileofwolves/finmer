@@ -25,7 +25,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Guid JournalGuid { get; set; } = Guid.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return "Remove Quest " + JournalGuid;
         }

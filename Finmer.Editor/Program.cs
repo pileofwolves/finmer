@@ -32,6 +32,11 @@ namespace Finmer.Editor
         internal static Furball ActiveDependencies { get; set; }
 
         /// <summary>
+        /// Encapsulates the loaded content as a content store.
+        /// </summary>
+        internal static EditorContentStore LoadedContent { get; set; }
+
+        /// <summary>
         /// The main entry point for the application.
         /// </summary>
         [STAThread]

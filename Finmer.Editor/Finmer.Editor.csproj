@@ -72,6 +72,7 @@
     <Compile Include="BandedListView.Designer.cs">
       <DependentUpon>BandedListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="EditorContentStore.cs" />
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
     </Compile>

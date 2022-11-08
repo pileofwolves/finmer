@@ -30,7 +30,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string PredatorName { get; set; } = String.Empty;
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             return String.IsNullOrWhiteSpace(PredatorName)
                 ? $"Participant '{ParticipantName}' Is Swallowed"

@@ -24,7 +24,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public string Snippet { get; set; }
 
-        public override string GetEditorDescription()
+        public override string GetEditorDescription(IContentStore content)
         {
             // Return the first line of the script
             return "Lua: " + new StringReader(Snippet).ReadLine() + " ...";

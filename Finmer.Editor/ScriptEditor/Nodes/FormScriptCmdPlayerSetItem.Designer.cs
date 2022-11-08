@@ -35,6 +35,7 @@
             this.optModeAdd = new System.Windows.Forms.RadioButton();
             this.optModeRemove = new System.Windows.Forms.RadioButton();
             this.apcItem = new Finmer.Editor.AssetPickerControl();
+            this.chkAnnounce = new System.Windows.Forms.CheckBox();
             label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -52,10 +53,10 @@
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(56, 128);
+            this.cmdAccept.Location = new System.Drawing.Point(56, 168);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 3;
+            this.cmdAccept.TabIndex = 5;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -67,10 +68,10 @@
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(184, 127);
+            this.cmdCancel.Location = new System.Drawing.Point(184, 167);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 6;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -86,6 +87,7 @@
             this.optModeAdd.TabStop = true;
             this.optModeAdd.Text = "Add";
             this.optModeAdd.UseVisualStyleBackColor = true;
+            this.optModeAdd.CheckedChanged += new System.EventHandler(this.optModeAdd_CheckedChanged);
             // 
             // optModeRemove
             // 
@@ -105,7 +107,17 @@
             this.apcItem.Name = "apcItem";
             this.apcItem.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcItem.Size = new System.Drawing.Size(288, 24);
-            this.apcItem.TabIndex = 0;
+            this.apcItem.TabIndex = 3;
+            // 
+            // chkAnnounce
+            // 
+            this.chkAnnounce.AutoSize = true;
+            this.chkAnnounce.Location = new System.Drawing.Point(16, 112);
+            this.chkAnnounce.Name = "chkAnnounce";
+            this.chkAnnounce.Size = new System.Drawing.Size(157, 17);
+            this.chkAnnounce.TabIndex = 4;
+            this.chkAnnounce.Text = "Show \'item added\' message";
+            this.chkAnnounce.UseVisualStyleBackColor = true;
             // 
             // FormScriptCmdPlayerSetItem
             // 
@@ -113,7 +125,8 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(320, 176);
+            this.ClientSize = new System.Drawing.Size(320, 216);
+            this.Controls.Add(this.chkAnnounce);
             this.Controls.Add(this.apcItem);
             this.Controls.Add(label2);
             this.Controls.Add(this.optModeRemove);
@@ -140,6 +153,7 @@
         private System.Windows.Forms.RadioButton optModeAdd;
         private System.Windows.Forms.RadioButton optModeRemove;
         private AssetPickerControl apcItem;
+        private System.Windows.Forms.CheckBox chkAnnounce;
     }
 
 }

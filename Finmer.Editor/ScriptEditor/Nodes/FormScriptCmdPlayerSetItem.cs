@@ -28,14 +28,23 @@ namespace Finmer.Editor
             optModeAdd.Checked = node.Add;
             optModeRemove.Checked = !node.Add;
             apcItem.SelectedGuid = node.ItemGuid;
+            chkAnnounce.Checked = !node.Quiet;
+            chkAnnounce.Visible = optModeAdd.Checked;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
             var node = (CommandPlayerSetItem)Node;
             node.Add = optModeAdd.Checked;
+            node.Quiet = !chkAnnounce.Checked;
             node.ItemGuid = apcItem.SelectedGuid;
             node.ItemName = apcItem.SelectedAsset?.Name ?? "[unknown]";
+        }
+
+        private void optModeAdd_CheckedChanged(object sender, System.EventArgs e)
+        {
+            // Quiet flag is only relevant when the mode is to add items
+            chkAnnounce.Visible = optModeAdd.Checked;
         }
 
     }

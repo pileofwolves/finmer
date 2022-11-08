@@ -36,6 +36,11 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public bool Add { get; set; } = true;
 
+        /// <summary>
+        /// Whether to suppress the item addition message.
+        /// </summary>
+        public bool Quiet { get; set; } = false;
+
         public override string GetEditorDescription()
         {
             return Add
@@ -54,8 +59,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             if (item == null)
                 throw new InvalidScriptNodeException($"Could not find an Item asset with ID {ItemGuid}");
 
-            output.Append(Add ? "Player:GiveItem" : "Player:TakeItem");
-            output.AppendFormat(CultureInfo.InvariantCulture, "(\"{0}\")", item.Name);
+            if (Add)
+                output.AppendFormat(CultureInfo.InvariantCulture, "Player:GiveItem(\"{0}\", {1})", item.Name, Quiet ? "true" : "false");
+            else
+                output.AppendFormat(CultureInfo.InvariantCulture, "Player:TakeItem(\"{0}\")", item.Name);
+
             output.AppendLine();
         }
 
@@ -64,6 +72,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
             outstream.WriteStringProperty(nameof(ItemName), ItemName);
             outstream.WriteBooleanProperty(nameof(Add), Add);
+
+            if (Add)
+                outstream.WriteBooleanProperty(nameof(Quiet), Quiet);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
@@ -71,6 +82,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
             ItemName = instream.ReadStringProperty(nameof(ItemName));
             Add = instream.ReadBooleanProperty(nameof(Add));
+
+            if (Add)
+                Quiet = instream.ReadBooleanProperty(nameof(Quiet));
         }
 
     }

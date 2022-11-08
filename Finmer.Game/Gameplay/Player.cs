@@ -345,6 +345,7 @@ namespace Finmer.Gameplay
         {
             var self = FromLuaNonOptional<Player>(L, 1);
             var item_name = LuaApi.luaL_checkstring(L, 2);
+            var quiet = LuaApi.lua_type(L, 3) == LuaApi.ELuaType.Boolean && LuaApi.lua_toboolean(L, 3);
 
             // Instantiate the item and give it to the player
             Item item = Item.FromAsset(ScriptContext.FromLua(L), item_name);
@@ -352,8 +353,9 @@ namespace Finmer.Gameplay
                 return LuaApi.luaL_error(L, $"Failed to load item '{item_name}'");
             self.AddItem(item);
 
-            // Display announcement
-            GameUI.Instance.Log($"{item.Name} added to your backpack.", Theme.LogColorNotification);
+            // Display announcement, unless explicitly silenced
+            if (!quiet)
+                GameUI.Instance.Log($"{item.Name} added to your backpack.", Theme.LogColorNotification);
 
             return 0;
         }

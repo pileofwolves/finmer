@@ -34,6 +34,7 @@
             this.lstKeys = new System.Windows.Forms.ListView();
             this.clhDummy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.scintilla = new ScintillaNET.Scintilla();
+            this.tslStats = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -45,7 +46,8 @@
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
-            this.tsbRemove});
+            this.tsbRemove,
+            this.tslStats});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(784, 25);
@@ -125,14 +127,21 @@
             this.scintilla.Visible = false;
             this.scintilla.TextChanged += new System.EventHandler(this.scintilla_TextChanged);
             // 
-            // frmDocumentStringTable
+            // tslStats
+            // 
+            this.tslStats.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslStats.Name = "tslStats";
+            this.tslStats.Size = new System.Drawing.Size(32, 22);
+            this.tslStats.Text = "Stats";
+            // 
+            // FormDocumentStringTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 493);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip);
-            this.Name = "frmDocumentStringTable";
+            this.Name = "FormDocumentStringTable";
             this.Text = "frmDocumentStringTable";
             this.Load += new System.EventHandler(this.FormDocumentStringTable_Load);
             this.toolStrip.ResumeLayout(false);
@@ -155,5 +164,6 @@
 		private System.Windows.Forms.ToolStripButton tsbRemove;
 		private System.Windows.Forms.ListView lstKeys;
 		private System.Windows.Forms.ColumnHeader clhDummy;
-	}
+        private System.Windows.Forms.ToolStripLabel tslStats;
+    }
 }

@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
@@ -40,6 +41,9 @@ namespace Finmer.Editor
             // Populate the list control with the table's entries
             m_RawDictionary.Keys.ForEach(key => lstKeys.Items.Add(key));
             lstKeys.Sort();
+
+            // Populate stats label
+            UpdateStats();
         }
 
         public override void Flush()
@@ -54,6 +58,9 @@ namespace Finmer.Editor
             // Commit the changes by updating the asset represented by this editor window with a new snapshot
             Asset = AssetSerializer.DuplicateAsset(m_AssetStringTable);
 
+            // Refresh stats label
+            UpdateStats();
+
             base.Flush();
         }
 
@@ -66,6 +73,24 @@ namespace Finmer.Editor
             var list = m_RawDictionary[m_EditingKey];
             list.Clear();
             list.AddRange(scintilla.Text.Split(new[] { Environment.NewLine }, StringSplitOptions.RemoveEmptyEntries));
+        }
+
+        private void UpdateStats()
+        {
+            // First calculate number of entries, to avoid a division by zero if the table is empty
+            int num_entries = m_RawDictionary.Sum(pair => pair.Value.Count);
+            if (m_RawDictionary.Count == 0 || num_entries == 0)
+            {
+                tslStats.Text = "0 words";
+                return;
+            }
+
+            // Compute the total word count in all string sets, and divide by the set entry count (not set count) to get average
+            int total_words = m_RawDictionary.SelectMany(pair => pair.Value).Sum(phrase => phrase.Count(ch => ch == ' ') + 1);
+            int avg_words = total_words / num_entries;
+
+            // Show stats on-screen
+            tslStats.Text = $"{total_words:##,##0} words, {avg_words:##,##0} avg";
         }
 
         private void lstKeys_AfterLabelEdit(object sender, LabelEditEventArgs e)

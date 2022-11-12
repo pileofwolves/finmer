@@ -19,6 +19,9 @@ namespace Finmer.Core.Assets
     public class AssetScene : AssetBase
     {
 
+        /// <summary>
+        /// Describes a patch injection point, relative to a State node.
+        /// </summary>
         public enum ESceneInjectMode : byte
         {
             BeforeTarget,
@@ -27,12 +30,46 @@ namespace Finmer.Core.Assets
             InsideAtEnd
         }
 
+        /// <summary>
+        /// Describes the specialization of a scene node.
+        /// </summary>
+        public enum ENodeType : byte
+        {
+            State,
+            Choice,
+            Link,
+            Compass
+        }
+
+        /// <summary>
+        /// Describes which compass direction a compass link will be attached to.
+        /// </summary>
+        public enum ECompassDirection : byte
+        {
+            North,
+            West,
+            South,
+            East
+        }
+
+        /// <summary>
+        /// The root node of the scene node tree.
+        /// </summary>
         public SceneNode Root { get; set; }
 
+        /// <summary>
+        /// A custom script header that will be inserted at the top of the generated scene script.
+        /// </summary>
         public ScriptData ScriptCustom { get; set; }
 
+        /// <summary>
+        /// Script that will run when the player enters this scene.
+        /// </summary>
         public ScriptData ScriptEnter { get; set; }
 
+        /// <summary>
+        /// Script that will run when the player leaves this scene, before entering another scene.
+        /// </summary>
         public ScriptData ScriptLeave { get; set; }
 
         /// <summary>
@@ -40,9 +77,24 @@ namespace Finmer.Core.Assets
         /// </summary>
         public CompiledScript PrecompiledScript { get; set; }
 
+        /// <summary>
+        /// Indicates whether this scene is a patch, meaning it adds or replaces nodes in another scene.
+        /// </summary>
         public bool IsPatch { get; set; }
+
+        /// <summary>
+        /// The method with which to inject patch nodes. Relevant only if IsPatch is set.
+        /// </summary>
         public ESceneInjectMode InjectMode { get; set; } = ESceneInjectMode.AfterTarget;
+
+        /// <summary>
+        /// The Asset ID of the target scene to inject a patch into. Relevant only if IsPatch is set.
+        /// </summary>
         public Guid InjectTargetScene { get; set; } = Guid.Empty;
+
+        /// <summary>
+        /// The name of the scene node in the target scene into which to inject a patch. Relevant only if IsPatch is set.
+        /// </summary>
         public string InjectTargetNode { get; set; } = String.Empty;
 
         public override void Serialize(IFurballContentWriter outstream)
@@ -152,7 +204,7 @@ namespace Finmer.Core.Assets
                 SceneNode node = stack.Pop();
 
                 // Links do not have keys
-                if (node.IsLink)
+                if (node.NodeType != ENodeType.State && node.NodeType != ENodeType.Choice)
                     continue;
 
                 // Is this the node we're looking for?
@@ -167,74 +219,219 @@ namespace Finmer.Core.Assets
             return null;
         }
 
+        /// <summary>
+        /// Represents a node in the scene node tree.
+        /// </summary>
         public class SceneNode
         {
 
+            /// <summary>
+            /// The specialization / intended purpose of this node.
+            /// </summary>
+            public ENodeType NodeType { get; set; }
+
+            /// <summary>
+            /// The unique identifier of this node. May be an empty string, in which case a key should be auto-generated.
+            /// </summary>
             public string Key { get; set; } = String.Empty;
+
+            /// <summary>
+            /// Choice nodes: The caption of the choice button.
+            /// </summary>
             public string Title { get; set; } = String.Empty;
+
+            /// <summary>
+            /// Choice nodes: The tooltip to display when the user hovers over this choice button.
+            /// </summary>
             public string Tooltip { get; set; } = String.Empty;
 
-            public bool IsState { get; set; }
-            public bool IsLink { get; set; }
-            public string LinkTarget { get; set; } = String.Empty;
-
-            public ScriptData ScriptAction { get; set; }
-            public ScriptData ScriptAppear { get; set; }
-
+            /// <summary>
+            /// Choice nodes: Indicates whether to visually accentuate the choice button.
+            /// </summary>
             public bool Highlight { get; set; }
+
+            /// <summary>
+            /// Choice nodes: Size multiplier for the choice button's on-screen width, as a factor of its default size.
+            /// </summary>
             public float ButtonWidth { get; set; } = 1.0f;
 
+            /// <summary>
+            /// Compass nodes: Compass direction to associate with the compass link.
+            /// </summary>
+            public ECompassDirection CompassLinkDirection { get; set; } = ECompassDirection.North;
+
+            /// <summary>
+            /// Compass nodes: Asset ID of the target scene. May be empty if an Actions Taken script is specified instead.
+            /// </summary>
+            public Guid CompassLinkScene { get; set; } = Guid.Empty;
+
+            /// <summary>
+            /// Link nodes: Key of the scene node to resolve this link node to.
+            /// </summary>
+            public string LinkTarget { get; set; } = String.Empty;
+
+            /// <summary>
+            /// State, Choice, Compass nodes: Actions Taken script that will run when the user 'activates' the node.
+            /// </summary>
+            public ScriptData ScriptAction { get; set; }
+
+            /// <summary>
+            /// State, Choice, Compass nodes: Appears When script that determines whether the node may be displayed and/or activated.
+            /// </summary>
+            public ScriptData ScriptAppear { get; set; }
+
+            /// <summary>
+            /// State, Choice nodes: Tree of downstream scene nodes.
+            /// </summary>
             public List<SceneNode> Children { get; } = new List<SceneNode>();
+
+            /// <summary>
+            /// The parent node of this node. If this node is the tree root, parent is null.
+            /// </summary>
             public SceneNode Parent { get; private set; }
+
+            /// <summary>
+            /// Indicates whether this node is a full member of the scene tree and can have child nodes. If false, the node is a leaf node.
+            /// </summary>
+            public bool IsFullNode()
+            {
+                return NodeType == ENodeType.Choice || NodeType == ENodeType.State;
+            }
 
             public void Serialize(IFurballContentWriter outstream)
             {
                 // Core metadata
+                outstream.WriteEnumProperty(nameof(NodeType), NodeType);
                 outstream.WriteStringProperty(nameof(Key), Key);
-                outstream.WriteBooleanProperty(nameof(IsState), IsState);
-                outstream.WriteBooleanProperty(nameof(IsLink), IsLink);
 
-                // Choice node settings
-                if (!IsState && !IsLink)
+                // Node-specific metadata
+                switch (NodeType)
                 {
-                    outstream.WriteStringProperty(nameof(Title), Title);
-                    outstream.WriteStringProperty(nameof(Tooltip), Tooltip);
-                    outstream.WriteBooleanProperty(nameof(Highlight), Highlight);
-                    outstream.WriteFloatProperty(nameof(ButtonWidth), ButtonWidth);
-                }
+                    case ENodeType.Choice:
+                        // Choice node configuration
+                        outstream.WriteStringProperty(nameof(Title), Title);
+                        outstream.WriteStringProperty(nameof(Tooltip), Tooltip);
+                        outstream.WriteBooleanProperty(nameof(Highlight), Highlight);
+                        outstream.WriteFloatProperty(nameof(ButtonWidth), ButtonWidth);
 
-                // Link node settings
-                if (IsLink)
-                {
-                    outstream.WriteStringProperty(nameof(LinkTarget), LinkTarget);
-                }
-                // Generic node settings
-                else
-                {
-                    outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
-                    outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
+                        goto case ENodeType.State;
 
-                    // Recursively serialize child nodes
-                    outstream.BeginArray(nameof(Children), Children.Count);
-                    foreach (SceneNode child in Children)
-                    {
-                        outstream.BeginObject();
-                        child.Serialize(outstream);
-                        outstream.EndObject();
-                    }
-                    outstream.EndArray();
+                    case ENodeType.State:
+                        // Shared configuration for state & choice nodes
+                        outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
+                        outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
+
+                        // Recursively serialize child nodes
+                        outstream.BeginArray(nameof(Children), Children.Count);
+                        foreach (SceneNode child in Children)
+                        {
+                            outstream.BeginObject();
+                            child.Serialize(outstream);
+                            outstream.EndObject();
+                        }
+                        outstream.EndArray();
+
+                        break;
+
+                    case ENodeType.Link:
+                        // Node link configuration
+                        outstream.WriteStringProperty(nameof(LinkTarget), LinkTarget);
+
+                        break;
+
+                    case ENodeType.Compass:
+                        // Compass link configuration
+                        outstream.WriteEnumProperty(nameof(CompassLinkDirection), CompassLinkDirection);
+                        outstream.WriteGuidProperty(nameof(CompassLinkScene), CompassLinkScene);
+
+                        break;
                 }
             }
 
             public void Deserialize(IFurballContentReader instream, int version)
             {
+                // Backwards-compatible deserialization functions are split, to maintain readability
+                if (version >= 17)
+                    DeserializeV17OrHigher(instream, version);
+                else
+                    DeserializeV16OrLower(instream, version);
+            }
+
+            private void DeserializeV17OrHigher(IFurballContentReader instream, int version)
+            {
                 // Core metadata
+                NodeType = instream.ReadEnumProperty<ENodeType>(nameof(NodeType));
                 Key = instream.ReadStringProperty(nameof(Key));
-                IsState = instream.ReadBooleanProperty(nameof(IsState));
-                IsLink = instream.ReadBooleanProperty(nameof(IsLink));
+
+                // Read node-specific settings
+                switch (NodeType)
+                {
+                    case ENodeType.Choice:
+                        // Choice-specific configuration
+                        Title = instream.ReadStringProperty(nameof(Title));
+                        Tooltip = instream.ReadStringProperty(nameof(Tooltip));
+                        Highlight = instream.ReadBooleanProperty(nameof(Highlight));
+                        ButtonWidth = instream.ReadFloatProperty(nameof(ButtonWidth));
+
+                        // Fallthrough to read shared properties
+                        goto case ENodeType.State;
+
+                    case ENodeType.State:
+                        // Shared configuration between state & choice nodes
+                        ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
+                        ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
+
+                        // Assign script names
+                        if (ScriptAction != null)
+                            ScriptAction.Name = Key + "/Actions";
+                        if (ScriptAppear != null)
+                            ScriptAppear.Name = Key + "/AppearsWhen";
+
+                        // Recursively deserialize child nodes
+                        Children.Clear();
+                        for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)
+                        {
+                            instream.BeginObject();
+                            {
+                                // Read this child node
+                                var child = new SceneNode();
+                                child.Deserialize(instream, version);
+                                child.Parent = this;
+                                Children.Add(child);
+                            }
+                            instream.EndObject();
+                        }
+                        instream.EndArray();
+
+                        break;
+
+                    case ENodeType.Link:
+                        // Node link configuration
+                        LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
+                        break;
+
+                    case ENodeType.Compass:
+                        // Compass link configuration
+                        LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
+                        CompassLinkDirection = instream.ReadEnumProperty<ECompassDirection>(nameof(CompassLinkDirection));
+                        break;
+                }
+            }
+
+            private void DeserializeV16OrLower(IFurballContentReader instream, int version)
+            {
+                Key = instream.ReadStringProperty(nameof(Key));
+                bool is_state = instream.ReadBooleanProperty("IsState");
+                bool is_link = instream.ReadBooleanProperty("IsLink");
+                if (is_link)
+                    NodeType = ENodeType.Link;
+                else if (is_state)
+                    NodeType = ENodeType.State;
+                else
+                    NodeType = ENodeType.Choice;
 
                 // Choice node settings
-                if (!IsState && !IsLink)
+                if (NodeType == ENodeType.Choice)
                 {
                     Title = instream.ReadStringProperty(nameof(Title));
                     Tooltip = instream.ReadStringProperty(nameof(Tooltip));
@@ -243,7 +440,7 @@ namespace Finmer.Core.Assets
                 }
 
                 // Link node settings
-                if (IsLink)
+                if (NodeType == ENodeType.Link)
                 {
                     LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
                 }
@@ -286,7 +483,7 @@ namespace Finmer.Core.Assets
                 }
 
                 // Links do not have child nodes as of version 15
-                if (version <= 14 || !IsLink)
+                if (version <= 14 || NodeType != ENodeType.Link)
                 {
                     // Recursively deserialize child nodes
                     Children.Clear();

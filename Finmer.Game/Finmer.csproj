@@ -257,6 +257,9 @@
     <Compile Include="Views\Parts\SimpleDiceTrack.xaml.cs">
       <DependentUpon>SimpleDiceTrack.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Parts\TitleLogoView.xaml.cs">
+      <DependentUpon>TitleLogoView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SaveGamePage.xaml.cs">
       <DependentUpon>SaveGamePage.xaml</DependentUpon>
     </Compile>
@@ -419,6 +422,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Parts\SimpleDiceTrack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\TitleLogoView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

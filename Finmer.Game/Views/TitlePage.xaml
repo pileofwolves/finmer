@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:v="clr-namespace:Finmer.Views"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:TitlePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="800">
@@ -32,22 +33,15 @@
             </EventTrigger>
         </Grid.Triggers>
         <StackPanel
+            Width="500"
             Orientation="Vertical"
             VerticalAlignment="Center"
             HorizontalAlignment="Center">
-            <TextBlock
-                Text="FINMER"
-                Style="{StaticResource TextBlockLargest}"
-                FontSize="22"
-                HorizontalAlignment="Center" />
-            <TextBlock
-                Style="{StaticResource TextBlockSubtle}"
-                HorizontalAlignment="Center">
-                <Run>A Text Adventure Game by</Run> <Bold>Nuntis the Wolf</Bold>
-            </TextBlock>
+            <!-- Game logo -->
+            <v:TitleLogoView />
+            <!-- Main menu -->
             <Grid
-                Margin="0,50,0,20"
-                Width="500">
+                Margin="0,50,0,20">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />

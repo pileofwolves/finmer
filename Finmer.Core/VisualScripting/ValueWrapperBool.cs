@@ -22,7 +22,7 @@ namespace Finmer.Core.VisualScripting
         /// <summary>
         /// Describes the type of the right operand.
         /// </summary>
-        public enum EOperandMode
+        public enum EOperandMode : byte
         {
             Literal,
             Variable,

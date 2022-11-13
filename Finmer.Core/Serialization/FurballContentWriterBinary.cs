@@ -9,6 +9,7 @@
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Finmer.Core.Serialization
 {
@@ -55,8 +56,18 @@ namespace Finmer.Core.Serialization
             if (!Enum.IsDefined(enum_type, value))
                 throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enum_type.Name}'");
 
-            // We don't actually need any further info about the enumerator here, since the value is already provided
-            m_Stream.Write(Convert.ToInt32(value));
+            // Find the size in bytes of the underlying type
+            var underlying_type = Enum.GetUnderlyingType(enum_type);
+            int underlying_size = Marshal.SizeOf(underlying_type);
+
+            // Serialize the smallest type that will fit the enum
+            switch (underlying_size)
+            {
+                case 1:     m_Stream.Write(Convert.ToByte(value));      break;
+                case 2:     m_Stream.Write(Convert.ToUInt16(value));    break;
+                case 4:     m_Stream.Write(Convert.ToUInt32(value));    break;
+                default:    throw new NotSupportedException();
+            }
         }
 
         public void WriteGuidProperty(string key, Guid value)

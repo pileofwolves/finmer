@@ -12,7 +12,7 @@ namespace Finmer.Core
     /// <summary>
     /// Specifies an object's gender.
     /// </summary>
-    public enum EGender
+    public enum EGender : byte
     {
         Male,
         Female,

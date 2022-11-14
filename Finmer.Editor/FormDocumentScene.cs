@@ -27,7 +27,7 @@ namespace Finmer.Editor
         private const float k_Button_Max_Width = 3.0f;
 
         private AssetScene m_Scene;
-        private AssetScene m_SceneInject;
+        private AssetScene m_PatchTargetScene;
         private AssetScene.SceneNode m_SelectedNode, m_SelectedNodeParent;
 
         private TreeNode m_SelectedTree, m_SelectedTreeParent;
@@ -39,12 +39,25 @@ namespace Finmer.Editor
         private WeakReference<EditorWindow> m_ScriptEditorLeave;
         private WeakReference<EditorWindow> m_ScriptEditorCustom;
 
+        private readonly TabPage m_TabPageNodeRoot;
+        private readonly TabPage m_TabPageNodeState;
+        private readonly TabPage m_TabPageNodeChoice;
+        private readonly TabPage m_TabPageNodeLink;
+        private readonly TabPage m_TabPageNodeCompass;
+
         private bool m_SkipDirtyUpdates = true;
         private bool m_SkipTreeSelect;
 
         public FormDocumentScene()
         {
             InitializeComponent();
+
+            // Cache node tabs, so we can hide tabs we don't need
+            m_TabPageNodeRoot = tbpNodeRoot;
+            m_TabPageNodeState = tbpNodeState;
+            m_TabPageNodeChoice = tbpNodeChoice;
+            m_TabPageNodeLink = tbpNodeLink;
+            m_TabPageNodeCompass = tbpNodeCompass;
         }
 
         private void FormDocumentScene_Load(object sender, EventArgs e)
@@ -52,9 +65,17 @@ namespace Finmer.Editor
             // Duplicate the asset we're going to be editing, so that we can safely modify the copy in-place while still allowing changes to be discarded
             m_Scene = AssetSerializer.DuplicateAsset((AssetScene)Asset);
 
+            // Hide node edit panel by default
+            tbcNode.TabPages.Clear();
+
+            // Set up toolbar
             UpdateScriptButtonIcons();
+
+            // Build the visual node tree
+            trvNodes.SuspendLayout();
             AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
             trvNodes.ExpandAll();
+            trvNodes.ResumeLayout();
 
             // Set up patch settings panel
             chkRootInject.Checked = m_Scene.IsPatch;
@@ -111,29 +132,82 @@ namespace Finmer.Editor
             scriptAction.Flush();
             scriptAppear.Flush();
 
-            var tag = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
-            splitNodeSettings.Visible = tag != null;
-
+            // Determine which visual tree node was selected
             m_SelectedTree = trvNodes.SelectedNode;
             m_SelectedTreeParent = m_SelectedTree?.Parent;
             m_SelectedTreeIndex = m_SelectedTreeParent?.Nodes.IndexOf(m_SelectedTree) ?? -1;
             m_SelectedTreeMaxIndex = m_SelectedTreeParent?.Nodes.Count ?? -1;
             UpdateMoveButtons();
 
-            m_SelectedNode = tag;
+            // Determine which logical node was selected
+            m_SelectedNode = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
             m_SelectedNodeParent = m_SelectedTreeParent?.Tag as AssetScene.SceneNode;
-
-            m_SkipDirtyUpdates = true;
-
             Debug.Assert(m_SelectedNode != null);
-            optTypeNode.Checked = m_SelectedNode.NodeType != AssetScene.ENodeType.Link;
-            optTypeLink.Checked = m_SelectedNode.NodeType == AssetScene.ENodeType.Link;
-            optTypeLink.Enabled = m_SelectedNode.Children.Count == 0; // cannot make link if node has children
 
-            txtNodeKey.Text = m_SelectedNode.Key;
-            txtNodeTitle.Text = m_SelectedNode.Title;
-            txtNodeTooltip.Text = m_SelectedNode.Tooltip;
-            cmbLinkTarget.Text = m_SelectedNode.LinkTarget;
+            // We're about to programmatically update UI elements, so prevent them from reacting to changes
+            m_SkipDirtyUpdates = true;
+            splitNodeSettings.SuspendLayout();
+            splitNodeSettings.Visible = true;
+
+            // Remove all tabs so that we can add only the specific tab we need for this node
+            tbcNode.TabPages.Clear();
+
+            // Configure toolbar for this node
+            bool is_root = m_SelectedNode == m_Scene.Root;
+            tbcScripts.Visible = !is_root && m_SelectedNode.NodeType != AssetScene.ENodeType.Link;
+            tsbAddNode.Enabled = trvNodes.SelectedNode != null && m_SelectedNode.IsFullNode();
+            tsbAddLink.Enabled = tsbAddNode.Enabled;
+            tsbRemoveNode.Enabled = !is_root;
+
+            // The root node has a special set of settings
+            if (is_root)
+            {
+                tbcNode.TabPages.Add(m_TabPageNodeRoot);
+                m_SkipDirtyUpdates = false;
+                splitNodeSettings.ResumeLayout();
+                return;
+            }
+
+            // Display specific settings for the node
+            switch (m_SelectedNode.NodeType)
+            {
+                case AssetScene.ENodeType.State:
+                    // Populate state-specific settings
+                    tbcNode.TabPages.Add(m_TabPageNodeState);
+                    txtNodeStateKey.Text = m_SelectedNode.Key;
+
+                    break;
+
+                case AssetScene.ENodeType.Choice:
+                    // Populate choice-specific settings
+                    tbcNode.TabPages.Add(m_TabPageNodeChoice);
+                    txtNodeChoiceKey.Text = m_SelectedNode.Key;
+                    txtNodeChoiceTitle.Text = m_SelectedNode.Title;
+                    txtNodeChoiceTooltip.Text = m_SelectedNode.Tooltip;
+                    chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
+                    chkChoiceCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;
+                    nudChoiceCustomWidth.Value = chkChoiceCustomWidth.Checked
+                        ? (decimal)Math.Max(Math.Min(m_SelectedNode.ButtonWidth, k_Button_Max_Width), k_Button_Min_Width)
+                        : (decimal)k_Button_Default_Width;
+
+                    break;
+
+                case AssetScene.ENodeType.Link:
+                    // Populate link-specific settings
+                    tbcNode.TabPages.Add(m_TabPageNodeLink);
+                    UpdateLinkTargetList();
+                    cmbLinkTarget.Text = m_SelectedNode.LinkTarget;
+
+                    break;
+
+                case AssetScene.ENodeType.Compass:
+                    // Populate compass-specific settings
+                    tbcNode.TabPages.Add(m_TabPageNodeCompass);
+                    break;
+
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
 
             // Set up the script editor tabs
             var wrapper = ScriptDataWrapper.EnsureWrapped(m_SelectedNode.ScriptAction);
@@ -143,25 +217,9 @@ namespace Finmer.Editor
             m_SelectedNode.ScriptAppear = wrapper;
             scriptAppear.SetScript(wrapper);
 
-            chkChoiceHighlight.Checked = m_SelectedNode.Highlight;
-            chkCustomWidth.Checked = Math.Abs(m_SelectedNode.ButtonWidth - 1.0f) > 0.01f;
-            nudCustomWidth.Value = chkCustomWidth.Checked
-                ? (decimal)Math.Max(Math.Min(m_SelectedNode.ButtonWidth, k_Button_Max_Width), k_Button_Min_Width)
-                : (decimal)k_Button_Default_Width;
-
-            UpdateLinkTargetList();
-
-            bool is_root = tag == m_Scene.Root;
-            pnlChoiceNodeSettings.Visible = m_SelectedNode.NodeType == AssetScene.ENodeType.Choice;
-            pnlGeneralNodeSettings.Visible = !is_root;
-            pnlRootNodeSettings.Visible = is_root;
-            scriptTabs.Visible = pnlGeneralNodeSettings.Visible;
-
-            tsbAddNode.Enabled = trvNodes.SelectedNode != null && m_SelectedNode.IsFullNode();
-            tsbAddLink.Enabled = tsbAddNode.Enabled;
-            tsbRemoveNode.Enabled = !is_root;
-
+            // Allow update handlers again
             m_SkipDirtyUpdates = false;
+            splitNodeSettings.ResumeLayout();
         }
 
         private void UpdateNodeImage(TreeNode treeNode, AssetScene.SceneNode sceneNode)
@@ -193,21 +251,21 @@ namespace Finmer.Editor
                 // To be a valid link target, the node must have a key, and either be of the same type or be a compass link where compass links are accepted.
                 bool can_accept_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State;
                 bool is_compass = node.NodeType == AssetScene.ENodeType.Compass;
-                bool is_same_type = node.NodeType == m_SelectedNode.NodeType;
+                bool is_same_type = node.NodeType == GetInverseNodeType(m_SelectedNodeParent.NodeType);
                 if (((is_compass && can_accept_compass) || is_same_type) && !String.IsNullOrWhiteSpace(node.Key))
                     cmbLinkTarget.Items.Add(node.Key);
             }
 
             cmbLinkTarget.Items.Clear();
             m_Scene.Root.Children.Traverse(node => node.Children).ForEach(AddToLinkTargetList);
-            m_SceneInject?.Root.Children.Traverse(node => node.Children).ForEach(AddToLinkTargetList);
+            m_PatchTargetScene?.Root.Children.Traverse(node => node.Children).ForEach(AddToLinkTargetList);
         }
 
         private void UpdateScriptButtonIcons()
         {
-            tsbScriptCustom.Image   = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptEnter.Image    = m_Scene.ScriptEnter != null && m_Scene.ScriptEnter.HasContent() ? Resources.script_code : Resources.plus;
-            tsbScriptLeave.Image    = m_Scene.ScriptLeave != null && m_Scene.ScriptLeave.HasContent() ? Resources.script_code : Resources.plus;
+            tsbScriptCustom.Image   = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent() ? Resources.pencil : Resources.plus;
+            tsbScriptEnter.Image    = m_Scene.ScriptEnter != null && m_Scene.ScriptEnter.HasContent() ? Resources.pencil : Resources.plus;
+            tsbScriptLeave.Image    = m_Scene.ScriptLeave != null && m_Scene.ScriptLeave.HasContent() ? Resources.pencil : Resources.plus;
         }
 
         private void UpdateInjectionNodeList()
@@ -219,7 +277,7 @@ namespace Finmer.Editor
                 return;
 
             // populate the node combobox with the nodes of the selected target scene
-            m_SceneInject = target_scene;
+            m_PatchTargetScene = target_scene;
             target_scene.Root.Children
                 .Traverse(node => node.Children)
                 .Where(node => node.NodeType == AssetScene.ENodeType.State && !String.IsNullOrEmpty(node.Key))
@@ -368,42 +426,13 @@ namespace Finmer.Editor
             trvNodes.CollapseAll();
         }
 
-        private void optTypeNode_CheckedChanged(object sender, EventArgs e)
-        {
-            bool mode = optTypeNode.Checked;
-
-            scriptTabs.Visible = mode;
-
-            lblNodeKey.Visible = mode;
-            txtNodeKey.Visible = mode;
-            pnlChoiceNodeSettings.Visible = mode && m_SelectedNode.NodeType == AssetScene.ENodeType.Choice;
-
-            lblLinkTarget.Visible = !mode;
-            cmbLinkTarget.Visible = !mode;
-
-            // Avoid treating UI changes as user input if the UI is being reconfigured
-            if (m_SkipDirtyUpdates)
-                return;
-            Dirty = true;
-
-            // Update node configuration
-            if (optTypeLink.Checked)
-                m_SelectedNode.NodeType = AssetScene.ENodeType.Link;
-            else
-                m_SelectedNode.NodeType = GetInverseNodeType(m_SelectedNodeParent.NodeType);
-
-            // Update UI representation
-            UpdateNodeImage(m_SelectedTree, m_SelectedNode);
-            UpdateNodeText(m_SelectedTree, m_SelectedNode);
-            UpdateLinkTargetList();
-        }
-
         private void txtNodeKey_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;
-
             Dirty = true;
-            m_SelectedNode.Key = txtNodeKey.Text;
+
+            var text_box = (TextBox)sender;
+            m_SelectedNode.Key = text_box.Text;
             UpdateLinkTargetList();
             UpdateNodeText(m_SelectedTree, m_SelectedNode);
         }
@@ -411,25 +440,25 @@ namespace Finmer.Editor
         private void txtNodeTitle_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;
-
             Dirty = true;
-            m_SelectedNode.Title = txtNodeTitle.Text;
+
+            m_SelectedNode.Title = txtNodeChoiceTitle.Text;
             UpdateNodeText(m_SelectedTree, m_SelectedNode);
         }
 
         private void txtNodeTooltip_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;
-
             Dirty = true;
-            m_SelectedNode.Tooltip = txtNodeTooltip.Text;
+
+            m_SelectedNode.Tooltip = txtNodeChoiceTooltip.Text;
         }
 
         private void cmbLinkTarget_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;
-
             Dirty = true;
+
             m_SelectedNode.LinkTarget = cmbLinkTarget.Text;
             UpdateNodeText(m_SelectedTree, m_SelectedNode);
         }
@@ -475,15 +504,15 @@ namespace Finmer.Editor
         private void chkCustomWidth_CheckedChanged(object sender, EventArgs e)
         {
             // Width widget appears only if custom width is enabled
-            nudCustomWidth.Visible = chkCustomWidth.Checked;
+            nudChoiceCustomWidth.Visible = chkChoiceCustomWidth.Checked;
 
             // Mark as dirty
             if (m_SkipDirtyUpdates) return;
             Dirty = true;
 
             // If custom width is disabled, reset the width widget back to default value
-            if (!chkCustomWidth.Checked)
-                nudCustomWidth.Value = (decimal)k_Button_Default_Width;
+            if (!chkChoiceCustomWidth.Checked)
+                nudChoiceCustomWidth.Value = (decimal)k_Button_Default_Width;
 
             // Either way, reset the stored value as well
             m_SelectedNode.ButtonWidth = k_Button_Default_Width;
@@ -502,7 +531,7 @@ namespace Finmer.Editor
             if (m_SkipDirtyUpdates) return;
 
             Dirty = true;
-            m_SelectedNode.ButtonWidth = (float)nudCustomWidth.Value;
+            m_SelectedNode.ButtonWidth = (float)nudChoiceCustomWidth.Value;
         }
 
         private void trvNodes_ItemDrag(object sender, ItemDragEventArgs e)
@@ -743,7 +772,7 @@ namespace Finmer.Editor
             // numbers are ok if they're not the first character
             if (e.KeyChar >= 48 && e.KeyChar <= 57)
             {
-                if (txtNodeKey.TextLength == 0)
+                if (((TextBox)sender).TextLength == 0)
                     e.Handled = true;
             }
             // skip everything except [a-zA-Z]

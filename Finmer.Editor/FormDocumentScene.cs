@@ -28,7 +28,7 @@ namespace Finmer.Editor
 
         private AssetScene m_Scene;
         private AssetScene m_PatchTargetScene;
-        private AssetScene.SceneNode m_SelectedNode, m_SelectedNodeParent;
+        private AssetScene.SceneNode m_SelectedNode;
 
         private TreeNode m_SelectedTree, m_SelectedTreeParent;
 
@@ -141,7 +141,6 @@ namespace Finmer.Editor
 
             // Determine which logical node was selected
             m_SelectedNode = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
-            m_SelectedNodeParent = m_SelectedTreeParent?.Tag as AssetScene.SceneNode;
             Debug.Assert(m_SelectedNode != null);
 
             // We're about to programmatically update UI elements, so prevent them from reacting to changes
@@ -251,7 +250,7 @@ namespace Finmer.Editor
                 // To be a valid link target, the node must have a key, and either be of the same type or be a compass link where compass links are accepted.
                 bool can_accept_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State;
                 bool is_compass = node.NodeType == AssetScene.ENodeType.Compass;
-                bool is_same_type = node.NodeType == GetInverseNodeType(m_SelectedNodeParent.NodeType);
+                bool is_same_type = node.NodeType == GetInverseNodeType(m_SelectedNode.Parent.NodeType);
                 if (((is_compass && can_accept_compass) || is_same_type) && !String.IsNullOrWhiteSpace(node.Key))
                     cmbLinkTarget.Items.Add(node.Key);
             }
@@ -372,8 +371,9 @@ namespace Finmer.Editor
             // Generate a new node
             var node = new AssetScene.SceneNode
             {
-                NodeType = GetInverseNodeType(m_SelectedNode.NodeType),
-                Key = String.Empty
+                NodeType = m_SelectedNode.Parent == null ? GetAcceptableRootType() : GetInverseNodeType(m_SelectedNode.NodeType),
+                Key = String.Empty,
+                Parent = m_SelectedNode
             };
 
             // Append it to the internal representation and the UI tree
@@ -410,7 +410,7 @@ namespace Finmer.Editor
             if (MessageBox.Show($"Are you sure you want to remove '{m_SelectedNode.Key}' and ALL its children? This operation cannot be undone.", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No) return;
 
             // remove from scene graph, and tree view
-            m_SelectedNodeParent.Children.Remove(m_SelectedNode);
+            m_SelectedNode.Parent.Children.Remove(m_SelectedNode);
             m_SelectedTree.Remove();
 
             Dirty = true;
@@ -486,8 +486,8 @@ namespace Finmer.Editor
             m_SkipTreeSelect = true;
 
             // move scene noed
-            m_SelectedNodeParent.Children[m_SelectedTreeIndex] = m_SelectedNodeParent.Children[m_SelectedTreeIndex - 1];
-            m_SelectedNodeParent.Children[m_SelectedTreeIndex - 1] = m_SelectedNode;
+            m_SelectedNode.Parent.Children[m_SelectedTreeIndex] = m_SelectedNode.Parent.Children[m_SelectedTreeIndex - 1];
+            m_SelectedNode.Parent.Children[m_SelectedTreeIndex - 1] = m_SelectedNode;
 
             // move tree node
             m_SelectedTreeParent.Nodes.RemoveAt(m_SelectedTreeIndex);
@@ -575,6 +575,7 @@ namespace Finmer.Editor
                     // Add to target
                     target.Nodes.Add(source);
                     target_sn.Children.Add(source_sn);
+                    source_sn.Parent = target_sn;
 
                     // Select it to enable immediate editing
                     trvNodes.SelectedNode = source;
@@ -729,7 +730,6 @@ namespace Finmer.Editor
 
                 // destroy all scene contents
                 m_Scene.Root.Children.Clear();
-                m_Scene.Root.NodeType = mode_new >= 2 ? AssetScene.ENodeType.State : AssetScene.ENodeType.Choice;
                 trvNodes.Nodes.Clear();
                 AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root);
             }
@@ -741,10 +741,13 @@ namespace Finmer.Editor
         private void tsbMoveDown_Click(object sender, EventArgs e)
         {
             m_SkipTreeSelect = true;
-            // move scene node
-            m_SelectedNodeParent.Children[m_SelectedTreeIndex] = m_SelectedNodeParent.Children[m_SelectedTreeIndex + 1];
-            m_SelectedNodeParent.Children[m_SelectedTreeIndex + 1] = m_SelectedNode;
-            // move tree node
+
+            // Swap the two nodes in the scene tree
+            var node_parent = m_SelectedNode.Parent;
+            node_parent.Children[m_SelectedTreeIndex] = node_parent.Children[m_SelectedTreeIndex + 1];
+            node_parent.Children[m_SelectedTreeIndex + 1] = m_SelectedNode;
+
+            // Remove and reinsert the node in the visual tree to match
             m_SelectedTreeParent.Nodes.RemoveAt(m_SelectedTreeIndex);
             m_SelectedTreeParent.Nodes.Insert(m_SelectedTreeIndex + 1, m_SelectedTree);
             m_SelectedTree.TreeView.SelectedNode = m_SelectedTree;
@@ -786,6 +789,11 @@ namespace Finmer.Editor
         {
             Debug.Assert(type == AssetScene.ENodeType.State || type == AssetScene.ENodeType.Choice);
             return type == AssetScene.ENodeType.State ? AssetScene.ENodeType.Choice : AssetScene.ENodeType.State;
+        }
+
+        private AssetScene.ENodeType GetAcceptableRootType()
+        {
+            return m_Scene.InjectMode >= AssetScene.ESceneInjectMode.InsideAtStart ? AssetScene.ENodeType.Choice : AssetScene.ENodeType.State;
         }
 
         private static AssetScene.ENodeType GetAcceptableParentType(AssetScene.SceneNode child)

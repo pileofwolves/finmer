@@ -288,7 +288,7 @@ namespace Finmer.Core.Assets
             /// <summary>
             /// The parent node of this node. If this node is the tree root, parent is null.
             /// </summary>
-            public SceneNode Parent { get; private set; }
+            public SceneNode Parent { get; set; }
 
             /// <summary>
             /// Indicates whether this node is a full member of the scene tree and can have child nodes. If false, the node is a leaf node.

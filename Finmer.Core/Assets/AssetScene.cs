@@ -35,6 +35,7 @@ namespace Finmer.Core.Assets
         /// </summary>
         public enum ENodeType : byte
         {
+            Root,
             State,
             Choice,
             Link,
@@ -185,6 +186,10 @@ namespace Finmer.Core.Assets
             Root = new SceneNode();
             Root.Deserialize(instream, version);
             instream.EndObject();
+
+            // From V17 up, the root node should be patched to be its own special type
+            if (version < 17)
+                Root.NodeType = ENodeType.Root;
         }
 
         /// <summary>
@@ -295,7 +300,7 @@ namespace Finmer.Core.Assets
             /// </summary>
             public bool IsFullNode()
             {
-                return NodeType == ENodeType.Choice || NodeType == ENodeType.State;
+                return NodeType == ENodeType.Root || NodeType == ENodeType.Choice || NodeType == ENodeType.State;
             }
 
             public void Serialize(IFurballContentWriter outstream)
@@ -321,6 +326,9 @@ namespace Finmer.Core.Assets
                         outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
                         outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
 
+                        goto case ENodeType.Root;
+
+                    case ENodeType.Root:
                         // Recursively serialize child nodes
                         outstream.BeginArray(nameof(Children), Children.Count);
                         foreach (SceneNode child in Children)
@@ -387,6 +395,9 @@ namespace Finmer.Core.Assets
                         if (ScriptAppear != null)
                             ScriptAppear.Name = Key + "/AppearsWhen";
 
+                        goto case ENodeType.Root;
+
+                    case ENodeType.Root:
                         // Recursively deserialize child nodes
                         Children.Clear();
                         for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)

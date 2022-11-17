@@ -158,18 +158,15 @@ namespace Finmer.Editor
             tsbAddLink.Enabled = tsbAddNode.Enabled;
             tsbRemoveNode.Enabled = !is_root;
 
-            // The root node has a special set of settings
-            if (is_root)
-            {
-                tbcNode.TabPages.Add(m_TabPageNodeRoot);
-                m_SkipDirtyUpdates = false;
-                splitNodeSettings.ResumeLayout();
-                return;
-            }
-
             // Display specific settings for the node
             switch (m_SelectedNode.NodeType)
             {
+                case AssetScene.ENodeType.Root:
+                    // Root node has a separate collection of settings
+                    Debug.Assert(is_root);
+                    tbcNode.TabPages.Add(m_TabPageNodeRoot);
+                    break;
+
                 case AssetScene.ENodeType.State:
                     // Populate state-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeState);

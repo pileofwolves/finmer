@@ -167,6 +167,10 @@ end"
                 if (node.NodeType == child.NodeType)
                     throw new SceneCompilerException($"Node '{node.Key}' contains child '{child.Key}' of same node type as parent ({node.NodeType}). Module file is likely corrupted.");
 
+                // Nested nodes can never be the scene root node
+                if (child.NodeType == AssetScene.ENodeType.Root)
+                    throw new SceneCompilerException($"Node '{node.Key}' is a Root node, but nested nodes cannot be Root nodes. Module file is likely corrupted.");
+
                 // If the node key is unspecified, assign a default value instead.
                 // This must be done before code is emitted for the parent node because the parent may refer to the keys of child nodes.
                 if (String.IsNullOrWhiteSpace(child.Key))
@@ -201,6 +205,7 @@ end"
                     CompileStateNode(state, node);
                     break;
 
+                case AssetScene.ENodeType.Root:
                 case AssetScene.ENodeType.Choice:
                     CompileChoiceNode(state, node);
                     break;
@@ -306,7 +311,7 @@ end"
         /// <param name="node">The node to generate code for.</param>
         private static void CompileChoiceNode(CompilerState state, Node node)
         {
-            Debug.Assert(node.NodeType == AssetScene.ENodeType.Choice);
+            Debug.Assert(node.NodeType == AssetScene.ENodeType.Choice || node.NodeType == AssetScene.ENodeType.Root);
 
             state.TableChoices.AppendLine($"{node.Key} = {state.NextStateID++},");
             state.TableChoiceFns.AppendLine($"_ChoiceFns[_Choices.{node.Key}] = function()");

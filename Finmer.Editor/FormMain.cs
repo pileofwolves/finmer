@@ -690,8 +690,8 @@ namespace Finmer.Editor
                 ID = asset_guid,
                 Root = new AssetScene.SceneNode
                 {
-                    Key = "Root",
-                    Title = "Root"
+                    NodeType = AssetScene.ENodeType.Root,
+                    Key = "Root"
                 }
             };
             RegisterNewAsset(asset);

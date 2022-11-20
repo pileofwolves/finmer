@@ -36,11 +36,15 @@
             System.Windows.Forms.Label lblNodeKey;
             System.Windows.Forms.Label lblLinkTarget;
             System.Windows.Forms.Label label1;
+            System.Windows.Forms.Label lblCompassDirection;
+            System.Windows.Forms.Label lblCompassTarget;
+            System.Windows.Forms.Label lblCompassExplanation;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentScene));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbAddNode = new System.Windows.Forms.ToolStripButton();
-            this.tsbAddLink = new System.Windows.Forms.ToolStripButton();
             this.tsbRemoveNode = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddLink = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddCompass = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMoveUp = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
@@ -74,6 +78,8 @@
             this.tbpNodeLink = new System.Windows.Forms.TabPage();
             this.cmbLinkTarget = new System.Windows.Forms.ComboBox();
             this.tbpNodeCompass = new System.Windows.Forms.TabPage();
+            this.assetCompassTarget = new Finmer.Editor.AssetPickerControl();
+            this.cmbCompassDirection = new System.Windows.Forms.ComboBox();
             this.tbcScripts = new System.Windows.Forms.TabControl();
             this.tbpScriptAction = new System.Windows.Forms.TabPage();
             this.scriptAction = new Finmer.Editor.ScriptEditorHost();
@@ -87,6 +93,9 @@
             lblNodeKey = new System.Windows.Forms.Label();
             lblLinkTarget = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
+            lblCompassDirection = new System.Windows.Forms.Label();
+            lblCompassTarget = new System.Windows.Forms.Label();
+            lblCompassExplanation = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -103,6 +112,7 @@
             this.tbpNodeChoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudChoiceCustomWidth)).BeginInit();
             this.tbpNodeLink.SuspendLayout();
+            this.tbpNodeCompass.SuspendLayout();
             this.tbcScripts.SuspendLayout();
             this.tbpScriptAction.SuspendLayout();
             this.tbpScriptAppear.SuspendLayout();
@@ -180,12 +190,43 @@
             label1.TabIndex = 9;
             label1.Text = "Unique Key:";
             // 
+            // lblCompassDirection
+            // 
+            lblCompassDirection.AutoSize = true;
+            lblCompassDirection.Location = new System.Drawing.Point(8, 8);
+            lblCompassDirection.Name = "lblCompassDirection";
+            lblCompassDirection.Size = new System.Drawing.Size(98, 13);
+            lblCompassDirection.TabIndex = 0;
+            lblCompassDirection.Text = "Compass Direction:";
+            // 
+            // lblCompassTarget
+            // 
+            lblCompassTarget.AutoSize = true;
+            lblCompassTarget.Location = new System.Drawing.Point(8, 56);
+            lblCompassTarget.Name = "lblCompassTarget";
+            lblCompassTarget.Size = new System.Drawing.Size(75, 13);
+            lblCompassTarget.TabIndex = 2;
+            lblCompassTarget.Text = "Target Scene:";
+            // 
+            // lblCompassExplanation
+            // 
+            lblCompassExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            lblCompassExplanation.Location = new System.Drawing.Point(8, 152);
+            lblCompassExplanation.Name = "lblCompassExplanation";
+            lblCompassExplanation.Size = new System.Drawing.Size(192, 80);
+            lblCompassExplanation.TabIndex = 4;
+            lblCompassExplanation.Text = "A Compass node may either have a Target Scene (above), or an Actions Taken script" +
+    ". If a custom script is specified, the Target Scene is ignored.";
+            lblCompassExplanation.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAddNode,
-            this.tsbAddLink,
             this.tsbRemoveNode,
+            this.tsbAddLink,
+            this.tsbAddCompass,
             this.toolStripSeparator1,
             this.tsbMoveUp,
             this.tsbMoveDown,
@@ -209,16 +250,8 @@
             this.tsbAddNode.Name = "tsbAddNode";
             this.tsbAddNode.Size = new System.Drawing.Size(81, 22);
             this.tsbAddNode.Text = "Add Node";
+            this.tsbAddNode.ToolTipText = "Add State or Choice Node";
             this.tsbAddNode.Click += new System.EventHandler(this.tsbAddNode_Click);
-            // 
-            // tsbAddLink
-            // 
-            this.tsbAddLink.Image = global::Finmer.Editor.Properties.Resources.chain;
-            this.tsbAddLink.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAddLink.Name = "tsbAddLink";
-            this.tsbAddLink.Size = new System.Drawing.Size(74, 22);
-            this.tsbAddLink.Text = "Add Link";
-            this.tsbAddLink.Click += new System.EventHandler(this.tsbAddLink_Click);
             // 
             // tsbRemoveNode
             // 
@@ -228,6 +261,26 @@
             this.tsbRemoveNode.Size = new System.Drawing.Size(102, 22);
             this.tsbRemoveNode.Text = "Remove Node";
             this.tsbRemoveNode.Click += new System.EventHandler(this.tsbRemoveNode_Click);
+            // 
+            // tsbAddLink
+            // 
+            this.tsbAddLink.Image = global::Finmer.Editor.Properties.Resources.chain;
+            this.tsbAddLink.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddLink.Name = "tsbAddLink";
+            this.tsbAddLink.Size = new System.Drawing.Size(49, 22);
+            this.tsbAddLink.Text = "Link";
+            this.tsbAddLink.ToolTipText = "Add Link to Other Node";
+            this.tsbAddLink.Click += new System.EventHandler(this.tsbAddLink_Click);
+            // 
+            // tsbAddCompass
+            // 
+            this.tsbAddCompass.Image = global::Finmer.Editor.Properties.Resources.compass;
+            this.tsbAddCompass.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddCompass.Name = "tsbAddCompass";
+            this.tsbAddCompass.Size = new System.Drawing.Size(76, 22);
+            this.tsbAddCompass.Text = "Compass";
+            this.tsbAddCompass.ToolTipText = "Add Compass Item";
+            this.tsbAddCompass.Click += new System.EventHandler(this.tsbAddCompass_Click);
             // 
             // toolStripSeparator1
             // 
@@ -303,7 +356,7 @@
             this.tsbExpand.Image = global::Finmer.Editor.Properties.Resources.arrow_out;
             this.tsbExpand.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExpand.Name = "tsbExpand";
-            this.tsbExpand.Size = new System.Drawing.Size(23, 22);
+            this.tsbExpand.Size = new System.Drawing.Size(23, 20);
             this.tsbExpand.Text = "Expand All";
             this.tsbExpand.Click += new System.EventHandler(this.tsbExpand_Click);
             // 
@@ -313,7 +366,7 @@
             this.tsbCollapse.Image = global::Finmer.Editor.Properties.Resources.arrow_in;
             this.tsbCollapse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCollapse.Name = "tsbCollapse";
-            this.tsbCollapse.Size = new System.Drawing.Size(23, 22);
+            this.tsbCollapse.Size = new System.Drawing.Size(23, 20);
             this.tsbCollapse.Text = "Collapse All";
             this.tsbCollapse.Click += new System.EventHandler(this.tsbCollapse_Click);
             // 
@@ -340,6 +393,7 @@
             // 
             this.trvNodes.AllowDrop = true;
             this.trvNodes.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.trvNodes.FullRowSelect = true;
             this.trvNodes.HideSelection = false;
             this.trvNodes.ImageIndex = 0;
             this.trvNodes.ImageList = this.imlNodeIcons;
@@ -358,12 +412,11 @@
             // 
             this.imlNodeIcons.ImageStream = ((System.Windows.Forms.ImageListStreamer)(resources.GetObject("imlNodeIcons.ImageStream")));
             this.imlNodeIcons.TransparentColor = System.Drawing.Color.Transparent;
-            this.imlNodeIcons.Images.SetKeyName(0, "node-link");
-            this.imlNodeIcons.Images.SetKeyName(1, "node-option");
-            this.imlNodeIcons.Images.SetKeyName(2, "node-option-alt");
-            this.imlNodeIcons.Images.SetKeyName(3, "node-root");
-            this.imlNodeIcons.Images.SetKeyName(4, "node-state");
-            this.imlNodeIcons.Images.SetKeyName(5, "node-state-alt");
+            this.imlNodeIcons.Images.SetKeyName(0, "node_root");
+            this.imlNodeIcons.Images.SetKeyName(1, "node_state");
+            this.imlNodeIcons.Images.SetKeyName(2, "node_choice");
+            this.imlNodeIcons.Images.SetKeyName(3, "node_link");
+            this.imlNodeIcons.Images.SetKeyName(4, "node_compass");
             // 
             // splitNodeSettings
             // 
@@ -612,12 +665,44 @@
             // 
             // tbpNodeCompass
             // 
+            this.tbpNodeCompass.Controls.Add(lblCompassExplanation);
+            this.tbpNodeCompass.Controls.Add(this.assetCompassTarget);
+            this.tbpNodeCompass.Controls.Add(lblCompassTarget);
+            this.tbpNodeCompass.Controls.Add(this.cmbCompassDirection);
+            this.tbpNodeCompass.Controls.Add(lblCompassDirection);
             this.tbpNodeCompass.Location = new System.Drawing.Point(4, 22);
             this.tbpNodeCompass.Name = "tbpNodeCompass";
             this.tbpNodeCompass.Size = new System.Drawing.Size(210, 242);
             this.tbpNodeCompass.TabIndex = 4;
             this.tbpNodeCompass.Text = "Compass Node";
             this.tbpNodeCompass.UseVisualStyleBackColor = true;
+            // 
+            // assetCompassTarget
+            // 
+            this.assetCompassTarget.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
+            this.assetCompassTarget.Location = new System.Drawing.Point(8, 72);
+            this.assetCompassTarget.Name = "assetCompassTarget";
+            this.assetCompassTarget.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetCompassTarget.Size = new System.Drawing.Size(192, 24);
+            this.assetCompassTarget.TabIndex = 3;
+            this.assetCompassTarget.SelectedAssetChanged += new System.EventHandler(this.assetCompassTarget_SelectedAssetChanged);
+            // 
+            // cmbCompassDirection
+            // 
+            this.cmbCompassDirection.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.cmbCompassDirection.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbCompassDirection.FormattingEnabled = true;
+            this.cmbCompassDirection.Items.AddRange(new object[] {
+            "North",
+            "West",
+            "South",
+            "East"});
+            this.cmbCompassDirection.Location = new System.Drawing.Point(8, 24);
+            this.cmbCompassDirection.Name = "cmbCompassDirection";
+            this.cmbCompassDirection.Size = new System.Drawing.Size(192, 21);
+            this.cmbCompassDirection.TabIndex = 1;
+            this.cmbCompassDirection.SelectedIndexChanged += new System.EventHandler(this.cmbCompassDirection_SelectedIndexChanged);
             // 
             // tbcScripts
             // 
@@ -708,6 +793,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.nudChoiceCustomWidth)).EndInit();
             this.tbpNodeLink.ResumeLayout(false);
             this.tbpNodeLink.PerformLayout();
+            this.tbpNodeCompass.ResumeLayout(false);
+            this.tbpNodeCompass.PerformLayout();
             this.tbcScripts.ResumeLayout(false);
             this.tbpScriptAction.ResumeLayout(false);
             this.tbpScriptAppear.ResumeLayout(false);
@@ -741,7 +828,7 @@
 		private System.Windows.Forms.ToolStripButton tsbMoveUp;
 		private System.Windows.Forms.ToolStripButton tsbMoveDown;
 		private System.Windows.Forms.TextBox txtNodeChoiceTitle;
-		private System.Windows.Forms.ToolStripButton tsbAddLink;
+		private System.Windows.Forms.ToolStripButton tsbAddCompass;
 		private System.Windows.Forms.NumericUpDown nudChoiceCustomWidth;
 		private System.Windows.Forms.CheckBox chkChoiceHighlight;
 		private System.Windows.Forms.CheckBox chkChoiceCustomWidth;
@@ -760,5 +847,8 @@
         private System.Windows.Forms.TextBox txtNodeChoiceKey;
         private System.Windows.Forms.TabPage tbpNodeLink;
         private System.Windows.Forms.TabPage tbpNodeCompass;
+        private System.Windows.Forms.ToolStripButton tsbAddLink;
+        private System.Windows.Forms.ComboBox cmbCompassDirection;
+        private AssetPickerControl assetCompassTarget;
     }
 }

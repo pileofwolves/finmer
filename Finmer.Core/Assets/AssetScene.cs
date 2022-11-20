@@ -309,6 +309,9 @@ namespace Finmer.Core.Assets
                 outstream.WriteEnumProperty(nameof(NodeType), NodeType);
                 outstream.WriteStringProperty(nameof(Key), Key);
 
+                bool write_scripts = false;
+                bool write_children = false;
+
                 // Node-specific metadata
                 switch (NodeType)
                 {
@@ -318,41 +321,50 @@ namespace Finmer.Core.Assets
                         outstream.WriteStringProperty(nameof(Tooltip), Tooltip);
                         outstream.WriteBooleanProperty(nameof(Highlight), Highlight);
                         outstream.WriteFloatProperty(nameof(ButtonWidth), ButtonWidth);
-
-                        goto case ENodeType.State;
+                        write_scripts = true;
+                        write_children = true;
+                        break;
 
                     case ENodeType.State:
-                        // Shared configuration for state & choice nodes
-                        outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
-                        outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
-
-                        goto case ENodeType.Root;
+                        write_scripts = true;
+                        write_children = true;
+                        break;
 
                     case ENodeType.Root:
-                        // Recursively serialize child nodes
-                        outstream.BeginArray(nameof(Children), Children.Count);
-                        foreach (SceneNode child in Children)
-                        {
-                            outstream.BeginObject();
-                            child.Serialize(outstream);
-                            outstream.EndObject();
-                        }
-                        outstream.EndArray();
-
+                        write_children = true;
                         break;
 
                     case ENodeType.Link:
                         // Node link configuration
                         outstream.WriteStringProperty(nameof(LinkTarget), LinkTarget);
-
                         break;
 
                     case ENodeType.Compass:
                         // Compass link configuration
                         outstream.WriteEnumProperty(nameof(CompassLinkDirection), CompassLinkDirection);
                         outstream.WriteGuidProperty(nameof(CompassLinkScene), CompassLinkScene);
-
+                        write_scripts = true;
                         break;
+                }
+
+                if (write_scripts)
+                {
+                    // Write node scripts
+                    outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
+                    outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
+                }
+
+                if (write_children)
+                {
+                    // Recursively serialize child nodes
+                    outstream.BeginArray(nameof(Children), Children.Count);
+                    foreach (SceneNode child in Children)
+                    {
+                        outstream.BeginObject();
+                        child.Serialize(outstream);
+                        outstream.EndObject();
+                    }
+                    outstream.EndArray();
                 }
             }
 
@@ -371,61 +383,71 @@ namespace Finmer.Core.Assets
                 NodeType = instream.ReadEnumProperty<ENodeType>(nameof(NodeType));
                 Key = instream.ReadStringProperty(nameof(Key));
 
+                bool read_scripts = false;
+                bool read_children = false;
+
                 // Read node-specific settings
                 switch (NodeType)
                 {
                     case ENodeType.Choice:
-                        // Choice-specific configuration
                         Title = instream.ReadStringProperty(nameof(Title));
                         Tooltip = instream.ReadStringProperty(nameof(Tooltip));
                         Highlight = instream.ReadBooleanProperty(nameof(Highlight));
                         ButtonWidth = instream.ReadFloatProperty(nameof(ButtonWidth));
-
-                        // Fallthrough to read shared properties
-                        goto case ENodeType.State;
+                        read_scripts = true;
+                        read_children = true;
+                        break;
 
                     case ENodeType.State:
-                        // Shared configuration between state & choice nodes
-                        ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
-                        ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
-
-                        // Assign script names
-                        if (ScriptAction != null)
-                            ScriptAction.Name = Key + "/Actions";
-                        if (ScriptAppear != null)
-                            ScriptAppear.Name = Key + "/AppearsWhen";
-
-                        goto case ENodeType.Root;
+                        read_scripts = true;
+                        read_children = true;
+                        break;
 
                     case ENodeType.Root:
-                        // Recursively deserialize child nodes
-                        Children.Clear();
-                        for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)
-                        {
-                            instream.BeginObject();
-                            {
-                                // Read this child node
-                                var child = new SceneNode();
-                                child.Deserialize(instream, version);
-                                child.Parent = this;
-                                Children.Add(child);
-                            }
-                            instream.EndObject();
-                        }
-                        instream.EndArray();
-
+                        read_children = true;
                         break;
 
                     case ENodeType.Link:
-                        // Node link configuration
                         LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
                         break;
 
                     case ENodeType.Compass:
-                        // Compass link configuration
-                        LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
                         CompassLinkDirection = instream.ReadEnumProperty<ECompassDirection>(nameof(CompassLinkDirection));
+                        CompassLinkScene = instream.ReadGuidProperty(nameof(CompassLinkScene));
+                        read_scripts = true;
                         break;
+                }
+
+                if (read_scripts)
+                {
+                    // Deserialize scripts
+                    ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
+                    ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
+
+                    // Correct script names
+                    if (ScriptAction != null)
+                        ScriptAction.Name = Key + "/Actions";
+                    if (ScriptAppear != null)
+                        ScriptAppear.Name = Key + "/AppearsWhen";
+                }
+
+                if (read_children)
+                {
+                    // Recursively deserialize child nodes
+                    Children.Clear();
+                    for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)
+                    {
+                        instream.BeginObject();
+                        {
+                            // Read this child node
+                            var child = new SceneNode();
+                            child.Deserialize(instream, version);
+                            child.Parent = this;
+                            Children.Add(child);
+                        }
+                        instream.EndObject();
+                    }
+                    instream.EndArray();
                 }
             }
 

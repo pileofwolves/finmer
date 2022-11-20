@@ -248,7 +248,7 @@ end"
                     if (resolved_child == null)
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but no such node exists");
                     if (resolved_child.NodeType == AssetScene.ENodeType.State)
-                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but the link target type does not match (You cannot link to a state from another state.)");
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is a state, but parent '{node.Parent.Key}' is also a state; this is not supported");
                     if (resolved_child.NodeType == AssetScene.ENodeType.Link)
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is also a link. Recursive link resolving is not supported.");
                 }
@@ -271,21 +271,25 @@ end"
                         state.TableStateFns.Append($"AddLink(ECompass.{resolved_child.CompassLinkDirection}, ");
 
                         // Emit the compass link target
-                        if (node.ScriptAction != null && node.ScriptAction.HasContent())
+                        if (resolved_child.ScriptAction != null && resolved_child.ScriptAction.HasContent())
                         {
                             // If the compass link has a script, inject that script code here
-                            var script_text = node.ScriptAction.GetScriptText(state.Content);
-                            state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
+                            var script_text = resolved_child.ScriptAction.GetScriptText(state.Content);
+                            state.Compiler?.Compile(script_text, $"{resolved_child.Key}/ActionsTaken");
                             state.TableStateFns.AppendLine("function()");
                             state.TableStateFns.AppendLine(script_text);
                             state.TableStateFns.AppendLine("end");
                         }
                         else
                         {
+                            // Compass must specify either a target scene or a script
+                            if (resolved_child.CompassLinkScene == Guid.Empty)
+                                throw new SceneCompilerException($"Compass node '{resolved_child.Key}' contains neither a target scene nor an Actions Taken script; one of these is required");
+
                             // Otherwise, the link should target a scene asset directly
                             var resolved_scene = state.Content.GetAssetByID<AssetScene>(resolved_child.CompassLinkScene);
                             if (resolved_scene == null)
-                                throw new SceneCompilerException($"Node '{resolved_child.Key}' contains a compass link to scene '{resolved_child.CompassLinkScene}', but no such Scene exists");
+                                throw new SceneCompilerException($"Compass node '{resolved_child.Key}' has target scene '{resolved_child.CompassLinkScene}', but no such Scene exists");
 
                             state.TableStateFns.Append($"\"{CoreUtility.EscapeLuaString(resolved_scene.Name)}\"");
                         }
@@ -293,8 +297,7 @@ end"
                         state.TableStateFns.AppendLine(") end");
                         break;
 
-                    case AssetScene.ENodeType.State:
-                    case AssetScene.ENodeType.Link:
+                    default:
                         // States cannot contain States
                         Debug.Fail($"Node '{node.Key}' resolved to child '{resolved_child.Key}' with unexpected type; this should have been caught earlier");
                         break;

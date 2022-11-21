@@ -95,6 +95,10 @@ namespace Finmer.Editor
             scriptAction.Flush();
             scriptAppear.Flush();
 
+            // If a node was already selected, update its node text to "commit" pending changes
+            if (m_SelectedNode != null)
+                UpdateNodeText(m_SelectedTree, m_SelectedNode);
+
             // Ensure scene scripts are committed, since the serialization of the scene asset depends on it
             // These are weak references so that this scene editor doesn't keep the script editors alive after the user closes them
             if (m_ScriptEditorEnter != null && m_ScriptEditorEnter.TryGetTarget(out var enter_script_window) && !enter_script_window.IsDisposed)
@@ -131,6 +135,10 @@ namespace Finmer.Editor
             // Ensure any previous script editor changes are committed
             scriptAction.Flush();
             scriptAppear.Flush();
+
+            // If a node was already selected, update its node text to "commit" pending changes
+            if (m_SelectedNode != null)
+                UpdateNodeText(m_SelectedTree, m_SelectedNode);
 
             // Determine which visual tree node was selected
             m_SelectedTree = trvNodes.SelectedNode;

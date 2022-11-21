@@ -162,10 +162,14 @@ namespace Finmer.Editor
             // Configure toolbar for this node
             bool is_root = m_SelectedNode == m_Scene.Root;
             tbcScripts.Visible = !is_root && m_SelectedNode.NodeType != AssetScene.ENodeType.Link;
-            tsbAddNode.Enabled = trvNodes.SelectedNode != null && m_SelectedNode.IsFullNode();
+            tsbAddNode.Enabled = m_SelectedNode.IsFullNode();
             tsbAddLink.Enabled = tsbAddNode.Enabled;
-            tsbAddCompass.Enabled = tsbAddNode.Enabled && m_SelectedNode.NodeType == AssetScene.ENodeType.State;
             tsbRemoveNode.Enabled = !is_root;
+
+            // Node can have a compass child if it's a state, or a root node acting as a placeholder state
+            bool can_host_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State
+                || (is_root && GetAcceptableRootType() == AssetScene.ENodeType.Choice);
+            tsbAddCompass.Enabled = tsbAddNode.Enabled && can_host_compass;
 
             // Display specific settings for the node
             switch (m_SelectedNode.NodeType)

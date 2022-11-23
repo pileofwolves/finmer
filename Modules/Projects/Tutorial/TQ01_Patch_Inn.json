@@ -18,16 +18,32 @@
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 1"
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 1.0
+						}
+					]
 				},
 				"Children": [
 					{
 						"NodeType": "State",
 						"Key": "TQ01_Tobias_Meet",
 						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "Log(\"TQ01_MEET\")"
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "TQ01_MEET",
+									"IsRaw": false
+								}
+							]
 						},
 						"Children": [
 							{
@@ -42,8 +58,14 @@
 										"NodeType": "State",
 										"Key": "TQ01_Tobias_Explain",
 										"ScriptAction": {
-											"!Type": "ScriptDataInline",
-											"Script": "Log(\"TQ01_EXPLAIN\")"
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "TQ01_EXPLAIN",
+													"IsRaw": false
+												}
+											]
 										},
 										"Children": [
 											{
@@ -54,16 +76,37 @@
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_FRIEND",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
 														"NodeType": "State",
 														"Key": "TQ01_Expo_Friend",
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_FRIEND\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_FRIEND\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_FRIEND",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_FRIEND",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
@@ -93,16 +136,37 @@
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\")\r\n"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_LOCATION",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
 														"NodeType": "State",
 														"Key": "TQ01_Expo_Location",
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_LOCATION\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_LOCATION\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_LOCATION",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_LOCATION",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
@@ -132,16 +196,37 @@
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_REWARD",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
 														"NodeType": "State",
 														"Key": "TQ01_Expo_Reward",
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_REWARD\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_REWARD\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_REWARD",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_REWARD",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
@@ -171,16 +256,59 @@
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_FRIEND",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_LOCATION",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_REWARD",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
 												},
 												"Children": [
 													{
 														"NodeType": "State",
 														"Key": "TQ01_Wrapup",
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_WRAPUP\")\r\nJournal.Update(\"TQ01\", 1)\r\nStorage.SetNumber(\"TQ01\", 2)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_WRAPUP",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandComment",
+																	"Comment": "Advance the quest's state"
+																},
+																{
+																	"!Type": "CommandJournalUpdate",
+																	"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+																	"Stage": 1
+																},
+																{
+																	"!Type": "CommandVarSetNumber",
+																	"VariableName": "TQ01",
+																	"ValueOperation": "Set",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": 2.0
+																}
+															]
 														},
 														"Children": [
 															{
@@ -217,16 +345,75 @@
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 3"
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 3.0
+						}
+					]
 				},
 				"Children": [
 					{
 						"NodeType": "State",
 						"Key": "TQ01_Toby_Finish",
 						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "-- Print message\r\nLog(\"TQ01_COMPLETION\")\r\n\r\n-- Prevent player from completing the quest again\r\nStorage.SetNumber(\"TQ01\", 4)\r\n\r\n-- Remove the journal entry and the quest item\r\nJournal.Close(\"TQ01\")\r\nPlayer:TakeItem(\"TQ01_I_Pendant\")\r\n\r\n-- Grant rewards\r\nPlayer:ModifyMoney(55)\r\nPlayer:AwardXP(50)"
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "Print final message"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "TQ01_COMPLETION",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Prevent player from completing the quest again"
+								},
+								{
+									"!Type": "CommandVarSetNumber",
+									"VariableName": "TQ01",
+									"ValueOperation": "Set",
+									"OperandMode": "Literal",
+									"OperandLiteral": 4.0
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Remove the journal entry and the quest item"
+								},
+								{
+									"!Type": "CommandJournalClose",
+									"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c"
+								},
+								{
+									"!Type": "CommandPlayerSetItem",
+									"ItemGuid": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
+									"Add": false
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Grant rewards"
+								},
+								{
+									"!Type": "CommandPlayerSetMoney",
+									"ValueOperation": "Add",
+									"OperandMode": "Literal",
+									"OperandLiteral": 55
+								},
+								{
+									"!Type": "CommandPlayerAddXP",
+									"OperandMode": "Literal",
+									"OperandLiteral": 50
+								}
+							]
 						},
 						"Children": [
 							{

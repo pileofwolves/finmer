@@ -18,16 +18,52 @@
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 0"
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 0.0
+						}
+					]
 				},
 				"Children": [
 					{
 						"NodeType": "State",
 						"Key": "TQ01_Start",
 						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "Log(\"TQ01_NOTICE\")\r\nStorage.SetNumber(\"TQ01\", 1)\r\nJournal.Update(\"TQ01\", 0)"
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "Display the opening text (the board notice)"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "TQ01_NOTICE",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Enable the intro scene with Tobias in the inn"
+								},
+								{
+									"!Type": "CommandVarSetNumber",
+									"VariableName": "TQ01",
+									"ValueOperation": "Set",
+									"OperandMode": "Literal",
+									"OperandLiteral": 1.0
+								},
+								{
+									"!Type": "CommandJournalUpdate",
+									"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+									"Stage": 0
+								}
+							]
 						},
 						"Children": [
 							{

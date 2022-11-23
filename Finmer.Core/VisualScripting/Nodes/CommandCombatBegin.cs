@@ -35,6 +35,11 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// User script function. May be null if callback is not configured.
         /// </summary>
+        public List<ScriptNode> CallbackCombatStart { get; set; }
+
+        /// <summary>
+        /// User script function. May be null if callback is not configured.
+        /// </summary>
         public List<ScriptNode> CallbackRoundEnd { get; set; }
 
         /// <summary>
@@ -98,6 +103,11 @@ namespace Finmer.Core.VisualScripting.Nodes
                 output.AppendLine();
             }
 
+            // Emit start callback (which is just some custom script in between setup and the Begin call)
+            if (CallbackCombatStart != null)
+                foreach (var node in CallbackCombatStart)
+                    node.EmitLua(output, content);
+
             // Attach user callbacks
             EmitCallbackFunction(output, content, "OnRoundEnd", CallbackRoundEnd);
             EmitCallbackFunction(output, content, "OnPlayerKilled", CallbackPlayerKilled);
@@ -127,6 +137,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.EndArray();
 
             // Serialize the callbacks
+            SerializeOptionalSubgroup(outstream, nameof(CallbackCombatStart), CallbackCombatStart);
             SerializeOptionalSubgroup(outstream, nameof(CallbackRoundEnd), CallbackRoundEnd);
             SerializeOptionalSubgroup(outstream, nameof(CallbackPlayerKilled), CallbackPlayerKilled);
             SerializeOptionalSubgroup(outstream, nameof(CallbackCreatureKilled), CallbackCreatureKilled);
@@ -150,6 +161,8 @@ namespace Finmer.Core.VisualScripting.Nodes
             instream.EndArray();
 
             // Callback bodies
+            if (version >= 17)
+                CallbackCombatStart = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCombatStart));
             CallbackRoundEnd = DeserializeOptionalSubgroup(instream, version, nameof(CallbackRoundEnd));
             CallbackPlayerKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackPlayerKilled));
             CallbackCreatureKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCreatureKilled));
@@ -159,6 +172,14 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override IEnumerable<Subgroup> GetSubgroups()
         {
+            if (CallbackCombatStart != null)
+            {
+                yield return new Subgroup
+                {
+                    EditorPrefix = "Before Combat Starts:",
+                    Nodes = CallbackCombatStart
+                };
+            }
             if (CallbackRoundEnd != null)
             {
                 yield return new Subgroup

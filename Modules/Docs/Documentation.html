@@ -461,12 +461,13 @@
         In Finmer, Scenes are a tree of <em>nodes</em>. You can think of each node as a single decision made in, or by, the game world. Each node can contain scripts that determine what happens if that node is picked, and whether or not that node will be shown in-game. For reference, the Scene editor is heavily inspired by - and works similarly to - the dialogue editor from the old Neverwinter Nights game. So if you're familiar with that, welcome back.
     </p>
     <p>
-        There are three types of nodes:
+        There are four types of nodes:
     </p>
     <ul>
         <li><strong>Choices</strong> are options available to the player. In the game, these are the buttons at the bottom of the screen. A Choice will generally lead to another State. In the editor, Choices have a speech bubble as icon.</li>
         <li><strong>States</strong> are groups of Choice nodes. Think of them as the game's response to a player's Choice. Each State may contain any number of Choices. In the editor, States have a paper sheet as icon.</li>
-        <li><strong>Links</strong> are 'teleports' to other nodes. These are useful to avoid duplicating the same nodes over and over, and to make it possible to return to an earlier point in the tree. Links may replace States or Choices anywhere in the tree, and they will function as if the link's target was actually there. In the game, these are invisible to the player. In the editor, Links have a chain as icon.</li>
+        <li><strong>Compasses</strong> add a compass button to the left side of the screen. They can either link directly to a Scene, or can have a custom script that gets run when the player clicks the compass button. A Compass can only be on a State node.</li>
+        <li><strong>Links</strong> are 'teleports' to other nodes. These are useful to avoid duplicating the same nodes over and over, and to make it possible to return to an earlier point in the tree. Links may replace States, Choices or Compasses anywhere in the tree, and they will function as if the link's target was actually there. In the game, these are invisible to the player. In the editor, Links have a chain as icon.</li>
     </ul>
     <p>
         States and Choices alternate each other in the Scene tree. Each State may contain a number of Choices, and each Choice may contain a number of States. <strong>The idea is that the player can click on any Choice they like, and the game subsequently picks the next State in response.</strong> Then the new set of Choices are shown, and we begin again. It is not possible for States to contain States, or for Choices to contain Choices, as that wouldn't really make sense.
@@ -487,7 +488,7 @@
     </p>
     <ul>
         <li><strong>Actions Taken</strong> is run whenever that Choice is selected, or State is activated. This is where you put actions such as adding text to the window, opening a shop, starting combat, etc.</li>
-        <li><strong>Node Appears When</strong> is run whenever the game evaluates whether or not to use this node. This script determines whether (for Choices) to show the button or not, or (for States) to select this State or not.</li>
+        <li><strong>Appears When</strong> is run whenever the game evaluates whether or not to use this node. This script determines whether (for Choices) to show the button or not, or (for States) to select this State or not.</li>
     </ul>
     <p>
         The Actions Taken script is simply a block of Lua code that is run whenever the node is selected (when a Choice is clicked, or a State is activated). If you want something to happen when a button is clicked, it technically doesn't matter whether you put your script in the Choice or in the State, either is fine, as both will be executed. I personally prefer putting actions in the State (as they represent the game's 'response' to your choices), but if you link back to that State (for example, with dialogue trees) putting them in the preceding Choice prevents them from being executed when you don't want them to.
@@ -506,9 +507,9 @@
         A Scene may optionally contain three additional Lua scripts:
     </p>
     <ul>
-        <li><strong>EnterScript</strong> runs whenever the player enters this scene, for example when changing scenes using <code>SetScene</code>. It runs after the previous scene's LeaveScript, and before this scene's first State. Think of it like an 'Actions Taken' for the Root node.</li>
-        <li><strong>LeaveScript</strong> runs whenever the player leaves the scene. It'll run right before the next scene's EnterScript. You probably won't need to use LeaveScripts for most use cases, but if you need to clean something up, here's the place to do it.</li>
-        <li><strong>CustomScript</strong> will be embedded at the start of the scene's generated Lua script. It's useful for declaring variables and common functions. Stuff you declare here is accessible in any other part of the scene. <em>Do not immediately query or manipulate game objects, their state is undefined at this point.</em> Using the <code>Storage</code> API is fine.</li>
+        <li><strong>Enter Script</strong> runs whenever the player enters this scene, for example when changing scenes using <code>SetScene</code>. It runs after the previous scene's LeaveScript, and before this scene's first State. Think of it like an 'Actions Taken' for the Root node.</li>
+        <li><strong>Leave Script</strong> runs whenever the player leaves the scene. It'll run right before the next scene's EnterScript. You probably won't need to use LeaveScripts for most use cases, but if you need to clean something up, here's the place to do it.</li>
+        <li><strong>Custom Script</strong> is for advanced users; the script content will be inserted in the outermost scope of the scene script. It's useful for declaring variables and common functions. Stuff you declare here is accessible in any other part of the scene. <em>Caution: avoid interacting with game and UI systems in this script; their state is undefined.</em> Using the <code>Storage</code> API is fine.</li>
     </ul>
 
     <a name="sref"><h2>Script Reference</h2></a>

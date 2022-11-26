@@ -212,6 +212,7 @@ namespace Finmer.Editor
                 case AssetScene.ENodeType.Compass:
                     // Populate compass-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeCompass);
+                    txtNodeCompassKey.Text = m_SelectedNode.Key;
                     cmbCompassDirection.SelectedIndex = (int)m_SelectedNode.CompassLinkDirection;
                     assetCompassTarget.SelectedGuid = m_SelectedNode.CompassLinkScene;
                     break;
@@ -382,6 +383,7 @@ namespace Finmer.Editor
                     var compass_target = Program.LoadedContent.GetAssetByID<AssetScene>(scene_node.CompassLinkScene);
                     string[] elements =
                     {
+                        String.IsNullOrWhiteSpace(scene_node.Key) ? String.Empty : $"[{scene_node.Key}]",
                         scene_node.CompassLinkDirection.ToString(),
                         (compass_target != null && !has_action_script) ? "to " + compass_target.Name : String.Empty,
                         has_action_script ? "(custom script)" : String.Empty,

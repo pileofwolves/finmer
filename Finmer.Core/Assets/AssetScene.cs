@@ -209,7 +209,7 @@ namespace Finmer.Core.Assets
                 SceneNode node = stack.Pop();
 
                 // Links do not have keys
-                if (node.NodeType != ENodeType.State && node.NodeType != ENodeType.Choice)
+                if (node.NodeType == ENodeType.Link || node.NodeType == ENodeType.Root)
                     continue;
 
                 // Is this the node we're looking for?

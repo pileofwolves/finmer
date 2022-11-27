@@ -24,10 +24,10 @@ namespace Finmer.Views
     public partial class ChoicePanelView
     {
 
-        private const float k_AnimTime_FlyIn = 0.40f;
-        private const float k_AnimTime_FlyOut = 0.15f;
-        private const float k_AnimTime_DelayInitial = 0.175f;
-        private const float k_AnimTime_DelayEach = 0.08f;
+        private const float k_AnimTime_FlyIn = 0.25f;
+        private const float k_AnimTime_FlyOut = 0.12f;
+        private const float k_AnimTime_DelayInitial = 0.05f;
+        private const float k_AnimTime_DelayEach = 0.05f;
 
         private const float k_Button_DefaultWidth = 175.0f;
 
@@ -143,11 +143,9 @@ namespace Finmer.Views
                 transform.Y = 200;
                 anim_slide = new DoubleAnimation(0, length)
                 {
-                    EasingFunction = new ElasticEase
+                    EasingFunction = new CubicEase
                     {
-                        EasingMode = EasingMode.EaseOut,
-                        Oscillations = 1,
-                        Springiness = 8f
+                        EasingMode = EasingMode.EaseOut
                     },
                     BeginTime = TimeSpan.FromSeconds(delay)
                 };

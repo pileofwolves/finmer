@@ -3,10 +3,15 @@
 	"AssetID": "9424541d-3712-4dc7-8c30-5934d1581317",
 	"AssetName": "AC_IsoRing",
 	"ObjectName": "Curious Ring",
-	"FlavorText": "A small silver ring with intricate amber patterns engraved on the outside. You feel you've never seen the like before, but then how did it end up on your finger?",
+	"FlavorText": "A brass ring, engraved on the outside with intricate amber patterns that glimmer even in the dark. You feel you've never seen the like before, but then how did it end up on your finger?",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
-	"EquipEffects": [],
+	"EquipEffects": [
+		{
+			"!Type": "BuffCustomTooltipText",
+			"TooltipText": "?????"
+		}
+	],
 	"PurchaseValue": 0,
 	"IsQuestItem": true
 }

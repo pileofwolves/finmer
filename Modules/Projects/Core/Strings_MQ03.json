@@ -282,7 +282,7 @@
 		{
 			"Key": "MQ03_TAVERN_FINALE2_AMBER",
 			"Text": [
-				"The vulpine blinks, clearly not having expected this line of conversation. \"W-What?\" he stammers, before a loud grruuuurrgle below him shakes him into action. \"R-rare orange shiny gem-thingies. It's real magic, proper-like, you know? You can do things. I-I never seen it, but they say you can walk through walls.\" Toby apparently intends to leave it at that, but your dissatisfied, piercing stare convinces him otherwise. \"I-I thought it was just a legend, but it really exists. The boss p-promised us a share of the stuff as payment... I just wanted to sell it...\" He trails off."
+				"The vulpine blinks, clearly not having expected this line of conversation. \"W-What?\" he stammers, before a loud grruuuurrgle below him shakes him into action. \"R-rare orange shiny gem-thingies. It's real magic, proper-like, you know? You can do things. I-I never seen it, but they say you can walk through walls.\" Toby apparently intends to leave it at that, but your dissatisfied, piercing stare convinces him otherwise. \"I-I thought it was just a legend, but it really exists. The boss p-promised us a share of the stuff as payment... I don't really know how to use it, I just wanted to sell it...\" He trails off."
 			]
 		},
 		{
@@ -294,7 +294,7 @@
 		{
 			"Key": "MQ03_TAVERN_FINALE2_PC",
 			"Text": [
-				"Your catch shakes his head nervously. \"N-No, you p-probably woke up in an alley, right? It was me. That night, after everything went to hell, *he* told me to make sure you were... taken care of.\" He swallows and sighs, pausing briefly in recollection. \"But I couldn't do it. Knew there'd probably be consequences for winging it. I just couldn't. I burned an amber shard, instead. Knocked you right out. Thought that was good enough. Boss believed it... at the time. L-look, I saved your life, right? Any one of them would've just gulped you instead. S-so maybe you could... return the favor?\""
+				"Your catch shakes his head nervously. \"N-No, you p-probably woke up in an alley, right? It was me. That night, after everything went to hell, *he* told me to make sure you were... taken care of.\" He swallows and sighs, pausing briefly in recollection. \"But I couldn't do it. Knew there'd probably be consequences for winging it. I just couldn't. I, um, c-clobbered you on the head instead. Thought that was good enough. Boss believed it... at the time. L-look, I saved your life, right? Any one of *them* would've just gulped you instead. S-so maybe you could... return the favor?\""
 			]
 		},
 		{
@@ -385,6 +385,102 @@
 			"Key": "MQ03_TAVERN_PRED_VORE_WIN_POV",
 			"Text": [
 				"Stunned by the bruises on your head and the inability to get a proper breather, you are left dazed as {assailant} pushes all of your face into the back of her maw. Only once your nose breaches the slimy gullet and the first swallow squeezes your muzzle, do you realize the literal depth of your predicament. By then, however, you've already crossed the point of no return. Your predator wastes little time in dealing with you - apparently she has been looking forward to devouring you for quite some time. Though you cannot see, encased by wet muscles as you are, you can feel the muscular tube widening around you to accommodate the larger prey, before caving in again with crushing pressure, driving you ever deeper into {assailant.aliaspossessive} hot, sour guts. These swallows repeat many times, each wave of peristalsis forcing you a little deeper into this digestive system that will be your home. As you slide smoothly into the furnace-like organ with only a heartbeat and a cacophony of wet squelches and gurgles for company, the vile air inside her stomach leaves you dazed once more. Your feet and tail join you soon enough, and with a final torrent of slime squeezing through the stomach sphincter, you are sealed inside."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO1",
+			"Text": [
+				"Just as you decide to leave, the old oak door of this tiny chapel's entrace swings open once more with a creaky moan. The dark night is revealed briefly, a pitter-patter echoing through the shrine. It appears a rain shower had started. A hooded figure barges into the cozy room, bringing a gust of cold air with them. They shut the door behind them, a thin black-furred tail trailing behind the mysterious stranger as they turn to the priestess. \"Willow, we need to-\" a soft, gentle feminine voice begins; a voice that is quiet and yet demands nothing less than your full attention. It sounds so very familiar. She turns to you, then, and freezes. Azure eyes drill into yours, a short feline muzzle revealed under that hood, fur black as night. \"{player.name}?\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO2",
+			"Text": [
+				"Iso stands before you once more. With a careful, delibrate motion, as if fearful that you might lunge for her throat, she pulls back the hood, revealing her features in full. She is a bit small in stature, perhaps, though the pantheress more than makes up for it with a stockier build than one might expect for one serving a public office. The dark spots of fur on her face glimmer in the lantern-lit room, her rounded ears flicking as she composes herself. In that moment you reconcile her presence with that of your earlier half-remembered vision. \"I thought you hadn't made it out,\" she whispers, before her eyes narrow, and her words take on an accusatory edge. \"Where've you been?\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO2_DUMB",
+			"Text": [
+				"Iso stands before you once more. With a careful, delibrate motion, as if fearful that you might lunge for her throat, she pulls back the hood, revealing her features in full. She is a bit small in stature, perhaps, though the pantheress more than makes up for it with a stockier build than one might expect for one serving a public office. The dark spots of fur on her face glimmer in the lantern-lit room, her rounded ears flicking as she composes herself. \"I thought you hadn't made it out,\" she whispers, before her eyes narrow, and her words take on an accusatory edge. \"Where've you been?\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO3",
+			"Text": [
+				"The ebony feline opens her mouth to respond, though before she can, the lapine behind her interjects. \"I apologize for intruding, Iso, but what is going on? Your colleagues say they've been searching up and down for you for days,\" Willow questions, her collected attitude not quite matching the surprising charge behind her words. \"You should have told me something was amiss when last we spoke.\"\\n\\nIso, in turn, turns to the spirit warden with a haunted look. \"I'm- I'm sorry, Willow,\" she sighs. \"The week hasn't been great, to say the least.\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO4",
+			"Text": [
+				"The mayor sighs, running a paw through the fur between her ears. \"Willow, listen. *He* is right on my tail, and I came here as quickly as I could.\" The rabbit's eyes widen in response to this, realization hitting her even though she remains silent and Iso continues. \"I'm so, so sorry that I put you in danger, but you need to move. I have no idea how long we have.\" Finally, the pantheress turns to you. She starts again, glancing at your paw, considering something as her brow furrows. \"{player.name}, do you still have it? The ring?\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO4_WORN",
+			"Text": [
+				"The mayor sighs, running a paw through the fur between her ears. \"Willow, listen. *He* is right on my tail, and I came here as quickly as I could.\" The rabbit's eyes widen in response to this, realization hitting her even though she remains silent and Iso continues. \"I'm so, so sorry that I put you in danger, but you need to move. I have no idea how long we have.\" Finally, the pantheress turns to you. She starts again, glancing at your paw, a mirthful expression flashing across her muzzle when she recognizes the engraved brass ring you're wearing. \"Oh! {player.name}, you still have the ring, thank the spirits!\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO5",
+			"Text": [
+				"Iso studies you for a moment, letting her paws drop to her sides, tucked into the dark coat she's wearing. \"I see,\" she declares simply. \"You... don't remember. That's why you didn't come find me where we agreed to meet. How strange, I would've expected him to...\" She trails off, fidgeting and apparently deciding to not finish that sentence, though the implication is fairly obvious. \"Okay, then, er... Spirits, there's a lot we need to... We don't have time. Okay, the ring first.\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_INTRO6",
+			"Text": [
+				"\"It's Rux's,\" she declares, as if that is supposed to mean anything to you. Quickly recognizing your complete and utter lack of a reaction, she continues, though Willow, standing behind her, freezes at the mention. \"Rux is an Adept. The only one in the area, to my knowledge. Lives in the woods by North Finmer. We're good friends. I trust him, and we agreed to use his house as a... safe house of sorts.\"\\n\\nWhen you blink at her with another quizzical stare, she elaborates. \"Rux prefers to stay hidden. Amber users like him attract a lot of... undesirable attention. He never fully explained how he does it, nor does it really matter. The ring shows you how to find him. That's why Rux agreed to shelter us in case everything went to hell; *he* cannot follow us there. And then the plan blew up in our faces. We fled, but you didn't show up. I thought you were... yeah.\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN1",
+			"Text": [
+				"The pantheress considers your question for a brief moment, eyes wandering to the incense offering on the altar. \"Well...\" She turns to you again, as if to answer, before loud knocks on the door startles all three of you. The door opens once more, the soft light of the lanterns scattered around the room illuminating a wolf's face. He pulls down his hood, revealing a short crimson mane running down a black-furred head. Dark, plain clothes drip rainwater on the pristine chalky flagstones. Iso's breath catches in her throat and Willow appears even more confused, as Randall offers a smile. Unlike the last time you met, he does not sport a horrifyingly large belly bulge - though knowing full well what he is capable of, keeping some distance is not unreasonable. \"There you are, my love,\" he says, a deceptively calm, rumbling voice laced with venom as he steps inside, not bothering to close the door behind him."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN2",
+			"Text": [
+				"\"Do not call me that,\" Iso hisses, taking a step back just as the wolf does the inverse. There is nowhere to go here - the only way out of the shrine is past an angry canine. He appears almost offended at the response, though his muzzle soon returns to an impassive grimace.\\n\\n\"You sure made me work for it, but I finally found you after all this time.\" Randall growls. \"If I'd known you'd just show up, I wouldn't even have had to claim the Red Maw for myself.\" He grunts casually, almost like a chuckle, eyes flicking to you, then Willow, then back to Iso. \"Dragging in all these witless preythings-\"\\n\\n\"Damn it, Randall,\" she interrupts him with a growl of her own, her long, slender tail flicking about behind her. \"You're the one going around killing people, not me,\" Iso demands, raising her voice. \"You are the only one responsible for the shitshow that is your love life!\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN3",
+			"Text": [
+				"This slight strikes a nerve, and then some. The black wolf bares his teeth in a snarl, taking another few steps forward, threatening all merely by closing the distance. \"Do you not see, Iso? I'm doing all this, all of this, for you.\" He swings an arm sideways at nothing in particular, as if gesturing at the town as a whole. \"Because you just had to run away!\"\\n\\nThe pantheress is taken aback at this outburst, struggling to find words for a few moments, before the priestess beside her interrupts with a booming voice that is entirely unlike her character and smaller stature. \"There will not be an altercation inside my shrine!\" she demands, drawing the attention of all present. \"Leave, all of you, or--\"\\n\\n\"Quiet, wench,\" Randall snarls, saliva droplets spraying from his black lips. \"I'll deal with you - and you - later,\" he adds, resting his gaze on you, before it returns to his chosen prey. \"But now, my love, enough chat. You are here, and you are not leaving my side ever again,\" he declares.\\n\\nWith that, he bounds over to the pantheress, drool dribbling from his maw as he attempts to wrap his arms around her. Willow squeaks and backs away. Iso reacts quickly, using her slender frame to her advantage to duck below his arms and recklessly kicking him in his stomach, staggering the wolf and sending him backwards, right towards you."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN4A",
+			"Text": [
+				"You wrap your arms around Randall, taking advantage of the element of surprise to force him tightly against your chest. Of course, it takes only a second for him to realize his predicament, and buck like a stubborn mount. The wolf slams his elbows backwards, into your chest, and with a wheeze you have no choice but to let go - but not before jerking your own knee upwards to deliver a painful kick in his shin, putting some distance between the two of you. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN4B",
+			"Text": [
+				"You take advantage of the element of surprise to slam your fist into the side of the wolf's skull. Droplets of saliva are sent flying, and before Randall realizes the depth of his predicament, he grunts in pain, stumbling down to the flagstones beneath in a bid to regain his balance. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN4C",
+			"Text": [
+				"Iso, meanwhile, did not waste the opportunity, her possessive stalker briefly occupied in a scuffle with yourself. \"Willow, we need to move,\" she manages to say, the lapine priestess behind her more or less mortified at the evening's proceedings. \"{player.name}, I need to get Willow to safety. It's me he's after. Find me at Rux's!\" Tugging at the rabbit's arms, the two of them quickly rush past the downed wolf, who snarls in frustration, sensing his quarry escaping.\\n\\nThe feline turns back, as Randall scrambles back to his feet, absolutely livid and quickly assessing the situation. With him in between you and Iso, blocking your exit, he was going to have to make a choice. \"C'mon, dogbreath,\" Iso taunts, which appears to be surprisingly effective, before she slips through the door and into the cold night. Out of your grasp once more."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN5",
+			"Text": [
+				"Randall turns to you, eyes ablaze. This had not gone the way he had desired, and he did not usually settle for anything less than his own desires. You assess your options - the only way out of the room is through a dangerous predator. \"You little shit,\" he snarls, spitting a little bit of blood on the floor. A gust of frigid air blowing in through the open door overpowers the gentle warmth in the room, and several candles are extinguished. The crazed hunger in his eyes speaks volumes of his temptation to eat you where you stand. Were it not for your meddling, he might have followed through - instead, Randall finds himself in the difficult position of being forced to choose between prey, and quickly at that. Ultimately, Randall chooses the object of his desire. Turning tail, the wolf sprints through the shrine door with a loud curse, kicking it shut behind him in an attempt to delay you for just a second or two."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN6",
+			"Text": [
+				"You pursue the trio, stepping out into the cold street of South Finmer after fiddling with the heavy oaken door for a brief moment. Much to your dismay, however, there is nothing more to be found here. Iso is long gone, presumably with Willow in tow. The mad canine himself is nowhere to be found either; you cannot quite tell in which direction the chase has taken place, so the only thing you can do is trust the pantheress to hold her own. At least you managed to finally reconvene, after all this time, however briefly. More importantly, you know have a meeting point. Rain splashes on the grimy stones beneath your feet, and as you consider your next move, you find yourself growing slightly envious of the oblivious citizens around you, safely sleeping the night away."
 			]
 		}
 	]

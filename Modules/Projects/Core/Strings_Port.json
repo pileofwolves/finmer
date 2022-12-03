@@ -71,6 +71,84 @@
 			"Text": [
 				"At this, the shopkeep's eyes widen. \"Missing? Missing how?\" He scratches the back of his head, before sticking his paws in his sides, chewing on his lip a little. \"Hmm, I'd heard something about a disappearance today, but I thought they were talking about someone else. Well, that is alarming.\" Pat shakes his head. \"Sorry, I don't know. But I hope she turns up soon, then.\""
 			]
+		},
+		{
+			"Key": "PORT_TEMPLE_ENTER",
+			"Text": [
+				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, the calming scent of floral incense tickles your nose. Willow, the resident healer, acknowledges your arrival with a nod, before continuing to sweep the floor."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_ENTER_FIRST",
+			"Text": [
+				"South Finmer, as it turns out, features a local shrine. Such places of worship are relatively common in the Reaches, though often serving more as a place of healing than one of prayer. As such, while the focal point is indeed a lavishly decorated altar at the back of the chamber, the space is not filled with pews as might be expected of a more traditional chapel. Rather, the shrine sees a few unoccupied beds lining one wall, and neatly spaced chairs lining the other. The scent of floral incense combined with the way the light of candles and lanterns bounces off the smooth chalky flagstones makes for a fairly serene scene overall. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_ENTER_FIRST2",
+			"Text": [
+				"As you shut the well-oiled oak door behind you to keep the heat inside, the resident healer, a brown-furred rabbit, welcomes you with a brief bow. She had been tending to a vase of flowers near the altar and proceeds to give you a radiant smile you did not know you needed. \"A new face, welcome!\" The lapine turns to you fully, dusting off her white and gray robes before folding her paws together. \"I am called Willow, humble spirit custodian. What do you seek?\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_POSTMQ03_EMPTY",
+			"Text": [
+				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, you are left in an empty room, the candles and lanterns having gone dark after going unmaintained. There is nobody around, it seems."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_REST",
+			"Text": [
+				"You spend a few moments resting at the altar. Whether through the influence of the spirits this place claims to channel, or by virtue of simply taking a moment for yourself, you feel reinvigorated."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK",
+			"Text": [
+				"Willow sets aside her broom, and folds her paws in front of her. \"Certainly. What is it that you need?\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_ADEPT",
+			"Text": [
+				"\"Yes,\" Willow responds simply. \"One who has studied the Shore sufficiently to see the threads that amber crystals cast, is called an Adept. They may wield it like magic, with all the risks and dangers such a power implies. Indeed, because of its potential for destruction, the trade and use of amber is strictly controlled. I should stress, though, that because of the mineral's rarity and the depth of study required to tame it, there are very, very few Adepts actually out there.\" She smiles then, as if revisiting an old memory. \"I know of only one, though it's been years since we last spoke, so I don't know where he is. In any case, if you wish to learn more, I do believe there is a school dedicated to the study of the Shore and formal training of Adepts, elsewhere on the Continent. They might be able to tell you more.\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_AMBER",
+			"Text": [
+				"This line of conversation catches the rabbit off guard, and she casts a wary glance your way. \"The mineral is an enigma indeed. How it can be both so priceless and sacred, yet also dark and volatile, only the spirits know. A shard of what we call amber, can cast its own threads to the Far Shore.\" The white-robed lapine scratches the side of her nose, as if in thought. \"If one but knows how to grasp those threads, it allows one to draw from the beyond without the spirits' permission. The crystals are blessed, to possess such a fantastical connection, and also accursed, to allow for such frightening violations,\" she explains. \"Yet, I will not go so far as to call all Adepts evil. I cannot deny its usefulness in enhancing one's link to the spirits and the Shore, for better or for worse.\" The priestess studies you for a moment, bringing a paw to her chin. \"Tell me, then, traveler. What prompted this question?\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_AMBER2",
+			"Text": [
+				"The priestess turns to relight a candle on the altar as you explain. She nods sagely, her face unreadable even as she faces you again - whether she had found your answer agreeable, you know not. \"I see. All I can say, is that you must be careful.\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_ISO",
+			"Text": [
+				"Willow considers your question for a moment, before gently shaking her head. \"The mayor? No, I haven't seen her,\" she reports, offering you a sad smile. \"I've heard our northern friends are having rough tidings indeed. Spirits be with them.\" A silence falls between you for a moment, until the priestess adds a suggestion: \"Consider visiting the tavern down the street. The establishment has quite a lot of through-traffic, so perhaps you might find her, or someone who has seen her, there.\""
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_SHORE",
+			"Text": [
+				"\"An astute question,\" the custodian of spirits observes. \"The Far Shore is the beyond, the place where the spirits reside. I admit, we know little of it, other than that it is the place we travel to when we depart this world. When we accept a gift from the spirits, such as by healing an injury or consulting the wisdom of our ancestors, the spirits permit us to draw from the Shore through them. And as such, it must be done respectfully, gently, and only ever with permission.\" To emphasize, Willow gestures to the smooth-hewn altar behind her, decorated with intricate patterns in the sides. Glimmering amber glyphs are carved into the polished stone surface, though they resemble a language you do not recognize. \"I hope this sates your curiosity; I can only share what I know,\" she concludes."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_SPIRITS",
+			"Text": [
+				"Willow raises her eyebrows in response to your inquiry, but her respectful demeanor never falters. Clearly, she is pleased with your expressed interest. \"I was right to assume you have traveled far, to not have heard of the Shore. But no matter, I can explain.\" She flicks her long, floppy ears once. \"The energy that binds, that ties us to the Shore, dwells all around us, you see. It is in the wind, in the trees, in the rocks below your feet. It is in us, our dear departed ancestors, and every living thing in the Reaches. We call these threads the spirits, and as we honor them with prayer, gifts and celebration, they may provide us with guidance, warmth, and a torch in the night.\" The priestess pauses to let her words sink in. Though eloquently spoken, her description does not sound rehearsed to you; rather drawing from a place of conviction."
+			]
+		},
+		{
+			"Key": "PORT_TEMPLE_TALK_WHO",
+			"Text": [
+				"She smiles, briefly turning towards the cyan-patterned tapestry on the wall as if drawing inspiration from it. \"Ah, who I am is not as important as what I do. I have devoted my being to honoring the spirits all around us. And in return, they bless us when we need it the most.\" The rabbit nods sagely. \"I can tell you have traveled far to reach my shrine. Did you come bearing gifts for the spirits? Or have you come to make a request of them?\""
+			]
 		}
 	]
 }

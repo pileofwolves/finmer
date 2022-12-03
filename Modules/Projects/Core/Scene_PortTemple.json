@@ -1,0 +1,1569 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "8d5f166c-a747-4d83-9cbc-069187723512",
+	"AssetName": "Scene_PortTemple",
+	"ScriptEnter": {
+		"!Type": "ScriptDataVisualAction",
+		"Nodes": [
+			{
+				"!Type": "CommandSetLocation",
+				"OperandMode": "Literal",
+				"OperandText": "South Finmer, Shrine"
+			},
+			{
+				"!Type": "CommandSetInventoryEnabled",
+				"OperandMode": "Literal",
+				"OperandLiteral": true
+			}
+		]
+	},
+	"IsPatch": false,
+	"Root": {
+		"Key": "Root",
+		"IsState": false,
+		"IsLink": false,
+		"Title": "Root",
+		"Highlight": false,
+		"ButtonWidth": 1.0,
+		"Children": [
+			{
+				"Key": "Empty",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "PORT_TEMPLE_POSTMQ03_EMPTY",
+							"IsRaw": false
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "MQ03_DONE",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "PORT_TEMPLE_REOPENED",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"Key": "Empty_C_Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "There's not much else to do here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandSetScene",
+									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
+									"SceneName": "Scene_PortDocks"
+								}
+							]
+						},
+						"Children": []
+					},
+					{
+						"Key": "Empty_C_Rest",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Rest",
+						"Tooltip": "Rest for a moment and record your progress.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "Empty_R_Rest",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandPlayerHealAll"
+										},
+										{
+											"!Type": "CommandSaveDialog"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_TEMPLE_REST",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"IsState": false,
+										"IsLink": true,
+										"LinkTarget": "Empty_C_Leave"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "EnterFirst",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "PORT_TEMPLE_ENTER_FIRST",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "PORT_TEMPLE_ENTER_FIRST",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "PORT_TEMPLE_ENTER_FIRST",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"Key": "EnterFirst_C_Intro2",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "EnterFirst_R_Intro2",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_TEMPLE_ENTER_FIRST2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"Key": "EnterFirst_C_Who",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Greet",
+										"Tooltip": "Exchange pleasantries.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "EnterFirst_R_Who",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_WHO",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Iso"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Spirits"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Shore"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Adept"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "Main",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "PORT_TEMPLE_ENTER",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"Key": "Main_C_FakeLeaveMQ03",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Return outside...",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ03_TEMPLE_EVENT",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ03_TAVERN_EVENT",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionInlineSnippet",
+									"Snippet": "GetIsNight()"
+								}
+							]
+						},
+						"Children": [
+							{
+								"IsState": true,
+								"IsLink": true,
+								"LinkTarget": "MQ03_Event_Intro"
+							}
+						]
+					},
+					{
+						"Key": "Main_C_Leave",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Leave",
+						"Tooltip": "Return outside.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandSetScene",
+									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
+									"SceneName": "Scene_PortDocks"
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "Any",
+							"Operand": false,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ03_TEMPLE_EVENT",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ03_TAVERN_EVENT",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionInlineSnippet",
+									"Snippet": "GetIsNight()"
+								}
+							]
+						},
+						"Children": []
+					},
+					{
+						"Key": "Main_C_Talk",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Talk",
+						"Tooltip": "Speak with the priestess.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "Talk_Root",
+								"IsState": true,
+								"IsLink": false,
+								"Children": [
+									{
+										"Key": "Talk_C_Back",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "(Back)",
+										"Highlight": false,
+										"ButtonWidth": 0.75,
+										"Children": [
+											{
+												"IsState": true,
+												"IsLink": false,
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Main_C_FakeLeaveMQ03"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Main_C_Leave"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Main_C_Talk"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Main_C_Rest"
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Talk_C_Iso",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Iso",
+										"Tooltip": "Ask Willow if she has seen Iso around.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_ISO",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ03_TEMPLE_EVENT",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"Key": "Talk_R_Iso",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_ISO",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_ISO",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "CommandInlineSnippet",
+															"Snippet": "MQ03_IncrementGossip()"
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Back"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Spirits"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Shore"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Adept"
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Talk_C_Spirits",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Spirits",
+										"Tooltip": "Ask her to tell you more about these spirits she talked about.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_SPIRITS",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"Key": "Talk_R_Spirits",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_SPIRITS",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_SPIRITS",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Back"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Iso"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Shore"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Adept"
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Talk_C_Shore",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "The Shore",
+										"Tooltip": "Ask what she knows of this mystical 'shore'.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "Any",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_SPIRITS",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "ABBEY_EXPLORE_WORKSHOP_S1",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_SHORE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"Key": "Talk_R_Shore",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_SHORE",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_SHORE",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Back"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Iso"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Spirits"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Adept"
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Talk_C_Amber",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Amber",
+										"Tooltip": "Ask about the amber crystals you've heard about.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "Any",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ03_TAVERN_EVENT_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "TOWN_ALCH_STOLEN",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_DEAD",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_SHORE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"Key": "Talk_R_Amber",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_AMBER",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_AMBER",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Possession",
+														"Tooltip": "Say that you found some on your journey.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"Key": "Talk_R_Amber2",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "PORT_TEMPLE_TALK_AMBER2",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "Talk_C_Back"
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "Talk_C_Iso"
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "Talk_C_Spirits"
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "Talk_C_Shore"
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "Talk_C_Adept"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Rumors",
+														"Tooltip": "Say that you've overheard rumors about it.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Talk_R_Amber2"
+															}
+														]
+													},
+													{
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Desire",
+														"Tooltip": "Say that you seek to discover it for yourself.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"IsState": true,
+																"IsLink": true,
+																"LinkTarget": "Talk_R_Amber2"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"Key": "Talk_C_Adept",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Adepts",
+										"Tooltip": "Ask what Adepts are, then - are they trained users?",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "Any",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_SHORE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"Key": "Talk_R_Adept",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_ADEPT",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_ADEPT",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Back"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Iso"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Spirits"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Shore"
+													},
+													{
+														"IsState": false,
+														"IsLink": true,
+														"LinkTarget": "Talk_C_Amber"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"Key": "Main_C_Rest",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Rest",
+						"Tooltip": "Rest for a moment and record your progress.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandPlayerHealAll"
+										},
+										{
+											"!Type": "CommandSaveDialog"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_TEMPLE_REST",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"IsState": false,
+										"IsLink": true,
+										"LinkTarget": "Main_C_FakeLeaveMQ03"
+									},
+									{
+										"IsState": false,
+										"IsLink": true,
+										"LinkTarget": "Main_C_Leave"
+									},
+									{
+										"IsState": false,
+										"IsLink": true,
+										"LinkTarget": "Main_C_Talk"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "MQ03_Event_Intro",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "MQ03_TEMPLE_EVENT",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ03_TEMPLE_INTRO1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandComment",
+							"Comment": "Replace Iso's ring with the \"revealed\" one"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionInlineSnippet",
+									"Snippet": "Player.EquippedAccessory1 ~= nil and Player.EquippedAccessory1.AssetName == \"AC_IsoRing\""
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandPlayerSetEquipment",
+									"EquipSlot": "Accessory1",
+									"ItemGuid": "c2238bbd-9af9-4167-9024-2e631fec5f83"
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ03_TEMPLE_RING_WORN",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionInlineSnippet",
+											"Snippet": "Player.EquippedAccessory2 ~= nil and Player.EquippedAccessory2.AssetName == \"AC_IsoRing\""
+										}
+									],
+									"HasElseBranch": true,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandPlayerSetEquipment",
+											"EquipSlot": "Accessory2",
+											"ItemGuid": "c2238bbd-9af9-4167-9024-2e631fec5f83"
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "MQ03_TEMPLE_RING_WORN",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"ElseSubgroup": [
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "9424541d-3712-4dc7-8c30-5934d1581317",
+											"Add": false
+										},
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "c2238bbd-9af9-4167-9024-2e631fec5f83",
+											"Add": true,
+											"Quiet": true
+										}
+									]
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"Key": "MQ03_C_Intro2",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "MQ03_R_Intro2Wits",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ03_TEMPLE_INTRO2",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionPlayerStat",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 6.0,
+											"Stat": "Wits"
+										}
+									]
+								},
+								"Children": [
+									{
+										"Key": "MQ03_C_Intro3",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Explain",
+										"Tooltip": "Something went wrong...",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "MQ03_R_Intro3",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ03_TEMPLE_INTRO3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"Key": "MQ03_C_Intro4",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"Key": "MQ03_R_Intro4Worn",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_INTRO4_WORN",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataVisualCondition",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarFlag",
+																			"VariableName": "MQ03_TEMPLE_RING_WORN",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "What",
+																		"Tooltip": "Ask her if she knows what this ring is.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"Key": "MQ03_R_Intro5",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_INTRO5",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"Key": "MQ03_C_Intro6",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"Key": "MQ03_R_Intro6",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ03_TEMPLE_INTRO6",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Rux",
+																										"Tooltip": "Ask how she knows an Adept.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "MQ03_Event_Showdown"
+																											}
+																										]
+																									},
+																									{
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Randall",
+																										"Tooltip": "Ask why Randall is chasing after her.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "MQ03_Event_Showdown"
+																											}
+																										]
+																									},
+																									{
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Plan",
+																										"Tooltip": "Ask her what this 'plan' was that supposedly failed.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "MQ03_Event_Showdown"
+																											}
+																										]
+																									},
+																									{
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Panic",
+																										"Tooltip": "Ask her why she is in such a panicked hurry.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "MQ03_Event_Showdown"
+																											}
+																										]
+																									},
+																									{
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Ring",
+																										"Tooltip": "Ask her why you, not Iso, possess the ring.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"IsState": true,
+																												"IsLink": true,
+																												"LinkTarget": "MQ03_Event_Showdown"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "How",
+																		"Tooltip": "Ask her how she knows about this ring.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "MQ03_R_Intro5"
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"Key": "MQ03_R_Intro4Inv",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_INTRO4",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Confirm",
+																		"Tooltip": "Say that you do still have the strange ring you woke up with.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "MQ03_R_Intro5"
+																			}
+																		]
+																	},
+																	{
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "How",
+																		"Tooltip": "Ask her how she knows you woke up with a strange ring.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"IsState": true,
+																				"IsLink": true,
+																				"LinkTarget": "MQ03_R_Intro5"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"Key": "MQ03_R_Intro2Dumb",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ03_TEMPLE_INTRO2_DUMB",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"IsState": false,
+										"IsLink": true,
+										"LinkTarget": "MQ03_C_Intro3"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"Key": "MQ03_Event_Showdown",
+				"IsState": true,
+				"IsLink": false,
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSaveCheckpoint"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ03_TEMPLE_SHOWDOWN1",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"Key": "MQ03_C_Showdown2",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"Key": "MQ03_R_Showdown2",
+								"IsState": true,
+								"IsLink": false,
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ03_TEMPLE_SHOWDOWN2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"Key": "MQ03_C_Showdown3",
+										"IsState": false,
+										"IsLink": false,
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"Key": "MQ03_R_Showdown3",
+												"IsState": true,
+												"IsLink": false,
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ03_TEMPLE_SHOWDOWN3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"Key": "MQ03_C_Showdown4B",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Punch",
+														"Tooltip": "[Strength & Agility] Give Randall a good whack while he's staggered.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"Key": "MQ03_R_Showdown4B",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN4B",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN4C",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"IsState": false,
+																		"IsLink": true,
+																		"LinkTarget": "MQ03_C_Showdown5"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"Key": "MQ03_C_Showdown4A",
+														"IsState": false,
+														"IsLink": false,
+														"Title": "Grapple",
+														"Tooltip": "[Body & Wits] Try to restrain Randall to buy Iso some time.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"Key": "MQ03_R_Showdown4A",
+																"IsState": true,
+																"IsLink": false,
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN4A",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN4C",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"Key": "MQ03_C_Showdown5",
+																		"IsState": false,
+																		"IsLink": false,
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"Key": "MQ03_R_Showdown5",
+																				"IsState": true,
+																				"IsLink": false,
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN5",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"Key": "MQ03_C_Showdown6",
+																						"IsState": false,
+																						"IsLink": false,
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"Key": "MQ03_R_Showdown6",
+																								"IsState": true,
+																								"IsLink": false,
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ03_TEMPLE_SHOWDOWN6",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"Key": "MQ03_C_Finish",
+																										"IsState": false,
+																										"IsLink": false,
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandComment",
+																													"Comment": "Complete MQ03"
+																												},
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "MQ03_DONE",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												},
+																												{
+																													"!Type": "CommandJournalClose",
+																													"JournalGuid": "fb14b2b1-f0cf-474d-a311-720266f557d3"
+																												},
+																												{
+																													"!Type": "CommandJournalUpdate",
+																													"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+																													"Stage": 10
+																												},
+																												{
+																													"!Type": "CommandComment",
+																													"Comment": "Return player to town"
+																												},
+																												{
+																													"!Type": "CommandSetScene",
+																													"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
+																													"SceneName": "Scene_PortDocks"
+																												}
+																											]
+																										},
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

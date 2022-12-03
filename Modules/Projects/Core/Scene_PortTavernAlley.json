@@ -21,7 +21,7 @@
 				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\nMQ03_SetupAssailantContext()\r\nLog(\"MQ03_TAVERN_EVENT6\")"
+					"Script": "MQ03_SetupAssailantContext()\r\nLog(\"MQ03_TAVERN_EVENT6\")"
 				},
 				"Children": [
 					{

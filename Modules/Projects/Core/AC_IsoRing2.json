@@ -1,0 +1,17 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "c2238bbd-9af9-4167-9024-2e631fec5f83",
+	"AssetName": "AC_IsoRing2",
+	"ObjectName": "Rux's Navigator",
+	"FlavorText": "An engraved brass ring crafted by the Adept Rux, granted to Mayor Iso as a token of friendship, now passed to you as a token of trust. Intricate amber glyphs are burned into the metal, awaiting activation.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "BuffCustomTooltipText",
+			"TooltipText": "When in the woods near North Finmer, reveals the path to the Adept's home."
+		}
+	],
+	"PurchaseValue": 0,
+	"IsQuestItem": true
+}

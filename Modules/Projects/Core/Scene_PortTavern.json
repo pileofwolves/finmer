@@ -53,7 +53,7 @@
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
-									"Script": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") >= 3\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")"
+									"Script": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") > 0\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")"
 								},
 								"Children": [
 									{

@@ -23,7 +23,28 @@
 					"!Type": "ScriptDataInline",
 					"Script": "AddLink(ECompass.East, \"Scene_PortCentral\")"
 				},
-				"Children": []
+				"Children": [
+					{
+						"Key": "C_Temple",
+						"IsState": false,
+						"IsLink": false,
+						"Title": "Shrine",
+						"Tooltip": "Visit the town's local shrine.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandSetScene",
+									"SceneGuid": "8d5f166c-a747-4d83-9cbc-069187723512",
+									"SceneName": "Scene_PortTemple"
+								}
+							]
+						},
+						"Children": []
+					}
+				]
 			}
 		]
 	}

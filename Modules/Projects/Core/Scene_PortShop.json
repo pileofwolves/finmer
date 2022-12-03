@@ -91,7 +91,7 @@
 								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Storage.SetFlag(\"PORT_SHOP_ASK_ISO\", true)\r\nStorage.ModifyNumber(\"MQ03_ISO_GOSSIP\", 1)\r\nLog(\"PORT_SHOP_TALK_ISO\")"
+									"Script": "Storage.SetFlag(\"PORT_SHOP_ASK_ISO\", true)\r\nLog(\"PORT_SHOP_TALK_ISO\")\r\nMQ03_IncrementGossip()"
 								},
 								"Children": [
 									{

@@ -4,168 +4,307 @@
 	"AssetName": "TQ01_Scene_Hideout",
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "TQ01_Hideout",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "Log(\"TQ01_HIDEOUT\")"
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "TQ01_HIDEOUT",
+							"IsRaw": false
+						}
+					]
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "TQ01_Approach",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Approach",
 						"Tooltip": "Approach the prone individual.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "TQ01_Approach_Log",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
-									"!Type": "ScriptDataInline",
-									"Script": "Log(\"TQ01_APPROACH\")"
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "TQ01_APPROACH",
+											"IsRaw": false
+										}
+									]
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "TQ01_Investigate",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Investigate",
 										"Tooltip": "Investigate the body, see what happened.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "TQ01_InvestigatePass",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
-													"!Type": "ScriptDataInline",
-													"Script": "Log(\"TQ01_INVESTIGATEWIT\")"
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "TQ01_INVESTIGATEWIT",
+															"IsRaw": false
+														}
+													]
 												},
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return Player.Wits >= 5"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionPlayerStat",
+															"Operator": "GreaterOrEqual",
+															"OperandMode": "Literal",
+															"OperandLiteral": 5.0,
+															"Stat": "Wits"
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "Link",
 														"Key": "AutoLink",
-														"IsState": false,
-														"IsLink": true,
 														"LinkTarget": "TQ01_Search"
 													}
 												]
 											},
 											{
+												"NodeType": "State",
 												"Key": "TQ01_InvestigateFail",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
-													"!Type": "ScriptDataInline",
-													"Script": "Log(\"TQ01_INVESTIGATELOWWIT\")"
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "TQ01_INVESTIGATELOWWIT",
+															"IsRaw": false
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "TQ01_Search",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Search",
 														"Tooltip": "Search Theo's corpse for the pendant.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "TQ01_Pendant_Get",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "Log(\"TQ01_SEARCH\")\r\nPlayer:ModifyMoney(5)\r\nPlayer:GiveItem(\"TQ01_I_Pendant\")"
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "TQ01_SEARCH",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandPlayerSetMoney",
+																			"ValueOperation": "Add",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": 5
+																		},
+																		{
+																			"!Type": "CommandPlayerSetItem",
+																			"ItemGuid": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
+																			"Add": true,
+																			"Quiet": false
+																		}
+																	]
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "TQ01_Fight_Cont",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Tooltip": "Time to return to Tobias.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "TQ01_Fight",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"TQ01_FIGHT_LEAD\")"
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "TQ01_FIGHT_LEAD",
+																							"IsRaw": false
+																						}
+																					]
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "TQ01_Fight_Start",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Uh-oh!",
 																						"Tooltip": "And you thought this would be a simple job...",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"ScriptAction": {
-																							"!Type": "ScriptDataInline",
-																							"Script": "local wolf = Creature(\"TQ01_CR_Wolf\")\r\nfight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(wolf)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        Storage.SetFlag(\"TQ01_WOLF_NOM\", true)\r\n    end\r\nend)\r\nfight:Begin()"
+																							"!Type": "ScriptDataVisualAction",
+																							"Nodes": [
+																								{
+																									"!Type": "CommandCombatBegin",
+																									"IncludePlayer": true,
+																									"IncludeAllies": true,
+																									"Participants": [
+																										{
+																											"Variable": "wolf",
+																											"Creature": "257235b2-2595-47f1-afce-c19557422492"
+																										}
+																									],
+																									"HasCallbackCombatStart": false,
+																									"HasCallbackRoundEnd": false,
+																									"HasCallbackPlayerKilled": false,
+																									"HasCallbackCreatureKilled": false,
+																									"HasCallbackCreatureVored": true,
+																									"CallbackCreatureVored": [
+																										{
+																											"!Type": "CommandComment",
+																											"Comment": "If the player eats the NPC, show alternate text post-combat"
+																										},
+																										{
+																											"!Type": "CommandIf",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionCombatParSwallowed",
+																													"ParticipantName": "wolf",
+																													"PredatorName": "player"
+																												}
+																											],
+																											"HasElseBranch": false,
+																											"MainSubgroup": [
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "TQ01_WOLF_NOM",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												}
+																											]
+																										}
+																									],
+																									"HasCallbackCreatureReleased": false
+																								}
+																							]
 																						},
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "TQ01_Fight_Nom_Win",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"TQ01_FIGHT_FINISH_NOM\")\r\nFoodComa()\r\nLog(\"TQ01_FIGHT_FINISH_NOM2\")"
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "TQ01_FIGHT_FINISH_NOM",
+																											"IsRaw": false
+																										},
+																										{
+																											"!Type": "CommandInlineSnippet",
+																											"Snippet": "FoodComa()"
+																										},
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "TQ01_FIGHT_FINISH_NOM2",
+																											"IsRaw": false
+																										}
+																									]
 																								},
 																								"ScriptAppear": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "return Storage.GetFlag(\"TQ01_WOLF_NOM\")"
+																									"!Type": "ScriptDataVisualCondition",
+																									"Mode": "All",
+																									"Operand": true,
+																									"Tests": [
+																										{
+																											"!Type": "ConditionVarFlag",
+																											"VariableName": "TQ01_WOLF_NOM",
+																											"OperandMode": "Literal",
+																											"OperandLiteral": true
+																										}
+																									]
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Link",
 																										"Key": "AutoLink",
-																										"IsState": false,
-																										"IsLink": true,
 																										"LinkTarget": "TQ01_To_Road"
 																									}
 																								]
 																							},
 																							{
+																								"NodeType": "State",
 																								"Key": "TQ01_Fight_Win",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"TQ01_FIGHT_FINISH\")"
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "TQ01_FIGHT_FINISH",
+																											"IsRaw": false
+																										}
+																									]
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "TQ01_To_Road",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"ScriptAction": {
-																											"!Type": "ScriptDataInline",
-																											"Script": "Storage.SetNumber(\"TQ01\", 3)\r\nJournal.Update(\"TQ01\", 2)\r\nSetScene(\"Scene_RoadNorth\")"
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandComment",
+																													"Comment": "Advance the quest state so it can be turned in"
+																												},
+																												{
+																													"!Type": "CommandVarSetNumber",
+																													"VariableName": "TQ01",
+																													"ValueOperation": "Set",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": 3.0
+																												},
+																												{
+																													"!Type": "CommandJournalUpdate",
+																													"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+																													"Stage": 2
+																												},
+																												{
+																													"!Type": "CommandComment",
+																													"Comment": "Return to the crossroads"
+																												},
+																												{
+																													"!Type": "CommandSetScene",
+																													"SceneGuid": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
+																													"SceneName": "Scene_RoadNorth"
+																												}
+																											]
 																										},
 																										"Children": []
 																									}

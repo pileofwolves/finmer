@@ -18,7 +18,7 @@ namespace Finmer.Core
         /// <summary>
         /// Describes the condition that must be met for a string mapping to be activated.
         /// </summary>
-        public enum ERule
+        public enum ERule : byte
         {
             Always,
             NpcToPlayer,

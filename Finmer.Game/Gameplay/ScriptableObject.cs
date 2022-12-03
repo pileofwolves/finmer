@@ -348,7 +348,7 @@ namespace Finmer.Gameplay
 
                 // Find the correct unmarshaller. Inverse of LuaMetaGet().
                 if (type.IsEnum)
-                    new_value = (int)LuaApi.luaL_checknumber(state, 3);
+                    new_value = Enum.ToObject(type, (int)LuaApi.luaL_checknumber(state, 3));
                 else if (type.IsSubclassOf(typeof(ScriptableObject)))
                     new_value = FromLua(state, 3);
                 else if (s_UnmarshalFunctions.TryGetValue(type, out Func<IntPtr, int, object> unmarshaller))

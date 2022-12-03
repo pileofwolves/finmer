@@ -10,11 +10,11 @@
 		},
 		{
 			"Key": 1,
-			"Text": "Tobias instructed me to look for Theo to the west side of the town. I should see about heading that way when I'm able."
+			"Text": "Tobias instructed you to look for Theo to the west side of the town, along the crossroads out of town."
 		},
 		{
 			"Key": 2,
-			"Text": "After fighting off a wolf, you now have the Pendant that Tobias was looking for. You should return to him for the reward."
+			"Text": "After fighting off a wolf, you now have the Pendant that Tobias was looking for. Return to him for the reward."
 		}
 	]
 }

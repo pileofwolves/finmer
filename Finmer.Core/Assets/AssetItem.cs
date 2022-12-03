@@ -23,7 +23,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Describes the in-game functionality of an item.
         /// </summary>
-        public enum EItemType
+        public enum EItemType : byte
         {
             Generic,
             Equipable,
@@ -33,7 +33,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Describes the type of equipment slot that fits an Equipable item.
         /// </summary>
-        public enum EEquipSlot
+        public enum EEquipSlot : byte
         {
             Weapon,
             Armor,

@@ -8,6 +8,7 @@
 
 using System;
 using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Finmer.Core.Serialization
 {
@@ -47,9 +48,23 @@ namespace Finmer.Core.Serialization
 
         public TEnum ReadEnumProperty<TEnum>(string key) where TEnum : struct, Enum
         {
+            // Find the size in bytes of the underlying type
+            var underlying_type = Enum.GetUnderlyingType(typeof(TEnum));
+            int underlying_size = Marshal.SizeOf(underlying_type);
+
+            // Deserialize the same underlying type
             // Key and enum type are ignored, since the file stores only the raw integer value.
+            int value;
+            switch (underlying_size)
+            {
+                case 1:     value = m_Stream.ReadByte();            break;
+                case 2:     value = m_Stream.ReadUInt16();          break;
+                case 4:     value = (int)m_Stream.ReadUInt32();     break;
+                default:    throw new NotSupportedException();
+            }
+
+            // Cast the deserialized integer value to the enum type.
             // There doesn't seem to be an easy way to cast an int to a generic enum, so we kinda have to force the compiler's paw here.
-            var value = m_Stream.ReadInt32();
             return (TEnum)Enum.ToObject(typeof(TEnum), value);
         }
 

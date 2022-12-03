@@ -19,7 +19,10 @@ namespace Finmer.Core.Assets
     public class AssetCreature : AssetBase
     {
 
-        public enum ESize
+        /// <summary>
+        /// Describes the relative size factor of a creature.
+        /// </summary>
+        public enum ESize : byte
         {
             Tiny,
             Small,

@@ -7,88 +7,121 @@
 	"InjectTargetScene": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
 	"InjectTargetNode": "InnTalkRoot",
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": true,
-		"IsLink": false,
 		"Children": [
 			{
+				"NodeType": "Choice",
 				"Key": "TQ01_Tobias",
-				"IsState": false,
-				"IsLink": false,
 				"Title": "Dingo",
 				"Tooltip": "The dingo on the bench.",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 1"
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 1.0
+						}
+					]
 				},
 				"Children": [
 					{
+						"NodeType": "State",
 						"Key": "TQ01_Tobias_Meet",
-						"IsState": true,
-						"IsLink": false,
 						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "Log(\"TQ01_MEET\")"
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "TQ01_MEET",
+									"IsRaw": false
+								}
+							]
 						},
 						"Children": [
 							{
+								"NodeType": "Choice",
 								"Key": "TQ01_Continue",
-								"IsState": false,
-								"IsLink": false,
 								"Title": "Continue",
 								"Tooltip": "Shake paws and introduce yourself.",
 								"Highlight": false,
 								"ButtonWidth": 1.0,
 								"Children": [
 									{
+										"NodeType": "State",
 										"Key": "TQ01_Tobias_Explain",
-										"IsState": true,
-										"IsLink": false,
 										"ScriptAction": {
-											"!Type": "ScriptDataInline",
-											"Script": "Log(\"TQ01_EXPLAIN\")"
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "TQ01_EXPLAIN",
+													"IsRaw": false
+												}
+											]
 										},
 										"Children": [
 											{
+												"NodeType": "Choice",
 												"Key": "TQ01_Choice_Friend",
-												"IsState": false,
-												"IsLink": false,
 												"Title": "Friend",
 												"Tooltip": "Ask about this \"friend\".",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_FRIEND",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "State",
 														"Key": "TQ01_Expo_Friend",
-														"IsState": true,
-														"IsLink": false,
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_FRIEND\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_FRIEND\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_FRIEND",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_FRIEND",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Reward"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Location"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_End"
 															}
 														]
@@ -96,43 +129,59 @@
 												]
 											},
 											{
+												"NodeType": "Choice",
 												"Key": "TQ01_Choice_Location",
-												"IsState": false,
-												"IsLink": false,
 												"Title": "Location",
 												"Tooltip": "Where you might be able to find the thief.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\")\r\n"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_LOCATION",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "State",
 														"Key": "TQ01_Expo_Location",
-														"IsState": true,
-														"IsLink": false,
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_LOCATION\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_LOCATION\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_LOCATION",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_LOCATION",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Reward"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Friend"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_End"
 															}
 														]
@@ -140,43 +189,59 @@
 												]
 											},
 											{
+												"NodeType": "Choice",
 												"Key": "TQ01_Choice_Reward",
-												"IsState": false,
-												"IsLink": false,
 												"Title": "Reward",
 												"Tooltip": "What you can expect for helping out.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_REWARD",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "State",
 														"Key": "TQ01_Expo_Reward",
-														"IsState": true,
-														"IsLink": false,
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_INFO_REWARD\")\r\nStorage.SetFlag(\"TQ01_DISCUSSED_REWARD\", true)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_INFO_REWARD",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TQ01_DISCUSSED_REWARD",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Location"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_Friend"
 															},
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": false,
-																"IsLink": true,
 																"LinkTarget": "TQ01_Choice_End"
 															}
 														]
@@ -184,39 +249,78 @@
 												]
 											},
 											{
+												"NodeType": "Choice",
 												"Key": "TQ01_Choice_End",
-												"IsState": false,
-												"IsLink": false,
 												"Title": "Accept",
 												"Tooltip": "That should be everything for now.",
 												"Highlight": false,
 												"ButtonWidth": 1.0,
 												"ScriptAppear": {
-													"!Type": "ScriptDataInline",
-													"Script": "return\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_FRIEND\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_LOCATION\") and\r\n    Storage.GetFlag(\"TQ01_DISCUSSED_REWARD\")"
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_FRIEND",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_LOCATION",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "TQ01_DISCUSSED_REWARD",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
 												},
 												"Children": [
 													{
+														"NodeType": "State",
 														"Key": "TQ01_Wrapup",
-														"IsState": true,
-														"IsLink": false,
 														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"TQ01_WRAPUP\")\r\nJournal.Update(\"TQ01\", 1)\r\nStorage.SetNumber(\"TQ01\", 2)"
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TQ01_WRAPUP",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandComment",
+																	"Comment": "Advance the quest's state"
+																},
+																{
+																	"!Type": "CommandJournalUpdate",
+																	"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+																	"Stage": 1
+																},
+																{
+																	"!Type": "CommandVarSetNumber",
+																	"VariableName": "TQ01",
+																	"ValueOperation": "Set",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": 2.0
+																}
+															]
 														},
 														"Children": [
 															{
+																"NodeType": "Choice",
 																"Key": "TQ01_Tobias1_Goodbye",
-																"IsState": false,
-																"IsLink": false,
 																"Title": "Continue",
 																"Tooltip": "Tell him you'll get the job done.",
 																"Highlight": false,
 																"ButtonWidth": 1.0,
 																"Children": [
 																	{
-																		"IsState": true,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Main"
 																	}
 																]
@@ -234,39 +338,94 @@
 				]
 			},
 			{
+				"NodeType": "Choice",
 				"Key": "TQ01_Tobias_Done",
-				"IsState": false,
-				"IsLink": false,
 				"Title": "Tobias",
 				"Tooltip": "Report your success to Tobias.",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 3"
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 3.0
+						}
+					]
 				},
 				"Children": [
 					{
+						"NodeType": "State",
 						"Key": "TQ01_Toby_Finish",
-						"IsState": true,
-						"IsLink": false,
 						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "-- Print message\r\nLog(\"TQ01_COMPLETION\")\r\n\r\n-- Prevent player from completing the quest again\r\nStorage.SetNumber(\"TQ01\", 4)\r\n\r\n-- Remove the journal entry and the quest item\r\nJournal.Close(\"TQ01\")\r\nPlayer:TakeItem(\"TQ01_I_Pendant\")\r\n\r\n-- Grant rewards\r\nPlayer:ModifyMoney(55)\r\nPlayer:AwardXP(50)"
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "Print final message"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "TQ01_COMPLETION",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Prevent player from completing the quest again"
+								},
+								{
+									"!Type": "CommandVarSetNumber",
+									"VariableName": "TQ01",
+									"ValueOperation": "Set",
+									"OperandMode": "Literal",
+									"OperandLiteral": 4.0
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Remove the journal entry and the quest item"
+								},
+								{
+									"!Type": "CommandJournalClose",
+									"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c"
+								},
+								{
+									"!Type": "CommandPlayerSetItem",
+									"ItemGuid": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
+									"Add": false
+								},
+								{
+									"!Type": "CommandComment",
+									"Comment": "Grant rewards"
+								},
+								{
+									"!Type": "CommandPlayerSetMoney",
+									"ValueOperation": "Add",
+									"OperandMode": "Literal",
+									"OperandLiteral": 55
+								},
+								{
+									"!Type": "CommandPlayerAddXP",
+									"OperandMode": "Literal",
+									"OperandLiteral": 50
+								}
+							]
 						},
 						"Children": [
 							{
+								"NodeType": "Choice",
 								"Key": "TQ01_Finale",
-								"IsState": false,
-								"IsLink": false,
 								"Title": "Continue",
 								"Tooltip": "And that's that!",
 								"Highlight": false,
 								"ButtonWidth": 1.0,
 								"Children": [
 									{
-										"IsState": true,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Main"
 									}
 								]

@@ -152,20 +152,24 @@ end"
         {
             // Basic validation
             if (node.Key.Length > 32)
-                throw new SceneCompilerException("A node has an invalid key (empty or too long). This likely indicates that the module file is corrupt.");
-
+                throw new SceneCompilerException($"Node key '{node.Key}' is too long. The limit is 32 characters.");
             if (state.NodeNames.Contains(node.Key))
                 throw new SceneCompilerException($"Node key '{node.Key}' is used more than once.");
 
-            if (node.IsLink && node.Children.Count > 0)
-                throw new SceneCompilerException($"Node '{node.Key}' is a link, but also contains children. This likely indicates that the module file is corrupt.");
+            // Sanity checks that indicate deserialization errors
+            Debug.Assert(node.IsFullNode() || node.Children.Count == 0,
+                $"Node '{node.Key}' is a link, but also contains child nodes. This indicates a deserialization bug.");
 
             // Enqueue all children
             foreach (Node child in node.Children)
             {
                 // States and choices must alternate
-                if (node.IsState == child.IsState)
-                    throw new SceneCompilerException($"Node '{node.Key}' contains child '{child.Key}' of same node type as parent. Module file is likely corrupted. (IsState = {node.IsState})");
+                if (node.NodeType == child.NodeType)
+                    throw new SceneCompilerException($"Node '{node.Key}' contains child '{child.Key}' of same node type as parent ({node.NodeType}). Module file is likely corrupted.");
+
+                // Nested nodes can never be the scene root node
+                if (child.NodeType == AssetScene.ENodeType.Root)
+                    throw new SceneCompilerException($"Node '{node.Key}' is a Root node, but nested nodes cannot be Root nodes. Module file is likely corrupted.");
 
                 // If the node key is unspecified, assign a default value instead.
                 // This must be done before code is emitted for the parent node because the parent may refer to the keys of child nodes.
@@ -177,8 +181,10 @@ end"
             }
 
             // Generate an AppearFn for all concrete nodes that have one specified
-            if (node.ScriptAppear != null && node.ScriptAppear.HasContent() && !node.IsLink)
+            if (node.ScriptAppear != null && node.ScriptAppear.HasContent())
             {
+                Debug.Assert(node.NodeType != AssetScene.ENodeType.Link, "Node links cannot have appears-when functions. This indicates a deserialization bug.");
+
                 var script_text = node.ScriptAppear.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/AppearsWhen");
                 state.TableAppearFns.Append(node.Key);
@@ -187,15 +193,23 @@ end"
                 state.TableAppearFns.AppendLine("end,");
             }
 
-            // Keep the node name in the hashset so we can check for uniqueness
-            if (!node.IsLink)
+            // Track the node name so we can verify its uniqueness
+            if (node.IsFullNode())
                 state.NodeNames.Add(node.Key);
 
-            // Generate code
-            if (node.IsState)
-                CompileStateNode(state, node);
-            else
-                CompileChoiceNode(state, node);
+            // Generate code for the downstream node.
+            // Note that code generation for node links and compass links are handled by their parent nodes.
+            switch (node.NodeType)
+            {
+                case AssetScene.ENodeType.State:
+                    CompileStateNode(state, node);
+                    break;
+
+                case AssetScene.ENodeType.Root:
+                case AssetScene.ENodeType.Choice:
+                    CompileChoiceNode(state, node);
+                    break;
+            }
         }
 
         /// <summary>
@@ -205,17 +219,13 @@ end"
         /// <param name="node">The node to generate code for.</param>
         private static void CompileStateNode(CompilerState state, Node node)
         {
-            Debug.Assert(node.IsState);
-
-            // Links are resolved by their parent, no need to add new code
-            if (node.IsLink)
-                return;
+            Debug.Assert(node.NodeType == AssetScene.ENodeType.State);
 
             state.TableStates.AppendLine($"{node.Key} = {state.NextStateID++},");
             state.TableStateFns.AppendLine($"_StateFns[_States.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
-            if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
+            if (node.ScriptAction != null && node.ScriptAction.HasContent())
             {
                 var script_text = node.ScriptAction.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
@@ -225,28 +235,73 @@ end"
             // Emit AddButton calls (wrapped in CanAppear tests) for all child Choices of this State
             foreach (Node child in node.Children)
             {
-                Debug.Assert(!child.IsState);
+                Node resolved_child = child;
 
-                // Follow Links to their respective targets
-                Node link_target = child;
-                if (child.IsLink)
+                // Follow links to their respective targets
+                if (child.NodeType == AssetScene.ENodeType.Link)
                 {
                     // Dereference the link target node
                     string link_target_key = child.LinkTarget;
-                    link_target = FindNodeByKey(state, link_target_key);
+                    resolved_child = FindNodeByKey(state, link_target_key);
 
-                    if (link_target == null)
+                    // Validate the link
+                    if (resolved_child == null)
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but no such node exists");
-
-                    if (link_target.IsState)
-                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' but the link target type does not match (You cannot link to a state from another state.)");
+                    if (resolved_child.NodeType == AssetScene.ENodeType.State)
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is a state, but parent '{node.Parent.Key}' is also a state; this is not supported");
+                    if (resolved_child.NodeType == AssetScene.ENodeType.Link)
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is also a link. Recursive link resolving is not supported.");
                 }
 
-                // Emit a call to the 'Appears When' test, then the AddButton call if it passes.
-                string formatted_button_width = String.Format(CultureInfo.InvariantCulture, "{0:F3}", link_target.ButtonWidth);
-                state.TableStateFns.Append($"if _CanAppear(\"{link_target.Key}\") then ");
-                state.TableStateFns.Append($"AddButton(_Choices.{link_target.Key}, \"{CoreUtility.EscapeLuaString(link_target.Title)}\", \"{CoreUtility.EscapeLuaString(link_target.Tooltip)}\", {(link_target.Highlight ? "true" : "false")}, {formatted_button_width})");
-                state.TableStateFns.AppendLine(" end");
+                // Generate code for the resolved child node
+                switch (resolved_child.NodeType)
+                {
+                    case AssetScene.ENodeType.Choice:
+                        // Emit a call to the 'Appears When' test, then the AddButton call if it passes.
+                        string formatted_button_width = String.Format(CultureInfo.InvariantCulture, "{0:F3}", resolved_child.ButtonWidth);
+                        state.TableStateFns.Append($"if _CanAppear(\"{resolved_child.Key}\") then ");
+                        state.TableStateFns.Append($"AddButton(_Choices.{resolved_child.Key}, \"{CoreUtility.EscapeLuaString(resolved_child.Title)}\", \"{CoreUtility.EscapeLuaString(resolved_child.Tooltip)}\", {(resolved_child.Highlight ? "true" : "false")}, {formatted_button_width})");
+                        state.TableStateFns.AppendLine(" end");
+
+                        break;
+
+                    case AssetScene.ENodeType.Compass:
+                        // Emit an 'Appears When' test, followed by an AddLink call
+                        state.TableStateFns.Append($"if _CanAppear(\"{resolved_child.Key}\") then ");
+                        state.TableStateFns.Append($"AddLink(ECompass.{resolved_child.CompassLinkDirection}, ");
+
+                        // Emit the compass link target
+                        if (resolved_child.ScriptAction != null && resolved_child.ScriptAction.HasContent())
+                        {
+                            // If the compass link has a script, inject that script code here
+                            var script_text = resolved_child.ScriptAction.GetScriptText(state.Content);
+                            state.Compiler?.Compile(script_text, $"{resolved_child.Key}/ActionsTaken");
+                            state.TableStateFns.AppendLine("function()");
+                            state.TableStateFns.AppendLine(script_text);
+                            state.TableStateFns.AppendLine("end");
+                        }
+                        else
+                        {
+                            // Compass must specify either a target scene or a script
+                            if (resolved_child.CompassLinkScene == Guid.Empty)
+                                throw new SceneCompilerException($"Compass node '{resolved_child.Key}' contains neither a target scene nor an Actions Taken script; one of these is required");
+
+                            // Otherwise, the link should target a scene asset directly
+                            var resolved_scene = state.Content.GetAssetByID<AssetScene>(resolved_child.CompassLinkScene);
+                            if (resolved_scene == null)
+                                throw new SceneCompilerException($"Compass node '{resolved_child.Key}' has target scene '{resolved_child.CompassLinkScene}', but no such Scene exists");
+
+                            state.TableStateFns.Append($"\"{CoreUtility.EscapeLuaString(resolved_scene.Name)}\"");
+                        }
+
+                        state.TableStateFns.AppendLine(") end");
+                        break;
+
+                    default:
+                        // States cannot contain States
+                        Debug.Fail($"Node '{node.Key}' resolved to child '{resolved_child.Key}' with unexpected type; this should have been caught earlier");
+                        break;
+                }
             }
 
             state.TableStateFns.AppendLine("end");
@@ -259,17 +314,13 @@ end"
         /// <param name="node">The node to generate code for.</param>
         private static void CompileChoiceNode(CompilerState state, Node node)
         {
-            Debug.Assert(!node.IsState);
-
-            // Links are resolved by their parent, no need to add new code
-            if (node.IsLink)
-                return;
+            Debug.Assert(node.NodeType == AssetScene.ENodeType.Choice || node.NodeType == AssetScene.ENodeType.Root);
 
             state.TableChoices.AppendLine($"{node.Key} = {state.NextStateID++},");
             state.TableChoiceFns.AppendLine($"_ChoiceFns[_Choices.{node.Key}] = function()");
 
             // Inject the user's 'Actions Taken' script if it's non-empty
-            if (node.ScriptAction != null && node.ScriptAction.HasContent() && !node.IsLink)
+            if (node.ScriptAction != null && node.ScriptAction.HasContent())
             {
                 var script_text = node.ScriptAction.GetScriptText(state.Content);
                 state.Compiler?.Compile(script_text, $"{node.Key}/ActionsTaken");
@@ -280,26 +331,24 @@ end"
             Node last = node.Children.LastOrDefault();
             foreach (Node child in node.Children)
             {
-                Debug.Assert(child.IsState);
+                Node resolved_child = child;
 
-                // For link nodes, verify that the target link is a state and not a choice
-                if (child.IsLink)
+                // Resolve the link, if this node is a link
+                if (child.NodeType == AssetScene.ENodeType.Link)
                 {
-                    Node link_target = FindNodeByKey(state, child.LinkTarget);
-
-                    if (link_target == null)
+                    resolved_child = FindNodeByKey(state, child.LinkTarget);
+                    if (resolved_child == null)
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{child.LinkTarget}' but no such node exists");
-
-                    if (!link_target.IsState)
-                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{child.LinkTarget}' but the link target type does not match (You cannot link to a choice from another choice.)");
                 }
 
-                string child_key = child.IsLink ? child.LinkTarget : child.Key;
+                // Choices cannot contain Choices or Compass links
+                if (resolved_child.NodeType != AssetScene.ENodeType.State)
+                    throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{child.LinkTarget}' but the target node is not a state. (Choices can only contain States or links to States.)");
 
                 // Omit the _CanAppear call for the last child, since there must always be one passing State
                 state.TableChoiceFns.AppendLine(child == last
-                    ? $"_state = _States.{child_key}"
-                    : $"if _CanAppear(\"{child_key}\") then _state = _States.{child_key} return end");
+                    ? $"_state = _States.{resolved_child.Key}"
+                    : $"if _CanAppear(\"{resolved_child.Key}\") then _state = _States.{resolved_child.Key} return end");
             }
 
             // Close the function

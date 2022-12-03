@@ -3,30 +3,31 @@
 	"AssetID": "3e0c96ff-4469-4fdb-8a49-161a3112571d",
 	"AssetName": "TQ01_Patch_RoadNorth",
 	"IsPatch": true,
-	"InjectMode": "BeforeTarget",
+	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
 	"InjectTargetNode": "Main",
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
-				"Key": "TQ01_Main",
-				"IsState": true,
-				"IsLink": false,
-				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.West, \"TQ01_Scene_Hideout\") -- This adds a west-bound link for our quest\r\nAddLink(ECompass.East, GoEast)"
-				},
+				"NodeType": "Compass",
+				"CompassLinkDirection": "West",
+				"CompassLinkScene": "062b100c-1f16-494e-b451-81128f6ddaaa",
 				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetNumber(\"TQ01\") == 2"
-				},
-				"Children": []
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "TQ01",
+							"Operator": "Equal",
+							"OperandMode": "Literal",
+							"OperandLiteral": 2.0
+						}
+					]
+				}
 			}
 		]
 	}

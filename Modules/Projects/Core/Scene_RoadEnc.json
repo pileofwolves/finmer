@@ -409,8 +409,15 @@
 														"Highlight": true,
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
-															"!Type": "ScriptDataInline",
-															"Script": "local ty = Player.EquippedWeapon\r\nreturn ty ~= nil and ty.WeaponType == WeaponType.LIGHT"
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionPlayerEquipment",
+																	"ItemGuid": "795c79f2-ce54-4c2f-837e-d767e3c2599a"
+																}
+															]
 														},
 														"Children": [
 															{

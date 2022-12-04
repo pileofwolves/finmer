@@ -8,22 +8,16 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Leave",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "Leave the busy fellow to his work.",
 						"Highlight": false,
@@ -35,9 +29,8 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Browse",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Browse",
 						"Tooltip": "Have a look at what's in stock.",
 						"Highlight": false,
@@ -48,16 +41,14 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "MQ01_C_Setup",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Work",
 						"Tooltip": "Ask the vixen if she knows any leads for work.",
 						"Highlight": false,
@@ -68,40 +59,35 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ01_R_Setup",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"the smith\"\r\nquestgiver.Gender = EGender.Female\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ01_C_Bridge",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Bridge",
 										"Tooltip": "Ask how a trade route could just collapse like that.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ01_R_Bridge",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ01_SETUP_BRIDGE\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ01_C_Mayor"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ01_C_Exit"
 													}
 												]
@@ -109,31 +95,27 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ01_C_Mayor",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Acting Mayor",
 										"Tooltip": "Ask what she meant by 'acting' mayor.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ01_R_Mayor",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ01_SETUP_MAYOR\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ01_C_Bridge"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ01_C_Exit"
 													}
 												]
@@ -141,9 +123,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ01_C_Exit",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Tooltip": "Thank her for the information.",
 										"Highlight": false,
@@ -154,8 +135,7 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -165,18 +145,16 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Chat",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Chat",
 						"Tooltip": "Talk for a spell.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Chat_R_MQ02",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.SetFlag(\"town_smithy_chat_mq02\", true)\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02_ALT\")\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_MQ02\")\r\nend"
@@ -187,32 +165,28 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Chat_C_Exit"
 									}
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Chat_R_General",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Chat_C_Exit",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]

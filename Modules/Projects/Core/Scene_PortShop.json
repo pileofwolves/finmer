@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "FirstEntry",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"PORT_SHOP_ENTER_FIRST\")\r\nStorage.SetFlag(\"PORT_SHOP_FIRST\", true)"
@@ -29,8 +24,7 @@
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Tooltip": "Exchange pleasantries.",
 						"Highlight": false,
@@ -41,8 +35,7 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Main"
 							}
 						]
@@ -50,13 +43,11 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Browse",
 						"Tooltip": "Take a look at what's in stock.",
 						"Highlight": false,
@@ -67,15 +58,13 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Iso",
 						"Tooltip": "Ask if he has seen Mayor Iso recently.",
 						"Highlight": false,
@@ -86,36 +75,32 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ03_R_TalkIso",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.SetFlag(\"PORT_SHOP_ASK_ISO\", true)\r\nLog(\"PORT_SHOP_TALK_ISO\")\r\nMQ03_IncrementGossip()"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_TalkIsoMiss",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Missing",
 										"Tooltip": "Explain that she has disappeared a few days ago.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_R_TalkIsoMiss",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"PORT_SHOP_TALK_ISO_MISSING\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "MQ03_C_TalkIsoEnd",
-														"IsState": false,
-														"IsLink": false,
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -129,26 +114,23 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_TalkIsoMeet",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Meeting",
 										"Tooltip": "Explain that you were to meet her here.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_R_TalkIsoMeet",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"PORT_SHOP_TALK_ISO_EXPECT\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_TalkIsoEnd"
 													}
 												]
@@ -160,8 +142,7 @@
 						]
 					},
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Leave",
 						"Tooltip": "Time to go.",
 						"Highlight": false,

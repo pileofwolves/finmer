@@ -12,35 +12,28 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", false)\r\nJournal.Close(\"SQ02\")\r\nLog(\"SQ02_WOLF_ENDO_BEGIN\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "C_Struggle",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Move",
 						"Tooltip": "Push and kick around!",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_StrugglePostRest",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"SQ02_WOLF_ENDO_REGURGITATE\")\r\nPlayer:AwardXP(RewardXP.SQ02_Befriend)"
@@ -51,18 +44,16 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "C_GetSpatUp",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Tooltip": "Ugh... so much drool...",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "R_GetSpatUp",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SetScene(\"Scene_ForestCottage\")"
@@ -74,27 +65,23 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "R_Struggle",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Text.SetContext(\"predator\", context_wolf)\r\nLog(\"VORE_POV_STRUGGLE\")\r\nLog(\"VORE_POV_ENDO\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "C_Struggle"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "C_SQ01_UseVial"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "C_Sleep"
 									}
 								]
@@ -102,9 +89,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_SQ01_UseVial",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Use Vial",
 						"Tooltip": "Scoop up some of the stomach fluids.",
 						"Highlight": false,
@@ -115,22 +101,19 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_SQ01_UseVial",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"SQ01_VIAL_USE\")\r\nPlayer:TakeItem(\"I_SQ01_Vial\")\r\nPlayer:GiveItem(\"I_SQ01_VialFull\")\r\nJournal.Update(\"SQ01\", 20)"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "C_Struggle"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "C_Sleep"
 									}
 								]
@@ -138,49 +121,43 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Sleep",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Rest",
 						"Tooltip": "It is oddly reassuring that an apex predator is keeping you safe.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_Sleep",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_ENDO_SLEEP\")\r\n\r\nRest()"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "C_SleepSave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Save",
 										"Tooltip": "Record your adventure so far.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SavePoint_Stomach",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SaveData.ShowSaveDialog()\r\nStorage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "C_Struggle"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "C_SQ01_UseVial"
 													}
 												]
@@ -188,30 +165,26 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_SleepContinue",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "R_AwakeAfterSleep",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"forest_direwolf_sleptinside\", true)\r\nLog(\"SQ02_WOLF_SAVEPOINT\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "C_Struggle"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "C_SQ01_UseVial"
 													}
 												]

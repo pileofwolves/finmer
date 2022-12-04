@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "SQ04_Opening",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SetInventoryEnabled(false)\r\nLog(\"TOWN_NSQ_PITOPEN_BEGIN\")\r\nStorage.SetNumber(\"sq04\", 1)"
@@ -29,34 +24,30 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "SQ04_C_Opening",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Tooltip": "Well, that was weird.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "SQ04_OpeningEnd",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_NSQ_PITOPEN_END\")\r\nPlayer:GiveItem(\"I_PitInvite\", true)\r\nJournal.Update(\"SQ04\", 10)"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "SQ04_C_OpeningEnd",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -68,18 +59,16 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "AddLink(ECompass.South, \"Scene_TownMarket\")\r\nSetInventoryEnabled(true)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Hall",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Town Hall",
 						"Tooltip": "Visit the town hall.",
 						"Highlight": false,
@@ -91,9 +80,8 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Board",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Notice Board",
 						"Tooltip": "Examine the notice board.",
 						"Highlight": false,
@@ -104,54 +92,47 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "ViewBoard",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Board_Close",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "(Back)",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Board_C_Changelog",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Recent Renovations",
 										"Tooltip": "This notice describes recent changes to Finmer, whatever that means.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Board_R_Changelog",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_CHANGELOG\")\r\nLog(\"NOTICE__MEME\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "ReturnToBoard",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "ViewBoard"
 															}
 														]
@@ -161,9 +142,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Board_C_SQ02_Kickoff",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Wanted: Dire Wolf",
 										"Tooltip": "This notice details a dire wolf, and calls for it to be slain.",
 										"Highlight": false,
@@ -174,17 +154,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Board_R_SQ02_Kickoff",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_SQ02_KICKOFF\")\r\nStorage.SetNumber(\"sq02\", 1)\r\nJournal.Update(\"SQ02\", 10)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "ReturnToBoard"
 													}
 												]

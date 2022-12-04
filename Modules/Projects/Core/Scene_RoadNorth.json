@@ -12,17 +12,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "MQ03_Carriage",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- This dialogue only happens once\r\nStorage.SetFlag(\"MQ03_CARRIAGE_INTRO\", true)\r\n\r\nLog(\"MQ03_RIDESOUTH_INTRO1\")"
@@ -33,31 +28,27 @@
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_RIDESOUTH_INTRO2\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_Ride_MetZosk",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_RIDESOUTH_INTRO3_MET\")"
@@ -68,57 +59,50 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "MQ03_Ride_AskBoard",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ03_RIDESOUTH_INTRO4\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Yes",
 																		"Tooltip": "Tell him that you are indeed headed south.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": false,
+																				"NodeType": "State",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_RIDESOUTH_INTRO5_YES\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_Ride_BoardNow",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Board",
 																						"Tooltip": "Climb aboard!",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": false,
+																								"NodeType": "State",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ03_RIDESOUTH_BOARD\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Let's go!",
 																										"Tooltip": "Off we go!",
 																										"Highlight": false,
@@ -134,32 +118,28 @@
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_Ride_BoardLater",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Decline",
 																						"Tooltip": "Insist that you have an important errand to run.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": false,
+																								"NodeType": "State",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ03_RIDESOUTH_BOARD_DECLINE\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "Main"
 																											}
 																										]
@@ -173,29 +153,25 @@
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "No",
 																		"Tooltip": "Tell him you have other business to take care of.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": false,
+																				"NodeType": "State",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_RIDESOUTH_INTRO5_NO\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Ride_BoardNow"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Ride_BoardLater"
 																					}
 																				]
@@ -209,17 +185,15 @@
 												]
 											},
 											{
+												"NodeType": "State",
 												"Key": "MQ03_Ride_NewZosk",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_RIDESOUTH_INTRO3_NEW\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_Ride_AskBoard"
 													}
 												]
@@ -233,17 +207,15 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.East, GoEast)\r\n\r\n-- If the player can go south for the first time, they must travel with the carriage\r\nif not Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") or Storage.GetFlag(\"MQ03_RODE_SOUTH\") then\r\n    AddLink(ECompass.South, GoSouth)\r\nend"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Carriage",
 						"Tooltip": "Talk to Zosk about riding south.",
 						"Highlight": false,
@@ -254,21 +226,18 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_RIDESOUTH_BOARD_POKE\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "MQ03_Ride_BoardNow"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "MQ03_Ride_BoardLater"
 									}
 								]

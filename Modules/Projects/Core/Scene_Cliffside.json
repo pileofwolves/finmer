@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")\r\n\r\n-- Travel to either of the towns from here\r\nAddLink(ECompass.North, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.South, function() BeginRoadTravel(\"Scene_PortGate\") end)"

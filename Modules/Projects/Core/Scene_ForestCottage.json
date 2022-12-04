@@ -8,35 +8,28 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Start",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "if not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "EnterCottage",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Cottage",
 						"Tooltip": "Step inside.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "CottageFirstEntry",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "SetInventoryEnabled(false)\r\nLog(\"forest_cottage_approach\")"
@@ -47,47 +40,41 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "CFE_Leave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Tooltip": "Turn back while you still can.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Start"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "CFE_Knock",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Knock",
 										"Tooltip": "The polite way.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "CFE_DoKnock",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "-- no answer\r\nLog(\"forest_cottage_knock1\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock2\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock3\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "CFE_Leave"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "CFE_Enter"
 													}
 												]
@@ -95,36 +82,32 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "CFE_Enter",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Enter",
 										"Tooltip": "Just open the door and step in.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "CFE_EnterResponse",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "CFE_CheckOnGuy",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Check",
 														"Tooltip": "[Wits] Try and see what's wrong with him.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "CFE_CheckWitsy",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")"
@@ -135,9 +118,8 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "CFE_Slap",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Slap",
 																		"Tooltip": "Give his face a good slap.",
 																		"Highlight": false,
@@ -148,88 +130,78 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "CFE_DoWakeUp",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Oliver1_C_Who",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Sympathetic",
 																						"Tooltip": "Tell him your name, and that he's safe.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Oliver1_R_Who",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ02_OLIVER_R_WHO\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Oliver1_C_Spill1",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Oliver1_R_Spill1",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"MQ02_OLIVER_R_SPILL1\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "Oliver1_C_Spill2a",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Open",
 																														"Tooltip": "Say that you're here to get supplies for the bridge.",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
+																																"NodeType": "State",
 																																"Key": "Oliver1_R_Spill2",
-																																"IsState": true,
-																																"IsLink": false,
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataInline",
 																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL2\")"
 																																},
 																																"Children": [
 																																	{
+																																		"NodeType": "Choice",
 																																		"Key": "Oliver1_C_Spill3",
-																																		"IsState": false,
-																																		"IsLink": false,
 																																		"Title": "Continue",
 																																		"Highlight": false,
 																																		"ButtonWidth": 1.0,
 																																		"Children": [
 																																			{
+																																				"NodeType": "State",
 																																				"Key": "Oliver1_R_Spill3",
-																																				"IsState": true,
-																																				"IsLink": false,
 																																				"ScriptAction": {
 																																					"!Type": "ScriptDataInline",
 																																					"Script": "Log(\"MQ02_OLIVER_R_SPILL3\")"
 																																				},
 																																				"Children": [
 																																					{
+																																						"NodeType": "Choice",
 																																						"Key": "Oliver1_C_Spill_Wolf",
-																																						"IsState": false,
-																																						"IsLink": false,
 																																						"Title": "Wolf",
 																																						"Tooltip": "Ask about the big wolf. What did he look like?",
 																																						"Highlight": false,
@@ -240,27 +212,23 @@
 																																						},
 																																						"Children": [
 																																							{
+																																								"NodeType": "State",
 																																								"Key": "Oliver1_R_Spill_Wolf",
-																																								"IsState": true,
-																																								"IsLink": false,
 																																								"ScriptAction": {
 																																									"!Type": "ScriptDataInline",
 																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WOLF\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)"
 																																								},
 																																								"Children": [
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Prey"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Why"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill4"
 																																									}
 																																								]
@@ -268,9 +236,8 @@
 																																						]
 																																					},
 																																					{
+																																						"NodeType": "Choice",
 																																						"Key": "Oliver1_C_Spill_Prey",
-																																						"IsState": false,
-																																						"IsLink": false,
 																																						"Title": "Prey",
 																																						"Tooltip": "Ask about the stomach and the live prey.",
 																																						"Highlight": false,
@@ -281,27 +248,23 @@
 																																						},
 																																						"Children": [
 																																							{
+																																								"NodeType": "State",
 																																								"Key": "Oliver1_R_Spill_Prey",
-																																								"IsState": true,
-																																								"IsLink": false,
 																																								"ScriptAction": {
 																																									"!Type": "ScriptDataInline",
 																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_PREY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_PREY\", true)"
 																																								},
 																																								"Children": [
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Wolf"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Why"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill4"
 																																									}
 																																								]
@@ -309,9 +272,8 @@
 																																						]
 																																					},
 																																					{
+																																						"NodeType": "Choice",
 																																						"Key": "Oliver1_C_Spill_Why",
-																																						"IsState": false,
-																																						"IsLink": false,
 																																						"Title": "Reason",
 																																						"Tooltip": "Ask about why they were there.",
 																																						"Highlight": false,
@@ -322,27 +284,23 @@
 																																						},
 																																						"Children": [
 																																							{
+																																								"NodeType": "State",
 																																								"Key": "Oliver1_R_Spill_Why",
-																																								"IsState": true,
-																																								"IsLink": false,
 																																								"ScriptAction": {
 																																									"!Type": "ScriptDataInline",
 																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WHY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WHY\", true)"
 																																								},
 																																								"Children": [
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Wolf"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill_Prey"
 																																									},
 																																									{
-																																										"IsState": false,
-																																										"IsLink": true,
+																																										"NodeType": "Link",
 																																										"LinkTarget": "Oliver1_C_Spill4"
 																																									}
 																																								]
@@ -350,36 +308,32 @@
 																																						]
 																																					},
 																																					{
+																																						"NodeType": "Choice",
 																																						"Key": "Oliver1_C_Spill4",
-																																						"IsState": false,
-																																						"IsLink": false,
 																																						"Title": "Continue",
 																																						"Tooltip": "Ask him what happened next.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
 																																						"Children": [
 																																							{
+																																								"NodeType": "State",
 																																								"Key": "Oliver1_R_Spill4",
-																																								"IsState": true,
-																																								"IsLink": false,
 																																								"ScriptAction": {
 																																									"!Type": "ScriptDataInline",
 																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL4\")"
 																																								},
 																																								"Children": [
 																																									{
+																																										"NodeType": "Choice",
 																																										"Key": "Oliver1_C_End1",
-																																										"IsState": false,
-																																										"IsLink": false,
 																																										"Title": "Comfort",
 																																										"Tooltip": "Maybe he wants a hug?",
 																																										"Highlight": false,
 																																										"ButtonWidth": 1.0,
 																																										"Children": [
 																																											{
+																																												"NodeType": "State",
 																																												"Key": "Oliver1_R_End_Hug",
-																																												"IsState": true,
-																																												"IsLink": false,
 																																												"ScriptAction": {
 																																													"!Type": "ScriptDataInline",
 																																													"Script": "Log(\"MQ02_OLIVER_R_END_HUG\")\r\nSleep(1)"
@@ -390,16 +344,14 @@
 																																												},
 																																												"Children": [
 																																													{
+																																														"NodeType": "Choice",
 																																														"Key": "Oliver1_C_End_Hug",
-																																														"IsState": false,
-																																														"IsLink": false,
 																																														"Title": "Continue",
 																																														"Highlight": false,
 																																														"ButtonWidth": 1.0,
 																																														"Children": [
 																																															{
-																																																"IsState": true,
-																																																"IsLink": true,
+																																																"NodeType": "Link",
 																																																"LinkTarget": "Oliver1_R_End_NoHug"
 																																															}
 																																														]
@@ -407,60 +359,53 @@
 																																												]
 																																											},
 																																											{
+																																												"NodeType": "State",
 																																												"Key": "Oliver1_R_End_NoHug",
-																																												"IsState": true,
-																																												"IsLink": false,
 																																												"ScriptAction": {
 																																													"!Type": "ScriptDataInline",
 																																													"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)"
 																																												},
 																																												"Children": [
 																																													{
+																																														"NodeType": "Choice",
 																																														"Key": "Oliver1_C_End_NoHug",
-																																														"IsState": false,
-																																														"IsLink": false,
 																																														"Title": "Continue",
 																																														"Highlight": false,
 																																														"ButtonWidth": 1.0,
 																																														"Children": [
 																																															{
+																																																"NodeType": "State",
 																																																"Key": "Oliver1_R_End1B",
-																																																"IsState": true,
-																																																"IsLink": false,
 																																																"ScriptAction": {
 																																																	"!Type": "ScriptDataInline",
 																																																	"Script": "Log(\"MQ02_OLIVER_R_END1B\")\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)"
 																																																},
 																																																"Children": [
 																																																	{
+																																																		"NodeType": "Choice",
 																																																		"Key": "Oliver1_C_End1B",
-																																																		"IsState": false,
-																																																		"IsLink": false,
 																																																		"Title": "Continue",
 																																																		"Highlight": false,
 																																																		"ButtonWidth": 1.0,
 																																																		"Children": [
 																																																			{
+																																																				"NodeType": "State",
 																																																				"Key": "Oliver_R_End2",
-																																																				"IsState": true,
-																																																				"IsLink": false,
 																																																				"ScriptAction": {
 																																																					"!Type": "ScriptDataInline",
 																																																					"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
 																																																				},
 																																																				"Children": [
 																																																					{
+																																																						"NodeType": "Choice",
 																																																						"Key": "Oliver_C_End2",
-																																																						"IsState": false,
-																																																						"IsLink": false,
 																																																						"Title": "Leave",
 																																																						"Tooltip": "Time to go.",
 																																																						"Highlight": false,
 																																																						"ButtonWidth": 1.0,
 																																																						"Children": [
 																																																							{
-																																																								"IsState": true,
-																																																								"IsLink": true,
+																																																								"NodeType": "Link",
 																																																								"LinkTarget": "Start"
 																																																							}
 																																																						]
@@ -478,17 +423,15 @@
 																																										]
 																																									},
 																																									{
+																																										"NodeType": "Choice",
 																																										"Key": "Oliver1_C_End2",
-																																										"IsState": false,
-																																										"IsLink": false,
 																																										"Title": "Vengeful",
 																																										"Tooltip": "Tell him you'll get to the bottom of this.",
 																																										"Highlight": false,
 																																										"ButtonWidth": 1.0,
 																																										"Children": [
 																																											{
-																																												"IsState": true,
-																																												"IsLink": true,
+																																												"NodeType": "Link",
 																																												"LinkTarget": "Oliver1_R_End_NoHug"
 																																											}
 																																										]
@@ -506,17 +449,15 @@
 																														]
 																													},
 																													{
+																														"NodeType": "Choice",
 																														"Key": "Oliver1_C_Spill2b",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Cautious",
 																														"Tooltip": "Say that you want to know what the hell happened here.",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": true,
+																																"NodeType": "Link",
 																																"LinkTarget": "Oliver1_R_Spill2"
 																															}
 																														]
@@ -530,9 +471,8 @@
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Oliver1_C_WhoFight",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Concerned",
 																						"Tooltip": "Ask about his injuries specifically. Who did that?",
 																						"Highlight": true,
@@ -543,17 +483,15 @@
 																						},
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Oliver1_R_Injuries",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": true,
+																										"NodeType": "Link",
 																										"LinkTarget": "Oliver1_C_Spill1"
 																									}
 																								]
@@ -561,61 +499,54 @@
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Oliver1_C_What",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Direct",
 																						"Tooltip": "Ask him what the hell happened to him.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Oliver1_R_What",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ02_OLIVER_R_WHAT\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Oliver1_C_Reassure",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Calm",
 																										"Tooltip": "Tell him to calm down; you're here to help.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "Oliver1_R_Spill1"
 																											}
 																										]
 																									},
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Oliver1_C_AggravateA",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Cold",
 																										"Tooltip": "Tell him to man it up and stop wasting time.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Oliver1_BeginCombat",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"MQ02_OLIVER_R_AGGRAVATE\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "Oliver1_CombatDone",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Uh-oh...",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
@@ -625,9 +556,8 @@
 																														},
 																														"Children": [
 																															{
+																																"NodeType": "State",
 																																"Key": "Oliver1_FD_Digested",
-																																"IsState": true,
-																																"IsLink": false,
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataInline",
 																																	"Script": "Log(\"MQ02_OLIVER_FD_DIGESTED\")"
@@ -638,26 +568,23 @@
 																																},
 																																"Children": [
 																																	{
+																																		"NodeType": "Choice",
 																																		"Key": "Oliver1_FD_Digested2",
-																																		"IsState": false,
-																																		"IsLink": false,
 																																		"Title": "Sleep",
 																																		"Highlight": false,
 																																		"ButtonWidth": 1.0,
 																																		"Children": [
 																																			{
+																																				"NodeType": "State",
 																																				"Key": "Oliver1_FD_Digested3",
-																																				"IsState": true,
-																																				"IsLink": false,
 																																				"ScriptAction": {
 																																					"!Type": "ScriptDataInline",
 																																					"Script": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")"
 																																				},
 																																				"Children": [
 																																					{
+																																						"NodeType": "Choice",
 																																						"Key": "Oliver1_FD_ToHome",
-																																						"IsState": false,
-																																						"IsLink": false,
 																																						"Title": "Continue",
 																																						"Tooltip": "Look around the house, see if anything's worth taking.",
 																																						"Highlight": false,
@@ -668,8 +595,7 @@
 																																						},
 																																						"Children": [
 																																							{
-																																								"IsState": true,
-																																								"IsLink": true,
+																																								"NodeType": "Link",
 																																								"LinkTarget": "Start"
 																																							}
 																																						]
@@ -681,9 +607,8 @@
 																																]
 																															},
 																															{
+																																"NodeType": "State",
 																																"Key": "Oliver1_FD_Killed",
-																																"IsState": true,
-																																"IsLink": false,
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataInline",
 																																	"Script": "Log(\"MQ02_OLIVER_FD_KILLED\")"
@@ -694,8 +619,7 @@
 																																},
 																																"Children": [
 																																	{
-																																		"IsState": false,
-																																		"IsLink": true,
+																																		"NodeType": "Link",
 																																		"LinkTarget": "Oliver1_FD_ToHome"
 																																	}
 																																]
@@ -707,17 +631,15 @@
 																										]
 																									},
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Oliver1_C_AggravateB",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Harsh",
 																										"Tooltip": "Tell him to start talking right now.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "Oliver1_BeginCombat"
 																											}
 																										]
@@ -731,9 +653,8 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "CFE_SoberUp",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Sober Up",
 																		"Tooltip": "Splash some water from your canteen on his face.",
 																		"Highlight": false,
@@ -744,16 +665,14 @@
 																		},
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "CFE_DoWakeUp"
 																			}
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "CFE_Bandage",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Bandage",
 																		"Tooltip": "Wrap some cloth around the claw marks.",
 																		"Highlight": true,
@@ -768,27 +687,23 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "CFE_DoBandage",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"mq02_cot_awake_bandage\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Oliver1_C_Who"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Oliver1_C_WhoFight"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Oliver1_C_What"
 																					}
 																				]
@@ -796,9 +711,8 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "CFE_UsePotion",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Potion",
 																		"Tooltip": "Pour one of your healing potions down his throat.",
 																		"Highlight": true,
@@ -813,16 +727,14 @@
 																		},
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "CFE_DoWakeUp"
 																			}
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "CFE_Carry",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Carry",
 																		"Tooltip": "[Strength] Pick him up and put him on the couch.",
 																		"Highlight": false,
@@ -837,9 +749,8 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "CFE_CarryOK",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)"
@@ -850,54 +761,45 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_Slap"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_SoberUp"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_Bandage"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_UsePotion"
 																					}
 																				]
 																			},
 																			{
+																				"NodeType": "State",
 																				"Key": "CFE_CarryFail",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"mq02_cot_carry_fail\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_Slap"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_SoberUp"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_Bandage"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "CFE_UsePotion"
 																					}
 																				]
@@ -907,32 +809,27 @@
 																]
 															},
 															{
+																"NodeType": "State",
 																"Key": "CFE_CheckNotSoWitsy",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"mq02_cot_check_dumb\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "CFE_Slap"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "CFE_SoberUp"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "CFE_UsePotion"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "CFE_Carry"
 																	}
 																]
@@ -946,18 +843,16 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "CottageInside",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nLog(\"forest_cottage_enter\")\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\nelse\r\n    Log(\"forest_cottage_oliver_hello\")\r\nend"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Cottage_Leave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -967,16 +862,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Start"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Cottage_C_SQ03Handin",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Give Tools",
 										"Tooltip": "You have the items he had asked for.",
 										"Highlight": true,
@@ -987,26 +880,23 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Cottage_R_SQ03Handin",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Cottage_C_SQ03Exit",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Tooltip": "Thank him.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "CottageInside"
 															}
 														]

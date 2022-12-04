@@ -8,22 +8,16 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "C_Leave",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "You've got other places to be.",
 						"Highlight": false,
@@ -35,18 +29,16 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Drink",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Drink",
 						"Tooltip": "Spend some quiet time.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ03_EventStart",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_TAVERN_EVENT1\")\r\nSetInventoryEnabled(false)\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nSetTimeHour(20)"
@@ -57,48 +49,42 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_Event2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_EVENT2\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "MQ03_Event3",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ03_TAVERN_EVENT3\")\r\n\r\n-- Set up context for the pred\r\nMQ03_SetupAssailantContext()"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_Event4_Eaten",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_TAVERN_EVENT4_EATEN\")"
@@ -109,43 +95,38 @@
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_Event5_C_Why",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Why",
 																						"Tooltip": "Ask what they want with you.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "MQ03_Event5_R_Why",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ03_TAVERN_EVENT5_WHY\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "MQ03_Event5_R_Why2",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"MQ03_TAVERN_EVENT5_WHY2\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "MQ03_Event_ToAlley",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Uh-oh",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
@@ -164,42 +145,37 @@
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_Event5_C_Who",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Who",
 																						"Tooltip": "Ask who they are.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": true,
+																								"NodeType": "Link",
 																								"LinkTarget": "MQ03_Event5_R_Why"
 																							}
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_Event5_C_Resist",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Resist",
 																						"Tooltip": "You're not going down without a fight!",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "MQ03_Event5_R_Resist",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ03_TAVERN_EVENT5_RESIST\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": true,
+																										"NodeType": "Link",
 																										"LinkTarget": "MQ03_Event_ToAlley"
 																									}
 																								]
@@ -209,9 +185,8 @@
 																				]
 																			},
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_Event4_Hit",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_TAVERN_EVENT4_HIT\")"
@@ -222,44 +197,37 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Why"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Who"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Resist"
 																					}
 																				]
 																			},
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_Event4_Default",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_TAVERN_EVENT4_DEFAULT\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Why"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Who"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_Event5_C_Resist"
 																					}
 																				]
@@ -277,21 +245,18 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "R_Drink_NoEvent",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "C_DrinkEnd",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -301,29 +266,25 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Talk",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Talk",
 						"Tooltip": "Find someone to chat with.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "TavernTalkRoot",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Never mind",
 										"Highlight": false,
 										"ButtonWidth": 0.75,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]

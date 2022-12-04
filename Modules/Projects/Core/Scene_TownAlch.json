@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Abandoned",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "if Storage.GetFlag(\"town_alch_stolen\") then\r\n    -- this is not the player's first visit to the now-empty place\r\n    Log(\"town_alch_abandoned\")\r\nend"
@@ -29,21 +24,18 @@
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Exit"
 					}
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Exit",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -54,9 +46,8 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Browse",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Browse",
 						"Tooltip": "Have a look at the wares on display.",
 						"Highlight": false,
@@ -67,17 +58,15 @@
 						},
 						"Children": [
 							{
+								"NodeType": "Link",
 								"Key": "Shop",
-								"IsState": true,
-								"IsLink": true,
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "MQ01_C_StolenGoods",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Stolen Supplies",
 						"Tooltip": "Ask about the compounds that were stolen last night.",
 						"Highlight": true,
@@ -88,18 +77,16 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ01_R_StolenGoods",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.SetFlag(\"TOWN_INN_TALK_STOLENGOODS\", true)\r\nLog(\"TOWN_ALCH_STOLENGOODS\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ01_C_StolenGoods2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -109,8 +96,7 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -120,9 +106,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "SQ01_C_Intro",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Book",
 						"Tooltip": "Ask about the book he was just reading.",
 						"Highlight": false,
@@ -133,40 +118,35 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "SQ01_R_Intro",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"sq01_intro\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "SQ01_C_Decline",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Back",
 										"Tooltip": "Change the subject.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SQ01_R_Decline",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"sq01_rejected\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Exit"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Browse"
 													}
 												]
@@ -174,49 +154,43 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "SQ01_C_Intro2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Offer Help",
 										"Tooltip": "Say that you would be willing to help him.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SQ01_R_Intro2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"sq01_confirm\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_Decline2",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Back Out",
 														"Tooltip": "Say that you can't really help him there.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "SQ01_R_Decline2",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"sq01_rejected_alt\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exit"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Browse"
 																	}
 																]
@@ -224,9 +198,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_DiscussNosy",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Investigate",
 														"Tooltip": "Ask him why he would need such a thing.",
 														"Highlight": false,
@@ -237,16 +210,14 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "SQ01_R_DiscussNosy"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_DiscussNosy2",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Investigate",
 														"Tooltip": "Press him futher...",
 														"Highlight": false,
@@ -257,9 +228,8 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "SQ01_R_TooNosy",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"SQ01_ASK_WHY\" .. Storage.GetNumber(\"SQ01_NOSY\") + 1)"
@@ -270,9 +240,8 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "SQ01_BeginFight",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Uh-oh...",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
@@ -282,60 +251,53 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "FightWon_AteGuy",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAppear": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "return Storage.GetFlag(\"TOWN_ALCH_EATEN\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "FightWon_C_SleepOff",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Sleep Off",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "FightWon_R_SleepOff",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "FoodComa()\r\nLogPostVore(\"SQ01_POSTVORE_SCAT\", \"SQ01_POSTVORE_NOSCAT\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "FightWon_C_Loot",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Tooltip": "Gather what you can from the scene and leave.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "FightWon_R_Loot",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Storage.SetFlag(\"town_alch_stolen\", true)\r\nLog(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_SQ01_AlchSupplies\")\r\nPlayer:GiveItem(\"I_Amber01\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "FightWon_C_ToAbandon",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Continue",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": true,
+																																"NodeType": "Link",
 																																"LinkTarget": "Abandoned"
 																															}
 																														]
@@ -351,30 +313,26 @@
 																				]
 																			},
 																			{
+																				"NodeType": "State",
 																				"Key": "FightWon_KilledGuy",
-																				"IsState": true,
-																				"IsLink": false,
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "FightWon_C_Swallow",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Swallow him",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "FightWon_R_Swallow",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"SQ01_ALCH_EAT_ANYWAY\")\r\nSleep(3)\r\nLog(\"SQ01_ALCH_KILL_DIGESTED\")"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": true,
+																										"NodeType": "Link",
 																										"LinkTarget": "FightWon_C_SleepOff"
 																									}
 																								]
@@ -382,9 +340,8 @@
 																						]
 																					},
 																					{
+																						"NodeType": "Choice",
 																						"Key": "FightWon_C_Leave",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Leave him",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
@@ -394,8 +351,7 @@
 																						},
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": true,
+																								"NodeType": "Link",
 																								"LinkTarget": "FightWon_R_Loot"
 																							}
 																						]
@@ -407,32 +363,27 @@
 																]
 															},
 															{
+																"NodeType": "State",
 																"Key": "SQ01_R_DiscussNosy",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "local stubborn = Storage.GetNumber(\"SQ01_NOSY\") + 1\r\nif stubborn == 1 then\r\n    -- Preysense warning on the first poke, so player has a chance to back out\r\n    PreySense(Creature(\"CR_SQ01_Alchemist\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)\r\nend\r\n\r\nStorage.SetNumber(\"SQ01_NOSY\", stubborn)\r\nLog(\"SQ01_ASK_WHY\" .. stubborn)"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_Decline2"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_DiscussNosy2"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_DiscussReward"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_Accept"
 																	}
 																]
@@ -440,41 +391,35 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_DiscussReward",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Reward",
 														"Tooltip": "Ask what's in it for you.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "SQ01_R_DiscussReward",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"sq01_ask_reward\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_Decline2"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_DiscussNosy"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_DiscussNosy2"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "SQ01_C_Accept"
 																	}
 																]
@@ -482,34 +427,30 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_Accept",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Accept",
 														"Tooltip": "Say that you can handle that.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "SQ01_R_Accept",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"SQ01_ACCEPTED\")\r\nStorage.SetNumber(\"sq01\", 1)\r\nPlayer:GiveItem(\"I_SQ01_Vial\", true)\r\nJournal.Update(\"SQ01\", 10)"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "SQ01_C_Accept2",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Main"
 																			}
 																		]
@@ -527,9 +468,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "SQ01_C_Handin",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Give Vial",
 						"Tooltip": "Say you did as he asked.",
 						"Highlight": true,
@@ -540,42 +480,37 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "SQ01_R_Handin",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"SQ01_HANDIN1\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "SQ01_C_Handin2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SQ01_R_Handin2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "SQ01_C_Handin3",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Main"
 															}
 														]
@@ -589,9 +524,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "SQ01_C_Reward",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Sample",
 						"Tooltip": "Ask about the sample you were promised.",
 						"Highlight": true,
@@ -602,9 +536,8 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "SQ01_R_Reward_Wait",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"SQ01_REWARD_NOTREADY\")"
@@ -615,16 +548,14 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "SQ01_C_Reward_Close",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -632,17 +563,15 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "SQ01_R_Reward_Ready",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "SQ01_C_Reward_Close"
 									}
 								]

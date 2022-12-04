@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Entry_RefuseReturn",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TOWN_PIT_ENTER\")\r\nLog(\"TOWN_PIT_DESK_INIT_REFUSE_RETURN\")"
@@ -29,36 +24,30 @@
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_DeskWhy"
 					},
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_DeskReward"
 					},
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_DeskLegal"
 					},
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_DeskRefuse"
 					},
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_DeskAccept"
 					}
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Entry_First",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TOWN_PIT_ENTER_FIRST\")\r\nStorage.SetFlag(\"town_pit_first\", true)"
@@ -69,43 +58,38 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Entry_C_DeskInit1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Come over",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_DeskInit1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_DESK_INIT1\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_DeskInit2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Entry_R_DeskInit2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_DESK_INIT2\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Entry_C_DeskWhy",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Why",
 														"Tooltip": "Ask why this is even a thing.",
 														"Highlight": false,
@@ -116,32 +100,27 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Entry_R_DeskWhy",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_DESK_INIT_WHY\")\r\nStorage.SetFlag(\"town_pit_desk_why\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskReward"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskLegal"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskRefuse"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskAccept"
 																	}
 																]
@@ -149,9 +128,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Entry_C_DeskReward",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Reward",
 														"Tooltip": "Ask how the rewards work.",
 														"Highlight": false,
@@ -162,32 +140,27 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Entry_R_DeskReward",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_DESK_INIT_REWARD\")\r\nStorage.SetFlag(\"town_pit_desk_reward\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskWhy"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskLegal"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskRefuse"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskAccept"
 																	}
 																]
@@ -195,9 +168,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Entry_C_DeskLegal",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Legal",
 														"Tooltip": "Ask about the legality of this business.",
 														"Highlight": false,
@@ -208,32 +180,27 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Entry_R_DeskLegal",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_DESK_INIT_LEGAL\")\r\nStorage.SetFlag(\"town_pit_desk_legal\", true)\r\nStorage.SetFlag(\"town_pit_desk_showaccept\", true)"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskWhy"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskReward"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskRefuse"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Entry_C_DeskAccept"
 																	}
 																]
@@ -241,9 +208,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Entry_C_DeskRefuse",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Refuse",
 														"Tooltip": "Say that you're not really interested.",
 														"Highlight": false,
@@ -254,26 +220,23 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Entry_R_DeskRefuse",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_DESK_INIT_REFUSE\")\r\nStorage.SetFlag(\"town_pit_refused\", true)"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Entry_C_DeskRefuse2",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Leave",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Entry_R_DeskRefuseSn",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Storage.SetFlag(\"town_pit_refused_snitch\", true)\r\nLog(\"TOWN_PIT_DESK_INIT_REFUSE_SNITCH\")"
@@ -284,25 +247,22 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Entry_C_DeskRefuse3"
 																					}
 																				]
 																			},
 																			{
+																				"NodeType": "State",
 																				"Key": "Entry_R_DeskRefuse2",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_DESK_INIT_REFUSE2\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Entry_C_DeskRefuse3",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
@@ -321,9 +281,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Entry_C_DeskAccept",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Accept",
 														"Tooltip": "Say that you want to participate.",
 														"Highlight": false,
@@ -334,77 +293,68 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Entry_R_DeskAccept",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_DESK_INIT_ACCEPT\")\r\nStorage.SetFlag(\"town_pit_refused\", false)"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Lower_C_First1",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Go downstairs",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Lower_R_First1",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_LOWER_ENTER_FIRST\")\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Lower_C_First2",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Lower_R_First2",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"TOWN_PIT_LOWER_INTRODUCE\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Lower_C_IntroRoar",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "ROAR!",
 																										"Tooltip": "Give them a taste of your fighting spirit.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Lower_R_IntroRoar",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"TOWN_PIT_LOWER_INTRO_ROAR\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "Lower_C_MeetOpp1",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Continue",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": true,
+																																"NodeType": "Link",
 																																"LinkTarget": "Op1"
 																															}
 																														]
@@ -414,26 +364,23 @@
 																										]
 																									},
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Lower_C_IntroTaunt",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Taunt",
 																										"Tooltip": "Give them a taste of your carnivorous intentions.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Lower_R_IntroTaunt",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"TOWN_PIT_LOWER_INTRO_TAUNT\")"
 																												},
 																												"Children": [
 																													{
-																														"IsState": false,
-																														"IsLink": true,
+																														"NodeType": "Link",
 																														"LinkTarget": "Lower_C_MeetOpp1"
 																													}
 																												]
@@ -441,26 +388,23 @@
 																										]
 																									},
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Lower_C_IntroSilent",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Remain silent",
 																										"Tooltip": "Give them a taste of your calculated cunning.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Lower_R_IntroSilent",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"TOWN_PIT_LOWER_INTRO_SILENCE\")"
 																												},
 																												"Children": [
 																													{
-																														"IsState": false,
-																														"IsLink": true,
+																														"NodeType": "Link",
 																														"LinkTarget": "Lower_C_MeetOpp1"
 																													}
 																												]
@@ -488,25 +432,22 @@
 						]
 					},
 					{
-						"IsState": false,
-						"IsLink": true,
+						"NodeType": "Link",
 						"LinkTarget": "Entry_C_Dbg_StartOpp"
 					}
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Entry",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SetLocation(\"The Club\")\r\nSetInventoryEnabled(true)\r\nTimedCheckpoint(\"TOWN_PIT\")\r\nLog(\"TOWN_PIT_ENTER\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Entry_C_Leave",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -517,9 +458,8 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Entry_C_Challenge",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Challenge",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -529,9 +469,8 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Full",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_DESK_CH_DENY_BELLY\")"
@@ -542,35 +481,30 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Chall_DenyOK",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Entry_R_Chall_DenyOK",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SetInventoryEnabled(true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Entry_C_Leave"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Entry_C_Challenge"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Entry_C_ClaimReward"
 													}
 												]
@@ -580,9 +514,8 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Ended",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_DESK_CH_DENY_ENDED\")"
@@ -593,16 +526,14 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Chall_DenyOK"
 									}
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Op4",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_PHILLIP1\")"
@@ -613,16 +544,14 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Op4_Start",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op4"
 											}
 										]
@@ -630,9 +559,8 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Op3Alt",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "-- A little reprimand for sparing Carson, so it doesn't feel like it has zero consequence\r\nLog(\"TOWN_PIT_O_TYE_CARSONSPARED\")"
@@ -643,16 +571,14 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Chall_Op3Alt",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Entry_R_Chall_Op3"
 											}
 										]
@@ -660,9 +586,8 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Op3",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_TYE1\")"
@@ -673,41 +598,36 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Op3_Start",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op3"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Op3_Tip",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Tip",
 										"Tooltip": "Ask for some advice.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Entry_R_Op3_Tip",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_O_TYE1_TIP\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Entry_C_Op3_Start"
 													}
 												]
@@ -717,50 +637,44 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Chall_Op2",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_CARSON1\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Op2_Start",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op2"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Op2_Tip",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Tip",
 										"Tooltip": "Ask for some advice.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Entry_R_Op2_Tip",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_O_CARSON_TIP\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Entry_C_Op2_Start"
 													}
 												]
@@ -772,9 +686,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Entry_C_ClaimReward",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Claim reward",
 						"Tooltip": "Ask for shares owed to you by the Club.",
 						"Highlight": false,
@@ -785,9 +698,8 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Claim_Reward",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    if IsDebugMode() then print(\"warning: entitled > #RewardGoldPit\") end\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer:ModifyMoney(totalReward)\r\nLog(\"TOWN_PIT_DESK_REWARD\")"
@@ -798,21 +710,18 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Leave"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Challenge"
 									}
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Claim_Annoy",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPlayer:GiveItem(\"I_PitRechToken\")"
@@ -823,39 +732,33 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Leave"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Challenge"
 									}
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Claim_Poke",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Storage.ModifyNumber(\"TOWN_PIT_CASH_BUGGED\", 1)\r\nLog(\"TOWN_PIT_DESK_REWARD_POKE\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Leave"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Challenge"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Entry_C_ClaimReward"
 									}
 								]
@@ -863,9 +766,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Entry_C_Dbg_StartOpp",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "[DBG] Challenge Specific",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -875,66 +777,57 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Entry_R_Dbg_StartOpp",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Dbg_Opp1",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "O1",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op1"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Dbg_Opp2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "O2",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op2"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Dbg_Opp3",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "O3",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op3"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Entry_C_Dbg_Opp4",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "O4",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op4"
 											}
 										]
@@ -946,51 +839,45 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "SafeRoom",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TOWN_PIT_SLEEPROOM_ENTER_2\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "SafeRoom_C_Enter",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "SafeRoom_R_Enter",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "SetLocation(\"The Club, Break Room\")\r\nStorage.SetFlag(\"savepoint\", true)\r\n\r\nif not Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_SLEEPROOM_SLEEP\")\r\nend\r\n\r\nFoodComa()\r\nLog(\"TOWN_PIT_SLEEPROOM_SAVE\", Color.LightGray)"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "SafeRoom_C_Save",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Save",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SafeRoom_R_Save",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SaveData.ShowSaveDialog()\r\n\r\nif Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "SafeRoom_C_Leave"
 													}
 												]
@@ -998,26 +885,23 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "SafeRoom_C_Sleep",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SafeRoom_R_Sleep",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "if Storage.GetFlag(\"TOWN_PIT_OPP4_WON\") then\r\n    Log(\"TOWN_PIT_NEWCHAMP4\")\r\nelse\r\n    Log(\"TOWN_PIT_SLEEPROOM_WAKE\")\r\nend"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "SafeRoom_C_Leave",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Leave",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -1027,8 +911,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Entry"
 															}
 														]
@@ -1044,52 +927,46 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Op1",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SaveData.TakeCheckpoint()\r\nLog(\"TOWN_PIT_O_VULPES1\")\r\nPreySense(Creature(\"CR_Town_Pit_Vulpes\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Op1_C_1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Op1_R_1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_VULPES1B\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Op1_C_2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Op1_R_2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_O_VULPES2\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op1_C_Fight",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Begin",
 														"Tooltip": "Dance the dance of predation.",
 														"Highlight": false,
@@ -1100,42 +977,37 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Op1_R_FightWon",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"TOWN_PIT_OPP1_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP1_FOUGHT\", true)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_ENTITLED\", 1) -- Reward tier 1\r\nLog(\"TOWN_PIT_O_VULPES_VICTORY\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Op1_C_ToRoom",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Op1_R_ToRoom",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "LogSplit()\r\nLog(\"TOWN_PIT_SLEEPROOM_FIRST\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Op1_C_ToRoom2",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": true,
+																								"NodeType": "Link",
 																								"LinkTarget": "SafeRoom_R_Enter"
 																							}
 																						]
@@ -1149,9 +1021,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Op1_C_Dbg_Skip",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "[DBG] Skip",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -1161,8 +1032,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Op1_R_FightWon"
 															}
 														]
@@ -1178,35 +1048,31 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Op2",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\n-- (No preysense because Carson is not a predator)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON2\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Op2_C_1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Op2_R_1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_CARSON3\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Op2_C_Fight",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Begin",
 										"Tooltip": "The moment of truth.",
 										"Highlight": false,
@@ -1217,9 +1083,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Op2_R_FightLost",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"TOWN_PIT_OPP2_LOST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_CARSON_DEFEAT\")"
@@ -1230,26 +1095,23 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op2_C_FightLost_C1",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Op2_R_FightLost_C1",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_O_CARSON_DEFEAT2\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Op2_C_FightLost_C2",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
@@ -1259,8 +1121,7 @@
 																		},
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Entry"
 																			}
 																		]
@@ -1272,9 +1133,8 @@
 												]
 											},
 											{
+												"NodeType": "State",
 												"Key": "Op2_R_FightWonNoVore",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"TOWN_PIT_OPP2_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY_NV\")"
@@ -1285,34 +1145,30 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op2_C_NV_Eat",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Devour",
 														"Tooltip": "The best meal is a defenseless and squirming meal.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Op2_R_NV_Eat",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\n\r\n-- Show gulp text\r\nlocal food = Creature(\"CR_Town_Pit_Carson\")\r\nLogVore(Player, food)\r\n\r\n-- Start a digestion sequence (with Carson already swallowed)\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(food)\r\nstate:SetVored(Player, food)\r\nstate:Begin()"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Op2_C_NV_Eat2",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Op2_R_FightWon"
 																			}
 																		]
@@ -1322,69 +1178,61 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Op2_C_NV_Spare",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Spare",
 														"Tooltip": "You hope that he might have done the same to you.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Op2_R_NV_Spare",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_O_CARSON_VICTORY_SPARE\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Op2_C_NV_Spare2",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Op2_R_NV_Spare2",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_O_CARSON_VICTORY_SPARE2\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Op2_C_NV_Spare3",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Insist",
 																						"Tooltip": "You had a change of heart, perhaps.",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Op2_R_NV_Spare3",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Storage.SetFlag(\"CARSON_SPARED\", true)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY_SPARE3\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Op2_C_NV_Spare4",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "Entry"
 																											}
 																										]
@@ -1394,8 +1242,7 @@
 																						]
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Op2_C_NV_Eat"
 																					}
 																				]
@@ -1409,26 +1256,23 @@
 												]
 											},
 											{
+												"NodeType": "State",
 												"Key": "Op2_R_FightWon",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"TOWN_PIT_OPP2_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP2_FOUGHT\", true)\r\nStorage.SetFlag(\"CARSON_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_CARSON_VICTORY\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op2_C_FightWon",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Leave",
 														"Tooltip": "Your work here is done.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "SafeRoom"
 															}
 														]
@@ -1438,9 +1282,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Op2_C_Dbg_Skip1",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "[DBG] Skip, kill",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -1450,8 +1293,7 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op2_R_FightWon"
 											}
 										]
@@ -1463,35 +1305,31 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Op3",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_TYE2\")\r\nPreySense(Creature(\"CR_Town_Pit_Tye\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Op3_C_1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Op3_R_1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_TYE3A\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Op3_C_Fight",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Begin",
 										"Tooltip": "We'll see about that.",
 										"Highlight": false,
@@ -1502,25 +1340,22 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Op3_R_FightWon",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"TOWN_PIT_OPP3_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP3_FOUGHT\", true)\r\nStorage.SetFlag(\"TYE_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_TYE_VICTORY\")\r\nPlayer:GiveItem(\"I_PitTyePendant\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op3_C_FightWon",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Leave",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "SafeRoom"
 															}
 														]
@@ -1530,9 +1365,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Op3_C_Dbg_Skip1",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "[DBG] Skip",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -1542,8 +1376,7 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Op3_R_FightWon"
 											}
 										]
@@ -1555,52 +1388,46 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Op4",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Game setup\r\nSetLocation(\"The Club, Pit\")\r\nSetTimeHour(0)\r\nSaveData.TakeCheckpoint()\r\n-- Log messages\r\nLogSplit()\r\nLog(\"TOWN_PIT_O_PHILLIP2\")\r\nPreySense(Creature(\"CR_Town_Pit_Phillip\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Op4_C_1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Op4_R_1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_O_PHILLIP3A\")\r\nLog(\"TOWN_PIT_O_PHILLIP3B\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Op4_C_2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Op4_R_2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_O_PHILLIP3C\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Op4_C_Fight",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Begin",
 														"Tooltip": "Oh, you won't keep him waiting, alright...",
 														"Highlight": false,
@@ -1611,25 +1438,22 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Op4_R_FightWon",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"TOWN_PIT_OPP4_WON\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP4_FOUGHT\", true)\r\nStorage.SetFlag(\"PHILLIP_DEAD\", true)\r\nStorage.ModifyNumber(\"TOWN_PIT_CASH_ENTITLED\", 1)\r\nLog(\"TOWN_PIT_O_PHILLIP_VICTORY\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Op4_C_FightWon",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "NewChamp"
 																			}
 																		]
@@ -1639,9 +1463,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Op4_C_Dbg_Skip1",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "[DBG] Skip",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -1651,8 +1474,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Op4_R_FightWon"
 															}
 														]
@@ -1668,52 +1490,46 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "NewChamp",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TOWN_PIT_NEWCHAMP1\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "NewChamp_C_1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "NewChamp_R_1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_NEWCHAMP2\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "NewChamp_C_2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "NewChamp_R_2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_NEWCHAMP3\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "NewChamp_C_3",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -1723,8 +1539,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "SafeRoom"
 															}
 														]

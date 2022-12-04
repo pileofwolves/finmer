@@ -7,23 +7,20 @@
 	"InjectTargetScene": "ab250357-19c3-4e27-9c8f-505e01f329af",
 	"InjectTargetNode": "Start",
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": true,
-		"IsLink": false,
 		"Children": [
 			{
+				"NodeType": "Choice",
 				"Key": "GoToCustomCombat",
-				"IsState": false,
-				"IsLink": false,
 				"Title": "Custom Combat",
 				"Tooltip": "Open the custom combat debug tool",
 				"Highlight": false,
 				"ButtonWidth": 1.0,
 				"Children": [
 					{
+						"NodeType": "State",
 						"Key": "GoToCustomCombat_R",
-						"IsState": true,
-						"IsLink": false,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "SetScene(\"Scene_CustomCombat\")"

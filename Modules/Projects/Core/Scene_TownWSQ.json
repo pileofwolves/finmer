@@ -8,17 +8,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Pit_Snitched",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TOWN_PIT_DESK_INIT_REFUSE_SNITCH2\")"
@@ -29,16 +24,14 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Pit_Snitched_End",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Pit_R_GiveToken2"
 							}
 						]
@@ -46,18 +39,16 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "AddLink(ECompass.East, \"Scene_TownMarket\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Smith",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Smithy",
 						"Tooltip": "Pay a visit to the local blacksmith.",
 						"Highlight": false,
@@ -68,16 +59,14 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Alch",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Alchemist",
 						"Tooltip": "Visit the alchemy shop.",
 						"Highlight": false,
@@ -89,18 +78,16 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Pit",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Alley",
 						"Tooltip": "A narrow, unlit pathway runs between the buildings.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Pit_R_Unlocked",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME_UNLOCKED\")"
@@ -111,18 +98,16 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_UnlockedEnter",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Enter",
 										"Tooltip": "Brush past him and step inside.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_UnlockedEnter",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SetScene(\"Scene_TownPit\")"
@@ -132,9 +117,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_GiveToken",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Give Token",
 										"Tooltip": "Show him the token Venna gave you.",
 										"Highlight": true,
@@ -145,62 +129,55 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_GiveToken",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EVoreStyle.OV, true)"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Pit_C_GiveToken2",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Pit_R_GiveToken2",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_RECH_TOKEN_SHOW2\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Pit_C_GiveToken3",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Tooltip": "Uh-oh...",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Pit_R_GiveToken3",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_RECH_TOKEN_VORE1\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Pit_C_GiveToken4",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Tooltip": "Slip and slide...",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Pit_R_GiveToken4",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"CR_Town_Pit_RechFatal\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player, true)\r\nstate:Begin()"
@@ -224,9 +201,8 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Pit_R_Night",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")\r\n\r\n-- Preysense warning only if vore scene not already triggered\r\nif not Storage.GetFlag(\"town_pit_rech_sneaky\") then\r\n    PreySense(Creature(\"CR_Town_Pit_RechEndo\"), EVoreStyle.OV, false)\r\nend"
@@ -237,18 +213,16 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_AskWhat",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Location",
 										"Tooltip": "Ask what's behind the door.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_WasInvited",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_ENTRANCE_INV\")\r\nPlayer:TakeItem(\"I_PitInvite\")\r\nJournal.Close(\"SQ04\")"
@@ -259,51 +233,45 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Pit_C_Invited2",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Pit_R_Invited2",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_ENTRANCE_INV2\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Pit_C_Invited3",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Pit_R_Invited3",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_ENTRANCE_INV3\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Pit_C_InvitedEnter",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Step inside",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Pit_R_InvitedEnter",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Storage.SetFlag(\"town_pit_unlocked\", true)\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nSetScene(\"Scene_TownPit\")"
@@ -323,27 +291,23 @@
 												]
 											},
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_AskWhat",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_ENTRANCE_DENY_WHATSTHIS\")\r\nStorage.SetFlag(\"town_pit_showsneaky\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_AskEntry"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_EnterAnyway"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_Leave2"
 													}
 												]
@@ -351,41 +315,35 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_AskEntry",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Entry",
 										"Tooltip": "Ask if you can go inside.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Pit_R_WasInvited"
 											},
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_AskEntry",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_PIT_ENTRANCE_DENY_ENTRY\")\r\nStorage.SetFlag(\"town_pit_showsneaky\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_AskWhat"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_EnterAnyway"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Pit_C_Leave2"
 													}
 												]
@@ -393,9 +351,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_EnterAnyway",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Sneak in",
 										"Tooltip": "Hide nearby, and wait for him to leave.",
 										"Highlight": false,
@@ -406,89 +363,79 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Pit_R_Sneak1",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "-- Can only do this interaction once, because it's silly to repeat it\r\nStorage.SetFlag(\"town_pit_rech_sneaky\", true)\r\n\r\nLog(\"TOWN_PIT_RECH_SNEAK1\")\r\nSleep(4)\r\nLog(\"TOWN_PIT_RECH_SNEAK2\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Pit_C_Sneak_Business",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Business",
 														"Tooltip": "Claim that you need to get through here.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Pit_R_Sneak_Business",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_RECH_SNEAK3\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Pit_C_SneakVore",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Tooltip": "Uh-oh...",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Pit_R_SneakVore1",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_PIT_RECH_SNEAK_VORE1\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "Pit_C_SneakVore2",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "Pit_R_SneakVore2",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"TOWN_PIT_RECH_SNEAK_VORE2\")\r\nSleep(4)\r\n\r\nlocal rech = Creature(\"CR_Town_Pit_RechEndo\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player, true)\r\nstate:OnRoundEnd(function(round)\r\n    Log(\"TOWN_PIT_RECH_SNEAK_WALK\" .. round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "Pit_C_SneakEnding",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Tooltip": "Take a quick moment to catch your breath...",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "Pit_R_SneakEnding",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"TOWN_PIT_RECH_SNEAK_ENDING\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "Pit_C_SneakEnding3",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Continue",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
@@ -498,8 +445,7 @@
 																														},
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": true,
+																																"NodeType": "Link",
 																																"LinkTarget": "Main"
 																															}
 																														]
@@ -521,26 +467,23 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Pit_C_Sneak_Back",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Backpedal",
 														"Tooltip": "Apologize and say that you'll get out of his way!",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Pit_R_Sneak_Back",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_PIT_RECH_SNEAK3B\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Pit_C_SneakVore"
 																	}
 																]
@@ -552,9 +495,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_Leave2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Tooltip": "Oh well...",
 										"Highlight": false,
@@ -565,8 +507,7 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
@@ -574,26 +515,23 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "Pit_R_Day",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_PIT_ENTRANCE_DAYTIME\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Pit_C_Leave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Tooltip": "Return to there where the sun shines.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]

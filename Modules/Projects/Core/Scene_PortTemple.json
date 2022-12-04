@@ -19,17 +19,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Empty",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -61,9 +56,8 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Empty_C_Leave",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "There's not much else to do here.",
 						"Highlight": false,
@@ -81,18 +75,16 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Empty_C_Rest",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Rest",
 						"Tooltip": "Rest for a moment and record your progress.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Empty_R_Rest",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -111,8 +103,7 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Empty_C_Leave"
 									}
 								]
@@ -122,9 +113,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "EnterFirst",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -156,17 +146,15 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "EnterFirst_C_Intro2",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "EnterFirst_R_Intro2",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -179,18 +167,16 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "EnterFirst_C_Who",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Greet",
 										"Tooltip": "Exchange pleasantries.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "EnterFirst_R_Who",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -203,28 +189,23 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Spirits"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Shore"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
 													}
 												]
@@ -238,9 +219,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -253,9 +233,8 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Main_C_FakeLeaveMQ03",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "Return outside...",
 						"Highlight": false,
@@ -285,16 +264,14 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "MQ03_Event_Intro"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Main_C_Leave",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Leave",
 						"Tooltip": "Return outside.",
 						"Highlight": false,
@@ -335,49 +312,41 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Main_C_Talk",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Talk",
 						"Tooltip": "Speak with the priestess.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Talk_Root",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Back",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "(Back)",
 										"Highlight": false,
 										"ButtonWidth": 0.75,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Main_C_FakeLeaveMQ03"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Main_C_Leave"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Main_C_Talk"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Main_C_Rest"
 													}
 												]
@@ -385,9 +354,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Iso",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Iso",
 										"Tooltip": "Ask Willow if she has seen Iso around.",
 										"Highlight": false,
@@ -413,9 +381,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Talk_R_Iso",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -438,28 +405,23 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Back"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Spirits"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Shore"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
 													}
 												]
@@ -467,9 +429,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Spirits",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Spirits",
 										"Tooltip": "Ask her to tell you more about these spirits she talked about.",
 										"Highlight": false,
@@ -489,9 +450,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Talk_R_Spirits",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -510,28 +470,23 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Back"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Shore"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
 													}
 												]
@@ -539,9 +494,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Shore",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "The Shore",
 										"Tooltip": "Ask what she knows of this mystical 'shore'.",
 										"Highlight": false,
@@ -573,9 +527,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Talk_R_Shore",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -594,28 +547,23 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Back"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Spirits"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
 													}
 												]
@@ -623,9 +571,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Amber",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Amber",
 										"Tooltip": "Ask about the amber crystals you've heard about.",
 										"Highlight": false,
@@ -663,9 +610,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Talk_R_Amber",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -684,17 +630,15 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Possession",
 														"Tooltip": "Say that you found some on your journey.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Talk_R_Amber2",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -707,28 +651,23 @@
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Back"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Iso"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Spirits"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Shore"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Adept"
 																	}
 																]
@@ -736,31 +675,27 @@
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Rumors",
 														"Tooltip": "Say that you've overheard rumors about it.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Talk_R_Amber2"
 															}
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Desire",
 														"Tooltip": "Say that you seek to discover it for yourself.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Talk_R_Amber2"
 															}
 														]
@@ -770,9 +705,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Talk_C_Adept",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Adepts",
 										"Tooltip": "Ask what Adepts are, then - are they trained users?",
 										"Highlight": false,
@@ -798,9 +732,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Talk_R_Adept",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -819,28 +752,23 @@
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Back"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Spirits"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Shore"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
 													}
 												]
@@ -852,17 +780,15 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Main_C_Rest",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Rest",
 						"Tooltip": "Rest for a moment and record your progress.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -881,18 +807,15 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Main_C_FakeLeaveMQ03"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Main_C_Leave"
 									},
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Main_C_Talk"
 									}
 								]
@@ -902,9 +825,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "MQ03_Event_Intro",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -1000,17 +922,15 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "MQ03_C_Intro2",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ03_R_Intro2Wits",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -1037,18 +957,16 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Intro3",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Explain",
 										"Tooltip": "Something went wrong...",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_R_Intro3",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -1061,17 +979,15 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "MQ03_C_Intro4",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "MQ03_R_Intro4Worn",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -1097,17 +1013,15 @@
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "What",
 																		"Tooltip": "Ask her if she knows what this ring is.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_R_Intro5",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
@@ -1120,17 +1034,15 @@
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_C_Intro6",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "MQ03_R_Intro6",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataVisualAction",
 																									"Nodes": [
@@ -1143,76 +1055,66 @@
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Rux",
 																										"Tooltip": "Ask how she knows an Adept.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "MQ03_Event_Showdown"
 																											}
 																										]
 																									},
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Randall",
 																										"Tooltip": "Ask why Randall is chasing after her.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "MQ03_Event_Showdown"
 																											}
 																										]
 																									},
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Plan",
 																										"Tooltip": "Ask her what this 'plan' was that supposedly failed.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "MQ03_Event_Showdown"
 																											}
 																										]
 																									},
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Panic",
 																										"Tooltip": "Ask her why she is in such a panicked hurry.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "MQ03_Event_Showdown"
 																											}
 																										]
 																									},
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Ring",
 																										"Tooltip": "Ask her why you, not Iso, possess the ring.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "MQ03_Event_Showdown"
 																											}
 																										]
@@ -1226,16 +1128,14 @@
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "How",
 																		"Tooltip": "Ask her how she knows about this ring.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "MQ03_R_Intro5"
 																			}
 																		]
@@ -1243,9 +1143,8 @@
 																]
 															},
 															{
+																"NodeType": "State",
 																"Key": "MQ03_R_Intro4Inv",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -1258,31 +1157,27 @@
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Confirm",
 																		"Tooltip": "Say that you do still have the strange ring you woke up with.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "MQ03_R_Intro5"
 																			}
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "How",
 																		"Tooltip": "Ask her how she knows you woke up with a strange ring.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "MQ03_R_Intro5"
 																			}
 																		]
@@ -1298,9 +1193,8 @@
 								]
 							},
 							{
+								"NodeType": "State",
 								"Key": "MQ03_R_Intro2Dumb",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -1313,8 +1207,7 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "MQ03_C_Intro3"
 									}
 								]
@@ -1324,9 +1217,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "MQ03_Event_Showdown",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -1342,17 +1234,15 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "MQ03_C_Showdown2",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "MQ03_R_Showdown2",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -1365,17 +1255,15 @@
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Showdown3",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "MQ03_R_Showdown3",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -1388,18 +1276,16 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "MQ03_C_Showdown4B",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Punch",
 														"Tooltip": "[Strength & Agility] Give Randall a good whack while he's staggered.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "MQ03_R_Showdown4B",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -1417,8 +1303,7 @@
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "MQ03_C_Showdown5"
 																	}
 																]
@@ -1426,18 +1311,16 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "MQ03_C_Showdown4A",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Grapple",
 														"Tooltip": "[Body & Wits] Try to restrain Randall to buy Iso some time.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "MQ03_R_Showdown4A",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -1455,17 +1338,15 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "MQ03_C_Showdown5",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_R_Showdown5",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
@@ -1478,17 +1359,15 @@
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_C_Showdown6",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "MQ03_R_Showdown6",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataVisualAction",
 																									"Nodes": [
@@ -1501,9 +1380,8 @@
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "MQ03_C_Finish",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,

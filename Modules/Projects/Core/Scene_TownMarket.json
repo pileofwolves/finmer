@@ -12,17 +12,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "WakeUp",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SetInventoryEnabled(false)\r\nSetLocation(\"...\")\r\nStorage.SetFlag(\"town_first\", true)\r\nLog(\"town_first\")"
@@ -33,44 +28,39 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "WakeUp_C_OK1",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "WakeUp_R_OK1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TOWN_FIRST_FOX1\")\r\nSleep(3)\r\nLog(\"TOWN_FIRST_FOX2\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "WakeUp_C_Amnesia",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Answer",
 										"Tooltip": "Tell him you don't know where you are, or why.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "WakeUp_R_Amnesia",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_FIRST_FROMWHERE\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "WakeUp_C_FromNorth",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "North",
 														"Tooltip": "Say that you come from the far, cold North, from where many thick-furred races hail.",
 														"Highlight": false,
@@ -81,71 +71,63 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "WakeUp_R_FromThere",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"TOWN_FIRST_FROM\" .. Storage.GetString(\"player_origin\"))"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "WakeUp_C_Leave",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Leave",
 																		"Tooltip": "Thank him and say you want a minute to breathe.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "WakeUp_R_Leave",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_FIRST_FOX_LEAVE1\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "WakeUp_C_Leave2",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "WakeUp_R_Leave2",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"TOWN_FIRST_FOX_LEAVE2\")"
 																								},
 																								"Children": [
 																									{
+																										"NodeType": "Choice",
 																										"Key": "WakeUp_C_Leave2a",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Deny",
 																										"Tooltip": "Explain that you don't think that's the case.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
+																												"NodeType": "State",
 																												"Key": "WakeUp_R_Leave3",
-																												"IsState": true,
-																												"IsLink": false,
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"TOWN_FIRST_FOX_LEAVE3\")"
 																												},
 																												"Children": [
 																													{
+																														"NodeType": "Choice",
 																														"Key": "WakeUp_C_Leave3",
-																														"IsState": false,
-																														"IsLink": false,
 																														"Title": "Step outside",
 																														"Tooltip": "The world is out there, waiting...",
 																														"Highlight": false,
@@ -156,8 +138,7 @@
 																														},
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": true,
+																																"NodeType": "Link",
 																																"LinkTarget": "Main"
 																															}
 																														]
@@ -167,17 +148,15 @@
 																										]
 																									},
 																									{
+																										"NodeType": "Choice",
 																										"Key": "WakeUp_C_Leave2b",
-																										"IsState": false,
-																										"IsLink": false,
 																										"Title": "Avoid",
 																										"Tooltip": "Explain that, having lost your memory, you cannot be sure.",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": true,
+																												"NodeType": "Link",
 																												"LinkTarget": "WakeUp_R_Leave3"
 																											}
 																										]
@@ -191,9 +170,8 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "WakeUp_C_AskFinmer",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Finmer",
 																		"Tooltip": "Ask him to tell you more about this place.",
 																		"Highlight": false,
@@ -204,27 +182,23 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "WakeUp_R_AskFinmer",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_FIRST_ASK_FINMER\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FINMER\", true)"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskFox"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskAlley"
 																					}
 																				]
@@ -232,9 +206,8 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "WakeUp_C_AskFox",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Fox",
 																		"Tooltip": "Ask who he is, and why he's helping you.",
 																		"Highlight": false,
@@ -245,27 +218,23 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "WakeUp_R_AskFox",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_FIRST_ASK_FOX\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_FOX\", true)"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskFinmer"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskAlley"
 																					}
 																				]
@@ -273,9 +242,8 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "WakeUp_C_AskAlley",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Alleyway",
 																		"Tooltip": "Ask how he managed to find you.",
 																		"Highlight": false,
@@ -286,27 +254,23 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "WakeUp_R_AskAlley",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"TOWN_FIRST_ASK_ALLEY\")\r\nStorage.SetFlag(\"TOWN_FIRST_ASK_ALLEY\", true)"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_Leave"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskFinmer"
 																					},
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "WakeUp_C_AskFox"
 																					}
 																				]
@@ -318,9 +282,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "WakeUp_C_FromEast",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "East",
 														"Tooltip": "Say that you come from the modest East, where many cultures live interspersed.",
 														"Highlight": false,
@@ -331,16 +294,14 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "WakeUp_R_FromThere"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "WakeUp_C_FromSouth",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "South",
 														"Tooltip": "Say that you come from the balmy South, where the centers of commerce lie.",
 														"Highlight": false,
@@ -351,8 +312,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "WakeUp_R_FromThere"
 															}
 														]
@@ -366,9 +326,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "WakeUp_C_Skip",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "[DBG] Skip",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -378,8 +337,7 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Main"
 							}
 						]
@@ -387,9 +345,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Event_Naked",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Randomize the guard's species\r\nguard = GetRandomCharacter()\r\n\r\n-- Remember this encounter\r\nStorage.SetFlag(\"law_ever_arrested\", true)\r\nStorage.SetFlag(\"law_arrested_naked\", true)\r\n\r\nSetInventoryEnabled(false)\r\nText.SetContext(\"guard\", guard)\r\nLog(\"EVENT_NAKED_BEGIN\")\r\n\r\nPreySense(guard, EPreySenseType.OralVore, EPreySenseType.Endo)\r\n"
@@ -400,44 +357,39 @@
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "EvNaked_C_Apologize",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Apologize",
 						"Tooltip": "You'll, uh, make sure it doesn't happen again.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "EvNaked_R_Apologize",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"EVENT_NAKED_APOLOGIZE\")\r\nLog(\"EVENT_NAKED_ARRESTED\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "EvNaked_C_VoreHit",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Uhh...",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "EvNaked_R_VoreHit",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_GUARD_VORE_HIT_POV\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "EvNaked_C_GetEaten",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Gllrrk!",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -447,43 +399,38 @@
 														},
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "EvNaked_R_GetEaten",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "-- Take a fine, and make sure the player has clothes now\r\nPlayer:ModifyMoney(-10)\r\nPlayer.EquippedArmor = Item(\"A_ClothArmor\")\r\n\r\n-- Remove clothes in the inventory to prevent farming them\r\nif Player:HasItem(\"A_ClothArmor\") then\r\n    Player:TakeItem(\"A_ClothArmor\")\r\nend"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "EvNaked_C_Regurg",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "EvNaked_R_Regurg",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "-- Context was discarded (scene change) so we need to reset it now\r\nText.SetContext(\"guard\", guard)\r\n\r\nLog(\"TOWN_GUARD_REGURGITATED\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "EvNaked_C_ExitToGate",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
+																								"NodeType": "State",
 																								"Key": "EvNaked_R_ExitToGate",
-																								"IsState": true,
-																								"IsLink": false,
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "SetScene(\"Scene_TownGate\")"
@@ -509,26 +456,23 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "EvNaked_C_Defy",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Defy",
 						"Tooltip": "Make a corny sex joke.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "EvNaked_R_Defy",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"EVENT_NAKED_DEFY\")\r\nLog(\"EVENT_NAKED_ARRESTED\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "EvNaked_C_VoreHit"
 									}
 								]
@@ -538,18 +482,16 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)\r\n\r\n-- Take a checkpoint if the player leaves town and comes back\r\nTimedCheckpoint(\"TOWN_MARKET\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Inn",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Inn",
 						"Tooltip": "Visit the town's local public house.",
 						"Highlight": false,
@@ -561,9 +503,8 @@
 						"Children": []
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "GoFishStall",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Fish Stall",
 						"Tooltip": "They sell fish in a fishing village, who knew?",
 						"Highlight": false,
@@ -578,14 +519,12 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_FishStall",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "FishLeave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -595,16 +534,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Fish_C_MQ01Setup",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Work",
 										"Tooltip": "Ask the fox if he knows any leads for work.",
 										"Highlight": false,
@@ -615,40 +552,35 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Fish_R_MQ01Setup",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "local questgiver = Creature(\"CR_RandomAnthro\")\r\nquestgiver.Alias = \"Gabe\"\r\nquestgiver.Gender = EGender.Male\r\nText.SetContext(\"questgiver\", questgiver)\r\nLog(\"MQ01_SETUP1\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Fish_C_MQ01Bridge",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Bridge",
 														"Tooltip": "Ask how a trade route could just collapse like that.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Fish_R_MQ01Bridge",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ01_SETUP_BRIDGE\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Fish_C_MQ01Mayor"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Fish_C_MQ01Exit"
 																	}
 																]
@@ -656,31 +588,27 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Fish_C_MQ01Mayor",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Acting Mayor",
 														"Tooltip": "Ask what he meant by 'acting' mayor.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Fish_R_MQ01Mayor",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ01_SETUP_MAYOR\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Fish_C_MQ01Bridge"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Fish_C_MQ01Exit"
 																	}
 																]
@@ -688,9 +616,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Fish_C_MQ01Exit",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Tooltip": "Thank him for the information.",
 														"Highlight": false,
@@ -701,8 +628,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "R_FishStall"
 															}
 														]
@@ -712,34 +638,30 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Fish_C_Talk",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Chat",
 										"Tooltip": "Ask the fox how business is.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Fish_R_Talk",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"TOWN_MARKET_FISH_TALK_NO\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Fish_C_TalkExit",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "R_FishStall"
 															}
 														]
@@ -749,9 +671,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "FishBuy",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Buy",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -766,9 +687,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "GoFruitStall",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Fruit Stall",
 						"Tooltip": "And fruit & veggies too, apparently, if you're into that sort of thing.",
 						"Highlight": false,
@@ -783,53 +703,46 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "FruitStall",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "FruitLeave",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Leave",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Main"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "FruitTalk",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Chat",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "FruitTalkResponse",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLog(\"TOWN_MARKET_FRUIT_TALK_NO\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "FruitTalkExit",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "FruitStall"
 															}
 														]
@@ -839,9 +752,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "FruitBuy",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Buy",
 										"Highlight": false,
 										"ButtonWidth": 1.0,

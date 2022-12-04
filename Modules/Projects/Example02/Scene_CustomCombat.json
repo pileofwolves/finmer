@@ -12,26 +12,20 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Ensure inventory is available for the user to edit\r\nSetInventoryEnabled(true)"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "C_Launch",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "LAUNCH!",
 						"Tooltip": "FIGHT!",
 						"Highlight": false,
@@ -42,47 +36,41 @@
 						},
 						"Children": [
 							{
+								"NodeType": "Link",
 								"Key": "AutoLink",
-								"IsState": true,
-								"IsLink": true,
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_ParticipantMenu",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Add Participant",
 						"Tooltip": "Add new participants to the combat",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_ParticipantMenu",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part__Cancel",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "[ Cancel ]",
 										"Highlight": true,
 										"ButtonWidth": 0.75,
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "Main"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_Player",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Player",
 										"Tooltip": "Add the player character",
 										"Highlight": false,
@@ -94,9 +82,8 @@
 										"Children": []
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_AddOpp",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Opponent",
 										"Tooltip": "Add an enemy participant",
 										"Highlight": false,
@@ -107,24 +94,21 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "R_Part_Add",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "SetInstruction(\"Okay, now select which creature to use as \" .. (next_is_ally and \"ally\" or \"enemy\") .. \"...\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Link",
 														"Key": "AutoLink",
-														"IsState": false,
-														"IsLink": true,
 														"LinkTarget": "C_Part__Cancel"
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestOppEasy",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Easy Opponent",
 														"Tooltip": "Level 1, with all stats set to 4",
 														"Highlight": false,
@@ -135,17 +119,15 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestOppMed",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Medium Opponent",
 														"Tooltip": "Level 3, with all stats set to 6",
 														"Highlight": false,
@@ -156,17 +138,15 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestOppHard",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Hard Opponent",
 														"Tooltip": "Level 5, with all stats set to 8",
 														"Highlight": false,
@@ -177,17 +157,15 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestPredEasy",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Easy Predator",
 														"Tooltip": "Predator, Level 1, with all stats set to 4",
 														"Highlight": false,
@@ -198,17 +176,15 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestPredMed",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Medium Predator",
 														"Tooltip": "Predator, Level 3, with all stats set to 6",
 														"Highlight": false,
@@ -219,17 +195,15 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "C_Part_TestPredHard",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Hard Predator",
 														"Tooltip": "Predator, Level 5, with all stats set to 8",
 														"Highlight": false,
@@ -240,9 +214,8 @@
 														},
 														"Children": [
 															{
+																"NodeType": "Link",
 																"Key": "AutoLink",
-																"IsState": true,
-																"IsLink": true,
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -252,9 +225,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_AddAlly",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Ally",
 										"Tooltip": "Add a friendly participant",
 										"Highlight": false,
@@ -265,17 +237,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_Part_Add"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_Pit01",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Pit - Vulpes",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -289,17 +259,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_Pit02",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Pit - Carson",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -313,17 +281,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_Pit03",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Pit - Tye",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -337,17 +303,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Part_Pit04",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Pit - Phillip",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -361,9 +325,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
@@ -373,29 +336,25 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Cheats",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Cheats",
 						"Tooltip": "Adjust player stats",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "R_CheatMenu",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
+										"NodeType": "Link",
 										"Key": "AutoLink",
-										"IsState": false,
-										"IsLink": true,
 										"LinkTarget": "C_Part__Cancel"
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_Str",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "+1 Strength",
 										"Tooltip": "Add 1 Strength to the player",
 										"Highlight": false,
@@ -406,17 +365,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_Agi",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "+1 Agility",
 										"Tooltip": "Add 1 Agility to the player",
 										"Highlight": false,
@@ -427,17 +384,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_Body",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "+1 Body",
 										"Tooltip": "Add 1 Body to the player",
 										"Highlight": false,
@@ -448,17 +403,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_Wit",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "+1 Wits",
 										"Tooltip": "Add 1 Wits to the player",
 										"Highlight": false,
@@ -469,17 +422,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_FullHeal",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Full Heal",
 										"Tooltip": "Fully heal player as if rested",
 										"Highlight": false,
@@ -490,17 +441,15 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "C_Cheat_Items",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Items",
 										"Tooltip": "Add various weapons/armor to inventory",
 										"Highlight": false,
@@ -511,9 +460,8 @@
 										},
 										"Children": [
 											{
+												"NodeType": "Link",
 												"Key": "AutoLink",
-												"IsState": true,
-												"IsLink": true,
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -523,9 +471,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Reset",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Reset",
 						"Tooltip": "Reset all combat state changes (removing all participants)",
 						"Highlight": false,
@@ -536,17 +483,15 @@
 						},
 						"Children": [
 							{
+								"NodeType": "Link",
 								"Key": "AutoLink",
-								"IsState": true,
-								"IsLink": true,
 								"LinkTarget": "Main"
 							}
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "C_Exit",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "[ Exit ]",
 						"Highlight": false,
 						"ButtonWidth": 1.0,

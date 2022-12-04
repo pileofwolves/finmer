@@ -12,32 +12,25 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"ABBEY_EXPLORE_INTRO\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Explore_Main"
 							}
 						]
@@ -45,74 +38,65 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Explore_Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SetInventoryEnabled(true)\r\nTimedCheckpoint(\"ABBEY_COURTYARD\")\r\nAddLink(ECompass.South, \"Scene_DalsidaPass\")\r\n\r\nif Storage.GetFlag(\"ABBEY_EXPLORE_COURTYARD\") then\r\n    Log(\"ABBEY_EXPLORE_COURTYARD\")\r\nelse\r\n    Storage.SetFlag(\"ABBEY_EXPLORE_COURTYARD\", true)\r\n    Log(\"ABBEY_EXPLORE_COURTYARD_FIRST\")\r\nend"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Exp_C_Barracks",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Barracks",
 						"Tooltip": "Visit the residential area.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Exp_R_Barracks",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"ABBEY_EXPLORE_BARRACKS\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_ReturnCourtyrd",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Return",
 										"Tooltip": "Go back to the courtyard.",
 										"Highlight": false,
 										"ButtonWidth": 0.75,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Explore_Main"
 											}
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_BarracksSide",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Side Buildings",
 										"Tooltip": "Examine the surrounding smaller houses.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Exp_R_BarracksSide",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"ABBEY_EXPLORE_BARRACKS_SIDE\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Exp_C_ReturnCourtyrd"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "Exp_C_BarracksMain"
 													}
 												]
@@ -120,9 +104,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_BarracksMain",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Main Building",
 										"Tooltip": "Try to enter the main building.",
 										"Highlight": false,
@@ -133,41 +116,35 @@
 										},
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Exp_R_BarracksMain",
-												"IsState": true,
-												"IsLink": false,
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Exp_C_BarracksMainLv",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Leave",
 														"Tooltip": "Return outside.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Exp_R_BarracksMainLv",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"ABBEY_EXPLORE_BARRACKS_OUTSIDE\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exp_C_ReturnCourtyrd"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exp_C_BarracksSide"
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exp_C_BarracksMain"
 																	}
 																]
@@ -175,9 +152,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Exp_C_BarracksMainS1",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Beds",
 														"Tooltip": "Search the beds and the drawers near them.",
 														"Highlight": false,
@@ -188,8 +164,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_BARRACKS_S1\", true)\r\nLog(\"ABBEY_EXPLORE_BARRACKS_BEDS_WITS\")\r\nPlayer:GiveItem(\"AC_SilverNecklace\")"
@@ -210,9 +185,8 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Exp_C_BarracksResume",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
@@ -222,8 +196,7 @@
 																		},
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Exp_R_BarracksMain"
 																			}
 																		]
@@ -231,16 +204,14 @@
 																]
 															},
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_BARRACKS_S1\", true)\r\nLog(\"ABBEY_EXPLORE_BARRACKS_BEDS\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exp_C_BarracksResume"
 																	}
 																]
@@ -248,9 +219,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Exp_C_BarracksMainS2",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Shelves",
 														"Tooltip": "Search the crumbling shelves on the far wall.",
 														"Highlight": false,
@@ -261,16 +231,14 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_BARRACKS_S2\", true)\r\nLog(\"ABBEY_EXPLORE_BARRACKS_SHELVES\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Continue",
 																		"Tooltip": "Oops.",
 																		"Highlight": false,
@@ -281,13 +249,11 @@
 																		},
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Gryphon_Intro"
 																			},
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Exp_R_BarracksMain"
 																			}
 																		]
@@ -297,9 +263,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Exp_C_BarracksMainS3",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Tree",
 														"Tooltip": "Search for anything interesting around the oak tree.",
 														"Highlight": false,
@@ -310,16 +275,14 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_BARRACKS_S3\", true)\r\nLog(\"ABBEY_EXPLORE_BARRACKS_TREE\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": true,
+																		"NodeType": "Link",
 																		"LinkTarget": "Exp_C_BarracksResume"
 																	}
 																]
@@ -335,9 +298,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Exp_C_Chapel",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Chapel",
 						"Tooltip": "Visit the dilapidated chapel.",
 						"Highlight": false,
@@ -348,19 +310,16 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Exp_R_Chapel",
-								"IsState": true,
-								"IsLink": false,
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Exp_C_ReturnCourtyrd"
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_ChapelS1",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Altar",
 										"Tooltip": "Search the imposing altar and lectern.",
 										"Highlight": false,
@@ -371,16 +330,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_CHAPEL_S1\", true)\r\nLog(\"ABBEY_EXPLORE_CHAPEL_ALTAR\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Tooltip": "Oops.",
 														"Highlight": false,
@@ -391,13 +348,11 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Gryphon_Intro"
 															},
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Exp_R_Chapel"
 															}
 														]
@@ -407,9 +362,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_ChapelS2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Pews",
 										"Tooltip": "Search what remains of the benches in the room.",
 										"Highlight": false,
@@ -420,16 +374,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_CHAPEL_S2\", true)\r\nLog(\"ABBEY_EXPLORE_CHAPEL_PEWS\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -439,8 +391,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Exp_R_Chapel"
 															}
 														]
@@ -450,9 +401,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_ChapelS3",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Statue",
 										"Tooltip": "Examine the crumbling statue.",
 										"Highlight": false,
@@ -463,16 +413,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_CHAPEL_S3\", true)\r\nLog(\"ABBEY_EXPLORE_CHAPEL_STATUE\")\r\nPlayer:ModifyMoney(12)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -482,8 +430,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Exp_R_Chapel"
 															}
 														]
@@ -497,9 +444,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Exp_C_Workshop",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Buildings",
 						"Tooltip": "Visit the mysterious left-most buildings.",
 						"Highlight": false,
@@ -529,9 +475,8 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Exp_R_Workshop",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -545,14 +490,12 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": true,
+										"NodeType": "Link",
 										"LinkTarget": "Exp_C_ReturnCourtyrd"
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_WorkshopS1",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Study",
 										"Tooltip": "Search the reading room.",
 										"Highlight": false,
@@ -563,16 +506,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_WORKSHOP_S1\", true)\r\nLog(\"ABBEY_EXPLORE_WORKSHOP_STUDY\")\r\nPlayer:GiveItem(\"I_AbbeyBook01\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -582,8 +523,7 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Exp_R_Workshop"
 															}
 														]
@@ -593,9 +533,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "Exp_C_WorkshopS2",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Library",
 										"Tooltip": "Search the library.",
 										"Highlight": false,
@@ -606,16 +545,14 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Storage.SetFlag(\"ABBEY_EXPLORE_WORKSHOP_S2\", true)\r\nLog(\"ABBEY_EXPLORE_WORKSHOP_LIBRARY\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -625,13 +562,11 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Gryphon_Intro"
 															},
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Exp_R_Workshop"
 															}
 														]
@@ -645,9 +580,8 @@
 						]
 					},
 					{
+						"NodeType": "Choice",
 						"Key": "Exp_C_Workshop2",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Workshop",
 						"Tooltip": "Visit the workshop area.",
 						"Highlight": false,
@@ -677,8 +611,7 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Exp_R_Workshop"
 							}
 						]
@@ -686,9 +619,8 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Gryphon_Intro",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "-- Note: No text here, the previous node printed the last noise warning\r\nSetInventoryEnabled(false)"
@@ -699,17 +631,15 @@
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Oh dear",
 						"Tooltip": "Perhaps you made a bit too much noise...",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "Gryphon_R_Intro1",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -722,16 +652,14 @@
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "Gryphon_R_Intro2",
-												"IsState": true,
-												"IsLink": false,
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
@@ -744,18 +672,16 @@
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Gryphon_C_Stay",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Stay",
 														"Tooltip": "You're not sure you could outrun this creature to begin with.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Gryphon_R_Stay",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -768,17 +694,15 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Gryphon_C_Caught",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Caught!",
 																		"Tooltip": "There's nowhere else to go.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": false,
+																				"NodeType": "State",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
@@ -791,15 +715,13 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": false,
+																						"NodeType": "Choice",
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": false,
+																								"NodeType": "State",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"ABBEY_GRYPHON_VORE_WIN_POV\")\r\nSleep(3)\r\n\r\nlocal combat = Combat2()\r\nlocal pred = Creature(\"CR_AbbeyGryphon\")\r\ncombat:AddParticipant(Player)\r\ncombat:AddParticipant(pred)\r\ncombat:SetVored(pred, Player)\r\ncombat:Begin()"
@@ -817,18 +739,16 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Gryphon_C_Run",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Run",
 														"Tooltip": "Best not let this one chance slip away.",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
+																"NodeType": "State",
 																"Key": "Gryphon_R_Run",
-																"IsState": true,
-																"IsLink": false,
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
@@ -841,18 +761,16 @@
 																},
 																"Children": [
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Gryphon_C_RunStraight",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Keep going!",
 																		"Tooltip": "Get as far away from this place as possible!",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Gryphon_R_RunStraight",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
@@ -865,8 +783,7 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Gryphon_C_Caught"
 																					}
 																				]
@@ -874,18 +791,16 @@
 																		]
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Gryphon_C_RunHide",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Hide!",
 																		"Tooltip": "Find a place to hide!",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "Gryphon_R_RunHide",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
@@ -898,8 +813,7 @@
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "Gryphon_C_Caught"
 																					}
 																				]

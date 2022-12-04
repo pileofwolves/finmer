@@ -12,47 +12,38 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Text.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK1\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"TUTORIAL_TALK2\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Fight_Regular"
 											}
 										]
@@ -64,25 +55,22 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Fight_Regular",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TUTORIAL_NOTE_ROUNDS1\", tutorial_color)\r\nLog(\"TUTORIAL_NOTE_ROUNDS2\", tutorial_color)\r\n\r\nlocal note_hit = false\r\nlocal dummy = Creature(\"CR_TrainingDummy1\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(dummy)\r\nfight:OnRoundEnd(function(round)\r\n    -- Once the dummy takes damage, show a quip\r\n    if dummy.Health ~= dummy.HealthMax and not note_hit then\r\n        note_hit = true\r\n        Log(\"TUTORIAL_TALK3\", tutorial_color)\r\n    end\r\nend)\r\nfight:OnCreatureKilled(function(killer, victim)\r\n    -- Ensure the hit text is displayed even if the dummy is OHKO'd\r\n    if victim == dummy and not note_hit then\r\n        Log(\"TUTORIAL_TALK3\", tutorial_color)\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\nSleep(1)\r\nText.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK4\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Continue3",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": true,
+								"NodeType": "Link",
 								"LinkTarget": "Fight_Vore"
 							}
 						]
@@ -90,18 +78,16 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Fight_Vore",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"TUTORIAL_NOTE_GRAPPLE\", tutorial_color)\r\n\r\nlocal note_swallow = false\r\nlocal note_digest = false\r\nlocal dummy = Creature(\"CR_TrainingDummy2\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(dummy)\r\nfight:OnRoundEnd(function(round)\r\n    if (not note_swallow) and fight:IsGrappling(Player) then\r\n        -- Tutorial note\r\n        note_swallow = true\r\n        Log(\"TUTORIAL_NOTE_VORE1\", tutorial_color)\r\n        -- Enable swallowing\r\n        dummy.Flags = dummy.Flags - ECharacterFlags.NoPrey\r\n    end\r\n    if (not note_digest) and fight:GetPredator(dummy) == Player then\r\n        -- Tutorial note\r\n        note_digest = true\r\n        Log(\"TUTORIAL_NOTE_VORE2\", tutorial_color)\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\nSleep(1)\r\nText.SetContext(\"instructor\", instructor)\r\nLog(\"TUTORIAL_TALK5\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "Exit",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Finish",
 						"Highlight": false,
 						"ButtonWidth": 1.0,

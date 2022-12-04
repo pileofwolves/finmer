@@ -8,26 +8,20 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "MQ03_Event6",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "MQ03_SetupAssailantContext()\r\nLog(\"MQ03_TAVERN_EVENT6\")"
 				},
 				"Children": [
 					{
+						"NodeType": "Choice",
 						"Key": "MQ03_DoFight",
-						"IsState": false,
-						"IsLink": false,
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -37,17 +31,15 @@
 						},
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_TAVERN_FINALE1\")"
 								},
 								"Children": [
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Who",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Who",
 										"Tooltip": "Ask him who he is and why he is after you.",
 										"Highlight": false,
@@ -58,36 +50,30 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE2_WHO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_WHO\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_PC"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Employer"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_StopTalk"
 													}
 												]
@@ -95,9 +81,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_PC",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "You",
 										"Tooltip": "Ask what he knows you from.",
 										"Highlight": false,
@@ -108,36 +93,30 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE2_PC\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_PC\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Who"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Employer"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_StopTalk"
 													}
 												]
@@ -145,9 +124,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Employer",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Employer",
 										"Tooltip": "Ask who sent him and the predator after you.",
 										"Highlight": false,
@@ -158,36 +136,30 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE2_RANDALL\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_RANDALL\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Who"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_PC"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_StopTalk"
 													}
 												]
@@ -195,9 +167,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Iso",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Iso",
 										"Tooltip": "Ask what he knows about Mayor Iso.",
 										"Highlight": false,
@@ -208,36 +179,30 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE2_ISO\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_ISO\", true)\r\nJournal.Update(\"MQ03\", 50)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Who"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_PC"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Employer"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Amber"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_StopTalk"
 													}
 												]
@@ -245,9 +210,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_Amber",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Amber",
 										"Tooltip": "Ask what this 'amber' substance is.",
 										"Highlight": false,
@@ -258,36 +222,30 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE2_AMBER\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_AMBER\", true)"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Who"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_PC"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Employer"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_Iso"
 													},
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "MQ03_C_StopTalk"
 													}
 												]
@@ -295,9 +253,8 @@
 										]
 									},
 									{
+										"NodeType": "Choice",
 										"Key": "MQ03_C_StopTalk",
-										"IsState": false,
-										"IsLink": false,
 										"Title": "Move on",
 										"Tooltip": "You've heard enough.",
 										"Highlight": false,
@@ -308,86 +265,75 @@
 										},
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_TAVERN_FINALE3\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ03_TAVERN_FINALE4\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Spare",
 																		"Tooltip": "He's scared out of his mind and probably not a threat.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_R_Spare",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Storage.SetFlag(\"MQ03_TOBY_SPARED\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_SPARE\")"
 																				},
 																				"Children": [
 																					{
+																						"NodeType": "Choice",
 																						"Key": "MQ03_C_EventWrapup",
-																						"IsState": false,
-																						"IsLink": false,
 																						"Title": "Leave",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
-																								"IsState": true,
-																								"IsLink": false,
+																								"NodeType": "State",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
 																									"Script": "Log(\"MQ03_TAVERN_FINALE6\")\r\nFoodComa()"
 																								},
 																								"Children": [
 																									{
-																										"IsState": false,
-																										"IsLink": false,
+																										"NodeType": "Choice",
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
-																												"IsState": true,
-																												"IsLink": false,
+																												"NodeType": "State",
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
 																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend"
 																												},
 																												"Children": [
 																													{
-																														"IsState": false,
-																														"IsLink": false,
+																														"NodeType": "Choice",
 																														"Title": "Continue",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
-																																"IsState": true,
-																																"IsLink": false,
+																																"NodeType": "State",
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataInline",
 																																	"Script": "Log(\"MQ03_TAVERN_FINALE8\")\r\nSetScene(\"Scene_PortDocks\")"
@@ -409,25 +355,22 @@
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Kill",
 																		"Tooltip": "He works for the Red Maw and will probably tell on you.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "State",
 																				"Key": "MQ03_R_Kill",
-																				"IsState": true,
-																				"IsLink": false,
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Storage.SetFlag(\"TOBY_DEAD\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_KILL\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": true,
+																						"NodeType": "Link",
 																						"LinkTarget": "MQ03_C_EventWrapup"
 																					}
 																				]

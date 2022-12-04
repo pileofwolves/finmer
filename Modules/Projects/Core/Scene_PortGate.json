@@ -12,17 +12,12 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Main",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"PORT_GATE_ENTER\")\r\nAddLink(ECompass.West, \"Scene_PortCentral\")\r\nAddLink(ECompass.East, GoEast)\r\nAddLink(ECompass.North, GoNorth)"

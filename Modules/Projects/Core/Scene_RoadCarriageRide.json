@@ -8,56 +8,46 @@
 	},
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Ride_Start",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"MQ03_RIDESOUTH_TRIP01\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_RIDESOUTH_TRIP02\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_RIDESOUTH_TRIP03\")"
 												},
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "Ride_C_AskZosk",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Zosk",
 														"Tooltip": "Ask about the merchant's background.",
 														"Highlight": false,
@@ -68,35 +58,30 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_ZOSK\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_ZOSK\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
+																		"NodeType": "Choice",
 																		"Key": "Ride_C_AskEnd",
-																		"IsState": false,
-																		"IsLink": false,
 																		"Title": "Continue",
 																		"Tooltip": "That's enough for now.",
 																		"Highlight": false,
@@ -107,9 +92,8 @@
 																		},
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Memory"
 																			}
 																		]
@@ -119,9 +103,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Ride_C_AskFamily",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Family",
 														"Tooltip": "Ask whether his work lets him see his relatives.",
 														"Highlight": false,
@@ -132,35 +115,30 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_FAMILY\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_FAMILY\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -168,9 +146,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Ride_C_AskCargo",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Cargo",
 														"Tooltip": "Ask about the contents of the cart behind you.",
 														"Highlight": false,
@@ -181,35 +158,30 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CARGO\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CARGO\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -217,9 +189,8 @@
 														]
 													},
 													{
+														"NodeType": "Choice",
 														"Key": "Ride_C_AskClient",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "Client",
 														"Tooltip": "Ask about the buyer.",
 														"Highlight": false,
@@ -230,35 +201,30 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Storage.SetFlag(\"MQ03_RIDESOUTH_ASK_CLIENT\", true)\r\nLog(\"MQ03_RIDESOUTH_TALK_CLIENT\")"
 																},
 																"Children": [
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
+																		"NodeType": "Link",
 																		"Key": "AutoLink",
-																		"IsState": false,
-																		"IsLink": true,
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -276,135 +242,118 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Ride_Memory",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"MQ03_RIDESOUTH_TRIP04\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_RIDESOUTH_TRIP05\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_RIDESOUTH_TRIP06\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ03_RIDESOUTH_TRIP07\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Don't know",
 																		"Tooltip": "Say you don't have any particular reason for traveling here.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Explore",
 																		"Tooltip": "Say you felt the call of adventure. Or maybe you just like traveling.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Search",
 																		"Tooltip": "Say you intend to help find the missing mayor.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Jobs",
 																		"Tooltip": "Say you intend to look for work.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
 																	},
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Food",
 																		"Tooltip": "Say you wish to try the local cuisine (perhaps in more ways than one).",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
+																				"NodeType": "Link",
 																				"Key": "AutoLink",
-																				"IsState": true,
-																				"IsLink": true,
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
@@ -424,77 +373,67 @@
 				]
 			},
 			{
+				"NodeType": "State",
 				"Key": "Ride_Reflect",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "Log(\"MQ03_RIDESOUTH_TRIP08\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Continue",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"IsState": true,
-								"IsLink": false,
+								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_RIDESOUTH_TRIP09\")"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Log(\"MQ03_RIDESOUTH_TRIP10\")"
 												},
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "Log(\"MQ03_RIDESOUTH_TRIP11\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": false,
+																				"NodeType": "State",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Log(\"MQ03_RIDESOUTH_TRIP12\")"
 																				},
 																				"Children": [
 																					{
-																						"IsState": false,
-																						"IsLink": false,
+																						"NodeType": "Choice",
 																						"Title": "Continue",
 																						"Tooltip": "Finally, you've arrived!",
 																						"Highlight": false,

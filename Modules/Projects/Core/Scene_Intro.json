@@ -4,25 +4,19 @@
 	"AssetName": "Scene_Intro",
 	"IsPatch": false,
 	"Root": {
+		"NodeType": "Root",
 		"Key": "Root",
-		"IsState": false,
-		"IsLink": false,
-		"Title": "Root",
-		"Highlight": false,
-		"ButtonWidth": 1.0,
 		"Children": [
 			{
+				"NodeType": "State",
 				"Key": "Start",
-				"IsState": true,
-				"IsLink": false,
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
 					"Script": "SetInventoryEnabled(false)\r\nClearLog()\r\nLog(\"TUTORIAL_PROMPT\")"
 				},
 				"Children": [
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Nah, I'm good",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
@@ -33,8 +27,7 @@
 						"Children": []
 					},
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Yes please!",
 						"Highlight": false,
 						"ButtonWidth": 1.25,
@@ -45,8 +38,7 @@
 						"Children": []
 					},
 					{
-						"IsState": false,
-						"IsLink": false,
+						"NodeType": "Choice",
 						"Title": "Debug Menu",
 						"Tooltip": "Here be dragons",
 						"Highlight": true,
@@ -57,57 +49,49 @@
 						},
 						"Children": [
 							{
+								"NodeType": "State",
 								"Key": "DebugMenu",
-								"IsState": true,
-								"IsLink": false,
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()"
 								},
 								"Children": [
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "(Back)",
 										"Highlight": false,
 										"ButtonWidth": 0.6,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": true,
+												"NodeType": "Link",
 												"LinkTarget": "Start"
 											}
 										]
 									},
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "Teleports",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"IsState": true,
-												"IsLink": false,
+												"NodeType": "State",
 												"Children": [
 													{
+														"NodeType": "Choice",
 														"Key": "DebugSubMenuBack",
-														"IsState": false,
-														"IsLink": false,
 														"Title": "(Back)",
 														"Highlight": false,
 														"ButtonWidth": 0.6,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "DebugMenu"
 															}
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to Inn",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -118,8 +102,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to MQ02 RoadEnc",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -130,8 +113,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to MQ02 Done",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -142,8 +124,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to MQ03 Port",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -154,8 +135,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to MQ03 Ending",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -166,8 +146,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to Forest Edge",
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,
@@ -179,8 +158,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to Pit",
 														"Tooltip": "Level 3",
 														"Highlight": false,
@@ -192,8 +170,7 @@
 														"Children": []
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Go to Abbey",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -208,25 +185,21 @@
 										]
 									},
 									{
-										"IsState": false,
-										"IsLink": false,
+										"NodeType": "Choice",
 										"Title": "System Tests",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
+												"NodeType": "State",
 												"Key": "SysTestsRoot",
-												"IsState": true,
-												"IsLink": false,
 												"Children": [
 													{
-														"IsState": false,
-														"IsLink": true,
+														"NodeType": "Link",
 														"LinkTarget": "DebugSubMenuBack"
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Shop test",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -236,38 +209,33 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "DebugMenu"
 															}
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Save Game (Checkpoint)",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "LogRaw(\"Capturing checkpoint...\")\r\nSaveData.TakeCheckpoint()"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Continue",
 																		"Tooltip": "Continue from checkpoint.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "SysTestsRoot"
 																			}
 																		]
@@ -277,8 +245,7 @@
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Save Game (Choice)",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -288,38 +255,33 @@
 														},
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": true,
+																"NodeType": "Link",
 																"LinkTarget": "Start"
 															}
 														]
 													},
 													{
-														"IsState": false,
-														"IsLink": false,
+														"NodeType": "Choice",
 														"Title": "Save Game (State)",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
-																"IsState": true,
-																"IsLink": false,
+																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
 																	"Script": "LogRaw(\"Capturing Save B\")\r\nSaveData.ShowSaveDialog()\r\nLogRaw(\"Restoring Save B\")"
 																},
 																"Children": [
 																	{
-																		"IsState": false,
-																		"IsLink": false,
+																		"NodeType": "Choice",
 																		"Title": "Continue",
 																		"Tooltip": "Continue from save data.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
-																				"IsState": true,
-																				"IsLink": true,
+																				"NodeType": "Link",
 																				"LinkTarget": "Start"
 																			}
 																		]

@@ -20,7 +20,7 @@ using Finmer.Core.Serialization;
 namespace Finmer.Editor
 {
 
-    public partial class FormDocumentProject : AssetWindow
+    public partial class FormDocumentProject : EditorWindow
     {
 
         private readonly Furball m_Furball;

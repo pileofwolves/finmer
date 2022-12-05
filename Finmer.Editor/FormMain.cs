@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Windows.Forms;
 using Finmer.Core;
 using Finmer.Core.Assets;
@@ -31,8 +32,7 @@ namespace Finmer.Editor
         private readonly TreeNode m_NodeScripts;
         private readonly TreeNode m_NodeTexts;
 
-        private readonly Dictionary<IFurballSerializable, EditorWindow> m_OpenWindows = new Dictionary<IFurballSerializable, EditorWindow>();
-        private IFurballSerializable m_ProjectSettingsKey;
+        private readonly Dictionary<int, EditorWindow> m_OpenWindows = new Dictionary<int, EditorWindow>();
 
         private bool m_Dirty;
         private string m_Filename;
@@ -61,12 +61,13 @@ namespace Finmer.Editor
             m_NodeScripts = trvAssetList.Nodes.Add("Scripts", "Scripts", 0);
         }
 
-        public EditorWindow OpenAssetEditor(IFurballSerializable data)
+        public EditorWindow OpenEditorWindow(IFurballSerializable data)
         {
             // TODO: Prevent opening dependencies, since they cannot be edited while a different project is opened
 
             // If asset is already open, focus the window instead of making a new one
-            if (m_OpenWindows.TryGetValue(data, out var open_window))
+            int object_key = GetEditorWindowKey(data);
+            if (m_OpenWindows.TryGetValue(object_key, out var open_window))
             {
                 open_window.Show();
                 return open_window;
@@ -76,13 +77,24 @@ namespace Finmer.Editor
             EditorWindow window = CreateEditorWindow(data);
 
             // Ensure the opened-window association is removed when the window is closed
-            window.Closed += (o, args) => m_OpenWindows.Remove(data);
+            window.Closed += (o, args) => m_OpenWindows.Remove(object_key);
 
             // Dock and display the window
             window.Show(dockPanel, DockState.Document);
-            m_OpenWindows.Add(data, window);
+            m_OpenWindows.Add(object_key, window);
 
             return window;
+        }
+
+        private static int GetEditorWindowKey(IFurballSerializable data)
+        {
+            // For assets, use the asset GUID, which is guaranteed to not be changed by the editor window.
+            // AssetWindows can replace the asset pointer itself, so the GUID is the only property that will always remain the same.
+            if (data is AssetBase asset)
+                return asset.ID.GetHashCode();
+
+            // Otherwise, hash the pointer to the object - base EditorWindows cannot replace the edited object
+            return RuntimeHelpers.GetHashCode(data);
         }
 
         public void MarkDirty()
@@ -142,7 +154,6 @@ namespace Finmer.Editor
                 window.Close();
             });
             m_OpenWindows.Clear();
-            m_ProjectSettingsKey = new AssetDummy();
 
             // Remove all tree nodes for assets
             m_NodeScenes.Nodes.Clear();
@@ -169,7 +180,7 @@ namespace Finmer.Editor
 
             // also open the editor window for the new asset, as the user probably
             // wants to make changes in the new asset
-            OpenAssetEditor(asset);
+            OpenEditorWindow(asset);
         }
 
         private void AddAssetToList(AssetBase asset, bool autoselect)
@@ -263,6 +274,7 @@ namespace Finmer.Editor
                     var old_asset = Program.ActiveFurball.GetAssetByID(new_asset.ID);
                     Debug.Assert(old_asset != null, "Asset ID changes are not supported");
                     Debug.Assert(old_asset.Name.Equals(new_asset.Name, StringComparison.InvariantCulture), "Asset name changes must be copied by window");
+                    Debug.Assert(GetEditorWindowKey(old_asset) == GetEditorWindowKey(new_asset), "Window key has changed");
 
                     // If the window still points to the same asset object, we do not need to replace anything
                     if (ReferenceEquals(new_asset, old_asset))
@@ -620,18 +632,20 @@ namespace Finmer.Editor
 
         private void rbtPakSettings_Click(object sender, EventArgs e)
         {
+            const int k_PakSettingsKey = 0;
+
             // If settings window is already open, focus the window instead of making a new one
-            if (m_OpenWindows.ContainsKey(m_ProjectSettingsKey))
+            if (m_OpenWindows.ContainsKey(k_PakSettingsKey))
             {
-                m_OpenWindows[m_ProjectSettingsKey].Show();
+                m_OpenWindows[k_PakSettingsKey].Show();
                 return;
             }
 
             // Otherwise, create a new one
             var window = new FormDocumentProject(Program.ActiveFurball);
-            window.Closed += (o, args) => m_OpenWindows.Remove(m_ProjectSettingsKey);
+            window.Closed += (o, args) => m_OpenWindows.Remove(k_PakSettingsKey);
             window.Show(dockPanel, DockState.Document);
-            m_OpenWindows.Add(m_ProjectSettingsKey, window);
+            m_OpenWindows.Add(k_PakSettingsKey, window);
         }
 
         private void rbtPlayDev_Click(object sender, EventArgs e)
@@ -773,17 +787,17 @@ namespace Finmer.Editor
 
             if (MessageBox.Show($"Are you sure you want to remove '{asset.Name}'? This operation cannot be undone.", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No) return;
 
-            // close asset editor windows
-            m_OpenWindows
-                .Where(pair => pair.Key == asset)
-                .ForEach(pair =>
-                {
-                    pair.Value.Dirty = false; // prevent save popup
-                    pair.Value.Close();
-                });
+            // Close editor window for the asset, if it was still open
+            if (m_OpenWindows.TryGetValue(GetEditorWindowKey(asset), out var open_window))
+            {
+                open_window.Dirty = false;
+                open_window.Close();
+            }
 
-            // remove from furball, and tree view
+            // Remove asset from furball
             Program.ActiveFurball.Assets.Remove(asset);
+
+            // Remove asset from tree view
             trvAssetList.SelectedNode.Remove();
 
             MarkDirty();
@@ -821,7 +835,7 @@ namespace Finmer.Editor
 
             // Open the editor window for the clicked node
             var asset = (AssetBase)node.Tag;
-            OpenAssetEditor(asset);
+            OpenEditorWindow(asset);
         }
 
         private void trvAssetList_AfterSelect(object sender, TreeViewEventArgs e)
@@ -853,7 +867,7 @@ namespace Finmer.Editor
             e.Node.Text = e.Label;
 
             // If window was open, update the window title
-            if (m_OpenWindows.TryGetValue(asset, out var open_window))
+            if (m_OpenWindows.TryGetValue(GetEditorWindowKey(asset), out var open_window))
                 open_window.UpdateText();
 
             // Allow saving

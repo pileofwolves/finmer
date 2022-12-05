@@ -131,7 +131,7 @@ namespace Finmer.Editor
                         return;
 
                     // Open the specified asset in the editor
-                    Program.MainForm.OpenAssetEditor(selected_asset);
+                    Program.MainForm.OpenEditorWindow(selected_asset);
                     break;
 
                 case MouseButtons.Right:

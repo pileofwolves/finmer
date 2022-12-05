@@ -518,19 +518,19 @@ namespace Finmer.Editor
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptCustom = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptCustom);
-            m_ScriptEditorCustom = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptCustom));
+            m_ScriptEditorCustom = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptCustom));
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptEnter = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptEnter);
-            m_ScriptEditorEnter = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptEnter));
+            m_ScriptEditorEnter = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptEnter));
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptLeave = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptLeave);
-            m_ScriptEditorLeave = new WeakReference<EditorWindow>(Program.MainForm.OpenAssetEditor(m_Scene.ScriptLeave));
+            m_ScriptEditorLeave = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptLeave));
         }
 
         private void tsbMoveUp_Click(object sender, EventArgs e)

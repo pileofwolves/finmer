@@ -108,7 +108,7 @@ namespace Finmer.Editor
             item.UseScript.Contents = wrapper;
 
             // Open it
-            Program.MainForm.OpenAssetEditor(wrapper);
+            Program.MainForm.OpenEditorWindow(wrapper);
         }
 
         private void cmbType_SelectedIndexChanged(object sender, EventArgs e)

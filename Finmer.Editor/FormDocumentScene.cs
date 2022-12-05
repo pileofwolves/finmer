@@ -157,6 +157,7 @@ namespace Finmer.Editor
             splitNodeSettings.Visible = true;
 
             // Remove all tabs so that we can add only the specific tab we need for this node
+            tbcNode.SuspendLayout();
             tbcNode.TabPages.Clear();
 
             // Configure toolbar for this node
@@ -232,6 +233,10 @@ namespace Finmer.Editor
             // Allow update handlers again
             m_SkipDirtyUpdates = false;
             splitNodeSettings.ResumeLayout();
+            tbcNode.ResumeLayout();
+
+            // Ensure input focus remains on the tree view - for some reason tbcNode claims focus when tabs are added
+            trvNodes.Focus();
         }
 
         private void UpdateNodeImage(TreeNode treeNode, AssetScene.SceneNode sceneNode)

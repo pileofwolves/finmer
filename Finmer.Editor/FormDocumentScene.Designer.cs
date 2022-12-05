@@ -127,7 +127,7 @@
             lblNodeTooltip.Location = new System.Drawing.Point(8, 104);
             lblNodeTooltip.Name = "lblNodeTooltip";
             lblNodeTooltip.Size = new System.Drawing.Size(42, 13);
-            lblNodeTooltip.TabIndex = 5;
+            lblNodeTooltip.TabIndex = 4;
             lblNodeTooltip.Text = "Tooltip:";
             // 
             // lblNodeTitle
@@ -136,7 +136,7 @@
             lblNodeTitle.Location = new System.Drawing.Point(8, 56);
             lblNodeTitle.Name = "lblNodeTitle";
             lblNodeTitle.Size = new System.Drawing.Size(65, 13);
-            lblNodeTitle.TabIndex = 8;
+            lblNodeTitle.TabIndex = 2;
             lblNodeTitle.Text = "Button Text:";
             // 
             // lblInjectTargetNode
@@ -145,7 +145,7 @@
             lblInjectTargetNode.Location = new System.Drawing.Point(0, 56);
             lblInjectTargetNode.Name = "lblInjectTargetNode";
             lblInjectTargetNode.Size = new System.Drawing.Size(77, 13);
-            lblInjectTargetNode.TabIndex = 4;
+            lblInjectTargetNode.TabIndex = 2;
             lblInjectTargetNode.Text = "Injection Point:";
             // 
             // lblInjectTargetScene
@@ -154,7 +154,7 @@
             lblInjectTargetScene.Location = new System.Drawing.Point(0, 8);
             lblInjectTargetScene.Name = "lblInjectTargetScene";
             lblInjectTargetScene.Size = new System.Drawing.Size(75, 13);
-            lblInjectTargetScene.TabIndex = 2;
+            lblInjectTargetScene.TabIndex = 0;
             lblInjectTargetScene.Text = "Target Scene:";
             // 
             // lblRootInfo
@@ -163,7 +163,7 @@
             lblRootInfo.Location = new System.Drawing.Point(8, 8);
             lblRootInfo.Name = "lblRootInfo";
             lblRootInfo.Size = new System.Drawing.Size(192, 32);
-            lblRootInfo.TabIndex = 4;
+            lblRootInfo.TabIndex = 0;
             lblRootInfo.Text = "The Root node is the starting point of the scene and can\'t be edited directly.";
             // 
             // lblNodeKey
@@ -172,7 +172,7 @@
             lblNodeKey.Location = new System.Drawing.Point(8, 8);
             lblNodeKey.Name = "lblNodeKey";
             lblNodeKey.Size = new System.Drawing.Size(65, 13);
-            lblNodeKey.TabIndex = 7;
+            lblNodeKey.TabIndex = 0;
             lblNodeKey.Text = "Unique Key:";
             // 
             // lblLinkTarget
@@ -181,7 +181,7 @@
             lblLinkTarget.Location = new System.Drawing.Point(8, 8);
             lblLinkTarget.Name = "lblLinkTarget";
             lblLinkTarget.Size = new System.Drawing.Size(93, 13);
-            lblLinkTarget.TabIndex = 2;
+            lblLinkTarget.TabIndex = 0;
             lblLinkTarget.Text = "Link Target Node:";
             // 
             // label1
@@ -190,7 +190,7 @@
             label1.Location = new System.Drawing.Point(8, 8);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(65, 13);
-            label1.TabIndex = 9;
+            label1.TabIndex = 0;
             label1.Text = "Unique Key:";
             // 
             // lblCompassDirection
@@ -199,7 +199,7 @@
             lblCompassDirection.Location = new System.Drawing.Point(8, 56);
             lblCompassDirection.Name = "lblCompassDirection";
             lblCompassDirection.Size = new System.Drawing.Size(98, 13);
-            lblCompassDirection.TabIndex = 0;
+            lblCompassDirection.TabIndex = 2;
             lblCompassDirection.Text = "Compass Direction:";
             // 
             // lblCompassTarget
@@ -208,7 +208,7 @@
             lblCompassTarget.Location = new System.Drawing.Point(8, 104);
             lblCompassTarget.Name = "lblCompassTarget";
             lblCompassTarget.Size = new System.Drawing.Size(75, 13);
-            lblCompassTarget.TabIndex = 2;
+            lblCompassTarget.TabIndex = 4;
             lblCompassTarget.Text = "Target Scene:";
             // 
             // lblCompassExplanation
@@ -218,7 +218,7 @@
             lblCompassExplanation.Location = new System.Drawing.Point(8, 152);
             lblCompassExplanation.Name = "lblCompassExplanation";
             lblCompassExplanation.Size = new System.Drawing.Size(192, 80);
-            lblCompassExplanation.TabIndex = 4;
+            lblCompassExplanation.TabIndex = 6;
             lblCompassExplanation.Text = "A Compass node may either have a Target Scene (above), or an Actions Taken script" +
     ". If a custom script is specified, the Target Scene is ignored.";
             lblCompassExplanation.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
@@ -229,7 +229,7 @@
             label2.Location = new System.Drawing.Point(8, 8);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(65, 13);
-            label2.TabIndex = 11;
+            label2.TabIndex = 0;
             label2.Text = "Unique Key:";
             // 
             // toolStrip
@@ -462,7 +462,8 @@
             this.tbcNode.Name = "tbcNode";
             this.tbcNode.SelectedIndex = 0;
             this.tbcNode.Size = new System.Drawing.Size(218, 268);
-            this.tbcNode.TabIndex = 1;
+            this.tbcNode.TabIndex = 0;
+            this.tbcNode.TabStop = false;
             // 
             // tbpNodeRoot
             // 
@@ -487,7 +488,7 @@
             this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 72);
             this.pnlInjectionSettings.Name = "pnlInjectionSettings";
             this.pnlInjectionSettings.Size = new System.Drawing.Size(184, 152);
-            this.pnlInjectionSettings.TabIndex = 6;
+            this.pnlInjectionSettings.TabIndex = 0;
             this.pnlInjectionSettings.Visible = false;
             // 
             // assetInjectTargetScene
@@ -497,7 +498,7 @@
             this.assetInjectTargetScene.Name = "assetInjectTargetScene";
             this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
-            this.assetInjectTargetScene.TabIndex = 3;
+            this.assetInjectTargetScene.TabIndex = 1;
             this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
             // 
             // cmbInjectTargetMode
@@ -512,7 +513,7 @@
             this.cmbInjectTargetMode.Location = new System.Drawing.Point(0, 72);
             this.cmbInjectTargetMode.Name = "cmbInjectTargetMode";
             this.cmbInjectTargetMode.Size = new System.Drawing.Size(184, 21);
-            this.cmbInjectTargetMode.TabIndex = 4;
+            this.cmbInjectTargetMode.TabIndex = 3;
             this.cmbInjectTargetMode.SelectedIndexChanged += new System.EventHandler(this.cmbInjectTargetMode_SelectedIndexChanged);
             // 
             // cmbInjectTargetNode
@@ -521,7 +522,7 @@
             this.cmbInjectTargetNode.Location = new System.Drawing.Point(0, 96);
             this.cmbInjectTargetNode.Name = "cmbInjectTargetNode";
             this.cmbInjectTargetNode.Size = new System.Drawing.Size(184, 21);
-            this.cmbInjectTargetNode.TabIndex = 5;
+            this.cmbInjectTargetNode.TabIndex = 4;
             this.cmbInjectTargetNode.TextChanged += new System.EventHandler(this.cmbInjectTargetNode_TextChanged);
             // 
             // chkRootInject
@@ -530,7 +531,7 @@
             this.chkRootInject.Location = new System.Drawing.Point(8, 48);
             this.chkRootInject.Name = "chkRootInject";
             this.chkRootInject.Size = new System.Drawing.Size(65, 17);
-            this.chkRootInject.TabIndex = 5;
+            this.chkRootInject.TabIndex = 1;
             this.chkRootInject.Text = "Is Patch";
             this.chkRootInject.UseVisualStyleBackColor = true;
             this.chkRootInject.CheckedChanged += new System.EventHandler(this.chkRootInject_CheckedChanged);
@@ -553,7 +554,7 @@
             this.txtNodeStateKey.MaxLength = 20;
             this.txtNodeStateKey.Name = "txtNodeStateKey";
             this.txtNodeStateKey.Size = new System.Drawing.Size(192, 20);
-            this.txtNodeStateKey.TabIndex = 2;
+            this.txtNodeStateKey.TabIndex = 1;
             this.txtNodeStateKey.TextChanged += new System.EventHandler(this.txtNodeKey_TextChanged);
             this.txtNodeStateKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNodeKey_KeyPress);
             // 
@@ -596,7 +597,7 @@
             131072});
             this.nudChoiceCustomWidth.Name = "nudChoiceCustomWidth";
             this.nudChoiceCustomWidth.Size = new System.Drawing.Size(72, 20);
-            this.nudChoiceCustomWidth.TabIndex = 11;
+            this.nudChoiceCustomWidth.TabIndex = 8;
             this.nudChoiceCustomWidth.Value = new decimal(new int[] {
             10,
             0,
@@ -611,7 +612,7 @@
             this.chkChoiceHighlight.Location = new System.Drawing.Point(8, 160);
             this.chkChoiceHighlight.Name = "chkChoiceHighlight";
             this.chkChoiceHighlight.Size = new System.Drawing.Size(67, 17);
-            this.chkChoiceHighlight.TabIndex = 9;
+            this.chkChoiceHighlight.TabIndex = 6;
             this.chkChoiceHighlight.Text = "Highlight";
             this.chkChoiceHighlight.UseVisualStyleBackColor = true;
             this.chkChoiceHighlight.CheckedChanged += new System.EventHandler(this.chkChoiceHighlight_CheckedChanged);
@@ -622,7 +623,7 @@
             this.chkChoiceCustomWidth.Location = new System.Drawing.Point(8, 184);
             this.chkChoiceCustomWidth.Name = "chkChoiceCustomWidth";
             this.chkChoiceCustomWidth.Size = new System.Drawing.Size(92, 17);
-            this.chkChoiceCustomWidth.TabIndex = 10;
+            this.chkChoiceCustomWidth.TabIndex = 7;
             this.chkChoiceCustomWidth.Text = "Custom Width";
             this.chkChoiceCustomWidth.UseVisualStyleBackColor = true;
             this.chkChoiceCustomWidth.CheckedChanged += new System.EventHandler(this.chkCustomWidth_CheckedChanged);
@@ -633,7 +634,7 @@
             this.txtNodeChoiceKey.MaxLength = 20;
             this.txtNodeChoiceKey.Name = "txtNodeChoiceKey";
             this.txtNodeChoiceKey.Size = new System.Drawing.Size(192, 20);
-            this.txtNodeChoiceKey.TabIndex = 8;
+            this.txtNodeChoiceKey.TabIndex = 1;
             this.txtNodeChoiceKey.TextChanged += new System.EventHandler(this.txtNodeKey_TextChanged);
             this.txtNodeChoiceKey.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNodeKey_KeyPress);
             // 
@@ -652,7 +653,7 @@
             this.txtNodeChoiceTooltip.MaxLength = 200;
             this.txtNodeChoiceTooltip.Name = "txtNodeChoiceTooltip";
             this.txtNodeChoiceTooltip.Size = new System.Drawing.Size(192, 20);
-            this.txtNodeChoiceTooltip.TabIndex = 4;
+            this.txtNodeChoiceTooltip.TabIndex = 5;
             this.txtNodeChoiceTooltip.TextChanged += new System.EventHandler(this.txtNodeTooltip_TextChanged);
             // 
             // tbpNodeLink
@@ -672,7 +673,7 @@
             this.cmbLinkTarget.Location = new System.Drawing.Point(8, 24);
             this.cmbLinkTarget.Name = "cmbLinkTarget";
             this.cmbLinkTarget.Size = new System.Drawing.Size(192, 21);
-            this.cmbLinkTarget.TabIndex = 2;
+            this.cmbLinkTarget.TabIndex = 1;
             this.cmbLinkTarget.TextChanged += new System.EventHandler(this.cmbLinkTarget_TextChanged);
             // 
             // tbpNodeCompass
@@ -708,7 +709,7 @@
             this.assetCompassTarget.Name = "assetCompassTarget";
             this.assetCompassTarget.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetCompassTarget.Size = new System.Drawing.Size(192, 24);
-            this.assetCompassTarget.TabIndex = 3;
+            this.assetCompassTarget.TabIndex = 5;
             this.assetCompassTarget.SelectedAssetChanged += new System.EventHandler(this.assetCompassTarget_SelectedAssetChanged);
             // 
             // cmbCompassDirection
@@ -725,7 +726,7 @@
             this.cmbCompassDirection.Location = new System.Drawing.Point(8, 72);
             this.cmbCompassDirection.Name = "cmbCompassDirection";
             this.cmbCompassDirection.Size = new System.Drawing.Size(192, 21);
-            this.cmbCompassDirection.TabIndex = 2;
+            this.cmbCompassDirection.TabIndex = 3;
             this.cmbCompassDirection.SelectedIndexChanged += new System.EventHandler(this.cmbCompassDirection_SelectedIndexChanged);
             // 
             // tbcScripts

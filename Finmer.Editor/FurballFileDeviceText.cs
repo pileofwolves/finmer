@@ -35,8 +35,12 @@ namespace Finmer.Editor
                     // Read the project version number
                     var header_reader = new FurballContentReaderText(JObject.Load(json_stream), null);
                     var project_version = header_reader.ReadInt32Property("FormatVersion");
-                    if (project_version < 7)
-                        throw new FurballInvalidHeaderException($"Unsupported version number {project_version}, latest version is {k_LatestVersion}");
+
+                    // Validate that the version is within supported range
+                    if (project_version < 14)
+                        throw new FurballInvalidHeaderException($"Unsupported project version {project_version} (latest version is {k_LatestVersion}). Please use an older version of the Editor to upgrade your project.");
+                    if (project_version > k_LatestVersion)
+                        throw new FurballInvalidHeaderException($"Unsupported project version {project_version} (latest version is {k_LatestVersion}). Please use a newer version of the Editor to open your project.");
 
                     // Read basic metadata
                     var output = new Furball

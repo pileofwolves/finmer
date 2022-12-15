@@ -30,7 +30,7 @@
 		{
 			"Key": "MQ02_AM_BELLYRUB",
 			"Text": [
-				"Your paw gently strokes the wolf's exposed belly, combing through the soft fur as you feel fat and sludge being noisily displaced. The black-furred predator is just about to stop you, but then changes his mind, churring softly. \"Such a good little {player.species}.\" He grabs your shoulders and creeps closer, your nose touching his, as he breathes into your face some more. \"Maybe I'll make an exception for you.\""
+				"Your paw gently strokes the wolf's exposed belly, combing through the soft fur as you feel fat and sludge being noisily displaced. The black-furred predator is just about to stop you, but then changes his mind, churring softly. \"Such a good little {player.species}.\" He grabs your shoulders and creeps closer, your nose touching his, as he breathes into your face some more. \"Maybe I'll make an exception for an eager slab of meat like you.\""
 			]
 		},
 		{
@@ -78,25 +78,25 @@
 		{
 			"Key": "MQ02_AM_HELLO_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he patronizingly waggles his finger. \"Now, now, did your mama never tell you to not talk to strangers? And giving them your name, even!\"\\n\\nHe laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
+				"The wolf's lips split in a toothy grin and he patronizingly waggles his finger. \"Look at you, being a good honest little scout and shit!\" He laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_NOT_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he positively beams for a second or two. \"That's a yes, then!\"\\n\\nHe laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
+				"The wolf's lips split in a toothy grin and he positively beams for a second or two. \"That's a yes, then!\" He laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_PUNCH",
 			"Text": [
-				"In but a blink of an eye, your fist connects with the side of his muzzle. With a delightfully satisfying crunch, the lupine's saliva flies everywhere and he awkwardly steps backwards. He clutches his muzzle and only just manages to maintain his balance. The wolf wheezes and takes a second to recover, then growls, his fur bristling. \"You little shit!\" he snarls. \"I, Randall, own you! I'll make you stew nice and long for that!\""
+				"Taking advantage of the wolf's proximity, your fist connects with the side of his muzzle. With a delightfully satisfying crunch, the lupine's saliva is sent flying and he awkwardly steps backwards. He clutches his muzzle and only just manages to maintain his balance. The wolf wheezes and takes a second to recover, then growls, his fur bristling. \"Little shit,\" he snarls. Within a blink of an eye, Randall returns the favor. The wind is knocked from your lungs and a sharp sting spreads through your chest before you realize the wolf punched you hard in retaliation. Staggered, you are unable to fend off your attacker in time as he grabs your shoulders and parts his jaws enough for you to taste his acidic breath. \"If I weren't full already, I'd have you for lunch. Do not make me fucking repeat myself, meat.\" With that warning, he pushes you backwards, putting some distance in between the two of you again."
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_REALLY_NOT_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he glances over his shoulder, gesturing at you for some reason or another. His goons chuckle. Then he turns back to you and suddenly grabs your shoulders, his snout inches away from yours, as he breathes right in your face. Warm wolfbreath, smelling vaguely of acid and meat, hits you dead-on.\\n\\n\"That tiger guy? Yeah, I ate him,\" he says while provokingly rubbing his pudgy belly. \"Haven't had a squirmer like that in a while. Though they all look the same once they submit to me, heh.\""
+				"The wolf's lips split in a toothy grin and he glances over his shoulder, gesturing at you for some reason or another. His goons chuckle. Then he turns back to you and suddenly grabs your shoulders, his snout inches away from yours, as his lips part just slightly, a droplet of saliva leaking forth. Warm wolfbreath, smelling vaguely of acid and meat, assaults your nostrils. \"That tiger guy? Yeah, I ate him,\" he says while provokingly rubbing his pudgy belly. \"Haven't had a squirmer like that in a while. Though they all look the same once they submit to me, heh.\""
 			]
 		},
 		{
@@ -108,7 +108,7 @@
 		{
 			"Key": "MQ02_AM_HELLO_STAB",
 			"Text": [
-				"In but a blink of an eye, you close the distance and you plunge your {!weapon} into the wolf's gut. His eyes bulge and he gasps, glancing down. Clearly, he had not expected that. Dark crimson fluid sprouts from the wound, staining his paw and clothes as you pull the {!weapon} back and kick the wolf away. The blade slides free of his flesh with a disgusting sound. The blood barely has time to leak onto the dirt ground before he scrambles back up. The lupine storms at you, snarling, eyes ablaze, and his goons in tow. \"You fucker! I, Randall, own you! I'll rip you to shreds!\" he screams."
+				"In but a blink of an eye, you flick your {!weapon} and attempt to plunge it straight into the wolf's gut. Randall reacts just barely in time, clearly not expecting so blatant an attack. He and his unwieldy bulging gut dodge the worst of the blade, but you manage to slash him quite deeply in his side, parting flesh and cloth alike with a disgusting squelch. His eyes bulge and he gasps, glancing down. Dark crimson fluid sprouts from the wound, staining his paw and jacket as you pull the {!weapon} back and kick the wolf away. The blood barely has time to leak onto the dirt ground before he scrambles back up. The lupine storms at you, snarling, eyes ablaze, and his goons in tow. \"You fucker! I own you! I'll make you stew slowly, meat!\" he screams."
 			]
 		},
 		{
@@ -132,19 +132,37 @@
 		{
 			"Key": "MQ02_AM_WINFIGHT",
 			"Text": [
-				"Blood trickles from several injuries on the wolf's body. He anxiously glances behind him only to find the husky and panther both sprawled on the ground - whether unconscious or straight-up dead, it is hard to say. Finally realizing that he might have underestimated you, he drops his tough-guy act and backs away, towards the densely-packed pine and birch trees surrounding Oliver's cabin."
+				"What a mess this scene turned out to be. This had escalated very quickly. Randall lies sprawled before you, unmoving. With his hideously swollen belly bulge, the wolf's body makes for a very strange figure. Well, considering the guy was most certainly a murderer on the prowl, you cannot help but feel a little vindicated in your little act of vigilante justice, despite the particularly violent nature of your retaliation. At least this guy will not harm anyone else anymore, and the soupy remains of the late Stip should be sufficient to prove your innocence in this matter when the town guard inevitably gets involved."
 			]
 		},
 		{
-			"Key": "MQ02_AM_WINFIGHT_LETGO",
+			"Key": "MQ02_AM_WINFIGHT_CRAB_RANGOON1",
 			"Text": [
-				"You watch the wounded gang boss scamper off into the woods. What with all the blood he's leaving behind, he might just attract a predator and get his face mauled off. You don't fancy following him there, lest you lose track of the trail yourself. Just as you move to chase down your cornered prey, Randall pulls a shining orange crystal from his jacket. It illuminates his paw with a gentle glow, and before you realize what it is exactly, he crushes the gem as if it were a mere twig.\\n\\nIn a split second, the wolf is engulfed in light, then vanishes, leaving only a dull glass-like dust on the ground as evidence of his act. Seeing no way to pursue your quarry, you take a moment to recompose yourself and continue down the beaten path."
+				"It appears, then, that with the immediate threat eliminated, you are free to report back to the resident authority of North Finmer. This canine was probably the perpetrator behind the strange happenings in the town anyway, or so you believe, so it's a good thing you took matters into your own hands when you got the chance. It is with this in mind that you decide to leave this gruesome scene behind, evidence of your deeds and all, and begin your long trek back to the town hall to confirm your story - luckily the clear weather appears to hold for a while longer. Indeed, the beauty these environs are known for lie not just in commerce alone. And while you cannot for the life of you remember why you visited North Finmer in the first place, it must have been a good reason, no?"
 			]
 		},
 		{
-			"Key": "MQ02_AM_WINFIGHT_NOBACKUP",
+			"Key": "MQ02_AM_WINFIGHT_CRAB_RANGOON2",
 			"Text": [
-				"Blood trickles from several injuries on the wolf's body. He anxiously glances at the twitching bulge on your gut, his backup clearly not being in a state to help him out of this one. Finally realizing that he might have underestimated you, he drops his tough-guy act and backs away, towards the densely-packed pine and birch trees surrounding Oliver's cabin."
+				"Though you look forward to spending some time unwinding in town while you wait for the bridge repairs, you cannot help but find yourself wondering what Randall was babbling on about when he mentioned the missing mayor. There is still no sign of her, and the only other one who could fill this hole in the story has stopped kicking. Perhaps there is more to explore here after all.\\n\\nEND"
+			]
+		},
+		{
+			"Key": "MQ02_AM_WINFIGHT_GOON_FLEE1",
+			"Text": [
+				"The last remaining lackey, who had been watching in quiet horror up until now, appears to unfreeze from stunned silence when your predatory gaze turns their way. Perhaps realizing that this is a battle they cannot win, not to mention the fact that they are now without their boss to back them up, they back away from you in unison, before turning tail and fleeing down the road. Cowards."
+			]
+		},
+		{
+			"Key": "MQ02_AM_WINFIGHT_GOON_FLEE2",
+			"Text": [
+				"The husky and tigress, who had been watching in quiet horror up until now, appear to unfreeze from their stunned silence when your predatory gaze comes to rest on them. Perhaps realizing that this is a battle they cannot win, not to mention the fact that they are now without their boss to back them up, they back away from you in unison, before turning tail and fleeing down the road. Cowards."
+			]
+		},
+		{
+			"Key": "MQ02_AM_WINFIGHT_VORE",
+			"Text": [
+				"What a mess this scene turned out to be. This had escalated very quickly. With your mountain of a belly bulge - containing both an adult wolf and the chunky stew of his last prey - you feel utterly stuffed, and maybe even struggle to move. The added weight of one and a half extra person sagging down your gut is not trivial to work with, after all. Well, considering the guy was most certainly a murderer on the prowl, you cannot help but feel a little vindicated in your little act of vigilante justice, despite the particularly acidic nature of your retaliation. At least this guy will not harm anyone else anymore. You should probably finish digesting the entirety before waltzing into town, though, lest you implicate yourself to the town guard in this whole ordeal."
 			]
 		},
 		{
@@ -409,13 +427,19 @@
 			"Key": "MQ02_OLIVER_VORE_EXT_STRUGGLE",
 			"Text": [
 				"Your gut gurgles and groans loudly around your prey. The lion whimpers as warm stomach flesh squeezes and churns away at him.",
-				"Your prey struggles violently within his fleshy prison. \"Please, {!mister} {player.species}, let me out!\" you can hear him shout."
+				"Your prey struggles violently within his fleshy prison. \"Please, I thought you were a nice {player.species}, let me out!\" you can hear him shout."
 			]
 		},
 		{
 			"Key": "MQ02_OLIVER_VORE_WIN",
 			"Text": [
 				"Your form looms over the battered and rather defenseless lion. In one swift motion, your jaws part and immediately slather your prey with warm, sticky saliva. You engulf his head inside your maw and eagerly begin swallowing. Hungrily, you shove the lion down your throat, completely ignoring his loud protesting and kicking legs. One of your paws roams around on your {player.furry} belly as it expands to accomodate the large struggling meal. Thick drool leaks down your prey as you make quick work of the rest. The lion's legs rapidly vanish down your gullet and settle in that swollen {player.species}-gut. A loud belch, splattering drool in front of you, is all that's left of the unfortunate preything."
+			]
+		},
+		{
+			"Key": "MQ02_RANDALL_KILL_DIGESTED",
+			"Text": [
+				"While you cannot quite tell what the atmosphere inside your distended stomach must be like, if the string of curses rumbling through your bowels is anything to go by, it is an unpleasant environment. Randall thrashes this way and that, perhaps trying his very best to escape, cut his way out or at least give you some very bad indigestion, though you manage to hold him down, if barely. Your efforts are soon rewarded, then, as the bandit king is drained of his energy and the kicking slows. You can no longer hear him now, though the occasional twitch is enough to tell you he still lives, if barely. Of course, your stomach will take care of that problem soon enough; a loud gurgle and a violent crunch of your bowels signal the start of biological processes proper. The meat that was once named Randall can do nothing but submit to the first stages of mechanical digestion. For the supposed bad guy, he went down pretty smoothly."
 			]
 		},
 		{
@@ -427,19 +451,25 @@
 		{
 			"Key": "MQ02_RANDALL_KILL_GENERIC",
 			"Text": [
-				"Randall stumbles and drops to a knee, apparently barely able to keep himself standing. What a humiliating sight."
+				"Randall stumbles and drops to a knee, apparently barely able to keep himself standing. What a humiliating sight. Blood trickles from several injuries on his body. He anxiously glances around, as if searching for a method of escape, before the wolf finally realizes that he might have underestimated you, and blacks out."
 			]
 		},
 		{
 			"Key": "MQ02_RANDALL_VORE_DISPOSAL",
 			"Text": [
-				"When the gang boss squats down in the bushes the next morning, there is a lot less left of you. Inside the predator's stomach remains only a chunky stew, enough to make Randall's stomach swell out a fair bit, though nowhere near as much as the bulge you made last night. Most of that bulk has, indeed, either been added as a nice extra layer of pudge on the wolf's belly or hips, though an equally large part has been processed fully by the predator's digestive system.\\n\\nAfter a minute, Randall finishes emptying bowels, having piled your remains into a pretty impressive mound of wolf shit. The process is certainly not finished, though, and the lupine's stomach gurgles loudly as it resumes digesting its large meal. For now, however, the gang boss is satisfied and carelessly walks away, a smug grin on his muzzle, already thinking about who to swallow next."
+				"When the gang boss squats down in the bushes the next morning, there is a lot less left of you. Inside the predator's stomach remains only a meaty slurry, enough to make Randall's stomach swell out a fair bit, though nowhere near as much as the bulge you made last night. Most of that bulk has, indeed, either been added as a nice extra layer of pudge on the wolf's belly or hips, though an equally large part has been processed fully by the predator's digestive system.\\n\\nAfter a minute, Randall finishes emptying bowels, having piled your remains into a pretty impressive mound of wolf shit. The process is certainly not finished, though, and the lupine's stomach gurgles loudly as it resumes digesting its large meal. For now, however, the gang boss is satisfied and carelessly walks away. Nobody will find your remains, and now the wolf can resume his hunt uninterrupted. A smug grin spreads on his muzzle, already thinking about who to swallow next."
+			]
+		},
+		{
+			"Key": "MQ02_RANDALL_VORE_WIN",
+			"Text": [
+				"You part your maw before the unfortunate wolf, catching him in a moment of weakness. In a way, it is ironic that you are now subjecting him to the same treatment he gave you; blowing hot, rank {player.species}-breath on his muzzle to remind him of exactly where he's going. Unlike Randall, however, you don't stop there. Lunging forward, you engulf the canine's head inside your own before he has a chance to mount a proper resistance. A wet glllllrrrrk follows, your throat pulling itself vacuum as Randall begins his one-way journey down into your digestive tract. At this point, you have him in a vice grip - no outside interference would suffice; it is only with your permission that the wolf moves. And so you continue swallowing, quickly stripping the fallen predator of his jacket and pants so that your meaty tongue can explore his thick ebony fur. Your meal has a rich, earthy flavor, perhaps as you might expect from a lupine fur coat - wherever you finished sampling the meat, the fur is matted down with a thick layer of saliva before it slides down the slick abyss of your gullet. You recognize the moment your digestive system dunks Randall into a slimy acid pit when you hear a yell reverberate through your guts and his dangling legs kick awkwardly. No matter; you will have him where he belongs quite soon. A moment longer, and your head tilts skyward, the unfortunate wolf on your lips failing utterly in his fight against gravity. Another token swallow seals the lupine inside, now surrounded on all sides by hot, pulsating flesh as your well-lubricated muscles deposit him neatly as a ball of meat."
 			]
 		},
 		{
 			"Key": "MQ02_RANDALL_VORE_WIN_POV",
 			"Text": [
-				"The black wolf spreads his jaws, taking a few more precious seconds to breathe hot, sour wolfbreath on your face, before he shoves you forward into the fetid tunnel of warm, writhing flesh. Your muzzle breaks several sticky strands of saliva as you touch, and start sliding across the predator's meaty tongue. With several loud, powerful swallows, the muscle around you expertly grips your face and squeezes, forcing you into the wolf's digestive tract. Randall greedily gulps down his latest catch, and before long your nose enters the opening into the predator's stomach. The stench that hits you is unbearable; some mixture of an acid pit and whatever the wolf ate last. The digestive sack has been busy even before your arrival; acidic slime trickles and seeps from between every fold of flesh. Thick goop coats the walls and forms a pool of sorts near the bottom - probably what little remains of the previous soul to venture into the gang boss's jaws, and also a nice reminder of what's about to happen to you, too. With each noisy swallow, more of your body is deposited into the warm, accommodating organ and you are forced to curl up into a {player.furry} ball of {player.species}-meat. Once Randall finishes devouring you, your feet join you inside the caustic furnace and the wolf on the outside licks his paws clean, giving his massive gut a few loving pats. The searing hot flesh quickly begins clenching and kneading away at you, eager to grind you down into the same meaty slush that surrounds you."
+				"The black wolf spreads his jaws, taking a few more precious seconds to breathe hot, sour wolfbreath on your face, before he shoves you forward into the fetid tunnel of warm, writhing flesh. Your muzzle breaks several sticky strands of saliva as you touch, and start sliding across the predator's meaty tongue. With several loud, powerful swallows, the muscle around you expertly grips your face and squeezes, forcing you into the wolf's digestive tract. Randall greedily gulps down his latest catch, and before long your nose enters the opening into the predator's stomach. The stench that hits you is unbearable; some mixture of an acid pit and whatever the wolf ate last. The digestive sack has been busy even before your arrival; acidic slime trickles and seeps from between every fold of flesh. Thick goop coats the walls and a chunky stew shifts and bubbles in the organ's bottom half - probably what little remains of the previous soul to venture into the gang boss's jaws, and also a nice reminder of what's about to happen to you, too. With each noisy swallow, more of your body is deposited into the warm, accommodating organ and you are forced to curl up into a {player.furry} ball of {player.species}-meat, displacing the digested sludge around you to make room. Once Randall finishes devouring you, your feet join you inside the caustic furnace and the wolf on the outside licks his paws clean, giving his massive gut a few loving pats. The searing hot flesh quickly begins clenching and kneading away at you, eager to grind you down into the same meaty slush that surrounds you."
 			]
 		}
 	]

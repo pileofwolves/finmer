@@ -3,11 +3,11 @@
 	"AssetID": "3612d1f1-d12c-40c0-8424-3e54a1ca2ca2",
 	"AssetName": "CR_MQ02_Randall",
 	"ObjectName": "Randall",
-	"Strength": 4,
+	"Strength": 5,
 	"Agility": 5,
-	"Body": 5,
+	"Body": 7,
 	"Wits": 4,
-	"Flags": 2,
+	"Flags": 0,
 	"Level": 4,
 	"Size": "Medium",
 	"Gender": "Male",
@@ -40,6 +40,16 @@
 			"Key": "VORE_DISPOSAL",
 			"Rule": "NpcToPlayer",
 			"NewKey": "MQ02_RANDALL_VORE_DISPOSAL"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ02_RANDALL_VORE_WIN"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ02_RANDALL_KILL_DIGESTED"
 		}
 	]
 }

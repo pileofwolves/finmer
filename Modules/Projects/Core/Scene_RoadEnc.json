@@ -16,7 +16,7 @@
 				"Key": "ENC_MQ02Ambush",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nrandall = Creature(\"CR_MQ02_Randall\")\r\ngoon1 = Creature(\"CR_MQ02_Goon1\")\r\ngoon2 = Creature(\"CR_MQ02_Goon2\")\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(randall, EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+					"Script": "SaveData.TakeCheckpoint()\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", false)\r\nStorage.SetFlag(\"mq02_ambushed\", true)\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(Creature(\"CR_MQ02_Randall\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
@@ -303,7 +303,7 @@
 																										"ButtonWidth": 1.0,
 																										"ScriptAction": {
 																											"!Type": "ScriptDataInline",
-																											"Script": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()"
+																											"Script": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nlocal randall = Creature(\"CR_MQ02_Randall\")\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()"
 																										},
 																										"Children": [
 																											{
@@ -338,89 +338,95 @@
 																				"Key": "MQ02A_R_HelloPunch",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.ModifyNumber(\"rep_randall\", -2)"
+																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
 																				},
 																				"Children": [
 																					{
 																						"NodeType": "Link",
-																						"LinkTarget": "MQ02A_BeginFight"
+																						"LinkTarget": "MQ02A_C_Business"
 																					}
 																				]
 																			}
 																		]
 																	},
 																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "MQ02A_C_Stab"
-																	}
-																]
-															}
-														]
-													},
-													{
-														"NodeType": "Choice",
-														"Key": "MQ02A_C_Stab",
-														"Title": "Stab",
-														"Tooltip": "Quickly try to stab him with your light weapon.",
-														"Highlight": true,
-														"ButtonWidth": 1.0,
-														"ScriptAppear": {
-															"!Type": "ScriptDataVisualCondition",
-															"Mode": "All",
-															"Operand": true,
-															"Tests": [
-																{
-																	"!Type": "ConditionPlayerEquipment",
-																	"ItemGuid": "795c79f2-ce54-4c2f-837e-d767e3c2599a"
-																}
-															]
-														},
-														"Children": [
-															{
-																"NodeType": "State",
-																"Key": "MQ02A_R_Stab",
-																"ScriptAction": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")\r\n\r\n-- He'll remember that\r\nStorage.SetFlag(\"MQ02_RANDALL_STABBED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -3)\r\n\r\n-- Reflect the stab in the upcoming fight\r\nrandall.Health = randall.Health * 0.5"
-																},
-																"Children": [
-																	{
 																		"NodeType": "Choice",
-																		"Key": "MQ02A_BeginFight",
-																		"Title": "Let's roll",
-																		"Highlight": false,
+																		"Key": "MQ02A_C_Stab",
+																		"Title": "Stab",
+																		"Tooltip": "He's close, and your dagger is small enough to quickly pull out!",
+																		"Highlight": true,
 																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "-- Player fights Randall and two goons\r\nStorage.SetFlag(\"MQ02_RANDALL_FOUGHT\", true)\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(predator, prey)\r\n    if predator == Player then\r\n        -- Dialogue changes if any goon got gulped\r\n        Storage.SetFlag(\"MQ02_RANDALL_GOON_EATEN\", true)\r\n\r\n        -- The tigress in particular, comes up in MQ03\r\n        if prey == goon2 then\r\n            Storage.SetFlag(\"MQ02_RANDALL_TIGRESS_EATEN\", true)\r\n        end\r\n    end\r\nend)\r\nfight:Begin()"
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataVisualCondition",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionPlayerEquipment",
+																					"ItemGuid": "795c79f2-ce54-4c2f-837e-d767e3c2599a"
+																				}
+																			]
 																		},
 																		"Children": [
 																			{
 																				"NodeType": "State",
-																				"Key": "MQ02A_WinFight",
+																				"Key": "MQ02A_R_Stab",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "if Storage.GetFlag(\"MQ02_RANDALL_GOON_EATEN\") then\r\n    -- Alternate text if either of the goons are eaten\r\n    Log(\"MQ02_AM_WINFIGHT_NOBACKUP\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend"
+																					"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")"
 																				},
 																				"Children": [
 																					{
 																						"NodeType": "Choice",
-																						"Key": "MQ02A_C_WinChase",
-																						"Title": "Continue",
+																						"Key": "MQ02A_C_Fight",
+																						"Title": "Let's roll",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
 																								"NodeType": "State",
-																								"Key": "MQ02A_R_WinChase",
+																								"Key": "MQ02A_R_Fight",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"MQ02_AM_WINFIGHT_LETGO\")"
+																									"Script": "local fight = Combat2()\r\nlocal randall = Creature(\"CR_MQ02_Randall\")\r\nlocal goon1 = Creature(\"CR_MQ02_Goon1\")\r\nlocal goon2 = Creature(\"CR_MQ02_Goon2\")\r\n\r\n-- Reflect the stab in the upcoming fight - mostly visual\r\nrandall.Health = randall.Health - 1\r\n\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(pred, prey)\r\n    -- Goons flee when Randall is swallowed\r\n    if prey == randall then\r\n        local goon1_ok = not goon1:IsDead() and not fight:IsSwallowed(goon1)\r\n        local goon2_ok = not goon2:IsDead() and not fight:IsSwallowed(goon2)\r\n        if goon1_ok and goon2_ok then\r\n            -- Both alive\r\n            Log(\"MQ02_AM_WINFIGHT_GOON_FLEE2\")\r\n        elseif goon1_ok ~= goon2_ok then\r\n            -- One alive\r\n            Log(\"MQ02_AM_WINFIGHT_GOON_FLEE1\")\r\n        end\r\n\r\n        Log(\"MQ02_RANDALL_KILL_DIGESTED\")\r\n        Sleep(3)\r\n\r\n        fight:End()\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\n-- Wrap-up\r\nif fight:IsSwallowed(randall) then\r\n    Log(\"MQ02_AM_WINFIGHT_VORE\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend"
 																								},
 																								"Children": [
 																									{
-																										"NodeType": "Link",
-																										"LinkTarget": "MQ02A_C_Finish"
+																										"NodeType": "Choice",
+																										"Key": "MQ02A_C_CrabRangoon1",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ02A_R_CrabRangoon1",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_WINFIGHT_CRAB_RANGOON1\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ02A_C_CrabRangoon2",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ02A_R_CrabRangoon2",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_AM_WINFIGHT_CRAB_RANGOON2\")\r\nEndGame()"
+																																},
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
 																									}
 																								]
 																							}

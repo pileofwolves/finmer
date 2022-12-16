@@ -102,10 +102,10 @@
 		{
 			"Key": "KILL_GENERIC",
 			"Text": [
-				"{target} {target succumb} to {target.possessive} wounds and {target fall} down on the ground.",
-				"{target} {target collapse} to the ground with a dull thud.",
-				"{target.aliaspossessive} vision fades and {target.subject} {target drop} on the ground.",
-				"{target.aliaspossessive} injuries are too severe and {target.subject} {target collapse}."
+				"{defender} {defender succumb} to {defender.possessive} wounds and {defender fall} down on the ground.",
+				"{defender} {defender collapse} to the ground with a dull thud.",
+				"{defender.aliaspossessive} vision fades and {defender.subject} {defender drop} on the ground.",
+				"{defender.aliaspossessive} injuries are too severe and {defender.subject} {defender collapse}."
 			]
 		},
 		{
@@ -140,7 +140,7 @@
 		{
 			"Key": "VORE_EXT_STRUGGLE",
 			"Text": [
-				"{prey} {prey squirm} around helplessly in their oppressive environment, splashing slime and juices all over {prey.object}self.",
+				"{prey} {prey squirm} around helplessly in {prey.possessive} oppressive environment, splashing slime and juices all over {prey.object}self.",
 				"As much as {prey} {prey squirm}, it only makes the stomach knead and churn harder around {prey.object}.",
 				"{prey} {prey struggle} within {predator.aliaspossessive} stomach by kicking and punching the walls, noisily displacing fluids.",
 				"{prey} {prey punch} and {prey kick} at the stomach walls surrounding {prey.object}, but that only makes the stomach compress some more.",

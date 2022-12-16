@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "ab250357-19c3-4e27-9c8f-505e01f329af",
 	"AssetName": "Scene_Intro",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_Intro_Custom"
+	},
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",
@@ -108,7 +112,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")"
+															"Script": "DebugStartMQ02()\r\nPlayer.EquippedWeapon = Item(\"W_Dagger\")\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")"
 														},
 														"Children": []
 													},
@@ -119,7 +123,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nSetScene(\"Scene_TownMarket\")"
+															"Script": "DebugCompleteMQ02()\r\nSetScene(\"Scene_TownMarket\")"
 														},
 														"Children": []
 													},
@@ -130,7 +134,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nStorage.SetFlag(\"BRIDGE_IS_REPAIRED\", true)\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_PortCentral\")"
+															"Script": "DebugStartMQ03()\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_PortCentral\")"
 														},
 														"Children": []
 													},
@@ -141,7 +145,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nStorage.SetFlag(\"BRIDGE_IS_REPAIRED\", true)\r\nJournal.Update(\"MQ03\", 50)\r\nSetTimeHour(21)\r\nSetScene(\"Scene_PortTemple\")"
+															"Script": "DebugStartMQ03()\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nJournal.Update(\"MQ03\", 50)\r\nSetTimeHour(21)\r\nSetScene(\"Scene_PortTemple\")"
 														},
 														"Children": []
 													},
@@ -153,7 +157,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Storage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetNumber(\"SQ02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")"
+															"Script": "DebugStartMQ02()\r\nStorage.SetNumber(\"SQ02\", 1)\r\nJournal.Update(\"SQ02\", 10)\r\nJournal.Update(\"MQ02\", 10)\r\nSetScene(\"Scene_ForestCottage\")"
 														},
 														"Children": []
 													},
@@ -165,7 +169,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Player:AwardXP(300)\r\nPlayer.EquippedWeapon = Item(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"TOWN_PIT_UNLOCKED\", true)\r\nSetScene(\"Scene_TownPit\")"
+															"Script": "DebugCompleteMQ02()\r\nSetScene(\"Scene_TownPit\")"
 														},
 														"Children": []
 													},
@@ -176,7 +180,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "Player:AwardXP(300)\r\nPlayer.EquippedWeapon = Item(\"W_SwordSteel\")\r\nStorage.SetFlag(\"TOWN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_INN_RENTED_ROOM\", true)\r\nStorage.SetFlag(\"MQ01_STARTED\", true)\r\nStorage.SetFlag(\"MQ01_DONE\", true)\r\nStorage.SetFlag(\"MQ02_DONE\", true)\r\nStorage.SetFlag(\"MQ03_STARTED\", true)\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nStorage.SetFlag(\"BRIDGE_IS_REPAIRED\", true)\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_DalsidaAbbey\")"
+															"Script": "DebugStartMQ03()\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_DalsidaAbbey\")"
 														},
 														"Children": []
 													}

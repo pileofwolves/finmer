@@ -150,7 +150,7 @@
 		{
 			"Key": "MQ02_AM_WINFIGHT_GOON_FLEE1",
 			"Text": [
-				"The last remaining lackey, who had been watching in quiet horror up until now, appears to unfreeze from stunned silence when your predatory gaze turns their way. Perhaps realizing that this is a battle they cannot win, not to mention the fact that they are now without their boss to back them up, they back away from you in unison, before turning tail and fleeing down the road. Cowards."
+				"The last remaining lackey, who had been watching in quiet horror up until now, appears to unfreeze from stunned silence when your predatory gaze turns {goon.possessive} way. Perhaps realizing that this is a battle {goon.subject} cannot win, not to mention the fact that {goon.subject} now without {goon.possessive} boss to back {goon.object} up, {goon} backs away from you, before turning tail and fleeing down the road. Coward."
 			]
 		},
 		{
@@ -426,8 +426,9 @@
 		{
 			"Key": "MQ02_OLIVER_VORE_EXT_STRUGGLE",
 			"Text": [
-				"Your gut gurgles and groans loudly around your prey. The lion whimpers as warm stomach flesh squeezes and churns away at him.",
-				"Your prey struggles violently within his fleshy prison. \"Please, I thought you were a nice {player.species}, let me out!\" you can hear him shout."
+				"Your gut gurgles and groans loudly around your prey. The lion whimpers as warm stomach flesh squeezes and churns away at him, displacing fluids with slimy glorps and squelches. He says something, or screams it perhaps, though it is too incoherent to make out the words.",
+				"The meat kicking about inside your digestive organ desperately seeks an escape - you know he will not find one, or at least not quite in time. \"You can't do this! Let me out!\" your meal's voice mumbles through {player.fur} and flesh.",
+				"Your prey struggles violently within his fleshy prison. \"Please, I'll do anything, let me out!\" you can hear him shout. A wet, loud gurgle vibrates through your bowels as your stomach squeezes inwards, seemingly eager to take the lion up on that 'anything' part."
 			]
 		},
 		{

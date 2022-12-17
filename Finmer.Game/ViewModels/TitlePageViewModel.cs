@@ -7,7 +7,9 @@
  */
 
 using System.Windows.Input;
+using Finmer.Core;
 using Finmer.Gameplay;
+using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views;
 
@@ -36,6 +38,11 @@ namespace Finmer.ViewModels
         public ICommand OptionsCommand => m_CommandOptions ?? (m_CommandOptions = new RelayCommand(OnOptions));
 
         /// <summary>
+        /// Command for navigating to the game page using cached save data.
+        /// </summary>
+        public ICommand QuickStartCommand => m_CommandQuickStart ?? (m_CommandQuickStart = new RelayCommand(OnQuickStart, CanQuickStart));
+
+        /// <summary>
         /// Returns the version number of this build.
         /// </summary>
         public string VersionNumber => CompileConstants.k_VersionString;
@@ -58,6 +65,7 @@ namespace Finmer.ViewModels
         private ICommand m_CommandNewGame;
         private ICommand m_CommandLoadGame;
         private ICommand m_CommandOptions;
+        private ICommand m_CommandQuickStart;
 
         public TitlePageViewModel()
         {
@@ -67,13 +75,26 @@ namespace Finmer.ViewModels
             Save3Text = SaveManager.GetSaveInfo(2).Info;
         }
 
-        private void OnNewGame(object args)
+        private static void OnNewGame(object args)
         {
             // Navigate to the options page
             GameController.Window.Navigate(new NewGamePage(), ENavigatorAnimation.SlideLeft);
         }
 
-        private void OnLoadGame(object args)
+        private static void OnQuickStart(object args)
+        {
+            // Start a new game using the last configured character creator preset
+            GameSnapshot save_data = new GameSnapshot(UserConfig.NewGamePreset, new PropertyBag(), new PropertyBag());
+            GameController.BeginNewSession(save_data);
+            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+        }
+
+        private static bool CanQuickStart(object args)
+        {
+            return UserConfig.NewGamePreset != null;
+        }
+
+        private static void OnLoadGame(object args)
         {
             int slot_index = (int)args;
             GameSnapshot snapshot;
@@ -95,14 +116,14 @@ namespace Finmer.ViewModels
             GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }
 
-        private bool CanLoadGame(object args)
+        private static bool CanLoadGame(object args)
         {
             // Game can be loaded if the slot contains valid save data
             int slot_index = (int)args;
             return SaveManager.GetSaveInfo(slot_index).IsLoadable;
         }
 
-        private void OnOptions(object args)
+        private static void OnOptions(object args)
         {
             // Navigate to the options page
             GameController.Window.Navigate(new OptionsPage(), ENavigatorAnimation.SlideRight);

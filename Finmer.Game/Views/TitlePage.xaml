@@ -7,10 +7,12 @@
     xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:TitlePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
         <Style x:Key="TitleButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Margin" Value="4" />
             <Setter Property="Height" Value="40" />
@@ -67,11 +69,25 @@
                             </BeginStoryboard>
                         </EventTrigger>
                     </DockPanel.Triggers>
-                    <Button
-                        DockPanel.Dock="Top"
-                        Style="{StaticResource TitleButton}"
-                        Command="{Binding NewGameCommand}"
-                        Content="Start New Game" />
+                    <Grid
+                        DockPanel.Dock="Top">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="Auto" />
+                        </Grid.ColumnDefinitions>
+                        <Button
+                            Grid.Column="0"
+                            Style="{StaticResource TitleButton}"
+                            Command="{Binding NewGameCommand}"
+                            Content="Start New Game" />
+                        <Button
+                            Grid.Column="1"
+                            Style="{StaticResource TitleButton}"
+                            Visibility="{Binding Source={x:Static Member=gp:GameController.DebugMode}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Command="{Binding QuickStartCommand}"
+                            ToolTip="Dev Mode: Start a new game using the last character created"
+                            Content="Quick Start" />
+                    </Grid>
                     <Button
                         DockPanel.Dock="Top"
                         Style="{StaticResource TitleButton}"

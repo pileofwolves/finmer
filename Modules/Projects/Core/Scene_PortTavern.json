@@ -193,7 +193,7 @@
 																				},
 																				"ScriptAppear": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "-- Player attacked Randall during MQ02, which means\r\n-- Sahro must have been knocked out also.\r\nreturn Storage.GetFlag(\"MQ02_RANDALL_FOUGHT\")"
+																					"Script": "return Storage.GetFlag(\"MQ02_RANDALL_PUNCHED\")"
 																				},
 																				"Children": [
 																					{

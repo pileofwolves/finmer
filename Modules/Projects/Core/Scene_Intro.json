@@ -80,6 +80,7 @@
 										"Children": [
 											{
 												"NodeType": "State",
+												"Key": "TeleportMenu",
 												"Children": [
 													{
 														"NodeType": "Choice",

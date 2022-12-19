@@ -1,4 +1,5 @@
 SetLocation("Town, West")
+SetInventoryEnabled(true)
 
 -- for the snitch scene, the fluff text is undesirable (because we're just jumping between scenes to reuse the token vore scene)
 if not Storage.GetFlag("town_pit_refused_snitch") then

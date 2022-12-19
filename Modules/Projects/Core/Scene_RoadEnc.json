@@ -338,7 +338,7 @@
 																				"Key": "MQ02A_R_HelloPunch",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
+																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.SetFlag(\"MQ02_RANDALL_PUNCHED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
 																				},
 																				"Children": [
 																					{

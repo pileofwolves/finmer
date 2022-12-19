@@ -91,7 +91,7 @@
 		{
 			"Key": "TOWN_FIRST_FOX2",
 			"Text": [
-				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. The gesture is not unwelcome, but does very little to settle your frazzled nerves. \"There ya go,\" he says. Anxiously, you look around; it seems you're in a narrow alleyway between two stone buildings. You can see the bright sun just overhead, bathing the immediate environs as well as whatever is just ahead in warmth.\\n\\n\"So,\" the vulpine begins. \"You look like you've been through the wringer, friend. Ain't every day I stumble across {player.speciesplural} passed out in an alley. I'm Gabe. Tell me, what's your story?\""
+				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. The gesture is not unwelcome, but does very little to settle your frazzled nerves. \"There ya go,\" he says. Anxiously, you look around; it seems you're in a narrow alleyway between two stone buildings. You can see the bright sun just overhead, bathing the immediate environs as well as whatever is just ahead in warmth. \"So,\" the vulpine begins. \"You look like you've been through the wringer, friend. Ain't every day I stumble across {player.speciesplural} passed out in an alley. I'm Gabe. Tell me, what's your story?\""
 			]
 		},
 		{

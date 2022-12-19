@@ -119,6 +119,10 @@
 																	{
 																		"NodeType": "Link",
 																		"LinkTarget": "MQ01_C_ActingMayor"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ01_C_Routes"
 																	}
 																]
 															}
@@ -147,6 +151,42 @@
 																	{
 																		"NodeType": "Link",
 																		"LinkTarget": "MQ01_C_Reward"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ01_C_Routes"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ01_C_Routes",
+														"Title": "Trade Route",
+														"Tooltip": "Ask why this route is so important. Are there really no alternatives?",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ01_R_Routes",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ01_INFO_ROUTES\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ01_C_Intro4"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ01_C_Reward"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ01_C_ActingMayor"
 																	}
 																]
 															}

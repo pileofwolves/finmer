@@ -30,13 +30,19 @@
 		{
 			"Key": "MQ01_INFO_ACTINGMAYOR",
 			"Text": [
-				"When you broach the subject, you notice her gaze soften considerably. \"Yeah. Everyone - especially me, frankly - have to put on a brave face, but the truth is I'm worried. Mayor Iso always had her affairs in order, and she was definitely not one to just up and leave.\" Briefly, in a moment of weakness, she averts her eyes. When they return to gaze into yours, the impassively cold expression seems to have returned. \"I need to get to the bottom of this madness, but I only have so many people to work with. Can I count you among them?\""
+				"When you broach the subject, she sighs, and you notice her averting her eyes. \"Yeah. Everyone has to put on a brave face, but the truth is I'm worried. Mayor Iso always had her affairs in order, and she was definitely not one to just up and leave.\" Briefly, in what you assume is a moment of weakness, she shakes her head. When her eyes flick back up to gaze into yours, the impassively cold expression seems to have returned. \"I need to get to the bottom of this madness, but I only have so many people to work with. Can I count you among them?\""
 			]
 		},
 		{
 			"Key": "MQ01_INFO_REWARD",
 			"Text": [
 				"The white feline huffs indignantly, though you feel like she should've expected the question. \"I'm sure the wanderer-types such as yourself are swayed by gold, no? And you can make use of a room at our local tavern. If I may be so frank, you look like you could use a rest. Deal?\""
+			]
+		},
+		{
+			"Key": "MQ01_INFO_ROUTES",
+			"Text": [
+				"Canbell nods. \"Because of the elevation difference, primarily. We are up on a plateau, essentially; South Finmer is at sea level. You'll find that the road leading there slopes down pretty much all the way. So making an alternative route is really difficult and expensive.\" She snorts, perhaps somewhat more derisively than she had intended. \"Besides, the place doesn't get quite so much traffic that it's ever been an issue - until now of course.\""
 			]
 		},
 		{
@@ -48,7 +54,7 @@
 		{
 			"Key": "MQ01_INTRO2",
 			"Text": [
-				"She scratches her chin. \"I see. I'm not sure what you've heard so far, but let me get you up to speed; I'll take all the help I can get right now. Call me Canbell, by the way.\"\\n\\n\"Last night, there was an explosion that seems to have rendered our primary route to South Finmer unusable. That's a big problem; even now there are traders stuck here that would have gone that way otherwise. There are some other ways around, of course, but none that are suitable for carriages and the like.\" The leopardess pauses for a moment and takes a breath. \"Now, we're handling the search for those responsible, but we need materials to perform the repairs with. Generally, we get those from a forester who lives near the woods, east of here.\""
+				"She scratches her chin. \"I see. I'm not sure what you've heard so far, but let me get you up to speed; I'll take all the help I can get right now. Call me Canbell, by the way.\"\\n\\n\"Last night, there was an explosion that seems to have rendered our primary route to South Finmer unusable. That's a big problem; even now there are traders stuck here that would have gone that way otherwise. There are no other viable trade routes to South Finmer. Some cliff paths, but none that are suitable for carriages and the like.\" The leopardess pauses for a moment and takes a breath. \"Now, we're handling the search for those responsible, but we need materials to perform the repairs with. Generally, we get those from a forester who lives near the woods, east of here.\""
 			]
 		},
 		{
@@ -78,7 +84,7 @@
 		{
 			"Key": "MQ01_SETUP_MAYOR",
 			"Text": [
-				"\"Ah, you hadn't heard? Understandable, this place is a mess right now, honestly.\" {^questgiver.subject} pauses briefly to collect {questgiver.possessive} thoughts. \"Iso, the mayor of this town, would usually take care of such things. But, for some reason, she vanished two days ago. Strangest thing, isn't it? Anyway, her right paw, Canbell, is taking over for now to help keep things running.\""
+				"\"Ah, you hadn't heard? Understandable, this place is a mess right now, honestly.\" {^questgiver.subject} pauses briefly to collect {questgiver.possessive} thoughts. \"Iso, the mayor of this town, would usually take care of such things. But, for some reason, she vanished last night. And then at the same time, our infrastructure is attacked! Strangest thing, isn't it? Anyway, her right paw, Canbell, is taking over for now to help keep things running.\""
 			]
 		},
 		{

@@ -195,7 +195,7 @@ namespace Finmer.Gameplay.Combat
 
             // Generally, first participant to win 3 rounds wins the contest. If pred/prey size differs, the pred's required
             // success count changes by 1 for every level of difference (but never less than 1 round).
-            int size_diff = target.Character.Size - instigator.Character.Size;
+            int size_diff = (int)target.Character.Size - (int)instigator.Character.Size;
             int pred_rounds_to_win = Math.Max(k_NumVoreRoundsToWin + size_diff, 1);
             int rounds_attack = 0;
             int rounds_defend = 0;

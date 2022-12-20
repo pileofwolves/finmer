@@ -31,7 +31,6 @@ namespace Finmer.Editor
             Scene,
             Creature,
             Item,
-            Feat,
             Journal,
             StringTable,
             Script
@@ -42,7 +41,6 @@ namespace Finmer.Editor
             { EPickerType.Scene,        typeof(AssetScene) },
             { EPickerType.Creature,     typeof(AssetCreature) },
             { EPickerType.Item,         typeof(AssetItem) },
-            { EPickerType.Feat,         typeof(AssetFeat) },
             { EPickerType.Journal,      typeof(AssetJournal) },
             { EPickerType.StringTable,  typeof(AssetStringTable) },
             { EPickerType.Script,       typeof(AssetScript) }

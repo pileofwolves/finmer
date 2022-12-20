@@ -54,7 +54,6 @@ namespace Finmer.Editor
             this.rbtAssetAddScene = new System.Windows.Forms.RibbonButton();
             this.rbtAssetAddItem = new System.Windows.Forms.RibbonButton();
             this.rbtAssetAddCreature = new System.Windows.Forms.RibbonButton();
-            this.rbtAssetAddFeat = new System.Windows.Forms.RibbonButton();
             this.rbtAssetAddJournal = new System.Windows.Forms.RibbonButton();
             this.rbtAssetAddStringTable = new System.Windows.Forms.RibbonButton();
             this.rbtAssetAddScript = new System.Windows.Forms.RibbonButton();
@@ -312,7 +311,6 @@ namespace Finmer.Editor
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddScene);
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddItem);
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddCreature);
-            this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddFeat);
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddJournal);
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddStringTable);
             this.rbtAssetAdd.DropDownItems.Add(this.rbtAssetAddScript);
@@ -362,18 +360,6 @@ namespace Finmer.Editor
             this.rbtAssetAddCreature.ToolTip = "An object that can participate in the combat system.";
             this.rbtAssetAddCreature.ToolTipTitle = "Creature";
             this.rbtAssetAddCreature.Click += new System.EventHandler(this.rbtAssetAddCreature_Click);
-            // 
-            // rbtAssetAddFeat
-            // 
-            this.rbtAssetAddFeat.DropDownArrowDirection = System.Windows.Forms.RibbonArrowDirection.Left;
-            this.rbtAssetAddFeat.Image = ((System.Drawing.Image)(resources.GetObject("rbtAssetAddFeat.Image")));
-            this.rbtAssetAddFeat.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbtAssetAddFeat.LargeImage")));
-            this.rbtAssetAddFeat.Name = "rbtAssetAddFeat";
-            this.rbtAssetAddFeat.SmallImage = global::Finmer.Editor.Properties.Resources.tag_label;
-            this.rbtAssetAddFeat.Text = "Feat";
-            this.rbtAssetAddFeat.ToolTip = "An attribute that grants a character abilities in combat.";
-            this.rbtAssetAddFeat.ToolTipTitle = "Feat";
-            this.rbtAssetAddFeat.Click += new System.EventHandler(this.rbtAssetAddFeat_Click);
             // 
             // rbtAssetAddJournal
             // 
@@ -579,7 +565,6 @@ namespace Finmer.Editor
         private RibbonButton rbtAssetAddScene;
         private RibbonButton rbtAssetAddItem;
         private RibbonButton rbtAssetAddCreature;
-        private RibbonButton rbtAssetAddFeat;
         private RibbonButton rbtAssetAddJournal;
         private RibbonButton rbtAssetAddStringTable;
         private RibbonButton rbtAssetAddScript;

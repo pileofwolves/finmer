@@ -25,7 +25,6 @@ namespace Finmer.Editor
     {
 
         private readonly TreeNode m_NodeCreatures;
-        private readonly TreeNode m_NodeFeats;
         private readonly TreeNode m_NodeItems;
         private readonly TreeNode m_NodeJournals;
         private readonly TreeNode m_NodeScenes;
@@ -55,7 +54,6 @@ namespace Finmer.Editor
             m_NodeScenes = trvAssetList.Nodes.Add("Scenes", "Scenes", 0);
             m_NodeItems = trvAssetList.Nodes.Add("Items", "Items", 0);
             m_NodeCreatures = trvAssetList.Nodes.Add("Creatures", "Creatures", 0);
-            m_NodeFeats = trvAssetList.Nodes.Add("Feats", "Feats", 0);
             m_NodeJournals = trvAssetList.Nodes.Add("Journals", "Journals", 0);
             m_NodeTexts = trvAssetList.Nodes.Add("String Tables", "String Tables", 0);
             m_NodeScripts = trvAssetList.Nodes.Add("Scripts", "Scripts", 0);
@@ -131,9 +129,8 @@ namespace Finmer.Editor
                 case AssetCreature asset:       return new FormDocumentCreature             { Asset = asset };
                 case AssetStringTable asset:    return new FormDocumentStringTable          { Asset = asset };
                 case AssetScript asset:         return new FormDocumentScriptExternal       { Asset = asset };
-                case AssetFeat asset:           return new FormDocumentFeat                 { Asset = asset };
                 case AssetJournal asset:        return new FormDocumentJournal              { Asset = asset };
-                case ScriptDataWrapper script:  return new FormDocumentScriptNested       { ScriptWrapper = script };
+                case ScriptDataWrapper script:  return new FormDocumentScriptNested         { ScriptWrapper = script };
                 default:                        throw new ArgumentException(nameof(data));
             }
         }
@@ -161,7 +158,6 @@ namespace Finmer.Editor
             m_NodeCreatures.Nodes.Clear();
             m_NodeTexts.Nodes.Clear();
             m_NodeScripts.Nodes.Clear();
-            m_NodeFeats.Nodes.Clear();
             m_NodeJournals.Nodes.Clear();
 
             // Disable saving UI
@@ -208,10 +204,6 @@ namespace Finmer.Editor
                 case AssetScript _:
                     node.ImageKey = "script";
                     m_NodeScripts.Nodes.Add(node);
-                    break;
-                case AssetFeat _:
-                    node.ImageKey = "feat";
-                    m_NodeFeats.Nodes.Add(node);
                     break;
                 case AssetJournal _:
                     node.ImageKey = "text";
@@ -508,7 +500,6 @@ namespace Finmer.Editor
         private TreeNode FindAssetTreeNode(AssetBase asset)
         {
             return FindAssetTreeNodeInGroup(m_NodeCreatures.Nodes, asset)
-                ?? FindAssetTreeNodeInGroup(m_NodeFeats.Nodes, asset)
                 ?? FindAssetTreeNodeInGroup(m_NodeItems.Nodes, asset)
                 ?? FindAssetTreeNodeInGroup(m_NodeJournals.Nodes, asset)
                 ?? FindAssetTreeNodeInGroup(m_NodeScenes.Nodes, asset)
@@ -727,16 +718,6 @@ namespace Finmer.Editor
             var asset = new AssetCreature
             {
                 Name = GetUniqueAssetName("NewCreature"),
-                ID = Guid.NewGuid()
-            };
-            RegisterNewAsset(asset);
-        }
-
-        private void rbtAssetAddFeat_Click(object sender, EventArgs e)
-        {
-            var asset = new AssetFeat
-            {
-                Name = GetUniqueAssetName("NewFeat"),
                 ID = Guid.NewGuid()
             };
             RegisterNewAsset(asset);

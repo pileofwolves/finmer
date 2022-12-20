@@ -57,7 +57,6 @@
     <Compile Include="Serialization\AssetSerializer.cs" />
     <Compile Include="Assets\AssetBase.cs" />
     <Compile Include="Assets\AssetJournal.cs" />
-    <Compile Include="Assets\AssetFeat.cs" />
     <Compile Include="Assets\AssetScene.cs" />
     <Compile Include="Assets\ScriptDataExternal.cs" />
     <Compile Include="Assets\AssetStringTable.cs" />

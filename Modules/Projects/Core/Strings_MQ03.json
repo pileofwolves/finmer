@@ -58,6 +58,12 @@
 			]
 		},
 		{
+			"Key": "MQ03_PORT_LOCKED",
+			"Text": [
+				"The Red Maw is actively searching for you right now in South Finmer's town center. It would be best to not return there for a little while and wait for things to cool down. Besides, you have someplace else to be."
+			]
+		},
+		{
 			"Key": "MQ03_RIDESOUTH_BOARD",
 			"Text": [
 				"The chameleon appears visibly elated. It almost appears like his skin changes ever so slightly, the color becoming more vibrant - or perhaps it is a trick of the light. \"Well then, {player.name}-{player.species}, hop on in, and we will be off!\" Needing no further encouragement, you circle around the vehicle and the lone horse, who glances at you with barely concealed disinterest, before latching on to the carriage and lifting yourself up. Once you are comfortable, Zosk glances forward once more to ensure the road is clear, then yips a command to his steed and loudly claps his hand together. On cue, the horse begins walking forwards lazily, seemingly taking a few moments to gauge the weight, then settling into a comfortable pace."
@@ -238,15 +244,9 @@
 			]
 		},
 		{
-			"Key": "MQ03_TAVERN_EVENT4_EATEN",
-			"Text": [
-				"\"The boss did tell you to piss off, and look where that got you.\" The paw clutching your head pulls back, allowing you turn and see just who you are dealing with. A rust and white furred husky flashes a toothy grin, as she leans in a little too close for comfort. \"Normally he'd send Sahro to take care of this, but since you just had to go and do the cute tigress in, I'll have to take care of you instead.\" The chubby canine sighs. \"I loved her, but since she's now on your waistline, I suppose it's only fair I get a little bit of her back from you.\""
-			]
-		},
-		{
 			"Key": "MQ03_TAVERN_EVENT4_HIT",
 			"Text": [
-				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, before slamming you right back into the countertop, leaving you groaning and with a nosebleed. \"That was for punching me last time, little shit. You got me once, and it won't happen again. Now, the boss has a message for you. You're going to be a good {player.boy} and follow me, quietly.\""
+				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, before slamming you right back into the countertop, leaving you groaning and with a nosebleed. \"That was for punching my boss last time, little shit. You did it once under my watch, and it won't happen again. Now, the boss has a message for you. You're going to be a good {player.boy} and follow me, quietly.\""
 			]
 		},
 		{
@@ -378,7 +378,7 @@
 		{
 			"Key": "MQ03_TAVERN_PRED_VORE_WIN",
 			"Text": [
-				"Through some stroke of luck, you manage to part your jaws at just the right time as {assailant} lunges for you. Instead of achieving her desired effect, she ends up plunging her muzzle right into your own, and you immediately swallow for good measure. The shock wears off for both of you a moment later, but it's already too late - her furry head is lodged in your slimy gullet, and the muscular tube is not accustomed to letting things go. With nothing else to do but capitalize on your victory before it takes a turn for the worse, you greedily take swallow after swallow. Your prey's arms flail around and beat against you, but the effort is not enough to dislodge her from your carnivorous grip. Eventually her arms are pinned against her sides as you continue to devour her, speeding things along. Though the shirt and shorts she wears dampen the flavor of her fur, the sheer feeling of fullness that overcomes you as the pudgy preything begins to settle is worth the trouble. As you slurp up {assailant.aliaspossessive} tail and footpaws, your meal making quite the racket inside of you, your gaze comes to rest on her accomplice. The fox, who had been petrified up until now, attempts to back off immediately. With a single paw, you manage to snatch the terrified vulpine by his wrist, keeping him from fleeing the scene, as your attention turns to the angry wriggling in your midsection."
+				"Through some stroke of luck, you manage to part your jaws at just the right time as {assailant} lunges for you. Instead of achieving her desired effect, she ends up plunging her muzzle right into your own. You manage to surprise the both of you, and you consider opening your maw again, but this is a life-or-death situation, and the chance is too good to pass up. So instead, you swallow once for good measure. The shock on {assailant.aliaspossessive} face wears off a moment later, but it's already too late - her furry head is lodged in your slimy gullet, and the muscular tube is not accustomed to letting things go. With nothing else to do but capitalize on your victory before it takes a turn for the worse, you greedily take swallow after swallow. Your prey's arms flail around and beat against you, but the effort is not enough to dislodge her from your carnivorous grip. Eventually her arms are pinned against her sides as you continue to devour her, speeding things along. Though the shirt and shorts she wears dampen the flavor of her fur, the sheer feeling of fullness that overcomes you as the pudgy preything begins to settle is worth the trouble. As you slurp up {assailant.aliaspossessive} tail and footpaws, your meal making quite the racket inside of you, your gaze comes to rest on her accomplice. The fox, who had been petrified up until now, attempts to back off immediately. With a single paw, you manage to snatch the terrified vulpine by his wrist, keeping him from fleeing the scene, as your attention turns to the angry wriggling in your midsection."
 			]
 		},
 		{
@@ -436,51 +436,141 @@
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN1",
+			"Key": "MQ03_TEMPLE_PRED_KILL_DIGESTED",
+			"Text": [
+				"Though it is probably not how the husky had envisioned it, you've successfully reunited her with her beloved tigress. One had already made the trip through your winding intestines, stripped of useful qualities and reduced to {player.species}-fat; now her canine companion is soon to follow. Your prey falls still inside your stomach, having quickly depleted the meager oxygen supply she had. As you waddle off to the side, seeking a slightly better position to crash into, you stumble and gasp. Inadvertently, you swallow some air - while stale and diluted, it is enough to restart the engine that kicks and whines about inside the pit of your digestive system. Futile, of course; there is no way out of that cradle of acid but down. You sigh, tongue rolling from your maw, resting with your back against a barrel, paws roaming over your belly in an attempt to quiet down the discontented food. The sensation of something whole and alive churning away in there is intoxicating; you feel like you're getting the hang of this predation thing. Maybe Randall has the right idea when he slurps up a random passerby for dinner..."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_PRED_KILL_DIGESTED_POV",
+			"Text": [
+				"Satisfied, your captor saunters out back into the open, kicking gut slowing down given a few more minutes. Nothing quite compared to live prey. Randall understood. That is why Mia follows him, and why she is his trusted right paw. Sahro was one, too, before that dumb {player.species} caught her by surprise. Good thing she has you all locked up and pressed into a ball of nameless, worthless meat. Carnivores like this one need quite a lot of protein to sustain themselves, after all, and you will do quite nicely. Whether through practice or through natural talent, the dog's digestive system is exceedingly capable at melting down meat into gut soup. The pyloric valve near the bottom of the caustic pit yawns open occasionally, and perhaps with increasing frequency, to admit the nutritious slop you have been reduced to. Joining up with her comrades, earning a smirk and some praise from her beloved boss, the hunt for that other loose end resumes, the gurgling chunk of food weighing down her midsection already all but forgotten."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_PRED_KILL_GENERIC",
+			"Text": [
+				"Mia the husky collapses before you, your last attack too much to handle. Quickly, you drag her limp rust-furred body behind a nearby crate, taking full advantage of the fact that she had already backed you into a corner. The lack of light here made fighting messy and difficult, but it is really helping you remain hidden now."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_PRED_VORE_WIN",
+			"Text": [
+				"Taking advantage of the poor lighting conditions, you fake out the husky, disrupting her balance. This is more than enough of an opportunity for you to slam her into the alley wall and wrap your jaws around her canine muzzle in one smooth motion. She braces against your shoulders, of course, but you anticipated this and tense up enough to pin her down tight. A loud, wet gllllrrrrk signals the start of ingestion, and as you pack the rust-furred dog's arms together to more easily cram her shoulders down your gullet, she loses all composure. Wild, panicked flailing ensues, and an uncoordinated escape attempt such as that is simply not enough to overpower the suction of your oesophagus. You part your jaws a little further, clamping back down further ahead, and so it is that you claim the canine's body for yourself, bit by bit. Mia's struggles slow down by the time she's dunked halfway through your chest, owing in all likelihood to a pressing lack of breathable air. The internals of a carnivorous {player.species} are not made for food to survive in, after all. Making quick work of your meal, eager to get into a better hiding place lest you get spotted in your little act of predation, you scarf down the canine's chubby legs and tail, encasing her entirely in slimy, throbbing flesh, much to her displeasure. As the meat settles within you, a bubble of air rushes up your throat and you release a loud belch. Oops. Hopefully that is not too incriminating. The stomach walls collapse inwards around your prize, shifting and churning as the long cycle of mechanical digestion begins."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_PRED_VORE_WIN_POV",
+			"Text": [
+				"Perhaps more accustomed to fighting dirty in the black of night, the husky gets the better of you. A well-timed jab staggers you; more than enough time for the fluffy dog to spread her jaws unnaturally wide and push the entirety of your head straight in the back of her maw. It seems this predator is quite excited to scarf you down. If Randall was drooling a lot at the sight of his beloved prey, then this one's maw is positively flooding with hot, sticky, foul saliva. There is way too much to just cover your face and shoulders, and so it ends up leaking down and covering your chest before Mia even gets around to swallowing that much. The tight, slimy tube pressing in around your face convulses rapidly, forcing you down with one greedy swallow after another. While you have no real measure of time with half your body sunk into digestive pit, you are fairly certain the husky is devouring you in record time. At the apex of the skin-tight journey lies the sour, bubbling gut that will strip the flesh from your bones in the next several hours. Before you even realize the stomach sphincter has finished spitting out your toes and tail, the meaty cavern collapses around you, eager to grind you down into meat stew."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN01",
 			"Text": [
 				"The pantheress considers your question for a brief moment, eyes wandering to the incense offering on the altar. \"Well...\" She turns to you again, as if to answer, before loud knocks on the door startles all three of you. The door opens once more, the soft light of the lanterns scattered around the room illuminating a wolf's face. He pulls down his hood, revealing a short crimson mane running down a black-furred head. Dark, plain clothes drip rainwater on the pristine chalky flagstones. Iso's breath catches in her throat and Willow appears even more confused, as Randall offers a smile. Unlike the last time you met, he does not sport a horrifyingly large belly bulge - though knowing full well what he is capable of, keeping some distance is not unreasonable. \"There you are, my love,\" he says, a deceptively calm, rumbling voice laced with venom as he steps inside, not bothering to close the door behind him."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN2",
+			"Key": "MQ03_TEMPLE_SHOWDOWN02",
 			"Text": [
 				"\"Do not call me that,\" Iso hisses, taking a step back just as the wolf does the inverse. There is nowhere to go here - the only way out of the shrine is past an angry canine. He appears almost offended at the response, though his muzzle soon returns to an impassive grimace.\\n\\n\"You sure made me work for it, but I finally found you after all this time.\" Randall growls. \"If I'd known you'd just show up, I wouldn't even have had to claim the Red Maw for myself.\" He grunts casually, almost like a chuckle, eyes flicking to you, then Willow, then back to Iso. \"Dragging in all these witless preythings-\"\\n\\n\"Damn it, Randall,\" she interrupts him with a growl of her own, her long, slender tail flicking about behind her. \"You're the one going around killing people, not me,\" Iso demands, raising her voice. \"You are the only one responsible for the shitshow that is your love life!\""
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN3",
+			"Key": "MQ03_TEMPLE_SHOWDOWN03",
 			"Text": [
-				"This slight strikes a nerve, and then some. The black wolf bares his teeth in a snarl, taking another few steps forward, threatening all merely by closing the distance. \"Do you not see, Iso? I'm doing all this, all of this, for you.\" He swings an arm sideways at nothing in particular, as if gesturing at the town as a whole. \"Because you just had to run away!\"\\n\\nThe pantheress is taken aback at this outburst, struggling to find words for a few moments, before the priestess beside her interrupts with a booming voice that is entirely unlike her character and smaller stature. \"There will not be an altercation inside my shrine!\" she demands, drawing the attention of all present. \"Leave, all of you, or--\"\\n\\n\"Quiet, wench,\" Randall snarls, saliva droplets spraying from his black lips. \"I'll deal with you - and you - later,\" he adds, resting his gaze on you, before it returns to his chosen prey. \"But now, my love, enough chat. You are here, and you are not leaving my side ever again,\" he declares.\\n\\nWith that, he bounds over to the pantheress, drool dribbling from his maw as he attempts to wrap his arms around her. Willow squeaks and backs away. Iso reacts quickly, using her slender frame to her advantage to duck below his arms and recklessly kicking him in his stomach, staggering the wolf and sending him backwards, right towards you."
+				"This slight strikes a nerve, and then some. The black wolf bares his teeth in a snarl, taking another few steps forward, threatening all merely by closing the distance. \"Do you not see, Iso? I'm doing all this, all of this, for you.\" He swings an arm sideways at nothing in particular, as if gesturing at the town as a whole. \"Because you just had to run away!\"\\n\\nThe pantheress is taken aback at this outburst, struggling to find words for a few moments, before the priestess beside her interrupts with a booming voice that is entirely unlike her character and smaller stature. \"There will not be an altercation inside my shrine!\" she demands, drawing the attention of all present. \"Leave, all of you, or-\" Randall snarls. \"Quiet, wench,\" he breathes through teeth, saliva droplets spraying from his black lips. \"I'll deal with you later,\" he adds, before resting his gaze on you."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN4A",
+			"Key": "MQ03_TEMPLE_SHOWDOWN04",
+			"Text": [
+				"\"You,\" he growls, voice taking on a lot more venom. \"Iso, love, don't you know you associate with murderers?\" he begins. \"This one killed my trusted right hand, and a new recruit. You can't even let me have that.\" He must have assumed their failure to report back in as evidence enough. Randall finds himself in the difficult position of being forced to choose between prey, and quickly at that. Ultimately, he focuses on the object of his desire, a smooth grin reappearing on his lips. \"But now, my love, enough chat. You are here, and you are not leaving my side ever again,\" he declares.\\n\\nWith that, he bounds over to the pantheress, lips morphing into something resembling nothing but hunger. Drool dribbles from his maw as he attempts to wrap his arms around her. Willow squeaks and backs away. Iso reacts quickly, using her slender frame to her advantage to duck below his arms and recklessly kicking him in his stomach, staggering the wolf and sending him backwards, right towards you."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN05A",
 			"Text": [
 				"You wrap your arms around Randall, taking advantage of the element of surprise to force him tightly against your chest. Of course, it takes only a second for him to realize his predicament, and buck like a stubborn mount. The wolf slams his elbows backwards, into your chest, and with a wheeze you have no choice but to let go - but not before jerking your own knee upwards to deliver a painful kick in his shin, putting some distance between the two of you. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN4B",
+			"Key": "MQ03_TEMPLE_SHOWDOWN05B",
 			"Text": [
 				"You take advantage of the element of surprise to slam your fist into the side of the wolf's skull. Droplets of saliva are sent flying, and before Randall realizes the depth of his predicament, he grunts in pain, stumbling down to the flagstones beneath in a bid to regain his balance. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN4C",
+			"Key": "MQ03_TEMPLE_SHOWDOWN05Z",
 			"Text": [
-				"Iso, meanwhile, did not waste the opportunity, her possessive stalker briefly occupied in a scuffle with yourself. \"Willow, we need to move,\" she manages to say, the lapine priestess behind her more or less mortified at the evening's proceedings. \"{player.name}, I need to get Willow to safety. It's me he's after. Find me at Rux's!\" Tugging at the rabbit's arms, the two of them quickly rush past the downed wolf, who snarls in frustration, sensing his quarry escaping.\\n\\nThe feline turns back, as Randall scrambles back to his feet, absolutely livid and quickly assessing the situation. With him in between you and Iso, blocking your exit, he was going to have to make a choice. \"C'mon, dogbreath,\" Iso taunts, which appears to be surprisingly effective, before she slips through the door and into the cold night. Out of your grasp once more."
+				"\"You little shit,\" the wolf snarls, spitting a little bit of blood on the floor as he briefly rests on his side, staring daggers at you. The crazed hunger in his eyes speaks volumes of his temptation to eat you where you stand. Iso, meanwhile, did not waste the opportunity, her possessive stalker briefly occupied in a scuffle with yourself. \"Willow, we need to move,\" she manages to say, trying to usher Willow out of the room. \"{player.name}, it's me he's after!\" she adds, the lapine priestess behind her more or less mortified at the evening's proceedings. A moment later, that horror turns to poorly concealed anger and she yanks her wrist from Iso's well-intentioned grip."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN5",
+			"Key": "MQ03_TEMPLE_SHOWDOWN06",
 			"Text": [
-				"Randall turns to you, eyes ablaze. This had not gone the way he had desired, and he did not usually settle for anything less than his own desires. You assess your options - the only way out of the room is through a dangerous predator. \"You little shit,\" he snarls, spitting a little bit of blood on the floor. A gust of frigid air blowing in through the open door overpowers the gentle warmth in the room, and several candles are extinguished. The crazed hunger in his eyes speaks volumes of his temptation to eat you where you stand. Were it not for your meddling, he might have followed through - instead, Randall finds himself in the difficult position of being forced to choose between prey, and quickly at that. Ultimately, Randall chooses the object of his desire. Turning tail, the wolf sprints through the shrine door with a loud curse, kicking it shut behind him in an attempt to delay you for just a second or two."
+				"The downed wolf snarls in frustration and quite literally pounces on his quarry, pushing you and the healer aside like a cannonball rushing past. The two tumble to the ground, knocking over a vase in the process, before Randall assumes dominance and pins his catch beneath him, filling the pantheress' vision with black fur and sharp yellow eyes. \"Oh, Iso,\" he sighs. \"We had such a beautiful thing together. Why did you leave me?\" His meaty tongue lashes out from behind his black lips and drags across her face, leaving a thin coating of saliva squarely between her eyes. \"Go to hell, dogbreath,\" she hisses, grimacing and barely suppressing a cough. The wolf is by far the strongest of the two, and the mayor, knowing this, stopped bothering to struggle. Pleased with this development, Randall grins. \"There'll be a lot more of that dogbreath for you to enjoy now that we can reunite,\" he taunts, before parting his lips and clamping his jaws around Iso's head."
 			]
 		},
 		{
-			"Key": "MQ03_TEMPLE_SHOWDOWN6",
+			"Key": "MQ03_TEMPLE_SHOWDOWN07",
 			"Text": [
-				"You pursue the trio, stepping out into the cold street of South Finmer after fiddling with the heavy oaken door for a brief moment. Much to your dismay, however, there is nothing more to be found here. Iso is long gone, presumably with Willow in tow. The mad canine himself is nowhere to be found either; you cannot quite tell in which direction the chase has taken place, so the only thing you can do is trust the pantheress to hold her own. At least you managed to finally reconvene, after all this time, however briefly. More importantly, you know have a meeting point. Rain splashes on the grimy stones beneath your feet, and as you consider your next move, you find yourself growing slightly envious of the oblivious citizens around you, safely sleeping the night away."
+				"With the sight of a ravenous carnivore taking his first swallow of a long-awaited meal, torrents of saliva leaking from the lupine's lips and dripping on the stones beneath, Willow finds her resolve. She beckons you, and you intervene together. With four arms grabbing on and around the wolf's chest, the two of you pull him up, while your foot presses down hard on Iso's belly to give her some leverage. You were just in time, too; though the feline's face is utterly soaked in reeking wolf slobber, she pulls free quite easily - a few seconds longer and it would have been near-impossible to overcome the experienced predator's powerful throat.\\n\\nRandall tumbles backwards, crashing right on top of the priestess. As if on reflex, Willow locks her arms around the beefy canine in an attempt to hold him down. In this moment, you rush over to the heaving mayor and help her up. Just off to your side, the unwelcome guest struggles violently against his lapine captor. \"Fucking whore! Unhand me, or you're wolf fat!\" he shouts, eyes ablaze. This had not gone the way he had desired, and he did not usually settle for anything less than his own desires. \"Go, you two!\" Willow yells. \"Go now!\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN08",
+			"Text": [
+				"Iso looks like she's torn in two. Whether Willow understands the gravity of her actions or not, this is the one and only chance you're going to get. The rabbit looks like she's about to say something again, but the wolf atop her forbids her from doing so by slamming an elbow into her face. Time is running out fast. You exchange another glance with the once-missing mayor, before the two of you make a run for it. The heavy oak door leading outside creaks open, before a gust of frigid air blows through. The cold quickly overpowers the gentle warmth in the room, and several candles are extinguished. You dash through, shutting it behind you to add a precious second of delay, but not before the lupine predator makes his displeasure known. \"ISO!\" he screams, almost having freed himself from the flailing healer, his voice echoing into the rainy night. Then the groaning door falls shut, catching in the lock."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN09",
+			"Text": [
+				"Unfortunately, there is no time for celebration or relaxation. Waiting for you in the rain are two figures, one avian, one canine. It takes only a short moment for them to recognize the two of you, and for you to understand just why they are out here: the backup plan. Not a moment later, the two sentries dive forward. Iso grapples with the hooded avian, while a rust and white furred husky lady flashes a toothy grin at you while forcing you to back into a one-way alley. \"Normally he'd send Sahro to take care of this, but since you just had to go and do the cute tigress in, I'll have to take care of you instead.\" The chubby canine sighs. \"I loved her, but since she's now on your waistline, I suppose it's only fair I get a little bit of her back from you.\" Somewhere behind her, you hear Iso shout at you. \"I'll be fine, {player.name}! We'll meet at Rux's!\" The scuffle continues as she tries to pry herself loose of the mass of feathers holding her down. The husky before you glances sideways, before turning to you again, blocking your exit. \"Tcch, too bad she belongs to the boss. But for you, no such restrictions. Come here, snack.\""
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN10",
+			"Text": [
+				"With your attacker dealt with, you risk a glance out of the alley just in time to see Randall emerge from the shrine. Iso is nowhere in sight, and the bird fellow she had been fighting with is right behind the wolf along with a rodent you cannot quite make out any details of, so perhaps she got away. That is when you notice that Randall has gained some weight, so to speak. His jacket is held open by a huge dome of black fur, sagging down well over his belt. The bulge shifts rather violently - obviously someone is kicking about in there, alive but not for much longer. From your vantage point, you cannot quite make out details, though by the looks of it, the wolf's meal is thrashing up a storm. It isn't until he slaps his gut as if to discipline it, that it gurgles so loudly even you can hear it. You have an inkling as to who the occupant is, but now is not the time to worry about that, lest you reveal yourself."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN11A",
+			"Text": [
+				"\"For fuck's sake, Jett!\" Randall shouts, his commanding voice far louder than it really needed to be. \"Find them, NOW!\" The two lackeys need no further encouragement to dash off into the night. The apex predator himself casts a sidelong glance at the alley you're hiding inside, and you pray to whomever might be listening that your own gut is not so noisy as to attract unwanted attention. The husky inside is trying hard, at least - your digestive system groans and gurgles as it squeezes her down into a ball of furred food, though she is not so easily silenced. Luckily, the layers of {player.fur} and flesh insulating her from the outside is enough to muffle the displeased struggles - either that or the wolf mistakes the chorus of digestion and pleading for his own meal - and he walks off after his subordinates, cradling his swaying gut in his paws. Too close."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN11B",
+			"Text": [
+				"\"For fuck's sake, Jett!\" Randall shouts, his commanding voice far louder than it really needed to be. \"Find them, NOW!\" The two lackeys need no further encouragement to dash off into the night. The apex predator himself casts a sidelong glance at the alley you're hiding inside, and you pray to whomever might be listening that no part of the husky's nor your own body sticks out from your hiding place. The cover of night is your saving grace; without it you might as well have been standing right in front of him. Only when the wolf walks off after his subordinates, cradling his swaying gut in his paws, do you finally release the breath that you had been holding in. Too close."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN12",
+			"Text": [
+				"You need to leave, quickly and quietly. Unfortunately the one other involved in tonight's altercation was caught in the crossfire and is now squirming for dear life underneath the wolf's pelt. To try and make a rescue attempt is tantamount to suicide. There is nothing you can do. At least Iso seems to have gotten away, if Randall's reaction is any indication to go by. So it is that you find yourself separated from her once more. At least you managed to finally reconvene, after all this time, however briefly. More importantly, you know have a meeting point now, and in all likelihood she is already on her way there, hoping you managed to escape as well. Rain splashes on the grimy stones beneath your feet, and as you consider your next move, you find yourself growing slightly envious of the oblivious citizens around you, safely sleeping the night away."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN13A",
+			"Text": [
+				"When you feel you've waited long enough for the Red Maw's vigilance to end, you reveal yourself from your hiding spot, gurgling gut sloshing about noisily. Your passenger has stopped moving for good at this point, the noisy organ surrounding the now-nameless ball of meat gurgling ominously as it gets to work. While moving about with the added weight of an adult sagging down your middle would be quite unwieldy to say the least, it is dark enough outside to move safely. Quietly, though, not so much. It would be best to leave South Finmer until things have cooled down a little - the Red Maw is actively searching for you now."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN13B",
+			"Text": [
+				"When you feel you've waited long enough for the Red Maw's vigilance to end, you reveal yourself from your hiding spot, leaving the cold, unmoving body of a rust-furred husky behind. Even if you wanted to, there is nothing you can do for her - and if you did, she would probably just try to swallow you again. No, this was truly a matter of self-defense. The real matter, now, is to remove yourself from these premises. At least it is dark enough outside to move safely. It would be best to leave South Finmer until things have cooled down a little - the Red Maw is actively searching for you now."
+			]
+		},
+		{
+			"Key": "MQ03_TEMPLE_SHOWDOWN14",
+			"Text": [
+				"You make your way over to the crossroads just outside the port town without further incident. It would be best to not return here until at least a day or so. And, of course, hopefully Iso is on her way to safety as well. Though separated, you know where she is headed; the pantheress had mentioned the old Adept lives somewhere in the woods near North Finmer. The ring will show you the way."
 			]
 		}
 	]

@@ -2,10 +2,6 @@
 	"!Type": "AssetScene",
 	"AssetID": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1",
 	"AssetName": "Scene_PortGate",
-	"ScriptCustom": {
-		"!Type": "ScriptDataExternal",
-		"Name": "Scene_PortGate_Custom"
-	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_PortGate_Enter"
@@ -19,10 +15,84 @@
 				"NodeType": "State",
 				"Key": "Main",
 				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "Log(\"PORT_GATE_ENTER\")\r\nAddLink(ECompass.West, \"Scene_PortCentral\")\r\nAddLink(ECompass.East, GoEast)\r\nAddLink(ECompass.North, GoNorth)"
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "PORT_GATE_ENTER",
+							"IsRaw": false
+						}
+					]
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "West",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "After MQ03, port town is locked for a little bit"
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ03_DONE",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "ConditionVarNumber",
+											"VariableName": "MQ03_PORT_LOCK",
+											"Operator": "Equal",
+											"OperandMode": "Script",
+											"OperandText": "GetTimeHourTotal()"
+										}
+									],
+									"HasElseBranch": true,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ03_PORT_LOCKED",
+											"IsRaw": false
+										}
+									],
+									"ElseSubgroup": [
+										{
+											"!Type": "CommandSetScene",
+											"SceneGuid": "e13adba2-36df-4bb6-bb08-d45eecc27594",
+											"SceneName": "Scene_PortCentral"
+										}
+									]
+								}
+							]
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(\"Scene_Cliffside\")"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "East",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(\"Scene_DalsidaPass\")"
+						}
+					}
+				]
 			}
 		]
 	}

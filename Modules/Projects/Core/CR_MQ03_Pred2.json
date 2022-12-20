@@ -4,12 +4,12 @@
 	"AssetName": "CR_MQ03_Pred2",
 	"ObjectName": "Mia",
 	"ObjectAlias": "the husky",
-	"Strength": 6,
-	"Agility": 3,
+	"Strength": 5,
+	"Agility": 4,
 	"Body": 7,
 	"Wits": 4,
 	"Flags": 0,
-	"Level": 4,
+	"Level": 3,
 	"Size": "Medium",
 	"Gender": "Female",
 	"Equipment1": "00000000-0000-0000-0000-000000000000",
@@ -17,7 +17,7 @@
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"AutoVorePrey": true,
+	"AutoVorePrey": false,
 	"AutoVorePredator": true,
 	"PredatorDigests": true,
 	"PredatorDisposal": true,
@@ -25,12 +25,12 @@
 		{
 			"Key": "KILL_DIGESTED",
 			"Rule": "PlayerToNpc",
-			"NewKey": "MQ03_TAVERN_PRED_KILL_DIGESTED"
+			"NewKey": "MQ03_TEMPLE_PRED_KILL_DIGESTED"
 		},
 		{
 			"Key": "KILL_DIGESTED",
 			"Rule": "NpcToPlayer",
-			"NewKey": "MQ03_TAVERN_PRED_KILL_DIGESTED_POV"
+			"NewKey": "MQ03_TEMPLE_PRED_KILL_DIGESTED_POV"
 		},
 		{
 			"Key": "VORE_DISPOSAL",
@@ -40,12 +40,17 @@
 		{
 			"Key": "VORE_WIN",
 			"Rule": "PlayerToNpc",
-			"NewKey": "MQ03_TAVERN_PRED_VORE_WIN"
+			"NewKey": "MQ03_TEMPLE_PRED_VORE_WIN"
 		},
 		{
 			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
-			"NewKey": "MQ03_TAVERN_PRED_VORE_WIN_POV"
+			"NewKey": "MQ03_TEMPLE_PRED_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ03_TEMPLE_PRED_KILL_GENERIC"
 		}
 	]
 }

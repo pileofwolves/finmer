@@ -1227,7 +1227,7 @@
 						},
 						{
 							"!Type": "CommandLog",
-							"Text": "MQ03_TEMPLE_SHOWDOWN1",
+							"Text": "MQ03_TEMPLE_SHOWDOWN01",
 							"IsRaw": false
 						}
 					]
@@ -1242,13 +1242,13 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "MQ03_R_Showdown2",
+								"Key": "MQ03_R_Showdown02",
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
 										{
 											"!Type": "CommandLog",
-											"Text": "MQ03_TEMPLE_SHOWDOWN2",
+											"Text": "MQ03_TEMPLE_SHOWDOWN02",
 											"IsRaw": false
 										}
 									]
@@ -1256,20 +1256,20 @@
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "MQ03_C_Showdown3",
+										"Key": "MQ03_C_Showdown03",
 										"Title": "Continue",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "MQ03_R_Showdown3",
+												"Key": "MQ03_R_Showdown03",
 												"ScriptAction": {
 													"!Type": "ScriptDataVisualAction",
 													"Nodes": [
 														{
 															"!Type": "CommandLog",
-															"Text": "MQ03_TEMPLE_SHOWDOWN3",
+															"Text": "MQ03_TEMPLE_SHOWDOWN03",
 															"IsRaw": false
 														}
 													]
@@ -1277,61 +1277,20 @@
 												"Children": [
 													{
 														"NodeType": "Choice",
-														"Key": "MQ03_C_Showdown4B",
-														"Title": "Punch",
-														"Tooltip": "[Strength & Agility] Give Randall a good whack while he's staggered.",
+														"Key": "MQ03_C_Showdown04",
+														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
 																"NodeType": "State",
-																"Key": "MQ03_R_Showdown4B",
+																"Key": "MQ03_R_Showdown04",
 																"ScriptAction": {
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
 																		{
 																			"!Type": "CommandLog",
-																			"Text": "MQ03_TEMPLE_SHOWDOWN4B",
-																			"IsRaw": false
-																		},
-																		{
-																			"!Type": "CommandLog",
-																			"Text": "MQ03_TEMPLE_SHOWDOWN4C",
-																			"IsRaw": false
-																		}
-																	]
-																},
-																"Children": [
-																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "MQ03_C_Showdown5"
-																	}
-																]
-															}
-														]
-													},
-													{
-														"NodeType": "Choice",
-														"Key": "MQ03_C_Showdown4A",
-														"Title": "Grapple",
-														"Tooltip": "[Body & Wits] Try to restrain Randall to buy Iso some time.",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"Children": [
-															{
-																"NodeType": "State",
-																"Key": "MQ03_R_Showdown4A",
-																"ScriptAction": {
-																	"!Type": "ScriptDataVisualAction",
-																	"Nodes": [
-																		{
-																			"!Type": "CommandLog",
-																			"Text": "MQ03_TEMPLE_SHOWDOWN4A",
-																			"IsRaw": false
-																		},
-																		{
-																			"!Type": "CommandLog",
-																			"Text": "MQ03_TEMPLE_SHOWDOWN4C",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN04",
 																			"IsRaw": false
 																		}
 																	]
@@ -1339,20 +1298,26 @@
 																"Children": [
 																	{
 																		"NodeType": "Choice",
-																		"Key": "MQ03_C_Showdown5",
-																		"Title": "Continue",
+																		"Key": "MQ03_C_Showdown05B",
+																		"Title": "Punch",
+																		"Tooltip": "[Strength & Agility] Give Randall a good whack while he's staggered.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
 																				"NodeType": "State",
-																				"Key": "MQ03_R_Showdown5",
+																				"Key": "MQ03_R_Showdown05B",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
 																						{
 																							"!Type": "CommandLog",
-																							"Text": "MQ03_TEMPLE_SHOWDOWN5",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN05B",
+																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN05Z",
 																							"IsRaw": false
 																						}
 																					]
@@ -1360,20 +1325,20 @@
 																				"Children": [
 																					{
 																						"NodeType": "Choice",
-																						"Key": "MQ03_C_Showdown6",
+																						"Key": "MQ03_C_Showdown06",
 																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
 																								"NodeType": "State",
-																								"Key": "MQ03_R_Showdown6",
+																								"Key": "MQ03_R_Showdown06",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataVisualAction",
 																									"Nodes": [
 																										{
 																											"!Type": "CommandLog",
-																											"Text": "MQ03_TEMPLE_SHOWDOWN6",
+																											"Text": "MQ03_TEMPLE_SHOWDOWN06",
 																											"IsRaw": false
 																										}
 																									]
@@ -1381,44 +1346,66 @@
 																								"Children": [
 																									{
 																										"NodeType": "Choice",
-																										"Key": "MQ03_C_Finish",
+																										"Key": "MQ03_C_Showdown07",
 																										"Title": "Continue",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
-																										"ScriptAction": {
-																											"!Type": "ScriptDataVisualAction",
-																											"Nodes": [
-																												{
-																													"!Type": "CommandComment",
-																													"Comment": "Complete MQ03"
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ03_R_Showdown07",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ03_TEMPLE_SHOWDOWN07",
+																															"IsRaw": false
+																														}
+																													]
 																												},
-																												{
-																													"!Type": "CommandVarSetFlag",
-																													"VariableName": "MQ03_DONE",
-																													"OperandMode": "Literal",
-																													"OperandLiteral": true
-																												},
-																												{
-																													"!Type": "CommandJournalClose",
-																													"JournalGuid": "fb14b2b1-f0cf-474d-a311-720266f557d3"
-																												},
-																												{
-																													"!Type": "CommandJournalUpdate",
-																													"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
-																													"Stage": 10
-																												},
-																												{
-																													"!Type": "CommandComment",
-																													"Comment": "Return player to town"
-																												},
-																												{
-																													"!Type": "CommandSetScene",
-																													"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
-																													"SceneName": "Scene_PortDocks"
-																												}
-																											]
-																										},
-																										"Children": []
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ03_C_Showdown08",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ03_R_Showdown08",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ03_TEMPLE_SHOWDOWN08",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "MQ03_C_Showdown09",
+																																		"Title": "Continue",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "MQ03_R_Showdown09"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
 																									}
 																								]
 																							}
@@ -1427,6 +1414,359 @@
 																				]
 																			}
 																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ03_C_Showdown05A",
+																		"Title": "Grapple",
+																		"Tooltip": "[Body & Wits] Try to restrain Randall to buy Iso some time.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ03_R_Showdown05A",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN05A",
+																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN05Z",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ03_C_Showdown06"
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "MQ03_R_Showdown09",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSetLocation",
+											"OperandMode": "Literal",
+											"OperandText": "South Finmer, Docks"
+										},
+										{
+											"!Type": "CommandLogSplit"
+										},
+										{
+											"!Type": "CommandSaveCheckpoint"
+										},
+										{
+											"!Type": "CommandInlineSnippet",
+											"Snippet": "AdvanceTime(1)"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ03_TEMPLE_SHOWDOWN09",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ03_C_Showdown10",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ03_R_Showdown10",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandGrammarSetContext",
+															"VariableName": "assailant",
+															"CreatureGuid": "faeb4850-2ec9-483f-acc7-67ce5398d812"
+														},
+														{
+															"!Type": "CommandCombatBegin",
+															"IncludePlayer": true,
+															"IncludeAllies": true,
+															"Participants": [
+																{
+																	"Variable": "goon",
+																	"Creature": "faeb4850-2ec9-483f-acc7-67ce5398d812"
+																}
+															],
+															"HasCallbackCombatStart": false,
+															"HasCallbackRoundEnd": false,
+															"HasCallbackPlayerKilled": false,
+															"HasCallbackCreatureKilled": false,
+															"HasCallbackCreatureVored": true,
+															"CallbackCreatureVored": [
+																{
+																	"!Type": "CommandIf",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionCombatParSwallowed",
+																			"ParticipantName": "goon"
+																		}
+																	],
+																	"HasElseBranch": false,
+																	"MainSubgroup": [
+																		{
+																			"!Type": "CommandVarSetFlag",
+																			"VariableName": "MQ03_TEMPLE_PRED_EATEN",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																}
+															],
+															"HasCallbackCreatureReleased": false
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ03_TEMPLE_SHOWDOWN10",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ03_C_Showdown11",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ03_R_Showdown11A",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN11A",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataVisualCondition",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarFlag",
+																			"VariableName": "MQ03_TEMPLE_PRED_EATEN",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ03_C_Showdown12",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ03_R_Showdown12",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ03_TEMPLE_SHOWDOWN12",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ03_C_Showdown13",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "AdvanceTime(1)"
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ03_R_Showdown13A",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ03_TEMPLE_SHOWDOWN13A",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataVisualCondition",
+																									"Mode": "All",
+																									"Operand": true,
+																									"Tests": [
+																										{
+																											"!Type": "ConditionVarFlag",
+																											"VariableName": "MQ03_TEMPLE_PRED_EATEN",
+																											"OperandMode": "Literal",
+																											"OperandLiteral": true
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ03_C_Showdown14",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ03_R_Showdown14",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ03_TEMPLE_SHOWDOWN14",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ03_C_Finish",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandComment",
+																																	"Comment": "Complete MQ03"
+																																},
+																																{
+																																	"!Type": "CommandVarSetFlag",
+																																	"VariableName": "MQ03_DONE",
+																																	"OperandMode": "Literal",
+																																	"OperandLiteral": true
+																																},
+																																{
+																																	"!Type": "CommandVarSetNumber",
+																																	"VariableName": "MQ03_PORT_LOCK",
+																																	"ValueOperation": "Set",
+																																	"OperandMode": "Script",
+																																	"OperandText": "GetTimeHourTotal()"
+																																},
+																																{
+																																	"!Type": "CommandJournalClose",
+																																	"JournalGuid": "fb14b2b1-f0cf-474d-a311-720266f557d3"
+																																},
+																																{
+																																	"!Type": "CommandJournalUpdate",
+																																	"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+																																	"Stage": 10
+																																},
+																																{
+																																	"!Type": "CommandComment",
+																																	"Comment": "Return player to town"
+																																},
+																																{
+																																	"!Type": "CommandSetScene",
+																																	"SceneGuid": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1",
+																																	"SceneName": "Scene_PortGate"
+																																}
+																															]
+																														},
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ03_R_Showdown13B",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ03_TEMPLE_SHOWDOWN13B",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Link",
+																										"LinkTarget": "MQ03_C_Showdown14"
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"NodeType": "State",
+																"Key": "MQ03_R_Showdown11B",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ03_TEMPLE_SHOWDOWN11B",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ03_C_Showdown12"
 																	}
 																]
 															}

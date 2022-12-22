@@ -423,6 +423,10 @@
 													{
 														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Book"
 													}
 												]
 											}
@@ -488,6 +492,10 @@
 													{
 														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Book"
 													}
 												]
 											}
@@ -565,6 +573,10 @@
 													{
 														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Adept"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Book"
 													}
 												]
 											}
@@ -669,6 +681,10 @@
 																	{
 																		"NodeType": "Link",
 																		"LinkTarget": "Talk_C_Adept"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Talk_C_Book"
 																	}
 																]
 															}
@@ -770,6 +786,83 @@
 													{
 														"NodeType": "Link",
 														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Book"
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Book",
+										"Title": "Old Book",
+										"Tooltip": "Show the old tome you found in Dalsida Abbey.",
+										"Highlight": true,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionPlayerHasItem",
+													"ItemGuid": "b5225d74-e3fb-4561-bc60-d80be316335f"
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TEMPLE_TALK_BOOK",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Book",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TEMPLE_TALK_BOOK",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TEMPLE_TALK_BOOK",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Back"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Iso"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Spirits"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Shore"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Amber"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Talk_C_Adept"
 													}
 												]
 											}

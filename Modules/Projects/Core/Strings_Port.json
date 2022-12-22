@@ -127,6 +127,12 @@
 			]
 		},
 		{
+			"Key": "PORT_TEMPLE_TALK_BOOK",
+			"Text": [
+				"She clasps the book, quietly studying its cover, before flipping through the pages with something vaguely resembling a scowl on her face. \"Fascinating,\" she adds simply. Willow's gaze returns to you as she snaps the book shut, gently returning it to your care. \"This is indeed a study on the Shore; I recognize some of the iconography. It is very, very old; I'm surprised it survived this long. But unfortunately, I do not speak its tongue.\" Briefly, she turns to the altar at the back wall, lost in thought. \"Perhaps I can still be of use to you. An old friend of mine may know the right person for this, if he doesn't simply know the glyphs himself. Let me see what I can do; I'll get in touch with you when I learn more.\""
+			]
+		},
+		{
 			"Key": "PORT_TEMPLE_TALK_ISO",
 			"Text": [
 				"Willow considers your question for a moment, before gently shaking her head. \"The mayor? No, I haven't seen her,\" she reports, offering you a sad smile. \"I've heard our northern friends are having rough tidings indeed. Spirits be with them.\" A silence falls between you for a moment, until the priestess adds a suggestion: \"Consider visiting the tavern down the street. The establishment has quite a lot of through-traffic, so perhaps you might find her, or someone who has seen her, there.\""

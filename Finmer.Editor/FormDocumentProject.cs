@@ -105,8 +105,8 @@ namespace Finmer.Editor
             // Find text in items
             foreach (AssetItem item in m_Furball.Assets.OfType<AssetItem>())
             {
-                total += CountWords(item.FlavorText);
-                total += CountWords(item.UseDescription);
+                total += item.FlavorText.CountWords();
+                total += item.UseDescription.CountWords();
             }
 
             // Find text in journals
@@ -119,14 +119,9 @@ namespace Finmer.Editor
             return total;
         }
 
-        private static int CountWords(string phrase)
-        {
-            return phrase.Count(x => x == ' ') + 1;
-        }
-
         private static int CountWords(IEnumerable<string> group)
         {
-            return group.Sum(CountWords);
+            return group.Sum(phrase => phrase.CountWords());
         }
 
         private void cmdRandomGuid_Click(object sender, EventArgs e)

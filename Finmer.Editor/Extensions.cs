@@ -48,6 +48,28 @@ namespace Finmer.Editor
             }
         }
 
+        /// <summary>
+        /// Count the number of words in the specified string.
+        /// </summary>
+        public static int CountWords(this string str)
+        {
+            // If there is no meaningful text in this string, it contains no words either
+            if (String.IsNullOrWhiteSpace(str))
+                return 0;
+
+            // We just use the number of spaces and escaped newlines
+            int spaces = str.Count(ch => ch == ' ');
+            int newlines = 0, index = str.IndexOf("\\n", StringComparison.InvariantCultureIgnoreCase);
+            while (index != -1)
+            {
+                newlines++;
+                index = str.IndexOf("\\n", index + 2, StringComparison.InvariantCultureIgnoreCase);
+            }
+
+            // Add one for the first word (i.e. one space separates two words)
+            return spaces + newlines + 1;
+        }
+
     }
 
 }

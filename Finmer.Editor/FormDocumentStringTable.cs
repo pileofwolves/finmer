@@ -86,7 +86,7 @@ namespace Finmer.Editor
             }
 
             // Compute the total word count in all string sets, and divide by the set entry count (not set count) to get average
-            int total_words = m_RawDictionary.SelectMany(pair => pair.Value).Sum(phrase => phrase.Count(ch => ch == ' ') + 1);
+            int total_words = m_RawDictionary.SelectMany(pair => pair.Value).Sum(phrase => phrase.CountWords());
             int avg_words = total_words / num_entries;
 
             // Show stats on-screen

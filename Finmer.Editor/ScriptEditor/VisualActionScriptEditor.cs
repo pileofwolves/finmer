@@ -281,7 +281,7 @@ namespace Finmer.Editor
         /// <summary>
         /// Tree item tag that contains metadata for the visual editor UI.
         /// </summary>
-        private class TreeItemTag
+        private sealed class TreeItemTag
         {
             public ScriptNode m_Node;
             public List<ScriptNode> m_Parent;

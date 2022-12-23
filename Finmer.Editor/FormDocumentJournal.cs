@@ -36,9 +36,11 @@ namespace Finmer.Editor
 
             foreach (var stage in m_Journal.Stages)
             {
-                var lsi = new ListViewItem();
-                lsi.Text = $"{stage.Key}: {stage.Text}";
-                lsi.Tag = stage;
+                var lsi = new ListViewItem
+                {
+                    Text = $"{stage.Key}: {stage.Text}",
+                    Tag = stage
+                };
                 lstEntries.Items.Add(lsi);
             }
 

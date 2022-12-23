@@ -6,15 +6,13 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Windows.Controls;
-
 namespace Finmer.Views
 {
 
     /// <summary>
     /// Interaction logic for TitleLogoView.xaml
     /// </summary>
-    public partial class TitleLogoView : UserControl
+    public partial class TitleLogoView
     {
 
         public TitleLogoView()

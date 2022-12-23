@@ -72,7 +72,7 @@ namespace Finmer.Core.VisualScripting
                 case EOperator.LesserOrEqual:           output.Append(" <= ");      break;
                 case EOperator.Greater:                 output.Append(" > ");       break;
                 case EOperator.GreaterOrEqual:          output.Append(" >= ");      break;
-                default:                                throw new ArgumentOutOfRangeException();
+                default:                                throw new InvalidScriptNodeException("Invalid operator mode");
             }
 
             // Emit right-hand operand

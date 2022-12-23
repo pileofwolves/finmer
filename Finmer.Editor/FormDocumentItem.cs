@@ -119,16 +119,14 @@ namespace Finmer.Editor
             fraEquipment.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Equipable;
             fraUsable.Visible = cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable;
 
-            // Configure Usable items
-            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable)
+            // If there is no UseScript instance on a Usable item, create one now
+            if (cmbType.SelectedIndex == (int)AssetItem.EItemType.Usable && item.UseScript == null)
             {
-                // If there is no UseScript object, instantiate one now
-                if (item.UseScript == null)
-                    item.UseScript = new AssetScript
-                    {
-                        ID = Guid.NewGuid(),
-                        Name = item.GetUseScriptName()
-                    };
+                item.UseScript = new AssetScript
+                {
+                    ID = Guid.NewGuid(),
+                    Name = item.GetUseScriptName()
+                };
             }
         }
 

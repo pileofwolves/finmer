@@ -219,7 +219,7 @@ namespace Finmer.Editor
                     break;
 
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new InvalidOperationException();
             }
 
             // Set up the script editor tabs
@@ -257,7 +257,6 @@ namespace Finmer.Editor
                     treeNode.ImageKey = "node_state";
                     break;
                 case AssetScene.ENodeType.Choice:
-                default:
                     treeNode.ImageKey = "node_choice";
                     break;
             }

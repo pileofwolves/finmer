@@ -358,7 +358,7 @@ end"
         /// <summary>
         /// Contains state and partial progress for the code generation process.
         /// </summary>
-        private class CompilerState
+        private sealed class CompilerState
         {
 
             public AssetScene Scene { get; set; }

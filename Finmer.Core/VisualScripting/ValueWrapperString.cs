@@ -70,7 +70,7 @@ namespace Finmer.Core.VisualScripting
                     return OperandText;
 
                 default:
-                    throw new ArgumentOutOfRangeException(nameof(OperandMode));
+                    throw new InvalidScriptNodeException("Invalid operand mode");
             }
         }
 

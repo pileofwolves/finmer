@@ -59,7 +59,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 case EOperation.Set:
                     return String.Format(CultureInfo.InvariantCulture, "Set Variable {0} to {1}", VariableName, Value.GetOperandDescription());
                 default:
-                    throw new ArgumentOutOfRangeException();
+                    throw new InvalidScriptNodeException("Invalid operation mode");
             }
         }
 

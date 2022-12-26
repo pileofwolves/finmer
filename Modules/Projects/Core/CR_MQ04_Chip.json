@@ -1,0 +1,36 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "cfb153b7-68b0-4181-b39e-4d7c6b39406c",
+	"AssetName": "CR_MQ04_Chip",
+	"ObjectName": "Chip",
+	"ObjectAlias": "the wolf",
+	"Strength": 10,
+	"Agility": 5,
+	"Body": 10,
+	"Wits": 2,
+	"Flags": 0,
+	"Level": 3,
+	"Size": "Huge",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ04_CHIP_KILL_DIGESTED_POV"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "NpcToPlayer",
+			"NewKey": "SQ02_WOLF_VORE_DISPOSAL"
+		}
+	]
+}

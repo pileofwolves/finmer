@@ -22,7 +22,42 @@
 					"!Type": "ScriptDataInline",
 					"Script": "AddLink(ECompass.North, Wander)\r\nAddLink(ECompass.East, Wander)\r\nAddLink(ECompass.South, Wander)\r\nAddLink(ECompass.West, ExitForest)"
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Use Ring",
+						"Tooltip": "Activate Rux's Navigator to show the path.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionPlayerEquipment",
+									"ItemGuid": "c2238bbd-9af9-4167-9024-2e631fec5f83"
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSetScene",
+											"SceneGuid": "12bf6348-0e15-43a4-88af-4eb8f435cb69",
+											"SceneName": "Scene_ForestAdept"
+										}
+									]
+								},
+								"Children": []
+							}
+						]
+					}
+				]
 			}
 		]
 	}

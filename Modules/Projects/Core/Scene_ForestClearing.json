@@ -38,7 +38,7 @@
 				"Key": "SQ02_Start",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EPreySenseType.OralVore, EPreySenseType.EndoOrFatal)"
+					"Script": "Storage.SetFlag(\"FOREST_DIREWOLF_MET\", true)\r\nSaveData.TakeCheckpoint()\r\n\r\nText.SetVariable(\"sun\", GetIsNight() and \"moon\" or \"sun\")\r\nLog(\"SQ02_OPENING\")\r\n\r\nPreySense(Creature(\"CR_SQ02_Wolf_OV\"), EPreySenseType.OralVore, EPreySenseType.EndoOrFatal)"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
@@ -167,7 +167,7 @@
 																				"Key": "SQ02_R_EatPlayerSafe",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Storage.SetFlag(\"forest_direwolf_friendly\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")"
+																					"Script": "Storage.SetFlag(\"FOREST_DIREWOLF_FRIENDLY\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")"
 																				},
 																				"Children": []
 																			}
@@ -340,7 +340,7 @@
 												"Key": "SQ02_R_Slay",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"SQ02_SNEAK_SLAY_OK\")\r\n\r\n-- Progress the quest\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend"
+													"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"SQ02_SNEAK_SLAY_OK\")\r\n\r\n-- Progress the quest\r\nStorage.SetFlag(\"FOREST_DIREWOLF_DEAD\", true)\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend"
 												},
 												"Children": [
 													{

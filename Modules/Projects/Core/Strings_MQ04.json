@@ -1,0 +1,259 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "7f9a8c62-671e-439a-b145-2376f1b59af2",
+	"AssetName": "Strings_MQ04",
+	"Entries": [
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_END_CHIP",
+			"Text": [
+				"The wizened hermit raises his eyebrows. \"Oh, before I forget, I promised Chip a snack, did I not?\" Without waiting for an answer from you, the robed figure disappears into another side room, presumably some manner of kitchen, before reemerging, carrying a dish of kibble. Interestingly, the container itself is made of stiff leather, instead of something more traditional, and some of the juices stain the material. He passes the thing to you wholesale without any further explanation. \"Could you please give this to Chip on your way out? Thanks.\" And with that, he disappears into the kitchen again."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_END01",
+			"Text": [
+				"Rux sighs again, turning to you, before gesturing at the door. \"Let's leave her to rest.\" At his recommendation, the two of you step back into the living and dining room, warm and cozy by the fire. The panda closes the door behind you, permitting the feline beyond to rest in solitude, before hovering somewhere near the bookshelves. \"I know you have a lot of questions, {player.name}. But so do I. And right now, we have more pressing matters. There is something I need of you.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_END02",
+			"Text": [
+				"The Adept places a paw on a particularly vibrantly-hued book, pulling it from the shelf. Without facing you, he continues to speak, flicking through the pages to find some manner of bookmark. \"She will heal on her own, eventually. But while I have no formal training in the healing arts, it is plain to see she is stretching herself to the breaking point.\" Finally, Rux turns to you, book still held, a gloomy frown on his face. \"And I suspect that the two of you are in a hurry. Thus, to speed her recovery, and strengthen both you and her for the work to come, I require some herbs that I do not presently possess. Would you be so kind as to travel to Jar'la's shop in North Finmer, and obtain from him 'the usual', and a handful of silverbrush?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_END03",
+			"Text": [
+				"He then extends the book bound in emerald green he was holding to you. \"He'll take this as payment. As professionals in somewhat similar fields of study, we have some 'equivalent exchanges' set up, you see,\" the old panda explains. \"When you return, hopefully she will be more-or-less awake, and I can answer your questions as you will answer mine. I trust you will be careful, of course? The way I hear it, the two of you have made some enemies out there. I look forward to hearing the finer details.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_END04",
+			"Text": [
+				"\"Don't worry about the mayor,\" Rux states as you express your concern, the faintest hint of a smile crossing his otherwise cold expression. \"I'll be here to take care of her if she needs anything, but above all she requires rest, and she will be safe here. It's not easy to approach this house without my approval.\" He casually gestures to the amber ring you're wearing - it had served its purpose exactly as advertised - before he clasps his hands together and flicks his ringed tail. \"That was Iso's, originally. If she trusted you enough to give it you, my door shall be open to you. Now then.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_INJURIES",
+			"Text": [
+				"The panda shakes his head, staring impassively at Iso's sleeping form. A robed paw moves up to his chin to stroke it gently. \"She's fine,\" he declares. \"I am not a healer, I should add, but I could not find any injuries, nor signs of poisoning. She is merely exhausted, and some rest will do her good. Best not to wake her up right now.\" A brief pause follows, his words taking on a somewhat accusatory edge. \"It is not entirely clear to me, however, what exactly she was running from.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BEDSIDE_RANDALL",
+			"Text": [
+				"Your question is answered with a simple headshake. \"Not that I noticed. I suppose she could have been followed; if the tail was close behind, they could bypass my tricks.\" A sly smirk crosses his muzzle, then. \"Even so, while I may look past my prime, I assure you I am not defenseless.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_ENTER01",
+			"Text": [
+				"Pushing shrubbery and dense foliage aside, you come upon a small clearing. Light filters down through a gap in the canopy, illuminating a small, cozy-looking log cabin. Light flickers through a small window set in the side; a dark gray stone chimney atop the building is puffing a thin smoke plume. Of course, you know now that the house's exterior belies its actual size."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO_EXIT1",
+			"Text": [
+				"You leave the cabin, stepping back into the cold outside world. Answers would come very soon - you just had one more task to take care of before then. Then, it will be a matter of putting together a plan of counterattack. This insane wolf's tyranny must end."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO_EXIT2",
+			"Text": [
+				"With all that out of the way, you rub your paws and arms together for a bit in an attempt to trap heat, the cold autumn chill making for quite the stark difference with the gentle glowing warmth of Rux's fireplace. As you step away from the cabin, trying to think of where to go from here, you find yourself almost longing for a warm beverage and a cozy blanket. The way back to the beaten path is to the south from here - it should not be too long a trek, at least."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO01",
+			"Text": [
+				"Memory is a fascinating thing, you muse as you clench your fist. Stirred to life by Iso's words, you remember activating this strange relic once before, and you know how to do it again - it is so blatantly obvious in hindsight. Answering an unspoken call, the brass ring on your paw glows, the amber glyphs shimmering as if reflecting a distant fire. The trinket draws your attention entirely for a brief moment, as you realize it is attempting to intertwine itself with your thoughts in a way you cannot quite describe. A moment later, your gaze wanders to the underbrush beside you. Nothing about it has truly changed at all in that short moment you looked away, and yet, now you can clearly tell that these are the exact same bushes and trees you've been wandering past in circles for a solid hour, as if they have been marked with an invisible paint. The ring reveals a path through the trickery of the woods merely by beckoning you in the right direction - and you dutifully follow it."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO02",
+			"Text": [
+				"Pushing shrubbery and dense foliage aside, you come upon a small clearing. Light filters down through a gap in the canopy, illuminating a small, cozy-looking cabin. It is not at all unlike the cottage near the forest's edge, but where Oliver's residence combines masonry with wood architecture, this one is composed entirely of thick, polished oak logs. A little window is set into the side; from this angle you cannot see inside. A dark gray stone chimney atop the building is puffing a thin smoke plume; someone is inside. The cabin is relatively small - enough to comfortably house one person, maybe two in a pinch - but from what you've heard about the Adept, that might be quite enough."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO03_CHIP01A",
+			"Text": [
+				"Perhaps more demanding of your attention is the absolutely massive wolf stepping into the clearing, opposite of yourself. You immediately recognize it as the very same dire wolf you have already met in these woods - off-gray, perhaps silvery fur, a little missing chip in his left ear, and a body so formidably large he could probably jump on the single-story cabin's roof if he wanted to. The predator, luckily, recognizes you too - you hope he remembers more than just your taste, at least. His hackles lower right away, and those bared teeth make room for a floppy tongue and a lazy wag of his bushy tail. Gently, he bounds over to you, which by your standards of movement speed more or less boils down to a sprint. That massive, slimy tongue rolls out from between those black lips like a royal carpet, and before you can so much as voice a protest, it slams into your chest and face, dragging up and leaving a trail of drool and its tail breaks into a full dog-like wag. The slick muscle curls around your head and shoulders as the beast's jaws part wide, as if to guide you into the soft, slimy warmth that slowly descends on you."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO03_CHIP01B",
+			"Text": [
+				"Perhaps more demanding of your attention is the absolutely massive wolf stepping into the clearing, opposite of yourself. The giant predator has a head at least as big as you are, its coat thick, off-gray and perhaps featuring a silvery shine under the right light. The left ear has a little notch in it, as if he had been in a fight some time ago, though with a body so formidably large - he could probably jump on the single-story cabin's roof if he wanted to - you wonder who would actually challenge such a beast. Alarmingly, however, those black lips deform into a snarl, and with raised hackles, the monster bounds over to you and slams a paw into your chest, forcing you down into the ground. Its jaws part, revealing a pink, throbbing cavern lined with sharp fangs, globs of drool dripping down and soaking into your {player.fur}. The slick tongue curls around your head and shoulders as if to guide you into the soft, slimy warmth that slowly descends on you."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO03_CHIP02",
+			"Text": [
+				"You fear the oversized guard dog might actually swallow you whole, before the cabin's front door swings wide open, bringing with it a taste of cozy warmth and a fragrance of spice. The wolf freezes - whether at the sound or the smell, you know not - and someone sighs loudly. With your vision partially obstructed by drooling jaws, you cannot tell exactly who it is, but a masculine voice tells you enough. \"Chip, that's enough. Spit {player.object3p} out.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO03_CHIP03",
+			"Text": [
+				"A loud whine rumbles around you, but the oversized puppy obliges. The tongue releases your head and the jaws move away, but not before a sneaky little lick refreshes the drool coating on your head. Nonplussed, you wipe some saliva from your eyes, before taking in the sight of the red panda standing impassively between you and the guard wolf, who had taken a step back by now. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe. Without a word, a black-furred paw offers you a towel, and you gratefully take it, cleaning up the worst of your little slobbery adventure."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO03_NOCHIP",
+			"Text": [
+				"You are just about to go knock on the door, to get the attention of whomever is inside, before it swings open right in front of you, your paw already held up mid-knock. A gust of warm air brings with it the fragrant scent of spice, and a red panda stands impassively in the doorway. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe. He crosses his arms, his expression completely unreadable."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO04A",
+			"Text": [
+				"\"You must be {player.name}. Good of you to finally show up,\" the old man remarks dryly. \"I thought I heard someone coming.\" His rust-orange eyes fall on your paw - on the ring you are wearing, specifically. The glyphs on the device have gone inert now, you note - it seems that with you standing here, its purpose is complete. The panda flicks his paw absent-mindedly. \"You look like you've been on the road for some time. Come on in.\" Without waiting for an answer, the robed figure turns and marches back into his humble abode, leaving the door open."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO04B",
+			"Text": [
+				"\"You must be {player.name}. Good of you to finally show up,\" the old man remarks dryly. \"I thought I heard someone coming.\" His rust-orange eyes fall on your paw - on the ring you are wearing, specifically. The glyphs on the device have gone inert now, you note - it seems that with you standing here, its purpose is complete. \"Don't mind him; he can just get a little carried away when meeting people.\" Turning to the huge canine, who seems content to sit on his haunches and watch, the panda flicks his paw absent-mindedly. \"I'll get you something else to munch on, Chip. You too, actually, friend. Come on in.\" Without waiting for an answer, the robed figure turns and marches back into his humble abode, leaving you with an open door and a wolf trying not to make too much noise while licking his lips."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO05",
+			"Text": [
+				"Needing no further invitation, you step inside. The room inside is expansive - a lit fireplace brightens and warms the space considerably, flickering light playing with the dining table and couch set up in the room. Shelves littered with assorted treasures and trifles line the walls. The back wall, on either side of the fireplace, is filled entirely with colorfully stuffed bookshelves. You are just about to wonder where the red panda sleeps or prepares food, before you notice the handful of doors in the log wall opposite the window leading to rooms that most certainly do not fit into the cabin's exterior shape, and it begins to dawn on you that this house may quite literally be bigger on the inside."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_INTRO06",
+			"Text": [
+				"\"I assume you're looking for the mayor. She's just over here,\" the mysterious hermit sighs. By now you've deduced that this must be Rux, the one last person the beleaguered pantheress could confide in. He shows you into a room off of the main living space, bushy ringed tail maneuvering expertly so as to not knock anything over. In a small, sparsely decorated bedroom lies Iso, sleeping quietly. It appears she made it here in one piece, at least. She lies on top of clean linen sheets, fully clothed, chest rising and falling slowly. You feel a little weird staring at a sleeping person - perhaps sensing your unvoiced questions, Rux elaborates briefly. \"She appeared just an hour or so ago. Collapsed right on my doorstep. Must've been exhausted.\""
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV01",
+			"Text": [
+				"You are quite content to stay on this side of the oversized guard dog, right within an arm's length of the creature's densely furred back. Chip raises his head to give you an odd stare, as if assessing you for threats, before he snorts in a decidedly canine-like fashion and resumes his nap. When you place your paws just above the base of his tail, however, the feral shifts in surprise, and you fear for a moment that he might roll over and crush you. No such thing actually happens, luckily, and as you press your paws into the wolf's lower back, he uncurls slightly to arch his back entirely on instinct. That bushy tail moves out of the way as well, dragging across the forest floor, revealing a salmon-hued hole just above his proud sheath and balls. The ring muscle flexes once or twice, as if winking at you, radiating warmth and unfiltered musk, and you find yourself staring at it perhaps slightly longer than you had intended."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV02",
+			"Text": [
+				"Knowing full well the nature of sensitive spots on one's body, you tenderly place a paw on the wolf's anus. An area loaded with nerve endings and muscles, it is a prime location for stimulation of the kind you suspect the feral has never quite experienced before. Accordingly, Chip all but yelps in surprise in response to your unexpected assault - though he does nothing to stop you, perhaps interested at this strange feeling on the rear end that he normally only uses to rid himself of past prey. The dire wolf's tailhole is huge, easily large enough for you to push both arms in, though perhaps it could widen even further for particularly stubborn dumps. You press your paw forward, making extensive use of the thin layer of slime coating the muscle just beyond the immediate perimeter. The heat radiating off of the canine's nethers is intense, as intoxicating as the musk that comes with it. Of course, there is also the matter of the unwashed anus you are forcing your way inside in."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV02_CLEAN",
+			"Text": [
+				"Knowing full well the nature of sensitive spots on one's body, you tenderly place a paw on the wolf's anus. An area loaded with nerve endings and muscles, it is a prime location for stimulation of the kind you suspect the feral has never quite experienced before. Accordingly, Chip all but yelps in surprise in response to your unexpected assault - though he does nothing to stop you, perhaps interested at this strange feeling on the rear end, unaccustomed to something forcing itself inside. The dire wolf's tailhole is huge, easily large enough for you to push both arms in. You press your paw forward, making extensive use of the thin layer of slime coating the muscle just beyond the immediate perimeter. The heat radiating off of the canine's nethers is intense, as intoxicating as the musk that comes with it."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV03",
+			"Text": [
+				"With your wrist disappearing into warm flesh, you bask in the sensation of the space just beyond. Velvety soft walls caress your paw, as if welcoming it inside. Just beyond, the massive wolf grunts and shifts, seemingly trying to change position without interrupting you, the movements causing his anus and bowel walls to squeeze tightly inwards. By way of an experiment, you flex your paw, rubbing against the warm, throbbing walls surrounding it. In doing so, you feel thin slime running through your fingers, along with flecks of what presumably must once have been food. Luckily for you, however, the feral's colon is mostly empty, so while you are free to explore the hot recesses of a predator's digestive tract, it shouldn't be that hard to clean up after. Hopefully."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV03_CLEAN",
+			"Text": [
+				"With your wrist disappearing into warm flesh, you bask in the sensation of the space just beyond. Velvety soft walls caress your paw, as if welcoming it inside. Just beyond, the massive wolf grunts and shifts, seemingly trying to change position without interrupting you, the movements causing his anus and bowel walls to squeeze tightly inwards. By way of an experiment, you flex your paw, rubbing against the warm, throbbing walls surrounding it. In doing so, you feel thin slime running through your fingers, a natural lubricant. In a way you are lucky, perhaps, to be free to explore the hot recesses of a predator's digestive tract. It shouldn't be that hard to clean up after. Hopefully."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV04",
+			"Text": [
+				"Chip, meanwhile, is very much nonplussed by the intrusion into his sensitive depths. With a surprised yelp, the wolf backs away slightly, right into you, knocking you off your feet. That warm, plush tailhole squishes right into your face, and you brace your free paw against that furry rump in response. It slips on the well-lubricated hole, and with a squelch, your arm slides inside. At the same time, Chip's poorly-considered movement leads to him losing his balance, and he recovers by sitting on his rump - right on top of you. The puckered ring parts wide for you, and with a wet shllrrrk, your entire upper body slides right through into the wolf's colon. With your head and shoulders well on their way into the slimy, pulsating depths, you are exposed to the full brunt of the atmosphere inside the feral's lower digestive tract. The heat is sweltering, the texture is unpleasantly slimy and grainy - probably remains of digested food, best not to consider for too long - but the scent, above all, is overpowering. Scat, of course, pungent, raw and unfiltered - the very core of a feral wolf's ass could not have smelled of anything different. Anything that the massive creature would have swallowed and digested throughout its many years of life will have collected in, and passed through, this vile place."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV04_CLEAN",
+			"Text": [
+				"Chip, meanwhile, is very much nonplussed by the intrusion into his sensitive depths. With a surprised yelp, the wolf backs away slightly, right into you, knocking you off your feet. That warm, plush tailhole squishes right into your face, and you brace your free paw against that furry rump in response. It slips on the well-lubricated hole, and with a squelch, your arm slides inside. At the same time, Chip's poorly-considered movement leads to him losing his balance, and he recovers by sitting on his rump - right on top of you. The puckered ring parts wide for you, and with a wet shllrrrk, your entire upper body slides right through into the wolf's colon. With your head and shoulders well on their way into the slimy, pulsating depths, you are exposed to the full brunt of the atmosphere inside the feral's lower digestive tract. The heat is sweltering, the texture is unpleasantly slimy and grainy, the scent powerfully musky - thick and incredibly stale, but barely breathable. The very core of a feral wolf's ass could not have smelled of anything different. You are probably the only {player.species} on this content to have so simply and easily buried {player.possessive3p} head into a creature ten times {player.possessive3p} size."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV05",
+			"Text": [
+				"Your unwilling host, meanwhile, all but bucks in response to the blockage in its rump. While you still have a chance, you try and successfully shift your arms, the rectum surprisingly accommodating for your movements, so they are down alongside the rest of your body instead of pointing forward. Perhaps you could use the wolf's butt as leverage. Then, muscles surrounding you clench, the anus squeezes your pinned arms against your belly, while plush walls collapse inwards and renew the coating of awfully pungent, goopy slime. Much to the guard dog's dismay, however, and perhaps also to yours, the action has the opposite to intended results. The clench turns into a rippling wave of peristaltic motion, and you are shunted forward - deeper still into the depths of the wolf. It only now dawns on you just how incredibly powerful these walls are, to have such surprisingly fine control, yet able to pull along an entire adult {player.species} without issue. You try kicking your legs awkwardly, though with the wolf's butt planted firmly on the ground, you can only twist them a little. If anything, you do manage to flick your tail tip in mild displeasure, though. Chip, meanwhile, continues flexing his anal muscles in this way, perhaps thinking that progress was being made. To you, such progress is inverted. Flesh squelches, shifts and shllllrrks all around you, as more and more of your body vanishes into the predator's."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_AV06",
+			"Text": [
+				"At some point, you can no longer tell the difference between parts of your body that are encased in warm, pulsating flesh, and the parts that are smothered under fur and fat. The tight, slimy tube surrounding you keeps pushing you forward, bit by bit, deeper and deeper. By now, you must have well and truly cleared the colon and large intestines - who knows how much deeper you can go from here. You have absolutely no metric for how much time is passing as you slide along, one squelching squeeze after another, and you think Chip has long since considered the strange blockage cleared, if the snores vibrating through your prison are any indication. To you, however, your world is only pulsating flesh, slime and stale air. That is, until after an eternity or two, you hit another muscular ring on your journey - not dissimilar from the one you had already pushed through."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_FEED01",
+			"Text": [
+				"As soon as you step out in the open, the giant wolf is right there, peeking around the corner of the cabin. You've barely had time to shut the door behind you, in some attempt to not let Rux's attempts at heating his home go to waste, before the monstrosity known as Chip is all over you. In a surprisingly puppy-like behavior, he lowers his head in between stretched front legs, raising his rump up in the air while his tail wags in a decidedly un-wolf-like manner."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_FEED02",
+			"Text": [
+				"Those black lips part and munch on the entirety of your lower arms, the bowl of kibble disappearing into the feral's maw. Chip swallows once, a wet gllllllrrrrk reverberating through your arms, as the whole dish, leather bowl and all, is dislodged from your care and vanishes wholesale into the creature's gullet. The suction is so strong that you even feel your paws being dragged along for a brief moment, until the wolf opens his maw once more with a happy sigh, food bowl nowhere in sight. Now you understand the peculiar choice of platter. As the subtle throat bulge vanishes into his chest, you cannot help but wonder how many unwanted guests this oversized guard dog has 'removed' from the permises over the years."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_FEED03",
+			"Text": [
+				"With this little feeding session taken care of, Chip gives you one last playful flick of the tail, alongside a sloppy and wet but perhaps loving 'kiss' on the nose, before he trots off to the edge of the clearing and casually flops down on his side with a yawn. A peculiar specimen indeed."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_INTERACT",
+			"Text": [
+				"Confidently, you stride over to where the dire wolf is dozing. He hears you approach, of course, if the flick of his pointed ears is any indication. Otherwise, though, the lupine gives no particular indication of interest."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_INTERACT_LEAVE",
+			"Text": [
+				"Chip huffs when you step away, almost indignantly, but then resumes his rest by placing his head back on his front legs. In this state - just lazing about - he seems kind of harmless, though you know better than to actually assume as much."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_KILL_DIGESTED_POV",
+			"Text": [
+				"On the outside of your digestive hell, Chip lazily smacks his lips. Whether he realizes the gravity of swallowing another person whole or not, you are fast becoming indistinguishable from the chunky sludge that has been sloshing about in that gut alongside yourself. The wolf casually rolls over on his back, exposing his fluffy belly to nobody in particular. The soft, light-silvery fur on his gut shifts and distorts as the meat within kicks its last kicks. With a meal of this size, the dire wolf would be sated for a few days at least - his master would figure out he'd snacked on some silly adventurer again, but there was little either of them could do about it at this point. With a noxious belch, Chip's stomach compacts tightly, crushing the now-nameless meal into a meaty slurry, slowly draining deeper into the wolf's guts for further processing over the course of many hours. Just another snack."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV01",
+			"Text": [
+				"You walk around the oversized guard dog, taking note of how his deep yellow eyes track your every movement, before you stop right around his midsection. Slowly, making sure to both the predator and yourself that there would be no undesirable surprises, you press your paws into his belly, and you find yourself somewhat surprised at just how soft and doughy that gut is. On the outside, he certainly does not look the part, but the wolf has a healthy layer of pudge for tougher times. Either that, or his diet of random adventurers is somewhat more prevalent than you might have initialy assumed. Chip, for his part, rumbles approvingly. One of his front paws moves to hook around your middle, gently pulling you in closer, but by no means forcefully."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV02",
+			"Text": [
+				"Your paws press into the wolf's soft belly, the full and fluffy fur coat quite pleasant to the touch. Chip grumbles and shifts under your care, his bushy tail rolling out behind him before curling inwards again. You continue massaging the big pup for some time, until a slurp on your head catches you off guard. It seems the feral is happy to bask in your attention quite a bit, and the best way for him to show as much is by soaking your head in goopy, reeking drool, of course. No matter, you can wash it off later, so with newfound appreciation, you continue, paws roaming around that coarse belly fur, occasionally stopping to gently knead..."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV03",
+			"Text": [
+				"Chip huffs loudly, rolling over on his back before climbing back up on all fours. At full height, you can barely reach his nose with the tips of your fingers, and even then, only when he leans down a little. Up close, it becomes clear just how massive this predator truly is - and to what lengths Rux must have gone to tame him in such a manner. The wolf takes a step towards you, but while you expect him to brush against you in some manner like an affectionate cat might, he instead slams a front paw into your chest, forcing you down to the damp forest floor, leaving you breathless in the process. Then the rest of the wolf follows suit: Chip simply bellyflops right on top of you, burying you in a sea of thick, damp fur. The very same belly that you had been massaging earlier is now pinning you down, leaving you immobilized entirely and struggling to breathe, submerged under fluff and pudge as you are."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV04",
+			"Text": [
+				"Somewhere above you - or perhaps to your side, it's hard to tell - the wolf's stomach gurgles and rumbles ominously. It is already hard at work on the platter of food you'd deposited into the feral earlier. Fluids slosh around inside as the organs work and the wolf himself shifts. You did want to be closer to that belly, after all. With a happy sigh, amplified through your physical contact, the wolf finally relents before the lack of breathable air becomes a real problem. Chip rises to all fours again, with you directly below him, and as you rub your eyes and the cold forest air rushes over you again, you find yourself almost longing for that warm, furry blanket. But when you open your eyes once more, expecting to see a sheepish, satisfied wolf, you instead see a pair of wide open jaws, dribbling drool, rushing right for you."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV05",
+			"Text": [
+				"In your dazed state, you are no match for the oversized canine's slobbery tongue. It curls around you with ease, not unlike the poorly disguised attempt Chip had made earlier at swallowing you, before his master intervened. Unfortunately for you, there is no such safety net now. The slick throat muscles flex and ripple, a loud, wet swallow shunting you forwards into the slimy tube. Even with the wolf's size, the gullet is skin-tight still. While the wolf's tongue does an excellent job at giving your {player.fur} a goopy, warm drool coating, you're forced to hold your breath as you slide down into the feral's depths, towards that impatiently gurgling stomach you had been admiring so much."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV06",
+			"Text": [
+				"Your face presses into a tightly sealed sphincter with a nasty squelch. Somewhat reluctantly, the ring widens for you - not quite enough to fit comfortably, but with your thoroughly slime-coated body, gravity combined with a few peristaltic squeezes is enough to shunt you forward. Chyme and partially digested sludge splashes about as you settle within and conform to the organ's shape; it seems the stomach is still far from empty. Bathing in this lukewarm, acidic muck, you try not to focus too much on the chunky stew sloshing around you. The digestive organ, though, gives you little choice in the matter when it begins clamping down, rippling waves of muscular pressure kneading you into a ball of meat as if you are no different from the rest of it. And in truth, that is exactly what you've been reduced to: whether you had not realized, or chose this anyway, you should have known that the dire wolf's stomach would not be a safe place to stay when he is already processing another meal."
+			]
+		}
+	]
+}

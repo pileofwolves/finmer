@@ -1,0 +1,1367 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "12bf6348-0e15-43a4-88af-4eb8f435cb69",
+	"AssetName": "Scene_ForestAdept",
+	"ScriptEnter": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_ForestAdept_Enter"
+	},
+	"IsPatch": false,
+	"Root": {
+		"NodeType": "Root",
+		"Key": "Root",
+		"Children": [
+			{
+				"NodeType": "State",
+				"Key": "Entry_R_First",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandComment",
+							"Comment": "Make SQ02 unavailable"
+						},
+						{
+							"!Type": "CommandJournalClose",
+							"JournalGuid": "9011a5fb-a8dc-4efb-bd89-8458490a64f8"
+						},
+						{
+							"!Type": "CommandVarSetNumber",
+							"VariableName": "SQ02",
+							"ValueOperation": "Set",
+							"OperandMode": "Literal",
+							"OperandLiteral": 999.0
+						},
+						{
+							"!Type": "CommandComment",
+							"Comment": "Area entry text"
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "FOREST_ADEPT_FIRST",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandVarSetNumber",
+							"VariableName": "MQ04",
+							"ValueOperation": "Set",
+							"OperandMode": "Literal",
+							"OperandLiteral": 1.0
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ04_ADEPT_INTRO01",
+							"IsRaw": false
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return not Storage.GetFlag(\"FOREST_ADEPT_FIRST\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Entry_C_Intro02",
+						"Title": "Continue",
+						"Tooltip": "The trees themselves beckon you - or is that a trick of the light?",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Entry_R_Intro02",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_INTRO02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Entry_C_Intro03",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Entry_R_I03_Lonely",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_INTRO03_NOCHIP",
+															"IsRaw": false
+														}
+													]
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "FOREST_DIREWOLF_DEAD",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Entry_C_Intro04",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Entry_R_Intro04A",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_INTRO04A",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataVisualCondition",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarFlag",
+																			"VariableName": "FOREST_DIREWOLF_DEAD",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Entry_C_Intro05",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Entry_R_Intro05",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandSetLocation",
+																							"OperandMode": "Literal",
+																							"OperandText": "Forest, Rux's Cabin"
+																						},
+																						{
+																							"!Type": "CommandLogSplit"
+																						},
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_INTRO05",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Entry_C_Intro06",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataVisualAction",
+																							"Nodes": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ04_ADEPT_INTRO06",
+																									"IsRaw": false
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "MQ04_Bedside_Talk"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"NodeType": "State",
+																"Key": "Entry_R_Intro04B",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_INTRO04B",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Entry_C_Intro05"
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"NodeType": "State",
+												"Key": "Entry_R_I03_GoodBoy",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_INTRO03_CHIP01A",
+															"IsRaw": false
+														}
+													]
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "FOREST_DIREWOLF_FRIENDLY",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Entry_C_IntroChip02",
+														"Title": "Continue",
+														"Tooltip": "Uh, wait-",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Entry_R_IntroChip02",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_INTRO03_CHIP02",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Entry_C_IntroChip03",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Entry_R_IntroChip03",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_INTRO03_CHIP03",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "Entry_C_Intro04"
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"NodeType": "State",
+												"Key": "Entry_R_I03_BadDog",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_INTRO03_CHIP01B",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Entry_C_IntroChip02"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Entry_R_Main",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Forest, Rux's Cabin"
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Compass",
+						"Key": "Compass_Exit",
+						"CompassLinkDirection": "South",
+						"CompassLinkScene": "d93a8b96-ed74-4de1-9f57-5f404f9ea351"
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Entry_C_Cabin",
+						"Title": "Cabin",
+						"Tooltip": "Step inside Rux's cabin.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Can only enter after Jar'la is visited\r\nreturn Storage.GetNumber(\"MQ04\") >= 2"
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Children": []
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Entry_C_Chip",
+						"Title": "Chip",
+						"Tooltip": "The giant wolf is sleeping just beside the trees.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return not Storage.GetFlag(\"FOREST_DIREWOLF_DEAD\")"
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Chip_Interact"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "MQ04_Bedside_Talk",
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Injuries",
+						"Tooltip": "Ask about Iso's health.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_Bedside_Talk"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Randall",
+						"Tooltip": "Ask if anyone was following her.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_Bedside_Talk"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Adept",
+						"Tooltip": "Ask if he is indeed capable of tapping into amber.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Bedside_End1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_BEDSIDE_END01",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Bedside_End2",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Bedside_End2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_BEDSIDE_END02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Bedside_End3",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TOWN_ALCH_DEAD",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Bedside_End3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_BEDSIDE_END03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ04_C_Bedside_End4",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ04_R_Bedside_End4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_BEDSIDE_END04",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ04_C_Bedside_End5",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAppear": {
+																							"!Type": "ScriptDataVisualCondition",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "FOREST_DIREWOLF_DEAD",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": false
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ04_R_Bedside_Chip",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_ADEPT_BEDSIDE_END_CHIP",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ04_C_Bedside_Leav2",
+																										"Title": "Leave",
+																										"Tooltip": "Time to go.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "MQ04_Intro_Exit"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ04_C_Bedside_Leave",
+																						"Title": "Leave",
+																						"Tooltip": "Time to go.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAppear": {
+																							"!Type": "ScriptDataVisualCondition",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "FOREST_DIREWOLF_DEAD",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "MQ04_Intro_Exit"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Bedside_End2B",
+														"Title": "Uh, sure...",
+														"Tooltip": "Not like he's dead or anything...",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TOWN_ALCH_DEAD",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "MQ04_R_Bedside_End3"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Red Maw",
+						"Tooltip": "Ask if he knows what the Red Maw is.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_R_Bedside_End1"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Chip",
+						"Tooltip": "Ask about the giant guard wolf.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "FOREST_DIREWOLF_DEAD",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_R_Bedside_End1"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Shore",
+						"Tooltip": "Ask what he knows about this magical Shore you've heard about.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_INJURIES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_BEDSIDE_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_R_Bedside_End1"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "MQ04_Real_Talk",
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "MQ04_Intro_Exit",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ04_ADEPT_INTRO_EXIT1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "TOWN_ALCH_DEAD",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandJournalUpdate",
+									"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+									"Stage": 21
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandJournalUpdate",
+									"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+									"Stage": 20
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "MQ04_C_Intro_Exit2",
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Chip_Feed1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_CHIP_FEED01",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "FOREST_DIREWOLF_DEAD",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Chip_Feed2",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Chip_Feed2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_CHIP_FEED02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Chip_Feed3",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Chip_Feed3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_CHIP_FEED03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ04_C_Chip_Feed4",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "MQ04_R_Intro_Exit2"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Intro_Exit2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSaveCheckpoint"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_INTRO_EXIT2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Compass_Exit"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Entry_C_Chip"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Chip_Interact",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ04_CHIP_INTERACT",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Chip_C_Leave",
+						"Title": "Leave",
+						"Tooltip": "Let sleeping dogs lie.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_CHIP_INTERACT_LEAVE",
+									"IsRaw": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Entry_R_Main"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Chip_C_AV01",
+						"Title": "Tail Scritches!",
+						"Tooltip": "Butt scritches, just at the base of the spine! Irresistible!",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Chip_R_AV01",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ04_CHIP_AV01\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.AnalVore, EPreySenseType.DigestionFatal)"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Chip_C_AV02",
+										"Title": "Touch",
+										"Tooltip": "Can't let such a sexy butt go unexplored.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Chip_R_AV02",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "if Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ04_CHIP_AV02\")\r\nelse\r\n    Log(\"MQ04_CHIP_AV02_CLEAN\")\r\nend"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Chip_C_AV03",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Chip_R_AV03",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "if Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ04_CHIP_AV03\")\r\nelse\r\n    Log(\"MQ04_CHIP_AV03_CLEAN\")\r\nend"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Chip_C_AV04",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Chip_R_AV04",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "if Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ04_CHIP_AV04\")\r\nelse\r\n    Log(\"MQ04_CHIP_AV04_CLEAN\")\r\nend"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Chip_C_AV05",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Chip_R_AV05",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_CHIP_AV05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Chip_C_AV06",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Chip_R_AV06",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ04_CHIP_AV06\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Chip_C_AV_Combat",
+																														"Title": "Continue",
+																														"Tooltip": "Yup, you're wolf food now.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ04_CHIP_OV06",
+																																	"IsRaw": false
+																																}
+																															]
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "Chip_Fatal_Vore"
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Chip_C_Leave"
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Chip_Fatal_Vore",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "local fight = Combat2()\r\nlocal good_boye = Creature(\"CR_MQ04_Chip\")\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(good_boye)\r\nfight:SetVored(good_boye, Player)\r\nfight:Begin()"
+								},
+								"Children": []
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Chip_C_OV01",
+						"Title": "Bellyrubs!",
+						"Tooltip": "Who's a good boy? Who's a good boy?",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Chip_R_OV01",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ04_CHIP_OV01\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Chip_C_OV02",
+										"Title": "Knead away",
+										"Tooltip": "That soft, fuzzy belly looks like it could use a good massage.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Chip_R_OV02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_CHIP_OV02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Chip_C_OV03",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Chip_R_OV03",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_CHIP_OV03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Chip_C_OV04",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Chip_R_OV04",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_CHIP_OV04",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Chip_C_OV05",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Chip_R_OV05",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_CHIP_OV05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Chip_C_OV06",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ04_CHIP_OV06",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Chip_Fatal_Vore"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Chip_C_Leave"
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

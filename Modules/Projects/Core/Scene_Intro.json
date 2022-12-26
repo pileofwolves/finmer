@@ -97,7 +97,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to Inn",
+														"Title": "Inn",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -108,7 +108,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to MQ02 RoadEnc",
+														"Title": "MQ02 RoadEnc",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -119,7 +119,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to MQ02 Done",
+														"Title": "MQ02 Done",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -130,7 +130,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to MQ03 Port",
+														"Title": "MQ03 Port",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -141,7 +141,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to MQ03 Ending",
+														"Title": "MQ03 Ending",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
@@ -152,7 +152,18 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to Forest Edge",
+														"Title": "MQ04 Start",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugCompleteMQ03()\r\nSetScene(\"Scene_Forest\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
+														"Title": "SQ02",
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -164,7 +175,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to Pit",
+														"Title": "SQ04",
 														"Tooltip": "Level 3",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -176,7 +187,7 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "Go to Abbey",
+														"Title": "Abbey",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {

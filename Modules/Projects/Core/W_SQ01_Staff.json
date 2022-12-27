@@ -1,0 +1,12 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "f7fe3c07-3f64-4dda-9cdf-b1532081bd41",
+	"AssetName": "W_SQ01_Staff",
+	"ObjectName": "Jar'la's Staff",
+	"ObjectAlias": "staff",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [],
+	"PurchaseValue": 0,
+	"IsQuestItem": false
+}

@@ -43,7 +43,7 @@ namespace Finmer.Views
             }
             else
             {
-                GenderInputMale.IsChecked = InitialSaveData.GetString(SaveData.k_Object_Gender).Equals("Male");
+                GenderInputMale.IsChecked = (EGender)InitialSaveData.GetInt(SaveData.k_Object_Gender) == EGender.Male;
                 GenderInputFemale.IsChecked = !GenderInputMale.IsChecked;
             }
 
@@ -64,16 +64,14 @@ namespace Finmer.Views
 
             // If this option was actually ticked (it might be toggled off instead) then update the selected gender
             if (gender_option.IsChecked ?? false)
-                InitialSaveData.SetString(SaveData.k_Object_Gender, (string)gender_option.Tag);
+                InitialSaveData.SetInt(SaveData.k_Object_Gender, Convert.ToInt32((EGender)gender_option.Tag));
 
             ValidateForm();
         }
 
         private void ValidateForm()
         {
-            m_CanGoNext =
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Name)) &&
-                !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Gender));
+            m_CanGoNext = !String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Object_Name));
             OnPropertyChanged(nameof(CanGoNext));
         }
 

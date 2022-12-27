@@ -293,7 +293,7 @@ namespace Finmer.Gameplay
                 // Hardcoded handler: enum atoms can be converted to numbers
                 if (type.IsEnum)
                 {
-                    LuaApi.lua_pushnumber(state, (int)value);
+                    LuaApi.lua_pushnumber(state, Convert.ToInt32(value));
                     return 1;
                 }
 

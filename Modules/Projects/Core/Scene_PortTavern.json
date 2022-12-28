@@ -189,7 +189,7 @@
 																				"Key": "MQ03_Event4_Hit",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"MQ03_TAVERN_EVENT4_HIT\")"
+																					"Script": "Text.SetVariable(\"boy\", Player.Gender == EGender.Male and \"boy\" or \"girl\")\r\nLog(\"MQ03_TAVERN_EVENT4_HIT\")"
 																				},
 																				"ScriptAppear": {
 																					"!Type": "ScriptDataInline",
@@ -215,7 +215,7 @@
 																				"Key": "MQ03_Event4_Default",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"MQ03_TAVERN_EVENT4_DEFAULT\")"
+																					"Script": "Text.SetVariable(\"boy\", Player.Gender == EGender.Male and \"boy\" or \"girl\")\r\nLog(\"MQ03_TAVERN_EVENT4_DEFAULT\")"
 																				},
 																				"Children": [
 																					{

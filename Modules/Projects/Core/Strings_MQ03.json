@@ -234,19 +234,19 @@
 		{
 			"Key": "MQ03_TAVERN_EVENT3",
 			"Text": [
-				"For whatever reason, the fox turns to leave, making for the tavern's back exit. Then, without warning, another paw materializes on the back of your head, forcefully and painfully slamming your face into the bar's wooden countertop. Your assailant leans close enough for you to feel their breath on your ear. \"Well, aren't you a curious {player.species},\" she whispers in a mockingly sweet voice."
+				"For whatever reason, the fox turns to leave, making for the tavern's back exit. Then, without warning, another paw materializes on the back of your head, forcefully and painfully slamming your face into the bar's wooden countertop. Your assailant leans close enough for you to feel their breath on your ear. \"Well, aren't you a curious one,\" she whispers in a mockingly sweet voice. \"Of all the {player.speciesplural} I've had the displeasure of tailing, you were the most erratic and annoying, let me tell you. But now that the boss has his 'date' scheduled, you are a loose end.\""
 			]
 		},
 		{
 			"Key": "MQ03_TAVERN_EVENT4_DEFAULT",
 			"Text": [
-				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, continuing to address you as if you were a disobedient cub. \"It seems you did not receive the message. I shall repeat it for you. And you will be a good {player.boy} and follow me, quietly. Now.\""
+				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, continuing to address you as if you were a disobedient cub. \"It seems you did not receive the message. I shall repeat it for you. And you will be a good {!boy} and follow me, quietly. Now.\""
 			]
 		},
 		{
 			"Key": "MQ03_TAVERN_EVENT4_HIT",
 			"Text": [
-				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, before slamming you right back into the countertop, leaving you groaning and with a nosebleed. \"That was for punching my boss last time, little shit. You did it once under my watch, and it won't happen again. Now, the boss has a message for you. You're going to be a good {player.boy} and follow me, quietly.\""
+				"\"You know what they say: curiosity killed the cat. And the boss was even so generous as to warn you to mind your own business!\" The paw clutching your head pulls back, allowing you to turn and see just who you are dealing with. The pristinely white-furred tigress - the very same one who had been standing behind Randall the other day - sneers at you, before slamming you right back into the countertop, leaving you groaning and with a nosebleed. \"That was for punching my boss last time, little shit. You did it once under my watch, and it won't happen again. Now, the boss has a message for you. You're going to be a good {!boy} and follow me, quietly.\""
 			]
 		},
 		{

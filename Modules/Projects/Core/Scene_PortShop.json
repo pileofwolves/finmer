@@ -101,13 +101,19 @@
 													{
 														"NodeType": "Choice",
 														"Key": "MQ03_C_TalkIsoEnd",
+														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
 															"Script": "Log(\"PORT_SHOP_BROWSE\")"
 														},
-														"Children": []
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Main"
+															}
+														]
 													}
 												]
 											}

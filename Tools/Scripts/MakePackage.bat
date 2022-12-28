@@ -16,6 +16,8 @@ echo .exp >> %STAGEDIR%\IgnoreList
 echo .iobj >> %STAGEDIR%\IgnoreList
 echo .ipdb >> %STAGEDIR%\IgnoreList
 echo .lib >> %STAGEDIR%\IgnoreList
+echo .dmp >> %STAGEDIR%\IgnoreList
+echo .log >> %STAGEDIR%\IgnoreList
 
 rem Copy Game artifacts, plus Modules (non-recursive to skip Samples)
 xcopy /S /Y /EXCLUDE:%STAGEDIR%\IgnoreList Finmer.Game\bin\Release %GAMEDIR%

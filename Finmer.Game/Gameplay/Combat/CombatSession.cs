@@ -205,14 +205,14 @@ namespace Finmer.Gameplay.Combat
             else
             {
                 // This was a vore kill
-                Debug.Assert(victim.Predator == killer);
+                // Note that the killer could differ from the predator if an auto-vore path was used earlier.
+                killer = victim.Predator;
                 CombatDisplay.ShowSimpleMessage(@"kill_digested", killer, victim);
-                // Increment Digest count if the player ate victim
-                if (killer.Character is Player player)
-                {
-                    player.TotalPreyDigested++;
-                }
 
+                // Increment vore stats if the player was the predator
+                if (killer.Character is Player player)
+                    player.TotalPreyDigested++; 
+                
                 // Optional disposal scene if available and enabled by the user
                 var predator_asset = killer.Character.Asset;
                 if (predator_asset != null && predator_asset.PredatorDisposal && UserConfig.AllowExplicitDisposal)

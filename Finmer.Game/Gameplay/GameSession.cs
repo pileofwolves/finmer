@@ -175,7 +175,13 @@ namespace Finmer.Gameplay
         /// <param name="scene"></param>
         public void SetScene(Scene scene)
         {
+            // Remove the last scene
             PopScene();
+
+            // Wipe grammar contexts created by the removed scene
+            TextParser.ClearNonPersistentContexts();
+
+            // Set up the new scene
             PushScene(scene);
         }
 
@@ -190,7 +196,6 @@ namespace Finmer.Gameplay
             GameUI.Instance.LogSplit();
             GameUI.Instance.ClearButtons();
             GameUI.Instance.Instruction = String.Empty;
-            TextParser.ClearNonPersistentContexts();
             Compass.Reset();
 
             // Add this scene onto the stack

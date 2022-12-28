@@ -22,8 +22,12 @@ namespace Finmer.Core
         {
             Always,
             NpcToPlayer,
-            NpcToNpc,
-            PlayerToNpc
+            PlayerToNpc,
+            NpcToNpcAsInstigator,
+            NpcToNpcAsTarget,
+
+            // Backwards compatibility
+            NpcToNpc = NpcToNpcAsInstigator
         }
 
         /// <summary>

@@ -51,14 +51,6 @@ namespace Finmer.Editor
             label1.TabIndex = 0;
             label1.Text = "When this string is used:";
             // 
-            // txtOldKey
-            // 
-            this.txtOldKey.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtOldKey.Location = new System.Drawing.Point(16, 32);
-            this.txtOldKey.Name = "txtOldKey";
-            this.txtOldKey.Size = new System.Drawing.Size(360, 21);
-            this.txtOldKey.TabIndex = 1;
-            // 
             // label2
             // 
             label2.AutoSize = true;
@@ -68,20 +60,6 @@ namespace Finmer.Editor
             label2.TabIndex = 2;
             label2.Text = "In this situation:";
             // 
-            // cmbRule
-            // 
-            this.cmbRule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbRule.FormattingEnabled = true;
-            this.cmbRule.Items.AddRange(new object[] {
-            "Always",
-            "NPC takes action on player",
-            "NPC takes action on NPC",
-            "Player takes action on NPC"});
-            this.cmbRule.Location = new System.Drawing.Point(16, 88);
-            this.cmbRule.Name = "cmbRule";
-            this.cmbRule.Size = new System.Drawing.Size(360, 21);
-            this.cmbRule.TabIndex = 3;
-            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -90,6 +68,29 @@ namespace Finmer.Editor
             label3.Size = new System.Drawing.Size(113, 13);
             label3.TabIndex = 4;
             label3.Text = "Use this string instead:";
+            // 
+            // txtOldKey
+            // 
+            this.txtOldKey.Font = new System.Drawing.Font("Courier New", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtOldKey.Location = new System.Drawing.Point(16, 32);
+            this.txtOldKey.Name = "txtOldKey";
+            this.txtOldKey.Size = new System.Drawing.Size(360, 21);
+            this.txtOldKey.TabIndex = 1;
+            // 
+            // cmbRule
+            // 
+            this.cmbRule.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbRule.FormattingEnabled = true;
+            this.cmbRule.Items.AddRange(new object[] {
+            "Always",
+            "NPC targets player",
+            "Player targets NPC",
+            "This NPC targets another NPC",
+            "This NPC is targeted by another NPC"});
+            this.cmbRule.Location = new System.Drawing.Point(16, 88);
+            this.cmbRule.Name = "cmbRule";
+            this.cmbRule.Size = new System.Drawing.Size(360, 21);
+            this.cmbRule.TabIndex = 3;
             // 
             // txtNewKey
             // 
@@ -114,6 +115,7 @@ namespace Finmer.Editor
             // 
             // cmdCancel
             // 
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
             this.cmdCancel.Location = new System.Drawing.Point(256, 216);
             this.cmdCancel.Name = "cmdCancel";

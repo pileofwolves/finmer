@@ -99,7 +99,7 @@ namespace Finmer.Gameplay
             {
                 // Accept the first matching mapping
                 foreach (var mapping in asset.StringMappings)
-                    if (EvaluateStringMappingRule(mapping, input, instigator, target))
+                    if (EvaluateStringMappingRule(mapping, input, instigator, target, true))
                         return mapping.NewKey;
             }
 
@@ -109,7 +109,7 @@ namespace Finmer.Gameplay
             {
                 // Accept the first matching mapping
                 foreach (var mapping in asset.StringMappings)
-                    if (EvaluateStringMappingRule(mapping, input, instigator, target))
+                    if (EvaluateStringMappingRule(mapping, input, instigator, target, false))
                         return mapping.NewKey;
             }
 
@@ -120,23 +120,27 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Evaluates whether an individual StringMapping matches the input parameters. Returns true on matches, false otherwise.
         /// </summary>
-        private static bool EvaluateStringMappingRule(StringMapping mapping, string input, Character instigator, Character target)
+        private static bool EvaluateStringMappingRule(StringMapping mapping, string input, Character instigator, Character target, bool is_instigator_pov)
         {
             // The mapped input key must match
             if (!mapping.Key.Equals(input, StringComparison.InvariantCultureIgnoreCase))
                 return false;
 
             // Verify the actual rule
+            bool instigator_is_player = instigator is Player;
+            bool target_is_player = target is Player;
             switch (mapping.Rule)
             {
                 case StringMapping.ERule.Always:
                     return true;
                 case StringMapping.ERule.NpcToPlayer:
-                    return target is Player;
-                case StringMapping.ERule.NpcToNpc:
-                    return !(instigator is Player || target is Player);
+                    return target_is_player;
                 case StringMapping.ERule.PlayerToNpc:
-                    return instigator is Player;
+                    return instigator_is_player;
+                case StringMapping.ERule.NpcToNpcAsInstigator:
+                    return !instigator_is_player && !target_is_player && is_instigator_pov;
+                case StringMapping.ERule.NpcToNpcAsTarget:
+                    return !instigator_is_player && !target_is_player && !is_instigator_pov;
                 default:
                     throw new ArgumentException(nameof(mapping));
             }

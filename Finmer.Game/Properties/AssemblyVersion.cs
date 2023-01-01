@@ -5,7 +5,7 @@
 
 [assembly: AssemblyCompany("Nuntis the Wolf")]
 [assembly: AssemblyProduct("Finmer - Text Adventure")]
-[assembly: AssemblyCopyright("(C) 2019-2022. Please don't repost without permission.")]
+[assembly: AssemblyCopyright("(C) 2019-2023. Please don't repost without permission.")]
 
 namespace Finmer
 {

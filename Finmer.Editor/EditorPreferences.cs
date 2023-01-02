@@ -20,7 +20,7 @@ namespace Finmer.Editor
     public static class EditorPreferences
     {
 
-        private const uint k_ConfigMagic = 0xF1CF0001;
+        private const uint k_ConfigMagic = 0xF1CF0002;
 #if DEBUG
         private const string k_ConfigFileName = "EditorDbg.sav";
 #else
@@ -36,6 +36,16 @@ namespace Finmer.Editor
         /// Working directory to apply to the launched game executable, or an empty string if unset.
         /// </summary>
         public static string ExecutableWorkingDirectory { get; set; } = String.Empty;
+
+        /// <summary>
+        /// Whether to automatically generate node keys for child nodes of States and Choices.
+        /// </summary>
+        public static bool SceneEditorGuessChildKeys { get; set; } = true;
+
+        /// <summary>
+        /// Whether to show the button for creating Custom Scripts if the scene does not have one yet.
+        /// </summary>
+        public static bool SceneEditorAllowCustomScript { get; set; }
 
         /// <summary>
         /// Reloads the user preferences from disk.
@@ -59,8 +69,10 @@ namespace Finmer.Editor
 
                         // Deserialize the file
                         PropertyBag props = PropertyBag.FromStream(instream);
-                        ExecutablePath = props.GetString("exe_path");
-                        ExecutableWorkingDirectory = props.GetString("exe_workdir");
+                        ExecutablePath = props.GetString(nameof(ExecutablePath));
+                        ExecutableWorkingDirectory = props.GetString(nameof(ExecutableWorkingDirectory));
+                        SceneEditorGuessChildKeys = props.GetBool(nameof(SceneEditorGuessChildKeys));
+                        SceneEditorAllowCustomScript = props.GetBool(nameof(SceneEditorAllowCustomScript));
                     }
                 }
             }
@@ -102,8 +114,10 @@ namespace Finmer.Editor
         private static PropertyBag Flush()
         {
             var props = new PropertyBag();
-            props.SetString("exe_path", ExecutablePath);
-            props.SetString("exe_workdir", ExecutableWorkingDirectory);
+            props.SetString(nameof(ExecutablePath), ExecutablePath);
+            props.SetString(nameof(ExecutableWorkingDirectory), ExecutableWorkingDirectory);
+            props.SetBool(nameof(SceneEditorGuessChildKeys), SceneEditorGuessChildKeys);
+            props.SetBool(nameof(SceneEditorAllowCustomScript), SceneEditorAllowCustomScript);
             return props;
         }
 

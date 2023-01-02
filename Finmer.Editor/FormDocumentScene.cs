@@ -10,7 +10,9 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
@@ -47,6 +49,11 @@ namespace Finmer.Editor
 
         private bool m_SkipDirtyUpdates = true;
         private bool m_SkipTreeSelect;
+
+        private static readonly Regex s_StateKeyRegex = new Regex(@"^(\w+)_R_([A-Za-z_]+)(\d*)[A-Z]?$",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
+        private static readonly Regex s_ChoiceKeyRegex = new Regex(@"^(\w+)_C_(.+)[A-Z]?$",
+            RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public FormDocumentScene()
         {
@@ -297,7 +304,12 @@ namespace Finmer.Editor
 
         private void UpdateScriptButtonIcons()
         {
-            tsbScriptCustom.Image   = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent() ? Resources.pencil : Resources.plus;
+            // To simplify the UI for newcomer module authors, we hide the Custom Script button by default, since it is only useful for
+            // Lua scripting. Show it if the Custom Script is already present or the user indicated they want to see it.
+            bool has_custom_script  = m_Scene.ScriptCustom != null && m_Scene.ScriptCustom.HasContent();
+            tsbScriptCustom.Image   = has_custom_script ? Resources.pencil : Resources.plus;
+            tsbScriptCustom.Visible = has_custom_script || EditorPreferences.SceneEditorAllowCustomScript;
+
             tsbScriptEnter.Image    = m_Scene.ScriptEnter != null && m_Scene.ScriptEnter.HasContent() ? Resources.pencil : Resources.plus;
             tsbScriptLeave.Image    = m_Scene.ScriptLeave != null && m_Scene.ScriptLeave.HasContent() ? Resources.pencil : Resources.plus;
         }
@@ -412,6 +424,10 @@ namespace Finmer.Editor
                 NodeType = GetInverseNodeType(m_SelectedNode.NodeType),
                 Parent = m_SelectedNode
             };
+
+            // If enabled, try auto-generating a sensible key for this node
+            if (EditorPreferences.SceneEditorGuessChildKeys)
+                node.Key = GenerateChildNodeKey(m_SelectedNode);
 
             // Append it to the internal representation and the UI tree
             Debug.Assert(m_SelectedNode != null);
@@ -893,6 +909,83 @@ namespace Finmer.Editor
                 default:
                     throw new ArgumentException(nameof(child));
             }
+        }
+
+        /// <summary>
+        /// Auto-generate a unique key for a child node of the specified parent, using the parent's type and key as input.
+        /// </summary>
+        private static string GenerateChildNodeKey(AssetScene.SceneNode parent)
+        {
+            string part_group, part_topic, part_type;
+
+            switch (parent.NodeType)
+            {
+                case AssetScene.ENodeType.State:
+                {
+                    // Parse the key of the parent State. If unsuccessful, we cannot auto-generate a key.
+                    var match = s_StateKeyRegex.Match(parent.Key);
+                    if (!match.Success)
+                        return String.Empty;
+
+                    // Child node should be a Choice ('C' for 'call') inheriting the State's namespace label
+                    part_group = match.Groups[1].Value;
+                    part_topic = match.Groups[2].Value;
+                    part_type = "C";
+
+                    // Append a sequence number
+                    if (match.Groups.Count == 4 &&
+                        Int32.TryParse(match.Groups[3].Value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int sequence))
+                    {
+                        // The parent node includes a sequence number - increment it (since the choice represents the next sequence)
+                        sequence++;
+
+                        // Append it to the topic, making sure we use the same number of leading zeroes
+                        part_topic += sequence.ToString("D" + match.Groups[3].Length, CultureInfo.InvariantCulture);
+                    }
+                    else
+                    {
+                        // Since this Choice must be the second sequence item, append a default sequence number
+                        part_topic += "02";
+                    }
+
+                    break;
+                }
+
+                case AssetScene.ENodeType.Choice:
+                {
+                    // Parse the key of the parent Choice. If unsuccessful, we cannot auto-generate a key.
+                    var match = s_ChoiceKeyRegex.Match(parent.Key);
+                    if (!match.Success)
+                        return String.Empty;
+
+                    // Child node should be a State ('R' for 'response') inheriting the Choice's namespace label
+                    part_group = match.Groups[1].Value;
+                    part_topic = match.Groups[2].Value;
+                    part_type = "R";
+                    break;
+                }
+
+                default:
+                    // Cannot auto-generate key for other node types
+                    return String.Empty;
+            }
+
+            // We may also need to append an additional letter suffix, if there are siblings with the same key
+            for (int i = 0; i < 26; i++)
+            {
+                // First node has no letter suffix, then start with B, C, and so on
+                string alphabet_suffix = (i == 0) ? String.Empty : ((char)('A' + i)).ToString();
+
+                // Combine all the extracted parts and computed suffixes into one key
+                string combined = String.Format(CultureInfo.InvariantCulture, "{0}_{1}_{2}{3}", part_group, part_type, part_topic, alphabet_suffix);
+
+                // If this key is not yet in use, apply it
+                if (!parent.Children.Exists(node => node.Key.Equals(combined, StringComparison.InvariantCultureIgnoreCase)))
+                    return combined;
+            }
+
+            // Otherwise, if we can't find a usable suffix, abort the auto-generation
+            return String.Empty;
         }
 
     }

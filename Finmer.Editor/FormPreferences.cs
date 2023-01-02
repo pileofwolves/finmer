@@ -24,6 +24,8 @@ namespace Finmer.Editor
 
             txtExePath.Text = EditorPreferences.ExecutablePath;
             txtExeWorkDir.Text = EditorPreferences.ExecutableWorkingDirectory;
+            chkSceneAutoGuessKey.Checked = EditorPreferences.SceneEditorGuessChildKeys;
+            chkSceneAllowCustomScript.Checked = EditorPreferences.SceneEditorAllowCustomScript;
         }
 
         private void cmdOK_Click(object sender, EventArgs e)
@@ -31,6 +33,8 @@ namespace Finmer.Editor
             // Update the global preferences store
             EditorPreferences.ExecutablePath = txtExePath.Text;
             EditorPreferences.ExecutableWorkingDirectory = txtExeWorkDir.Text;
+            EditorPreferences.SceneEditorGuessChildKeys = chkSceneAutoGuessKey.Checked;
+            EditorPreferences.SceneEditorAllowCustomScript = chkSceneAllowCustomScript.Checked;
             EditorPreferences.Save();
 
             Close();

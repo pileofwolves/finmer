@@ -737,30 +737,34 @@ namespace Finmer.Editor
 
         private void trvNodes_DragOver(object sender, DragEventArgs e)
         {
+            // Unless we determine otherwise, the drop action is invalid by default
+            e.Effect = DragDropEffects.None;
+
+            // Find the particular node the mouse is hovering over
             var source = e.Data.GetData(typeof(TreeNode)) as TreeNode;
             Point mouse = trvNodes.PointToClient(new Point(e.X, e.Y));
             TreeNode target = trvNodes.GetNodeAt(mouse);
-
-            // Check if the user is hovering over any particular node at all
             if (target == null || source == null)
-            {
-                e.Effect = DragDropEffects.None;
                 return;
-            }
 
             // Retrieve the SceneNodes represented by these tree items
             var source_sn = (AssetScene.SceneNode)source.Tag;
             var target_sn = (AssetScene.SceneNode)target.Tag;
 
-            // Nodes cannot be re-parented to links, or break alternation between States/Choices
-            if (target_sn.NodeType != GetAcceptableParentType(source_sn))
-            {
-                e.Effect = DragDropEffects.None;
+            // Cannot parent nodes to leaf nodes, or to themselves
+            if (source_sn == target_sn || !target_sn.IsFullNode())
                 return;
-            }
 
-            // Notify the system which actions are allowed now
-            e.Effect = e.AllowedEffect;
+            // Nodes must follow the State/Choice alternation. Some extra logic is required to handle the Root node correctly.
+            bool target_is_root = target_sn.NodeType == AssetScene.ENodeType.Root;
+            bool can_parent_generic = target_sn.NodeType == GetAcceptableParentType(source_sn);
+            bool can_parent_root_node = target_is_root && source_sn.NodeType == GetAcceptableRootType();
+            bool can_parent_root_leaf = target_is_root && GetInverseNodeType(GetAcceptableParentType(source_sn)) == GetAcceptableRootType();
+            if (can_parent_generic || can_parent_root_node || can_parent_root_leaf)
+            {
+                // Notify the system which actions are allowed now
+                e.Effect = e.AllowedEffect;
+            }
         }
 
         private void chkRootInject_CheckedChanged(object sender, EventArgs e)

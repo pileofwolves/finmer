@@ -176,6 +176,10 @@ end"
                 if (String.IsNullOrWhiteSpace(child.Key))
                     child.Key = $"_AutoKey{state.NextAutoKey++}";
 
+                // If a Choice node's button caption is unspecified, assign a default value instead.
+                if (child.NodeType == AssetScene.ENodeType.Choice && String.IsNullOrWhiteSpace(child.Title))
+                    child.Title = "Continue";
+
                 // Queue this child
                 state.Backlog.Push(child);
             }

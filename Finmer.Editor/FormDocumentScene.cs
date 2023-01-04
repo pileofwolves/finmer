@@ -371,10 +371,11 @@ namespace Finmer.Editor
                     bool is_state = scene_node.NodeType == AssetScene.ENodeType.State;
                     bool has_action_script = scene_node.ScriptAction != null && scene_node.ScriptAction.HasContent();
                     bool has_appear_script = scene_node.ScriptAppear != null && scene_node.ScriptAppear.HasContent();
+                    string choice_caption = String.IsNullOrWhiteSpace(scene_node.Title) ? "Continue" : scene_node.Title;
                     string[] elements =
                     {
                         String.IsNullOrWhiteSpace(scene_node.Key) ? String.Empty : $"[{scene_node.Key}]",
-                        !is_state ? scene_node.Title : String.Empty,
+                        !is_state ? choice_caption : String.Empty,
                         has_action_script ? "(!)" : String.Empty,
                         has_appear_script ? "(?)" : String.Empty,
                     };

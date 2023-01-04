@@ -32,7 +32,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Encompasses gameplay state associated with one running session, that can be discarded when returning to the menu screen.
     /// </summary>
-    public class GameSession : IDisposable
+    public sealed class GameSession : IDisposable
     {
 
         /// <summary>
@@ -79,6 +79,7 @@ namespace Finmer.Gameplay
         private GameSnapshot m_RestoreSnapshot;
         private bool m_ScriptThreadStop;
         private bool m_GameOverRequested;
+        private bool m_IsDisposed;
 
         public GameSession(GameSnapshot snapshot)
         {
@@ -129,6 +130,11 @@ namespace Finmer.Gameplay
 
         public void Dispose()
         {
+            // Run the finalizer only once
+            if (m_IsDisposed)
+                return;
+            m_IsDisposed = true;
+
             // Stop the script thread
             m_ScriptThreadStop = true;
             m_ScriptWaitEvent.Set();
@@ -136,6 +142,10 @@ namespace Finmer.Gameplay
 
             // Clean up thread
             m_ScriptWaitEvent.Dispose();
+
+            // Force global systems to release references to this session
+            TextParser.ClearAllContexts();
+            GameUI.Reset();
 
             // Clean up runtime
             m_SceneStack.Clear();

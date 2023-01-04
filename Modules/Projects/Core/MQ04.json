@@ -15,6 +15,10 @@
 		{
 			"Key": 21,
 			"Text": "You met briefly with Rux, the reclusive Adept. The mayor is safe in his care, but to help properly, Rux requires ingredients from Jar'la, who has recently 'gone out of business'. Visit his shop in North Finmer once more, and find what you need there."
+		},
+		{
+			"Key": 30,
+			"Text": "You obtained the supplies Rux requires; bring them back to his cabin in the woods east of North Finmer."
 		}
 	]
 }

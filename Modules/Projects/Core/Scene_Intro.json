@@ -163,6 +163,17 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "MQ04 Return",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ04()\r\nJournal.Update(\"MQ04\", 30)\r\nStorage.SetNumber(\"MQ04\", 2)\r\nPlayer:TakeItem(\"I_MQ04_RuxBook\")\r\nPlayer:GiveItem(\"I_MQ04_AlchSupplies\")\r\nSetScene(\"Scene_ForestAdept\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "SQ02",
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,

@@ -18,19 +18,19 @@
 		{
 			"Key": "MQ04_ADEPT_BEDSIDE_END02",
 			"Text": [
-				"The Adept places a paw on a particularly vibrantly-hued book, pulling it from the shelf. Without facing you, he continues to speak, flicking through the pages to find some manner of bookmark. \"She will heal on her own, eventually. But while I have no formal training in the healing arts, it is plain to see she is stretching herself to the breaking point.\" Finally, Rux turns to you, book still held, a gloomy frown on his face. \"And I suspect that the two of you are in a hurry. Thus, to speed her recovery, and strengthen both you and her for the work to come, I require some herbs that I do not presently possess. Would you be so kind as to travel to Jar'la's shop in North Finmer, and obtain from him 'the usual', and a handful of silverbrush?\""
+				"The Adept places a paw on a particularly vibrantly-hued book, pulling it from the shelf. Without facing you, he continues to speak, flicking through the pages to find some manner of bookmark. \"She will heal on her own, eventually. But while I have no formal training in the healing arts, it is plain to see she is stretching herself to the breaking point.\" Finally, Rux turns to you, book still held, a gloomy frown on his face. \"And I suspect that the two of you are in a hurry. Thus, to speed her recovery, and strengthen both you and her for the work to come, I require some herbs that I do not presently possess. Would you be so kind as to travel to Jar'la's shop in North Finmer, and obtain from him 'the usual'? He'll know what I mean.\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_BEDSIDE_END03",
 			"Text": [
-				"He then extends the book bound in emerald green he was holding to you. \"He'll take this as payment. As professionals in somewhat similar fields of study, we have some 'equivalent exchanges' set up, you see,\" the old panda explains. \"When you return, hopefully she will be more-or-less awake, and I can answer your questions as you will answer mine. I trust you will be careful, of course? The way I hear it, the two of you have made some enemies out there. I look forward to hearing the finer details.\""
+				"He then extends the book bound in bright pink he was holding to you. \"He'll take this as payment. As professionals in somewhat similar fields of study, we have some 'equivalent exchanges' set up, you see,\" the old panda explains. \"When you return, hopefully she will be more-or-less awake, and I can answer your questions as you will answer mine. I trust you will be careful, of course? The way I hear it, the two of you have made some enemies out there. I look forward to hearing the finer details.\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_BEDSIDE_END04",
 			"Text": [
-				"\"Don't worry about the mayor,\" Rux states as you express your concern, the faintest hint of a smile crossing his otherwise cold expression. \"I'll be here to take care of her if she needs anything, but above all she requires rest, and she will be safe here. It's not easy to approach this house without my approval.\" He casually gestures to the amber ring you're wearing - it had served its purpose exactly as advertised - before he clasps his hands together and flicks his ringed tail. \"That was Iso's, originally. If she trusted you enough to give it you, my door shall be open to you. Now then.\""
+				"\"Don't worry about the mayor,\" Rux states as you express your concern, the faintest hint of a smile crossing his otherwise cold expression. \"I'll be here to take care of her if she needs anything, but above all she requires rest, and she will be safe here. It's not easy to approach this house without my approval.\" He casually gestures to the amber ring you're wearing - it had served its purpose exactly as advertised - before he clasps his hands together and flicks his ringed tail. \"That was hers, originally. I was surprised to see you with it, I'll admit. If she trusted you enough to give it you, you shall be welcome in my home, though I will keep an eye on you. Now then.\""
 			]
 		},
 		{
@@ -46,9 +46,27 @@
 			]
 		},
 		{
+			"Key": "MQ04_ADEPT_ENTER_CHIP",
+			"Text": [
+				"The sleeping form of Chip, the resident guard dog, is sprawled between trees just off to the side of the clearing. Despite his imposing stature, the giant wolf does not seem to be particularly active if he can help it."
+			]
+		},
+		{
 			"Key": "MQ04_ADEPT_ENTER01",
 			"Text": [
 				"Pushing shrubbery and dense foliage aside, you come upon a small clearing. Light filters down through a gap in the canopy, illuminating a small, cozy-looking log cabin. Light flickers through a small window set in the side; a dark gray stone chimney atop the building is puffing a thin smoke plume. Of course, you know now that the house's exterior belies its actual size."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_ENTER02",
+			"Text": [
+				"You step through the cabin's front door. The room inside is expansive - a lit fireplace brightens and warms the space considerably, flickering light playing with the dining table and couch set up in the room. Shelves littered with assorted treasures and trifles line the walls. The back wall, on either side of the fireplace, is filled entirely with colorfully stuffed bookshelves. Off to the side, opposite the window, are doors leading to bedrooms, a kitchen, and presumably a laboratory. All in all, with a place this cozy, it is understandable why the Adept would not leave for town often."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_EXIT",
+			"Text": [
+				"Leaving the cabin, you rub your paws and arms together for a bit in an attempt to trap heat, the cold autumn chill making for quite the stark difference with the gentle glowing warmth of Rux's fireplace. As you step away from the cabin, trying to think of where to go from here, you find yourself almost longing for a warm beverage and a cozy blanket. The way back to the beaten path is to the south from here - it should not be too long a trek, at least."
 			]
 		},
 		{
@@ -120,13 +138,271 @@
 		{
 			"Key": "MQ04_ADEPT_INTRO05",
 			"Text": [
-				"Needing no further invitation, you step inside. The room inside is expansive - a lit fireplace brightens and warms the space considerably, flickering light playing with the dining table and couch set up in the room. Shelves littered with assorted treasures and trifles line the walls. The back wall, on either side of the fireplace, is filled entirely with colorfully stuffed bookshelves. You are just about to wonder where the red panda sleeps or prepares food, before you notice the handful of doors in the log wall opposite the window leading to rooms that most certainly do not fit into the cabin's exterior shape, and it begins to dawn on you that this house may quite literally be bigger on the inside."
+				"Needing no further invitation, you step inside. The room inside is expansive - a lit fireplace brightens and warms the space considerably, flickering light playing with the dining table and duo of couches set up in the room. Shelves littered with assorted treasures and trifles line the walls. The back wall, on either side of the fireplace, is filled entirely with colorfully stuffed bookshelves. You are just about to wonder where the red panda sleeps or prepares food, before you notice the handful of doors in the log wall opposite the window leading to rooms that most certainly do not fit into the cabin's exterior shape, and it begins to dawn on you that this house may quite literally be bigger on the inside."
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_INTRO06",
 			"Text": [
 				"\"I assume you're looking for the mayor. She's just over here,\" the mysterious hermit sighs. By now you've deduced that this must be Rux, the one last person the beleaguered pantheress could confide in. He shows you into a room off of the main living space, bushy ringed tail maneuvering expertly so as to not knock anything over. In a small, sparsely decorated bedroom lies Iso, sleeping quietly. It appears she made it here in one piece, at least. She lies on top of clean linen sheets, fully clothed, chest rising and falling slowly. You feel a little weird staring at a sleeping person - perhaps sensing your unvoiced questions, Rux elaborates briefly. \"She appeared just an hour or so ago. Collapsed right on my doorstep. Must've been exhausted.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN01",
+			"Text": [
+				"\"Very well,\" Rux concludes, adjusting his deep red robe before rising from the comfortable couch. He gathers the finished teacups and takes them away to the kitchen, giving you a brief moment of solitude with the pantheress for whom you have risked your life more than once. \"{player.name},\" she begins, eyes fixed on you, a sad smile telling of a rare moment of vulnerability. \"I'm really sorry I dragged you into all this. You've done so much for me, more than you ever agreed to, whether you remember or not. And now...\" A cough follows, then, and a loud inhale. \"Now he's after you, too. I've made some bad choices, and got a bunch of people eaten. We have to stop him from killing anyone else.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN02",
+			"Text": [
+				"The Adept returns from the kitchen, paws folded neatly behind his back. \"Indeed, we must,\" he declares simply, resuming his previous spot on the other sofa, glancing between yourself and the besieged feline. \"The Mayor and I were discussing this very topic before you arrived,\" he says. \"This news about amber misuse is exceedingly alarming, not to mention the harm this misguided canine has already caused. Thus, I shall provide what assistance I can. Iso, if you would...?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN03",
+			"Text": [
+				"\"Right,\" the feline responds. \"What Randall said back at the shrine got me thinking. Rux and I believe that this 'Red Maw' of his, is not actually the name of his gang, but rather the name of a place. What we need now, is information. We can't risk him being a step ahead of us all the time, so we need to know what he's actually planning to do with the mine.\" On the other couch, the Adept in question nods in agreement, chiming in with his own considerations. \"Regrettably, we do not know exactly where it is,\" he says. \"However, this may not pose an issue. When you visited South Finmer, you rode along with a merchant, yes?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN04",
+			"Text": [
+				"When you express agreement, the duo nod in response. \"As the Mayor may have already mentioned, that merchant is making deliveries right to our cult leader's doorstep. This shall serve as a covert entry point,\" Rux explains. The black-furred cat sitting next to you waves a paw through the air, as if tracing out a route. \"The plan is this,\" she continues. \"We will conceal ourselves within a cargo delivery. The chameleon fellow will then take us right to the location of the Red Maw.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN05",
+			"Text": [
+				"The usually impassive face of the red panda creases in annoyance. \"By 'we', you mean {player.name}, of course,\" he corrects. In response to this, Iso opens her mouth in a retort, but Rux is already ahead of her. \"Absolutely not,\" he commands sternly. \"You are injured, and mentally and physically exhausted. I will see to it that you take time for yourself to recover properly for once, as opposed to subjecting yourself to more terror.\" The Adept's fiery gaze then locks on to you, studying you carefully. \"Our {player.species} friend here has proven {player.object3p}self more than capable, no? Besides, infiltrating with two unnecessarily increases the risk of discovery.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN06",
+			"Text": [
+				"Iso chews on her lip quietly, a mixture of disappointment and frustration written all over her face. Were it not for the fact that you should know better of the mayor, you might start to think she is secretly developing a taste for these risky adventures. Certainly, this saga will make for quite the stark difference compared to the usual bleak boredom that must be signing papers in an office. Or perhaps she merely feels guilty for throwing you into the lion's den - or wolf's den, as it happens - once more. \"So, {player.name},\" Rux says, recapturing your attention. \"What say you of this task?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN07",
+			"Text": [
+				"Rux nods slowly, considering your response. \"Well, frankly, you're the only one who can do this, seeing as the set of able people embroiled in this conflict is shrinking. I won't bend the truth; it will be exceptionally dangerous. No doubt there are others there with certain carnivorous inclinations, too. But as I said, I believe you capable.\" He rises from the cozy couch, stepping over to the bookshelves sandwiching the fireplace. The red panda continues to speak even with his back turned to you, his ringed tail slowly swaying back and forth as he apparently searches for something. \"Fret not, the Mayor and I shall not remain idle. While you recover details on the Red Maw's movements and intentions, we shall try and develop countermeasures for the worst-case scenarios.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN08",
+			"Text": [
+				"Iso, meanwhile, appears to have resigned to the Adept's judgement, and chimes in with some details of her own. \"So to recap, {player.name}, we need you to infiltrate into the amber mine known as the Red Maw, avoid as much attention as you can, and come back with intel. Any information is useful: plans, routes, locations, names. And hopefully by the time you get back, we'll be able to take the fight to him, instead of getting caught off-guard every time.\" She nods one more, resolving to trust you entirely with this matter. \"Find Zosk, first. He should be in South Finmer. How you get on his cart is up to you.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN09",
+			"Text": [
+				"Finally, you rise from the comfortable furniture, making sure you've gathered all your things as you resolve to head out once more. \"Hold on, {player.name},\" the old mage says simply, voice carrying perhaps an ember of warmth more than he had granted you the first time he sent you away to fetch something. He turns to you, managing to tear himself away from the shelves he had been poking at. An outstretched paw offers you two vials, and you carefully accept them. \"Jar'la gave me these once, but I have no use for them. Take them, just in case. Good luck. We'll be here when you return.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_REST",
+			"Text": [
+				"A few minutes spent warming yourself by the cozy fireplace leaves you feeling reinvigorated. Perhaps you should ask Rux if you could borrow and read one of his many books the next time you're here - surely there have to be some fascinating stories to find among these shelves - but for now, you decide you have other important matters to resolve."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN01",
+			"Text": [
+				"As you take a brief moment to acclimatize to the lighting and temperature difference in the warmly lit living room of Rux's home, you notice two figures sitting together by the fire, both holding steaming cups. In unison, they turn their heads to regard the one who intruded upon their quiet conversation."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN02",
+			"Text": [
+				"Rux and Iso stare back at you, before their surprised faces morph into smiles. Rux sets down his cup on the table with gentle care - a tea with a fragrant spice mix, you note - while Iso is less capable of holding down her brimming excitement. \"Oh, {player.name}, you made it!\" she quips, recovering just barely in time to keep the tea cup from overflowing. You know not what made the pantheress so particularly jubilant, though you suppose learning that one's few allies are safe and sound counts for something. The red panda, still dressed in the very same maroon robe, spots the wooden box you're carrying and simply nods. \"Please, set the box down over there, join us by the fire,\" he says, gesturing to a table by the window, never having moved from his seated position. \"The Mayor and I were having a discussion that I imagine you would like to join in on. But first - would you like some tea, to help banish the autumn chill?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN03A",
+			"Text": [
+				"Rux nods simply, rising from the soft couch and marching wordlessly into the kitchen. Though he is barefoot, wearing naught but the robe, the dark wooden floor boards look like they might retain heat fairly well. You sit down beside Iso, who is busy staring into her teacup, gently swirling the steaming beverage. It appears that the both of you are uncertain as to how to broach the subject, exactly, so it is fortuitous that the Adept returns when he does. Rux passes you a full cup, you take a moment sampling its fragrance, before taking a sip. The tea is hot - quite a welcome feeling - and tastes of spices and a hint of sweetness."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN03B",
+			"Text": [
+				"Rux nods simply, crossing his legs on the soft sofa opposite the fire. Though he is barefoot, wearing naught but the robe, the temperature in the cabin is such that it might even be comfortable to do so. You sit down beside Iso, who is busy staring into her teacup, gently swirling the steaming beverage. It appears that the both of you are uncertain as to how to broach the subject, exactly, so it is fortuitous that the Adept does. Once he finishes taking a sip of his own tea, he sets the cup down again, looks you over, and clears his throat as if to draw attention."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN04",
+			"Text": [
+				"\"We were just discussing you, actually,\" the striped panda says simply, sensing that Iso perhaps is not too eager to initiate the conversation now that you've returned. Understandable, of course; you are about to touch upon a number of sensitive subjects, and the pantheress did get her head stuck halfway down a wolf's gullet last time you met. \"And I would like to hear your side of the story on this one. Likewise, I imagine you have many questions. So, get comfortable, {player.name}; we have much to cover.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN05",
+			"Text": [
+				"The rightful mayor of North Finmer sighs softly, tearing her gaze away from the teacup, fixing it on you instead. \"I'll start with this one, then, {player.name},\" she says, as if offering a warning. \"What happened when we were separated last night? I didn't see you when I fought off that bird fellow. Did- did Willow make it out okay?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN06",
+			"Text": [
+				"Clearly saddened by the news, the ebony-furred feline frowns, resuming her busy act of swirling tea in the cup. \"Such a wonderful woman,\" she mumbles, \"reduced to... u-urk. No. That's...\" Iso remains quiet for a brief moment, before she grits her teeth and, as if a stray ember set powder keg alight, that sorrow morphs into barely-contained fury. \"That fucking dog,\" she snarls, tail flicking against the surface of the couch with a soft thump, not entirely unlike how said canine had snarled at her the other night. \"I am going to-\" she begins, but before she can express her dark desire, Rux raises a paw. \"Restrain yourself,\" he says simply, his gentle voice commanding yet soothing. \"He's not here, and we shall resolve this matter swiftly.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN07",
+			"Text": [
+				"While the pantheress stews quietly in her anger beside you on the sofa, the strange fellow turns to you, an eyebrow raised in either curiosity or suspicion. \"{player.name}, I hear you suffered a lapse in memory. Is this true?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_RETURN08",
+			"Text": [
+				"Rux scratches the side of his muzzle in thought. \"How curious,\" he replies, before taking a breath and continuing. \"Well, let me just say right away that I unfortunately know of no trivial cure for such ailments. I am not a healer by trade, not to mention the mind is a complex thing indeed.\" He studies you for several moments, rust-colored eyes drilling into your very soul. Then, he glances away, resting his gaze on the mayor instead, who appears to have a better grasp on her emotional outburst at this point. Whether the panda was satisfied with what he saw, you know not. \"Let us plug the holes in your memory where we can, then,\" he finishes, sipping his own teacup. \"Ask away.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_ADEPT",
+			"Text": [
+				"The striped panda cracks a faint smile, and nods slowly. \"Indeed. A person who has studied the art of burning amber is known as an Adept. After having dedicated decades of my life to learning the intricacies of the mineral, I count myself among that group.\" He sighs, taking a sip of his tea. \"There aren't many of us. I know of no others in Finmer's territories. Some big cities have schools specifically for training Adepts, but it requires a certain predisposition, not to mention affluence.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_AMBER",
+			"Text": [
+				"The red panda nods at your question, reaching for a shelf behind him. He fetches and passes to you a small shard of a bright orange mineral, not entirely unlike stained glass but heavier and with a strange shimmering air around it. \"Amber,\" he begins, \"is a mineral-like crystal rarely found underground. On its own, it is merely a pretty gem, but skilled Adepts can 'burn' it, as it's called, to do more-or-less supernatural things.\" He holds his paw up, and you return the shard to him. \"Nothing ridiculous like becoming immortal, or creating anything out of thin air, but you can... influence things.\"\\n\\n\"Composing or decomposing materials, enhancing one's body, see the unseen, that sort of thing. Or crafting trickeries, of course; that's how my cabin stays hidden.\" He shakes his head, almost sadly. \"It can be used destructively, too. Killing, stealing, setting fire, corrupting land. Though it is inert and useless in untrained paws, it is because of this threat that the refining and trade of amber is strictly controlled by law. A regrettable but understandable measure.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_AMBER_YOU",
+			"Text": [
+				"Rux raises an eyebrow, a faint smirk forming on his lips. \"A sharp question. These days I study materials sciences, primarily - the art of enhancing the alloys used for weapons and armor beyond what a normal smith could do. Though I've also dabbled in illusions - useful for shows of 'light and fire' at North Finmer's annual winter festival.\" He shakes his head, a chuckle escaping his lips as a mirthful, almost nostalgic smile takes hold. \"It was simple curiosity, at first, sparked by an... incident in my hometown. There was a thief, a gifted youngster. He'd learned how to use simple illusions to take what he wanted. Petty shoplifting, but still, he was caught eventually and received a mild sentence in recognition of his budding talent.\" A short pause follows, the panda seemingly lost in thought for some time. \"The thief was to leave everything behind and move to the city, to formally pursue his fascination with amber and its applications. Suffice to say, that spark led to a lifelong dedication,\" he finishes."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE_EXCESS",
+			"Text": [
+				"The mayor nods sadly. \"Yes, I know. Very excessive indeed. If word gets out that I'm responsible... well. But there were no more options. I could not send my town guard there, because I have no direct jurisdiction over the South Finmer community. I could not just formally block random merchants on a hunch, and I could not openly ask anyone near me to help look into the matter; I'd look insane.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE_PC",
+			"Text": [
+				"The pantheress chuckles darkly. \"Ironically, I'm not the best person to ask, am I?\" She sighs softly, catching herself in the perhaps somewhat unintended sarcasm. \"Well, I needed an outsider's help, because formally taking these severe actions without, well, proper legal evidence, wouldn't do anything but make me look crazy. You weren't from here, and I don't know if you remember, but you did have a grudge against the Red Maw yourself.\" The feline runs a paw through the fur on her head and gives you a cheeky smile. \"So when we met by chance in Edgard's inn, it didn't take a lot of convincing to get you to agree. To be honest, I... did promise you favors in return, too. Ugh, it's so weird having to explain this, your own memories, to you. And I'm sorry to have dragged you into this mess. He wants you dead now, too.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE1",
+			"Text": [
+				"\"Yes,\" the black-furred feline begins simply, \"that.\" She exchanges looks with her confidant, receiving a nod and a smile in return. \"I've already brought Rux up to speed in the time you were 'away'. I'll start from the beginning, since I don't know exactly what you're missing. So.\" Iso takes a breath, perhaps to steady herself, or collect her thoughts - or both. \"Just before Randall and I 'parted', he was all wags and ecstatic about an 'amazing discovery' near South Finmer. Heh, he was always trying to make me happy. He never told me any details about whatever he found, though in his excitement he did let it slip that it was an abandoned mine he wanted to restart.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE2",
+			"Text": [
+				"She glances sideways for a moment in an attempt to bury shame, before turning to deliver the rest of her story to you. \"So when all manner of construction and excavation supplies were heading that way, labelled for 'expansion of South Finmer infrastructure', I knew it was him. I have many ties to neighboring towns, of course, being the mayor, and I knew our southern friends had no such expansion plans, so it was a front for something else. He must have repurposed the place as a hideout of sorts, especially now that he's got his very own little gang going on.\" She huffs a bit, flicking an ear and glancing at the floor as if in shame. \"Admittedly, it was a guess, but while I'll say it's the only conclusion that made sense, I was afraid. Still am, to be honest.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE3",
+			"Text": [
+				"\"It turned out, though, that I was right,\" Iso continues. \"Unfortunately I don't know exactly where it is, but our murderous wolf has made it into a base of operations. Rux and I,\" she begins, glancing sidelong at the red panda, \"...believe what he found is actually a natural amber deposit, based on a somewhat underhanded recruitment drive that went on in South Finmer. An 'anonymous benefactor' promised amber in exchange for dirty work, or so my contacts told me. That stuff is rare and crazy expensive, so someone promising to hand it out for free is... setting off alarm bells, to say the least.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE4",
+			"Text": [
+				"\"So I came up with a rather desperate plan: to cut off the main trade route to South Finmer, and force all shipments going to him to be delayed indefinitely. That's where you came in.\" She chuckles, perhaps a bit forcefully. \"That merchant you rode with, by the way, was the very same one we were trying to stop.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE5",
+			"Text": [
+				"She nods, appearing almost amused at how all these events had turned out. Admittedly, from an outside perspective, this complex conspiracy seems almost outlandish. \"We blew up the bridge, {player.name}. You and I. 'Borrowed' the necessary chemicals from our resident alchemist. I have spare keys to most buildings, so we didn't even have to break in. Then, well, we mixed the reagents, set them alight, and...\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_BRIDGE6",
+			"Text": [
+				"\"He was there, though, along with two henchmen,\" the story continues, Iso's voice taking on a darker tone - one that does not quite suit her lips. \"I don't know how he got there so quickly, he was supposed to be in South Finmer, but, well, seeing what we'd done, he was livid, of course. You... delayed them, actually. Gave me an opening and told me to run for it, so I kind of clambered my way across what was left of the bridge, heh.\" She shakes her head, then rubs her cheek. If anything, she looks fatigued, you muse as the pantheress sips her tea in idle thought. If this insanity is to be believed, you cannot fault her for feeling thusly. \"Randall came after me, of course. Couldn't pass up the chance. Left you to those goons. I was faster than him, though. I don't know what happened to you exactly when we were separated, but you're here now,\" she says with a sad smile - apologetic, perhaps. \"So. That's the story.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_CHIP",
+			"Text": [
+				"Rux laughs warmly, brightening the somewhat dour mood in the room considerably. \"Oh, I hope he didn't scare you. Yes, that dire wolf is a friend of mine, or I suppose a pet if you want to use that terminology. I found him in the woods several years ago - he was much smaller then, and injured quite severely after a bad fight with a competitor, I'm guessing. So I took him in, and as we bonded in a way, he decided to stick around. I named him Chip after the notch in his ear, and he grew over the years, though I may... also have accelerated matters through my field of study. He was always a big pup, but he used to fit inside my cabin...\" Beside you, Iso chuckles, listening in on the story - she knew all this already, of course. \"You forget to mention you also trained him to remove unwanted guests from the premises,\" she cheekily adds. In response to this, the red panda looks away sheepishly, scratching his muzzle. \"Well,\" he says, \"I do occasionally get bandits looking for me. Though the veil helps with keeping them away, I do prefer the area to be safe for myself and others... besides, food is quite expensive; how much do you think that maw fits?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_RANDALL",
+			"Text": [
+				"Azure eyes gaze into yours for some time as Iso considers your question. She was expecting it, of course, but even so, did not have the words prepared. \"He is...\" she begins, before deciding on another course. \"We were together, for some time. A couple years. I... like to think we made a good pair back then. But his affection turned into something cruel and jealous. Possessive, maybe. Eventually I caught him after swallowing a family friend. That swollen gut. They were long gone by then. He said they didn't deserve me. I'm still not sure what to think about that, honestly. But... I cut him out of my life then, fearing for myself, my friends and family, my career. And now he wants me back. Something along the lines of 'if I can't have you, no one can'.\" She sighs and stares off into the void, blinking away the subtlest hint of a tear before resuming her cool and collected exterior, well practiced through many years of serving a considerably stressful public office. \"I loved him. And it pains me to know I'll never have him back.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_SHORE",
+			"Text": [
+				"\"Yes, the Shore...\" At this line of inquiry, the Adept pauses to consider his words carefully. \"I can only tell you what I've heard. It is... an old myth, of a place that is neither here nor there, so to speak. A realm of endless possibility 'in between' reality, just out of reach, yet always there. Legends say that it is the Shore from where amber crystals draw their energy, and furthermore, that to touch it directly is to obtain incredible power. I've never heard of someone managing to actually do that, though.\" He gives you a faint smile, realizing his answer is on the cryptic side. \"Frankly, I sincerely doubt the veracity of the story; there is no evidence of such a place, only hearsay and folk tales. But then again, there is much we do not understand in this world.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_SPIRITS",
+			"Text": [
+				"The first part of the answer comes in the form of a snort. \"Willow tell you that, did she?\" Rux stares out the window for a moment, appearing forlorn. \"We... were good friends, she and I, despite failing to agree on virtually anything. She chose to follow a more... spiritual path to knowledge, whereas I am inclined to not believe in such things. I say these 'spirits' are hogwash; the crystals are mere power sources, nothing more.\" He chuckles, then, recollecting something. \"She'd just give me this gentle smile, so convinced I was wrong. We did not speak often at all, but I will miss her.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_TALK_WILLOW",
+			"Text": [
+				"Iso sighs deeply, rubbing her eyes with a paw. \"You really weren't kidding, by any chance, huh?\" She pauses for several moments, collecting her thoughts. A sniff is the only further response you have to work with - though it may also have just been a response to the changing seasons - before she speaks. \"All I'll say is that I'll need some time to think things over. Whenever I think of *him*, or probably the next time he flashes that gut of his... It... makes things more personal. More so than they already are.\""
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_EXCHANGE_BOOK",
+			"Text": [
+				"Jar'la chuckles in gentle amusement. \"Oh, the book? Yes, I reckon that looks a bit odd for an outside viewer.\" He turns it to you again, the bright pink cover featuring some manner of pie appearing a little out of place in an establishment of this manner. \"Rux and I are colleagues in that we use all manner of reagents to craft things. He focuses more on the application of amber, where I found my calling in the distillation of potions. But our studies have many similarities. So we exchange notes often.\" The reptile gestures to the book. \"Such research is dangerous if misused, so it is often encoded in case it is stolen. Hence this... cookbook.\" The alchemist offers you a warm, mirthful smile."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_EXCHANGE1",
+			"Text": [
+				"\"Ah,\" Jar'la answers simply, quirking an eyebrow. \"You're here on Rux's behalf? I see, he doesn't often have visitors.\" A smirk crosses the old lizard's face then. \"Then again, neither does he leave his cabin at all, really.\" The alchemist takes the book you were offering as payment for the order, and he leans back into his chair with a sigh, absentmindedly flipping through the pages."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_EXCHANGE2",
+			"Text": [
+				"Something catches his eye on one of the many pages - a recipe that, on the surface, appears to be for baking some kind of cheesy bread - and his boredom turns to surprise, then interest. \"Ah, the old bastard read my thoughts again. These will be interesting for my next set of experiments.\" The wizened craftsman snaps the book shut and places it beside him on the counter, to study later. Finally, he turns to you again. \"Thanks, dear {player.species}. One moment.\" He reaches down into a cabinet beside the counter and plucks a nondescript wooden box from it, dumping it on the table with a grunt and a louder clatter than strictly necessary. The box is small enough to carry with ease, and is loaded with vials, canisters and smaller packages you cannot identify with your untrained eye."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_EXCHANGE3",
+			"Text": [
+				"\"So then,\" the shopkeeper finishes, clasping his hands together. \"Please do pass my well-wishes on to Rux. He really needs to step outside that cabin of his, cozy as the fireplace is.\" He sighs and stares past you for a brief moment, out the window. \"The old bugger and I need to have tea some time soon. Ah, well, but don't let me bother  you with all that nonsense. Is there anything else I can help you with?\""
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_STEAL_DAYTIME",
+			"Text": [
+				"Since Jar'la is no longer in business, so to speak, you will need to break into his old shop and steal what you need. Doing so in broad daylight, however, is a little excessive and risky. Come back at night."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_STEAL1",
+			"Text": [
+				"Under the cover of night, you force your way into the shop that had once been welcoming - until your intervention. The front door was locked, presumably by the town guard, but that issue is easily circumvented with a well-placed kick. Luckily, the town guard isn't around to ask questions nor hear your lack of subtlety. So it is that you step into the shop's front room, where merchandise used to be displayed. Most of it has been taken since, perhaps for storage elsewhere, leaving barren shelves and a foreboding atmosphere."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_STEAL2",
+			"Text": [
+				"You spend a solid hour rummaging through shelves and cabinets, all the while trying not to make too much noise. You are most certainly trespassing, after all, so it would be best to not attract unwanted attention. Speed is of the essence, likewise - more time spent searching through a dead alchemist's belongings is more time the town guard has to catch you. Luckily, with your Wits about you, you finally manage to track down what you were looking for. In a cabinet behind the counter, the late shopkeeper had stashed away a small wooden box with a bunch of random-looking items in it - at least, to your untrained eye - but the giveaway is the name 'Rux' engraved on the side. With nothing else to go on, you take the container for yourself, hoping it is indeed what the Adept is looking for, and leave."
+			]
+		},
+		{
+			"Key": "MQ04_ALCH_STEAL3",
+			"Text": [
+				"Some time later, you return to the town's west square, having successfully plundered what little remains of the alchemist's legacy. Oh well. Best bring these items to Rux, and hope he does not ask any annoying questions about how the exchange went."
 			]
 		},
 		{
@@ -253,6 +529,12 @@
 			"Key": "MQ04_CHIP_OV06",
 			"Text": [
 				"Your face presses into a tightly sealed sphincter with a nasty squelch. Somewhat reluctantly, the ring widens for you - not quite enough to fit comfortably, but with your thoroughly slime-coated body, gravity combined with a few peristaltic squeezes is enough to shunt you forward. Chyme and partially digested sludge splashes about as you settle within and conform to the organ's shape; it seems the stomach is still far from empty. Bathing in this lukewarm, acidic muck, you try not to focus too much on the chunky stew sloshing around you. The digestive organ, though, gives you little choice in the matter when it begins clamping down, rippling waves of muscular pressure kneading you into a ball of meat as if you are no different from the rest of it. And in truth, that is exactly what you've been reduced to: whether you had not realized, or chose this anyway, you should have known that the dire wolf's stomach would not be a safe place to stay when he is already processing another meal."
+			]
+		},
+		{
+			"Key": "TIP_MQ04_TALK_OPTIONAL",
+			"Text": [
+				"< Tip: You can also ask these questions later, if you prefer. >"
 			]
 		}
 	]

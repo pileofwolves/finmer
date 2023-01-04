@@ -360,6 +360,10 @@
 							"!Type": "CommandSetLocation",
 							"OperandMode": "Literal",
 							"OperandText": "Forest, Rux's Cabin"
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "TimedCheckpoint(\"FOREST_ADEPT\")"
 						}
 					]
 				},
@@ -377,14 +381,28 @@
 						"Tooltip": "Step inside Rux's cabin.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_ADEPT_ENTER02",
+									"IsRaw": false
+								}
+							]
+						},
 						"ScriptAppear": {
 							"!Type": "ScriptDataInline",
-							"Script": "-- Can only enter after Jar'la is visited\r\nreturn Storage.GetNumber(\"MQ04\") >= 2"
+							"Script": "-- Can only enter after Jar'la is visited\r\nreturn Storage.GetNumber(\"MQ04\") >= 3\r\n    or Player:HasItem(\"I_MQ04_AlchSupplies\")"
 						},
 						"Children": [
 							{
-								"NodeType": "State",
-								"Children": []
+								"NodeType": "Link",
+								"LinkTarget": "MQ04_Return"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Cabin_Main"
 							}
 						]
 					},
@@ -587,6 +605,36 @@
 																			"!Type": "CommandLog",
 																			"Text": "MQ04_ADEPT_BEDSIDE_END03",
 																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandIf",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "TOWN_ALCH_DEAD",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": true
+																				}
+																			],
+																			"HasElseBranch": true,
+																			"MainSubgroup": [
+																				{
+																					"!Type": "CommandPlayerSetItem",
+																					"ItemGuid": "4e63571f-d681-4738-86bb-116e57993c75",
+																					"Add": true,
+																					"Quiet": false
+																				}
+																			],
+																			"ElseSubgroup": [
+																				{
+																					"!Type": "CommandPlayerSetItem",
+																					"ItemGuid": "c01a169f-6a86-47ec-bffd-b7036da80147",
+																					"Add": true,
+																					"Quiet": false
+																				}
+																			]
 																		}
 																	]
 																},
@@ -840,8 +888,286 @@
 			},
 			{
 				"NodeType": "State",
-				"Key": "MQ04_Real_Talk",
-				"Children": []
+				"Key": "MQ04_Return",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandComment",
+							"Comment": "Log message already shown by 'Entry_C_Cabin' node"
+						},
+						{
+							"!Type": "CommandPlayerSetItem",
+							"ItemGuid": "baef8361-87cb-460d-80a5-6d8e4bca404a",
+							"Add": false
+						},
+						{
+							"!Type": "CommandVarSetNumber",
+							"VariableName": "MQ04",
+							"ValueOperation": "Set",
+							"OperandMode": "Literal",
+							"OperandLiteral": 3.0
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetNumber(\"MQ04\") == 2"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "MQ04_C_Return01",
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Return01",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_RETURN01",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Return02",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Return02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_RETURN02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Return03A",
+														"Title": "Yes",
+														"Tooltip": "Sure thing.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Return03A",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_RETURN03A",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ04_C_Return04",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ04_R_Return04",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_RETURN04",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ04_C_Return05",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ04_R_Return05",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_ADEPT_RETURN05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ04_C_Return06",
+																										"Title": "Gentle",
+																										"Tooltip": "Say that she did not make it out, so that we could.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ04_R_Return06",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_ADEPT_RETURN06",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ04_C_Return07",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ04_R_Return07",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ04_ADEPT_RETURN07",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "MQ04_C_Return08",
+																																		"Title": "Continue",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAction": {
+																																			"!Type": "ScriptDataInline",
+																																			"Script": "Log(\"MQ04_ADEPT_RETURN08\")\r\nLogSplit()\r\nLog(\"TIP_MQ04_TALK_OPTIONAL\", Color.Highlight)"
+																																		},
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "Talk_R_Main"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ04_C_Return06B",
+																										"Title": "Neutral",
+																										"Tooltip": "Say that Randall swallowed her.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "MQ04_R_Return06"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ04_C_Return06C",
+																										"Title": "Snarky",
+																										"Tooltip": "Say that she's well on her way sloshing through wolf intestines by now.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "MQ04_R_Return06"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Return03B",
+														"Title": "No",
+														"Tooltip": "Politely decline.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Return03B",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_RETURN03B",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ04_C_Return04"
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
 			},
 			{
 				"NodeType": "State",
@@ -991,6 +1317,11 @@
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
 										{
+											"!Type": "CommandSetInventoryEnabled",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
 											"!Type": "CommandSaveCheckpoint"
 										},
 										{
@@ -1008,6 +1339,1072 @@
 									{
 										"NodeType": "Link",
 										"LinkTarget": "Entry_C_Chip"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Cabin_Main",
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_Leave",
+						"Title": "Leave",
+						"Tooltip": "Return to the wilderness beyond the doorway.",
+						"Highlight": false,
+						"ButtonWidth": 0.75,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_ADEPT_EXIT",
+									"IsRaw": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Entry_R_Main"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_Talk",
+						"Title": "Talk",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Main"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_Rest",
+						"Title": "Rest",
+						"Tooltip": "Sit by the fire a moment and record your progress.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Cabin_R_Rest",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandPlayerHealAll"
+										},
+										{
+											"!Type": "CommandSaveDialog"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_REST",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_Leave"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_Talk"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Talk_R_Main",
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Leave",
+						"Title": "Done",
+						"Tooltip": "No more questions for now.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Plan01",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetNumber",
+											"VariableName": "MQ04",
+											"ValueOperation": "Set",
+											"OperandMode": "Literal",
+											"OperandLiteral": 4.0
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_PLAN01",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarNumber",
+											"VariableName": "MQ04",
+											"Operator": "Equal",
+											"OperandMode": "Literal",
+											"OperandLiteral": 3.0
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Plan02",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Plan02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_PLAN02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Plan03",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Plan03",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_PLAN03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ04_C_Plan04",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ04_R_Plan04",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_PLAN04",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ04_C_Plan05",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ04_R_Plan05",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_ADEPT_PLAN05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ04_C_Plan06",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ04_R_Plan06",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_ADEPT_PLAN06",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ04_C_Plan07A",
+																														"Title": "Confident",
+																														"Tooltip": "You'll get it done quickly and quietly.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ04_R_Plan07",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ04_ADEPT_PLAN07",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "MQ04_C_Plan08",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "MQ04_R_Plan08",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataVisualAction",
+																																					"Nodes": [
+																																						{
+																																							"!Type": "CommandLog",
+																																							"Text": "MQ04_ADEPT_PLAN08",
+																																							"IsRaw": false
+																																						},
+																																						{
+																																							"!Type": "CommandJournalClose",
+																																							"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849"
+																																						},
+																																						{
+																																							"!Type": "CommandJournalUpdate",
+																																							"JournalGuid": "d127b368-5ed9-4e1d-b389-4842632b2c4b",
+																																							"Stage": 10
+																																						}
+																																					]
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "MQ04_C_Plan09",
+																																						"Title": "Done",
+																																						"Tooltip": "You have your mission, and they have theirs.",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"ScriptAction": {
+																																							"!Type": "ScriptDataVisualAction",
+																																							"Nodes": [
+																																								{
+																																									"!Type": "CommandLog",
+																																									"Text": "MQ04_ADEPT_PLAN09",
+																																									"IsRaw": false
+																																								},
+																																								{
+																																									"!Type": "CommandPlayerSetItem",
+																																									"ItemGuid": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
+																																									"Add": true,
+																																									"Quiet": false
+																																								},
+																																								{
+																																									"!Type": "CommandPlayerSetItem",
+																																									"ItemGuid": "4505f0d0-d81b-402a-98fc-89951d01de84",
+																																									"Add": true,
+																																									"Quiet": false
+																																								}
+																																							]
+																																						},
+																																						"Children": [
+																																							{
+																																								"NodeType": "Link",
+																																								"LinkTarget": "Cabin_Main"
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ04_C_Plan07B",
+																														"Title": "Pessimistic",
+																														"Tooltip": "They had better think of a backup plan.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "MQ04_R_Plan07"
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ04_C_Plan07C",
+																														"Title": "Vengeful",
+																														"Tooltip": "You're done running.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "MQ04_R_Plan07"
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Cabin_Main"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Rux_Root",
+						"Title": "Talk to Rux",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Rux_Root",
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Leave",
+										"Title": "(Back)",
+										"Highlight": false,
+										"ButtonWidth": 0.7,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Adept",
+										"Title": "Adept",
+										"Tooltip": "Ask if he is an Adept, and what that title even means.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_ADEPT",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_ADEPT",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_ADEPT",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Amber",
+										"Title": "Amber",
+										"Tooltip": "Ask what the amber crystals are, and why they are so important.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_AMBER",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Rux_Amber",
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Rux_Amber02A",
+														"Title": "Purpose",
+														"Tooltip": "Ask what he uses it for.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Talk_R_Rux_Amber02",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_TALK_AMBER_YOU",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Talk_C_Rux_Amber03",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Talk_R_Rux_Root"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Rux_Amber02B",
+														"Title": "History",
+														"Tooltip": "Ask how he came to choose this field of study.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Talk_R_Rux_Amber02"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Shore",
+										"Title": "Shore",
+										"Tooltip": "Ask him for his take on the mystical Shore that Willow mentioned.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_SHORE",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_SHORE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_SHORE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Spirits",
+										"Title": "Spirits",
+										"Tooltip": "Ask him what he thinks about the spirits that some hold sacred.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_SPIRITS",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_SPIRITS",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_SPIRITS",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Chip",
+										"Title": "Guard Wolf",
+										"Tooltip": "Ask about the giant wolf you met outside.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_CHIP",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_CHIP",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_CHIP",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "FOREST_DIREWOLF_DEAD",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Iso_Root",
+						"Title": "Talk to Iso",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Iso_Root",
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Talk_C_Rux_Leave"
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Iso_Bridge1",
+										"Title": "Bridge Incident",
+										"Tooltip": "Ask her to recap the whole story.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_BRIDGE1",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Iso_Bridge1",
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Iso_Bridge2",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Talk_R_Iso_Bridge2",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ADEPT_TALK_BRIDGE2",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Talk_C_Iso_Bridge3",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Talk_R_Iso_Bridge3",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ04_ADEPT_TALK_BRIDGE3",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Talk_C_Iso_Bridge4",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Talk_R_Iso_Bridge4",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ04_ADEPT_TALK_BRIDGE4",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Talk_C_Iso_Bridge5",
+																										"Title": "And then?",
+																										"Tooltip": "Continue the story.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Talk_R_Iso_Bridge5",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_ADEPT_TALK_BRIDGE5",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Talk_C_Iso_Bridge6",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ04_ADEPT_TALK_BRIDGE6",
+																																	"IsRaw": false
+																																}
+																															]
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "Talk_R_Iso_Root"
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Talk_C_Iso_Bridge_Ex",
+																										"Title": "Drastic Measures",
+																										"Tooltip": "Ask if this decision wasn't a bit excessive.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ04_ADEPT_TALK_BRIDGE_EXCESS",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Talk_R_Iso_Bridge_Ex",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_ADEPT_TALK_BRIDGE_EXCESS",
+																															"IsRaw": false
+																														},
+																														{
+																															"!Type": "CommandVarSetFlag",
+																															"VariableName": "MQ04_ADEPT_TALK_BRIDGE_EXCESS",
+																															"OperandMode": "Literal",
+																															"OperandLiteral": true
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Talk_C_Iso_Bridge5"
+																													},
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Talk_C_Iso_Bridge_PC"
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Talk_C_Iso_Bridge_PC",
+																										"Title": "Your Involvement",
+																										"Tooltip": "Ask how she'd convinced you to take part in all this.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ04_ADEPT_TALK_BRIDGE_PC",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Talk_R_Iso_Bridge_PC",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_ADEPT_TALK_BRIDGE_PC",
+																															"IsRaw": false
+																														},
+																														{
+																															"!Type": "CommandVarSetFlag",
+																															"VariableName": "MQ04_ADEPT_TALK_BRIDGE_PC",
+																															"OperandMode": "Literal",
+																															"OperandLiteral": true
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Talk_C_Iso_Bridge5"
+																													},
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Talk_C_Iso_Bridge_Ex"
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Iso_Willow",
+										"Title": "Willow",
+										"Tooltip": "Ask her if she's doing alright after the other night.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_WILLOW",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_WILLOW",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_WILLOW",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Iso_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Iso_Randall",
+										"Title": "Randall",
+										"Tooltip": "Ask her how she relates to the wolf, exactly.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ04_ADEPT_TALK_RANDALL",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ04_ADEPT_TALK_RANDALL",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ04_ADEPT_TALK_RANDALL",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Iso_Root"
+											}
+										]
 									}
 								]
 							}

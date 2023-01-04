@@ -73,9 +73,14 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "SetScene(\"Scene_TownAlch\")"
+							"Script": "local mq04_must_steal = Storage.GetNumber(\"MQ04\") == 1\r\n    and Storage.GetFlag(\"TOWN_ALCH_DEAD\")\r\n\r\nif mq04_must_steal and not GetIsNight() then\r\n    Log(\"MQ04_ALCH_STEAL_DAYTIME\")\r\nelse\r\n    SetScene(\"Scene_TownAlch\")\r\nend"
 						},
-						"Children": []
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Main"
+							}
+						]
 					},
 					{
 						"NodeType": "Choice",
@@ -133,7 +138,7 @@
 												"Key": "Pit_R_GiveToken",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EVoreStyle.OV, true)"
+													"Script": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 												},
 												"Children": [
 													{
@@ -180,7 +185,7 @@
 																								"Key": "Pit_R_GiveToken4",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"CR_Town_Pit_RechFatal\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player, true)\r\nstate:Begin()"
+																									"Script": "Log(\"TOWN_PIT_RECH_TOKEN_VORE2\")\r\n\r\n-- Start a battle with the player eaten by Rech.\r\n-- The player is not expected to survive the combat.\r\nlocal rech = Creature(\"CR_Town_Pit_RechFatal\")\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(rech)\r\nstate:SetVored(rech, Player)\r\nstate:Begin()"
 																								},
 																								"Children": []
 																							}

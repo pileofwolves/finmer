@@ -13,14 +13,121 @@
 		"Children": [
 			{
 				"NodeType": "State",
-				"Key": "Abandoned",
+				"Key": "MQ04_Steal",
 				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "if Storage.GetFlag(\"town_alch_stolen\") then\r\n    -- this is not the player's first visit to the now-empty place\r\n    Log(\"town_alch_abandoned\")\r\nend"
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ04_ALCH_STEAL1",
+							"IsRaw": false
+						}
+					]
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetFlag(\"town_alch_dead\")"
+					"Script": "return Storage.GetFlag(\"TOWN_ALCH_DEAD\") and Storage.GetNumber(\"MQ04\") == 1"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "MQ04_C_Steal2",
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Steal2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ALCH_STEAL2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Steal3",
+										"Title": "Leave",
+										"Tooltip": "Nothing left to do here.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Steal3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ALCH_STEAL3",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandPlayerSetItem",
+															"ItemGuid": "baef8361-87cb-460d-80a5-6d8e4bca404a",
+															"Add": true,
+															"Quiet": false
+														},
+														{
+															"!Type": "CommandVarSetNumber",
+															"VariableName": "MQ04",
+															"ValueOperation": "Set",
+															"OperandMode": "Literal",
+															"OperandLiteral": 2.0
+														},
+														{
+															"!Type": "CommandJournalUpdate",
+															"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+															"Stage": 30
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Steal_Leave",
+														"Title": "Continue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandSetScene",
+																	"SceneGuid": "2b113d7d-464f-4033-9a89-b50048eccb01",
+																	"SceneName": "Scene_TownWSQ"
+																}
+															]
+														},
+														"Children": []
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Abandoned",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"TOWN_ALCH_ABANDONED\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"TOWN_ALCH_DEAD\")"
 				},
 				"Children": [
 					{
@@ -114,7 +221,7 @@
 						"ButtonWidth": 1.0,
 						"ScriptAppear": {
 							"!Type": "ScriptDataInline",
-							"Script": "return Storage.GetNumber(\"sq01\") == 0"
+							"Script": "-- Disable SQ01 while MQ04 is ongoing, so PC can't kill alchemist\r\nreturn Storage.GetNumber(\"SQ01\") == 0\r\n    and Storage.GetNumber(\"MQ04\") ~= 1"
 						},
 						"Children": [
 							{
@@ -286,7 +393,7 @@
 																												"Key": "FightWon_R_Loot",
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
-																													"Script": "Storage.SetFlag(\"town_alch_stolen\", true)\r\nLog(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_SQ01_AlchSupplies\")\r\nPlayer:GiveItem(\"I_Amber01\")"
+																													"Script": "Log(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_Amber01\")"
 																												},
 																												"Children": [
 																													{
@@ -573,6 +680,143 @@
 									{
 										"NodeType": "Link",
 										"LinkTarget": "SQ01_C_Reward_Close"
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "MQ04_C_Exchange1",
+						"Title": "Rux's Order",
+						"Tooltip": "Forward the request Rux had made, and give the alchemist the cookbook.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionPlayerHasItem",
+									"ItemGuid": "c01a169f-6a86-47ec-bffd-b7036da80147"
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ04_R_Exchange1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ALCH_EXCHANGE1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ04_C_Exchange2",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ04_R_Exchange2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ALCH_EXCHANGE2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Exchange_Book",
+														"Title": "Cookbook",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ04_R_Exchange_Book",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ04_ALCH_EXCHANGE_BOOK",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ04_C_Exchange_Done"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ04_C_Exchange_Done",
+														"Title": "Finish",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ04_ALCH_EXCHANGE3",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandPlayerSetItem",
+																	"ItemGuid": "c01a169f-6a86-47ec-bffd-b7036da80147",
+																	"Add": false
+																},
+																{
+																	"!Type": "CommandPlayerSetItem",
+																	"ItemGuid": "baef8361-87cb-460d-80a5-6d8e4bca404a",
+																	"Add": true,
+																	"Quiet": false
+																},
+																{
+																	"!Type": "CommandVarSetNumber",
+																	"VariableName": "MQ04",
+																	"ValueOperation": "Set",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": 2.0
+																},
+																{
+																	"!Type": "CommandJournalUpdate",
+																	"JournalGuid": "91d32e80-0d61-45d3-8d5f-a6f810689849",
+																	"Stage": 30
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Main"
+															}
+														]
+													}
+												]
+											}
+										]
 									}
 								]
 							}

@@ -1,0 +1,10 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "4e63571f-d681-4738-86bb-116e57993c75",
+	"AssetName": "I_MQ04_RuxBookSellable",
+	"ObjectName": "Cookbook",
+	"FlavorText": "A collection of what appear to be recipes for various exotic dishes, bound with a light pink hardcover. While Jar'la was the intended recipient, he is in no state to accept the book, so it is now yours to do with as you please.",
+	"ItemType": "Generic",
+	"PurchaseValue": 7,
+	"IsQuestItem": false
+}

@@ -1,0 +1,10 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "c01a169f-6a86-47ec-bffd-b7036da80147",
+	"AssetName": "I_MQ04_RuxBook",
+	"ObjectName": "Cookbook",
+	"FlavorText": "A collection of what appear to be recipes for various exotic dishes, bound with a light pink hardcover. Some of the ingredient lists suggest bizarre combinations, or even entire other dishes from the same book. Unusual, but maybe tasty?",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": true
+}

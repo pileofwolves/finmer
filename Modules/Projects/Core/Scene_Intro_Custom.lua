@@ -37,3 +37,11 @@ local function DebugCompleteMQ03()
     Storage.SetFlag("MQ03_TEMPLE_EVENT", true)
     Storage.SetFlag("MQ03_DONE", true)
 end
+
+local function DebugStartMQ04()
+    DebugCompleteMQ03()
+    Storage.SetNumber("MQ04", 1)
+    Storage.SetNumber("SQ02", 999)
+    Storage.SetFlag("FOREST_ADEPT_FIRST", true)
+    Player:GiveItem("I_MQ04_RuxBook")
+end

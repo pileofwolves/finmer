@@ -8,6 +8,7 @@
 
 using System;
 using System.Linq;
+using System.Runtime.ExceptionServices;
 using System.Windows;
 using Finmer.Gameplay;
 using Finmer.Gameplay.Scripting;
@@ -69,6 +70,7 @@ namespace Finmer
         }
 
         [UsedImplicitly]
+        [HandleProcessCorruptedStateExceptions]
         private static void Program_UnhandledException(object sender, UnhandledExceptionEventArgs e)
         {
             // Make sure the object is actually an Exception

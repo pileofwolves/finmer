@@ -23,7 +23,7 @@ namespace Finmer.Gameplay.Scripting
     /// <summary>
     /// Represents a Lua context.
     /// </summary>
-    public class ScriptContext : IDisposable
+    public sealed class ScriptContext : IDisposable
     {
 
         /// <summary>
@@ -36,6 +36,7 @@ namespace Finmer.Gameplay.Scripting
         private readonly Dictionary<Guid, PinnedScriptableObject> m_PinnedObjects = new Dictionary<Guid, PinnedScriptableObject>();
 
         private GCHandle m_GCPin;
+        private bool m_IsDisposed;
 
         public ScriptContext()
         {
@@ -76,8 +77,27 @@ namespace Finmer.Gameplay.Scripting
 
         public void Dispose()
         {
+            // Run the finalizer only once
+            if (m_IsDisposed)
+                return;
+
+            // Release owned resources
+            foreach (var resource_ref in m_OwnedResources)
+                if (resource_ref.TryGetTarget(out var resource))
+                    resource.Dispose();
+
+            // Release internal Lua state, calling all remaining Lua finalizers
             ReleaseUnmanagedResources();
+
+            // Release all pinned memory now that unmanaged code no longer references it
+            m_GCPin.Free();
+            m_PinnedDelegates.ForEach(handle => handle.Free());
+            m_PinnedDelegates.Clear();
+            m_PinnedObjects.Clear();
+
+            // Avoid running the finalizer again
             GC.SuppressFinalize(this);
+            m_IsDisposed = true;
         }
 
         /// <summary>
@@ -321,22 +341,11 @@ namespace Finmer.Gameplay.Scripting
 
         private void ReleaseUnmanagedResources()
         {
-            // Release owned resources
-            foreach (var resource_ref in m_OwnedResources)
-                if (resource_ref.TryGetTarget(out var resource))
-                    resource.Dispose();
-
             // Destroy the Lua state
-            lua_close(LuaState);
+            if (LuaState != IntPtr.Zero)
+                lua_close(LuaState);
+
             LuaState = IntPtr.Zero;
-
-            // Release the pinned GC handle
-            m_GCPin.Free();
-
-            // Since all userdata has been released, we do not need the pinned ScriptableObjects anymore
-            m_PinnedDelegates.ForEach(handle => handle.Free());
-            m_PinnedDelegates.Clear();
-            m_PinnedObjects.Clear();
         }
 
         /// <summary>

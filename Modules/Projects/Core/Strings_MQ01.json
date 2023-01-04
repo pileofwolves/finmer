@@ -78,7 +78,7 @@
 		{
 			"Key": "MQ01_SETUP_BRIDGE",
 			"Text": [
-				"{questgiver} nods, seemingly a little confused by the news {questgiver.object}self. \"Yes, just like that. Supposedly some people heard an explosion last night, even, so it sounds intentional, right? The town guard haven't managed to catch anyone yet, though. I went down to check this morning, myself: there's a giant hole in the center now. Definitely not safe for crossing.\""
+				"{questgiver} nods, seemingly a little confused by the news {questgiver.object}self. \"Yes, just like that. Many people heard an explosion last night, even, myself included, so it sounds intentional, right? The town guard haven't managed to catch anyone yet, though. I went down to check this morning, myself: there's a giant hole in the center now. Still standing, but definitely not safe for crossing.\""
 			]
 		},
 		{

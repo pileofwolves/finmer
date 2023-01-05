@@ -19,7 +19,7 @@ namespace Finmer.ViewModels
     /// <summary>
     /// View model for the title screen page.
     /// </summary>
-    public sealed class TitlePageViewModel : WelcomePageViewModel
+    public sealed class TitlePageViewModel : CommonNavigatorViewModel
     {
 
         /// <summary>
@@ -113,7 +113,7 @@ namespace Finmer.ViewModels
 
             // Launch the session using the save data
             GameController.BeginNewSession(snapshot);
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            NavigationUtilities.NavigateToGame();
         }
 
         private static bool CanLoadGame(object args)

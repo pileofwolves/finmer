@@ -6,8 +6,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using Finmer.ViewModels;
-
 namespace Finmer.Views
 {
 
@@ -20,9 +18,6 @@ namespace Finmer.Views
         public WelcomePage()
         {
             InitializeComponent();
-
-            // Set up data context
-            DataContext = new WelcomePageViewModel();
         }
 
     }

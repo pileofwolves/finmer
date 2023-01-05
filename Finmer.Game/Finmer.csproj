@@ -128,6 +128,7 @@
     <Compile Include="ViewModels\JournalItemViewModel.cs" />
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\NavigationUtilities.cs" />
     <Compile Include="ViewModels\SavePageViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\SpeciesPresetViewModel.cs" />
@@ -135,6 +136,7 @@
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
+    <Compile Include="ViewModels\CommonNavigatorViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />

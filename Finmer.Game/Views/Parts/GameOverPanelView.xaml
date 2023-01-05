@@ -61,10 +61,10 @@
             </StackPanel.Resources>
             <Button
                 Content="Reload Last Checkpoint"
-                Command="{Binding ReloadCommand}" />
+                Command="{Binding ReloadCheckpointCommand}" />
             <Button
                 Content="Exit to Menu"
-                Command="{Binding ExitCommand}" />
+                Command="{Binding NavigateToMenuCommand}" />
         </StackPanel>
     </Grid>
 </UserControl>

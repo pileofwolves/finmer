@@ -13,6 +13,7 @@ using Finmer.Core;
 using Finmer.Gameplay;
 using Finmer.Models;
 using Finmer.Utility;
+using Finmer.ViewModels;
 using Finmer.Views.Base;
 using JetBrains.Annotations;
 
@@ -117,7 +118,7 @@ namespace Finmer.Views
             // Launch the session
             GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag(), new PropertyBag());
             GameController.BeginNewSession(save_data);
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            NavigationUtilities.NavigateToGame();
         }
 
         [NotifyPropertyChangedInvocator]

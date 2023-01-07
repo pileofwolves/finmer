@@ -460,6 +460,36 @@
 			]
 		},
 		{
+			"Key": "MQ04_CHIP_ENDO1",
+			"Text": [
+				"The organ is comfortable to sit in only because of the soft, velvety texture of the spongy walls surrounding you. Not at all unlike a hammock, you are suspended in its tight, sweltering embrace. As the fleshy chamber begins gently churning its contents, the center of gravity shifts with Chip changing position."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_ENDO2",
+			"Text": [
+				"Nothing much is happening inside the wolf's stomach - that is, if you disregard the thundering heartbeat somewhere above you, and the fact that these slimy rubbery sheets of flesh completely refuse to stay still. Ordinarily you might've been worried about the slime and drool sloshing about with you, though you are so utterly soaked with the goop at this point that avoiding it has become irrelevant entirely."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_ENDO3",
+			"Text": [
+				"You open your eyes, realizing only then that you must've dozed off for a little while. It takes you a brief moment to remember the fact that you got yourself sloshing about inside the stomach of a dire wolf - and by some miracle, you are still in one piece after having spent however many hours in here. As if on cue, the chamber caves inwards, wrapping you in a coccoon of throbbing meat, though you soon realize it is shunting you upwards."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_ENDO4",
+			"Text": [
+				"Chip's guts - or perhaps his throat, it is difficult to tell the difference when you are soaked in drool as you are - convulse and shift, clearly propelling you somewhere. It is only when your head emerges into the predator's open maw, that you realize he is in fact retching quite loudly in an attempt to release you from your gurgling prison. The thick layer of slime coating you serves as excellent lubrication, if the speed by which you are being regurgitated is any indication. With surprising ease, you slide right across the canine's soft, undulating tongue, past his sharp fangs, into a grassy, drool-soaked patch on the ground. The temperature difference is almost painful - the fluid sticking to your {player.fur} quickly sapping heat, and you find yourself almost longing for the tight warmth of the dire wolf once more. The predator in question, meanwhile, gives you one more playful lick before he turns tail, teasingly waves his fluffy butt, and trots back off to his usual sleeping spot. You would've sworn you saw him winking."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_ENDO5",
+			"Text": [
+				"You try rubbing off some of the saliva coating you, using grass and dirt as makeshift drying tool, though it is of little use. You'd need a proper bath to get rid of the smell of dog guts. Ah well, it seems like the wolf left you in safe territories at least - in fact you did not move anywhere at all. The Adept's cabin is just off to the side, and you can head south to leave the clearing."
+			]
+		},
+		{
 			"Key": "MQ04_CHIP_FEED01",
 			"Text": [
 				"As soon as you step out in the open, the giant wolf is right there, peeking around the corner of the cabin. You've barely had time to shut the door behind you, in some attempt to not let Rux's attempts at heating his home go to waste, before the monstrosity known as Chip is all over you. In a surprisingly puppy-like behavior, he lowers his head in between stretched front legs, raising his rump up in the air while his tail wags in a decidedly un-wolf-like manner."
@@ -496,6 +526,18 @@
 			]
 		},
 		{
+			"Key": "MQ04_CHIP_NOTE_ENDO",
+			"Text": [
+				"As you sink your paws into the giant wolf's thick fur coat, the noisy stomach gurgles in response, as if calling for you. It must've been a while since the beast last had a meal, so the noisy organ sputters back to life in the presence of something more or less edible. You just hope the big pup will be gentle as you continue to pet him."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_NOTE_FATAL",
+			"Text": [
+				"As you sink your paws into the giant wolf's thick fur coat, you hear - and feel - his noisy stomach working at the food you had just offered. The organ shifts, gurgles and glorps, no doubt quite busy processing this latest snack, like so many countless others before it. It would no doubt be rather unpleasant inside - you might even consider coming back later."
+			]
+		},
+		{
 			"Key": "MQ04_CHIP_OV01",
 			"Text": [
 				"You walk around the oversized guard dog, taking note of how his deep yellow eyes track your every movement, before you stop right around his midsection. Slowly, making sure to both the predator and yourself that there would be no undesirable surprises, you press your paws into his belly, and you find yourself somewhat surprised at just how soft and doughy that gut is. On the outside, he certainly does not look the part, but the wolf has a healthy layer of pudge for tougher times. Either that, or his diet of random adventurers is somewhat more prevalent than you might have initialy assumed. Chip, for his part, rumbles approvingly. One of his front paws moves to hook around your middle, gently pulling you in closer, but by no means forcefully."
@@ -516,7 +558,7 @@
 		{
 			"Key": "MQ04_CHIP_OV04",
 			"Text": [
-				"Somewhere above you - or perhaps to your side, it's hard to tell - the wolf's stomach gurgles and rumbles ominously. It is already hard at work on the platter of food you'd deposited into the feral earlier. Fluids slosh around inside as the organs work and the wolf himself shifts. You did want to be closer to that belly, after all. With a happy sigh, amplified through your physical contact, the wolf finally relents before the lack of breathable air becomes a real problem. Chip rises to all fours again, with you directly below him, and as you rub your eyes and the cold forest air rushes over you again, you find yourself almost longing for that warm, furry blanket. But when you open your eyes once more, expecting to see a sheepish, satisfied wolf, you instead see a pair of wide open jaws, dribbling drool, rushing right for you."
+				"Somewhere above you - or perhaps to your side, it's hard to tell - the wolf's stomach gurgles and rumbles ominously. Going by the sounds alone, you might think it is hard at work on something substantial. Fluids slosh around inside as the organs work and the wolf himself shifts. You did want to be closer to that belly, after all. With a happy sigh, amplified through your physical contact, the wolf finally relents before the lack of breathable air becomes a real problem. Chip rises to all fours again, with you directly below him, and as you rub your eyes and the cold forest air rushes over you again, you find yourself almost longing for that warm, furry blanket. But when you open your eyes once more, expecting to see a sheepish, satisfied wolf, you instead see a pair of wide open jaws, dribbling drool, rushing right for you."
 			]
 		},
 		{
@@ -529,6 +571,12 @@
 			"Key": "MQ04_CHIP_OV06",
 			"Text": [
 				"Your face presses into a tightly sealed sphincter with a nasty squelch. Somewhat reluctantly, the ring widens for you - not quite enough to fit comfortably, but with your thoroughly slime-coated body, gravity combined with a few peristaltic squeezes is enough to shunt you forward. Chyme and partially digested sludge splashes about as you settle within and conform to the organ's shape; it seems the stomach is still far from empty. Bathing in this lukewarm, acidic muck, you try not to focus too much on the chunky stew sloshing around you. The digestive organ, though, gives you little choice in the matter when it begins clamping down, rippling waves of muscular pressure kneading you into a ball of meat as if you are no different from the rest of it. And in truth, that is exactly what you've been reduced to: whether you had not realized, or chose this anyway, you should have known that the dire wolf's stomach would not be a safe place to stay when he is already processing another meal."
+			]
+		},
+		{
+			"Key": "MQ04_CHIP_OV06_SAFE",
+			"Text": [
+				"Your face presses into a tightly sealed sphincter with a nasty squelch. Somewhat reluctantly, the ring widens for you - not quite enough to fit comfortably, but with your thoroughly slime-coated body, gravity combined with a few peristaltic squeezes is enough to shunt you forward. Hot, sticky sludge splashes about as you settle within and conform to the organ's shape; the stomach seems more or less free of foodstuff - barring yourself - but that never stopped the pulsating walls from secreting lukewarm, thick slime that you now bathe in. The fleshy organ, meanwhile, punctuates your sloppy welcome when it begins clamping down, rippling waves of muscular pressure kneading you into a {player.furry} ball, before it bounces back again, giving you a little more space to work with - still next to nothing, of course. It seems you might be stuck in here for a little while."
 			]
 		},
 		{

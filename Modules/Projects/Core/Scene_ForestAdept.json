@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "12bf6348-0e15-43a4-88af-4eb8f435cb69",
 	"AssetName": "Scene_ForestAdept",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_ForestAdept_Custom"
+	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_ForestAdept_Enter"
@@ -1176,6 +1180,9 @@
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
 						{
+							"!Type": "CommandLogSplit"
+						},
+						{
 							"!Type": "CommandLog",
 							"Text": "MQ04_ADEPT_INTRO_EXIT1",
 							"IsRaw": false
@@ -1283,6 +1290,13 @@
 																			"!Type": "CommandLog",
 																			"Text": "MQ04_CHIP_FEED03",
 																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetNumber",
+																			"VariableName": "MQ04_CHIP_LAST_ATE",
+																			"ValueOperation": "Set",
+																			"OperandMode": "Script",
+																			"OperandText": "GetTimeHourTotal()"
 																		}
 																	]
 																},
@@ -2463,7 +2477,7 @@
 								"Key": "Chip_R_AV01",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"MQ04_CHIP_AV01\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.AnalVore, EPreySenseType.DigestionFatal)"
+									"Script": "Log(\"MQ04_CHIP_AV01\")\r\nLog(IsChipVoreFatal() and \"MQ04_CHIP_NOTE_FATAL\" or \"MQ04_CHIP_NOTE_ENDO\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.AnalVore,\r\n    IsChipVoreFatal() and EPreySenseType.DigestionFatal or EPreySenseType.Endo)"
 								},
 								"Children": [
 									{
@@ -2559,9 +2573,30 @@
 																															"!Type": "ScriptDataVisualAction",
 																															"Nodes": [
 																																{
-																																	"!Type": "CommandLog",
-																																	"Text": "MQ04_CHIP_OV06",
-																																	"IsRaw": false
+																																	"!Type": "CommandIf",
+																																	"Mode": "All",
+																																	"Operand": true,
+																																	"Tests": [
+																																		{
+																																			"!Type": "ConditionInlineSnippet",
+																																			"Snippet": "IsChipVoreFatal()"
+																																		}
+																																	],
+																																	"HasElseBranch": true,
+																																	"MainSubgroup": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ04_CHIP_OV06",
+																																			"IsRaw": false
+																																		}
+																																	],
+																																	"ElseSubgroup": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ04_CHIP_OV06_SAFE",
+																																			"IsRaw": false
+																																		}
+																																	]
 																																}
 																															]
 																														},
@@ -2569,6 +2604,10 @@
 																															{
 																																"NodeType": "Link",
 																																"LinkTarget": "Chip_Fatal_Vore"
+																															},
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "Chip_Endo_Vore"
 																															}
 																														]
 																													}
@@ -2605,7 +2644,70 @@
 									"!Type": "ScriptDataInline",
 									"Script": "local fight = Combat2()\r\nlocal good_boye = Creature(\"CR_MQ04_Chip\")\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(good_boye)\r\nfight:SetVored(good_boye, Player)\r\nfight:Begin()"
 								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return IsChipVoreFatal()"
+								},
 								"Children": []
+							},
+							{
+								"NodeType": "State",
+								"Key": "Chip_Endo_Vore",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "local fight = Combat2()\r\nlocal good_boye = Creature(\"CR_MQ04_Chip\")\r\ngood_boye.PredatorDigests = false\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(good_boye)\r\nfight:SetVored(good_boye, Player)\r\nfight:OnRoundEnd(function(round)\r\n    Log(\"MQ04_CHIP_ENDO\" .. tostring(round))\r\n    AdvanceTime(2)\r\n    if round >= 3 then fight:End() end\r\nend)\r\nfight:Begin()"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Chip_C_Endo4",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Chip_R_Endo4",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLogSplit"
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_CHIP_ENDO4",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Chip_C_Endo5",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ04_CHIP_ENDO5",
+																	"IsRaw": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Entry_R_Main"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
 							}
 						]
 					},
@@ -2622,7 +2724,7 @@
 								"Key": "Chip_R_OV01",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"MQ04_CHIP_OV01\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+									"Script": "Log(\"MQ04_CHIP_OV01\")\r\nLog(IsChipVoreFatal() and \"MQ04_CHIP_NOTE_FATAL\" or \"MQ04_CHIP_NOTE_ENDO\")\r\nPreySense(Creature(\"CR_MQ04_Chip\"), EPreySenseType.OralVore,\r\n    IsChipVoreFatal() and EPreySenseType.DigestionFatal or EPreySenseType.Endo)"
 								},
 								"Children": [
 									{
@@ -2720,9 +2822,30 @@
 																											"!Type": "ScriptDataVisualAction",
 																											"Nodes": [
 																												{
-																													"!Type": "CommandLog",
-																													"Text": "MQ04_CHIP_OV06",
-																													"IsRaw": false
+																													"!Type": "CommandIf",
+																													"Mode": "All",
+																													"Operand": true,
+																													"Tests": [
+																														{
+																															"!Type": "ConditionInlineSnippet",
+																															"Snippet": "IsChipVoreFatal()"
+																														}
+																													],
+																													"HasElseBranch": true,
+																													"MainSubgroup": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_CHIP_OV06",
+																															"IsRaw": false
+																														}
+																													],
+																													"ElseSubgroup": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ04_CHIP_OV06_SAFE",
+																															"IsRaw": false
+																														}
+																													]
 																												}
 																											]
 																										},
@@ -2730,6 +2853,10 @@
 																											{
 																												"NodeType": "Link",
 																												"LinkTarget": "Chip_Fatal_Vore"
+																											},
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Chip_Endo_Vore"
 																											}
 																										]
 																									}

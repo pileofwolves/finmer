@@ -22,6 +22,12 @@
 			]
 		},
 		{
+			"Key": "SLEEP_NIGHT_CANNOT",
+			"Text": [
+				"It's already night, there's no need to sleep again."
+			]
+		},
+		{
 			"Key": "SPECIES_ANY",
 			"Text": [
 				"bear",

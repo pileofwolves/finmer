@@ -134,6 +134,19 @@ function Rest()
     Player.Health = Player.HealthMax
 end
 
+function RestUntilNight()
+    Sleep(1)
+
+    if GetIsNight() then
+        Log("SLEEP_NIGHT_CANNOT")
+    else
+        SetTimeHour(21)
+        -- Recover
+        Player.Health = Player.HealthMax
+    end
+    Sleep(1)
+end
+
 function TimedCheckpoint(id)
     local now = GetTimeHourTotal()
     id = "_TIMED_CHECKPOINT_" .. id

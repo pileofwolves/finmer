@@ -651,7 +651,7 @@
 										"ButtonWidth": 1.0,
 										"ScriptAction": {
 											"!Type": "ScriptDataInline",
-											"Script": "Text.SetContext(\"partner\", ftpartner)\r\nLog(\"INN_FOXTAUR_APPROACH\")"
+											"Script": "Text.SetContext(\"partner\", foxtaur_partner)\r\nLog(\"INN_FOXTAUR_APPROACH\")"
 										},
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",

@@ -166,7 +166,7 @@
 		{
 			"Key": "TOWN_INN_BARKEEP_BEGIN_FIRST",
 			"Text": [
-				"You grab a barstool and sit across from {bartender} who tends the place. \"Ah, it's the {player.species}! What can I get ya, my friend?\" he begins, turning to face you, but pausing when he meets your eyes. When you give him a quizzical stare, his face falls and he shakes his head apologetically. \"Sorry, thought I recognized you, but never mind. What'll it be?\""
+				"You grab a barstool and sit across from {bartender} who tends the place. \"Ah, it's the {player.species}! What can I get ya, my friend?\" he begins, turning to face you as he wipes a wrist on his tan-and-black-furred forehead. When he meets your eyes, and in particular the quizzical stare you're giving him, he pauses, as if confused by what he's seeing. {^bartender}'s face falls and he shakes his head apologetically. \"Sorry, thought I recognized you, but never mind. What'll it be?\""
 			]
 		},
 		{

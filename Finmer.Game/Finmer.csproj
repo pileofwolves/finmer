@@ -140,6 +140,9 @@
     <Compile Include="Views\CharCreateSpecies.xaml.cs">
       <DependentUpon>CharCreateSpecies.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Parts\AbilityScoreCharSheetView.xaml.cs">
+      <DependentUpon>AbilityScoreCharSheetView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parts\CarouselView.xaml.cs">
       <DependentUpon>CarouselView.xaml</DependentUpon>
     </Compile>
@@ -288,6 +291,10 @@
     <Page Include="Views\CharCreateSpecies.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Parts\AbilityScoreCharSheetView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Parts\CarouselView.xaml">
       <SubType>Designer</SubType>

@@ -154,61 +154,9 @@
                     HorizontalAlignment="Left"
                     VerticalAlignment="Top"
                     RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <Grid Grid.Column="1" Grid.Row="3">
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="3*" />
-                        <ColumnDefinition Width="*" />
-                        <ColumnDefinition Width="2*" />
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Column="0" Style="{StaticResource TextBlockDefault}">
-                        Strength:<LineBreak />
-                        Agility:<LineBreak />
-                        Body:<LineBreak />
-                        Wits:
-                    </TextBlock>
-                    <TextBlock Grid.Column="1" Style="{StaticResource TextBlockDefault}">
-                        <Run Text="{Binding Strength, Mode=OneWay}" /><LineBreak />
-                        <Run Text="{Binding Agility, Mode=OneWay}" /><LineBreak />
-                        <Run Text="{Binding Body, Mode=OneWay}" /><LineBreak />
-                        <Run Text="{Binding Wits, Mode=OneWay}" />
-                    </TextBlock>
-                    <TextBlock Grid.Column="2"
-                        Style="{StaticResource TextBlockDefault}"
-                        Visibility="{Binding AbilityPointVisibility}">
-                        <!-- Animated pulsing of this text block, to draw user's attention to unspent points -->
-                        <TextBlock.Background>
-                            <SolidColorBrush x:Name="AbilityUpgradePanelAnimatedBack" Color="{StaticResource ButtonHoverColorAlt}" Opacity="0" />
-                        </TextBlock.Background>
-                        <TextBlock.Triggers>
-                            <EventTrigger RoutedEvent="UserControl.Loaded">
-                                <BeginStoryboard>
-                                    <Storyboard
-                                        RepeatBehavior="Forever"
-                                        FillBehavior="HoldEnd">
-                                        <DoubleAnimationUsingKeyFrames
-                                            Storyboard.TargetName="AbilityUpgradePanelAnimatedBack"
-                                            Storyboard.TargetProperty="Opacity">
-                                            <LinearDoubleKeyFrame KeyTime="0:0:0.0" Value="0" />
-                                            <LinearDoubleKeyFrame KeyTime="0:0:2.0" Value="0" />
-                                            <LinearDoubleKeyFrame KeyTime="0:0:2.2" Value="1" />
-                                            <LinearDoubleKeyFrame KeyTime="0:0:2.4" Value="0" />
-                                            <LinearDoubleKeyFrame KeyTime="0:0:2.6" Value="1" />
-                                            <LinearDoubleKeyFrame KeyTime="0:0:2.8" Value="0" />
-                                        </DoubleAnimationUsingKeyFrames>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </EventTrigger>
-                        </TextBlock.Triggers>
-                        <Hyperlink Command="{Binding IncreaseAbilityCommand}" CommandParameter="0">+1</Hyperlink>
-                        <Span Foreground="{StaticResource DepressedBrush}">(<Run Text="{Binding AbilityPoints, Mode=OneWay}" /> left)</Span>
-                        <LineBreak />
-                        <Hyperlink Command="{Binding IncreaseAbilityCommand}" CommandParameter="1">+1</Hyperlink>
-                        <LineBreak />
-                        <Hyperlink Command="{Binding IncreaseAbilityCommand}" CommandParameter="2">+1</Hyperlink>
-                        <LineBreak />
-                        <Hyperlink Command="{Binding IncreaseAbilityCommand}" CommandParameter="3">+1</Hyperlink>
-                    </TextBlock>
-                </Grid>
+                <v:AbilityScoreCharSheetView
+                    Grid.Column="1"
+                    Grid.Row="3" />
             </Grid>
         </StackPanel>
 

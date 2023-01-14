@@ -66,8 +66,7 @@
 									"ElseSubgroup": [
 										{
 											"!Type": "CommandSetScene",
-											"SceneGuid": "e13adba2-36df-4bb6-bb08-d45eecc27594",
-											"SceneName": "Scene_PortCentral"
+											"SceneGuid": "e13adba2-36df-4bb6-bb08-d45eecc27594"
 										}
 									]
 								}

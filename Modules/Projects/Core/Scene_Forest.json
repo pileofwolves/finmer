@@ -48,8 +48,7 @@
 									"Nodes": [
 										{
 											"!Type": "CommandSetScene",
-											"SceneGuid": "12bf6348-0e15-43a4-88af-4eb8f435cb69",
-											"SceneName": "Scene_ForestAdept"
+											"SceneGuid": "12bf6348-0e15-43a4-88af-4eb8f435cb69"
 										}
 									]
 								},

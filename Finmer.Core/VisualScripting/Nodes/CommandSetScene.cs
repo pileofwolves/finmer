@@ -26,14 +26,13 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// </summary>
         public Guid SceneGuid { get; set; } = Guid.Empty;
 
-        /// <summary>
-        /// The cached name of the item (for display purposes).
-        /// </summary>
-        public string SceneName { get; set; } = String.Empty;
-
         public override string GetEditorDescription(IContentStore content)
         {
-            return String.Format(CultureInfo.InvariantCulture, "Switch to Scene '{0}'", SceneName);
+            // Resolve the scene UUID to obtain its name. Note that the link may be unresolved.
+            AssetScene scene = content.GetAssetByID<AssetScene>(SceneGuid);
+            string scene_name = scene?.Name ?? SceneGuid.ToString();
+
+            return $"Switch to Scene '{scene_name}'";
         }
 
         public override EColor GetEditorColor()
@@ -54,13 +53,11 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Serialize(IFurballContentWriter outstream)
         {
             outstream.WriteGuidProperty(nameof(SceneGuid), SceneGuid);
-            outstream.WriteStringProperty(nameof(SceneName), SceneName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             SceneGuid = instream.ReadGuidProperty(nameof(SceneGuid));
-            SceneName = instream.ReadStringProperty(nameof(SceneName));
         }
 
     }

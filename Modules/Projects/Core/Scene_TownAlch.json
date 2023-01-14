@@ -101,8 +101,7 @@
 															"Nodes": [
 																{
 																	"!Type": "CommandSetScene",
-																	"SceneGuid": "2b113d7d-464f-4033-9a89-b50048eccb01",
-																	"SceneName": "Scene_TownWSQ"
+																	"SceneGuid": "2b113d7d-464f-4033-9a89-b50048eccb01"
 																}
 															]
 														},

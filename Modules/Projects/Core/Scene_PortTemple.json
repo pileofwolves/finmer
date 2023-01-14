@@ -67,8 +67,7 @@
 							"Nodes": [
 								{
 									"!Type": "CommandSetScene",
-									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
-									"SceneName": "Scene_PortDocks"
+									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706"
 								}
 							]
 						},
@@ -281,8 +280,7 @@
 							"Nodes": [
 								{
 									"!Type": "CommandSetScene",
-									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706",
-									"SceneName": "Scene_PortDocks"
+									"SceneGuid": "e6b01216-c0e8-4438-9da3-8f3587458706"
 								}
 							]
 						},
@@ -1802,8 +1800,7 @@
 																																},
 																																{
 																																	"!Type": "CommandSetScene",
-																																	"SceneGuid": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1",
-																																	"SceneName": "Scene_PortGate"
+																																	"SceneGuid": "f27d5789-2f77-49dd-bd74-1b7d220e7ea1"
 																																}
 																															]
 																														},

@@ -33,7 +33,11 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return $"Update Quest {JournalGuid} to Stage {Stage}";
+            // Resolve the journal UUID to obtain its name. Note that the link may be unresolved.
+            AssetJournal journal = content.GetAssetByID<AssetJournal>(JournalGuid);
+            string journal_name = journal?.Name ?? JournalGuid.ToString();
+
+            return $"Update Quest '{journal_name}' to Stage {Stage}";
         }
 
         public override EColor GetEditorColor()

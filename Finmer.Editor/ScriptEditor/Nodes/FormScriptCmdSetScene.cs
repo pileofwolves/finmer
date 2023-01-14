@@ -32,7 +32,6 @@ namespace Finmer.Editor
         {
             var node = (CommandSetScene)Node;
             node.SceneGuid = apcScene.SelectedGuid;
-            node.SceneName = apcScene.SelectedAsset?.Name ?? "[unknown]";
         }
 
     }

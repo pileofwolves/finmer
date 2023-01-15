@@ -1,0 +1,9 @@
+﻿{
+	"!Type": "AssetScript",
+	"AssetID": "fbb1a74e-1153-4178-bfc2-ba755886213c",
+	"AssetName": "Script_RumorList",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_RumorList"
+	}
+}

@@ -179,7 +179,10 @@
 		{
 			"Key": "TOWN_INN_DRINK",
 			"Text": [
-				"You slide a gold coin across the counter and {bartender} catches it. With practiced swiftness, the barkeep pours some alcohol into a mug - ale, judging by the smell - and slides it back your way within a matter of seconds. You spend a while carefully nursing your beverage while quietly watching the room. Nothing remotely interesting happens though."
+				"You slide a gold coin across the counter and {bartender} catches it. With practiced swiftness, the barkeep pours you a drink and slides it back your way within a matter of seconds as he answers your request for rumors.",
+				"You spend a while carefully nursing your beverage, while the bartender regales you with something he wants to share.",
+				"You request a beverage and a side of information. With a smirk, the bartender obliges your request with well-practiced ease.",
+				"You pay for a drink, and as you are enjoying some downtime, the barkeep attempts to both satisfy your desire for information, and to alleviate his own boring routine of washing dishes."
 			]
 		},
 		{

@@ -1,0 +1,43 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "a955c964-f1f2-412f-81b5-56b09b1702be",
+	"AssetName": "Strings_Rumors",
+	"Entries": [
+		{
+			"Key": "RUMOR_GENERAL01",
+			"Text": [
+				"\"All these adventurers coming by, asking for the latest news...\" {^mill} sighs. \"Why don't you go out and tell me what you've been running into, for once? Spirits know I can use something interesting to listen to.\""
+			]
+		},
+		{
+			"Key": "RUMOR_GENERAL02",
+			"Text": [
+				"\"Some tourists visiting these parts come for an old ruined monastery known as 'Dalsida',\" {mill} explains. \"There's not a lot left, but it must've been impressive once. It's pretty close to South Finmer. Just follow the road east and uphill, once you're out of the town.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ01_CONFUSION",
+			"Text": [
+				"{mill} runs a paw through the fur on {mill.possessive} head. \"Honestly, I've never seen the town in such disarray before. Mayor Iso is always right on top of everything going in and out of the marketplace. But now that she's vanished into thin air, we're picking up the pieces.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ02_BRIDGE",
+			"Text": [
+				"\"I wonder why someone would go through the trouble of blowing up the bridge,\" {mill.subject} says. \"I mean, it was intentional, right? Couldn't have been anything else. But what would they hope to accomplish, and why haven't they been caught yet?\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ02_PREDS",
+			"Text": [
+				"\"I hear there are voracious predators stalking the roads, picking off people to - get this - swallow them alive.\" {^mill} raises an eyebrow. \"Can you imagine such insanity? We're really having a streak of misfortune in our little community these days.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ03_ACTINGMAYOR",
+			"Text": [
+				"\"After nobody could find Iso anywhere, and she was declared missing, her assistant was put in charge temporarily,\" {mill} says. \"'Acting Mayor' Canbell would be forgiven if she made mistakes, but I hear she's holding the town together surprisingly well.\""
+			]
+		}
+	]
+}

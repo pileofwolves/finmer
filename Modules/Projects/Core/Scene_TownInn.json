@@ -119,7 +119,7 @@
 																"Key": "BottomsUp",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "Player:ModifyMoney(-1)\r\nLog(\"town_inn_drink\")\r\nAdvanceTime(1)"
+																	"Script": "Player:ModifyMoney(-1)\r\nLog(\"town_inn_drink\")\r\nRumor.Present(barkeep)\r\nAdvanceTime(1)"
 																},
 																"Children": [
 																	{
@@ -594,37 +594,6 @@
 																		"NodeType": "Choice",
 																		"Title": "Never mind",
 																		"Tooltip": "Oh well...",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"Children": [
-																			{
-																				"NodeType": "Link",
-																				"LinkTarget": "BarkeepTalkRoot"
-																			}
-																		]
-																	}
-																]
-															}
-														]
-													},
-													{
-														"NodeType": "Choice",
-														"Key": "BarkeepTalkGossip",
-														"Title": "Rumors",
-														"Tooltip": "Ask about recent happenings in the area.",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"Children": [
-															{
-																"NodeType": "State",
-																"ScriptAction": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "-- TODO: Add actual gossip states here\r\nLog(\"town_inn_rumor_none\")"
-																},
-																"Children": [
-																	{
-																		"NodeType": "Choice",
-																		"Title": "Continue",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [

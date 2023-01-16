@@ -45,8 +45,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override string GetEditorDescription(IContentStore content)
         {
             // Resolve the item UUID to obtain its name
-            AssetItem item = content.GetAssetByID<AssetItem>(ItemGuid);
-            string item_name = item?.Name ?? ItemGuid.ToString();
+            string item_name = content.GetAssetName(ItemGuid);
 
             return ItemGuid == Guid.Empty
                 ? String.Format(CultureInfo.InvariantCulture, "Remove Equipped {0}", EquipSlot)

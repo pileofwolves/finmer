@@ -24,6 +24,19 @@ namespace Finmer.Editor
             return (Program.ActiveFurball.GetAssetByID(id) ?? Program.ActiveDependencies.GetAssetByID(id)) as TAsset;
         }
 
+        public string GetAssetName(Guid id)
+        {
+            // Return a human-readable string for the common case of an unset link
+            if (id == Guid.Empty)
+                return "[None]";
+
+            // Otherwise, try to resolve the asset name
+            var asset = GetAssetByID<AssetBase>(id);
+            return asset == null
+                ? id.ToString()
+                : asset.Name;
+        }
+
     }
 
 }

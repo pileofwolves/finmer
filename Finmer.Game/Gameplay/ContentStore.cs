@@ -98,6 +98,14 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Returns the name of the asset identified by its GUID, or an approximation if not found.
+        /// </summary>
+        public string GetAssetName(Guid id)
+        {
+            return GetAssetByID(id).Name ?? id.ToString();
+        }
+
+        /// <summary>
         /// Look up an asset by its unique name. Returns the asset if found, or null if not found.
         /// </summary>
         public AssetBase GetAssetByName(string name)

@@ -27,11 +27,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            // Resolve the item UUID to obtain its name
-            AssetItem item = content.GetAssetByID<AssetItem>(ItemGuid);
-            string item_name = item?.Name ?? ItemGuid.ToString();
-
-            return "Player Has Equipped " + item_name;
+            return "Player Has Equipped " + content.GetAssetName(ItemGuid);
         }
 
         public override EColor GetEditorColor()

@@ -28,11 +28,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            // Resolve the scene UUID to obtain its name. Note that the link may be unresolved.
-            AssetScene scene = content.GetAssetByID<AssetScene>(SceneGuid);
-            string scene_name = scene?.Name ?? SceneGuid.ToString();
-
-            return $"Switch to Scene '{scene_name}'";
+            return $"Switch to Scene '{content.GetAssetName(SceneGuid)}'";
         }
 
         public override EColor GetEditorColor()

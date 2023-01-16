@@ -23,6 +23,11 @@ namespace Finmer.Core.Serialization
         /// </summary>
         TAsset GetAssetByID<TAsset>(Guid id) where TAsset : AssetBase;
 
+        /// <summary>
+        /// Returns the name of the asset identified by its GUID, or an approximation if not found.
+        /// </summary>
+        string GetAssetName(Guid id);
+
     }
 
 }

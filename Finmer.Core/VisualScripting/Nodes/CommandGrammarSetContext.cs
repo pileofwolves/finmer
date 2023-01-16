@@ -33,11 +33,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            // Resolve the scene UUID to obtain its name. Note that the link may be unresolved.
-            AssetCreature creature = content.GetAssetByID<AssetCreature>(CreatureGuid);
-            string creature_name = creature?.Name ?? CreatureGuid.ToString();
-
-            return $"Set Grammar Context {VariableName} to Creature '{creature_name}'";
+            return $"Set Grammar Context {VariableName} to Creature '{content.GetAssetName(CreatureGuid)}'";
         }
 
         public override EColor GetEditorColor()

@@ -54,6 +54,11 @@ namespace Finmer.Editor
 
             // Flush the script editor
             scriptEditorHost.Flush();
+
+            // Ensure the contained script always copies the name of the parent asset
+            AssetScript script = (AssetScript)Asset;
+            if (script.Contents != null)
+                script.Contents.Name = Asset.Name;
         }
 
     }

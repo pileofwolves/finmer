@@ -1,0 +1,124 @@
+[
+	{
+		"type": "function",
+		"name": "Storage.GetFlag",
+		"remarks": "Returns the state of a flag (boolean). The default value is false for flags that were never set before.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to retrieve"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "the state of the requested flag"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.GetNumber",
+		"remarks": "Returns a number from storage. The default value is 0 for numbers that were never set before.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to retrieve"
+			}
+		],
+		"output": [
+			{
+				"type": "number",
+				"desc": "the requested value"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.GetString",
+		"remarks": "Returns a string from storage. The default value is an empty string (not nil!) if never set before.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to retrieve"
+			}
+		],
+		"output": [
+			{
+				"type": "string",
+				"desc": "the requested value"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.SetFlag",
+		"remarks": "Saves a flag with the specified key to persistent storage.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to store"
+			},
+			{
+				"name": "value",
+				"type": "boolean",
+				"desc": "the new value to associate with this name"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.SetNumber",
+		"remarks": "Saves a number with the specified key to persistent storage.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to store"
+			},
+			{
+				"name": "value",
+				"type": "number",
+				"desc": "the new value to associate with this name"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.ModifyNumber",
+		"remarks": "Adds a value to a number with the specified key. This is functionally equivalent to chaining Storage.GetNumber and Storage.SetNumber together, but a bit more concise.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to store"
+			},
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the change, positive or negative, to add to the current value"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Storage.SetString",
+		"remarks": "Saves a string with the specified key to persistent storage.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the unique name of the value to store"
+			},
+			{
+				"name": "value",
+				"type": "string",
+				"desc": "the new value to associate with this name"
+			}
+		]
+	}
+]

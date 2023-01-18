@@ -1,0 +1,9 @@
+{
+	"label": "Your First Quest",
+	"position": 20,
+	"link": {
+		"type": "generated-index",
+		"slug": "/category/tutorial",
+		"description": "A step-by-step guide to creating your first custom quest."
+	}
+}

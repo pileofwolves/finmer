@@ -1,0 +1,80 @@
+[
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnRoundEnd",
+		"remarks": "Invokes the specified function when a combat round ends. The round parameter passed to the function is the number of the round that just ended (starting at 1).",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(round)",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnCombatEnd",
+		"remarks": "Invokes the specified function when the combat ends. The callback has no arguments.",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnCreatureKilled",
+		"remarks": "Invokes the specified function when a non-player participant dies, regardless of the type of damage that was last dealt. The killer and the victim are passed as arguments to the callback.",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(killer, victim)",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnCreatureVored",
+		"remarks": "Invokes the specified function when any participant is swallowed. The predator and prey are passed as arguments to the callback.",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(predator, prey)",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnCreatureReleased",
+		"remarks": "Invokes the specified function when any participant is regurgitated by their predator. The predator and prey are passed as arguments to the callback. Note that because the combat system does not normally offer an action for a predator to release their prey, this callback is only invoked when a script uses the UnsetVored function.",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(predator, prey)",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "OnPlayerKilled",
+		"remarks": "Invokes the specified function when the player character dies, regardless of the type of damage that was last dealt. The killer and the player are passed as arguments to the callback. Note that if the callback changes the player's Health to a non-zero value (i.e. 'resurrecting' the player), combat will resume as if nothing happened.",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(killer, victim)",
+				"desc": "user callback function"
+			}
+		]
+	}
+]

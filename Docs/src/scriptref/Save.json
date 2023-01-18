@@ -1,0 +1,23 @@
+[
+	{
+		"type": "function",
+		"name": "SaveData.ShowSaveDialog",
+		"remarks": "Opens a screen where the player can choose to save their progress to disk."
+	},
+	{
+		"type": "function",
+		"name": "SaveData.TakeCheckpoint",
+		"remarks": "Create a checkpoint (auto-save). The player may load this checkpoint if their game ends."
+	},
+	{
+		"type": "function",
+		"name": "SaveData.IsRestoringSave",
+		"remarks": "For advanced users. Indicates whether save data is currently being restored. This will return true during the first State or Choice node script(s) that run after save data is loaded. In all other cases, this will return false. This function can be used to detect that the player reloaded save data.",
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "save restore flag"
+			}
+		]
+	}
+]

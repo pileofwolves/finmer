@@ -1,0 +1,122 @@
+[
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Health",
+		"remarks": "The number of hit points this Creature has left.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "HealthMax",
+		"remarks": "The max number of hit points this Creature can have. This is the sum of the Body stat and applicable equipment effects.",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Level",
+		"remarks": "The XP level of this Creature. Determines XP payout when defeated.",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Strength",
+		"remarks": "The Strength stat. Determines Attack Dice and Grapple Dice.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Agility",
+		"remarks": "The Agility stat. Determines Defense Dice and Struggle Dice.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Body",
+		"remarks": "The Body stat. Determines Swallow Dice and maximum Health Points.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Wits",
+		"remarks": "The Wits stat. Determines combat turn order. Also used in exploration.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "Size",
+		"remarks": "The character's body size. The return value is a member of ESize, a table defined in the Core module.",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "IsAlly",
+		"remarks": "Indicates whether this Creature is on the player's side in combat. Allies will attack enemies on their turn. The default is false.",
+		"valuetype": "boolean",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "IsPredator",
+		"remarks": "Indicates whether this Creature is a predator. If true, the Creature may choose to take vore-related actions in combat.",
+		"valuetype": "boolean",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "PredatorDigests",
+		"remarks": "If true, swallowed prey will take digestion damage each round. If false, it's all nice and cozy. Caution: If you disable digestion, you must manually script the encounter in such a way that the player is either released, or the combat ends. AI predators never regurgitate their prey, so the game would softlock.",
+		"valuetype": "boolean",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "EquippedWeapon",
+		"remarks": "Gets or sets the Item in the first equipment slot. A nil value indicates an empty slot.",
+		"valuetype": "Item",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "EquippedArmor",
+		"remarks": "Gets or sets the Item in the second equipment slot. A nil value indicates an empty slot.",
+		"valuetype": "Item",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "EquippedAccessory1",
+		"remarks": "Gets or sets the Item in the third equipment slot. A nil value indicates an empty slot.",
+		"valuetype": "Item",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "creature.",
+		"name": "EquippedAccessory2",
+		"remarks": "Gets or sets the Item in the fourth equipment slot. A nil value indicates an empty slot.",
+		"valuetype": "Item",
+		"writable": true
+	}
+]

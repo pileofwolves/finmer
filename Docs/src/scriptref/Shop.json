@@ -1,0 +1,126 @@
+[
+	{
+		"type": "function",
+		"name": "Shop",
+		"remarks": "Creates and returns a new Shop instance. If a Shop with the same key was ever saved before, that data will be loaded. Otherwise, an empty shop template is returned.",
+		"input": [
+			{
+				"name": "key",
+				"type": "string",
+				"desc": "the unique internal name of this shop"
+			}
+		],
+		"output": [
+			{
+				"type": "Shop",
+				"desc": "a new Shop instance"
+			}
+		]
+	},
+	{
+		"type": "property",
+		"qualifier": "shop.",
+		"name": "Key",
+		"remarks": "The internal name that uniquely identifies this shop. This is the same string you passed to the Shop function.",
+		"valuetype": "string",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "shop.",
+		"name": "Title",
+		"remarks": "The text describing the shop, that is displayed at the top of the shop screen.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "shop.",
+		"name": "RestockInterval",
+		"remarks": "The number of in-world hours between restocks. If this number of hours elapse on the in-game clock since RestockLastTime, RestockRequired will be flipped to true.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "shop.",
+		"name": "RestockRequired",
+		"remarks": "Indicates whether you should take action to restock the shop. The game sets this to true when RestockInterval elapses, or when a new shop is created. To set it back to false, call MarkRestocked().",
+		"valuetype": "boolean",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "shop.",
+		"name": "RestockLastTime",
+		"remarks": "The timestamp in world hours at which the shop was last marked as restocked. Use the global function GetTimeHourTotal() to compare against.",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "Save",
+		"remarks": "Saves the state of this shop. Any future calls to Shop() with this shop's key will return the data as it was at the moment this function was called."
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "Show",
+		"remarks": "Opens the shop for the player. The running script will be paused until the player exits the shop screen."
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "RemoveDefaultStock",
+		"remarks": "Removes items that are not unique items from the shop's stock."
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "RemoveAll",
+		"remarks": "Removes all items from the shop's stock, including unique items."
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "AddItem",
+		"remarks": "Adds an item to the shop's stock. This stack will be considered part of the shop's normal stock.",
+		"input": [
+			{
+				"name": "item",
+				"type": "Item",
+				"desc": "the item template to stock"
+			},
+			{
+				"name": "quantity",
+				"type": "number",
+				"desc": "copies in stock. -1 means unlimited stock."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "AddUniqueItem",
+		"remarks": "Adds an item to the shop's stock. This stack will not be removed when calling RemoveDefaultStock(), and thus could be used to for example add a new quest-related item to a shop, without risking it getting removed when the shop restocks.",
+		"input": [
+			{
+				"name": "item",
+				"type": "Item",
+				"desc": "the item template to stock"
+			},
+			{
+				"name": "quantity",
+				"type": "number",
+				"desc": "copies in stock. -1 means unlimited stock."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "shop:",
+		"name": "MarkRestocked",
+		"remarks": "Updates the RestockLastTime to the current time, and clears the RestockRequired flag."
+	}
+]

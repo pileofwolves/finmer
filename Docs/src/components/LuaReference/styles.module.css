@@ -1,0 +1,104 @@
+:root {
+	--api-color-qualifier: var(--ifm-color-emphasis-600);
+	--api-color-signature: var(--ifm-color-emphasis-700);
+	--api-color-io: var(--ifm-color-emphasis-800);
+}
+
+:root[data-theme='dark'] {
+	--api-color-qualifier: var(--ifm-color-emphasis-400);
+	--api-color-signature: var(--ifm-color-emphasis-400);
+	--api-color-io: var(--ifm-color-emphasis-600);
+}
+
+.scriptapi {
+    display: block;
+    min-width: 500px;
+    width: 80%;
+    margin: 0 0 0.8em 0.1em;
+    padding: 0.75em;
+    border: 1px solid #808080;
+    border-radius: 5px;
+}
+
+.scriptapi .title {
+	font-size: 1.3em;
+    font-family: monospace;
+    font-weight: bold;
+}
+
+.scriptapi .title .signature {
+	display: inline;
+}
+
+.scriptapi .title .signature > div {
+	display: inline;
+	font-style: italic;
+}
+
+.scriptapi .title .signature > div:not(:first-child)::before {
+	content: ', ';
+	font-style: normal;
+}
+
+.scriptapi .title .signature::before {
+	content: '(';
+	color: var(--api-color-signature);
+}
+
+.scriptapi .title .signature::after {
+	content: ')';
+	color: var(--api-color-signature);
+}
+
+.scriptapi .title .signature > div.optional::before {
+	content: '[';
+	font-style: normal;
+}
+
+.scriptapi .title .signature > div.optional::after {
+	content: ']';
+	font-style: normal;
+}
+
+/* Combine comma and optional prefix */
+.scriptapi .title .signature > div.optional:not(:first-child)::before {
+	content: ', [';
+}
+
+.scriptapi .title .qualifier {
+	display: inline;
+    color: var(--api-color-qualifier);
+}
+
+.scriptapi .desc {
+    margin-top: 16px;
+}
+
+/* Custom ul format for the argument list, to keep it compact */
+.scriptapi li {
+    display: block;
+    margin-left: 6em;
+}
+
+.scriptapi .input, .scriptapi .output, .scriptapi .type {
+    display: inline;
+    margin: 0;
+    padding: 0;
+	color: var(--api-color-io);
+    list-style-type: none;
+}
+
+.scriptapi .type::before {
+    content: 'Type:';
+    float: left;
+}
+
+.scriptapi .input::before {
+    content: 'Parameters:';
+    float: left;
+}
+
+.scriptapi .output::before {
+    content: 'Returns:';
+    float: left;
+}

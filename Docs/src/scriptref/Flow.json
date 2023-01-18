@@ -1,0 +1,62 @@
+[
+	{
+		"type": "function",
+		"name": "SetScene",
+		"remarks": "Switches to a different scene. In order: the new scene will be loaded, the current scene's LeaveScript will be executed, the new scene is made active, and the new scene's EnterScript is executed. Note that SetScene will terminate the currently running script, so any instructions coming after it will not run.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the asset name of the new Scene to load."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "SetLocation",
+		"remarks": "Sets the text displayed above the compass. It is intended to be used to show the player's current location, though it is not technically limited to that. This string is also shown in the player's save game.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the user-friendly name of the player's location."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "SetInstruction",
+		"remarks": "Sets the default tooltip text displayed above the choice buttons, if no other tooltip is currently active. This is reset back to an empty string after every player turn.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "a user-facing text string."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "SetInventoryEnabled",
+		"remarks": "Sets whether or not the player can access their Character Sheet. If true, access is allowed, if false, the button will be greyed out. The setting will last until this function is called again, and is stored in save data.",
+		"input": [
+			{
+				"name": "mode",
+				"type": "boolean",
+				"desc": "true if enabled, false if not."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Sleep",
+		"remarks": "Pauses execution of the script for the specified time. Dramatic pause, oh my!",
+		"input": [
+			{
+				"name": "seconds",
+				"type": "number",
+				"desc": "time in seconds during which to pause."
+			}
+		]
+	}
+]

@@ -1,0 +1,196 @@
+[
+	{
+		"type": "property",
+		"name": "Player",
+		"remarks": "Global variable that references the player character. You can use any properties or functions that are available on Creatures, in addition to the extra features below.",
+		"valuetype": "Creature",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "Species",
+		"remarks": "The lowercase singular species name of the player character, e.g. 'dragon'.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "SpeciesPlural",
+		"remarks": "The lowercase plural species name of the player character, e.g. 'dragons'.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "CoatNoun",
+		"remarks": "The lowercase noun describing the player character's species coat, e.g. 'fur'.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "CoatAdjective",
+		"remarks": "The lowercase adjective describing the player character's species coat, e.g. 'furry'.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "IsExplicitDisposalEnabled",
+		"remarks": "Whether the player has explicit disposal content enabled in the game settings.",
+		"valuetype": "boolean",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "IsPreySenseEnabled",
+		"remarks": "Whether the player has the Preysense feature enabled in the game settings.",
+		"valuetype": "boolean",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "IsExplorerModeEnabled",
+		"remarks": "Whether the player has the Explorer Mode feature enabled in the game settings.",
+		"valuetype": "boolean",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "XP",
+		"remarks": "The number of XP acquired so far. If you wish to change this, call AwardXP().",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "RequiredXP",
+		"remarks": "The number of XP required to level up.",
+		"valuetype": "number",
+		"writable": false
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "AbilityPoints",
+		"remarks": "The number of unspent ability points available for the player.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "Money",
+		"remarks": "The amount of money the player owns. You can modify this directly if you wish, but consider using Player:ModifyMoney instead (see below).",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "TotalPreySwallowed",
+		"remarks": "Tally of prey successfully swallowed during combat.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "Player.",
+		"name": "TotalPreyDigested",
+		"remarks": "Tally of prey killed through digestion damage during combat.",
+		"valuetype": "number",
+		"writable": true
+	},
+	{
+		"type": "function",
+		"qualifier": "Player:",
+		"name": "HasItem",
+		"remarks": "Returns true if the player has an item in their inventory (*not* equipment!) with the specified asset name.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "asset name of the item to check"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if owned, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "Player:",
+		"name": "GiveItem",
+		"remarks": "Adds an item to the player's inventory.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "asset name of the item to give"
+			},
+			{
+				"name": "quiet",
+				"type": "boolean",
+				"desc": "if true, hide 'obtained' message - defaults to false",
+				"optional": true
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "Player:",
+		"name": "TakeItem",
+		"remarks": "Looks for the first item in the player's inventory with the specified asset name. If found, the item is deleted and true is returned. Otherwise, returns false.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "asset name of the item to remove"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if removed, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "Player:",
+		"name": "AwardXP",
+		"remarks": "Grants the specified number of XP to the player, levelling them up if the requirements are met.",
+		"input": [
+			{
+				"name": "amount",
+				"type": "number",
+				"desc": "the amount of XP to add"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "Player:",
+		"name": "ModifyMoney",
+		"remarks": "Adds the specified delta to the player's money total, and prints a message notifying the player of the change. This function prevents money from dropping below zero; it will be capped at zero in that case.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the change, positive or negative, to apply"
+			}
+		]
+	}
+]

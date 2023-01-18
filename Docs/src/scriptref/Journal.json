@@ -1,0 +1,31 @@
+[
+	{
+		"type": "function",
+		"name": "Journal.Update",
+		"remarks": "Sets the specified quest to the specified stage number (as preconfigured in the Journal asset), and updates the journal list. If the quest was not yet in the player's journal, it will be added.",
+		"input": [
+			{
+				"name": "quest",
+				"type": "string",
+				"desc": "the asset name of the Journal to update"
+			},
+			{
+				"name": "stage",
+				"type": "number",
+				"desc": "the stage number to set this Journal to"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Journal.Close",
+		"remarks": "Removes a quest from the player's journal.",
+		"input": [
+			{
+				"name": "quest",
+				"type": "string",
+				"desc": "the asset name of the Journal to remove"
+			}
+		]
+	}
+]

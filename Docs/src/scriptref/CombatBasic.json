@@ -1,0 +1,38 @@
+[
+	{
+		"type": "function",
+		"name": "Combat2",
+		"remarks": "Creates and returns a new Combat Session. You can call the other combat functions on this object.",
+		"output": [
+			{
+				"type": "Combat Session",
+				"desc": "a new, empty combat session."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "AddParticipant",
+		"remarks": "Adds a new participant to the combat session. All participants must be added before calling Begin.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the new creature to involve in this fight."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "Begin",
+		"remarks": "Begins a combat session. If the same combat session had been started and stopped previously, it will resume where it left off. The running script is paused until combat completes or pauses."
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "End",
+		"remarks": "Manually stops a combat session. Any pending XP will be awarded to the player, and the script that originally called Begin will be resumed. You don't need to call this unless you want to stop the fight mid-way through."
+	}
+]

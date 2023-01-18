@@ -1,0 +1,54 @@
+[
+	{
+		"type": "function",
+		"name": "Text.GetString",
+		"remarks": "Looks up the specified key in all loaded string tables, and returns a random entry.",
+		"input": [
+			{
+				"name": "key",
+				"type": "string",
+				"desc": "string table key"
+			}
+		],
+		"output": [
+			{
+				"type": "string",
+				"desc": "a random string table entry."
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Text.SetContext",
+		"remarks": "Attaches the specified object to a context, so that if the specified name is later used in a grammar tag, this object will be used to resolve the grammar tag. The context lasts until the Scene changes, or until the game restarts (i.e. it is NOT stored in save data).",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the name of the context, i.e. what you place in the curly braces"
+			},
+			{
+				"name": "context",
+				"type": "Creature",
+				"desc": "value of the context"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Text.SetVariable",
+		"remarks": "Registers a replacement variable. After this function is called, any text in string tables in the form of {!name} (note the exclamation mark, to differ it from a regular grammar tag) will be replaced with value. The variable lasts until the Scene changes, or until the game restarts (i.e. it is NOT stored in save data).",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "variable name"
+			},
+			{
+				"name": "value",
+				"type": "string",
+				"desc": "replacement text"
+			}
+		]
+	}
+]

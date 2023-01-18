@@ -1,0 +1,48 @@
+[
+	{
+		"type": "function",
+		"name": "Log",
+		"remarks": "Adds a message to the game window. The specified key is looked up in the string tables, and a random entry will be chosen. If the key cannot be found, a placeholder message is used instead. Color may be obtained using the Color table.",
+		"input": [
+			{
+				"name": "key",
+				"type": "string",
+				"desc": "string table key to look up and log"
+			},
+			{
+				"name": "color",
+				"type": "Color",
+				"desc": "the color to draw with",
+				"optional": true
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "LogRaw",
+		"remarks": "Adds a message to the game window. Unlike Log, this variant does not use string tables, and takes the final message as input directly. LogRaw(Text.GetString(key)) is functionally identical to Log(key).",
+		"input": [
+			{
+				"name": "message",
+				"type": "string",
+				"desc": "the full string to add to the game window"
+			},
+			{
+				"name": "color",
+				"type": "Color",
+				"desc": "the color to draw with",
+				"optional": true
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "LogSplit",
+		"remarks": "Adds a horizontal bar (splitter) to the game log. Useful for visually distinguishing unrelated pieces of text. The game does this by default when switching Scenes."
+	},
+	{
+		"type": "function",
+		"name": "ClearLog",
+		"remarks": "Erases all text in the game log."
+	}
+]

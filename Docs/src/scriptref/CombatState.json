@@ -1,0 +1,169 @@
+[
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "IsGrappling",
+		"remarks": "Returns true if this Creature is currently grappling with anyone.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to check"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if grappling, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "IsSwallowed",
+		"remarks": "Returns true if this Creature has been swallowed by anyone.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to check"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if swallowed, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "IsGrappleInitiator",
+		"remarks": "Returns true if this Creature is the one 'on top' in a grapple, i.e. able to release or swallow the target. If the participant is being grappled, or is not grappling, returns false.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to check"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if grappling and initiator, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "GetPredator",
+		"remarks": "Returns the Creature who swallowed the specified prey Creature. If the prey Creature is not swallowed, returns nil.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to check"
+			}
+		],
+		"output": [
+			{
+				"type": "Creature",
+				"desc": "the predator who swallowed the input participant, or nil"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "GetGrapplingWith",
+		"remarks": "Returns the grappling partner of a Creature. If the input participant is not grappling, returns nil.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to check"
+			}
+		],
+		"output": [
+			{
+				"type": "Creature",
+				"desc": "the grapple partner, or nil"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "SetVored",
+		"remarks": "Forces the two specified participants to enter into a vore state, such that the prey is swallowed by the predator. If either participant is already grappling or swallowed, they must first exit these states before this function is used; not doing so may cause the game to malfunction.",
+		"input": [
+			{
+				"name": "predator",
+				"type": "Creature",
+				"desc": "the predator swallowing the prey"
+			},
+			{
+				"name": "prey",
+				"type": "Creature",
+				"desc": "the prey being swallowed"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "UnsetVored",
+		"remarks": "Forces the two specified participants to cancel their vore status, such that the prey is released and the predator is no longer swallowing them.",
+		"input": [
+			{
+				"name": "predator",
+				"type": "Creature",
+				"desc": "the predator swallowing the prey"
+			},
+			{
+				"name": "prey",
+				"type": "Creature",
+				"desc": "the prey being swallowed"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "SetGrappling",
+		"remarks": "Forces the two specified participants to enter into a grapple. The instigator will be 'on top', i.e. able to release or swallow the target. If either participant is already grappling or swallowed, they must first exit these states before this function is used; not doing so may cause the game to malfunction.",
+		"input": [
+			{
+				"name": "instigator",
+				"type": "Creature",
+				"desc": "the grappling initiator"
+			},
+			{
+				"name": "target",
+				"type": "Creature",
+				"desc": "the target being grappled"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
+		"name": "UnsetGrappling",
+		"remarks": "Forces the two specified participants to stop grappling. The order of a and b does not matter, as long as the two Creatures are indeed grappling together.",
+		"input": [
+			{
+				"name": "a",
+				"type": "Creature",
+				"desc": "the first grappling partner"
+			},
+			{
+				"name": "b",
+				"type": "Creature",
+				"desc": "the second grappling partner"
+			}
+		]
+	}
+]

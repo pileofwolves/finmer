@@ -1,0 +1,63 @@
+[
+	{
+		"type": "property",
+		"qualifier": "object.",
+		"name": "Name",
+		"remarks": "The user-friendly name of this instance.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "property",
+		"qualifier": "object.",
+		"name": "Alias",
+		"remarks": "The user-friendly alias of this instance. May be the same as Name. Used in place of Name in combat text and the like.",
+		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "HasTag",
+		"remarks": "Returns whether this object has the specified tag. Tags are arbitrary text labels like \"dog\" or \"friend\" or \"fishing\". They are not used by the game engine, so you are free to use them for any purpose.",
+		"input": [
+			{
+				"name": "tag",
+				"type": "string",
+				"desc": "script tag to find, not case-sensitive"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if matching tag was found, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "AddTag",
+		"remarks": "Adds the specified tag to this object's tag list.",
+		"input": [
+			{
+				"name": "tag",
+				"type": "string",
+				"desc": "script tag to add, not case-sensitive"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "RemoveTag",
+		"remarks": "Removes the specified tag from this object. No error is thrown if the tag was not found.",
+		"input": [
+			{
+				"name": "tag",
+				"type": "string",
+				"desc": "script tag to remove, not case-sensitive"
+			}
+		]
+	}
+]

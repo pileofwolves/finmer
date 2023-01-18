@@ -1,0 +1,38 @@
+[
+	{
+		"type": "function",
+		"name": "Creature",
+		"remarks": "Creates and returns a new Creature instance based on the specified Creature asset.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the asset name of the desired Creature"
+			}
+		],
+		"output": [
+			{
+				"type": "Creature",
+				"desc": "a new instance of the requested asset"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Item",
+		"remarks": "Creates and returns a new Item instance based on the specified Item asset.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the asset name of the desired Item"
+			}
+		],
+		"output": [
+			{
+				"type": "Item",
+				"desc": "a new instance of the requested asset"
+			}
+		]
+	}
+]

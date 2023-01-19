@@ -6,7 +6,7 @@ end
 
 -- Prepare text variables
 local barkeep = Creature("CR_RandomAnthro")
-barkeep.Name = "alsatian"
+barkeep.Name = "Edgard"
 barkeep.Alias = "the shepherd"
 barkeep.Gender = EGender.Male
 local foxtaur_partner = Creature("CR_RandomAnthro")

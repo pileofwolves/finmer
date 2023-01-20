@@ -24,7 +24,7 @@
 					"Tests": [
 						{
 							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01",
+							"VariableName": "TQ01_PROGRESS",
 							"Operator": "Equal",
 							"OperandMode": "Literal",
 							"OperandLiteral": 1.0
@@ -283,7 +283,7 @@
 												"Children": [
 													{
 														"NodeType": "State",
-														"Key": "TQ01_Wrapup",
+														"Key": "TQ01_Expo_End",
 														"ScriptAction": {
 															"!Type": "ScriptDataVisualAction",
 															"Nodes": [
@@ -303,7 +303,7 @@
 																},
 																{
 																	"!Type": "CommandVarSetNumber",
-																	"VariableName": "TQ01",
+																	"VariableName": "TQ01_PROGRESS",
 																	"ValueOperation": "Set",
 																	"OperandMode": "Literal",
 																	"OperandLiteral": 2.0
@@ -313,7 +313,7 @@
 														"Children": [
 															{
 																"NodeType": "Choice",
-																"Key": "TQ01_Tobias1_Goodbye",
+																"Key": "TQ01_Expo_Accept",
 																"Title": "Continue",
 																"Tooltip": "Tell him you'll get the job done.",
 																"Highlight": false,
@@ -339,7 +339,7 @@
 			},
 			{
 				"NodeType": "Choice",
-				"Key": "TQ01_Tobias_Done",
+				"Key": "TQ01_Return",
 				"Title": "Tobias",
 				"Tooltip": "Report your success to Tobias.",
 				"Highlight": false,
@@ -351,7 +351,7 @@
 					"Tests": [
 						{
 							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01",
+							"VariableName": "TQ01_PROGRESS",
 							"Operator": "Equal",
 							"OperandMode": "Literal",
 							"OperandLiteral": 3.0
@@ -361,7 +361,7 @@
 				"Children": [
 					{
 						"NodeType": "State",
-						"Key": "TQ01_Toby_Finish",
+						"Key": "TQ01_Complete_Quest",
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -380,7 +380,7 @@
 								},
 								{
 									"!Type": "CommandVarSetNumber",
-									"VariableName": "TQ01",
+									"VariableName": "TQ01_PROGRESS",
 									"ValueOperation": "Set",
 									"OperandMode": "Literal",
 									"OperandLiteral": 4.0
@@ -418,7 +418,7 @@
 						"Children": [
 							{
 								"NodeType": "Choice",
-								"Key": "TQ01_Finale",
+								"Key": "TQ01_Exit",
 								"Title": "Continue",
 								"Tooltip": "And that's that!",
 								"Highlight": false,

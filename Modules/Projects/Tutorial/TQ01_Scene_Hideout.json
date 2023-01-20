@@ -2,6 +2,16 @@
 	"!Type": "AssetScene",
 	"AssetID": "062b100c-1f16-494e-b451-81128f6ddaaa",
 	"AssetName": "TQ01_Scene_Hideout",
+	"ScriptEnter": {
+		"!Type": "ScriptDataVisualAction",
+		"Nodes": [
+			{
+				"!Type": "CommandSetLocation",
+				"OperandMode": "Literal",
+				"OperandText": "Abandoned Campsite"
+			}
+		]
+	},
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",
@@ -31,7 +41,7 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "TQ01_Approach_Log",
+								"Key": "TQ01_Approach2",
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -285,7 +295,7 @@
 																												},
 																												{
 																													"!Type": "CommandVarSetNumber",
-																													"VariableName": "TQ01",
+																													"VariableName": "TQ01_PROGRESS",
 																													"ValueOperation": "Set",
 																													"OperandMode": "Literal",
 																													"OperandLiteral": 3.0

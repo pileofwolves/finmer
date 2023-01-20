@@ -24,7 +24,7 @@
 					"Tests": [
 						{
 							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01",
+							"VariableName": "TQ01_PROGRESS",
 							"Operator": "Equal",
 							"OperandMode": "Literal",
 							"OperandLiteral": 0.0
@@ -53,7 +53,7 @@
 								},
 								{
 									"!Type": "CommandVarSetNumber",
-									"VariableName": "TQ01",
+									"VariableName": "TQ01_PROGRESS",
 									"ValueOperation": "Set",
 									"OperandMode": "Literal",
 									"OperandLiteral": 1.0

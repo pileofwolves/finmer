@@ -23,6 +23,29 @@ namespace Finmer.Core.VisualScripting.Nodes
     {
 
         /// <summary>
+        /// Describes an NPC participant.
+        /// </summary>
+        public struct Participant
+        {
+
+            /// <summary>
+            /// Participant ID, used for code generation.
+            /// </summary>
+            public string ID { get; set; }
+
+            /// <summary>
+            /// Template creature asset.
+            /// </summary>
+            public Guid Creature { get; set; }
+
+            /// <summary>
+            /// Whether the participant is allied with the player's faction.
+            /// </summary>
+            public bool IsAlly { get; set; }
+
+        }
+
+        /// <summary>
         /// Indicates whether the player character participates in this battle.
         /// </summary>
         public bool IncludePlayer { get; set; } = true;
@@ -30,7 +53,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// The collection of participants in the battle, expressed as a pair of variable name and Creature asset GUID.
         /// </summary>
-        public Dictionary<string, Guid> Participants { get; set; } = new Dictionary<string, Guid>();
+        public List<Participant> Participants { get; set; } = new List<Participant>();
 
         /// <summary>
         /// User script function. May be null if callback is not configured.
@@ -88,19 +111,30 @@ namespace Finmer.Core.VisualScripting.Nodes
             }
 
             // Add AI participants
-            foreach (var pair in Participants)
+            foreach (var participant in Participants)
             {
+                // Validate participant name
+                if (String.IsNullOrWhiteSpace(participant.ID))
+                    throw new InvalidScriptNodeException($"Combat participant has no name (creature asset {content.GetAssetName(participant.Creature)})");
+
                 // Find the asset for this participant
-                var creature = content.GetAssetByID<AssetCreature>(pair.Value);
+                var creature = content.GetAssetByID<AssetCreature>(participant.Creature);
                 if (creature == null)
-                    throw new InvalidScriptNodeException($"Could not find a Creature asset with ID {pair.Value} (participant \"{pair.Key}\")");
+                    throw new InvalidScriptNodeException($"Could not find a Creature asset with ID {participant.Creature} (participant \"{participant.ID}\")");
 
                 // Add them as a local variable and participant
-                var variable_name = GetParticipantVariableName(pair.Key);
+                var variable_name = GetParticipantVariableName(participant.ID);
                 output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Creature(\"{1}\")", variable_name, creature.Name);
                 output.AppendLine();
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:AddParticipant({0})", variable_name);
                 output.AppendLine();
+
+                // If marked as ally, emit code to flip the 'allied' flag
+                if (participant.IsAlly)
+                {
+                    output.AppendFormat(CultureInfo.InvariantCulture, "{0}.IsAlly = true", variable_name);
+                    output.AppendLine();
+                }
             }
 
             // Emit start callback (which is just some custom script in between setup and the Begin call)
@@ -130,8 +164,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             foreach (var participant in Participants)
             {
                 outstream.BeginObject();
-                outstream.WriteStringProperty(@"Variable", participant.Key);
-                outstream.WriteGuidProperty(@"Creature", participant.Value);
+                outstream.WriteStringProperty(@"Variable", participant.ID);
+                outstream.WriteGuidProperty(@"Creature", participant.Creature);
+                outstream.WriteBooleanProperty(@"IsAlly", participant.IsAlly);
                 outstream.EndObject();
             }
             outstream.EndArray();
@@ -155,7 +190,12 @@ namespace Finmer.Core.VisualScripting.Nodes
             for (int i = 0, c = instream.BeginArray(nameof(Participants)); i < c; i++)
             {
                 instream.BeginObject();
-                Participants.Add(instream.ReadStringProperty(@"Variable"), instream.ReadGuidProperty(@"Creature"));
+                Participants.Add(new Participant
+                {
+                    ID = instream.ReadStringProperty(@"Variable"),
+                    Creature = instream.ReadGuidProperty(@"Creature"),
+                    IsAlly = version >= 18 && instream.ReadBooleanProperty(@"IsAlly")
+                });
                 instream.EndObject();
             }
             instream.EndArray();

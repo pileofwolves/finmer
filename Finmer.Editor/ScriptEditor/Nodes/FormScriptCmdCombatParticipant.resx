@@ -117,40 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="columnHeader1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="label2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
-  <metadata name="columnHeader2.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="grpParticipants.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="cmdNpcAdd.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAALGPC/xhBQAAABl0RVh0U29m
-        dHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAGwSURBVDhPpY/PS1RxFMUvkyiJjs4PYxyVhtGQGgXH
-        WeWoYQamNWZaUEGi7lq0sH20caM5LlwIz19BMZIWbgrXo2aR3sAWge1c1l9xvPdb+t48nysvfB6He885
-        7z0CcC7Mo/VVmmi1qpC1Kkvg/1in7pmLdgHNB4jeBIneh53w6N8XGPkzDtUFN/VKprBgQViWQ04M/+BH
-        h8+gqD7Zq0e9ngXKkhjehhS+/3sMAwejUG12ejv2nVmgLIpxOci9P5/g9v5jqDY7p8dVYAnspnvvAbq+
-        D8LrJlh2wVwlZ34N4xY/hIZu7g6ZYNvWHVzf7EPn13vo2OlH+5cM0tt3jdaMXTBbwfqpN74NGDSgwWuf
-        0oitJg01uSZE3yVQm2tG/EMKmrELZvwWZf3spna9GdGPCXjdNGMXZP1E0w5eC5PlHNm4ikufG6Ha7Jwe
-        yXgXTAkTZQqH81cQyjdAtdnpzbOgp4ROJnaB6GWpwsEf9QhwHKrNTm+OsQvcU+cjel7MgYM4FNVm5xp3
-        QZFQI7QIKerxrdBTHxtU644oKVwWioVTBfoK+TmKCNEzqBYqBfMvAOgIVItm3DcJeSsAAAAASUVORK5C
-        YII=
-</value>
-  </data>
-  <metadata name="columnHeader3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+  <metadata name="label3.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
   </metadata>
   <metadata name="label1.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>False</value>
-  </metadata>
-  <metadata name="grpCallbacks.GenerateMember" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-    <value>False</value>
-  </metadata>
-  <metadata name="eventLog1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
-    <value>17, 17</value>
   </metadata>
 </root>

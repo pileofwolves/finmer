@@ -179,6 +179,12 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.Designer.cs">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatParticipant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatParticipant.Designer.cs">
+      <DependentUpon>FormScriptCmdCombatParticipant.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -568,6 +574,9 @@
     </Compile>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.resx">
       <DependentUpon>FormScriptCmdCombatBegin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatParticipant.resx">
+      <DependentUpon>FormScriptCmdCombatParticipant.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.resx">
       <DependentUpon>FormScriptCmdGrammarContext.cs</DependentUpon>

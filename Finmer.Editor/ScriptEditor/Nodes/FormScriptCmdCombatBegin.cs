@@ -9,7 +9,6 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using Finmer.Core.Assets;
 using Finmer.Core.VisualScripting;
 using Finmer.Core.VisualScripting.Nodes;
 
@@ -38,23 +37,10 @@ namespace Finmer.Editor
 
             // NPC participants
             foreach (var npc in node.Participants)
-            {
-                var item = new ListViewItem
-                {
-                    Text = npc.Key,
-                    Tag = npc.Value,
-                    SubItems =
-                    {
-                        new ListViewItem.ListViewSubItem
-                        {
-                            Text = npc.Value.ToString()
-                        }
-                    }
-                };
-                lsvNpcs.Items.Add(item);
-            }
+                AddParticipant(npc);
 
             // Callbacks
+            chkCallbackCS.Checked = node.CallbackCombatStart != null;
             chkCallbackRE.Checked = node.CallbackRoundEnd != null;
             chkCallbackPK.Checked = node.CallbackPlayerKilled != null;
             chkCallbackCK.Checked = node.CallbackCreatureKilled != null;
@@ -72,9 +58,10 @@ namespace Finmer.Editor
             // NPC participants
             node.Participants.Clear();
             foreach (ListViewItem item in lsvNpcs.Items)
-                node.Participants[item.Text.ToLowerInvariant()] = (Guid)item.Tag;
+                node.Participants.Add((CommandCombatBegin.Participant)item.Tag);
 
             // Callbacks
+            node.CallbackCombatStart = chkCallbackCS.Checked ? (node.CallbackCombatStart ?? new List<ScriptNode>()) : null;
             node.CallbackRoundEnd = chkCallbackRE.Checked ? (node.CallbackRoundEnd ?? new List<ScriptNode>()) : null;
             node.CallbackPlayerKilled = chkCallbackPK.Checked ? (node.CallbackPlayerKilled ?? new List<ScriptNode>()) : null;
             node.CallbackCreatureKilled = chkCallbackCK.Checked ? (node.CallbackCreatureKilled ?? new List<ScriptNode>()) : null;
@@ -88,61 +75,34 @@ namespace Finmer.Editor
             if (lsvNpcs.SelectedItems.Count != 1)
             {
                 m_SelectedParticipant = null;
-                grpParticipantSettings.Enabled = false;
+                cmdNpcEdit.Enabled = false;
                 cmdNpcRemove.Enabled = false;
                 return;
             }
 
             // Re-enable UI
-            m_SelectedParticipant = null;
-            grpParticipantSettings.Enabled = true;
+            cmdNpcEdit.Enabled = true;
             cmdNpcRemove.Enabled = true;
-
-            // Show state of the selected participant
-            var item = lsvNpcs.SelectedItems[0];
-            txtNpcName.Text = item.Text;
-            apcNpcAsset.SelectedGuid = (Guid)item.Tag;
-
-            // Assign selected participant only after UI is configured, so that all content-changed callbacks early-out
             m_SelectedParticipant = lsvNpcs.SelectedItems[0];
-        }
-
-        private void txtNpcName_TextChanged(object sender, EventArgs e)
-        {
-            if (m_SelectedParticipant == null)
-                return;
-
-            // Store the new NPC variable name
-            m_SelectedParticipant.Text = txtNpcName.Text;
-        }
-
-        private void apcNpcAsset_SelectedAssetChanged(object sender, EventArgs e)
-        {
-            if (m_SelectedParticipant == null)
-                return;
-
-            // Store the new Creature asset ID
-            var creature = (AssetCreature)apcNpcAsset.SelectedAsset;
-            m_SelectedParticipant.Tag = apcNpcAsset.SelectedGuid;
-            m_SelectedParticipant.SubItems[1].Text = creature?.Name ?? "(not set)";
         }
 
         private void cmdNpcAdd_Click(object sender, EventArgs e)
         {
-            var item = new ListViewItem
+            // Open participant editor dialog with a default-initialized (and thus empty) participant
+            using (var window = new FormScriptCmdCombatParticipant())
             {
-                Text = String.Empty,
-                Tag = Guid.Empty,
-                Selected = true,
-                SubItems =
-                {
-                    new ListViewItem.ListViewSubItem
-                    {
-                        Text = "(not set)"
-                    }
-                }
-            };
-            lsvNpcs.Items.Add(item);
+                // Abort editing if the dialog was dismissed
+                if (window.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // Add the newly configured participant to the tree
+                AddParticipant(window.Participant);
+            }
+        }
+
+        private void cmdNpcEdit_Click(object sender, EventArgs e)
+        {
+            EditSelectedParticipant();
         }
 
         private void cmdNpcRemove_Click(object sender, EventArgs e)
@@ -153,6 +113,55 @@ namespace Finmer.Editor
 
             // Delete the selected row
             lsvNpcs.Items.Remove(lsvNpcs.SelectedItems[0]);
+        }
+
+        private void lsvNpcs_DoubleClick(object sender, EventArgs e)
+        {
+            EditSelectedParticipant();
+        }
+
+        private void AddParticipant(CommandCombatBegin.Participant npc)
+        {
+            var item = new ListViewItem
+            {
+                Text = npc.ID,
+                Tag = npc,
+                SubItems =
+                {
+                    new ListViewItem.ListViewSubItem
+                    {
+                        Text = Program.LoadedContent.GetAssetName(npc.Creature)
+                    },
+                    new ListViewItem.ListViewSubItem
+                    {
+                        Text = npc.IsAlly ? "Yes" : "No"
+                    }
+                }
+            };
+            lsvNpcs.Items.Add(item);
+        }
+
+        private void EditSelectedParticipant()
+        {
+            // Safeguard
+            if (m_SelectedParticipant == null)
+                return;
+
+            // Open editor window for participant
+            CommandCombatBegin.Participant npc = (CommandCombatBegin.Participant)m_SelectedParticipant.Tag;
+            using (var window = new FormScriptCmdCombatParticipant { Participant = npc })
+            {
+                // Abort editing if the dialog was dismissed
+                if (window.ShowDialog() != DialogResult.OK)
+                    return;
+
+                // Update tree with new participant state
+                npc = window.Participant;
+                m_SelectedParticipant.Tag = npc;
+                m_SelectedParticipant.Text = npc.ID;
+                m_SelectedParticipant.SubItems[1].Text = Program.LoadedContent.GetAssetName(npc.Creature);
+                m_SelectedParticipant.SubItems[2].Text = npc.IsAlly ? "Yes" : "No";
+            }
         }
 
     }

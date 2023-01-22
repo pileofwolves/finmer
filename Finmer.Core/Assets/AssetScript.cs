@@ -32,6 +32,10 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             outstream.WriteNestedScriptProperty(nameof(Contents), Contents);
+
+            // Reserved space
+            outstream.BeginArray("LoadOrder", 0);
+            outstream.EndArray();
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
@@ -43,6 +47,13 @@ namespace Finmer.Core.Assets
                 Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
                 if (Contents != null)
                     Contents.Name = Name;
+
+                // Reserved space
+                if (version >= 18)
+                {
+                    instream.BeginArray("LoadOrder");
+                    instream.EndArray();
+                }
             }
             else
             {

@@ -102,7 +102,7 @@ namespace Finmer.Gameplay
         /// </summary>
         public string GetAssetName(Guid id)
         {
-            return GetAssetByID(id).Name ?? id.ToString();
+            return GetAssetByID(id)?.Name ?? id.ToString();
         }
 
         /// <summary>

@@ -1605,7 +1605,8 @@
 															"Participants": [
 																{
 																	"Variable": "goon",
-																	"Creature": "faeb4850-2ec9-483f-acc7-67ce5398d812"
+																	"Creature": "faeb4850-2ec9-483f-acc7-67ce5398d812",
+																	"IsAlly": false
 																}
 															],
 															"HasCallbackCombatStart": false,

@@ -183,7 +183,8 @@
 																									"Participants": [
 																										{
 																											"Variable": "wolf",
-																											"Creature": "257235b2-2595-47f1-afce-c19557422492"
+																											"Creature": "257235b2-2595-47f1-afce-c19557422492",
+																											"IsAlly": false
 																										}
 																									],
 																									"HasCallbackCombatStart": false,

@@ -21,18 +21,8 @@ If you ever have any questions, concerns, suggestions or bug reports, you can co
 Start with the ['Getting Started' help pages (click here!)](/getting-started/about-modules) for an introduction to the basics of the Editor. You'll then be taken to a step-by-step guide to creating your first custom quest.
 :::
 
-The editor should be reasonably easy to get the hang of using this documentation. While some technical knowledge is **helpful**, you do not need to know the Lua scripting language in order to create content. A **visual-scripting feature is available**, allowing you to put together scripts using small building blocks.
+In these pages, we will discuss each element of the Editor and the game. There's also [a step-by-step guide to creating an example module here](/getting-started/about-modules).
 
-In these pages, we will discuss each element of the Editor and the game. There's also **a step-by-step guide to creating an example module**.
+Content in Finmer is powered by the Lua scripting language. **You do not need to know Lua to create content for Finmer.** There is a **visual-scripting feature**, allowing you to put together scripts using small building blocks. If, however, you'd like to use the engine to its fullest potential, some scripting knowledge will be useful.
 
 Feel free to look at the small example projects bundled with this editor, or the Core module (which contains my own stuff), to see how some things are set up! 
-
-### Notes for Lua Scripting
-
-:::info There's a visual scripting feature, too!
-**You do not need to know Lua to create content for Finmer.** If, however, you'd like to use the engine to its fullest potential, some scripting knowledge will be useful.
-:::
-
-Lua is a simple, elegant script language. If you would like to learn it, there are lots of resources available online for you to peruse. You can find the official [Lua 5.1 reference manual here](https://www.lua.org/manual/5.1/manual.html), and a large directory of [user-made tutorials here](http://lua-users.org/wiki/TutorialDirectory). Check the [Script Reference](/category/script-reference) to see what you can do with the game engine.
-
-The game makes available for you most standard Lua libraries. You can use the `base`, `coroutine`, `table`, `string` and `math` libraries. Note that for security reasons, the `io`, `os`, `package` and `debug` libraries are unavailable. 

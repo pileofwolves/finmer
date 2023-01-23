@@ -134,6 +134,10 @@ When you create a new Visual Script, you'll get this empty list:
 
 Each line is a 'command' that the game will run. You can double-click on any of the `[ Add ]` lines to open a command palette. From the palette, you can pick whatever command you like, and where applicable you'll then get to customize the command.
 
+<CaptionedImage
+	src={require("/images/Tutorial01VisPalette.png")}
+	caption="There's a lot of options here - you want 'Show Message' at the top!" />
+
 For this first node, we merely want to print some text to the screen. This is what the 'Show Message' command is for, under the 'Interface Control' group. Click this button. In the popup that appears, use `TQ01_NOTICE` as the String Table Key. (More on this later, just follow along.) Finally, click Accept.
 
 Your script should look like this:
@@ -152,6 +156,10 @@ This should be your Actions Taken script:
 ```lua
 Log("TQ01_NOTICE")
 ```
+
+<CaptionedImage
+	src={require("/images/Tutorial01NewLuaScript.png")}
+	caption="Enter your script in the text area that appears." />
 
 </TabItem>
 </Tabs>
@@ -172,7 +180,11 @@ Note the `\n` snippets near the end of the string - all instances of `\n` (forwa
 
 With that string ready to go, let's go back to our scene. Take a look again at the `TQ01_Start` node. The Log command that we added earlier will grab the string that we just wrote (`TQ01_NOTICE`) and print it on the game screen. It will look up the 'key' in all loaded string tables, and find the nice text we just wrote. Now, if we save the module and play it, we'll see that message printed to the screen when we hit the button.
 
-Let's get a journal going to keep track of everything that we do on this adventure of ours. Journals are meant to help remind players about what was going on in a story if they take a break or go off and do something else.
+<CaptionedImage
+	src={require("/images/Tutorial01StringInAction.png")}
+	caption="So the wordsmithing begins!" />
+
+Next, let's get a journal going to keep track of everything that we do on this adventure of ours. Journals are meant to help remind players about what was going on in a story if they take a break or go off and do something else.
 
 Create a new Journal asset. In the main game, journals are always named after the quest they represent, so for this tutorial, we'll call the asset `TQ01`. Set the Journal's summary to a nice title, something like "Hired Help", and add an entry with ID 0. The entry's ID is what you'll later use to tell Finmer which entry text you want to be shown. For the text, write something indicating that the player is interested in getting more information about the quest. For example:
 

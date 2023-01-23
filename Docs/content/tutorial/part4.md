@@ -110,6 +110,7 @@ There is one last thing we can do to add bit more personality to our quest. Go b
 `TQ01_WOLF_STRUGGLE`:
 
 > The wolf frantically fights to escape your stomach, though it seems to be of no avail.
+
 > The wolf whines and whimpers in its desperate attempt to free itself from your belly.
 
 Notice how `TQ01_WOLF_STRUGGLE` has multiple strings. Enter each one on a new line. This allows for randomization of messages playing: the game will automatically select a random one from this string set whenever `TQ01_WOLF_STRUGGLE` is used.

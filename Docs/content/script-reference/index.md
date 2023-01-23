@@ -16,6 +16,12 @@ If you intend to use the **visual scripting feature, you do not need to consult 
 The game engine may or may not expose additional functions or properties that are not included in this script reference. Usage of such undocumented features is not supported; they may change or break without notice in future updates.
 :::
 
+## About Lua
+
+Lua is a simple, elegant script language. If you would like to learn it, there are lots of resources available online for you to peruse. You can find the official [Lua 5.1 reference manual here](https://www.lua.org/manual/5.1/manual.html), and a large directory of [user-made tutorials here](http://lua-users.org/wiki/TutorialDirectory). Check the [Script Reference](/category/script-reference) to see what you can do with the game engine.
+
+The game makes available for you most standard Lua libraries. You can use the `base`, `coroutine`, `table`, `string` and `math` libraries. Note that for security reasons, the `io`, `os`, `package` and `debug` libraries are unavailable. 
+
 ## Reference pages
 
 The API is split up into these categories:

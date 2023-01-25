@@ -143,6 +143,21 @@ namespace Finmer.Editor
             AddScriptNode(new ConditionCombatParSwallowed());
         }
 
+        private void cmdSystemExplorer_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionIsExplorerEnabled());
+        }
+
+        private void cmdSystemDisposal_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionIsDisposalEnabled());
+        }
+
+        private void cmdSystemDebug_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionIsDebugMode());
+        }
+
     }
 
 }

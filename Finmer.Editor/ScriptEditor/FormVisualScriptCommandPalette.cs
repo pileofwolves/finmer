@@ -109,11 +109,6 @@ namespace Finmer.Editor
             AddScriptNode(new CommandLogClear());
         }
 
-        private void cmdUIAddLink_Click(object sender, System.EventArgs e)
-        {
-            // TODO: Larger refactor to make compass links part of the scene graph
-        }
-
         private void cmdUISetInstruction_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new CommandSetInstruction());
@@ -184,14 +179,29 @@ namespace Finmer.Editor
             AddScriptNode(new CommandSetScene());
         }
 
-        private void cmdSceneCombat_Click(object sender, System.EventArgs e)
+        private void cmdCombatBegin_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new CommandCombatBegin());
         }
 
-        private void cmdSceneCombatStop_Click(object sender, System.EventArgs e)
+        private void cmdCombatStop_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new CommandCombatEnd());
+        }
+
+        private void cmdCombatSetVored_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandCombatSetVored());
+        }
+
+        private void cmdCombatSetGrappled_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandCombatSetGrappled());
+        }
+
+        private void cmdCombatPreysense_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandPreysense());
         }
 
         private void cmdSceneShop_Click(object sender, System.EventArgs e)

@@ -185,6 +185,18 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatParticipant.Designer.cs">
       <DependentUpon>FormScriptCmdCombatParticipant.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPreysense.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdPreysense.Designer.cs">
+      <DependentUpon>FormScriptCmdPreysense.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatSetGrappled.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatSetGrappled.Designer.cs">
+      <DependentUpon>FormScriptCmdCombatSetGrappled.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -208,6 +220,12 @@
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdJournalUpdate.Designer.cs">
       <DependentUpon>FormScriptCmdJournalUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatSetVored.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatSetVored.Designer.cs">
+      <DependentUpon>FormScriptCmdCombatSetVored.cs</DependentUpon>
     </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.cs">
       <SubType>Form</SubType>
@@ -578,6 +596,12 @@
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatParticipant.resx">
       <DependentUpon>FormScriptCmdCombatParticipant.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPreysense.resx">
+      <DependentUpon>FormScriptCmdPreysense.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatSetGrappled.resx">
+      <DependentUpon>FormScriptCmdCombatSetGrappled.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdGrammarContext.resx">
       <DependentUpon>FormScriptCmdGrammarContext.cs</DependentUpon>
     </EmbeddedResource>
@@ -589,6 +613,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdJournalUpdate.resx">
       <DependentUpon>FormScriptCmdJournalUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatSetVored.resx">
+      <DependentUpon>FormScriptCmdCombatSetVored.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPlayerSetEquipment.resx">
       <DependentUpon>FormScriptCmdPlayerSetEquipment.cs</DependentUpon>

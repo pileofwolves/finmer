@@ -47,9 +47,9 @@ namespace Finmer.Editor
             label2.AutoSize = true;
             label2.Location = new System.Drawing.Point(16, 16);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(38, 13);
+            label2.Size = new System.Drawing.Size(74, 13);
             label2.TabIndex = 0;
-            label2.Text = "Name:";
+            label2.Text = "Participant ID:";
             // 
             // label3
             // 
@@ -73,6 +73,7 @@ namespace Finmer.Editor
             // 
             this.txtNpcName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNpcName.Location = new System.Drawing.Point(16, 32);
+            this.txtNpcName.MaxLength = 100;
             this.txtNpcName.Name = "txtNpcName";
             this.txtNpcName.Size = new System.Drawing.Size(264, 22);
             this.txtNpcName.TabIndex = 1;

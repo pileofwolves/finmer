@@ -96,6 +96,9 @@
     <Compile Include="StringTable.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandPreysense.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatSetGrappled.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatSetVored.cs" />
     <Compile Include="VisualScripting\Nodes\CommandEndGame.cs" />
     <Compile Include="VisualScripting\Nodes\CommandGrammarSetContext.cs" />
     <Compile Include="VisualScripting\Nodes\CommandGrammarSetVariable.cs" />
@@ -131,6 +134,9 @@
     <Compile Include="VisualScripting\Nodes\CommandVarSetFlag.cs" />
     <Compile Include="VisualScripting\Nodes\CommandVarSetNumber.cs" />
     <Compile Include="VisualScripting\Nodes\CommandVarSetString.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionIsExplorerEnabled.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionIsDisposalEnabled.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionIsDebugMode.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatActive.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParDead.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParGrappling.cs" />

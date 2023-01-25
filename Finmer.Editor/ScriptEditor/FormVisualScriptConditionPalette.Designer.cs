@@ -33,9 +33,8 @@ namespace Finmer.Editor
             System.Windows.Forms.GroupBox groupBox2;
             System.Windows.Forms.GroupBox groupBox6;
             System.Windows.Forms.GroupBox groupBox4;
+            System.Windows.Forms.GroupBox groupBox1;
             this.cmdPlayerGetMaxHealth = new System.Windows.Forms.Button();
-            this.cmdPlayerGetSpecies = new System.Windows.Forms.Button();
-            this.cmdPlayerGetName = new System.Windows.Forms.Button();
             this.cmdPlayerGetLevel = new System.Windows.Forms.Button();
             this.cmdPlayerGetStat = new System.Windows.Forms.Button();
             this.cmdPlayerHasItem = new System.Windows.Forms.Button();
@@ -51,21 +50,24 @@ namespace Finmer.Editor
             this.cmdCombatSwallowed = new System.Windows.Forms.Button();
             this.cmdCombatDead = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdSystemExplorer = new System.Windows.Forms.Button();
+            this.cmdSystemDisposal = new System.Windows.Forms.Button();
+            this.cmdSystemDebug = new System.Windows.Forms.Button();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
             groupBox4 = new System.Windows.Forms.GroupBox();
+            groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
+            groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
             // 
             groupBox3.Controls.Add(this.cmdPlayerGetMaxHealth);
-            groupBox3.Controls.Add(this.cmdPlayerGetSpecies);
-            groupBox3.Controls.Add(this.cmdPlayerGetName);
             groupBox3.Controls.Add(this.cmdPlayerGetLevel);
             groupBox3.Controls.Add(this.cmdPlayerGetStat);
             groupBox3.Controls.Add(this.cmdPlayerHasItem);
@@ -74,99 +76,77 @@ namespace Finmer.Editor
             groupBox3.Controls.Add(this.cmdPlayerGetMoney);
             groupBox3.Location = new System.Drawing.Point(16, 16);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new System.Drawing.Size(208, 256);
+            groupBox3.Size = new System.Drawing.Size(208, 208);
             groupBox3.TabIndex = 0;
             groupBox3.TabStop = false;
             groupBox3.Text = "Player";
             // 
             // cmdPlayerGetMaxHealth
             // 
-            this.cmdPlayerGetMaxHealth.Location = new System.Drawing.Point(16, 120);
+            this.cmdPlayerGetMaxHealth.Location = new System.Drawing.Point(16, 72);
             this.cmdPlayerGetMaxHealth.Name = "cmdPlayerGetMaxHealth";
             this.cmdPlayerGetMaxHealth.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetMaxHealth.TabIndex = 4;
+            this.cmdPlayerGetMaxHealth.TabIndex = 2;
             this.cmdPlayerGetMaxHealth.Text = "Max Health";
             this.cmdPlayerGetMaxHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerGetMaxHealth.Click += new System.EventHandler(this.cmdPlayerGetMaxHealth_Click);
             // 
-            // cmdPlayerGetSpecies
-            // 
-            this.cmdPlayerGetSpecies.Enabled = false;
-            this.cmdPlayerGetSpecies.Location = new System.Drawing.Point(16, 48);
-            this.cmdPlayerGetSpecies.Name = "cmdPlayerGetSpecies";
-            this.cmdPlayerGetSpecies.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetSpecies.TabIndex = 1;
-            this.cmdPlayerGetSpecies.Text = "Species";
-            this.cmdPlayerGetSpecies.UseVisualStyleBackColor = true;
-            this.cmdPlayerGetSpecies.Click += new System.EventHandler(this.cmdPlayerGetSpecies_Click);
-            // 
-            // cmdPlayerGetName
-            // 
-            this.cmdPlayerGetName.Enabled = false;
-            this.cmdPlayerGetName.Location = new System.Drawing.Point(16, 24);
-            this.cmdPlayerGetName.Name = "cmdPlayerGetName";
-            this.cmdPlayerGetName.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetName.TabIndex = 0;
-            this.cmdPlayerGetName.Text = "Name";
-            this.cmdPlayerGetName.UseVisualStyleBackColor = true;
-            this.cmdPlayerGetName.Click += new System.EventHandler(this.cmdPlayerGetName_Click);
-            // 
             // cmdPlayerGetLevel
             // 
-            this.cmdPlayerGetLevel.Location = new System.Drawing.Point(16, 216);
+            this.cmdPlayerGetLevel.Location = new System.Drawing.Point(16, 168);
             this.cmdPlayerGetLevel.Name = "cmdPlayerGetLevel";
             this.cmdPlayerGetLevel.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetLevel.TabIndex = 8;
+            this.cmdPlayerGetLevel.TabIndex = 6;
             this.cmdPlayerGetLevel.Text = "Level";
             this.cmdPlayerGetLevel.UseVisualStyleBackColor = true;
             this.cmdPlayerGetLevel.Click += new System.EventHandler(this.cmdPlayerGetLevel_Click);
             // 
             // cmdPlayerGetStat
             // 
-            this.cmdPlayerGetStat.Location = new System.Drawing.Point(16, 72);
+            this.cmdPlayerGetStat.Location = new System.Drawing.Point(16, 24);
             this.cmdPlayerGetStat.Name = "cmdPlayerGetStat";
             this.cmdPlayerGetStat.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetStat.TabIndex = 2;
+            this.cmdPlayerGetStat.TabIndex = 0;
             this.cmdPlayerGetStat.Text = "Primary Stat";
             this.cmdPlayerGetStat.UseVisualStyleBackColor = true;
             this.cmdPlayerGetStat.Click += new System.EventHandler(this.cmdPlayerGetStat_Click);
             // 
             // cmdPlayerHasItem
             // 
-            this.cmdPlayerHasItem.Location = new System.Drawing.Point(16, 192);
+            this.cmdPlayerHasItem.Location = new System.Drawing.Point(16, 144);
             this.cmdPlayerHasItem.Name = "cmdPlayerHasItem";
             this.cmdPlayerHasItem.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerHasItem.TabIndex = 7;
+            this.cmdPlayerHasItem.TabIndex = 5;
             this.cmdPlayerHasItem.Text = "Item";
             this.cmdPlayerHasItem.UseVisualStyleBackColor = true;
             this.cmdPlayerHasItem.Click += new System.EventHandler(this.cmdPlayerHasItem_Click);
             // 
             // cmdPlayerGetHealth
             // 
-            this.cmdPlayerGetHealth.Location = new System.Drawing.Point(16, 96);
+            this.cmdPlayerGetHealth.Location = new System.Drawing.Point(16, 48);
             this.cmdPlayerGetHealth.Name = "cmdPlayerGetHealth";
             this.cmdPlayerGetHealth.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetHealth.TabIndex = 3;
+            this.cmdPlayerGetHealth.TabIndex = 1;
             this.cmdPlayerGetHealth.Text = "Health";
             this.cmdPlayerGetHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerGetHealth.Click += new System.EventHandler(this.cmdPlayerGetHealth_Click);
             // 
             // cmdPlayerGetEquipment
             // 
-            this.cmdPlayerGetEquipment.Location = new System.Drawing.Point(16, 168);
+            this.cmdPlayerGetEquipment.Location = new System.Drawing.Point(16, 120);
             this.cmdPlayerGetEquipment.Name = "cmdPlayerGetEquipment";
             this.cmdPlayerGetEquipment.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetEquipment.TabIndex = 6;
+            this.cmdPlayerGetEquipment.TabIndex = 4;
             this.cmdPlayerGetEquipment.Text = "Equipment";
             this.cmdPlayerGetEquipment.UseVisualStyleBackColor = true;
             this.cmdPlayerGetEquipment.Click += new System.EventHandler(this.cmdPlayerGetEquipment_Click);
             // 
             // cmdPlayerGetMoney
             // 
-            this.cmdPlayerGetMoney.Location = new System.Drawing.Point(16, 144);
+            this.cmdPlayerGetMoney.Location = new System.Drawing.Point(16, 96);
             this.cmdPlayerGetMoney.Name = "cmdPlayerGetMoney";
             this.cmdPlayerGetMoney.Size = new System.Drawing.Size(176, 24);
-            this.cmdPlayerGetMoney.TabIndex = 5;
+            this.cmdPlayerGetMoney.TabIndex = 3;
             this.cmdPlayerGetMoney.Text = "Money";
             this.cmdPlayerGetMoney.UseVisualStyleBackColor = true;
             this.cmdPlayerGetMoney.Click += new System.EventHandler(this.cmdPlayerGetMoney_Click);
@@ -216,10 +196,10 @@ namespace Finmer.Editor
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(16, 288);
+            groupBox6.Location = new System.Drawing.Point(240, 288);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
-            groupBox6.TabIndex = 1;
+            groupBox6.TabIndex = 4;
             groupBox6.TabStop = false;
             groupBox6.Text = "Advanced";
             // 
@@ -290,22 +270,65 @@ namespace Finmer.Editor
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(312, 336);
+            this.cmdCancel.Location = new System.Drawing.Point(320, 376);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 5;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(this.cmdSystemDebug);
+            groupBox1.Controls.Add(this.cmdSystemDisposal);
+            groupBox1.Controls.Add(this.cmdSystemExplorer);
+            groupBox1.Location = new System.Drawing.Point(16, 240);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(208, 112);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "System";
+            // 
+            // cmdSystemExplorer
+            // 
+            this.cmdSystemExplorer.Location = new System.Drawing.Point(16, 24);
+            this.cmdSystemExplorer.Name = "cmdSystemExplorer";
+            this.cmdSystemExplorer.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemExplorer.TabIndex = 0;
+            this.cmdSystemExplorer.Text = "Is Explorer Mode Enabled";
+            this.cmdSystemExplorer.UseVisualStyleBackColor = true;
+            this.cmdSystemExplorer.Click += new System.EventHandler(this.cmdSystemExplorer_Click);
+            // 
+            // cmdSystemDisposal
+            // 
+            this.cmdSystemDisposal.Location = new System.Drawing.Point(16, 48);
+            this.cmdSystemDisposal.Name = "cmdSystemDisposal";
+            this.cmdSystemDisposal.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemDisposal.TabIndex = 1;
+            this.cmdSystemDisposal.Text = "Is Explicit Disposal Enabled";
+            this.cmdSystemDisposal.UseVisualStyleBackColor = true;
+            this.cmdSystemDisposal.Click += new System.EventHandler(this.cmdSystemDisposal_Click);
+            // 
+            // cmdSystemDebug
+            // 
+            this.cmdSystemDebug.Location = new System.Drawing.Point(16, 72);
+            this.cmdSystemDebug.Name = "cmdSystemDebug";
+            this.cmdSystemDebug.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemDebug.TabIndex = 2;
+            this.cmdSystemDebug.Text = "Is Debug Mode";
+            this.cmdSystemDebug.UseVisualStyleBackColor = true;
+            this.cmdSystemDebug.Click += new System.EventHandler(this.cmdSystemDebug_Click);
+            // 
             // FormVisualScriptConditionPalette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(464, 384);
+            this.ClientSize = new System.Drawing.Size(465, 424);
+            this.Controls.Add(groupBox1);
             this.Controls.Add(groupBox4);
             this.Controls.Add(groupBox6);
             this.Controls.Add(groupBox2);
@@ -323,6 +346,7 @@ namespace Finmer.Editor
             groupBox2.ResumeLayout(false);
             groupBox6.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
+            groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -335,8 +359,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdPlayerHasItem;
         private System.Windows.Forms.Button cmdPlayerGetStat;
         private System.Windows.Forms.Button cmdPlayerGetLevel;
-        private System.Windows.Forms.Button cmdPlayerGetName;
-        private System.Windows.Forms.Button cmdPlayerGetSpecies;
         private System.Windows.Forms.Button cmdPlayerGetMaxHealth;
         private System.Windows.Forms.Button cmdVarStr;
         private System.Windows.Forms.Button cmdVarNum;
@@ -346,5 +368,8 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCombatGrappling;
         private System.Windows.Forms.Button cmdCombatSwallowed;
         private System.Windows.Forms.Button cmdCombatDead;
+        private System.Windows.Forms.Button cmdSystemDebug;
+        private System.Windows.Forms.Button cmdSystemDisposal;
+        private System.Windows.Forms.Button cmdSystemExplorer;
     }
 }

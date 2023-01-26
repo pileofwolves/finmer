@@ -58,16 +58,6 @@ namespace Finmer.Editor
             Close();
         }
 
-        private void cmdPlayerGetName_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ConditionPlayerName());
-        }
-
-        private void cmdPlayerGetSpecies_Click(object sender, System.EventArgs e)
-        {
-            AddScriptNode(new ConditionPlayerSpecies());
-        }
-
         private void cmdPlayerGetStat_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new ConditionPlayerStat());

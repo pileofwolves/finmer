@@ -197,6 +197,7 @@ namespace Finmer.Gameplay
                 var all_scripts = global_scripts.Concat(item_scripts);
 
                 // Precompile all of them
+                // Note: Load order does not matter here, because globals etc are not resolved until run-time
                 foreach (var script in all_scripts)
                 {
                     try

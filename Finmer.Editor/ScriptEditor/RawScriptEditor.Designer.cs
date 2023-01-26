@@ -30,10 +30,11 @@ namespace Finmer.Editor
         private void InitializeComponent()
         {
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.scintilla = new ScintillaNET.Scintilla();
             this.tsbUndo = new System.Windows.Forms.ToolStripButton();
             this.tsbRedo = new System.Windows.Forms.ToolStripButton();
             this.tsbConvertVisual = new System.Windows.Forms.ToolStripButton();
-            this.scintilla = new ScintillaNET.Scintilla();
+            this.tsbLoadOrder = new System.Windows.Forms.ToolStripButton();
             this.toolStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,12 +43,22 @@ namespace Finmer.Editor
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbUndo,
             this.tsbRedo,
-            this.tsbConvertVisual});
+            this.tsbConvertVisual,
+            this.tsbLoadOrder});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(475, 25);
             this.toolStrip.TabIndex = 1;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // scintilla
+            // 
+            this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.scintilla.Location = new System.Drawing.Point(0, 25);
+            this.scintilla.Name = "scintilla";
+            this.scintilla.Size = new System.Drawing.Size(475, 286);
+            this.scintilla.TabIndex = 0;
             // 
             // tsbUndo
             // 
@@ -80,14 +91,17 @@ namespace Finmer.Editor
             this.tsbConvertVisual.Visible = false;
             this.tsbConvertVisual.Click += new System.EventHandler(this.tsbConvertVisual_Click);
             // 
-            // scintilla
+            // tsbLoadOrder
             // 
-            this.scintilla.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.scintilla.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.scintilla.Location = new System.Drawing.Point(0, 25);
-            this.scintilla.Name = "scintilla";
-            this.scintilla.Size = new System.Drawing.Size(475, 286);
-            this.scintilla.TabIndex = 0;
+            this.tsbLoadOrder.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tsbLoadOrder.Image = global::Finmer.Editor.Properties.Resources.sort_quantity;
+            this.tsbLoadOrder.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbLoadOrder.Name = "tsbLoadOrder";
+            this.tsbLoadOrder.Size = new System.Drawing.Size(86, 22);
+            this.tsbLoadOrder.Text = "Load Order";
+            this.tsbLoadOrder.ToolTipText = "Edit Script Loading Order";
+            this.tsbLoadOrder.Visible = false;
+            this.tsbLoadOrder.Click += new System.EventHandler(this.tsbLoadOrder_Click);
             // 
             // RawScriptEditor
             // 
@@ -112,5 +126,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.ToolStripButton tsbUndo;
         private System.Windows.Forms.ToolStripButton tsbRedo;
         private System.Windows.Forms.ToolStripButton tsbConvertVisual;
+        private System.Windows.Forms.ToolStripButton tsbLoadOrder;
     }
 }

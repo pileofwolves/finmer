@@ -26,6 +26,8 @@ namespace Finmer.Editor
 
         public event EventHandler Dirty;
 
+        public event EventHandler EditLoadOrder;
+
         /// <summary>
         /// Configures which script subtypes the user is allowed to transform the contained script into.
         /// </summary>
@@ -134,6 +136,11 @@ namespace Finmer.Editor
 
             m_Wrapper.Wrapped = replacement;
             PrepareClientEditor();
+        }
+
+        public void OpenLoadOrderEditor()
+        {
+            EditLoadOrder?.Invoke(this, EventArgs.Empty);
         }
 
         private void PrepareClientEditor()

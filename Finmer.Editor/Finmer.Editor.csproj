@@ -161,6 +161,12 @@
     <Compile Include="FormLoadingProgress.Designer.cs">
       <DependentUpon>FormLoadingProgress.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormLoadOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormLoadOrder.Designer.cs">
+      <DependentUpon>FormLoadOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -570,6 +576,9 @@
     <EmbeddedResource Include="FormLoadingProgress.resx">
       <DependentUpon>FormLoadingProgress.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="FormLoadOrder.resx">
+      <DependentUpon>FormLoadOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -853,6 +862,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FinmerIcon.ico" />
+    <None Include="Resources\sort-quantity.png" />
     <None Include="Resources\compass.png" />
     <None Include="Resources\arrow-circle-225-left.png" />
     <None Include="Resources\arrow-circle-225.png" />

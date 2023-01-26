@@ -59,6 +59,7 @@ namespace Finmer.Editor
         {
             tsbUndo.Enabled = scintilla.CanUndo;
             tsbRedo.Enabled = scintilla.CanRedo;
+            tsbLoadOrder.Visible = !m_Host.AllowInlineScript && !m_Host.AllowVisualActionScript && !m_Host.AllowVisualConditionScript;
             tsbConvertVisual.Visible = m_Host.AllowVisualActionScript || m_Host.AllowVisualConditionScript;
         }
 
@@ -83,6 +84,11 @@ namespace Finmer.Editor
         private void tsbConvertVisual_Click(object sender, EventArgs e)
         {
             m_Host.ConvertToVisual();
+        }
+
+        private void tsbLoadOrder_Click(object sender, EventArgs e)
+        {
+            m_Host.OpenLoadOrderEditor();
         }
 
     }

@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
+using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
@@ -101,9 +102,8 @@ namespace Finmer.Gameplay
             GameUI.Instance.Deserialize(snapshot.InterfaceData);
 
             // Run global scripts
-            foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
-                if (ScriptContext.LoadScript(script.PrecompiledScript, script.Name))
-                    ScriptContext.RunProtectedCall(0, 0);
+            // TODO: Catch UnsolvableConstraintException in window navigation utilities
+            RunGlobalScripts();
 
             // Check if we have write perms
             if (!Logger.HasWritePermission())
@@ -302,6 +302,44 @@ namespace Finmer.Gameplay
             ui.InventoryEnabled = false;
             ui.Location = String.Empty;
             ui.IsGameOver = true;
+        }
+
+        /// <summary>
+        /// Run all global script assets, in module-specified load order.
+        /// </summary>
+        /// <exception cref="UnsolvableConstraintException">Throws if load order dependency tree cannot be resolved.</exception>
+        private void RunGlobalScripts()
+        {
+            // Build a directed graph of scripts with dependencies on other scripts
+            var solver = new DependencyConstraintSolver<AssetScript>();
+            foreach (var script in GameController.Content.GetAssetsByType<AssetScript>())
+            {
+                // Register this script in the graph
+                solver.AddNode(script, script.Name);
+
+                // Find its dependencies
+                foreach (var dependency in script.LoadOrder)
+                {
+                    // Register the target script in the graph as well
+                    var target = GameController.Content.GetAssetByID<AssetScript>(dependency.TargetAsset)
+                        ?? throw new UnsolvableConstraintException($"Script '{script.Name}' (in module {script.SourceModuleName}) has a load-order dependency on script '{dependency.TargetAsset}', but no such script is loaded.");
+                    solver.AddNode(target, target.Name);
+
+                    // Add an edge between the two nodes
+                    if (dependency.Relation == LoadOrderDependency.ERelation.Before)
+                        solver.AddDependency(script, target);
+                    else
+                        solver.AddDependency(target, script);
+                }
+            }
+
+            // Sort the scripts with their load order
+            foreach (var sorted_script in solver.Solve())
+            {
+                // Run each script in the load order
+                if (ScriptContext.LoadScript(sorted_script.PrecompiledScript, sorted_script.Name))
+                    ScriptContext.RunProtectedCall(0, 0);
+            }
         }
 
         private void ScriptThreadWorker()

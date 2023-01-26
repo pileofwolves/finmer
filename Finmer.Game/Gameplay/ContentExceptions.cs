@@ -42,4 +42,19 @@ namespace Finmer.Gameplay
 
     }
 
+    /// <summary>
+    /// Represents the exception that is thrown when a set of dependency constraints is unsolvable, i.e. cannot be topologically sorted.
+    /// </summary>
+    [Serializable]
+    public sealed class UnsolvableConstraintException : ApplicationException
+    {
+
+        private UnsolvableConstraintException(SerializationInfo info, StreamingContext context) : base(info, context) {}
+
+        public UnsolvableConstraintException(string message) : base(message) {}
+
+        public UnsolvableConstraintException(string message, Exception inner) : base(message, inner) {}
+
+    }
+
 }

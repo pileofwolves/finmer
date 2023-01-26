@@ -403,6 +403,16 @@ namespace Finmer.Editor.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap sort_quantity {
+            get {
+                object obj = ResourceManager.GetObject("sort_quantity", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap t_shirt_gray {
             get {
                 object obj = ResourceManager.GetObject("t_shirt_gray", resourceCulture);

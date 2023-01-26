@@ -40,6 +40,13 @@ namespace Finmer.Editor
             // Configure the editor host
             scriptEditorHost.SetScript(m_Wrapper);
             scriptEditorHost.Dirty += ScriptEditorHost_Dirty;
+            scriptEditorHost.EditLoadOrder += ScriptEditorHost_EditLoadOrder;
+        }
+
+        private void ScriptEditorHost_EditLoadOrder(object sender, EventArgs e)
+        {
+            using (var window = new FormLoadOrder { Source = (AssetScript)Asset })
+                window.ShowDialog();
         }
 
         private void ScriptEditorHost_Dirty(object sender, EventArgs e)

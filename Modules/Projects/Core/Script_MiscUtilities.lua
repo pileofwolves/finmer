@@ -137,13 +137,9 @@ end
 function RestUntilNight()
     Sleep(1)
 
-    if GetIsNight() then
-        Log("SLEEP_NIGHT_CANNOT")
-    else
-        SetTimeHour(21)
-        -- Recover
-        Player.Health = Player.HealthMax
-    end
+    SetTimeHour(21)
+    Player.Health = Player.HealthMax
+
     Sleep(1)
 end
 

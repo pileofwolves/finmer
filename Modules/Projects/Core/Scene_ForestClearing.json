@@ -458,7 +458,7 @@
 									{
 										"NodeType": "Choice",
 										"Key": "Clearing_C_Sleep",
-										"Title": "Sleep",
+										"Title": "Sleep until Morning",
 										"Tooltip": "Sit a moment and rest.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -479,6 +479,38 @@
 													{
 														"NodeType": "Link",
 														"Key": "AutoLink",
+														"LinkTarget": "Clearing_C_Leave"
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Clearing_C_SleepNigh",
+										"Title": "Sleep until Night",
+										"Tooltip": "Sit a moment and rest.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not GetIsNight()"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Clearing_R_SleepNigh",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"FOREST_SLEEP\")\r\nRestUntilNight()\r\nLog(\"FOREST_SLEEP_WAKEUP\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Clearing_C_Save"
+													},
+													{
+														"NodeType": "Link",
 														"LinkTarget": "Clearing_C_Leave"
 													}
 												]

@@ -911,7 +911,7 @@
 									{
 										"NodeType": "Choice",
 										"Key": "Room_C_Sleep",
-										"Title": "Sleep",
+										"Title": "Sleep until Morning",
 										"Tooltip": "The bed does look rather inviting.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
@@ -947,7 +947,7 @@
 												"Key": "Room_R_Sleep",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Log(\"town_inn_room_sleep\")\r\nStorage.SetFlag(\"town_inn_rented\", false)\r\nStorage.SetFlag(\"town_inn_cansleep\", false)\r\nRest()"
+													"Script": "Log(\"TOWN_INN_ROOM_SLEEP\")\r\nRest()"
 												},
 												"Children": [
 													{
@@ -963,6 +963,34 @@
 																"LinkTarget": "Room_Main"
 															}
 														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Room_C_SleepNight",
+										"Title": "Sleep until Night",
+										"Tooltip": "The bed does look rather inviting.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not GetIsNight()"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Room_R_SleepNight",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"TOWN_INN_ROOM_SLEEP\")\r\nRestUntilNight()"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "RoomDoSleepEnd"
 													}
 												]
 											}

@@ -6,5 +6,10 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Script_RumorList"
 	},
-	"LoadOrder": []
+	"LoadOrder": [
+		{
+			"TargetAsset": "fe64eed9-a10c-43da-97bb-54fd22028082",
+			"Relation": "After"
+		}
+	]
 }

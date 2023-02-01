@@ -6,9 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:sys="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:SavePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="600">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
     <Grid>
         <StackPanel
             Orientation="Vertical"
@@ -78,10 +82,49 @@
                     <sys:Int32>2</sys:Int32>
                 </Button.CommandParameter>
             </Button>
+
+            <!-- Mod warning -->
+            <StackPanel
+                Visibility="{Binding Source={x:Static gp:SaveManager.IsModdedGame},
+                    Converter={StaticResource BooleanToVisibilityConverter}}"
+                Margin="20"
+                Orientation="Horizontal">
+                <Rectangle
+                    Margin="8"
+                    Width="25" Height="25">
+                    <Rectangle.Fill>
+                        <DrawingBrush Stretch="Uniform">
+                            <DrawingBrush.Drawing>
+                                <DrawingGroup>
+                                    <DrawingGroup>
+                                        <GeometryDrawing
+                                            Geometry="F1M14.444,14.27,14,15H1l-.444-.73,6.5-12.5h.888Z">
+                                            <GeometryDrawing.Brush>
+                                                <SolidColorBrush Color="{StaticResource LogColorNegative}" />
+                                            </GeometryDrawing.Brush>
+                                        </GeometryDrawing>
+                                        <GeometryDrawing
+                                            Brush="{StaticResource ForegroundBrush}"
+                                            Geometry="F1M7.5,13.25a.75.75,0,1,1,.75-.75A.75.75,0,0,1,7.5,13.25ZM7,6v4.5H8V6Z" />
+                                    </DrawingGroup>
+                                </DrawingGroup>
+                            </DrawingBrush.Drawing>
+                        </DrawingBrush>
+                    </Rectangle.Fill>
+                </Rectangle>
+                <TextBlock
+                    Width="450"
+                    TextWrapping="Wrap"
+                    Style="{StaticResource TextBlockDefault}">
+                    Your game has custom modules installed. Please note that if any modules are uninstalled, save data you create now cannot be loaded.
+                </TextBlock>
+            </StackPanel>
+
+            <!-- Cancel button -->
             <Button
                 Width="150"
                 Height="40"
-                Margin="0,50,0,0"
+                Margin="0,40,0,0"
                 Content="Never mind"
                 Command="{Binding CloseCommand}" />
         </StackPanel>

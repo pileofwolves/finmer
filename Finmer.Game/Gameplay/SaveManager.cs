@@ -24,6 +24,14 @@ namespace Finmer.Gameplay
         private const int k_SlotCount = 3;
 
         private static readonly SaveSlot[] s_Slots = new SaveSlot[k_SlotCount];
+        private static readonly Guid k_CoreModuleID = new Guid("edcf99d2-6ced-40fa-87e9-86cda5e570ee");
+
+        /// <summary>
+        /// Indicates whether the game instance includes unofficial content.
+        /// </summary>
+        public static bool IsModdedGame =>
+            // The game cannot start without at least one module loaded, so if any of them isn't Core, there are mods present
+            GameController.LoadedModules.Any(meta => meta.ID != k_CoreModuleID);
 
         /// <summary>
         /// Preload the contents of all save slots, for display. This performs disk access and is therefore slow.
@@ -75,6 +83,7 @@ namespace Finmer.Gameplay
         /// <param name="snapshot">The <seealso cref="PropertyBag" /> containing the save data.</param>
         public static void Save(int slot, GameSnapshot snapshot)
         {
+            // Create save file
             string filename = GetSaveFileName(slot);
             string description;
             using (var file = new FileStream(filename, FileMode.Create))
@@ -176,7 +185,8 @@ namespace Finmer.Gameplay
 
             // Describe the player data
             var player = snapshot.PlayerData;
-            text.AppendFormat("{0}  -  Lv {1} {2}",
+            text.AppendFormat("{0}{1}  -  Lv {2} {3}",
+                IsModdedGame ? "[M] " : String.Empty,
                 player.GetString(SaveData.k_Object_Name),
                 player.GetInt(SaveData.k_Character_Level),
                 player.GetString(SaveData.k_Player_SpeciesSingular).CapFirst());

@@ -54,9 +54,16 @@ namespace Finmer.Core
         {
             key = key.ToUpperInvariant();
 
-            if (m_Table.TryGetValue(key, out List<string> list))
-                return list[CoreUtility.Rng.Next(list.Count)];
+            // Find the string set for this key
+            if (m_Table.TryGetValue(key, out List<string> list) && list.Count > 0)
+            {
+                // Short-circuit the RNG for single-string sets, since it's relatively expensive
+                return list.Count == 1
+                    ? list[0]
+                    : list[CoreUtility.Rng.Next(list.Count)];
+            }
 
+            // Return a default for missing keys
             return $"[missing text: '{key}']";
         }
 

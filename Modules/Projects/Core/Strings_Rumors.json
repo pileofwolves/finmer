@@ -6,13 +6,37 @@
 		{
 			"Key": "RUMOR_GENERAL01",
 			"Text": [
-				"\"All these adventurers coming by, asking for the latest news...\" {^mill} sighs. \"Why don't you go out and tell me what you've been running into, for once? Spirits know I can use something interesting to listen to.\""
+				"\"All these adventurers coming by, asking for the latest news...\" {^mill} sighs. \"Why don't you go out for a walk and tell me what you've been running into, for once? Spirits know I can use something interesting to listen to.\""
 			]
 		},
 		{
 			"Key": "RUMOR_GENERAL02",
 			"Text": [
 				"\"Some tourists visiting these parts come for an old ruined monastery known as 'Dalsida',\" {mill} explains. \"There's not a lot left, but it must've been impressive once. It's pretty close to South Finmer. Just follow the road east and uphill, once you're out of the town.\""
+			]
+		},
+		{
+			"Key": "RUMOR_GENERAL03",
+			"Text": [
+				"\"Because North Finmer sits right on top of the Great North Road - an important trade route - there's a lot of through-traffic.\" {^mill} nods with a cheeky smile. \"The neighbors, South Finmer of course, have a port, since they're right on the coast, but somehow it's still far enough off the beaten path that they don't get nearly the same number of visitors.\""
+			]
+		},
+		{
+			"Key": "RUMOR_GENERAL04",
+			"Text": [
+				"\"Everyone's looking forward to the winter festivities,\" {mill.subject} nods. \"Days are getting colder, and North Finmer always has an awesome festival on the longest night of the year. Food, drink, games and fireworks. You should visit if you're around.\""
+			]
+		},
+		{
+			"Key": "RUMOR_GENERAL05",
+			"Text": [
+				"\"They say some people in the cities can actually afford shoes,\" {mill} scoffs. \"Can you imagine, having something weirdly tight and stuffy like that wrapped around your footpaws? Yeah, no thanks, I'm glad everyone just sticks with cloth strips.\""
+			]
+		},
+		{
+			"Key": "RUMOR_GENERAL06",
+			"Text": [
+				"\"Despite what the port commerce board is saying, South Finmer ain't doing too well lately. Economy is on a bit of a downturn, it seems. There's a lot fewer visitors, and many merchants choose to dock in a bigger port a ways down the shore.\""
 			]
 		},
 		{
@@ -34,9 +58,63 @@
 			]
 		},
 		{
+			"Key": "RUMOR_MQ02_SUPPLIES",
+			"Text": [
+				"\"With the bridge out between towns, there's been a sharp decline in traffic,\" {mill} explains. \"I hope our southern friends are doing alright; they imported a lot of food and other basics from us.\""
+			]
+		},
+		{
 			"Key": "RUMOR_MQ03_ACTINGMAYOR",
 			"Text": [
 				"\"After nobody could find Iso anywhere, and she was declared missing, her assistant was put in charge temporarily,\" {mill} says. \"'Acting Mayor' Canbell would be forgiven if she made mistakes, but I hear she's holding the town together surprisingly well.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ03_TEMPLE_EVENT",
+			"Text": [
+				"\"Rumor has it there was a rather violent altercation in South Finmer's shrine the other night,\" your host tells you. \"Neighbors say there was a lot of noise, and now the custodian is missing. I hope she's alright, but that's the second unexplained disappearance now. People are getting a little fearful...\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ03_TOBY_ALIVE",
+			"Text": [
+				"\"South Finmer town guard says they see an arctic fox snooping around the general store sometimes, but he always manages to slip past them somehow when they go in to make sure nothing's going on. And the owner, Pat, just chuckles at them whenever they ask if he's being bothered by this fox guy.\" {^mill} shakes {mill.possessive} head."
+			]
+		},
+		{
+			"Key": "RUMOR_MQ03_TOBY_DEAD",
+			"Text": [
+				"\"Town guard in South Finmer found the body of an arctic fox in the alleyways, I hear. Windpipe crushed! How awful.\" {^mill} shakes {mill.possessive} head, appearing repulsed at the thought. \"I can't imagine what kind of twisted mind would do something like that. What for?!\" A sigh follows. \"Ah, I apologize, friend. I shouldn't be getting worked up at you.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ04_AMBER",
+			"Text": [
+				"\"Someone went around South Finmer a while back, offering people true amber in exchange for services rendered,\" {mill} relays. \"Can you believe it?! Shady business, I tell ya. That stuff is so expensive, there's no way they'd just hand it out. But maybe some people down on their luck might take the offer... spirits help them.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ05_TOBY_ALIVE",
+			"Text": [
+				"\"Did you hear that Pat has a new helper in the store?\" {^mill} gives you a broad smile. \"It's a cute story, really. This arctic fox fella was down on his luck, and Pat decided to give 'em bread and board in exchange for a paw in the shop. Kit's really taken to his new role, too.\""
+			]
+		},
+		{
+			"Key": "RUMOR_SQ02_CHIP",
+			"Text": [
+				"\"There's a weird rumor going around about a giant, man-eating wolf prowling the woods around North Finmer.\" {^mill} sticks out {mill.possessive} tongue. \"The monster supposedly even has a master. What baloney, obviously.\""
+			]
+		},
+		{
+			"Key": "RUMOR_SQ04_CHAMPION",
+			"Text": [
+				"{^mill.subject} gives you an uneasy stare. \"I'll be honest; I've met other {player.speciesplural} in my days, and none of them gave me that... oddly predatory look that's in your eyes. Whered'ya pick that up?\""
+			]
+		},
+		{
+			"Key": "RUMOR_SQ04_UNLOCKED",
+			"Text": [
+				"\"A regular of mine stopped checking in recently,\" {mill} sighs, absent-mindedly polishing a well-used mug. \"Last I heard, she'd found some weird 'Club' they wanted to be a part of. Hope they're doing alright.\""
 			]
 		}
 	]

@@ -8,6 +8,7 @@
 
 using System.Collections.Generic;
 using Finmer.Core;
+using Finmer.Models;
 
 namespace Finmer.Gameplay
 {
@@ -51,6 +52,9 @@ namespace Finmer.Gameplay
         {
             // Ensure the old session is removed first
             ExitSession();
+
+            // Increment play counter
+            UserConfig.SessionLoadCount++;
 
             // Set up the new gameplay session
             Session = new GameSession(snapshot);

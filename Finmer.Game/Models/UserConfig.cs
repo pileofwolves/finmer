@@ -62,6 +62,16 @@ namespace Finmer.Models
         public static float ZoomFactor { get; set; } = 1.0f;
 
         /// <summary>
+        /// The number of times the user has restarted a game session.
+        /// </summary>
+        public static int SessionLoadCount { get; set; }
+
+        /// <summary>
+        /// Indicates whether the community invite dialog has already been shown.
+        /// </summary>
+        public static bool CommunityInviteShown { get; set; }
+
+        /// <summary>
         /// The cached initial save data to be restored when opening the character creator.
         /// </summary>
         public static PropertyBag NewGamePreset { get; set; }
@@ -100,6 +110,8 @@ namespace Finmer.Models
                         ExplorerMode = props.GetBool(nameof(ExplorerMode));
                         FirstStart = props.GetBool(nameof(FirstStart));
                         ZoomFactor = Math.Min(Math.Max(props.GetFloat(nameof(ZoomFactor)), k_Zoom_Min), k_Zoom_Max);
+                        SessionLoadCount = props.GetInt(nameof(SessionLoadCount));
+                        CommunityInviteShown = props.GetBool(nameof(CommunityInviteShown));
                         NewGamePreset = props.GetNestedPropertyBag(nameof(NewGamePreset));
                         CombatSpeed = (EAnimationLevel)Math.Min(Math.Max(props.GetInt(nameof(CombatSpeed)), (int)EAnimationLevel.Full), (int)EAnimationLevel.Disabled);
                     }
@@ -149,6 +161,8 @@ namespace Finmer.Models
             props.SetBool(nameof(ExplorerMode), ExplorerMode);
             props.SetBool(nameof(FirstStart), FirstStart);
             props.SetFloat(nameof(ZoomFactor), ZoomFactor);
+            props.SetInt(nameof(SessionLoadCount), SessionLoadCount);
+            props.SetBool(nameof(CommunityInviteShown), CommunityInviteShown);
             props.SetNestedPropertyBag(nameof(NewGamePreset), NewGamePreset);
             props.SetInt(nameof(CombatSpeed), (int)CombatSpeed);
             return props;

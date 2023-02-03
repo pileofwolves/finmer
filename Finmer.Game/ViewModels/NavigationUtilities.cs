@@ -7,6 +7,7 @@
  */
 
 using Finmer.Gameplay;
+using Finmer.Models;
 using Finmer.Utility;
 using Finmer.Views;
 
@@ -24,7 +25,22 @@ namespace Finmer.ViewModels
         /// </summary>
         public static void NavigateToGame()
         {
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            // Number of times the player must start a game session to get the invitation dialog.
+            // This is based on one initial load (for a new game), and then two reloads (such as due to game-overs).
+            const int k_CommunityInviteThreshold = 3;
+
+            // If the user has been playing for some time, show a community info dialog first instead of navigating directly to the game
+            if (UserConfig.SessionLoadCount >= k_CommunityInviteThreshold && !UserConfig.CommunityInviteShown)
+            {
+                // Show info dialog
+                UserConfig.CommunityInviteShown = true;
+                GameController.Window.Navigate(new CommunityInvitePage(), ENavigatorAnimation.SlideLeft);
+            }
+            else
+            {
+                // Show game
+                GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            }
         }
 
     }

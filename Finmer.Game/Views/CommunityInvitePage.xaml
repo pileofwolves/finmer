@@ -19,17 +19,31 @@
     </UserControl.Resources>
     <Grid>
         <Grid
-            Width="750"
-            HorizontalAlignment="Center"
+            Background="{StaticResource DarkBackgroundBrush}"
+            HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch"
-            Margin="0,-25"
-            Background="{StaticResource DarkBackgroundBrush}">
-            <Grid.Effect>
-                <BlurEffect
-                    KernelType="Gaussian"
-                    RenderingBias="Performance"
-                    Radius="40" />
-            </Grid.Effect>
+            Margin="0,-25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="220" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0.15" Color="{StaticResource BackgroundColor}" />
+                        <GradientStop Offset="1" Color="{StaticResource DarkBackgroundColor}" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="2">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                        <GradientStop Offset="0.15" Color="{StaticResource BackgroundColor}" />
+                        <GradientStop Offset="1" Color="{StaticResource DarkBackgroundColor}" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
         </Grid>
         <StackPanel
             Width="650"

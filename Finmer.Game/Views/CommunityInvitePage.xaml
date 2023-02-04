@@ -108,12 +108,12 @@
                 <Button
                     Margin="8,0,0,0"
                     Width="220"
-                    Command="{Binding VisitFaCommand}">
+                    Command="{Binding VisitWebsiteCommand}">
                     <StackPanel Orientation="Horizontal" Margin="4">
                         <Image
                             Width="24"
                             Height="24"
-                            Source="/Finmer;component/Resources/UI/MenuButtonFA.png"
+                            Source="/Finmer;component/Resources/UI/MenuButtonWebsite.png"
                             Margin="0,0,8,0" />
                         <TextBlock
                             VerticalAlignment="Center"

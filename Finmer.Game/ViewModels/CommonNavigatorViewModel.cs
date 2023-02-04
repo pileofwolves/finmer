@@ -25,12 +25,12 @@ namespace Finmer.ViewModels
         /// <summary>
         /// Command for opening a FA link in an external browser.
         /// </summary>
-        public ICommand VisitFaCommand => m_CommandVisitFa ?? (m_CommandVisitFa = new RelayCommand(OnClickFA));
+        public ICommand VisitWebsiteCommand => m_CommandVisitWebsite ?? (m_CommandVisitWebsite = new RelayCommand(OnClickWebsite));
 
         /// <summary>
         /// Command for opening the GitHub repository in an external browser.
         /// </summary>
-        public ICommand VisitGhCommand => m_CommandVisitGh ?? (m_CommandVisitGh = new RelayCommand(OnClickGH));
+        public ICommand VisitGitHubCommand => m_CommandVisitGitHub ?? (m_CommandVisitGitHub = new RelayCommand(OnClickGH));
 
         /// <summary>
         /// Command for opening the donation page in an external browser.
@@ -52,16 +52,17 @@ namespace Finmer.ViewModels
         /// </summary>
         public ICommand ExitCommand => m_CommandExit ?? (m_CommandExit = new RelayCommand(OnExit));
 
-        private ICommand m_CommandVisitFa;
-        private ICommand m_CommandVisitGh;
+        private ICommand m_CommandVisitWebsite;
+        private ICommand m_CommandVisitGitHub;
         private ICommand m_CommandDonate;
         private ICommand m_CommandEmail;
         private ICommand m_CommandExit;
         private ICommand m_CommandNavGame;
 
-        private static void OnClickFA(object args)
+        private static void OnClickWebsite(object args)
         {
-            Process.Start(@"https://www.furaffinity.net/user/nuntis/");
+            // TODO: Soon, friend, soon :)
+            Process.Start(@"https://whoknows.where");
         }
 
         private static void OnClickGH(object args)
@@ -76,6 +77,7 @@ namespace Finmer.ViewModels
 
         private static void OnClickEmail(object args)
         {
+            // TODO: Replace
             Process.Start(@"mailto:nuntiswolf@gmail.com");
         }
 

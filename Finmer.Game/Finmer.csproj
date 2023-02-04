@@ -550,9 +550,9 @@
     <Resource Include="Resources\UI\HUDJournal.png" />
     <Resource Include="Resources\UI\HUDScriptConsole.png" />
     <Resource Include="Resources\UI\LoadingSpinner.png" />
-    <Resource Include="Resources\UI\MenuButtonFA.png" />
     <Resource Include="Resources\UI\MenuButtonGitHub.png" />
     <Resource Include="Resources\UI\MenuButtonKofi.png" />
+    <Resource Include="Resources\UI\MenuButtonWebsite.png" />
     <Resource Include="Resources\UI\MissingItemIcon.png" />
     <Resource Include="Resources\UI\Money.png" />
     <Resource Include="Resources\UI\RemovedStatOverlay.png" />

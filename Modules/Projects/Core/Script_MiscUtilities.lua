@@ -14,13 +14,6 @@ end
 -- Log utilities
 ------------------------------------------------------------------------------
 
-function LogVore(predator, prey)
-    Text.SetContext("predator", predator)
-    Text.SetContext("prey", prey)
-    Sleep(3)
-    LogRaw(prey:GetString("VORE_WIN", Player))
-end
-
 function LogPostVore(scat, noscat)
     -- if the player disabled scat, then use the noscat msg if present, otherwise exit
     local text = Player.IsExplicitDisposalEnabled and scat or noscat
@@ -149,8 +142,8 @@ function TimedCheckpoint(id)
 
     -- Take a checkpoint if the game clock advanced since the last time this function was called
     if Storage.GetNumber(id) ~= now then
-        Storage.SetNumber(id, now)
         SaveData.TakeCheckpoint()
+        Storage.SetNumber(id, now)
     end
 end
 

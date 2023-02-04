@@ -27,7 +27,7 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "local _, pred = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(pred)\r\nfight:SetGrappling(pred, Player)\r\nfight:Begin()"
+							"Script": "local _, pred = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(pred)\r\nfight:Begin()"
 						},
 						"Children": [
 							{

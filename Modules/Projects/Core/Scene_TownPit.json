@@ -724,7 +724,7 @@
 								"Key": "Entry_R_Claim_Annoy",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPlayer:GiveItem(\"I_PitRechToken\")"
+									"Script": "Log(\"TOWN_PIT_DESK_REWARD_ANNOY\")\r\nStorage.SetFlag(\"TOWN_PIT_BUGGED_LOTS\", true)\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)\r\nPlayer:GiveItem(\"I_PitRechToken\")"
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
@@ -1157,7 +1157,7 @@
 																"Key": "Op2_R_NV_Eat",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\n\r\n-- Show gulp text\r\nlocal food = Creature(\"CR_Town_Pit_Carson\")\r\nLogVore(Player, food)\r\n\r\n-- Start a digestion sequence (with Carson already swallowed)\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(food)\r\nstate:SetVored(Player, food)\r\nstate:Begin()"
+																	"Script": "Log(\"TOWN_PIT_O_CARSON_VICTORY_NV_EAT\")\r\n\r\n-- Show gulp text\r\nlocal food = Creature(\"CR_Town_Pit_Carson\")\r\nText.SetContext(\"predator\", Player)\r\nText.SetContext(\"prey\", food)\r\nSleep(3)\r\nLog(\"TOWN_PIT_O_CARSON_VORE_WIN\")\r\n\r\n-- Start a digestion sequence (with Carson already swallowed)\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(food)\r\nstate:SetVored(Player, food)\r\nstate:Begin()"
 																},
 																"Children": [
 																	{

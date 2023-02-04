@@ -6,5 +6,4 @@ if not Storage.GetFlag("PORT_TAVERN_ENTER_FIRST") then
     Log("PORT_TAVERN_ENTER_FIRST")
 end
 
-SaveData.TakeCheckpoint()
 Log("PORT_TAVERN_ENTER")

@@ -138,7 +138,7 @@
 												"Key": "Pit_R_GiveToken",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")\r\nPreySense(Creature(\"CR_Town_Pit_RechFatal\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+													"Script": "Player:TakeItem(\"I_PitRechToken\")\r\nLog(\"TOWN_PIT_RECH_TOKEN_SHOW\")"
 												},
 												"Children": [
 													{
@@ -210,7 +210,7 @@
 								"Key": "Pit_R_Night",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")\r\n\r\n-- Preysense warning only if vore scene not already triggered\r\nif not Storage.GetFlag(\"town_pit_rech_sneaky\") then\r\n    PreySense(Creature(\"CR_Town_Pit_RechEndo\"), EVoreStyle.OV, false)\r\nend"
+									"Script": "Log(\"TOWN_PIT_ENTRANCE_NIGHTTIME\")\r\n\r\n-- Preysense warning only if vore scene not already triggered\r\nif not Storage.GetFlag(\"town_pit_rech_sneaky\") then\r\n    PreySense(Creature(\"CR_Town_Pit_RechEndo\"), EPreySenseType.OralVore, EPreySenseType.Endo)\r\nend"
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",

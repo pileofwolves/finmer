@@ -14,6 +14,10 @@
 			{
 				"NodeType": "State",
 				"Key": "Main",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "TimedCheckpoint(\"PORT_TAVERN\")"
+				},
 				"Children": [
 					{
 						"NodeType": "Choice",

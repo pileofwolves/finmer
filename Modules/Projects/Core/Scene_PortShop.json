@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "ec0d5a9b-b88d-4eb0-8c90-2564f8098f22",
 	"AssetName": "Scene_PortShop",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_PortShop_Custom"
+	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_PortShop_Enter"
@@ -36,7 +40,72 @@
 						"Children": [
 							{
 								"NodeType": "Link",
+								"LinkTarget": "TobyFirst"
+							},
+							{
+								"NodeType": "Link",
 								"LinkTarget": "Main"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "TobyFirst",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Log(\"PORT_SHOP_TOBY_FIRST1\")\r\nStorage.SetFlag(\"PORT_SHOP_TOBY_FIRST\", true)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return toby_in_shop and not Storage.GetFlag(\"PORT_SHOP_TOBY_FIRST\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"PORT_SHOP_TOBY_FIRST2\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"PORT_SHOP_TOBY_FIRST3\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"PORT_SHOP_TOBY_FIRST4\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Main"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
 							}
 						]
 					}
@@ -144,6 +213,48 @@
 										]
 									}
 								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Talk",
+						"Tooltip": "Talk for a spell.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "PORT_SHOP_TALK_NOPE",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "PORT_SHOP_TALK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "PORT_SHOP_TALK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Main"
 							}
 						]
 					},

@@ -73,6 +73,46 @@
 			]
 		},
 		{
+			"Key": "PORT_SHOP_TALK_NOPE",
+			"Text": [
+				"The stoat gives you a warm smile. \"I must admit, youngster, I am not much for chatter these days. I tire so easily. Perhaps the proprietor of the tavern has some stories to regale you with? I'm afraid I'd only bore you,\" he answers with a soft, dark chuckle."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TOBY_ANGSTY",
+			"Text": [
+				"The stoat's assistant is not around right now, perhaps rummaging around in the storage room in back. Avoiding you, of course.",
+				"Toby is sweeping the floor, trying very hard to not make eye contact. Perhaps the tod just needs a little more time.",
+				"Before you can ask the new assistant, Toby, if he's doing alright, he hurries off into the storeroom, and maybe has a panic attack while there.",
+				"You wave to the vulpine doing chores in the storefront. Toby's face flushes with a multitude of expressions, before settling on silent nervousness.",
+				"Toby is busy stocking shelves, not so much as tilting an ear back before he knows it's you. He needs more time."
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TOBY_FIRST1",
+			"Text": [
+				"Behind him, a figure emerges from the shop's storage room. An arctic fox waddles into the storefront, carrying a heavy-looking sealed crate. The stoat, in turn, glances behind him. \"Oh, thanks Toby, I'd forgotten-\" the elderly proprietor begins, before turning fully and raising an eyebrow at the vulpine, who had frozen in place. Azure eyes burn holes into your own. Fear, anticipation, curiosity. Excitement?"
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TOBY_FIRST2",
+			"Text": [
+				"In his distraction, he might have dropped the box, were it not for the stoat's alarmed shout. Instead, Toby adjusts his grip and cautiously walks past you. With exceedingly quiet, deliberate footfalls, he sets down the crate and begins fiddling with it. It is difficult to not pick up on how the air in the room had changed. From behind the counter, Pat coughs surprisingly loudly given his smaller stature. He catches your attention, but not the fox's. \"Care to share, you two?\""
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TOBY_FIRST3",
+			"Text": [
+				"The snow-furred canine gives you a sheepish look, not knowing quite what to do or say - not at all unlike cornered prey. More than once, his eyes dart down to your chest, at the innocuously flat stomach that he has at some point observed in a different state. He does not voice the buried accusation, perhaps fearful that he might not leave the room if he does. \"W-we, uh, met,\" Toby stammers. In response to this, the stoat rolls his eyes. \"Obviously,\" he deadpans, before turning his attention to you, his commanding tone leaving little up for discussion. \"Would you mind leaving my staff to work in peace?\""
+			]
+		},
+		{
+			"Key": "PORT_SHOP_TOBY_FIRST4",
+			"Text": [
+				"Pat takes on a more neutral expression as Toby does everything in his power to ignore your presence. \"He was down on his luck, so I offered him a job here. Frankly, I could use the help.\" The stoat sighs and leans back in his chair, casting a sidelong glance at the vulpine as he unpacks merchandise onto a shelf. \"And that's all there is to it. Now, is there something I can help you with?\""
+			]
+		},
+		{
 			"Key": "PORT_TEMPLE_ENTER",
 			"Text": [
 				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, the calming scent of floral incense tickles your nose. Willow, the resident healer, acknowledges your arrival with a nod, before continuing to sweep the floor."
@@ -93,7 +133,7 @@
 		{
 			"Key": "PORT_TEMPLE_POSTMQ03_EMPTY",
 			"Text": [
-				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, you are left in an empty room, the candles and lanterns having gone dark after going unmaintained. There is nobody around, it seems."
+				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, you are left in an empty room, the candles and lanterns having gone dark after going unmaintained. Street sounds vanish behind you with the closing door, trapping you in a foreboding silence. There is nobody around, it seems."
 			]
 		},
 		{

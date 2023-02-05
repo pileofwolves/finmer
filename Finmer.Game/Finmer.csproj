@@ -128,6 +128,7 @@
     <Compile Include="ViewModels\JournalItemViewModel.cs" />
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
+    <Compile Include="ViewModels\NavigationUtilities.cs" />
     <Compile Include="ViewModels\SavePageViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\SpeciesPresetViewModel.cs" />
@@ -135,11 +136,15 @@
     <Compile Include="ViewModels\UserConfigViewModel.cs" />
     <Compile Include="ViewModels\CompassGridViewModel.cs" />
     <Compile Include="ViewModels\AbilityPointCollectionViewModel.cs" />
+    <Compile Include="ViewModels\CommonNavigatorViewModel.cs" />
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
     <Compile Include="Views\CharCreateSpecies.xaml.cs">
       <DependentUpon>CharCreateSpecies.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CommunityInvitePage.xaml.cs">
+      <DependentUpon>CommunityInvitePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Parts\AbilityScoreCharSheetView.xaml.cs">
       <DependentUpon>AbilityScoreCharSheetView.xaml</DependentUpon>
@@ -290,6 +295,10 @@
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
     <Page Include="Views\CharCreateSpecies.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CommunityInvitePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -541,14 +550,15 @@
     <Resource Include="Resources\UI\HUDJournal.png" />
     <Resource Include="Resources\UI\HUDScriptConsole.png" />
     <Resource Include="Resources\UI\LoadingSpinner.png" />
-    <Resource Include="Resources\UI\MenuButtonFA.png" />
     <Resource Include="Resources\UI\MenuButtonGitHub.png" />
     <Resource Include="Resources\UI\MenuButtonKofi.png" />
+    <Resource Include="Resources\UI\MenuButtonWebsite.png" />
     <Resource Include="Resources\UI\MissingItemIcon.png" />
     <Resource Include="Resources\UI\Money.png" />
     <Resource Include="Resources\UI\RemovedStatOverlay.png" />
     <Resource Include="Resources\UI\RoundPipAlly.png" />
     <Resource Include="Resources\UI\RoundPipEnemy.png" />
+    <Resource Include="Resources\UI\Selfie.png" />
     <Resource Include="Resources\UI\StatDefense.png" />
     <Resource Include="Resources\UI\StatOffense.png" />
     <Resource Include="Resources\UI\StatPrimary.png" />

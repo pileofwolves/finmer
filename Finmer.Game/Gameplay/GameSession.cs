@@ -294,8 +294,9 @@ namespace Finmer.Gameplay
             return Player.IsDead() || m_GameOverRequested;
         }
 
-        private void RunGameOver()
+        private void SetGameOverInternal()
         {
+            // Reconfigure UI to prevent further game choices from being made
             var ui = GameUI.Instance;
             ui.Instruction = String.Empty;
             ui.ControlsEnabled = false;
@@ -416,7 +417,7 @@ namespace Finmer.Gameplay
                     // Skip all further scene events if the game has ended
                     if (IsGameOver())
                     {
-                        RunGameOver();
+                        SetGameOverInternal();
                         return;
                     }
 

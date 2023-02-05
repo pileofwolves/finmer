@@ -30,7 +30,12 @@ namespace Finmer
                 WindowState = WindowState.Maximized;
         }
 
-        internal void Navigate(Control target, ENavigatorAnimation anim)
+        /// <summary>
+        /// Change the content of the carousel.
+        /// </summary>
+        /// <param name="target">The new root control to display in the carousel.</param>
+        /// <param name="anim">The change-over animation style to use.</param>
+        public void Navigate(Control target, ENavigatorAnimation anim)
         {
             MainWindowCarousel.Navigate(target, anim);
         }

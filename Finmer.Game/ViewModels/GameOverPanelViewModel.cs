@@ -23,12 +23,12 @@ namespace Finmer.ViewModels
         /// <summary>
         /// Command for reloading the last stored checkpoint (auto-save).
         /// </summary>
-        public ICommand ReloadCommand => m_CommandReload ?? (m_CommandReload = new RelayCommand(OnReloadCheckpoint, CanReloadCheckpoint));
+        public ICommand ReloadCheckpointCommand => m_CommandReload ?? (m_CommandReload = new RelayCommand(OnReloadCheckpoint, CanReloadCheckpoint));
 
         /// <summary>
         /// Command for closing the game and returning to the main menu.
         /// </summary>
-        public ICommand ExitCommand => m_CommandExit ?? (m_CommandExit = new RelayCommand(OnReturnToMenu));
+        public ICommand NavigateToMenuCommand => m_CommandExit ?? (m_CommandExit = new RelayCommand(OnReturnToMenu));
 
         private ICommand m_CommandReload;
         private ICommand m_CommandExit;
@@ -40,7 +40,7 @@ namespace Finmer.ViewModels
             GameController.BeginNewSession(checkpoint);
 
             // Navigate to a new copy of the main page, to ensure a clean visual break and to easily reset all UI
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            NavigationUtilities.NavigateToGame();
         }
 
         private bool CanReloadCheckpoint(object args)

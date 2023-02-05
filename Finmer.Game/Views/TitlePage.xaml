@@ -102,11 +102,11 @@
                         </Grid.ColumnDefinitions>
                         <Button
                             Grid.Column="0"
-                            ToolTip="Visit me on FurAffinity"
+                            ToolTip="Visit the community website!"
                             Style="{StaticResource TitleButton}"
-                            Command="{Binding VisitFaCommand}">
+                            Command="{Binding VisitWebsiteCommand}">
                             <Image
-                                Source="/Finmer;component/Resources/UI/MenuButtonFA.png" />
+                                Source="/Finmer;component/Resources/UI/MenuButtonWebsite.png" />
                         </Button>
                         <Button
                             Grid.Column="1"
@@ -120,7 +120,7 @@
                             Grid.Column="2"
                             ToolTip="Visit the project on GitHub"
                             Style="{StaticResource TitleButton}"
-                            Command="{Binding VisitGhCommand}">
+                            Command="{Binding VisitGitHubCommand}">
                             <Image
                                 Source="/Finmer;component/Resources/UI/MenuButtonGitHub.png" />
                         </Button>

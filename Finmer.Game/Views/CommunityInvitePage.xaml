@@ -1,0 +1,157 @@
+﻿<UserControl
+    x:Class="Finmer.Views.CommunityInvitePage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    mc:Ignorable="d"
+    d:DesignHeight="600" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:CommonNavigatorViewModel />
+    </UserControl.DataContext>
+    <UserControl.Resources>
+        <Style TargetType="TextBlock" BasedOn="{StaticResource TextBlockDefault}">
+            <Setter Property="TextWrapping" Value="Wrap" />
+            <Setter Property="Margin" Value="0,16,0,16" />
+        </Style>
+    </UserControl.Resources>
+    <Grid>
+        <!-- Background gradient -->
+        <Grid
+            Background="{StaticResource DarkBackgroundBrush}"
+            HorizontalAlignment="Stretch"
+            VerticalAlignment="Stretch"
+            Margin="0,-25">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="220" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="220" />
+            </Grid.ColumnDefinitions>
+            <Rectangle Grid.Column="0">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,0">
+                        <GradientStop Offset="0.15" Color="{StaticResource BackgroundColor}" />
+                        <GradientStop Offset="1" Color="{StaticResource DarkBackgroundColor}" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+            <Rectangle Grid.Column="2">
+                <Rectangle.Fill>
+                    <LinearGradientBrush StartPoint="1,0" EndPoint="0,0">
+                        <GradientStop Offset="0.15" Color="{StaticResource BackgroundColor}" />
+                        <GradientStop Offset="1" Color="{StaticResource DarkBackgroundColor}" />
+                    </LinearGradientBrush>
+                </Rectangle.Fill>
+            </Rectangle>
+        </Grid>
+
+        <!-- Main content -->
+        <Grid
+            Width="680"
+            Margin="25"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Center">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <StackPanel
+                Grid.Row="0"
+                Orientation="Horizontal">
+                <Image
+                    RenderOptions.BitmapScalingMode="HighQuality"
+                    Width="100"
+                    Height="100"
+                    Source="/Finmer;component/Resources/UI/Selfie.png"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Margin="0,0,18,0" />
+                <TextBlock
+                    VerticalAlignment="Center"
+                    Style="{StaticResource TextBlockLarge}">
+                    Hey there! Nuntis here. &#x1F44B;
+                    <LineBreak />
+                    <Span Foreground="{StaticResource DepressedBrush}">Just a moment of your time...</Span>
+                </TextBlock>
+            </StackPanel>
+            <ScrollViewer
+                Grid.Row="1"
+                Margin="0,15"
+                VerticalScrollBarVisibility="Auto"
+                HorizontalScrollBarVisibility="Disabled">
+                <TextBlock
+                    Style="{StaticResource TextBlockDefault}"
+                    TextWrapping="Wrap">
+                    I'm very glad that you are enjoying this game so far.
+                    <LineBreak />
+                    <LineBreak />
+                    Finmer is a passion project that started way back in 2015. It grew and changed forms several times, until in 2019 I first released a demo of a story set in a quiet little trading post. The reception has been incredible, and I am thankful for everyone's enthusiasm.
+                    <LineBreak />
+                    <LineBreak />
+                    <Bold>Making games</Bold>, especially with an engine built from scratch, costs a ton of <Bold>time and energy</Bold>. I also pay the community website's hosting fees out of my own pocket, because I love this project. Many popular creators lock their work behind subscription models and the like, to compensate for these costs. I do not charge for Finmer, nor do I intend to.
+                    <LineBreak />
+                    <LineBreak />
+                    If you happen to have <Bold>enjoyed the game</Bold> enough to send me a tip, <Bold>that would mean the world to me</Bold>. It's entirely optional; if you don't want to, no worries, and I won't bother you again. But if you would like to support the game's development and/or my future work, please consider buying me a coffee with the button below.
+                    <LineBreak />
+                    <LineBreak />
+                    <Bold>Also, consider joining the community!</Bold>
+                    Be the first to see updates, share feedback, learn how to mod the game with custom content, and try out others' creations.
+                </TextBlock>
+            </ScrollViewer>
+            <StackPanel
+                Grid.Row="2"
+                Orientation="Vertical">
+                <StackPanel
+                    HorizontalAlignment="Center"
+                    Orientation="Horizontal">
+                    <Button
+                        Width="220"
+                        Command="{Binding DonateCommand}">
+                        <StackPanel Orientation="Horizontal" Margin="4">
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Source="/Finmer;component/Resources/UI/MenuButtonKofi.png"
+                                Margin="0,0,8,0" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Style="{StaticResource TextBlockDefault}">
+                                Feed a wolf some coffee
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                    <Button
+                        Margin="8,0,0,0"
+                        Width="220"
+                        Command="{Binding VisitWebsiteCommand}">
+                        <StackPanel Orientation="Horizontal" Margin="4">
+                            <Image
+                                Width="24"
+                                Height="24"
+                                Source="/Finmer;component/Resources/UI/MenuButtonWebsite.png"
+                                Margin="0,0,8,0" />
+                            <TextBlock
+                                VerticalAlignment="Center"
+                                Style="{StaticResource TextBlockDefault}">
+                                Join the Community!
+                            </TextBlock>
+                        </StackPanel>
+                    </Button>
+                </StackPanel>
+                <TextBlock
+                    HorizontalAlignment="Center">
+                    Thank you so much for playing.
+                    <Span Foreground="{StaticResource DepressedBrush}">This message will not be shown again.</Span>
+                </TextBlock>
+                <Button
+                    Width="200"
+                    Height="40"
+                    Content="Continue to the Game"
+                    Command="{Binding NavigateToGameCommand}">
+                </Button>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</UserControl>

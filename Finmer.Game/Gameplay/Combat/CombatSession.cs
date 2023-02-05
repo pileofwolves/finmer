@@ -458,61 +458,61 @@ namespace Finmer.Gameplay.Combat
             OnRoundEnd += round =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnRoundEnd))
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnRoundEnd, out var coroutine))
                 {
-                    LuaApi.lua_pushnumber(stack, round);
-                    m_Binder.Call(stack, 1);
+                    LuaApi.lua_pushnumber(coroutine, round);
+                    m_Binder.Call(stack, coroutine, 1);
                 }
             };
 
             OnCombatEnd += () =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCombatEnd))
-                    m_Binder.Call(stack, 0);
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCombatEnd, out var coroutine))
+                    m_Binder.Call(stack, coroutine, 0);
             };
 
             OnCharacterKilled += (killer, victim) =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterKilled))
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterKilled, out var coroutine))
                 {
-                    killer.Character.PushToLua(stack);
-                    victim.Character.PushToLua(stack);
-                    m_Binder.Call(stack, 2);
+                    killer.Character.PushToLua(coroutine);
+                    victim.Character.PushToLua(coroutine);
+                    m_Binder.Call(stack, coroutine, 2);
                 }
             };
 
             OnPlayerKilled += (killer, victim) =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnPlayerKilled))
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnPlayerKilled, out var coroutine))
                 {
-                    killer.Character.PushToLua(stack);
-                    victim.Character.PushToLua(stack);
-                    m_Binder.Call(stack, 2);
+                    killer.Character.PushToLua(coroutine);
+                    victim.Character.PushToLua(coroutine);
+                    m_Binder.Call(stack, coroutine, 2);
                 }
             };
 
             OnCharacterVored += (predator, prey) =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterVored))
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterVored, out var coroutine))
                 {
-                    predator.Character.PushToLua(stack);
-                    prey.Character.PushToLua(stack);
-                    m_Binder.Call(stack, 2);
+                    predator.Character.PushToLua(coroutine);
+                    prey.Character.PushToLua(coroutine);
+                    m_Binder.Call(stack, coroutine, 2);
                 }
             };
 
             OnCharacterReleased += (predator, prey) =>
             {
                 IntPtr stack = ScriptContext.LuaState;
-                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterReleased))
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnCharacterReleased, out var coroutine))
                 {
-                    predator.Character.PushToLua(stack);
-                    prey.Character.PushToLua(stack);
-                    m_Binder.Call(stack, 2);
+                    predator.Character.PushToLua(coroutine);
+                    prey.Character.PushToLua(coroutine);
+                    m_Binder.Call(stack, coroutine, 2);
                 }
             };
         }

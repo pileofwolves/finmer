@@ -103,9 +103,12 @@ namespace Finmer.Gameplay.Scripting
         }
 
         /// <summary>
-        /// Find the callback associated with the specified name. Returns true if available, false if not.
+        /// Find the callback associated with the specified name, and generates a coroutine that encapsulates it.
         /// </summary>
-        public bool PrepareCall(IntPtr stack, string name)
+        /// <returns>
+        /// Returns a pointer to the Lua thread representing the new coroutine, or IntPtr.Zero if the callback is not bound.
+        /// </returns>
+        public bool PrepareCall(IntPtr stack, string name, out IntPtr coroutine)
         {
             Debug.Assert(m_TableRef != -1, "Table used after being freed");
 
@@ -118,8 +121,14 @@ namespace Finmer.Gameplay.Scripting
             if (lua_type(stack, -1) != ELuaType.Function)
             {
                 lua_pop(stack, 1);
+                coroutine = IntPtr.Zero;
                 return false;
             }
+
+            // Generate a coroutine and push the function onto it
+            coroutine = lua_newthread(stack);
+            lua_insert(stack, -2);
+            lua_xmove(stack, coroutine, 1);
 
             return true;
         }
@@ -127,13 +136,21 @@ namespace Finmer.Gameplay.Scripting
         /// <summary>
         /// Invokes a function prepared by PrepareCall(), passing the specified number of user arguments to the function.
         /// </summary>
-        public void Call(IntPtr stack, int numArgs)
+        public void Call(IntPtr stack, IntPtr coroutine, int num_args)
         {
             Debug.Assert(m_TableRef != -1, "Table used after being freed");
-            Debug.Assert(lua_type(stack, -1 - numArgs) == ELuaType.Function, "Call PrepareCall first, and check that it returned 'true'");
+            Debug.Assert(coroutine != IntPtr.Zero, "Call PrepareCall first, and check that it returned 'true'");
+            Debug.Assert(lua_gettop(coroutine) > num_args, "Insufficient arguments on coroutine stack");
+            Debug.Assert(lua_type(coroutine, -1 - num_args) == ELuaType.Function, "Invalid coroutine");
 
             // The stack has already been prepared, so perform the call
-            m_Context.RunProtectedCall(stack, numArgs, 0);
+            // TODO: Catch script error and rethrow as ScriptException, when handling infra is in place
+            lua_resume(coroutine, num_args);
+
+            // Destroy the coroutine
+            Debug.Assert(lua_type(stack, -1) == ELuaType.Thread);
+            Debug.Assert(lua_tothread(stack, -1) == coroutine);
+            lua_pop(stack, 1);
         }
 
         /// <summary>

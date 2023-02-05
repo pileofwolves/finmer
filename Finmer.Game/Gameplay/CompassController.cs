@@ -117,15 +117,15 @@ namespace Finmer.Gameplay
                 if (target_scene == null)
                 {
                     // This is a script link, load the callback function
-                    var stack = m_Session.ScriptContext.LuaState;
-                    if (!m_CallbackTable.PrepareCall(stack, DirectionToString(direction)))
+                    var main_stack = m_Session.ScriptContext.LuaState;
+                    if (!m_CallbackTable.PrepareCall(main_stack, DirectionToString(direction), out var coroutine))
                     {
                         Debug.Fail("Could not load script link");
                         return;
                     }
 
                     // Call the user callback function
-                    m_CallbackTable.Call(stack, 0);
+                    m_CallbackTable.Call(main_stack, coroutine, 0);
                 }
                 else
                 {

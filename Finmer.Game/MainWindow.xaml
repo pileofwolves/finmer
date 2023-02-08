@@ -11,11 +11,17 @@
     Background="{StaticResource BackgroundBrush}"
     Width="1280" Height="720"
     MinWidth="1000" MinHeight="640">
-    <v:CarouselView x:Name="MainWindowCarousel">
-        <v:CarouselView.LayoutTransform>
+    <Grid>
+        <Grid.LayoutTransform>
             <ScaleTransform
                 ScaleX="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}"
                 ScaleY="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}" />
-        </v:CarouselView.LayoutTransform>
-    </v:CarouselView>
+        </Grid.LayoutTransform>
+
+        <!-- Main content container -->
+        <v:CarouselView x:Name="MainWindowCarousel" />
+
+        <!-- Popup container -->
+        <v:PopupStackView x:Name="MainWindowPopupStack" />
+    </Grid>
 </Window>

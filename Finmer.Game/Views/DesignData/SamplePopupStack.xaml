@@ -1,0 +1,28 @@
+﻿<vm:PopupStackViewModel
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:base="clr-namespace:Finmer.Views.Base"
+    IsStackVisible="True">
+    <vm:PopupStackViewModel.Elements>
+        <base:StackablePopupBase>
+            <StackPanel Width="400" Orientation="Vertical">
+                <TextBlock
+                    Style="{StaticResource TextBlockDefault}"
+                    TextWrapping="Wrap">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+                    Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
+                    dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
+                    proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    <LineBreak /><LineBreak />
+                    Quae magnam delectus culpa temporibus esse numquam ut. Deleniti voluptas labore placeat omnis dolorem minima. Qui quis aut
+                    autem nam nam et dolores. Est voluptate consequatur dicta autem animi vel rerum. Et est dolor cumque qui. Fugit et voluptas a.
+                    <LineBreak /><LineBreak />
+                    Ut pariatur expedita suscipit quam atque. Sed quis rem rerum et atque sed. Culpa inventore quaerat dolor repellendus neque
+                    doloribus eaque atque. Rerum est iure ad rerum dolores eos quas. Optio ut quae qui laborum alias quas culpa.
+                </TextBlock>
+                <Button Width="250" Height="40" Margin="8">Button 1</Button>
+                <Button Width="250" Height="40">Button 2</Button>
+            </StackPanel>
+        </base:StackablePopupBase>
+    </vm:PopupStackViewModel.Elements>
+</vm:PopupStackViewModel>

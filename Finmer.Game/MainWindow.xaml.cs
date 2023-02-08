@@ -10,6 +10,7 @@ using System.Windows;
 using System.Windows.Controls;
 using Finmer.Gameplay;
 using Finmer.Utility;
+using Finmer.Views.Base;
 
 namespace Finmer
 {
@@ -38,6 +39,14 @@ namespace Finmer
         public void Navigate(Control target, ENavigatorAnimation anim)
         {
             MainWindowCarousel.Navigate(target, anim);
+        }
+
+        /// <summary>
+        /// Push a new dialog popup onto the popup stack.
+        /// </summary>
+        public void OpenPopup(StackablePopupBase popup)
+        {
+            MainWindowPopupStack.Push(popup);
         }
 
     }

@@ -129,6 +129,7 @@
     <Compile Include="ViewModels\JournalViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="ViewModels\NavigationUtilities.cs" />
+    <Compile Include="ViewModels\PopupStackViewModel.cs" />
     <Compile Include="ViewModels\SavePageViewModel.cs" />
     <Compile Include="ViewModels\ShopViewModel.cs" />
     <Compile Include="ViewModels\SpeciesPresetViewModel.cs" />
@@ -140,11 +141,16 @@
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
+    <Compile Include="Views\Base\StackablePopupBase.cs" />
+    <Compile Include="Views\Base\WrappedUIElementItemsControl.cs" />
     <Compile Include="Views\CharCreateSpecies.xaml.cs">
       <DependentUpon>CharCreateSpecies.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\CommunityInvitePage.xaml.cs">
       <DependentUpon>CommunityInvitePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Dialogs\SimpleMessageDialog.xaml.cs">
+      <DependentUpon>SimpleMessageDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Parts\AbilityScoreCharSheetView.xaml.cs">
       <DependentUpon>AbilityScoreCharSheetView.xaml</DependentUpon>
@@ -222,6 +228,9 @@
     </Compile>
     <Compile Include="Views\Parts\MainPageNavButtonsView.xaml.cs">
       <DependentUpon>MainPageNavButtonsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Parts\PopupStackView.xaml.cs">
+      <DependentUpon>PopupStackView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\Parts\ShopItemListView.xaml.cs">
       <DependentUpon>ShopItemListView.xaml</DependentUpon>
@@ -301,6 +310,14 @@
     <Page Include="Views\CommunityInvitePage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
+    </Page>
+    <DesignData Include="Views\DesignData\SamplePopupStack.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </DesignData>
+    <Page Include="Views\Dialogs\SimpleMessageDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Parts\AbilityScoreCharSheetView.xaml">
       <SubType>Designer</SubType>
@@ -399,6 +416,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Parts\MainPageNavButtonsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\PopupStackView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -564,6 +585,7 @@
     <Resource Include="Resources\UI\StatPrimary.png" />
     <Resource Include="Resources\UI\StatVore.png" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

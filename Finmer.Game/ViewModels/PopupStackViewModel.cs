@@ -8,6 +8,7 @@
 
 using System.Collections.ObjectModel;
 using System.Collections.Specialized;
+using System.Linq;
 using Finmer.Views.Base;
 
 namespace Finmer.ViewModels
@@ -20,20 +21,28 @@ namespace Finmer.ViewModels
     {
 
         /// <summary>
-        /// .
+        /// Collection of popups visible in this stack.
         /// </summary>
         public ObservableCollection<StackablePopupBase> Elements { get; set; } = new ObservableCollection<StackablePopupBase>();
 
-        public bool IsStackVisible => Elements.Count != 0;
+        /// <summary>
+        /// Whether any popups are open.
+        /// </summary>
+        public bool HasAnyOpenPopups => Elements.Any(popup => popup.Host != null);
 
         public PopupStackViewModel()
         {
             CollectionChangedEventManager.AddHandler(Elements, Elements_OnCollectionChanged);
         }
 
+        public void OnPopupClosing()
+        {
+            OnPropertyChanged(nameof(HasAnyOpenPopups));
+        }
+
         private void Elements_OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
-            OnPropertyChanged(nameof(IsStackVisible));
+            OnPropertyChanged(nameof(HasAnyOpenPopups));
         }
 
     }

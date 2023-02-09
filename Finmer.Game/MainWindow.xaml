@@ -17,9 +17,22 @@
                 ScaleX="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}"
                 ScaleY="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}" />
         </Grid.LayoutTransform>
+        <Grid.Resources>
+            <Style x:Key="MainWindowCarouselStyle" TargetType="v:CarouselView">
+                <Style.Triggers>
+                    <DataTrigger Binding="{Binding ElementName=MainWindowPopupStack, Path=(v:PopupStackView.HasAnyOpenPopups)}" Value="True">
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <BlurEffect Radius="8" KernelType="Gaussian" RenderingBias="Performance" />
+                            </Setter.Value>
+                        </Setter>
+                    </DataTrigger>
+                </Style.Triggers>
+            </Style>
+        </Grid.Resources>
 
         <!-- Main content container -->
-        <v:CarouselView x:Name="MainWindowCarousel" />
+        <v:CarouselView x:Name="MainWindowCarousel" Style="{StaticResource MainWindowCarouselStyle}" />
 
         <!-- Popup container -->
         <v:PopupStackView x:Name="MainWindowPopupStack" />

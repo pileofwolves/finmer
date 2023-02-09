@@ -7,6 +7,8 @@
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     xmlns:vb="clr-namespace:Finmer.Views.Base"
+    Loaded="PopupStackView_OnLoaded"
+    Unloaded="PopupStackView_OnUnloaded"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData Source=../DesignData/SamplePopupStack.xaml}"
     d:DesignHeight="450"
@@ -56,7 +58,7 @@
     </UserControl.Resources>
 
     <!-- Popup stack -->
-    <Grid Visibility="{Binding IsStackVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
+    <Grid Visibility="{Binding HasAnyOpenPopups, Converter={StaticResource BooleanToVisibilityConverter}}">
         <vb:WrappedUIElementItemsControl ItemsSource="{Binding Elements}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>
@@ -65,10 +67,7 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid
-                        FocusManager.FocusedElement="{Binding RelativeSource={RelativeSource Self}}"
-                        KeyboardNavigation.TabNavigation="Contained"
-                        KeyboardNavigation.DirectionalNavigation="Contained">
+                    <Grid>
                         <!-- Animation triggers -->
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Loaded">
@@ -81,10 +80,7 @@
                         <!-- Background darkening filter -->
                         <Grid IsHitTestVisible="True">
                             <Grid.Background>
-                                <SolidColorBrush
-                                    x:Name="DarkBackFilter"
-                                    Color="Black"
-                                    Opacity="0.35" />
+                                <SolidColorBrush Color="Black" Opacity="0.35" />
                             </Grid.Background>
                         </Grid>
                         <!-- Popup border -->

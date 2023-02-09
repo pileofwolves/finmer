@@ -7,9 +7,13 @@
  */
 
 using System;
+using System.Collections.ObjectModel;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
 using System.Windows;
 using Finmer.ViewModels;
 using Finmer.Views.Base;
+using JetBrains.Annotations;
 
 namespace Finmer.Views
 {
@@ -17,7 +21,7 @@ namespace Finmer.Views
     /// <summary>
     /// Interaction logic for PopupStackView.xaml
     /// </summary>
-    public partial class PopupStackView
+    public partial class PopupStackView : INotifyPropertyChanged
     {
 
         /// <summary>
@@ -26,10 +30,22 @@ namespace Finmer.Views
         public static readonly RoutedEvent PopupClosingEvent = EventManager.RegisterRoutedEvent(
             "PopupClosing", RoutingStrategy.Bubble, typeof(RoutedEventHandler), typeof(PopupStackView));
 
+        /// <summary>
+        /// Indicates whether the stack contains a non-zero number of open popups.
+        /// </summary>
+        public bool HasAnyOpenPopups => ((PopupStackViewModel)DataContext).HasAnyOpenPopups;
+
+        /// <summary>
+        /// Wrapper accessor for view model.
+        /// </summary>
+        private PopupStackViewModel ViewModel => (PopupStackViewModel)DataContext;
+
         public PopupStackView()
         {
             InitializeComponent();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         /// <summary>
         /// Push a new popup onto the stack.
@@ -38,8 +54,7 @@ namespace Finmer.Views
         {
             popup.Host = this;
 
-            var context = (PopupStackViewModel)DataContext;
-            context.Elements.Add(popup);
+            ViewModel.Elements.Add(popup);
         }
 
         /// <summary>
@@ -51,6 +66,8 @@ namespace Finmer.Views
             popup.Host = null;
 
             popup.RaiseEvent(new RoutedEventArgs(PopupClosingEvent, popup));
+
+            ViewModel.OnPopupClosing();
         }
 
         private void FadeOutAnimation_OnCompleted(object sender, EventArgs e)
@@ -59,12 +76,34 @@ namespace Finmer.Views
             // A bit of a cheeky hack: this callback receives no context for which dialog actually finished animating out,
             // since the 'sender' argument is an internal animation clock that has no direct bearing on the actual popup.
             // So we resort to some trickery here to just delete all dialogs that are animating out - it's good enough.
-            var elements = ((PopupStackViewModel)DataContext).Elements;
+            ObservableCollection<StackablePopupBase> elements = ViewModel.Elements;
             for (int i = elements.Count - 1; i >= 0; i--)
                 if (elements[i].Host == null)
                     elements.RemoveAt(i);
         }
 
+        [NotifyPropertyChangedInvocator]
+        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        private void PopupStackView_OnLoaded(object sender, RoutedEventArgs e)
+        {
+            PropertyChangedEventManager.AddHandler(ViewModel, PopupStackViewModel_OnPropertyChanged,
+                nameof(PopupStackViewModel.HasAnyOpenPopups));
+        }
+
+        private void PopupStackView_OnUnloaded(object sender, RoutedEventArgs e)
+        {
+            PropertyChangedEventManager.RemoveHandler(ViewModel, PopupStackViewModel_OnPropertyChanged,
+                nameof(PopupStackViewModel.HasAnyOpenPopups));
+        }
+
+        private void PopupStackViewModel_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            OnPropertyChanged(nameof(HasAnyOpenPopups));
+        }
     }
 
 }

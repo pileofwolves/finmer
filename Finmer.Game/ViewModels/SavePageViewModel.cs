@@ -118,13 +118,20 @@ namespace Finmer.ViewModels
             }
             catch (UnauthorizedAccessException)
             {
-                // If an error occurs, report it to the user and ignore since there's nothing we can do about it at this point
-                GameUI.Instance.Log("Could not save game data: Access was denied. Make sure the game can write files to the game folder.", Theme.LogColorError);
+                // We cannot solve I/O errors without user intervention, so show the error to the user
+                GameController.Window.OpenPopup(new SimpleMessageDialog
+                {
+                    Message = "Could not write save data, because access to the filesystem was denied. " +
+                        "Please make sure the game is permitted to write files to the game directory, and then try again."
+                });
             }
             catch (IOException ex)
             {
-                // If an error occurs, report it to the user and ignore since there's nothing we can do about it at this point
-                GameUI.Instance.Log("Could not save game data: " + ex.Message, Theme.LogColorError);
+                // We cannot solve I/O errors without user intervention, so show the error to the user
+                GameController.Window.OpenPopup(new SimpleMessageDialog
+                {
+                    Message = $"Could not write save data due to a filesystem error: {ex.GetType().Name}: {ex.Message}"
+                });
             }
 
             // Close this dialog

@@ -81,6 +81,8 @@ namespace Finmer.Gameplay
         /// </summary>
         /// <param name="slot">The zero-based save slot, range is [0, k_SlotCount).</param>
         /// <param name="snapshot">The <seealso cref="PropertyBag" /> containing the save data.</param>
+        /// <exception cref="IOException">Throws if file writing fails.</exception>
+        /// <exception cref="UnauthorizedAccessException">Throws if filesystem write access was denied.</exception>
         public static void Save(int slot, GameSnapshot snapshot)
         {
             // Create save file

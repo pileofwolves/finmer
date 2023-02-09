@@ -14,7 +14,6 @@ using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
-using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -104,11 +103,6 @@ namespace Finmer.Gameplay
             // Run global scripts
             // TODO: Catch UnsolvableConstraintException in window navigation utilities
             RunGlobalScripts();
-
-            // Check if we have write perms
-            if (!Logger.HasWritePermission())
-                GameUI.Instance.Log("Warning: It looks like the game does not have permission to write files to the app " +
-                    "directory. This means that you cannot save your game.\r\n", Theme.LogColorError);
 
             // Prepare the script thread (but do not launch it yet)
             m_RestoreSnapshot = snapshot;

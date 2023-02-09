@@ -114,6 +114,18 @@ namespace Finmer.Views
                 // Otherwise, go straight to the title screen
                 GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.Instant);
             }
+
+            // Warn the user if we don't have filesystem write permission
+            if (!Logger.HasWritePermission())
+            {
+                var dialog = new SimpleMessageDialog
+                {
+                    Message = "The game application does not have permission to write files to the game directory. " +
+                        "This means you cannot save your progress. To resolve this, please move the game files to a folder " +
+                        "where your user account does have 'write' permissions."
+                };
+                GameController.Window.OpenPopup(dialog);
+            }
         }
 
         private void UserControl_Loaded(object sender, RoutedEventArgs e)

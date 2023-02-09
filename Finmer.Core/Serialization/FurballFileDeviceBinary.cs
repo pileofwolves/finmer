@@ -27,7 +27,7 @@ namespace Finmer.Core.Serialization
         {
             try
             {
-                using (var file_stream = new FileStream(file.FullName, FileMode.Open))
+                using (var file_stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                 using (var instream = new BinaryReader(file_stream, Encoding.UTF8, true))
                 {
                     // Read basic configuration

@@ -143,6 +143,10 @@ namespace Finmer.Models
                     }
                 }
             }
+            catch (UnauthorizedAccessException)
+            {
+                // Ignore exception
+            }
             catch (IOException)
             {
                 // Ignore exception

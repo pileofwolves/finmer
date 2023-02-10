@@ -58,7 +58,7 @@
     </UserControl.Resources>
 
     <!-- Popup stack -->
-    <Grid Visibility="{Binding HasAnyOpenPopups, Converter={StaticResource BooleanToVisibilityConverter}}">
+    <Grid Visibility="{Binding HasAnyAnimatingPopups, Converter={StaticResource BooleanToVisibilityConverter}}">
         <vb:WrappedUIElementItemsControl ItemsSource="{Binding Elements}">
             <ItemsControl.ItemsPanel>
                 <ItemsPanelTemplate>

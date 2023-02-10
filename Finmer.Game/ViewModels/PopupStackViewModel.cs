@@ -26,9 +26,14 @@ namespace Finmer.ViewModels
         public ObservableCollection<StackablePopupBase> Elements { get; set; } = new ObservableCollection<StackablePopupBase>();
 
         /// <summary>
-        /// Whether any popups are open.
+        /// Whether any popups are active and visible.
         /// </summary>
         public bool HasAnyOpenPopups => Elements.Any(popup => popup.Host != null);
+
+        /// <summary>
+        /// Whether any popups are opening, active, or closing, for animation purposes.
+        /// </summary>
+        public bool HasAnyAnimatingPopups => Elements.Any();
 
         public PopupStackViewModel()
         {
@@ -43,6 +48,7 @@ namespace Finmer.ViewModels
         private void Elements_OnCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             OnPropertyChanged(nameof(HasAnyOpenPopups));
+            OnPropertyChanged(nameof(HasAnyAnimatingPopups));
         }
 
     }

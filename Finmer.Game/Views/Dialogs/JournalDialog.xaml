@@ -1,0 +1,41 @@
+﻿<vb:StackablePopupBase
+    x:Class="Finmer.Views.JournalDialog"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
+    xmlns:v="clr-namespace:Finmer.Views"
+    mc:Ignorable="d"
+    d:DataContext="{d:DesignData Source=/Models/DesignData/SampleCharacterSheet.xaml}">
+    <Grid Width="450">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <!-- Journal content -->
+        <TextBlock
+            Grid.Row="0"
+            Text="Journal"
+            Margin="0,0,0,8"
+            Style="{StaticResource TextBlockLarge}" />
+        <v:JournalListView
+            Grid.Row="1"
+            MaxHeight="450"
+            DataContext="{Binding JournalViewModel}"
+            VerticalAlignment="Stretch"
+            Margin="10" />
+
+        <!-- Close button -->
+        <Button
+            Grid.Row="2"
+            Command="{Binding CloseCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=vb:StackablePopupBase}}"
+            Margin="0,10,0,0"
+            Height="38"
+            Width="150">
+            Close
+        </Button>
+    </Grid>
+</vb:StackablePopupBase>

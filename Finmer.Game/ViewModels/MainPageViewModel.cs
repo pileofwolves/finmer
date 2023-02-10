@@ -25,6 +25,7 @@ namespace Finmer.ViewModels
         private ICommand m_CommandExit;
         private ICommand m_CommandConsole;
         private ICommand m_CommandCharSheet;
+        private ICommand m_CommandJournal;
 
         /// <summary>
         /// Command for exiting the game session and returning to the title screen.
@@ -40,6 +41,11 @@ namespace Finmer.ViewModels
         /// Command for navigating to the character sheet page.
         /// </summary>
         public ICommand ViewCharacterSheetCommand => m_CommandCharSheet ?? (m_CommandCharSheet = new RelayCommand(OnViewCharSheet));
+
+        /// <summary>
+        /// Command for navigating to the journal page.
+        /// </summary>
+        public ICommand ViewJournalCommand => m_CommandJournal ?? (m_CommandJournal = new RelayCommand(OnViewJournal));
 
         /// <summary>
         /// Downstream viewmodel representing the player character.
@@ -76,7 +82,12 @@ namespace Finmer.ViewModels
 
         private void OnViewCharSheet(object args)
         {
-            GameController.Window.Navigate(new CharSheetPage(), ENavigatorAnimation.SlideLeft);
+            GameController.Window.OpenPopup(new CharSheetDialog());
+        }
+
+        private void OnViewJournal(object args)
+        {
+            GameController.Window.OpenPopup(new JournalDialog());
         }
 
     }

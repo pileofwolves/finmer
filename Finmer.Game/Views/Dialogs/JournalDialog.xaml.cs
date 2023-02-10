@@ -6,32 +6,25 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Windows;
 using Finmer.Gameplay;
-using Finmer.Utility;
 using Finmer.ViewModels;
 
 namespace Finmer.Views
 {
 
     /// <summary>
-    /// Interaction logic for CharSheetPage.xaml
+    /// Interaction logic for JournalDialog.xaml
     /// </summary>
-    public partial class CharSheetPage
+    public partial class JournalDialog
     {
 
-        public CharSheetPage()
+        public JournalDialog()
         {
             InitializeComponent();
 
-            // Populate the main view
+            // Populate the data context
             var player = GameController.Session.Player;
             DataContext = new CharacterSheetViewModel(player);
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideRight);
         }
 
     }

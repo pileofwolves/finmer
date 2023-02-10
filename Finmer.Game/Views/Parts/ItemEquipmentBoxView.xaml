@@ -82,7 +82,7 @@
                         Height="32"
                         Content="Unequip"
                         Click="UnequipButton_Click"
-                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UnequipItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UnequipItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetDialog}}"
                         CommandParameter="{Binding EquipmentIndex, RelativeSource={RelativeSource FindAncestor, AncestorType=v:ItemEquipmentBoxView}}" />
                 </StackPanel>
             </Border>

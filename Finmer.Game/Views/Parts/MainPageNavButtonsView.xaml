@@ -86,5 +86,17 @@
                     Stretch="None" />
             </Button.Content>
         </Button>
+        <!-- Journal button -->
+        <Button
+            ToolTip="View Journal"
+            Command="{Binding ViewJournalCommand}">
+            <Button.Content>
+                <Image
+                    Source="/Finmer;component/Resources/UI/HUDJournal.png"
+                    SnapsToDevicePixels="True"
+                    Margin="0,-2,0,0"
+                    Stretch="None" />
+            </Button.Content>
+        </Button>
     </UniformGrid>
 </UserControl>

@@ -30,7 +30,7 @@
             Margin="2"
             Height="35"
             Content="{Binding Converter={StaticResource CharSheetUseLabelConverter}}"
-            Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UseItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+            Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.UseItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetDialog}}"
             CommandParameter="{Binding}"
             IsEnabled="{Binding Converter={StaticResource CharSheetItemUseConverter}}" />
         <!-- Drop button -->
@@ -59,7 +59,7 @@
                         Content="Confirm Drop"
                         Foreground="OrangeRed"
                         Margin="5"
-                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.DropItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetPage}}"
+                        Command="{Binding Path=DataContext.(vm:CharacterSheetViewModel.DropItemCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharSheetDialog}}"
                         CommandParameter="{Binding}" />
                 </StackPanel>
             </Border>

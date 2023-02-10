@@ -149,6 +149,9 @@
     <Compile Include="Views\CommunityInvitePage.xaml.cs">
       <DependentUpon>CommunityInvitePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Dialogs\JournalDialog.xaml.cs">
+      <DependentUpon>JournalDialog.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Dialogs\SimpleMessageDialog.xaml.cs">
       <DependentUpon>SimpleMessageDialog.xaml</DependentUpon>
     </Compile>
@@ -176,8 +179,8 @@
     <Compile Include="Views\Parts\ItemActionsCharSheet.xaml.cs">
       <DependentUpon>ItemActionsCharSheet.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\CharSheetPage.xaml.cs">
-      <DependentUpon>CharSheetPage.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\CharSheetDialog.xaml.cs">
+      <DependentUpon>CharSheetDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Converters\StringCapFirstConverter.cs" />
     <Compile Include="Gameplay\GameController.cs" />
@@ -315,6 +318,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Views\Dialogs\JournalDialog.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\Dialogs\SimpleMessageDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -351,7 +358,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\CharSheetPage.xaml">
+    <Page Include="Views\Dialogs\CharSheetDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

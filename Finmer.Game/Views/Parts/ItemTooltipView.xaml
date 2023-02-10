@@ -5,11 +5,16 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DesignHeight="200" d:DesignWidth="300"
     d:DataContext="{d:DesignInstance gp:Item}"
     DataContextChanged="ItemTooltipView_OnContextChanged">
-    
+    <UserControl.LayoutTransform>
+        <ScaleTransform
+            ScaleX="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}"
+            ScaleY="{Binding ZoomLevel, Source={x:Static vm:UserConfigViewModel.Instance}}" />
+    </UserControl.LayoutTransform>
     <StackPanel
         MaxWidth="300">
         <TextBlock

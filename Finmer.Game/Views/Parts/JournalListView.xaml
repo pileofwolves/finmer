@@ -8,8 +8,18 @@
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:JournalViewModel}"
-    d:DesignHeight="300" d:DesignWidth="400">
-    <Grid Margin="-8">
+    d:DesignHeight="200" d:DesignWidth="400">
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+    </UserControl.Resources>
+    <Grid>
+        <!-- Empty journal text -->
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            Visibility="{Binding IsEmpty, Converter={StaticResource BooleanToVisibilityConverter}}"
+            Text="Your journal is empty."
+            TextWrapping="Wrap" />
+        <!-- Entry list -->
         <ItemsControl
             ItemsSource="{Binding Entries}">
             <ItemsControl.ItemTemplate>
@@ -21,8 +31,7 @@
                 <ItemsPanelTemplate>
                     <StackPanel
                         VerticalAlignment="Top"
-                        Orientation="Vertical"
-                        ClipToBounds="False" />
+                        Orientation="Vertical" />
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
             <ItemsControl.Template>

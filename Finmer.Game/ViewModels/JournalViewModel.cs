@@ -7,6 +7,7 @@
  */
 
 using System.Collections.Generic;
+using System.Linq;
 using Finmer.Core.Assets;
 using Finmer.Gameplay;
 
@@ -46,6 +47,11 @@ namespace Finmer.ViewModels
                 }
             }
         }
+
+        /// <summary>
+        /// Indicates whether the journal contains no entries.
+        /// </summary>
+        public bool IsEmpty => !m_Journal.GetAllQuests().Any();
 
     }
 

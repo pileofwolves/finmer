@@ -17,14 +17,14 @@ namespace Finmer.Views
     public partial class JournalListItemView
     {
 
-        private const double k_RotationMax = 3.0;
+        private const double k_RotationMax = 1.5;
 
         public JournalListItemView()
         {
             InitializeComponent();
 
             // Randomize the rotation on each item, so it looks less repetitive
-            RotateRoot.Angle = (CoreUtility.Rng.NextDouble() * 1.5 - 1.0) * k_RotationMax;
+            RotateRoot.Angle = (CoreUtility.Rng.NextDouble() * 2 - 1) * k_RotationMax;
         }
 
     }

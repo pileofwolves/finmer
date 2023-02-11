@@ -21,7 +21,7 @@
         </Border>
 
         <!-- Actual contents -->
-        <StackPanel Orientation="Vertical" Margin="15" MaxWidth="300">
+        <StackPanel Orientation="Vertical" Margin="15">
             <TextBlock
                 Typography.Capitals="SmallCaps"
                 Style="{StaticResource TextBlockDefault}"

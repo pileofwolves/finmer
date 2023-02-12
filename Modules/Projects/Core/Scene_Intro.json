@@ -47,6 +47,10 @@
 						"Tooltip": "Here be dragons",
 						"Highlight": true,
 						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()\r\n\r\n-- Set a marker that the debug menu was used, to help with investigating bug reports\r\nStorage.SetFlag(\"DEBUG_MENU_USED\", true)"
+						},
 						"ScriptAppear": {
 							"!Type": "ScriptDataInline",
 							"Script": "return IsDebugMode()"
@@ -55,10 +59,6 @@
 							{
 								"NodeType": "State",
 								"Key": "DebugMenu",
-								"ScriptAction": {
-									"!Type": "ScriptDataInline",
-									"Script": "-- Always set up inventory when entering the game\r\nApplyPlayerStartingGear()"
-								},
 								"Children": [
 									{
 										"NodeType": "Choice",

@@ -9,6 +9,9 @@
 using System;
 using System.Diagnostics;
 using Finmer.Core.Assets;
+using Finmer.Gameplay.Scripting;
+using Finmer.Models;
+using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -37,15 +40,21 @@ namespace Finmer.Gameplay
             if (!script_context.LoadScript(asset.UseScript.PrecompiledScript, asset.UseScript.Name))
                 return;
 
-            // Execute the script
-            if (!script_context.RunProtectedCall(0, 0))
-                return;
-
-            // If the item is consumable, delete it from the inventory now
-            if (asset.IsConsumable)
+            try
             {
-                var inventory = session.Player.Inventory;
-                inventory.Remove(item);
+                // Execute the script
+                script_context.Call();
+
+                // If the item is consumable, delete it from the inventory now
+                if (asset.IsConsumable)
+                {
+                    var inventory = session.Player.Inventory;
+                    inventory.Remove(item);
+                }
+            }
+            catch (ScriptException ex)
+            {
+                GameUI.Instance.Log("ERROR in item script: " + ex.Message, Theme.LogColorError);
             }
         }
 

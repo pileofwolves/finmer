@@ -106,8 +106,7 @@ namespace Finmer.Gameplay
 #endif
 
             // Run it
-            if (!context.RunProtectedCall(0, 0))
-                return;
+            context.Call();
 
 #if LUA_TIMINGS
             sw.Stop();
@@ -141,10 +140,21 @@ namespace Finmer.Gameplay
                 // Prevent further callbacks, since the script is now in an undefined state
                 m_HasError = true;
 
-                // Note: there's no need to pop the error message or clean the stack at all, because we will destroy the coroutine entirely
+                // Generate a call stack on top of the stack
+                lua_CFunction error_handler = lua_traceback;
+                lua_pushcfunction(m_Coroutine, error_handler);
+                lua_call(m_Coroutine, 0, 1);
+                GC.KeepAlive(error_handler);
+
+                // We now expect the call stack to contain an error message and a call stack
+                // Note: there's no need to clean the stack, because we will destroy the coroutine entirely
                 Debug.Assert(lua_isstring(m_Coroutine, -1));
-                string error_message = lua_tostring(m_Coroutine, -1);
-                GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneName}': {error_message}", Theme.LogColorError);
+                Debug.Assert(lua_isstring(m_Coroutine, -2));
+                string error_message = lua_tostring(m_Coroutine, -2);
+                string stack_trace = lua_tostring(m_Coroutine, -1);
+
+                // Print the final error message
+                GameUI.Instance.Log($"ERROR: Script error in scene '{m_SceneName}': {error_message}\r\n{stack_trace}", Theme.LogColorError);
             }
 
             // Remove the thread object from the main thread's stack. This will make it eligible for GC.

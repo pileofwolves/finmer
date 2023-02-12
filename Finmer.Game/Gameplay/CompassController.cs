@@ -138,6 +138,10 @@ namespace Finmer.Gameplay
                     {
                         GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
                     }
+                    catch (ScriptException ex)
+                    {
+                        GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
+                    }
                 }
             }
         }

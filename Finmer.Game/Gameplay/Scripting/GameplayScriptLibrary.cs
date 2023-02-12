@@ -111,6 +111,10 @@ namespace Finmer.Gameplay.Scripting
             {
                 return luaL_error(L, ex.Message);
             }
+            catch (ScriptException ex)
+            {
+                return luaL_error(L, ex.Message);
+            }
 
             // Interrupt the current scene so control returns to the script wrapper that invoked Lua. While throwing an error
             // would have the same effect, yielding is much faster even though we do not intend to ever return control to this thread.

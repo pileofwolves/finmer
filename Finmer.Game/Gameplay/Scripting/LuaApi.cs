@@ -374,6 +374,9 @@ namespace Finmer.Gameplay.Scripting
         public static extern int luaopen_math(IntPtr L);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
+        public static extern int lua_traceback(IntPtr L);
+
+        [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
         public static extern int luaL_argerror(IntPtr L, int narg, [MarshalAs(UnmanagedType.LPStr)] string extramsg);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]

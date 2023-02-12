@@ -117,8 +117,7 @@ namespace Finmer.Views
 
             // Launch the session
             GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag(), new PropertyBag());
-            GameController.BeginNewSession(save_data);
-            NavigationUtilities.NavigateToGame();
+            NavigationUtilities.BeginSessionAndNavigate(save_data);
         }
 
         [NotifyPropertyChangedInvocator]

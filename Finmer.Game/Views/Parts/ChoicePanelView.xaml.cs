@@ -15,6 +15,7 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Animation;
 using Finmer.Gameplay;
+using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
 
@@ -111,8 +112,15 @@ namespace Finmer.Views
             var script_context = GameController.Session.ScriptContext;
             lock (script_context)
             {
-                if (script_context.LoadScript(command, "DebugConsole"))
-                    script_context.RunProtectedCall(0, 0);
+                try
+                {
+                    if (script_context.LoadScript(command, "DebugConsole"))
+                        script_context.Call();
+                }
+                catch (ScriptException ex)
+                {
+                    GameUI.Instance.Log("Error in debug console: " + ex.Message, Theme.LogColorError);
+                }
             }
 
             // Clear UI

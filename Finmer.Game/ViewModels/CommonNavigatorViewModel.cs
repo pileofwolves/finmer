@@ -10,7 +10,9 @@ using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Windows;
 using System.Windows.Input;
+using Finmer.Gameplay;
 using Finmer.Utility;
+using Finmer.Views;
 
 namespace Finmer.ViewModels
 {
@@ -83,7 +85,7 @@ namespace Finmer.ViewModels
 
         private static void OnNavigateGame(object args)
         {
-            NavigationUtilities.NavigateToGame();
+            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
         }
 
         private static void OnExit(object args)

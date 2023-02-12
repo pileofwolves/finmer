@@ -396,3 +396,9 @@ LUALIB_API int luaopen_debug (lua_State *L) {
   return 1;
 }
 
+
+// BEGIN Finmer extension
+LUALIB_API int lua_traceback (lua_State *L) {
+  return db_errorfb(L);
+}
+// END Finmer extension

@@ -85,8 +85,7 @@ namespace Finmer.ViewModels
         {
             // Start a new game using the last configured character creator preset
             GameSnapshot save_data = new GameSnapshot(UserConfig.NewGamePreset, new PropertyBag(), new PropertyBag());
-            GameController.BeginNewSession(save_data);
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideLeft);
+            NavigationUtilities.BeginSessionAndNavigate(save_data);
         }
 
         private static bool CanQuickStart(object args)
@@ -112,8 +111,7 @@ namespace Finmer.ViewModels
             }
 
             // Launch the session using the save data
-            GameController.BeginNewSession(snapshot);
-            NavigationUtilities.NavigateToGame();
+            NavigationUtilities.BeginSessionAndNavigate(snapshot);
         }
 
         private static bool CanLoadGame(object args)

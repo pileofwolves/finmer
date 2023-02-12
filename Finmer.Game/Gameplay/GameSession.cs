@@ -81,6 +81,12 @@ namespace Finmer.Gameplay
         private bool m_GameOverRequested;
         private bool m_IsDisposed;
 
+        /// <summary>
+        /// Initializes a new game session.
+        /// </summary>
+        /// <param name="snapshot">Save data from which to construct a game session.</param>
+        /// <exception cref="UnsolvableConstraintException">Throws if load order dependency tree cannot be resolved.</exception>
+        /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
         public GameSession(GameSnapshot snapshot)
         {
             Debug.Assert(GameController.Session == null, "This class manipulates singletons, so there should be only one instance");
@@ -101,7 +107,6 @@ namespace Finmer.Gameplay
             GameUI.Instance.Deserialize(snapshot.InterfaceData);
 
             // Run global scripts
-            // TODO: Catch UnsolvableConstraintException in window navigation utilities
             RunGlobalScripts();
 
             // Prepare the script thread (but do not launch it yet)
@@ -303,6 +308,7 @@ namespace Finmer.Gameplay
         /// Run all global script assets, in module-specified load order.
         /// </summary>
         /// <exception cref="UnsolvableConstraintException">Throws if load order dependency tree cannot be resolved.</exception>
+        /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
         private void RunGlobalScripts()
         {
             // Build a directed graph of scripts with dependencies on other scripts
@@ -333,7 +339,7 @@ namespace Finmer.Gameplay
             {
                 // Run each script in the load order
                 if (ScriptContext.LoadScript(sorted_script.PrecompiledScript, sorted_script.Name))
-                    ScriptContext.RunProtectedCall(0, 0);
+                    ScriptContext.Call();
             }
         }
 

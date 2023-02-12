@@ -35,12 +35,11 @@ namespace Finmer.ViewModels
 
         private void OnReloadCheckpoint(object args)
         {
-            // Reload the last checkpoint
+            // Grab the last checkpoint
             var checkpoint = GameController.Session.LastCheckpoint;
-            GameController.BeginNewSession(checkpoint);
 
             // Navigate to a new copy of the main page, to ensure a clean visual break and to easily reset all UI
-            NavigationUtilities.NavigateToGame();
+            NavigationUtilities.BeginSessionAndNavigate(checkpoint);
         }
 
         private bool CanReloadCheckpoint(object args)

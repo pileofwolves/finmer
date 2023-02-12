@@ -34,6 +34,7 @@ namespace Finmer.Gameplay.Scripting
         private readonly List<WeakReference<IDisposable>> m_OwnedResources = new List<WeakReference<IDisposable>>();
         private readonly List<GCHandle> m_PinnedDelegates = new List<GCHandle>();
         private readonly Dictionary<Guid, PinnedScriptableObject> m_PinnedObjects = new Dictionary<Guid, PinnedScriptableObject>();
+        private readonly lua_CFunction m_ErrorHandler;
 
         private GCHandle m_GCPin;
         private bool m_IsDisposed;
@@ -47,6 +48,9 @@ namespace Finmer.Gameplay.Scripting
             lua_CFunction new_panic_func = ExportedPanic;
             PinDelegate(new_panic_func);
             lua_atpanic(LuaState, new_panic_func);
+
+            // Register protected call error handler
+            m_ErrorHandler = lua_traceback;
 
             // Write a global pointer to this managed object to the Lua registry, enabling users to obtain the ScriptContext given only a lua_State pointer
             m_GCPin = GCHandle.Alloc(this, GCHandleType.Normal);
@@ -256,25 +260,34 @@ namespace Finmer.Gameplay.Scripting
             return true;
         }
 
-        public bool RunProtectedCall(IntPtr stack, int numArgs, int numResults)
+        /// <summary>
+        /// Perform a protected call using lua_call semantics. Errors are forwarded as exceptions.
+        /// </summary>
+        /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
+        public void Call()
         {
-            // TODO: Shared error handler
+            // Insert error handler below the function being called
+            lua_pushcfunction(LuaState, m_ErrorHandler);
+            lua_insert(LuaState, -2);
 
-            // Call the function in protected mode
-            if (lua_pcall(stack, numArgs, numResults, 0) == 0)
-                return true;
+            try
+            {
+                // Call the function in protected mode
+                if (lua_pcall(LuaState, 0, 0, -2) == 0)
+                    return;
 
-            // An error occurred; get the error message
-            string errormsg = lua_tostring(stack, -1);
-            GameUI.Instance.Log($"ERROR: Script error in protected call: {errormsg}", Theme.LogColorError);
-            lua_pop(stack, 1);
+                // An error occurred; get the error message. The error handler should have augmented it with a call stack.
+                string error_msg = lua_tostring(LuaState, -1);
+                lua_pop(LuaState, 1);
 
-            return false;
-        }
-
-        public bool RunProtectedCall(int numArgs, int numResults)
-        {
-            return RunProtectedCall(LuaState, numArgs, numResults);
+                // Forward error to caller
+                throw new ScriptException("Script error: " + error_msg);
+            }
+            finally
+            {
+                // Pop the error handler
+                lua_pop(LuaState, 1);
+            }
         }
 
         public byte[] Precompile(string body, string chunkname)

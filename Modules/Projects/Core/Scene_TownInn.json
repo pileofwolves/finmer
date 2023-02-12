@@ -369,7 +369,7 @@
 																				"Key": "MQ02F_R_End",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Storage.SetFlag(\"MQ02_DONE\", true)\r\nLog(\"MQ02_BARKEEP_END\")\r\nPlayer:AwardXP(RewardXP.MQ02_Complete)\r\nJournal.Close(\"MQ02\")\r\nJournal.Update(\"MQ03\", 20)"
+																					"Script": "Log(\"MQ02_BARKEEP_END\")"
 																				},
 																				"Children": [
 																					{

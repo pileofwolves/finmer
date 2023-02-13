@@ -20,12 +20,13 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Write data representing this instance to an output save data object.
         /// </summary>
-        PropertyBag Serialize();
+        PropertyBag SaveState();
 
         /// <summary>
-        /// Overwrite state of this instance with data previously captured by Serialize().
+        /// Overwrite state of this instance with data previously captured by SaveState().
         /// </summary>
-        void Deserialize(PropertyBag input);
+        /// <exception cref="InvalidSaveDataException">Throws if save data cannot be parsed.</exception>
+        void LoadState(PropertyBag input);
 
     }
 

@@ -19,21 +19,11 @@ namespace Finmer.Gameplay
     public abstract class GameObject : ScriptableObject
     {
 
-        private string m_Alias;
-        private string m_Name;
+        private string m_Alias = String.Empty;
+        private string m_Name = String.Empty;
         private EGender m_Gender;
 
-        protected GameObject(ScriptContext context, PropertyBag template) : base(context, template)
-        {
-            m_Name = template.GetString(SaveData.k_Object_Name);
-            m_Alias = template.GetString(SaveData.k_Object_Alias);
-
-            // Alias defaults to name if unspecified
-            if (String.IsNullOrWhiteSpace(Alias))
-                m_Alias = m_Name;
-
-            Gender = (EGender)template.GetInt(SaveData.k_Object_Gender, (int)EGender.Ungendered);
-        }
+        protected GameObject(ScriptContext context) : base(context) {}
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public EGender Gender
@@ -48,28 +38,28 @@ namespace Finmer.Gameplay
         }
 
         [TextProperty(@"object")]
-        public string PronounObjective { get; protected set; }
+        public string PronounObjective { get; protected set; } = String.Empty;
 
         [TextProperty(@"subject")]
-        public string PronounSubjective { get; protected set; }
+        public string PronounSubjective { get; protected set; } = String.Empty;
 
         [TextProperty(@"possessive")]
-        public string PronounPossessive { get; protected set; }
+        public string PronounPossessive { get; protected set; } = String.Empty;
 
         [TextProperty(@"object3p")]
-        public string PronounObjective3P { get; protected set; }
+        public string PronounObjective3P { get; protected set; } = String.Empty;
 
         [TextProperty(@"subject3p")]
-        public string PronounSubjective3P { get; protected set; }
+        public string PronounSubjective3P { get; protected set; } = String.Empty;
 
         [TextProperty(@"possessive3p")]
-        public string PronounPossessive3P { get; protected set; }
+        public string PronounPossessive3P { get; protected set; } = String.Empty;
 
         [TextProperty(@"aliaspossessive")]
-        public string AliasPossessive { get ; protected set; }
+        public string AliasPossessive { get ; protected set; } = String.Empty;
 
         [TextProperty(@"namepossessive")]
-        public string NamePossessive { get ; protected set; }
+        public string NamePossessive { get ; protected set; } = String.Empty;
 
         /// <summary>
         /// The UI-friendly name of this object.
@@ -107,14 +97,29 @@ namespace Finmer.Gameplay
             }
         }
 
-        public override PropertyBag SerializeProperties()
+        public override PropertyBag SaveState()
         {
-            var props = base.SerializeProperties();
-            props.SetString(SaveData.k_Object_Name, Name);
-            props.SetString(SaveData.k_Object_Alias, Alias);
-            props.SetInt(SaveData.k_Object_Gender, (int)Gender);
+            var output = base.SaveState();
 
-            return props;
+            output.SetString(SaveData.k_Object_Name, Name);
+            output.SetString(SaveData.k_Object_Alias, Alias);
+            output.SetInt(SaveData.k_Object_Gender, (int)Gender);
+
+            return output;
+        }
+
+        public override void LoadState(PropertyBag input)
+        {
+            base.LoadState(input);
+
+            m_Name = input.GetString(SaveData.k_Object_Name);
+            m_Alias = input.GetString(SaveData.k_Object_Alias);
+
+            // Alias defaults to name if unspecified
+            if (String.IsNullOrWhiteSpace(Alias))
+                m_Alias = m_Name;
+
+            Gender = (EGender)input.GetInt(SaveData.k_Object_Gender, (int)EGender.Ungendered);
         }
 
         protected virtual void ReloadPronouns()

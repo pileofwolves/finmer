@@ -85,6 +85,7 @@ namespace Finmer.Gameplay
         /// Initializes a new game session.
         /// </summary>
         /// <param name="snapshot">Save data from which to construct a game session.</param>
+        /// <exception cref="InvalidSaveDataException">Throws if save data is broken.</exception>
         /// <exception cref="UnsolvableConstraintException">Throws if load order dependency tree cannot be resolved.</exception>
         /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
         public GameSession(GameSnapshot snapshot)
@@ -93,7 +94,8 @@ namespace Finmer.Gameplay
 
             // Initialize the session
             Compass = new CompassController(this);
-            Player = new Player(ScriptContext, snapshot.PlayerData);
+            Player = new Player(ScriptContext);
+            Player.LoadState(snapshot.PlayerData);
 
             // Allow scripts to access the player object as a global variable
             ScriptContext.PinObjectAsGlobal(Player, "Player");
@@ -104,7 +106,7 @@ namespace Finmer.Gameplay
 
             // Restore UI state
             GameUI.Reset();
-            GameUI.Instance.Deserialize(snapshot.InterfaceData);
+            GameUI.Instance.LoadState(snapshot.InterfaceData);
 
             // Run global scripts
             RunGlobalScripts();
@@ -172,9 +174,9 @@ namespace Finmer.Gameplay
 
             // Serialize all different types of data to create a save data object
             return new GameSnapshot(
-                Player.SerializeProperties(),
-                current_scene.Serialize(),
-                GameUI.Instance.Serialize()
+                Player.SaveState(),
+                current_scene.SaveState(),
+                GameUI.Instance.SaveState()
             );
         }
 
@@ -448,7 +450,7 @@ namespace Finmer.Gameplay
                 m_SceneStack.Push(restored_scene);
 
                 // Restore state and run the next state function (as if it were the initial turn)
-                restored_scene.Deserialize(snapshot.SceneData);
+                restored_scene.LoadState(snapshot.SceneData);
             }
         }
 

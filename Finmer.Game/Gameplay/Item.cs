@@ -23,10 +23,24 @@ namespace Finmer.Gameplay
     public class Item : GameObject
     {
 
+        private AssetItem m_Asset;
+
         /// <summary>
         /// Returns the item asset that describes the behavior of this item instance.
         /// </summary>
-        public AssetItem Asset { get; }
+        public AssetItem Asset
+        {
+            get => m_Asset;
+            private set
+            {
+                m_Asset = value;
+
+                // Copy name and alias from the asset
+                Gender = EGender.Ungendered;
+                Name = m_Asset.ObjectName;
+                Alias = m_Asset.ObjectAlias;
+            }
+        }
 
         /// <summary>
         /// Returns the item asset's assigned name. Enables scripts to test equality between Item objects.
@@ -66,16 +80,9 @@ namespace Finmer.Gameplay
             }
         }
 
-        private Item(ScriptContext context, PropertyBag template, AssetItem asset) : base(context, template)
-        {
-            Asset = asset;
+        private Item(ScriptContext context) : base(context) {}
 
-            // Copy name and alias from the asset
-            Name = Asset.ObjectName;
-            Alias = asset.ObjectAlias;
-        }
-
-        public override PropertyBag SerializeProperties()
+        public override PropertyBag SaveState()
         {
             // Item is a bit of a special case; because all its properties are read-only from script, we can safely discard the entire
             // instance and just save the Asset ID, then look it up in the Furball when we deserialize to re-create the same object.
@@ -84,16 +91,38 @@ namespace Finmer.Gameplay
             return serialized;
         }
 
-        public static Item FromAsset(ScriptContext context, string assetName)
+        public override void LoadState(PropertyBag input)
         {
-            // Find the AssetItem represented by the specified file name
-            AssetItem item = GameController.Content.GetAssetByName(assetName) as AssetItem;
-            if (item == null)
-                return null;
+            // Read the asset file ID
+            byte[] asset_id_bytes = input.GetBytes(SaveData.k_AssetID);
+            if (asset_id_bytes == null || asset_id_bytes.Length != 16)
+                throw new InvalidSaveDataException("Missing asset ID in Item");
 
-            // Initialize the item with empty save data
-            PropertyBag template = new PropertyBag();
-            return new Item(context, template, item);
+            // Get the asset associated with that ID
+            var asset_guid = new Guid(asset_id_bytes);
+            var item = GameController.Content.GetAssetByID<AssetItem>(asset_guid);
+            if (item == null)
+                throw new InvalidSaveDataException($"Could not find Item {asset_guid} in loaded modules");
+
+            // Assign reference to internal asset object
+            Asset = item;
+        }
+
+        public static Item FromAsset(ScriptContext context, string asset_name)
+        {
+            if (asset_name == null)
+                throw new ArgumentNullException(nameof(asset_name));
+
+            // Find the AssetItem represented by the specified file name
+            AssetItem item = GameController.Content.GetAssetByName(asset_name) as AssetItem;
+            if (item == null)
+                throw new MissingContentException($"Could not find Item '{asset_name}' in loaded modules");
+
+            // Initialize the item
+            return new Item(context)
+            {
+                Asset = item
+            };
         }
 
         public static Item FromAsset(ScriptContext context, Guid guid)
@@ -107,27 +136,18 @@ namespace Finmer.Gameplay
             if (item == null)
                 return null;
 
-            // Initialize the item with empty save data
-            PropertyBag template = new PropertyBag();
-            return new Item(context, template, item);
+            // Initialize the item
+            return new Item(context)
+            {
+                Asset = item
+            };
         }
 
-        public static Item FromSaveGame(ScriptContext context, PropertyBag savedata)
+        public static Item FromSaveData(ScriptContext context, PropertyBag save_data)
         {
-            // Read the asset file ID
-            byte[] asset_id_bytes = savedata.GetBytes(SaveData.k_AssetID);
-            if (asset_id_bytes == null || asset_id_bytes.Length != 16)
-                return null;
-
-            // Get the asset associated with that ID
-            var asset_guid = new Guid(asset_id_bytes);
-            AssetItem item = GameController.Content.GetAssetByID(asset_guid) as AssetItem;
-            if (item == null)
-                return null;
-
-            // We don't need to actually restore any state from the save data because Items are immutable
-            var template = new PropertyBag();
-            return new Item(context, template, item);
+            var instance = new Item(context);
+            instance.LoadState(save_data);
+            return instance;
         }
 
     }

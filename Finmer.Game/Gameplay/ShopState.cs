@@ -142,30 +142,11 @@ namespace Finmer.Gameplay
 
             // Look for the shop in the player's save data
             Player player = GameController.Session.Player;
-            PropertyBag saved = player.AdditionalSaveData.GetNestedPropertyBag(GetShopID(id));
+            PropertyBag save_data = player.AdditionalSaveData.GetNestedPropertyBag(GetShopID(id));
 
             // If found, deserialize it. Otherwise, we leave the properties at defaults (as above).
-            if (saved != null)
-            {
-                // Overwrite the shop's settings with things retrieved from the save file
-                ret.Title = saved.GetString(SaveData.k_Shop_Title);
-                ret.RestockInterval = saved.GetInt(SaveData.k_Shop_RestockInterval);
-                ret.RestockLastTime = saved.GetInt(SaveData.k_Shop_RestockTimestamp);
-
-                // Read stock
-                int num_stock = saved.GetInt(SaveData.k_Shop_StockCount);
-                for (var i = 0; i < num_stock; i++)
-                {
-                    var quantity = saved.GetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i));
-                    var type = saved.GetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i)) ? ShopItemStack.EStackType.Unique : ShopItemStack.EStackType.Regular;
-                    var item_data = saved.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i));
-                    ret.AddItem(Item.FromSaveGame(context, item_data), quantity, type);
-                }
-
-                // If the restock interval has elapsed, set the RestockRequired flag
-                int total_world_hours = player.TimeHourCumulative;
-                ret.RestockRequired = ret.RestockInterval != 0 && total_world_hours >= ret.RestockLastTime + ret.RestockInterval;
-            }
+            if (save_data != null)
+                ret.LoadState(save_data);
 
             return ret;
         }
@@ -175,31 +156,55 @@ namespace Finmer.Gameplay
         /// </summary>
         public void Save()
         {
-            PropertyBag save_data = SerializeProperties();
+            PropertyBag save_data = SaveState();
             GameController.Session.Player.AdditionalSaveData.SetNestedPropertyBag(GetShopID(Key), save_data);
         }
 
-        public override PropertyBag SerializeProperties()
+        public override PropertyBag SaveState()
         {
-            PropertyBag props = base.SerializeProperties();
+            var output = base.SaveState();
 
             // Serialize metadata
-            props.SetString(SaveData.k_Shop_Title, Title);
-            props.SetBool(SaveData.k_Shop_RestockRequired, RestockRequired);
-            props.SetInt(SaveData.k_Shop_RestockInterval, RestockInterval);
-            props.SetInt(SaveData.k_Shop_RestockTimestamp, RestockLastTime);
+            output.SetString(SaveData.k_Shop_Title, Title);
+            output.SetBool(SaveData.k_Shop_RestockRequired, RestockRequired);
+            output.SetInt(SaveData.k_Shop_RestockInterval, RestockInterval);
+            output.SetInt(SaveData.k_Shop_RestockTimestamp, RestockLastTime);
 
             // Serialize stock
-            props.SetInt(SaveData.k_Shop_StockCount, Stock.Count);
+            output.SetInt(SaveData.k_Shop_StockCount, Stock.Count);
             for (var i = 0; i < Stock.Count; i++)
             {
                 ShopItemStack entry = Stock[i];
-                props.SetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i), entry.Quantity);
-                props.SetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i), entry.Type == ShopItemStack.EStackType.Unique);
-                props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i), entry.Item.SerializeProperties());
+                output.SetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i), entry.Quantity);
+                output.SetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i), entry.Type == ShopItemStack.EStackType.Unique);
+                output.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i), entry.Item.SaveState());
             }
 
-            return props;
+            return output;
+        }
+
+        public override void LoadState(PropertyBag input)
+        {
+            base.LoadState(input);
+
+            // Overwrite the shop's settings with things retrieved from the save file
+            Title = input.GetString(SaveData.k_Shop_Title);
+            RestockInterval = input.GetInt(SaveData.k_Shop_RestockInterval);
+            RestockLastTime = input.GetInt(SaveData.k_Shop_RestockTimestamp);
+
+            // Read stock
+            int num_stock = input.GetInt(SaveData.k_Shop_StockCount);
+            for (var i = 0; i < num_stock; i++)
+            {
+                var quantity = input.GetInt(SaveData.CombineBase(SaveData.k_Shop_StockQuantityBase, i));
+                var type = input.GetBool(SaveData.CombineBase(SaveData.k_Shop_StockUniqueBase, i)) ? ShopItemStack.EStackType.Unique : ShopItemStack.EStackType.Regular;
+                var item_data = input.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Shop_StockItemBase, i));
+                AddItem(Item.FromSaveData(ScriptContext, item_data), quantity, type);
+            }
+
+            // If the restock interval has elapsed, set the RestockRequired flag
+            int total_world_hours = GameController.Session.Player.TimeHourCumulative;
+            RestockRequired = RestockInterval != 0 && total_world_hours >= RestockLastTime + RestockInterval;
         }
 
         private int AddItemInternal(IntPtr state, ShopItemStack.EStackType type)

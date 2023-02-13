@@ -34,6 +34,10 @@ namespace Finmer.ViewModels
                 // Present the game screen
                 NavigateToGameInternal();
             }
+            catch (InvalidSaveDataException ex)
+            {
+                HandleGameStartupError("Save data is corrupted: " + ex.Message);
+            }
             catch (UnsolvableConstraintException ex)
             {
                 HandleGameStartupError("There is a configuration error in loaded modules: " + ex.Message);

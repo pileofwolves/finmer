@@ -43,6 +43,21 @@ namespace Finmer.Gameplay
     }
 
     /// <summary>
+    /// Represents the exception that is thrown when a request to load an asset cannot be fulfilled because the asset does not exist.
+    /// </summary>
+    [Serializable]
+    public sealed class MissingContentException : ApplicationException
+    {
+
+        private MissingContentException(SerializationInfo info, StreamingContext context) : base(info, context) {}
+
+        public MissingContentException(string message) : base(message) {}
+
+        public MissingContentException(string message, Exception inner) : base(message, inner) {}
+
+    }
+
+    /// <summary>
     /// Represents the exception that is thrown when a set of dependency constraints is unsolvable, i.e. cannot be topologically sorted.
     /// </summary>
     [Serializable]

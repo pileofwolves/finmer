@@ -144,12 +144,12 @@ namespace Finmer.Gameplay
             if (player != null)
             {
                 // Serialize the current player as a byte stream
-                PropertyBag savedata = player.SerializeProperties();
+                PropertyBag save_data = player.SaveState();
                 using (var ms = new MemoryStream())
                 {
                     using (var writer = new BinaryWriter(ms, Encoding.UTF8, true))
                     {
-                        savedata.Serialize(writer);
+                        save_data.Serialize(writer);
                     }
 
                     crashlog.WriteLine(Convert.ToBase64String(ms.ToArray()));

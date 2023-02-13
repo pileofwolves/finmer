@@ -22,7 +22,7 @@ namespace Finmer.Gameplay
     /// <summary>
     /// Represents an object that can be manipulated from Lua script.
     /// </summary>
-    public abstract class ScriptableObject : BaseProp
+    public abstract class ScriptableObject : BaseProp, ISaveable
     {
 
         private static readonly Dictionary<Type, Func<IntPtr, object, int>> s_MarshalFunctions =
@@ -46,8 +46,11 @@ namespace Finmer.Gameplay
         /// <summary>
         /// This object's globally unique ID.
         /// </summary>
-        public Guid ID { get; }
+        public Guid ID { get; private set; }
 
+        /// <summary>
+        /// Collection of user-defined script tags assigned to this object.
+        /// </summary>
         private List<string> Tags { get; } = new List<string>();
 
         /// <summary>
@@ -62,23 +65,6 @@ namespace Finmer.Gameplay
         {
             ScriptContext = context;
             ID = Guid.NewGuid();
-
-            CacheExportedMembers();
-        }
-
-        protected ScriptableObject(ScriptContext context, PropertyBag template)
-        {
-            ScriptContext = context;
-
-            // Read the object ID
-            byte[] id_bytes = template.GetBytes(SaveData.k_Object_Guid);
-            ID = id_bytes == null || id_bytes.Length != 16
-                ? Guid.NewGuid()
-                : new Guid(id_bytes);
-
-            // Read tags
-            for (var i = 0; i < template.GetInt(SaveData.k_Object_TagCount); i++)
-                Tags.Add(template.GetString(SaveData.k_Object_TagBase + i).ToUpperInvariant());
 
             CacheExportedMembers();
         }
@@ -113,10 +99,8 @@ namespace Finmer.Gameplay
             return Tags.Contains(tag.ToUpperInvariant());
         }
 
-        /// <summary>
-        /// Saves the <see cref="ScriptableObject" />'s properties to a new <see cref="PropertyBag" /> and returns the result.
-        /// </summary>
-        public virtual PropertyBag SerializeProperties()
+        /// <inheritdoc />
+        public virtual PropertyBag SaveState()
         {
             var output = new PropertyBag();
 
@@ -129,6 +113,20 @@ namespace Finmer.Gameplay
                 output.SetString(SaveData.k_Object_TagBase + i, Tags[i]);
 
             return output;
+        }
+
+        /// <inheritdoc />
+        public virtual void LoadState(PropertyBag input)
+        {
+            // Read the object ID
+            byte[] id_bytes = input.GetBytes(SaveData.k_Object_Guid);
+            ID = id_bytes == null || id_bytes.Length != 16
+                ? Guid.NewGuid()
+                : new Guid(id_bytes);
+
+            // Read tags
+            for (var i = 0; i < input.GetInt(SaveData.k_Object_TagCount); i++)
+                Tags.Add(input.GetString(SaveData.k_Object_TagBase + i).ToUpperInvariant());
         }
 
         /// <summary>

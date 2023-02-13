@@ -278,7 +278,7 @@ namespace Finmer.Gameplay
             LaunchCoroutine(k_ScriptCallbackTurn, 1);
         }
 
-        public PropertyBag Serialize()
+        public PropertyBag SaveState()
         {
             IntPtr state = m_Context.LuaState;
 
@@ -304,7 +304,7 @@ namespace Finmer.Gameplay
             return output;
         }
 
-        public void Deserialize(PropertyBag input)
+        public void LoadState(PropertyBag input)
         {
             // Push the state value onto the stack
             IntPtr state = m_Context.LuaState;

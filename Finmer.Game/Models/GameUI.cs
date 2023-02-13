@@ -184,7 +184,7 @@ namespace Finmer.Models
             s_Inst = new GameUI();
         }
 
-        public PropertyBag Serialize()
+        public PropertyBag SaveState()
         {
             var output = new PropertyBag();
 
@@ -210,7 +210,7 @@ namespace Finmer.Models
             return output;
         }
 
-        public void Deserialize(PropertyBag input)
+        public void LoadState(PropertyBag input)
         {
             Dispatcher.VerifyAccess();
 

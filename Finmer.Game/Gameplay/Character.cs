@@ -13,8 +13,6 @@ using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Core.Buffs;
 using Finmer.Gameplay.Scripting;
-using Finmer.Models;
-using Finmer.Utility;
 
 namespace Finmer.Gameplay
 {
@@ -166,7 +164,7 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.Read)]
         public int NumStruggleDice => Math.Max(Agility + CumulativeBuffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta), 1);
 
-        public AssetCreature Asset { get; }
+        public AssetCreature Asset { get; private set; }
 
         private int m_Strength;
         private int m_Agility;
@@ -174,76 +172,48 @@ namespace Finmer.Gameplay
         private int m_Wits;
         private int m_Health;
 
-        protected Character(ScriptContext context, PropertyBag template) : base(context, template)
+        protected Character(ScriptContext context) : base(context) {}
+
+        public static Character FromAsset(ScriptContext context, string asset_name)
         {
-            // Asset ID
-            byte[] asset_id = template.GetBytes(SaveData.k_AssetID);
-            if (asset_id != null)
-                Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
+            if (asset_name == null)
+                throw new ArgumentNullException(nameof(asset_name));
 
-            // Core stats
-            Strength = template.GetInt(SaveData.k_Character_Strength);
-            Agility = template.GetInt(SaveData.k_Character_Agility);
-            Body = template.GetInt(SaveData.k_Character_Body);
-            Wits = template.GetInt(SaveData.k_Character_Wits);
-            Flags = (ECharacterFlags)template.GetInt(SaveData.k_Character_Flags);
-            Level = template.GetInt(SaveData.k_Character_Level);
-            Size = (AssetCreature.ESize)template.GetInt(SaveData.k_Character_Size, (int)AssetCreature.ESize.Medium);
-            Health = template.GetInt(SaveData.k_Character_Health, HealthMax);
+            // Find the asset with the given name
+            AssetBase asset = GameController.Content.GetAssetByName(asset_name);
+            if (!(asset is AssetCreature creature))
+                throw new MissingContentException($"Could not find Creature '{asset_name}' in loaded modules.");
 
-            // Combat settings
-            IsPredator = template.GetBool(SaveData.k_Character_IsPredator);
-            PredatorDigests = template.GetBool(SaveData.k_Character_PredatorDigest);
-            PredatorFullness = template.GetFloat(SaveData.k_Character_PredatorFullness);
-
-            // Load equipment
+            // Convert the asset to a save data template with initial settings
+            PropertyBag props = new PropertyBag();
+            props.SetBytes(SaveData.k_AssetID, asset.ID.ToByteArray());
+            props.SetString(SaveData.k_Object_Name, creature.ObjectName);
+            props.SetString(SaveData.k_Object_Alias, creature.ObjectAlias);
+            props.SetInt(SaveData.k_Object_Gender, (int)creature.Gender);
+            props.SetInt(SaveData.k_Character_Strength, creature.Strength);
+            props.SetInt(SaveData.k_Character_Agility, creature.Agility);
+            props.SetInt(SaveData.k_Character_Body, creature.Body);
+            props.SetInt(SaveData.k_Character_Wits, creature.Wits);
+            props.SetInt(SaveData.k_Character_Flags, creature.Flags);
+            props.SetInt(SaveData.k_Character_Level, creature.Level);
+            props.SetInt(SaveData.k_Character_Size, (int)creature.Size);
+            props.SetBool(SaveData.k_Character_IsPredator, creature.PredatorEnabled);
+            props.SetBool(SaveData.k_Character_PredatorDigest, creature.PredatorDigests);
             for (var i = 0; i < k_EquipSlotCount; i++)
             {
-                PropertyBag nested = template.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i));
-                if (nested != null)
-                    Equipment[i] = Item.FromSaveGame(context, nested);
+                var key = SaveData.CombineBase(SaveData.k_Character_EquipBase, i);
+                props.SetNestedPropertyBag(key, Item.FromAsset(context, creature.Equipment[i])?.SaveState());
             }
+
+            // Convert the template to an instance
+            var output = new Character(context);
+            output.LoadState(props);
+            return output;
         }
 
-        public static Character FromAsset(ScriptContext context, string assetName)
+        public override PropertyBag SaveState()
         {
-            try
-            {
-                // Find the asset with the given name
-                AssetBase asset = GameController.Content.GetAssetByName(assetName);
-                if (!(asset is AssetCreature creature))
-                    throw new ArgumentException($"The specified asset ('{assetName ?? "[null]"}') does not exist or is not a Creature.", nameof(assetName));
-
-                // Convert the asset to a savedata template with initial settings
-                PropertyBag props = new PropertyBag();
-                props.SetBytes(SaveData.k_AssetID, asset.ID.ToByteArray());
-                props.SetString(SaveData.k_Object_Name, creature.ObjectName);
-                props.SetString(SaveData.k_Object_Alias, creature.ObjectAlias);
-                props.SetInt(SaveData.k_Object_Gender, (int)creature.Gender);
-                props.SetInt(SaveData.k_Character_Strength, creature.Strength);
-                props.SetInt(SaveData.k_Character_Agility, creature.Agility);
-                props.SetInt(SaveData.k_Character_Body, creature.Body);
-                props.SetInt(SaveData.k_Character_Wits, creature.Wits);
-                props.SetInt(SaveData.k_Character_Flags, creature.Flags);
-                props.SetInt(SaveData.k_Character_Level, creature.Level);
-                props.SetInt(SaveData.k_Character_Size, (int)creature.Size);
-                props.SetBool(SaveData.k_Character_IsPredator, creature.PredatorEnabled);
-                props.SetBool(SaveData.k_Character_PredatorDigest, creature.PredatorDigests);
-                for (var i = 0; i < k_EquipSlotCount; i++)
-                    props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i), Item.FromAsset(context, creature.Equipment[i])?.SerializeProperties());
-
-                return new Character(context, props);
-            }
-            catch (Exception ex)
-            {
-                GameUI.Instance.Log($"ERROR: Failed to create character '{assetName}': {ex}", Theme.LogColorError);
-                return null;
-            }
-        }
-
-        public override PropertyBag SerializeProperties()
-        {
-            PropertyBag props = base.SerializeProperties();
+            PropertyBag props = base.SaveState();
 
             // Asset ID
             if (Asset != null)
@@ -266,9 +236,45 @@ namespace Finmer.Gameplay
 
             // Equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
-                props.SetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i), Equipment[i]?.SerializeProperties());
+            {
+                var key = SaveData.CombineBase(SaveData.k_Character_EquipBase, i);
+                props.SetNestedPropertyBag(key, Equipment[i]?.SaveState());
+            }
 
             return props;
+        }
+
+        public override void LoadState(PropertyBag input)
+        {
+            base.LoadState(input);
+
+            // Asset ID
+            byte[] asset_id = input.GetBytes(SaveData.k_AssetID);
+            if (asset_id != null)
+                Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
+
+            // Core stats
+            Strength = input.GetInt(SaveData.k_Character_Strength);
+            Agility = input.GetInt(SaveData.k_Character_Agility);
+            Body = input.GetInt(SaveData.k_Character_Body);
+            Wits = input.GetInt(SaveData.k_Character_Wits);
+            Flags = (ECharacterFlags)input.GetInt(SaveData.k_Character_Flags);
+            Level = input.GetInt(SaveData.k_Character_Level);
+            Size = (AssetCreature.ESize)input.GetInt(SaveData.k_Character_Size, (int)AssetCreature.ESize.Medium);
+            Health = input.GetInt(SaveData.k_Character_Health, HealthMax);
+
+            // Combat settings
+            IsPredator = input.GetBool(SaveData.k_Character_IsPredator);
+            PredatorDigests = input.GetBool(SaveData.k_Character_PredatorDigest);
+            PredatorFullness = input.GetFloat(SaveData.k_Character_PredatorFullness);
+
+            // Load equipment
+            for (var i = 0; i < k_EquipSlotCount; i++)
+            {
+                PropertyBag nested = input.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i));
+                if (nested != null)
+                    Equipment[i] = Item.FromSaveData(ScriptContext, nested);
+            }
         }
 
         /// <summary>
@@ -300,7 +306,7 @@ namespace Finmer.Gameplay
         /// Returns a value indicating whether a certain character can be grappled in a fight.
         /// </summary>
         /// <param name="victim">The character who may or may not be grabbed.</param>
-        public bool CanGrapple(Character victim) 
+        public bool CanGrapple(Character victim)
         {
             return victim.Size <= Size;
         }

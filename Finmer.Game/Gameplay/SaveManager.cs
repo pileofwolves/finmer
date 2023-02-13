@@ -46,13 +46,11 @@ namespace Finmer.Gameplay
         /// Returns the save data stored in the specified slot, or null if none exists.
         /// </summary>
         /// <param name="slot">The save slot index (zero-based).</param>
+        /// <exception cref="IOException">Throws if save file could not be read.</exception>
+        /// <exception cref="InvalidDataException">Throws if save file is invalid.</exception>
         public static GameSnapshot LoadSaveFile(int slot)
         {
             string filename = GetSaveFileName(slot);
-            if (!File.Exists(filename))
-                return null;
-
-            // read PropertyBag from file stream
             using (var file = new FileStream(filename, FileMode.Open))
             {
                 using (var reader = new BinaryReader(file, Encoding.UTF8, true))

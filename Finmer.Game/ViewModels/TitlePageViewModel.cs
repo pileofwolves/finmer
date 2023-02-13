@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Windows.Input;
 using Finmer.Core;
 using Finmer.Gameplay;
@@ -103,10 +104,13 @@ namespace Finmer.ViewModels
                 // Read the stored save data
                 snapshot = SaveManager.LoadSaveFile(slot_index);
             }
-            catch
+            catch (Exception ex)
             {
-                // Handle I/O or data corruption errors by ignoring them
-                // TODO: Once the popup system is in place, use that to notify the user of the error
+                // Handle I/O or data corruption errors by aborting the game load, and displaying the error
+                GameController.Window.OpenPopup(new SimpleMessageDialog
+                {
+                    Message = $"Save data could not be loaded: {ex.GetType().Name}: {ex.Message}"
+                });
                 return;
             }
 

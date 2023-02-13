@@ -48,38 +48,57 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedNewCharacter(IntPtr state)
         {
             // Try creating an instance of a Character with the specified asset name
-            string name = luaL_checkstring(state, 1);
-            Character ch = Character.FromAsset(ScriptContext.FromLua(state), name);
-
-            // If that failed, throw a script error
-            if (ch == null)
-                return luaL_error(state, $"failed to load creature '{name}'");
+            var name = luaL_checkstring(state, 1);
+            var context = ScriptContext.FromLua(state);
+            Character instance;
+            try
+            {
+                instance = Character.FromAsset(context, name);
+            }
+            catch (Exception ex)
+            {
+                return luaL_error(state, $"Failed to load Creature '{name}': {ex.Message}");
+            }
 
             // Return it to script
-            ch.PushToLua(state);
+            instance.PushToLua(state);
             return 1;
         }
 
         private static int ExportedNewItem(IntPtr state)
         {
             // Try creating an instance of an Item with the specified asset name
-            string name = luaL_checkstring(state, 1);
-            Item obj = Item.FromAsset(ScriptContext.FromLua(state), name);
-
-            // If that failed, throw a script error
-            if (obj == null)
-                return luaL_error(state, $"failed to load item '{name}'");
+            var name = luaL_checkstring(state, 1);
+            var context = ScriptContext.FromLua(state);
+            Item instance;
+            try
+            {
+                instance = Item.FromAsset(context, name);
+            }
+            catch (Exception ex)
+            {
+                return luaL_error(state, $"Failed to load Item '{name}': {ex.Message}");
+            }
 
             // Return it to script
-            obj.PushToLua(state);
+            instance.PushToLua(state);
             return 1;
         }
 
         private static int ExportedNewShop(IntPtr state)
         {
             // Get or create the shop with the specified unique key
-            string key = luaL_checkstring(state, 1);
-            ShopState shop = ShopState.LoadOrCreate(ScriptContext.FromLua(state), key);
+            var key = luaL_checkstring(state, 1);
+            var context = ScriptContext.FromLua(state);
+            ShopState shop;
+            try
+            {
+                shop = ShopState.LoadOrCreate(context, key);
+            }
+            catch (Exception ex)
+            {
+                return luaL_error(state, $"Failed to load Shop '{key}': {ex.Message}");
+            }
 
             // Return it to script
             shop.PushToLua(state);

@@ -350,19 +350,28 @@ namespace Finmer.Gameplay
         [ScriptableFunction]
         protected static int ExportedGiveItem(IntPtr L)
         {
+            // Unmarshal input arguments
             var self = FromLuaNonOptional<Player>(L, 1);
             var item_name = LuaApi.luaL_checkstring(L, 2);
             var quiet = LuaApi.lua_type(L, 3) == LuaApi.ELuaType.Boolean && LuaApi.lua_toboolean(L, 3);
 
-            // Instantiate the item and give it to the player
-            Item item = Item.FromAsset(ScriptContext.FromLua(L), item_name);
-            if (item == null)
-                return LuaApi.luaL_error(L, $"Failed to load item '{item_name}'");
-            self.AddItem(item);
+            // Instantiate the item
+            Item instance;
+            try
+            {
+                instance = Item.FromAsset(self.ScriptContext, item_name);
+            }
+            catch (Exception ex)
+            {
+                return LuaApi.luaL_error(L, $"Failed to load Item '{item_name}': {ex.Message}");
+            }
+
+            // Give the item to the player
+            self.AddItem(instance);
 
             // Display announcement, unless explicitly silenced
             if (!quiet)
-                GameUI.Instance.Log($"{item.Name} added to your backpack.", Theme.LogColorNotification);
+                GameUI.Instance.Log($"{instance.Name} added to your backpack.", Theme.LogColorNotification);
 
             return 0;
         }

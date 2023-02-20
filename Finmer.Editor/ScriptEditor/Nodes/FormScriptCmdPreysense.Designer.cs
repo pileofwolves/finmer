@@ -51,18 +51,18 @@ namespace Finmer.Editor
             label2.AutoSize = true;
             label2.Location = new System.Drawing.Point(16, 16);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(120, 13);
+            label2.Size = new System.Drawing.Size(50, 13);
             label2.TabIndex = 0;
-            label2.Text = "Instigator Participant ID:";
+            label2.Text = "Predator:";
             // 
             // label1
             // 
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 72);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(120, 13);
-            label1.TabIndex = 10;
-            label1.Text = "Instigator Participant ID:";
+            label1.Size = new System.Drawing.Size(103, 13);
+            label1.TabIndex = 2;
+            label1.Text = "Content Descriptors:";
             // 
             // cmdAccept
             // 
@@ -72,7 +72,7 @@ namespace Finmer.Editor
             this.cmdAccept.Location = new System.Drawing.Point(73, 257);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 7;
+            this.cmdAccept.TabIndex = 11;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -87,7 +87,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(201, 256);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 8;
+            this.cmdCancel.TabIndex = 12;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -100,7 +100,7 @@ namespace Finmer.Editor
             this.apcCreature.Name = "apcCreature";
             this.apcCreature.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.apcCreature.Size = new System.Drawing.Size(232, 24);
-            this.apcCreature.TabIndex = 9;
+            this.apcCreature.TabIndex = 1;
             // 
             // chkTypeOV
             // 
@@ -108,7 +108,7 @@ namespace Finmer.Editor
             this.chkTypeOV.Location = new System.Drawing.Point(24, 96);
             this.chkTypeOV.Name = "chkTypeOV";
             this.chkTypeOV.Size = new System.Drawing.Size(70, 17);
-            this.chkTypeOV.TabIndex = 11;
+            this.chkTypeOV.TabIndex = 3;
             this.chkTypeOV.Text = "Oral Vore";
             this.chkTypeOV.UseVisualStyleBackColor = true;
             // 
@@ -118,7 +118,7 @@ namespace Finmer.Editor
             this.chkTypeAV.Location = new System.Drawing.Point(24, 120);
             this.chkTypeAV.Name = "chkTypeAV";
             this.chkTypeAV.Size = new System.Drawing.Size(72, 17);
-            this.chkTypeAV.TabIndex = 12;
+            this.chkTypeAV.TabIndex = 4;
             this.chkTypeAV.Text = "Anal Vore";
             this.chkTypeAV.UseVisualStyleBackColor = true;
             // 
@@ -128,7 +128,7 @@ namespace Finmer.Editor
             this.chkTypeCV.Location = new System.Drawing.Point(24, 144);
             this.chkTypeCV.Name = "chkTypeCV";
             this.chkTypeCV.Size = new System.Drawing.Size(76, 17);
-            this.chkTypeCV.TabIndex = 13;
+            this.chkTypeCV.TabIndex = 5;
             this.chkTypeCV.Text = "Cock Vore";
             this.chkTypeCV.UseVisualStyleBackColor = true;
             // 
@@ -138,7 +138,7 @@ namespace Finmer.Editor
             this.chkTypeUB.Location = new System.Drawing.Point(24, 168);
             this.chkTypeUB.Name = "chkTypeUB";
             this.chkTypeUB.Size = new System.Drawing.Size(60, 17);
-            this.chkTypeUB.TabIndex = 14;
+            this.chkTypeUB.TabIndex = 6;
             this.chkTypeUB.Text = "Unbirth";
             this.chkTypeUB.UseVisualStyleBackColor = true;
             // 
@@ -148,7 +148,7 @@ namespace Finmer.Editor
             this.chkTypeDigestFatal.Location = new System.Drawing.Point(160, 168);
             this.chkTypeDigestFatal.Name = "chkTypeDigestFatal";
             this.chkTypeDigestFatal.Size = new System.Drawing.Size(102, 17);
-            this.chkTypeDigestFatal.TabIndex = 18;
+            this.chkTypeDigestFatal.TabIndex = 10;
             this.chkTypeDigestFatal.Text = "Digestion (Fatal)";
             this.chkTypeDigestFatal.UseVisualStyleBackColor = true;
             // 
@@ -158,7 +158,7 @@ namespace Finmer.Editor
             this.chkTypeDigestReform.Location = new System.Drawing.Point(160, 144);
             this.chkTypeDigestReform.Name = "chkTypeDigestReform";
             this.chkTypeDigestReform.Size = new System.Drawing.Size(136, 17);
-            this.chkTypeDigestReform.TabIndex = 17;
+            this.chkTypeDigestReform.TabIndex = 9;
             this.chkTypeDigestReform.Text = "Digestion (Reformation)";
             this.chkTypeDigestReform.UseVisualStyleBackColor = true;
             // 
@@ -168,7 +168,7 @@ namespace Finmer.Editor
             this.chkTypeEndoOrFatal.Location = new System.Drawing.Point(160, 120);
             this.chkTypeEndoOrFatal.Name = "chkTypeEndoOrFatal";
             this.chkTypeEndoOrFatal.Size = new System.Drawing.Size(150, 17);
-            this.chkTypeEndoOrFatal.TabIndex = 16;
+            this.chkTypeEndoOrFatal.TabIndex = 8;
             this.chkTypeEndoOrFatal.Text = "Endo or Fatal (Undecided)";
             this.chkTypeEndoOrFatal.UseVisualStyleBackColor = true;
             // 
@@ -178,7 +178,7 @@ namespace Finmer.Editor
             this.chkTypeEndo.Location = new System.Drawing.Point(160, 96);
             this.chkTypeEndo.Name = "chkTypeEndo";
             this.chkTypeEndo.Size = new System.Drawing.Size(82, 17);
-            this.chkTypeEndo.TabIndex = 15;
+            this.chkTypeEndo.TabIndex = 7;
             this.chkTypeEndo.Text = "Endo (Safe)";
             this.chkTypeEndo.UseVisualStyleBackColor = true;
             // 
@@ -209,7 +209,7 @@ namespace Finmer.Editor
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Set / Unset Participants as Grappling";
+            this.Text = "Show Preysense Warning";
             this.Load += new System.EventHandler(this.FormScriptCmdPreysense_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

@@ -228,13 +228,13 @@
 		{
 			"Key": "MQ03_TAVERN_EVENT2",
 			"Text": [
-				"As you spend the time lost in thought, quietly nursing your mug all to yourself, you begin to take note of a pair of eyes burning a hole in your skull. Perhaps you are not quite as alone in the tavern as you had at first anticipated. You turn your head ever so slightly, trying not to be overly obvious as a white fox, leaning against the far wall of the establishment, enters your view. You make eye contact, rendering your attempt at subterfuge moot, as he stares at you blankly."
+				"As you spend the time lost in thought, quietly nursing your mug all to yourself, you begin to take note of a pair of eyes burning a hole in your skull. Perhaps you are not quite as alone in the tavern as you had at first anticipated. You turn your head ever so slightly, trying not to be overly obvious as a white fox, leaning against the far wall of the establishment, enters your view. You make eye contact, rendering your attempt at subterfuge moot, as he stares at you blankly. It is only when you realize that there is no one else in the room but the two of you - the barkeep seemingly having left - that you suddenly feel exceptionally vulnerable."
 			]
 		},
 		{
 			"Key": "MQ03_TAVERN_EVENT3",
 			"Text": [
-				"For whatever reason, the fox turns to leave, making for the tavern's back exit. Then, without warning, another paw materializes on the back of your head, forcefully and painfully slamming your face into the bar's wooden countertop. Your assailant leans close enough for you to feel their breath on your ear. \"Well, aren't you a curious one,\" she whispers in a mockingly sweet voice. \"Of all the {player.speciesplural} I've had the displeasure of tailing, you were the most erratic and annoying, let me tell you. But now that the boss has his 'date' scheduled, you are a loose end.\""
+				"For whatever reason, the fox turns to leave, making for the tavern's back exit. Then, without warning, another paw materializes on the back of your head, forcefully and painfully slamming your face into the bar's wooden countertop. Your assailant leans close enough for you to feel their breath on your ear. \"Well, aren't you a curious one,\" she whispers in a mockingly sweet voice. \"Of all the {player.speciesplural} I've had the displeasure of tailing, you were the most erratic and annoying, let me tell you. Not to mention the hoops I had to step through to distract that taur for long enough. But now that the boss has his 'date' scheduled, you are an unwanted loose end.\""
 			]
 		},
 		{

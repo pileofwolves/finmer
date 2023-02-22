@@ -113,6 +113,88 @@
 			]
 		},
 		{
+			"Key": "PORT_TAVERN_ENTER",
+			"Text": [
+				"South Finmer's public dining room is a compact, comfortable space. Wide stone arches support the wooden ceiling beams, the floor set with thick flagstones, well-polished through years of travel. Worn dark wooden tables with chairs and benches line the walls, while the counter and bar takes up the corner of the room. A tiger-taur curiously eyes you from behind the bar, but says nothing and returns to her cleaning work. Despite the establishment's clear purpose as a restaurant, there are no customers inside but you."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_ENTER_FIRST",
+			"Text": [
+				"You spare a brief glance to a sign swaying gently above the door, labeled 'The Snout and Thorn'. A cozy name for an establishment, to be sure. Pushing the heavy wooden door open with both paws, a pleasant warmth rushes over you, banishing the autumn chill - in all likelihood much to the chagrin of whoever else is inside whose atmosphere you are stealing. Stepping through, you quickly close the door behind you and take a brief moment to unwind the muscular tension you did not know you had been building up. The scent of warm, fresh comfort food and cheap booze almost makes you forget the conspiracy you've been dragged into along with the voracious killer on your tail. Ah well, a good meal solves a lot of problems, as the saying goes."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK",
+			"Text": [
+				"Holly nods at you as you lean on the counter. \"What's up?\"",
+				"With a gentle smile, Holly welcomes you back to her establishment. \"Yes, hun?\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_BRIDGE",
+			"Text": [
+				"\"Oh, yes,\" she comments dryly. \"Well, we only found out quite late that... that whole thing happened. The bridge is right next door for you guys, of course, but for us it's a two hours' walk away, so that slows things.\" Holly shifts slightly, rolling her eyes with mock indignation as she sticks two paws into her sides. \"We only really noticed something was up when the caravans stopped coming. Then by the time the council had bickered enough to actually make a damn decision, you guys had already dealt with the problem. Though, that said, I am still very curious to understand what exactly happened. As are you, of course, honey.\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_DRINK",
+			"Text": [
+				"The tigress considers your question for a moment as she pours you a cup of whatever beverage was within reach.",
+				"The quadruped half of the taur-barkeep flops down on the ground with a thud, while she casually makes conversation.",
+				"Sitting on her haunches, the tiger-taur idly scratches an ear using a front leg, while she prepares a mug for you.",
+				"You chat the hours away with the owner of the tavern. With the number of free drinks she's giving you, you wonder how this establishment stays afloat."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_FIRST",
+			"Text": [
+				"The taur behind the counter had been eyeing you for a few moments already, and seems pleased when you step up to her. The tigress sports the classic orange-and-white fur pattern, wearing only a gold-colored jacket around her upper body's torso. Though you cannot see behind the bar particularly well from your present vantage point, as far as you can tell, the taur is not wearing anything in particular on the quadruped half. Amused, she watches your gaze snap back to her eyes, as if having quietly waited for your examination to finish. \"Welcome, {player.species}, to my eatery. Call me Holly.\" You exchange paws and names. \"What can I do for you?\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_ISO",
+			"Text": [
+				"\"Iso? Our northern neighbors' mayor Iso? No, I haven't seen her recently, why?\" the tiger-taur responds, not looking up from whatever writing work she's doing behind the counter. When you explain that Iso is missing, you get her attention. Molly rises to all fours, revealing the taur's true stature. She towers above you, appearing to almost touch the ceiling. That must be in part the reason for the particularly tall supports... \"Explain,\" she demands sternly. Her voice carries an edge of concern, the implied accusation not necessarily directed at you."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_ISO2",
+			"Text": [
+				"Molly scratches at her chin in thought, considering your words carefully. Amusingly, she performs the movement with one of her quadruped front legs, instead of her arm like one might expect, though you decide it best to not comment on the matter. \"How unlike her,\" she decides eventually. \"The mayor and I do not speak often, but she's always been a gracious, responsible lady. For her to vanish...\" She affixes her gaze back onto you. \"Very well, tell you what, I'll ask around. A friend of mine at the temple knows her well and might have more answers. Unless you have any more questions for me, sit tight and grab a drink; I'll be back.\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_MQ03_TAVERN",
+			"Text": [
+				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day. \"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is a mess and the lock on the back door is busted.\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_MQ03_TAVERN_ALT",
+			"Text": [
+				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day. \"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is ransacked and the town guard is investigating a body out back of my restaurant.\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_MQ03_TAVERN2",
+			"Text": [
+				"In response to your explanation, Molly's harsh expression does a complete one-eighty. Barely managing to keep herself from tearing up, the tigress veritably launches herself at the countertop, grabbing you in a crushingly tight and awkward over-the-counter hug. \"Oh, honey! How horrible! I'm so glad you're alright!\" Perhaps realizing how she is overstepping more than a few boundaries, she releases you, patting down her jacket with a sniff. \"These are dark times, that such monsters can roam freely.\" She gives you a beaming smile, almost matronly. \"Don't you worry about a thing, hun, I'll talk to the guards for you. Relax a bit, tell me what's on your mind.\""
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_MQ03_TEMPLE",
+			"Text": [
+				"Holly quickly waves you over. \"Oh, hun, there you are! Did you hear about what happened the other night? Oh, it's terrible, these things that are happening to my little town,\" she blurts out in just over one breath, before you've even finished walking over to the bar and taking a seat. \"It was my restaurant first, now Willow's shrine was ransacked, and even worse, she's missing! Oh, dearie, I hope she turns up in one piece soon,\" the over-eager tigress sighs. Perhaps it's not so much an attempt to notify you of the latest news, but rather an attempt to get the facts that are bothering her deeply off of her chest. You accept her story grimly, unable to augment it any further, lest you let it slip that you know exactly where Willow went and implicate yourself."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_TALK_RECRUITMENT",
+			"Text": [
+				"The tiger-taur nods darkly. \"It's true, I received the offer myself from some hooded creep.\" She begins hooting with laughter, placing a paw on her belly as if to stabilize her bouncing chest. \"Utterly ridiculous, I'm not sure what they're on, whoever spread these rumors, but I did my part and let the town guard know, of course. No luck so far, but I'm sure we'll get to the bottom of whatever little scam that was.\""
+			]
+		},
+		{
 			"Key": "PORT_TEMPLE_ENTER",
 			"Text": [
 				"The local shrine doubles as a place of worship and gathering, and a modest hospital. Empty beds line one wall, while the other half of the room is occupied with neatly spaced chairs. The large granite altar at the far end of the room sits below an impressive wall tapestry featuring intricate blue and white patterns. As you shut the poorly-oiled oak door behind you to keep the heat inside, the calming scent of floral incense tickles your nose. Willow, the resident healer, acknowledges your arrival with a nod, before continuing to sweep the floor."

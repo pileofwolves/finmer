@@ -198,6 +198,17 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "Port Tavern",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ03()\r\nJournal.Update(\"MQ03\", 40)\r\nSetScene(\"Scene_PortTavern\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "Abbey",
 														"Highlight": false,
 														"ButtonWidth": 1.0,

@@ -21,7 +21,7 @@
 				"Children": [
 					{
 						"NodeType": "Choice",
-						"Key": "C_Leave",
+						"Key": "Main_C_Leave",
 						"Title": "Leave",
 						"Tooltip": "You've got other places to be.",
 						"Highlight": false,
@@ -34,11 +34,15 @@
 					},
 					{
 						"NodeType": "Choice",
-						"Key": "C_Drink",
-						"Title": "Drink",
-						"Tooltip": "Spend some quiet time.",
+						"Key": "Main_C_MQ03_Drink",
+						"Title": "Plan ahead",
+						"Tooltip": "Spend some quiet time with a drink and review your findings.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") > 0\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")"
+						},
 						"Children": [
 							{
 								"NodeType": "State",
@@ -46,10 +50,6 @@
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "Log(\"MQ03_TAVERN_EVENT1\")\r\nSetInventoryEnabled(false)\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT\", true)\r\nSetTimeHour(20)"
-								},
-								"ScriptAppear": {
-									"!Type": "ScriptDataInline",
-									"Script": "return Storage.GetNumber(\"MQ03_ISO_GOSSIP\") > 0\r\n    and not Storage.GetFlag(\"MQ03_TAVERN_EVENT\")"
 								},
 								"Children": [
 									{
@@ -247,49 +247,541 @@
 										]
 									}
 								]
-							},
-							{
-								"NodeType": "State",
-								"Key": "R_Drink_NoEvent",
-								"Children": [
-									{
-										"NodeType": "Choice",
-										"Key": "C_DrinkEnd",
-										"Title": "Continue",
-										"Highlight": false,
-										"ButtonWidth": 1.0,
-										"Children": [
-											{
-												"NodeType": "Link",
-												"LinkTarget": "Main"
-											}
-										]
-									}
-								]
 							}
 						]
 					},
 					{
 						"NodeType": "Choice",
-						"Key": "C_Talk",
+						"Key": "Main_C_Talk",
 						"Title": "Talk",
-						"Tooltip": "Find someone to chat with.",
+						"Tooltip": "Chat up Holly, the bartender.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "Allow showing hello message by default"
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "PORT_TAVERN_TALKING",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "TavernTalkRoot",
+								"Key": "Talk_R_MQ03_Temple",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_TAVERN_TALK_MQ03_TEMPLE",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandComment",
+											"Comment": "Don't show post-tavern event text if post-temple is shown first"
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "PORT_TAVERN_TALK_MQ03_TAVERN",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "PORT_TAVERN_TALK_MQ03_TEMPLE",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "PORT_TAVERN_TALKING",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ03_TEMPLE_EVENT",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "PORT_TAVERN_TALK_MQ03_TEMPLE",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										}
+									]
+								},
 								"Children": [
 									{
 										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_MQ03_Tavern",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "PORT_TAVERN_TALK_MQ03_TAVERN",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "PORT_TAVERN_TALKING",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandIf",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "TOBY_DEAD",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											],
+											"HasElseBranch": true,
+											"MainSubgroup": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_TAVERN_TALK_MQ03_TAVERN_ALT",
+													"IsRaw": false
+												}
+											],
+											"ElseSubgroup": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_TAVERN_TALK_MQ03_TAVERN",
+													"IsRaw": false
+												}
+											]
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ03_TAVERN_EVENT",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "PORT_TAVERN_TALK_MQ03_TAVERN",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Title": "Predator",
+										"Tooltip": "Say that you were accosted by someone who tried to eat you!",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_MQ03_Tavern2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TAVERN_TALK_MQ03_TAVERN2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Talk_R_Main"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Title": "Red Maw",
+										"Tooltip": "Say that you're on the run from a gang of murderous predators.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_MQ03_Tavern2"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Title": "Iso",
+										"Tooltip": "Say that you got attacked by the people Mayor Iso is running from, too.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_MQ03_Tavern2"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Main",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandComment",
+											"Comment": "Skip 'hello' message if interrupt conversations were shown"
+										},
+										{
+											"!Type": "CommandIf",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TAVERN_TALKING",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											],
+											"HasElseBranch": false,
+											"MainSubgroup": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "PORT_TAVERN_TALKING",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandComment",
+													"Comment": "Show different/longer text on first visit"
+												},
+												{
+													"!Type": "CommandIf",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "PORT_TAVERN_TALK_FIRST",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													],
+													"HasElseBranch": true,
+													"MainSubgroup": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TAVERN_TALK_FIRST",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TAVERN_TALK_FIRST",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													],
+													"ElseSubgroup": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TAVERN_TALK",
+															"IsRaw": false
+														}
+													]
+												}
+											]
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Leave",
 										"Title": "Never mind",
+										"Tooltip": "Time to go.",
 										"Highlight": false,
 										"ButtonWidth": 0.75,
 										"Children": [
 											{
 												"NodeType": "Link",
 												"LinkTarget": "Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Iso",
+										"Title": "Iso",
+										"Tooltip": "Ask about the missing mayor.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TAVERN_TALK_ISO",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ03_TEMPLE_EVENT",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Iso",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_TAVERN_TALK_ISO",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "PORT_TAVERN_TALK_ISO",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Iso02",
+														"Title": "Neutral",
+														"Tooltip": "Explain that she has not been seen since a strange incident.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Talk_R_Iso02",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "SaveData.TakeCheckpoint()\r\nLog(\"PORT_TAVERN_TALK_ISO2\")\r\nMQ03_IncrementGossip()"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Talk_C_Leave"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Main_C_MQ03_Drink"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Talk_C_Bridge"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Talk_C_Recruitment"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Iso02B",
+														"Title": "Concerned",
+														"Tooltip": "Explain that, with missing persons, every second counts.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Talk_R_Iso02"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Iso02C",
+														"Title": "Dismissive",
+														"Tooltip": "Explain that the Acting Mayor instructed you to find her.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Talk_R_Iso02"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Bridge",
+										"Title": "Bridge",
+										"Tooltip": "Ask about how South Finmer dealt with the broken bridge.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_TAVERN_TALK_BRIDGE",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "PORT_TAVERN_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TAVERN_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Recruitment",
+										"Title": "Recruitment",
+										"Tooltip": "Ask about the mysterious job offers going around.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_TAVERN_TALK_RECRUITMENT",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "PORT_TAVERN_TALK_RECRUITMENT",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_TAVERN_TALK_RECRUITMENT",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ03_TAVERN_EVENT",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Drink",
+										"Title": "Rumors",
+										"Tooltip": "Chat about some recent happenings.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"PORT_TAVERN_TALK_DRINK\")\r\nRumor.Present(Creature(\"CR_Port_Tavernkeep\"))\r\nAdvanceTime(1)"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
 											}
 										]
 									}

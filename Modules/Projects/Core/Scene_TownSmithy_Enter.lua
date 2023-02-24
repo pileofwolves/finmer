@@ -1,4 +1,4 @@
-SetLocation("Town, Smithy")
+SetLocation("North Finmer, Smithy")
 if Storage.GetFlag("town_smithy_first") then
     Log("town_smithy")
 else

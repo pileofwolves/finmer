@@ -1,4 +1,4 @@
-SetLocation("Town, West")
+SetLocation("North Finmer, West")
 SetInventoryEnabled(true)
 
 -- for the snitch scene, the fluff text is undesirable (because we're just jumping between scenes to reuse the token vore scene)

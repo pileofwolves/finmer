@@ -1,4 +1,4 @@
-SetLocation("Town, North")
+SetLocation("North Finmer, North")
 Log("town_nsq")
 
 -- don't add in the fluff text every time

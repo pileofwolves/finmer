@@ -1,4 +1,4 @@
-SetLocation("Town, Inn")
+SetLocation("North Finmer, Inn")
 
 -- Set up the bartender context
 Text.SetContext("bartender", barkeep)

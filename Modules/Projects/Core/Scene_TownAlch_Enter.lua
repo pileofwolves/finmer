@@ -1,4 +1,7 @@
--- you monster
+-- Update compass
+SetLocation("North Finmer, Alchemist")
+
+-- Skip welcome message if alchemist is killed
 if not Storage.GetFlag("town_alch_dead") then
 
     -- long/detailed message on first visit, short version afterwards

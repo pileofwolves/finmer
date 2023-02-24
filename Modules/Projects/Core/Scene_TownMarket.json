@@ -20,7 +20,7 @@
 				"Key": "WakeUp",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetInventoryEnabled(false)\r\nSetLocation(\"...\")\r\nStorage.SetFlag(\"town_first\", true)\r\nLog(\"town_first\")"
+					"Script": "SetInventoryEnabled(false)\r\nSetLocation(\"???\")\r\nStorage.SetFlag(\"town_first\", true)\r\nLog(\"town_first\")"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
@@ -486,7 +486,7 @@
 				"Key": "Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"Town, Marketplace\")\r\nSetInventoryEnabled(true)\r\n\r\n-- Take a checkpoint if the player leaves town and comes back\r\nTimedCheckpoint(\"TOWN_MARKET\")"
+					"Script": "AddLink(ECompass.North, \"Scene_TownNSQ\")\r\nAddLink(ECompass.West, \"Scene_TownWSQ\")\r\nAddLink(ECompass.South, \"Scene_TownGate\")\r\nSetLocation(\"North Finmer, Marketplace\")\r\nSetInventoryEnabled(true)\r\n\r\n-- Take a checkpoint if the player leaves town and comes back\r\nTimedCheckpoint(\"TOWN_MARKET\")"
 				},
 				"Children": [
 					{

@@ -12,7 +12,7 @@
 				"Key": "Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetLocation(\"Town, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")"
+					"Script": "SetLocation(\"North Finmer, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")"
 				},
 				"Children": []
 			}

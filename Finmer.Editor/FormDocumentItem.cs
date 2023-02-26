@@ -45,8 +45,8 @@ namespace Finmer.Editor
 
             // Equipment data
             cmbEquipSlot.SelectedIndex = (int)item.EquipSlot;
-            foreach (var buff in item.EquipEffects)
-                AddEquipEffect(buff, false);
+            foreach (var effect in item.EquipEffects)
+                AddEquipEffectGroup(effect, false);
 
             // Usable item data
             txtUseDesc.Text = item.UseDescription;
@@ -78,10 +78,10 @@ namespace Finmer.Editor
             // Equipment data
             item.EquipSlot = (AssetItem.EEquipSlot)cmbEquipSlot.SelectedIndex;
             item.EquipEffects.Clear();
-            foreach (var buff_item in lsvEquipEffects.Items)
+            foreach (ListViewItem entry in lsvEquipEffectGroups.Items)
             {
-                var buff = (Buff)((ListViewItem)buff_item).Tag;
-                item.EquipEffects.Add(buff);
+                var effect = (EquipEffectGroup)entry.Tag;
+                item.EquipEffects.Add(effect);
             }
 
             // Usable item data
@@ -185,57 +185,40 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
-        private void AddEquipEffect(Buff buff, bool isUserAction = true)
+        private void AddEquipEffectGroup(EquipEffectGroup group, bool isUserAction = true)
         {
             // Create a new list entry that represents this effect
-            var buff_item = new ListViewItem
+            lsvEquipEffectGroups.Items.Add(new ListViewItem
             {
-                Text = buff.GetEditorDescription(),
-                Tag = buff
-            };
-            lsvEquipEffects.Items.Add(buff_item);
+                Text = group.GetEditorDescription(),
+                Tag = group
+            });
 
             // Mark asset as having changed
             Dirty |= isUserAction;
         }
 
-        private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)
-        {
-            switch (buff)
-            {
-                case SingleDeltaBuff _:
-                    return new FormEffectEditorSingleDelta();
-
-                case BuffCustomTooltipText _:
-                    return new FormEffectEditorCustomText();
-
-                default:
-                    throw new ArgumentException(nameof(buff));
-            }
-        }
-
         private void EditSelectedEquipEffect()
         {
             // Validate that there actually is a selection to edit
-            if (lsvEquipEffects.SelectedItems.Count == 0)
+            if (lsvEquipEffectGroups.SelectedItems.Count == 0)
                 return;
 
-            // Get the Buff object associated with the selected row
-            var item = lsvEquipEffects.SelectedItems[0];
-            var buff = (Buff)item.Tag;
-
-            using (var form = CreateEquipEffectEditor(buff))
+            // Get the effect group object associated with the selected row
+            var item = lsvEquipEffectGroups.SelectedItems[0];
+            var group = (EquipEffectGroup)item.Tag;
+            using (var form = new FormEquipEffectGroupEditor())
             {
                 // Make a copy of the buff, so the editor form can edit it safely
-                form.BuffInstance = AssetSerializer.DuplicateAsset(buff);
+                form.Group = AssetSerializer.DuplicateAsset(group);
 
                 // Save result only if user clicked OK
                 if (form.ShowDialog() != DialogResult.OK)
                     return;
 
                 // Update list item
-                item.Text = form.BuffInstance.GetEditorDescription();
-                item.Tag = form.BuffInstance;
+                item.Text = form.Group.GetEditorDescription();
+                item.Tag = form.Group;
 
                 // Mark the asset as having changed
                 Dirty = true;
@@ -244,13 +227,13 @@ namespace Finmer.Editor
 
         private void cmdEquipEffectAdd_Click(object sender, EventArgs e)
         {
-            mnuEquipEffectAdd.Show(cmdEquipEffectAdd, new Point(0, cmdEquipEffectAdd.Height));
+            AddEquipEffectGroup(new EquipEffectGroup());
         }
 
         private void cmdEquipEffectRemove_Click(object sender, EventArgs e)
         {
-            foreach (var selection in lsvEquipEffects.SelectedItems)
-                lsvEquipEffects.Items.Remove((ListViewItem)selection);
+            foreach (var selection in lsvEquipEffectGroups.SelectedItems)
+                lsvEquipEffectGroups.Items.Remove((ListViewItem)selection);
 
             // Mark the asset as having changed
             Dirty = true;
@@ -261,51 +244,16 @@ namespace Finmer.Editor
             EditSelectedEquipEffect();
         }
 
-        private void lsvEquipEffects_DoubleClick(object sender, EventArgs e)
+        private void lsvEquipEffectGroups_DoubleClick(object sender, EventArgs e)
         {
             EditSelectedEquipEffect();
         }
 
-        private void lsvEquipEffects_SelectedIndexChanged(object sender, EventArgs e)
+        private void lsvEquipEffectGroups_SelectedIndexChanged(object sender, EventArgs e)
         {
-            bool has_selection = lsvEquipEffects.SelectedItems.Count != 0;
+            bool has_selection = lsvEquipEffectGroups.SelectedItems.Count != 0;
             cmdEquipEffectEdit.Enabled = has_selection;
             cmdEquipEffectRemove.Enabled = has_selection;
-        }
-
-        private void mnuEffectDiceAttack_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffAttackDice());
-        }
-
-        private void mnuEffectDiceDefense_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffDefenseDice());
-        }
-
-        private void mnuEffectDiceGrapple_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffGrappleDice());
-        }
-
-        private void mnuEffectDiceSwallow_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffSwallowDice());
-        }
-
-        private void mnuEffectDiceStruggle_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffStruggleDice());
-        }
-
-        private void mnuEffectStatHP_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffHealth());
-        }
-
-        private void mnuEffectCustomText_Click(object sender, EventArgs e)
-        {
-            AddEquipEffect(new BuffCustomTooltipText());
         }
 
     }

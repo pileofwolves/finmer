@@ -94,6 +94,12 @@
     <Compile Include="EquipEffects\FormEffectEditorSingleDelta.Designer.cs">
       <DependentUpon>FormEffectEditorSingleDelta.cs</DependentUpon>
     </Compile>
+    <Compile Include="EquipEffects\FormEquipEffectGroupEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EquipEffects\FormEquipEffectGroupEditor.Designer.cs">
+      <DependentUpon>FormEquipEffectGroupEditor.cs</DependentUpon>
+    </Compile>
     <Compile Include="Extensions.cs" />
     <Compile Include="FormAbout.cs">
       <SubType>Form</SubType>
@@ -539,6 +545,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="EquipEffects\FormEffectEditorSingleDelta.resx">
       <DependentUpon>FormEffectEditorSingleDelta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EquipEffects\FormEquipEffectGroupEditor.resx">
+      <DependentUpon>FormEquipEffectGroupEditor.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormAbout.resx">
       <DependentUpon>FormAbout.cs</DependentUpon>

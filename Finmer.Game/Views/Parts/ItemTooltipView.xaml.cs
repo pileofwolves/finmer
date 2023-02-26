@@ -12,6 +12,7 @@ using Finmer.Gameplay;
 using Finmer.Utility;
 using System;
 using System.ComponentModel;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Documents;
@@ -122,26 +123,73 @@ namespace Finmer.Views
             // Write the name of the required equip slot
             parts.Add(asset.EquipSlot.ToString());
 
-            // Show equipment effects
-            if (asset.EquipEffects.Count != 0)
-            {
-                // Header text
-                parts.Add(new LineBreak());
-                parts.Add(new LineBreak());
-                parts.Add("When equipped:");
-
-                // Describe all buffs provided by this item
-                foreach (var effect in asset.EquipEffects)
-                {
-                    parts.Add(new LineBreak());
-                    DescribeEquipmentBuff(parts, effect);
-                }
-            }
+            // Describe all effect groups provided by this item
+            foreach (var effect in asset.EquipEffects)
+                DescribeEquipmentEffectGroup(parts, effect);
         }
 
-        private static void DescribeEquipmentBuff(InlineCollection parts, Buff effect)
+        private static void DescribeEquipmentEffectGroup(InlineCollection parts, EquipEffectGroup group)
         {
-            switch (effect)
+            // Spacing with previous group
+            parts.Add(new LineBreak());
+            parts.Add(new LineBreak());
+
+            // Style of the trigger event
+            StringBuilder header_text = new StringBuilder(256);
+            switch (group.ProcStyle)
+            {
+                case EquipEffectGroup.EProcStyle.Always:                header_text.Append("While equipped"); break;
+                case EquipEffectGroup.EProcStyle.RoundStart:            header_text.Append("When a new round starts"); break;
+                case EquipEffectGroup.EProcStyle.TurnStart:             header_text.Append("When your turn starts"); break;
+                case EquipEffectGroup.EProcStyle.WielderAttackHit:      header_text.Append("When hitting an opponent"); break;
+                case EquipEffectGroup.EProcStyle.WielderAttackMiss:     header_text.Append("When missing an opponent"); break;
+                case EquipEffectGroup.EProcStyle.WielderGrappled:       header_text.Append("When grappling"); break;
+                case EquipEffectGroup.EProcStyle.WielderSwallowed:      header_text.Append("When swallowed"); break;
+                case EquipEffectGroup.EProcStyle.WielderSwallowsPrey:   header_text.Append("When prey is swallowed"); break;
+                case EquipEffectGroup.EProcStyle.EnemyAttackHit:        header_text.Append("When hit by opponent"); break;
+                case EquipEffectGroup.EProcStyle.EnemyAttackMiss:       header_text.Append("When opponent misses"); break;
+            }
+
+            // 'Always-on' effects don't need further context; other styles have trigger conditions
+            if (group.ProcStyle != EquipEffectGroup.EProcStyle.Always)
+            {
+                header_text.Append(",");
+
+                // If the effect has a randomized chance to trigger, display that number
+                if (group.ProcChance < 1.0f)
+                    header_text.AppendFormat(" {0:F0}% chance to", group.ProcChance * 100.0f);
+
+                // Show to which target the effects will apply
+                header_text.AppendLine();
+                header_text.Append("apply to ");
+                switch (group.ProcTarget)
+                {
+                    case EquipEffectGroup.EProcTarget.Self:             header_text.Append("self"); break;
+                    case EquipEffectGroup.EProcTarget.Opponent:         header_text.Append("opponent"); break;
+                    case EquipEffectGroup.EProcTarget.AllAllies:        header_text.Append("all allies"); break;
+                    case EquipEffectGroup.EProcTarget.AllOpponents:     header_text.Append("all opponents"); break;
+                }
+
+                // Effect duration
+                header_text.AppendFormat(" for {0} round{1}", group.Duration, group.Duration == 1 ? String.Empty : "s");
+            }
+
+            // Draw the generated header text on-screen
+            header_text.Append(":");
+            parts.Add(header_text.ToString());
+
+            // Next, describe each of the buffs actually contained in this effect group
+            foreach (var buff in group.Buffs)
+                DescribeEquipmentBuff(parts, buff);
+        }
+
+        private static void DescribeEquipmentBuff(InlineCollection parts, Buff buff)
+        {
+            // Spacing with the previous item
+            parts.Add(new LineBreak());
+
+            // Describe the individual buff
+            switch (buff)
             {
                 case BuffAttackDice effect_attack:
                     DescribeEquipmentBuffDiceTrack(parts, effect_attack, SimpleDiceTrack.EDiceStyle.Attack, "Attack Dice");
@@ -171,11 +219,11 @@ namespace Finmer.Views
                         HorizontalAlignment = HorizontalAlignment.Left,
                         VerticalAlignment = VerticalAlignment.Center
                     };
-                    parts.Add(CreateBuffContainer(effect, $"{effect_health.Delta:+#;-#;0} Health", info));
+                    parts.Add(CreateBuffContainer(buff, $"{effect_health.Delta:+#;-#;0} Health", info));
                     break;
 
                 case BuffCustomTooltipText effect_text:
-                    parts.Add(CreateBuffContainer(effect, effect_text.TooltipText, null));
+                    parts.Add(CreateBuffContainer(buff, effect_text.TooltipText, null));
                     break;
             }
         }

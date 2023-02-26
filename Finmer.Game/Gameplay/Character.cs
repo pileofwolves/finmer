@@ -147,7 +147,12 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns the cumulative collection of buffs applied to this Character and all its equipped items.
         /// </summary>
-        public IEnumerable<Buff> CumulativeBuffs => LocalBuffs.Concat(Equipment.Where(item => item != null).SelectMany(item => item.Asset.EquipEffects));
+        public IEnumerable<Buff> CumulativeBuffs => LocalBuffs
+            .Concat(Equipment
+            .Where(item => item != null)
+            .SelectMany(item => item.Asset.EquipEffects)
+            .Where(group => group.ProcStyle == EquipEffectGroup.EProcStyle.Always)
+            .SelectMany(group => group.Buffs));
 
         [ScriptableProperty(EScriptAccess.Read)]
         public int NumAttackDice => Math.Max(Strength + CumulativeBuffs.OfType<BuffAttackDice>().Sum(buff => buff.Delta), 1);
@@ -309,6 +314,17 @@ namespace Finmer.Gameplay
         public bool CanGrapple(Character victim)
         {
             return victim.Size <= Size;
+        }
+
+        /// <summary>
+        /// Returns all equip effect groups in equipped items that are configured to proc with the specified style.
+        /// </summary>
+        public IEnumerable<EquipEffectGroup> GetEquipEffectsOfType(EquipEffectGroup.EProcStyle type)
+        {
+            return Equipment
+                .Where(item => item != null)
+                .SelectMany(item => item.Asset.EquipEffects)
+                .Where(group => group.ProcStyle == type);
         }
 
         [ScriptableFunction]

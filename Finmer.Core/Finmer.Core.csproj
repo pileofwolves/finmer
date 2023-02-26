@@ -53,6 +53,7 @@
     <Compile Include="Assets\ScriptDataInline.cs" />
     <Compile Include="Assets\ScriptDataVisualAction.cs" />
     <Compile Include="Assets\ScriptData.cs" />
+    <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="LoadOrderDependency.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />

@@ -12,6 +12,7 @@ using System.Windows;
 using System.Windows.Input;
 using Finmer.Core.Assets;
 using Finmer.Gameplay;
+using Finmer.Gameplay.Combat;
 using Finmer.Utility;
 
 namespace Finmer.ViewModels
@@ -49,15 +50,15 @@ namespace Finmer.ViewModels
 
         public int Wits => Player.Wits;
 
-        public int NumAttackDice => Player.NumAttackDice;
+        public int NumAttackDice => CombatLogic.GetNumAttackDice(Player, Player.AlwaysActiveBuffs);
 
-        public int NumDefenseDice => Player.NumDefenseDice;
+        public int NumDefenseDice => CombatLogic.GetNumDefenseDice(Player, Player.AlwaysActiveBuffs);
 
-        public int NumGrappleDice => Player.NumGrappleDice;
+        public int NumGrappleDice => CombatLogic.GetNumGrappleDice(Player, Player.AlwaysActiveBuffs);
 
-        public int NumSwallowDice => Player.NumSwallowDice;
+        public int NumSwallowDice => CombatLogic.GetNumSwallowDice(Player, Player.AlwaysActiveBuffs);
 
-        public int NumStruggleDice => Player.NumStruggleDice;
+        public int NumStruggleDice => CombatLogic.GetNumStruggleDice(Player, Player.AlwaysActiveBuffs);
 
         public int Level => Player.Level;
 

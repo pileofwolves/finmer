@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Finmer.Core;
+using Finmer.Core.Buffs;
 
 namespace Finmer.Gameplay.Combat
 {
@@ -31,8 +32,8 @@ namespace Finmer.Gameplay.Combat
         public static void PerformAttack(Participant instigator, Participant target)
         {
             // Roll dice for this attack
-            List<int> attack_dice = RollCombatDice(instigator.Character.NumAttackDice);
-            List<int> defense_dice = RollCombatDice(target.Character.NumDefenseDice);
+            List<int> attack_dice = RollCombatDice(GetNumAttackDice(instigator.Character, instigator.CumulativeBuffs));
+            List<int> defense_dice = RollCombatDice(GetNumDefenseDice(target.Character, target.CumulativeBuffs));
             int num_attacks = attack_dice.Sum();
             int num_defense = defense_dice.Sum();
 
@@ -84,8 +85,8 @@ namespace Finmer.Gameplay.Combat
         private static bool GrappleRoll(Participant instigator, Participant target, string logKeyWin, string logKeyLose)
         {
             // Roll dice for this attack
-            List<int> attack_dice = RollGenericD6(instigator.Character.NumGrappleDice);
-            List<int> defense_dice = RollGenericD6(target.Character.NumGrappleDice);
+            List<int> attack_dice = RollGenericD6(GetNumGrappleDice(instigator.Character, instigator.CumulativeBuffs));
+            List<int> defense_dice = RollGenericD6(GetNumGrappleDice(target.Character, target.CumulativeBuffs));
             int num_attacks = attack_dice.Sum();
             int num_defense = defense_dice.Sum();
 
@@ -203,13 +204,13 @@ namespace Finmer.Gameplay.Combat
             while (true)
             {
                 // Calculate the number of struggle dice for the target
-                int num_struggle_dice = target.Character.NumStruggleDice;
+                int num_struggle_dice = GetNumStruggleDice(target.Character, target.CumulativeBuffs);
                 if (target.IsGrappling())
                     // If the target is being grappled, the pred should be more likely to overpower the prey
                     num_struggle_dice = Math.Max(1, num_struggle_dice - 2);
 
                 // Roll dice for this attack
-                List<int> attack_dice = RollGenericD6(instigator.Character.NumSwallowDice);
+                List<int> attack_dice = RollGenericD6(GetNumSwallowDice(instigator.Character, instigator.CumulativeBuffs));
                 List<int> defense_dice = RollGenericD6(num_struggle_dice);
                 int num_attacks = attack_dice.Sum();
                 int num_defense = defense_dice.Sum();
@@ -374,6 +375,46 @@ namespace Finmer.Gameplay.Combat
         {
             // Start at 20 XP per kill, multiplying by log(n) for levels above 1
             return (int)Math.Round((Math.Log(victim.Level) + 1) * 20);
+        }
+
+        /// <summary>
+        /// Return the total number of Attack Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumAttackDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Strength + buffs.OfType<BuffAttackDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Defense Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumDefenseDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Agility + buffs.OfType<BuffDefenseDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Grapple Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumGrappleDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Strength + buffs.OfType<BuffGrappleDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Swallow Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumSwallowDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Body + buffs.OfType<BuffSwallowDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Struggle Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumStruggleDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Agility + buffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta), 1);
         }
 
         /// <summary>

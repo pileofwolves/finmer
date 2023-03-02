@@ -39,7 +39,7 @@ namespace Finmer.Gameplay
         }
 
         [ScriptableProperty(EScriptAccess.Read)]
-        public int HealthMax => Math.Max(1, Body + CumulativeBuffs.OfType<BuffHealth>().Sum(buff => buff.Delta));
+        public int HealthMax => Math.Max(1, Body + AlwaysActiveBuffs.OfType<BuffHealth>().Sum(buff => buff.Delta));
 
         public Item[] Equipment { get; } = new Item[k_EquipSlotCount];
 
@@ -140,34 +140,13 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Collection of buffs applied to this character specifically (e.g. excludes items).
+        /// Returns the collection of always-active buffs from equipped items.
         /// </summary>
-        public List<Buff> LocalBuffs { get; } = new List<Buff>();
-
-        /// <summary>
-        /// Returns the cumulative collection of buffs applied to this Character and all its equipped items.
-        /// </summary>
-        public IEnumerable<Buff> CumulativeBuffs => LocalBuffs
-            .Concat(Equipment
+        public IEnumerable<Buff> AlwaysActiveBuffs => Equipment
             .Where(item => item != null)
             .SelectMany(item => item.Asset.EquipEffects)
             .Where(group => group.ProcStyle == EquipEffectGroup.EProcStyle.Always)
-            .SelectMany(group => group.Buffs));
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int NumAttackDice => Math.Max(Strength + CumulativeBuffs.OfType<BuffAttackDice>().Sum(buff => buff.Delta), 1);
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int NumDefenseDice => Math.Max(Agility + CumulativeBuffs.OfType<BuffDefenseDice>().Sum(buff => buff.Delta), 1);
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int NumGrappleDice => Math.Max(Strength + CumulativeBuffs.OfType<BuffGrappleDice>().Sum(buff => buff.Delta), 1);
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int NumSwallowDice => Math.Max(Body + CumulativeBuffs.OfType<BuffSwallowDice>().Sum(buff => buff.Delta), 1);
-
-        [ScriptableProperty(EScriptAccess.Read)]
-        public int NumStruggleDice => Math.Max(Agility + CumulativeBuffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta), 1);
+            .SelectMany(group => group.Buffs);
 
         public AssetCreature Asset { get; private set; }
 

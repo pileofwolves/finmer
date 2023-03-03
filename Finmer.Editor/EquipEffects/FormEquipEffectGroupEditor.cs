@@ -39,7 +39,6 @@ namespace Finmer.Editor
             nudProcChance.Value = (decimal)Math.Min(Math.Max(Group.ProcChance * 100.0f, 0.0f), 100.0f);
             nudProcDuration.Value = Group.Duration;
             txtProcString.Text = Group.ProcStringTableKey;
-            chkIsVolatile.Checked = Group.IsVolatile;
 
             // Copy buff list
             foreach (var buff in Group.Buffs)
@@ -54,7 +53,6 @@ namespace Finmer.Editor
             Group.ProcChance = (float)nudProcChance.Value / 100.0f;
             Group.Duration = (int)nudProcDuration.Value;
             Group.ProcStringTableKey = txtProcString.Text;
-            Group.IsVolatile = chkIsVolatile.Checked;
 
             // Commit buff list
             Group.Buffs.Clear();

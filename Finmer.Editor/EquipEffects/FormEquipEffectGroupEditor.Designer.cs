@@ -43,10 +43,10 @@ namespace Finmer.Editor
             this.cmdBuffAdd = new System.Windows.Forms.Button();
             this.cmbProcMode = new System.Windows.Forms.ComboBox();
             this.grpProcSettings = new System.Windows.Forms.GroupBox();
+            this.cmbProcTarget = new System.Windows.Forms.ComboBox();
             this.txtProcString = new System.Windows.Forms.TextBox();
             this.nudProcDuration = new System.Windows.Forms.NumericUpDown();
             this.nudProcChance = new System.Windows.Forms.NumericUpDown();
-            this.chkIsVolatile = new System.Windows.Forms.CheckBox();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.cmdOK = new System.Windows.Forms.Button();
             this.mnuBuffAdd = new System.Windows.Forms.ContextMenuStrip(this.components);
@@ -62,7 +62,6 @@ namespace Finmer.Editor
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectCustomText = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmbProcTarget = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -187,6 +186,15 @@ namespace Finmer.Editor
             this.cmdBuffAdd.UseVisualStyleBackColor = true;
             this.cmdBuffAdd.Click += new System.EventHandler(this.cmdBuffAdd_Click);
             // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(16, 72);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(79, 13);
+            label5.TabIndex = 4;
+            label5.Text = "Apply to whom:";
+            // 
             // cmbProcMode
             // 
             this.cmbProcMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -216,15 +224,28 @@ namespace Finmer.Editor
             this.grpProcSettings.Controls.Add(label4);
             this.grpProcSettings.Controls.Add(this.nudProcDuration);
             this.grpProcSettings.Controls.Add(this.nudProcChance);
-            this.grpProcSettings.Controls.Add(this.chkIsVolatile);
             this.grpProcSettings.Controls.Add(label3);
             this.grpProcSettings.Controls.Add(label2);
             this.grpProcSettings.Location = new System.Drawing.Point(16, 72);
             this.grpProcSettings.Name = "grpProcSettings";
-            this.grpProcSettings.Size = new System.Drawing.Size(264, 208);
+            this.grpProcSettings.Size = new System.Drawing.Size(264, 176);
             this.grpProcSettings.TabIndex = 2;
             this.grpProcSettings.TabStop = false;
             this.grpProcSettings.Text = "Activation Settings";
+            // 
+            // cmbProcTarget
+            // 
+            this.cmbProcTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbProcTarget.FormattingEnabled = true;
+            this.cmbProcTarget.Items.AddRange(new object[] {
+            "Wielder",
+            "Opponent",
+            "All allies",
+            "All opponents"});
+            this.cmbProcTarget.Location = new System.Drawing.Point(16, 88);
+            this.cmbProcTarget.Name = "cmbProcTarget";
+            this.cmbProcTarget.Size = new System.Drawing.Size(232, 21);
+            this.cmbProcTarget.TabIndex = 5;
             // 
             // txtProcString
             // 
@@ -260,16 +281,6 @@ namespace Finmer.Editor
             this.nudProcChance.Name = "nudProcChance";
             this.nudProcChance.Size = new System.Drawing.Size(88, 20);
             this.nudProcChance.TabIndex = 1;
-            // 
-            // chkIsVolatile
-            // 
-            this.chkIsVolatile.AutoSize = true;
-            this.chkIsVolatile.Location = new System.Drawing.Point(16, 176);
-            this.chkIsVolatile.Name = "chkIsVolatile";
-            this.chkIsVolatile.Size = new System.Drawing.Size(189, 17);
-            this.chkIsVolatile.TabIndex = 8;
-            this.chkIsVolatile.Text = "Remove effect when combat ends";
-            this.chkIsVolatile.UseVisualStyleBackColor = true;
             // 
             // cmdCancel
             // 
@@ -398,29 +409,6 @@ namespace Finmer.Editor
             this.mnuEffectCustomText.Text = "Custom Text";
             this.mnuEffectCustomText.Click += new System.EventHandler(this.mnuEffectCustomText_Click);
             // 
-            // cmbProcTarget
-            // 
-            this.cmbProcTarget.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbProcTarget.FormattingEnabled = true;
-            this.cmbProcTarget.Items.AddRange(new object[] {
-            "Wielder",
-            "Opponent",
-            "All allies",
-            "All opponents"});
-            this.cmbProcTarget.Location = new System.Drawing.Point(16, 88);
-            this.cmbProcTarget.Name = "cmbProcTarget";
-            this.cmbProcTarget.Size = new System.Drawing.Size(232, 21);
-            this.cmbProcTarget.TabIndex = 5;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(16, 72);
-            label5.Name = "label5";
-            label5.Size = new System.Drawing.Size(79, 13);
-            label5.TabIndex = 4;
-            label5.Text = "Apply to whom:";
-            // 
             // FormEquipEffectGroupEditor
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -455,7 +443,6 @@ namespace Finmer.Editor
         #endregion
         private System.Windows.Forms.ComboBox cmbProcMode;
         private System.Windows.Forms.GroupBox grpProcSettings;
-        private System.Windows.Forms.CheckBox chkIsVolatile;
         private System.Windows.Forms.NumericUpDown nudProcDuration;
         private System.Windows.Forms.NumericUpDown nudProcChance;
         private System.Windows.Forms.TextBox txtProcString;

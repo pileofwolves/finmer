@@ -75,11 +75,6 @@ namespace Finmer.Core.Buffs
         public int Duration { get; set; } = 1;
 
         /// <summary>
-        /// Whether to remove applied buffs when combat ends. If false, buffs persist between combats.
-        /// </summary>
-        public bool IsVolatile { get; set; } = true;
-
-        /// <summary>
         /// The collection of buffs that are applied when the group triggers.
         /// </summary>
         public List<Buff> Buffs { get; set; } = new List<Buff>();
@@ -119,7 +114,6 @@ namespace Finmer.Core.Buffs
                 outstream.WriteFloatProperty(nameof(ProcChance), ProcChance);
                 outstream.WriteStringProperty(nameof(ProcStringTableKey), ProcStringTableKey);
                 outstream.WriteInt32Property(nameof(Duration), Duration);
-                outstream.WriteBooleanProperty(nameof(IsVolatile), IsVolatile);
             }
 
             // Buff collection
@@ -141,7 +135,6 @@ namespace Finmer.Core.Buffs
                 ProcChance = instream.ReadFloatProperty(nameof(ProcChance));
                 ProcStringTableKey = instream.ReadStringProperty(nameof(ProcStringTableKey));
                 Duration = instream.ReadInt32Property(nameof(Duration));
-                IsVolatile = instream.ReadBooleanProperty(nameof(IsVolatile));
             }
 
             // Buff collection

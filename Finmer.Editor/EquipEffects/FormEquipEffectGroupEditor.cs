@@ -107,9 +107,19 @@ namespace Finmer.Editor
             AddBuff(new BuffHealth());
         }
 
+        private void mnuEffectStatHPOverTime_Click(object sender, EventArgs e)
+        {
+            AddBuff(new BuffHealthOverTime());
+        }
+
         private void mnuEffectCustomText_Click(object sender, EventArgs e)
         {
             AddBuff(new BuffCustomTooltipText());
+        }
+
+        private void stunSkipTurnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AddBuff(new BuffStun());
         }
 
         private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)

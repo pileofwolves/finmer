@@ -26,6 +26,37 @@ namespace Finmer.Core.Buffs
     }
 
     /// <summary>
+    /// Modifies the current HP of a character each turn.
+    /// </summary>
+    public sealed class BuffHealthOverTime : SingleDeltaBuff
+    {
+
+        public override string GetEditorDescription()
+        {
+            return $"{Delta:+#;-#;0} Health per Turn";
+        }
+
+    }
+
+    /// <summary>
+    /// Forces a character to skip combat turns.
+    /// </summary>
+    public sealed class BuffStun : Buff
+    {
+
+        public override EImpact GetImpact()
+        {
+            return EImpact.Negative;
+        }
+
+        public override string GetEditorDescription()
+        {
+            return "Stun (Skip Turn)";
+        }
+
+    }
+
+    /// <summary>
     /// Adds an arbitrary text string to the in-game item tooltip.
     /// </summary>
     public sealed class BuffCustomTooltipText : Buff

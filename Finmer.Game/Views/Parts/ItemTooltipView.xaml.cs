@@ -212,14 +212,15 @@ namespace Finmer.Views
                     break;
 
                 case BuffHealth effect_health:
-                    // Show the added/removed health points
-                    var info = new TextBlock
-                    {
-                        Text = $"{effect_health.Delta:+##,###;-##,###;0} Max Health",
-                        HorizontalAlignment = HorizontalAlignment.Left,
-                        VerticalAlignment = VerticalAlignment.Center
-                    };
-                    parts.Add(CreateBuffContainer(buff, $"{effect_health.Delta:+#;-#;0} Health", info));
+                    parts.Add(CreateBuffContainer(buff, $"{effect_health.Delta:+#;-#;0} Max Health", null));
+                    break;
+
+                case BuffHealthOverTime effect_hp_over_time:
+                    parts.Add(CreateBuffContainer(buff, $"{effect_hp_over_time.Delta:+#;-#;0} Health per Turn", null));
+                    break;
+
+                case BuffStun _:
+                    parts.Add(CreateBuffContainer(buff, "Stunned (Cannot take actions)", null));
                     break;
 
                 case BuffCustomTooltipText effect_text:

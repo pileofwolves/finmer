@@ -319,11 +319,19 @@ namespace Finmer.Gameplay.Combat
                     }
             }
 
+            // Apply health-over-time buffs now
+            int health_diff = participant.CumulativeBuffs.OfType<BuffHealthOverTime>().Sum(buff => buff.Delta);
+            participant.Character.Health += health_diff;
+            if (participant.Character.IsDead())
+                participant.Session.NotifyParticipantKilled(participant, null);
+
             // Count down temporary buffs, iterating in reverse order so we can easily pop items from the end
             for (int i = participant.LocalBuffs.Count - 1; i >= 0; i--)
             {
+                var container = participant.LocalBuffs[i];
+
                 // Decrease duration, and remove the buff if it expired
-                if (participant.LocalBuffs[i].RoundsLeft-- == 0)
+                if (--container.RoundsLeft == 0)
                     participant.LocalBuffs.RemoveAt(i);
             }
         }

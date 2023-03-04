@@ -58,10 +58,12 @@ namespace Finmer.Editor
             this.mnuEffectDiceStruggle = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEffectStatHP = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectStatMaxHP = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.miscToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectStun = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectCustomText = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectStatHPOverTime = new System.Windows.Forms.ToolStripMenuItem();
+            this.stunSkipTurnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -322,92 +324,108 @@ namespace Finmer.Editor
             this.mnuEffectDiceStruggle,
             this.toolStripSeparator1,
             this.toolStripMenuItem1,
-            this.mnuEffectStatHP,
+            this.mnuEffectStatMaxHP,
+            this.mnuEffectStatHPOverTime,
             this.toolStripSeparator2,
-            this.miscToolStripMenuItem,
+            this.mnuEffectStun,
+            this.stunSkipTurnToolStripMenuItem,
             this.mnuEffectCustomText});
             this.mnuBuffAdd.Name = "mnuEquipEffectAdd";
-            this.mnuBuffAdd.Size = new System.Drawing.Size(145, 236);
+            this.mnuBuffAdd.Size = new System.Drawing.Size(181, 302);
             // 
             // toolStripMenuItem2
             // 
             this.toolStripMenuItem2.Enabled = false;
             this.toolStripMenuItem2.Name = "toolStripMenuItem2";
-            this.toolStripMenuItem2.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem2.Text = "Dice:";
             // 
             // mnuEffectDiceAttack
             // 
             this.mnuEffectDiceAttack.Name = "mnuEffectDiceAttack";
-            this.mnuEffectDiceAttack.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectDiceAttack.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectDiceAttack.Text = "Attack Dice";
             this.mnuEffectDiceAttack.Click += new System.EventHandler(this.mnuEffectDiceAttack_Click);
             // 
             // mnuEffectDiceDefense
             // 
             this.mnuEffectDiceDefense.Name = "mnuEffectDiceDefense";
-            this.mnuEffectDiceDefense.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectDiceDefense.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectDiceDefense.Text = "Defense Dice";
             this.mnuEffectDiceDefense.Click += new System.EventHandler(this.mnuEffectDiceDefense_Click);
             // 
             // mnuEffectDiceGrapple
             // 
             this.mnuEffectDiceGrapple.Name = "mnuEffectDiceGrapple";
-            this.mnuEffectDiceGrapple.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectDiceGrapple.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectDiceGrapple.Text = "Grapple Dice";
             this.mnuEffectDiceGrapple.Click += new System.EventHandler(this.mnuEffectDiceGrapple_Click);
             // 
             // mnuEffectDiceSwallow
             // 
             this.mnuEffectDiceSwallow.Name = "mnuEffectDiceSwallow";
-            this.mnuEffectDiceSwallow.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectDiceSwallow.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectDiceSwallow.Text = "Swallow Dice";
             this.mnuEffectDiceSwallow.Click += new System.EventHandler(this.mnuEffectDiceSwallow_Click);
             // 
             // mnuEffectDiceStruggle
             // 
             this.mnuEffectDiceStruggle.Name = "mnuEffectDiceStruggle";
-            this.mnuEffectDiceStruggle.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectDiceStruggle.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectDiceStruggle.Text = "Struggle Dice";
             this.mnuEffectDiceStruggle.Click += new System.EventHandler(this.mnuEffectDiceStruggle_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(177, 6);
             // 
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Enabled = false;
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(144, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.toolStripMenuItem1.Text = "Stats:";
             // 
-            // mnuEffectStatHP
+            // mnuEffectStatMaxHP
             // 
-            this.mnuEffectStatHP.Name = "mnuEffectStatHP";
-            this.mnuEffectStatHP.Size = new System.Drawing.Size(144, 22);
-            this.mnuEffectStatHP.Text = "Health";
-            this.mnuEffectStatHP.Click += new System.EventHandler(this.mnuEffectStatHP_Click);
+            this.mnuEffectStatMaxHP.Name = "mnuEffectStatMaxHP";
+            this.mnuEffectStatMaxHP.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectStatMaxHP.Text = "Max Health";
+            this.mnuEffectStatMaxHP.Click += new System.EventHandler(this.mnuEffectStatHP_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(141, 6);
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
             // 
-            // miscToolStripMenuItem
+            // mnuEffectStun
             // 
-            this.miscToolStripMenuItem.Enabled = false;
-            this.miscToolStripMenuItem.Name = "miscToolStripMenuItem";
-            this.miscToolStripMenuItem.Size = new System.Drawing.Size(144, 22);
-            this.miscToolStripMenuItem.Text = "Misc:";
+            this.mnuEffectStun.Enabled = false;
+            this.mnuEffectStun.Name = "mnuEffectStun";
+            this.mnuEffectStun.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectStun.Text = "Misc:";
             // 
             // mnuEffectCustomText
             // 
             this.mnuEffectCustomText.Name = "mnuEffectCustomText";
-            this.mnuEffectCustomText.Size = new System.Drawing.Size(144, 22);
+            this.mnuEffectCustomText.Size = new System.Drawing.Size(180, 22);
             this.mnuEffectCustomText.Text = "Custom Text";
             this.mnuEffectCustomText.Click += new System.EventHandler(this.mnuEffectCustomText_Click);
+            // 
+            // mnuEffectStatHPOverTime
+            // 
+            this.mnuEffectStatHPOverTime.Name = "mnuEffectStatHPOverTime";
+            this.mnuEffectStatHPOverTime.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectStatHPOverTime.Text = "Health over Time";
+            this.mnuEffectStatHPOverTime.Click += new System.EventHandler(this.mnuEffectStatHPOverTime_Click);
+            // 
+            // stunSkipTurnToolStripMenuItem
+            // 
+            this.stunSkipTurnToolStripMenuItem.Name = "stunSkipTurnToolStripMenuItem";
+            this.stunSkipTurnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.stunSkipTurnToolStripMenuItem.Text = "Stun (Skip Turn)";
+            this.stunSkipTurnToolStripMenuItem.Click += new System.EventHandler(this.stunSkipTurnToolStripMenuItem_Click);
             // 
             // FormEquipEffectGroupEditor
             // 
@@ -461,10 +479,12 @@ namespace Finmer.Editor
         private System.Windows.Forms.ToolStripMenuItem mnuEffectDiceStruggle;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem mnuEffectStatHP;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectStatMaxHP;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem miscToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectStun;
         private System.Windows.Forms.ToolStripMenuItem mnuEffectCustomText;
         private System.Windows.Forms.ComboBox cmbProcTarget;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectStatHPOverTime;
+        private System.Windows.Forms.ToolStripMenuItem stunSkipTurnToolStripMenuItem;
     }
 }

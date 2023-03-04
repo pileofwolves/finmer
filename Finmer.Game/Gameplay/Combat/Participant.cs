@@ -77,7 +77,8 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         public bool CanAct()
         {
-            return !Character.IsDead();
+            // Skip turn if dead or stunned
+            return !Character.IsDead() && !CumulativeBuffs.OfType<BuffStun>().Any();
         }
 
         /// <summary>

@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Finmer.Core;
+using Finmer.Core.Buffs;
 using Finmer.Gameplay.Combat;
 using Finmer.Models;
 
@@ -424,6 +425,10 @@ namespace Finmer.Gameplay
                     m_RoundStepIndex = 0;
                 }
 
+                // Activate per-round buffs
+                foreach (var participant in m_RoundParticipants)
+                    CombatLogic.ProcEffectGroups(participant, null, EquipEffectGroup.EProcStyle.RoundStart);
+
                 // Step all participants
                 for (int i = m_RoundStepIndex; i < m_RoundParticipants.Length; i++)
                 {
@@ -435,6 +440,9 @@ namespace Finmer.Gameplay
 
                     // Show this participant as having the turn
                     Session.WhoseTurn = participant;
+
+                    // Activate per-turn buffs
+                    CombatLogic.ProcEffectGroups(participant, null, EquipEffectGroup.EProcStyle.TurnStart);
 
                     if (m_Player != null && participant == m_Player)
                     {

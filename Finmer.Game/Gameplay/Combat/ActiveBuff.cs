@@ -20,7 +20,7 @@ namespace Finmer.Gameplay.Combat
         /// <summary>
         /// The underlying effect.
         /// </summary>
-        public Buff Effect { get; }
+        public Buff Effect { get; set; }
 
         /// <summary>
         /// Time left before the buff is removed, in combat rounds.

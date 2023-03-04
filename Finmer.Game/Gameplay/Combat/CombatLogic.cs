@@ -12,6 +12,7 @@ using System.Diagnostics;
 using System.Linq;
 using Finmer.Core;
 using Finmer.Core.Buffs;
+using JetBrains.Annotations;
 
 namespace Finmer.Gameplay.Combat
 {
@@ -77,6 +78,18 @@ namespace Finmer.Gameplay.Combat
             // Script callbacks on death
             if (target.Character.IsDead())
                 target.Session.NotifyParticipantKilled(instigator, target);
+
+            // Apply equipment effects
+            if (damage > 0)
+            {
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderAttackHit);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.EnemyAttackHit);
+            }
+            else
+            {
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderAttackMiss);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.EnemyAttackMiss);
+            }
         }
 
         /// <summary>
@@ -126,7 +139,13 @@ namespace Finmer.Gameplay.Combat
             // Set these characters to grappling if the instigator succeeded
             bool success = GrappleRoll(instigator, target, @"grapple_hit", @"grapple_miss");
             if (success)
+            {
                 instigator.Session.SetGrappling(instigator, target);
+
+                // Apply equipment effects
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderGrappled);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.WielderGrappled);
+            }
         }
 
         /// <summary>
@@ -248,6 +267,10 @@ namespace Finmer.Gameplay.Combat
             {
                 var session = instigator.Session;
                 session.SetVored(instigator, target);
+
+                // Apply equipment effects
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderSwallowsPrey);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.WielderSwallowed);
             }
         }
 
@@ -296,7 +319,13 @@ namespace Finmer.Gameplay.Combat
                     }
             }
 
-            // TODO: Count down temporary buffs
+            // Count down temporary buffs, iterating in reverse order so we can easily pop items from the end
+            for (int i = participant.LocalBuffs.Count - 1; i >= 0; i--)
+            {
+                // Decrease duration, and remove the buff if it expired
+                if (participant.LocalBuffs[i].RoundsLeft-- == 0)
+                    participant.LocalBuffs.RemoveAt(i);
+            }
         }
 
         /// <summary>
@@ -365,6 +394,70 @@ namespace Finmer.Gameplay.Combat
                 session.SetVored(predator, victim);
                 CombatDisplay.ShowSimpleMessage(@"kill_generic", predator, victim);
                 CombatDisplay.ShowSimpleMessage(@"vore_win", predator, victim);
+            }
+        }
+
+        /// <summary>
+        /// Evaluate and trigger all equipment effect groups of a particular type on the specified participant.
+        /// </summary>
+        /// <param name="owner">The character whose effect groups to evaluate.</param>
+        /// <param name="opponent">Last opponent to attack <paramref name="owner"/>. May be null. Used as target for some effects.</param>
+        /// <param name="proc">The category of effect groups to evaluate.</param>
+        public static void ProcEffectGroups([NotNull] Participant owner, [CanBeNull] Participant opponent, EquipEffectGroup.EProcStyle proc)
+        {
+            // Find all effect groups with a matching style
+            var eligible_groups = owner.Character.Equipment
+                .Where(item => item != null)
+                .SelectMany(item => item.Asset.EquipEffects);
+
+            // Evaluate each group
+            foreach (var group in eligible_groups)
+            {
+                // Check that the proc style matches the input trigger
+                if (group.ProcStyle != proc)
+                    continue;
+
+                // If the group has a random chance specified, roll for it
+                if (group.ProcChance < 1.0f && group.ProcChance < CoreUtility.Rng.NextDouble())
+                    continue;
+
+                // Find the target(s) of the group
+                var targets = new List<Participant>();
+                switch (group.ProcTarget)
+                {
+                    case EquipEffectGroup.EProcTarget.Self:
+                        targets.Add(owner);
+                        break;
+                    case EquipEffectGroup.EProcTarget.Opponent:
+                        if (opponent != null)
+                            targets.Add(opponent);
+                        break;
+                    case EquipEffectGroup.EProcTarget.AllAllies:
+                        targets.AddRange(owner.Session.Participants.Where(p => p.Character.IsAlly == owner.Character.IsAlly));
+                        break;
+                    case EquipEffectGroup.EProcTarget.AllOpponents:
+                        targets.AddRange(owner.Session.Participants.Where(p => p.Character.IsAlly != owner.Character.IsAlly));
+                        break;
+                }
+
+                // Apply all included buffs to all targets
+                foreach (var target in targets)
+                    foreach (var buff in group.Buffs)
+                        target.LocalBuffs.Add(new ActiveBuff
+                        {
+                            Effect = buff,
+                            RoundsLeft = group.Duration
+                        });
+
+                // If a message is included, display it now
+                if (!String.IsNullOrWhiteSpace(group.ProcStringTableKey))
+                {
+                    // Pick overload depending on whether or not we have a relevant opponent
+                    if (opponent == null)
+                        CombatDisplay.ShowSimpleMessage(group.ProcStringTableKey, owner);
+                    else
+                        CombatDisplay.ShowSimpleMessage(group.ProcStringTableKey, owner, opponent);
+                }
             }
         }
 

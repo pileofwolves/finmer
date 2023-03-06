@@ -3,16 +3,21 @@ SetLocation("North Finmer, Inn")
 -- Set up the bartender context
 Text.SetContext("bartender", barkeep)
 
--- long/detailed message on first visit, short version afterwards
-if Storage.GetFlag("town_inn_visited") then
+-- Long/detailed message on first visit, short version afterwards
+if Storage.GetFlag("TOWN_INN_VISITED") then
     Log("town_inn_enter")
 else
-    Storage.SetFlag("town_inn_visited", true)
+    Storage.SetFlag("TOWN_INN_VISITED", true)
     Log("town_inn_enter_first")
 end
+
+-- Mention present patrons
 if not Storage.GetFlag("town_inn_foxtaur_arrested") then
     Log("TOWN_INN_PATRONS_TAUR")
 end
+if not Storage.GetFlag("MQ03_STARTED") then
+    Log("INN_ZOSK_PATRON")
+end
 
--- can't sleep twice in a row, and we reset that flag when re-entering the inn
-Storage.SetFlag("town_inn_cansleep", true)
+-- Allow sleeping in the private room after leaving and re-entering the inn
+Storage.SetFlag("TOWN_INN_CAN_SLEEP", true)

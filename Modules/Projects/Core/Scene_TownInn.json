@@ -341,7 +341,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
-															"Script": "return Storage.GetFlag(\"mq02_ambushed\") and not Storage.GetFlag(\"mq02_done\")"
+															"Script": "return Storage.GetFlag(\"MQ02_AMBUSHED\") and not Storage.GetFlag(\"MQ02_DONE\")"
 														},
 														"Children": [
 															{
@@ -837,6 +837,154 @@
 												]
 											}
 										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "TalkZoskMQ01",
+										"Title": "Chameleon",
+										"Tooltip": "Talk to the hooded fellow by the bar.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"MQ03_STARTED\") and not Storage.GetFlag(\"TOWN_INN_ZOSK_MET\")"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "ZoskMQ01_R_First1",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Storage.SetFlag(\"TOWN_INN_ZOSK_MET\", true)\r\nLog(\"INN_ZOSK_GREET_FIRST1\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "ZoskMQ01_C_First2",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"INN_ZOSK_GREET_FIRST2\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "ZoskMQ01_R_Root"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "TalkZoskMQ01B",
+										"Title": "Zosk",
+										"Tooltip": "Talk to the friendly merchant again.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"INN_ZOSK_GREET\")"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"MQ03_STARTED\") and Storage.GetFlag(\"TOWN_INN_ZOSK_MET\")"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "ZoskMQ01_R_Root",
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "ZoskMQ01_C_Leave",
+														"Title": "Leave",
+														"Tooltip": "Bid farewell.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Log(\"INN_ZOSK_LEAVE\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Main"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "ZoskMQ01_C_Job",
+														"Title": "Job",
+														"Tooltip": "Ask Zosk about his work.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Storage.SetFlag(\"INN_ZOSK_TALK_JOB\", true)\r\nLog(\"INN_ZOSK_TALK_JOB\")"
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return not Storage.GetFlag(\"INN_ZOSK_TALK_JOB\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "ZoskMQ01_R_Root"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "ZoskMQ01_C_Bridge",
+														"Title": "Bridge",
+														"Tooltip": "Ask about what the work stoppage means for him.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Storage.SetFlag(\"INN_ZOSK_TALK_BRIDGE\", true)\r\nLog(\"INN_ZOSK_TALK_BRIDGE\")"
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "return not Storage.GetFlag(\"INN_ZOSK_TALK_BRIDGE\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "ZoskMQ01_R_Root"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "ZoskMQ01_C_Repair",
+														"Title": "Repairs!",
+														"Tooltip": "Tell Zosk that repairs are finally about to start properly!",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "Storage.SetFlag(\"INN_ZOSK_TALK_REPAIRS\", true)\r\nLog(\"INN_ZOSK_TALK_REPAIRS\")"
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- Same conditions as completing MQ02 over at Edgard's dialogue tree\r\nreturn Storage.GetFlag(\"MQ02_AMBUSHED\") and not Storage.GetFlag(\"MQ02_DONE\")\r\n    and not Storage.GetFlag(\"INN_ZOSK_TALK_REPAIRS\")"
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "ZoskMQ01_R_Root"
+															}
+														]
+													}
+												]
+											}
+										]
 									}
 								]
 							}
@@ -925,7 +1073,7 @@
 												},
 												"ScriptAppear": {
 													"!Type": "ScriptDataInline",
-													"Script": "return not Storage.GetFlag(\"town_inn_cansleep\")\r\n\r\n--[[\r\n-- the rent flag was reset if we slept, so use that to prevent sleeping twice.\r\n-- also can't sleep during the day.\r\nlocal hour = GetTimeHour()\r\nlocal sleepytime = hour < 6 or hour > 19\r\nreturn not sleepytime --and not Storage.GetFlag(\"town_inn_rented\")\r\n]]"
+													"Script": "return not Storage.GetFlag(\"TOWN_INN_CAN_SLEEP\")"
 												},
 												"Children": [
 													{

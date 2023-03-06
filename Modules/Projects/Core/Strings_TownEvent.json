@@ -244,6 +244,54 @@
 			]
 		},
 		{
+			"Key": "INN_ZOSK_GREET",
+			"Text": [
+				"Once more, you greet the emerald-scaled chameleon merchant. He glances over his shoulder to watch your approach, giving you a gleeful, toothy grin. \"{^player.species}-friend, hello again!\" he beams, as if you are the most wondrous thing to appear in his life this day. Where and how the trader manages to find such boundless extrovert energy, is a mystery to you. \"What can Zosk do for you?\""
+			]
+		},
+		{
+			"Key": "INN_ZOSK_GREET_FIRST1",
+			"Text": [
+				"Almost casually, you take a seat beside the viridian-hued chameleon sitting by the bar. A baggy, brown robe, no doubt a useful garment on the road, covers most of his features. Still, a face of polished emerald scales shining atop those shoulders draws the bulk of your attention regardless. With bulbous eyes, the lizard regards you. \"Greetings, {player.species}-friend! Zosk, merchant of industrial items, at your service!\" he declares exuberantly. The lizard extends a scaled hand towards you, ogling you with a gleeful smile that you cannot identify as either genuine or malicious. When you clasp his hand to affirm the greeting, he nods, before withdrawing."
+			]
+		},
+		{
+			"Key": "INN_ZOSK_GREET_FIRST2",
+			"Text": [
+				"Pleasantries exchanged, the reptile's jubilant smile immediately morphs into a scowl, and it is only after he speaks that you realize his displeasure is not aimed at you. \"It's awful, {player.name}-{player.species},\" he declares. \"Zosk was required by town guards to wait here. No bridge, no travel, no trade.\" A drawn-out sigh follows, and the merchant flips his mug upside down above his open mouth. Satisfied, he slams the empty vessel into the well-used surface of the bar, startling Edgard who was off to the side reading through some papers. \"Ah well, is for good reason, Zosk understands. Not town guard's fault. And my steed is excellent, but she cannot float, hah!\""
+			]
+		},
+		{
+			"Key": "INN_ZOSK_LEAVE",
+			"Text": [
+				"The trader gives you a nod, his expression utterly inscrutable, though his eager tone perhaps belies his thoughts. \"Very well, take care, {player.name}-{player.species}! Hope we meet again on the road,\" he finishes, returning to pick at his empty mug."
+			]
+		},
+		{
+			"Key": "INN_ZOSK_PATRON",
+			"Text": [
+				"A chameleon covered in a robed attire sits by the bar, idly sipping a drink and tapping the bar as if waiting for something."
+			]
+		},
+		{
+			"Key": "INN_ZOSK_TALK_BRIDGE",
+			"Text": [
+				"In response to your line of questioning, the lizard sneers. \"Bah! What misfortune befalls Zosk today. Some moon-man explodes my trade route, and now Zosk is left with baked pears.\" He sighs, swirling his mug, perhaps having forgotten that there is no liquid left inside. \"No use getting angry. Everyone's working hard to get it fixed. Zosk just hopes it doesn't happen again; contract worth too much for that.\""
+			]
+		},
+		{
+			"Key": "INN_ZOSK_TALK_JOB",
+			"Text": [
+				"Zosk nods excitedly in response to your question. \"Yes, yes, Zosk is a merchant of industrial wares, as I mentioned. Occasionally dabble in other things, too, as the market requires, but hardware is the specialty, you see,\" he explains, glancing sidelong at you as he speaks. The way those bulbous eyes of his can move independently of each other could be perceived as slightly unnerving, considering it's a rare quality among anthros, but the fellow's bubbling personality makes up for his quirks. \"Zosk scored a very good contract in South Finmer, yes, but until the road is fixed, we're stuck here, hrmph. Hopefully buyer-friend accepts sufficient apology, oho.\""
+			]
+		},
+		{
+			"Key": "INN_ZOSK_TALK_REPAIRS",
+			"Text": [
+				"At this, the chameleon visibly perks up. \"Work is done? No? Underway, at least? Oh, wondrous news!\" The merchant sighs happily, sinking into his seat, as if a great weight had been lifted from him. Perhaps the poor fellow was stressing quite a bit about this seemingly lucrative contract he'd managed to get. \"Thanks for letting Zosk know, {player.species}-friend. Preparations to be made, mhm.\""
+			]
+		},
+		{
 			"Key": "TOWN_GUARD_POSTVORE1",
 			"Text": [
 				"Your predator pats his belly and gets on the move, your organic prison gently sloshing about, though you have no way of telling where you're being taken."

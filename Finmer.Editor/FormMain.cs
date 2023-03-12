@@ -340,91 +340,103 @@ namespace Finmer.Editor
 
         private void OpenProject(string filename)
         {
-            // Close the tree view to prevent the UI redrawing every change we make, which is extremely slow
-            trvAssetList.CollapseAll();
-
-            // Present a dialog for the duration of the load
-            using (var loading_window = new FormLoadingProgress())
+            try
             {
-                loading_window.Show(this);
-                Application.DoEvents();
+                // Prevent all interaction with the UI, to avoid concurrent requests and the like
+                ribbon.Enabled = false;
+                splitContainer.Enabled = false;
 
-                // Configure content store
-                Program.LoadedContent = new EditorContentStore();
+                // Close the tree view to prevent the UI redrawing every change we make, which is extremely slow
+                trvAssetList.SuspendLayout();
 
-                // Load project from disk
-                var device = new FurballFileDeviceText();
-                try
+                // Present a dialog for the duration of the load
+                using (var loading_window = new FormLoadingProgress())
                 {
-                    loading_window.SetLabel("Unpacking module...");
-                    Program.ActiveFurball = device.ReadModule(new FileInfo(filename));
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"Couldn't load the asset package: {ex}", "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+                    loading_window.Show(this);
 
-                loading_window.SetLabel("Loading dependencies...");
+                    // Reset current loaded module
+                    ClearUI();
 
-                // Figure out the folder where the module file is located
-                string parent_folder = Path.GetDirectoryName(filename);
-                Debug.Assert(parent_folder != null);
+                    // Configure content store
+                    Program.LoadedContent = new EditorContentStore();
 
-                // Load all dependencies of this module
-                Program.ActiveDependencies = new Furball();
-                List<string> dep_load_failures = new List<string>();
-                foreach (FurballDependency dependency in Program.ActiveFurball.Dependencies)
+                    // Load project from disk
+                    var device = new FurballFileDeviceText();
                     try
                     {
-                        // Find the dependency file based on the file name hint
-                        string dep_file_name = FindBinaryModuleFile(parent_folder, dependency.FileNameHint);
-                        if (dep_file_name == null)
-                        {
-                            dep_load_failures.Add($"- {dependency.ID} ({dependency.FileNameHint}) could not be found");
-                            continue;
-                        }
-
-                        // Load it using a binary file device (since it's suppposed to be in furball form)
-                        FurballFileDevice dep_device = new FurballFileDeviceBinary();
-                        Furball dep_module = dep_device.ReadModule(new FileInfo(dep_file_name));
-                        Program.ActiveDependencies.Merge(dep_module);
+                        loading_window.SetLabel("Unpacking module...");
+                        Program.ActiveFurball = device.ReadModule(new FileInfo(filename));
                     }
                     catch (Exception ex)
                     {
-                        dep_load_failures.Add($"- {dependency.ID} in file {dependency.FileNameHint} (reason: {ex.Message})");
+                        MessageBox.Show($"Couldn't load the asset package: {ex}", "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
                     }
 
-                // Display a warning dialog if not all dependencies were loaded
-                if (dep_load_failures.Count > 0)
-                    MessageBox.Show("Warning: One or more dependencies could not be loaded. This module can still be edited, but some data from other modules may be missing.\r\n\r\n" +
-                        String.Join(Environment.NewLine, dep_load_failures), "Module Dependencies Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    loading_window.SetLabel("Loading dependencies...");
 
-                loading_window.SetLabel("Preparing editor...");
+                    // Figure out the folder where the module file is located
+                    string parent_folder = Path.GetDirectoryName(filename);
+                    Debug.Assert(parent_folder != null);
 
-                // full cleanup
-                ClearUI();
-                UpdateWindowTitle();
+                    // Load all dependencies of this module
+                    Program.ActiveDependencies = new Furball();
+                    List<string> dep_load_failures = new List<string>();
+                    foreach (FurballDependency dependency in Program.ActiveFurball.Dependencies)
+                        try
+                        {
+                            // Find the dependency file based on the file name hint
+                            string dep_file_name = FindBinaryModuleFile(parent_folder, dependency.FileNameHint);
+                            if (dep_file_name == null)
+                            {
+                                dep_load_failures.Add($"- {dependency.ID} ({dependency.FileNameHint}) could not be found");
+                                continue;
+                            }
 
-                // show new assets in list
-                loading_window.SetupProgress(Program.ActiveFurball.Assets.Count);
-                Program.ActiveFurball.Assets.ForEach(asset =>
-                {
-                    loading_window.AddProgress();
-                    AddAssetToList(asset, false);
-                    Application.DoEvents();
-                });
+                            // Load it using a binary file device (since it's suppposed to be in furball form)
+                            FurballFileDevice dep_device = new FurballFileDeviceBinary();
+                            Furball dep_module = dep_device.ReadModule(new FileInfo(dep_file_name));
+                            Program.ActiveDependencies.Merge(dep_module);
+                        }
+                        catch (Exception ex)
+                        {
+                            dep_load_failures.Add($"- {dependency.ID} in file {dependency.FileNameHint} (reason: {ex.Message})");
+                        }
 
-                loading_window.RequestClose();
+                    // Display a warning dialog if not all dependencies were loaded
+                    if (dep_load_failures.Count > 0)
+                        MessageBox.Show("Warning: One or more dependencies could not be loaded. This module can still be edited, but some data from other modules may be missing.\r\n\r\n" +
+                            String.Join(Environment.NewLine, dep_load_failures), "Module Dependencies Missing", MessageBoxButtons.OK, MessageBoxIcon.Warning);
 
-                // Allow the module to be saved right from the get-go. This allows users to open a text project (fnproj) and then immediately
-                // convert it to a binary module file (furball) without having to awkwardly get the editor to call MarkDirty().
-                // This is NOT the same as calling MarkDirty here since we don't want the editor to actually ask "save unchanged changes?" etc.
-                m_Filename = filename;
-                rbtProjSave.Enabled = true;
+                    // Reconfigure editor window
+                    loading_window.SetLabel("Preparing editor...");
+                    UpdateWindowTitle();
+
+                    // show new assets in list
+                    loading_window.SetupProgress(Program.ActiveFurball.Assets.Count);
+                    foreach (var asset in Program.ActiveFurball.Assets)
+                    {
+                        loading_window.AddProgress();
+                        AddAssetToList(asset, false);
+                    }
+
+                    // Allow the module to be saved right from the get-go. This allows users to open a text project (fnproj) and then immediately
+                    // convert it to a binary module file (furball) without having to awkwardly get the editor to call MarkDirty().
+                    // This is NOT the same as calling MarkDirty here since we don't want the editor to actually ask "save unchanged changes?" etc.
+                    m_Filename = filename;
+                    rbtProjSave.Enabled = true;
+                }
             }
+            finally
+            {
+                // Re-enable main window UI
+                splitContainer.Enabled = true;
+                ribbon.Enabled = true;
 
-            trvAssetList.ExpandAll();
+                // Re-enable layout passes in the tree view
+                trvAssetList.ExpandAll();
+                trvAssetList.ResumeLayout();
+            }
         }
 
         private string GetModulesFolder()

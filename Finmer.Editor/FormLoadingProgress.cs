@@ -14,22 +14,22 @@ namespace Finmer.Editor
     public partial class FormLoadingProgress : Form
     {
 
-        private bool m_AllowClose  ;
-
         public FormLoadingProgress()
         {
             InitializeComponent();
         }
 
-        private void frmLoadingProgress_FormClosing(object sender, FormClosingEventArgs e)
+        private void FormLoadingProgress_Load(object sender, System.EventArgs e)
         {
-            if (!m_AllowClose) e.Cancel = true;
+            // Move dialog to owner center - must be done manually because FormStartPosition.CenterParent does not work with non-modal forms
+            CenterToParent();
         }
 
-        public void RequestClose()
+        private void FormLoadingProgress_FormClosing(object sender, FormClosingEventArgs e)
         {
-            m_AllowClose = true;
-            Close();
+            // Ignore requests from the user to close the form; this is handled programmatically
+            if (e.CloseReason == CloseReason.UserClosing)
+                e.Cancel = true;
         }
 
         public void SetLabel(string label)

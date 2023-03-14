@@ -24,7 +24,7 @@
 		{
 			"Key": "MQ03_INTRO3_DETAIL",
 			"Text": [
-				"She huffs indignantly, glancing down at the mountain of documents before her. \"Let's just say that I'm starting to see why Iso wanted an assistant. Taking care of all the trade documents going around this place is enough of a headache. This... recent mess... is not helping things.\" A flicker of hope glimmers in her eyes as she turns to you once more. \"Speaking of, you've been gone a while. I take it you have news? Did you speak to Edgard about our situation?\""
+				"She huffs indignantly, glancing down at the mountain of documents before her. \"Let's just say that I'm starting to see why Iso wanted an assistant. Taking care of all the trade documents going around this place is enough of a headache. I've always wanted to be mayor, but this... recent mess... is not helping things.\" A flicker of hope glimmers in her eyes as she turns to you once more. \"Speaking of, you've been gone a while. I take it you have news? Did you speak to Edgard about our situation?\""
 			]
 		},
 		{
@@ -42,7 +42,7 @@
 		{
 			"Key": "MQ03_INTRO5",
 			"Text": [
-				"She stops and takes a deep breath, selecting her words carefully. \"I have... reason to believe... that Iso went south. I found some notes that I think she left for me to find. Anyway, I won't bore you with the details, but she seemed convinced there is something brewing over at the coast that demanded immediate attention. More so than, well... the duties of one in public office, clearly.\" Canbell catches herself and shakes her head almost imperceptibly. \"Now. There's a traveling merchant preparing to head to South Finmer. Would you travel with him and visit our southern friends on my behalf? I've already asked the merchant about this; he would be waiting for you. When repairs on the bridge have finally finished, you can expect him there.\""
+				"She stops and takes a deep breath, selecting her words carefully. \"I have... reason to believe... that Iso is in the South Finmer area. I won't bore you with the details, but when last we spoke, she seemed convinced there is something brewing over at the coast that demanded immediate attention. More so than, well... the duties of one in public office, clearly.\" Canbell catches herself and shakes her head almost imperceptibly. \"Now. There's a traveling merchant preparing to head to South Finmer. Would you travel with him and visit our southern friends on my behalf? I've already asked the merchant about this; he would be waiting for you. When repairs on the bridge have finally finished, you can expect him there.\""
 			]
 		},
 		{
@@ -54,7 +54,7 @@
 		{
 			"Key": "MQ03_INTRO7",
 			"Text": [
-				"With your new goal in mind, you bid the overworked snow leopardess farewell. She gives you a smile, more genuine this time than the first time you had met. \"Here's some coins, in case you need to resupply.\" Then, a soft sigh. \"Take care, {player.name}. And if you find anything, let me know right away.\" Assuring her you'll do that, you leave the room and the mayor to her work."
+				"With your new goal in mind, you bid the overworked snow leopardess farewell. She gives you a smile, more genuine this time than the first time you had met. \"Here's some coins, in case you need to resupply.\" Then, a soft sigh. \"Take care, {player.name}. And if you find anything, let me know right away.\" Her eyes flick up to yours with a glimmer of suspicion. \"And I mean that. When you find her, I need to know posthaste, so we can make all the recovery arrangements we need.\" Assuring her you'll do that, you leave the room and the mayor to her work."
 			]
 		},
 		{

@@ -326,6 +326,7 @@ namespace Finmer.Gameplay.Combat
                 participant.Session.NotifyParticipantKilled(participant, null);
 
             // Count down temporary buffs, iterating in reverse order so we can easily pop items from the end
+            bool has_buffs = participant.LocalBuffs.Any();
             for (int i = participant.LocalBuffs.Count - 1; i >= 0; i--)
             {
                 var container = participant.LocalBuffs[i];
@@ -334,6 +335,10 @@ namespace Finmer.Gameplay.Combat
                 if (--container.RoundsLeft == 0)
                     participant.LocalBuffs.RemoveAt(i);
             }
+
+            // If the participant had any displayed buffs, they will have changed/expired now, so update UI
+            if (has_buffs)
+                participant.UpdateDisplay();
         }
 
         /// <summary>
@@ -450,12 +455,16 @@ namespace Finmer.Gameplay.Combat
 
                 // Apply all included buffs to all targets
                 foreach (var target in targets)
+                {
                     foreach (var buff in group.Buffs)
                         target.LocalBuffs.Add(new ActiveBuff
                         {
                             Effect = buff,
                             RoundsLeft = group.Duration
                         });
+
+                    target.UpdateDisplay();
+                }
 
                 // If a message is included, display it now
                 if (!String.IsNullOrWhiteSpace(group.ProcStringTableKey))

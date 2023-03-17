@@ -6,9 +6,10 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:CombatParticipantViewModel}"
-    d:DesignHeight="150" d:DesignWidth="240"
+    d:DesignWidth="240"
     DataContextChanged="CombatantListItemView_OnDataContextChanged">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
@@ -161,5 +162,43 @@
                 </TransformGroup>
             </v:ColoredBar.RenderTransform>
         </v:ColoredBar>
+        <!-- Active buff list -->
+        <vb:WrappedUIElementItemsControl
+            ItemsSource="{Binding VolatileBuffs}">
+            <vb:WrappedUIElementItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <Grid
+                        Margin="2"
+                        Width="32"
+                        Height="32"
+                        Cursor="Help">
+                        <Rectangle Fill="DarkGreen" />
+                        <TextBlock
+                            Margin="0,0,3,0"
+                            HorizontalAlignment="Right"
+                            VerticalAlignment="Bottom"
+                            Style="{StaticResource TextBlockDefault}"
+                            FontWeight="Bold"
+                            Text="{Binding RoundsLeft}">
+                            <TextBlock.Effect>
+                                <DropShadowEffect
+                                    Color="Black"
+                                    RenderingBias="Performance"
+                                    BlurRadius="1"
+                                    ShadowDepth="2" />
+                            </TextBlock.Effect>
+                        </TextBlock>
+                    </Grid>
+                </DataTemplate>
+            </vb:WrappedUIElementItemsControl.ItemTemplate>
+            <vb:WrappedUIElementItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel
+                        Margin="2,6,2,0"
+                        Orientation="Horizontal"
+                        IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </vb:WrappedUIElementItemsControl.ItemsPanel>
+        </vb:WrappedUIElementItemsControl>
     </StackPanel>
 </UserControl>

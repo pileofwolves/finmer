@@ -59,6 +59,14 @@ namespace Finmer.ViewModels
 
         public int HealthMax => m_Upstream.HealthMax;
 
+        /// <summary>
+        /// Returns a collection of buffs applied to this participant that will not persist past combat end.
+        /// </summary>
+        /// <remarks>
+        /// Note that this returns a new list object on every query, because ItemsControl is dumb and ignores updates to the same instance.
+        /// </remarks>
+        public IReadOnlyCollection<ActiveBuff> VolatileBuffs => new List<ActiveBuff>(m_Participant.LocalBuffs);
+
         public Color InnerColor => IsAlly
             ? Color.FromRgb(90, 90, 176)
             : Color.FromRgb(154, 32, 32);
@@ -90,6 +98,7 @@ namespace Finmer.ViewModels
         {
             // Any change in the combat state should get us to reevaluate the display state as well
             OnPropertyChanged(nameof(Subtext));
+            OnPropertyChanged(nameof(VolatileBuffs));
         }
 
         private void Session_PropertyChanged(object sender, PropertyChangedEventArgs e)

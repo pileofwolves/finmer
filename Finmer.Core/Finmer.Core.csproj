@@ -53,6 +53,8 @@
     <Compile Include="Assets\ScriptDataInline.cs" />
     <Compile Include="Assets\ScriptDataVisualAction.cs" />
     <Compile Include="Assets\ScriptData.cs" />
+    <Compile Include="Buffs\EBuffIcon.cs" />
+    <Compile Include="Buffs\EBuffImpact.cs" />
     <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="LoadOrderDependency.cs" />

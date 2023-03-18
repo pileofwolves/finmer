@@ -44,9 +44,9 @@ namespace Finmer.Core.Buffs
     public sealed class BuffStun : Buff
     {
 
-        public override EImpact GetImpact()
+        public override EBuffImpact GetImpact()
         {
-            return EImpact.Negative;
+            return EBuffImpact.Negative;
         }
 
         public override string GetEditorDescription()
@@ -67,9 +67,9 @@ namespace Finmer.Core.Buffs
         /// </summary>
         public string TooltipText { get; set; } = String.Empty;
 
-        public override EImpact GetImpact()
+        public override EBuffImpact GetImpact()
         {
-            return EImpact.Neutral;
+            return EBuffImpact.Neutral;
         }
 
         public override string GetEditorDescription()

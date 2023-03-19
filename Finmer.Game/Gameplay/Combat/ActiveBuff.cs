@@ -27,6 +27,16 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         public int RoundsLeft { get; set; }
 
+        /// <summary>
+        /// MVVM wrapper for buff impact category.
+        /// </summary>
+        public EBuffImpact DisplayImpact => Effect.GetImpact();
+
+        /// <summary>
+        /// MVVM wrapper for buff icon.
+        /// </summary>
+        public EBuffIcon DisplayIcon => Effect.GetIcon();
+
     }
 
 }

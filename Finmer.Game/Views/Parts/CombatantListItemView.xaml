@@ -7,12 +7,15 @@
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     xmlns:vb="clr-namespace:Finmer.Views.Base"
+    xmlns:cv="clr-namespace:Finmer.Converters"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:CombatParticipantViewModel}"
     d:DesignWidth="240"
     DataContextChanged="CombatantListItemView_OnDataContextChanged">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cv:BuffIconToImageConverter x:Key="BuffIconToImageConverter" />
+        <cv:BuffImpactToImageConverter x:Key="BuffImpactToImageConverter" />
     </UserControl.Resources>
     <!-- =================== HEALTH ANIMATIONS =================== -->
     <UserControl.Triggers>
@@ -168,14 +171,23 @@
             <vb:WrappedUIElementItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid
-                        Margin="2"
-                        Width="32"
-                        Height="32"
+                        Margin="2,0,2,0"
                         Cursor="Help">
-                        <Rectangle Fill="DarkGreen" />
+                        <Image
+                            Width="32"
+                            Height="32"
+                            VerticalAlignment="Top"
+                            Stretch="Fill"
+                            Source="{Binding DisplayImpact, Converter={StaticResource BuffImpactToImageConverter}}" />
+                        <Image
+                            Width="32"
+                            Height="32"
+                            VerticalAlignment="Top"
+                            Stretch="Fill"
+                            Source="{Binding DisplayIcon, Converter={StaticResource BuffIconToImageConverter}}" />
                         <TextBlock
-                            Margin="0,0,3,0"
-                            HorizontalAlignment="Right"
+                            Margin="0,32,0,0"
+                            HorizontalAlignment="Center"
                             VerticalAlignment="Bottom"
                             Style="{StaticResource TextBlockDefault}"
                             FontWeight="Bold"

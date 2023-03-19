@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BuffIconToImageConverter.cs" />
+    <Compile Include="Converters\BuffImpactToImageConverter.cs" />
     <Compile Include="Converters\ChainConverter.cs" />
     <Compile Include="Converters\CharSheetItemDropConverter.cs" />
     <Compile Include="Converters\CharSheetUseLabelConverter.cs" />
@@ -117,6 +119,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="Utility\Extensions.cs" />
+    <Compile Include="Utility\PackImageUtilities.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="Models\UserConfig.cs" />
     <Compile Include="ViewModels\AbilityPointViewModel.cs" />
@@ -594,7 +597,12 @@
     <Resource Include="Resources\UI\StatPrimary.png" />
     <Resource Include="Resources\UI\StatVore.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Buffs\BackNegative.png" />
+    <Resource Include="Resources\Buffs\BackNeutral.png" />
+    <Resource Include="Resources\Buffs\BackPositive.png" />
+    <Resource Include="Resources\Buffs\IconGeneric.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

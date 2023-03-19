@@ -84,7 +84,7 @@ namespace Finmer.Core.Buffs
         /// </summary>
         public string GetEditorDescription()
         {
-            string buff_list = Buffs.Any() ? String.Join(", ", Buffs.Select(buff => buff.GetEditorDescription())) : "(Empty)";
+            string buff_list = Buffs.Any() ? String.Join(", ", Buffs.Select(buff => buff.GetDescription())) : "(Empty)";
             float proc_chance = ProcChance * 100.0f;
             switch (ProcStyle)
             {

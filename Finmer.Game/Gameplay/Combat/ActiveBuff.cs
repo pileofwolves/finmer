@@ -28,6 +28,11 @@ namespace Finmer.Gameplay.Combat
         public int RoundsLeft { get; set; }
 
         /// <summary>
+        /// MVVM wrapper for buff tooltip description.
+        /// </summary>
+        public string DisplayTooltip => Effect.GetDescription();
+
+        /// <summary>
         /// MVVM wrapper for buff impact category.
         /// </summary>
         public EBuffImpact DisplayImpact => Effect.GetImpact();

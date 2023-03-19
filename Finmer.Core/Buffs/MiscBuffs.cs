@@ -18,7 +18,7 @@ namespace Finmer.Core.Buffs
     public sealed class BuffHealth : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Max Health";
         }
@@ -31,7 +31,7 @@ namespace Finmer.Core.Buffs
     public sealed class BuffHealthOverTime : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Health per Turn";
         }
@@ -49,9 +49,9 @@ namespace Finmer.Core.Buffs
             return EBuffImpact.Negative;
         }
 
-        public override string GetEditorDescription()
+        public override string GetDescription()
         {
-            return "Stun (Skip Turn)";
+            return "Stunned (Skip Next Turn)";
         }
 
     }
@@ -72,7 +72,7 @@ namespace Finmer.Core.Buffs
             return EBuffImpact.Neutral;
         }
 
-        public override string GetEditorDescription()
+        public override string GetDescription()
         {
             return $"Custom Text: \"{TooltipText}\"";
         }

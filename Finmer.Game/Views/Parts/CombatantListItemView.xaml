@@ -171,8 +171,14 @@
             <vb:WrappedUIElementItemsControl.ItemTemplate>
                 <DataTemplate>
                     <Grid
+                        ToolTipService.InitialShowDelay="250"
                         Margin="2,0,2,0"
                         Cursor="Help">
+                        <Grid.ToolTip>
+                            <TextBlock
+                                Style="{StaticResource TextBlockDefault}"
+                                Text="{Binding DisplayTooltip}" />
+                        </Grid.ToolTip>
                         <Image
                             Width="32"
                             Height="32"

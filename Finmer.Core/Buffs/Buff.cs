@@ -31,9 +31,9 @@ namespace Finmer.Core.Buffs
         }
 
         /// <summary>
-        /// Gets an unlocalized human-readable description of the buff, for editor display.
+        /// Gets a human-readable description of the buff, for display in-game and in the editor.
         /// </summary>
-        public abstract string GetEditorDescription();
+        public abstract string GetDescription();
 
         public virtual void Serialize(IFurballContentWriter outstream) {}
 

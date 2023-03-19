@@ -71,7 +71,7 @@ namespace Finmer.Editor
             // Create a new list entry that represents this effect
             var buff_item = new ListViewItem
             {
-                Text = buff.GetEditorDescription(),
+                Text = buff.GetDescription(),
                 Tag = buff
             };
             lsvBuffs.Items.Add(buff_item);
@@ -156,7 +156,7 @@ namespace Finmer.Editor
                     return;
 
                 // Update list item
-                item.Text = form.BuffInstance.GetEditorDescription();
+                item.Text = form.BuffInstance.GetDescription();
                 item.Tag = form.BuffInstance;
             }
         }

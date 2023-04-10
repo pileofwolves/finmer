@@ -16,7 +16,7 @@
 				"Key": "Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "TimedCheckpoint(\"PORT_TAVERN\")"
+					"Script": "TimedCheckpoint(\"PORT_TAVERN\")\r\nSetInventoryEnabled(true)"
 				},
 				"Children": [
 					{
@@ -782,6 +782,782 @@
 											{
 												"NodeType": "Link",
 												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Bed_Intro1",
+										"Title": "Bed",
+										"Tooltip": "Ask if there's a room available for the night.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_EVENT_TAURDINING_INTRO1",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO1",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandPreysense",
+													"Mode": 33,
+													"CreatureGuid": "201c797e-46f0-4137-891d-b68b6fac3e76"
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO1",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Bed_Intro2",
+										"Title": "Private Room",
+										"Tooltip": "Keep asking about private rooms or sleeping places.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "if Storage.GetFlag(\"PORT_EVENT_TAURDINING_INTRO4\") then\r\n    -- No text; transition to main event scene\r\n    Storage.SetFlag(\"PORT_EVENT_TAURDINING_INTRO_DONE\", true)\r\n\r\nelseif Storage.GetFlag(\"PORT_EVENT_TAURDINING_INTRO3\") then\r\n    Log(\"PORT_EVENT_TAURDINING_INTRO4\")\r\n    Storage.SetFlag(\"PORT_EVENT_TAURDINING_INTRO4\", true)\r\n\r\nelseif Storage.GetFlag(\"PORT_EVENT_TAURDINING_INTRO2\") then\r\n    Log(\"PORT_EVENT_TAURDINING_INTRO3\")\r\n    Storage.SetFlag(\"PORT_EVENT_TAURDINING_INTRO3\", true)\r\n\r\nelseif Storage.GetFlag(\"PORT_EVENT_TAURDINING_INTRO1\") then\r\n    Log(\"PORT_EVENT_TAURDINING_INTRO2\")\r\n    Storage.SetFlag(\"PORT_EVENT_TAURDINING_INTRO2\", true)\r\nend"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO1",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Event_TaurDining"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Bed_Safe",
+										"Title": "Safety",
+										"Tooltip": "Ask if this idea is even safe!",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "PORT_EVENT_TAURDINING_INTRO4B",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO4B",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO3",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_INTRO4B",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "PORT_EVENT_TAURDINING_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Main"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Event_TaurDining",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "PORT_EVENT_TAURDINING_MAIN1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "PORT_EVENT_TAURDINING_DONE",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "SetTimeHour(21)"
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "PORT_EVENT_TAURDINING_INTRO_DONE",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Ev_TaurDine_C_Main2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Ev_TaurDine_R_Main2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_EVENT_TAURDINING_MAIN2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_Main3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Ev_TaurDine_R_Main3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_EVENT_TAURDINING_MAIN3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Ev_TaurDine_C_Main4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Ev_TaurDine_R_Main4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "PORT_EVENT_TAURDINING_MAIN4",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Ev_TaurDine_C_Main5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Ev_TaurDine_R_Main5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "PORT_EVENT_TAURDINING_MAIN5",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Ev_TaurDine_C_Main6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Ev_TaurDine_R_Main6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "PORT_EVENT_TAURDINING_MAIN6",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Ev_TaurDine_C_Main7",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Ev_TaurDine_R_Main7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "PORT_EVENT_TAURDINING_MAIN7",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Ev_TaurDine_C_Main8",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Ev_TaurDine_R_Main8",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "PORT_EVENT_TAURDINING_MAIN8",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Ev_TaurDine_C_Main9",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "Ev_TaurDine_R_Main9",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataVisualAction",
+																																					"Nodes": [
+																																						{
+																																							"!Type": "CommandLog",
+																																							"Text": "PORT_EVENT_TAURDINING_MAIN9",
+																																							"IsRaw": false
+																																						}
+																																					]
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "Ev_TaurDine_C_Vore1",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "Link",
+																																								"LinkTarget": "Ev_TaurDine_R_Vore1"
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Ev_TaurDine_R_Vore1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "VORE_POV_ENDO",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandInlineSnippet",
+											"Snippet": "AdvanceTime(1)"
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_V1_Str",
+										"Title": "Struggle",
+										"Tooltip": "Having second thoughts?",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.ModifyNumber(\"PORT_EVENT_TAURDINING_VORE1_STAGE\", 1)\r\nLog(\"PORT_EVENT_TAURDINING_STRUGGLE_A\" .. Storage.GetNumber(\"PORT_EVENT_TAURDINING_VORE1_STAGE\"))"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Dig1"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Vore1"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_V1_Sub",
+										"Title": "Submit",
+										"Tooltip": "It's your very own private room - one that you asked for.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.ModifyNumber(\"PORT_EVENT_TAURDINING_VORE1_STAGE\", 1)\r\nLog(\"PORT_EVENT_TAURDINING_SUBMIT_A\" .. Storage.GetNumber(\"PORT_EVENT_TAURDINING_VORE1_STAGE\"))"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Dig1"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Vore1"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Ev_TaurDine_R_Vore2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandGrammarSetContext",
+											"VariableName": "predator",
+											"CreatureGuid": "201c797e-46f0-4137-891d-b68b6fac3e76"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "VORE_POV_DIGEST",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandInlineSnippet",
+											"Snippet": "AdvanceTime(1)"
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_V2_Str",
+										"Title": "Struggle",
+										"Tooltip": "Maybe, just maybe, you could wake her up.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.ModifyNumber(\"PORT_EVENT_TAURDINING_VORE2_STAGE\", 1)\r\nStorage.ModifyNumber(\"PORT_EVENT_TAURDINING_VORE2_KICKS\", 1)\r\nLog(\"PORT_EVENT_TAURDINING_STRUGGLE_B\" .. Storage.GetNumber(\"PORT_EVENT_TAURDINING_VORE2_STAGE\"))"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Resc1"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Dig3"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Vore2"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_V2_Sub",
+										"Title": "Submit",
+										"Tooltip": "Make the best of a bad situation.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.ModifyNumber(\"PORT_EVENT_TAURDINING_VORE2_STAGE\", 1)\r\nLog(\"PORT_EVENT_TAURDINING_SUBMIT_B\" .. Storage.GetNumber(\"PORT_EVENT_TAURDINING_VORE2_STAGE\"))"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Resc1"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Dig3"
+											},
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ev_TaurDine_R_Vore2"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Ev_TaurDine_R_Dig1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSleep",
+											"OperandMode": "Literal",
+											"OperandLiteral": 3.0
+										},
+										{
+											"!Type": "CommandLogSplit"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_EVENT_TAURDINING_DIGEST1",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarNumber",
+											"VariableName": "PORT_EVENT_TAURDINING_VORE1_STAGE",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 3.0
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_Dig2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Ev_TaurDine_R_Dig2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_EVENT_TAURDINING_DIGEST2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Ev_TaurDine_C_Dig3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Ev_TaurDine_R_Vore2"
+															},
+															{
+																"NodeType": "State",
+																"Key": "Ev_TaurDine_R_Dig3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Player.Health = 0\r\nSleep(3)\r\nLogSplit()\r\nLog(\"PORT_EVENT_TAURDINING_DIGEST3\")\r\nLogPostVore(\"PORT_EVENT_TAURDINING_DIGEST4\")"
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataVisualCondition",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarNumber",
+																			"VariableName": "PORT_EVENT_TAURDINING_VORE2_STAGE",
+																			"Operator": "GreaterOrEqual",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": 3.0
+																		}
+																	]
+																},
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Ev_TaurDine_R_Resc1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSleep",
+											"OperandMode": "Literal",
+											"OperandLiteral": 3.0
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "PORT_EVENT_TAURDINING_RESCUE1",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarNumber",
+											"VariableName": "PORT_EVENT_TAURDINING_VORE2_STAGE",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 3.0
+										},
+										{
+											"!Type": "ConditionVarNumber",
+											"VariableName": "PORT_EVENT_TAURDINING_VORE2_KICKS",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 2.0
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ev_TaurDine_C_Resc2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Ev_TaurDine_R_Resc2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLogSplit"
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "PORT_EVENT_TAURDINING_RESCUE2",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandInlineSnippet",
+															"Snippet": "AdvanceTime(7)"
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Ev_TaurDine_C_Resc3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Ev_TaurDine_R_Resc3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "PORT_EVENT_TAURDINING_RESCUE3",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Ev_TaurDine_C_Resc4",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Ev_TaurDine_R_Resc4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "PORT_EVENT_TAURDINING_RESCUE4",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Ev_TaurDine_C_Resc5",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataVisualAction",
+																							"Nodes": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "PORT_EVENT_TAURDINING_RESCUE5",
+																									"IsRaw": false
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "Main"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
 											}
 										]
 									}

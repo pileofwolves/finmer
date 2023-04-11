@@ -7,6 +7,10 @@
  */
 
 using System.Globalization;
+using System.IO;
+using System.Text;
+using Finmer.Core;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Gameplay
 {
@@ -89,6 +93,63 @@ namespace Finmer.Gameplay
         public static string CombineBase(string group, int suffix)
         {
             return group + suffix.ToString(CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Game-specific save data extension: Writes a furball asset to save data.
+        /// </summary>
+        /// <param name="output">The output save data container.</param>
+        /// <param name="asset">The asset to serialize.</param>
+        /// <param name="key">The unique key that identifies the asset in save data.</param>
+        public static void SetSavedAsset(this PropertyBag output, IFurballSerializable asset, string key)
+        {
+            using (var ms = new MemoryStream())
+            using (var bw = new BinaryWriter(ms, Encoding.UTF8, true))
+            {
+                // Serialize asset to a byte array
+                var writer = new FurballContentWriterBinary(bw);
+                AssetSerializer.SerializeAsset(writer, asset);
+
+                // Store the byte array
+                output.SetBytes(key, ms.ToArray());
+            }
+        }
+
+        /// <summary>
+        /// Game-specific save data extension: Reads a furball asset from save data.
+        /// </summary>
+        /// <param name="input">The input save data container to read from.</param>
+        /// <param name="key">The unique key that was used to identify this asset when it was saved.</param>
+        /// <exception cref="InvalidSaveDataException">Throws if asset cannot be deserialized.</exception>
+        public static TAsset GetSavedAsset<TAsset>(this PropertyBag input, string key) where TAsset : class, IFurballSerializable
+        {
+            // Retrieve the raw byte array that represents the asset
+            byte[] serialized = input.GetBytes(key);
+            if (serialized == null)
+                throw new InvalidSaveDataException($"Saved asset '{key}' is missing from save data");
+
+            // Wrap a stream around it
+            using (var ms = new MemoryStream(serialized))
+            using (var br = new BinaryReader(ms, Encoding.UTF8, true))
+            {
+                try
+                {
+                    // Reconstruct and deserialize the asset
+                    var reader = new FurballContentReaderBinary(br);
+                    var result = AssetSerializer.DeserializeAsset(reader, FurballFileDevice.k_LatestVersion) as TAsset;
+
+                    // If casting failed, the asset was of some unexpected type
+                    if (result == null)
+                        throw new InvalidSaveDataException($"Saved asset '{key}' had unexpected type");
+
+                    return result;
+                }
+                catch (FurballException ex)
+                {
+                    // Forward all other deserialization errors to the caller as a save data problem
+                    throw new InvalidSaveDataException($"Failed to deserialize saved asset '{key}': " + ex.Message, ex);
+                }
+            }
         }
 
     }

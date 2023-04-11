@@ -16,7 +16,7 @@ namespace Finmer.Core.Serialization
     /// <summary>
     /// Implementation of an asset data reader that operates on compact, binary package files.
     /// </summary>
-    internal sealed class FurballContentReaderBinary : IFurballContentReader
+    public sealed class FurballContentReaderBinary : IFurballContentReader
     {
 
         private readonly BinaryReader m_Stream;

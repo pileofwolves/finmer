@@ -54,17 +54,16 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedGetActiveCombat(IntPtr state)
         {
-            // Check whether the current scene is a combat scene
-            var combat_scene = GameController.Session.PeekScene() as SceneCombat2;
-            if (combat_scene == null)
+            // Get the CombatSession of the currently active scene, if any
+            var session = CombatSession.GetActiveSession();
+            if (session == null)
             {
-                // If not, there cannot be an active combat either
+                // There is no active combat
                 lua_pushnil(state);
                 return 1;
             }
 
-            // Get the CombatSession that the scene is simulating
-            var session = combat_scene.Session;
+            // Return the session to script
             session.PushToLua(state);
             return 1;
         }

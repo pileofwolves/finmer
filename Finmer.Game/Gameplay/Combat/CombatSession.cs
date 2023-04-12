@@ -71,6 +71,14 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Returns the CombatSession instance of the currently active combat, or null if unavailable.
+        /// </summary>
+        public static CombatSession GetActiveSession()
+        {
+            return (GameController.Session.PeekScene() as SceneCombat2)?.Session;
+        }
+
+        /// <summary>
         /// Add a Character to this combat session as a new participant.
         /// </summary>
         /// <param name="character">The character to register. Characters may only be registered once.</param>

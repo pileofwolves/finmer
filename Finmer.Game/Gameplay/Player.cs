@@ -443,12 +443,26 @@ namespace Finmer.Gameplay
         }
 
         [ScriptableFunction]
-        protected static int ExportedAddPendingBuff(IntPtr L)
+        protected static int ExportedApplyBuff(IntPtr L)
         {
             var self = FromLuaNonOptional<Player>(L, 1);
             var buff = FromLuaNonOptional<PendingBuff>(L, 2);
 
-            // Add buff to list of effects to apply on next combat start
+            // If there is an active combat, prefer applying the buff immediately. This simplifies user script code.
+            var active_combat = CombatSession.GetActiveSession();
+            if (active_combat != null)
+            {
+                // Find the player in this combat - could be absent too
+                var player_participant = active_combat.Participants.FirstOrDefault(p => p.IsPlayer());
+                if (player_participant != null)
+                {
+                    // If found, apply buff directly
+                    buff.Apply(player_participant);
+                    return 0;
+                }
+            }
+
+            // Otherwise, add buff to list of effects to apply on next combat start
             self.PendingBuffs.Add(buff);
 
             return 0;

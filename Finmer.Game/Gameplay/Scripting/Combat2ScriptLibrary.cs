@@ -7,6 +7,7 @@
  */
 
 using System;
+using Finmer.Core.Buffs;
 using Finmer.Gameplay.Combat;
 using static Finmer.Gameplay.Scripting.LuaApi;
 
@@ -25,9 +26,22 @@ namespace Finmer.Gameplay.Scripting
         /// <param name="context"></param>
         public static void Inject(ScriptContext context)
         {
-            // CombatV2 table
+            IntPtr state = context.LuaState;
+
+            // Combat globals
             context.RegisterGlobalFunction("Combat2", ExportedNewCombat2State);
             context.RegisterGlobalFunction("GetActiveCombat", ExportedGetActiveCombat);
+
+            // Buff table
+            lua_createtable(state, 0, 2);
+            context.RegisterFunction("AttackDice", ExportedNewBuffAttackDice);
+            context.RegisterFunction("DefenseDice", ExportedNewBuffDefenseDice);
+            context.RegisterFunction("GrappleDice", ExportedNewBuffGrappleDice);
+            context.RegisterFunction("SwallowDice", ExportedNewBuffSwallowDice);
+            context.RegisterFunction("StruggleDice", ExportedNewBuffStruggleDice);
+            context.RegisterFunction("HealthOverTime", ExportedNewBuffHealthOverTime);
+            context.RegisterFunction("Stun", ExportedNewBuffStun);
+            lua_setglobal(state, "Buff");
         }
 
         private static int ExportedNewCombat2State(IntPtr state)
@@ -52,6 +66,53 @@ namespace Finmer.Gameplay.Scripting
             // Get the CombatSession that the scene is simulating
             var session = combat_scene.Session;
             session.PushToLua(state);
+            return 1;
+        }
+
+        private static int ExportedNewBuffAttackDice(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffAttackDice { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffDefenseDice(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffDefenseDice { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffGrappleDice(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffGrappleDice { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffStruggleDice(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffStruggleDice { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffSwallowDice(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffSwallowDice { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffHealthOverTime(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffHealthOverTime { Delta = (int)luaL_checknumber(state, 1) }, (int)luaL_checknumber(state, 2));
+        }
+
+        private static int ExportedNewBuffStun(IntPtr state)
+        {
+            return InternalNewPendingBuff(state, new BuffStun(), (int)luaL_checknumber(state, 1));
+        }
+
+        private static int InternalNewPendingBuff(IntPtr state, Buff effect, int duration)
+        {
+            var buff = new PendingBuff(ScriptContext.FromLua(state))
+            {
+                Effect = effect,
+                Duration = duration
+            };
+
+            buff.PushToLua(state);
             return 1;
         }
 

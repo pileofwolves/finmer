@@ -82,6 +82,7 @@
     <Compile Include="Gameplay\Combat\CombatSession.cs" />
     <Compile Include="Gameplay\Combat\EDieFace.cs" />
     <Compile Include="Gameplay\Combat\Participant.cs" />
+    <Compile Include="Gameplay\Combat\PendingBuff.cs" />
     <Compile Include="Gameplay\CompassController.cs" />
     <Compile Include="Gameplay\ContentExceptions.cs" />
     <Compile Include="Gameplay\DependencyConstraintSolver.cs" />

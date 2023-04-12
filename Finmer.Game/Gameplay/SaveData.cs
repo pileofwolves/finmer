@@ -69,6 +69,8 @@ namespace Finmer.Gameplay
         public const string k_Player_NumPreyDigested = @"num_prey_digested";
         public const string k_Player_InventoryCount = @"inv_count";
         public const string k_Player_InventoryBase = @"inv_";
+        public const string k_Player_PendingBuffCount = @"pending_buff_count";
+        public const string k_Player_PendingBuffBase = @"pending_buff_";
         public const string k_Player_Journal = @"journal";
 
         public const string k_Shop_Title = @"title";
@@ -79,6 +81,9 @@ namespace Finmer.Gameplay
         public const string k_Shop_StockQuantityBase = @"stock_qty_";
         public const string k_Shop_StockItemBase = @"stock_data_";
         public const string k_Shop_StockUniqueBase = @"stock_unique_";
+
+        public const string k_PendingBuff_Effect = @"buff";
+        public const string k_PendingBuff_Duration = @"duration";
 
         public const string k_Journal_Count = @"count";
         public const string k_Journal_EntryGuid = @"guid_";

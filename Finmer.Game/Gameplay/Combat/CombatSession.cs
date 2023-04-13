@@ -84,8 +84,18 @@ namespace Finmer.Gameplay.Combat
         /// <param name="character">The character to register. Characters may only be registered once.</param>
         public void AddParticipant(Character character)
         {
+            // Register the character as a new participantt
             Debug.Assert(Participants.All(p => p.Character != character), "Character is already registered");
-            Participants.Add(new Participant(character, this));
+            var participant = new Participant(character, this);
+            Participants.Add(participant);
+
+            // If this is the player, transfer any pending buffs to this combat session
+            if (character is Player player)
+            {
+                foreach (var pending in player.PendingBuffs)
+                    pending.Apply(participant);
+                player.PendingBuffs.Clear();
+            }
         }
 
         public void SetVored(Participant predator, Participant prey)

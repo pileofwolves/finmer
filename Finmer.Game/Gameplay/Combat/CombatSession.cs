@@ -349,6 +349,19 @@ namespace Finmer.Gameplay.Combat
         }
 
         [ScriptableFunction]
+        protected static int ExportedApplyBuff(IntPtr state)
+        {
+            // Retrieve and validate the participant and desired buff from the stack
+            var participant = GetValidatedParticipant(state);
+            var buff = FromLuaNonOptional<PendingBuff>(state, 3);
+
+            // Add the buff to the participant
+            buff.Apply(participant);
+
+            return 1;
+        }
+
+        [ScriptableFunction]
         protected static int ExportedOnRoundEnd(IntPtr state)
         {
             // Keep the function around so the callback can find it

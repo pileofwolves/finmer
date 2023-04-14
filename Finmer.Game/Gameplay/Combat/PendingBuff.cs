@@ -57,6 +57,11 @@ namespace Finmer.Gameplay.Combat
         /// </summary>
         public void Apply(Participant target)
         {
+            // Downed participants should not have any buffs
+            if (target.Character.IsDead())
+                return;
+
+            // Copy buff to participant
             target.LocalBuffs.Add(new ActiveBuff
             {
                 Effect = Effect,

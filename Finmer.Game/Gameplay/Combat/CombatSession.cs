@@ -209,6 +209,9 @@ namespace Finmer.Gameplay.Combat
             if (!victim_character.IsDead())
                 return;
 
+            // Remove any buffs from the victim so they do not have special logic ticking every turn
+            victim.LocalBuffs.Clear();
+
             // If the victim was not swallowed, there may be auto-vore triggers we need to activate, check now
             if (!victim.IsSwallowed())
                 CombatLogic.HandleAutoVore(killer, victim);

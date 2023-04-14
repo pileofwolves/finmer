@@ -42,7 +42,20 @@ namespace Finmer.Converters
         {
             switch (face)
             {
-                case EBuffIcon.Generic:             return "Buffs/IconGeneric.png";
+                case EBuffIcon.Generic:             return @"Buffs/IconGeneric.png";
+                case EBuffIcon.AttackUp:            return @"Buffs/IconAttackUp.png";
+                case EBuffIcon.AttackDown:          return @"Buffs/IconAttackDown.png";
+                case EBuffIcon.DefenseUp:           return @"Buffs/IconDefenseUp.png";
+                case EBuffIcon.DefenseDown:         return @"Buffs/IconDefenseDown.png";
+                case EBuffIcon.GrappleUp:           return @"Buffs/IconGrappleUp.png";
+                case EBuffIcon.GrappleDown:         return @"Buffs/IconGrappleDown.png";
+                case EBuffIcon.SwallowUp:           return @"Buffs/IconSwallowUp.png";
+                case EBuffIcon.SwallowDown:         return @"Buffs/IconSwallowDown.png";
+                case EBuffIcon.StruggleUp:          return @"Buffs/IconStruggleUp.png";
+                case EBuffIcon.StruggleDown:        return @"Buffs/IconStruggleDown.png";
+                case EBuffIcon.HealingPerTurn:      return @"Buffs/IconHealingOverTime.png";
+                case EBuffIcon.DamagePerTurn:       return @"Buffs/IconDamageOverTime.png";
+                case EBuffIcon.Stun:                return @"Buffs/IconStun.png";
                 default:                            throw new ArgumentOutOfRangeException(nameof(face));
             }
         }

@@ -15,6 +15,19 @@ namespace Finmer.Core.Buffs
     public enum EBuffIcon
     {
         Generic,
+        AttackUp,
+        AttackDown,
+        DefenseUp,
+        DefenseDown,
+        GrappleUp,
+        GrappleDown,
+        SwallowUp,
+        SwallowDown,
+        StruggleUp,
+        StruggleDown,
+        HealingPerTurn,
+        DamagePerTurn,
+        Stun
     }
 
 }

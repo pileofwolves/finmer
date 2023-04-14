@@ -604,6 +604,21 @@
     <Resource Include="Resources\Buffs\BackPositive.png" />
     <Resource Include="Resources\Buffs\IconGeneric.png" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Buffs\IconAttackDown.png" />
+    <Resource Include="Resources\Buffs\IconAttackUp.png" />
+    <Resource Include="Resources\Buffs\IconDamageOverTime.png" />
+    <Resource Include="Resources\Buffs\IconDefenseUp.png" />
+    <Resource Include="Resources\Buffs\IconDefenseDown.png" />
+    <Resource Include="Resources\Buffs\IconGrappleDown.png" />
+    <Resource Include="Resources\Buffs\IconGrappleUp.png" />
+    <Resource Include="Resources\Buffs\IconHealingOverTime.png" />
+    <Resource Include="Resources\Buffs\IconStruggleDown.png" />
+    <Resource Include="Resources\Buffs\IconStruggleUp.png" />
+    <Resource Include="Resources\Buffs\IconStun.png" />
+    <Resource Include="Resources\Buffs\IconSwallowDown.png" />
+    <Resource Include="Resources\Buffs\IconSwallowUp.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

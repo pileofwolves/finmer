@@ -18,6 +18,11 @@ namespace Finmer.Core.Buffs
     public sealed class BuffHealth : SingleDeltaBuff
     {
 
+        public override EBuffIcon GetIcon()
+        {
+            return EBuffIcon.HealingPerTurn;
+        }
+
         public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Max Health";
@@ -31,6 +36,11 @@ namespace Finmer.Core.Buffs
     public sealed class BuffHealthOverTime : SingleDeltaBuff
     {
 
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.HealingPerTurn : EBuffIcon.DamagePerTurn;
+        }
+
         public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Health per Turn";
@@ -43,6 +53,11 @@ namespace Finmer.Core.Buffs
     /// </summary>
     public sealed class BuffStun : Buff
     {
+
+        public override EBuffIcon GetIcon()
+        {
+            return EBuffIcon.Stun;
+        }
 
         public override EBuffImpact GetImpact()
         {

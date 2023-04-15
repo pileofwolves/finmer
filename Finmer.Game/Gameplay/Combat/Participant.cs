@@ -73,15 +73,6 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
-        /// Indicates whether this participant can perform an action during the current turn.
-        /// </summary>
-        public bool CanAct()
-        {
-            // Skip turn if dead or stunned
-            return !Character.IsDead() && !CumulativeBuffs.OfType<BuffStun>().Any();
-        }
-
-        /// <summary>
         /// Shorthand for checking if the underlying character of this participant represents the player character.
         /// </summary>
         public bool IsPlayer()

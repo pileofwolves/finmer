@@ -434,9 +434,16 @@ namespace Finmer.Gameplay
                 {
                     Participant participant = m_RoundParticipants[i];
 
-                    // Skip downed or immobilized participants
-                    if (!participant.CanAct())
+                    // Skip downed participants
+                    if (participant.Character.IsDead())
                         continue;
+
+                    // Skip immobilized participants, but do count down the buff
+                    if (participant.CumulativeBuffs.OfType<BuffStun>().Any())
+                    {
+                        CombatLogic.PostStunTurn(participant);
+                        continue;
+                    }
 
                     // Show this participant as having the turn
                     Session.WhoseTurn = participant;

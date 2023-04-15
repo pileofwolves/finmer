@@ -297,6 +297,18 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Perform turn end for an otherwise active participant whose turn is being skipped.
+        /// </summary>
+        public static void PostStunTurn(Participant instigator)
+        {
+            // Show a quick message
+            CombatDisplay.ShowSimpleMessage(@"turn_stunned", instigator);
+
+            // Perform normal post-turn processing
+            PostTurn(instigator);
+        }
+
+        /// <summary>
         /// Perform any post-turn automatic actions or countdowns for a participant.
         /// </summary>
         public static void PostTurn(Participant participant)

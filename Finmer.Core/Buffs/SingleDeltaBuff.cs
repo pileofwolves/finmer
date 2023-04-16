@@ -32,14 +32,14 @@ namespace Finmer.Core.Buffs
             Delta = instream.ReadInt32Property("Delta");
         }
 
-        public override EImpact GetImpact()
+        public override EBuffImpact GetImpact()
         {
             if (Delta == 0)
-                return EImpact.Neutral;
+                return EBuffImpact.Neutral;
 
             // Assuming positive delta is also actually positive for the player; if this is not the case
             // then derived classes can override this method to swap them around if needed.
-            return Delta > 0 ? EImpact.Positive : EImpact.Negative;
+            return Delta > 0 ? EBuffImpact.Positive : EBuffImpact.Negative;
         }
 
     }

@@ -63,6 +63,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BuffIconToImageConverter.cs" />
+    <Compile Include="Converters\BuffImpactToImageConverter.cs" />
     <Compile Include="Converters\ChainConverter.cs" />
     <Compile Include="Converters\CharSheetItemDropConverter.cs" />
     <Compile Include="Converters\CharSheetUseLabelConverter.cs" />
@@ -73,12 +75,14 @@
     <Compile Include="Converters\DieFaceToImageConverter.cs" />
     <Compile Include="Converters\ShopItemSellValueConverter.cs" />
     <Compile Include="Gameplay\Character.cs" />
+    <Compile Include="Gameplay\Combat\ActiveBuff.cs" />
     <Compile Include="Gameplay\Combat\CombatCallbacks.cs" />
     <Compile Include="Gameplay\Combat\CombatDisplay.cs" />
     <Compile Include="Gameplay\Combat\CombatLogic.cs" />
     <Compile Include="Gameplay\Combat\CombatSession.cs" />
     <Compile Include="Gameplay\Combat\EDieFace.cs" />
     <Compile Include="Gameplay\Combat\Participant.cs" />
+    <Compile Include="Gameplay\Combat\PendingBuff.cs" />
     <Compile Include="Gameplay\CompassController.cs" />
     <Compile Include="Gameplay\ContentExceptions.cs" />
     <Compile Include="Gameplay\DependencyConstraintSolver.cs" />
@@ -116,6 +120,7 @@
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="Properties\AssemblyVersion.cs" />
     <Compile Include="Utility\Extensions.cs" />
+    <Compile Include="Utility\PackImageUtilities.cs" />
     <Compile Include="Utility\RelayCommand.cs" />
     <Compile Include="Models\UserConfig.cs" />
     <Compile Include="ViewModels\AbilityPointViewModel.cs" />
@@ -593,7 +598,27 @@
     <Resource Include="Resources\UI\StatPrimary.png" />
     <Resource Include="Resources\UI\StatVore.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Resources\Buffs\BackNegative.png" />
+    <Resource Include="Resources\Buffs\BackNeutral.png" />
+    <Resource Include="Resources\Buffs\BackPositive.png" />
+    <Resource Include="Resources\Buffs\IconGeneric.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Buffs\IconAttackDown.png" />
+    <Resource Include="Resources\Buffs\IconAttackUp.png" />
+    <Resource Include="Resources\Buffs\IconDamageOverTime.png" />
+    <Resource Include="Resources\Buffs\IconDefenseUp.png" />
+    <Resource Include="Resources\Buffs\IconDefenseDown.png" />
+    <Resource Include="Resources\Buffs\IconGrappleDown.png" />
+    <Resource Include="Resources\Buffs\IconGrappleUp.png" />
+    <Resource Include="Resources\Buffs\IconHealingOverTime.png" />
+    <Resource Include="Resources\Buffs\IconStruggleDown.png" />
+    <Resource Include="Resources\Buffs\IconStruggleUp.png" />
+    <Resource Include="Resources\Buffs\IconStun.png" />
+    <Resource Include="Resources\Buffs\IconSwallowDown.png" />
+    <Resource Include="Resources\Buffs\IconSwallowUp.png" />
+  </ItemGroup>
   <PropertyGroup>
     <StartWorkingDirectory>$(SolutionDir)</StartWorkingDirectory>
     <EnableUnmanagedDebugging>true</EnableUnmanagedDebugging>

@@ -189,6 +189,11 @@ namespace Finmer.Editor
             AddScriptNode(new CommandCombatEnd());
         }
 
+        private void cmdCombatApplyBuff_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandCombatApplyBuff());
+        }
+
         private void cmdCombatSetVored_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new CommandCombatSetVored());

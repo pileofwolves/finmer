@@ -10,7 +10,6 @@ using System;
 using System.Diagnostics;
 using System.Globalization;
 using System.Windows.Data;
-using System.Windows.Media.Imaging;
 using Finmer.Gameplay.Combat;
 using Finmer.Utility;
 
@@ -32,12 +31,7 @@ namespace Finmer.Converters
             string face_name = GetFileNameForDieFace(face);
 
             // Compose the image file name into a full path for display
-            var source = new BitmapImage();
-            source.BeginInit();
-            source.UriSource = PackUriGenerator.GetGameResource(face_name);
-            source.EndInit();
-            source.Freeze();
-            return source;
+            return PackImageUtilities.GetImage(face_name);
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
@@ -48,7 +42,7 @@ namespace Finmer.Converters
         /// <summary>
         /// Given a die face, returns the image file name that can be used to represent it.
         /// </summary>
-        private string GetFileNameForDieFace(EDieFace face)
+        private static string GetFileNameForDieFace(EDieFace face)
         {
             switch (face)
             {

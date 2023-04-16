@@ -37,7 +37,7 @@ namespace Finmer.Views
         /// Dependency property for RowLabel.
         /// </summary>
         public static readonly DependencyProperty RowImpactProperty = DependencyProperty.Register(
-            "RowImpact", typeof(Buff.EImpact), typeof(ItemTooltipBuffRow), new PropertyMetadata(Buff.EImpact.Neutral));
+            "RowImpact", typeof(EBuffImpact), typeof(ItemTooltipBuffRow), new PropertyMetadata(EBuffImpact.Neutral));
 
         /// <summary>
         /// Arbitrary user control shown besides the row label.
@@ -60,9 +60,9 @@ namespace Finmer.Views
         /// <summary>
         /// Gets or sets the player impact indicator of this row.
         /// </summary>
-        public Buff.EImpact RowImpact
+        public EBuffImpact RowImpact
         {
-            get => (Buff.EImpact)GetValue(RowImpactProperty);
+            get => (EBuffImpact)GetValue(RowImpactProperty);
             set => SetValue(RowImpactProperty, value);
         }
 
@@ -75,9 +75,9 @@ namespace Finmer.Views
             {
                 switch (RowImpact)
                 {
-                    case Buff.EImpact.Positive:
+                    case EBuffImpact.Positive:
                         return Theme.LogColorPositive;
-                    case Buff.EImpact.Negative:
+                    case EBuffImpact.Negative:
                         return Theme.LogColorNegative;
                     default:
                         return Theme.LogColorDefault;

@@ -15,7 +15,12 @@ namespace Finmer.Core.Buffs
     public sealed class BuffAttackDice : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.AttackUp : EBuffIcon.AttackDown;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Attack Dice";
         }
@@ -28,7 +33,12 @@ namespace Finmer.Core.Buffs
     public sealed class BuffDefenseDice : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.DefenseUp : EBuffIcon.DefenseDown;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Defense Dice";
         }
@@ -41,7 +51,12 @@ namespace Finmer.Core.Buffs
     public sealed class BuffGrappleDice : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.GrappleUp : EBuffIcon.GrappleDown;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Grapple Dice";
         }
@@ -54,7 +69,12 @@ namespace Finmer.Core.Buffs
     public sealed class BuffSwallowDice : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.SwallowUp : EBuffIcon.SwallowDown;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Swallow Dice";
         }
@@ -67,7 +87,12 @@ namespace Finmer.Core.Buffs
     public sealed class BuffStruggleDice : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.StruggleUp : EBuffIcon.StruggleDown;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Struggle Dice";
         }

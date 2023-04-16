@@ -10,6 +10,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Finmer.Core;
+using Finmer.Gameplay.Combat;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
 using Finmer.Utility;
@@ -162,6 +163,11 @@ namespace Finmer.Gameplay
         public Journal Journal { get; private set; }
 
         /// <summary>
+        /// Collection of buffs that have been applied in script, and will take effect in the next combat.
+        /// </summary>
+        public List<PendingBuff> PendingBuffs { get; } = new List<PendingBuff>();
+
+        /// <summary>
         /// Returns a PropertyBag that is included in save data, that other code can write arbitrary data to.
         /// </summary>
         public PropertyBag AdditionalSaveData { get; private set; }
@@ -250,6 +256,14 @@ namespace Finmer.Gameplay
                 output.SetNestedPropertyBag(key, Inventory[i].SaveState());
             }
 
+            // Pending buffs
+            output.SetInt(SaveData.k_Player_PendingBuffCount, PendingBuffs.Count);
+            for (var i = 0; i < PendingBuffs.Count; i++)
+            {
+                var key = SaveData.CombineBase(SaveData.k_Player_PendingBuffBase, i);
+                output.SetNestedPropertyBag(key, PendingBuffs[i].SaveState());
+            }
+
             return output;
         }
 
@@ -287,6 +301,16 @@ namespace Finmer.Gameplay
                 PropertyBag value = input.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Player_InventoryBase, i));
                 if (value != null)
                     Inventory.Add(Item.FromSaveData(ScriptContext, value));
+            }
+
+            // Pending buffs
+            num_items = input.GetInt(SaveData.k_Player_PendingBuffCount);
+            for (var i = 0; i < num_items; i++)
+            {
+                var key = SaveData.CombineBase(SaveData.k_Player_PendingBuffBase, i);
+                var instance = new PendingBuff(ScriptContext);
+                instance.LoadState(input.GetNestedPropertyBag(key));
+                PendingBuffs.Add(instance);
             }
 
             // Journal
@@ -414,6 +438,32 @@ namespace Finmer.Gameplay
 
             // Perform assignment, clamp to zero
             self.Money = Math.Max(self.Money + delta, 0);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedApplyBuff(IntPtr L)
+        {
+            var self = FromLuaNonOptional<Player>(L, 1);
+            var buff = FromLuaNonOptional<PendingBuff>(L, 2);
+
+            // If there is an active combat, prefer applying the buff immediately. This simplifies user script code.
+            var active_combat = CombatSession.GetActiveSession();
+            if (active_combat != null)
+            {
+                // Find the player in this combat - could be absent too
+                var player_participant = active_combat.Participants.FirstOrDefault(p => p.IsPlayer());
+                if (player_participant != null)
+                {
+                    // If found, apply buff directly
+                    player_participant.ApplyPendingBuff(buff);
+                    return 0;
+                }
+            }
+
+            // Otherwise, add buff to list of effects to apply on next combat start
+            self.PendingBuffs.Add(buff);
 
             return 0;
         }

@@ -68,7 +68,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Collection of buffs applied when the item is equipped.
         /// </summary>
-        public List<Buff> EquipEffects { get; } = new List<Buff>();
+        public List<EquipEffectGroup> EquipEffects { get; } = new List<EquipEffectGroup>();
 
         /// <summary>
         /// The economic value of this item. Set to zero to prevent the item from being traded.
@@ -160,13 +160,25 @@ namespace Finmer.Core.Assets
             if (ItemType == EItemType.Equipable)
             {
                 EquipSlot = instream.ReadEnumProperty<EEquipSlot>(nameof(EquipSlot));
-                for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
+
+                // Read equipment effect groups
+                if (version >= 19)
                 {
-                    // Read each equip effect
-                    var effect_instance = instream.ReadNestedObjectProperty<Buff>(null, version);
-                    EquipEffects.Add(effect_instance);
+                    // V19 onwards: equip effect groups with nested buffs and proc settings
+                    for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
+                        EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
+                    instream.EndArray();
                 }
-                instream.EndArray();
+                else
+                {
+                    // V18 backwards compatibility: proc data didn't exist yet. If item had buffs, wrap them in a group with the Always proc mode.
+                    var implicit_group = new EquipEffectGroup();
+                    for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
+                        implicit_group.Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null, version));
+                    instream.EndArray();
+                    if (implicit_group.Buffs.Count != 0)
+                        EquipEffects.Add(implicit_group);
+                }
             }
             PurchaseValue = instream.ReadInt32Property(nameof(PurchaseValue));
             IsQuestItem = instream.ReadBooleanProperty(nameof(IsQuestItem));

@@ -71,13 +71,31 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Returns the CombatSession instance of the currently active combat, or null if unavailable.
+        /// </summary>
+        public static CombatSession GetActiveSession()
+        {
+            return (GameController.Session.PeekScene() as SceneCombat2)?.Session;
+        }
+
+        /// <summary>
         /// Add a Character to this combat session as a new participant.
         /// </summary>
         /// <param name="character">The character to register. Characters may only be registered once.</param>
         public void AddParticipant(Character character)
         {
+            // Register the character as a new participantt
             Debug.Assert(Participants.All(p => p.Character != character), "Character is already registered");
-            Participants.Add(new Participant(character, this));
+            var participant = new Participant(character, this);
+            Participants.Add(participant);
+
+            // If this is the player, transfer any pending buffs to this combat session
+            if (character is Player player)
+            {
+                foreach (var pending in player.PendingBuffs)
+                    participant.ApplyPendingBuff(pending);
+                player.PendingBuffs.Clear();
+            }
         }
 
         public void SetVored(Participant predator, Participant prey)
@@ -190,6 +208,9 @@ namespace Finmer.Gameplay.Combat
             // Check again whether the character is still dead - we allow the above callback to revive them
             if (!victim_character.IsDead())
                 return;
+
+            // Remove any buffs from the victim so they do not have special logic ticking every turn
+            victim.LocalBuffs.Clear();
 
             // If the victim was not swallowed, there may be auto-vore triggers we need to activate, check now
             if (!victim.IsSwallowed())
@@ -336,6 +357,19 @@ namespace Finmer.Gameplay.Combat
                 LuaApi.lua_pushnil(state);
             else
                 grapple_partner.Character.PushToLua(state);
+
+            return 1;
+        }
+
+        [ScriptableFunction]
+        protected static int ExportedApplyBuff(IntPtr state)
+        {
+            // Retrieve and validate the participant and desired buff from the stack
+            var participant = GetValidatedParticipant(state);
+            var buff = FromLuaNonOptional<PendingBuff>(state, 3);
+
+            // Add the buff to the participant
+            participant.ApplyPendingBuff( buff);
 
             return 1;
         }

@@ -53,6 +53,9 @@
     <Compile Include="Assets\ScriptDataInline.cs" />
     <Compile Include="Assets\ScriptDataVisualAction.cs" />
     <Compile Include="Assets\ScriptData.cs" />
+    <Compile Include="Buffs\EBuffIcon.cs" />
+    <Compile Include="Buffs\EBuffImpact.cs" />
+    <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="LoadOrderDependency.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />
@@ -97,6 +100,7 @@
     <Compile Include="StringTable.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatApplyBuff.cs" />
     <Compile Include="VisualScripting\Nodes\CommandPreysense.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetGrappled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetVored.cs" />

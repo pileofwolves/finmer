@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Finmer.Core;
+using Finmer.Core.Buffs;
+using JetBrains.Annotations;
 
 namespace Finmer.Gameplay.Combat
 {
@@ -31,8 +33,8 @@ namespace Finmer.Gameplay.Combat
         public static void PerformAttack(Participant instigator, Participant target)
         {
             // Roll dice for this attack
-            List<int> attack_dice = RollCombatDice(instigator.Character.NumAttackDice);
-            List<int> defense_dice = RollCombatDice(target.Character.NumDefenseDice);
+            List<int> attack_dice = RollCombatDice(GetNumAttackDice(instigator.Character, instigator.CumulativeBuffs));
+            List<int> defense_dice = RollCombatDice(GetNumDefenseDice(target.Character, target.CumulativeBuffs));
             int num_attacks = attack_dice.Sum();
             int num_defense = defense_dice.Sum();
 
@@ -76,6 +78,18 @@ namespace Finmer.Gameplay.Combat
             // Script callbacks on death
             if (target.Character.IsDead())
                 target.Session.NotifyParticipantKilled(instigator, target);
+
+            // Apply equipment effects
+            if (damage > 0)
+            {
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderAttackHit);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.EnemyAttackHit);
+            }
+            else
+            {
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderAttackMiss);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.EnemyAttackMiss);
+            }
         }
 
         /// <summary>
@@ -84,8 +98,8 @@ namespace Finmer.Gameplay.Combat
         private static bool GrappleRoll(Participant instigator, Participant target, string logKeyWin, string logKeyLose)
         {
             // Roll dice for this attack
-            List<int> attack_dice = RollGenericD6(instigator.Character.NumGrappleDice);
-            List<int> defense_dice = RollGenericD6(target.Character.NumGrappleDice);
+            List<int> attack_dice = RollGenericD6(GetNumGrappleDice(instigator.Character, instigator.CumulativeBuffs));
+            List<int> defense_dice = RollGenericD6(GetNumGrappleDice(target.Character, target.CumulativeBuffs));
             int num_attacks = attack_dice.Sum();
             int num_defense = defense_dice.Sum();
 
@@ -125,7 +139,13 @@ namespace Finmer.Gameplay.Combat
             // Set these characters to grappling if the instigator succeeded
             bool success = GrappleRoll(instigator, target, @"grapple_hit", @"grapple_miss");
             if (success)
+            {
                 instigator.Session.SetGrappling(instigator, target);
+
+                // Apply equipment effects
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderGrappled);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.WielderGrappled);
+            }
         }
 
         /// <summary>
@@ -203,13 +223,13 @@ namespace Finmer.Gameplay.Combat
             while (true)
             {
                 // Calculate the number of struggle dice for the target
-                int num_struggle_dice = target.Character.NumStruggleDice;
+                int num_struggle_dice = GetNumStruggleDice(target.Character, target.CumulativeBuffs);
                 if (target.IsGrappling())
                     // If the target is being grappled, the pred should be more likely to overpower the prey
                     num_struggle_dice = Math.Max(1, num_struggle_dice - 2);
 
                 // Roll dice for this attack
-                List<int> attack_dice = RollGenericD6(instigator.Character.NumSwallowDice);
+                List<int> attack_dice = RollGenericD6(GetNumSwallowDice(instigator.Character, instigator.CumulativeBuffs));
                 List<int> defense_dice = RollGenericD6(num_struggle_dice);
                 int num_attacks = attack_dice.Sum();
                 int num_defense = defense_dice.Sum();
@@ -247,6 +267,10 @@ namespace Finmer.Gameplay.Combat
             {
                 var session = instigator.Session;
                 session.SetVored(instigator, target);
+
+                // Apply equipment effects
+                ProcEffectGroups(instigator, target, EquipEffectGroup.EProcStyle.WielderSwallowsPrey);
+                ProcEffectGroups(target, instigator, EquipEffectGroup.EProcStyle.WielderSwallowed);
             }
         }
 
@@ -273,6 +297,18 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Perform turn end for an otherwise active participant whose turn is being skipped.
+        /// </summary>
+        public static void PostStunTurn(Participant instigator)
+        {
+            // Show a quick message
+            CombatDisplay.ShowSimpleMessage(@"turn_stunned", instigator);
+
+            // Perform normal post-turn processing
+            PostTurn(instigator);
+        }
+
+        /// <summary>
         /// Perform any post-turn automatic actions or countdowns for a participant.
         /// </summary>
         public static void PostTurn(Participant participant)
@@ -295,7 +331,26 @@ namespace Finmer.Gameplay.Combat
                     }
             }
 
-            // TODO: Count down temporary buffs
+            // Apply health-over-time buffs now
+            int health_diff = participant.CumulativeBuffs.OfType<BuffHealthOverTime>().Sum(buff => buff.Delta);
+            participant.Character.Health += health_diff;
+            if (participant.Character.IsDead())
+                participant.Session.NotifyParticipantKilled(participant, null);
+
+            // Count down temporary buffs, iterating in reverse order so we can easily pop items from the end
+            bool has_buffs = participant.LocalBuffs.Any();
+            for (int i = participant.LocalBuffs.Count - 1; i >= 0; i--)
+            {
+                var container = participant.LocalBuffs[i];
+
+                // Decrease duration, and remove the buff if it expired
+                if (--container.RoundsLeft == 0)
+                    participant.LocalBuffs.RemoveAt(i);
+            }
+
+            // If the participant had any displayed buffs, they will have changed/expired now, so update UI
+            if (has_buffs)
+                participant.UpdateDisplay();
         }
 
         /// <summary>
@@ -368,12 +423,120 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
+        /// Evaluate and trigger all equipment effect groups of a particular type on the specified participant.
+        /// </summary>
+        /// <param name="owner">The character whose effect groups to evaluate.</param>
+        /// <param name="opponent">Last opponent to attack <paramref name="owner"/>. May be null. Used as target for some effects.</param>
+        /// <param name="proc">The category of effect groups to evaluate.</param>
+        public static void ProcEffectGroups([NotNull] Participant owner, [CanBeNull] Participant opponent, EquipEffectGroup.EProcStyle proc)
+        {
+            // Find all effect groups with a matching style
+            var eligible_groups = owner.Character.Equipment
+                .Where(item => item != null)
+                .SelectMany(item => item.Asset.EquipEffects);
+
+            // Evaluate each group
+            foreach (var group in eligible_groups)
+            {
+                // Check that the proc style matches the input trigger
+                if (group.ProcStyle != proc)
+                    continue;
+
+                // If the group has a random chance specified, roll for it
+                if (group.ProcChance < 1.0f && group.ProcChance < CoreUtility.Rng.NextDouble())
+                    continue;
+
+                // Find the target(s) of the group
+                var targets = new List<Participant>();
+                switch (group.ProcTarget)
+                {
+                    case EquipEffectGroup.EProcTarget.Self:
+                        targets.Add(owner);
+                        break;
+                    case EquipEffectGroup.EProcTarget.Opponent:
+                        if (opponent != null)
+                            targets.Add(opponent);
+                        break;
+                    case EquipEffectGroup.EProcTarget.AllAllies:
+                        targets.AddRange(owner.Session.Participants.Where(p => p.Character.IsAlly == owner.Character.IsAlly));
+                        break;
+                    case EquipEffectGroup.EProcTarget.AllOpponents:
+                        targets.AddRange(owner.Session.Participants.Where(p => p.Character.IsAlly != owner.Character.IsAlly));
+                        break;
+                }
+
+                // Apply all included buffs to all targets
+                foreach (var target in targets)
+                {
+                    foreach (var buff in group.Buffs)
+                        target.LocalBuffs.Add(new ActiveBuff
+                        {
+                            Effect = buff,
+                            RoundsLeft = group.Duration
+                        });
+
+                    target.UpdateDisplay();
+                }
+
+                // If a message is included, display it now
+                if (!String.IsNullOrWhiteSpace(group.ProcStringTableKey))
+                {
+                    // Pick overload depending on whether or not we have a relevant opponent
+                    if (opponent == null)
+                        CombatDisplay.ShowSimpleMessage(group.ProcStringTableKey, owner);
+                    else
+                        CombatDisplay.ShowSimpleMessage(group.ProcStringTableKey, owner, opponent);
+                }
+            }
+        }
+
+        /// <summary>
         /// Calculates and returns the amount of XP that the target character would award when defeated.
         /// </summary>
         public static int CalculateXP(Character victim)
         {
             // Start at 20 XP per kill, multiplying by log(n) for levels above 1
             return (int)Math.Round((Math.Log(victim.Level) + 1) * 20);
+        }
+
+        /// <summary>
+        /// Return the total number of Attack Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumAttackDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Strength + buffs.OfType<BuffAttackDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Defense Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumDefenseDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Agility + buffs.OfType<BuffDefenseDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Grapple Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumGrappleDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Strength + buffs.OfType<BuffGrappleDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Swallow Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumSwallowDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Body + buffs.OfType<BuffSwallowDice>().Sum(buff => buff.Delta), 1);
+        }
+
+        /// <summary>
+        /// Return the total number of Struggle Dice a character has in combat given the specified buff set.
+        /// </summary>
+        public static int GetNumStruggleDice(Character target, IEnumerable<Buff> buffs)
+        {
+            return Math.Max(target.Agility + buffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta), 1);
         }
 
         /// <summary>

@@ -18,24 +18,22 @@ namespace Finmer.Core.Buffs
     {
 
         /// <summary>
-        /// Describes how a buff affects the player.
+        /// Describes how this buff affects the player.
         /// </summary>
-        public enum EImpact
+        public abstract EBuffImpact GetImpact();
+
+        /// <summary>
+        /// Describes how to visually display this buff in-game.
+        /// </summary>
+        public virtual EBuffIcon GetIcon()
         {
-            Neutral,
-            Positive,
-            Negative
+            return EBuffIcon.Generic;
         }
 
         /// <summary>
-        /// Describes how this buff affects the player.
+        /// Gets a human-readable description of the buff, for display in-game and in the editor.
         /// </summary>
-        public abstract EImpact GetImpact();
-
-        /// <summary>
-        /// Gets an unlocalized human-readable description of the buff, for editor display.
-        /// </summary>
-        public abstract string GetEditorDescription();
+        public abstract string GetDescription();
 
         public virtual void Serialize(IFurballContentWriter outstream) {}
 

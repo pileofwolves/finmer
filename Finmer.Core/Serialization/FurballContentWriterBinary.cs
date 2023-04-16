@@ -17,7 +17,7 @@ namespace Finmer.Core.Serialization
     /// <summary>
     /// Implementation of an asset data writer that generates compact, binary package files.
     /// </summary>
-    internal sealed class FurballContentWriterBinary : IFurballContentWriter
+    public sealed class FurballContentWriterBinary : IFurballContentWriter
     {
 
         private readonly BinaryWriter m_Stream;

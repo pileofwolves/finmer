@@ -7,6 +7,8 @@
  */
 
 using System.Collections.Generic;
+using System.Linq;
+using Finmer.Core.Buffs;
 using Finmer.ViewModels;
 
 namespace Finmer.Gameplay.Combat
@@ -49,6 +51,17 @@ namespace Finmer.Gameplay.Combat
         public List<Participant> Prey { get; } = new List<Participant>();
 
         /// <summary>
+        /// Gets a collection of transient buffs that have been applied to this participant during this combat.
+        /// </summary>
+        public List<ActiveBuff> LocalBuffs { get; } = new List<ActiveBuff>();
+
+        /// <summary>
+        /// Gets a collection of all buffs active on this participant, including always-active equipment effects.
+        /// </summary>
+        public IEnumerable<Buff> CumulativeBuffs =>
+            LocalBuffs.Select(active => active.Effect).Concat(Character.AlwaysActiveBuffs);
+
+        /// <summary>
         /// Indicates whether the participant should not receive digestion damage this turn.
         /// </summary>
         public bool DigestionImmunity { get; set; } = false;
@@ -57,14 +70,6 @@ namespace Finmer.Gameplay.Combat
         {
             Character = character;
             Session = session;
-        }
-
-        /// <summary>
-        /// Indicates whether this participant can perform an action during the current turn.
-        /// </summary>
-        public bool CanAct()
-        {
-            return !Character.IsDead();
         }
 
         /// <summary>
@@ -97,6 +102,28 @@ namespace Finmer.Gameplay.Combat
         public void UpdateDisplay()
         {
             OnPropertyChanged();
+        }
+
+        /// <summary>
+        /// Apply this pending buff to an active combat participant.
+        /// </summary>
+        public void ApplyPendingBuff(PendingBuff config)
+        {
+            // Downed participants should not have any buffs
+            if (Character.IsDead())
+                return;
+
+            // Buffs that characters apply to themselves are extended by a turn, because that looks/feels more natural
+            int duration = config.Duration;
+            if (Session.WhoseTurn == this)
+                duration++;
+
+            // Copy buff to participant
+            LocalBuffs.Add(new ActiveBuff
+            {
+                Effect = config.Effect,
+                RoundsLeft = duration
+            });
         }
 
     }

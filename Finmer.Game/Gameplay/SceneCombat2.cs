@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Finmer.Core;
+using Finmer.Core.Buffs;
 using Finmer.Gameplay.Combat;
 using Finmer.Models;
 
@@ -422,6 +423,10 @@ namespace Finmer.Gameplay
                     // Make a copy of the participants list so it can be edited by combat callbacks etc
                     m_RoundParticipants = Session.Participants.ToArray();
                     m_RoundStepIndex = 0;
+
+                    // Activate per-round buffs
+                    foreach (var participant in m_RoundParticipants)
+                        CombatLogic.ProcEffectGroups(participant, null, EquipEffectGroup.EProcStyle.RoundStart);
                 }
 
                 // Step all participants
@@ -429,9 +434,20 @@ namespace Finmer.Gameplay
                 {
                     Participant participant = m_RoundParticipants[i];
 
-                    // Skip downed or immobilized participants
-                    if (!participant.CanAct())
+                    // Skip downed participants
+                    if (participant.Character.IsDead())
                         continue;
+
+                    // Skip immobilized participants, but do count down the buff
+                    if (participant.CumulativeBuffs.OfType<BuffStun>().Any())
+                    {
+                        // Make sure the player can select a new action next round (normally reset below)
+                        if (participant.IsPlayer())
+                            m_PlayerDecision = new CombatAction();
+
+                        CombatLogic.PostStunTurn(participant);
+                        continue;
+                    }
 
                     // Show this participant as having the turn
                     Session.WhoseTurn = participant;
@@ -441,6 +457,10 @@ namespace Finmer.Gameplay
                         // If the player has not yet selected an action, pause the round now and present UI
                         if (!m_PlayerDecision.IsValid())
                         {
+                            // Activate per-turn buffs now - for the player, we do this before presenting action selection UI,
+                            // because the activation of buffs could influence the player's decision this turn.
+                            CombatLogic.ProcEffectGroups(participant, null, EquipEffectGroup.EProcStyle.TurnStart);
+
                             // Save the step index so we can resume stepping the round once the player has selected an action
                             m_RoundStepIndex = i;
                             return;
@@ -454,6 +474,9 @@ namespace Finmer.Gameplay
                     }
                     else
                     {
+                        // Activate per-turn buffs
+                        CombatLogic.ProcEffectGroups(participant, null, EquipEffectGroup.EProcStyle.TurnStart);
+
                         // Run AI action
                         CombatAction decision = GetAIAction(participant);
                         StepParticipant(participant, decision.Action, decision.Target);

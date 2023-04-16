@@ -18,9 +18,55 @@ namespace Finmer.Core.Buffs
     public sealed class BuffHealth : SingleDeltaBuff
     {
 
-        public override string GetEditorDescription()
+        public override EBuffIcon GetIcon()
+        {
+            return EBuffIcon.HealingPerTurn;
+        }
+
+        public override string GetDescription()
         {
             return $"{Delta:+#;-#;0} Max Health";
+        }
+
+    }
+
+    /// <summary>
+    /// Modifies the current HP of a character each turn.
+    /// </summary>
+    public sealed class BuffHealthOverTime : SingleDeltaBuff
+    {
+
+        public override EBuffIcon GetIcon()
+        {
+            return Delta >= 0 ? EBuffIcon.HealingPerTurn : EBuffIcon.DamagePerTurn;
+        }
+
+        public override string GetDescription()
+        {
+            return $"{Delta:+#;-#;0} Health per Turn";
+        }
+
+    }
+
+    /// <summary>
+    /// Forces a character to skip combat turns.
+    /// </summary>
+    public sealed class BuffStun : Buff
+    {
+
+        public override EBuffIcon GetIcon()
+        {
+            return EBuffIcon.Stun;
+        }
+
+        public override EBuffImpact GetImpact()
+        {
+            return EBuffImpact.Negative;
+        }
+
+        public override string GetDescription()
+        {
+            return "Stunned (Skip Next Turn)";
         }
 
     }
@@ -36,12 +82,12 @@ namespace Finmer.Core.Buffs
         /// </summary>
         public string TooltipText { get; set; } = String.Empty;
 
-        public override EImpact GetImpact()
+        public override EBuffImpact GetImpact()
         {
-            return EImpact.Neutral;
+            return EBuffImpact.Neutral;
         }
 
-        public override string GetEditorDescription()
+        public override string GetDescription()
         {
             return $"Custom Text: \"{TooltipText}\"";
         }

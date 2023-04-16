@@ -80,7 +80,7 @@
             Command="{Binding ViewCharacterSheetCommand}">
             <Button.Content>
                 <Image
-                    Source="/Finmer;component/Resources/UI/HUDJournal.png"
+                    Source="/Finmer;component/Resources/UI/HUDCharSheet.png"
                     SnapsToDevicePixels="True"
                     Margin="0,-2,0,0"
                     Stretch="None" />

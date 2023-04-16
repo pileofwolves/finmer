@@ -9,15 +9,25 @@
 	"IsQuestItem": false,
 	"IsConsumable": true,
 	"CanUseInField": true,
-	"CanUseInBattle": false,
+	"CanUseInBattle": true,
 	"UseDescription": "When used, relieves fatigue and heightens awareness, greatly improving chances of resisting predators. Cannot, however, help escape once already swallowed.",
 	"UseScript": {
 		"!Type": "AssetScript",
 		"AssetID": "011a16bb-4308-40a8-b218-ce5b788c28c1",
 		"AssetName": "U_PotionDigestResist_Use",
 		"Contents": {
-			"!Type": "ScriptDataExternal",
-			"Name": "U_PotionDigestResist_Use"
+			"!Type": "ScriptDataVisualAction",
+			"Nodes": [
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffStruggleDice",
+						"Delta": 2
+					},
+					"Duration": 5
+				}
+			]
 		},
 		"LoadOrder": []
 	}

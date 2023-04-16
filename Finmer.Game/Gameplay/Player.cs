@@ -457,7 +457,7 @@ namespace Finmer.Gameplay
                 if (player_participant != null)
                 {
                     // If found, apply buff directly
-                    buff.Apply(player_participant);
+                    player_participant.ApplyPendingBuff(buff);
                     return 0;
                 }
             }

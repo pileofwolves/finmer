@@ -104,6 +104,28 @@ namespace Finmer.Gameplay.Combat
             OnPropertyChanged();
         }
 
+        /// <summary>
+        /// Apply this pending buff to an active combat participant.
+        /// </summary>
+        public void ApplyPendingBuff(PendingBuff config)
+        {
+            // Downed participants should not have any buffs
+            if (Character.IsDead())
+                return;
+
+            // Buffs that characters apply to themselves are extended by a turn, because that looks/feels more natural
+            int duration = config.Duration;
+            if (Session.WhoseTurn == this)
+                duration++;
+
+            // Copy buff to participant
+            LocalBuffs.Add(new ActiveBuff
+            {
+                Effect = config.Effect,
+                RoundsLeft = duration
+            });
+        }
+
     }
 
 }

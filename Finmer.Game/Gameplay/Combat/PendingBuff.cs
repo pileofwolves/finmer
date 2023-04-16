@@ -52,23 +52,6 @@ namespace Finmer.Gameplay.Combat
             Duration = Math.Max(input.GetInt(SaveData.k_PendingBuff_Duration, 1), 1);
         }
 
-        /// <summary>
-        /// Apply this pending buff to an active combat participant.
-        /// </summary>
-        public void Apply(Participant target)
-        {
-            // Downed participants should not have any buffs
-            if (target.Character.IsDead())
-                return;
-
-            // Copy buff to participant
-            target.LocalBuffs.Add(new ActiveBuff
-            {
-                Effect = Effect,
-                RoundsLeft = Duration
-            });
-        }
-
     }
 
 }

@@ -93,7 +93,7 @@ namespace Finmer.Gameplay.Combat
             if (character is Player player)
             {
                 foreach (var pending in player.PendingBuffs)
-                    pending.Apply(participant);
+                    participant.ApplyPendingBuff(pending);
                 player.PendingBuffs.Clear();
             }
         }
@@ -369,7 +369,7 @@ namespace Finmer.Gameplay.Combat
             var buff = FromLuaNonOptional<PendingBuff>(state, 3);
 
             // Add the buff to the participant
-            buff.Apply(participant);
+            participant.ApplyPendingBuff( buff);
 
             return 1;
         }

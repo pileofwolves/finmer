@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Windows.Forms;
 using Finmer.Core.Buffs;
 
@@ -22,6 +23,24 @@ namespace Finmer.Editor
         /// The buff object that is being edited by this form.
         /// </summary>
         public Buff BuffInstance { get; set; }
+
+        /// <summary>
+        /// Instantiates an appropriate buff editing form for the specified buff object.
+        /// </summary>
+        public static BaseEffectEditor CreateBuffEditor(Buff buff)
+        {
+            switch (buff)
+            {
+                case SingleDeltaBuff _:
+                    return new FormEffectEditorSingleDelta();
+
+                case BuffCustomTooltipText _:
+                    return new FormEffectEditorCustomText();
+
+                default:
+                    return null;
+            }
+        }
 
     }
 

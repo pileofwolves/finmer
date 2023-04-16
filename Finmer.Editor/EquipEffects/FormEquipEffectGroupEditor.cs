@@ -122,21 +122,6 @@ namespace Finmer.Editor
             AddBuff(new BuffStun());
         }
 
-        private static BaseEffectEditor CreateEquipEffectEditor(Buff buff)
-        {
-            switch (buff)
-            {
-                case SingleDeltaBuff _:
-                    return new FormEffectEditorSingleDelta();
-
-                case BuffCustomTooltipText _:
-                    return new FormEffectEditorCustomText();
-
-                default:
-                    throw new ArgumentException(nameof(buff));
-            }
-        }
-
         private void EditSelectedBuff()
         {
             // Validate that there actually is a selection to edit
@@ -146,8 +131,12 @@ namespace Finmer.Editor
             // Edit the Buff object associated with the selected row
             var item = lsvBuffs.SelectedItems[0];
             var buff = (Buff)item.Tag;
-            using (var form = CreateEquipEffectEditor(buff))
+            using (var form = BaseEffectEditor.CreateBuffEditor(buff))
             {
+                // Some buffs have no editable properties
+                if (form == null)
+                    return;
+
                 // Make a copy of the buff, so the editor form can edit it safely
                 form.BuffInstance = AssetSerializer.DuplicateAsset(buff);
 

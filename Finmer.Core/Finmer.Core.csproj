@@ -100,6 +100,7 @@
     <Compile Include="StringTable.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandCombatApplyBuff.cs" />
     <Compile Include="VisualScripting\Nodes\CommandPreysense.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetGrappled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetVored.cs" />

@@ -9,6 +9,7 @@
 using System;
 using System.Windows.Forms;
 using Finmer.Core.Buffs;
+using Finmer.Core.Serialization;
 
 namespace Finmer.Editor
 {
@@ -29,17 +30,19 @@ namespace Finmer.Editor
         /// </summary>
         public static BaseEffectEditor CreateBuffEditor(Buff buff)
         {
+            // Create a matching editor form
+            BaseEffectEditor form;
             switch (buff)
             {
-                case SingleDeltaBuff _:
-                    return new FormEffectEditorSingleDelta();
-
-                case BuffCustomTooltipText _:
-                    return new FormEffectEditorCustomText();
-
-                default:
-                    return null;
+                case SingleDeltaBuff _:             form = new FormEffectEditorSingleDelta();       break;
+                case BuffCustomTooltipText _:       form = new FormEffectEditorCustomText();        break;
+                default:                            return null;
             }
+
+            // Make a copy of the buff, so the editor form can edit it safely
+            form.BuffInstance = AssetSerializer.DuplicateAsset(buff);
+
+            return form;
         }
 
     }

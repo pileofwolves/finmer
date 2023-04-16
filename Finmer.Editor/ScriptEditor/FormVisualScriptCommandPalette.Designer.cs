@@ -80,6 +80,7 @@ namespace Finmer.Editor
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdCombatApplyBuff = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
@@ -539,6 +540,7 @@ namespace Finmer.Editor
             // 
             // groupBox10
             // 
+            groupBox10.Controls.Add(this.cmdCombatApplyBuff);
             groupBox10.Controls.Add(this.cmdCombatPreysense);
             groupBox10.Controls.Add(this.cmdCombatSetGrappled);
             groupBox10.Controls.Add(this.cmdCombatSetVored);
@@ -546,37 +548,37 @@ namespace Finmer.Editor
             groupBox10.Controls.Add(this.cmdCombatBegin);
             groupBox10.Location = new System.Drawing.Point(240, 344);
             groupBox10.Name = "groupBox10";
-            groupBox10.Size = new System.Drawing.Size(208, 160);
+            groupBox10.Size = new System.Drawing.Size(208, 184);
             groupBox10.TabIndex = 4;
             groupBox10.TabStop = false;
             groupBox10.Text = "Combat";
             // 
             // cmdCombatPreysense
             // 
-            this.cmdCombatPreysense.Location = new System.Drawing.Point(16, 120);
+            this.cmdCombatPreysense.Location = new System.Drawing.Point(16, 144);
             this.cmdCombatPreysense.Name = "cmdCombatPreysense";
             this.cmdCombatPreysense.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatPreysense.TabIndex = 4;
+            this.cmdCombatPreysense.TabIndex = 5;
             this.cmdCombatPreysense.Text = "Show Preysense";
             this.cmdCombatPreysense.UseVisualStyleBackColor = true;
             this.cmdCombatPreysense.Click += new System.EventHandler(this.cmdCombatPreysense_Click);
             // 
             // cmdCombatSetGrappled
             // 
-            this.cmdCombatSetGrappled.Location = new System.Drawing.Point(16, 96);
+            this.cmdCombatSetGrappled.Location = new System.Drawing.Point(16, 120);
             this.cmdCombatSetGrappled.Name = "cmdCombatSetGrappled";
             this.cmdCombatSetGrappled.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatSetGrappled.TabIndex = 3;
+            this.cmdCombatSetGrappled.TabIndex = 4;
             this.cmdCombatSetGrappled.Text = "Set Participants Grappling";
             this.cmdCombatSetGrappled.UseVisualStyleBackColor = true;
             this.cmdCombatSetGrappled.Click += new System.EventHandler(this.cmdCombatSetGrappled_Click);
             // 
             // cmdCombatSetVored
             // 
-            this.cmdCombatSetVored.Location = new System.Drawing.Point(16, 72);
+            this.cmdCombatSetVored.Location = new System.Drawing.Point(16, 96);
             this.cmdCombatSetVored.Name = "cmdCombatSetVored";
             this.cmdCombatSetVored.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatSetVored.TabIndex = 2;
+            this.cmdCombatSetVored.TabIndex = 3;
             this.cmdCombatSetVored.Text = "Set Participants Swallowed";
             this.cmdCombatSetVored.UseVisualStyleBackColor = true;
             this.cmdCombatSetVored.Click += new System.EventHandler(this.cmdCombatSetVored_Click);
@@ -645,6 +647,16 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
+            // 
+            // cmdCombatApplyBuff
+            // 
+            this.cmdCombatApplyBuff.Location = new System.Drawing.Point(16, 72);
+            this.cmdCombatApplyBuff.Name = "cmdCombatApplyBuff";
+            this.cmdCombatApplyBuff.Size = new System.Drawing.Size(176, 24);
+            this.cmdCombatApplyBuff.TabIndex = 2;
+            this.cmdCombatApplyBuff.Text = "Apply Buff";
+            this.cmdCombatApplyBuff.UseVisualStyleBackColor = true;
+            this.cmdCombatApplyBuff.Click += new System.EventHandler(this.cmdCombatApplyBuff_Click);
             // 
             // FormVisualScriptCommandPalette
             // 
@@ -727,5 +739,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCombatSetGrappled;
         private System.Windows.Forms.Button cmdCombatSetVored;
         private System.Windows.Forms.Button cmdCombatPreysense;
+        private System.Windows.Forms.Button cmdCombatApplyBuff;
     }
 }

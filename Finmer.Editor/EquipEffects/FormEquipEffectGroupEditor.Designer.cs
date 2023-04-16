@@ -59,11 +59,11 @@ namespace Finmer.Editor
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectStatMaxHP = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuEffectStatHPOverTime = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripMenuItem3 = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectStun = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuEffectCustomText = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuEffectStatHPOverTime = new System.Windows.Forms.ToolStripMenuItem();
-            this.stunSkipTurnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             label3 = new System.Windows.Forms.Label();
@@ -327,8 +327,8 @@ namespace Finmer.Editor
             this.mnuEffectStatMaxHP,
             this.mnuEffectStatHPOverTime,
             this.toolStripSeparator2,
+            this.toolStripMenuItem3,
             this.mnuEffectStun,
-            this.stunSkipTurnToolStripMenuItem,
             this.mnuEffectCustomText});
             this.mnuBuffAdd.Name = "mnuEquipEffectAdd";
             this.mnuBuffAdd.Size = new System.Drawing.Size(181, 302);
@@ -394,25 +394,6 @@ namespace Finmer.Editor
             this.mnuEffectStatMaxHP.Text = "Max Health";
             this.mnuEffectStatMaxHP.Click += new System.EventHandler(this.mnuEffectStatHP_Click);
             // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
-            // 
-            // mnuEffectStun
-            // 
-            this.mnuEffectStun.Enabled = false;
-            this.mnuEffectStun.Name = "mnuEffectStun";
-            this.mnuEffectStun.Size = new System.Drawing.Size(180, 22);
-            this.mnuEffectStun.Text = "Misc:";
-            // 
-            // mnuEffectCustomText
-            // 
-            this.mnuEffectCustomText.Name = "mnuEffectCustomText";
-            this.mnuEffectCustomText.Size = new System.Drawing.Size(180, 22);
-            this.mnuEffectCustomText.Text = "Custom Text";
-            this.mnuEffectCustomText.Click += new System.EventHandler(this.mnuEffectCustomText_Click);
-            // 
             // mnuEffectStatHPOverTime
             // 
             this.mnuEffectStatHPOverTime.Name = "mnuEffectStatHPOverTime";
@@ -420,12 +401,31 @@ namespace Finmer.Editor
             this.mnuEffectStatHPOverTime.Text = "Health over Time";
             this.mnuEffectStatHPOverTime.Click += new System.EventHandler(this.mnuEffectStatHPOverTime_Click);
             // 
-            // stunSkipTurnToolStripMenuItem
+            // toolStripSeparator2
             // 
-            this.stunSkipTurnToolStripMenuItem.Name = "stunSkipTurnToolStripMenuItem";
-            this.stunSkipTurnToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.stunSkipTurnToolStripMenuItem.Text = "Stun (Skip Turn)";
-            this.stunSkipTurnToolStripMenuItem.Click += new System.EventHandler(this.stunSkipTurnToolStripMenuItem_Click);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(177, 6);
+            // 
+            // toolStripMenuItem3
+            // 
+            this.toolStripMenuItem3.Enabled = false;
+            this.toolStripMenuItem3.Name = "toolStripMenuItem3";
+            this.toolStripMenuItem3.Size = new System.Drawing.Size(180, 22);
+            this.toolStripMenuItem3.Text = "Misc:";
+            // 
+            // mnuEffectStun
+            // 
+            this.mnuEffectStun.Name = "mnuEffectStun";
+            this.mnuEffectStun.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectStun.Text = "Stun (Skip Turn)";
+            this.mnuEffectStun.Click += new System.EventHandler(this.mnuEffectStun_Click);
+            // 
+            // mnuEffectCustomText
+            // 
+            this.mnuEffectCustomText.Name = "mnuEffectCustomText";
+            this.mnuEffectCustomText.Size = new System.Drawing.Size(180, 22);
+            this.mnuEffectCustomText.Text = "Custom Text";
+            this.mnuEffectCustomText.Click += new System.EventHandler(this.mnuEffectCustomText_Click);
             // 
             // FormEquipEffectGroupEditor
             // 
@@ -481,10 +481,10 @@ namespace Finmer.Editor
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem mnuEffectStatMaxHP;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem mnuEffectStun;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem3;
         private System.Windows.Forms.ToolStripMenuItem mnuEffectCustomText;
         private System.Windows.Forms.ComboBox cmbProcTarget;
         private System.Windows.Forms.ToolStripMenuItem mnuEffectStatHPOverTime;
-        private System.Windows.Forms.ToolStripMenuItem stunSkipTurnToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mnuEffectStun;
     }
 }

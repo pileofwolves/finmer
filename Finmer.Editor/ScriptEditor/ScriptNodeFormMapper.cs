@@ -41,6 +41,7 @@ namespace Finmer.Editor
             { typeof(CommandPlayerAddAP),           () => new FormScriptCmdPlayerAddAP() },
             { typeof(CommandSetScene),              () => new FormScriptCmdSetScene() },
             { typeof(CommandPreysense),             () => new FormScriptCmdPreysense() },
+            { typeof(CommandCombatApplyBuff),       () => new FormScriptCmdCombatApplyBuff() },
             { typeof(CommandCombatBegin),           () => new FormScriptCmdCombatBegin() },
             { typeof(CommandCombatSetVored),        () => new FormScriptCmdCombatSetVored() },
             { typeof(CommandCombatSetGrappled),     () => new FormScriptCmdCombatSetGrappled() },

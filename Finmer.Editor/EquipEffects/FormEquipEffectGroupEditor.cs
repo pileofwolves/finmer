@@ -117,7 +117,7 @@ namespace Finmer.Editor
             AddBuff(new BuffCustomTooltipText());
         }
 
-        private void stunSkipTurnToolStripMenuItem_Click(object sender, EventArgs e)
+        private void mnuEffectStun_Click(object sender, EventArgs e)
         {
             AddBuff(new BuffStun());
         }
@@ -136,9 +136,6 @@ namespace Finmer.Editor
                 // Some buffs have no editable properties
                 if (form == null)
                     return;
-
-                // Make a copy of the buff, so the editor form can edit it safely
-                form.BuffInstance = AssetSerializer.DuplicateAsset(buff);
 
                 // Save result only if user clicked OK
                 if (form.ShowDialog() != DialogResult.OK)

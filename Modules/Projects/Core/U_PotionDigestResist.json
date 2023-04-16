@@ -26,6 +26,15 @@
 						"Delta": 2
 					},
 					"Duration": 5
+				},
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffGrappleDice",
+						"Delta": 2
+					},
+					"Duration": 5
 				}
 			]
 		},

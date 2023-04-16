@@ -441,6 +441,10 @@ namespace Finmer.Gameplay
                     // Skip immobilized participants, but do count down the buff
                     if (participant.CumulativeBuffs.OfType<BuffStun>().Any())
                     {
+                        // Make sure the player can select a new action next round (normally reset below)
+                        if (participant.IsPlayer())
+                            m_PlayerDecision = new CombatAction();
+
                         CombatLogic.PostStunTurn(participant);
                         continue;
                     }

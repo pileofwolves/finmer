@@ -1,1 +1,0 @@
-Player.StruggleFatigue = -5

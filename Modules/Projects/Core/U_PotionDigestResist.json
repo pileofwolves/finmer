@@ -10,7 +10,7 @@
 	"IsConsumable": true,
 	"CanUseInField": true,
 	"CanUseInBattle": true,
-	"UseDescription": "When used, relieves fatigue and heightens awareness, greatly improving chances of resisting predators. Cannot, however, help escape once already swallowed.",
+	"UseDescription": "Grants +2 Grapple Dice and +2 Struggle Dice for 5 turns, greatly improving chances of resisting predators. Cannot, however, help escape once already swallowed.",
 	"UseScript": {
 		"!Type": "AssetScript",
 		"AssetID": "011a16bb-4308-40a8-b218-ce5b788c28c1",

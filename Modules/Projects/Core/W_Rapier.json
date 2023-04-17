@@ -9,8 +9,14 @@
 	"EquipSlot": "Weapon",
 	"EquipEffects": [
 		{
-			"!Type": "BuffAttackDice",
-			"Delta": 1
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": 1
+				}
+			]
 		}
 	],
 	"PurchaseValue": 30,

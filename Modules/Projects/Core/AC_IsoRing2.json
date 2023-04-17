@@ -8,8 +8,14 @@
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
 		{
-			"!Type": "BuffCustomTooltipText",
-			"TooltipText": "When in the woods near North Finmer, reveals the path to the Adept's home."
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffCustomTooltipText",
+					"TooltipText": "When in the woods near North Finmer, reveals the path to the Adept's home."
+				}
+			]
 		}
 	],
 	"PurchaseValue": 0,

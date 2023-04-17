@@ -7,8 +7,14 @@
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
 		{
-			"!Type": "BuffDefenseDice",
-			"Delta": 1
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 1
+				}
+			]
 		}
 	],
 	"PurchaseValue": 0,

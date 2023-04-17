@@ -8,24 +8,30 @@
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
 		{
-			"!Type": "BuffAttackDice",
-			"Delta": 5
-		},
-		{
-			"!Type": "BuffDefenseDice",
-			"Delta": 5
-		},
-		{
-			"!Type": "BuffGrappleDice",
-			"Delta": 5
-		},
-		{
-			"!Type": "BuffSwallowDice",
-			"Delta": 5
-		},
-		{
-			"!Type": "BuffStruggleDice",
-			"Delta": 5
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": 5
+				},
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 5
+				},
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": 5
+				},
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": 5
+				},
+				{
+					"!Type": "BuffStruggleDice",
+					"Delta": 5
+				}
+			]
 		}
 	],
 	"PurchaseValue": 0,

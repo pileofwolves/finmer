@@ -8,8 +8,14 @@
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
 		{
-			"!Type": "BuffCustomTooltipText",
-			"TooltipText": "?????"
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffCustomTooltipText",
+					"TooltipText": "?????"
+				}
+			]
 		}
 	],
 	"PurchaseValue": 0,

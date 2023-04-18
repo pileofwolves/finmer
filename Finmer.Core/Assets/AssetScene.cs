@@ -127,50 +127,17 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream, version);
 
             // Read scene scripts
-            if (version >= 16)
-            {
-                ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
-                ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
-                ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
+            ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
+            ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
+            ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
 
-                // Assign script names
-                if (ScriptCustom != null)
-                    ScriptCustom.Name = Name + "_Custom";
-                if (ScriptEnter != null)
-                    ScriptEnter.Name = Name + "_Enter";
-                if (ScriptLeave != null)
-                    ScriptLeave.Name = Name + "_Leave";
-            }
-            else
-            {
-                // V15 backwards compatibility
-                instream.BeginObject("ScriptCustom");
-                {
-                    instream.ReadGuidProperty("ID"); // Skip property
-                    ScriptCustom = new ScriptDataExternal();
-                    ScriptCustom.Deserialize(instream, version);
-                }
-                instream.EndObject();
-                instream.BeginObject("ScriptEnter");
-                {
-                    instream.ReadGuidProperty("ID"); // Skip property
-                    ScriptEnter = new ScriptDataExternal();
-                    ScriptEnter.Deserialize(instream, version);
-                }
-                instream.EndObject();
-                instream.BeginObject("ScriptLeave");
-                {
-                    instream.ReadGuidProperty("ID"); // Skip property
-                    ScriptLeave = new ScriptDataExternal();
-                    ScriptLeave.Deserialize(instream, version);
-                }
-                instream.EndObject();
-
-                // Update script names to new standards
+            // Assign script names
+            if (ScriptCustom != null)
                 ScriptCustom.Name = Name + "_Custom";
+            if (ScriptEnter != null)
                 ScriptEnter.Name = Name + "_Enter";
+            if (ScriptLeave != null)
                 ScriptLeave.Name = Name + "_Leave";
-            }
 
             // Read modding/injection settings
             IsPatch = instream.ReadBooleanProperty(nameof(IsPatch));
@@ -186,10 +153,6 @@ namespace Finmer.Core.Assets
             Root = new SceneNode();
             Root.Deserialize(instream, version);
             instream.EndObject();
-
-            // From V17 up, the root node should be patched to be its own special type
-            if (version < 17)
-                Root.NodeType = ENodeType.Root;
         }
 
         /// <summary>
@@ -370,11 +333,7 @@ namespace Finmer.Core.Assets
 
             public void Deserialize(IFurballContentReader instream, int version)
             {
-                // Backwards-compatible deserialization functions are split, to maintain readability
-                if (version >= 17)
                     DeserializeV17OrHigher(instream, version);
-                else
-                    DeserializeV16OrLower(instream, version);
             }
 
             private void DeserializeV17OrHigher(IFurballContentReader instream, int version)
@@ -432,91 +391,6 @@ namespace Finmer.Core.Assets
                 }
 
                 if (read_children)
-                {
-                    // Recursively deserialize child nodes
-                    Children.Clear();
-                    for (int child_count = instream.BeginArray(nameof(Children)); child_count > 0; child_count--)
-                    {
-                        instream.BeginObject();
-                        {
-                            // Read this child node
-                            var child = new SceneNode();
-                            child.Deserialize(instream, version);
-                            child.Parent = this;
-                            Children.Add(child);
-                        }
-                        instream.EndObject();
-                    }
-                    instream.EndArray();
-                }
-            }
-
-            private void DeserializeV16OrLower(IFurballContentReader instream, int version)
-            {
-                Key = instream.ReadStringProperty(nameof(Key));
-                bool is_state = instream.ReadBooleanProperty("IsState");
-                bool is_link = instream.ReadBooleanProperty("IsLink");
-                if (is_link)
-                    NodeType = ENodeType.Link;
-                else if (is_state)
-                    NodeType = ENodeType.State;
-                else
-                    NodeType = ENodeType.Choice;
-
-                // Choice node settings
-                if (NodeType == ENodeType.Choice)
-                {
-                    Title = instream.ReadStringProperty(nameof(Title));
-                    Tooltip = instream.ReadStringProperty(nameof(Tooltip));
-                    Highlight = instream.ReadBooleanProperty(nameof(Highlight));
-                    ButtonWidth = instream.ReadFloatProperty(nameof(ButtonWidth));
-                }
-
-                // Link node settings
-                if (NodeType == ENodeType.Link)
-                {
-                    LinkTarget = instream.ReadStringProperty(nameof(LinkTarget));
-                }
-                // Generic node settings
-                else
-                {
-                    if (version >= 16)
-                    {
-                        ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
-                        ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
-
-                        // Assign script names
-                        if (ScriptAction != null)
-                            ScriptAction.Name = Key + "/Actions";
-                        if (ScriptAppear != null)
-                            ScriptAppear.Name = Key + "/AppearsWhen";
-                    }
-                    else
-                    {
-                        // V15 backwards compatibility: convert raw strings to inline script objects
-                        var text = instream.ReadStringProperty(nameof(ScriptAction));
-                        if (!String.IsNullOrEmpty(text))
-                        {
-                            ScriptAction = new ScriptDataInline
-                            {
-                                Name = Key + "/Actions",
-                                ScriptText = text
-                            };
-                        }
-                        text = instream.ReadStringProperty(nameof(ScriptAppear));
-                        if (!String.IsNullOrEmpty(text))
-                        {
-                            ScriptAppear = new ScriptDataInline
-                            {
-                                Name = Key + "/AppearsWhen",
-                                ScriptText = text
-                            };
-                        }
-                    }
-                }
-
-                // Links do not have child nodes as of version 15
-                if (version <= 14 || NodeType != ENodeType.Link)
                 {
                     // Recursively deserialize child nodes
                     Children.Clear();

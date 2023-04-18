@@ -55,42 +55,24 @@ namespace Finmer.Core.Assets
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             base.Deserialize(instream, version);
+            // Read script data
+            Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
+            if (Contents != null)
+                Contents.Name = Name;
 
-            if (version >= 16)
+            // Read load order
+            LoadOrder.Clear();
+            for (int i = 0, c = instream.BeginArray(nameof(LoadOrder)); i < c; i++)
             {
-                // Read script data
-                Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
-                if (Contents != null)
-                    Contents.Name = Name;
-
-                // Read load order
-                if (version >= 18)
+                instream.BeginObject();
+                LoadOrder.Add(new LoadOrderDependency
                 {
-                    LoadOrder.Clear();
-                    for (int i = 0, c = instream.BeginArray(nameof(LoadOrder)); i < c; i++)
-                    {
-                        instream.BeginObject();
-                        LoadOrder.Add(new LoadOrderDependency
-                        {
-                            TargetAsset = instream.ReadGuidProperty(nameof(LoadOrderDependency.TargetAsset)),
-                            Relation = instream.ReadEnumProperty<LoadOrderDependency.ERelation>(nameof(LoadOrderDependency.Relation)),
-                        });
-                        instream.EndObject();
-                    }
-                    instream.EndArray();
-                }
+                    TargetAsset = instream.ReadGuidProperty(nameof(LoadOrderDependency.TargetAsset)),
+                    Relation = instream.ReadEnumProperty<LoadOrderDependency.ERelation>(nameof(LoadOrderDependency.Relation)),
+                });
+                instream.EndObject();
             }
-            else
-            {
-                // V15 backwards compatibility
-                Contents = new ScriptDataExternal
-                {
-                    Name = Name
-                };
-                Contents.Deserialize(instream, version);
-            }
+            instream.EndArray();
         }
-
     }
-
 }

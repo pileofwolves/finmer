@@ -47,16 +47,8 @@ namespace Finmer.Core.Assets
         /// </summary>
         public virtual void Deserialize(IFurballContentReader instream, int version)
         {
-            if (version >= 16)
-            {
                 ID = instream.ReadGuidProperty(@"AssetID");
                 Name = instream.ReadStringProperty(@"AssetName");
-            }
-            else
-            {
-                ID = instream.ReadGuidProperty(@"ID");
-                Name = instream.ReadStringProperty(@"Name");
-            }
         }
 
     }

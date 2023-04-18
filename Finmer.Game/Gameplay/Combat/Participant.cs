@@ -105,25 +105,34 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
-        /// Apply this pending buff to an active combat participant.
+        /// Apply a new buff to this participant.
         /// </summary>
-        public void ApplyPendingBuff(PendingBuff config)
+        /// <param name="effect">Buff to apply.</param>
+        /// <param name="duration">Effect duration in rounds.</param>
+        public void ApplyBuff(Buff effect, int duration)
         {
             // Downed participants should not have any buffs
             if (Character.IsDead())
                 return;
 
             // Buffs that characters apply to themselves are extended by a turn, because that looks/feels more natural
-            int duration = config.Duration;
             if (Session.WhoseTurn == this)
                 duration++;
 
             // Copy buff to participant
             LocalBuffs.Add(new ActiveBuff
             {
-                Effect = config.Effect,
+                Effect = effect,
                 RoundsLeft = duration
             });
+        }
+
+        /// <summary>
+        /// Apply a script-configured buff to this participant.
+        /// </summary>
+        public void ApplyPendingBuff(PendingBuff config)
+        {
+            ApplyBuff(config.Effect, config.Duration);
         }
 
     }

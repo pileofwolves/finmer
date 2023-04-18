@@ -469,11 +469,7 @@ namespace Finmer.Gameplay.Combat
                 foreach (var target in targets)
                 {
                     foreach (var buff in group.Buffs)
-                        target.LocalBuffs.Add(new ActiveBuff
-                        {
-                            Effect = buff,
-                            RoundsLeft = group.Duration
-                        });
+                        target.ApplyBuff(buff, group.Duration);
 
                     target.UpdateDisplay();
                 }

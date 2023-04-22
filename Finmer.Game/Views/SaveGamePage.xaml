@@ -63,7 +63,7 @@
                 Content="{Binding Save1Text}"
                 Command="{Binding SaveCommand}">
                 <Button.CommandParameter>
-                    <sys:Int32>0</sys:Int32>
+                    <gp:ESaveSlot>Manual1</gp:ESaveSlot>
                 </Button.CommandParameter>
             </Button>
             <Button
@@ -71,7 +71,7 @@
                 Content="{Binding Save2Text}"
                 Command="{Binding SaveCommand}">
                 <Button.CommandParameter>
-                    <sys:Int32>1</sys:Int32>
+                    <gp:ESaveSlot>Manual2</gp:ESaveSlot>
                 </Button.CommandParameter>
             </Button>
             <Button
@@ -79,7 +79,7 @@
                 Content="{Binding Save3Text}"
                 Command="{Binding SaveCommand}">
                 <Button.CommandParameter>
-                    <sys:Int32>2</sys:Int32>
+                    <gp:ESaveSlot>Manual3</gp:ESaveSlot>
                 </Button.CommandParameter>
             </Button>
 

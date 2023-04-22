@@ -67,7 +67,7 @@ namespace Finmer.ViewModels
         public string Save3Text { get; }
 
         private bool m_IsConfirmPopupOpen;
-        private int m_SelectedSlot;
+        private ESaveSlot m_SelectedSlot;
         private ICommand m_PopupConfirmCommand;
         private ICommand m_SaveCommand;
         private ICommand m_CloseCommand;
@@ -75,25 +75,25 @@ namespace Finmer.ViewModels
         public SavePageViewModel()
         {
             // Cache headings for all save slots
-            var slot = SaveManager.GetSaveInfo(0);
-            Save1Text = slot.IsLoadable ? slot.Info : "Empty";
+            var slot = SaveManager.GetSlotInfo(ESaveSlot.Manual1);
+            Save1Text = slot.IsLoadable ? slot.Label : "Empty";
 
-            slot = SaveManager.GetSaveInfo(1);
-            Save2Text = slot.IsLoadable ? slot.Info : "Empty";
+            slot = SaveManager.GetSlotInfo(ESaveSlot.Manual2);
+            Save2Text = slot.IsLoadable ? slot.Label : "Empty";
 
-            slot = SaveManager.GetSaveInfo(2);
-            Save3Text = slot.IsLoadable ? slot.Info : "Empty";
+            slot = SaveManager.GetSlotInfo(ESaveSlot.Manual3);
+            Save3Text = slot.IsLoadable ? slot.Label : "Empty";
         }
 
         private void OnSaveCommand(object arg)
         {
-            m_SelectedSlot = (int)arg;
+            m_SelectedSlot = (ESaveSlot)arg;
 
             // Find the save slot associated with the index
-            SaveManager.SaveSlot slot = SaveManager.GetSaveInfo(m_SelectedSlot);
+            SaveManager.SlotInfo info = SaveManager.GetSlotInfo(m_SelectedSlot);
 
             // If no save data exists in this slot yet, there's nothing to overwrite, so just save
-            if (!slot.IsLoadable)
+            if (!info.IsLoadable)
             {
                 OnSaveConfirm(arg);
                 return;
@@ -113,7 +113,7 @@ namespace Finmer.ViewModels
             try
             {
                 // Save it to disk
-                SaveManager.Save(m_SelectedSlot, snapshot);
+                SaveManager.WriteSnapshot(m_SelectedSlot, snapshot);
                 GameUI.Instance.Log("Game saved!", Theme.LogColorLightGray);
             }
             catch (UnauthorizedAccessException)

@@ -71,9 +71,9 @@ namespace Finmer.ViewModels
         public TitlePageViewModel()
         {
             // Cache descriptions for all save data slots
-            Save1Text = SaveManager.GetSaveInfo(0).Info;
-            Save2Text = SaveManager.GetSaveInfo(1).Info;
-            Save3Text = SaveManager.GetSaveInfo(2).Info;
+            Save1Text = SaveManager.GetSlotInfo(ESaveSlot.Manual1).Label;
+            Save2Text = SaveManager.GetSlotInfo(ESaveSlot.Manual2).Label;
+            Save3Text = SaveManager.GetSlotInfo(ESaveSlot.Manual3).Label;
         }
 
         private static void OnNewGame(object args)
@@ -96,13 +96,13 @@ namespace Finmer.ViewModels
 
         private static void OnLoadGame(object args)
         {
-            int slot_index = (int)args;
+            ESaveSlot slot = (ESaveSlot)args;
             GameSnapshot snapshot;
 
             try
             {
                 // Read the stored save data
-                snapshot = SaveManager.LoadSaveFile(slot_index);
+                snapshot = SaveManager.ReadSnapshot(slot);
             }
             catch (Exception ex)
             {
@@ -121,8 +121,8 @@ namespace Finmer.ViewModels
         private static bool CanLoadGame(object args)
         {
             // Game can be loaded if the slot contains valid save data
-            int slot_index = (int)args;
-            return SaveManager.GetSaveInfo(slot_index).IsLoadable;
+            ESaveSlot slot = (ESaveSlot)args;
+            return SaveManager.GetSlotInfo(slot).IsLoadable;
         }
 
         private static void OnOptions(object args)

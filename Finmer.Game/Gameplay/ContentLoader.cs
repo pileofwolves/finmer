@@ -38,8 +38,8 @@ namespace Finmer.Gameplay
             CompileScenePatches();
             CompileScenes();
 
-            // Touch all save slots, to cache their header information
-            SaveManager.CacheSlots();
+            // Cache the headers of all save slots
+            SaveManager.RefreshSlots();
         }
 
         /// <summary>

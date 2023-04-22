@@ -4,7 +4,6 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-    xmlns:system="clr-namespace:System;assembly=mscorlib"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
@@ -18,7 +17,7 @@
             <Setter Property="Height" Value="40" />
         </Style>
         <Style x:Key="TitleSaveDataButton" TargetType="Button" BasedOn="{StaticResource TitleButton}">
-            <Setter Property="Height" Value="64" />
+            <Setter Property="Height" Value="56" />
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -155,10 +154,18 @@
                     </StackPanel.Triggers>
                     <Button
                         Style="{StaticResource TitleSaveDataButton}"
+                        Content="Load Last Checkpoint"
+                        Command="{Binding LoadGameCommand}">
+                        <Button.CommandParameter>
+                            <gp:ESaveSlot>Checkpoint</gp:ESaveSlot>
+                        </Button.CommandParameter>
+                    </Button>
+                    <Button
+                        Style="{StaticResource TitleSaveDataButton}"
                         Content="{Binding Save1Text}"
                         Command="{Binding LoadGameCommand}">
                         <Button.CommandParameter>
-                            <system:Int32>0</system:Int32>
+                            <gp:ESaveSlot>Manual1</gp:ESaveSlot>
                         </Button.CommandParameter>
                     </Button>
                     <Button
@@ -166,7 +173,7 @@
                         Content="{Binding Save2Text}"
                         Command="{Binding LoadGameCommand}">
                         <Button.CommandParameter>
-                            <system:Int32>1</system:Int32>
+                            <gp:ESaveSlot>Manual2</gp:ESaveSlot>
                         </Button.CommandParameter>
                     </Button>
                     <Button
@@ -174,7 +181,7 @@
                         Content="{Binding Save3Text}"
                         Command="{Binding LoadGameCommand}">
                         <Button.CommandParameter>
-                            <system:Int32>2</system:Int32>
+                            <gp:ESaveSlot>Manual3</gp:ESaveSlot>
                         </Button.CommandParameter>
                     </Button>
                 </StackPanel>

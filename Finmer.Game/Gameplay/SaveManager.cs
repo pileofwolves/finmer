@@ -16,14 +16,26 @@ namespace Finmer.Gameplay
 {
 
     /// <summary>
+    /// Identifies a slot for storing save data.
+    /// </summary>
+    public enum ESaveSlot : byte
+    {
+        Checkpoint = 0,
+        Manual1 = 1,
+        Manual2 = 2,
+        Manual3 = 3,
+        _Count
+    }
+
+    /// <summary>
     /// Manages the saving and loading of save files.
     /// </summary>
     public static class SaveManager
     {
 
-        private const int k_SlotCount = 3;
+        private const int k_SlotCount = (int)ESaveSlot._Count;
 
-        private static readonly SaveSlot[] s_Slots = new SaveSlot[k_SlotCount];
+        private static readonly SlotInfo[] s_Slots = new SlotInfo[k_SlotCount];
         private static readonly Guid k_CoreModuleID = new Guid("edcf99d2-6ced-40fa-87e9-86cda5e570ee");
 
         /// <summary>
@@ -34,23 +46,23 @@ namespace Finmer.Gameplay
             GameController.LoadedModules.Any(meta => meta.ID != k_CoreModuleID);
 
         /// <summary>
-        /// Preload the contents of all save slots, for display. This performs disk access and is therefore slow.
+        /// Refresh the cached save slot info by reading save data headers from disk.
         /// </summary>
-        public static void CacheSlots()
+        public static void RefreshSlots()
         {
             for (var index = 0; index < k_SlotCount; index++)
-                s_Slots[index] = CacheSlot(index);
+                s_Slots[index] = ReadSlotInfo((ESaveSlot)index);
         }
 
         /// <summary>
-        /// Returns the save data stored in the specified slot, or null if none exists.
+        /// Returns the save data stored in the specified slot.
         /// </summary>
-        /// <param name="slot">The save slot index (zero-based).</param>
-        /// <exception cref="IOException">Throws if save file could not be read.</exception>
-        /// <exception cref="InvalidDataException">Throws if save file is invalid.</exception>
-        public static GameSnapshot LoadSaveFile(int slot)
+        /// <param name="slot">The save slot index.</param>
+        /// <exception cref="IOException">Throws if a filesystem error occurs.</exception>
+        /// <exception cref="InvalidSaveDataException">Throws if save file is unreadable.</exception>
+        public static GameSnapshot ReadSnapshot(ESaveSlot slot)
         {
-            string filename = GetSaveFileName(slot);
+            string filename = GetSlotFileName(slot);
             using (var file = new FileStream(filename, FileMode.Open))
             {
                 using (var reader = new BinaryReader(file, Encoding.UTF8, true))
@@ -58,17 +70,17 @@ namespace Finmer.Gameplay
                     // Verify version
                     byte version = reader.ReadByte();
                     if (version != SaveData.k_FileVersion)
-                        throw new InvalidDataException("Incompatible save version " + version);
+                        throw new InvalidSaveDataException("Incompatible save version " + version);
 
-                    // Skip the header, which will have been validated by CacheSlot().
+                    // Skip the header, which will have been validated by ReadSlotInfo().
                     reader.ReadString();
                     int num_modules = reader.ReadInt32();
                     reader.ReadBytes(num_modules * 16);
 
                     // Deserialize stream
-                    var player_data = PropertyBag.FromStream(reader);
-                    var scene_data = PropertyBag.FromStream(reader);
-                    var ui_data = PropertyBag.FromStream(reader);
+                    PropertyBag player_data = PropertyBag.FromStream(reader);
+                    PropertyBag scene_data = PropertyBag.FromStream(reader);
+                    PropertyBag ui_data = PropertyBag.FromStream(reader);
                     return new GameSnapshot(player_data, scene_data, ui_data);
                 }
             }
@@ -81,17 +93,17 @@ namespace Finmer.Gameplay
         /// <param name="snapshot">The <seealso cref="PropertyBag" /> containing the save data.</param>
         /// <exception cref="IOException">Throws if file writing fails.</exception>
         /// <exception cref="UnauthorizedAccessException">Throws if filesystem write access was denied.</exception>
-        public static void Save(int slot, GameSnapshot snapshot)
+        public static void WriteSnapshot(ESaveSlot slot, GameSnapshot snapshot)
         {
             // Create save file
-            string filename = GetSaveFileName(slot);
+            string filename = GetSlotFileName(slot);
             string description;
             using (var file = new FileStream(filename, FileMode.Create))
             {
                 using (var writer = new BinaryWriter(file, Encoding.UTF8, true))
                 {
                     // Write the save version, and the short save info, as header
-                    description = DescribeSaveFile(snapshot);
+                    description = GetSnapshotDescription(snapshot);
                     writer.Write(SaveData.k_FileVersion);
                     writer.Write(description);
 
@@ -108,32 +120,33 @@ namespace Finmer.Gameplay
             }
 
             // Overwrite the cached version of the slot so it's displayed correctly in UI
-            s_Slots[slot].Info = description;
-            s_Slots[slot].IsLoadable = true;
+            s_Slots[(int)slot] = new SlotInfo
+            {
+                Label = description,
+                IsLoadable = true
+            };
         }
 
         /// <summary>
         /// Returns a string describing a saved game.
         /// </summary>
-        /// <param name="index">The save slot index (zero-based).</param>
-        public static SaveSlot GetSaveInfo(int index)
+        public static SlotInfo GetSlotInfo(ESaveSlot slot)
         {
-            SaveSlot slot = s_Slots[index];
-            return slot;
+            return s_Slots[(int)slot];
         }
 
         /// <summary>
-        /// Preload the contents of a single save slot, so it can be displayed.
+        /// Read the header of a save slot, or returns an invalid slot if empty/corrupt.
         /// </summary>
-        private static SaveSlot CacheSlot(int index)
+        private static SlotInfo ReadSlotInfo(ESaveSlot slot)
         {
             try
             {
-                string filename = GetSaveFileName(index);
+                string filename = GetSlotFileName(slot);
 
                 // Slot may be empty
                 if (!File.Exists(filename))
-                    return new SaveSlot("Empty");
+                    return new SlotInfo("Empty");
 
                 // Read the save file header
                 using (var file = new FileStream(filename, FileMode.Open))
@@ -143,13 +156,13 @@ namespace Finmer.Gameplay
                         // Check version number
                         byte version = reader.ReadByte();
                         if (version != SaveData.k_FileVersion)
-                            return new SaveSlot($"Incompatible save version:\r\nfile is v{version}, but expected v{SaveData.k_FileVersion}");
+                            return new SlotInfo($"Incompatible save version:\r\nfile is v{version}, but expected v{SaveData.k_FileVersion}");
 
                         // Obtain the info string
-                        var slot = new SaveSlot
+                        var info = new SlotInfo
                         {
                             IsLoadable = true,
-                            Info = reader.ReadString()
+                            Label = reader.ReadString()
                         };
 
                         // Check if all modules used by this save are loaded
@@ -159,32 +172,31 @@ namespace Finmer.Gameplay
                             // Get the ID of the module and verify that it's loaded
                             var guid = new Guid(reader.ReadBytes(16));
                             if (GameController.LoadedModules.All(module => module.ID != guid))
-                                return new SaveSlot("Missing required module:\r\n" + guid);
+                                return new SlotInfo("Missing required module:\r\n" + guid);
 
                             num_modules--;
                         }
 
-                        return slot;
+                        return info;
                     }
                 }
             }
             catch (Exception ex)
             {
                 // In case of any I/O issues, assume file is corrupted
-                return new SaveSlot("Read error: " + ex.Message);
+                return new SlotInfo("Read error: " + ex.Message);
             }
         }
 
         /// <summary>
         /// Returns a string describing a saved game.
         /// </summary>
-        /// <param name="snapshot">The <seealso cref="Player" /> to check.</param>
-        private static string DescribeSaveFile(GameSnapshot snapshot)
+        private static string GetSnapshotDescription(GameSnapshot snapshot)
         {
             var text = new StringBuilder();
 
             // Describe the player data
-            var player = snapshot.PlayerData;
+            PropertyBag player = snapshot.PlayerData;
             text.AppendFormat("{0}{1}  -  Lv {2} {3}",
                 IsModdedGame ? "[M] " : String.Empty,
                 player.GetString(SaveData.k_Object_Name),
@@ -201,21 +213,21 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Generate a file name for the specified save slot index.
         /// </summary>
-        private static string GetSaveFileName(int slot)
+        private static string GetSlotFileName(ESaveSlot slot)
         {
-            return $"Slot{slot}.sav";
+            return $"Slot{(int)slot}.sav";
         }
 
         /// <summary>
         /// Represents a save slot.
         /// </summary>
-        public struct SaveSlot
+        public struct SlotInfo
         {
 
-            public SaveSlot(string errorMessage)
+            public SlotInfo(string errorMessage)
             {
                 IsLoadable = false;
-                Info = errorMessage;
+                Label = errorMessage;
             }
 
             /// <summary>
@@ -226,10 +238,9 @@ namespace Finmer.Gameplay
             /// <summary>
             /// A human-readable string describing the contents of this save slot, or a relevant read error.
             /// </summary>
-            public string Info { get; set; }
+            public string Label { get; set; }
 
         }
-
     }
 
 }

@@ -77,10 +77,10 @@ namespace Finmer.ViewModels
         {
             // Cache descriptions for all save data slots
             var checkpoint = SaveManager.GetSlotInfo(ESaveSlot.Checkpoint);
-            SaveCheckpointText = checkpoint.IsLoadable ? checkpoint.Label : "Last Checkpoint";
-            Save1Text = SaveManager.GetSlotInfo(ESaveSlot.Manual1).Label;
-            Save2Text = SaveManager.GetSlotInfo(ESaveSlot.Manual2).Label;
-            Save3Text = SaveManager.GetSlotInfo(ESaveSlot.Manual3).Label;
+            SaveCheckpointText = checkpoint.IsLoadable ? checkpoint.Description : "Last Checkpoint";
+            Save1Text = SaveManager.GetSlotInfo(ESaveSlot.Manual1).Description;
+            Save2Text = SaveManager.GetSlotInfo(ESaveSlot.Manual2).Description;
+            Save3Text = SaveManager.GetSlotInfo(ESaveSlot.Manual3).Description;
         }
 
         private static void OnNewGame(object args)

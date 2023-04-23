@@ -122,7 +122,7 @@ namespace Finmer.Gameplay
             // Overwrite the cached version of the slot so it's displayed correctly in UI
             s_Slots[(int)slot] = new SlotInfo
             {
-                Label = description,
+                Description = description,
                 IsLoadable = true
             };
         }
@@ -146,7 +146,7 @@ namespace Finmer.Gameplay
 
                 // Slot may be empty
                 if (!File.Exists(filename))
-                    return new SlotInfo("Empty");
+                    return new SlotInfo("Empty Slot");
 
                 // Read the save file header
                 using (var file = new FileStream(filename, FileMode.Open))
@@ -162,7 +162,7 @@ namespace Finmer.Gameplay
                         var info = new SlotInfo
                         {
                             IsLoadable = true,
-                            Label = reader.ReadString()
+                            Description = reader.ReadString()
                         };
 
                         // Check if all modules used by this save are loaded
@@ -172,7 +172,7 @@ namespace Finmer.Gameplay
                             // Get the ID of the module and verify that it's loaded
                             var guid = new Guid(reader.ReadBytes(16));
                             if (GameController.LoadedModules.All(module => module.ID != guid))
-                                return new SlotInfo("Missing required module:\r\n" + guid);
+                                return new SlotInfo($"Missing required module:\r\nID {guid.ToString().Substring(0, 8)}");
 
                             num_modules--;
                         }
@@ -227,7 +227,7 @@ namespace Finmer.Gameplay
             public SlotInfo(string errorMessage)
             {
                 IsLoadable = false;
-                Label = errorMessage;
+                Description = errorMessage;
             }
 
             /// <summary>
@@ -238,7 +238,7 @@ namespace Finmer.Gameplay
             /// <summary>
             /// A human-readable string describing the contents of this save slot, or a relevant read error.
             /// </summary>
-            public string Label { get; set; }
+            public string Description { get; set; }
 
         }
     }

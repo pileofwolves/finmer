@@ -75,14 +75,9 @@ namespace Finmer.ViewModels
         public SavePageViewModel()
         {
             // Cache headings for all save slots
-            var slot = SaveManager.GetSlotInfo(ESaveSlot.Manual1);
-            Save1Text = slot.IsLoadable ? slot.Label : "Empty";
-
-            slot = SaveManager.GetSlotInfo(ESaveSlot.Manual2);
-            Save2Text = slot.IsLoadable ? slot.Label : "Empty";
-
-            slot = SaveManager.GetSlotInfo(ESaveSlot.Manual3);
-            Save3Text = slot.IsLoadable ? slot.Label : "Empty";
+            Save1Text = SaveManager.GetSlotInfo(ESaveSlot.Manual1).Description;
+            Save2Text = SaveManager.GetSlotInfo(ESaveSlot.Manual2).Description;
+            Save3Text = SaveManager.GetSlotInfo(ESaveSlot.Manual3).Description;
         }
 
         private void OnSaveCommand(object arg)

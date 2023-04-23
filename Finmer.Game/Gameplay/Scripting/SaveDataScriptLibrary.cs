@@ -73,16 +73,26 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedTakeCheckpoint(IntPtr state)
         {
-            // Note: Making a checkpoint is always allowed, even when restoring save data, since a newly created
-            // GameSession does not inherit its predecessor's GameSnapshot, so we have to make a new one anyway.
+            // Ignore save data requests if we're restarting a game, since capturing the same checkpoint again is pointless
+            if (GameController.Session.IsRestoringGame)
+                return 0;
 
-            // Update the cached checkpoint for the current session
-            var session = GameController.Session;
-            session.LastCheckpoint = session.CaptureSnapshot();
+            // Take a snapshot of the session and save it to the checkpoint save slot
+            var snapshot = GameController.Session.CaptureSnapshot();
+            try
+            {
+                // Write the save data to disk
+                SaveManager.WriteSnapshot(ESaveSlot.Checkpoint, snapshot);
+            }
+            catch (Exception ex)
+            {
+                // Display an error
+                GameUI.Instance.Log($"An error occurred while writing save data: {ex.Message} ({ex.GetType().Name})", Theme.LogColorError);
+                return 0;
+            }
 
-            // Notify the user
+            // All done
             GameUI.Instance.Log("Checkpoint reached.", Theme.LogColorLightGray);
-
             return 0;
         }
 

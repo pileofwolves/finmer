@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Windows.Input;
 using Finmer.Gameplay;
 using Finmer.Utility;
@@ -35,8 +36,20 @@ namespace Finmer.ViewModels
 
         private void OnReloadCheckpoint(object args)
         {
-            // Grab the last checkpoint
-            var checkpoint = GameController.Session.LastCheckpoint;
+            // Load the checkpoint from disk
+            GameSnapshot checkpoint;
+            try
+            {
+                checkpoint = SaveManager.ReadSnapshot(ESaveSlot.Checkpoint);
+            }
+            catch (Exception ex)
+            {
+                GameController.Window.OpenPopup(new SimpleMessageDialog
+                {
+                    Message = $"Could not load checkpoint save data: {ex.Message} ({ex.GetType().Name})"
+                });
+                return;
+            }
 
             // Navigate to a new copy of the main page, to ensure a clean visual break and to easily reset all UI
             NavigationUtilities.BeginSessionAndNavigate(checkpoint);
@@ -44,8 +57,7 @@ namespace Finmer.ViewModels
 
         private bool CanReloadCheckpoint(object args)
         {
-            // Note: Session may be null in the XAML designer
-            return GameController.Session?.LastCheckpoint != null;
+            return SaveManager.GetSlotInfo(ESaveSlot.Checkpoint).IsLoadable;
         }
 
         private void OnReturnToMenu(object args)

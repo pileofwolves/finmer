@@ -61,11 +61,6 @@ namespace Finmer.Gameplay
         public CompassController Compass { get; }
 
         /// <summary>
-        /// The last checkpoint that was captured during this game, or null if unavailable.
-        /// </summary>
-        public GameSnapshot LastCheckpoint { get; set; }
-
-        /// <summary>
         /// Indicates whether this session has not yet completed a full turn cycle (i.e. the game is being started).
         /// </summary>
         public bool IsRestoringGame { get; private set; } = true;

@@ -7,17 +7,40 @@
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:cv="clr-namespace:Finmer.Converters"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:TitlePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cv:SaveSlotLabelConverter x:Key="SaveSlotLabelConverter" />
         <Style x:Key="TitleButton" TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
             <Setter Property="Margin" Value="4" />
             <Setter Property="Height" Value="40" />
         </Style>
         <Style x:Key="TitleSaveDataButton" TargetType="Button" BasedOn="{StaticResource TitleButton}">
             <Setter Property="Height" Value="56" />
+            <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+            <Setter Property="VerticalContentAlignment" Value="Stretch" />
+            <Setter Property="ContentTemplate">
+                <Setter.Value>
+                    <DataTemplate>
+                        <!-- Save slot contents text in the center, ID label in the corner -->
+                        <Grid Margin="3">
+                            <TextBlock
+                                Text="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button},
+                                    Path=CommandParameter, Converter={StaticResource SaveSlotLabelConverter}}"
+                                HorizontalAlignment="Right"
+                                VerticalAlignment="Top" />
+                            <TextBlock
+                                Text="{Binding}"
+                                TextAlignment="Center"
+                                HorizontalAlignment="Center"
+                                VerticalAlignment="Center" />
+                        </Grid>
+                    </DataTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </UserControl.Resources>
     <Grid>
@@ -154,7 +177,7 @@
                     </StackPanel.Triggers>
                     <Button
                         Style="{StaticResource TitleSaveDataButton}"
-                        Content="Load Last Checkpoint"
+                        Content="{Binding SaveCheckpointText}"
                         Command="{Binding LoadGameCommand}">
                         <Button.CommandParameter>
                             <gp:ESaveSlot>Checkpoint</gp:ESaveSlot>

@@ -71,6 +71,7 @@
     <Compile Include="Converters\CharSheetItemUseConverter.cs" />
     <Compile Include="Converters\HourToClockAngleConverter.cs" />
     <Compile Include="Converters\CountToListConverter.cs" />
+    <Compile Include="Converters\SaveSlotLabelConverter.cs" />
     <Compile Include="Converters\ShopStackQuantityVisibilityConverter.cs" />
     <Compile Include="Converters\DieFaceToImageConverter.cs" />
     <Compile Include="Converters\ShopItemSellValueConverter.cs" />

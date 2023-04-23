@@ -49,6 +49,11 @@ namespace Finmer.ViewModels
         public string VersionNumber => CompileConstants.k_VersionString;
 
         /// <summary>
+        /// Save data description for the checkpoint save slot.
+        /// </summary>
+        public string SaveCheckpointText { get; }
+
+        /// <summary>
         /// Save data description for save slot 1.
         /// </summary>
         public string Save1Text { get; }
@@ -71,6 +76,8 @@ namespace Finmer.ViewModels
         public TitlePageViewModel()
         {
             // Cache descriptions for all save data slots
+            var checkpoint = SaveManager.GetSlotInfo(ESaveSlot.Checkpoint);
+            SaveCheckpointText = checkpoint.IsLoadable ? checkpoint.Label : "Last Checkpoint";
             Save1Text = SaveManager.GetSlotInfo(ESaveSlot.Manual1).Label;
             Save2Text = SaveManager.GetSlotInfo(ESaveSlot.Manual2).Label;
             Save3Text = SaveManager.GetSlotInfo(ESaveSlot.Manual3).Label;

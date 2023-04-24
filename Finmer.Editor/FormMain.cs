@@ -657,7 +657,7 @@ namespace Finmer.Editor
             {
                 FileName = EditorPreferences.ExecutablePath,
                 WorkingDirectory = EditorPreferences.ExecutableWorkingDirectory,
-                Arguments = "-debug",
+                Arguments = "-dev",
                 UseShellExecute = false
             };
 

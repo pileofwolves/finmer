@@ -48,7 +48,7 @@ namespace Finmer.Views
             }
 
             // When debugging, apply default settings to enable quickly clicking through to the game
-            if (GameController.DebugMode && String.IsNullOrWhiteSpace(NameInput.Text))
+            if (GameController.IsDevModeEnabled && String.IsNullOrWhiteSpace(NameInput.Text))
                 NameInput.Text = "Snack";
         }
 

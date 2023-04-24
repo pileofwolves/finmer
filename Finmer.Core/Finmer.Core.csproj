@@ -141,7 +141,7 @@
     <Compile Include="VisualScripting\Nodes\CommandVarSetString.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionIsExplorerEnabled.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionIsDisposalEnabled.cs" />
-    <Compile Include="VisualScripting\Nodes\ConditionIsDebugMode.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionIsDevModeEnabled.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatActive.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParDead.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParGrappling.cs" />

@@ -100,7 +100,7 @@ namespace Finmer.Views
         private void txtConsole_KeyDown(object sender, KeyEventArgs e)
         {
             // Safeguard: must be in debug mode to be able to do this
-            if (!GameController.DebugMode)
+            if (!GameController.IsDevModeEnabled)
                 return;
 
             // Activate when pressing Enter
@@ -139,7 +139,7 @@ namespace Finmer.Views
             DoubleAnimation anim_slide;
 
             // Speed up animations when debugging
-            if (GameController.DebugMode)
+            if (GameController.IsDevModeEnabled)
             {
                 length = new Duration(TimeSpan.FromSeconds(0.05));
                 delay = 0.0;

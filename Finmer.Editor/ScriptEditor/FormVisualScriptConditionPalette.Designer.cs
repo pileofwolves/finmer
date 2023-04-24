@@ -49,10 +49,10 @@ namespace Finmer.Editor
             this.cmdCombatGrappling = new System.Windows.Forms.Button();
             this.cmdCombatSwallowed = new System.Windows.Forms.Button();
             this.cmdCombatDead = new System.Windows.Forms.Button();
-            this.cmdCancel = new System.Windows.Forms.Button();
-            this.cmdSystemExplorer = new System.Windows.Forms.Button();
+            this.cmdSystemDevMode = new System.Windows.Forms.Button();
             this.cmdSystemDisposal = new System.Windows.Forms.Button();
-            this.cmdSystemDebug = new System.Windows.Forms.Button();
+            this.cmdSystemExplorer = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
@@ -266,6 +266,48 @@ namespace Finmer.Editor
             this.cmdCombatDead.UseVisualStyleBackColor = true;
             this.cmdCombatDead.Click += new System.EventHandler(this.cmdCombatDead_Click);
             // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(this.cmdSystemDevMode);
+            groupBox1.Controls.Add(this.cmdSystemDisposal);
+            groupBox1.Controls.Add(this.cmdSystemExplorer);
+            groupBox1.Location = new System.Drawing.Point(16, 240);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new System.Drawing.Size(208, 112);
+            groupBox1.TabIndex = 1;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "System";
+            // 
+            // cmdSystemDevMode
+            // 
+            this.cmdSystemDevMode.Location = new System.Drawing.Point(16, 72);
+            this.cmdSystemDevMode.Name = "cmdSystemDevMode";
+            this.cmdSystemDevMode.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemDevMode.TabIndex = 2;
+            this.cmdSystemDevMode.Text = "Is Dev Mode Enabled";
+            this.cmdSystemDevMode.UseVisualStyleBackColor = true;
+            this.cmdSystemDevMode.Click += new System.EventHandler(this.cmdSystemDevMode_Click);
+            // 
+            // cmdSystemDisposal
+            // 
+            this.cmdSystemDisposal.Location = new System.Drawing.Point(16, 48);
+            this.cmdSystemDisposal.Name = "cmdSystemDisposal";
+            this.cmdSystemDisposal.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemDisposal.TabIndex = 1;
+            this.cmdSystemDisposal.Text = "Is Explicit Disposal Enabled";
+            this.cmdSystemDisposal.UseVisualStyleBackColor = true;
+            this.cmdSystemDisposal.Click += new System.EventHandler(this.cmdSystemDisposal_Click);
+            // 
+            // cmdSystemExplorer
+            // 
+            this.cmdSystemExplorer.Location = new System.Drawing.Point(16, 24);
+            this.cmdSystemExplorer.Name = "cmdSystemExplorer";
+            this.cmdSystemExplorer.Size = new System.Drawing.Size(176, 24);
+            this.cmdSystemExplorer.TabIndex = 0;
+            this.cmdSystemExplorer.Text = "Is Explorer Mode Enabled";
+            this.cmdSystemExplorer.UseVisualStyleBackColor = true;
+            this.cmdSystemExplorer.Click += new System.EventHandler(this.cmdSystemExplorer_Click);
+            // 
             // cmdCancel
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -279,48 +321,6 @@ namespace Finmer.Editor
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
-            // 
-            // groupBox1
-            // 
-            groupBox1.Controls.Add(this.cmdSystemDebug);
-            groupBox1.Controls.Add(this.cmdSystemDisposal);
-            groupBox1.Controls.Add(this.cmdSystemExplorer);
-            groupBox1.Location = new System.Drawing.Point(16, 240);
-            groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(208, 112);
-            groupBox1.TabIndex = 1;
-            groupBox1.TabStop = false;
-            groupBox1.Text = "System";
-            // 
-            // cmdSystemExplorer
-            // 
-            this.cmdSystemExplorer.Location = new System.Drawing.Point(16, 24);
-            this.cmdSystemExplorer.Name = "cmdSystemExplorer";
-            this.cmdSystemExplorer.Size = new System.Drawing.Size(176, 24);
-            this.cmdSystemExplorer.TabIndex = 0;
-            this.cmdSystemExplorer.Text = "Is Explorer Mode Enabled";
-            this.cmdSystemExplorer.UseVisualStyleBackColor = true;
-            this.cmdSystemExplorer.Click += new System.EventHandler(this.cmdSystemExplorer_Click);
-            // 
-            // cmdSystemDisposal
-            // 
-            this.cmdSystemDisposal.Location = new System.Drawing.Point(16, 48);
-            this.cmdSystemDisposal.Name = "cmdSystemDisposal";
-            this.cmdSystemDisposal.Size = new System.Drawing.Size(176, 24);
-            this.cmdSystemDisposal.TabIndex = 1;
-            this.cmdSystemDisposal.Text = "Is Explicit Disposal Enabled";
-            this.cmdSystemDisposal.UseVisualStyleBackColor = true;
-            this.cmdSystemDisposal.Click += new System.EventHandler(this.cmdSystemDisposal_Click);
-            // 
-            // cmdSystemDebug
-            // 
-            this.cmdSystemDebug.Location = new System.Drawing.Point(16, 72);
-            this.cmdSystemDebug.Name = "cmdSystemDebug";
-            this.cmdSystemDebug.Size = new System.Drawing.Size(176, 24);
-            this.cmdSystemDebug.TabIndex = 2;
-            this.cmdSystemDebug.Text = "Is Debug Mode";
-            this.cmdSystemDebug.UseVisualStyleBackColor = true;
-            this.cmdSystemDebug.Click += new System.EventHandler(this.cmdSystemDebug_Click);
             // 
             // FormVisualScriptConditionPalette
             // 
@@ -368,7 +368,7 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCombatGrappling;
         private System.Windows.Forms.Button cmdCombatSwallowed;
         private System.Windows.Forms.Button cmdCombatDead;
-        private System.Windows.Forms.Button cmdSystemDebug;
+        private System.Windows.Forms.Button cmdSystemDevMode;
         private System.Windows.Forms.Button cmdSystemDisposal;
         private System.Windows.Forms.Button cmdSystemExplorer;
     }

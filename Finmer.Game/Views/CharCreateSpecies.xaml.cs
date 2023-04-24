@@ -37,7 +37,7 @@ namespace Finmer.Views
             if (String.IsNullOrWhiteSpace(InitialSaveData.GetString(SaveData.k_Player_SpeciesSingular)))
             {
                 // If no species has been selected yet, pick a random one
-                if (GameController.DebugMode)
+                if (GameController.IsDevModeEnabled)
                     PresetInput.SelectedIndex = CoreUtility.Rng.Next(PresetInput.Items.Count);
             }
             else

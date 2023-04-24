@@ -59,7 +59,7 @@ namespace Finmer.Views
             m_Abilities[3].Reset(InitialSaveData.GetInt(SaveData.k_Character_Wits));
 
             // In debug mode, roll random stats when the page opens, to allow quickly clicking through to the game
-            if (GameController.DebugMode)
+            if (GameController.IsDevModeEnabled)
                 ButtonRandomize_Click(sender, e);
 
             m_Setup = false;

@@ -39,9 +39,9 @@ namespace Finmer.Gameplay
         public static GameSession Session { get; private set; }
 
         /// <summary>
-        /// Gets or sets whether debug mode is enabled, which allows various development tools to be shown and used.
+        /// Gets or sets whether developer mode is enabled, which allows various development tools to be shown and used.
         /// </summary>
-        public static bool DebugMode { get; set; }
+        public static bool IsDevModeEnabled { get; set; }
 
         /// <summary>
         /// Activate a new GameSession using the provided save data.

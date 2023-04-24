@@ -27,7 +27,7 @@ namespace Finmer
 
             // For the regular player experience, maximize the window. We avoid this in debug mode because it
             // can get in the way a little bit when rapidly iterating.
-            if (!GameController.DebugMode && WindowState == WindowState.Normal)
+            if (!GameController.IsDevModeEnabled && WindowState == WindowState.Normal)
                 WindowState = WindowState.Maximized;
         }
 

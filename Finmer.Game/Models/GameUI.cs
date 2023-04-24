@@ -122,7 +122,7 @@ namespace Finmer.Models
         /// <summary>
         /// Gets or sets whether the script console can be opened at all.
         /// </summary>
-        public bool IsScriptConsoleEnabled => GameController.DebugMode;
+        public bool IsScriptConsoleEnabled => GameController.IsDevModeEnabled;
 
         /// <summary>
         /// Gets or sets whether the combat system is currently active.

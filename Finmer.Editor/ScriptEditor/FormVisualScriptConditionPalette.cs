@@ -143,9 +143,9 @@ namespace Finmer.Editor
             AddScriptNode(new ConditionIsDisposalEnabled());
         }
 
-        private void cmdSystemDebug_Click(object sender, System.EventArgs e)
+        private void cmdSystemDevMode_Click(object sender, System.EventArgs e)
         {
-            AddScriptNode(new ConditionIsDebugMode());
+            AddScriptNode(new ConditionIsDevModeEnabled());
         }
 
     }

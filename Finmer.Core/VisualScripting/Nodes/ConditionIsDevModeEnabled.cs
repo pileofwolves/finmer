@@ -15,12 +15,12 @@ namespace Finmer.Core.VisualScripting.Nodes
     /// <summary>
     /// Script condition that checks game settings.
     /// </summary>
-    public sealed class ConditionIsDebugMode : ScriptCondition
+    public sealed class ConditionIsDevModeEnabled : ScriptCondition
     {
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Is Debug Mode";
+            return "Is Dev Mode Enabled";
         }
 
         public override EColor GetEditorColor()
@@ -30,7 +30,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
-            output.Append("IsDebugMode()");
+            output.Append("IsDevModeEnabled()");
         }
 
     }

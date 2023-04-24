@@ -32,14 +32,14 @@ namespace Finmer
 
 #if DEBUG
             // Enable development mode by default when running a debug build
-            GameController.DebugMode = !e.Args.Contains("-nodebug");
+            GameController.IsDevModeEnabled = !e.Args.Contains("-nodev");
 #else
             // Install exception handler, for logging crashes. We only do this in non-Debug builds, to ensure that
             // when debugging the debugger gets the first chance at the exception without having it muddled by the handler.
             AppDomain.CurrentDomain.UnhandledException += Program_UnhandledException;
 
             // Enable development mode if requested by user (or the editor)
-            GameController.DebugMode = e.Args.Contains("-debug");
+            GameController.IsDevModeEnabled = e.Args.Contains("-dev");
 #endif
 
             // Load script runtime

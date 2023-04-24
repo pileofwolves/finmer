@@ -105,7 +105,7 @@
                         <Button
                             Grid.Column="1"
                             Style="{StaticResource TitleButton}"
-                            Visibility="{Binding Source={x:Static Member=gp:GameController.DebugMode}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                            Visibility="{Binding Source={x:Static Member=gp:GameController.IsDevModeEnabled}, Converter={StaticResource BooleanToVisibilityConverter}}"
                             Command="{Binding QuickStartCommand}"
                             ToolTip="Dev Mode: Start a new game using the last character created"
                             Content="Quick Start" />

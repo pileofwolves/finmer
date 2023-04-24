@@ -46,7 +46,8 @@ namespace Finmer.Gameplay.Scripting
             context.RegisterGlobalFunction("print", ExportedPrint);
 
             // Misc global utilities
-            context.RegisterGlobalFunction("IsDebugMode", ExportedIsDebugMode);
+            context.RegisterGlobalFunction("IsDevModeEnabled", ExportedIsDevModeEnabled);
+            context.RegisterGlobalFunction("IsDebugMode", ExportedIsDevModeEnabled); // BC
             context.RegisterGlobalFunction("Sleep", ExportedSleep);
         }
 
@@ -81,9 +82,9 @@ namespace Finmer.Gameplay.Scripting
             return 0;
         }
 
-        private static int ExportedIsDebugMode(IntPtr L)
+        private static int ExportedIsDevModeEnabled(IntPtr L)
         {
-            lua_pushboolean(L, GameController.DebugMode);
+            lua_pushboolean(L, GameController.IsDevModeEnabled);
             return 1;
         }
 

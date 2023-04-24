@@ -58,5 +58,16 @@
 				"desc": "time in seconds during which to pause."
 			}
 		]
+	},
+	{
+		"type": "function",
+		"name": "IsDevModeEnabled",
+		"remarks": "Checks whether Developer Mode is enabled. Dev Mode is enabled by clicking the Launch Dev Mode option in the Editor, or passing the '-dev' command line option to the game.",
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if dev mode on, false otherwise"
+			}
+		]
 	}
 ]

@@ -36,7 +36,7 @@
 		{
 			"Key": "MQ02_AM_BUSINESS1",
 			"Text": [
-				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Hmm, I do get a possessive streak sometimes, I dare say. Not my fault he only informed me of his, ah, benign intentions, when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts. \"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw."
+				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Mm, I do get a possessive streak sometimes. Didn't help that the striped fucker took a swing at me. Not my fault he only became cooperative when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts. \"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw."
 			]
 		},
 		{
@@ -48,13 +48,13 @@
 		{
 			"Key": "MQ02_AM_BUSINESS3",
 			"Text": [
-				"\"I don't care who you think you are, or what that idiot of a lion told you back there. Poor kid keeled right over when I belched in his face, hah! But I want things to go my way here, and I don't like things I can't control.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"\"I don't care who you think you are, or what that idiot of a lion told you back there. Poor kid keeled right over when I belched in his face, hah! But I want things to go my way here, and I don't like things I can't control.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I've already made a mess here, and I've no intention of making it worse. I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
 			]
 		},
 		{
 			"Key": "MQ02_AM_BUSINESS3B",
 			"Text": [
-				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and I don't like things I can't control. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and I don't like things I can't control. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I've already made a mess here, and I've no intention of making it worse. I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
 			]
 		},
 		{
@@ -144,7 +144,7 @@
 		{
 			"Key": "MQ02_AM_WINFIGHT_CRAB_RANGOON2",
 			"Text": [
-				"Though you look forward to spending some time unwinding in town while you wait for the bridge repairs, you cannot help but find yourself wondering what Randall was babbling on about when he mentioned the missing mayor. There is still no sign of her, and the only other one who could fill this hole in the story has stopped kicking. Perhaps there is more to explore here after all.\\n\\nEND"
+				"Though you look forward to spending some time unwinding in town while you wait for the bridge repairs, you cannot help but find yourself wondering what Randall was babbling on about when he mentioned the missing mayor. There is still no sign of her, and the only other one who could fill this hole in the story has stopped kicking by now. Perhaps there is more to explore here after all.\\n\\nEND"
 			]
 		},
 		{
@@ -396,13 +396,13 @@
 		{
 			"Key": "MQ02_OLIVER_R_SPILL2",
 			"Text": [
-				"A grim smile splits Oliver's lips. \"Ain't that the thing?\" He shifts slightly and folds his paws, his tail curling around his waist. \"So uh, Oliver, usually proud local carpenter, forester, what have you. Ugh, I'm sorry you had to find me like this; not my finest moment. It's not often I get caught with my pants down.\" In another moment, the lion composes himself, his voice becoming steady. \"Anyway, uh... Stip visited this morning, told me about what's going on in town. I told him I have everything they need, I like having some stock, being prepared and all that. It sounded like Stip wasn't expecting that, so he left to go get some guys and a cart.\" He pauses, seemingly lost in thought."
+				"A grim smile splits Oliver's lips. \"Ain't that the thing?\" He shifts slightly and folds his paws, his tail curling around his waist. \"So uh, Oliver, usually proud local carpenter, forester, what have you. Ugh, I'm sorry you had to find me like this; not my finest moment. It's not often I get caught with my pants down.\" In another moment, the lion composes himself, his voice becoming steady. \"Anyway, uh... my buddy Stip visited this morning, told me about what's going on in town. I told him I have everything they need, I like having some stock, being prepared and all that. It sounded like Stip wasn't expecting that, so he left to go get some guys and a cart.\" He pauses, seemingly lost in thought."
 			]
 		},
 		{
 			"Key": "MQ02_OLIVER_R_SPILL3",
 			"Text": [
-				"\"Less than an hour later... these guys barge in... didn't even get a good look at the goons. Leader figure... big wolf... just walks up to me, this grin on his face, drones on about how Stip had fucked up.\" Oliver's face falls. \"His... the wolf's stomach... it was massive. Like blown up. A-and there was someone *inside*.\""
+				"\"Less than an hour later... these guys barge in... didn't even get a good look at the goons. Leader figure... big wolf... just walks up to me, this grin on his face, drones on about how Stip had fucked up.\" Oliver's face falls. \"His... the wolf's stomach... it was massive. Like blown up. A-and there was someone *inside*. I knew who. I heard him screaming. M-my friend.\""
 			]
 		},
 		{

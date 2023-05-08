@@ -128,6 +128,26 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Deletes the save data associated with the specified slot, if any. Does not throw I/O exceptions on failure.
+        /// </summary>
+        public static void DeleteSlot(ESaveSlot slot)
+        {
+            // Try deleting the snapshot from disk
+            try
+            {
+                string filename = GetSlotFileName(slot);
+                File.Delete(filename);
+            }
+            catch (SystemException)
+            {
+                // Ignore errors
+            }
+
+            // Wipe cached save slot
+            s_Slots[(int)slot] = new SlotInfo();
+        }
+
+        /// <summary>
         /// Returns a string describing a saved game.
         /// </summary>
         public static SlotInfo GetSlotInfo(ESaveSlot slot)

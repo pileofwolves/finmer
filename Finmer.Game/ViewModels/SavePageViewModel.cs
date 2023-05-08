@@ -109,6 +109,10 @@ namespace Finmer.ViewModels
             {
                 // Save it to disk
                 SaveManager.WriteSnapshot(m_SelectedSlot, snapshot);
+
+                // Erase the auto-save, to help prevent confusing UI: the manual save is now the most recent save data
+                SaveManager.DeleteSlot(ESaveSlot.Checkpoint);
+
                 GameUI.Instance.Log("Game saved!", Theme.LogColorLightGray);
             }
             catch (UnauthorizedAccessException)

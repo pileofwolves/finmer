@@ -1,0 +1,27 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "a82f6b19-2396-435e-819a-f97af69a5317",
+	"AssetName": "W_VampiricDagger",
+	"ObjectName": "Draining Blade",
+	"ObjectAlias": "dagger",
+	"FlavorText": "Save for a blood-red amber stone set in its pommel, this one-of-a-kind blade might have been unremarkable. With a paw hovering close, however, a dark, swirling energy can be felt.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Self",
+			"ProcChance": 0.25,
+			"Duration": 2,
+			"Buffs": [
+				{
+					"!Type": "BuffHealthOverTime",
+					"Delta": 2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 40,
+	"IsQuestItem": false
+}

@@ -1,0 +1,45 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "a898fed1-5d82-49c9-a932-d9f5c8016218",
+	"AssetName": "W_BattleAxe",
+	"ObjectName": "Battle Axe",
+	"ObjectAlias": "axe",
+	"FlavorText": "Always a fearsome sight in any battle, this heavy tool of war is unwieldy, but carries frightening cleaving power and certain grievous harm in its twin blades.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -1
+				},
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": -1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "TurnStart",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.5,
+			"Duration": 2,
+			"Buffs": [
+				{
+					"!Type": "BuffHealthOverTime",
+					"Delta": -2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 40,
+	"IsQuestItem": false
+}

@@ -4,7 +4,7 @@
 	"AssetName": "W_SwordSilver",
 	"ObjectName": "Silver Sword",
 	"ObjectAlias": "sword",
-	"FlavorText": "While sharing its overall design with the steel longsword, a silver alloy is used instead for the blade, making it much lighter to handle. It is said that silver can cut through magic and certain monsters in a way that steel cannot.",
+	"FlavorText": "While sharing its overall design with the steel longsword, a silver alloy is used instead for the blade, making it much lighter to handle. This makes its blows land with less force, but also allows quick recovery.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Weapon",
 	"EquipEffects": [
@@ -14,11 +14,28 @@
 			"Buffs": [
 				{
 					"!Type": "BuffAttackDice",
-					"Delta": 2
+					"Delta": 1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackMiss",
+			"ProcTarget": "Self",
+			"ProcChance": 1.0,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffStruggleDice",
+					"Delta": 1
 				}
 			]
 		}
 	],
-	"PurchaseValue": 55,
+	"PurchaseValue": 50,
 	"IsQuestItem": false
 }

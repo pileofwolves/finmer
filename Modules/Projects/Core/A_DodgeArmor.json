@@ -1,0 +1,31 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "31dd1e68-6981-4637-8dbe-01590b9e08c9",
+	"AssetName": "A_DodgeArmor",
+	"ObjectName": "Ranger's Robes",
+	"FlavorText": "Popularized by Scarlet's Rangers, a band of wandering thieves famous for launching ambushes on all manner of caravans, as a tool for evading the grasp of local authorities and blending into the night.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Armor",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffStruggleDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": -1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 30,
+	"IsQuestItem": false
+}

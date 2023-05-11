@@ -1,0 +1,36 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "61838236-0050-4962-b0d3-b15720d9fbca",
+	"AssetName": "A_ReactiveArmor",
+	"ObjectName": "Imperial Armor",
+	"FlavorText": "Sturdy, polished silver armor befitting of royal guards. Many attempts at regicide have been foiled by elite troops, well-versed in the art of holding one's ground and repelling ambushes.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Armor",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "EnemyAttackHit",
+			"ProcTarget": "Self",
+			"ProcChance": 0.75,
+			"Duration": 5,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 30,
+	"IsQuestItem": false
+}

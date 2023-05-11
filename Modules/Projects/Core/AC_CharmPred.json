@@ -1,0 +1,30 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "bcc03236-5de8-4454-8af2-b41cc9271126",
+	"AssetName": "AC_CharmPred",
+	"ObjectName": "Gluttonous Choker",
+	"FlavorText": "An engraved ruby necklace that has the strange property of soothing the wearer's throat after a particularly rough meal. Though rare, such trinkets find popularity with the man-eaters of the Reaches.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderSwallowsPrey",
+			"ProcTarget": "Self",
+			"ProcChance": 1.0,
+			"Duration": 2,
+			"Buffs": [
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": 1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 20,
+	"IsQuestItem": false
+}

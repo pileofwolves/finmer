@@ -1,0 +1,26 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "b1c3d0c0-622f-4fc6-8b60-de5742b1759a",
+	"AssetName": "A_MirrorArmor",
+	"ObjectName": "Mirror Armor",
+	"FlavorText": "A surprisingly light vest of polished plates, shimmering to the point where the material is not recognizable as metal anymore. If not for the dents and scratches, one might consider it a ceremonial suit.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Armor",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "EnemyAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.5,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffHealthOverTime",
+					"Delta": -2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

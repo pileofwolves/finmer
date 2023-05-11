@@ -1,0 +1,53 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "14e5be29-add1-4882-b405-a7a4b456bd68",
+	"AssetName": "W_WarHammer",
+	"ObjectName": "War Hammer",
+	"ObjectAlias": "hammer",
+	"FlavorText": "What this giant hammer lacks in agility and elegance, it more than makes up for in sheer stopping power. Enemies struck by this are bound to lose a few teeth - if you land the blow, that is.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": -1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.8,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -1
+				},
+				{
+					"!Type": "BuffStun"
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackMiss",
+			"ProcTarget": "Self",
+			"ProcChance": 1.0,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 50,
+	"IsQuestItem": false
+}

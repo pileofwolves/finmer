@@ -1,0 +1,39 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "40893ada-5f4a-4bff-9dc8-68894b58c945",
+	"AssetName": "W_PunisherAxe",
+	"ObjectName": "Punisher's Axe",
+	"ObjectAlias": "axe",
+	"FlavorText": "A strange instrument of slaughter from a distant past, this axe is said to whisper of bloodlust to its wielder, and of despair to those who join the many to taste its bite.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Self",
+			"ProcChance": 0.5,
+			"Duration": 3,
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": 1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.25,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffStun"
+				}
+			]
+		}
+	],
+	"PurchaseValue": 55,
+	"IsQuestItem": false
+}

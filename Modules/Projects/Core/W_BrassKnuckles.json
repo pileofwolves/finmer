@@ -1,0 +1,36 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "c73b2464-7308-4e84-ab04-0846fe350ca2",
+	"AssetName": "W_BrassKnuckles",
+	"ObjectName": "Brass Knuckles",
+	"ObjectAlias": "knuckles",
+	"FlavorText": "A metal piece shaped to fit around the paw. Useful for blunt force and stunning targets, though with the natural fur and scale coats possessed by most in these lands, the capacity for violence is limited.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Weapon",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": 1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.3,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffStun"
+				}
+			]
+		}
+	],
+	"PurchaseValue": 15,
+	"IsQuestItem": false
+}

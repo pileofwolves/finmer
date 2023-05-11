@@ -1,0 +1,31 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "fab2fe03-1836-4745-a433-3108b7e7b706",
+	"AssetName": "AC_CharmGlassCannon",
+	"ObjectName": "Meridem's Gambit",
+	"FlavorText": "An inscribed tooth necklace, named after the aspiring gladiator Meridem. Misunderstanding its purpose, he believed himself untouchable in a swift and decisive battle against a dire lion. The trinket was the only surviving evidence.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffAttackDice",
+					"Delta": 2
+				},
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -2
+				},
+				{
+					"!Type": "BuffHealth",
+					"Delta": 1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 20,
+	"IsQuestItem": false
+}

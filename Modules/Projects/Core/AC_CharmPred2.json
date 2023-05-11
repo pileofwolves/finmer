@@ -1,0 +1,39 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "2bffffdd-84d8-4e2c-82e4-eb8da5680b3b",
+	"AssetName": "AC_CharmPred2",
+	"ObjectName": "Fanged Visage",
+	"FlavorText": "Worn not for the protective effect but rather the outward appearance, this face mask representing a monstrous pair of jaws is sure to make any prospective preythings reconsider a confrontation.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderGrappled",
+			"ProcTarget": "Self",
+			"ProcChance": 0.5,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": 2
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Self",
+			"ProcChance": 0.5,
+			"Duration": 2,
+			"Buffs": [
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": 2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

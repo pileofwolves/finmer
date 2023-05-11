@@ -1,0 +1,40 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "d9544843-cdc0-41d0-8ecc-504014b6f47e",
+	"AssetName": "AC_CharmPrey",
+	"ObjectName": "Aerodynamic Oil",
+	"FlavorText": "A thin, transparent armor coating that makes the wearer frustratingly untouchable. Useful for escaping all manner of grasps, and establishing the upper paw in a messy, slippery grapple.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffStruggleDice",
+					"Delta": 1
+				},
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": -1
+				}
+			]
+		},
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderGrappled",
+			"ProcTarget": "Self",
+			"ProcChance": 0.75,
+			"Duration": 3,
+			"Buffs": [
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": 2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

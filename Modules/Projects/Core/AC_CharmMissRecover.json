@@ -1,0 +1,26 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "1283d23e-6137-415b-b9cd-0dac154397e0",
+	"AssetName": "AC_CharmMissRecover",
+	"ObjectName": "Heavy Counterweight",
+	"FlavorText": "A tactic popularized by a crafty scoundrel many years ago, a well-placed counterweight lets one add momentum to a swing, enabling fast moves and quick recovery.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackMiss",
+			"ProcTarget": "Self",
+			"ProcChance": 0.45,
+			"Duration": 1,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": 2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 15,
+	"IsQuestItem": false
+}

@@ -2,7 +2,8 @@
 	"!Type": "AssetItem",
 	"AssetID": "8b49aff2-624c-401d-b78b-9987785e7cf1",
 	"AssetName": "AC_CharmBlock",
-	"ObjectName": "Charm of Shields",
+	"ObjectName": "Belt Buckle",
+	"FlavorText": "A polished, sturdy clasp for keeping armor pieces together. There is no such thing as too many layers of physical safety.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
@@ -17,6 +18,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 0,
+	"PurchaseValue": 15,
 	"IsQuestItem": false
 }

@@ -1,0 +1,26 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "954bc474-e949-4032-8fdb-559361c32347",
+	"AssetName": "AC_CharmPoisonAtk",
+	"ObjectName": "Jagged Prongs",
+	"FlavorText": "Simple but effective as an implement, this set of barbs can be added onto a weapon to add risk of causing lacerations in the prospective victim.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.6,
+			"Duration": 4,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 20,
+	"IsQuestItem": false
+}

@@ -1,0 +1,23 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "8f6f8fc2-58a9-4ec6-af08-80599412f7b8",
+	"AssetName": "A_EnduranceArmor",
+	"ObjectName": "Sentinel's Plates",
+	"FlavorText": "Forged by a forgotten smith from the city of Stiegal, this suit has seen better days - though perhaps the tarnished, chipped visage adds character, and speaks of a great many blows blocked with success.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Armor",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffHealth",
+					"Delta": 4
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

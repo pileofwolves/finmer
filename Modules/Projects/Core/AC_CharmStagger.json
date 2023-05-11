@@ -1,0 +1,30 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "04955d61-6684-4c23-add7-5da8a1723873",
+	"AssetName": "AC_CharmStagger",
+	"ObjectName": "Elastic Wristband",
+	"FlavorText": "A loop of black, padded leather, secured around the wrist. An eerie amber-colored glyph is presumably responsible for adding that little extra force to a swing, staggering opponents with ease.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.5,
+			"Duration": 2,
+			"Buffs": [
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": -2
+				},
+				{
+					"!Type": "BuffStruggleDice",
+					"Delta": -2
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

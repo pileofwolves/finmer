@@ -1,0 +1,26 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "052547f8-0b0f-47b4-95eb-49bc3b38b911",
+	"AssetName": "AC_CharmArmorBreak",
+	"ObjectName": "Corrosive Oil",
+	"FlavorText": "Applied to gauntlets or a weapon, this fast-acting acidic agent is engineered specifically to weaken metal, while being strangely unreactive to fur and skin.",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "WielderAttackHit",
+			"ProcTarget": "Opponent",
+			"ProcChance": 0.6,
+			"Duration": 4,
+			"Buffs": [
+				{
+					"!Type": "BuffDefenseDice",
+					"Delta": -1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 25,
+	"IsQuestItem": false
+}

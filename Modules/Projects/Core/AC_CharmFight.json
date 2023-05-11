@@ -2,7 +2,8 @@
 	"!Type": "AssetItem",
 	"AssetID": "01d5d8e7-edf4-48da-b293-54aed0e2a05e",
 	"AssetName": "AC_CharmFight",
-	"ObjectName": "Charm of Swords",
+	"ObjectName": "Rough Whetstone",
+	"FlavorText": "It's all in the swing, as they say. Keeping one's blade sharp is as important for impact as it is for aerodynamics.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
@@ -17,6 +18,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 0,
+	"PurchaseValue": 15,
 	"IsQuestItem": false
 }

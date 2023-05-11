@@ -2,7 +2,8 @@
 	"!Type": "AssetItem",
 	"AssetID": "63b5fad8-91fc-4072-b109-ddc2b042b534",
 	"AssetName": "AC_CharmBody",
-	"ObjectName": "Charm of Health",
+	"ObjectName": "Comfy Scarf",
+	"FlavorText": "What appears at first glance to be a comfortable crimson scarf, is actually woven from threads soaked in a healing concoction. The effect is diluted, but nevertheless imparts a sensation of resilience.",
 	"ItemType": "Equipable",
 	"EquipSlot": "Accessory",
 	"EquipEffects": [
@@ -17,6 +18,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 0,
+	"PurchaseValue": 15,
 	"IsQuestItem": false
 }

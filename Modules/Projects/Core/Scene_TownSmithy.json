@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "885b2cbf-be29-4fee-b085-5977cd6a4cf7",
 	"AssetName": "Scene_TownSmithy",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownSmithy_Custom"
+	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_TownSmithy_Enter"
@@ -37,7 +41,7 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "local shop = Shop(\"TownSmithy\")\r\nshop.Title = \"North Finmer Smithy\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"A_LeatherArmor\"), math.random(1, 2))\r\n    shop:AddItem(Item(\"W_Dagger\"), math.random(1, 4))\r\n    shop:AddItem(Item(\"W_SwordSteel\"), math.random(1, 2))\r\n    if math.random(0, 1) == 1 then\r\n        shop:AddItem(Item(\"W_SwordSilver\"), 1)\r\n    end\r\nend\r\nshop:Show()\r\nshop:Save()"
+							"Script": "-- Defined in custom script, for easier maintaining\r\nShowSmithyShop()"
 						},
 						"Children": [
 							{

@@ -1,7 +1,9 @@
 SetLocation("North Finmer, Smithy")
-if Storage.GetFlag("town_smithy_first") then
-    Log("town_smithy")
+
+-- Show longer text on first visit
+if Storage.GetFlag("TOWN_SMITHY_FIRST") then
+    Log("TOWN_SMITHY")
 else
-    Storage.SetFlag("town_smithy_first", true)
+    Storage.SetFlag("TOWN_SMITHY_FIRST", true)
     Log("TOWN_SMITHY_FIRST")
 end

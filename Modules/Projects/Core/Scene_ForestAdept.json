@@ -1436,8 +1436,30 @@
 									{
 										"NodeType": "Link",
 										"LinkTarget": "Cabin_C_Talk"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_Trade"
 									}
 								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_Trade",
+						"Title": "Trade",
+						"Tooltip": "Ask Rux if he has any supplies to spare.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "ShowRuxShop()"
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Cabin_Main"
 							}
 						]
 					}

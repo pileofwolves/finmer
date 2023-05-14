@@ -13,6 +13,7 @@ using System.Linq;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
 using Finmer.Models;
+using Finmer.Utility;
 
 namespace Finmer.Gameplay.Combat
 {
@@ -487,6 +488,20 @@ namespace Finmer.Gameplay.Combat
             return participant;
         }
 
+        private void InternalProtectedCallback(IntPtr stack, IntPtr coroutine, int num_args)
+        {
+            try
+            {
+                // Run callback in protected mode
+                m_Binder.Call(stack, coroutine, num_args);
+            }
+            catch (ScriptException ex)
+            {
+                // Write any errors to game log; upstream caller has no concept of the script callback so cannot handle them better
+                GameUI.Instance.Log("ERROR: Script error in combat callback: " + ex.Message, Theme.LogColorError);
+            }
+        }
+
         private void AttachScriptCallbacks()
         {
             OnRoundEnd += round =>
@@ -495,7 +510,7 @@ namespace Finmer.Gameplay.Combat
                 if (m_Binder.PrepareCall(stack, k_CallbackName_OnRoundEnd, out var coroutine))
                 {
                     LuaApi.lua_pushnumber(coroutine, round);
-                    m_Binder.Call(stack, coroutine, 1);
+                    InternalProtectedCallback(stack, coroutine, 1);
                 }
             };
 
@@ -503,7 +518,7 @@ namespace Finmer.Gameplay.Combat
             {
                 IntPtr stack = ScriptContext.LuaState;
                 if (m_Binder.PrepareCall(stack, k_CallbackName_OnCombatEnd, out var coroutine))
-                    m_Binder.Call(stack, coroutine, 0);
+                    InternalProtectedCallback(stack, coroutine, 0);
             };
 
             OnCharacterKilled += (killer, victim) =>
@@ -513,7 +528,7 @@ namespace Finmer.Gameplay.Combat
                 {
                     killer.Character.PushToLua(coroutine);
                     victim.Character.PushToLua(coroutine);
-                    m_Binder.Call(stack, coroutine, 2);
+                    InternalProtectedCallback(stack, coroutine, 2);
                 }
             };
 
@@ -524,7 +539,7 @@ namespace Finmer.Gameplay.Combat
                 {
                     killer.Character.PushToLua(coroutine);
                     victim.Character.PushToLua(coroutine);
-                    m_Binder.Call(stack, coroutine, 2);
+                    InternalProtectedCallback(stack, coroutine, 2);
                 }
             };
 
@@ -535,7 +550,7 @@ namespace Finmer.Gameplay.Combat
                 {
                     predator.Character.PushToLua(coroutine);
                     prey.Character.PushToLua(coroutine);
-                    m_Binder.Call(stack, coroutine, 2);
+                    InternalProtectedCallback(stack, coroutine, 2);
                 }
             };
 
@@ -546,7 +561,7 @@ namespace Finmer.Gameplay.Combat
                 {
                     predator.Character.PushToLua(coroutine);
                     prey.Character.PushToLua(coroutine);
-                    m_Binder.Call(stack, coroutine, 2);
+                    InternalProtectedCallback(stack, coroutine, 2);
                 }
             };
         }

@@ -125,7 +125,14 @@ namespace Finmer.Gameplay
                     }
 
                     // Call the user callback function
-                    m_CallbackTable.Call(main_stack, coroutine, 0);
+                    try
+                    {
+                        m_CallbackTable.Call(main_stack, coroutine, 0);
+                    }
+                    catch (ScriptException ex)
+                    {
+                        GameUI.Instance.Log($"ERROR: {ex.Message}", Theme.LogColorError);
+                    }
                 }
                 else
                 {

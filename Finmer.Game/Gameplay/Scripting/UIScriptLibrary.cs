@@ -108,14 +108,14 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedLog(IntPtr L)
         {
-            Color color = lua_type(L, 2) == ELuaType.Table ? LuaUtils.lua_tocolor(L, 2) : Theme.LogColorDefault;
+            Color color = lua_type(L, 2) == ELuaType.Table ? LuaUtils.ToColor(L, 2) : Theme.LogColorDefault;
             GameUI.Instance.Log(GameController.Content.GetAndParseString(luaL_checkstring(L, 1)), color);
             return 0;
         }
 
         private static int ExportedLogRaw(IntPtr L)
         {
-            Color color = lua_type(L, 2) == ELuaType.Table ? LuaUtils.lua_tocolor(L, 2) : Theme.LogColorDefault;
+            Color color = lua_type(L, 2) == ELuaType.Table ? LuaUtils.ToColor(L, 2) : Theme.LogColorDefault;
             GameUI.Instance.Log(luaL_checkstring(L, 1), color);
             return 0;
         }

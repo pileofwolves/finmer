@@ -136,6 +136,7 @@ namespace Finmer.Gameplay.Scripting
         /// <summary>
         /// Invokes a function prepared by PrepareCall(), passing the specified number of user arguments to the function.
         /// </summary>
+        /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
         public void Call(IntPtr stack, IntPtr coroutine, int num_args)
         {
             Debug.Assert(m_TableRef != -1, "Table used after being freed");
@@ -144,13 +145,23 @@ namespace Finmer.Gameplay.Scripting
             Debug.Assert(lua_type(coroutine, -1 - num_args) == ELuaType.Function, "Invalid coroutine");
 
             // The stack has already been prepared, so perform the call
-            // TODO: Catch script error and rethrow as ScriptException, when handling infra is in place
-            lua_resume(coroutine, num_args);
-
-            // Destroy the coroutine
-            Debug.Assert(lua_type(stack, -1) == ELuaType.Thread);
-            Debug.Assert(lua_tothread(stack, -1) == coroutine);
-            lua_pop(stack, 1);
+            try
+            {
+                int result = lua_resume(coroutine, num_args);
+                if (result != 0)
+                {
+                    // Coroutine execution failed; gather an error message and propagate to caller
+                    string error_message = LuaUtils.GetErrorStackTrace(coroutine);
+                    throw new ScriptException("Script error: " + error_message);
+                }
+            }
+            finally
+            {
+                // Destroy the coroutine
+                Debug.Assert(lua_type(stack, -1) == ELuaType.Thread);
+                Debug.Assert(lua_tothread(stack, -1) == coroutine);
+                lua_pop(stack, 1);
+            }
         }
 
         /// <summary>

@@ -162,7 +162,8 @@ namespace Finmer.Gameplay
 
         public override PropertyBag SaveState()
         {
-            var output = base.SaveState();
+            // Never save object ID, to ensure that multiple copies of the state can be deserialized in parallel
+            var output = new PropertyBag();
 
             // Serialize metadata
             output.SetString(SaveData.k_Shop_Title, Title);

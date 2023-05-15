@@ -162,13 +162,13 @@
 		{
 			"Key": "MQ04_ADEPT_PLAN03",
 			"Text": [
-				"\"Right,\" the feline responds. \"What Randall said back at the shrine got me thinking. Rux and I believe that this 'Red Maw' of his, is not actually the name of his gang, but rather the name of a place. What we need now, is information. We can't risk him being a step ahead of us all the time, so we need to know what he's actually planning to do with the mine.\" On the other couch, the Adept in question nods in agreement, chiming in with his own considerations. \"Regrettably, we do not know exactly where it is,\" he says. \"However, this may not pose an issue. When you visited South Finmer, you rode along with a merchant, yes?\""
+				"\"Right,\" the feline responds. \"What Randall said back at the shrine got me thinking. Rux and I believe that this 'Red Maw' of his, is not actually the name of his gang, but rather the name of a place. An amber deposit, which he's turning into a proper mine. What we need now, is information. We can't risk him being a step ahead of us all the time, so we need to know what he's actually planning to do with the mine.\" On the other couch, the Adept in question nods in agreement, chiming in with his own considerations. \"Regrettably, we do not know exactly where it is,\" he says. \"However, this may not pose an issue. When you visited South Finmer, you rode along with a merchant, yes?\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_PLAN04",
 			"Text": [
-				"When you express agreement, the duo nod in response. \"As the Mayor may have already mentioned, that merchant is making deliveries right to our cult leader's doorstep. This shall serve as a covert entry point,\" Rux explains. The black-furred cat sitting next to you waves a paw through the air, as if tracing out a route. \"The plan is this,\" she continues. \"We will conceal ourselves within a cargo delivery. The chameleon fellow will then take us right to the location of the Red Maw.\""
+				"When you express agreement, the duo nod in response. \"As the Mayor may have already mentioned, that merchant is making deliveries right to our cult leader's doorstep. This shall serve as a covert entry point,\" Rux explains. The black-furred cat sitting next to you waves a paw through the air, as if tracing out a route. \"The plan is this,\" she continues. \"We will conceal ourselves within a cargo delivery. The chameleon fellow will then take us right to the location of the Red Maw. Sneak in, gather any useful intel, and get out. Plans, dates, routes, locations, names. We need to know what he's up to, so we can prepare.\""
 			]
 		},
 		{
@@ -192,7 +192,7 @@
 		{
 			"Key": "MQ04_ADEPT_PLAN08",
 			"Text": [
-				"Iso, meanwhile, appears to have resigned to the Adept's judgement, and chimes in with some details of her own. \"So to recap, {player.name}, we need you to infiltrate into the amber mine known as the Red Maw, avoid as much attention as you can, and come back with intel. Any information is useful: plans, routes, locations, names. And hopefully by the time you get back, we'll be able to take the fight to him, instead of getting caught off-guard every time.\" She nods one more, resolving to trust you entirely with this matter. \"Find Zosk, first. He should be in South Finmer. How you get on his cart is up to you.\""
+				"Iso, meanwhile, appears to have resigned to the Adept's judgement, and chimes in with some details of her own. \"So to recap, {player.name}, we need you to infiltrate into the amber mine known as the Red Maw, avoid as much attention as you can, and come back with intel. Any information is useful. And hopefully by the time you get back, we'll be able to take the fight to him, instead of getting caught off-guard every time.\" She nods one more, resolving to trust you entirely with this matter. \"Find Zosk, first. He should be in South Finmer. How you get on his cart is up to you.\""
 			]
 		},
 		{
@@ -330,7 +330,7 @@
 		{
 			"Key": "MQ04_ADEPT_TALK_CHIP",
 			"Text": [
-				"Rux laughs warmly, brightening the somewhat dour mood in the room considerably. \"Oh, I hope he didn't scare you. Yes, that dire wolf is a friend of mine, or I suppose a pet if you want to use that terminology. I found him in the woods several years ago - he was much smaller then, and injured quite severely after a bad fight with a competitor, I'm guessing. So I took him in, and as we bonded in a way, he decided to stick around. I named him Chip after the notch in his ear, and he grew over the years, though I may... also have accelerated matters through my field of study. He was always a big pup, but he used to fit inside my cabin...\" Beside you, Iso chuckles, listening in on the story - she knew all this already, of course. \"You forget to mention you also trained him to remove unwanted guests from the premises,\" she cheekily adds. In response to this, the red panda looks away sheepishly, scratching his muzzle. \"Well,\" he says, \"I do occasionally get bandits looking for me. Though the veil helps with keeping them away, I do prefer the area to be safe for myself and others... besides, food is quite expensive; how much do you think that maw fits?\""
+				"Rux laughs warmly, brightening the somewhat dour mood in the room considerably. \"Oh, I hope he didn't scare you. Yes, that dire wolf is a friend of mine, or I suppose a pet if you want to use that terminology. I found him in the woods several years ago - he was much smaller then, and injured quite severely after a bad fight with a competitor, I'm guessing. So I took him in, and as we bonded in a way, he decided to stick around. I named him Chip after the notch in his ear, and he grew over the years, though I may... also have accelerated matters through my field of study. He was always a big pup, but he used to fit inside my cabin...\" Beside you, Iso chuckles, listening in on the story - she knew all this already, of course. \"You forget to mention you also trained him to 'remove unwanted guests from the premises',\" she cheekily adds. In response to this, the red panda looks away sheepishly, scratching his muzzle. \"Well,\" he says, \"I do occasionally get bandits looking for me. Though the veil helps with keeping them away, I do prefer the area to be safe for myself and others... besides, food is quite expensive; how much do you think that maw fits?\""
 			]
 		},
 		{

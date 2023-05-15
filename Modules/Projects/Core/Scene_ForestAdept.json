@@ -1071,7 +1071,8 @@
 																																	{
 																																		"NodeType": "Choice",
 																																		"Key": "MQ04_C_Return08",
-																																		"Title": "Continue",
+																																		"Title": "Confirm",
+																																		"Tooltip": "No point in obfuscating the truth.",
 																																		"Highlight": false,
 																																		"ButtonWidth": 1.0,
 																																		"ScriptAction": {

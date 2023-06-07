@@ -6,11 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
-    mc:Ignorable="d"
-    MinWidth="36"
-    MaxWidth="36"
-    MinHeight="36"
-    MaxHeight="36">
+    mc:Ignorable="d">
     <Grid>
         <Button Click="OpenActionsButton_Click">
             <Button.Template>
@@ -49,6 +45,8 @@
             <Grid
                 ToolTipService.ShowDuration="60000"
                 d:DataContext="{d:DesignInstance v:ItemEquipmentBoxView}"
+                UseLayoutRounding="True"
+                SnapsToDevicePixels="True"
                 HorizontalAlignment="Stretch"
                 VerticalAlignment="Stretch"
                 DataContext="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=v:ItemEquipmentBoxView}}">
@@ -65,6 +63,7 @@
                 <!-- Item icon centered in the box -->
                 <v:ItemIconView
                     DataContext="{Binding DisplayedItem}"
+                    Margin="1"
                     HorizontalAlignment="Center"
                     VerticalAlignment="Center" />
             </Grid>

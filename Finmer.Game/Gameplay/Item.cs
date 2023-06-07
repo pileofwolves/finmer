@@ -58,6 +58,8 @@ namespace Finmer.Gameplay
                 var src = new BitmapImage();
                 src.BeginInit();
                 src.CacheOption = BitmapCacheOption.OnLoad;
+                src.DecodePixelWidth = 32;
+                src.DecodePixelHeight = 32;
                 if (Asset.InventoryIcon == null)
                 {
                     // no icon specified in editor, so use a default one included in resources

@@ -22,7 +22,7 @@
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="*" />
-            <ColumnDefinition Width="Auto" />
+            <ColumnDefinition Width="40" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
 
@@ -42,8 +42,10 @@
         <Rectangle
             Grid.Row="0"
             Grid.Column="1"
-            Margin="0,20,40,20"
+            Margin="0,20,10,20"
             Width="1"
+            SnapsToDevicePixels="True"
+            HorizontalAlignment="Center"
             VerticalAlignment="Stretch"
             Fill="{StaticResource BrightBackgroundBrush}" />
 

@@ -6,12 +6,13 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
     mc:Ignorable="d"
-    MinWidth="32" MaxWidth="32"
-    MinHeight="32" MaxHeight="32"
     d:DataContext="{d:DesignInstance gp:Item}">
     <Image
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
+        Width="32"
+        Height="32"
+        Stretch="Fill"
+        UseLayoutRounding="True"
+        SnapsToDevicePixels="True"
         Source="{Binding Image}"
         RenderOptions.BitmapScalingMode="NearestNeighbor" />
 </UserControl>

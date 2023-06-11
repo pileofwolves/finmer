@@ -70,6 +70,22 @@
     color: var(--api-color-qualifier);
 }
 
+.scriptapi .origin_coremod {
+	font-style: italic;
+	margin-top: 0.6em;
+	vertical-align: top;
+	color: var(--api-color-signature);
+}
+
+.scriptapi .origin_coremod > svg {
+	position: relative;
+	width: 1.25em;
+	height: 1.25em;
+	top: 0.225em;
+	margin-right: 0.3em;
+	fill: var(--api-color-signature);
+}
+
 .scriptapi .desc {
     margin-top: 16px;
 }

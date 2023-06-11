@@ -49,6 +49,23 @@
 	},
 	{
 		"type": "function",
+		"name": "AddLink",
+		"remarks": "Creates a compass link button. The button remains until the next Choice the user makes. Compass links can link either directly to a scene, as if SetScene is called when the button is pressed, or can contain a Lua script which will run when the button is pressed.",
+		"input": [
+			{
+				"name": "direction",
+				"type": "number",
+				"desc": "compass direction - valid values are ECompass.North, ECompass.South, ECompass.West, ECompass.East"
+			},
+			{
+				"name": "link",
+				"type": "string or function",
+				"desc": "if string: name of scene asset to link to. if function: a callback that takes no parameters"
+			}
+		]
+	},
+	{
+		"type": "function",
 		"name": "Sleep",
 		"remarks": "Pauses execution of the script for the specified time. Dramatic pause, oh my!",
 		"input": [

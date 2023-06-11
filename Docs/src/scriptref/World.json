@@ -1,0 +1,83 @@
+[
+	{
+		"type": "function",
+		"name": "EndGame",
+		"remarks": "Ends the current game with a 'game-over' screen. The user cannot interact with the scene anymore, and will be able to exit the game or reload save data."
+	},
+	{
+		"type": "function",
+		"name": "GetTime",
+		"remarks": "Returns the current world clock time, represented as the current day and the 24-hour time. The game starts at day 1, hour 8. Note: This function has two return values.",
+		"output": [
+			{
+				"type": "number",
+				"desc": "current day"
+			},
+			{
+				"type": "number",
+				"desc": "current hour (0-23)"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "GetTimeDay",
+		"remarks": "Returns only the day portion of the current world clock time. Equivalent to calling GetTime and discarding one return value.",
+		"coremod": true,
+		"output": [
+			{
+				"type": "number",
+				"desc": "current day"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "GetTimeHour",
+		"remarks": "Returns only the hour portion of the current world clock time. Equivalent to calling GetTime and discarding one return value.",
+		"coremod": true,
+		"output": [
+			{
+				"type": "number",
+				"desc": "current hour (0-23)"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "GetTimeHourTotal",
+		"remarks": "Returns the total number of hours passed on the clock. Useful for setting timers. Equivalent GetTimeDay() * 24 + GetTimeHour().",
+		"coremod": true,
+		"output": [
+			{
+				"type": "number",
+				"desc": "cumulative hour total"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "AdvanceTime",
+		"remarks": "Advances the time of the world clock, as returned by the GetTime() function. This function will automatically roll the clock over to the next day as required.",
+		"input": [
+			{
+				"name": "hours",
+				"type": "number",
+				"desc": "number of world-hours to add to the clock"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "SetTimeHour",
+		"remarks": "Advances the time of the world clock so that the current hour matches the input hour number.",
+		"coremod": true,
+		"input": [
+			{
+				"name": "hour",
+				"type": "number",
+				"desc": "new hour (0-23) to advance the clock to"
+			}
+		]
+	}
+]

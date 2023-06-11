@@ -44,5 +44,29 @@
 		"type": "function",
 		"name": "ClearLog",
 		"remarks": "Erases all text in the game log."
+	},
+	{
+		"type": "function",
+		"name": "PreySense",
+		"remarks": "If the user has the preysense feature enabled, displays a customizable content warning. You can add any number of warning labels, they will each be displayed. Valid values for the labels are: EPreySenseType.OralVore, AnalVore, CockVore, Unbirth, Endo, EndoOrFatal, DigestionReform, DigestionFatal",
+		"coremod": true,
+		"input": [
+			{
+				"name": "predator",
+				"type": "Creature",
+				"desc": "the creature context whose name to display"
+			},
+			{
+				"name": "label1",
+				"type": "EPreySenseType",
+				"desc": "the warning type to display"
+			},
+			{
+				"name": "label2...",
+				"type": "EPreySenseType",
+				"desc": "another warning type to display",
+				"optional": true
+			}
+		]
 	}
 ]

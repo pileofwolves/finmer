@@ -100,6 +100,9 @@ namespace Finmer.ViewModels
             OnPropertyChanged(nameof(AbilityPoints));
             OnPropertyChanged(nameof(AbilityPointVisibility));
 
+            // Track max health changes
+            int old_max_hp = Player.HealthMax;
+
             // Increase the stat of choice
             switch (stat_index)
             {
@@ -109,7 +112,8 @@ namespace Finmer.ViewModels
                 case 3:     Player.Wits++;          OnPropertyChanged(nameof(Wits));            break;
             }
 
-            // Increasing an ability will have changed the dice totals
+            // Increasing an ability will have changed the dice totals or other stats
+            Player.ApplyMaxHealthChange(old_max_hp);
             RefreshDiceReadouts();
         }
 

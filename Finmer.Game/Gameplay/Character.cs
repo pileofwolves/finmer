@@ -262,6 +262,28 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
+        /// Notifies the character that max health was changed, and updates current health accordingly.
+        /// </summary>
+        /// <param name="old_max">The value of HealthMax before the change was applied.</param>
+        public void ApplyMaxHealthChange(int old_max)
+        {
+            int new_max = HealthMax;
+            if (new_max == old_max)
+                return;
+
+            // Add or take away the difference in HP, so adding max HP doesn't leave the player with
+            // injuries, and removing max HP doesn't allow for free healing (by equipping and unequipping)
+            m_Health += new_max - old_max;
+
+            // Ensure health is clamped, and prevent killing player with this
+            m_Health = Math.Max(Math.Min(m_Health, new_max), 1);
+
+            // Notify UI
+            OnPropertyChanged(nameof(HealthMax));
+            OnPropertyChanged(nameof(Health));
+        }
+
+        /// <summary>
         /// Returns the degree to which an ability score is above-average, meaning how many points it's above the minimum.
         /// </summary>
         public static int GetAbilityModifier(int ability)

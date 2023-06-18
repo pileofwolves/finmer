@@ -75,8 +75,12 @@ namespace Finmer.Gameplay
             player.Inventory.Remove(equipable);
 
             // Place it in the equipment slot
+            int old_max_hp = player.HealthMax;
             Debug.Assert(player.Equipment[slot] == null);
             player.Equipment[slot] = equipable;
+
+            // This change could have adjusted max HP
+            player.ApplyMaxHealthChange(old_max_hp);
         }
 
         /// <summary>
@@ -89,7 +93,11 @@ namespace Finmer.Gameplay
                 return;
 
             // Remove it from the slot
+            int old_max_hp = player.HealthMax;
             player.Equipment[equipSlotIndex] = null;
+
+            // This change could have adjusted max HP
+            player.ApplyMaxHealthChange(old_max_hp);
 
             // Append the item to the end of the inventory
             player.Inventory.Add(equipped);

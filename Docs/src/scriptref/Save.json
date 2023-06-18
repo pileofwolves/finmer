@@ -7,7 +7,15 @@
 	{
 		"type": "function",
 		"name": "SaveData.TakeCheckpoint",
-		"remarks": "Create a checkpoint (auto-save). The player may load this checkpoint if their game ends."
+		"remarks": "Create a checkpoint (auto-save). The player may load this checkpoint if their game ends. If there already is a checkpoint file, it is overwritten.",
+		"input": [
+			{
+				"name": "quiet",
+				"type": "boolean",
+				"optional": true,
+				"desc": "if true, suppress 'checkpoint reached' message. defaults to false."
+			}
+		]
 	},
 	{
 		"type": "function",

@@ -92,7 +92,10 @@ namespace Finmer.Gameplay.Scripting
             }
 
             // All done
-            GameUI.Instance.Log("Checkpoint reached.", Theme.LogColorLightGray);
+            bool quiet = lua_isboolean(state, 1) && lua_toboolean(state, 1);
+            if (!quiet)
+                GameUI.Instance.Log("Checkpoint reached.", Theme.LogColorLightGray);
+
             return 0;
         }
 

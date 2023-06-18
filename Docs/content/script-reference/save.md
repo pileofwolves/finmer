@@ -11,4 +11,6 @@ These functions allow you to create save data. When save data is loaded, the gam
 
 If you're looking for the functions for changing the actual save data contents, check [Variables & Persistent Storage](/script-reference/storage).
 
+Note that if the user creates a manual save using the save menu presented by `SaveData.ShowSaveDialog()`, any checkpoint save data created using `SaveData.TakeCheckpoint()` is deleted. This is done to avoid the potentially confusing scenario where the user could be led to believe that their checkpoint is more recent than their last manual save.
+
 <LuaReference group={ApiGroup} />

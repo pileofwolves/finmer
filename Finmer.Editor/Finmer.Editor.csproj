@@ -113,12 +113,6 @@
     <Compile Include="FormDocumentJournal.Designer.cs">
       <DependentUpon>FormDocumentJournal.cs</DependentUpon>
     </Compile>
-    <Compile Include="FormDocumentFeat.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="FormDocumentFeat.Designer.cs">
-      <DependentUpon>FormDocumentFeat.cs</DependentUpon>
-    </Compile>
     <Compile Include="FormDocumentCreature.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -561,9 +555,6 @@
     <EmbeddedResource Include="FormDocumentJournal.resx">
       <DependentUpon>FormDocumentJournal.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FormDocumentFeat.resx">
-      <DependentUpon>FormDocumentFeat.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="FormDocumentCreature.resx">
       <DependentUpon>FormDocumentCreature.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -889,13 +880,11 @@
     <None Include="Resources\folder-import.png" />
     <None Include="Resources\document.png" />
     <None Include="Resources\document--plus-32.png" />
-    <None Include="Resources\plus-32.png" />
     <None Include="Resources\disk-32.png" />
     <None Include="Resources\scripts-text.png" />
     <None Include="Resources\information-frame.png" />
     <None Include="Resources\book.png" />
     <None Include="Resources\folder-horizontal-32.png" />
-    <None Include="Resources\tag-label.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

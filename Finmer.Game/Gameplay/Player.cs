@@ -58,17 +58,6 @@ namespace Finmer.Gameplay
         public int RequiredXP => 100 + (Level - 1) * 20;
 
         [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public int FeatPoints
-        {
-            get => m_FeatPoints;
-            set
-            {
-                m_FeatPoints = value;
-                OnPropertyChanged();
-            }
-        }
-
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int AbilityPoints
         {
             get => m_AbilityPoints;
@@ -202,8 +191,7 @@ namespace Finmer.Gameplay
                 XP -= RequiredXP;
                 Level++;
 
-                // Award points
-                FeatPoints++;
+                // Award ability point
                 AbilityPoints++;
 
                 // Show a notification message

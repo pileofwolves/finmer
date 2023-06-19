@@ -62,7 +62,7 @@ namespace Finmer.Core.Assets
         public int Wits { get; set; } = 3;
 
         /// <summary>
-        /// Bitflags of type ECharacterFlags.
+        /// Bitmask of type ECharacterFlags.
         /// </summary>
         public int Flags { get; set; }
 

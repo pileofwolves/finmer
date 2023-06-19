@@ -162,7 +162,7 @@ namespace Finmer.Gameplay.Combat
         }
 
         /// <summary>
-        /// Attempt to reverse a grappling session, swapping the grappler and grapplee.
+        /// Attempt to reverse a grappling session, swapping the grapple initiator and grappled target.
         /// </summary>
         /// <param name="instigator">The participant that is initiating the attack.</param>
         /// <param name="target">The participant that is being attacked.</param>

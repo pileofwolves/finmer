@@ -14,7 +14,7 @@ namespace Finmer.Core.Assets
 {
 
     /// <summary>
-    /// Describes a quest journal, with all entries pertaining to a single questline.
+    /// Describes a quest journal, with all entries pertaining to a single story.
     /// </summary>
     public class AssetJournal : AssetBase
     {

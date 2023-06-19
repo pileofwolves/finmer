@@ -167,15 +167,14 @@ namespace Finmer.Editor
 
         private void RegisterNewAsset(AssetBase asset)
         {
-            // add asset to treeview
+            // Add asset to asset list view
             Program.ActiveFurball.Assets.Add(asset);
             AddAssetToList(asset, true);
 
-            // allow the user to save the project
+            // Adding assets changes the project, so allow saving
             MarkDirty();
 
-            // also open the editor window for the new asset, as the user probably
-            // wants to make changes in the new asset
+            // The user likely wants to begin editing the new asset, so open it immediately
             OpenEditorWindow(asset);
         }
 
@@ -393,7 +392,7 @@ namespace Finmer.Editor
                                 continue;
                             }
 
-                            // Load it using a binary file device (since it's suppposed to be in furball form)
+                            // We expect the dependency as a binary-mode furball, so use a binary device accordingly
                             FurballFileDevice dep_device = new FurballFileDeviceBinary();
                             Furball dep_module = dep_device.ReadModule(new FileInfo(dep_file_name));
                             Program.ActiveDependencies.Merge(dep_module);
@@ -420,7 +419,7 @@ namespace Finmer.Editor
                         AddAssetToList(asset, false);
                     }
 
-                    // Allow the module to be saved right from the get-go. This allows users to open a text project (fnproj) and then immediately
+                    // Allow the module to be saved right from the get-go. This allows users to open a project and then immediately
                     // convert it to a binary module file (furball) without having to awkwardly get the editor to call MarkDirty().
                     // This is NOT the same as calling MarkDirty here since we don't want the editor to actually ask "save unchanged changes?" etc.
                     m_Filename = filename;

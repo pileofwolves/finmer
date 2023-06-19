@@ -11,7 +11,7 @@ namespace Finmer
 {
 
     /// <summary>
-    /// Contains build versioning info as compile-time constants.
+    /// Contains build version info as compile-time constants.
     /// </summary>
     internal static class CompileConstants
     {

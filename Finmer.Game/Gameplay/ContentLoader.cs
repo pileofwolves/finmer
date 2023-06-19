@@ -84,10 +84,10 @@ namespace Finmer.Gameplay
                     // Collect the dependencies of this module
                     required_dependencies.AddRange(furball.Dependencies);
 
-                    // Record the furball's metadata (used for crash reports)
+                    // Record the module metadata (used for crash reports)
                     GameController.LoadedModules.Add(furball.Metadata);
 
-                    // Merge the furball with the central asset repository
+                    // Merge the module with the central asset repository
                     GameController.Content.Add(furball.Assets);
                 }
 

@@ -78,7 +78,7 @@ namespace Finmer.Gameplay.Scripting
             Debug.Assert(m_TableRef != -1, "Table used after being freed");
             IntPtr stack = m_Context.LuaState;
 
-            // Assign nil to the name, so the function can be GC'd
+            // Assign nil to the name, so the function can be garbage-collected
             PushCallbackTable(stack);
             lua_pushnil(stack);
             lua_setfield(stack, -2, name);

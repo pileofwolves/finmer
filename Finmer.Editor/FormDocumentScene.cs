@@ -558,11 +558,11 @@ namespace Finmer.Editor
         {
             m_SkipTreeSelect = true;
 
-            // move scene noed
+            // Move the scene node in the asset
             m_SelectedNode.Parent.Children[m_SelectedTreeIndex] = m_SelectedNode.Parent.Children[m_SelectedTreeIndex - 1];
             m_SelectedNode.Parent.Children[m_SelectedTreeIndex - 1] = m_SelectedNode;
 
-            // move tree node
+            // Move tree node in UI
             m_SelectedTreeParent.Nodes.RemoveAt(m_SelectedTreeIndex);
             m_SelectedTreeParent.Nodes.Insert(m_SelectedTreeIndex - 1, m_SelectedTree);
             m_SelectedTree.TreeView.SelectedNode = m_SelectedTree;
@@ -625,17 +625,23 @@ namespace Finmer.Editor
 
         private void trvNodes_ItemDrag(object sender, ItemDragEventArgs e)
         {
-            // can only drag/drop treenodes
-            if (!(e.Item is TreeNode treenode)) return;
-            // cannot change the scene root
-            if (treenode.Parent == null) return;
-            // must be left or right mouse
-            if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right) return;
+            // Can only drag/drop tree nodes
+            if (!(e.Item is TreeNode tree_node))
+                return;
 
-            // if doing a move, collapse the node, so that it becomes impossible to drag the source onto one of its children (which makes no sense)
+            // Cannot change the scene root
+            if (tree_node.Parent == null)
+                return;
+
+            // Must be left or right mouse
+            if (e.Button != MouseButtons.Left && e.Button != MouseButtons.Right)
+                return;
+
+            // If doing a move, collapse the node, to prevent dragging the source onto one of its children (which would lead to a cycle)
             if (e.Button == MouseButtons.Left)
-                treenode.Collapse();
+                tree_node.Collapse();
 
+            // Permit the drag operation
             DoDragDrop(e.Item, e.Button == MouseButtons.Left ? DragDropEffects.Move :  DragDropEffects.Link);
         }
 

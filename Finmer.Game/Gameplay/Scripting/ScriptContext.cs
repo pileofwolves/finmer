@@ -162,7 +162,7 @@ namespace Finmer.Gameplay.Scripting
                 m_PinnedObjects.Add(obj.ID, pin);
             }
 
-            // Increase its refcount
+            // Increase its reference count
             pin.m_RefCount++;
         }
 
@@ -345,7 +345,7 @@ namespace Finmer.Gameplay.Scripting
         private void OpenStandardLibrary(lua_CFunction func)
         {
             // The purpose of this function is to ensure that Lua can finish calling the input function pointer, while we keep the
-            // managed delegate alive until the function completes. Not doing this risks GCing the function pointer while it's running.
+            // managed delegate alive until the function completes. Not doing this risks collecting the function pointer while it's running.
             lua_pushcfunction(LuaState, func);
             lua_call(LuaState, 0, 0);
 

@@ -151,11 +151,11 @@ namespace Finmer.Editor
 
         private void tsbRemove_Click(object sender, EventArgs e)
         {
-            // Has selection? (failsafe)
+            // Ensure there is actually a selection to remove
             if (lstKeys.SelectedItems.Count == 0) 
                 return;
 
-            // User confirmed?
+            // Ask for confirmation
             if (MessageBox.Show($"Are you sure you want to delete the set '{m_EditingKey}'? This operation cannot be undone.", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
                 return;
 

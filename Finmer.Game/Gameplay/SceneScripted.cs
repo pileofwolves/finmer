@@ -98,7 +98,7 @@ namespace Finmer.Gameplay
 
             // Sandbox the main chunk
             lua_setfenv(state, -3);
-            lua_pop(state, 1); // remove SceneEnvs table
+            lua_pop(state, 1); // remove environments table
 
 #if LUA_TIMINGS
             double time_sandbox = sw.Elapsed.TotalMilliseconds;

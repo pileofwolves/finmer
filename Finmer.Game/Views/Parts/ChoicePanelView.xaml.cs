@@ -170,8 +170,7 @@ namespace Finmer.Views
                 // Get absolute position and size
                 Point pos = button.TransformToVisual(ButtonExitAnimCanvas).Transform(new Point());
 
-                // Remove from previous parent and readd to the overlay container so it can continue animating after being removed from the collection.
-                // Yes, this is super hacky, but it works :3
+                // Remove from previous parent and re-add to the overlay container so it can continue animating after being removed from the collection
                 Buttons.Remove(button);
                 ButtonExitAnimCanvas.Children.Add(button);
 

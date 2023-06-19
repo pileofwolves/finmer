@@ -11,7 +11,7 @@
     d:DesignHeight="100" d:DesignWidth="290">
     <UserControl.Resources>
         <cv:DieFaceToImageConverter x:Key="DieFaceToImageConverter" />
-        <!-- ReSharper disable once Xaml.RedundantResource -> Retrieved in codebehind -->
+        <!-- ReSharper disable once Xaml.RedundantResource -> Retrieved in code-behind -->
         <TimelineCollection x:Key="DieAppearTimeline">
             <DoubleAnimation From="0" To="1" Duration="00:00:00.350" Storyboard.TargetName="DieGrid" Storyboard.TargetProperty="Opacity">
                 <DoubleAnimation.EasingFunction>

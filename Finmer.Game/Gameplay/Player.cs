@@ -198,15 +198,15 @@ namespace Finmer.Gameplay
 
             while (XP >= RequiredXP)
             {
-                // subtract xp needed for levelup
+                // Subtract XP required for level-up
                 XP -= RequiredXP;
                 Level++;
 
-                // award points
+                // Award points
                 FeatPoints++;
                 AbilityPoints++;
 
-                // notify player
+                // Show a notification message
                 GameUI.Instance.Log(
                     $"Congratulations, you have reached level {Level}! You gain 1 ability point.",
                     Theme.LogColorNotification);
@@ -321,7 +321,7 @@ namespace Finmer.Gameplay
         {
             base.ReloadPronouns();
 
-            // Hardcode the player's 'pronouns' to be first-person
+            // Force the player's 'pronouns' to be first-person
             Alias = "you";
             PronounObjective = "you";
             PronounSubjective = "you";

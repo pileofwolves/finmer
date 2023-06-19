@@ -16,7 +16,7 @@ namespace Finmer.Views.Base
 {
 
     /// <summary>
-    /// Base class for character creation pageviews.
+    /// Base class for character creation section pages.
     /// </summary>
     public abstract class CharCreateViewBase : UserControl, INotifyPropertyChanged
     {

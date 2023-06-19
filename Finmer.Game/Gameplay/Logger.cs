@@ -63,32 +63,32 @@ namespace Finmer.Gameplay
                 // Ignore
             }
 
-            // Write a text crashlog that includes a stacktrace and some game state
+            // Write a text crash log that includes a stacktrace and some game state
             try
             {
-                using (var crashlog = new StreamWriter(base_name + ".log"))
+                using (var crash_report = new StreamWriter(base_name + ".log"))
                 {
-                    crashlog.WriteLine("===================================");
-                    crashlog.WriteLine("EXCEPTION REPORT");
-                    crashlog.WriteLine();
+                    crash_report.WriteLine("===================================");
+                    crash_report.WriteLine("EXCEPTION REPORT");
+                    crash_report.WriteLine();
 
-                    WriteBasicInfo(ex, crashlog);
-                    crashlog.WriteLine();
+                    WriteBasicInfo(ex, crash_report);
+                    crash_report.WriteLine();
 
-                    WriteExceptionInfo(ex, crashlog);
-                    crashlog.WriteLine();
+                    WriteExceptionInfo(ex, crash_report);
+                    crash_report.WriteLine();
 
-                    WriteModuleInfo(crashlog);
-                    crashlog.WriteLine();
+                    WriteModuleInfo(crash_report);
+                    crash_report.WriteLine();
 
-                    WriteSaveDataInfo(crashlog);
-                    crashlog.WriteLine();
+                    WriteSaveDataInfo(crash_report);
+                    crash_report.WriteLine();
 
-                    WriteUserConfigInfo(crashlog);
-                    crashlog.WriteLine();
+                    WriteUserConfigInfo(crash_report);
+                    crash_report.WriteLine();
 
-                    crashlog.WriteLine("END OF FILE");
-                    crashlog.WriteLine("===================================");
+                    crash_report.WriteLine("END OF FILE");
+                    crash_report.WriteLine("===================================");
                 }
             }
             catch (Exception)

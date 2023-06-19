@@ -21,7 +21,7 @@ namespace Finmer.Gameplay.Combat
     public delegate void CombatEndHandler();
 
     /// <summary>
-    /// Describes a handler for a combat event in which a character is killed in a non-vorish way.
+    /// Describes a handler for a combat event in which a character is killed in a non-vore-related way.
     /// </summary>
     /// <param name="killer">The <seealso cref="Participant" /> responsible for the kill.</param>
     /// <param name="victim">The <seealso cref="Participant" /> that was killed.</param>

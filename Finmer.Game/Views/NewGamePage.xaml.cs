@@ -109,7 +109,7 @@ namespace Finmer.Views
             // Store this character in the user config, so the next time this menu is opened, the same settings are restored
             UserConfig.NewGamePreset = m_Player;
 
-            // Initialize the savegame with basic defaults.
+            // Initialize the save data with basic defaults.
             // The scripts in content can make any other adjustments if needed (such as starting equipment).
             m_Player.SetInt(SaveData.k_Character_Level, 1);
             m_Player.SetInt(SaveData.k_Player_TimeDay, 1);

@@ -37,7 +37,7 @@ namespace Finmer.Core.Assets
             outstream.BeginArray("Entries", entries.Count);
             foreach (var key in sorted_keys)
             {
-                // Search for the string table entry matching this key (remember, the table is a hashmap, but we want sorted keys)
+                // Search for the string table entry matching this key (remember, the table is a hash map, but we want sorted keys)
                 var entry = entries[key];
 
                 // Write each individual text collection
@@ -64,14 +64,12 @@ namespace Finmer.Core.Assets
             {
                 instream.BeginObject();
 
-                // Read entry key and number of subentries
+                // Read entry key and number of entries
                 string key = instream.ReadStringProperty("Key");
 
                 // Read all strings into the table
-                for (int subentries = instream.BeginArray("Text"); subentries > 0; subentries--)
-                {
+                for (int entries = instream.BeginArray("Text"); entries > 0; entries--)
                     Table.Add(key, instream.ReadStringValue());
-                }
 
                 instream.EndArray();
                 instream.EndObject();

@@ -156,7 +156,7 @@ namespace Finmer.ViewModels
 
         private void UnequipItem(object arg)
         {
-            // Find the equipped item; validate that the slot actually contains something as a failsafe
+            // Find the equipped item; validate that the slot actually contains something
             int equipment_index = (int)arg;
             Item equipped = Equipment[equipment_index];
             if (equipped == null)

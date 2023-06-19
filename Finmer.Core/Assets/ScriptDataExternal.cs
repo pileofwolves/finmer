@@ -36,7 +36,7 @@ namespace Finmer.Core.Assets
             Name = instream.ReadStringProperty("Name");
             byte[] source_utf8 = instream.ReadAttachment(GetScriptAttachmentName());
 
-            // Convert the UTF-8 bytestream to a string, or fall back on an empty script if the attachment was unavailable
+            // Convert the UTF-8 byte stream to a string, or fall back on an empty script if the attachment was unavailable
             ScriptText = (source_utf8 != null) ? Encoding.UTF8.GetString(source_utf8) : String.Empty;
         }
 

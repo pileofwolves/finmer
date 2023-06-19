@@ -135,7 +135,7 @@ namespace Finmer.Gameplay.Combat
             // Keep duration in sync with exit animation begin time + duration (in CombatantPanelView.xaml).
             Thread.Sleep(1650);
 
-            // Delete the combat state viewmodel, which will also release the participant viewmodels etc.
+            // Delete the combat state viewmodel, which will also release the participant view-models etc.
             // This must be done after the animation finishes because otherwise the participant list is wiped while on-screen, which looks bad.
             GameUI.Instance.CombatStateViewModel = null;
         }

@@ -374,7 +374,7 @@ namespace Finmer.Gameplay
             public bool IsPersistent { get; }
 
             /// <summary>
-            /// Hashmap of grammar properties supported by this context.
+            /// Table of grammar properties supported by this context.
             /// </summary>
             public Dictionary<string, PropertyInfo> Properties { get; }
 

@@ -243,7 +243,7 @@ namespace Finmer.Gameplay
                     if (ai.Character.IsPredator)
                         return new CombatAction(ECombatAction.Swallow, ai.GrapplingWith);
 
-                    // Non-preds shouldn't have reached this since we don't support in-grapple attacks yet
+                    // Prey-only participants shouldn't have reached this since we don't support in-grapple attacks yet
                     Debug.Fail("Non-predator character is the grapple initiator, this should not be possible");
                     return new CombatAction(ECombatAction.SkipTurn, null);
                 }

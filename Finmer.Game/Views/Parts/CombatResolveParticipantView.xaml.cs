@@ -97,7 +97,7 @@ namespace Finmer.Views
 
         private string GetTotalLabel()
         {
-            // Failsafe, such as for the XAML designer
+            // This function may be called from the XAML designer, in which case the view-model is not set
             if (m_ViewModel == null)
                 return "Total";
 

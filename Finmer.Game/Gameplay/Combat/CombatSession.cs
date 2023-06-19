@@ -85,7 +85,7 @@ namespace Finmer.Gameplay.Combat
         /// <param name="character">The character to register. Characters may only be registered once.</param>
         public void AddParticipant(Character character)
         {
-            // Register the character as a new participantt
+            // Register the character as a new participant
             Debug.Assert(Participants.All(p => p.Character != character), "Character is already registered");
             var participant = new Participant(character, this);
             Participants.Add(participant);

@@ -19,7 +19,7 @@ namespace Finmer.Editor
 {
 
     /// <summary>
-    /// Implementation of a file device that manages a collection of text files on disk, suitable for versioning.
+    /// Implementation of a file device that manages a collection of text files on disk, suitable for version control.
     /// </summary>
     public sealed class FurballFileDeviceText : FurballFileDevice
     {
@@ -149,7 +149,7 @@ namespace Finmer.Editor
                 foreach (var unused_file in unused_files)
                     unused_file.Delete();
 
-                // Write fnproj file
+                // Write project metadata
                 WriteProjectFile(furball, file);
 
                 // Write all individual asset files

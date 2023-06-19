@@ -90,7 +90,7 @@ namespace Finmer.Gameplay.Scripting
 
         private static int ExportedRandom(IntPtr L)
         {
-            // Re-implementation of Lua's default math.random function, but with a much higher-quality underlying PRNG
+            // Re-implementation of Lua's default math.random function, but with a much higher-quality underlying RNG
             double rand = s_RNG.NextDouble();
             switch (lua_gettop(L))
             {

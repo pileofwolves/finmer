@@ -72,7 +72,7 @@ namespace Finmer.ViewModels
         {
             CombatDisplay.ResolveRound round = info.Rounds[roundIndex];
 
-            // Update the participant viewmodels to show the new sets of dice
+            // Update the participant view-models to show the new sets of dice
             Participant1ViewModel = new CombatResolveParticipantViewModel(info.Instigator, info.Action, round.OffenseTotal, round.OffenseDice);
             Participant2ViewModel = new CombatResolveParticipantViewModel(info.Target, info.Action, round.DefenseTotal, round.DefenseDice);
 

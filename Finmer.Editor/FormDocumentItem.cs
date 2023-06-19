@@ -138,7 +138,9 @@ namespace Finmer.Editor
                 try
                 {
                     var pic = (Bitmap)new ImageConverter().ConvertFrom(newImage);
-                    Debug.Assert(pic != null); // should've thrown an exception otherwise
+
+                    // ImageConverter is expected to throw an exception if image decoding fails
+                    Debug.Assert(pic != null);
 
                     if (pic.Width != 32 || pic.Height != 32)
                         throw new InvalidDataException("The image must be 32 x 32 pixels in size.");

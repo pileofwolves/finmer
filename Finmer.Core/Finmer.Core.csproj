@@ -67,9 +67,6 @@
     <Compile Include="Assets\AssetCreature.cs" />
     <Compile Include="Assets\AssetItem.cs" />
     <Compile Include="Assets\AssetScript.cs" />
-    <Compile Include="Bindings\Binding.cs" />
-    <Compile Include="Bindings\EBindingType.cs" />
-    <Compile Include="Bindings\LiteralBinding.cs" />
     <Compile Include="Buffs\Buff.cs" />
     <Compile Include="Buffs\SingleDeltaBuff.cs" />
     <Compile Include="Buffs\DiceBuffs.cs" />

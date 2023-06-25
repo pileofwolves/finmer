@@ -7,6 +7,14 @@
 		{
 			"Key": 10,
 			"Text": "After reconciling with Mayor Iso and Adept Rux, the three of you put together a plan. Find Zosk the merchant in South Finmer and hitch a ride."
+		},
+		{
+			"Key": 20,
+			"Text": "You found the Red Maw, an amber mine that serves as Randall's hideout. Find what information you can on his plans and whereabouts, then escape."
+		},
+		{
+			"Key": 30,
+			"Text": "You found the information your co-conspirators are looking for. Leave the Red Maw, and return to Rux's home."
 		}
 	]
 }

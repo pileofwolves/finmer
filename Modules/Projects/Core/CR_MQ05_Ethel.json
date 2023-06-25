@@ -1,0 +1,51 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "347af72d-30f2-4484-9f24-32fad59d5059",
+	"AssetName": "CR_MQ05_Ethel",
+	"ObjectName": "Ethel",
+	"ObjectAlias": "the bluebird",
+	"Strength": 6,
+	"Agility": 5,
+	"Body": 6,
+	"Wits": 1,
+	"Flags": 2,
+	"Level": 6,
+	"Size": "Medium",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": true,
+	"StringMappings": [
+		{
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ05_ENCOUNTER_ETHEL_VORE_POV_WIN"
+		},
+		{
+			"Key": "VORE_POV_STRUGGLE",
+			"Rule": "Always",
+			"NewKey": "MQ05_ENCOUNTER_ETHEL_VORE_POV_STRUGGLE"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ05_ENCOUNTER_ETHEL_VORE_POV_DIGEST"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "Always",
+			"NewKey": "MQ05_ENCOUNTER_ETHEL_VORE_POV_DISPOSAL"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ05_ENCOUNTER_ETHEL_CLOBBER"
+		}
+	]
+}

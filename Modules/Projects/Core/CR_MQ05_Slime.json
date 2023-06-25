@@ -1,0 +1,36 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "fa36d74b-822a-4fcd-a12a-a8ffb3d71778",
+	"AssetName": "CR_MQ05_Slime",
+	"ObjectName": "Gelatinous Cube",
+	"ObjectAlias": "the slime",
+	"Strength": 10,
+	"Agility": 1,
+	"Body": 20,
+	"Wits": 1,
+	"Flags": 3,
+	"Level": 10,
+	"Size": "Huge",
+	"Gender": "Ungendered",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": false,
+	"StringMappings": [
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ05_ENCOUNTER_SLIME_DIGEST"
+		},
+		{
+			"Key": "VORE_POV_STRUGGLE",
+			"Rule": "Always",
+			"NewKey": "MQ05_ENCOUNTER_SLIME_STRUGGLE"
+		}
+	]
+}

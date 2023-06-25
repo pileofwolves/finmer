@@ -1,0 +1,1485 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "52e3b2fc-79dc-4453-ad26-743f12d36c17",
+	"AssetName": "Scene_RedMaw",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RedMaw_Custom"
+	},
+	"IsPatch": false,
+	"Root": {
+		"NodeType": "Root",
+		"Key": "Root",
+		"Children": [
+			{
+				"NodeType": "State",
+				"Key": "Cart_R_Intro",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Red Maw, Beach"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ05_MAW_CART_IN1",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Cart_C_Intro02",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Cart_R_Intro02",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ05_MAW_CART_IN2\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Cart_C_Intro03",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Cart_R_Intro03",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ05_MAW_CART_IN3\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Cart_C_Intro04",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Cart_R_Intro04_Wits",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_MAW_CART_IN4_WITS",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataVisualCondition",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionPlayerStat",
+																			"Operator": "GreaterOrEqual",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": 7.0,
+																			"Stat": "Wits"
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Room_EntryHall"
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"NodeType": "State",
+																"Key": "Cart_R_Intro04_Dumb",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_MAW_CART_IN4_DUMB",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Room_EntryHall"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Cart_Exit",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "Ok bye",
+							"IsRaw": true
+						}
+					]
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Encounter_Jett",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Red Maw, Depths"
+						},
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ05_ENCOUNTER_JETT_AMBUSH1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandPreysense",
+							"Mode": 129,
+							"CreatureGuid": "8df7c1f7-7953-4e83-8305-3b4f92f58654"
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_ENCOUNTER_JETT_AMBUSH2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandCombatBegin",
+															"IncludePlayer": true,
+															"IncludeAllies": true,
+															"Participants": [
+																{
+																	"Variable": "jett",
+																	"Creature": "8df7c1f7-7953-4e83-8305-3b4f92f58654",
+																	"IsAlly": false
+																}
+															],
+															"HasCallbackCombatStart": false,
+															"HasCallbackRoundEnd": false,
+															"HasCallbackPlayerKilled": false,
+															"HasCallbackCreatureKilled": false,
+															"HasCallbackCreatureVored": false,
+															"HasCallbackCreatureReleased": false
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_ENCOUNTER_JETT_END",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandSetInventoryEnabled",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "CommandPlayerSetItem",
+															"ItemGuid": "b98ca030-9458-4685-b0c1-9378a79b3155",
+															"Add": true,
+															"Quiet": false
+														},
+														{
+															"!Type": "CommandComment",
+															"Comment": "Quick hack for disabling Shaft3 room text"
+														},
+														{
+															"!Type": "CommandVarSetString",
+															"VariableName": "MQ05_MAW_CURRENT_ROOM",
+															"OperandMode": "Literal",
+															"OperandText": "MQ05_MAW_ROOM_SHAFT3"
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Room_Shaft3"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Encounter_Ethel",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Red Maw, Mess Hall"
+						},
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "LogRoomText(\"MQ05_MAW_ROOM_STORAGE2\")"
+						},
+						{
+							"!Type": "CommandPreysense",
+							"Mode": 129,
+							"CreatureGuid": "347af72d-30f2-4484-9f24-32fad59d5059"
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Kick",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_ENCOUNTER_ETHEL_WAKE_KICK",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "TOWN_PIT_OPP4_WON",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"HasElseBranch": false,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandComment",
+											"Comment": "A little recognition"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_ENCOUNTER_ETHEL_WAKE_CHAMP",
+											"IsRaw": false
+										}
+									]
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Ethel_R_Question",
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Ethel_C_Q_Self",
+										"Title": "Ethel",
+										"Tooltip": "Ask him who he is to this gang.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ05_ENCOUNTER_ETHEL_QUESTION_SELF",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ05_ENCOUNTER_ETHEL_QUESTION_SELF",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_ENCOUNTER_ETHEL_QUESTION_SELF",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ethel_R_Question"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Ethel_C_Q_Randall",
+										"Title": "Randall",
+										"Tooltip": "Ask him about the boss himself.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Ethel_R_Q_Randall",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_ENCOUNTER_ETHEL_QUESTION_BAD",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Ethel_C_Fight",
+														"Title": "Uh-oh",
+														"Tooltip": "Oops.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Ethel_R_Fight",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandCombatBegin",
+																			"IncludePlayer": true,
+																			"IncludeAllies": true,
+																			"Participants": [
+																				{
+																					"Variable": "birb",
+																					"Creature": "347af72d-30f2-4484-9f24-32fad59d5059",
+																					"IsAlly": false
+																				}
+																			],
+																			"HasCallbackCombatStart": false,
+																			"HasCallbackRoundEnd": false,
+																			"HasCallbackPlayerKilled": false,
+																			"HasCallbackCreatureKilled": false,
+																			"HasCallbackCreatureVored": false,
+																			"HasCallbackCreatureReleased": false
+																		},
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_ENCOUNTER_ETHEL_END",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Ethel_C_Fight02",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Room_Storage2"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Ethel_C_Q_Plans",
+										"Title": "Plans",
+										"Tooltip": "Ask him about the gang's plans.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ethel_R_Q_Randall"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Ethel_C_Q_Amber",
+										"Title": "Amber",
+										"Tooltip": "Ask him what all the fuss is about with amber.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Ethel_R_Q_Randall"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Sit on",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_ENCOUNTER_ETHEL_WAKE_SIT",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandCombatBegin",
+											"IncludePlayer": true,
+											"IncludeAllies": true,
+											"Participants": [
+												{
+													"Variable": "birb",
+													"Creature": "347af72d-30f2-4484-9f24-32fad59d5059",
+													"IsAlly": false
+												}
+											],
+											"HasCallbackCombatStart": true,
+											"CallbackCombatStart": [
+												{
+													"!Type": "CommandCombatSetGrappled",
+													"Mode": "Set",
+													"InstigatorName": "birb",
+													"TargetName": "player"
+												}
+											],
+											"HasCallbackRoundEnd": true,
+											"CallbackRoundEnd": [
+												{
+													"!Type": "CommandIf",
+													"Mode": "All",
+													"Operand": false,
+													"Tests": [
+														{
+															"!Type": "ConditionCombatParGrappling",
+															"ParticipantName": "birb"
+														},
+														{
+															"!Type": "ConditionCombatParSwallowed",
+															"ParticipantName": "player"
+														}
+													],
+													"HasElseBranch": false,
+													"MainSubgroup": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_ENCOUNTER_ETHEL_CLOBBER",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandCombatEnd"
+														}
+													]
+												}
+											],
+											"HasCallbackPlayerKilled": false,
+											"HasCallbackCreatureKilled": false,
+											"HasCallbackCreatureVored": false,
+											"HasCallbackCreatureReleased": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ05_ENCOUNTER_ETHEL_END",
+													"IsRaw": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Room_Storage2"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_EntryHall",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "TimedCheckpoint(\"MQ05_MAW\")\r\n\r\nlocal can_leave = Storage.GetFlag(\"MQ05_MAW_CAN_LEAVE\")\r\nAddLink(ECompass.North, can_leave and NodeLink(\"Cart_Exit\") or\r\n    function() Log(\"MQ05_MAW_ROOM_ENTRY_EXIT_LOCKED\") end)\r\nAddLink(ECompass.East, NodeLink(\"Room_Barracks\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Storage1\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\nSetLinkLabelVariable(2, \"MQ05_MAW_ROOM_BARRACKS_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK2A\", \"MQ05_MAW_ROOM_ENTRY_LINK2B\")\r\n\r\nSetInventoryEnabled(true)\r\nSetLocation(\"Red Maw, Entrance\")\r\nLogRoomText(\"MQ05_MAW_ROOM_ENTRY\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Barracks",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.West, NodeLink(\"Room_EntryHall\"))\r\nAddLink(ECompass.East, NodeLink(\"Room_Kitchen\"))\r\n\r\nSetLocation(\"Red Maw, Barracks\")\r\nLogRoomText(\"MQ05_MAW_ROOM_BARRACKS\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Search",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_BARRACKS_SEARCH1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_BARRACKS_SEARCH1",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_BARRACKS_SEARCH1",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Barracks"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Search More",
+						"Tooltip": "It's worth the time and effort, surely...",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_BARRACKS_SEARCH2",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionPlayerStat",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 5.0,
+											"Stat": "Wits"
+										}
+									],
+									"HasElseBranch": true,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_BARRACKS_SEARCH2_WITS",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "a82f6b19-2396-435e-819a-f97af69a5317",
+											"Add": true,
+											"Quiet": false
+										}
+									],
+									"ElseSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_BARRACKS_SEARCH2_DUMB",
+											"IsRaw": false
+										}
+									]
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_BARRACKS_SEARCH1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_BARRACKS_SEARCH2",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Barracks"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Kitchen",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Barracks\"))\r\nSetLocation(\"Red Maw, Empty Room\")\r\nLogRoomText(\"MQ05_MAW_ROOM_KITCHEN\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Workshop",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.East, NodeLink(\"Room_Storage1\"))\r\nSetLocation(\"Red Maw, Workshop\")\r\nLogRoomText(\"MQ05_MAW_ROOM_WORKSHOP\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Workbench",
+						"Tooltip": "Search the workbench for interesting samples.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_WORKSHOP_BENCH",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_WORKSHOP_BENCH",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandPlayerSetItem",
+									"ItemGuid": "95623bd8-43cd-4198-bffc-9c903d7f36a6",
+									"Add": true,
+									"Quiet": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_WORKSHOP_BENCH",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Workshop"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Maps",
+						"Tooltip": "Search the desk with scrolls and maps.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_WORKSHOP_MAPS",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_WORKSHOP_MAPS",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "ABBEY_EXPLORE_COURTYARD",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"HasElseBranch": false,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_WORKSHOP_MAPS_VISITED",
+											"IsRaw": false
+										}
+									]
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_WORKSHOP_MAPS",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ05_MAW_ROOM_STUDY_DESK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ05_MAW_CAN_LEAVE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ05_MAW_ROOM_WORKSHOP_MAPS_FULL",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandJournalUpdate",
+													"JournalGuid": "d127b368-5ed9-4e1d-b389-4842632b2c4b",
+													"Stage": 30
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Room_Workshop"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Workshop"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Study",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Player:TakeItem(\"I_MQ05_StudyKey\")\r\nAddLink(ECompass.West, NodeLink(\"Room_Shaft1\"))\r\nSetLocation(\"Red Maw, Study\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STUDY\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Desk",
+						"Tooltip": "Search the paperwork on the desk.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_STUDY_DESK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_STUDY_DESK",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_STUDY_DESK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ05_MAW_ROOM_WORKSHOP_MAPS",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ05_MAW_CAN_LEAVE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ05_MAW_ROOM_STUDY_DESK_FULL",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandJournalUpdate",
+													"JournalGuid": "d127b368-5ed9-4e1d-b389-4842632b2c4b",
+													"Stage": 30
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Room_Study"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Study"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Shelves",
+						"Tooltip": "Search the sparse archives and shelves.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_STUDY_SHELVES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_STUDY_SHELVES",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_STUDY_SHELVES",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Study"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Journal",
+						"Tooltip": "Read the loose journal page.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL4\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL4\", true)"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_STUDY_SHELVES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_JOURNAL4",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Study"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Storage1",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Workshop\"))\r\nAddLink(ECompass.North, NodeLink(\"Room_EntryHall\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft1\"))\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_WORKSHOP_FIRST\", \"MQ05_MAW_ROOM_STORAGE1_LINK1A\", \"MQ05_MAW_ROOM_STORAGE1_LINK1B\")\r\n\r\nSetLocation(\"Red Maw, Storage Room\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STORAGE1\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Search",
+						"Tooltip": "Rummage through the barrels to find something of value.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_STORAGE1_SEARCH",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_STORAGE1_SEARCH",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_STORAGE1_SEARCH",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Storage1"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Journal",
+						"Tooltip": "Read what little you can from the crumbling journal.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL1\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL1\", true)"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_STORAGE1_SEARCH",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_JOURNAL1",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Storage1"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Storage2",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Shaft2\"))\r\nSetLocation(\"Red Maw, Mess Hall\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STORAGE2\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Journal",
+						"Tooltip": "Read the lonely journal page.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL3\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL3\", true)"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return not Storage.GetFlag(\"MQ05_MAW_JOURNAL3\")"
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Storage2"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Shaft1",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nlocal study_open = Player:HasItem(\"I_MQ05_StudyKey\") or Storage.GetFlag(\"MQ05_MAW_ROOM_STUDY_FIRST\")\r\nlocal study_lock = function()\r\n    Log(Storage.GetFlag(\"MQ05_MAW_STUDY_POKE\") and \"MQ05_MAW_ROOM_STUDY_LOCKED2\" or \"MQ05_MAW_ROOM_STUDY_LOCKED\")\r\n    Storage.SetFlag(\"MQ05_MAW_STUDY_POKE\", true)\r\nend\r\nAddLink(ECompass.North, NodeLink(\"Room_Storage1\"))\r\nAddLink(ECompass.East, study_open and NodeLink(\"Room_Study\") or study_lock)\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft2\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\n\r\nSetLocation(\"Red Maw, Upper Level\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT1\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Shaft2",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nlocal visited_collapsed = Storage.GetFlag(\"MQ05_MAW_ROOM_COLLAPSED_DONE\")\r\nlocal visited_storage2 = Storage.GetFlag(\"MQ05_MAW_ROOM_STORAGE2_FIRST\")\r\nAddLink(ECompass.West, visited_collapsed and function()\r\n    Log(\"MQ05_MAW_ROOM_COLLAPSED_LOCKED\") end or NodeLink(\"Room_Collapsed\"))\r\nAddLink(ECompass.East, NodeLink(visited_storage2 and \"Room_Storage2\" or \"Encounter_Ethel\"))\r\nAddLink(ECompass.North, NodeLink(\"Room_Shaft1\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft3\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\nSetLocation(\"Red Maw, Lower Level\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT2\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Shaft3",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nAddLink(ECompass.North, NodeLink(\"Room_Shaft2\"))\r\nAddLink(ECompass.East, NodeLink(\"Room_Iron\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Terminus\"))\r\n\r\nSetLocation(\"Red Maw, Depths\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT3\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Collapsed",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.East, NodeLink(\"Room_Shaft2\"))\r\nSetLocation(\"Red Maw, Collapsed Tunnel\")\r\nLogSplit()\r\nLog(\"MQ05_MAW_ROOM_COLLAPSED\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_ENCOUNTER_SLIME1",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandPreysense",
+											"Mode": 64,
+											"CreatureGuid": "fa36d74b-822a-4fcd-a12a-a8ffb3d71778"
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Title": "Leave",
+										"Tooltip": "Best leave this thing for what it is.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ05_ENCOUNTER_SLIME_LEAVE",
+													"IsRaw": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Room_Shaft2"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Title": "Touch",
+										"Tooltip": "Or you could be an utter fool, if you want.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "SaveData.TakeCheckpoint(true)\r\nif SaveData.IsRestoringGame() then\r\n    Storage.SetFlag(\"MQ05_MAW_ROOM_COLLAPSED_DONE\", true)\r\n    Log(\"MQ05_ENCOUNTER_SLIME_RELOAD\")\r\nelse\r\n    Log(\"MQ05_ENCOUNTER_SLIME2\")\r\nend"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ05_MAW_ROOM_COLLAPSED_DONE",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_ENCOUNTER_SLIME3",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandCombatBegin",
+																			"IncludePlayer": true,
+																			"IncludeAllies": true,
+																			"Participants": [
+																				{
+																					"Variable": "slime",
+																					"Creature": "fa36d74b-822a-4fcd-a12a-a8ffb3d71778",
+																					"IsAlly": false
+																				}
+																			],
+																			"HasCallbackCombatStart": true,
+																			"CallbackCombatStart": [
+																				{
+																					"!Type": "CommandCombatSetVored",
+																					"Mode": "Set",
+																					"PredatorName": "slime",
+																					"PreyName": "player"
+																				}
+																			],
+																			"HasCallbackRoundEnd": false,
+																			"HasCallbackPlayerKilled": false,
+																			"HasCallbackCreatureKilled": false,
+																			"HasCallbackCreatureVored": false,
+																			"HasCallbackCreatureReleased": false
+																		}
+																	]
+																},
+																"Children": []
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Title": "Leave",
+														"Tooltip": "There is nothing for you here.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ05_ENCOUNTER_SLIME_LEAVE",
+																	"IsRaw": false
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ05_MAW_ROOM_COLLAPSED_DONE",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Room_Shaft2"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Iron",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Shaft3\"))\r\nSetLocation(\"Red Maw, Side Tunnel\")\r\nLogRoomText(\"MQ05_MAW_ROOM_IRON\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Journal",
+						"Tooltip": "Read the journal page.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL2\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL2\", true)"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return not Storage.GetFlag(\"MQ05_MAW_JOURNAL2\")"
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Iron"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Terminus",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "local repeat_visit = Storage.GetFlag(\"MQ05_MAW_ROOM_TERMINUS_FIRST\")\r\nAddLink(ECompass.North, NodeLink(repeat_visit and \"Room_Shaft3\" or \"Encounter_Jett\"))\r\nSetLocation(\"Red Maw, Pit\")\r\nLogRoomText(\"MQ05_MAW_ROOM_TERMINUS\")"
+				},
+				"Children": []
+			}
+		]
+	}
+}

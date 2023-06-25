@@ -45,3 +45,9 @@ local function DebugStartMQ04()
     Storage.SetFlag("FOREST_ADEPT_FIRST", true)
     Player:GiveItem("I_MQ04_RuxBook")
 end
+
+local function DebugStartMQ05()
+    DebugStartMQ04()
+    Player:TakeItem("I_MQ04_RuxBook")
+    Storage.SetNumber("MQ04", 4)
+end

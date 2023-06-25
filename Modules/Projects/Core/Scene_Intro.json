@@ -174,6 +174,17 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "MQ05 Maw",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 20)\r\nSetScene(\"Scene_RedMaw\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "SQ02",
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,

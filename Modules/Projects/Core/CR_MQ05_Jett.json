@@ -1,0 +1,56 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "8df7c1f7-7953-4e83-8305-3b4f92f58654",
+	"AssetName": "CR_MQ05_Jett",
+	"ObjectName": "Jett",
+	"ObjectAlias": "the rat",
+	"Strength": 5,
+	"Agility": 8,
+	"Body": 5,
+	"Wits": 8,
+	"Flags": 0,
+	"Level": 7,
+	"Size": "Medium",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": true,
+	"StringMappings": [
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ05_ENCOUNTER_JETT_KILL_GENERIC"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ05_ENCOUNTER_JETT_KILL_DIGEST"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ05_ENCOUNTER_JETT_KILL_DIGEST_POV"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ05_ENCOUNTER_JETT_VORE_WIN"
+		},
+		{
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ05_ENCOUNTER_JETT_VORE_WIN_POV"
+		},
+		{
+			"Key": "VORE_DISPOSAL",
+			"Rule": "Always",
+			"NewKey": "MQ05_ENCOUNTER_JETT_VORE_DISPOSAL"
+		}
+	]
+}

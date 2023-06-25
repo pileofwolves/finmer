@@ -36,6 +36,7 @@ namespace Finmer.Gameplay.Scripting
             context.RegisterGlobalFunction("LogRaw", ExportedLogRaw);
             context.RegisterGlobalFunction("LogSplit", ExportedLogSplit);
             context.RegisterGlobalFunction("ClearLog", ExportedClearLog);
+            context.RegisterGlobalFunction("ResetButtons", ExportedResetButtons);
         }
 
         private static int ExportedSetInstruction(IntPtr L)
@@ -129,6 +130,14 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedClearLog(IntPtr L)
         {
             GameUI.Instance.ClearLog();
+            return 0;
+        }
+
+        private static int ExportedResetButtons(IntPtr L)
+        {
+            // Reset user-configurable UI elements, as if by ending a turn cycle
+            GameUI.Instance.ClearButtons();
+            GameController.Session.Compass.Reset();
             return 0;
         }
 

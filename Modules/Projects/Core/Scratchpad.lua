@@ -23,11 +23,11 @@ Pat:        stoat, m, shop owner
 Willow:     rabbit, f, shrine tender
 
     Baddies:
-Sahro:      tigress, f, MQ02 goon, shows up in MQ03
-Mako:       husky, m, unnamed in-game, MQ02 goon, shows up in MQ05
-Mia:        husky, f, replaces Sahro if she died in MQ02
-Jett:       unspecified rodent, m, unnamed in-game, RM member
-Ethel:      unspecified avian, m, unnamed in-game, RM member
+Sahro:      tigress, f, RM member, MQ02 goon, MQ03 tavern
+Mako:       husky, m, RM member, MQ02/MQ06
+Mia:        husky, f, RM member, MQ03 temple
+Jett:       rat, m, RM member, MQ05
+Ethel:      bluebird, m, RM member, MQ05
 
     Mentioned:
 Wilhelm:    tabby cat, m, mentioned in werewolf short story

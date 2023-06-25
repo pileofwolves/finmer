@@ -16,7 +16,7 @@
         <Button
             Margin="2"
             Height="35"
-            Command="{Binding Path=DataContext.(vm:ShopViewModel.BuyCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopPage}}"
+            Command="{Binding Path=DataContext.(vm:ShopViewModel.BuyCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopDialog}}"
             CommandParameter="{Binding}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockDefault}">Buy</TextBlock>

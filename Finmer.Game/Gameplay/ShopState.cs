@@ -274,7 +274,7 @@ namespace Finmer.Gameplay
         {
             // Queue a delegate on the main thread to navigate to the shop page
             var shop = FromLuaNonOptional<ShopState>(state, 1);
-            GameController.Window.Dispatcher.Invoke(delegate { GameController.Window.Navigate(new ShopPage(shop), ENavigatorAnimation.SlideLeft); });
+            GameController.Window.Dispatcher.Invoke(delegate { GameController.Window.OpenPopup(new ShopDialog(shop)); });
 
             // Pause the script until the shop page closes
             return LuaApi.lua_yield(state, 0);

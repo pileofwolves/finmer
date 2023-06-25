@@ -6,32 +6,24 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System.Windows;
 using Finmer.Gameplay;
-using Finmer.Utility;
 using Finmer.ViewModels;
 
 namespace Finmer.Views
 {
 
     /// <summary>
-    /// Interaction logic for ShopPage.xaml
+    /// Interaction logic for ShopDialog.xaml
     /// </summary>
-    public partial class ShopPage
+    public partial class ShopDialog
     {
 
-        public ShopPage(ShopState state)
+        public ShopDialog(ShopState state)
         {
             InitializeComponent();
 
             // Configure view model for data binding
             DataContext = new ShopViewModel(state, GameController.Session.Player);
-        }
-
-        private void BackButton_Click(object sender, RoutedEventArgs e)
-        {
-            GameController.Window.Navigate(new MainPage(), ENavigatorAnimation.SlideRight);
-            GameController.Session.ResumeScript();
         }
 
     }

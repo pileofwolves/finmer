@@ -292,8 +292,8 @@
       <DependentUpon>SaveGamePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ScrollViewerBehavior.cs" />
-    <Compile Include="Views\ShopPage.xaml.cs">
-      <DependentUpon>ShopPage.xaml</DependentUpon>
+    <Compile Include="Views\Dialogs\ShopDialog.xaml.cs">
+      <DependentUpon>ShopDialog.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\TitlePage.xaml.cs">
       <DependentUpon>TitlePage.xaml</DependentUpon>
@@ -485,7 +485,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\ShopPage.xaml">
+    <Page Include="Views\Dialogs\ShopDialog.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

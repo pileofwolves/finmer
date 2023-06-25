@@ -25,7 +25,7 @@
         <Button
             Margin="2"
             Height="35"
-            Command="{Binding Path=DataContext.(vm:ShopViewModel.SellCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopPage}}"
+            Command="{Binding Path=DataContext.(vm:ShopViewModel.SellCommand), RelativeSource={RelativeSource FindAncestor, AncestorType=v:ShopDialog}}"
             CommandParameter="{Binding}">
             <Grid>
                 <StackPanel

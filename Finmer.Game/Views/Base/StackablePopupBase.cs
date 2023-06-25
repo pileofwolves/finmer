@@ -10,6 +10,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Controls;
 using System.Windows.Input;
+using Finmer.Gameplay;
 using Finmer.Utility;
 using JetBrains.Annotations;
 
@@ -32,7 +33,12 @@ namespace Finmer.Views.Base
         /// </summary>
         public ICommand CloseCommand => m_CloseCommand ?? (m_CloseCommand = new RelayCommand(_ => Close()));
 
-        private ICommand m_CloseCommand;
+        /// <summary>
+        /// Wrapped command object for closing the dialog, and resuming gameplay scripts.
+        /// </summary>
+        public ICommand CloseResumeCommand => m_CloseResumeCommand ?? (m_CloseResumeCommand = new RelayCommand(_ => CloseAndResume()));
+
+        private ICommand m_CloseCommand, m_CloseResumeCommand;
 
         public event PropertyChangedEventHandler PropertyChanged;
 
@@ -42,6 +48,15 @@ namespace Finmer.Views.Base
         private void Close()
         {
             Host.Remove(this);
+        }
+
+        /// <summary>
+        /// Close the dialog and resume gameplay scripts.
+        /// </summary>
+        private void CloseAndResume()
+        {
+            Close();
+            GameController.Session.ResumeScript();
         }
 
         [NotifyPropertyChangedInvocator]

@@ -1,10 +1,11 @@
-﻿<UserControl
-    x:Class="Finmer.Views.ShopPage"
+﻿<vb:StackablePopupBase
+    x:Class="Finmer.Views.ShopDialog"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:ShopViewModel}"
@@ -28,7 +29,7 @@
             Height="40"
             HorizontalAlignment="Right"
             Content="Close"
-            Click="BackButton_Click" />
+            Command="{Binding CloseResumeCommand, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=vb:StackablePopupBase}}" />
 
         <!-- Inventory panels -->
         <DockPanel
@@ -86,4 +87,4 @@
             </v:ItemListView>
         </DockPanel>
     </Grid>
-</UserControl>
+</vb:StackablePopupBase>

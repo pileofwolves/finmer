@@ -18,6 +18,7 @@
                     <ControlTemplate TargetType="ListBoxItem">
                         <Border
                             x:Name="Border"
+                            ToolTipService.ShowDuration="60000"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch"
                             d:DataContext="{d:DesignInstance gp:ShopItemStack}">

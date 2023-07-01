@@ -299,18 +299,13 @@
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
 						{
-							"!Type": "CommandSetLocation",
-							"OperandMode": "Literal",
-							"OperandText": "Red Maw, Mess Hall"
-						},
-						{
 							"!Type": "CommandSetInventoryEnabled",
 							"OperandMode": "Literal",
 							"OperandLiteral": false
 						},
 						{
 							"!Type": "CommandInlineSnippet",
-							"Snippet": "LogRoomText(\"MQ05_MAW_ROOM_STORAGE2\")"
+							"Snippet": "SetCurrentRoom(\"Room_Storage2\", ELinkMode.Skip)"
 						},
 						{
 							"!Type": "CommandPreysense",
@@ -627,7 +622,7 @@
 				"Key": "Room_EntryHall",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "TimedCheckpoint(\"MQ05_MAW\")\r\n\r\nlocal can_leave = Storage.GetFlag(\"MQ05_MAW_CAN_LEAVE\")\r\nAddLink(ECompass.North, can_leave and NodeLink(\"Cart_Exit\") or\r\n    function() Log(\"MQ05_MAW_ROOM_ENTRY_EXIT_LOCKED\") end)\r\nAddLink(ECompass.East, NodeLink(\"Room_Barracks\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Storage1\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\nSetLinkLabelVariable(2, \"MQ05_MAW_ROOM_BARRACKS_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK2A\", \"MQ05_MAW_ROOM_ENTRY_LINK2B\")\r\n\r\nSetInventoryEnabled(true)\r\nSetLocation(\"Red Maw, Entrance\")\r\nLogRoomText(\"MQ05_MAW_ROOM_ENTRY\")"
+					"Script": "TimedCheckpoint(\"MQ05_MAW\")\r\nSetInventoryEnabled(true)\r\nSetCurrentRoom(\"Room_EntryHall\")"
 				},
 				"Children": []
 			},
@@ -636,7 +631,7 @@
 				"Key": "Room_Barracks",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.West, NodeLink(\"Room_EntryHall\"))\r\nAddLink(ECompass.East, NodeLink(\"Room_Kitchen\"))\r\n\r\nSetLocation(\"Red Maw, Barracks\")\r\nLogRoomText(\"MQ05_MAW_ROOM_BARRACKS\")"
+					"Script": "SetCurrentRoom(\"Room_Barracks\")"
 				},
 				"Children": [
 					{
@@ -765,7 +760,7 @@
 				"Key": "Room_Kitchen",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Barracks\"))\r\nSetLocation(\"Red Maw, Empty Room\")\r\nLogRoomText(\"MQ05_MAW_ROOM_KITCHEN\")"
+					"Script": "SetCurrentRoom(\"Room_Kitchen\")"
 				},
 				"Children": []
 			},
@@ -774,7 +769,7 @@
 				"Key": "Room_Workshop",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.East, NodeLink(\"Room_Storage1\"))\r\nSetLocation(\"Red Maw, Workshop\")\r\nLogRoomText(\"MQ05_MAW_ROOM_WORKSHOP\")"
+					"Script": "SetCurrentRoom(\"Room_Workshop\")"
 				},
 				"Children": [
 					{
@@ -945,7 +940,7 @@
 				"Key": "Room_Study",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "Player:TakeItem(\"I_MQ05_StudyKey\")\r\nAddLink(ECompass.West, NodeLink(\"Room_Shaft1\"))\r\nSetLocation(\"Red Maw, Study\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STUDY\")"
+					"Script": "Player:TakeItem(\"I_MQ05_StudyKey\")\r\nSetCurrentRoom(\"Room_Study\")"
 				},
 				"Children": [
 					{
@@ -1125,7 +1120,7 @@
 				"Key": "Room_Storage1",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Workshop\"))\r\nAddLink(ECompass.North, NodeLink(\"Room_EntryHall\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft1\"))\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_WORKSHOP_FIRST\", \"MQ05_MAW_ROOM_STORAGE1_LINK1A\", \"MQ05_MAW_ROOM_STORAGE1_LINK1B\")\r\n\r\nSetLocation(\"Red Maw, Storage Room\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STORAGE1\")"
+					"Script": "SetCurrentRoom(\"Room_Storage1\")"
 				},
 				"Children": [
 					{
@@ -1213,7 +1208,7 @@
 				"Key": "Room_Storage2",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Shaft2\"))\r\nSetLocation(\"Red Maw, Mess Hall\")\r\nLogRoomText(\"MQ05_MAW_ROOM_STORAGE2\")"
+					"Script": "SetCurrentRoom(\"Room_Storage2\")"
 				},
 				"Children": [
 					{
@@ -1244,7 +1239,7 @@
 				"Key": "Room_Shaft1",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nlocal study_open = Player:HasItem(\"I_MQ05_StudyKey\") or Storage.GetFlag(\"MQ05_MAW_ROOM_STUDY_FIRST\")\r\nlocal study_lock = function()\r\n    Log(Storage.GetFlag(\"MQ05_MAW_STUDY_POKE\") and \"MQ05_MAW_ROOM_STUDY_LOCKED2\" or \"MQ05_MAW_ROOM_STUDY_LOCKED\")\r\n    Storage.SetFlag(\"MQ05_MAW_STUDY_POKE\", true)\r\nend\r\nAddLink(ECompass.North, NodeLink(\"Room_Storage1\"))\r\nAddLink(ECompass.East, study_open and NodeLink(\"Room_Study\") or study_lock)\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft2\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\n\r\nSetLocation(\"Red Maw, Upper Level\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT1\")"
+					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft1\")"
 				},
 				"Children": []
 			},
@@ -1253,7 +1248,7 @@
 				"Key": "Room_Shaft2",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nlocal visited_collapsed = Storage.GetFlag(\"MQ05_MAW_ROOM_COLLAPSED_DONE\")\r\nlocal visited_storage2 = Storage.GetFlag(\"MQ05_MAW_ROOM_STORAGE2_FIRST\")\r\nAddLink(ECompass.West, visited_collapsed and function()\r\n    Log(\"MQ05_MAW_ROOM_COLLAPSED_LOCKED\") end or NodeLink(\"Room_Collapsed\"))\r\nAddLink(ECompass.East, NodeLink(visited_storage2 and \"Room_Storage2\" or \"Encounter_Ethel\"))\r\nAddLink(ECompass.North, NodeLink(\"Room_Shaft1\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Shaft3\"))\r\n\r\nSetLinkLabelVariable(1, \"MQ05_MAW_ROOM_STORAGE1_FIRST\", \"MQ05_MAW_ROOM_ENTRY_LINK1A\", \"MQ05_MAW_ROOM_ENTRY_LINK1B\")\r\nSetLocation(\"Red Maw, Lower Level\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT2\")"
+					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft2\")"
 				},
 				"Children": []
 			},
@@ -1262,7 +1257,7 @@
 				"Key": "Room_Shaft3",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\n\r\nAddLink(ECompass.North, NodeLink(\"Room_Shaft2\"))\r\nAddLink(ECompass.East, NodeLink(\"Room_Iron\"))\r\nAddLink(ECompass.South, NodeLink(\"Room_Terminus\"))\r\n\r\nSetLocation(\"Red Maw, Depths\")\r\nLogRoomText(\"MQ05_MAW_ROOM_SHAFT3\")"
+					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft3\")"
 				},
 				"Children": []
 			},
@@ -1271,7 +1266,7 @@
 				"Key": "Room_Collapsed",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.East, NodeLink(\"Room_Shaft2\"))\r\nSetLocation(\"Red Maw, Collapsed Tunnel\")\r\nLogSplit()\r\nLog(\"MQ05_MAW_ROOM_COLLAPSED\")"
+					"Script": "SetCurrentRoom(\"Room_Collapsed\")"
 				},
 				"Children": [
 					{
@@ -1445,7 +1440,7 @@
 				"Key": "Room_Iron",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.West, NodeLink(\"Room_Shaft3\"))\r\nSetLocation(\"Red Maw, Side Tunnel\")\r\nLogRoomText(\"MQ05_MAW_ROOM_IRON\")"
+					"Script": "SetCurrentRoom(\"Room_Iron\")"
 				},
 				"Children": [
 					{
@@ -1476,7 +1471,7 @@
 				"Key": "Room_Terminus",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "local repeat_visit = Storage.GetFlag(\"MQ05_MAW_ROOM_TERMINUS_FIRST\")\r\nAddLink(ECompass.North, NodeLink(repeat_visit and \"Room_Shaft3\" or \"Encounter_Jett\"))\r\nSetLocation(\"Red Maw, Pit\")\r\nLogRoomText(\"MQ05_MAW_ROOM_TERMINUS\")"
+					"Script": "SetCurrentRoom(\"Room_Terminus\")"
 				},
 				"Children": []
 			}

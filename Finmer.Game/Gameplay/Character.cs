@@ -305,7 +305,7 @@ namespace Finmer.Gameplay
         /// <param name="prey">The hypothetical prey character.</param>
         public bool CanSwallow(Character prey)
         {
-            return prey.Size <= Size;
+            return prey.Size <= Size && !prey.Flags.HasFlag(ECharacterFlags.NoPrey);
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Finmer.Gameplay
         /// <param name="victim">The character who may or may not be grabbed.</param>
         public bool CanGrapple(Character victim)
         {
-            return victim.Size <= Size;
+            return victim.Size <= Size && !victim.Flags.HasFlag(ECharacterFlags.NoGrapple);
         }
 
         /// <summary>

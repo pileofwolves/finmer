@@ -189,9 +189,7 @@ namespace Finmer.Gameplay
         private IEnumerable<Participant> GetViableGrappleTargets(Participant initiator)
         {
             return GetLiveUnoccupiedOpponents(initiator)
-                .Where(candidate =>
-                    !candidate.Character.Flags.HasFlag(ECharacterFlags.NoGrapple) &&
-                    initiator.Character.CanGrapple(candidate.Character));
+                .Where(candidate => initiator.Character.CanGrapple(candidate.Character));
         }
 
         /// <summary>
@@ -205,9 +203,7 @@ namespace Finmer.Gameplay
 
             // Otherwise, anyone will do
             return GetLiveUnoccupiedOpponents(predator)
-                .Where(candidate =>
-                    !candidate.Character.Flags.HasFlag(ECharacterFlags.NoPrey) &&
-                    predator.Character.CanSwallow(candidate.Character));
+                .Where(candidate => predator.Character.CanSwallow(candidate.Character));
         }
 
         /// <summary>
@@ -695,12 +691,15 @@ namespace Finmer.Gameplay
                 // Player is on top
                 ui.Instruction = $"You're pinning down {m_Player.GrapplingWith.Character.Name}. What will you do?";
 
-                ui.AddButton(new ChoiceButtonModel
+                if (m_Player.Character.CanSwallow(m_Player.GrapplingWith.Character))
                 {
-                    Choice = (int)ECombatAction.Swallow,
-                    Label = "Swallow",
-                    Tooltip = "Attempt to devour your pinned prey."
-                });
+                    ui.AddButton(new ChoiceButtonModel
+                    {
+                        Choice = (int)ECombatAction.Swallow,
+                        Label = "Swallow",
+                        Tooltip = "Attempt to devour your pinned prey."
+                    });
+                }
                 ui.AddButton(new ChoiceButtonModel
                 {
                     Choice = (int)ECombatAction.GrappleRelease,

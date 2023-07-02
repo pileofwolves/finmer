@@ -178,7 +178,7 @@ namespace Finmer.Editor
             OpenEditorWindow(asset);
         }
 
-        private void AddAssetToList(AssetBase asset, bool autoselect)
+        private void AddAssetToList(AssetBase asset, bool select)
         {
             // Generate a new TreeNode for opening this asset
             var node = new TreeNode(asset.Name);
@@ -213,7 +213,7 @@ namespace Finmer.Editor
             }
 
             // If requested, select it now
-            if (autoselect)
+            if (select)
                 trvAssetList.SelectedNode = node;
 
             // Other settings
@@ -637,9 +637,9 @@ namespace Finmer.Editor
             const int k_PakSettingsKey = 0;
 
             // If settings window is already open, focus the window instead of making a new one
-            if (m_OpenWindows.ContainsKey(k_PakSettingsKey))
+            if (m_OpenWindows.TryGetValue(k_PakSettingsKey, out EditorWindow open_window))
             {
-                m_OpenWindows[k_PakSettingsKey].Show();
+                open_window.Show();
                 return;
             }
 

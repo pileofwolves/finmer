@@ -28,11 +28,11 @@ namespace Finmer.Utility
         /// Initializes a new instance of the <see cref="RelayCommand" /> class.
         /// </summary>
         /// <param name="execute">The delegate to invoke upon command execution.</param>
-        /// <param name="canExecute">The predicate to use to check whether the command is enabled.</param>
-        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
+        /// <param name="can_execute">The predicate to use to check whether the command is enabled.</param>
+        public RelayCommand(Action<object> execute, Predicate<object> can_execute = null)
         {
             m_Execute = execute ?? throw new ArgumentNullException(nameof(execute));
-            m_CanExecute = canExecute;
+            m_CanExecute = can_execute;
         }
 
         /// <summary>

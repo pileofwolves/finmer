@@ -6,7 +6,6 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
 using System.Windows.Forms;
 using Finmer.Core.Buffs;
 using Finmer.Core.Serialization;

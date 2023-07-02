@@ -96,10 +96,7 @@ namespace Finmer.Gameplay
         private void SetQuestStage(Guid id, int stage)
         {
             // Add or update this quest
-            if (m_Quests.ContainsKey(id))
-                m_Quests[id] = stage;
-            else
-                m_Quests.Add(id, stage);
+            m_Quests[id] = stage;
         }
 
         private void DeserializeProperties(PropertyBag template)

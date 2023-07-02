@@ -11,7 +11,6 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using Finmer.Core;
 using Finmer.Gameplay.Scripting;
-using Finmer.Utility;
 using Finmer.Views;
 
 namespace Finmer.Gameplay
@@ -119,9 +118,9 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Given an item's base purchase value, returns the sale price the item goes for when sold back to a shop.
         /// </summary>
-        public static int GetSalePrice(int buyPrice)
+        public static int GetSalePrice(int buy_price)
         {
-            return (buyPrice + 1) / 2;
+            return (buy_price + 1) / 2;
         }
 
         /// <summary>
@@ -283,9 +282,9 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns a deterministic namespace to use for the shop in save data.
         /// </summary>
-        private static string GetShopID(string shopName)
+        private static string GetShopID(string shop_name)
         {
-            return "shop_" + shopName;
+            return "shop_" + shop_name;
         }
 
     }

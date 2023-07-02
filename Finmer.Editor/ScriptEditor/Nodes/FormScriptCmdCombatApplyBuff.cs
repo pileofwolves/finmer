@@ -30,7 +30,7 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCmdCombatApplyBuff_Load(object sender, System.EventArgs e)
+        private void FormScriptCmdCombatApplyBuff_Load(object sender, EventArgs e)
         {
             // Duplicate the asset so we can safely edit the buff properties
             m_Node = AssetSerializer.DuplicateAsset((CommandCombatApplyBuff)Node);
@@ -43,7 +43,7 @@ namespace Finmer.Editor
             UpdateBuffEditor();
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             // Copy settings to replacement instance
             m_Node.Target = optTargetPlayer.Checked ? CommandCombatApplyBuff.ETarget.Player : CommandCombatApplyBuff.ETarget.NPC;
@@ -54,7 +54,7 @@ namespace Finmer.Editor
             Node = m_Node;
         }
 
-        private void optTargetPlayer_CheckedChanged(object sender, System.EventArgs e)
+        private void optTargetPlayer_CheckedChanged(object sender, EventArgs e)
         {
             lblTargetNPC.Enabled = optTargetNPC.Checked;
             txtTargetNPC.Enabled = optTargetNPC.Checked;
@@ -93,14 +93,14 @@ namespace Finmer.Editor
             }
         }
 
-        private void cmdBuffDelete_Click(object sender, System.EventArgs e)
+        private void cmdBuffDelete_Click(object sender, EventArgs e)
         {
             // Reset the contained buff, so it can be replaced
             m_Node.Effect = null;
             UpdateBuffEditor();
         }
 
-        private void cmdBuffEdit_Click(object sender, System.EventArgs e)
+        private void cmdBuffEdit_Click(object sender, EventArgs e)
         {
             if (m_Node.Effect == null)
             {

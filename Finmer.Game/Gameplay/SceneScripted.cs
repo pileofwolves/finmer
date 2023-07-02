@@ -123,11 +123,11 @@ namespace Finmer.Gameplay
         /// <remarks>
         /// For details on passing arguments, see LaunchCoroutine().
         /// </remarks>
-        /// <param name="numArgs">Number of arguments to pass to the function.</param>
-        private void ResumeCoroutineWithArgs(int numArgs)
+        /// <param name="num_args">Number of arguments to pass to the function.</param>
+        private void ResumeCoroutineWithArgs(int num_args)
         {
             // Run script
-            int result = lua_resume(m_Coroutine, numArgs);
+            int result = lua_resume(m_Coroutine, num_args);
 
             // If the script yielded, we'll resume it later (on a call to ResumeCoroutine()), so there's nothing more to do here.
             if (result == LUA_YIELD)

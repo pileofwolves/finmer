@@ -244,10 +244,10 @@ namespace Finmer.Gameplay
         public struct SlotInfo
         {
 
-            public SlotInfo(string errorMessage)
+            public SlotInfo(string error_message)
             {
                 IsLoadable = false;
-                Description = errorMessage;
+                Description = error_message;
             }
 
             /// <summary>

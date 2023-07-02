@@ -21,7 +21,7 @@ namespace Finmer.Converters
     public class CountToListConverter : IValueConverter
     {
 
-        public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
+        public object Convert(object value, Type target_type, object parameter, CultureInfo culture)
         {
             Debug.Assert(value != null);
 
@@ -31,7 +31,7 @@ namespace Finmer.Converters
             return output;
         }
 
-        public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
+        public object ConvertBack(object value, Type target_type, object parameter, CultureInfo culture)
         {
             throw new NotImplementedException();
         }

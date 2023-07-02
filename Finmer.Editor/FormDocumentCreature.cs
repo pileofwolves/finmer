@@ -159,6 +159,8 @@ namespace Finmer.Editor
                 .Where(item => item != null)
                 .OfType<AssetItem>()
                 .SelectMany(item => item.EquipEffects)
+                .Where(group => group.ProcStyle == EquipEffectGroup.EProcStyle.Always)
+                .SelectMany(group => group.Buffs)
                 .ToList();
 
             // Attack dice
@@ -173,17 +175,17 @@ namespace Finmer.Editor
 
             // Grapple dice
             builder.AppendFormat(CultureInfo.InvariantCulture, "{0:+#;-#;0}",
-                Math.Max(1, creature.Agility));
+                Math.Max(1, creature.Agility + all_buffs.OfType<BuffGrappleDice>().Sum(buff => buff.Delta)));
             builder.AppendLine();
 
             // Swallow dice
             builder.AppendFormat(CultureInfo.InvariantCulture, "{0:+#;-#;0}",
-                Math.Max(1, creature.Strength));
+                Math.Max(1, creature.Body + all_buffs.OfType<BuffSwallowDice>().Sum(buff => buff.Delta)));
             builder.AppendLine();
 
             // Struggle dice
             builder.AppendFormat(CultureInfo.InvariantCulture, "{0:+#;-#;0}",
-                Math.Max(1, creature.Agility));
+                Math.Max(1, creature.Agility + all_buffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta)));
 
             lblCombatOverview.Text = builder.ToString();
         }

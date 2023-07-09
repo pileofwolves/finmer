@@ -30,11 +30,14 @@
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbAdd = new System.Windows.Forms.ToolStripButton();
             this.tsbRemove = new System.Windows.Forms.ToolStripButton();
+            this.tslStats = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbAddIncrement = new System.Windows.Forms.ToolStripButton();
+            this.tsbAddTopic = new System.Windows.Forms.ToolStripButton();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.lstKeys = new System.Windows.Forms.ListView();
             this.clhDummy = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.scintilla = new ScintillaNET.Scintilla();
-            this.tslStats = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -47,7 +50,10 @@
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsbAdd,
             this.tsbRemove,
-            this.tslStats});
+            this.tslStats,
+            this.toolStripSeparator1,
+            this.tsbAddIncrement,
+            this.tsbAddTopic});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
             this.toolStrip.Size = new System.Drawing.Size(784, 25);
@@ -72,6 +78,40 @@
             this.tsbRemove.Size = new System.Drawing.Size(89, 22);
             this.tsbRemove.Text = "Remove Set";
             this.tsbRemove.Click += new System.EventHandler(this.tsbRemove_Click);
+            // 
+            // tslStats
+            // 
+            this.tslStats.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.tslStats.Name = "tslStats";
+            this.tslStats.Size = new System.Drawing.Size(32, 22);
+            this.tslStats.Text = "Stats";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbAddIncrement
+            // 
+            this.tsbAddIncrement.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddIncrement.Enabled = false;
+            this.tsbAddIncrement.Image = global::Finmer.Editor.Properties.Resources.document_number;
+            this.tsbAddIncrement.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddIncrement.Name = "tsbAddIncrement";
+            this.tsbAddIncrement.Size = new System.Drawing.Size(23, 22);
+            this.tsbAddIncrement.Text = "Add Next Number in Set (Ctrl+D)";
+            this.tsbAddIncrement.Click += new System.EventHandler(this.tsbAddIncrement_Click);
+            // 
+            // tsbAddTopic
+            // 
+            this.tsbAddTopic.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAddTopic.Enabled = false;
+            this.tsbAddTopic.Image = global::Finmer.Editor.Properties.Resources.document_copy;
+            this.tsbAddTopic.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddTopic.Name = "tsbAddTopic";
+            this.tsbAddTopic.Size = new System.Drawing.Size(23, 22);
+            this.tsbAddTopic.Text = "Add Set with Same Topic (Ctrl+T)";
+            this.tsbAddTopic.Click += new System.EventHandler(this.tsbAddTopic_Click);
             // 
             // splitContainer1
             // 
@@ -127,13 +167,6 @@
             this.scintilla.Visible = false;
             this.scintilla.TextChanged += new System.EventHandler(this.scintilla_TextChanged);
             // 
-            // tslStats
-            // 
-            this.tslStats.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.tslStats.Name = "tslStats";
-            this.tslStats.Size = new System.Drawing.Size(32, 22);
-            this.tslStats.Text = "Stats";
-            // 
             // FormDocumentStringTable
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -142,7 +175,7 @@
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.toolStrip);
             this.Name = "FormDocumentStringTable";
-            this.Text = "frmDocumentStringTable";
+            this.Text = "FormDocumentStringTable";
             this.Load += new System.EventHandler(this.FormDocumentStringTable_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -165,5 +198,8 @@
 		private System.Windows.Forms.ListView lstKeys;
 		private System.Windows.Forms.ColumnHeader clhDummy;
         private System.Windows.Forms.ToolStripLabel tslStats;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripButton tsbAddIncrement;
+        private System.Windows.Forms.ToolStripButton tsbAddTopic;
     }
 }

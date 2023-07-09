@@ -8,7 +8,10 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
+using System.Globalization;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
@@ -24,6 +27,8 @@ namespace Finmer.Editor
 
         private AssetStringTable m_AssetStringTable;
         private Dictionary<string, List<string>> m_RawDictionary;
+
+        private static readonly Regex s_IncrementingKeyRegex = new Regex(@"^(.+?)(\d+)$", RegexOptions.Compiled | RegexOptions.CultureInvariant);
 
         public FormDocumentStringTable()
         {
@@ -64,9 +69,28 @@ namespace Finmer.Editor
             base.Flush();
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.Control | Keys.D))
+            {
+                if (tsbAddIncrement.Enabled)
+                    tsbAddIncrement_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            if (keyData == (Keys.Control | Keys.T))
+            {
+                if (tsbAddTopic.Enabled)
+                    tsbAddTopic_Click(this, EventArgs.Empty);
+                return true;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         private void FlushSelected()
         {
-            if (m_EditingKey == null) 
+            if (m_EditingKey == null)
                 return;
 
             // Replace the contents of the list with data from the form
@@ -93,6 +117,49 @@ namespace Finmer.Editor
             tslStats.Text = $"{total_words:##,##0} words, {avg_words:##,##0} avg";
         }
 
+        private void AddSet(string key)
+        {
+            // If a duplicate set is requested, select that node instead
+            if (m_RawDictionary.ContainsKey(key))
+            {
+                // Find and select a matching node
+                for (int i = 0; i < lstKeys.Items.Count; i++)
+                {
+                    if (lstKeys.Items[i].Text.Equals(key))
+                    {
+                        lstKeys.Items[i].BeginEdit();
+                        break;
+                    }
+                }
+
+                // Regardless of whether we found the list node (and we should have), we can't add a new one, so bail
+                return;
+            }
+
+            // Add a new table entry for the new key
+            m_RawDictionary.Add(key, new List<string>());
+
+            // Add a new list item and immediately put the label in edit mode so the user can easily customize the key
+            ListViewItem item = lstKeys.Items.Add(key);
+            lstKeys.Sort();
+            item.BeginEdit();
+
+            Dirty = true;
+        }
+
+        private string GetUnusedKey(string prefix, int start_suffix = 1, int suffix_width = 1)
+        {
+            // Find an unused name
+            string key;
+            do
+            {
+                key = prefix + String.Format(CultureInfo.InvariantCulture, $"{{0:D{suffix_width}}}", start_suffix);
+                start_suffix++;
+            } while (m_RawDictionary.ContainsKey(key));
+
+            return key;
+        }
+
         private void lstKeys_AfterLabelEdit(object sender, LabelEditEventArgs e)
         {
             // Always cancel, because we manually override the text to an uppercase-converted version
@@ -105,10 +172,7 @@ namespace Finmer.Editor
             // Check for uniqueness of the key
             string new_key = e.Label.ToUpperInvariant();
             if (m_RawDictionary.ContainsKey(new_key))
-            {
-                MessageBox.Show("The table key must be unique, please try something else.", "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
-            }
 
             // Update the label
             var list_item = lstKeys.Items[e.Item];
@@ -129,30 +193,14 @@ namespace Finmer.Editor
 
         private void tsbAdd_Click(object sender, EventArgs e)
         {
-            // Find an unused name
-            string key;
-            var name_number = 0;
-            do
-            {
-                name_number++;
-                key = "UNTITLED" + name_number;
-            } while (m_RawDictionary.ContainsKey(key));
-
-            // Add a new table entry for the new key
-            m_RawDictionary.Add(key, new List<string>());
-
-            // Add a new list item and immediately mark it for editing so the user can type a better name
-            ListViewItem item = lstKeys.Items.Add(key);
-            lstKeys.Sort();
-            item.BeginEdit();
-
-            Dirty = true;
+            // Create a new set with no name
+            AddSet(GetUnusedKey("UNTITLED"));
         }
 
         private void tsbRemove_Click(object sender, EventArgs e)
         {
             // Ensure there is actually a selection to remove
-            if (lstKeys.SelectedItems.Count == 0) 
+            if (lstKeys.SelectedItems.Count == 0)
                 return;
 
             // Ask for confirmation
@@ -174,6 +222,8 @@ namespace Finmer.Editor
             bool has_selection = lstKeys.SelectedIndices.Count != 0;
             scintilla.Visible = has_selection;
             tsbRemove.Enabled = has_selection;
+            tsbAddIncrement.Enabled = has_selection;
+            tsbAddTopic.Enabled = has_selection;
 
             // Save any previously selected set
             FlushSelected();
@@ -195,7 +245,7 @@ namespace Finmer.Editor
 
         private void scintilla_TextChanged(object sender, EventArgs e)
         {
-            if (m_IgnoreDirtiedText) 
+            if (m_IgnoreDirtiedText)
                 return;
 
             Dirty = true;
@@ -205,6 +255,58 @@ namespace Finmer.Editor
         {
             // Quick hack to make the column resize along with the control
             lstKeys.Columns[0].Width = lstKeys.ClientSize.Width - 1;
+        }
+
+        private void tsbAddIncrement_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(lstKeys.SelectedItems.Count == 1);
+
+            // Match the auto-increment regex against the selected key
+            string base_key = lstKeys.SelectedItems[0].Text;
+            var match = s_IncrementingKeyRegex.Match(base_key);
+            if (match.Success)
+            {
+                // We have a number suffix; increment it
+                string number_text = match.Groups[2].Value;
+                base_key = match.Groups[1].Value;
+                AddSet(GetUnusedKey(base_key, Int32.Parse(number_text), number_text.Length));
+            }
+            else
+            {
+                // If we can't find a number suffix, just slap on a new one
+                AddSet(GetUnusedKey(base_key));
+            }
+        }
+
+        private void tsbAddTopic_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(lstKeys.SelectedItems.Count == 1);
+
+            // Check if there is any text at all in this key, e.g. more than just an underscore
+            var base_key = lstKeys.SelectedItems[0].Text;
+            if (String.IsNullOrWhiteSpace(base_key) || base_key.Length <= 1)
+                return;
+
+            // Find the last underscore so we can strip it off
+            var underscore_index = base_key.LastIndexOf('_', base_key.Length - 2);
+            if (underscore_index != -1)
+            {
+                string topic_key = base_key.Substring(0, underscore_index + 1);
+
+                // Create or select a set with that stripped key
+                if (!String.IsNullOrEmpty(topic_key))
+                    AddSet(topic_key);
+            }
+            else if (!base_key.EndsWith("_"))
+            {
+                // This key does not contain underscores, so add a new one
+                AddSet(base_key + "_");
+            }
+            else
+            {
+                // This key already has an underscore and no further topics, so the best we can do is let the user edit this one
+                lstKeys.SelectedItems[0].BeginEdit();
+            }
         }
 
     }

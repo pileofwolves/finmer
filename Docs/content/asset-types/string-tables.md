@@ -16,6 +16,19 @@ Keys must be globally unique - that is, across all loaded modules. If any two se
 Try keeping keys short and recognizable. Consider prefixing them with a short context or 'topic', to clearly group related sets together: `TOWN_INN_ENTER`, `TOWN_INN_FOX_TALK`, `TOWN_INN_FOX_KISS` etc.
 :::
 
+## Editor Tools
+
+The string table editor features the list of sets on the left, and the contents of the selected set on the right.
+
+![String table editor layout](/images/StringEditor.png)
+
+Click on a set in the left list to show its entries. Each new line of text is interpreted as a separate entry in the set. Double-click a set to change its name. Use the `Add Set` / `Remove Set` buttons to create/delete individual sets as needed.
+
+The string table editor provides a couple of quality-of-life features to help implement bulk content quickly.
+
+- Add Next Number in Set **(Ctrl+D)**: Adds a new set with the same key as the currently selected one, except any number at the end is incremented. So `TALK1` turns into `TALK2`, etc. If there is no number, one is added for you. Useful for quickly adding sequential chunks of text.
+- Add Set with Same Topic **(Ctrl+T)**: Adds a new set with the currently selected key, stripped to the rightmost underscore. So `INN_TALK_FOX` turns into `INN_TALK_`, and when clicked again, that turns into `INN_`. Useful for adding closely related text, saving you some typing.
+
 ## Randomization
 
 Whenever a string set is used, one of its entries will be chosen at random. Each new line in the Editor represents one such entry. In other words, if you have a string set that looks like this:

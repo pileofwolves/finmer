@@ -871,6 +871,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FinmerIcon.ico" />
+    <None Include="Resources\document-number.png" />
+    <None Include="Resources\document-copy.png" />
     <None Include="Resources\sort-quantity.png" />
     <None Include="Resources\compass.png" />
     <None Include="Resources\arrow-circle-225-left.png" />

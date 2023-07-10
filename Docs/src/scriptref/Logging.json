@@ -46,9 +46,47 @@
 		"remarks": "Erases all text in the game log."
 	},
 	{
+		"type": "enum",
+		"name": "EPreySenseType",
+		"values": [
+			{
+				"name": "OralVore",
+				"desc": "content features oral vore"
+			},
+			{
+				"name": "AnalVore",
+				"desc": "content features anal vore"
+			},
+			{
+				"name": "CockVore",
+				"desc": "content features cock vore"
+			},
+			{
+				"name": "Unbirth",
+				"desc": "content features unbirth"
+			},
+			{
+				"name": "Endo",
+				"desc": "ending with player remaining alive or being released"
+			},
+			{
+				"name": "EndoOrFatal",
+				"desc": "ending with either endo or digestion, depending on some condition"
+			},
+			{
+				"name": "DigestionReform",
+				"desc": "ending with digestion and reformation"
+			},
+			{
+				"name": "DigestionFatal",
+				"desc": "ending with fatal digestion (and a game-over)"
+			}
+		]
+	},
+	{
 		"type": "function",
 		"name": "PreySense",
-		"remarks": "If the user has the preysense feature enabled, displays a customizable content warning. You can add any number of warning labels, they will each be displayed. Valid values for the labels are: EPreySenseType.OralVore, AnalVore, CockVore, Unbirth, Endo, EndoOrFatal, DigestionReform, DigestionFatal",
+		"remarks": "If the user has the preysense feature enabled, displays a customizable content warning. You can add any number of warning labels, they will each be displayed.",
 		"coremod": true,
 		"input": [
 			{

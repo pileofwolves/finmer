@@ -70,6 +70,16 @@ function MakeOutputList(entry) {
 	)
 }
 
+// Returns HTML elements describing an enum value
+function MakeEnumerator(enumerator) {
+	return (
+		<>
+			<dt><span className={styles.qualifier}>.</span>{enumerator.name}</dt>
+			<dd>{enumerator.desc}</dd>
+		</>
+	)
+}
+
 // Returns HTML elements describing the origin of the function
 function MakeOriginNote(entry) {
 	if (!entry.coremod)
@@ -118,14 +128,33 @@ function MakePropertyReference(entry) {
 	)
 }
 
+// Generates an enum reference document block
+function MakeEnumReference(entry) {
+	return (
+		<div className={styles.scriptapi}>
+			<div className={styles.title}>
+				<div className={styles.qualifier}>enum&nbsp;</div>
+				{entry.name}
+			</div>
+			<dl className={styles.enumerators}>
+				{entry.values.map((enumerator, index) => MakeEnumerator(enumerator))}
+			</dl>
+		</div>
+	)
+}
+
 // Generates documentation for an API element
 function LuaReferenceBlock(entry) {
-	return (
-		<>
-			<a id="toc1" />
-			{entry.type == "function" ? MakeFunctionReference(entry) : MakePropertyReference(entry)}
-		</>
-	)
+	switch (entry.type) {
+		case "function":
+			return MakeFunctionReference(entry);
+		case "property":
+			return MakePropertyReference(entry);
+		case "enum":
+			return MakeEnumReference(entry);
+		default:
+			throw new Error("invalid script reference type: " + entry.type);
+	}
 }
 
 // Generates a LuaReferenceBlock for each API element in an API group

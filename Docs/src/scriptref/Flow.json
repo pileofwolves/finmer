@@ -48,14 +48,36 @@
 		]
 	},
 	{
+		"type": "enum",
+		"name": "ECompass",
+		"values": [
+			{
+				"name": "North",
+				"desc": "the 'N' compass button"
+			},
+			{
+				"name": "West",
+				"desc": "the 'W' compass button"
+			},
+			{
+				"name": "South",
+				"desc": "the 'S' compass button"
+			},
+			{
+				"name": "East",
+				"desc": "the 'E' compass button"
+			}
+		]
+	},
+	{
 		"type": "function",
 		"name": "AddLink",
 		"remarks": "Creates a compass link button. The button remains until the next Choice the user makes. Compass links can link either directly to a scene, as if SetScene is called when the button is pressed, or can contain a Lua script which will run when the button is pressed.",
 		"input": [
 			{
 				"name": "direction",
-				"type": "number",
-				"desc": "compass direction - valid values are ECompass.North, ECompass.South, ECompass.West, ECompass.East"
+				"type": "ECompass",
+				"desc": "target compass direction"
 			},
 			{
 				"name": "link",

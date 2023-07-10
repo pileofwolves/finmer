@@ -3,7 +3,7 @@
 		"type": "property",
 		"qualifier": "object.",
 		"name": "Name",
-		"remarks": "The user-friendly name of this instance.",
+		"remarks": "Given name of this object, e.g. 'Bob', or 'Blue Scarf'.",
 		"valuetype": "string",
 		"writable": true
 	},
@@ -11,8 +11,38 @@
 		"type": "property",
 		"qualifier": "object.",
 		"name": "Alias",
-		"remarks": "The user-friendly alias of this instance. May be the same as Name. Used in place of Name in combat text and the like.",
+		"remarks": "Alternate name of this object, e.g. 'the fox' or 'the scarf'. May be the same as Name. Used in place of Name in combat text and the like.",
 		"valuetype": "string",
+		"writable": true
+	},
+	{
+		"type": "enum",
+		"name": "EGender",
+		"values": [
+			{
+				"name": "Male",
+				"desc": "he / him"
+			},
+			{
+				"name": "Female",
+				"desc": "she / her"
+			},
+			{
+				"name": "Ungendered",
+				"desc": "it / it"
+			},
+			{
+				"name": "Neutral",
+				"desc": "they / them - experimental - may result in incorrect grammar sometimes"
+			}
+		]
+	},
+	{
+		"type": "property",
+		"qualifier": "object.",
+		"name": "Gender",
+		"remarks": "The assigned gender of the object. Used to select pronouns for the grammar engine; does nothing otherwise.",
+		"valuetype": "EGender",
 		"writable": true
 	},
 	{

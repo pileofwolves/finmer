@@ -65,7 +65,7 @@
 	content: ', [';
 }
 
-.scriptapi .title .qualifier {
+.scriptapi .qualifier {
 	display: inline;
     color: var(--api-color-qualifier);
 }
@@ -117,4 +117,26 @@
 .scriptapi .output::before {
     content: 'Returns:';
     float: left;
+}
+
+.scriptapi .enumerators {
+	overflow: hidden;
+	margin-top: 0.6em;
+	margin-bottom: 0;
+}
+
+.scriptapi .enumerators dt {
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 1rem;
+	margin: 0;
+	clear: left;
+	float: left;
+	width: 25%;
+}
+
+.scriptapi .enumerators dd {
+	margin: 0;
+	float: left;
+	width: 70%;
 }

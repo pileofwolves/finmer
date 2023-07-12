@@ -28,7 +28,7 @@ Some fictional characters appearing in this project belong to others, and have b
 
 Finmer currently only officially supports Windows. To build the game from source, the following prerequisites are needed:
 
-- Visual Studio 2019 or newer
+- Visual Studio 2022 or newer
 - .NET Framework 4.8 SDK and targeting pack
 - C++11 compiler or newer
 - C# 7.3 compiler or newer

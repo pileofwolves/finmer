@@ -234,7 +234,7 @@ namespace Finmer.Gameplay
             output.SetInt(SaveData.k_GameRevision, CompileConstants.k_VersionRevision);
 
             // Journal
-            output.SetNestedPropertyBag(SaveData.k_Player_Journal, Journal.SerializeProperties());
+            output.SetNestedPropertyBag(SaveData.k_Player_Journal, Journal.SaveState());
 
             // Inventory
             output.SetInt(SaveData.k_Player_InventoryCount, Inventory.Count);

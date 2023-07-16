@@ -12,21 +12,22 @@ using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Models;
 using Finmer.Utility;
+using JetBrains.Annotations;
 
 namespace Finmer.Gameplay
 {
 
     /// <summary>
-    /// Represents the player's quest journal.
+    /// Represents the player's quest log by recording journal asset links and their current state IDs.
     /// </summary>
-    public class Journal
+    public class Journal : ISaveable
     {
 
         private readonly Dictionary<Guid, int> m_Quests = new Dictionary<Guid, int>();
 
-        public Journal(PropertyBag template = null)
+        public Journal([CanBeNull] PropertyBag save_data)
         {
-            DeserializeProperties(template ?? new PropertyBag());
+            LoadState(save_data ?? new PropertyBag());
         }
 
         /// <summary>
@@ -35,17 +36,15 @@ namespace Finmer.Gameplay
         public void SetQuestStage(AssetJournal quest, int stage)
         {
             SetQuestStage(quest.ID, stage);
-            GameUI.Instance.Log("Your journal has been updated.", Theme.LogColorNotification);
+            GameUI.Instance.Log($"Your journal has been updated: {quest.Title}", Theme.LogColorNotification);
         }
 
         /// <summary>
         /// Returns the current stage of the specified quest. Throws if the quest is not in the journal.
         /// </summary>
-        /// <param name="quest"></param>
-        /// <returns></returns>
         public int GetQuestStage(AssetJournal quest)
         {
-            return m_Quests[quest.ID]; // throws if not exists...
+            return m_Quests[quest.ID];
         }
 
         /// <summary>
@@ -59,7 +58,7 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Returns an enumerator that can be used to obtain all quests listed in the journal.
         /// </summary>
-        public IEnumerable<AssetJournal> GetAllQuests()
+        public IEnumerable<AssetJournal> GetOpenQuests()
         {
             foreach (var pair in m_Quests)
             {
@@ -74,7 +73,7 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Saves the journal's state to a new PropertyBag and returns it.
         /// </summary>
-        public PropertyBag SerializeProperties()
+        public PropertyBag SaveState()
         {
             var props = new PropertyBag();
 
@@ -99,18 +98,18 @@ namespace Finmer.Gameplay
             m_Quests[id] = stage;
         }
 
-        private void DeserializeProperties(PropertyBag template)
+        public void LoadState(PropertyBag input)
         {
             // Ensure different states cannot mix
             m_Quests.Clear();
 
             // Read the number of entries
-            int count = template.GetInt(SaveData.k_Journal_Count);
+            int count = input.GetInt(SaveData.k_Journal_Count);
             for (var i = 0; i < count; i++)
             {
                 // Read individual entries
-                var guid = new Guid(template.GetBytes(SaveData.CombineBase(SaveData.k_Journal_EntryGuid, i)));
-                int stage = template.GetInt(SaveData.CombineBase(SaveData.k_Journal_EntryStage, i));
+                var guid = new Guid(input.GetBytes(SaveData.CombineBase(SaveData.k_Journal_EntryGuid, i)));
+                int stage = input.GetInt(SaveData.CombineBase(SaveData.k_Journal_EntryStage, i));
 
                 m_Quests.Add(guid, stage);
             }

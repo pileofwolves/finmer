@@ -34,7 +34,7 @@ namespace Finmer.ViewModels
         {
             get
             {
-                foreach (AssetJournal quest in m_Journal.GetAllQuests())
+                foreach (AssetJournal quest in m_Journal.GetOpenQuests())
                 {
                     int stage = m_Journal.GetQuestStage(quest);
                     string text_stage = quest.GetEntryForStage(stage);
@@ -51,7 +51,7 @@ namespace Finmer.ViewModels
         /// <summary>
         /// Indicates whether the journal contains no entries.
         /// </summary>
-        public bool IsEmpty => !m_Journal.GetAllQuests().Any();
+        public bool IsEmpty => !m_Journal.GetOpenQuests().Any();
 
     }
 

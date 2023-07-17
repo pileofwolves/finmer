@@ -18,6 +18,7 @@
                     <ControlTemplate TargetType="ListBoxItem">
                         <Border
                             x:Name="Border"
+                            ToolTipService.InitialShowDelay="100"
                             ToolTipService.ShowDuration="60000"
                             VerticalAlignment="Stretch"
                             HorizontalAlignment="Stretch"

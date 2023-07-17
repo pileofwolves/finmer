@@ -43,6 +43,7 @@
 
             <!-- Item display -->
             <Grid
+                ToolTipService.InitialShowDelay="100"
                 ToolTipService.ShowDuration="60000"
                 d:DataContext="{d:DesignInstance v:ItemEquipmentBoxView}"
                 UseLayoutRounding="True"

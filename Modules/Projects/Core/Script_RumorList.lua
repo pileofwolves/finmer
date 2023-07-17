@@ -8,6 +8,7 @@ local p_mq03_done           = function() return     Storage.GetFlag("MQ03_DONE")
 local p_mq03_not_done       = function() return not Storage.GetFlag("MQ03_DONE") end
 local p_mq04_done           = function() return     Storage.GetFlag("MQ04_DONE") end
 local p_mq04_not_done       = function() return not Storage.GetFlag("MQ04_DONE") end
+local p_mq05_not_done       = function() return not Storage.GetFlag("MQ05_DONE") end
 
 ------------------------------------------------------------------------------
 -- General / always available
@@ -31,6 +32,7 @@ Rumor.Add{id = "MQ03_TempleEvent",  weight = 1.5,   text = "RUMOR_MQ03_TEMPLE_EV
 Rumor.Add{id = "MQ03_TobyAlive",    weight = 1.25,  text = "RUMOR_MQ03_TOBY_ALIVE",     check = function() return Storage.GetFlag("MQ03_TOBY_SPARED") and not Storage.GetFlag("MQ05_DONE") end}
 Rumor.Add{id = "MQ03_TobyDead",     weight = 1.25,  text = "RUMOR_MQ03_TOBY_DEAD",      check = function() return Storage.GetFlag("TOBY_DEAD") end}
 Rumor.Add{id = "MQ04_Amber",        weight = 1,     text = "RUMOR_MQ04_AMBER",          check = p_mq04_not_done}
+Rumor.Add{id = "MQ05_Abduction",    weight = 2,     text = "RUMOR_MQ05_ABDUCTION",      check = p_mq05_not_done}
 Rumor.Add{id = "MQ05_TobyAlive",    weight = 1.25,  text = "RUMOR_MQ05_TOBY_ALIVE",     check = function() return Storage.GetFlag("MQ05_DONE") and Storage.GetFlag("MQ03_TOBY_SPARED") end}
 
 ------------------------------------------------------------------------------

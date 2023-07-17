@@ -54,7 +54,7 @@
 		{
 			"Key": "RUMOR_MQ02_PREDS",
 			"Text": [
-				"\"I hear there are voracious predators stalking the roads, picking off people to - get this - swallow them alive.\" {^mill} raises an eyebrow. \"Can you imagine such insanity? We're really having a streak of misfortune in our little community these days.\""
+				"\"I hear there's been a whole lot more predator activity on the roads lately; people picking off travelers to - get this - swallow them alive.\" {^mill} raises an eyebrow. \"Can you imagine such insanity? We're really having a streak of misfortune in our little community these days.\""
 			]
 		},
 		{
@@ -91,6 +91,12 @@
 			"Key": "RUMOR_MQ04_AMBER",
 			"Text": [
 				"\"Someone went around South Finmer a while back, offering people true amber in exchange for services rendered,\" {mill} relays. \"Can you believe it?! Shady business, I tell ya. That stuff is so expensive, there's no way they'd just hand it out. But maybe some people down on their luck might take the offer... spirits help them.\""
+			]
+		},
+		{
+			"Key": "RUMOR_MQ05_ABDUCTION",
+			"Text": [
+				"\"They say a few people have gone missing lately; North Finmer's mayor isn't the only one. Mostly vagrants and loners out at night, the way I hear it.\" {^mill} sighs, perhaps contemplating the news {mill.object}self. \"Especially with the news about predators roaming, it's not looking good. Town guard hasn't found anything yet...\""
 			]
 		},
 		{

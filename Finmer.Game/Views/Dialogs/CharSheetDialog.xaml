@@ -12,10 +12,7 @@
     <UserControl.Resources>
         <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
     </UserControl.Resources>
-    <Grid
-        Width="640"
-        MaxHeight="550">
-
+    <Grid Width="640">
         <Grid.RowDefinitions>
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
@@ -50,127 +47,130 @@
             Fill="{StaticResource BrightBackgroundBrush}" />
 
         <!-- LEFT PANEL -->
-        <StackPanel
+        <ScrollViewer
             Grid.Column="0"
             Grid.Row="0"
-            Orientation="Vertical">
+            CanContentScroll="False"
+            HorizontalScrollBarVisibility="Disabled"
+            VerticalScrollBarVisibility="Auto">
+            <StackPanel Orientation="Vertical">
+                <!-- Basic info -->
+                <TextBlock
+                    Text="{Binding Name, Mode=OneTime}"
+                    Style="{StaticResource TextBlockLargest}" />
+                <TextBlock
+                    Text="{Binding Species, Mode=OneTime, Converter={StaticResource StringCapFirstConverter}}"
+                    Style="{StaticResource TextBlockLarge}" />
+                <TextBlock Style="{StaticResource TextBlockLarge}">
+                    Level
+                    <Run Text="{Binding Level, Mode=OneTime}" />
+                    (<Run Text="{Binding XP, Mode=OneTime}" /> / <Run Text="{Binding RequiredXP, Mode=OneTime}" /> XP)
+                </TextBlock>
 
-            <!-- Basic info -->
-            <TextBlock
-                Text="{Binding Name, Mode=OneTime}"
-                Style="{StaticResource TextBlockLargest}" />
-            <TextBlock
-                Text="{Binding Species, Mode=OneTime, Converter={StaticResource StringCapFirstConverter}}"
-                Style="{StaticResource TextBlockLarge}" />
-            <TextBlock Style="{StaticResource TextBlockLarge}">
-                Level
-                <Run Text="{Binding Level, Mode=OneTime}" />
-                (<Run Text="{Binding XP, Mode=OneTime}" /> / <Run Text="{Binding RequiredXP, Mode=OneTime}" /> XP)
-            </TextBlock>
+                <Grid Margin="16,16,16,0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="26" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-            <Grid Margin="16">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="26" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                    <RowDefinition Height="Auto" />
-                </Grid.RowDefinitions>
+                    <!-- Offense -->
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="0"
+                        Source="/Finmer;component/Resources/UI/StatOffense.png"
+                        Stretch="None"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="0"
+                        Orientation="Vertical">
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Attack Dice" />
+                        <v:SimpleDiceTrack
+                            Margin="0,0,0,12"
+                            DiceStyle="Attack"
+                            DiceCount="{Binding NumAttackDice}" />
+                    </StackPanel>
 
-                <!-- Offense -->
-                <Image
-                    Grid.Column="0"
-                    Grid.Row="0"
-                    Source="/Finmer;component/Resources/UI/StatOffense.png"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <StackPanel
-                    Grid.Column="1"
-                    Grid.Row="0"
-                    Orientation="Vertical">
-                    <TextBlock
-                        Style="{StaticResource TextBlockDefault}"
-                        Text="Attack Dice" />
-                    <v:SimpleDiceTrack
-                        Margin="0,0,0,12"
-                        DiceStyle="Attack"
-                        DiceCount="{Binding NumAttackDice}" />
-                </StackPanel>
+                    <!-- Armor -->
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="1"
+                        Source="/Finmer;component/Resources/UI/StatDefense.png"
+                        Stretch="None"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="1"
+                        Orientation="Vertical">
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Defense Dice" />
+                        <v:SimpleDiceTrack
+                            Margin="0,0,0,12"
+                            DiceStyle="Defense"
+                            DiceCount="{Binding NumDefenseDice}" />
+                    </StackPanel>
 
-                <!-- Armor -->
-                <Image
-                    Grid.Column="0"
-                    Grid.Row="1"
-                    Source="/Finmer;component/Resources/UI/StatDefense.png"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <StackPanel
-                    Grid.Column="1"
-                    Grid.Row="1"
-                    Orientation="Vertical">
-                    <TextBlock
-                        Style="{StaticResource TextBlockDefault}"
-                        Text="Defense Dice" />
-                    <v:SimpleDiceTrack
-                        Margin="0,0,0,12"
-                        DiceStyle="Defense"
-                        DiceCount="{Binding NumDefenseDice}" />
-                </StackPanel>
+                    <!-- Vore -->
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="2"
+                        Source="/Finmer;component/Resources/UI/StatVore.png"
+                        Stretch="None"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <StackPanel
+                        Grid.Column="1"
+                        Grid.Row="2">
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Grapple Dice" />
+                        <v:SimpleDiceTrack
+                            DiceStyle="D6"
+                            DiceCount="{Binding NumGrappleDice}" />
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Swallow Dice" />
+                        <v:SimpleDiceTrack
+                            DiceStyle="D6"
+                            DiceCount="{Binding NumSwallowDice}" />
+                        <TextBlock
+                            Style="{StaticResource TextBlockDefault}"
+                            Text="Struggle Dice" />
+                        <v:SimpleDiceTrack
+                            Margin="0,0,0,12"
+                            DiceStyle="D6"
+                            DiceCount="{Binding NumStruggleDice}" />
+                    </StackPanel>
 
-                <!-- Vore -->
-                <Image
-                    Grid.Column="0"
-                    Grid.Row="2"
-                    Source="/Finmer;component/Resources/UI/StatVore.png"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <StackPanel
-                    Grid.Column="1"
-                    Grid.Row="2">
-                    <TextBlock
-                        Style="{StaticResource TextBlockDefault}"
-                        Text="Grapple Dice" />
-                    <v:SimpleDiceTrack
-                        DiceStyle="D6"
-                        DiceCount="{Binding NumGrappleDice}" />
-                    <TextBlock
-                        Style="{StaticResource TextBlockDefault}"
-                        Text="Swallow Dice" />
-                    <v:SimpleDiceTrack
-                        DiceStyle="D6"
-                        DiceCount="{Binding NumSwallowDice}" />
-                    <TextBlock
-                        Style="{StaticResource TextBlockDefault}"
-                        Text="Struggle Dice" />
-                    <v:SimpleDiceTrack
-                        Margin="0,0,0,12"
-                        DiceStyle="D6"
-                        DiceCount="{Binding NumStruggleDice}" />
-                </StackPanel>
-
-                <!-- Abilities -->
-                <Image
-                    Grid.Column="0"
-                    Grid.Row="3"
-                    Source="/Finmer;component/Resources/UI/StatPrimary.png"
-                    Stretch="None"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    RenderOptions.BitmapScalingMode="NearestNeighbor" />
-                <v:AbilityScoreCharSheetView
-                    Grid.Column="1"
-                    Grid.Row="3" />
-            </Grid>
-        </StackPanel>
+                    <!-- Abilities -->
+                    <Image
+                        Grid.Column="0"
+                        Grid.Row="3"
+                        Source="/Finmer;component/Resources/UI/StatPrimary.png"
+                        Stretch="None"
+                        HorizontalAlignment="Left"
+                        VerticalAlignment="Top"
+                        RenderOptions.BitmapScalingMode="NearestNeighbor" />
+                    <v:AbilityScoreCharSheetView
+                        Grid.Column="1"
+                        Grid.Row="3" />
+                </Grid>
+            </StackPanel>
+        </ScrollViewer>
 
         <!-- MIDDLE PANEL -->
         <DockPanel Grid.Column="2" Grid.Row="0">

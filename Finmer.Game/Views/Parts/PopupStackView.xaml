@@ -87,6 +87,7 @@
                         <Border
                             HorizontalAlignment="Center"
                             VerticalAlignment="Center"
+                            Margin="0,12"
                             Background="{StaticResource DarkBackgroundBrush}"
                             BorderBrush="{StaticResource BrightBackgroundBrush}"
                             BorderThickness="2"

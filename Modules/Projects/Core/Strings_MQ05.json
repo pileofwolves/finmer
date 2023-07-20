@@ -126,6 +126,42 @@
 			]
 		},
 		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO1",
+			"Text": [
+				"Your attention is drawn by the steadily-approaching chatter coming from somewhere down the hall. Of course, it was unrealistic to have ever hoped to delve into someone's base of operations and not risk discovery. Thinking quickly, you set down your lantern on one of the barrels by the wall, hoping its presence will not be noticed, and dive behind the rows of crates. The gentle warmth of the room's other light sources just barely reaches here, leaving most of the crevices in the storage space dark and suitable for hiding."
+			]
+		},
+		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO2",
+			"Text": [
+				"A few moments later, a duo emerges from the railway tunnel leading into the mine, engaged what appears to be a mostly one-sided conversation. A black-furred canine with a tell-tale crimson mane marches into the storage room, a scowl on his muzzle. The black-and-white husky tailing him chatters excitedly, though to an observer such as yourself, it might as well look like the words are falling on deaf ears.\\n\\n\"... and we'll finish packing by tomorrow, like you wanted,\" the husky finishes, though his tone and cadence take a dive when he perhaps realizes the dour mood of his conversation partner."
+			]
+		},
+		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO3",
+			"Text": [
+				"\"Good,\" Randall grunts simply, not pausing his stride nor bothering to spare so much as a glance at his subordinate. \"And see to it that Ethel pulls his weight, too. I'm starting to think he's just here to freeload on food, in which case I'll make him useful to me another way,\" the wolf rumbles darkly - a comment that would have chilled most, but not the smaller, bouncy canine, who does not bat an eye at the thinly veiled threat. \"I wanted the one we had in storage, and he just went and took it,\" the predator finishes.\\n\\n\"Got it, boss. And...\" The unnamed dog pauses, muzzle scrunching up in apparant confusion or agitation, before he glances around the room the duo had been mostly ignoring thus far. \"Weird smell,\" he declares."
+			]
+		},
+		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO4",
+			"Text": [
+				"Randall dismissively waves a paw, turning briefly to properly address his lackey. \"It's probably that damn merchant's stuff again,\" he sighs. \"Ugh, if only he didn't look so unappetizing,\" the black-and-red wolf bemoans. He resumes his march towards the exit, permitting himself a flick of his bushy tail as he disappears from view. \"Come on, help Jett out in the mean time,\" he hollers back."
+			]
+		},
+		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO5",
+			"Text": [
+				"The husky, for this part, anxiously glances around. It would seem he is not entirely convinced, which could certainly spell your doom, though the command of his superior beckons him away from you. The footsteps fade away as the duo leaves the cave system, and after a few more moments of waiting, in case they decide to turn tail, you release a heavy breath you had not realized you'd been holding in. Carefully, you remove yourself from your uncomfortable, dark hiding spot and re-emerge into the soft light of oil-fueled flames. The cool touch of the lantern you'd claimed for yourself is reassuring in a strange way - like a guiding light into the very literal maw sprawling before you."
+			]
+		},
+		{
+			"Key": "MQ05_ENCOUNTER_MAKO_CONVO6",
+			"Text": [
+				"It seems, then, that Randall is close to wrapping up his use for this amber mine, considering the crew is preparing to leave, as you understood. Your objective remains unchanged, though there is perhaps an added sense of urgency to be found in the knowledge that you are once again one step behind."
+			]
+		},
+		{
 			"Key": "MQ05_ENCOUNTER_SLIME_DIGEST",
 			"Text": [
 				"Before long, you find the lack of air catching up with you. You do not know if this strange slime-like blob has consumed anyone before you, or indeed what exactly it might gain from the act, but it matters not. What little you can see of your {player.fur} is dissolving before your eyes, and the darkness becomes complete as your body ceases to function. Perhaps it is for the best - the particular cruelties of death by drowning in acid are perhaps best left unexperienced, even if you chose this fate. All you can do now is hang on to the hope - or the knowledge - that you are free to experience this pleasure over and over, that you are above the rules of the universe itself. Over the course of another hour or so, the slime finishes digesting its catch. Nobody disturbs the predator in this time; it is the dead of night, after all, and the usual occupants of the mine know better than to venture into this tunnel. Eventually the clear mass of goop, now entirely free of {player.species} becomes still once more, expands ever so slightly, using the new organic matter of its digested meal to increase its own volume. Its work complete, the cube continues waiting ever patiently for its next prey item. In your absence, the Maw will no doubt roam free. But there is a way to fix things. All you need to do is reload the game once more, and reconsider the choice that brought you down this path in the first place. We will rewind once more."

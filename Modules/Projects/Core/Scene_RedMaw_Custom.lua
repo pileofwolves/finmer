@@ -122,7 +122,7 @@ Room
     text_repeat     = "MQ05_MAW_ROOM_ENTRY",
     link_n          = LockableNodeLink("MQ05_MAW_CAN_LEAVE", "Cart_Exit", "MQ05_MAW_ROOM_ENTRY_EXIT_LOCKED"),
     link_e          = NodeLink("Room_Barracks"),
-    link_s          = NodeLink("Room_Storage1"),
+    link_s          = BranchNodeLink("MQ05_MAW_ROOM_STORAGE1_FIRST", "Room_Storage1", "Encounter_Mako"),
     link_labels     = {
         LinkLabel("MQ05_MAW_ROOM_STORAGE1_FIRST", "MQ05_MAW_ROOM_ENTRY_LINK1A", "MQ05_MAW_ROOM_ENTRY_LINK1B"),
         LinkLabel("MQ05_MAW_ROOM_BARRACKS_FIRST", "MQ05_MAW_ROOM_ENTRY_LINK2A", "MQ05_MAW_ROOM_ENTRY_LINK2B"),

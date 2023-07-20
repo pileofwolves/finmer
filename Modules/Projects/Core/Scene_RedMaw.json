@@ -619,6 +619,147 @@
 			},
 			{
 				"NodeType": "State",
+				"Key": "Encounter_Mako",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetCurrentRoom(\"Room_Storage1\", ELinkMode.Skip)\r\nSetInventoryEnabled(false)"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_ENCOUNTER_MAKO_CONVO1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_ENCOUNTER_MAKO_CONVO2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_ENCOUNTER_MAKO_CONVO3",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_ENCOUNTER_MAKO_CONVO4",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ05_ENCOUNTER_MAKO_CONVO5",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ05_ENCOUNTER_MAKO_CONVO6",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Room_Storage1"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
 				"Key": "Room_EntryHall",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
@@ -1120,7 +1261,7 @@
 				"Key": "Room_Storage1",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetCurrentRoom(\"Room_Storage1\")"
+					"Script": "SetCurrentRoom(\"Room_Storage1\")\r\nSetInventoryEnabled(true)"
 				},
 				"Children": [
 					{

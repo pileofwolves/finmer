@@ -69,17 +69,13 @@ namespace Finmer.Views
         {
             get
             {
-                List<bool> result = new List<bool>(DotCount);
-
                 // Add filled dots
                 for (var i = 0; i < FilledCount; i++)
-                    result.Add(true);
+                    yield return true;
 
                 // Add open dots
                 for (var i = 0; i < DotCount - FilledCount; i++)
-                    result.Add(false);
-
-                return result;
+                    yield return false;
             }
         }
 

@@ -626,8 +626,8 @@
   </PropertyGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>xcopy /S /Y $(SolutionDir)External\lua\bin\$(ConfigurationName) $(TargetDir)
-xcopy /S /Y $(SolutionDir)External\lua\bin\$(ConfigurationName) $(TargetDir)</PostBuildEvent>
+    <PostBuildEvent>xcopy /S /Y "$(SolutionDir)External\lua\bin\$(ConfigurationName)" "$(TargetDir)"
+xcopy /S /Y "$(SolutionDir)External\lua\bin\$(ConfigurationName)" "$(TargetDir)"</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>

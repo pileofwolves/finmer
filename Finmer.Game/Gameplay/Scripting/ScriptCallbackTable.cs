@@ -148,7 +148,7 @@ namespace Finmer.Gameplay.Scripting
             try
             {
                 int result = lua_resume(coroutine, num_args);
-                if (result != 0)
+                if (result != 0 && result != LUA_YIELD)
                 {
                     // Coroutine execution failed; gather an error message and propagate to caller
                     string error_message = LuaUtils.GetErrorStackTrace(coroutine);

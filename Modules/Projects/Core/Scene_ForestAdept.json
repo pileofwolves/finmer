@@ -1492,6 +1492,12 @@
 											"OperandLiteral": 4.0
 										},
 										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "MQ04_DONE",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
 											"!Type": "CommandLog",
 											"Text": "MQ04_ADEPT_PLAN01",
 											"IsRaw": false

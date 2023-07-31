@@ -13,6 +13,211 @@
 		"Children": [
 			{
 				"NodeType": "State",
+				"Key": "MQ05_EventCourtyard",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ05_INTRO_COURTYARD1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "MQ05_INTRO_COURTYARD",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "MQ05_INTRO_ZOSK",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "MQ05_INTRO_COURTYARD",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ05_R_Courtyard2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_INTRO_COURTYARD2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ05_C_Courtyard3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ05_R_Courtyard3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_INTRO_COURTYARD3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ05_C_Courtyard4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ05_R_Courtyard4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_INTRO_COURTYARD4",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ05_C_Courtyard5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ05_R_Courtyard5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_INTRO_COURTYARD5",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ05_C_Courtyard6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ05_R_Courtyard6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLogSplit"
+																										},
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ05_INTRO_COURTYARD6",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ05_C_Courtyard7",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ05_R_Courtyard7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ05_INTRO_COURTYARD7",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ05_C_CourtyardEnd",
+																														"Title": "Ride along",
+																														"Tooltip": "One bump in the road at a time...",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandSetScene",
+																																	"SceneGuid": "52e3b2fc-79dc-4453-ad26-743f12d36c17"
+																																}
+																															]
+																														},
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
 				"Key": "MQ03_Event6",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",

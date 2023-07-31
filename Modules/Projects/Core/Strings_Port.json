@@ -115,7 +115,13 @@
 		{
 			"Key": "PORT_TAVERN_ENTER",
 			"Text": [
-				"South Finmer's public dining room is a compact, comfortable space. Wide stone arches support the wooden ceiling beams, the floor set with thick flagstones, well-polished through years of travel. Worn dark wooden tables with chairs and benches line the walls, while the counter and bar takes up the corner of the room. A tiger-taur curiously eyes you from behind the bar, but says nothing and returns to her cleaning work. Despite the establishment's clear purpose as a restaurant, there are no customers inside but you."
+				"South Finmer's public dining room is a compact, comfortable space. Wide stone arches support the wooden ceiling beams, the floor set with thick flagstones, well-polished through years of travel. Worn dark wooden tables with chairs and benches line the walls, while the counter and bar takes up the corner of the room. A tiger-taur curiously eyes you from behind the bar, but says nothing and returns to her cleaning work."
+			]
+		},
+		{
+			"Key": "PORT_TAVERN_ENTER_EMPTY",
+			"Text": [
+				"Despite the establishment's clear purpose as a restaurant, there are no customers inside but you."
 			]
 		},
 		{

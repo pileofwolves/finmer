@@ -252,6 +252,302 @@
 					},
 					{
 						"NodeType": "Choice",
+						"Key": "Main_C_MQ05_Zosk",
+						"Title": "Zosk",
+						"Tooltip": "Speak to the merchant - you have need of him.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetFlag(\"MQ04_DONE\") and not Storage.GetFlag(\"MQ05_INTRO_ZOSK\")"
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ05_R_Zosk2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "MQ05_INTRO_ZOSK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_INTRO_ZOSK2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ05_R_Zosk3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_INTRO_ZOSK3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ05_R_Zosk4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ05_INTRO_ZOSK4",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ05_C_TopicCart",
+																		"Title": "Cart",
+																		"Tooltip": "Ask where his carriage is.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ05_R_TopicCart",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_INTRO_ZOSK_TOPIC_CART",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ05_C_Zosk5",
+																						"Title": "Continue",
+																						"Tooltip": "This fellow does not seem like much for conversation right now.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ05_R_Zosk5",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ05_INTRO_ZOSK5",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ05_C_ZoskEnd",
+																										"Title": "Leave",
+																										"Tooltip": "Use the opportunity to secure your ride.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandSetScene",
+																													"SceneGuid": "e610ac6b-025b-4181-9e31-c04d391c4ce8"
+																												}
+																											]
+																										},
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ05_C_TopicMaw",
+																		"Title": "Red Maw",
+																		"Tooltip": "Ask where the Red Maw is, and what he knows about it.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataVisualCondition",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "MQ05_INTRO_ZOSK_TOPIC_MAW",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": false
+																				}
+																			]
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ05_R_TopicMaw",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_INTRO_ZOSK_TOPIC_MAW",
+																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandVarSetFlag",
+																							"VariableName": "MQ05_INTRO_ZOSK_TOPIC_MAW",
+																							"OperandMode": "Literal",
+																							"OperandLiteral": true
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicCart"
+																					},
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicCargo"
+																					},
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicRide"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ05_C_TopicCargo",
+																		"Title": "Cargo",
+																		"Tooltip": "Ask what he is transporting currently.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataVisualCondition",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "MQ05_INTRO_ZOSK_TOPIC_CARGO",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": false
+																				}
+																			]
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ05_R_TopicCargo",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_INTRO_ZOSK_TOPIC_CARGO",
+																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandVarSetFlag",
+																							"VariableName": "MQ05_INTRO_ZOSK_TOPIC_CARGO",
+																							"OperandMode": "Literal",
+																							"OperandLiteral": true
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicCart"
+																					},
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicMaw"
+																					},
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_TopicRide"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ05_C_TopicRide",
+																		"Title": "Ride",
+																		"Tooltip": "Ask if you can hitch a ride.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ05_R_TopicRide",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ05_INTRO_ZOSK_TOPIC_RIDE",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ05_C_Zosk5"
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
 						"Key": "Main_C_Talk",
 						"Title": "Talk",
 						"Tooltip": "Chat up Holly, the bartender.",

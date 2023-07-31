@@ -174,12 +174,23 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "MQ05 Tavern",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 10)\r\nSetScene(\"Scene_PortTavern\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "MQ05 Maw",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
-															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 20)\r\nSetScene(\"Scene_RedMaw\")"
+															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 20)\r\nStorage.SetFlag(\"MQ05_INTRO_ZOSK\", true)\r\nStorage.SetFlag(\"MQ05_INTRO_COURTYARD\", true)\r\nSetScene(\"Scene_RedMaw\")"
 														},
 														"Children": []
 													},

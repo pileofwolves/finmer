@@ -208,6 +208,102 @@
 			]
 		},
 		{
+			"Key": "MQ05_INTRO_COURTYARD1",
+			"Text": [
+				"Exactly as promised, you find Zosk's lonely carriage sitting out back. Gently and quietly closing the tavern's back door behind you, you approach the rickety vehicle. Parked in a small sort of inner courtyard behind the tavern, the cart waits patiently for its driver to sober up. The space is surprisingly well-hidden, walled off on all sides with dull bricks except for an alley leading to the street - the very same one you had fled through when accosted by Sahro the other night. A small but well-maintained stable sits in the corner, nestled into the back wall of the tavern and what you suspect might be Pat's general store."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD2",
+			"Text": [
+				"Zosk's trusty draft horse offers you a snort from underneath her single-occupancy roof, resting comfortably atop straw. She stares somewhat curiously at whatever it is you are intending to do here, but otherwise makes no effort to either greet you or object to your presence. Perhaps the merchant had made some kind of deal with the owner of the establishment to be allowed to take refuge here, but to you, it matters little."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD3",
+			"Text": [
+				"A rare lucky break, you find that the carriage is actually already loaded and ready to go. A dull gray cloth tarp cover the cargo, held in place with straps and tied ropes, the notable silhouettes of crates and barrels standing out underneath. According to the chameleon's own words, this delivery is scheduled for tonight... and that presents you with an opportunity."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD4",
+			"Text": [
+				"Carefully, glancing over your shoulder to reaffirm that you are still alone, you untie two knots holding the tarp in place by the back of the cart, and crawl underneath. Awkwardly, you squirm betwixt containers, earning yourself a scrape or two, though with a little effort you manage to get into the position that pinches your limbs the least. Spread atop a crate, two tall barrels hold up the tarp above you, ensuring there is no particularly obvious {player.name}-shaped impression visible from the outside - as long as you remain still."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD5",
+			"Text": [
+				"You realize that from here, you would most certainly be unable to tie the knots back up that you had undone, leaving your intrusion imperfect - though you would need to quickly get off later as well, so it was an unfortunate necessity. With some difficulty, you seem to be able to catch glimpses of things happening outside without moving around too much within your cover; the cloth sheet has not been secured so tightly that there are no openings between it and the sturdy boards that make up the carriage itself. Staring out the sides of the cart strains your neck a little, but at least you would be able to keep general tabs on what's going on around you, and roughly where you will hopefully soon be going. Now, it is simply a matter of waiting..."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD6",
+			"Text": [
+				"When the tavern door kicks open, you startle awake, flustered. Though you cannot observe the hooded chameleon directly from your hiding spot, you know it is him when he marches over to the stable and, with some coaxing and quiet words of affection, links up the steed to the vehicle it will be carrying. Having only soft footfalls crunching on flagstones and scattered gravel to listen to, you cannot help but notice there is a certain spring to Zosk's step as he climbs aboard with a soft grunt, far more quickly and dextrous than you might expect from someone who had been black-out drunk a few hours prior."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_COURTYARD7",
+			"Text": [
+				"As you had witnessed him doing before, Zosk claps his paws together twice, quipping a short, flowery command in a foreign language. The draft horse complies, if reluctantly, and the trader gently steers his parade away from the solitude of the courtyard. It seems so far your infiltration attempt has gone unnoticed by the chameleon; perhaps his equine companion knows but it appears to either not understand or care about the implication of your presence. Provided you remain quiet on the bumpy ride ahead, you might even get to enjoy the view - what little you have, peeking out from beneath the tarp. The cobblestone streets of South Finmer give way to coarse dirt roads, then to trails, and finally, an eternity later, to the coast..."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK_TOPIC_CARGO",
+			"Text": [
+				"The viridian lizard stares at you sleepily, taking another swig from his empty mug. It appears to take several seconds before he realizes that there is, in fact, no liquid meeting his lips, and he gently, almost lovingly, sets the vessel back down on the wooden countertop. A few unintelligible words are whispered, leaving you to muse on whether or not that constituted an answer to your question."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK_TOPIC_CART",
+			"Text": [
+				"The chameleon visibly perks up at your question, seemingly energized simply by thinking about his noble trade of delivering things from one place to another with the very same trusty cart you'd asked about. \"Cart? Not sshtealing anything from Zosk, are you?\" A drowsy sigh follows, and your intoxicated conversation partner idly picks at his sleeve - and then the robe that hides most of his viridian skin. He laughs suddenly, as if having realized that he just made a joke. \"Issh parked out back, for later,\" Zosk waves half-heartedly, gesturing to the back door of the tavern. \"No touchies,\" he adds helpfully."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK_TOPIC_MAW",
+			"Text": [
+				"Zosk perks up curiously, a loopy grin forming on his lips. \"Ohh, yes! Makes sense now! Maw-place is client-frrrriend's, all nice and sunny there, and stone is red too.\" His long, spiked tail gives a lazy sway, almost brushing against the floor boards beneath. \"Funniest thing,\" the chameleon declares, eyes sparkling vibrantly as if he were about to relay some gloriously inspiring tale. \"Zosk told - hic - him he ssshould be lucky the place hasn't flooded. Could not appreciate Zosk's humor, oho.\""
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK_TOPIC_RIDE",
+			"Text": [
+				"Your intoxicated conversation partner waves absent-mindedly, having considered your request for all of one second. \"Sure, sshure, is parked out back for later,\" he says, significantly louder than needed to get the message across, before he seems to catch himself and lowers his voice slightly - still not enough though. \"{player.name}-{player.species} can ride along, no problemsh. Zosk enjoyed having ya along the otherrrr day, too. Gets lonely sssometimes. Talk nice. Ugh.\" Eventually, the merchant devolves into incoherent mumbling."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK1",
+			"Text": [
+				"As good a guess as any, you find the traveling merchant seated by Holly's bar. Clad in his favorite loose-fitting brown robe, he acknowledges your arrival, but only barely, with the lightest head nod one might consider perceptible. Mug seated neatly across from him on the counter, the chameleon manages to wobble atop his seat despite the floor being perfectly level."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK2",
+			"Text": [
+				"\"{^player.species}-ffuuhh-riend, come sit,\" Zosk slurs, very clearly feeling a little under the weather after having spent the hours relaxing. Still, tired as he appears to be, the tone picks up a little when he turns to regard you properly, as if not yet having been convinced you were actually there. Satisfied, the strange lizard shrugs and turns to his mug again, tapping it with his claws. He off-handedly waves in the general direction of an unoccupied stool right by him, and you accept the invitation wordlessly, having some business to attend to with the merchant."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK3",
+			"Text": [
+				"\"Zzzzosk does not hold hish -hrp- liquor well,\" he comments, as if the observation was not yet obvious.\\n\\nFrom the opposite end of the bar, the tigertaur snorts. \"Three mugs, Zosk. You're a lightweight. Space them out next time.\" With that advice, she casually trots off to reorganize some shelves, apparently trusting you to keep the flustered trader from falling off his chair and hitting his head. Soon, she casts a quick glance at you and disappears into the kitchen. \"I'll be with you in a few moments,\" she hollers."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK4",
+			"Text": [
+				"In response, Zosk only groans, arms folded atop the counter as a headrest, before remembering the fact that you exist. \"What's it? Zosshk has work to do tonight, but maybe some time forrrr chit-hrrrpp-chat.\" he hiccups. How the chameleon is considering making himself presentable for what is ostensibly a rather important delivery in a few hours, is a mystery to you. You consider how to phrase your request of hitching a ride to a particularly clandestine destination, on or in the wooden cart - with or without the owner's consent."
+			]
+		},
+		{
+			"Key": "MQ05_INTRO_ZOSK5",
+			"Text": [
+				"Whether Zosk had considered the evening so far a job well done, or whether your single question had exhausted him utterly, you cannot say. But the result is obvious when the lizard drops his head on top of his arms with a slightly louder thud than could have been considered comfortable, and promptly dozes off, resting on the countertop. At least he told you where the cart is, enabling you to inspect it now that you have the chance to do so without prying eyes. You decide it best to leave the fellow to his thoughts (or what is left of them), though you do find yourself curious as to how long it will take him to recover from all of three ales."
+			]
+		},
+		{
 			"Key": "MQ05_MAW_CART_IN1",
 			"Text": [
 				"As soon as you set your sights on the yawning hole in the cliff face, you grasp the true nature of the name behind the gang that dwells here. From behind openings between the wooden carriage and the tarp covering you, you can observe your surroundings from relative safety. High iron content in the surrounding sandstone and rocks has given this coastal maw a noticeably red color. The fact, then, that the name of the Red Maw doubles as a surprisingly accurate description of the location, as well as a predatory pun, would surely only serve for Randall's further amusement. Besides this inconspicious cave entrance facing the open sea, the beach is rather featureless. On any other day, it would have made for a pleasant afternoon resting spot; today, however, you have some more pressing matters in mind."

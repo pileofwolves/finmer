@@ -42,6 +42,22 @@ namespace Finmer.Views.Base
 
         public event PropertyChangedEventHandler PropertyChanged;
 
+        protected StackablePopupBase()
+        {
+            Loaded += StackablePopupBase_Loaded;
+        }
+
+        private void StackablePopupBase_Loaded(object sender, System.Windows.RoutedEventArgs e)
+        {
+            // First remove logical focus and keyboard focus from the main window
+            FocusManager.SetFocusedElement(FocusManager.GetFocusScope(GameController.Window), null);
+            Keyboard.ClearFocus();
+
+            // Reapply focus to the newly opened popup
+            Keyboard.Focus(this);
+            Focus();
+        }
+
         /// <summary>
         /// Close the dialog.
         /// </summary>

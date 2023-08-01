@@ -8,6 +8,8 @@
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
     xmlns:cv="clr-namespace:Finmer.Converters"
+    KeyboardNavigation.TabNavigation="None"
+    KeyboardNavigation.DirectionalNavigation="None"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:TitlePageViewModel}"
     d:DesignHeight="450" d:DesignWidth="800">

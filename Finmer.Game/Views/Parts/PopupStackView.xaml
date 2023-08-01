@@ -9,6 +9,8 @@
     xmlns:vb="clr-namespace:Finmer.Views.Base"
     Loaded="PopupStackView_OnLoaded"
     Unloaded="PopupStackView_OnUnloaded"
+    KeyboardNavigation.TabNavigation="None"
+    KeyboardNavigation.DirectionalNavigation="None"
     mc:Ignorable="d"
     d:DataContext="{d:DesignData Source=../DesignData/SamplePopupStack.xaml}"
     d:DesignHeight="450"
@@ -67,7 +69,10 @@
             </ItemsControl.ItemsPanel>
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
-                    <Grid>
+                    <Grid
+                        FocusManager.IsFocusScope="True"
+                        KeyboardNavigation.TabNavigation="Cycle"
+                        KeyboardNavigation.DirectionalNavigation="Cycle">
                         <!-- Animation triggers -->
                         <Grid.Triggers>
                             <EventTrigger RoutedEvent="Loaded">

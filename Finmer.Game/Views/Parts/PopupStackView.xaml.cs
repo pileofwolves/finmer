@@ -9,6 +9,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using Finmer.ViewModels;
@@ -52,8 +53,11 @@ namespace Finmer.Views
         /// </summary>
         public void Push(StackablePopupBase popup)
         {
+            // Tell popup it is being displayed by this view
+            Debug.Assert(popup.Host == null);
             popup.Host = this;
 
+            // Display the popup
             ViewModel.Elements.Add(popup);
         }
 

@@ -37,10 +37,11 @@ namespace Finmer.Views
                 return;
 
             // Make the die invisible to start, so there's no flickering when the delayed animation starts
-            ((UIElement)sender).Opacity = 0.0;
+            var element = (FrameworkElement)sender;
+            element.Opacity = 0.0;
 
             // Clunky :( There is no nice way to let the templated item know its index in the collection, so we'll get it the hard way
-            int my_index = DiceList.ItemContainerGenerator.IndexFromContainer(((FrameworkElement)sender).TemplatedParent);
+            int my_index = DiceList.ItemContainerGenerator.IndexFromContainer(element.TemplatedParent);
 
             // Compute animation offset per item. If there are many items, we shorten the offset, to make a large list appear roughly as fast as a short list.
             int num_items = DiceList.ItemContainerGenerator.Items.Count;
@@ -53,7 +54,7 @@ namespace Finmer.Views
                 storyboard.Children.Add(timeline);
             storyboard.BeginTime = TimeSpan.FromMilliseconds(offset_per_item * my_index);
             storyboard.Freeze();
-            storyboard.Begin((FrameworkElement)sender);
+            storyboard.Begin(element);
         }
 
     }

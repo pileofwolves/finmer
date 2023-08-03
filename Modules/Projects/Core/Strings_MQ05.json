@@ -334,6 +334,42 @@
 			]
 		},
 		{
+			"Key": "MQ05_MAW_CART_OUT1",
+			"Text": [
+				"Before long, you find yourself exiting the cave complex, stepping back into the cold open air of the night. Despite the fact that the mine is not heated particularly well, the lack of the strong breeze that is now brushing against your {player.fur} made it feel warmer than it really was. The scent of the sea gently lapping at the wide, moonlit beach before you is a welcome change, though you are not entirely sailing in open waters just yet."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_CART_OUT2",
+			"Text": [
+				"With Jett dealt with previously, there are no immediate dangers out and about. In fact, your favorite merchant is still there, or at least the cart is. When you sneak over - less carefully this time, since Zosk has not demonstrated himself to be particularly observant - you find the chameleon sitting atop the plain wooden bench. While the viridian-scaled fellow is patting down his jacket in boredom, mumbling about deliveries and delays, you quietly board the carriage once more and resume the same concealed position you used to bring yourself to this isolated place to begin with."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_CART_OUT3",
+			"Text": [
+				"At least, you were hoping Zosk would eventually return to South Finmer. Having been away for some time, and having no idea what his schedule looks like, you actually have no idea how much longer you'll be here, where you would be going, or what your risks of discovery are. Carefully burying yourself underneath the cloth tarp between two barrels, you await transportation. Being a stowaway is a nervewracking prospect to be sure; while the merchant himself does not seem the particularly aggressive type, the same cannot be said for the other regulars of this beach. And as you keep an eye out through the boards of the rickety cart, watching for the faintest sign of danger emerging from the oppressive shadow of the night, you contemplate today's findings."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_CART_OUT4",
+			"Text": [
+				"Now is not the time to reach into your pack and study the papers you snatched in close detail - the time for that would come later, when you could afford to make a little bit more noise and had the region's leading expert on all matters amber by your side - but nevertheless, you understand the discovery is alarming. If it is true that there is some manner of hidden power to be unlocked at the site of the old abbey, it surely bodes ill for Randall to be looking into it."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_CART_OUT5",
+			"Text": [
+				"\"Well, it doesn't seem like rat-friend is coming back,\" a somewhat nasal voice grumbles somewhere ahead of you, muffled through layers of cloth and wood. Your heart skips a beat or two, before you understand Zosk is, in fact, speaking to his horse, who responds simply with a disinterested snort. \"Zosk is not waiting all night, oho,\" he whispers to no one in particular, giving the reins a half-hearted flick followed by clapping his paws together twice. As if on cue - which is presumably exactly what the act is - the mare takes a first unsteady step forward, before settling into a familiar rhythm. The cart rocks and jumbles with each step, reminiscent of your first bouncy ride with Zosk, except that time you were a welcome guest."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_CART_OUT6",
+			"Text": [
+				"As the merchant departs, carrying its {player.species}-shaped hidden cargo, adrenaline that you didn't know you were holding on to begins dissipating from your system. Now that you have left the immediate area, the threat of being devoured alive is diminished greatly, and your body is quick to take advantage of the fact. The wheels of the wagon leave the uneven surface of the hardened soil and sand of the beach area, settling instead on a thin gravelly trail that leads back to civilization. You sink into exhaustion, lulled to a satisfying if rough sleep by the rhythmic bouncing of the rickety cart on gravel roads."
+			]
+		},
+		{
 			"Key": "MQ05_MAW_JOURNAL_PREFIX",
 			"Text": [
 				"You read the page..."
@@ -661,6 +697,48 @@
 			"Key": "MQ05_MAW_ROOM_WORKSHOP_MAPS_VISITED",
 			"Text": [
 				"You, however, recognize it as the site of Dalsida Abbey, which you have recently visited. Whatever Randall could possibly seek to do in that crumbling ruin is unknowable as yet."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK1",
+			"Text": [
+				"A rush of cold air washes over you as your make-shift blanket is torn away from you. It seems the cloth tarp did a better job than previously assumed at trapping heat and making for a relatively effective tent, if not for the hard surface you'd been sleeping on and the bumpy, rough ride that went along with it. The gentle warmth of a morning sun blinds you, and by the time you fully come to, you spot a particularly displeased chameleon gentleman looming over you, muzzle deformed into a scowl.\\n\\n\"Oh no, this will not do,\" Zosk declares, taking a step back. \"Zosk is pleased that his cart was to your liking, {player.name}-{player.species}, but this is squeezing the cat in the dark! What will client-friends think if they see this?\""
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK2",
+			"Text": [
+				"He points sternly at the street, and that warm, cheeky glint that you had come to recognize from the merchant seems to have made way for annoyance. \"Out,\" he commands, and you are left with little choice but to sheepishly comply. Gently you rise, finding your muscles more than a little sore from the impromptu overnight massage, but in your desire to not keep the frustrated lizard waiting lest he makes a bigger problem out of this scene, you climb over a crate or two and land on the cobblestone street with your own two paws. The fresh, salty air tastes refreshing after having spent another hour, if not more, wedged under a stifling cloth that was never meant to be used as a blanket."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK3",
+			"Text": [
+				"Shaking his head, Zosk fastens the tarp over the cart again, casting another glare over his shoulder in your general direction, before a spark of amusement flickers in these eyes as they return to his work of hiding any evidence you left behind. You take the time to take stock of your situation as well; it seems you had been deposited in the harbor area of South Finmer, if the familiar-looking docks, unoccupied merchant stalls and monotonous spruce buildings are any indication. Only a few hours have passed since daybreak, it seems, though nevertheless that is a considerable amount of time to spend sprawling on barrels and crates."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK3_ACCEPTED",
+			"Text": [
+				"\"Zosk vaguely remembers telling you it's okay to ride along, so the blame is not entirely on {player.name}-{player.species}. Night is a little blurry. But this is enough fun for one day, yes?\" He sighs, casting a glance back at you before focusing on his work, rigging another rope to the tarp as he ties it into a knot."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK3_STOWAWAY",
+			"Text": [
+				"\"What were you doing in there, anyway? No taking things, yes?\" he asks dryly, not bothering to keep eye contact as he rigs another rope to the tarp and ties it into a knot. \"{player.name}-{player.species} is lucky Zosk keeps a close eye on his cargo, and really just wants to go home at this point. No need to get the town guard involved, yes?\" He sighs, shrugging, or perhaps shivering in the autumn chill, tying the tarp down with another knot."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK4",
+			"Text": [
+				"Whether the emerald chameleon had actually processed your response or not, all you get as a reply is a vaguely interested grunt. \"Zosk heard there were strange people in Finmer. Not like this though. Get some sleep in a real bed, {player.species}-friend. Better for the back, oho.\"\\n\\nWith that comment, the merchant casts a final glance at you as you put a little more distance in between yourself and the carriage, before he hops back onto the bench, and strangely enough, licks his paws. \"Time to go home!\" he declares to his mount, who could be said to have perked up from its perpetual dissociative state at those words. With his trademark clapping noise, the strange duo sets off again, departing for greener pastures - or perhaps simply better-heated ones."
+			]
+		},
+		{
+			"Key": "MQ05_OUTRO_ZOSK5",
+			"Text": [
+				"That leaves you with little more than your own thoughts, along with the buzz of civilization rousing from its nightly slumber. Yes - you had discovered some critically important information during your unwelcome visit to the Maw; there will be two very interested parties awaiting your return. Best make your way to them posthaste."
 			]
 		}
 	]

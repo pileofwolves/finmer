@@ -522,6 +522,12 @@
 																							"!Type": "CommandLog",
 																							"Text": "MQ05_INTRO_ZOSK_TOPIC_RIDE",
 																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandVarSetFlag",
+																							"VariableName": "MQ05_ZOSK_RIDE_OK",
+																							"OperandMode": "Literal",
+																							"OperandLiteral": true
 																						}
 																					]
 																				},

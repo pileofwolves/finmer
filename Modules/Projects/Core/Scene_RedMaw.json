@@ -1517,12 +1517,6 @@
 									"VariableName": "MQ05_MAW_ROOM_STUDY_SHELVES",
 									"OperandMode": "Literal",
 									"OperandLiteral": true
-								},
-								{
-									"!Type": "ConditionVarFlag",
-									"VariableName": "MQ05_MAW_JOURNAL4",
-									"OperandMode": "Literal",
-									"OperandLiteral": false
 								}
 							]
 						},
@@ -1605,12 +1599,6 @@
 									"VariableName": "MQ05_MAW_ROOM_STORAGE1_SEARCH",
 									"OperandMode": "Literal",
 									"OperandLiteral": true
-								},
-								{
-									"!Type": "ConditionVarFlag",
-									"VariableName": "MQ05_MAW_JOURNAL1",
-									"OperandMode": "Literal",
-									"OperandLiteral": false
 								}
 							]
 						},
@@ -1640,10 +1628,6 @@
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL3\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL3\", true)"
-						},
-						"ScriptAppear": {
-							"!Type": "ScriptDataInline",
-							"Script": "return not Storage.GetFlag(\"MQ05_MAW_JOURNAL3\")"
 						},
 						"Children": [
 							{
@@ -1872,10 +1856,6 @@
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Log(\"MQ05_MAW_JOURNAL_PREFIX\")\r\nLog(\"MQ05_MAW_JOURNAL2\", k_JournalColor)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL2\", true)"
-						},
-						"ScriptAppear": {
-							"!Type": "ScriptDataInline",
-							"Script": "return not Storage.GetFlag(\"MQ05_MAW_JOURNAL2\")"
 						},
 						"Children": [
 							{

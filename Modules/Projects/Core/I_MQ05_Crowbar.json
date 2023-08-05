@@ -1,0 +1,11 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "e88f35fa-1677-4cd4-9c7f-479963ff9b25",
+	"AssetName": "I_MQ05_Crowbar",
+	"ObjectName": "Crowbar",
+	"ObjectAlias": "crowbar",
+	"FlavorText": "An old crowbar you found in the Red Maw mine complex. It has rusted and degraded from years of exposure to moisture, diminishing its strength. Nevertheless, it may yet come in handy.",
+	"ItemType": "Generic",
+	"PurchaseValue": 0,
+	"IsQuestItem": true
+}

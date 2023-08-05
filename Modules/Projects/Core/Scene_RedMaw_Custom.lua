@@ -114,8 +114,7 @@ end
 -- Room database --
 -------------------
 
-Room
-{
+Room {
     key             = "Room_EntryHall",
     label           = "Red Maw, Entrance",
     text_first      = "MQ05_MAW_ROOM_ENTRY_FIRST",
@@ -159,7 +158,7 @@ Room {
     label           = "Red Maw, Study",
     text_first      = "MQ05_MAW_ROOM_STUDY_FIRST",
     text_repeat     = "MQ05_MAW_ROOM_STUDY",
-    link_w          = NodeLink("Room_Shaft1"),
+    link_s          = NodeLink("Room_CorridorE1"),
 }
 
 Room {
@@ -181,6 +180,10 @@ Room {
     text_first      = "MQ05_MAW_ROOM_STORAGE2_FIRST",
     text_repeat     = "MQ05_MAW_ROOM_STORAGE2",
     link_w          = NodeLink("Room_Shaft2"),
+    link_e          = LockableNodeLink("MQ05_MAW_ROOM_CORRIDOR_E2_FIRST", "Room_CorridorE2", "MQ05_MAW_ROOM_CORRIDOR_E2_LOCKED"),
+    link_labels     = {
+        LinkLabel("MQ05_MAW_ROOM_CORRIDOR_E2_FIRST", "MQ05_MAW_ROOM_STORAGE2_LINK1A", "MQ05_MAW_ROOM_STORAGE2_LINK1B"),
+    }
 }
 
 Room {
@@ -189,12 +192,9 @@ Room {
     text_first      = "MQ05_MAW_ROOM_SHAFT1_FIRST",
     text_repeat     = "MQ05_MAW_ROOM_SHAFT1",
     link_n          = NodeLink("Room_Storage1"),
+    link_w          = NodeLink("Room_CorridorW1A"),
     link_s          = NodeLink("Room_Shaft2"),
-    link_e          = LockableNodeLink(function() return Player:HasItem("I_MQ05_StudyKey") or Storage.GetFlag("MQ05_MAW_ROOM_STUDY_FIRST") end,
-                      "Room_Study", "MQ05_MAW_ROOM_STUDY_LOCKED", "MQ05_MAW_ROOM_STUDY_LOCKED2"),
-    link_labels     = {
-        LinkLabel("MQ05_MAW_ROOM_STUDY_FIRST", "MQ05_MAW_ROOM_SHAFT1_LINK1A", "MQ05_MAW_ROOM_SHAFT1_LINK1B"),
-    }
+    link_e          = NodeLink("Room_CorridorE1"),
 }
 
 Room {
@@ -205,7 +205,7 @@ Room {
     link_n          = NodeLink("Room_Shaft1"),
     link_w          = LockableNodeLink(function() return not Storage.GetFlag("MQ05_MAW_ROOM_COLLAPSED_DONE") end,
                       "Room_Collapsed", "MQ05_MAW_ROOM_COLLAPSED_LOCKED"),
-    link_s          = NodeLink("Room_Shaft3"),
+    link_s          = LockableNodeLink("MQ05_MAW_CART_RELEASED", "Room_Shaft3", "MQ05_MAW_ROOM_SHAFT3_LOCKED"),
     link_e          = BranchNodeLink("MQ05_MAW_ROOM_STORAGE2_FIRST", "Room_Storage2", "Encounter_Ethel"),
     link_labels     = {
         LinkLabel("MQ05_MAW_ROOM_STORAGE2_FIRST", "MQ05_MAW_ROOM_SHAFT2_LINK1A", "MQ05_MAW_ROOM_SHAFT2_LINK1B"),
@@ -223,6 +223,49 @@ Room {
 }
 
 Room {
+    key             = "Room_CorridorW1A",
+    label           = "Red Maw, Side Tunnels, West",
+    text_first      = "MQ05_MAW_ROOM_CORRIDOR_W1A",
+    text_repeat     = "MQ05_MAW_ROOM_CORRIDOR_W1A",
+    link_w          = NodeLink("Room_CorridorW1B"),
+    link_e          = NodeLink("Room_Shaft1"),
+}
+
+Room {
+    key             = "Room_CorridorW1B",
+    label           = "Red Maw, Side Tunnels, West",
+    text_first      = "MQ05_MAW_ROOM_CORRIDOR_W1B_FIRST",
+    text_repeat     = "MQ05_MAW_ROOM_CORRIDOR_W1B",
+    link_e          = NodeLink("Room_CorridorW1A"),
+}
+
+Room {
+    key             = "Room_CorridorE1",
+    label           = "Red Maw, Side Tunnels, East",
+    text_first      = "MQ05_MAW_ROOM_CORRIDOR_E1",
+    text_repeat     = "MQ05_MAW_ROOM_CORRIDOR_E1",
+    link_n          = LockableNodeLink(function() return Player:HasItem("I_MQ05_StudyKey") or Storage.GetFlag("MQ05_MAW_ROOM_STUDY_FIRST") end,
+                      "Room_Study", "MQ05_MAW_ROOM_STUDY_LOCKED", "MQ05_MAW_ROOM_STUDY_LOCKED2"),
+    link_w          = NodeLink("Room_Shaft1"),
+    link_s          = NodeLink("Room_CorridorE2"),
+    link_labels     = {
+        LinkLabel("MQ05_MAW_ROOM_STUDY_FIRST", "MQ05_MAW_ROOM_CORRIDOR_E1_LINK1A", "MQ05_MAW_ROOM_CORRIDOR_E1_LINK1B"),
+    }
+}
+
+Room {
+    key             = "Room_CorridorE2",
+    label           = "Red Maw, Side Tunnels, East",
+    text_first      = "MQ05_MAW_ROOM_CORRIDOR_E2_FIRST",
+    text_repeat     = "MQ05_MAW_ROOM_CORRIDOR_E2",
+    link_n          = NodeLink("Room_CorridorE1"),
+    link_w          = BranchNodeLink("MQ05_MAW_ROOM_STORAGE2_FIRST", "Room_Storage2", "Encounter_Ethel"),
+    link_labels     = {
+        LinkLabel("MQ05_MAW_ROOM_STORAGE2_FIRST", "MQ05_MAW_ROOM_CORRIDOR_E2_LINK1A", "MQ05_MAW_ROOM_CORRIDOR_E2_LINK1B"),
+    }
+}
+
+Room {
     key             = "Room_Collapsed",
     label           = "Red Maw, Collapsed Tunnel",
     text_first      = "MQ05_MAW_ROOM_COLLAPSED",
@@ -232,7 +275,7 @@ Room {
 
 Room {
     key             = "Room_Iron",
-    label           = "Red Maw, Side Tunnel",
+    label           = "Red Maw, Deep Side Tunnel",
     text_first      = "MQ05_MAW_ROOM_IRON_FIRST",
     text_repeat     = "MQ05_MAW_ROOM_IRON",
     link_w          = NodeLink("Room_Shaft3"),

@@ -4,6 +4,12 @@
 	"AssetName": "Strings_MQ05",
 	"Entries": [
 		{
+			"Key": "MQ05_ENCOUNTER_ETHEL_CART_SOUND",
+			"Text": [
+				"How the predator had managed to sleep through the obnoxiously loud sound of a minecart crashing into a steel wall is beyond you. Or perhaps he did wake up, and proceeded to pass right back out. What a life that must be."
+			]
+		},
+		{
 			"Key": "MQ05_ENCOUNTER_ETHEL_CLOBBER",
 			"Text": [
 				"In the messy, panicked scuffle, as soon as you break free from your would-be predator's grasp, you clobber up him up the side of his head. To an outside observer, it might look like the blow is almost accidental on your part, but nevertheless, the effect is real enough. Ethel just blacks out on the spot, crashing to the floor, sprawling uncomfortably on the mattress he'd claimed for himself earlier. Of course, his swollen stomach is having none of it, groaning in protest, chyme sloshing about inside. As far as you're able to tell, the bluebird is out cold, permitting you the freedom you need to explore this room to your heart's content - though it would be prudent to keep in mind your time in this place is not unlimited either way."
@@ -12,7 +18,7 @@
 		{
 			"Key": "MQ05_ENCOUNTER_ETHEL_END",
 			"Text": [
-				"Now that you have a moment to yourself, distracted only by the lewd gurgling of a very busy stomach somewhere below you, you can rummage around a bit more safely. Despite having once served as a canteen of some description, there are no food rations around this place anymore - not that you'd want to sample them, given the extensive time during which they must have been rotting away in this cave system. You do spot a discarded journal page lying on one of the wall shelves, however."
+				"Now that you have a moment to yourself, distracted only by the lewd gurgling of a very busy stomach somewhere below you, you can rummage around a bit more safely. Right away, you yank a decorated necklace off of the unconscious bird, figuring it either valuable, powerful or both. Despite having once served as a canteen of some description, there are no food rations around this place anymore - not that you'd want to sample them, given the extensive time during which they must have been rotting away in this cave system. You do spot a discarded journal page lying on one of the wall shelves, however. The main tunnel is to the west, while {!link1} waits ever patiently on the eastern wall."
 			]
 		},
 		{
@@ -36,7 +42,7 @@
 		{
 			"Key": "MQ05_ENCOUNTER_ETHEL_VORE_POV_DISPOSAL",
 			"Text": [
-				"A half-hearted kick to the side jolts the bluebird awake. The leering glare of his black-furred superior hangs over him like a hangover, the dark crimson mane particularly unkempt this morning. \"Oof, 'sup boss?\" Ethel grunts in reply, rubbing his head as he rises, before remembering his gut is weighed down and then some. Oh, right, he'd had double dinner, some weirdo took a dive while he was trying to sleep off his first meal.\\n\\nThe wolf looming over him steps back with a displeased scowl, shaking his head before a flicker of curiosity shines through. \"They squirm well, at least?\" he asks, to which Ethel shakes his head. \"I don't even remember who. Ugh, prey. Er, I need to...\" he grunts, another rather pressing thought occurring to him when his digestive tract emits a particularly noisy groan.\\n\\nIn response, he receives a dismissive snort as he stands up fully, gut wobbling and mushy fluids sloshing within, taking several seconds to adjust his balance to compensate. Randall appraises his subordinate in a brief moment, annoyance flickering on his muzzle. \"Haul your ass over to the abbey and make yourself useful,\" he replies. \"Oh, and if you steal my food from the pantry again, you might just have to replace it,\" the lupine growls.\\n\\nThe bluebird simply nods, watching his boss depart, a modicum of concern on his mind. The canine is a tough nut to please, but it may admittedly also have to do with Ethel's pattern of loafing around lately. He can't help it - there is something so viscerally satisfying about turning squirming meat into something unspeakably messy and undignified. With new orders in mind - ones that he actually aims to follow, lest he finds the apex predator's gaze turn his way - he has a chance to discretely dispose of his digested prey; a chore he is looking forward to greatly. But before he can focus fully on that, the avian must first make for the exit, one uncertain, stomach-sloshing step at a time."
+				"A half-hearted kick to the side jolts the bluebird awake. The leering glare of his black-furred superior hangs over him like a hangover, the dark crimson mane particularly unkempt this morning. \"Oof, 'sup boss?\" Ethel grunts in reply, rubbing his head as he rises, before remembering his gut is weighed down and then some. Oh, right, he'd had double dinner, some weirdo took a dive while he was trying to sleep off his first meal.\\n\\nThe wolf looming over him steps back with a displeased scowl, shaking his head before a flicker of curiosity shines through. \"They squirm well, at least?\" he asks, to which Ethel shakes his head. \"I don't even remember who. Ugh, prey. Er, I need to...\" he grunts, another rather pressing thought occurring to him when his digestive tract emits a particularly noisy groan.\\n\\nIn response, he receives a dismissive snort as he stands up fully, gut wobbling and mushy fluids sloshing within, taking several seconds to adjust his balance to compensate. Randall appraises his subordinate in a brief moment, annoyance flickering on his muzzle. \"I could launch you out of a cannon and you'd still sleep through it. Haul your ass over to the abbey and make yourself useful,\" he replies. \"Oh, and if you steal my food from the pantry again, you might just have to replace it,\" the lupine growls.\\n\\nThe bluebird simply nods, watching his boss depart, a modicum of concern on his mind. The canine is a tough nut to please, but it may admittedly also have to do with Ethel's pattern of loafing around lately. He can't help it - there is something so viscerally satisfying about turning squirming meat into something unspeakably messy and undignified. With new orders in mind - ones that he actually aims to follow, lest he finds the apex predator's gaze turn his way - he has a chance to discretely dispose of his digested prey; a chore he is looking forward to greatly. But before he can focus fully on that, the avian must first make for the exit, one uncertain, stomach-sloshing step at a time."
 			]
 		},
 		{
@@ -80,7 +86,7 @@
 		{
 			"Key": "MQ05_ENCOUNTER_JETT_AMBUSH2",
 			"Text": [
-				"\"I knew someone was snooping around,\" Jett sneers. The rat bites at the air as if to taunt, his incisors glimmering with a saliva coating in the warmth of the flame. \"You {player.name}, then? I'm not sure how you found this place, but you're leaving through me.\" Almost casually, the predator sets his lantern down on the table at the intersection, quite reasonably deciding that an occupied paw is a dead weight. Perhaps you ought to do something similar. Making sure to place himself in between you and the exit, the predator assumes a wide, aggressive stance, and approaches."
+				"\"You,\" Jett sneers simply. The rat bites at the air as if to taunt, his incisors glimmering with a saliva coating in the warmth of the flame. \"{player.name}, then? They not have stealthy break-ins in whatever hole you crawled out of? I could've heard that crash all the way in Stiegal. I'm not sure how you found this place, but you're leaving through me.\" Almost casually, the predator sets his lantern down on the table at the intersection, quite reasonably deciding that an occupied paw is a dead weight. Perhaps you ought to do something similar. Making sure to place himself in between you and the exit, the predator assumes a wide, aggressive stance, and approaches."
 			]
 		},
 		{
@@ -140,7 +146,7 @@
 		{
 			"Key": "MQ05_ENCOUNTER_MAKO_CONVO3",
 			"Text": [
-				"\"Good,\" Randall grunts simply, not pausing his stride nor bothering to spare so much as a glance at his subordinate. \"And see to it that Ethel pulls his weight, too. I'm starting to think he's just here to freeload on food, in which case I'll make him useful to me another way,\" the wolf rumbles darkly - a comment that would have chilled most, but not the smaller, bouncy canine, who does not bat an eye at the thinly veiled threat. \"I wanted the one we had in storage, and he just went and took it,\" the predator finishes.\\n\\n\"Got it, boss. And...\" The unnamed dog pauses, muzzle scrunching up in apparant confusion or agitation, before he glances around the room the duo had been mostly ignoring thus far. \"Weird smell,\" he declares."
+				"\"Good,\" Randall grunts simply, not pausing his stride nor bothering to spare so much as a glance at his subordinate. \"And see to it that Ethel pulls his weight, too. I'm starting to think he's just here to freeload on food and sleep through his shifts, in which case I'll make him useful to me another way,\" the wolf rumbles darkly - a comment that would have chilled most, but not the smaller, bouncy canine, who does not bat an eye at the thinly veiled threat. \"I wanted the one we had in storage, and he just went and took it,\" the predator finishes.\\n\\n\"Got it, boss. And...\" The unnamed dog pauses, muzzle scrunching up in apparant confusion or agitation, before he glances around the room the duo had been mostly ignoring thus far. \"Weird smell,\" he declares."
 			]
 		},
 		{
@@ -442,6 +448,120 @@
 			]
 		},
 		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E1",
+			"Text": [
+				"In this tunnel, barely wide enough for two furs to walk side by side, to say nothing of the threateningly low ceiling, you see {!link1} on the northern wall. The main tunnel is back west, and a staircase descends deeper south, probably running side-by-side with the main tunnel."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E1_LINK1A",
+			"Text": [
+				"a dark, undecorated wooden door"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E1_LINK1B",
+			"Text": [
+				"the door to the study"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2",
+			"Text": [
+				"At the bottom of the stairs in this parallel tunnel, you see {!link1} on the west side. Besides that, there is not much of interest around: some barrels in the corner, a dead lantern hanging from the ceiling. You wonder briefly what a pain it must have been to keep this place organized and fueled back in its heyday."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_CROWBAR",
+			"Text": [
+				"You stash the crowbar into your pack. A tool like that might come in handy."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_FIRST",
+			"Text": [
+				"Descending down the sloppily arranged stairs, you reckon you are likely in a side excavation that runs parallel to the main tunnel. Soon, you reach the end of the tunnel, a closed wooden door on the west side. A lowered bar blocks the door from opening, and you take the time right away to unlatch it. Might be a useful shortcut for later. The other corner of the corridor features barrels, some stacked, some loose. Atop one of them, someone has left a small satchel and, curiously, an old crowbar. Considering the number of crates and other wooden containers the miners must have handled here back in the day, however, it is perhaps not such a strange discovery after all."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_LINK1A",
+			"Text": [
+				"a wooden door"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_LINK1B",
+			"Text": [
+				"the door to the mess hall"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_LOCKED",
+			"Text": [
+				"You push against the door, but it doesn't budge. Something is blocking it from the other side. That's probably not a fire hazard or anything, right?"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_E2_SATCHEL",
+			"Text": [
+				"Poking inside the satchel, you find a small binder and several loose pages. The writing on them depicts the plot of land this mine is situated in, and seems to include several administrative and financial notes relating to the mining operation that had been active here many years ago.  Most of the text is too faded to read properly. You also pocket a few loose coins you find in there."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1A",
+			"Text": [
+				"The main tunnel branches off into this side path, a level, very well-constructed pathway. The floor is polished smooth, either by hand or by sheer use, as have the walls themselves. Without that rough look to it, the speckled texture of the sandstone walls look surprisingly captivating in your lantern light. From here, you can go further west into the tunnel, or east to return to the main tunnel."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B",
+			"Text": [
+				"The damp, poorly lit corridor ends in what appears at first glance to be a storage space of some kind. Two deteriorated bookshelves line the left wall, the open space on the right cluttered with open crates filled with rocks."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_CROWBAR",
+			"Text": [
+				"With a tool designed for imparting exactly the kind of mechanical pressure you require here, breaking this lock is a cinch. Bracing your crowbar between the lid and the lock, you turn the rusty steel bar, and with a little effort, the wooden framework holding the thing in place snaps. Though the deadbolt is still in place, with its connection to the lid removed, the chest flies open."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_LOCKED",
+			"Text": [
+				"Much to your dismay, you find that the chest is locked. The actual key is probably lone gone at this point, you surmise, though who knows - maybe you could get lucky. You could try to force it open yourself, or you could try looking for a key or a tool to help here."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_OPEN",
+			"Text": [
+				"Inside, you find some valuables - it would seem your effort pays off after all. It is unclear why these items were left here, or by whom, though the handful of coins and what appears to be a blade of some kind, will no doubt serve you better than these cold, stone walls."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_STR_NO",
+			"Text": [
+				"Try as you might, you are unable to get the chest open through sheer brute force. Despite its age, the damn thing is sturdier than it looks. It seems you will have to find either the key or another method to force the lock open."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_STR_OK",
+			"Text": [
+				"You latch onto the chest's lid with one paw, bracing it under the locking mechanism, while the other holds the container down. Though straining, through sheer brute force you manage to undo the lock. The bolt keeping the lid shut, no doubt deteriorated, snaps clean in half from the pressure you apply, and the chest flies open."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_FIRST",
+			"Text": [
+				"The damp, poorly lit corridor ends in what is, surprisingly, a storage area. Perhaps the original miners had dug this little side tunnel had abandoned their search for minerals, and decided to repurpose the space they had created - or something else could have happened. Regardless, two deteriorated bookshelves line the left wall, the open space on the right cluttered with open crates filled with rocks and, more demanding of your attention, a sealed footlocker. The rusted carcasses of several iron lanterns hang from the ceiling, long since drained of fuel and now speaking only to the idea of what this place once was."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_CORRIDOR_W1B_SHELVES",
+			"Text": [
+				"You spend some time rummaging through the old shelves lining the walls. There are even a few drawers that you take a peek into. Sadly, it seems that there is nothing to be found in there but dust and bugs - if there ever was anything valuable, it has since been taken by something or someone else."
+			]
+		},
+		{
 			"Key": "MQ05_MAW_ROOM_ENTRY",
 			"Text": [
 				"The entrance is almost eerie in its plain, unremarkable nature; with lanterns illuminating only floor boards and sandstone walls, there is little to do here. Off to the south, the room narrows into a corridor {!link1}. To the east {!link2}."
@@ -486,13 +606,13 @@
 		{
 			"Key": "MQ05_MAW_ROOM_IRON",
 			"Text": [
-				"Atop a barrel sitting squarely on top of the railway, you spot a collection of loose pages, barely intact after having been torn from whatever binding they had belonged to, and then worn over time. Some of the text is still legible."
+				"Returning to the partially-excavated side tunnel, you take stock of the numerous iron and amber deposits. Atop a barrel sitting squarely on top of the railway, you spot a collection of loose pages, barely intact after having been torn from whatever binding they had belonged to, and then worn over time. Some of the text is still legible."
 			]
 		},
 		{
 			"Key": "MQ05_MAW_ROOM_IRON_FIRST",
 			"Text": [
-				"The side tunnel you step into does not run for very long at all. It soon becomes clear why the miners had taken this random diversion: even to the naked eye, it is obvious these walls are rich in iron content. The element stains the sandstone a particularly vibrant orange, as far as you are able to tell in the flame-hued colors of your lantern's warmth. While this fact alone would have made this excavation project reasonably profitable for the original proprietors, perhaps far more alluring is the faint glimmer of a crystal formation embedded in the wall far ahead. There, you find a cluster of what you now know to be raw amber crystals - a rare, dangerous and valuable find. Who can say what became of the business running this mine when word of this resource's presence had spread?"
+				"The side tunnel you step into does not run for very long at all. It soon becomes clear why the miners had taken this random diversion: even to the naked eye, it is obvious these walls are rich in iron content. The element stains the sandstone a particularly vibrant orange, as far as you are able to tell in the flame-hued colors of your lantern's warmth. While this fact alone would have made this excavation project reasonably profitable for the original proprietors, perhaps far more alluring is the faint glimmer of a crystal formation embedded in the wall far ahead. There, you find a cluster of what you now know to be raw amber crystals - a rare, dangerous and valuable find. Who can say what became of the business running this mine when word of this resource's presence had spread - or had it spread at all?"
 			]
 		},
 		{
@@ -510,25 +630,31 @@
 		{
 			"Key": "MQ05_MAW_ROOM_SHAFT1",
 			"Text": [
-				"The mineshaft begins sloping back upwards as you near the north exit of the excavation project. The railway continues deeper to the south, while {!link1} waits patiently on the eastern wall."
+				"The mineshaft begins sloping back upwards as you near the north exit of the excavation project. The railway continues deeper to the south. Two side tunnels branch off to the west and east."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT1_CART_FIRST",
+			"Text": [
+				"An old, dilapidated minecart sits on top of the railway here. It has more or less rusted stuck to the track, if that is even possible. One of the rear wheels leans on a triangular metal stopper, that was once probably intended to prevent the cart from barreling down the tunnel unprompted."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT1_CART_HANDS",
+			"Text": [
+				"You press both paws against the back of the minecart, pushing it forward, though it refuses to budge. It appears to be held stuck in place by the brace on one of the wheels. Having rusted stuck from lack of maintenance, you will probably need a tool to dislodge it."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT1_CART_TOOL",
+			"Text": [
+				"It seems you have just the tool for this job. You pull out the crowbar, and jam it in between the cart wheel and the track. Bracing the device against the rusted surface of the railway, you push, and again - before the wedge shatters under the pressure. And so does the old crowbar itself, at that. Luckily, you had been smart enough to apply the leverage while standing besides, not in front of, the minecart. Despite its age and sad state, as soon as it is dislodged, it creeps forward. A few seconds later the vehicle reaches the downward slope, from where it rapidly picks up speed, and soon rushes off into the dark tunnel beyond, faster and faster. Several seconds later you hear a deafening crash - muffled by the damp walls of the cave system as they are, the sound of a massive impact surely does not go unnoticed. It seems, then, that all pretense of stealth has been abandoned."
 			]
 		},
 		{
 			"Key": "MQ05_MAW_ROOM_SHAFT1_FIRST",
 			"Text": [
-				"Following a gradual downwards slope, you descend into the depths of the cave system. The tunnel is fairly wide and comfortably traversable, unlike what one might perhaps expect from a dark, abandoned mining site. You do have to take things slowly and keep your lantern close by, since there are no other sources of illumination in the area, and not even the enhanced night vision many anthro species are known for would be a suitable replacement for the flame. Still, following along with the railway is easy enough. While the track has warped, dented and even broken in places, no doubt stemming from years of disrepair, it provides a simple path to follow in this bland and featureless landscape. Soon enough, your descent gradually levels out again, and while you have no way to measure how deep you went exactly, this level appears to be where most of the mining work was done. The track continues to the south, while an ominous, dark door sits on the eastern wall."
-			]
-		},
-		{
-			"Key": "MQ05_MAW_ROOM_SHAFT1_LINK1A",
-			"Text": [
-				"a dark wooden door"
-			]
-		},
-		{
-			"Key": "MQ05_MAW_ROOM_SHAFT1_LINK1B",
-			"Text": [
-				"the door to the study"
+				"Following a gradual downwards slope, you descend into the depths of the cave system. The tunnel is fairly wide and comfortably traversable, unlike what one might perhaps expect from a dark, abandoned mining site. You do have to take things slowly and keep your lantern close by, since there are no other sources of illumination in the area, and not even the enhanced night vision many anthro species are known for would be a suitable replacement for the flame. Still, following along with the railway is easy enough. While the track has warped, dented and even broken in places, no doubt stemming from years of disrepair, it provides a simple path to follow in this bland and featureless landscape. Soon enough, your descent gradually levels out again, and while you have no way to measure how deep you went exactly, this level appears to be where most of the mining work was done. The main track continues to the south, while two smaller, though no doubt important side tunnels branch off to the west and east."
 			]
 		},
 		{
@@ -540,7 +666,19 @@
 		{
 			"Key": "MQ05_MAW_ROOM_SHAFT2_FIRST",
 			"Text": [
-				"Trekking onwards through the darkness, you are surprised to feel a bit of a draft ruffling through the corridor. The source is soon revealed as a big metal box embedded into the wall, cold air seeping from slits in the surface. Connected to a well on the surface, this opening in the ground provides an inflow of fresh air; a simple but effective construction that prevented the miners back in the day - and now, you - from suffocating. Moving on, you trudge onwards on the disused track, passing by a chain of minecarts, some empty, some filled with rubble, until you reach the next intersection. The track branches off into a tunnel to the west, though it seems to have collapsed. A wide door, slightly ajar, on the east wall, leads someplace else, a dim light shining through. The track branches off the main path here, into the side room and underneath the door. An extinguished lantern sits atop a handful of barrels by the door, and while you are tempted to light it so as to improve visibility, it would be best to leave as few tracks as possible. The railway continues further south."
+				"Trekking onwards through the darkness, you are surprised to feel a bit of a draft ruffling through the corridor. The source is soon revealed as a big metal box embedded into the wall, cold air seeping from slits in the surface. Connected to a well on the surface, this opening in the ground provides an inflow of fresh air; a simple but effective construction that prevented the miners back in the day - and now, you - from suffocating. Moving on, you trudge onwards on the disused track, passing by a chain of minecarts, some empty, some filled with rubble, until you reach the next intersection. The track branches off into a tunnel to the west, though it seems to have collapsed. A wide door, slightly ajar, on the east wall, leads someplace else, a dim light shining through. The track branches off the main path here, into the side room and underneath the door. An extinguished lantern sits atop a handful of barrels by the door, and while you are tempted to light it so as to improve visibility, it would be best to leave as few tracks as possible."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT2_GATE1",
+			"Text": [
+				"The railway continues further south, though it runs underneath an immense iron gate, blocking the entire breadth of the tunnel. Though old, the structure is surprisingly intact still, not to mention it shows signs of recent use, the dirt and dust around it having been disturbed. Unfortunately, because the hinges are on the other side of the door, breaking the gate is not a viable option, and the locking mechanism is not particularly revealing either. You will have to find some way to open it."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT2_GATE2",
+			"Text": [
+				"Exactly as the huge crash had suggested, the metal gate is in shambles. A huge hole has been torn straight down the center, the sheer force of impact of the minecart barreling down the tracks having proved too much for the steel door to handle. The left half of the gate is torn off its hinges entirely, the right standing, if barely. The vehicle itself had derailed after the impact, it seems, having rolled right of the track, dragging a trail across the rough, dusty stone floor before having come to a standstill. It would appear you've made quite the mess down here - though now you can at least pass easily."
 			]
 		},
 		{
@@ -564,7 +702,13 @@
 		{
 			"Key": "MQ05_MAW_ROOM_SHAFT3_FIRST",
 			"Text": [
-				"How you have still managed to evade the Maw's lethality in their very own hideout makes you a little uneasy, not knowing where all of them are - was this a trap all along? Did they expect you - or worse? As you ponder these questions, you come up on the next intersection in the mineshaft, the light ahead a welcome reprieve of the incessant darkness surrounding you. The slope evens out a little to allow for comfortable placement of some furniture. A table and a few chairs have been set up here, perhaps once intended as a resting spot for weary miners. Rusted tankards rest on the table surface still, probably no longer pleasant to drink from owning to many years of exposure to dust and moisture. A handful of lit lanterns - one on the ceiling, two on the table - add to your own lantern, brightening up the place considerably. Of course, that means someone must have been here recently, to replenish and ignite the oil vessels. The railway splits in two here; one heads further south still, though the track no longer slopes down. The other branch heads east, sloping back up ever so slightly."
+				"Stepping through the shattered remnants of a wrought iron gate, you continue your march into the depths of the mine. How you have still managed to evade the Maw's lethality in their very own hideout makes you a little uneasy, not knowing where all of them are - was this a trap all along? Did they expect you - or worse? As you ponder these questions, you come up on the next intersection in the mineshaft, the light ahead a welcome reprieve of the incessant darkness surrounding you.\\n\\nThe slope evens out a little to allow for comfortable placement of some furniture. A table and a few chairs have been set up here, perhaps once intended as a resting spot for weary miners. Rusted tankards rest on the table surface still, probably no longer pleasant to drink from owning to many years of exposure to dust and moisture. A handful of lit lanterns - one on the ceiling, two on the table - add to your own lantern, brightening up the place considerably. Of course, that means someone must have been here recently, to replenish and ignite the oil vessels. The railway splits in two here; one heads further south still, though the track no longer slopes down. The other branch heads east, sloping back up ever so slightly."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_SHAFT3_LOCKED",
+			"Text": [
+				"A large metal gate blocks the railway heading deeper into the complex, solid iron bars running from ceiling to floor with a wide doorway in the center. It is flush with the framework around it, so forced entry is difficult - you will need quite some force to get through here."
 			]
 		},
 		{
@@ -600,13 +744,25 @@
 		{
 			"Key": "MQ05_MAW_ROOM_STORAGE2",
 			"Text": [
-				"The mess hall would be a much more relaxing and pleasant place to spend time in, were it not for the unmoving body of an avian predator, sprawled out over a mattress, his bulging gut of partially-digested prey equally unresponsive. At least now that you can rummage around in relative peace and quiet, you spot a discarded journal page lying on one of the shelves. There are no food rations around this place anymore - not that you'd want to sample them, given the extensive time during which they must have been rotting away in this cave system."
+				"The mess hall would be a much more relaxing and pleasant place to spend time in, were it not for the unmoving body of an avian predator, sprawled out over a mattress, his bulging gut of partially-digested prey equally unresponsive. At least now that you can rummage around in relative peace and quiet, you spot a discarded journal page lying on one of the shelves. There are no food rations around this place anymore - not that you'd want to sample them, given the extensive time during which they must have been rotting away in this cave system. The main tunnel is to the west, while {!link1} waits ever patiently on the eastern wall."
 			]
 		},
 		{
 			"Key": "MQ05_MAW_ROOM_STORAGE2_FIRST",
 			"Text": [
-				"Excellent lighting and a less cave-like aesthetic make for quite a different atmosphere, as compared to the occasional feeling of the ceiling pressing in on you that the dank tunnel brings with it. The floor consists of neatly arranged boards, and a long table takes up a good chunk of the space in the room, barrels and shelves lining the walls. It seems this place had once served a purpose as a mess hall, though perhaps it still does, if the lounging predator could be taken as a clue. A naked bluebird lies sprawled out on a mattress on the floor, snoring contentedly, while the massively swollen, gurgling gut on his midsection betrays his choice of dinner. The feathered dome shifts and churns as fluids displace inside, presumably from the organ in question working overtime, but no longer shows the telltale dents and kicks that come with live prey. It seems it's been some time since this prey kicked the bucket. Nevertheless, here you are, alone in a room with a man-eater casually sleeping off his meal - one that you would most certainly not be able to fit your jaws around, either. It would be prudent to deal with the immediate threat while you have the upper paw, lest you find the tables turning on you."
+				"Excellent lighting and a less cave-like aesthetic in this new room make for quite a different atmosphere, as compared to the occasional feeling of the ceiling pressing in on you that the dank tunnels brings with them. The floor consists of neatly arranged boards, and a long table takes up a good chunk of the space in the room, barrels and shelves lining the walls. It seems this place had once served a purpose as a mess hall, though perhaps it still does, if the lounging predator could be taken as a clue. A naked bluebird lies sprawled out on a mattress on the floor, snoring contentedly, while the massively swollen, gurgling gut on his midsection betrays his choice of dinner. The feathered dome shifts and churns as fluids displace inside, presumably from the organ in question working overtime, but no longer shows the telltale dents and kicks that come with live prey. It seems it's been some time since this prey kicked the bucket. Nevertheless, here you are, alone in a room with a man-eater casually sleeping off his meal - one that you would most certainly not be able to fit your jaws around, either. It would be prudent to deal with the immediate threat while you have the upper paw, lest you find the tables turning on you."
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_STORAGE2_LINK1A",
+			"Text": [
+				"a door to some unexplored place"
+			]
+		},
+		{
+			"Key": "MQ05_MAW_ROOM_STORAGE2_LINK1B",
+			"Text": [
+				"a door to the bottom of a side tunnel"
 			]
 		},
 		{

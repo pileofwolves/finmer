@@ -162,6 +162,11 @@
 							"!Type": "CommandLog",
 							"Text": "MQ05_MAW_CART_OUT1",
 							"IsRaw": false
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Red Maw, Beach"
 						}
 					]
 				},
@@ -305,6 +310,11 @@
 											"!Type": "CommandLog",
 											"Text": "MQ05_OUTRO_ZOSK1",
 											"IsRaw": false
+										},
+										{
+											"!Type": "CommandSetLocation",
+											"OperandMode": "Literal",
+											"OperandText": "South Finmer, ???"
 										}
 									]
 								},
@@ -590,6 +600,27 @@
 							"!Type": "CommandPreysense",
 							"Mode": 129,
 							"CreatureGuid": "347af72d-30f2-4484-9f24-32fad59d5059"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_CART_RELEASED",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"HasElseBranch": false,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_ENCOUNTER_ETHEL_CART_SOUND",
+									"IsRaw": false
+								}
+							]
 						}
 					]
 				},
@@ -740,6 +771,12 @@
 																			"!Type": "CommandLog",
 																			"Text": "MQ05_ENCOUNTER_ETHEL_END",
 																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandPlayerSetItem",
+																			"ItemGuid": "fab2fe03-1836-4745-a433-3108b7e7b706",
+																			"Add": true,
+																			"Quiet": false
 																		}
 																	]
 																},
@@ -880,6 +917,12 @@
 													"!Type": "CommandLog",
 													"Text": "MQ05_ENCOUNTER_ETHEL_END",
 													"IsRaw": false
+												},
+												{
+													"!Type": "CommandPlayerSetItem",
+													"ItemGuid": "fab2fe03-1836-4745-a433-3108b7e7b706",
+													"Add": true,
+													"Quiet": false
 												}
 											]
 										},
@@ -1042,7 +1085,7 @@
 				"Key": "Room_EntryHall",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "TimedCheckpoint(\"MQ05_MAW\")\r\nSetInventoryEnabled(true)\r\nSetCurrentRoom(\"Room_EntryHall\")"
+					"Script": "SetInventoryEnabled(true)\r\nSetCurrentRoom(\"Room_EntryHall\")\r\nTimedCheckpoint(\"MQ05_MAW\")"
 				},
 				"Children": []
 			},
@@ -1616,7 +1659,7 @@
 				"Key": "Room_Storage2",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetCurrentRoom(\"Room_Storage2\")"
+					"Script": "SetInventoryEnabled(true)\r\nSetCurrentRoom(\"Room_Storage2\")"
 				},
 				"Children": [
 					{
@@ -1643,16 +1686,85 @@
 				"Key": "Room_Shaft1",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft1\")"
+					"Script": "SetCurrentRoom(\"Room_Shaft1\")\r\nSaveData.TakeCheckpoint(true)\r\n\r\nif not Storage.GetFlag(\"MQ05_MAW_ROOM_SHAFT1_CART_FIRST\") then\r\n    Storage.SetFlag(\"MQ05_MAW_ROOM_SHAFT1_CART_FIRST\", true)\r\n    Log(\"MQ05_MAW_ROOM_SHAFT1_CART_FIRST\")\r\nend"
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Minecart",
+						"Tooltip": "Try dislodging the minecart.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionPlayerHasItem",
+											"ItemGuid": "e88f35fa-1677-4cd4-9c7f-479963ff9b25"
+										}
+									],
+									"HasElseBranch": true,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_SHAFT1_CART_TOOL",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "e88f35fa-1677-4cd4-9c7f-479963ff9b25",
+											"Add": false
+										},
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "MQ05_MAW_CART_RELEASED",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"ElseSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_SHAFT1_CART_HANDS",
+											"IsRaw": false
+										}
+									]
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_CART_RELEASED",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Shaft1"
+							}
+						]
+					}
+				]
 			},
 			{
 				"NodeType": "State",
 				"Key": "Room_Shaft2",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft2\")"
+					"Script": "SetCurrentRoom(\"Room_Shaft2\")\r\nSaveData.TakeCheckpoint(true)\r\n\r\nif Storage.GetFlag(\"MQ05_MAW_CART_RELEASED\") then\r\n    -- Discuss broken gate\r\n    if not Storage.GetFlag(\"MQ05_MAW_ROOM_SHAFT2_GATE2\") then\r\n        Storage.SetFlag(\"MQ05_MAW_ROOM_SHAFT2_GATE2\", true)\r\n        Log(\"MQ05_MAW_ROOM_SHAFT2_GATE2\")\r\n    end\r\nelseif not Storage.GetFlag(\"MQ05_MAW_ROOM_SHAFT2_GATE1\") then\r\n    -- Discuss gate being in the way\r\n    Storage.SetFlag(\"MQ05_MAW_ROOM_SHAFT2_GATE1\", true)\r\n    Log(\"MQ05_MAW_ROOM_SHAFT2_GATE1\")\r\nend"
 				},
 				"Children": []
 			},
@@ -1661,9 +1773,407 @@
 				"Key": "Room_Shaft3",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SaveData.TakeCheckpoint(true)\r\nSetCurrentRoom(\"Room_Shaft3\")"
+					"Script": "SetInventoryEnabled(true)\r\nSetCurrentRoom(\"Room_Shaft3\")\r\nSaveData.TakeCheckpoint(true)"
 				},
 				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_CorridorW1A",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetCurrentRoom(\"Room_CorridorW1A\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_CorridorW1B",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetCurrentRoom(\"Room_CorridorW1B\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Chest",
+						"Tooltip": "Open the chest.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_LOCKED",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_CorridorW1B"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Break Chest",
+						"Tooltip": "[Strength] Force the chest open by breaking the lock by paw.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_OPEN",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_STR_OK",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionPlayerStat",
+											"Operator": "GreaterOrEqual",
+											"OperandMode": "Literal",
+											"OperandLiteral": 8.0,
+											"Stat": "Strength"
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Room_CorridorW1B_Che",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_OPEN",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_OPEN",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "CommandPlayerSetMoney",
+															"ValueOperation": "Add",
+															"OperandMode": "Literal",
+															"OperandLiteral": 14
+														},
+														{
+															"!Type": "CommandPlayerSetItem",
+															"ItemGuid": "40893ada-5f4a-4bff-9dc8-68894b58c945",
+															"Add": true,
+															"Quiet": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Room_CorridorW1B"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_STR_NO",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Room_CorridorW1B"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Use Crowbar",
+						"Tooltip": "Use the crowbar to open the chest.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_CROWBAR",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_CHEST_OPEN",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionPlayerHasItem",
+									"ItemGuid": "e88f35fa-1677-4cd4-9c7f-479963ff9b25"
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_CorridorW1B_Che"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Shelves",
+						"Tooltip": "Inspect the bookcases.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_CORRIDOR_W1B_SHELVES",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_SHELVES",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_W1B_SHELVES",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_CorridorW1B"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_CorridorE1",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetCurrentRoom(\"Room_CorridorE1\")"
+				},
+				"Children": []
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_CorridorE2",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetCurrentRoom(\"Room_CorridorE2\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Crowbar",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_CORRIDOR_E2_CROWBAR",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_E2_CROWBAR",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandPlayerSetItem",
+									"ItemGuid": "e88f35fa-1677-4cd4-9c7f-479963ff9b25",
+									"Add": true,
+									"Quiet": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_E2_CROWBAR",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_CorridorE2"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Satchel",
+						"Tooltip": "Search the small leather satchel.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ05_MAW_ROOM_CORRIDOR_E2_SATCHEL",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_E2_SATCHEL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandPlayerSetMoney",
+									"ValueOperation": "Add",
+									"OperandMode": "Literal",
+									"OperandLiteral": 3
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ05_MAW_ROOM_CORRIDOR_E2_SATCHEL",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_CorridorE2"
+							}
+						]
+					}
+				]
 			},
 			{
 				"NodeType": "State",

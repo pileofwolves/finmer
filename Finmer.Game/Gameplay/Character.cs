@@ -13,6 +13,7 @@ using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Core.Buffs;
 using Finmer.Gameplay.Scripting;
+using JetBrains.Annotations;
 
 namespace Finmer.Gameplay
 {
@@ -27,6 +28,9 @@ namespace Finmer.Gameplay
 
         private const int k_EquipSlotCount = 4;
 
+        /// <summary>
+        /// Current number of hit points.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Health
         {
@@ -38,20 +42,38 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Maximum number of hit points the character can have.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public int HealthMax => Math.Max(1, Body + AlwaysActiveBuffs.OfType<BuffHealth>().Sum(buff => buff.Delta));
 
+        /// <summary>
+        /// Set of equipment slots.
+        /// </summary>
         public Item[] Equipment { get; } = new Item[k_EquipSlotCount];
 
+        /// <summary>
+        /// Current level of experience. Used to determine XP value.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public int Level { get; protected set; }
 
+        /// <summary>
+        /// Relative size factor in combat. Used to determine relative strength between characters.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public AssetCreature.ESize Size { get; set; }
 
+        /// <summary>
+        /// Combat-related behavioral override flags.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public ECharacterFlags Flags { get; set; }
 
+        /// <summary>
+        /// Primary strength stat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Strength
         {
@@ -63,6 +85,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Primary agility stat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Agility
         {
@@ -74,6 +99,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Primary body stat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Body
         {
@@ -85,6 +113,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Primary wits stat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Wits
         {
@@ -102,15 +133,28 @@ namespace Finmer.Gameplay
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public virtual bool IsAlly { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether the character can take predator-related actions during combat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public bool IsPredator { get; set; }
 
+        /// <summary>
+        /// Gets or sets whether swallowed prey take digestion damage during combat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public bool PredatorDigests { get; set; }
 
+        /// <summary>
+        /// Currently unused.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public float PredatorFullness { get; set; }
 
+        /// <summary>
+        /// Equipment slot 1.
+        /// </summary>
+        [CanBeNull]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public Item EquippedWeapon
         {
@@ -118,6 +162,10 @@ namespace Finmer.Gameplay
             set => Equipment[ItemUtilities.k_SlotIndex_Weapon] = value;
         }
 
+        /// <summary>
+        /// Equipment slot 2.
+        /// </summary>
+        [CanBeNull]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public Item EquippedArmor
         {
@@ -125,6 +173,10 @@ namespace Finmer.Gameplay
             set => Equipment[ItemUtilities.k_SlotIndex_Armor] = value;
         }
 
+        /// <summary>
+        /// Equipment slot 3.
+        /// </summary>
+        [CanBeNull]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public Item EquippedAccessory1
         {
@@ -132,6 +184,10 @@ namespace Finmer.Gameplay
             set => Equipment[ItemUtilities.k_SlotIndex_Accessory1] = value;
         }
 
+        /// <summary>
+        /// Equipment slot 4.
+        /// </summary>
+        [CanBeNull]
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public Item EquippedAccessory2
         {
@@ -148,6 +204,10 @@ namespace Finmer.Gameplay
             .Where(group => group.ProcStyle == EquipEffectGroup.EProcStyle.Always)
             .SelectMany(group => group.Buffs);
 
+        /// <summary>
+        /// The asset this instance was loaded from. May be null if instance was not loaded from content.
+        /// </summary>
+        [CanBeNull]
         public AssetCreature Asset { get; private set; }
 
         private int m_Strength;

@@ -25,8 +25,14 @@ namespace Finmer.Gameplay
     public class Player : Character
     {
 
+        /// <summary>
+        /// Number of ability points a new player character can allocate to start with.
+        /// </summary>
         public const int k_AbilityScorePointsAllowed = 8;
 
+        /// <summary>
+        /// Lowercase singular noun for player character species.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         [TextProperty(@"species")]
         public string Species
@@ -39,24 +45,42 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Lowercase plural noun for player character species.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         [TextProperty(@"speciesplural")]
         public string SpeciesPlural { get; set; }
 
+        /// <summary>
+        /// Lowercase noun describing the player character's fur coat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         [TextProperty(@"fur")]
         public string CoatNoun { get; set; }
 
+        /// <summary>
+        /// Lowercase adjective describing the player character's fur coat.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         [TextProperty(@"furry")]
         public string CoatAdjective { get; set; }
 
+        /// <summary>
+        /// XP acquired since last level.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public int XP { get; private set; }
 
+        /// <summary>
+        /// Total XP required to reach the next experience level.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public int RequiredXP => 100 + (Level - 1) * 20;
 
+        /// <summary>
+        /// Number of available, unallocated ability points.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int AbilityPoints
         {
@@ -68,6 +92,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Total money currently owned by the player.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int Money
         {
@@ -83,15 +110,27 @@ namespace Finmer.Gameplay
         [Obsolete("Backwards compatibility only; use 'IsExplicitDisposalEnabled' instead")]
         public bool PreferScat => IsExplicitDisposalEnabled;
 
+        /// <summary>
+        /// Wraps disposal setting for scripts.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public bool IsExplicitDisposalEnabled => UserConfig.AllowExplicitDisposal;
 
+        /// <summary>
+        /// Wraps prey-sense setting for scripts.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public bool IsPreySenseEnabled => UserConfig.AllowPreySense;
 
+        /// <summary>
+        /// Wraps explorer mode setting for scripts.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
         public bool IsExplorerModeEnabled => UserConfig.ExplorerMode;
 
+        /// <summary>
+        /// Total number of characters the player has swallowed in combat since creation.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int TotalPreySwallowed
         {
@@ -103,6 +142,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Total number of characters the player has digested in swallowed and combat since creation.
+        /// </summary>
         [ScriptableProperty(EScriptAccess.ReadWrite)]
         public int TotalPreyDigested
         {
@@ -114,6 +156,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Current day number of the world clock, starting at 1.
+        /// </summary>
         public int TimeDay
         {
             get => m_TimeDay;
@@ -125,6 +170,9 @@ namespace Finmer.Gameplay
             }
         }
 
+        /// <summary>
+        /// Current hour number of the world clock, ranging 0-23 inclusive.
+        /// </summary>
         public int TimeHour
         {
             get => m_TimeHour;
@@ -161,14 +209,14 @@ namespace Finmer.Gameplay
         /// </summary>
         public PropertyBag AdditionalSaveData { get; private set; }
 
+        /// <inheritdoc />
         [ScriptableProperty(EScriptAccess.Read)]
         public sealed override bool IsAlly => true;
 
+        private string m_Species;
         private int m_AbilityPoints;
         private int m_FeatPoints;
         private int m_Money;
-
-        private string m_Species;
         private int m_TimeDay;
         private int m_TimeHour;
         private int m_TotalPreyDigested;

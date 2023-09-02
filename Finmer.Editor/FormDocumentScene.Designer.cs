@@ -551,7 +551,7 @@
             // txtNodeStateKey
             // 
             this.txtNodeStateKey.Location = new System.Drawing.Point(8, 24);
-            this.txtNodeStateKey.MaxLength = 20;
+            this.txtNodeStateKey.MaxLength = 32;
             this.txtNodeStateKey.Name = "txtNodeStateKey";
             this.txtNodeStateKey.Size = new System.Drawing.Size(192, 20);
             this.txtNodeStateKey.TabIndex = 1;
@@ -631,7 +631,7 @@
             // txtNodeChoiceKey
             // 
             this.txtNodeChoiceKey.Location = new System.Drawing.Point(8, 24);
-            this.txtNodeChoiceKey.MaxLength = 20;
+            this.txtNodeChoiceKey.MaxLength = 32;
             this.txtNodeChoiceKey.Name = "txtNodeChoiceKey";
             this.txtNodeChoiceKey.Size = new System.Drawing.Size(192, 20);
             this.txtNodeChoiceKey.TabIndex = 1;
@@ -695,7 +695,7 @@
             // txtNodeCompassKey
             // 
             this.txtNodeCompassKey.Location = new System.Drawing.Point(8, 24);
-            this.txtNodeCompassKey.MaxLength = 20;
+            this.txtNodeCompassKey.MaxLength = 32;
             this.txtNodeCompassKey.Name = "txtNodeCompassKey";
             this.txtNodeCompassKey.Size = new System.Drawing.Size(192, 20);
             this.txtNodeCompassKey.TabIndex = 1;

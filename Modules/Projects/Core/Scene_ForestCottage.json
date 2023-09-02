@@ -13,15 +13,15 @@
 		"Children": [
 			{
 				"NodeType": "State",
-				"Key": "Start",
+				"Key": "ExteriorMain",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "if not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")\r\nSetInventoryEnabled(true)"
+					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Forest Edge\")\r\n\r\nif not Storage.GetFlag(\"FOREST_COTTAGE_CHECKPOINT\") then\r\n    Storage.SetFlag(\"FOREST_COTTAGE_CHECKPOINT\", true)\r\n    SaveData.TakeCheckpoint()\r\nend\r\n\r\nAddLink(ECompass.West, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.East, \"Scene_Forest\")"
 				},
 				"Children": [
 					{
 						"NodeType": "Choice",
-						"Key": "EnterCottage",
+						"Key": "ExteriorMain_Enter",
 						"Title": "Cottage",
 						"Tooltip": "Step inside.",
 						"Highlight": false,
@@ -29,19 +29,19 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "CottageFirstEntry",
+								"Key": "MQ02_R_Enter",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
 									"Script": "SetInventoryEnabled(false)\r\nLog(\"forest_cottage_approach\")"
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
-									"Script": "return not Storage.GetFlag(\"forest_cottage_entry_first\")"
+									"Script": "return not Storage.GetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\")"
 								},
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "CFE_Leave",
+										"Key": "MQ02_C_EnterLeave",
 										"Title": "Leave",
 										"Tooltip": "Turn back while you still can.",
 										"Highlight": false,
@@ -49,13 +49,13 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"LinkTarget": "Start"
+												"LinkTarget": "ExteriorMain"
 											}
 										]
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "CFE_Knock",
+										"Key": "MQ02_C_EnterKnock",
 										"Title": "Knock",
 										"Tooltip": "The polite way.",
 										"Highlight": false,
@@ -63,7 +63,7 @@
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "CFE_DoKnock",
+												"Key": "MQ02_R_EnterKnock",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "-- no answer\r\nLog(\"forest_cottage_knock1\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock2\")\r\nSleep(3)\r\nLog(\"forest_cottage_knock3\")"
@@ -71,11 +71,11 @@
 												"Children": [
 													{
 														"NodeType": "Link",
-														"LinkTarget": "CFE_Leave"
+														"LinkTarget": "MQ02_C_EnterLeave"
 													},
 													{
 														"NodeType": "Link",
-														"LinkTarget": "CFE_Enter"
+														"LinkTarget": "MQ02_C_EnterForce"
 													}
 												]
 											}
@@ -83,7 +83,7 @@
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "CFE_Enter",
+										"Key": "MQ02_C_EnterForce",
 										"Title": "Enter",
 										"Tooltip": "Just open the door and step in.",
 										"Highlight": false,
@@ -91,10 +91,10 @@
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "CFE_EnterResponse",
+												"Key": "MQ02_R_EnterForce",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Storage.SetFlag(\"forest_cottage_entry_first\", true)\r\nStorage.SetFlag(\"mq02_road_antag_scheduled\", true)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")"
+													"Script": "Storage.SetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\", true)\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetNumber(\"OLIVER_MOOD\", 0)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")"
 												},
 												"Children": [
 													{
@@ -114,7 +114,7 @@
 																},
 																"ScriptAppear": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "return Player.Wits >= 5"
+																	"Script": "return Player.Wits >= 4"
 																},
 																"Children": [
 																	{
@@ -126,7 +126,7 @@
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": {
 																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)"
+																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_ROUGH\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)"
 																		},
 																		"Children": [
 																			{
@@ -375,42 +375,23 @@
 																																														"Children": [
 																																															{
 																																																"NodeType": "State",
-																																																"Key": "Oliver1_R_End1B",
+																																																"Key": "Oliver_R_End2",
 																																																"ScriptAction": {
 																																																	"!Type": "ScriptDataInline",
-																																																	"Script": "Log(\"MQ02_OLIVER_R_END1B\")\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)"
+																																																	"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
 																																																},
 																																																"Children": [
 																																																	{
 																																																		"NodeType": "Choice",
-																																																		"Key": "Oliver1_C_End1B",
-																																																		"Title": "Continue",
+																																																		"Key": "Oliver_C_End2",
+																																																		"Title": "Leave",
+																																																		"Tooltip": "Time to go.",
 																																																		"Highlight": false,
 																																																		"ButtonWidth": 1.0,
 																																																		"Children": [
 																																																			{
-																																																				"NodeType": "State",
-																																																				"Key": "Oliver_R_End2",
-																																																				"ScriptAction": {
-																																																					"!Type": "ScriptDataInline",
-																																																					"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
-																																																				},
-																																																				"Children": [
-																																																					{
-																																																						"NodeType": "Choice",
-																																																						"Key": "Oliver_C_End2",
-																																																						"Title": "Leave",
-																																																						"Tooltip": "Time to go.",
-																																																						"Highlight": false,
-																																																						"ButtonWidth": 1.0,
-																																																						"Children": [
-																																																							{
-																																																								"NodeType": "Link",
-																																																								"LinkTarget": "Start"
-																																																							}
-																																																						]
-																																																					}
-																																																				]
+																																																				"NodeType": "Link",
+																																																				"LinkTarget": "ExteriorMain"
 																																																			}
 																																																		]
 																																																	}
@@ -596,7 +577,7 @@
 																																						"Children": [
 																																							{
 																																								"NodeType": "Link",
-																																								"LinkTarget": "Start"
+																																								"LinkTarget": "CottageAbandoned"
 																																							}
 																																						]
 																																					}
@@ -679,7 +660,7 @@
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": {
 																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"mq02_oliver_bandaged\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)"
+																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_BANDAGE\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)"
 																		},
 																		"ScriptAppear": {
 																			"!Type": "ScriptDataInline",
@@ -719,7 +700,7 @@
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": {
 																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"mq02_oliver_healed\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
+																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_POTION\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
 																		},
 																		"ScriptAppear": {
 																			"!Type": "ScriptDataInline",
@@ -757,7 +738,7 @@
 																				},
 																				"ScriptAppear": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "return Player.Strength >= 5"
+																					"Script": "return Player.Strength >= 4"
 																				},
 																				"Children": [
 																					{
@@ -843,65 +824,698 @@
 								]
 							},
 							{
+								"NodeType": "Link",
+								"LinkTarget": "CottageAbandoned"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "CottageMain"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "CottageAbandoned",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\nLog(\"OLIVER_COTTAGE_ENTER_DEAD\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"OLIVER_DEAD\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Link",
+						"LinkTarget": "Cottage_Leave"
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "CottageMain",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Oliver's Cabin\")\r\n\r\nStorage.SetFlag(\"OLIVER_VISITED_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"), true)\r\nLogSplit()\r\nLog(\"OLIVER_COTTAGE_ENTER\")\r\nLog(\"OLIVER_GREET_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"))"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Cottage_Leave",
+						"Title": "Leave",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLogSplit"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "OLIVER_COTTAGE_LEAVE",
+									"IsRaw": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "ExteriorMain"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Oliver_C_Talk_Checkup",
+						"Title": "Check up",
+						"Tooltip": "Try to start a conversation.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"OLIVER_MOOD\") == 1"
+						},
+						"Children": [
+							{
 								"NodeType": "State",
-								"Key": "CottageInside",
+								"Key": "Oliver_R_Talk_Checkup_Mood0",
 								"ScriptAction": {
-									"!Type": "ScriptDataInline",
-									"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\n\r\nLog(\"forest_cottage_enter\")\r\nif Storage.GetFlag(\"oliver_dead\") then\r\n    Log(\"FOREST_COTTAGE_ENTER_DEAD\")\r\nelse\r\n    Log(\"forest_cottage_oliver_hello\")\r\nend"
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "OLIVER_TALK_CHECKUP_MOOD0",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "OLIVER_VISITED_MOOD0",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
 								},
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "Cottage_Leave",
-										"Title": "Leave",
+										"Key": "Oliver_C_Talk_Checkup_MQ02",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": {
-											"!Type": "ScriptDataInline",
-											"Script": "hasGreeted = false"
-										},
 										"Children": [
 											{
 												"NodeType": "Link",
-												"LinkTarget": "Start"
+												"LinkTarget": "Oliver_R_Talk_Checkup_MQ02"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Oliver_R_Talk_Checkup_MQ02",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "if Storage.GetFlag(\"MQ02_OLIVER_WAKE_POTION\") then\r\n    Log(\"OLIVER_TALK_CHECKUP_MQ02_POTION\")\r\nelseif Storage.GetFlag(\"MQ02_OLIVER_WAKE_BANDAGE\") then\r\n    Log(\"OLIVER_TALK_CHECKUP_MQ02_BANDAGES\")\r\nelseif Storage.GetFlag(\"MQ02_OLIVER_WAKE_ROUGH\") then\r\n    Log(\"OLIVER_TALK_CHECKUP_MQ02_ROUGH\")\r\nelse\r\n    Log(\"OLIVER_TALK_CHECKUP_MQ02_NEUTRAL\")\r\nend"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Checkup1",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Oliver_R_Talk_Checkup1"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Oliver_R_Talk_Checkup1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "OLIVER_TALK_CHECKUP1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Checkup2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Oliver_R_Talk_Checkup2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "OLIVER_TALK_CHECKUP2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver_C_Talk_Checkup3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Oliver_R_Talk_Checkup3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "OLIVER_TALK_CHECKUP3",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetNumber",
+																			"VariableName": "OLIVER_MOOD",
+																			"ValueOperation": "Set",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": 2.0
+																		},
+																		{
+																			"!Type": "CommandVarSetNumber",
+																			"VariableName": "OLIVER_AWOL_RETURN",
+																			"ValueOperation": "Set",
+																			"OperandMode": "Script",
+																			"OperandText": "GetTimeHourTotal() + 4"
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Cottage_Leave"
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Oliver_C_SQ03_Start",
+						"Title": "Help",
+						"Tooltip": "Ask if there is something you can do to help.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ03_STARTED",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarNumber",
+									"VariableName": "OLIVER_MOOD",
+									"Operator": "GreaterOrEqual",
+									"OperandMode": "Literal",
+									"OperandLiteral": 1.0
+								},
+								{
+									"!Type": "ConditionVarNumber",
+									"VariableName": "OLIVER_MOOD",
+									"Operator": "NotEqual",
+									"OperandMode": "Literal",
+									"OperandLiteral": 2.0
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Oliver_R_SQ03_Start",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"OLIVER_SQ03_START\")\r\nStorage.SetFlag(\"SQ03_STARTED\", true)\r\n\r\n-- Start SQ03: Add Oliver's tools to Pat's shop\r\nlocal shop = Shop(\"PortShop\")\r\nshop:AddUniqueItem(Item(\"I_SQ03_OliverSupplies\"), 1)\r\nshop:Save()\r\nJournal.Update(\"SQ03\", 10)"
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cottage_Leave"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Oliver_C_Talk_Checkup"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Oliver_C_Talk"
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Oliver_C_SQ03_Handin",
+						"Title": "Give Tools",
+						"Tooltip": "You have the items he had asked for.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Player:HasItem(\"I_SQ03_OliverSupplies\") and Storage.GetNumber(\"OLIVER_MOOD\") ~= 2"
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Oliver_R_SQ03_Handin",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"OLIVER_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_SQ03_Complete",
+										"Title": "Continue",
+										"Tooltip": "Thank him.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "CottageMain"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Oliver_C_Talk",
+						"Title": "Talk",
+						"Tooltip": "Strike up a conversation about something.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "return Storage.GetNumber(\"OLIVER_MOOD\") >= 3"
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Oliver_R_Talk_Root",
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Exit",
+										"Title": "< Back",
+										"Highlight": false,
+										"ButtonWidth": 0.6,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Oliver_R_Talk_Exit",
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cottage_Leave"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver_C_SQ03_Start"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver_C_SQ03_Handin"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver_C_Talk"
+													}
+												]
 											}
 										]
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "Cottage_C_SQ03Handin",
-										"Title": "Give Tools",
-										"Tooltip": "You have the items he had asked for.",
+										"Key": "Oliver_C_Talk_AwolMood2",
+										"Title": "Absence",
+										"Tooltip": "Ask where he was when you came by earlier.",
 										"Highlight": true,
 										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_AWOL",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_AWOL",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
-											"Script": "return Player:HasItem(\"I_SQ03_OliverSupplies\")"
+											"Script": "return Storage.GetFlag(\"OLIVER_VISITED_MOOD2\") and not Storage.GetFlag(\"OLIVER_TALK_AWOL\")"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Oliver_R_Talk_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Iso",
+										"Title": "Mayor Iso",
+										"Tooltip": "Ask what he knows about the missing mayor.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_ISO",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_ISO",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_TALK_ISO",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Oliver_R_Talk_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Lonely",
+										"Title": "Loneliness",
+										"Tooltip": "Ask if he doesn't feel isolated in this cabin, away from the town.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_LONELY",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_LONELY",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_TALK_LONELY",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Oliver_R_Talk_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Randall1",
+										"Title": "Randall",
+										"Tooltip": "Ask if he's seen the predatory black wolf again.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_RANDALL",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_RANDALL1",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_TALK_RANDALL",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
 										},
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "Cottage_R_SQ03Handin",
-												"ScriptAction": {
-													"!Type": "ScriptDataInline",
-													"Script": "Log(\"FOREST_COTTAGE_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
-												},
+												"Key": "Oliver_R_Talk_Randall1",
 												"Children": [
 													{
 														"NodeType": "Choice",
-														"Key": "Cottage_C_SQ03Exit",
-														"Title": "Continue",
-														"Tooltip": "Thank him.",
+														"Key": "Oliver_C_Talk_Randall2",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "OLIVER_TALK_RANDALL2",
+																	"IsRaw": false
+																}
+															]
+														},
 														"Children": [
 															{
 																"NodeType": "Link",
-																"LinkTarget": "CottageInside"
+																"LinkTarget": "Oliver_R_Talk_Root"
 															}
 														]
 													}
 												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Stip",
+										"Title": "Stip",
+										"Tooltip": "Ask about his relationship with the late Stip.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_STIP",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_STIP",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_TALK_STIP",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Oliver_R_Talk_Stip",
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver_C_Talk_StipPromise",
+														"Title": "Promise",
+														"Tooltip": "Promise to make Randall pay.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "OLIVER_TALK_STIP_PROMISE",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "OLIVER_TALK_STIP_PROMISE",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Oliver_R_Talk_Root"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver_C_Talk_StipNoPromise",
+														"Title": "Avoid",
+														"Tooltip": "Promise to try.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "OLIVER_TALK_STIP_NO_PROMISE",
+																	"IsRaw": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Oliver_R_Talk_Root"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Oliver_C_Talk_Work",
+										"Title": "Work",
+										"Tooltip": "Ask if he keeps busy enough with work.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "OLIVER_TALK_WORK",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "OLIVER_TALK_WORK",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "OLIVER_TALK_WORK",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Oliver_R_Talk_Root"
 											}
 										]
 									}

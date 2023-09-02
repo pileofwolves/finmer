@@ -228,7 +228,7 @@
 		{
 			"Key": "MQ02_COT_AWAKE_BANDAGE",
 			"Text": [
-				"Once satisfied, you glance over at the lion's face, and are momentarily startled to see him staring back at you - eyes wide, seemingly afraid."
+				"Once satisfied, you glance over at the lion's face, and are momentarily startled to see him staring back at you - sapphire eyes wide, seemingly afraid."
 			]
 		},
 		{
@@ -336,13 +336,7 @@
 		{
 			"Key": "MQ02_OLIVER_R_END1",
 			"Text": [
-				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they seemed pleased as punch about the things I had in storage. Wood, some small metalwork, some of my own tools as well. I think it's all still there. That freak wants the bridge repaired; I'm not sure I like the sound of that, but at least I figure that means he doesn't want to steal or break anything. If you get back to town fast, you can tell them, send some folks to pick them up before the next predator shows up.\" A sly smirk spreads on his features. \"I'm not too afraid of that prick, I'll be fine.\""
-			]
-		},
-		{
-			"Key": "MQ02_OLIVER_R_END1B",
-			"Text": [
-				"Something occurs to him, and he reaches out with a paw, before reconsidering. \"Oh, there's something else. I know I don't really... have the right to ask anything of you, but since you're looking into all this, you're probably getting around a lot more than I am.\" The lion pauses, before deciding to continue with his request. \"If you happen to visit South Finmer and you have some time to spare, would you mind picking up some replacement carpentry tools for me at Pat's place? They wear out, you see. I'll reimburse you plus extra for your trouble.\" He smiles and nods respectfully. \"Thanks, {player.name}. I owe you.\""
+				"Finally, Oliver rises up and gives you a pat on the shoulder. \"So, yeah, they seemed pleased as punch about the things I had in storage. Wood, some small metalwork, some of my own tools as well. I think it's all still there. That freak wants the bridge repaired; I'm not sure I like the sound of that, but at least I figure that means he doesn't want to steal or break anything. If you get back to town fast, you can tell them, send some folks to pick them up before the next predator shows up.\" A sly smirk spreads on his features, though it falls almost immediately. \"I-I'll be fine. I just need to... not think of that... d-drooling maw.\""
 			]
 		},
 		{
@@ -384,7 +378,7 @@
 		{
 			"Key": "MQ02_OLIVER_R_SPILL_WOLF",
 			"Text": [
-				"Oliver scratches his chin. \"Eh, well... bulky wolf guy, dark fur, silvery. Red mane on his head. Had this cocky, almost predatory grin plastered on his face all the time, like he knew the world was his. Not hard to miss, I guess.\""
+				"Oliver scratches his chin. \"Eh, well... bulky wolf guy, dark fur, silvery. Red mane on his head. Had this cocky, almost predatory grin plastered on his face all the time, like he knew the world was his. Or, well, literally predatory, in his case... Not hard to miss, I guess.\""
 			]
 		},
 		{

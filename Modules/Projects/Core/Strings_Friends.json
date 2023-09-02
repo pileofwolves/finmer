@@ -1,0 +1,180 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "682cccce-d36f-4ce2-a89c-5bf2018ed139",
+	"AssetName": "Strings_Friends",
+	"Entries": [
+		{
+			"Key": "OLIVER_COTTAGE_AREA",
+			"Text": [
+				"You reach the familiar cottage again. The clearing greets you with a calming rustling of greenery. Past the cabin, further to the east, the expanse of pine trees begins, skylight filtering through the leaves."
+			]
+		},
+		{
+			"Key": "OLIVER_COTTAGE_AREA_FIRST",
+			"Text": [
+				"The winding road leads to the forest edge, and ends right next to a cozy-looking wooden hut that's settled neatly next to the untamed woods. This must be where the carpenter you were told about lives. It's a rather picturesque place - living here must be beautiful in its own right, if a bit isolated from society. Past the cabin, further to the east, the expanse of pine trees begins, skylight filtering through the leaves to create an inviting scenery."
+			]
+		},
+		{
+			"Key": "OLIVER_COTTAGE_ENTER",
+			"Text": [
+				"You step inside the lonely yet homely-looking cottage. The interior isn't that big - there's a fireplace, a couch with a bookshelf next to it, and a table with chairs. Off to the side, there are two doors."
+			]
+		},
+		{
+			"Key": "OLIVER_COTTAGE_ENTER_DEAD",
+			"Text": [
+				"Of course, considering your efforts in dispatching the local inhabitant earlier, nobody's here to greet you."
+			]
+		},
+		{
+			"Key": "OLIVER_COTTAGE_LEAVE",
+			"Text": [
+				"You step back into the wild, untamed outdoors. Not so untamed as to not have a road leading back to a nearby town, though.",
+				"Stepping back outside, the temperature difference is remarkable. Late autumn is taking hold of the wider Finmer area; days are getting colder.",
+				"Setting foot on the gravel path that winds its way between the cottage and the riverside road, you stretch your muscles and consider your next objective."
+			]
+		},
+		{
+			"Key": "OLIVER_GREET_MOOD0",
+			"Text": [
+				"The lion broods quietly on the sofa, the downcast energy hanging over him almost tangible. He barely affords you a glance, expression screaming of exhaustion and dread, before he resumes moodily twiddling his thumbs and staring at his knees. \"Please, {player.name}. I-I... need to think,\" he says simply, his wish to be left alone obvious enough. Though not being able to offer help is frustrating in its own right, perhaps a little more time might help heal this wound."
+			]
+		},
+		{
+			"Key": "OLIVER_GREET_MOOD1",
+			"Text": [
+				"\"Hey, {player.name},\" Oliver says blankly, standing up from his seat in the corner of the room, putting down the sheets of paper he had been reading, glancing at you with barely concealed curiosity. While certainly not quite the chipper feline he was once said to be, the heavy air surrounding him seems to have cleared up a little bit. Briefly, you wonder how he keeps himself entertained - and sane - in this isolation. \"What can I do for you?\" he asks."
+			]
+		},
+		{
+			"Key": "OLIVER_GREET_MOOD2",
+			"Text": [
+				"Most curiously, the cabin's usual resident seems to be away from home. Blackened coals sit in the fireplace, smoldering embers still visible between them, a cooling kettle of water on the stovetop. Of course, one cannot expect to always find everyone at home at all times. It seems you just missed him; perhaps you could catch him another time."
+			]
+		},
+		{
+			"Key": "OLIVER_GREET_MOOD3",
+			"Text": [
+				"Oliver notices you entering and waves cheerfully, then continues what he was doing, studying some document at the table. \"Something I can help ya with?\" he hollers back without looking.",
+				"The lion carpenter nods as he sees your approach, looking at you expectantly, setting the figurine he was etching down on the table. \"What's on your mind, {player.name}?\" he asks curiously.",
+				"\"Hello, dear {player.species}! How's the world out there?\" Oliver exclaims from the couch, looking up from his book.",
+				"THe resident feline grins at you from his comfortable lounging position on the couch. \"My favorite {player.species} returns. What's up?\""
+			]
+		},
+		{
+			"Key": "OLIVER_SQ03_HANDIN",
+			"Text": [
+				"The lion gives you a stare, then starts positively beaming as you hand him the wooden box. \"Thank you so much, {player.name}! You have no idea how much this means to me! This will really help with the stuff I'm going to work on next.\" Flustered, he puts the box away on a shelf, then fetches something else off of it. \"Here, you'll probably have more use for this than I do,\" he says as he hands you a vial and some coins. He nods again."
+			]
+		},
+		{
+			"Key": "OLIVER_SQ03_START",
+			"Text": [
+				"Almost automatically, Oliver opens his mouth to dismiss your request, but something occurs to him. He reaches out with a paw, before reconsidering, pulling it back, and using words instead. \"Oh, there's something, actually. I know I don't really... have the right to ask anything of you, but since you're looking into all this, you're probably getting around a lot more than I am.\" The lion pauses, before deciding to continue with his request. \"If you happen to visit South Finmer and you have some time to spare, would you mind picking up some replacement carpentry tools for me at Pat's place? They wear out, you see, and he makes some specialty stuff I can't get elsewhere. I'll reimburse you plus extra for your trouble.\" He smiles and nods respectfully. \"I owe you one. Or two, {player.name}. For... everything. Really.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_AWOL",
+			"Text": [
+				"Oliver simply shrugs, avoiding your gaze for a moment too long. \"A lion can take a walk outside, no?\" he quips sarcastically, before sighing and relenting. \"Seriously though, I may be a lonely hermit, but I did choose this spot for a reason. The woods are really beautiful this time of year.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP_MOOD0",
+			"Text": [
+				"The carpenter nods simply, fidgeting in place, clearly unsure what to do with his paws, or where to leave them. \"I- I wanted to say sorry, first off. When you came by earlier, I mean, and I asked you to go away. I know you were trying to help, and I'm grateful for that.\" He sighs, finally having found a purpose for one paw at least as it runs through his mane."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP_MQ02_BANDAGES",
+			"Text": [
+				"Briefly, your gaze lingers on the lion's arm, where you had applied bandages earlier. He'd taken them off in the mean time, the shallow gashes they'd covered scabbing over. As gnarly as the sight is, a clean wound healing naturally is nevertheless a good sign. Oliver notices your ogling, and protectively moves to hide his arm behind his body, but catches himself in the movement, and carefully rubs it instead. \"Er, thanks again for patching me up back there,\" he says simply, a little flustered."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP_MQ02_NEUTRAL",
+			"Text": [
+				"Briefly, your gaze lingers on the lion's arm. The shallow gashes that Randall had left during whatever welcoming treatment he had applied, seem to be gradually scabbing over and healing, as all things do. Surviving out here on his own, at least means the carpenter does know how to take care of himself - a relief, to be sure."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP_MQ02_POTION",
+			"Text": [
+				"Briefly, your gaze lingers on the lion's arm. Your application of a potion had helped clean up and heal the gashes Randall had left, with frightening speed. In fact, if it weren't for the thinner fur and patches of exposed skin, you might not even have been able to tell there was ever an injury at all. Oliver catches your stare and idly rubs the tender spot, nodding as if to wordlessly thank you."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP_MQ02_ROUGH",
+			"Text": [
+				"Briefly, your gaze lingers on the lion's arm. Your application of force when you woke up the lion earlier hadn't done him any favors, all things considered. The shallow gashes and thinned fur patches look just as unpleasant as one might expect, and despite the fact that your gaze lingers on the poorly-healed wound for several moments too long, Oliver does not even seem to notice your staring."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP1",
+			"Text": [
+				"\"Long story short, I'm feeling better now,\" he declares, and despite the shakiness, you sense that his words are sincere. \"Not great. But better. I'm not the fearful kitten I once was, heh. But being confronted with a... *monster*, like that...\" He pauses, steadying his breathing, though his scowl betrays more than a little emotional charge behind the label he just spat out. \"It's... a lot.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP2",
+			"Text": [
+				"Finally, the carpenter sighs, sitting back down. \"Thanks, um,\" he begins, before swallowing his words. You wait patiently for the lion to collect his thoughts, and soon enough, he continues. \"Thanks for coming by, {player.name}. I... really appreciate it. I just can't... get that damn image out of my head.\" He sighs, fidgeting in his chair, digging claws into his armrests. At least he'd know exactly how to hide the marks later."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_CHECKUP3",
+			"Text": [
+				"\"But I'll be fine. I have people I can rely on. Like you,\" he adds, perhaps a bit shyly, leaving the last part only a quiet mutter, though he does offer a smile to sweeten the deal. \"Um, I need to... clean the place up a bit. Again, really, thanks for coming by. Tell Iso I'm fine, when you see her next.\" Though the lonely feline does not explicitly ask you to vacate the premises, you sense that more than anything, you've done what you can for now, and he wishes to reflect in solitude. A wish easily granted, of course."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_ISO",
+			"Text": [
+				"\"The mayor?\" he repeats, stopping what he is doing to give you a curious glance, before he returns to fidgeting with a wooden figurine - one that is presumably carved by his own paws. \"I'd call her a friend, though I suppose it's also kind of her job to be friends with everyone, heh. I hope she's alright, wherever she is.\" A scowl creeps onto his muzzle, one born of the same darkness that had clouded his thoughts last time you spoke. \"I bet that sicko of a wolf nabbed her,\" he grunts, squeezing the figurine in his paws."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_LONELY",
+			"Text": [
+				"He shakes his head with more confidence than you'd expected, a glimmer of true excitement brightening what has so far been a reserved and downcast image of a lion. A few moments later, it dips below the surface again, leaving only a vaguely content smirk. \"Not at all; I love it here. I dunno if you're from the city, {player.name}, but stargazing or hiking out here, away from the worries of the world... it's something else. And if the weather takes a turn for the worse, I sometimes use scraps and old tools to carve figurines. So, I keep busy.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_RANDALL1",
+			"Text": [
+				"When you mention the name of the gang boss, Oliver visibly tenses, fists clenching. Staring blankly ahead of him, the lashing of his tail speaks volumes on its own. Perhaps unconsciously, the lion applies so much force to the tiny wood carving trapped in his paw that it creaks - were it made of anything less solid, it would have disintegrated. The sound seems to bring him back from whichever swirling void his thoughts had ventured to, and he glances down at his paw, ashamed, realizing a leg had snapped off the mistreated decorative item. He does not meet your gaze until several moments more, despite your best attempts to obtain his attention."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_RANDALL2",
+			"Text": [
+				"\"I dreamt of him last night,\" the distressed feline growls, tenderly laying out the broken carving in front of him. \"I keep seeing that maw of his, stretched wide right in front of me. Tongue slick with saliva. I was going to be next, and...\" Oliver drops his head into his paws, elbows leaning on the table. You shift, feeling a little uncertain as to what an appropriate response might be to a conundrum of this magnitude. In the end, you can only hope that your support means something to the lion - and by all accounts, it does."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_STIP",
+			"Text": [
+				"For your response, you receive a lengthy, contemplative silence, followed by a loud sniff. \"Stip was a real one,\" Oliver begins, pausing to hide most, but not all, of a crack in his voice. He clears his throat and continues as if nothing happened. \"Always there to help ground me when I needed it. Of course he'd be the one to jump at the chance to visit. I... I'll miss him.\" A flash of anger follows, volume climbing until he composes himself. \"Spirits, there isn't even anything left of him! {player.name}, promise me you'll give that sick fuck what he deserves when you get him.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_STIP_NO_PROMISE",
+			"Text": [
+				"He sighs, sniffing once and biting back a tear or fifty. \"I know. It's all anyone can really do,\" he answers simply."
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_STIP_PROMISE",
+			"Text": [
+				"He nods, grateful, sniffing once and biting back a tear or fifty. \"Thanks, {player.name}. I don't know if it'll mean much for Stip, but I know I'll sleep better then.\""
+			]
+		},
+		{
+			"Key": "OLIVER_TALK_WORK",
+			"Text": [
+				"Oliver snorts, and offers you a vague hint of a smirk. \"I have quite the queue to go through. This... um, all this, has been occupying my mind of late. But, um, keeping my paws busy really does help a lot.\" He offers you a flick of the ear and a smile, one that you cannot quite identify as either genuine or forced. \"So don't worry, the Finmer community will get their paws on the things they need. Actually, I hear someone is shipping construction stuff to our Southern friends. But I dunno what for; if they were in need of construction work, I would know. Hope it's not a competitor...\""
+			]
+		}
+	]
+}

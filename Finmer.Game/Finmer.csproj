@@ -148,6 +148,7 @@
     <Compile Include="ViewModels\WelcomePageViewModel.cs" />
     <Compile Include="Views\Base\CharCreateViewBase.cs" />
     <Compile Include="ViewModels\CombatParticipantViewModel.cs" />
+    <Compile Include="Views\Base\GrayscaleToggleImage.cs" />
     <Compile Include="Views\Base\StackablePopupBase.cs" />
     <Compile Include="Views\Base\WrappedUIElementItemsControl.cs" />
     <Compile Include="Views\CharCreateSpecies.xaml.cs">

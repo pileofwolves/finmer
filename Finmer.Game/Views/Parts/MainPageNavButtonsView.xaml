@@ -4,6 +4,7 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DataContext="{d:DesignInstance vm:MainPageViewModel}"
@@ -27,7 +28,7 @@
         <ToggleButton ToolTip="Exit to Menu">
             <ToggleButton.Content>
                 <Grid>
-                    <Image
+                    <vb:GrayscaleToggleImage
                         Source="/Finmer;component/Resources/UI/HUDExitToMenu.png"
                         SnapsToDevicePixels="True"
                         Margin="0,-2,0,0"
@@ -66,7 +67,7 @@
             Command="{Binding ToggleScriptConsoleCommand}"
             ToolTip="Toggle Developer Script Console">
             <Button.Content>
-                <Image
+                <vb:GrayscaleToggleImage
                     Source="/Finmer;component/Resources/UI/HUDScriptConsole.png"
                     SnapsToDevicePixels="True"
                     Margin="0,-2,0,0"
@@ -75,11 +76,11 @@
         </Button>
         <!-- Character sheet button -->
         <Button
-            IsEnabled="{Binding UI.InventoryEnabled}"
             ToolTip="View Character Sheet"
+            IsEnabled="{Binding UI.InventoryEnabled}"
             Command="{Binding ViewCharacterSheetCommand}">
             <Button.Content>
-                <Image
+                <vb:GrayscaleToggleImage
                     Source="/Finmer;component/Resources/UI/HUDCharSheet.png"
                     SnapsToDevicePixels="True"
                     Margin="0,-2,0,0"
@@ -89,9 +90,10 @@
         <!-- Journal button -->
         <Button
             ToolTip="View Journal"
+            IsEnabled="{Binding UI.InventoryEnabled}"
             Command="{Binding ViewJournalCommand}">
             <Button.Content>
-                <Image
+                <vb:GrayscaleToggleImage
                     Source="/Finmer;component/Resources/UI/HUDJournal.png"
                     SnapsToDevicePixels="True"
                     Margin="0,-2,0,0"

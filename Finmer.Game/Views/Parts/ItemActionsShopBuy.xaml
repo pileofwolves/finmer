@@ -6,6 +6,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:v="clr-namespace:Finmer.Views"
     xmlns:gp="clr-namespace:Finmer.Gameplay"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
     xmlns:vm="clr-namespace:Finmer.ViewModels"
     mc:Ignorable="d"
     d:DesignHeight="100"
@@ -20,7 +21,7 @@
             CommandParameter="{Binding}">
             <StackPanel Orientation="Horizontal">
                 <TextBlock Style="{StaticResource TextBlockDefault}">Buy</TextBlock>
-                <Image
+                <vb:GrayscaleToggleImage
                     Source="/Finmer;component/Resources/UI/Money.png"
                     Stretch="None"
                     Margin="8,0,3,0" />

@@ -167,7 +167,7 @@
 																				"Key": "SQ02_R_EatPlayerSafe",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
-																					"Script": "Storage.SetFlag(\"FOREST_DIREWOLF_FRIENDLY\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_DireWolf_Stomach\")"
+																					"Script": "Storage.SetFlag(\"FOREST_DIREWOLF_FRIENDLY\", true)\r\nStorage.SetNumber(\"SQ02\", 3) -- disable clearing event\r\n\r\nlocal wuff = Creature(\"CR_SQ02_Wolf_OV\")\r\nwuff.PredatorDigests = false -- enable endo mode\r\n\r\n-- willing endo vore sequence\r\nLog(\"SQ02_WOLF_ENDO_VORE_WIN_POV\")\r\nText.SetContext(\"predator\", wuff)\r\n\r\nlocal state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(wuff)\r\nstate:SetVored(wuff, Player)\r\nstate:OnRoundEnd(function(round)\r\n    if round >= 5 then\r\n        state:End()\r\n    end\r\nend)\r\nstate:Begin()\r\n\r\n-- after combat ends\r\nSetScene(\"Scene_SQ02_ChipBelly\")"
 																				},
 																				"Children": []
 																			}

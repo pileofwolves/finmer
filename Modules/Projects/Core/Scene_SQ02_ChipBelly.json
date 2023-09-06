@@ -1,14 +1,14 @@
 ﻿{
 	"!Type": "AssetScene",
 	"AssetID": "a56dc882-f82e-4192-a1a6-6f325cb8b63e",
-	"AssetName": "Scene_DireWolf_Stomach",
+	"AssetName": "Scene_SQ02_ChipBelly",
 	"ScriptCustom": {
 		"!Type": "ScriptDataExternal",
-		"Name": "Scene_DireWolf_Stomach_Custom"
+		"Name": "Scene_SQ02_ChipBelly_Custom"
 	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
-		"Name": "Scene_DireWolf_Stomach_Enter"
+		"Name": "Scene_SQ02_ChipBelly_Enter"
 	},
 	"IsPatch": false,
 	"Root": {

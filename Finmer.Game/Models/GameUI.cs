@@ -193,9 +193,12 @@ namespace Finmer.Models
             output.SetString(SaveData.k_UI_Instruction, Instruction);
             output.SetBool(SaveData.k_UI_InventoryEnabled, InventoryEnabled);
 
+            // Capture the message list on the main thread (to avoid concurrent modification issues)
+            LogMessageModel[] filtered_messages = null;
+            Dispatcher.Invoke(() => filtered_messages = Messages.Where(entry => !entry.IsBar).ToArray());
+
             // Find the last few log messages (skipping entries that have no text content)
             const int k_LogMessageCount = 16;
-            var filtered_messages = Messages.Where(entry => !entry.IsBar).ToArray();
             var desired_message_count = Math.Min(filtered_messages.Length, k_LogMessageCount);
             var last_messages = filtered_messages.Skip(filtered_messages.Length - desired_message_count).ToArray();
 

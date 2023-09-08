@@ -232,14 +232,14 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "local _, pred = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(pred)\r\nfight:Begin()"
+							"Script": "local _, attacker = MQ03_SelectAssailant()\r\nlocal fight = Combat2()\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(attacker)\r\nfight:OnCreatureVored(function(pred, prey)\r\n    if pred == Player then\r\n        Storage.SetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\", true)\r\n    end\r\nend)\r\nfight:Begin()"
 						},
 						"Children": [
 							{
 								"NodeType": "State",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"MQ03_TAVERN_FINALE1\")"
+									"Script": "local sahro_stew = Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\")\r\nLog(sahro_stew and \"MQ03_TAVERN_FINALE1_VORE\" or \"MQ03_TAVERN_FINALE1\")"
 								},
 								"Children": [
 									{
@@ -344,7 +344,7 @@
 												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Log(\"MQ03_TAVERN_FINALE2_RANDALL\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_RANDALL\", true)"
+													"Script": "local sahro_stew = Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\")\r\nLog(sahro_stew and \"MQ03_TAVERN_FINALE2_RANDALL_VORE\" or \"MQ03_TAVERN_FINALE2_RANDALL\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_RANDALL\", true)"
 												},
 												"Children": [
 													{
@@ -430,7 +430,7 @@
 												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Log(\"MQ03_TAVERN_FINALE2_AMBER\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_AMBER\", true)"
+													"Script": "local sahro_stew = Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\")\r\nLog(sahro_stew and \"MQ03_TAVERN_FINALE2_AMBER_VORE\" or \"MQ03_TAVERN_FINALE2_AMBER\")\r\nStorage.SetFlag(\"MQ03_TAVERN_EVENT_AMBER\", true)"
 												},
 												"Children": [
 													{
@@ -486,19 +486,19 @@
 																"NodeType": "State",
 																"ScriptAction": {
 																	"!Type": "ScriptDataInline",
-																	"Script": "Log(\"MQ03_TAVERN_FINALE4\")"
+																	"Script": "local sahro_stew = Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\")\r\nLog(sahro_stew and \"MQ03_TAVERN_FINALE4_VORE\" or \"MQ03_TAVERN_FINALE4\")"
 																},
 																"Children": [
 																	{
 																		"NodeType": "Choice",
 																		"Title": "Spare",
-																		"Tooltip": "He's scared out of his mind and probably not a threat.",
+																		"Tooltip": "He's scared out of his mind and probably not a threat. Let him go.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
 																				"NodeType": "State",
-																				"Key": "MQ03_R_Spare",
+																				"Key": "MQ03_R_Toby_Spare",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Storage.SetFlag(\"MQ03_TOBY_SPARED\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_SPARE\")"
@@ -513,9 +513,14 @@
 																						"Children": [
 																							{
 																								"NodeType": "State",
+																								"Key": "MQ03_R_EventWrapupVore",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"MQ03_TAVERN_FINALE6\")\r\nFoodComa()"
+																									"Script": "Log(\"MQ03_TAVERN_FINALE6_VORE\")\r\nRest()"
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "return Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\") or Storage.GetFlag(\"MQ03_TAVERN_TOBY_EATEN\")"
 																								},
 																								"Children": [
 																									{
@@ -528,7 +533,7 @@
 																												"NodeType": "State",
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
-																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\n\r\nif Player.IsExplicitDisposalEnabled then\r\n    Log(\"MQ03_TAVERN_FINALE7_DISPOSAL\")\r\nend"
+																													"Script": "Log(\"MQ03_TAVERN_FINALE7_VORE\")\r\n\r\nif Player.IsExplicitDisposalEnabled then\r\n    if Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\") then\r\n        Log(\"MQ03_TAVERN_FINALE7_DISPOSAL_SAHRO\")\r\n    elseif Storage.GetFlag(\"MQ03_TAVERN_TOBY_EATEN\") then\r\n        Log(\"MQ03_TAVERN_FINALE7_DISPOSAL_TOBY\")\r\n    end\r\nend"
 																												},
 																												"Children": [
 																													{
@@ -541,13 +546,38 @@
 																																"NodeType": "State",
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataInline",
-																																	"Script": "Log(\"MQ03_TAVERN_FINALE8\")\r\nSetScene(\"Scene_PortDocks\")"
+																																	"Script": "Log(\"MQ03_TAVERN_FINALE8_VORE\")\r\nSetScene(\"Scene_PortDocks\")"
 																																},
 																																"Children": []
 																															}
 																														]
 																													}
 																												]
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ03_R_EventWrapupNonVore",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "-- Note: still calling Rest() here to advance time to morning\r\nLog(\"MQ03_TAVERN_FINALE6\")\r\nRest()"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ03_TAVERN_FINALE7\")\r\nSetScene(\"Scene_PortDocks\")"
+																												},
+																												"Children": []
 																											}
 																										]
 																									}
@@ -562,16 +592,43 @@
 																	{
 																		"NodeType": "Choice",
 																		"Title": "Kill",
-																		"Tooltip": "He works for the Red Maw and will probably tell on you.",
+																		"Tooltip": "He ratted you out once, and is therefore an enemy. But no suffering is required.",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
 																				"NodeType": "State",
-																				"Key": "MQ03_R_Kill",
+																				"Key": "MQ03_R_Toby_Kill",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataInline",
 																					"Script": "Storage.SetFlag(\"TOBY_DEAD\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_KILL\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ03_C_EventWrapup"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Title": "Swallow",
+																		"Tooltip": "All Red Maw members deserve a taste of their own cruel, acidic medicine.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return not Storage.GetFlag(\"MQ03_TAVERN_ASSAILANT_EATEN\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ03_R_Toby_Swallow",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Storage.SetFlag(\"MQ03_TAVERN_TOBY_EATEN\", true)\r\nStorage.SetFlag(\"TOBY_DEAD\", true)\r\nLog(\"MQ03_TAVERN_FINALE5_SWALLOW\")"
 																				},
 																				"Children": [
 																					{

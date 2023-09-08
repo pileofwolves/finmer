@@ -17,7 +17,7 @@
 	"Equipment3": "00000000-0000-0000-0000-000000000000",
 	"Equipment4": "00000000-0000-0000-0000-000000000000",
 	"IsPredator": true,
-	"AutoVorePrey": true,
+	"AutoVorePrey": false,
 	"AutoVorePredator": true,
 	"PredatorDigests": true,
 	"PredatorDisposal": true,
@@ -46,6 +46,11 @@
 			"Key": "VORE_WIN",
 			"Rule": "NpcToPlayer",
 			"NewKey": "MQ03_TAVERN_PRED_VORE_WIN_POV"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ03_TAVERN_PRED_KILL_GENERIC"
 		}
 	]
 }

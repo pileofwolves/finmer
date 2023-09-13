@@ -246,7 +246,7 @@
 		{
 			"Key": "MQ04_ADEPT_RETURN06",
 			"Text": [
-				"Clearly saddened by the news, the ebony-furred feline frowns, resuming her busy act of swirling tea in the cup. \"Such a wonderful woman,\" she mumbles, \"reduced to... u-urk. No. That's...\" Iso remains quiet for a brief moment, before she grits her teeth and, as if a stray ember set powder keg alight, that sorrow morphs into barely-contained fury. \"That fucking dog,\" she snarls, tail flicking against the surface of the couch with a soft thump, not entirely unlike how said canine had snarled at her the other night. \"I am going to-\" she begins, but before she can express her dark desire, Rux raises a paw. \"Restrain yourself,\" he says simply, his gentle voice commanding yet soothing. \"He's not here, and we shall resolve this matter swiftly.\""
+				"Clearly saddened by the news, the ebony-furred feline frowns, resuming her busy act of swirling tea in the cup. \"Such a wonderful woman,\" she mumbles, \"reduced to... u-urk. No. That's...\" Iso remains quiet for a brief moment, before she grits her teeth and, as if a stray ember set powder keg alight, that sorrow morphs into barely-contained fury. \"That fucking dog,\" she hisses, tail flicking against the surface of the couch with a soft thump, not entirely unlike how the canine in question had snarled at her the other night. \"I am going to-\" she begins, but before she can express her dark desire, Rux raises a paw. \"Restrain yourself,\" he says simply, his gentle voice commanding yet soothing. \"He's not here, and we shall resolve this matter swiftly.\""
 			]
 		},
 		{
@@ -294,25 +294,25 @@
 		{
 			"Key": "MQ04_ADEPT_TALK_BRIDGE1",
 			"Text": [
-				"\"Yes,\" the black-furred feline begins simply, \"that.\" She exchanges looks with her confidant, receiving a nod and a smile in return. \"I've already brought Rux up to speed in the time you were 'away'. I'll start from the beginning, since I don't know exactly what you're missing. So.\" Iso takes a breath, perhaps to steady herself, or collect her thoughts - or both. \"Just before Randall and I 'parted', he was all wags and ecstatic about an 'amazing discovery' near South Finmer. Heh, he was always trying to make me happy. He never told me any details about whatever he found, though in his excitement he did let it slip that it was an abandoned mine he wanted to restart.\""
+				"\"Yes,\" the black-furred feline begins simply, \"that.\" She exchanges looks with her confidant, receiving a nod and a smile in return. \"I've already brought Rux up to speed in the time you were 'away'. I'll start from the beginning, since I don't know exactly what you're missing. So.\" Iso takes a breath, perhaps to steady herself, or collect her thoughts - or both. \"Just before Randall and I 'parted', he was all wags and ecstatic about an 'amazing discovery' near South Finmer. Heh, he was always trying to make me happy. He never told me any details about whatever he found, though in his excitement he did let it slip that it was an abandoned mine he wanted to restart. I'm always interested in boosting the economy, of course, so I said, sure, go for it.\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_TALK_BRIDGE2",
 			"Text": [
-				"She glances sideways for a moment in an attempt to bury shame, before turning to deliver the rest of her story to you. \"So when all manner of construction and excavation supplies were heading that way, labelled for 'expansion of South Finmer infrastructure', I knew it was him. I have many ties to neighboring towns, of course, being the mayor, and I knew our southern friends had no such expansion plans, so it was a front for something else. He must have repurposed the place as a hideout of sorts, especially now that he's got his very own little gang going on.\" She huffs a bit, flicking an ear and glancing at the floor as if in shame. \"Admittedly, it was a guess, but while I'll say it's the only conclusion that made sense, I was afraid. Still am, to be honest.\""
+				"She glances sideways for a moment in an attempt to bury shame, before turning to deliver the rest of her story to you. \"That was several weeks ago. So when all manner of construction and excavation supplies were heading that way, labelled for 'expansion of South Finmer infrastructure', I knew. I have many ties to neighboring towns, of course, being the mayor, and I knew our southern friends had no such expansion plans, so it was a front for something else. He must have repurposed the place as a hideout of sorts, especially now that he's got his very own little gang going on.\" She huffs a bit, flicking an ear and glancing at the floor as if in shame. \"Admittedly, it was a guess, but while I'll say it's the only conclusion that made sense, I was afraid. Still am, to be honest.\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_TALK_BRIDGE3",
 			"Text": [
-				"\"It turned out, though, that I was right,\" Iso continues. \"Unfortunately I don't know exactly where it is, but our murderous wolf has made it into a base of operations. Rux and I,\" she begins, glancing sidelong at the red panda, \"...believe what he found is actually a natural amber deposit, based on a somewhat underhanded recruitment drive that went on in South Finmer. An 'anonymous benefactor' promised amber in exchange for dirty work, or so my contacts told me. That stuff is rare and crazy expensive, so someone promising to hand it out for free is... setting off alarm bells, to say the least.\""
+				"\"It turned out, though, that I was right,\" Iso continues. \"Unfortunately I don't know exactly where it is, but our murderous wolf has made it into a base of operations. Rux and I,\" she begins, glancing sidelong at the red panda, \"...believe what he found is actually a natural amber deposit, based on a somewhat underhanded recruitment drive that went on in South Finmer. An 'anonymous benefactor' promised amber in exchange for dirty work, or so my contacts told me. That stuff is rare, controlled and crazy expensive, so someone promising to hand it out for free under the table is... setting off alarm bells, to say the least.\""
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_TALK_BRIDGE4",
 			"Text": [
-				"\"So I came up with a rather desperate plan: to cut off the main trade route to South Finmer, and force all shipments going to him to be delayed indefinitely. That's where you came in.\" She chuckles, perhaps a bit forcefully. \"That merchant you rode with, by the way, was the very same one we were trying to stop.\""
+				"\"So I came up with a rather desperate plan: to cut off the main trade route to South Finmer, and force all shipments going to him to be delayed indefinitely. No supplies, no excavation, no amber to fuel whatever scheme he came up with. And that's where you came in.\" She chuckles, perhaps a bit forcefully. \"That merchant you rode with, by the way, was the very same one we were trying to stop.\""
 			]
 		},
 		{

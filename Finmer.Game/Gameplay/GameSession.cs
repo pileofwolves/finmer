@@ -103,9 +103,6 @@ namespace Finmer.Gameplay
             GameUI.Reset();
             GameUI.Instance.LoadState(snapshot.InterfaceData);
 
-            // Run global scripts
-            RunGlobalScripts();
-
             // Prepare the script thread (but do not launch it yet)
             m_RestoreSnapshot = snapshot;
             m_ScriptWaitEvent = new AutoResetEvent(false);
@@ -121,6 +118,11 @@ namespace Finmer.Gameplay
         public void Start()
         {
             Debug.Assert(GameController.Session == this, "This class manipulates singletons, so there should be only one instance");
+
+            // Run gameplay scripts in the global namespace that may dereference the session singleton
+            RunGlobalScripts();
+
+            // Start the turn cycle
             m_ScriptThread.Start();
         }
 

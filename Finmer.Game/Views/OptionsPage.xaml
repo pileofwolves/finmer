@@ -33,7 +33,7 @@
             IsChecked="{Binding ExplorerMode, Mode=TwoWay}" />
         <TextBlock
             Style="{StaticResource OptionSubtitle}"
-            Text="Simplify combat, focus on story. Requires starting new game!" />
+            Text="Simplify combat, focus on story. Can be toggled at any time." />
 
         <Grid Style="{StaticResource OptionSpacer}" />
 

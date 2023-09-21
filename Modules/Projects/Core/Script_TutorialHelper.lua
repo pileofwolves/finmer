@@ -9,7 +9,7 @@ function ApplyPlayerStartingGear()
     Player.EquippedArmor = Item("A_ClothArmor")
     Player.EquippedAccessory1 = Item("AC_IsoRing")
 
-    -- If Explorer Mode is on, give the player a 'cheating' ring
+    -- If Explorer Mode is on, return the cheat ring that was removed by the tutorial
     if Player.IsExplorerModeEnabled then
         Player.EquippedAccessory2 = Item("AC_ExplorerModeRing")
     end

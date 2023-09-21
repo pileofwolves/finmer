@@ -1,0 +1,10 @@
+﻿{
+	"!Type": "AssetScript",
+	"AssetID": "b3f19dfa-119f-41fd-86ab-07e4ed145e1a",
+	"AssetName": "Script_ExplorerMode",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_ExplorerMode"
+	},
+	"LoadOrder": []
+}

@@ -1,0 +1,391 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "bbf00f4a-b025-477e-afa5-3f1db1463c04",
+	"AssetName": "Strings_SQ05",
+	"Entries": [
+		{
+			"Key": "SQ05_INTRO_DECLINE",
+			"Text": [
+				"Iso nods simply, unceremoniously dropping herself back on the cushion she had been seated in. \"Aight,\" she grunts. \"Let me know if you want to check it out.\""
+			]
+		},
+		{
+			"Key": "SQ05_INTRO_REPEAT",
+			"Text": [
+				"When you broach the subject once more, Iso rises from the comfortable sofa, setting down her teacup on the table. \"Alright. I'm ready to go if you are,\" she says, turning to face you directly as she awaits your response."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO01",
+			"Text": [
+				"North Finmer's official regards you for a brief moment, before she nods, despite not bothering to rise from the sofa she had been sitting on, sipping tea. \"Got it. Are you ready to head on over there, then? My place is near the town hall, so it will be a little bit of a walk from here.\" She casts a sheepish grin in your direction - one that you take as circumstantial evidence that she is, in fact, as you previously suspected, secretly taking a liking for sneaking around her own town. \"We'll have to go at night, too; the town guard will just get in our way if we walk in the front gate. Hm, I suppose I pay them for something, after all.\""
+			]
+		},
+		{
+			"Key": "SQ05_INTRO02",
+			"Text": [
+				"Somehow, you'd managed to entertain yourself to pass a bit of time. It turns out that Rux is a surprisingly good storyteller (though he would be loath to admit it). With a soft sigh that is only barely audible over the gentle crackling of the fireplace, Iso rises from the sofa, dusts herself off and walks towards the door of the cabin, donning a simple coak that she snatched off a hook by the side. While a simple garment, its flat black color along with the hood have proven useful tools for avoiding detection so far - or, perhaps more importantly, identification. Her similarly black paw resting on the doorknob, she glances backwards at the comfortable nook she'd just left behind."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO02_NIGHT",
+			"Text": [
+				"It is already dark outside, so no further preamble is necessary to pass the time. With a soft sigh that is only barely audible over the gentle crackling of the fireplace, Iso rises from the sofa, dusts herself off and walks towards the door of the cabin, donning a simple coak that she snatched off a hook by the side. While a simple garment, its flat black color along with the hood have proven useful tools for avoiding detection so far - or, perhaps more importantly, identification. Her similarly black paw resting on the doorknob, she glances backwards at the comfortable nook she'd just left behind."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO03",
+			"Text": [
+				"\"We won't be long, Rux,\" she quips at the red panda, who nods silently, making eye contact briefly before the old Adept returns to studying the gentle embers of the fireplace. \"Be safe, Iso; you have not healed fully,\" he remarks coolly, not unlike a parent admonishing a child. The pantheress does not respond as you step through the threshold, and she shuts the door behind the two of you. \"I'm fine,\" she mutters to nobody in particular, though you surmise that perhaps her physicality is not exactly what the old hermit had been referring to."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO04_CHIP",
+			"Text": [
+				"Moonlight filters through the canopy, casting a dim glow on the otherwise pitch-black forest. Without the luxury of lantern lights one might find in the populated areas, Rux's isolated choice of land makes for a grim reminder that nature provides few tools for convenient navigation. More alarming, however, is the dark void that moves in front of the moon, blocking all light save for a dim orange glow coming through the cabin windows. The shadow whines softly, and steps in closer, revealing itself as the resident pet wolf, his head lowered to the floor in curiosity, rump raised and bushy tail slowly wagging. Entirely unfazed, Iso steps forward and places two paws on the massive beast's snout, receiving a sloppy lick for her trouble. The difference in size is stunning; that tongue could have curled around her, and yet the beast shows remarkable restraint. \"We won't be long, Chip. Go sleep,\" she whispers. The giant predator huffs and rises to all fours, before turning and casually padding off into the darkness. What a curious creature."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO04_NOCHIP",
+			"Text": [
+				"Moonlight filters through the canopy, casting a dim glow on the otherwise pitch-black forest. Without the luxury of lantern lights one might find in the populated areas, Rux's isolated choice of land makes for a grim reminder that nature provides few tools for convenient navigation. \"Hmm, that reminds me,\" your travel companion begins, idly picking at her claws as she looks back over her shoulder, before continuing her walk. \"Chip has been gone a while. He's, er, Rux's pet of sorts, if you didn't know. It's not really like him to skip on meal times. Hope nothing happened... but it will have to wait.\" A gust of wind rushes through the trees, and for a moment the light of the crescent moon falters, though you soon realize it was but a tree branch moving in front of it. Still, having just emerged from a warm, well-lit living room, you need a few seconds to adjust to the low light. Iso appears to have no such reservations whatsoever and begins her march."
+			]
+		},
+		{
+			"Key": "SQ05_INTRO05",
+			"Text": [
+				"Seemingly casting aside the appreciable risk of getting lost in these woods, the hooded feline steps into the underbrush with a level of confidence in her footing that might suggest she were walking on cobblestone streets. \"Coming, {player.name}?\" she asks casually, beckoning you to join her in your nightly sojourn. Of course, the only thing to do is to follow, and pray that you make it to North Finmer some time before winter sets in."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BATHROOM",
+			"Text": [
+				"The washroom is a carefully maintained one, which you well know is an essential component of personal hygiene. The tiled floors and walls seem to have been designed with ease of cleaning in mind, and the cabinets and mirror appear otherwise intact, as if the storm that has ravaged this house had passed this room entirely. Regardless, there is nothing else of interest here."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BATHROOM_FIRST",
+			"Text": [
+				"Without breaking stride, you walk into the bathroom. Unlike the hall, it is the very picture of care and cleanliness. Meticulously placed white tiles line the walls and floor, kept spotless, while a washing basin occupies one wall, opposite to a number of closets. While having access to flowing water is becoming less and less of an oddity in the Reaches, this washroom is nevertheless impressive. The owner in question peeks in from beyond the door, glances around, perhaps surprised that her shelves and supplies have not been shattered like the rest. \"Nothing in here, {player.name},\" she quips, that black-furred head disappearing again. \"Let's move on,\" she hollers. Indeed, there does not appear to be much of interest here."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BATHROOM_FIRST_NOISO",
+			"Text": [
+				"Without breaking stride, you walk into the bathroom. Unlike the hall, it is the very picture of care and cleanliness. Meticulously placed white tiles line the walls and floor, kept spotless, while a washing basin occupies one wall, opposite to a number of closets. While having access to flowing water is becoming less and less of an oddity in the Reaches, this washroom is nevertheless impressive. Why the shelves and supplies have been spared from the same carnage that has afflicted the living room is a mystery to you. Nevertheless, there does not appear to be much of interest here."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM",
+			"Text": [
+				"The air takes on a particular negative charge when you step into the bedroom. She says nothing, quietly staring at an old photograph while biting her lip - and yet the sorrow radiates off of Iso like the evening sun off the sea."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_BOOK1",
+			"Text": [
+				"Having managed to climb back out of her pit of emotion, she regards you with an uneven look. \"A book? What?\" the pantheress grunts, not quite grasping the relevance of the conversation topic. When you explain your findings in more detail, she tilts her head with a huff. \"Must be Randall's, I think,\" she replies. \"He's always been kind of into werewolf stuff. Described them as 'perfect predators', even though they're just stories to keep cubs in bed, of course. Hmm... now that you mention it - I might've gotten that one for him at some point. He... didn't have a lot to his name, back then.\""
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_BOOK2",
+			"Text": [
+				"A ghost of a smile forces its way onto the feline's muzzle, singing echoes of that which once was but has since departed. \"A couple of winters ago, we were, you know, sleeping together by the fireplace, to stay warm. And he'd tell me these 'fireside stories' about monsters and stuff. So then I got him this book, and maybe a few others, since he seemed so into them.\" She nods then, the happy memory fading, leaving only cold reality. \"I thought it might've been a form of escapism, then, but maybe it was a little more than that after all...\""
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_FIRST",
+			"Text": [
+				"You carefully navigate the battlefield into what you surmise must have once been a bedroom, were it not for the tornado that had taken care of the place. Though nowhere near as much of a warzone as the living room, the burglar had overturned drawers here too, though to your eye, it appears a little more methodical, controlled. Still, you find Iso seated on her double bed, clutching a picture frame in one paw, the other rubbing at her temple. Sensing your presence, she tilts the picture as if to hide it from you, wiping her eyes, never fully turning to face you properly. She says nothing, and you cannot help but feel you are intruding."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_LEAVE",
+			"Text": [
+				"When you agree that it is time to leave this wreck of a home, Iso nods and gestures towards the door. \"Well, let's not keep Rux waiting, then. I'd rather not explain to the town guard what happened here.\" A thought occurs to her, and a raspy huff that might have been intended as a chuckle escapes her throat. \"Though they'll found out about this anyway. But hopefully at a time when I'm a little... better prepared to explain.\" With that, the two of you make to depart - but not before the mayor looks back, and snatches the overturned picture frame from her nightstand."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK1",
+			"Text": [
+				"When you voice your concern, the pantheress lets out a sigh that could have leveled a building, deflating a little. \"It's...\" she begins, before her jaws clench shut. Her breath hitches, and she swallows heavily. \"I shouldn't have come back here,\" she croaks, falling silent again as she resumes staring at the picture, holding it up with one paw while the other digs holes into the knees of her trousers. No longer bothering to keep it from you - or perhaps forgetting to do so - you catch a glimpse of the monochrome photo. It shows Randall and Iso sitting together in a field of flowers, the feline ruffling the fur of her mate's short mane. The wolf looks nonplussed, yet carrying a vague hint of a smirk. A reminder that there were happier times, once."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK2",
+			"Text": [
+				"No more words flow between the two of you, and you get the sneaking suspicion that the longer the pantheress is staring at the picture, that memento of that which she cannot have, the deeper she sinks. Slender tail lashing against the sheets, her entire body shakes, as if the feline is on the verge of breaking down. Perhaps you can think of something to distract her with."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK3_DISTANT",
+			"Text": [
+				"Deciding it best to let her deal with her grievances at her own pace, figuring you would be there if the need arises, you awkwardly stand by as Iso's poorly-maintained façade of political professionalism cracks. The picture frame drops by her side as she hides her face in both paws, elbows resting on her knees. Even then, more than a few tears flow, soiling well-kept fur, uneven breaths turning into quiet sobs. Perhaps feeling a little exposed, Iso tilts her head up at the ceiling, rubbing her muzzle and eyes with one paw and willing the emotions to die down. To some degree, she is successful."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK3_HUG",
+			"Text": [
+				"After a brief moment of hesitation, you carefully take a seat next to her on the bed, and place a paw on her shoulder. Your touch startles Iso, despite her being well aware that you were approaching - perhaps a sign as to her frazzled nerves. For a brief moment, so short that you are unsure if you imagined it, she begins to lean into you, before veering back up to sit by herself. A loud sniff belies the singular tear that rolls down one cheek, a crack in that well-practiced façade of political professionalism - one that you now know holds down a considerable turmoil. Iso glances away, toward the window, rubbing her eyes and muzzle with one paw."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK4",
+			"Text": [
+				"A modicum of clarity returns to her gaze as the black-furred feline looks upon to the colorful ink representation of her past self again. A carefree version of Iso grins right back at her, tongue stuck out as if daring the love of her life to do something about the paw messing up his fur. To think that that level of proximity would end with a belch these days places the presumably pleasant memory in a much darker light - a fact that she is no doubt well aware of."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK5",
+			"Text": [
+				"\"It really isn't fair.\" Your companion sighs, and finally, ever reluctantly, sets the picture frame back down on her nightstand. A thoughtful expression crosses her face, and, blinking away another tear, she knocks the frame over, hiding the photo from view. Out of sight, out of mind, or something like that. A drawn-out exhale follows - an attempt at calming herself down. \"Maybe we'll meet again in another life, my love,\" she mumbles. Finally, Iso rises from the bed, making eye contact as if acknowledging your presence for the very first time."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_BEDROOM_TALK6",
+			"Text": [
+				"Suddenly feeling exceptionally self-conscious, Iso shifts on her feet, averting her gaze to the floor and then to the overturned drawers - almost afraid of any judgement that you might cast on her. \"Sorry, {player.name}. This trip was a waste of time after all. Unless you want to look around more, I think I'd just like to get out of here and figure out... this mess... later,\" she grumbles. With a tired huff, she lets herself drop right back down on the bed - probably the best available seat in house, since the padded chair in the corner of the room is flipped upside down and has claw marks on it. Oh well."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_HALL",
+			"Text": [
+				"Broken glass crunches underneath your feet as you trudge through the messy hallway. Good thing you're wearing something solid, otherwise the sharp edges might have been problematic. You glance out to the living room, which does not look particularly promising from here."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_HALL_FIRST",
+			"Text": [
+				"The entry hall is a mess. A brief trail of muddy footprints is tracked from the mat through the large, polished stone floor tiles. A mirror on the wall is shattered, shards of glass scattered randomly. You slowly close the door behind you, taking in the scene, while your companion appears to be doing the same. The two of you exchange glances, the home-owner, for her part, appearing nervous. Off to your side, there is a small closet, opposite to the bathroom, though Iso pays neither any mind. Just straight ahead is the door to the living room."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_LIVING",
+			"Text": [
+				"The destruction of property on display in the living room remains as impressive as it was on your first visit. With furniture overturned and throw about, it is a bit difficult to traverse the room normally. Still, from here you can reach most of the other rooms in the relatively humble home."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_LIVING_FIRST",
+			"Text": [
+				"The area that takes up most of the floor space, and had once served as a living room, can now only be described as a disaster. Furniture has been scattered and damaged, shelves have been broken, kitchen cabinet doors torn off their hinges, their contents spilled on the floor. Drawers have been overturned, glassware destroyed, cushions and documents alike torn and tossed about. A painting on the wall by the fireplace has even been clawed to shreds. Behind you, Iso chokes up, exhaling slowly and loudly. \"Fuck,\" she declares softly after several moments, and you find yourself in agreement with the sentiment. The destruction on display here far exceeds that of a burglar searching for valuables - this had been a tantrum fueled by frightening aggression. Without saying anything else, Iso marches forward, quite literally climbing over two chairs that block the way, disappearing into another door, leaving you to ponder this mess."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_STUDY",
+			"Text": [
+				"The study off the living room is surprisingly untouched - more than a little disorderly, but not quite on the same order of magnitude as the mess behind you. The bookshelf by the wall could use some reorganization, if anything."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_STUDY_BEANBAG",
+			"Text": [
+				"You crash into the beanbag with a dull thud, air rushing out from under you as the soft fabric shifts. All things considered, it is a really nice place to hang out in - maybe even for taking a nap. With some luck, there would be time in the future for such pleasures - but that time is not now, and as such, you reluctantly climb back up, leaving a nice {player.species}-shaped indent in the bag."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_STUDY_BOOK",
+			"Text": [
+				"Carefully, you place a finger in between the pages, acting as a bookmark, as you turn over the cover to view it. It is a compilation of werewolf lore. Slowly flipping through the pages, making sure to not let go of the one you were holding, you catch glimpses of maps of distant lands, drawings and artist's impressions, accounts and retellings, and any other colorful snippets the author had seen fit to include. You turn back to the page it was on when you found it, and step back. What a curious thing to have lying around. Maybe the mayor could provide some insights as to why the book is here - it does not need to be anything more than innocent curiosity."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_STUDY_BOOK_MQ05",
+			"Text": [
+				"Still, you recall that you found very similar writings during your 'visit' to the Red Maw. Perhaps that fact might help shine some light on who is interested in these topics, and what the point of it all is..."
+			]
+		},
+		{
+			"Key": "SQ05_ROOM_STUDY_FIRST",
+			"Text": [
+				"Off to the side of the slaughterhouse that is the living room, there is a small study. It was likely once a guest bedroom that Iso repurposed. A bookshelf takes up the wall opposite of the door, rows of colorful spines perhaps surprisingly intact, though a few items have been thrown on the floor. An L-shaped desk sits underneath a window, dim moonlight spilling in from behind the glass. The huge beanbag in the corner might have once made for a cozy reading spot. The workspace doesn't appear out of the ordinary, until you spot the one open book left neatly on the otherwise spotless desk - its placement seeming almost deliberate, were it not for the fact that reading books at a desk is not necessarily unusual."
+			]
+		},
+		{
+			"Key": "SQ05_TALK_CANBELL1",
+			"Text": [
+				"The black feline sighs, scratching the back of her head. \"Canbell's a childhood friend of mine. Is the quick summary.\" Seemingly content to leave it at that, silence follows, though soon she caves to the unspoken request for a little more information to work with than just that. \"Well, I... She's been my assistant since last winter. I could use the help. Town's almost growing too fast for me to keep up, heh. So I suppose I understand why she was appointed to run the show in my absence. But things have been a little weird between us as of late. I get a feeling when we talk.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_CANBELL2",
+			"Text": [
+				"Continuing to walk, Iso shrugs. \"I dunno, honestly. I'm not even sure why I'm telling you, we barely know each other. I guess fate has a weird way of bringing random people together, eh?\" When you express agreement, she chuckles. \"But yeah. I... have been a little weirded out by how eager she's been to take over my work whenever she could. I dunno, it's probably nothing, just my paranoia about... this whole shitshow.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_DIRECTION",
+			"Text": [
+				"Iso casts an odd look in your direction that morphs into an amused smirk after a few seconds. \"What do you mean?\" she asks, seemingly genuinely puzzled by your question, before a dash of understanding is mixed in. \"I've walked this path... a couple times. Nothing more to it. What, did you expect a different answer?\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_DISAPPEARANCE",
+			"Text": [
+				"A laugh is what you get for an answer - a scornful one at that, though you understand it isn't really aimed at you, more so at herself. \"What kind of mayor I must be, huh, to blow up my town and go AWOL. I've... been thinking a lot about how I'm going to spin the story.\" A few moments of silence pass, broken only by footfalls and breathing. \"It's probably easiest to blame Randall for everything. Just gotta frame it the right way. And he did murder people, to be fair.\" She offers you a cheeky smile. \"But perhaps you'd be surprised how little evidence the masses can work with. All they need is a face to project their anger onto, and voila, you've created a public enemy.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_EXIT1",
+			"Text": [
+				"Deciding to dwell in your own thoughts for a little while, the two of you continue on. It seems the pantheress is not particularly averse to traveling in silence, since she does not bring up any other conversation topics."
+			]
+		},
+		{
+			"Key": "SQ05_TALK_EXIT2",
+			"Text": [
+				"Before long, Iso makes a gesture at you as if requesting you to stay put. The gentle glow of lantern- and torch light in the distance marks the front gate of North Finmer. It seems that from this point onward, a more tactical approach will be required."
+			]
+		},
+		{
+			"Key": "SQ05_TALK_PREDATION",
+			"Text": [
+				"\"Yeah...\" she mumbles simply. \"It's a real issue. There's never been so many predation cases out in the wild as in the past few weeks. It happened, sometimes, but we'd usually be able to nail down and sentence the pred. Now, though...\" The mayor huffs in annoyance. \"Ever since Randall did his little recruitment drive, people have been disappearing randomly. Willow was just the latest one. We have to stop them from killing more, {player.name}.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_RUX1",
+			"Text": [
+				"She considers your question in brief silence, before glancing at you, rather neutrally. \"We've known each other for a long time,\" the pantheress states, focusing on the journey again. \"When I assumed office, several years ago, we met. The... rather unique services he provides, shall I say, require many goods that most people don't ask for, and in turn, he draws in certain wealthy crowds, too. So I guess you could say that our business relationship turned into friendship over time.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK_RUX2",
+			"Text": [
+				"\"Well, for one, he buys amber,\" she replies dryly. \"I don't know anyone else who does. The stuff's a hassle to get, but there are proper channels, and there's paperwork involved.\" A mirthful chuckle escapes her lips. \"I asked him once if he could use magic to prepare the documents himself. He just started laughing. Guess that meant 'no'.\""
+			]
+		},
+		{
+			"Key": "SQ05_TALK01",
+			"Text": [
+				"Several minutes of silence had passed as the two of you traverse the dark forest. How in the world the mayor knows where she is going is a mystery to you - perhaps her calm demeanor is merely a mask for someone who has no idea what is going on. But the surefootedness with which she strides though the moonlight, never once taking a misstep or turning around, tells a different story. Hurriedly and perhaps just a little bit out of breath, you manage to keep up with her. With nothing else to focus on, you find yourself breaking the silence with a conversation."
+			]
+		},
+		{
+			"Key": "SQ05_TALK02",
+			"Text": [
+				"A stray branch scrapes roughly against your leg as you walk. Though only the dim light of the moon filters through the forest canopy, now that your eyes have finally adjusted fully, it's a little easier to keep up."
+			]
+		},
+		{
+			"Key": "SQ05_TALK03",
+			"Text": [
+				"For the very first time, Iso pauses her march, briefly considering where to go from here, before you spot a familiar-looking cottage just ahead. It seems you've made it to Oliver's house; from this point there is at least a clear road to follow."
+			]
+		},
+		{
+			"Key": "SQ05_TALK04",
+			"Text": [
+				"The quaint cottage is long gone when you glance behind you, and the rest of the path stretches out before you."
+			]
+		},
+		{
+			"Key": "SQ05_TALK05",
+			"Text": [
+				"The path to North Finmer follows the wide river for the most part, occasionally twisting and turning to bend around a hill or incline."
+			]
+		},
+		{
+			"Key": "SQ05_TALK06",
+			"Text": [
+				"In the distance, you can just make out pinpricks of light - that of civilization. It's not much farther out now, and there's not a lot of time left to talk."
+			]
+		},
+		{
+			"Key": "SQ05_TALK07",
+			"Text": [
+				"As your conversation draws to a conclusion, Iso makes a gesture at you as if requesting your silence. The gentle glow of lantern- and torch light in the distance marks the front gate of North Finmer. There is more you would discuss, but it seems you will have to wait for another time, so as to avoid detection."
+			]
+		},
+		{
+			"Key": "SQ05_TALK08",
+			"Text": [
+				"\"We're going to sneak around,\" Iso declares with a simple confidence that makes you reconsider just how capable the pantheress is at avoiding the grasp of the sentries she employs. In all fairness, she likely does have indirect access to a great deal of information like timetables and patrol routes. \"C'mon, {player.name}, no time for dawdling.\""
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER01",
+			"Text": [
+				"Mayor Iso takes you off the winding gravel road, into the crop fields east of the town, past a water tower and away from prying eyes. The wheat fields would no doubt see quite a few paws preparing for the onset of winter during the day; in the dead of night, however, there is not a soul to be found. The two of you take care to take the same rough dirt paths walked by farmers, leaving as few traces as to your approach as possible. Pushing plants apart and striding through crops with all the grace of a dolphin diving through a wave, your tour guide leads you through and out of the fields, to an ominous sealed gate and guardhouse in the town's east wall."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER02",
+			"Text": [
+				"While the place looks abandoned and of little interest to you, your feline companion approaches anyway, glancing left and right to make sure there really is no one around to compromise the mission. Standing beside the mayor, you behold the double doors of a fairly large but not particularly imposing gate. Without a word, Iso sticks a paw in a pocket on her jacket, and fishes out a key - one that she then plunges into a keyhole on the old wooden gate. \"I know how to get around my own town,\" she remarks with a toothy smirk, before pocketing the key again, answering your unspoken question as to how she was so confident about sneaking past the front gate. How useful indeed - an entrance forgotten by most, usable by few."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER03",
+			"Text": [
+				"Slowly pushing one of the two doors open, testing both for the sounds it might make, as well as the alarm of anyone who might be on the other side, Iso peeks through. You spot her tail lashing back and forth, perhaps an understandable expression of nerves. Soon enough, she slips through, and motions for you to join her. Though you are by no means unwelcome in this town, sneaking in like this does keep the adrenaline levels up, and you judge it best to get this expedition over with sooner rather than later. The less time you're out in the open, the lower the chances of detection - or being jumped at by Maw members for that matter."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER04",
+			"Text": [
+				"So it is that the two of you stalk down the winding streets of the overgrown trading post, crossing through alleys and abandoned outskirts. The night is a considerable boon in this matter, making it much easier for the two of you to hide - not least of which Iso with her pitch-black fur. Along the way, the mayor had made a snide throwaway remark about the concept of having poles with lanterns on them lining the streets. Apparently she'd seen them once in a nearby city, and while useful, the maintenance burden is hefty indeed. In fact, Iso is surprisingly casual and chatty for someone who had their head pulled out of a slimy gullet an evening or two ago and is now breaking into their own home."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER05",
+			"Text": [
+				"Her demeanor falters, however, when you turn another corner and stop in front of a single-story house that, for all intents and purposes, does not appear to be any different whatsoever from the ones surrounding it. And perhaps that is the point - from what you have gathered, Iso does not strike you as the kind of person to flaunt her status and wealth unnecessarily. \"My place isn't big, so we should be in and out quickly enough,\" she says. Anxiously glancing over her shoulder to make sure there are no undesired tag-alongs, the pantheress steps up to the front door, and inserts a key... only to find that the unremarkable, sturdy wooden door drifts open with a tired moan, its lock already undone - or, more accurately, destroyed."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_ENTER06",
+			"Text": [
+				"\"Ah, shit,\" the mayor grunts simply, a great many thoughts running through her head, and yours - though the immediate conclusion to be drawn here is obvious. She does not speak further, pocketing the unused key again and pushing the ajar door open, stepping into her home. Quickly, you follow."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE01",
+			"Text": [
+				"The return trip is silent and uneventful. Retracing your steps through town and avoiding attention exactly as you had done on the way in, you walk back to Rux's - this time in comfortable silence. After her lapse in self-control, she has not been in the particular mood for conversation. Still, there is nothing that really needs to be said right now, and so, by the time you reach the inconspicious log cabin in the middle of absolute nowhere, a glimmer of dawn creeps through the trees, bathing the forest in a strangely reassuring glow. You breathe a sigh of relief then. It's funny, in a sense, how much the Adept's home has started to feel like a safe haven in such a short time."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE02",
+			"Text": [
+				"Where Iso had previously been looking for her friend's pet dire wolf, she now merely marches ahead toward the front door, not bothering to check if Chip is nearby. Not that it matters either way; it seems the guardian is not around. So sunk into thought she is, in fact, that when she pushes the front door open and steps through, the pantheress almost forgets there is, in fact, someone else walking behind her. She backs up just in time to prevent the door from crashing into your face, muttering a quick apology, before hurrying on inside."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE03",
+			"Text": [
+				"The mayor doffs her coat, and together you take in the welcome sight of Rux's cozy living room. The fireplace is still lit, and the red panda himself sits at the dining table, raising a teacup in greeting. \"Welcome back,\" he states simply, his unoccupied paw gesturing brusquely to the other two teacups sitting on the table, wisps of steam billowing from the liquid inside."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE04",
+			"Text": [
+				"Iso sits down at the table, clasping a cup with both paws, though she does not lift it to her lips just yet. After a few moments, you join the two - a chance to rest your legs after a straining walk through the woods is a welcome change, after all. The old hermit, perhaps sensing the change in his friend's demeanour, decides to probe for details, though still ever in his own grandfatherly, almost cryptic manner. \"Did you find what you were looking for?\" he asks. A simple question, but a well-phrased one, you decide - one that leaves many a door open for the feline to respond to."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE05",
+			"Text": [
+				"In response to the red panda's question, Iso reaches into a pocket on her tunic, and pulls out the very same picture frame that had caused her so much anguish just a short few hours ago. She places the photo on the table, and turns it to the Adept. Rux studies the printed memory, humming solemnly. \"I see,\" is all the pantheress receives in response. She downs the contents of her teacup all in one go, gently sets it back down, and rises again. \"Thank you, Rux,\" she says, turning to nod to you as well, before she walks towards the door of the bedroom she had been using, and disappears inside."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE06",
+			"Text": [
+				"Rux simply sips his tea, eyes closed, saying nothing else. For a brief moment, despite the fact that you are welcome in this safe haven, you feel a little out of place, though you soon rationalize that Iso simply desires a little bit of space. Finally, the red panda sets down his cup, picks up the picture frame, and walks over to a shelf on the wall. There, between books and memorabilia, he sets it down. With an approving hum, he sticks his paws in the sides of his robes and glances at you."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE07_MQ05DONE",
+			"Text": [
+				"\"So then,\" he begins, catching you off guard just a little bit despite the fact that you had been expecting him to say something. \"I suppose the next thing for us to do is to get our heads down together, no? Let us give the mayor a brief moment to herself, and then we shall reconvene.\" With that, he sits back down. And you, in turn, find yourself stepping back outside, deciding that some fresh air might do you good."
+			]
+		},
+		{
+			"Key": "SQ05_TOWN_LEAVE07_MQ05OPEN",
+			"Text": [
+				"\"So then,\" he begins, catching you off guard just a little bit despite the fact that you had been expecting him to say something. \"That leaves our only remaining lead, no? Hopefully by the time you return, the mayor will have had a moment to reflect. Then, we shall decide our next move together.\" With that, he sits back down. And you, in turn, find yourself stepping back outside, deciding that some fresh air might do you good."
+			]
+		}
+	]
+}

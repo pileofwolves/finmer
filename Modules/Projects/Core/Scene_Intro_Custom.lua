@@ -49,6 +49,7 @@ end
 local function DebugStartMQ05()
     DebugStartMQ04()
     Storage.SetFlag("MQ04_DONE", true)
+    Storage.SetFlag("SQ05_AVAILABLE", true)
     Player:TakeItem("I_MQ04_RuxBook")
     Storage.SetNumber("MQ04", 4)
 end

@@ -1517,6 +1517,27 @@
 									"!Type": "CommandLog",
 									"Text": "MQ05_MAW_ROOM_STUDY_SHELVES",
 									"IsRaw": false
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "SQ05_ROOM_STUDY_BOOK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"HasElseBranch": false,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ05_MAW_ROOM_STUDY_SHELVES_SQ05",
+											"IsRaw": false
+										}
+									]
 								}
 							]
 						},

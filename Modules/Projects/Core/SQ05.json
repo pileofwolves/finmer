@@ -1,0 +1,16 @@
+﻿{
+	"!Type": "AssetJournal",
+	"AssetID": "111ccd42-93c2-4c28-aa66-b3090be0b793",
+	"AssetName": "SQ05",
+	"Title": "When We Were Both Cats",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "Mayor Iso suggested that her residence in North Finmer may hold clues as to Randall's ultimate goal, as they lived together for some time. Meet her at Rux's cabin, then travel there together and investigate."
+		},
+		{
+			"Key": 20,
+			"Text": "Explore Iso's home to unearth any clues about Randall's ultimate goal."
+		}
+	]
+}

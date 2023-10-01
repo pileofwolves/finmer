@@ -220,6 +220,17 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "SQ05",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 10)\r\nJournal.Update(\"SQ05\", 10)\r\nSetScene(\"Scene_ForestAdept\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "Port Tavern",
 														"Highlight": false,
 														"ButtonWidth": 1.0,

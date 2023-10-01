@@ -1,0 +1,1642 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "f30fd178-a844-4a97-ad92-93773024bbf1",
+	"AssetName": "Scene_SQ05_IsoHome",
+	"IsPatch": false,
+	"Root": {
+		"NodeType": "Root",
+		"Key": "Root",
+		"Children": [
+			{
+				"NodeType": "State",
+				"Key": "Talk_R_Root",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Storage.ModifyNumber(\"SQ05_TALK\", 1)\r\nLog(\"SQ05_TALK0\" .. Storage.GetNumber(\"SQ05_TALK\"))\r\nSetLocation(\"On the move\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Exit",
+						"Title": "Done",
+						"Tooltip": "That's enough talking for now.",
+						"Highlight": false,
+						"ButtonWidth": 0.7,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Exit",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_TALK_EXIT1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Exit02",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Exit02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_TALK_EXIT2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Exit03",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Talk_R_Wrapup2"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Randall",
+						"Title": "Randall",
+						"Tooltip": "You didn't get the chance to ask about her relationship with Randall...",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandComment",
+									"Comment": "Reuse same flag/dialogue from MQ04, in case the question wasn't asked then"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ04_ADEPT_TALK_RANDALL",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ04_ADEPT_TALK_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ04_ADEPT_TALK_RANDALL",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Canbell1",
+						"Title": "Canbell",
+						"Tooltip": "Ask why Canbell is now Acting Mayor.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_CANBELL1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_CANBELL1",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_CANBELL1",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Canbell2",
+						"Title": "Weird feeling",
+						"Tooltip": "Ask about the 'weird feeling' she mentioned.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_CANBELL2",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_CANBELL2",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_CANBELL1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_CANBELL2",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Direction",
+						"Title": "Direction",
+						"Tooltip": "Ask how she even knows where you're going.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_DIRECTION",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_DIRECTION",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_DIRECTION",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Disappearance",
+						"Title": "Disappearance",
+						"Tooltip": "Ask how she is going to explain her disappearance to her people.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_DISAPPEARANCE",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_DISAPPEARANCE",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_DISAPPEARANCE",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Predation",
+						"Title": "Predation",
+						"Tooltip": "Ask if the act of predation is a common issue here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_PREDATION",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_PREDATION",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_PREDATION",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Rux1",
+						"Title": "Rux",
+						"Tooltip": "Ask who Rux is to her.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_RUX1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_RUX1",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_RUX1",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Rux2",
+						"Title": "Business Partners",
+						"Tooltip": "Ask what kind of business relationship she has with Rux.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_TALK_RUX2",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_TALK_RUX2",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_RUX1",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_TALK_RUX2",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Wrapup1"
+							},
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Talk_R_Root"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Talk_R_Wrapup1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "SQ05_TALK07",
+							"IsRaw": false
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarNumber",
+							"VariableName": "SQ05_TALK",
+							"Operator": "GreaterOrEqual",
+							"OperandMode": "Literal",
+							"OperandLiteral": 6.0
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Talk_C_Wrapup2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Wrapup2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_TALK08",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Town_C_Enter1",
+										"Tooltip": "Time to sneak in like a rogue.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Town_R_Enter1"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Town_R_Enter1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "AdvanceTime(1)"
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "North Finmer"
+						},
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "SQ05_TOWN_ENTER01",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Town_C_Enter2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Town_R_Enter2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_TOWN_ENTER02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Town_C_Enter3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Town_R_Enter3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_TOWN_ENTER03",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Town_C_Enter4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Town_R_Enter4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "SQ05_TOWN_ENTER04",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Town_C_Enter5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Town_R_Enter5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "SQ05_TOWN_ENTER05",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Town_C_Enter6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Town_R_Enter6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "SQ05_TOWN_ENTER06",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Town_C_EnterFinal",
+																										"Title": "Step inside",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "AdvanceTime(1)"
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Room_Hall"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Town_R_Leave1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "On the move"
+						},
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "SQ05_TOWN_LEAVE01",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "AdvanceTime(3)"
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Town_C_Leave2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Town_R_Leave2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_TOWN_LEAVE02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Town_C_Leave3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "FOREST_ADEPT_SQ05_TELEPORT",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandSetScene",
+													"SceneGuid": "12bf6348-0e15-43a4-88af-4eb8f435cb69"
+												}
+											]
+										},
+										"Children": []
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Hall",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Iso's House, Hall"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_HALL_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandSaveCheckpoint"
+								},
+								{
+									"!Type": "CommandJournalUpdate",
+									"JournalGuid": "111ccd42-93c2-4c28-aa66-b3090be0b793",
+									"Stage": 20
+								},
+								{
+									"!Type": "CommandLogSplit"
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_HALL_FIRST",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_HALL_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_HALL",
+									"IsRaw": false
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Living Room",
+						"Tooltip": "Go to the living room, at the end of the hall.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Living"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Bathroom",
+						"Tooltip": "Take a peek in the bathroom to the side.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Bathroom"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Bathroom",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Iso's House, Bathroom"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BATHROOM_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_BATHROOM_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "SQ05_ROOM_LIVING_FIRST",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										}
+									],
+									"HasElseBranch": true,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_BATHROOM_FIRST",
+											"IsRaw": false
+										}
+									],
+									"ElseSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_BATHROOM_FIRST_NOISO",
+											"IsRaw": false
+										}
+									]
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_BATHROOM",
+									"IsRaw": false
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Leave",
+						"Tooltip": "Nothing to see here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Hall"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Living",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Iso's House, Living Room"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_LIVING_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_LIVING_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_LIVING_FIRST",
+									"IsRaw": false
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_LIVING",
+									"IsRaw": false
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Study",
+						"Tooltip": "Go to the side room.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Study"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Bedroom",
+						"Tooltip": "Go to the master bedroom.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Bedroom"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Hall",
+						"Tooltip": "Return to the hall.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Hall"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Study",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Iso's House, Study"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_STUDY_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_STUDY_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_STUDY_FIRST",
+									"IsRaw": false
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_STUDY",
+									"IsRaw": false
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Study_C_Leave",
+						"Title": "Leave",
+						"Tooltip": "Return to the living room.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Living"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Study_C_Book",
+						"Title": "Book",
+						"Tooltip": "Check whatever was being read here.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_STUDY_BOOK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_STUDY_BOOK",
+									"IsRaw": false
+								},
+								{
+									"!Type": "CommandIf",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ05_MAW_ROOM_STUDY_SHELVES",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									],
+									"HasElseBranch": false,
+									"MainSubgroup": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_STUDY_BOOK_MQ05",
+											"IsRaw": false
+										}
+									]
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_STUDY_BOOK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Room_Study_Recap",
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Room_Study_C_Leave"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Room_Study_C_Book"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Room_Study_C_Beanbag"
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Study_C_Beanbag",
+						"Title": "Beanbag",
+						"Tooltip": "Take a moment for yourself and sprawl.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_STUDY_BEANBAG",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_STUDY_BEANBAG",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_STUDY_BEANBAG",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Study_Recap"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Room_Bedroom",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Iso's House, Bedroom"
+						},
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							],
+							"HasElseBranch": true,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_BEDROOM_FIRST",
+									"IsRaw": false
+								}
+							],
+							"ElseSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "SQ05_ROOM_BEDROOM",
+									"IsRaw": false
+								}
+							]
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Bedroom_C_Living",
+						"Title": "Living Room",
+						"Tooltip": "Return to the living room.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Room_Living"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Bedroom_C_Talk",
+						"Title": "Talk",
+						"Tooltip": "Breach the tension and silence.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_TALK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Bedroom_R_Talk1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "SQ05_ROOM_BEDROOM_TALK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_BEDROOM_TALK1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Bedroom_C_Talk2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Bedroom_R_Talk2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_ROOM_BEDROOM_TALK2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Bedroom_C_Talk3A",
+														"Title": "Comfort",
+														"Tooltip": "Try to let her know that she is not alone.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Bedroom_R_Talk3A",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "SQ05_ROOM_BEDROOM_TALK3_HUG",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Bedroom_C_Talk4",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Bedroom_R_Talk4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "SQ05_ROOM_BEDROOM_TALK4",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Bedroom_C_Talk5",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Bedroom_R_Talk5",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "SQ05_ROOM_BEDROOM_TALK5",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Bedroom_C_Talk6",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Bedroom_R_Talk6",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "SQ05_ROOM_BEDROOM_TALK6",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Room_Bedroom_C_Living"
+																													},
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Room_Bedroom_C_Book"
+																													},
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "Room_Bedroom_C_Exit"
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Bedroom_C_Talk3B",
+														"Title": "Distant",
+														"Tooltip": "It's really not your place to fill the void in her heart.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Bedroom_R_Talk3B",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "SQ05_ROOM_BEDROOM_TALK3_DISTANT",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Bedroom_C_Talk4"
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Bedroom_C_Book",
+						"Title": "Book",
+						"Tooltip": "Ask about the werewolf lore compilation you found in the study.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_TALK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_STUDY_BOOK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_BOOK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Room_Bedroom_R_Book",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "SQ05_ROOM_BEDROOM_BOOK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_BEDROOM_BOOK1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Room_Bedroom_C_Book02",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Room_Bedroom_R_Book02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_ROOM_BEDROOM_BOOK2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Room_Bedroom_C_Living"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Room_Bedroom_C_Exit"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Room_Bedroom_C_Exit",
+						"Title": "Leave",
+						"Tooltip": "Tell Iso that you're ready to leave the house.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ROOM_BEDROOM_TALK",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Room_Bedroom_R_Exit",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_ROOM_BEDROOM_LEAVE",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Room_Bedroom_C_Exit02",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Town_R_Leave1"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			}
+		]
+	}
+}

@@ -4,7 +4,7 @@ SetInventoryEnabled(false)
 
 -- Entry main node is used as a hub, so it shouldn't show extensive text about entering
 -- the area. Instead, to make sure enter text only shown once, we do that here.
-if Storage.GetFlag("FOREST_ADEPT_FIRST") then
+if Storage.GetFlag("FOREST_ADEPT_FIRST") and not Storage.GetFlag("FOREST_ADEPT_SQ05_TELEPORT") then
     Log("MQ04_ADEPT_ENTER01")
 
     if not Storage.GetFlag("FOREST_DIREWOLF_DEAD") then

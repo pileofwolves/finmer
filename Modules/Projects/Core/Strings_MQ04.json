@@ -198,6 +198,12 @@
 		{
 			"Key": "MQ04_ADEPT_PLAN09",
 			"Text": [
+				"\"There's one other thing that might be worth checking out,\" the pantheress adds. \"I- well, so Randall and I were living together for some time. And I know he discovered the mine before we, um, split. So.\" She locks eyes with you, perhaps considering her words, or searching for something. \"So there might be a chance he left some clues behind in my house as to what he was working on. It's just a hunch, but it may be worth checking out, so let me know if you want to check it out.\" She sighs, perhaps a touch frustrated, or even embarrassed. \"I'm... not usually one for rummaging through people's things. Unbecoming of a mayor, yadda yadda. But we're probably beyond that now.\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_PLAN10",
+			"Text": [
 				"Finally, you rise from the comfortable furniture, making sure you've gathered all your things as you resolve to head out once more. \"Hold on, {player.name},\" the old mage says simply, voice carrying perhaps an ember of warmth more than he had granted you the first time he sent you away to fetch something. He turns to you, managing to tear himself away from the shelves he had been poking at. An outstretched paw offers you two vials, and you carefully accept them. \"Jar'la gave me these once, but I have no use for them. Take them, just in case. Good luck. We'll be here when you return.\""
 			]
 		},

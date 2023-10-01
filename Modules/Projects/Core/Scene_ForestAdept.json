@@ -17,6 +17,167 @@
 		"Children": [
 			{
 				"NodeType": "State",
+				"Key": "SQ05_R_Return1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "FOREST_ADEPT_SQ05_TELEPORT",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
+						},
+						{
+							"!Type": "CommandJournalClose",
+							"JournalGuid": "111ccd42-93c2-4c28-aa66-b3090be0b793"
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Forest, Rux's Cabin"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "SQ05_TOWN_LEAVE03",
+							"IsRaw": false
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "FOREST_ADEPT_SQ05_TELEPORT",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "SQ05_C_Return2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "SQ05_R_Return2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "SQ05_TOWN_LEAVE04",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "SQ05_C_Return3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "SQ05_R_Return3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_TOWN_LEAVE05",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "SQ05_C_Return4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "SQ05_R_Return4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "SQ05_TOWN_LEAVE06",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "SQ05_C_Return5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataVisualAction",
+																			"Nodes": [
+																				{
+																					"!Type": "CommandIf",
+																					"Mode": "All",
+																					"Operand": true,
+																					"Tests": [
+																						{
+																							"!Type": "ConditionVarFlag",
+																							"VariableName": "MQ05_DONE",
+																							"OperandMode": "Literal",
+																							"OperandLiteral": true
+																						}
+																					],
+																					"HasElseBranch": true,
+																					"MainSubgroup": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "SQ05_TOWN_LEAVE07_MQ05DONE",
+																							"IsRaw": false
+																						}
+																					],
+																					"ElseSubgroup": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "SQ05_TOWN_LEAVE07_MQ05OPEN",
+																							"IsRaw": false
+																						}
+																					]
+																				}
+																			]
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Cabin_Main"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
 				"Key": "Entry_R_First",
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
@@ -1441,6 +1602,10 @@
 									{
 										"NodeType": "Link",
 										"LinkTarget": "Cabin_C_Trade"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_SQ05"
 									}
 								]
 							}
@@ -1463,12 +1628,308 @@
 								"LinkTarget": "Cabin_Main"
 							}
 						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_SQ05",
+						"Title": "Iso's Home",
+						"Tooltip": "Tell Iso you want to pick up the lead that she mentioned, at her home.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_AVAILABLE",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "SQ05_R_Intro1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandIf",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "SQ05_DECLINED",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											],
+											"HasElseBranch": true,
+											"MainSubgroup": [
+												{
+													"!Type": "CommandLog",
+													"Text": "SQ05_INTRO_REPEAT",
+													"IsRaw": false
+												}
+											],
+											"ElseSubgroup": [
+												{
+													"!Type": "CommandLog",
+													"Text": "SQ05_INTRO01",
+													"IsRaw": false
+												}
+											]
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "SQ05_C_Intro2",
+										"Title": "Ready",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "SQ05_R_Intro2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "SQ05_AVAILABLE",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														},
+														{
+															"!Type": "CommandIf",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionInlineSnippet",
+																	"Snippet": "GetIsNight()"
+																}
+															],
+															"HasElseBranch": true,
+															"MainSubgroup": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "SQ05_INTRO02_NIGHT",
+																	"IsRaw": false
+																}
+															],
+															"ElseSubgroup": [
+																{
+																	"!Type": "CommandLogSplit"
+																},
+																{
+																	"!Type": "CommandLog",
+																	"Text": "SQ05_INTRO02",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandInlineSnippet",
+																	"Snippet": "SetTimeHour(23)"
+																}
+															]
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "SQ05_C_Intro3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "SQ05_R_Intro3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "SQ05_INTRO03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "SQ05_C_Intro4",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "SQ05_R_Intro4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLogSplit"
+																						},
+																						{
+																							"!Type": "CommandIf",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "FOREST_DIREWOLF_DEAD",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							],
+																							"HasElseBranch": true,
+																							"MainSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "SQ05_INTRO04_NOCHIP",
+																									"IsRaw": false
+																								}
+																							],
+																							"ElseSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "SQ05_INTRO04_CHIP",
+																									"IsRaw": false
+																								}
+																							]
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "SQ05_C_Intro5",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "SQ05_R_Intro5",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "SQ05_INTRO05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "SQ05_C_Intro6",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandSetScene",
+																													"SceneGuid": "f30fd178-a844-4a97-ad92-93773024bbf1"
+																												}
+																											]
+																										},
+																										"Children": []
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "SQ05_C_Intro2B",
+										"Title": "Not ready",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "SQ05_R_Intro2B",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandVarSetFlag",
+															"VariableName": "SQ05_DECLINED",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "SQ05_INTRO_DECLINE",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cabin_C_Leave"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cabin_C_Talk"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cabin_C_Rest"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cabin_C_Trade"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Cabin_C_SQ05"
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
 					}
 				]
 			},
 			{
 				"NodeType": "State",
 				"Key": "Talk_R_Main",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetInstruction",
+							"OperandMode": "Literal",
+							"OperandText": "Talk to who?"
+						}
+					]
+				},
 				"Children": [
 					{
 						"NodeType": "Choice",
@@ -1476,7 +1937,7 @@
 						"Title": "Done",
 						"Tooltip": "No more questions for now.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.75,
 						"Children": [
 							{
 								"NodeType": "State",
@@ -1673,36 +2134,71 @@
 																																					{
 																																						"NodeType": "Choice",
 																																						"Key": "MQ04_C_Plan09",
-																																						"Title": "Done",
-																																						"Tooltip": "You have your mission, and they have theirs.",
 																																						"Highlight": false,
 																																						"ButtonWidth": 1.0,
-																																						"ScriptAction": {
-																																							"!Type": "ScriptDataVisualAction",
-																																							"Nodes": [
-																																								{
-																																									"!Type": "CommandLog",
-																																									"Text": "MQ04_ADEPT_PLAN09",
-																																									"IsRaw": false
-																																								},
-																																								{
-																																									"!Type": "CommandPlayerSetItem",
-																																									"ItemGuid": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
-																																									"Add": true,
-																																									"Quiet": false
-																																								},
-																																								{
-																																									"!Type": "CommandPlayerSetItem",
-																																									"ItemGuid": "4505f0d0-d81b-402a-98fc-89951d01de84",
-																																									"Add": true,
-																																									"Quiet": false
-																																								}
-																																							]
-																																						},
 																																						"Children": [
 																																							{
-																																								"NodeType": "Link",
-																																								"LinkTarget": "Cabin_Main"
+																																								"NodeType": "State",
+																																								"Key": "MQ04_R_Plan09",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataVisualAction",
+																																									"Nodes": [
+																																										{
+																																											"!Type": "CommandLog",
+																																											"Text": "MQ04_ADEPT_PLAN09",
+																																											"IsRaw": false
+																																										},
+																																										{
+																																											"!Type": "CommandJournalUpdate",
+																																											"JournalGuid": "111ccd42-93c2-4c28-aa66-b3090be0b793",
+																																											"Stage": 10
+																																										},
+																																										{
+																																											"!Type": "CommandVarSetFlag",
+																																											"VariableName": "SQ05_AVAILABLE",
+																																											"OperandMode": "Literal",
+																																											"OperandLiteral": true
+																																										}
+																																									]
+																																								},
+																																								"Children": [
+																																									{
+																																										"NodeType": "Choice",
+																																										"Key": "MQ04_C_Plan10",
+																																										"Title": "Done",
+																																										"Tooltip": "You have your mission, and they have theirs.",
+																																										"Highlight": false,
+																																										"ButtonWidth": 1.0,
+																																										"ScriptAction": {
+																																											"!Type": "ScriptDataVisualAction",
+																																											"Nodes": [
+																																												{
+																																													"!Type": "CommandLog",
+																																													"Text": "MQ04_ADEPT_PLAN10",
+																																													"IsRaw": false
+																																												},
+																																												{
+																																													"!Type": "CommandPlayerSetItem",
+																																													"ItemGuid": "7bbc6e8c-dc61-4c29-8922-f98c1cff7ca0",
+																																													"Add": true,
+																																													"Quiet": false
+																																												},
+																																												{
+																																													"!Type": "CommandPlayerSetItem",
+																																													"ItemGuid": "4505f0d0-d81b-402a-98fc-89951d01de84",
+																																													"Add": true,
+																																													"Quiet": false
+																																												}
+																																											]
+																																										},
+																																										"Children": [
+																																											{
+																																												"NodeType": "Link",
+																																												"LinkTarget": "Cabin_Main"
+																																											}
+																																										]
+																																									}
+																																								]
 																																							}
 																																						]
 																																					}

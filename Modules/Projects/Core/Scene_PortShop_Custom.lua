@@ -32,7 +32,6 @@ local function ShowGeneralShop()
         shop:AddItem(Item("U_FoodCheese"), math.random(0, 3))
         shop:AddItem(Item("U_FoodGrapes"), math.random(1, 3))
         shop:AddItem(Item("U_PotionHeal1"), math.random(1, 3))
-        shop:AddItem(Item("U_PotionDigestResist"), math.random(0, 2))
         shop:AddItem(Item("A_ClothArmor"), 1)
         shop:AddItem(Item("A_LeatherArmor"), 1)
 

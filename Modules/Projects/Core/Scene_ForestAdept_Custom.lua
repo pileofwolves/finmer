@@ -9,12 +9,14 @@ local potions = {
     "U_PotionHeal1",
     "U_PotionHeal1",
     "U_PotionDigestResist",
+    "U_PotionAttack",
+    "U_PotionDefense",
 }
 local function ShowRuxShop()
     -- Basic configuration
     local shop = Shop("ForestAdept")
     shop.Title = "Rux"
-    shop.RestockInterval = 40
+    shop.RestockInterval = 22
 
     -- Restock logic
     if shop.RestockRequired then
@@ -23,7 +25,7 @@ local function ShowRuxShop()
         shop:AddItem(Item("AC_CharmPrey"), 1)
         shop:AddItem(Item("AC_CharmPoisonDef"), 1)
         shop:AddItem(Item("AC_CharmArmorBreak"), 1)
-        AddRandomizableShopStock(shop, potions, 1)
+        AddRandomizableShopStock(shop, potions, math.random(2, 3))
     end
 
     -- Present shop to user

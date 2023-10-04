@@ -2,7 +2,7 @@
 	"!Type": "AssetItem",
 	"AssetID": "4505f0d0-d81b-402a-98fc-89951d01de84",
 	"AssetName": "U_PotionDigestResist",
-	"ObjectName": "Prey's Vigor",
+	"ObjectName": "Vigor Potion",
 	"FlavorText": "A rare concoction, treasured by adventurers. Predation in general society is often frowned upon, but 'accidents' do happen - whether in the wilderness, or otherwise.",
 	"ItemType": "Usable",
 	"PurchaseValue": 35,
@@ -10,7 +10,7 @@
 	"IsConsumable": true,
 	"CanUseInField": true,
 	"CanUseInBattle": true,
-	"UseDescription": "Grants +2 Grapple Dice and +2 Struggle Dice for 5 turns, greatly improving chances of resisting predators. Cannot, however, help escape once already swallowed.",
+	"UseDescription": "Grants +2 Grapple Dice, +2 Struggle Dice and -2 Swallow Dice for 5 turns, greatly improving chances of resisting predators. Cannot help if already swallowed.",
 	"UseScript": {
 		"!Type": "AssetScript",
 		"AssetID": "011a16bb-4308-40a8-b218-ce5b788c28c1",
@@ -18,6 +18,15 @@
 		"Contents": {
 			"!Type": "ScriptDataVisualAction",
 			"Nodes": [
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffGrappleDice",
+						"Delta": 2
+					},
+					"Duration": 5
+				},
 				{
 					"!Type": "CommandCombatApplyBuff",
 					"Target": "Player",
@@ -31,8 +40,8 @@
 					"!Type": "CommandCombatApplyBuff",
 					"Target": "Player",
 					"Effect": {
-						"!Type": "BuffGrappleDice",
-						"Delta": 2
+						"!Type": "BuffSwallowDice",
+						"Delta": -2
 					},
 					"Duration": 5
 				}

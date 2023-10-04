@@ -1,0 +1,52 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "836d4b08-b726-42c3-b37a-956a2ca22a4c",
+	"AssetName": "U_PotionPred",
+	"ObjectName": "Dripfang Potion",
+	"FlavorText": "A black-market concoction of digestive accelerants, muscle stimulants and other substances that set one's salivatory glands into overdrive - everything an aspiring pred might need.",
+	"ItemType": "Usable",
+	"PurchaseValue": 40,
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": true,
+	"UseDescription": "Grants +2 Grapple Dice, +1 Swallow Die and -1 Defense Die for 5 turns.",
+	"UseScript": {
+		"!Type": "AssetScript",
+		"AssetID": "391f4838-5900-40cb-a057-7741ca2c83a3",
+		"AssetName": "U_PotionPred_Use",
+		"Contents": {
+			"!Type": "ScriptDataVisualAction",
+			"Nodes": [
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffGrappleDice",
+						"Delta": 2
+					},
+					"Duration": 5
+				},
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffSwallowDice",
+						"Delta": 1
+					},
+					"Duration": 5
+				},
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffDefenseDice",
+						"Delta": -1
+					},
+					"Duration": 5
+				}
+			]
+		},
+		"LoadOrder": []
+	}
+}

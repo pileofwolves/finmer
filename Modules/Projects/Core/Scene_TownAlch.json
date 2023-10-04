@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "997b304e-0de9-407b-9600-a3b796cbabe2",
 	"AssetName": "Scene_TownAlch",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_TownAlch_Custom"
+	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_TownAlch_Enter"
@@ -160,7 +164,7 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "local shop = Shop(\"TownAlchemist\")\r\nshop.Title = \"Jar'la\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_PotionHeal1\"), math.random(1, 3))\r\nend\r\nshop:Show()\r\nshop:Save()\r\n\r\nLog(\"TOWN_ALCH_BROWSE\")"
+							"Script": "ShowAlchemyShop()\r\nLog(\"TOWN_ALCH_BROWSE\")"
 						},
 						"Children": [
 							{
@@ -673,7 +677,7 @@
 								"Key": "SQ01_R_Reward_Ready",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")"
+									"Script": "Storage.SetFlag(\"sq01_collected_sample\", true)\r\nLog(\"SQ01_REWARD_READY\")\r\nJournal.Close(\"SQ01\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionDigestResist\")\r\nPlayer:GiveItem(\"U_PotionPred\")"
 								},
 								"Children": [
 									{

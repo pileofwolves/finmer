@@ -1,0 +1,34 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "eba470f7-2f02-44d8-b4fd-acf14d3c3936",
+	"AssetName": "U_PotionDefense",
+	"ObjectName": "Ironfur Potion",
+	"FlavorText": "Charged with an otherworldly essence, this brew renders one's skin mysteriously difficult to pierce - and comes with a horrifically foul aftertaste.",
+	"ItemType": "Usable",
+	"PurchaseValue": 30,
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": true,
+	"UseDescription": "Grants +2 Defense Dice for 5 turns.",
+	"UseScript": {
+		"!Type": "AssetScript",
+		"AssetID": "a58b5173-4ae5-40a9-a4e9-068e377464bf",
+		"AssetName": "U_PotionDefense_Use",
+		"Contents": {
+			"!Type": "ScriptDataVisualAction",
+			"Nodes": [
+				{
+					"!Type": "CommandCombatApplyBuff",
+					"Target": "Player",
+					"Effect": {
+						"!Type": "BuffDefenseDice",
+						"Delta": 2
+					},
+					"Duration": 5
+				}
+			]
+		},
+		"LoadOrder": []
+	}
+}

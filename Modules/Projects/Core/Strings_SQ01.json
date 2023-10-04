@@ -156,7 +156,7 @@
 		{
 			"Key": "SQ01_REWARD_READY",
 			"Text": [
-				"Jar'la nods eagerly, clearly excited about his creation, whatever it is exactly. \"I was hoping you'd drop by soon. It's done.\"\\n\\nHe hands you two small vials and you look up at him expectantly. \"So you seem like the kind of {player.species} who tends to get into trouble. If you should ever find yourself facing down a hungry beast, be sure to take one of these. It'll help keep you safe for a short time, so use that time to make your escape, eh?\" The alchemist pats you on the shoulder. \"I believe that concludes our business. Best be on your way, dear {player.species}.\""
+				"Jar'la nods eagerly, clearly excited about his creation, whatever it is exactly. \"I was hoping you'd drop by soon. It's done.\"\\n\\nHe hands you two small vials and you look up at him expectantly. \"So you seem like the kind of {player.species} who tends to get into trouble. If you should ever find yourself facing down a hungry beast, be sure to take one of these. It'll help keep you safe for a short time, so use that time to make your escape, eh?\" A moment later, he fishes another one out of his pocket and thrusts it into your paws. \"Oh, and this one, as a personal thanks.\" The alchemist pats you on the shoulder. \"I believe that concludes our business. Best be on your way, dear {player.species}.\""
 			]
 		},
 		{

@@ -185,16 +185,21 @@ function GetUniqueCharacter(ident)
     return result
 end
 
--- Select 'count' strings from 'table', and add them to the stock of 'shop'.
+-- Select 'count' strings from 'candidates', and add them to the stock of 'shop'.
 function AddRandomizableShopStock(shop, candidates, count)
+    -- Make a shallow copy of the input table, so we can modify it without affecting future calls
+    local t = {}
+    for k, v in pairs(candidates) do t[k] = v end
+
+    -- Populate shop stock
     for _ = 1, count do
         -- If table of candidates ran out, nothing left to add
-        local max = #candidates
+        local max = #t
         if max == 0 then return end
 
         -- Pop a random item from the candidates table and add it to the shop
         local rand_index = math.random(1, max)
-        local item_name = table.remove(candidates, rand_index)
+        local item_name = table.remove(t, rand_index)
         if item_name ~= nil then
             shop:AddItem(Item(item_name), 1)
         end

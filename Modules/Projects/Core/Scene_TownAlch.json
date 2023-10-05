@@ -396,7 +396,7 @@
 																												"Key": "FightWon_R_Loot",
 																												"ScriptAction": {
 																													"!Type": "ScriptDataInline",
-																													"Script": "Log(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"U_PotionHeal1\")\r\nPlayer:GiveItem(\"I_Amber01\")"
+																													"Script": "Log(\"SQ01_STEAL_AFTER_DEATH\")\r\n\r\nPlayer:GiveItem(\"U_PotionHeal\")\r\nPlayer:GiveItem(\"U_PotionHeal\")\r\nPlayer:GiveItem(\"I_Amber01\")"
 																												},
 																												"Children": [
 																													{

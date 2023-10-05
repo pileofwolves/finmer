@@ -700,11 +700,11 @@
 																		"ButtonWidth": 1.0,
 																		"ScriptAction": {
 																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_POTION\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal1\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
+																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_POTION\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
 																		},
 																		"ScriptAppear": {
 																			"!Type": "ScriptDataInline",
-																			"Script": "return Player:HasItem(\"U_PotionHeal1\")"
+																			"Script": "return Player:HasItem(\"U_PotionHeal\")"
 																		},
 																		"Children": [
 																			{
@@ -1122,7 +1122,7 @@
 								"Key": "Oliver_R_SQ03_Handin",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"OLIVER_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal1\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
+									"Script": "Log(\"OLIVER_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
 								},
 								"Children": [
 									{

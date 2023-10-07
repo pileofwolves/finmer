@@ -114,13 +114,13 @@
 		{
 			"Key": "MQ04_ADEPT_INTRO03_CHIP03",
 			"Text": [
-				"A loud whine rumbles around you, but the oversized puppy obliges. The tongue releases your head and the jaws move away, but not before a sneaky little lick refreshes the drool coating on your head. Nonplussed, you wipe some saliva from your eyes, before taking in the sight of the red panda standing impassively between you and the guard wolf, who had taken a step back by now. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe. Without a word, a black-furred paw offers you a towel, and you gratefully take it, cleaning up the worst of your little slobbery adventure."
+				"A loud whine rumbles around you, but the oversized puppy obliges. The tongue releases your head and the jaws move away, but not before a sneaky little lick refreshes the drool coating on your head. Nonplussed, you wipe some saliva from your eyes, before taking in the sight of the red panda standing impassively between you and the guard wolf, who had taken a step back by now. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe, only his bare paws sticking out from under the garment. Without a word, a black-furred paw offers you a towel, and you gratefully take it, cleaning up the worst of your little slobbery adventure."
 			]
 		},
 		{
 			"Key": "MQ04_ADEPT_INTRO03_NOCHIP",
 			"Text": [
-				"You are just about to go knock on the door, to get the attention of whomever is inside, before it swings open right in front of you, your paw already held up mid-knock. A gust of warm air brings with it the fragrant scent of spice, and a red panda stands impassively in the doorway. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe. He crosses his arms, his expression completely unreadable."
+				"You are just about to go knock on the door, to get the attention of whomever is inside, before it swings open right in front of you, your paw already held up mid-knock. A gust of warm air brings with it the fragrant scent of spice, and a red panda stands impassively in the doorway. Copper and black fur stares back at you, the occasional silver hair standing out, though most of it is hidden under a simple maroon robe, only his bare paws sticking out from under the garment. He crosses his arms, his expression completely unreadable."
 			]
 		},
 		{
@@ -150,7 +150,7 @@
 		{
 			"Key": "MQ04_ADEPT_PLAN01",
 			"Text": [
-				"\"Very well,\" Rux concludes, adjusting his deep red robe before rising from the comfortable couch. He gathers the finished teacups and takes them away to the kitchen, giving you a brief moment of solitude with the pantheress for whom you have risked your life more than once. \"{player.name},\" she begins, eyes fixed on you, a sad smile telling of a rare moment of vulnerability. \"I'm really sorry I dragged you into all this. You've done so much for me, more than you ever agreed to, whether you remember or not. And now...\" A cough follows, then, and a loud inhale. \"Now he's after you, too. I've made some bad choices, and got a bunch of people eaten. We have to stop him from killing anyone else.\""
+				"\"Very well,\" Rux concludes, adjusting his deep red robe before rising from the comfortable couch, one paw stuck in the other sleeve, seemingly rubbing at some persistent itch. He gathers the finished teacups and takes them away to the kitchen, giving you a brief moment of solitude with the pantheress for whom you have risked your life more than once. \"{player.name},\" she begins, eyes fixed on you, a sad smile telling of a rare moment of vulnerability. \"I'm really sorry I dragged you into all this. You've done so much for me, more than you ever agreed to, whether you remember or not. And now...\" A cough follows, then, and a loud inhale. \"Now he's after you, too. I've made some bad choices, and got a bunch of people eaten. We have to stop him from killing anyone else.\""
 			]
 		},
 		{

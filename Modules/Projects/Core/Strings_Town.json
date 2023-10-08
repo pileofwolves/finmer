@@ -155,6 +155,12 @@
 			]
 		},
 		{
+			"Key": "TOWN_HALL_LOCKED",
+			"Text": [
+				"You pull on the handles of the singular, mostly undecorated door of the town hall building, but it doesn't budge. Seems like it's been locked."
+			]
+		},
+		{
 			"Key": "TOWN_INN_BARKEEP_BEGIN",
 			"Text": [
 				"You grab a barstool and sit across from {bartender}. \"What's your poison?\" he asks.",

@@ -28,6 +28,12 @@
 							"OperandLiteral": false
 						},
 						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "SQ05_DONE",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
 							"!Type": "CommandJournalClose",
 							"JournalGuid": "111ccd42-93c2-4c28-aa66-b3090be0b793"
 						},

@@ -19,11 +19,13 @@ local function DebugCompleteMQ02()
     DebugStartMQ02()
     Player:AwardXP(200)
     Storage.SetFlag("MQ02_DONE", true)
+    Storage.SetFlag("FOREST_COTTAGE_ENTRY_FIRST", true)
 end
 
 local function DebugStartMQ03()
     DebugCompleteMQ02()
     Storage.SetFlag("MQ03_STARTED", true)
+    Storage.SetFlag("MQ03_CARRIAGE_INTRO", true)
     Storage.SetFlag("MQ03_RODE_SOUTH", true)
     Storage.SetFlag("BRIDGE_IS_REPAIRED", true)
 end

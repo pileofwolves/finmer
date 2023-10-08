@@ -399,6 +399,258 @@
 			},
 			{
 				"NodeType": "State",
+				"Key": "Event_R_Snitch",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Storage.SetFlag(\"TOWN_HALL_EVENT_SNITCH\", true)\r\nStorage.SetFlag(\"MQ03_TOWN_HALL_LOCKED\", true)\r\nLog(\"TOWN_HALL_EVENT_SNITCH1\")"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"MQ03_DONE\")\r\n    and not Storage.GetFlag(\"MQ06_DONE\")\r\n    and not Storage.GetFlag(\"TOWN_HALL_EVENT_SNITCH\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Event_C_Snitch_Iso",
+						"Title": "Iso",
+						"Tooltip": "Say that Mayor Iso is alive and well.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"TOWN_HALL_EVENT_SNITCH2\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Title": "Rux's Home",
+										"Tooltip": "Explain that she is safe, at a confidant's residence.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"TOWN_HALL_EVENT_SNITCH3_RUX\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"TOWN_HALL_EVENT_SNITCH4\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Title": "Injured",
+																		"Tooltip": "Say that Iso is recovering, but safe.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"TOWN_HALL_EVENT_SNITCH5_GENERAL\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Event_R_Snitch5",
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Event_C_Snitch6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Event_R_Snitch6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"TOWN_HALL_EVENT_SNITCH6\")\r\nPlayer:ModifyMoney(RewardGold.MQ03_Snitch)"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Event_C_Snitch7",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Event_R_Snitch7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Storage.SetFlag(\"MQ06_CANBELL_AMBUSH_SCHEDULED\", true)\r\nLog(\"TOWN_HALL_EVENT_SNITCH7\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Event_C_Snitch8",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandSetScene",
+																																	"SceneGuid": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba"
+																																}
+																															]
+																														},
+																														"Children": []
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Title": "Hiding",
+																		"Tooltip": "Say that Iso is more or less in hiding.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"TOWN_HALL_EVENT_SNITCH5_GENERAL\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Event_R_Snitch5"
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Title": "Report Break-in",
+																		"Tooltip": "Say that Iso's house has been wrecked.",
+																		"Highlight": true,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"TOWN_HALL_EVENT_SNITCH5_SQ05\")"
+																		},
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Storage.GetFlag(\"SQ05_DONE\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Event_R_Snitch5"
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Title": "Report Red Maw",
+																		"Tooltip": "Say that you raided a secret amber mine.",
+																		"Highlight": true,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"TOWN_HALL_EVENT_SNITCH5_MQ05\")"
+																		},
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Storage.GetFlag(\"MQ05_DONE\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Event_R_Snitch5"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Leave",
+						"Tooltip": "Or maybe you changed your mind.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "TOWN_HALL_EVENT_SNITCH_LEAVE1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Event_C_Snitch_Iso"
+									},
+									{
+										"NodeType": "Choice",
+										"Title": "Bye!",
+										"Tooltip": "Nice talking to you, Canbell.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "TOWN_HALL_EVENT_SNITCH_LEAVE2",
+															"IsRaw": false
+														},
+														{
+															"!Type": "CommandSetScene",
+															"SceneGuid": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba"
+														}
+													]
+												},
+												"Children": []
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
 				"Key": "SQ02_Handin",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",

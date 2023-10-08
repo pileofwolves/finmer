@@ -35,6 +35,8 @@ RewardGold = {
     SQ01 = 80,
     SQ02 = 70,
     SQ03 = 60,
+
+    MQ03_Snitch     = 25,
 }
 
 RewardGoldPit = {

@@ -338,6 +338,72 @@
 			"Text": [
 				"Your ears are pinned back to your head, and with the tightness of the predator's throat, every sound around you seems to be amplified - from the thumping heart nearby, to the running of slime, and to the obnoxiously loud and somewhat concerning gulps and swallows. The guard certainly wastes no time getting {guard.possessive} prey down. With practiced force, your arms are squeezed to your sides, keeping you locked down and unable to resist your descent down the oppressively hot digestive system. Drool leaks down your chest as more and more of your body vanishes down the ravenous guard's throat, your fur easily matted down, lubed up for the trip.\\n\\nBefore long, you breach the stomach sphincter as your head and shoulders are forced into the cramped, superheated chamber. Rippling waves of muscular pressure force you down into the stomach little by little, and for a few moments you're pushed into a thin pool of slime and viscous goo. As your belly, thighs and legs join you inside the stomach, you are squeezed and curled up into a tight {player.furry} ball. Mere moments after your toes leave the sphincter's touch with a disgustingly wet squelch, a deafening belch rumbles your surroundings. Fluids splatter everywhere, and the stomach walls take the opportunity to cave in on you, smothering you in soft, slimy warmth."
 			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH_LEAVE1",
+			"Text": [
+				"Canbell stares blankly at you. \"That's not funny, {player.name},\" A soft sigh rolls past her lips and she squeezes the pencil she's holding between her fingers. \"Did you really just barge in to interrupt me, and nothing else?\""
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH_LEAVE2",
+			"Text": [
+				"You hear a snort behind you as you turn to leave. \"Useless, the lot of you. Have to do everything myself. Get out of here,\" the snow leopardess demands. With a voice dripping frustration and even vitriol, you are left wondering whether this little diversion was worth your time and energy after all. Before you close the door of the town hall, you take a peek backwards at the acting mayor, who has already resumed her work. She meets your stare, scowls again, and brushes her paw toward you as if shooing you away. Oh well - back to the town square it is, then."
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH1",
+			"Text": [
+				"You barge into the town hall with the confidence of someone who uses the space as their home. To some degree, you may be a regular here - few citizens of this town would visit the Mayor's office as often. Canbell, for her part, sits at her table, always exactly where you expect her when you need her. Interrupted in her scribbles on scattered documents, she wryly glances up at you, saying nothing. The unspoken question is obvious, and she waits for an answer."
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH2",
+			"Text": [
+				"When you drop the fact that Mayor Iso is, in fact, still alive and kicking, Canbell looks stunned. Tiredly rubbing her eyes, perhaps taking a few quick moments to fully process the scene that is unfolding before her, she drops her pencil on whichever illegible document she was working on. The first question that she utters is the most basic, honest one you could have expected. \"Where is she?\" the snow leopardess asks. \"Where did you see her last?\""
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH3_RUX",
+			"Text": [
+				"\"That hermit's place?\" Canbell blinks as you explain, eyes veering off a little to your side as she stares into the void. Her eyes narrow, a glimmer of suspicion flashing in them. \"She never told me they were in kahoots together. And that old fool's whole shtick is that his house can't be found unless he wants you to. How convenient.\""
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH4",
+			"Text": [
+				"Your employer nods slowly, perhaps running scenarios through her head as she composes herself. \"We'll... figure something out. I'll send a detachment there at once,\" she says. \"Thanks for bringing this to my attention, {player.name}.\" A soft sigh follows, the feline rubbing the entirety of her face with both paws. Seems her sleep schedule has been upset a little as of late. \"Is there anything else? What is she doing?\""
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH5_GENERAL",
+			"Text": [
+				"\"Hmm, yes, I'd figured as much,\" Canbell claims. \"Chased after by her mad, voracious ex-boyfriend, I'm starting to understand why she left,\" she chuckles darkly. The white-furred leopardess takes out a fresh piece of paper and begins scribbling things on it. Even from the respectable distance you have to her, you recognize her handwriting as the exact same illegible chicken-scratch she had produced for you back when you were here asking for work. A lot had changed since then."
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH5_MQ05",
+			"Text": [
+				"\"The... Red Maw? And this illegal amber mine, you say, is run by her boyfriend, and they seem to be gearing up for something?\" With a thoughtful hum, Canbell glances over at a map of the nearby area. \"Maybe... we can get our Southern friends to search along the coast.\" She takes out a fresh piece of paper and begins scribbling things on it. Even from the respectable distance you have to her, you recognize her handwriting as the exact same illegible chickenscratch she had produced for you back when you were here asking for work. A lot had changed since then."
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH5_SQ05",
+			"Text": [
+				"\"A break-in? In her home?\" Canbell questions. \"How do you even know where she... ah, no matter. I'll... get the town guard on the matter. Thanks for letting me know.\" She takes out a fresh piece of paper and begins scribbling things on it. Even from the respectable distance you have to her, you recognize her handwriting as the exact same illegible chickenscratch she had produced for you back when you were here asking for work. A lot had changed since then."
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH6",
+			"Text": [
+				"The acting mayor rises from her chair and offers a paw, which you quickly accept. \"Thanks for the info, {player.name}. I think we'll be able to take care of things from here.\" She blinks at you, considering something for a brief moment, before she wanders over to a cabinet by the wall and pulls something out of a drawer. A small coin bag, sealed with drawstrings, is flung through the air, into your paws. \"North Finmer thanks you for your service,\" she declares dryly. \"I think that concludes our business. Hopefully your next visit will be slightly less eventful, eh?\""
+			]
+		},
+		{
+			"Key": "TOWN_HALL_EVENT_SNITCH7",
+			"Text": [
+				"The feline wanders back to her desk, gait a little uneven, probably stemming from exhaustion. \"Now, if you'll excuse me,\" she sighs, permitting herself a brief back stretch before she breaks eye contact and sits back down, continuing to work on whatever notes, documents and maps she was fiddling with before your intrusion. Taking the hint, you decide to leave."
+			]
 		}
 	]
 }

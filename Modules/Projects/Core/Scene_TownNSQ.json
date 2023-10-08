@@ -75,9 +75,14 @@
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "SetScene(\"Scene_TownHall\")"
+							"Script": "if Storage.GetFlag(\"MQ03_TOWN_HALL_LOCKED\") then\r\n    Log(\"TOWN_HALL_LOCKED\")\r\nelse\r\n    SetScene(\"Scene_TownHall\")\r\nend"
 						},
-						"Children": []
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Main"
+							}
+						]
 					},
 					{
 						"NodeType": "Choice",

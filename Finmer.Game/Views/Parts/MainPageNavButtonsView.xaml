@@ -90,10 +90,9 @@
         <!-- Journal button -->
         <Button
             ToolTip="View Journal"
-            IsEnabled="{Binding UI.InventoryEnabled}"
             Command="{Binding ViewJournalCommand}">
             <Button.Content>
-                <vb:GrayscaleToggleImage
+                <Image
                     Source="/Finmer;component/Resources/UI/HUDJournal.png"
                     SnapsToDevicePixels="True"
                     Margin="0,-2,0,0"

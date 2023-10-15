@@ -1021,7 +1021,7 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "MQ03_R_Intro2Wits",
+								"Key": "MQ03_R_Intro2",
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -1029,20 +1029,6 @@
 											"!Type": "CommandLog",
 											"Text": "MQ03_TEMPLE_INTRO2",
 											"IsRaw": false
-										}
-									]
-								},
-								"ScriptAppear": {
-									"!Type": "ScriptDataVisualCondition",
-									"Mode": "All",
-									"Operand": true,
-									"Tests": [
-										{
-											"!Type": "ConditionPlayerStat",
-											"Operator": "GreaterOrEqual",
-											"OperandMode": "Literal",
-											"OperandLiteral": 6.0,
-											"Stat": "Wits"
 										}
 									]
 								},
@@ -1280,26 +1266,6 @@
 												]
 											}
 										]
-									}
-								]
-							},
-							{
-								"NodeType": "State",
-								"Key": "MQ03_R_Intro2Dumb",
-								"ScriptAction": {
-									"!Type": "ScriptDataVisualAction",
-									"Nodes": [
-										{
-											"!Type": "CommandLog",
-											"Text": "MQ03_TEMPLE_INTRO2_DUMB",
-											"IsRaw": false
-										}
-									]
-								},
-								"Children": [
-									{
-										"NodeType": "Link",
-										"LinkTarget": "MQ03_C_Intro3"
 									}
 								]
 							}

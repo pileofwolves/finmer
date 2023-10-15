@@ -341,7 +341,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
-															"Script": "return Storage.GetFlag(\"MQ02_AMBUSHED\") and not Storage.GetFlag(\"MQ02_DONE\")"
+															"Script": "return Storage.GetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\") and not Storage.GetFlag(\"MQ02_DONE\")"
 														},
 														"Children": [
 															{

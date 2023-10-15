@@ -24,49 +24,37 @@
 		{
 			"Key": "FOREST_COTTAGE_KNOCK3",
 			"Text": [
-				"Hmm. Either nobody's home, or you're not welcome."
+				"You hear a loud crash on the other side of the door, and yet, nobody answers."
 			]
 		},
 		{
 			"Key": "MQ02_AM_BELLYRUB",
 			"Text": [
-				"Your paw gently strokes the wolf's exposed belly, combing through the soft fur as you feel fat and sludge being noisily displaced. The black-furred predator is just about to stop you, but then changes his mind, churring softly. \"Such a good little {player.species}.\" He grabs your shoulders and creeps closer, your nose touching his, as he breathes into your face some more. \"Maybe I'll make an exception for an eager slab of meat like you.\""
+				"Your paw gently strokes the wolf's exposed belly, combing through the soft fur as you feel fat and sludge being noisily displaced. The black-furred predator is just about to stop you, but then changes his mind, churring softly. \"Such a good little {player.species}.\" He grabs your shoulders and creeps closer, your nose touching his, as he breathes into your face some more. \"I do feel full already, but maybe I'll make an exception for an eager slab of meat like you.\""
 			]
 		},
 		{
 			"Key": "MQ02_AM_BUSINESS1",
 			"Text": [
-				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Mm, I do get a possessive streak sometimes. Didn't help that the striped fucker took a swing at me. Not my fault he only became cooperative when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts. \"So. I am Randall. And you,\" he begins while jabbing a finger into your chest, \"are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw."
+				"\"You're after this guy, no?\" A wicked grin parts his lips as his oversized midsection gurgles loudly, and he licks his chops as if recalling the taste of his meal. \"I admit, I overreacted when I saw him. I thought he was there to steal my precious belongings. Mm, I do get a possessive streak sometimes. Didn't help that the striped shit took a swing at me. Not my fault he only became cooperative when he was already curled up in here, screaming. Let me tell you though, little {player.species}, he was damn tasty.\" The gang boss lifts his nose and snorts. \"As for you-\" he begins while jabbing a finger into your chest, \"-you are not welcome here. I'm running important work here, and it has been delayed long enough.\" he says while waving a paw."
 			]
 		},
 		{
 			"Key": "MQ02_AM_BUSINESS2",
 			"Text": [
-				"A strange feeling of vertigo overcomes you, as you recognize the predator before you as the leader of some kind of movement called the Red Maw. Not just because you heard somewhere, but because you know you have seen him before - and the thought of it sends your heart racing with a sense of dread you cannot reconcile with your lack of memories. \"Now listen here, {player.species},\" he says as he steps closer, seemingly oblivious to your realization, tail swishing behind him as he tries to look menacing."
+				"A strange feeling of vertigo overcomes you. The black fur, the belly bulge, the infuriatingly arrogant grin - you find yourself staring at them, and not just because the sight of a predator lugging around and digesting a whole person would be stunning to most. Is this what a déja-vu feels like? The thought sends your heart racing with a sense of dread you cannot reconcile with your lack of memories. It does, however, make you feel surprisingly vulnerable and self-conscious.\\n\\n\"Or you're after my Iso,\" he mumbles, a frightening scowl forming on his muzzle with that thought. \"Now listen here, {player.species},\" he says as he steps closer, seemingly oblivious to your inner turmoil, tail swishing behind him as he tries to look menacing."
 			]
 		},
 		{
 			"Key": "MQ02_AM_BUSINESS3",
 			"Text": [
-				"\"I don't care who you think you are, or what that idiot of a lion told you back there. Poor kid keeled right over when I belched in his face, hah! But I want things to go my way here, and I don't like things I can't control.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I have no time to lug you around right now. I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
+				"\"I don't care who you think you are, or what you think you're going to do here. But I want things to go my way here, and I don't like things I can't control. This idiot of a lion didn't really get the message. Not my fault the kid keeled right over when I rubbed his face into this!\" He gives his belly a sensual rub and it proudly gurgles in response. The massive, furry bulge isn't moving anymore, though given how relatively well-defined the lumps and outlines are, the prey hasn't spent long inside. Crushed and dunked in acid, however, likely means they are beyond saving. \"Now, I am in a bad mood. Luckily for you, I have no time to lug you around right now, and you'll make an excellent replacement for this dumbass 'messenger' in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
 			]
 		},
 		{
-			"Key": "MQ02_AM_BUSINESS3B",
+			"Key": "MQ02_AM_BUSINESS4",
 			"Text": [
-				"\"I don't care who you think--\" Randall falls silent as he notices your {player.furry} belly bulge. He laughs. \"You ate him? The lion? Poor fella, I bet he went down great.\" The lupine pauses, studying your stomach for a second before looking up at you again. \"I want things to go my way here, and I don't like things I can't control. It's a good thing the runt mentioned he already had all supplies ready to go; if it weren't for that I'd have to... punish you.\" He gives his belly a sensual rub, which proudly gurgles in response. It's quite easy to pick up on the furry bulge on his stomach, though it's nowhere near as large as it probably was a few hours ago. \"Now, I am in a bad mood. Luckily for you, I've already made a mess here, and I've no intention of making it worse. I really need that bridge fixed, and you'll make an excellent replacement for this dumbass in here.\" As if to prove his point, the wolf slaps his swollen gut, noisily displacing fluids inside. \"Were it not for that, I might just churn you up into wolf-fat myself. Maybe next time, huh?\""
-			]
-		},
-		{
-			"Key": "MQ02_AM_ENDING",
-			"Text": [
-				"With his point made, Randall flashes you a cocky grin, teasingly licks his lips, then turns and leaves. \"Go on now, run that little errand for me; tell your pantheress it's all fine and dandy over here. She'll get her damn supplies, and I don't want to wait a moment longer,\" he says, dismissively raising a paw as if waving to you. The husky and tigress, having remained motionless until now, wait for their leader to catch up before they too turn. What a massive jerk."
-			]
-		},
-		{
-			"Key": "MQ02_AM_FINISH",
-			"Text": [
-				"Once you're sure you're alone again, you continue on your way back to town. Best hurry back and inform Edgard, the inn fellow, of what's happened here."
+				"With his point made, Randall flashes you another cocky grin, teasingly licks his lips, then turns and walks to the front door. \"Go on now, run that little errand for me; run along to your 'acting mayor'. She'll get her damn supplies, and I don't want to wait a moment longer,\" he says, dismissively raising a paw as if waving to you before kicking the ajar door open and leaving. The husky and tigress, having remained silent and motionless until now, wordlessly follow the big guy's footsteps. What a massive jerk."
 			]
 		},
 		{
@@ -78,25 +66,25 @@
 		{
 			"Key": "MQ02_AM_HELLO_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he patronizingly waggles his finger. \"Look at you, being a good honest little scout and shit!\" He laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
+				"The wolf's lips split in a toothy grin and he patronizingly waggles his finger. \"Look at you, being a good honest little scout and shit!\" He laughs, perhaps a bit forcedly, before his face takes on a much more serious expression. \"A little disappointing, snack. Smart {player.speciesplural} don't put all their cards on the table.\""
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_NOT_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he positively beams for a second or two. \"That's a yes, then!\" He laughs, perhaps a bit forcedly, before his face takes on a much more serious expression."
+				"The wolf's lips raises an eyebrow and stares impassively at you for a few seconds, before he bursts into a patronizing laugh. \"You really- What makes you think 'kitten' over here has a say in anything?\" His face takes on a much darker expression - a grimace, perhaps, born from your implied challenge to his authority."
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_PUNCH",
 			"Text": [
-				"Taking advantage of the wolf's proximity, your fist connects with the side of his muzzle. With a delightfully satisfying crunch, the lupine's saliva is sent flying and he awkwardly steps backwards. He clutches his muzzle and only just manages to maintain his balance. The wolf wheezes and takes a second to recover, then growls, his fur bristling. \"Little shit,\" he snarls. Within a blink of an eye, Randall returns the favor. The wind is knocked from your lungs and a sharp sting spreads through your chest before you realize the wolf punched you hard in retaliation. Staggered, you are unable to fend off your attacker in time as he grabs your shoulders and parts his jaws enough for you to taste his acidic breath. \"If I weren't full already, I'd have you for lunch. Do not make me fucking repeat myself, meat.\" With that warning, he pushes you backwards, putting some distance in between the two of you again."
+				"Taking advantage of the wolf's proximity, your fist connects with the side of his muzzle. With a delightfully satisfying crunch, the lupine's saliva is sent flying and he awkwardly steps backwards. He clutches his muzzle and only just manages to maintain his balance. The wolf wheezes and takes a second to recover, then growls, his fur bristling. \"Little shit,\" he snarls. Within the blink of an eye, Randall returns the favor. The wind is knocked from your lungs and a sharp sting spreads through your chest before you realize the wolf punched you hard in retaliation. Staggered, you are unable to fend off your attacker in time as he grabs your shoulders and slams you against the fireplace mantel. Through parted jaws, you can taste his acidic breath. \"If I weren't full already, I'd have you for lunch. Do not make me fucking repeat myself, meat.\" With that warning, he releases you and steps back, putting some distance in between the two of you again."
 			]
 		},
 		{
 			"Key": "MQ02_AM_HELLO_REALLY_NOT_NICE",
 			"Text": [
-				"The wolf's lips split in a toothy grin and he glances over his shoulder, gesturing at you for some reason or another. His goons chuckle. Then he turns back to you and suddenly grabs your shoulders, his snout inches away from yours, as his lips part just slightly, a droplet of saliva leaking forth. Warm wolfbreath, smelling vaguely of acid and meat, assaults your nostrils. \"That tiger guy? Yeah, I ate him,\" he says while provokingly rubbing his pudgy belly. \"Haven't had a squirmer like that in a while. Though they all look the same once they submit to me, heh.\""
+				"The wolf's lips split in a toothy grin and he glances over his shoulder, gesturing at you for some reason or another. His goons chuckle. Then he turns back to you and suddenly grabs your shoulders, pushing you against the fireplace mantel. His snout hovers inches away from yours, his lips parting just slightly, a droplet of saliva leaking forth. Warm wolfbreath, smelling vaguely of acid and meat, assaults your nostrils. \"That tiger guy? Yeah, I ate him,\" he says while provokingly rubbing his pudgy belly. \"Haven't had a squirmer like that in a while. Though they all look the same once they submit to me, heh.\""
 			]
 		},
 		{
@@ -114,19 +102,19 @@
 		{
 			"Key": "MQ02_AM_OPENING1",
 			"Text": [
-				"As soon as you turn the corner, three figures emerge from the dense forestry surrounding you. They appear to have been waiting there the entire time - what for, you cannot say. Having already taken notice of your approach, one of the fellows confidently strides forward, the other two remaining where they are, eyeing you with mild disinterest."
+				"You push the door open - somewhat surprised it isn't locked - and step into the homely-looking building. The living room, which takes up the most space of the cottage, has a table and chair by a fireplace, as well as a soft couch and a bookshelf. It looks like the perfect place to wait out a blizzard.\\n\\nThe scene on display, however, is less inviting. On the floor by the table, you spy a lion sprawled out on the oaken floor, injured. Right on top of him sits a large wolf with black fur and a short, deep crimson mane, grinding what seems to be a hugely distended stomach into the unconscious feline. Two others, a husky and tigress, look up from their rummaging through drawers and cabinets to glare at you. It seems you may have arrived at a bad time."
 			]
 		},
 		{
 			"Key": "MQ02_AM_OPENING2",
 			"Text": [
-				"A large wolf with off-black fur and a crimson mane running from just above his eyes to the back of his head, approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats. A husky and a tigress, you note. Only then do you finally recognize the unnatural bulge on the lupine's midsection, exposing a huge dome of black fur underneath his jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its liquid contents shift."
+				"The black wolf rises off his plaything and turns to you, licking his lips. You get a better view of dark red ridge running from just above his eyes to the back of his head, not to mention the huge dome of black fur bulging out from his midsection, through an open jacket. It's hard to keep your eyes off of it, especially considering the sinister growls and gurgles it makes as its contents shift. He approaches you, and gets a little too close for comfort. The man and woman behind him - obviously his lackeys - watch you carefully, as if scanning for threats."
 			]
 		},
 		{
 			"Key": "MQ02_AM_OPENING3",
 			"Text": [
-				"\"Well now, I was not expecting the next messenger to be a scrawny {player.species}.\" the black wolf begins. \"Don't mind me, I am merely here to... safeguard my investments.\" For a moment you see his eyes flash with an unusual emotion. Confusion... recognition? It quickly vanishes, leaving behind only a cocky grin. \"But you don't seem like much of an issue. Iso sent you? Of course she did, the nosy bitch.\""
+				"\"And who the hell are you? I was not expecting the next messenger to be a scrawny {player.species}. Was hoping for someone with a little more... meat on them.\" he begins. Catching your glances to the cabin's original inhabitant, the canine chuckles darkly. \"Don't mind me, I am merely here to 'safeguard' my investments. Oh, excuse me, where are my manners?\" A shit-eating grin spreads on his lips, a moment before they part to release a wet, foul belch. \"I'm Randall, and you're on my turf, runt.\""
 			]
 		},
 		{
@@ -138,31 +126,31 @@
 		{
 			"Key": "MQ02_AM_WINFIGHT_CRAB_RANGOON1",
 			"Text": [
-				"It appears, then, that with the immediate threat eliminated, you are free to report back to the resident authority of North Finmer. This canine was probably the perpetrator behind the strange happenings in the town anyway, or so you believe, so it's a good thing you took matters into your own hands when you got the chance. It is with this in mind that you decide to leave this gruesome scene behind, evidence of your deeds and all, and begin your long trek back to the town hall to confirm your story - luckily the clear weather appears to hold for a while longer. Indeed, the beauty these environs are known for lie not just in commerce alone. And while you cannot for the life of you remember why you visited North Finmer in the first place, it must have been a good reason, no?"
+				"It appears, then, that with the immediate threat eliminated, you are free to report back to the resident authority of North Finmer. This canine was probably the perpetrator behind the strange happenings in the town anyway, so it's a good thing you took matters into your own hands when you got the chance. It is with this in mind that, after you make sure the unconscious lion is safe, you decide to leave this gruesome scene behind. It is time to begin your long trek back to the town hall to confirm your story - luckily the clear weather appears to hold for a while longer. Indeed, the beauty these environs are known for lie not just in commerce alone. And while you cannot for the life of you remember why you visited North Finmer in the first place, it must have been a good reason, no?"
 			]
 		},
 		{
 			"Key": "MQ02_AM_WINFIGHT_CRAB_RANGOON2",
 			"Text": [
-				"Though you look forward to spending some time unwinding in town while you wait for the bridge repairs, you cannot help but find yourself wondering what Randall was babbling on about when he mentioned the missing mayor. There is still no sign of her, and the only other one who could fill this hole in the story has stopped kicking by now. Perhaps there is more to explore here after all.\\n\\nEND"
+				"Though you look forward to spending some time unwinding in town while you wait for the bridge repairs, you cannot help but find yourself wondering what Randall was babbling on about, and how he relates to the missing mayor. There is still no sign of her, and the only other one who could fill this hole in the story has stopped kicking by now. Perhaps there is more to explore here after all.\\n\\nEND"
 			]
 		},
 		{
 			"Key": "MQ02_AM_WINFIGHT_GOON_FLEE1",
 			"Text": [
-				"The last remaining lackey, who had been watching in quiet horror up until now, appears to unfreeze from stunned silence when your predatory gaze turns {goon.possessive} way. Perhaps realizing that this is a battle {goon.subject} cannot win, not to mention the fact that {goon.subject} now without {goon.possessive} boss to back {goon.object} up, {goon} backs away from you, before turning tail and fleeing down the road. Coward."
+				"The last remaining lackey, who had been watching in quiet horror up until now, appears to unfreeze from stunned silence when your predatory gaze turns {goon.possessive} way. Perhaps realizing that this is a battle {goon.subject} cannot win, not to mention the fact that {goon.subject} now without {goon.possessive} boss to back {goon.object} up, {goon} backs away from you, before turning tail and fleeing past you, through the door. Coward."
 			]
 		},
 		{
 			"Key": "MQ02_AM_WINFIGHT_GOON_FLEE2",
 			"Text": [
-				"The husky and tigress, who had been watching in quiet horror up until now, appear to unfreeze from their stunned silence when your predatory gaze comes to rest on them. Perhaps realizing that this is a battle they cannot win, not to mention the fact that they are now without their boss to back them up, they back away from you in unison, before turning tail and fleeing down the road. Cowards."
+				"The husky and tigress, who had been watching in quiet horror up until now, appear to unfreeze from their stunned silence when your predatory gaze comes to rest on them. Perhaps realizing that this is a battle they cannot win, not to mention the fact that they are now without their boss to back them up, they back away from you in unison, before turning tail and fleeing past you, through the door. Cowards."
 			]
 		},
 		{
 			"Key": "MQ02_AM_WINFIGHT_VORE",
 			"Text": [
-				"What a mess this scene turned out to be. This had escalated very quickly. With your mountain of a belly bulge - containing both an adult wolf and the chunky stew of his last prey - you feel utterly stuffed, and maybe even struggle to move. The added weight of one and a half extra person sagging down your gut is not trivial to work with, after all. Well, considering the guy was most certainly a murderer on the prowl, you cannot help but feel a little vindicated in your little act of vigilante justice, despite the particularly acidic nature of your retaliation. At least this guy will not harm anyone else anymore. You should probably finish digesting the entirety before waltzing into town, though, lest you implicate yourself to the town guard in this whole ordeal."
+				"What a mess this scene turned out to be. This had escalated very quickly. With your mountain of a belly bulge - containing both an adult wolf and the stew of his mostly-intact prey - you feel utterly stuffed, and maybe even struggle to move. The added weight of two extra people sagging down your gut is not trivial to work with, after all. Well, considering the guy was most certainly a murderer on the prowl, you cannot help but feel a little vindicated in your little act of vigilante justice, despite the particularly acidic nature of your retaliation. At least this guy will not harm anyone else anymore. You should probably finish digesting the entirety before waltzing into town, though, lest you implicate yourself to the town guard in this whole ordeal."
 			]
 		},
 		{
@@ -204,7 +192,7 @@
 		{
 			"Key": "MQ02_BARKEEP_RANDALL",
 			"Text": [
-				"You describe Randall -  the big, imposing wolf you met - and that he's leading some kind of movement he calls the Red Maw. Also that he goes around eating people, which is equal parts alarming and fascinating. In response to all this, {bartender} looks moderately horrified."
+				"You describe Randall -  the big, imposing wolf you met - and that he's leading some kind of movement he calls the Red Maw. Also that he goes around eating people, which is a personality trait that is equal parts alarming and fascinating. In response to all this, {bartender} looks moderately horrified."
 			]
 		},
 		{
@@ -216,7 +204,7 @@
 		{
 			"Key": "MQ02_BARKEEP_TIGER",
 			"Text": [
-				"Grimly, you talk about the previous messenger's fate - that of a layer of fat on a big, cocky wolf. The barkeep stares for a bit, then shakes his head. \"Stip is dead? Shit. I knew predation is a thing, but that's a little close to home...\""
+				"Grimly, you talk about the previous messenger's fate - that of a layer of fat on a big, cocky wolf. The barkeep stares for a bit, then shakes his head. \"Stip is dead? And not just dead, he got... Uh. Wow. Shit. I knew predation is a thing, but that's a little close to home...\""
 			]
 		},
 		{
@@ -252,7 +240,7 @@
 		{
 			"Key": "MQ02_COT_CHECK_DUMB",
 			"Text": [
-				"You kneel down by the lion, and try to figure out what's wrong with him. He's still breathing just fine. Other than the fact that he clearly passed out on the floor for some reason, it's hard to say what exactly went down here."
+				"You kneel down by the lion, and try to figure out what's wrong with him. He's still breathing just fine. Other than the fact that he clearly passed out on the floor, it's hard to say what exactly went down here. No doubt this 'Randall' figure had a paw in the matter, but it seems you'll have to wait for the feline in question to provide you with the details."
 			]
 		},
 		{
@@ -264,13 +252,13 @@
 		{
 			"Key": "MQ02_COT_CHECK_WITS2",
 			"Text": [
-				"... Luckily, you can feel it. At least he's alive, and his breathing is stable. The coarse, otherwise well-kept fur makes it difficult to see, but it looks like there are some shallow claw marks on his arms and shoulders. Nothing to worry about in the grand scheme of things. You figure the guy could use a paw, but other than clearly having been shaken by something, there is no real noteworthy injury. Oddly enough, you muse, the room itself doesn't look any worse for the wear."
+				"... Luckily, you can feel it. At least he's alive, and his breathing is stable. The coarse, messy fur makes it difficult to see, but combing through, it looks like there are some shallow claw marks on his arms and shoulders. Nothing to worry about in the grand scheme of things; with a bit of cleaning they would heal just fine. It's obvious that the feline has been assaulted, but other than clearly having been shaken up, there is no particularly noteworthy injury."
 			]
 		},
 		{
 			"Key": "MQ02_COT_ENTRY",
 			"Text": [
-				"You push the door open - somewhat surprised it isn't locked - and step into the homely-looking building. The living room, which takes up the most space of the cottage, has a table and chair by a fireplace, as well as a soft couch and a bookshelf. It looks like the perfect place to wait out a blizzard.\\n\\nBut on the floor by the table, you spy the sole inhabitant, a lion, sprawled out on the oaken floor. He's not looking too good."
+				"With that problem dealt with, you move on to the next. You were tasked with finding the carpenter, and it seems he lies sprawled out uncomfortably on the carpet. The lion's fur is a mess, as are his clothes; it seems the burglars roughed him up a bit. You don't immediately see the cause of his unconsciousness, however - perhaps you could take a look to try and find what the issue is."
 			]
 		},
 		{
@@ -318,7 +306,7 @@
 		{
 			"Key": "MQ02_OLIVER_POSTVORE_STEAL",
 			"Text": [
-				"Before leaving, you decide it prudent to snatch a small coin purse off of a bookshelf near the door, along with an odd fist-sized chunk of rock sporting some kind of orange crystals. Lucky find, maybe? If only its owner were around to tell you what exactly you're cupping in your paws... but it matters little now.\\n\\nWith the knowledge that there are more than enough raw materials leftover here to suit the town's needs, you resolve to finish the job that the unfortunate tiger had started before anything else might take a turn for the worse. You had found an answer to one question, yet several more appeared in its stead. Certainly they won't be happy to hear of this back in town, but then again, there's no need for you to tell the whole story."
+				"Before leaving, you decide it prudent to snatch a small coin purse off of a bookshelf near the door, along with an odd fist-sized chunk of rock sporting some kind of orange crystals. Lucky find, maybe? If only its owner were around to tell you what exactly you're cupping in your paws... but it matters little now.\\n\\nWith the knowledge that there are more than enough raw materials leftover here to suit the town's needs, you resolve to finish the job that the unfortunate tiger had started before anything else might take a turn for the worse - there's a report to be delivered to the town. You had found an answer to one question, yet several more appeared in its stead. Certainly they won't be happy to hear of this back in town, but then again, there's no need for you to tell the whole story."
 			]
 		},
 		{
@@ -342,7 +330,7 @@
 		{
 			"Key": "MQ02_OLIVER_R_END2",
 			"Text": [
-				"With the knowledge that there are more than enough raw materials leftover here to suit the town's needs, you resolve to finish the job that the unfortunate tiger had started before anything else might take a turn for the worse. You had found an answer to one question, yet several more appeared in its stead. As you mull over this latest occurrence in an already strange chain of events, you make your way into the cold outside world while Oliver begins cleaning up behind you, no doubt taking stock."
+				"With the knowledge that there are more than enough raw materials leftover here to suit the town's needs, you resolve to finish the job that the unfortunate tiger had started before anything else might take a turn for the worse - there's a report to be delivered to the town. And while you had found an answer to one question, several more appeared in its stead. As you mull over this latest occurrence in an already strange chain of events, you make your way into the cold outside world while Oliver begins cleaning up behind you, no doubt taking stock."
 			]
 		},
 		{
@@ -372,19 +360,19 @@
 		{
 			"Key": "MQ02_OLIVER_R_SPILL_WHY",
 			"Text": [
-				"He shakes his head slowly. \"No, he seemed pretty pleased that I had everything they'd need in storage. Just what the 'Red Maw' needed, I think he said. I thought they were going to take some of it for themselves, but I don't think they actually did? I... this is all so confusing.\""
+				"He shakes his head slowly. \"No, he seemed pretty pleased that I had everything they'd need in storage. Just what the 'Red Maw' needed, I think he said. He wasn't really making sense, honestly. I thought he wanted to steal my stuff to, I dunno, resell it probably. But then I don't think they actually took or broke anything. This is all so confusing...\""
 			]
 		},
 		{
 			"Key": "MQ02_OLIVER_R_SPILL_WOLF",
 			"Text": [
-				"Oliver scratches his chin. \"Eh, well... bulky wolf guy, dark fur, silvery. Red mane on his head. Had this cocky, almost predatory grin plastered on his face all the time, like he knew the world was his. Or, well, literally predatory, in his case... Not hard to miss, I guess.\""
+				"Oliver scratches his chin. \"Eh, well... bulky wolf guy, black fur, maybe silvery in a few places, I'm not sure. Red mane on his head. Had this cocky, almost predatory grin plastered on his face all the time, like he knew the world was his. Or, well, literally predatory, in his case... Not hard to miss, I guess.\""
 			]
 		},
 		{
 			"Key": "MQ02_OLIVER_R_SPILL1",
 			"Text": [
-				"The lion's gaze moves from your eyes to the ceiling, the door and back. A long sigh escapes him - one that he had been holding for a while. \"So... if you're not here to set stuff on fire... what do you want?\""
+				"The lion's gaze moves from your eyes to the ceiling, the door and back. A long sigh escapes him - one that he had been holding for a while, and he squeezes his temple with one paw. \"Spirits, my head hurts. How long was I out? Can't have been more than a few minutes if they just left. Um, so... if you're not here to set stuff on fire... what do you want?\""
 			]
 		},
 		{
@@ -402,7 +390,7 @@
 		{
 			"Key": "MQ02_OLIVER_R_SPILL4",
 			"Text": [
-				"\"Anyway, uh, yeah... It's a bit blurry. Red-wolf-guy snarled that if I didn't have the supplies ready by noon, I'd join the guy he was digesting. And he said that while rubbing his gut.\" A forced chuckle escapes his lips. \"I told him I always keep stuff in storage. He seemed pleased with that. Thought they'd leave me alone, but then he started... rubbing my face against his gut. I dunno, I must've blacked out. Next thing I know, you're on top of me.\""
+				"\"Anyway, uh, yeah... It's a bit blurry. Red-wolf-guy snarled that if I didn't have the supplies ready by noon, I'd join the guy he was digesting. I-I watched him, rub his gut, p-press down on the kicks Stip was making...\" The lion looks sickened, though a forced chuckle escapes his lips. \"I told him I always keep stuff in storage. He seemed pleased with that. Thought they'd just steal what they wanted and then leave me alone, but then he started... rubbing my face against his gut, telling me what a good p-prey I'd be. I dunno, I don't really... um, his, uh, Stip was screaming and I heard something snap in there. Then I must've blacked out, 'cause next thing, you're on top of me.\""
 			]
 		},
 		{
@@ -440,7 +428,7 @@
 		{
 			"Key": "MQ02_RANDALL_KILL_DIGESTED_POV",
 			"Text": [
-				"As your struggles inevitably slow down, Randall gives his oversized furry gut a slap, the doughy dome jiggling as fluid splashes around. \"Come on, already? They usually last longer,\" he taunts. \"Squirm some more for me, will ya?\" But alas, your weakened and well-tenderized body is easily pickings for the onslaught of the digestive organ. Rippling walls knead and chew away at you, splashing slime everywhere and regularly renewing the layers of gooey acid as it slowly but surely works on you. With no more air left to breathe and warm flesh closing in on all sides, you finally give out. Just another worthless lump of meat for the large wolf to process overnight."
+				"It is impossible to breathe in this hellish pit, or indeed, to do much of anything at all. Pressed up against slimy stomach walls and the melting remains of what was once a tiger, you barely have room to express your displeasure, much less actually make work of an escape attempt. No, you are doomed to be digested and pump deeper into these slimy tubes. As your struggles inevitably slow down, Randall gives his oversized furry gut a slap, the doughy dome jiggling as fluid splashes around. \"Come on, already? They usually last longer,\" he taunts. \"Squirm some more for me, will ya?\" But alas, your weakened and well-tenderized body is easily pickings for the onslaught of the digestive organ. Rippling walls knead and chew away at you, splashing slime everywhere and regularly renewing the layers of gooey acid as it slowly but surely works on you. With no more air left to breathe and warm flesh closing in on all sides, you finally give out. Just another worthless lump of meat for the large wolf to process overnight."
 			]
 		},
 		{
@@ -464,7 +452,7 @@
 		{
 			"Key": "MQ02_RANDALL_VORE_WIN_POV",
 			"Text": [
-				"The black wolf spreads his jaws, taking a few more precious seconds to breathe hot, sour wolfbreath on your face, before he shoves you forward into the fetid tunnel of warm, writhing flesh. Your muzzle breaks several sticky strands of saliva as you touch, and start sliding across the predator's meaty tongue. With several loud, powerful swallows, the muscle around you expertly grips your face and squeezes, forcing you into the wolf's digestive tract. Randall greedily gulps down his latest catch, and before long your nose enters the opening into the predator's stomach. The stench that hits you is unbearable; some mixture of an acid pit and whatever the wolf ate last. The digestive sack has been busy even before your arrival; acidic slime trickles and seeps from between every fold of flesh. Thick goop coats the walls and a chunky stew shifts and bubbles in the organ's bottom half - probably what little remains of the previous soul to venture into the gang boss's jaws, and also a nice reminder of what's about to happen to you, too. With each noisy swallow, more of your body is deposited into the warm, accommodating organ and you are forced to curl up into a {player.furry} ball of {player.species}-meat, displacing the digested sludge around you to make room. Once Randall finishes devouring you, your feet join you inside the caustic furnace and the wolf on the outside licks his paws clean, giving his massive gut a few loving pats. The searing hot flesh quickly begins clenching and kneading away at you, eager to grind you down into the same meaty slush that surrounds you."
+				"The black wolf spreads his jaws, taking a few more precious seconds to breathe hot, sour wolfbreath on your face, before he shoves you forward into the fetid tunnel of warm, writhing flesh. Your muzzle breaks several sticky strands of saliva as you touch, and start sliding across the predator's meaty tongue. With several loud, powerful swallows, the muscle around you expertly grips your face and squeezes, forcing you into the wolf's digestive tract. Randall greedily gulps down his latest catch, and before long your nose enters the opening into the predator's stomach. The stench that hits you is unbearable; some mixture of an acid pit and processed meat. The digestive sack has been exceptionally busy even before your arrival; acidic slime trickles and seeps from between every fold of flesh. Thick goop coats the walls. Most of the open space in the stomach is occupied with a chunky, furry mess, no doubt the remains of the previous soul to venture into the gang boss's jaws. The horrible, greasy, grainy, slimy texture of the partially digested tiger you're being crammed up against also serves a nice reminder of what's about to happen to you, too. With each noisy swallow, more of your body is deposited into the warm, oppressively tight organ and you are forced to curl up into a {player.furry} ball of {player.species}-meat, displacing the digested sludge around you to make room. More than a few bones snap around you as you claim space. Once Randall finishes devouring you, your feet join you inside the caustic furnace and the wolf on the outside licks his paws clean, giving his massive gut a few loving pats. The searing hot flesh quickly begins clenching and kneading away at you, eager to grind you down into the same meaty slush that surrounds you."
 			]
 		}
 	]

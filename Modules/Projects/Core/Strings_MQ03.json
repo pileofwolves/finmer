@@ -168,7 +168,7 @@
 		{
 			"Key": "MQ03_RIDESOUTH_TRIP04",
 			"Text": [
-				"A silence falls, save for the gentle rhythm of the mount's hoofs and the creaking of the cart carrying you both. You take in the environment: the trees have given way to a cliffside facing the open, untamed ocean. With a solid rock wall on one side and quite the drop down on the other, the road might even be considered slightly dangerous were it not for the fact that the path is easily wide enough to accommodate the carriage and then some. The view is of course nothing short of stunning. The setting sun casts a surreal glow over the roaring waves far below you, its gentle warmth erasing the chill that had built up during the trip through the shaded woods."
+				"A silence falls, save for the gentle rhythm of the mount's hoofs and the creaking of the cart carrying you both. You take in the environment: the trees have given way to a cliffside facing the open, untamed ocean. With a solid rock wall on one side and quite the drop down on the other, the road might even be considered slightly dangerous. Luckily, the path is easily wide enough to accommodate the carriage and then some. The view is of course nothing short of stunning. The setting sun casts a surreal glow over the roaring waves far below you, its gentle warmth erasing the chill that had built up during the trip through the shaded woods."
 			]
 		},
 		{
@@ -180,13 +180,13 @@
 		{
 			"Key": "MQ03_RIDESOUTH_TRIP06",
 			"Text": [
-				"An image flashes across your mind, then: a broken shard of a memory somehow stirred to life by the merchant's words. You see your own paws setting down a large ceramic jug under a moonlit sky, gently unsealing it to reveal a murky liquid you cannot recall the nature of, only that the thought of it sends your heart racing. Someone else sets a similar jug down next to yours, hitting the cold stones with a soft thump. It is time. Through the dim haze of recollection, you remember yourself stepping backwards, guilt and grim determination warring on your subconscious as your partner begins mixing the two fluids. You reach into your pocket to retrieve the final piece of the puzzle."
+				"To that question, you are hopelessly unable to provide an answer. Where there should be images, sounds and emotion pertaining to the night you found yourself left for dead in an alleyway, there is only a foggy void. Seems you hit your head a little harder than you'd previously assumed. Still, wisps of recollection whisper and echo, just out of reach, buried like a forgotten dream. And yet, your heart rate elevates all the same. You grow frustrated, your subconscious stubbornly refusing to yield to your demands."
 			]
 		},
 		{
 			"Key": "MQ03_RIDESOUTH_TRIP07",
 			"Text": [
-				"Zosk nudges you in your shoulder, instantly dispelling your moment of weakness. Only a brief moment had passed. Even when you attempt to focus on your memory once more, the image remains buried like a forgotten dream: present yet just out of reach.\\n\\nYou find that your paw is lodged in your pocket - you had meant to grab something, but what exactly escapes you. Your fingers grasp at nothing. The lizard glances at you curiously, perhaps not entirely oblivious to your inner turmoil, and you sheepishly look away, realizing you had not yet answered his question."
+				"Zosk nudges you in your shoulder, instantly dispelling your train of thought. Only a brief moment had passed. You find that your paw is lodged in your pocket - you had meant to grab something, but what exactly escapes you. Your fingers grasp at nothing. The lizard glances at you curiously, not entirely oblivious to your inner turmoil, and for a moment you wonder how good he is at reading faces. Must be; it is an important aspect of the art of the deal. He says nothing, and you sheepishly look away, realizing you had not yet answered his question."
 			]
 		},
 		{
@@ -198,7 +198,7 @@
 		{
 			"Key": "MQ03_RIDESOUTH_TRIP09",
 			"Text": [
-				"You ponder his words as your mind chases after the memory you had just rediscovered. It continues to elude you, however, and all you end up with is a vague sense of dread. The road slopes downwards, and after a few minutes of comfortable silence, the docks and fisheries of South Finmer come into view. There is plenty of activity in this trading hub, and your dour mood is soon left behind."
+				"You ponder his words as the conversation draws to a close. Your mind continues to wander, yet no particular revelations come to you in the next several minutes, and all you end up with is a vague sense of dread. The road slopes downwards, and after a few minutes of comfortable silence, the docks and fisheries of South Finmer come into view. There is plenty of activity in this trading hub - your dour mood is soon left behind."
 			]
 		},
 		{
@@ -450,12 +450,6 @@
 		{
 			"Key": "MQ03_TEMPLE_INTRO2",
 			"Text": [
-				"Iso stands before you once more. With a careful, delibrate motion, as if fearful that you might lunge for her throat, she pulls back the hood, revealing her features in full. She is a bit small in stature, perhaps, though the pantheress more than makes up for it with a stockier build than one might expect for one serving a public office. The dark spots of fur on her face glimmer in the lantern-lit room, her rounded ears flicking as she composes herself. In that moment you reconcile her presence with that of your earlier half-remembered vision. \"I thought you hadn't made it out,\" she whispers, before her eyes narrow, and her words take on an accusatory edge. \"Where've you been?\""
-			]
-		},
-		{
-			"Key": "MQ03_TEMPLE_INTRO2_DUMB",
-			"Text": [
 				"Iso stands before you once more. With a careful, delibrate motion, as if fearful that you might lunge for her throat, she pulls back the hood, revealing her features in full. She is a bit small in stature, perhaps, though the pantheress more than makes up for it with a stockier build than one might expect for one serving a public office. The dark spots of fur on her face glimmer in the lantern-lit room, her rounded ears flicking as she composes herself. \"I thought you hadn't made it out,\" she whispers, before her eyes narrow, and her words take on an accusatory edge. \"Where've you been?\""
 			]
 		},
@@ -534,19 +528,19 @@
 		{
 			"Key": "MQ03_TEMPLE_SHOWDOWN03",
 			"Text": [
-				"This slight strikes a nerve, and then some. The black wolf bares his teeth in a snarl, taking another few steps forward, threatening all merely by closing the distance. \"Do you not see, Iso? I'm doing all this, all of this, for you.\" He swings an arm sideways at nothing in particular, as if gesturing at the town as a whole. \"Because you just had to run away!\"\\n\\nThe pantheress is taken aback at this outburst, struggling to find words for a few moments, before the priestess beside her interrupts with a booming voice that is entirely unlike her character and smaller stature. \"There will not be an altercation inside my shrine!\" she demands, drawing the attention of all present. \"Leave, all of you, or-\" Randall snarls. \"Quiet, wench,\" he breathes through teeth, saliva droplets spraying from his black lips. \"I'll deal with you later,\" he adds, before resting his gaze on you."
+				"This slight strikes a nerve, and then some. The black wolf bares his teeth in a snarl, taking another few steps forward, threatening all merely by closing the distance. \"Do you not see, Iso? I'm doing all this, all of this, for you.\" He swings an arm sideways at nothing in particular, as if gesturing at the town as a whole. \"Because you just had to run away!\"\\n\\nThe pantheress is taken aback at this outburst, struggling to find words for a few moments, before the priestess beside her interrupts with a booming voice that is entirely unlike her character and smaller stature.\\n\\n\"There will not be an altercation inside my shrine!\" she demands, drawing the attention of all present. \"Leave, all of you, or-\"\\n\\nRandall snarls. \"Quiet, wench,\" he breathes through teeth, saliva droplets spraying from his black lips. \"I'll deal with you later,\" he adds, before resting his gaze on you."
 			]
 		},
 		{
 			"Key": "MQ03_TEMPLE_SHOWDOWN04",
 			"Text": [
-				"\"You,\" he growls, voice taking on a lot more venom. \"Iso, love, don't you know you associate with murderers?\" he begins. \"This one killed my trusted right hand, and a new recruit. You can't even let me have that.\" He must have assumed their failure to report back in as evidence enough. Randall finds himself in the difficult position of being forced to choose between prey, and quickly at that. Ultimately, he focuses on the object of his desire, a smooth grin reappearing on his lips. \"But now, my love, enough chat. You are here, and you are not leaving my side ever again,\" he declares.\\n\\nWith that, he bounds over to the pantheress, lips morphing into something resembling nothing but hunger. Drool dribbles from his maw as he attempts to wrap his arms around her. Willow squeaks and backs away. Iso reacts quickly, using her slender frame to her advantage to duck below his arms and recklessly kicking him in his stomach, staggering the wolf and sending him backwards, right towards you."
+				"\"You,\" he growls, voice taking on a lot more venom. \"Iso, love, don't you know you associate with murderers?\" he begins. \"This one killed my trusted right hand, and a new recruit. You can't even let me have that.\" He must have assumed their failure to report back in as evidence enough. Randall finds himself in the difficult position of being forced to choose between prey, and quickly at that. Ultimately, he focuses on the object of his desire, a smooth grin reappearing on his lips. \"But now, my love, enough chat. You are here, and you are not leaving my side ever again,\" he declares.\\n\\nWith that, he bounds over to the pantheress, lips curling into a snarl and eyes glimmering with little more than primal hunger. Drool dribbles from his maw as he attempts to wrap his arms around her. Willow squeaks and backs away. Iso reacts quickly, using her slender frame to her advantage to duck below his arms and recklessly kicking him in his stomach, staggering the wolf and sending him backwards, right towards you."
 			]
 		},
 		{
 			"Key": "MQ03_TEMPLE_SHOWDOWN05A",
 			"Text": [
-				"You wrap your arms around Randall, taking advantage of the element of surprise to force him tightly against your chest. Of course, it takes only a second for him to realize his predicament, and buck like a stubborn mount. The wolf slams his elbows backwards, into your chest, and with a wheeze you have no choice but to let go - but not before jerking your own knee upwards to deliver a painful kick in his shin, putting some distance between the two of you. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
+				"You wrap your arms around Randall, taking advantage of the element of surprise to force him tightly against your chest. Of course, it takes only a second for him to realize his predicament, and buck like a stubborn mount. The wolf slams his elbows backwards, into your chest. With a pained wheeze, you have no choice but to let go - but not before jerking your own knee upwards to deliver a painful kick in his shin, putting some distance between the two of you. With your feet off balance, your opponent, in turn, lashes out by awkwardly hooking a leg behind yours, sending the both of you crashing into the floor."
 			]
 		},
 		{
@@ -558,13 +552,13 @@
 		{
 			"Key": "MQ03_TEMPLE_SHOWDOWN05Z",
 			"Text": [
-				"\"You little shit,\" the wolf snarls, spitting a little bit of blood on the floor as he briefly rests on his side, staring daggers at you. \"I see now. You want her for yourself, don't you? A pathetic little {player.species} stealing away my beloved pantheress,\" he accuses. The crazed, hateful hunger in his eyes speaks volumes of his temptation to eat you where you stand, though he tears his gaze away from you, to his preferred prey. Iso, meanwhile, did not waste the opportunity, her possessive stalker briefly occupied in a scuffle with yourself. \"Willow, we need to move,\" she manages to say, trying to usher Willow out of the room. \"{player.name}, it's me he's after!\" she adds, the lapine priestess behind her more or less mortified at the evening's proceedings. A moment later, that horror turns to poorly concealed anger and she yanks her wrist from Iso's well-intentioned grip."
+				"\"You little shit,\" the wolf snarls, spitting a little bit of blood on the floor as he briefly rests on his side, glaring daggers at you. \"I see now. You want her for yourself, don't you? A pathetic little {player.species} stealing away my beloved pantheress,\" he accuses. The crazed, hateful hunger in his eyes speaks volumes of his temptation to eat you where you stand, though he tears his gaze away from you, to his preferred prey. Iso, meanwhile, did not waste the opportunity, her possessive stalker briefly occupied in a scuffle with yourself. \"Willow, we need to move,\" she manages to say, trying to usher Willow out of the room. \"{player.name}, it's me he's after!\" she adds, the lapine priestess behind her more or less mortified at the evening's proceedings. A moment later, that horror turns to poorly concealed anger and she yanks her wrist from Iso's well-intentioned grip."
 			]
 		},
 		{
 			"Key": "MQ03_TEMPLE_SHOWDOWN06",
 			"Text": [
-				"The downed wolf snarls in frustration and quite literally pounces on his quarry, pushing you and the healer aside like a cannonball rushing past. The two tumble to the ground, knocking over a vase in the process, before Randall assumes dominance and pins his catch beneath him, filling the pantheress' vision with black fur and sharp yellow eyes. \"Oh, Iso,\" he sighs. \"We had such a beautiful thing together. Why did you leave me? Why was I not good enough?\" His meaty tongue lashes out from behind his black lips and drags across her face, leaving a thin coating of saliva squarely between her eyes. \"Go to hell, dogbreath,\" she hisses, grimacing and barely suppressing a cough. The wolf is by far the strongest of the two, and the mayor, knowing this, stopped bothering to struggle. Pleased with this development, Randall grins. \"There'll be a lot more of that dogbreath for you to enjoy now that we can reunite,\" he taunts, before parting his lips and clamping his jaws around Iso's head."
+				"The downed wolf snarls in frustration and quite literally pounces on his quarry, pushing you and the healer aside like a cannonball rushing past. The two tumble to the ground, knocking over a vase in the process, before Randall assumes dominance and pins his catch beneath him, filling the pantheress' vision with black fur and sharp yellow eyes.\\n\\n\"Oh, Iso,\" he sighs. \"We had such a beautiful thing together. Why did you leave me? Why was I not good enough?\" His meaty tongue lashes out from behind his black lips and drags across her face, leaving a thin coating of saliva squarely between her eyes.\\n\\n\"Go to hell, dogbreath,\" she hisses, grimacing and barely suppressing a cough. The wolf is by far the strongest of the two, and the mayor, knowing this, stopped bothering to struggle.\\n\\nPleased with this development, Randall grins. \"There'll be a lot more of that dogbreath for you to enjoy now that we can reunite,\" he taunts, before parting his lips and clamping his jaws around Iso's head."
 			]
 		},
 		{

@@ -90,734 +90,8 @@
 										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"NodeType": "State",
-												"Key": "MQ02_R_EnterForce",
-												"ScriptAction": {
-													"!Type": "ScriptDataInline",
-													"Script": "Storage.SetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\", true)\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetNumber(\"OLIVER_MOOD\", 0)\r\nLogSplit()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Cottage\")"
-												},
-												"Children": [
-													{
-														"NodeType": "Choice",
-														"Key": "CFE_CheckOnGuy",
-														"Title": "Check",
-														"Tooltip": "[Wits] Try and see what's wrong with him.",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"Children": [
-															{
-																"NodeType": "State",
-																"Key": "CFE_CheckWitsy",
-																"ScriptAction": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")"
-																},
-																"ScriptAppear": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "return Player.Wits >= 4"
-																},
-																"Children": [
-																	{
-																		"NodeType": "Choice",
-																		"Key": "CFE_Slap",
-																		"Title": "Slap",
-																		"Tooltip": "Give his face a good slap.",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_ROUGH\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)"
-																		},
-																		"Children": [
-																			{
-																				"NodeType": "State",
-																				"Key": "CFE_DoWakeUp",
-																				"ScriptAction": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")"
-																				},
-																				"Children": [
-																					{
-																						"NodeType": "Choice",
-																						"Key": "Oliver1_C_Who",
-																						"Title": "Sympathetic",
-																						"Tooltip": "Tell him your name, and that he's safe.",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"Children": [
-																							{
-																								"NodeType": "State",
-																								"Key": "Oliver1_R_Who",
-																								"ScriptAction": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"MQ02_OLIVER_R_WHO\")"
-																								},
-																								"Children": [
-																									{
-																										"NodeType": "Choice",
-																										"Key": "Oliver1_C_Spill1",
-																										"Title": "Continue",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"Children": [
-																											{
-																												"NodeType": "State",
-																												"Key": "Oliver1_R_Spill1",
-																												"ScriptAction": {
-																													"!Type": "ScriptDataInline",
-																													"Script": "Log(\"MQ02_OLIVER_R_SPILL1\")"
-																												},
-																												"Children": [
-																													{
-																														"NodeType": "Choice",
-																														"Key": "Oliver1_C_Spill2a",
-																														"Title": "Open",
-																														"Tooltip": "Say that you're here to get supplies for the bridge.",
-																														"Highlight": false,
-																														"ButtonWidth": 1.0,
-																														"Children": [
-																															{
-																																"NodeType": "State",
-																																"Key": "Oliver1_R_Spill2",
-																																"ScriptAction": {
-																																	"!Type": "ScriptDataInline",
-																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL2\")"
-																																},
-																																"Children": [
-																																	{
-																																		"NodeType": "Choice",
-																																		"Key": "Oliver1_C_Spill3",
-																																		"Title": "Continue",
-																																		"Highlight": false,
-																																		"ButtonWidth": 1.0,
-																																		"Children": [
-																																			{
-																																				"NodeType": "State",
-																																				"Key": "Oliver1_R_Spill3",
-																																				"ScriptAction": {
-																																					"!Type": "ScriptDataInline",
-																																					"Script": "Log(\"MQ02_OLIVER_R_SPILL3\")"
-																																				},
-																																				"Children": [
-																																					{
-																																						"NodeType": "Choice",
-																																						"Key": "Oliver1_C_Spill_Wolf",
-																																						"Title": "Wolf",
-																																						"Tooltip": "Ask about the big wolf. What did he look like?",
-																																						"Highlight": false,
-																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": {
-																																							"!Type": "ScriptDataInline",
-																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")"
-																																						},
-																																						"Children": [
-																																							{
-																																								"NodeType": "State",
-																																								"Key": "Oliver1_R_Spill_Wolf",
-																																								"ScriptAction": {
-																																									"!Type": "ScriptDataInline",
-																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WOLF\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)"
-																																								},
-																																								"Children": [
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Prey"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Why"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill4"
-																																									}
-																																								]
-																																							}
-																																						]
-																																					},
-																																					{
-																																						"NodeType": "Choice",
-																																						"Key": "Oliver1_C_Spill_Prey",
-																																						"Title": "Prey",
-																																						"Tooltip": "Ask about the stomach and the live prey.",
-																																						"Highlight": false,
-																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": {
-																																							"!Type": "ScriptDataInline",
-																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_PREY\")"
-																																						},
-																																						"Children": [
-																																							{
-																																								"NodeType": "State",
-																																								"Key": "Oliver1_R_Spill_Prey",
-																																								"ScriptAction": {
-																																									"!Type": "ScriptDataInline",
-																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_PREY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_PREY\", true)"
-																																								},
-																																								"Children": [
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Wolf"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Why"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill4"
-																																									}
-																																								]
-																																							}
-																																						]
-																																					},
-																																					{
-																																						"NodeType": "Choice",
-																																						"Key": "Oliver1_C_Spill_Why",
-																																						"Title": "Reason",
-																																						"Tooltip": "Ask about why they were there.",
-																																						"Highlight": false,
-																																						"ButtonWidth": 1.0,
-																																						"ScriptAppear": {
-																																							"!Type": "ScriptDataInline",
-																																							"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WHY\")"
-																																						},
-																																						"Children": [
-																																							{
-																																								"NodeType": "State",
-																																								"Key": "Oliver1_R_Spill_Why",
-																																								"ScriptAction": {
-																																									"!Type": "ScriptDataInline",
-																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL_WHY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WHY\", true)"
-																																								},
-																																								"Children": [
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Wolf"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill_Prey"
-																																									},
-																																									{
-																																										"NodeType": "Link",
-																																										"LinkTarget": "Oliver1_C_Spill4"
-																																									}
-																																								]
-																																							}
-																																						]
-																																					},
-																																					{
-																																						"NodeType": "Choice",
-																																						"Key": "Oliver1_C_Spill4",
-																																						"Title": "Continue",
-																																						"Tooltip": "Ask him what happened next.",
-																																						"Highlight": false,
-																																						"ButtonWidth": 1.0,
-																																						"Children": [
-																																							{
-																																								"NodeType": "State",
-																																								"Key": "Oliver1_R_Spill4",
-																																								"ScriptAction": {
-																																									"!Type": "ScriptDataInline",
-																																									"Script": "Log(\"MQ02_OLIVER_R_SPILL4\")"
-																																								},
-																																								"Children": [
-																																									{
-																																										"NodeType": "Choice",
-																																										"Key": "Oliver1_C_End1",
-																																										"Title": "Comfort",
-																																										"Tooltip": "Maybe he wants a hug?",
-																																										"Highlight": false,
-																																										"ButtonWidth": 1.0,
-																																										"Children": [
-																																											{
-																																												"NodeType": "State",
-																																												"Key": "Oliver1_R_End_Hug",
-																																												"ScriptAction": {
-																																													"!Type": "ScriptDataInline",
-																																													"Script": "Log(\"MQ02_OLIVER_R_END_HUG\")\r\nSleep(1)"
-																																												},
-																																												"ScriptAppear": {
-																																													"!Type": "ScriptDataInline",
-																																													"Script": "return Storage.GetNumber(\"rep_oliver\") >= 2"
-																																												},
-																																												"Children": [
-																																													{
-																																														"NodeType": "Choice",
-																																														"Key": "Oliver1_C_End_Hug",
-																																														"Title": "Continue",
-																																														"Highlight": false,
-																																														"ButtonWidth": 1.0,
-																																														"Children": [
-																																															{
-																																																"NodeType": "Link",
-																																																"LinkTarget": "Oliver1_R_End_NoHug"
-																																															}
-																																														]
-																																													}
-																																												]
-																																											},
-																																											{
-																																												"NodeType": "State",
-																																												"Key": "Oliver1_R_End_NoHug",
-																																												"ScriptAction": {
-																																													"!Type": "ScriptDataInline",
-																																													"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)"
-																																												},
-																																												"Children": [
-																																													{
-																																														"NodeType": "Choice",
-																																														"Key": "Oliver1_C_End_NoHug",
-																																														"Title": "Continue",
-																																														"Highlight": false,
-																																														"ButtonWidth": 1.0,
-																																														"Children": [
-																																															{
-																																																"NodeType": "State",
-																																																"Key": "Oliver_R_End2",
-																																																"ScriptAction": {
-																																																	"!Type": "ScriptDataInline",
-																																																	"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
-																																																},
-																																																"Children": [
-																																																	{
-																																																		"NodeType": "Choice",
-																																																		"Key": "Oliver_C_End2",
-																																																		"Title": "Leave",
-																																																		"Tooltip": "Time to go.",
-																																																		"Highlight": false,
-																																																		"ButtonWidth": 1.0,
-																																																		"Children": [
-																																																			{
-																																																				"NodeType": "Link",
-																																																				"LinkTarget": "ExteriorMain"
-																																																			}
-																																																		]
-																																																	}
-																																																]
-																																															}
-																																														]
-																																													}
-																																												]
-																																											}
-																																										]
-																																									},
-																																									{
-																																										"NodeType": "Choice",
-																																										"Key": "Oliver1_C_End2",
-																																										"Title": "Vengeful",
-																																										"Tooltip": "Tell him you'll get to the bottom of this.",
-																																										"Highlight": false,
-																																										"ButtonWidth": 1.0,
-																																										"Children": [
-																																											{
-																																												"NodeType": "Link",
-																																												"LinkTarget": "Oliver1_R_End_NoHug"
-																																											}
-																																										]
-																																									}
-																																								]
-																																							}
-																																						]
-																																					}
-																																				]
-																																			}
-																																		]
-																																	}
-																																]
-																															}
-																														]
-																													},
-																													{
-																														"NodeType": "Choice",
-																														"Key": "Oliver1_C_Spill2b",
-																														"Title": "Cautious",
-																														"Tooltip": "Say that you want to know what the hell happened here.",
-																														"Highlight": false,
-																														"ButtonWidth": 1.0,
-																														"Children": [
-																															{
-																																"NodeType": "Link",
-																																"LinkTarget": "Oliver1_R_Spill2"
-																															}
-																														]
-																													}
-																												]
-																											}
-																										]
-																									}
-																								]
-																							}
-																						]
-																					},
-																					{
-																						"NodeType": "Choice",
-																						"Key": "Oliver1_C_WhoFight",
-																						"Title": "Concerned",
-																						"Tooltip": "Ask about his injuries specifically. Who did that?",
-																						"Highlight": true,
-																						"ButtonWidth": 1.0,
-																						"ScriptAppear": {
-																							"!Type": "ScriptDataInline",
-																							"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
-																						},
-																						"Children": [
-																							{
-																								"NodeType": "State",
-																								"Key": "Oliver1_R_Injuries",
-																								"ScriptAction": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")"
-																								},
-																								"Children": [
-																									{
-																										"NodeType": "Link",
-																										"LinkTarget": "Oliver1_C_Spill1"
-																									}
-																								]
-																							}
-																						]
-																					},
-																					{
-																						"NodeType": "Choice",
-																						"Key": "Oliver1_C_What",
-																						"Title": "Direct",
-																						"Tooltip": "Ask him what the hell happened to him.",
-																						"Highlight": false,
-																						"ButtonWidth": 1.0,
-																						"Children": [
-																							{
-																								"NodeType": "State",
-																								"Key": "Oliver1_R_What",
-																								"ScriptAction": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "Log(\"MQ02_OLIVER_R_WHAT\")"
-																								},
-																								"Children": [
-																									{
-																										"NodeType": "Choice",
-																										"Key": "Oliver1_C_Reassure",
-																										"Title": "Calm",
-																										"Tooltip": "Tell him to calm down; you're here to help.",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"Children": [
-																											{
-																												"NodeType": "Link",
-																												"LinkTarget": "Oliver1_R_Spill1"
-																											}
-																										]
-																									},
-																									{
-																										"NodeType": "Choice",
-																										"Key": "Oliver1_C_AggravateA",
-																										"Title": "Cold",
-																										"Tooltip": "Tell him to man it up and stop wasting time.",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"Children": [
-																											{
-																												"NodeType": "State",
-																												"Key": "Oliver1_BeginCombat",
-																												"ScriptAction": {
-																													"!Type": "ScriptDataInline",
-																													"Script": "Log(\"MQ02_OLIVER_R_AGGRAVATE\")"
-																												},
-																												"Children": [
-																													{
-																														"NodeType": "Choice",
-																														"Key": "Oliver1_CombatDone",
-																														"Title": "Uh-oh...",
-																														"Highlight": false,
-																														"ButtonWidth": 1.0,
-																														"ScriptAction": {
-																															"!Type": "ScriptDataInline",
-																															"Script": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_MQ02_Oliver\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend)\r\nstate:OnCreatureKilled(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend)\r\nstate:Begin()"
-																														},
-																														"Children": [
-																															{
-																																"NodeType": "State",
-																																"Key": "Oliver1_FD_Digested",
-																																"ScriptAction": {
-																																	"!Type": "ScriptDataInline",
-																																	"Script": "Log(\"MQ02_OLIVER_FD_DIGESTED\")"
-																																},
-																																"ScriptAppear": {
-																																	"!Type": "ScriptDataInline",
-																																	"Script": "return Storage.GetFlag(\"oliver_eaten\")"
-																																},
-																																"Children": [
-																																	{
-																																		"NodeType": "Choice",
-																																		"Key": "Oliver1_FD_Digested2",
-																																		"Title": "Sleep",
-																																		"Highlight": false,
-																																		"ButtonWidth": 1.0,
-																																		"Children": [
-																																			{
-																																				"NodeType": "State",
-																																				"Key": "Oliver1_FD_Digested3",
-																																				"ScriptAction": {
-																																					"!Type": "ScriptDataInline",
-																																					"Script": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")"
-																																				},
-																																				"Children": [
-																																					{
-																																						"NodeType": "Choice",
-																																						"Key": "Oliver1_FD_ToHome",
-																																						"Title": "Continue",
-																																						"Tooltip": "Look around the house, see if anything's worth taking.",
-																																						"Highlight": false,
-																																						"ButtonWidth": 1.0,
-																																						"ScriptAction": {
-																																							"!Type": "ScriptDataInline",
-																																							"Script": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)"
-																																						},
-																																						"Children": [
-																																							{
-																																								"NodeType": "Link",
-																																								"LinkTarget": "CottageAbandoned"
-																																							}
-																																						]
-																																					}
-																																				]
-																																			}
-																																		]
-																																	}
-																																]
-																															},
-																															{
-																																"NodeType": "State",
-																																"Key": "Oliver1_FD_Killed",
-																																"ScriptAction": {
-																																	"!Type": "ScriptDataInline",
-																																	"Script": "Log(\"MQ02_OLIVER_FD_KILLED\")"
-																																},
-																																"ScriptAppear": {
-																																	"!Type": "ScriptDataInline",
-																																	"Script": "return Storage.GetFlag(\"oliver_dead\")"
-																																},
-																																"Children": [
-																																	{
-																																		"NodeType": "Link",
-																																		"LinkTarget": "Oliver1_FD_ToHome"
-																																	}
-																																]
-																															}
-																														]
-																													}
-																												]
-																											}
-																										]
-																									},
-																									{
-																										"NodeType": "Choice",
-																										"Key": "Oliver1_C_AggravateB",
-																										"Title": "Harsh",
-																										"Tooltip": "Tell him to start talking right now.",
-																										"Highlight": false,
-																										"ButtonWidth": 1.0,
-																										"Children": [
-																											{
-																												"NodeType": "Link",
-																												"LinkTarget": "Oliver1_BeginCombat"
-																											}
-																										]
-																									}
-																								]
-																							}
-																						]
-																					}
-																				]
-																			}
-																		]
-																	},
-																	{
-																		"NodeType": "Choice",
-																		"Key": "CFE_SoberUp",
-																		"Title": "Sober Up",
-																		"Tooltip": "Splash some water from your canteen on his face.",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "Log(\"mq02_cot_soberup\")\r\nSleep(3)"
-																		},
-																		"Children": [
-																			{
-																				"NodeType": "Link",
-																				"LinkTarget": "CFE_DoWakeUp"
-																			}
-																		]
-																	},
-																	{
-																		"NodeType": "Choice",
-																		"Key": "CFE_Bandage",
-																		"Title": "Bandage",
-																		"Tooltip": "Wrap some cloth around the claw marks.",
-																		"Highlight": true,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_BANDAGE\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)"
-																		},
-																		"ScriptAppear": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
-																		},
-																		"Children": [
-																			{
-																				"NodeType": "State",
-																				"Key": "CFE_DoBandage",
-																				"ScriptAction": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"mq02_cot_awake_bandage\")"
-																				},
-																				"Children": [
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "Oliver1_C_Who"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "Oliver1_C_WhoFight"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "Oliver1_C_What"
-																					}
-																				]
-																			}
-																		]
-																	},
-																	{
-																		"NodeType": "Choice",
-																		"Key": "CFE_UsePotion",
-																		"Title": "Potion",
-																		"Tooltip": "Pour one of your healing potions down his throat.",
-																		"Highlight": true,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_POTION\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
-																		},
-																		"ScriptAppear": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "return Player:HasItem(\"U_PotionHeal\")"
-																		},
-																		"Children": [
-																			{
-																				"NodeType": "Link",
-																				"LinkTarget": "CFE_DoWakeUp"
-																			}
-																		]
-																	},
-																	{
-																		"NodeType": "Choice",
-																		"Key": "CFE_Carry",
-																		"Title": "Carry",
-																		"Tooltip": "[Strength] Pick him up and put him on the couch.",
-																		"Highlight": false,
-																		"ButtonWidth": 1.0,
-																		"ScriptAction": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "Storage.SetFlag(\"mq02_cot_triedcarry\", true)"
-																		},
-																		"ScriptAppear": {
-																			"!Type": "ScriptDataInline",
-																			"Script": "return not Storage.GetFlag(\"mq02_cot_triedcarry\")"
-																		},
-																		"Children": [
-																			{
-																				"NodeType": "State",
-																				"Key": "CFE_CarryOK",
-																				"ScriptAction": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)"
-																				},
-																				"ScriptAppear": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "return Player.Strength >= 4"
-																				},
-																				"Children": [
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_Slap"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_SoberUp"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_Bandage"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_UsePotion"
-																					}
-																				]
-																			},
-																			{
-																				"NodeType": "State",
-																				"Key": "CFE_CarryFail",
-																				"ScriptAction": {
-																					"!Type": "ScriptDataInline",
-																					"Script": "Log(\"mq02_cot_carry_fail\")"
-																				},
-																				"Children": [
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_Slap"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_SoberUp"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_Bandage"
-																					},
-																					{
-																						"NodeType": "Link",
-																						"LinkTarget": "CFE_UsePotion"
-																					}
-																				]
-																			}
-																		]
-																	}
-																]
-															},
-															{
-																"NodeType": "State",
-																"Key": "CFE_CheckNotSoWitsy",
-																"ScriptAction": {
-																	"!Type": "ScriptDataInline",
-																	"Script": "Log(\"mq02_cot_check_dumb\")"
-																},
-																"Children": [
-																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "CFE_Slap"
-																	},
-																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "CFE_SoberUp"
-																	},
-																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "CFE_UsePotion"
-																	},
-																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "CFE_Carry"
-																	}
-																]
-															}
-														]
-													}
-												]
+												"NodeType": "Link",
+												"LinkTarget": "MQ02_R_RandallChat"
 											}
 										]
 									}
@@ -840,7 +114,7 @@
 				"Key": "CottageAbandoned",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Cottage\")\r\nLog(\"OLIVER_COTTAGE_ENTER_DEAD\")"
+					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Oliver's Cottage\")\r\nLog(\"OLIVER_COTTAGE_ENTER_DEAD\")"
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
@@ -858,7 +132,7 @@
 				"Key": "CottageMain",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Oliver's Cabin\")\r\n\r\nStorage.SetFlag(\"OLIVER_VISITED_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"), true)\r\nLogSplit()\r\nLog(\"OLIVER_COTTAGE_ENTER\")\r\nLog(\"OLIVER_GREET_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"))"
+					"Script": "SetInventoryEnabled(true)\r\nSetLocation(\"Oliver's Cottage\")\r\n\r\nStorage.SetFlag(\"OLIVER_VISITED_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"), true)\r\nLogSplit()\r\nLog(\"OLIVER_COTTAGE_ENTER\")\r\nLog(\"OLIVER_GREET_MOOD\" .. Storage.GetNumber(\"OLIVER_MOOD\"))"
 				},
 				"Children": [
 					{
@@ -1516,6 +790,1161 @@
 											{
 												"NodeType": "Link",
 												"LinkTarget": "Oliver_R_Talk_Root"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "MQ02_R_OliverChat",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "Storage.SetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\", true)\r\nStorage.SetNumber(\"OLIVER_MOOD\", 0)\r\nSaveData.TakeCheckpoint()\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)\r\nLog(\"mq02_cot_entry\")\r\nSetLocation(\"Oliver's Cottage\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "CFE_CheckOnGuy",
+						"Title": "Check",
+						"Tooltip": "[Wits] Try and see what's wrong with him.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "CFE_CheckWitsy",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Storage.SetFlag(\"mq02_cot_wits\", true)\r\nLog(\"mq02_cot_check_wits1\")\r\nSleep(1)\r\nLog(\"mq02_cot_check_wits2\")"
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataInline",
+									"Script": "return Player.Wits >= 4"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "CFE_Slap",
+										"Title": "Slap",
+										"Tooltip": "Give his face a good slap.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_ROUGH\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", -1)\r\nLog(\"mq02_cot_slapperino\")\r\nSleep(3)"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "CFE_DoWakeUp",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Text.SetVariable(\"floor\", Storage.GetFlag(\"mq02_oliver_couch\") and \"couch\" or \"floor\")\r\nLog(\"mq02_cot_awake\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver1_C_Who",
+														"Title": "Sympathetic",
+														"Tooltip": "Tell him your name, and that he's safe.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Oliver1_R_Who",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_OLIVER_R_WHO\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Oliver1_C_Spill1",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Oliver1_R_Spill1",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_OLIVER_R_SPILL1\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Oliver1_C_Spill2a",
+																						"Title": "Open",
+																						"Tooltip": "Say that you're here to get supplies for the bridge.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Oliver1_R_Spill2",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_OLIVER_R_SPILL2\")"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Oliver1_C_Spill3",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Oliver1_R_Spill3",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_OLIVER_R_SPILL3\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Oliver1_C_Spill_Wolf",
+																														"Title": "Wolf",
+																														"Tooltip": "Ask about the big wolf. Who is he?",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAppear": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\")"
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Oliver1_R_Spill_Wolf",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL_WOLF\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Prey"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Why"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill4"
+																																	}
+																																]
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Oliver1_C_Spill_Prey",
+																														"Title": "Prey",
+																														"Tooltip": "Ask about whoever was stewing in there.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAppear": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_PREY\")"
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Oliver1_R_Spill_Prey",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL_PREY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_PREY\", true)"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Wolf"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Why"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill4"
+																																	}
+																																]
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Oliver1_C_Spill_Why",
+																														"Title": "Reason",
+																														"Tooltip": "Ask about why they were there.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAppear": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "return not Storage.GetFlag(\"MQ02_OLIVER_R_SPILL_WHY\")"
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Oliver1_R_Spill_Why",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL_WHY\")\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WHY\", true)"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Wolf"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill_Prey"
+																																	},
+																																	{
+																																		"NodeType": "Link",
+																																		"LinkTarget": "Oliver1_C_Spill4"
+																																	}
+																																]
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Oliver1_C_Spill4",
+																														"Title": "Continue",
+																														"Tooltip": "Ask him what happened next.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Oliver1_R_Spill4",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_OLIVER_R_SPILL4\")"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Oliver1_C_End1",
+																																		"Title": "Comfort",
+																																		"Tooltip": "Maybe he wants a hug?",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "Oliver1_R_End_Hug",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "Log(\"MQ02_OLIVER_R_END_HUG\")\r\nSleep(1)"
+																																				},
+																																				"ScriptAppear": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "return Storage.GetNumber(\"rep_oliver\") >= 2"
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "Oliver1_C_End_Hug",
+																																						"Title": "Continue",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "Link",
+																																								"LinkTarget": "Oliver1_R_End_NoHug"
+																																							}
+																																						]
+																																					}
+																																				]
+																																			},
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "Oliver1_R_End_NoHug",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)\r\nJournal.Update(\"MQ02\", 20)"
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "Oliver1_C_End_NoHug",
+																																						"Title": "Continue",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "State",
+																																								"Key": "Oliver_R_End2",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataInline",
+																																									"Script": "Log(\"MQ02_OLIVER_R_END2\")\r\n\r\n-- Quite a big scene just happened\r\nAdvanceTime(1)"
+																																								},
+																																								"Children": [
+																																									{
+																																										"NodeType": "Choice",
+																																										"Key": "Oliver_C_End2",
+																																										"Title": "Leave",
+																																										"Tooltip": "Time to go.",
+																																										"Highlight": false,
+																																										"ButtonWidth": 1.0,
+																																										"Children": [
+																																											{
+																																												"NodeType": "Link",
+																																												"LinkTarget": "ExteriorMain"
+																																											}
+																																										]
+																																									}
+																																								]
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Oliver1_C_End2",
+																																		"Title": "Vengeful",
+																																		"Tooltip": "Tell him you'll get to the bottom of this.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "Oliver1_R_End_NoHug"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					},
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Oliver1_C_Spill2b",
+																						"Title": "Cautious",
+																						"Tooltip": "Say that you want to know what the hell happened here.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "Oliver1_R_Spill2"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver1_C_WhoFight",
+														"Title": "Concerned",
+														"Tooltip": "Ask about his injuries specifically. Who did that?",
+														"Highlight": true,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataInline",
+															"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Oliver1_R_Injuries",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(Storage.GetFlag(\"mq02_oliver_bandaged\") and \"MQ02_OLIVER_R_INJURIES_ALT\" or \"MQ02_OLIVER_R_INJURIES\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Oliver1_C_Spill1"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Oliver1_C_What",
+														"Title": "Direct",
+														"Tooltip": "Ask him what the hell happened to him.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Oliver1_R_What",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_OLIVER_R_WHAT\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Oliver1_C_Reassure",
+																		"Title": "Calm",
+																		"Tooltip": "Tell him to calm down; you're here to help.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Oliver1_R_Spill1"
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Oliver1_C_AggravateA",
+																		"Title": "Cold",
+																		"Tooltip": "Tell him to man it up and stop wasting time.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Oliver1_BeginCombat",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_OLIVER_R_AGGRAVATE\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Oliver1_CombatDone",
+																						"Title": "Uh-oh...",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataInline",
+																							"Script": "local state = Combat2()\r\nstate:AddParticipant(Player)\r\nstate:AddParticipant(Creature(\"CR_MQ02_Oliver\"))\r\nstate:OnCreatureVored(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_eaten\", true)\r\nend)\r\nstate:OnCreatureKilled(function(predator, prey)\r\n    Storage.SetFlag(\"oliver_dead\", true)\r\nend)\r\nstate:Begin()"
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Oliver1_FD_Digested",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_OLIVER_FD_DIGESTED\")"
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "return Storage.GetFlag(\"oliver_eaten\")"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Oliver1_FD_Digested2",
+																										"Title": "Sleep",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Oliver1_FD_Digested3",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "FoodComa()\r\n\r\nLog(\"MQ02_OLIVER_FD_DIGESTED2\")\r\nLogPostVore(\"MQ02_OLIVER_FD_DISPOSAL\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Oliver1_FD_ToHome",
+																														"Title": "Continue",
+																														"Tooltip": "Look around the house, see if anything's worth taking.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)\r\nJournal.Update(\"MQ02\", 21)"
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "CottageAbandoned"
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"NodeType": "State",
+																								"Key": "Oliver1_FD_Killed",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_OLIVER_FD_KILLED\")"
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "return Storage.GetFlag(\"oliver_dead\")"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Link",
+																										"LinkTarget": "Oliver1_FD_ToHome"
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Oliver1_C_AggravateB",
+																		"Title": "Harsh",
+																		"Tooltip": "Tell him to start talking right now.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Oliver1_BeginCombat"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "CFE_SoberUp",
+										"Title": "Sober Up",
+										"Tooltip": "Splash some water from your canteen on his face.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Log(\"mq02_cot_soberup\")\r\nSleep(3)"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "CFE_DoWakeUp"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "CFE_Bandage",
+										"Title": "Bandage",
+										"Tooltip": "Wrap some cloth around the claw marks.",
+										"Highlight": true,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_BANDAGE\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nLog(\"mq02_cot_bandage\")\r\nSleep(2)"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "-- shown if player noticed the injuries\r\nreturn Storage.GetFlag(\"mq02_cot_wits\")"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "CFE_DoBandage",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"mq02_cot_awake_bandage\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver1_C_Who"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver1_C_WhoFight"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Oliver1_C_What"
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "CFE_UsePotion",
+										"Title": "Potion",
+										"Tooltip": "Pour one of your healing potions down his throat.",
+										"Highlight": true,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.SetFlag(\"MQ02_OLIVER_WAKE_POTION\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nPlayer:TakeItem(\"U_PotionHeal\")\r\nLog(\"mq02_cot_potion\")\r\nSleep(3)"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return Player:HasItem(\"U_PotionHeal\")"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "CFE_DoWakeUp"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "CFE_Carry",
+										"Title": "Carry",
+										"Tooltip": "[Strength] Pick him up and put him on the couch.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "Storage.SetFlag(\"mq02_cot_triedcarry\", true)"
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataInline",
+											"Script": "return not Storage.GetFlag(\"mq02_cot_triedcarry\")"
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "CFE_CarryOK",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"mq02_cot_carry_ok\")\r\nStorage.SetFlag(\"mq02_oliver_couch\", true)\r\nStorage.ModifyNumber(\"rep_oliver\", 1)\r\nSleep(1)"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return Player.Strength >= 4"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_Slap"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_SoberUp"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_Bandage"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_UsePotion"
+													}
+												]
+											},
+											{
+												"NodeType": "State",
+												"Key": "CFE_CarryFail",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"mq02_cot_carry_fail\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_Slap"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_SoberUp"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_Bandage"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "CFE_UsePotion"
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "CFE_CheckNotSoWitsy",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"mq02_cot_check_dumb\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CFE_Slap"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CFE_SoberUp"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CFE_UsePotion"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CFE_Carry"
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "MQ02_R_RandallChat",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "SetLocation(\"Carpenter's Cottage\")\r\nSaveData.TakeCheckpoint()\r\nLog(\"MQ02_AM_OPENING1\")\r\nPreySense(Creature(\"CR_MQ02_Randall\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataInline",
+					"Script": "return Storage.GetFlag(\"mq02_road_antag_scheduled\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "MQ02A_C_Opening2",
+						"Title": "Continue",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ02A_R_Opening2",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"MQ02_AM_OPENING2\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ02A_C_Opening3",
+										"Title": "Continue",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ02A_R_Opening3",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Log(\"MQ02_AM_OPENING3\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ02A_C_HelloNice",
+														"Title": "Honest",
+														"Tooltip": "Tell him who you are.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ02A_R_HelloNice",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ02A_C_Business",
+																		"Title": "Continue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ02A_R_Business1",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_BUSINESS1\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ02A_C_Business1B",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ02A_R_Business2",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_AM_BUSINESS2\")"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ02A_C_Business3",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ02A_R_Business3B",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_BUSINESS3B\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)"
+																												},
+																												"ScriptAppear": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "return Storage.GetFlag(\"oliver_eaten\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Link",
+																														"LinkTarget": "MQ02A_C_Ending"
+																													}
+																												]
+																											},
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ02A_R_Business3",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_BUSINESS3\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ02A_C_Ending",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ02A_R_Ending",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_AM_BUSINESS4\")"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "MQ02A_C_Finish",
+																																		"Title": "Continue",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "MQ02_R_OliverChat"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ02A_C_HelloNotNice",
+														"Title": "Reserved",
+														"Tooltip": "Suggest that this is someone else's house.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ02A_R_HelloNotNice",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_NOT_NICE\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "MQ02A_C_Business"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "MQ02A_C_HelloAccuse",
+														"Title": "Accusatory",
+														"Tooltip": "Demand to know what's happening here.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ02A_R_HelloAccuse",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"MQ02_AM_HELLO_REALLY_NOT_NICE\")\r\nStorage.ModifyNumber(\"rep_randall\", 1)"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ02A_C_HelloPush",
+																		"Title": "Push",
+																		"Tooltip": "Give him a good shove. Back off, punk.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ02A_R_HelloPush",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_SHOVE\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ02A_C_Business"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ02A_C_HelloLick",
+																		"Title": "Lick",
+																		"Tooltip": "Lick his muzzle. Probably not what he expects.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ02A_R_HelloLick",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_LICK\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ02A_C_Business"
+																					},
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ02A_C_Bellyrub",
+																						"Title": "Bellyrub",
+																						"Tooltip": "Tease him further with a rub on that fuzzy gut.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ02A_R_Bellyrub",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "Log(\"MQ02_AM_BELLYRUB\")"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ02A_C_WillingVore",
+																										"Title": "Submit",
+																										"Tooltip": "Let the wolf swallow you, like the tasty preything you are.",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataInline",
+																											"Script": "-- Player gets gulped by Randall\r\nLog(\"MQ02_RANDALL_VORE_WIN_POV\")\r\nlocal fight = Combat2()\r\nlocal randall = Creature(\"CR_MQ02_Randall\")\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:SetVored(randall, Player)\r\nfight:Begin()"
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ02A_R_Dummy1",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "-- you're not supposed to be able to win the willing vore fight\r\nerror()"
+																												},
+																												"Children": []
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ02A_C_HelloPunch",
+																		"Title": "Punch",
+																		"Tooltip": "Your knuckles are itching. Use them.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ02A_R_HelloPunch",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ02_AM_HELLO_PUNCH\")\r\nStorage.SetFlag(\"MQ02_RANDALL_PUNCHED\", true)\r\nStorage.ModifyNumber(\"rep_randall\", -1)"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ02A_C_Business"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ02A_C_Stab",
+																		"Title": "Stab",
+																		"Tooltip": "He's close, and your dagger is small enough to quickly pull out!",
+																		"Highlight": true,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataVisualCondition",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionPlayerEquipment",
+																					"ItemGuid": "795c79f2-ce54-4c2f-837e-d767e3c2599a"
+																				}
+																			]
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ02A_R_Stab",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataInline",
+																					"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"MQ02_AM_HELLO_STAB\")"
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ02A_C_Fight",
+																						"Title": "Let's roll",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ02A_R_Fight",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "local fight = Combat2()\r\nlocal randall = Creature(\"CR_MQ02_Randall\")\r\nlocal goon1 = Creature(\"CR_MQ02_Goon1\")\r\nlocal goon2 = Creature(\"CR_MQ02_Goon2\")\r\n\r\n-- Reflect the stab in the upcoming fight - mostly visual\r\nrandall.Health = randall.Health - 1\r\n\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(randall)\r\nfight:AddParticipant(goon1)\r\nfight:AddParticipant(goon2)\r\nfight:OnCreatureVored(function(pred, prey)\r\n    -- Goons flee when Randall is swallowed\r\n    if prey == randall then\r\n        local goon1_ok = not goon1:IsDead() and not fight:IsSwallowed(goon1)\r\n        local goon2_ok = not goon2:IsDead() and not fight:IsSwallowed(goon2)\r\n        if goon1_ok and goon2_ok then\r\n            -- Both alive\r\n            Log(\"MQ02_AM_WINFIGHT_GOON_FLEE2\")\r\n        elseif goon1_ok ~= goon2_ok then\r\n            -- One alive\r\n            Text.SetContext(\"goon\", goon1_ok and goon1 or goon2)\r\n            Log(\"MQ02_AM_WINFIGHT_GOON_FLEE1\")\r\n        end\r\n\r\n        Log(\"MQ02_RANDALL_KILL_DIGESTED\")\r\n        Sleep(3)\r\n\r\n        fight:End()\r\n    end\r\nend)\r\nfight:Begin()\r\n\r\n-- Wrap-up\r\nif fight:IsSwallowed(randall) then\r\n    Log(\"MQ02_AM_WINFIGHT_VORE\")\r\nelse\r\n    Log(\"MQ02_AM_WINFIGHT\")\r\nend"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ02A_C_CrabRangoon1",
+																										"Title": "Continue",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ02A_R_CrabRangoon1",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "Log(\"MQ02_AM_WINFIGHT_CRAB_RANGOON1\")"
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ02A_C_CrabRangoon2",
+																														"Title": "Continue",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ02A_R_CrabRangoon2",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "Log(\"MQ02_AM_WINFIGHT_CRAB_RANGOON2\")\r\nEndGame()"
+																																},
+																																"Children": []
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
 											}
 										]
 									}

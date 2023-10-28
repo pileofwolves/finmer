@@ -42,7 +42,7 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(16, 16);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(155, 16);
+            this.label1.Size = new System.Drawing.Size(154, 16);
             this.label1.TabIndex = 0;
             this.label1.Text = "Finmer Module Editor";
             // 
@@ -98,7 +98,7 @@
             this.lklGitHub.Text = "Visit the project on GitHub";
             this.lklGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklGitHub_LinkClicked);
             // 
-            // frmAbout
+            // FormAbout
             // 
             this.AcceptButton = this.cmdClose;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -114,7 +114,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "frmAbout";
+            this.Name = "FormAbout";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Finmer Editor";

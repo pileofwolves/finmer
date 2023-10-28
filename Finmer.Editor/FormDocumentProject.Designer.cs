@@ -64,9 +64,9 @@
             lblTitle.AutoSize = true;
             lblTitle.Location = new System.Drawing.Point(16, 24);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new System.Drawing.Size(64, 13);
+            lblTitle.Size = new System.Drawing.Size(68, 13);
             lblTitle.TabIndex = 0;
-            lblTitle.Text = "Furball Title:";
+            lblTitle.Text = "Module Title:";
             // 
             // lblAuthor
             // 
@@ -82,9 +82,9 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 24);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(55, 13);
+            label1.Size = new System.Drawing.Size(59, 13);
             label1.TabIndex = 4;
-            label1.Text = "Furball ID:";
+            label1.Text = "Module ID:";
             // 
             // fraMeta
             // 
@@ -228,7 +228,7 @@
             // 
             // clhDepID
             // 
-            this.clhDepID.Text = "Furball ID";
+            this.clhDepID.Text = "Module ID";
             this.clhDepID.Width = 150;
             // 
             // lblDepInfo
@@ -237,8 +237,9 @@
             lblDepInfo.Name = "lblDepInfo";
             lblDepInfo.Size = new System.Drawing.Size(288, 56);
             lblDepInfo.TabIndex = 0;
-            lblDepInfo.Text = "Specify modules required by this module. They will be additionally loaded by the " +
-    "editor for convenience.\r\n\r\nReload this module to make changes take effect.";
+            lblDepInfo.Text = "Specify other modules required by this project, allowing you to import assets fro" +
+    "m those modules and re-use them.\r\n\r\nReload this project to make changes take eff" +
+    "ect.";
             // 
             // dlgSelectDep
             // 
@@ -253,7 +254,7 @@
             this.Controls.Add(fraStats);
             this.Controls.Add(fraMeta);
             this.Name = "FormDocumentProject";
-            this.Text = "Furball Settings";
+            this.Text = "Project Settings";
             this.Load += new System.EventHandler(this.FormDocumentProject_Load);
             fraMeta.ResumeLayout(false);
             fraMeta.PerformLayout();

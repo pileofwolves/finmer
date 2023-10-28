@@ -123,13 +123,8 @@ namespace Finmer.Editor
             switch (e.Button)
             {
                 case MouseButtons.Left:
-                    // Safety check: nothing to open if there's no set asset (but somehow this link was clicked anyway)
-                    var selected_asset = SelectedAsset;
-                    if (selected_asset == null)
-                        return;
-
-                    // Open the specified asset in the editor
-                    Program.MainForm.OpenEditorWindow(selected_asset);
+                    // Open browsing dialog
+                    cmdBrowse_Click(sender, EventArgs.Empty);
                     break;
 
                 case MouseButtons.Right:

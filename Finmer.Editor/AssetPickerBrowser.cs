@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Drawing;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
@@ -34,8 +35,7 @@ namespace Finmer.Editor
                 {
                     new ListViewItem.ListViewSubItem
                     {
-                        Text = asset.ID.ToString(),
-                        ForeColor = SystemColors.GrayText
+                        Text = DescribeAsset(asset)
                     }
                 },
                 Selected = isSelected,
@@ -52,6 +52,37 @@ namespace Finmer.Editor
                 SelectedAsset = null;
             else
                 SelectedAsset = (AssetBase)selection[0].Tag;
+        }
+
+        private void lsvAssets_DoubleClick(object sender, EventArgs e)
+        {
+            // If the user has made a selection, allow double-click as a convenience for confirming
+            if (SelectedAsset != null)
+            {
+                DialogResult = DialogResult.OK;
+                Close();
+            }
+        }
+
+        /// <summary>
+        /// Tries to return a user-defined name for an asset, or an empty string if unavailable.
+        /// </summary>
+        private static string DescribeAsset(AssetBase asset)
+        {
+            switch (asset)
+            {
+                case AssetCreature creature:
+                    return creature.ObjectName;
+
+                case AssetItem item:
+                    return item.ObjectName;
+
+                case AssetJournal journal:
+                    return journal.Title;
+
+                default:
+                    return String.Empty;
+            }
         }
 
     }

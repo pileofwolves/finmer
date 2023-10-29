@@ -43,7 +43,7 @@ namespace Finmer.Editor
             lblDelta.Location = new System.Drawing.Point(16, 16);
             lblDelta.Name = "lblDelta";
             lblDelta.Size = new System.Drawing.Size(67, 13);
-            lblDelta.TabIndex = 5;
+            lblDelta.TabIndex = 0;
             lblDelta.Text = "Modification:";
             // 
             // cmdCancel
@@ -53,7 +53,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(176, 112);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(112, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -66,7 +66,7 @@ namespace Finmer.Editor
             this.cmdOK.Location = new System.Drawing.Point(56, 112);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(112, 32);
-            this.cmdOK.TabIndex = 3;
+            this.cmdOK.TabIndex = 2;
             this.cmdOK.Text = "Accept";
             this.cmdOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -88,7 +88,7 @@ namespace Finmer.Editor
             -2147483648});
             this.nudDelta.Name = "nudDelta";
             this.nudDelta.Size = new System.Drawing.Size(272, 20);
-            this.nudDelta.TabIndex = 6;
+            this.nudDelta.TabIndex = 1;
             // 
             // FormEffectEditorSingleDelta
             // 

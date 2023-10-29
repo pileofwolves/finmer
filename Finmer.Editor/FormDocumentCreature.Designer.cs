@@ -123,7 +123,7 @@
             label11.Location = new System.Drawing.Point(104, 120);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(58, 13);
-            label11.TabIndex = 25;
+            label11.TabIndex = 8;
             label11.Text = "Size Class:";
             // 
             // label8
@@ -132,7 +132,7 @@
             label8.Location = new System.Drawing.Point(208, 168);
             label8.Name = "label8";
             label8.Size = new System.Drawing.Size(31, 13);
-            label8.TabIndex = 24;
+            label8.TabIndex = 16;
             label8.Text = "Wits:";
             // 
             // label7
@@ -141,7 +141,7 @@
             label7.Location = new System.Drawing.Point(144, 168);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(34, 13);
-            label7.TabIndex = 23;
+            label7.TabIndex = 14;
             label7.Text = "Body:";
             // 
             // label6
@@ -150,7 +150,7 @@
             label6.Location = new System.Drawing.Point(80, 168);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(37, 13);
-            label6.TabIndex = 22;
+            label6.TabIndex = 12;
             label6.Text = "Agility:";
             // 
             // label5
@@ -159,7 +159,7 @@
             label5.Location = new System.Drawing.Point(16, 168);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(50, 13);
-            label5.TabIndex = 21;
+            label5.TabIndex = 10;
             label5.Text = "Strength:";
             // 
             // label2
@@ -168,7 +168,7 @@
             label2.Location = new System.Drawing.Point(16, 120);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(36, 13);
-            label2.TabIndex = 16;
+            label2.TabIndex = 6;
             label2.Text = "Level:";
             // 
             // label10
@@ -177,7 +177,7 @@
             label10.Location = new System.Drawing.Point(16, 312);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(66, 13);
-            label10.TabIndex = 9;
+            label10.TabIndex = 21;
             label10.Text = "Asset GUID:";
             // 
             // label1
@@ -215,7 +215,7 @@
             fraCombatFlags.Location = new System.Drawing.Point(344, 16);
             fraCombatFlags.Name = "fraCombatFlags";
             fraCombatFlags.Size = new System.Drawing.Size(352, 304);
-            fraCombatFlags.TabIndex = 5;
+            fraCombatFlags.TabIndex = 1;
             fraCombatFlags.TabStop = false;
             fraCombatFlags.Text = "Combat Settings";
             // 
@@ -225,7 +225,7 @@
             this.chkAutoVorePrey.Location = new System.Drawing.Point(176, 144);
             this.chkAutoVorePrey.Name = "chkAutoVorePrey";
             this.chkAutoVorePrey.Size = new System.Drawing.Size(156, 17);
-            this.chkAutoVorePrey.TabIndex = 16;
+            this.chkAutoVorePrey.TabIndex = 11;
             this.chkAutoVorePrey.Text = "Swallowed When Defeated";
             this.chkAutoVorePrey.UseVisualStyleBackColor = true;
             // 
@@ -234,7 +234,7 @@
             label17.Location = new System.Drawing.Point(16, 272);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(48, 24);
-            label17.TabIndex = 15;
+            label17.TabIndex = 19;
             label17.Text = "Slot 4:";
             label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -243,7 +243,7 @@
             label15.Location = new System.Drawing.Point(16, 248);
             label15.Name = "label15";
             label15.Size = new System.Drawing.Size(48, 24);
-            label15.TabIndex = 14;
+            label15.TabIndex = 17;
             label15.Text = "Slot 3:";
             label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -252,7 +252,7 @@
             label14.Location = new System.Drawing.Point(16, 224);
             label14.Name = "label14";
             label14.Size = new System.Drawing.Size(48, 24);
-            label14.TabIndex = 13;
+            label14.TabIndex = 15;
             label14.Text = "Slot 2:";
             label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -261,7 +261,7 @@
             label13.Location = new System.Drawing.Point(16, 200);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(48, 24);
-            label13.TabIndex = 12;
+            label13.TabIndex = 13;
             label13.Text = "Slot 1:";
             label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
@@ -272,7 +272,7 @@
             this.assetEquip4.Name = "assetEquip4";
             this.assetEquip4.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetEquip4.Size = new System.Drawing.Size(280, 24);
-            this.assetEquip4.TabIndex = 11;
+            this.assetEquip4.TabIndex = 20;
             // 
             // assetEquip3
             // 
@@ -281,7 +281,7 @@
             this.assetEquip3.Name = "assetEquip3";
             this.assetEquip3.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetEquip3.Size = new System.Drawing.Size(280, 24);
-            this.assetEquip3.TabIndex = 10;
+            this.assetEquip3.TabIndex = 18;
             // 
             // assetEquip2
             // 
@@ -290,7 +290,7 @@
             this.assetEquip2.Name = "assetEquip2";
             this.assetEquip2.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetEquip2.Size = new System.Drawing.Size(280, 24);
-            this.assetEquip2.TabIndex = 9;
+            this.assetEquip2.TabIndex = 16;
             // 
             // assetEquip1
             // 
@@ -299,7 +299,7 @@
             this.assetEquip1.Name = "assetEquip1";
             this.assetEquip1.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
             this.assetEquip1.Size = new System.Drawing.Size(280, 24);
-            this.assetEquip1.TabIndex = 8;
+            this.assetEquip1.TabIndex = 14;
             // 
             // label12
             // 
@@ -307,7 +307,7 @@
             label12.Location = new System.Drawing.Point(8, 176);
             label12.Name = "label12";
             label12.Size = new System.Drawing.Size(60, 13);
-            label12.TabIndex = 7;
+            label12.TabIndex = 12;
             label12.Text = "Equipment:";
             // 
             // chkAutoVorePred
@@ -316,7 +316,7 @@
             this.chkAutoVorePred.Location = new System.Drawing.Point(184, 120);
             this.chkAutoVorePred.Name = "chkAutoVorePred";
             this.chkAutoVorePred.Size = new System.Drawing.Size(144, 17);
-            this.chkAutoVorePred.TabIndex = 3;
+            this.chkAutoVorePred.TabIndex = 10;
             this.chkAutoVorePred.Text = "Swallow Defeated Player";
             this.chkAutoVorePred.UseVisualStyleBackColor = true;
             // 
@@ -335,7 +335,7 @@
             this.chkVoreDisposal.Location = new System.Drawing.Point(184, 96);
             this.chkVoreDisposal.Name = "chkVoreDisposal";
             this.chkVoreDisposal.Size = new System.Drawing.Size(122, 17);
-            this.chkVoreDisposal.TabIndex = 2;
+            this.chkVoreDisposal.TabIndex = 9;
             this.chkVoreDisposal.Text = "Has Disposal Scene";
             this.chkVoreDisposal.UseVisualStyleBackColor = true;
             // 
@@ -345,7 +345,7 @@
             label3.Location = new System.Drawing.Point(8, 24);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(100, 13);
-            label3.TabIndex = 5;
+            label3.TabIndex = 0;
             label3.Text = "Behavior Overrides:";
             // 
             // chkVoreDigest
@@ -354,7 +354,7 @@
             this.chkVoreDigest.Location = new System.Drawing.Point(184, 72);
             this.chkVoreDigest.Name = "chkVoreDigest";
             this.chkVoreDigest.Size = new System.Drawing.Size(85, 17);
-            this.chkVoreDigest.TabIndex = 1;
+            this.chkVoreDigest.TabIndex = 8;
             this.chkVoreDigest.Text = "Digests Prey";
             this.chkVoreDigest.UseVisualStyleBackColor = true;
             // 
@@ -364,7 +364,7 @@
             this.chkFlagSkipTurns.Location = new System.Drawing.Point(16, 48);
             this.chkFlagSkipTurns.Name = "chkFlagSkipTurns";
             this.chkFlagSkipTurns.Size = new System.Drawing.Size(91, 17);
-            this.chkFlagSkipTurns.TabIndex = 4;
+            this.chkFlagSkipTurns.TabIndex = 1;
             this.chkFlagSkipTurns.Text = "Skip All Turns";
             this.chkFlagSkipTurns.UseVisualStyleBackColor = true;
             // 
@@ -374,7 +374,7 @@
             this.chkVorePred.Location = new System.Drawing.Point(176, 48);
             this.chkVorePred.Name = "chkVorePred";
             this.chkVorePred.Size = new System.Drawing.Size(77, 17);
-            this.chkVorePred.TabIndex = 0;
+            this.chkVorePred.TabIndex = 7;
             this.chkVorePred.Text = "Is Predator";
             this.chkVorePred.UseVisualStyleBackColor = true;
             this.chkVorePred.CheckedChanged += new System.EventHandler(this.chkVorePred_CheckedChanged);
@@ -385,7 +385,7 @@
             this.chkFlagNoXP.Location = new System.Drawing.Point(16, 144);
             this.chkFlagNoXP.Name = "chkFlagNoXP";
             this.chkFlagNoXP.Size = new System.Drawing.Size(113, 17);
-            this.chkFlagNoXP.TabIndex = 3;
+            this.chkFlagNoXP.TabIndex = 5;
             this.chkFlagNoXP.Text = "Does Not Give XP";
             this.chkFlagNoXP.UseVisualStyleBackColor = true;
             // 
@@ -405,7 +405,7 @@
             this.chkFlagNoVore.Location = new System.Drawing.Point(16, 120);
             this.chkFlagNoVore.Name = "chkFlagNoVore";
             this.chkFlagNoVore.Size = new System.Drawing.Size(107, 17);
-            this.chkFlagNoVore.TabIndex = 1;
+            this.chkFlagNoVore.TabIndex = 4;
             this.chkFlagNoVore.Text = "Cannot Be Vored";
             this.chkFlagNoVore.UseVisualStyleBackColor = true;
             // 
@@ -415,7 +415,7 @@
             this.chkFlagNoGrapple.Location = new System.Drawing.Point(16, 96);
             this.chkFlagNoGrapple.Name = "chkFlagNoGrapple";
             this.chkFlagNoGrapple.Size = new System.Drawing.Size(100, 17);
-            this.chkFlagNoGrapple.TabIndex = 0;
+            this.chkFlagNoGrapple.TabIndex = 3;
             this.chkFlagNoGrapple.Text = "Cannot Grapple";
             this.chkFlagNoGrapple.UseVisualStyleBackColor = true;
             // 
@@ -425,7 +425,7 @@
             label18.Location = new System.Drawing.Point(16, 216);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(53, 13);
-            label18.TabIndex = 16;
+            label18.TabIndex = 18;
             label18.Text = "Summary:";
             // 
             // fraGeneral
@@ -456,7 +456,7 @@
             fraGeneral.Location = new System.Drawing.Point(16, 16);
             fraGeneral.Name = "fraGeneral";
             fraGeneral.Size = new System.Drawing.Size(312, 368);
-            fraGeneral.TabIndex = 3;
+            fraGeneral.TabIndex = 0;
             fraGeneral.TabStop = false;
             fraGeneral.Text = "General";
             // 
@@ -465,7 +465,7 @@
             label19.Location = new System.Drawing.Point(24, 232);
             label19.Name = "label19";
             label19.Size = new System.Drawing.Size(88, 72);
-            label19.TabIndex = 31;
+            label19.TabIndex = 19;
             label19.Text = "Attack Dice:\r\nDefense Dice:\r\nGrapple Dice:\r\nSwallow Dice:\r\nStruggle Dice:";
             // 
             // lblCombatOverview
@@ -473,7 +473,7 @@
             this.lblCombatOverview.Location = new System.Drawing.Point(112, 232);
             this.lblCombatOverview.Name = "lblCombatOverview";
             this.lblCombatOverview.Size = new System.Drawing.Size(88, 72);
-            this.lblCombatOverview.TabIndex = 17;
+            this.lblCombatOverview.TabIndex = 20;
             this.lblCombatOverview.Text = "...";
             // 
             // cmbGender
@@ -488,7 +488,7 @@
             this.cmbGender.Location = new System.Drawing.Point(184, 88);
             this.cmbGender.Name = "cmbGender";
             this.cmbGender.Size = new System.Drawing.Size(112, 21);
-            this.cmbGender.TabIndex = 30;
+            this.cmbGender.TabIndex = 5;
             // 
             // cmbSize
             // 
@@ -503,7 +503,7 @@
             this.cmbSize.Location = new System.Drawing.Point(104, 136);
             this.cmbSize.Name = "cmbSize";
             this.cmbSize.Size = new System.Drawing.Size(112, 21);
-            this.cmbSize.TabIndex = 26;
+            this.cmbSize.TabIndex = 9;
             // 
             // label16
             // 
@@ -511,7 +511,7 @@
             label16.Location = new System.Drawing.Point(184, 72);
             label16.Name = "label16";
             label16.Size = new System.Drawing.Size(45, 13);
-            label16.TabIndex = 29;
+            label16.TabIndex = 4;
             label16.Text = "Gender:";
             // 
             // txtAlias
@@ -520,7 +520,7 @@
             this.txtAlias.MaxLength = 100;
             this.txtAlias.Name = "txtAlias";
             this.txtAlias.Size = new System.Drawing.Size(160, 20);
-            this.txtAlias.TabIndex = 1;
+            this.txtAlias.TabIndex = 3;
             // 
             // label9
             // 
@@ -528,7 +528,7 @@
             label9.Location = new System.Drawing.Point(16, 72);
             label9.Name = "label9";
             label9.Size = new System.Drawing.Size(32, 13);
-            label9.TabIndex = 28;
+            label9.TabIndex = 2;
             label9.Text = "Alias:";
             // 
             // nudLevel
@@ -546,7 +546,7 @@
             0});
             this.nudLevel.Name = "nudLevel";
             this.nudLevel.Size = new System.Drawing.Size(80, 20);
-            this.nudLevel.TabIndex = 15;
+            this.nudLevel.TabIndex = 7;
             this.nudLevel.Value = new decimal(new int[] {
             1,
             0,
@@ -563,7 +563,7 @@
             0});
             this.nudWis.Name = "nudWis";
             this.nudWis.Size = new System.Drawing.Size(56, 20);
-            this.nudWis.TabIndex = 13;
+            this.nudWis.TabIndex = 17;
             this.nudWis.Value = new decimal(new int[] {
             3,
             0,
@@ -580,7 +580,7 @@
             0});
             this.nudCon.Name = "nudCon";
             this.nudCon.Size = new System.Drawing.Size(56, 20);
-            this.nudCon.TabIndex = 12;
+            this.nudCon.TabIndex = 15;
             this.nudCon.Value = new decimal(new int[] {
             3,
             0,
@@ -597,7 +597,7 @@
             0});
             this.nudDex.Name = "nudDex";
             this.nudDex.Size = new System.Drawing.Size(56, 20);
-            this.nudDex.TabIndex = 11;
+            this.nudDex.TabIndex = 13;
             this.nudDex.Value = new decimal(new int[] {
             3,
             0,
@@ -614,7 +614,7 @@
             0});
             this.nudStr.Name = "nudStr";
             this.nudStr.Size = new System.Drawing.Size(56, 20);
-            this.nudStr.TabIndex = 10;
+            this.nudStr.TabIndex = 11;
             this.nudStr.Value = new decimal(new int[] {
             3,
             0,
@@ -629,7 +629,7 @@
             this.txtGuid.Name = "txtGuid";
             this.txtGuid.ReadOnly = true;
             this.txtGuid.Size = new System.Drawing.Size(280, 21);
-            this.txtGuid.TabIndex = 21;
+            this.txtGuid.TabIndex = 22;
             // 
             // txtName
             // 
@@ -637,7 +637,7 @@
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(280, 20);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 1;
             // 
             // fraTags
             // 
@@ -645,7 +645,7 @@
             fraTags.Location = new System.Drawing.Point(16, 392);
             fraTags.Name = "fraTags";
             fraTags.Size = new System.Drawing.Size(312, 96);
-            fraTags.TabIndex = 7;
+            fraTags.TabIndex = 2;
             fraTags.TabStop = false;
             fraTags.Text = "Script Tags (one per line)";
             // 
@@ -668,7 +668,7 @@
             fraStringMappings.Location = new System.Drawing.Point(344, 336);
             fraStringMappings.Name = "fraStringMappings";
             fraStringMappings.Size = new System.Drawing.Size(352, 152);
-            fraStringMappings.TabIndex = 8;
+            fraStringMappings.TabIndex = 3;
             fraStringMappings.TabStop = false;
             fraStringMappings.Text = "String Mappings";
             // 
@@ -679,7 +679,7 @@
             this.cmdStringMappingRemove.Location = new System.Drawing.Point(320, 88);
             this.cmdStringMappingRemove.Name = "cmdStringMappingRemove";
             this.cmdStringMappingRemove.Size = new System.Drawing.Size(24, 24);
-            this.cmdStringMappingRemove.TabIndex = 16;
+            this.cmdStringMappingRemove.TabIndex = 3;
             this.cmdStringMappingRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdStringMappingRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdStringMappingRemove.UseVisualStyleBackColor = true;
@@ -692,7 +692,7 @@
             this.cmdStringMappingEdit.Location = new System.Drawing.Point(320, 56);
             this.cmdStringMappingEdit.Name = "cmdStringMappingEdit";
             this.cmdStringMappingEdit.Size = new System.Drawing.Size(24, 24);
-            this.cmdStringMappingEdit.TabIndex = 15;
+            this.cmdStringMappingEdit.TabIndex = 2;
             this.cmdStringMappingEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdStringMappingEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdStringMappingEdit.UseVisualStyleBackColor = true;
@@ -704,7 +704,7 @@
             this.cmdStringMappingAdd.Location = new System.Drawing.Point(320, 24);
             this.cmdStringMappingAdd.Name = "cmdStringMappingAdd";
             this.cmdStringMappingAdd.Size = new System.Drawing.Size(24, 24);
-            this.cmdStringMappingAdd.TabIndex = 14;
+            this.cmdStringMappingAdd.TabIndex = 1;
             this.cmdStringMappingAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdStringMappingAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdStringMappingAdd.UseVisualStyleBackColor = true;
@@ -723,7 +723,7 @@
             this.lsvStringMappings.MultiSelect = false;
             this.lsvStringMappings.Name = "lsvStringMappings";
             this.lsvStringMappings.Size = new System.Drawing.Size(304, 128);
-            this.lsvStringMappings.TabIndex = 17;
+            this.lsvStringMappings.TabIndex = 0;
             this.lsvStringMappings.UseCompatibleStateImageBehavior = false;
             this.lsvStringMappings.View = System.Windows.Forms.View.Details;
             this.lsvStringMappings.SelectedIndexChanged += new System.EventHandler(this.lsvStringMappings_SelectedIndexChanged);
@@ -754,7 +754,7 @@
             this.Controls.Add(fraCombatFlags);
             this.Controls.Add(fraGeneral);
             this.Name = "FormDocumentCreature";
-            this.Text = "frmDocumentCreature";
+            this.Text = "FormDocumentCreature";
             this.Load += new System.EventHandler(this.FormDocumentCreature_Load);
             fraCombatFlags.ResumeLayout(false);
             fraCombatFlags.PerformLayout();

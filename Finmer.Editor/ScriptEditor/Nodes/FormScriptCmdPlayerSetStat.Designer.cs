@@ -47,7 +47,7 @@
             label1.Location = new System.Drawing.Point(16, 48);
             label1.Name = "label1";
             label1.Size = new System.Drawing.Size(66, 13);
-            label1.TabIndex = 3;
+            label1.TabIndex = 2;
             label1.Text = "Primary Stat:";
             // 
             // label2
@@ -94,7 +94,7 @@
             this.optModeAdd.Location = new System.Drawing.Point(16, 16);
             this.optModeAdd.Name = "optModeAdd";
             this.optModeAdd.Size = new System.Drawing.Size(44, 17);
-            this.optModeAdd.TabIndex = 1;
+            this.optModeAdd.TabIndex = 0;
             this.optModeAdd.TabStop = true;
             this.optModeAdd.Text = "Add";
             this.optModeAdd.UseVisualStyleBackColor = true;
@@ -105,7 +105,7 @@
             this.optModeSet.Location = new System.Drawing.Point(72, 16);
             this.optModeSet.Name = "optModeSet";
             this.optModeSet.Size = new System.Drawing.Size(41, 17);
-            this.optModeSet.TabIndex = 2;
+            this.optModeSet.TabIndex = 1;
             this.optModeSet.TabStop = true;
             this.optModeSet.Text = "Set";
             this.optModeSet.UseVisualStyleBackColor = true;
@@ -124,7 +124,7 @@
             this.cmbStat.Location = new System.Drawing.Point(16, 64);
             this.cmbStat.Name = "cmbStat";
             this.cmbStat.Size = new System.Drawing.Size(288, 21);
-            this.cmbStat.TabIndex = 0;
+            this.cmbStat.TabIndex = 3;
             // 
             // sveValue
             // 

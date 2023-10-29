@@ -42,7 +42,7 @@ namespace Finmer.Editor
             lblDelta.Location = new System.Drawing.Point(16, 16);
             lblDelta.Name = "lblDelta";
             lblDelta.Size = new System.Drawing.Size(174, 13);
-            lblDelta.TabIndex = 5;
+            lblDelta.TabIndex = 0;
             lblDelta.Text = "Additional text shown in item tooltip:";
             // 
             // cmdCancel
@@ -53,7 +53,7 @@ namespace Finmer.Editor
             this.cmdCancel.Location = new System.Drawing.Point(176, 112);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(112, 32);
-            this.cmdCancel.TabIndex = 4;
+            this.cmdCancel.TabIndex = 3;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -67,7 +67,7 @@ namespace Finmer.Editor
             this.cmdOK.Location = new System.Drawing.Point(56, 112);
             this.cmdOK.Name = "cmdOK";
             this.cmdOK.Size = new System.Drawing.Size(112, 32);
-            this.cmdOK.TabIndex = 3;
+            this.cmdOK.TabIndex = 2;
             this.cmdOK.Text = "Accept";
             this.cmdOK.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdOK.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -84,7 +84,7 @@ namespace Finmer.Editor
             this.txtTooltip.Multiline = true;
             this.txtTooltip.Name = "txtTooltip";
             this.txtTooltip.Size = new System.Drawing.Size(272, 64);
-            this.txtTooltip.TabIndex = 7;
+            this.txtTooltip.TabIndex = 1;
             // 
             // FormEffectEditorCustomText
             // 

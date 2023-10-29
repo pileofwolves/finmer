@@ -92,7 +92,7 @@
             label18.Location = new System.Drawing.Point(16, 72);
             label18.Name = "label18";
             label18.Size = new System.Drawing.Size(32, 13);
-            label18.TabIndex = 15;
+            label18.TabIndex = 2;
             label18.Text = "Alias:";
             // 
             // label17
@@ -101,7 +101,7 @@
             label17.Location = new System.Drawing.Point(240, 120);
             label17.Name = "label17";
             label17.Size = new System.Drawing.Size(31, 13);
-            label17.TabIndex = 11;
+            label17.TabIndex = 6;
             label17.Text = "Icon:";
             // 
             // label10
@@ -110,7 +110,7 @@
             label10.Location = new System.Drawing.Point(16, 368);
             label10.Name = "label10";
             label10.Size = new System.Drawing.Size(66, 13);
-            label10.TabIndex = 9;
+            label10.TabIndex = 15;
             label10.Text = "Asset GUID:";
             // 
             // label11
@@ -119,7 +119,7 @@
             label11.Location = new System.Drawing.Point(16, 256);
             label11.Name = "label11";
             label11.Size = new System.Drawing.Size(63, 13);
-            label11.TabIndex = 9;
+            label11.TabIndex = 13;
             label11.Text = "Flavor Text:";
             // 
             // label3
@@ -128,7 +128,7 @@
             label3.Location = new System.Drawing.Point(16, 168);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(37, 13);
-            label3.TabIndex = 4;
+            label3.TabIndex = 10;
             label3.Text = "Value:";
             // 
             // label2
@@ -137,7 +137,7 @@
             label2.Location = new System.Drawing.Point(16, 120);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(34, 13);
-            label2.TabIndex = 2;
+            label2.TabIndex = 4;
             label2.Text = "Type:";
             // 
             // label13
@@ -146,7 +146,7 @@
             label13.Location = new System.Drawing.Point(16, 24);
             label13.Name = "label13";
             label13.Size = new System.Drawing.Size(58, 13);
-            label13.TabIndex = 11;
+            label13.TabIndex = 0;
             label13.Text = "Equip Slot:";
             // 
             // clhEquipEffectTitle
@@ -160,7 +160,7 @@
             this.txtName.MaxLength = 100;
             this.txtName.Name = "txtName";
             this.txtName.Size = new System.Drawing.Size(264, 20);
-            this.txtName.TabIndex = 0;
+            this.txtName.TabIndex = 1;
             // 
             // fraGeneral
             // 
@@ -184,7 +184,7 @@
             this.fraGeneral.Location = new System.Drawing.Point(16, 16);
             this.fraGeneral.Name = "fraGeneral";
             this.fraGeneral.Size = new System.Drawing.Size(296, 424);
-            this.fraGeneral.TabIndex = 2;
+            this.fraGeneral.TabIndex = 0;
             this.fraGeneral.TabStop = false;
             this.fraGeneral.Text = "General";
             // 
@@ -194,7 +194,7 @@
             this.txtAlias.MaxLength = 100;
             this.txtAlias.Name = "txtAlias";
             this.txtAlias.Size = new System.Drawing.Size(264, 20);
-            this.txtAlias.TabIndex = 1;
+            this.txtAlias.TabIndex = 3;
             // 
             // cmdIconExport
             // 
@@ -202,7 +202,7 @@
             this.cmdIconExport.Location = new System.Drawing.Point(240, 184);
             this.cmdIconExport.Name = "cmdIconExport";
             this.cmdIconExport.Size = new System.Drawing.Size(24, 24);
-            this.cmdIconExport.TabIndex = 6;
+            this.cmdIconExport.TabIndex = 8;
             this.cmdIconExport.UseVisualStyleBackColor = true;
             // 
             // cmdIconClear
@@ -211,7 +211,7 @@
             this.cmdIconClear.Location = new System.Drawing.Point(264, 184);
             this.cmdIconClear.Name = "cmdIconClear";
             this.cmdIconClear.Size = new System.Drawing.Size(24, 24);
-            this.cmdIconClear.TabIndex = 7;
+            this.cmdIconClear.TabIndex = 9;
             this.cmdIconClear.UseVisualStyleBackColor = true;
             this.cmdIconClear.Click += new System.EventHandler(this.cmdIconClear_Click);
             // 
@@ -220,7 +220,7 @@
             this.cmdIcon.Location = new System.Drawing.Point(240, 136);
             this.cmdIcon.Name = "cmdIcon";
             this.cmdIcon.Size = new System.Drawing.Size(48, 48);
-            this.cmdIcon.TabIndex = 5;
+            this.cmdIcon.TabIndex = 7;
             this.cmdIcon.UseVisualStyleBackColor = true;
             this.cmdIcon.Click += new System.EventHandler(this.cmdIcon_Click);
             // 
@@ -232,7 +232,7 @@
             this.txtGuid.Name = "txtGuid";
             this.txtGuid.ReadOnly = true;
             this.txtGuid.Size = new System.Drawing.Size(264, 21);
-            this.txtGuid.TabIndex = 10;
+            this.txtGuid.TabIndex = 16;
             // 
             // txtFlavor
             // 
@@ -241,7 +241,7 @@
             this.txtFlavor.Multiline = true;
             this.txtFlavor.Name = "txtFlavor";
             this.txtFlavor.Size = new System.Drawing.Size(264, 88);
-            this.txtFlavor.TabIndex = 9;
+            this.txtFlavor.TabIndex = 14;
             // 
             // chkQuest
             // 
@@ -249,7 +249,7 @@
             this.chkQuest.Location = new System.Drawing.Point(16, 224);
             this.chkQuest.Name = "chkQuest";
             this.chkQuest.Size = new System.Drawing.Size(77, 17);
-            this.chkQuest.TabIndex = 8;
+            this.chkQuest.TabIndex = 12;
             this.chkQuest.Text = "Quest Item";
             this.chkQuest.UseVisualStyleBackColor = true;
             // 
@@ -263,7 +263,7 @@
             0});
             this.nudValue.Name = "nudValue";
             this.nudValue.Size = new System.Drawing.Size(96, 20);
-            this.nudValue.TabIndex = 3;
+            this.nudValue.TabIndex = 11;
             // 
             // cmbType
             // 
@@ -276,7 +276,7 @@
             this.cmbType.Location = new System.Drawing.Point(16, 136);
             this.cmbType.Name = "cmbType";
             this.cmbType.Size = new System.Drawing.Size(208, 21);
-            this.cmbType.TabIndex = 2;
+            this.cmbType.TabIndex = 5;
             this.cmbType.SelectedIndexChanged += new System.EventHandler(this.cmbType_SelectedIndexChanged);
             // 
             // fraEquipment
@@ -290,7 +290,7 @@
             this.fraEquipment.Location = new System.Drawing.Point(328, 16);
             this.fraEquipment.Name = "fraEquipment";
             this.fraEquipment.Size = new System.Drawing.Size(304, 424);
-            this.fraEquipment.TabIndex = 14;
+            this.fraEquipment.TabIndex = 2;
             this.fraEquipment.TabStop = false;
             this.fraEquipment.Text = "Equipment";
             // 
@@ -305,7 +305,7 @@
             this.lsvEquipEffectGroups.Location = new System.Drawing.Point(16, 112);
             this.lsvEquipEffectGroups.Name = "lsvEquipEffectGroups";
             this.lsvEquipEffectGroups.Size = new System.Drawing.Size(272, 296);
-            this.lsvEquipEffectGroups.TabIndex = 21;
+            this.lsvEquipEffectGroups.TabIndex = 5;
             this.lsvEquipEffectGroups.UseCompatibleStateImageBehavior = false;
             this.lsvEquipEffectGroups.View = System.Windows.Forms.View.Details;
             this.lsvEquipEffectGroups.SelectedIndexChanged += new System.EventHandler(this.lsvEquipEffectGroups_SelectedIndexChanged);
@@ -318,7 +318,7 @@
             this.cmdEquipEffectEdit.Location = new System.Drawing.Point(208, 72);
             this.cmdEquipEffectEdit.Name = "cmdEquipEffectEdit";
             this.cmdEquipEffectEdit.Size = new System.Drawing.Size(80, 32);
-            this.cmdEquipEffectEdit.TabIndex = 15;
+            this.cmdEquipEffectEdit.TabIndex = 4;
             this.cmdEquipEffectEdit.Text = "Edit";
             this.cmdEquipEffectEdit.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdEquipEffectEdit.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -332,7 +332,7 @@
             this.cmdEquipEffectRemove.Location = new System.Drawing.Point(120, 72);
             this.cmdEquipEffectRemove.Name = "cmdEquipEffectRemove";
             this.cmdEquipEffectRemove.Size = new System.Drawing.Size(80, 32);
-            this.cmdEquipEffectRemove.TabIndex = 14;
+            this.cmdEquipEffectRemove.TabIndex = 3;
             this.cmdEquipEffectRemove.Text = "Remove";
             this.cmdEquipEffectRemove.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdEquipEffectRemove.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -345,7 +345,7 @@
             this.cmdEquipEffectAdd.Location = new System.Drawing.Point(16, 72);
             this.cmdEquipEffectAdd.Name = "cmdEquipEffectAdd";
             this.cmdEquipEffectAdd.Size = new System.Drawing.Size(96, 32);
-            this.cmdEquipEffectAdd.TabIndex = 13;
+            this.cmdEquipEffectAdd.TabIndex = 2;
             this.cmdEquipEffectAdd.Text = "Add Group";
             this.cmdEquipEffectAdd.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdEquipEffectAdd.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -363,7 +363,7 @@
             this.cmbEquipSlot.Location = new System.Drawing.Point(16, 40);
             this.cmbEquipSlot.Name = "cmbEquipSlot";
             this.cmbEquipSlot.Size = new System.Drawing.Size(272, 21);
-            this.cmbEquipSlot.TabIndex = 12;
+            this.cmbEquipSlot.TabIndex = 1;
             // 
             // fraUsable
             // 
@@ -377,7 +377,7 @@
             this.fraUsable.Location = new System.Drawing.Point(328, 16);
             this.fraUsable.Name = "fraUsable";
             this.fraUsable.Size = new System.Drawing.Size(288, 280);
-            this.fraUsable.TabIndex = 17;
+            this.fraUsable.TabIndex = 1;
             this.fraUsable.TabStop = false;
             this.fraUsable.Text = "Usable";
             // 
@@ -387,7 +387,7 @@
             this.label4.Location = new System.Drawing.Point(16, 24);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(60, 13);
-            this.label4.TabIndex = 19;
+            this.label4.TabIndex = 0;
             this.label4.Text = "Item Script:";
             // 
             // chkItemConsumable
@@ -396,7 +396,7 @@
             this.chkItemConsumable.Location = new System.Drawing.Point(16, 192);
             this.chkItemConsumable.Name = "chkItemConsumable";
             this.chkItemConsumable.Size = new System.Drawing.Size(190, 17);
-            this.chkItemConsumable.TabIndex = 13;
+            this.chkItemConsumable.TabIndex = 4;
             this.chkItemConsumable.Text = "Consumable (Disappears after use)";
             this.chkItemConsumable.UseVisualStyleBackColor = true;
             // 
@@ -406,7 +406,7 @@
             this.chkUseBattle.Location = new System.Drawing.Point(16, 240);
             this.chkUseBattle.Name = "chkUseBattle";
             this.chkUseBattle.Size = new System.Drawing.Size(114, 17);
-            this.chkUseBattle.TabIndex = 15;
+            this.chkUseBattle.TabIndex = 6;
             this.chkUseBattle.Text = "Allow Use in Battle";
             this.chkUseBattle.UseVisualStyleBackColor = true;
             // 
@@ -416,7 +416,7 @@
             this.chkUseField.Location = new System.Drawing.Point(16, 216);
             this.chkUseField.Name = "chkUseField";
             this.chkUseField.Size = new System.Drawing.Size(109, 17);
-            this.chkUseField.TabIndex = 14;
+            this.chkUseField.TabIndex = 5;
             this.chkUseField.Text = "Allow Use in Field";
             this.chkUseField.UseVisualStyleBackColor = true;
             // 
@@ -427,7 +427,7 @@
             this.txtUseDesc.Multiline = true;
             this.txtUseDesc.Name = "txtUseDesc";
             this.txtUseDesc.Size = new System.Drawing.Size(256, 80);
-            this.txtUseDesc.TabIndex = 12;
+            this.txtUseDesc.TabIndex = 3;
             // 
             // lblUseDesc
             // 
@@ -435,7 +435,7 @@
             this.lblUseDesc.Location = new System.Drawing.Point(16, 80);
             this.lblUseDesc.Name = "lblUseDesc";
             this.lblUseDesc.Size = new System.Drawing.Size(85, 13);
-            this.lblUseDesc.TabIndex = 18;
+            this.lblUseDesc.TabIndex = 2;
             this.lblUseDesc.Text = "Use Description:";
             // 
             // cmdEditUseScript
@@ -444,7 +444,7 @@
             this.cmdEditUseScript.Location = new System.Drawing.Point(16, 40);
             this.cmdEditUseScript.Name = "cmdEditUseScript";
             this.cmdEditUseScript.Size = new System.Drawing.Size(144, 32);
-            this.cmdEditUseScript.TabIndex = 11;
+            this.cmdEditUseScript.TabIndex = 1;
             this.cmdEditUseScript.Text = "Edit UseScript...";
             this.cmdEditUseScript.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdEditUseScript.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -459,7 +459,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(641, 522);
+            this.ClientSize = new System.Drawing.Size(649, 457);
             this.Controls.Add(this.fraEquipment);
             this.Controls.Add(this.fraGeneral);
             this.Controls.Add(this.fraUsable);

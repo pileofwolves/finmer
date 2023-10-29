@@ -51,7 +51,7 @@
             this.label2.Location = new System.Drawing.Point(16, 56);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(320, 160);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = resources.GetString("label2.Text");
             // 
             // lklFA
@@ -60,7 +60,7 @@
             this.lklFA.Location = new System.Drawing.Point(16, 256);
             this.lklFA.Name = "lklFA";
             this.lklFA.Size = new System.Drawing.Size(110, 13);
-            this.lklFA.TabIndex = 2;
+            this.lklFA.TabIndex = 3;
             this.lklFA.TabStop = true;
             this.lklFA.Text = "Visit me on FurAffinity!";
             this.lklFA.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklFA_LinkClicked);
@@ -72,7 +72,7 @@
             this.cmdClose.Location = new System.Drawing.Point(216, 264);
             this.cmdClose.Name = "cmdClose";
             this.cmdClose.Size = new System.Drawing.Size(120, 32);
-            this.cmdClose.TabIndex = 3;
+            this.cmdClose.TabIndex = 5;
             this.cmdClose.Text = "Sweet!";
             this.cmdClose.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdClose.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -84,7 +84,7 @@
             this.lblVersion.Location = new System.Drawing.Point(16, 32);
             this.lblVersion.Name = "lblVersion";
             this.lblVersion.Size = new System.Drawing.Size(144, 16);
-            this.lblVersion.TabIndex = 4;
+            this.lblVersion.TabIndex = 1;
             this.lblVersion.Text = "Version";
             // 
             // lklGitHub
@@ -93,7 +93,7 @@
             this.lklGitHub.Location = new System.Drawing.Point(16, 280);
             this.lklGitHub.Name = "lklGitHub";
             this.lklGitHub.Size = new System.Drawing.Size(130, 13);
-            this.lklGitHub.TabIndex = 5;
+            this.lklGitHub.TabIndex = 4;
             this.lklGitHub.TabStop = true;
             this.lklGitHub.Text = "Visit the project on GitHub";
             this.lklGitHub.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.lklGitHub_LinkClicked);

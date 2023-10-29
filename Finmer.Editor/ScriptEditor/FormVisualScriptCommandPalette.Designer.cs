@@ -29,6 +29,7 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.Windows.Forms.GroupBox groupBox1;
             System.Windows.Forms.GroupBox groupBox2;
             System.Windows.Forms.GroupBox groupBox3;
@@ -72,6 +73,7 @@ namespace Finmer.Editor
             this.cmdTextSetVariable = new System.Windows.Forms.Button();
             this.cmdSaveDialog = new System.Windows.Forms.Button();
             this.cmdSaveCheckpoint = new System.Windows.Forms.Button();
+            this.cmdCombatApplyBuff = new System.Windows.Forms.Button();
             this.cmdCombatPreysense = new System.Windows.Forms.Button();
             this.cmdCombatSetGrappled = new System.Windows.Forms.Button();
             this.cmdCombatSetVored = new System.Windows.Forms.Button();
@@ -80,7 +82,7 @@ namespace Finmer.Editor
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.cmdCombatApplyBuff = new System.Windows.Forms.Button();
+            this.ttpCommand = new System.Windows.Forms.ToolTip(this.components);
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
@@ -125,6 +127,7 @@ namespace Finmer.Editor
             this.cmdFlowSleep.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowSleep.TabIndex = 4;
             this.cmdFlowSleep.Text = "Wait";
+            this.ttpCommand.SetToolTip(this.cmdFlowSleep, "Pause the script for a number of seconds.\r\nDramatic pause, oh my!");
             this.cmdFlowSleep.UseVisualStyleBackColor = true;
             this.cmdFlowSleep.Click += new System.EventHandler(this.cmdFlowSleep_Click);
             // 
@@ -135,6 +138,8 @@ namespace Finmer.Editor
             this.cmdFlowComment.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowComment.TabIndex = 5;
             this.cmdFlowComment.Text = "Comment";
+            this.ttpCommand.SetToolTip(this.cmdFlowComment, "Add comments to the script. These don\'t do anything in-game,\r\nbut may be useful f" +
+        "or your own notekeeping purposes.");
             this.cmdFlowComment.UseVisualStyleBackColor = true;
             this.cmdFlowComment.Click += new System.EventHandler(this.cmdFlowComment_Click);
             // 
@@ -145,6 +150,7 @@ namespace Finmer.Editor
             this.cmdFlowExit.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowExit.TabIndex = 3;
             this.cmdFlowExit.Text = "Exit Script";
+            this.ttpCommand.SetToolTip(this.cmdFlowExit, "Stop running the current script.");
             this.cmdFlowExit.UseVisualStyleBackColor = true;
             this.cmdFlowExit.Click += new System.EventHandler(this.cmdFlowExit_Click);
             // 
@@ -155,6 +161,7 @@ namespace Finmer.Editor
             this.cmdFlowLoopBreak.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowLoopBreak.TabIndex = 2;
             this.cmdFlowLoopBreak.Text = "Break Loop";
+            this.ttpCommand.SetToolTip(this.cmdFlowLoopBreak, "Exit a Loop command.");
             this.cmdFlowLoopBreak.UseVisualStyleBackColor = true;
             this.cmdFlowLoopBreak.Click += new System.EventHandler(this.cmdFlowLoopBreak_Click);
             // 
@@ -165,6 +172,7 @@ namespace Finmer.Editor
             this.cmdFlowLoop.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowLoop.TabIndex = 1;
             this.cmdFlowLoop.Text = "Loop";
+            this.ttpCommand.SetToolTip(this.cmdFlowLoop, "Repeat a group of commands.");
             this.cmdFlowLoop.UseVisualStyleBackColor = true;
             this.cmdFlowLoop.Click += new System.EventHandler(this.cmdFlowLoop_Click);
             // 
@@ -175,6 +183,7 @@ namespace Finmer.Editor
             this.cmdFlowIf.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowIf.TabIndex = 0;
             this.cmdFlowIf.Text = "Conditional Branch";
+            this.ttpCommand.SetToolTip(this.cmdFlowIf, "Run a group of commands only if some condition is met.");
             this.cmdFlowIf.UseVisualStyleBackColor = true;
             this.cmdFlowIf.Click += new System.EventHandler(this.cmdFlowIf_Click);
             // 
@@ -197,6 +206,7 @@ namespace Finmer.Editor
             this.cmdSceneSetScene.Size = new System.Drawing.Size(176, 24);
             this.cmdSceneSetScene.TabIndex = 0;
             this.cmdSceneSetScene.Text = "Change Scene";
+            this.ttpCommand.SetToolTip(this.cmdSceneSetScene, "Stop the current script and switch to another Scene.");
             this.cmdSceneSetScene.UseVisualStyleBackColor = true;
             this.cmdSceneSetScene.Click += new System.EventHandler(this.cmdSceneSetScene_Click);
             // 
@@ -207,6 +217,7 @@ namespace Finmer.Editor
             this.cmdSceneEndGame.Size = new System.Drawing.Size(176, 24);
             this.cmdSceneEndGame.TabIndex = 2;
             this.cmdSceneEndGame.Text = "End Game (Game Over)";
+            this.ttpCommand.SetToolTip(this.cmdSceneEndGame, "End the current game and show reload/exit buttons.");
             this.cmdSceneEndGame.UseVisualStyleBackColor = true;
             this.cmdSceneEndGame.Click += new System.EventHandler(this.cmdSceneEndGame_Click);
             // 
@@ -217,6 +228,7 @@ namespace Finmer.Editor
             this.cmdSceneShop.Size = new System.Drawing.Size(176, 24);
             this.cmdSceneShop.TabIndex = 1;
             this.cmdSceneShop.Text = "Open Shop";
+            this.ttpCommand.SetToolTip(this.cmdSceneShop, "Open the shop menu with the configured merchandise.");
             this.cmdSceneShop.UseVisualStyleBackColor = true;
             this.cmdSceneShop.Click += new System.EventHandler(this.cmdSceneShop_Click);
             // 
@@ -246,6 +258,7 @@ namespace Finmer.Editor
             this.cmdPlayerRestoreHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerRestoreHealth.TabIndex = 4;
             this.cmdPlayerRestoreHealth.Text = "Restore All Health";
+            this.ttpCommand.SetToolTip(this.cmdPlayerRestoreHealth, "Set the player character\'s Health to the Max Health.");
             this.cmdPlayerRestoreHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerRestoreHealth.Click += new System.EventHandler(this.cmdPlayerRestoreHealth_Click);
             // 
@@ -256,6 +269,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetSpecies.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetSpecies.TabIndex = 1;
             this.cmdPlayerSetSpecies.Text = "Change Species";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetSpecies, "Change the nouns and adjectives for the player\'s species.");
             this.cmdPlayerSetSpecies.UseVisualStyleBackColor = true;
             this.cmdPlayerSetSpecies.Click += new System.EventHandler(this.cmdPlayerSetSpecies_Click);
             // 
@@ -266,6 +280,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetName.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetName.TabIndex = 0;
             this.cmdPlayerSetName.Text = "Change Name";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetName, "Change the player character\'s name.");
             this.cmdPlayerSetName.UseVisualStyleBackColor = true;
             this.cmdPlayerSetName.Click += new System.EventHandler(this.cmdPlayerSetName_Click);
             // 
@@ -276,6 +291,7 @@ namespace Finmer.Editor
             this.cmdPlayerAddAbilityPoints.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddAbilityPoints.TabIndex = 9;
             this.cmdPlayerAddAbilityPoints.Text = "Add Ability Points";
+            this.ttpCommand.SetToolTip(this.cmdPlayerAddAbilityPoints, "Grant the player ability points.");
             this.cmdPlayerAddAbilityPoints.UseVisualStyleBackColor = true;
             this.cmdPlayerAddAbilityPoints.Click += new System.EventHandler(this.cmdPlayerAddAbilityPoints_Click);
             // 
@@ -286,6 +302,7 @@ namespace Finmer.Editor
             this.cmdPlayerAddXP.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddXP.TabIndex = 8;
             this.cmdPlayerAddXP.Text = "Add XP";
+            this.ttpCommand.SetToolTip(this.cmdPlayerAddXP, "Grant the player experience points.");
             this.cmdPlayerAddXP.UseVisualStyleBackColor = true;
             this.cmdPlayerAddXP.Click += new System.EventHandler(this.cmdPlayerAddXP_Click);
             // 
@@ -295,7 +312,8 @@ namespace Finmer.Editor
             this.cmdPlayerSetStat.Name = "cmdPlayerSetStat";
             this.cmdPlayerSetStat.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetStat.TabIndex = 2;
-            this.cmdPlayerSetStat.Text = "Change Primary Stat";
+            this.cmdPlayerSetStat.Text = "Change Ability Score";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetStat, "Modify one of the player\'s ability scores (Strength, Agility,\r\nBody, Wits).");
             this.cmdPlayerSetStat.UseVisualStyleBackColor = true;
             this.cmdPlayerSetStat.Click += new System.EventHandler(this.cmdPlayerSetStat_Click);
             // 
@@ -306,6 +324,7 @@ namespace Finmer.Editor
             this.cmdPlayerAddItem.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerAddItem.TabIndex = 7;
             this.cmdPlayerAddItem.Text = "Add/Remove Item";
+            this.ttpCommand.SetToolTip(this.cmdPlayerAddItem, "Add or remove items from the player\'s backpack.");
             this.cmdPlayerAddItem.UseVisualStyleBackColor = true;
             this.cmdPlayerAddItem.Click += new System.EventHandler(this.cmdPlayerAddItem_Click);
             // 
@@ -316,6 +335,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetHealth.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetHealth.TabIndex = 3;
             this.cmdPlayerSetHealth.Text = "Change Health";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetHealth, "Change the player character\'s current Health.");
             this.cmdPlayerSetHealth.UseVisualStyleBackColor = true;
             this.cmdPlayerSetHealth.Click += new System.EventHandler(this.cmdPlayerSetHealth_Click);
             // 
@@ -326,6 +346,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetEquipment.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetEquipment.TabIndex = 6;
             this.cmdPlayerSetEquipment.Text = "Change Equipment";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetEquipment, "Change the contents of the player character\'s equip slots.");
             this.cmdPlayerSetEquipment.UseVisualStyleBackColor = true;
             this.cmdPlayerSetEquipment.Click += new System.EventHandler(this.cmdPlayerSetEquipment_Click);
             // 
@@ -336,6 +357,7 @@ namespace Finmer.Editor
             this.cmdPlayerSetMoney.Size = new System.Drawing.Size(176, 24);
             this.cmdPlayerSetMoney.TabIndex = 5;
             this.cmdPlayerSetMoney.Text = "Change Money";
+            this.ttpCommand.SetToolTip(this.cmdPlayerSetMoney, "Add to or subtract from the player\'s money total.");
             this.cmdPlayerSetMoney.UseVisualStyleBackColor = true;
             this.cmdPlayerSetMoney.Click += new System.EventHandler(this.cmdPlayerSetMoney_Click);
             // 
@@ -358,6 +380,8 @@ namespace Finmer.Editor
             this.cmdDataSetString.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetString.TabIndex = 2;
             this.cmdDataSetString.Text = "Set String Variable";
+            this.ttpCommand.SetToolTip(this.cmdDataSetString, "Set a text variable in the player\'s save game. Variables can be\r\nchecked later, s" +
+        "uch as in a Conditional Branch command.\r\n\r\n");
             this.cmdDataSetString.UseVisualStyleBackColor = true;
             this.cmdDataSetString.Click += new System.EventHandler(this.cmdDataSetString_Click);
             // 
@@ -368,6 +392,8 @@ namespace Finmer.Editor
             this.cmdDataSetNumber.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetNumber.TabIndex = 1;
             this.cmdDataSetNumber.Text = "Set Number Variable";
+            this.ttpCommand.SetToolTip(this.cmdDataSetNumber, "Set a number variable in the player\'s save game. Variables can be\r\nchecked later," +
+        " such as in a Conditional Branch command.\r\n");
             this.cmdDataSetNumber.UseVisualStyleBackColor = true;
             this.cmdDataSetNumber.Click += new System.EventHandler(this.cmdDataSetNumber_Click);
             // 
@@ -378,6 +404,8 @@ namespace Finmer.Editor
             this.cmdDataSetFlag.Size = new System.Drawing.Size(176, 24);
             this.cmdDataSetFlag.TabIndex = 0;
             this.cmdDataSetFlag.Text = "Set Flag Variable";
+            this.ttpCommand.SetToolTip(this.cmdDataSetFlag, "Set a flag variable (\'yes/no\') in the player\'s save game. Variables\r\ncan be check" +
+        "ed later, such as in a Conditional Branch command.");
             this.cmdDataSetFlag.UseVisualStyleBackColor = true;
             this.cmdDataSetFlag.Click += new System.EventHandler(this.cmdDataSetFlag_Click);
             // 
@@ -398,6 +426,7 @@ namespace Finmer.Editor
             this.cmdAdvLuaScript.Size = new System.Drawing.Size(176, 24);
             this.cmdAdvLuaScript.TabIndex = 0;
             this.cmdAdvLuaScript.Text = "Lua Script";
+            this.ttpCommand.SetToolTip(this.cmdAdvLuaScript, "Run a block of raw Lua code. For advanced usage.");
             this.cmdAdvLuaScript.UseVisualStyleBackColor = true;
             this.cmdAdvLuaScript.Click += new System.EventHandler(this.cmdAdvLuaScript_Click);
             // 
@@ -423,6 +452,7 @@ namespace Finmer.Editor
             this.cmdUISetInventoryEnabled.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetInventoryEnabled.TabIndex = 4;
             this.cmdUISetInventoryEnabled.Text = "Set Character Sheet Enabled";
+            this.ttpCommand.SetToolTip(this.cmdUISetInventoryEnabled, "Change whether the player can access their inventory.");
             this.cmdUISetInventoryEnabled.UseVisualStyleBackColor = true;
             this.cmdUISetInventoryEnabled.Click += new System.EventHandler(this.cmdUISetInventoryEnabled_Click);
             // 
@@ -433,6 +463,7 @@ namespace Finmer.Editor
             this.cmdUISetLocation.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetLocation.TabIndex = 6;
             this.cmdUISetLocation.Text = "Set Location Text";
+            this.ttpCommand.SetToolTip(this.cmdUISetLocation, "Set the text that appears above the compass.");
             this.cmdUISetLocation.UseVisualStyleBackColor = true;
             this.cmdUISetLocation.Click += new System.EventHandler(this.cmdUISetLocation_Click);
             // 
@@ -443,6 +474,7 @@ namespace Finmer.Editor
             this.cmdUISetInstruction.Size = new System.Drawing.Size(176, 24);
             this.cmdUISetInstruction.TabIndex = 5;
             this.cmdUISetInstruction.Text = "Set Instruction Text";
+            this.ttpCommand.SetToolTip(this.cmdUISetInstruction, "Set the text that appears above Choice buttons.");
             this.cmdUISetInstruction.UseVisualStyleBackColor = true;
             this.cmdUISetInstruction.Click += new System.EventHandler(this.cmdUISetInstruction_Click);
             // 
@@ -453,6 +485,7 @@ namespace Finmer.Editor
             this.cmdUIClearLog.Size = new System.Drawing.Size(176, 24);
             this.cmdUIClearLog.TabIndex = 2;
             this.cmdUIClearLog.Text = "Clear Message Log";
+            this.ttpCommand.SetToolTip(this.cmdUIClearLog, "Erase all contents of the game log.");
             this.cmdUIClearLog.UseVisualStyleBackColor = true;
             this.cmdUIClearLog.Click += new System.EventHandler(this.cmdUIClearLog_Click);
             // 
@@ -463,6 +496,7 @@ namespace Finmer.Editor
             this.cmdUILog.Size = new System.Drawing.Size(176, 24);
             this.cmdUILog.TabIndex = 0;
             this.cmdUILog.Text = "Show Message";
+            this.ttpCommand.SetToolTip(this.cmdUILog, "Add text to the game log.");
             this.cmdUILog.UseVisualStyleBackColor = true;
             this.cmdUILog.Click += new System.EventHandler(this.cmdUILog_Click);
             // 
@@ -473,6 +507,7 @@ namespace Finmer.Editor
             this.cmdUILogSplit.Size = new System.Drawing.Size(176, 24);
             this.cmdUILogSplit.TabIndex = 1;
             this.cmdUILogSplit.Text = "Show Horizontal Bar";
+            this.ttpCommand.SetToolTip(this.cmdUILogSplit, "Add a horizontal bar to the game log, to split text.");
             this.cmdUILogSplit.UseVisualStyleBackColor = true;
             this.cmdUILogSplit.Click += new System.EventHandler(this.cmdUILogSplit_Click);
             // 
@@ -494,6 +529,8 @@ namespace Finmer.Editor
             this.cmdTextSetContext.Size = new System.Drawing.Size(176, 24);
             this.cmdTextSetContext.TabIndex = 0;
             this.cmdTextSetContext.Text = "Set Grammar Context";
+            this.ttpCommand.SetToolTip(this.cmdTextSetContext, "Bind a Creature object to a name, for use in grammar tags. Check\r\nthe documentati" +
+        "on pages on the grammar engine for details.");
             this.cmdTextSetContext.UseVisualStyleBackColor = true;
             this.cmdTextSetContext.Click += new System.EventHandler(this.cmdTextSetContext_Click);
             // 
@@ -504,6 +541,8 @@ namespace Finmer.Editor
             this.cmdTextSetVariable.Size = new System.Drawing.Size(176, 24);
             this.cmdTextSetVariable.TabIndex = 1;
             this.cmdTextSetVariable.Text = "Set Grammar Variable";
+            this.ttpCommand.SetToolTip(this.cmdTextSetVariable, "Bind some text to a variable, allowing it to be replaced in game text.\r\nCheck the" +
+        " documentation pages on the grammar engine for details.");
             this.cmdTextSetVariable.UseVisualStyleBackColor = true;
             this.cmdTextSetVariable.Click += new System.EventHandler(this.cmdTextSetVariable_Click);
             // 
@@ -525,6 +564,9 @@ namespace Finmer.Editor
             this.cmdSaveDialog.Size = new System.Drawing.Size(176, 24);
             this.cmdSaveDialog.TabIndex = 0;
             this.cmdSaveDialog.Text = "Open Save Menu";
+            this.ttpCommand.SetToolTip(this.cmdSaveDialog, "Display the save menu, allowing players to save their game if\r\nthey wish to. Note" +
+        " that if the player makes a manual save, the\r\nlast checkpoint (if any) is delete" +
+        "d.");
             this.cmdSaveDialog.UseVisualStyleBackColor = true;
             this.cmdSaveDialog.Click += new System.EventHandler(this.cmdSaveDialog_Click);
             // 
@@ -535,6 +577,8 @@ namespace Finmer.Editor
             this.cmdSaveCheckpoint.Size = new System.Drawing.Size(176, 24);
             this.cmdSaveCheckpoint.TabIndex = 1;
             this.cmdSaveCheckpoint.Text = "Save Checkpoint";
+            this.ttpCommand.SetToolTip(this.cmdSaveCheckpoint, "Take a checkpoint (auto-save), allowing the player to quickly\r\nreturn to the curr" +
+        "ent point in the scene if they exit the game.");
             this.cmdSaveCheckpoint.UseVisualStyleBackColor = true;
             this.cmdSaveCheckpoint.Click += new System.EventHandler(this.cmdSaveCheckpoint_Click);
             // 
@@ -553,6 +597,19 @@ namespace Finmer.Editor
             groupBox10.TabStop = false;
             groupBox10.Text = "Combat";
             // 
+            // cmdCombatApplyBuff
+            // 
+            this.cmdCombatApplyBuff.Location = new System.Drawing.Point(16, 72);
+            this.cmdCombatApplyBuff.Name = "cmdCombatApplyBuff";
+            this.cmdCombatApplyBuff.Size = new System.Drawing.Size(176, 24);
+            this.cmdCombatApplyBuff.TabIndex = 2;
+            this.cmdCombatApplyBuff.Text = "Apply Buff";
+            this.ttpCommand.SetToolTip(this.cmdCombatApplyBuff, "Apply a (de)buff to the player character, or a combat participant.\r\nIf the player" +
+        " is not currently in combat, buffs will be queued up\r\nfor later and applied when" +
+        " they next enter combat.");
+            this.cmdCombatApplyBuff.UseVisualStyleBackColor = true;
+            this.cmdCombatApplyBuff.Click += new System.EventHandler(this.cmdCombatApplyBuff_Click);
+            // 
             // cmdCombatPreysense
             // 
             this.cmdCombatPreysense.Location = new System.Drawing.Point(16, 144);
@@ -560,6 +617,9 @@ namespace Finmer.Editor
             this.cmdCombatPreysense.Size = new System.Drawing.Size(176, 24);
             this.cmdCombatPreysense.TabIndex = 5;
             this.cmdCombatPreysense.Text = "Show Preysense";
+            this.ttpCommand.SetToolTip(this.cmdCombatPreysense, "Show a Preysense warning (a content warning) describing some\r\nupcoming vore-relat" +
+        "ed content. Note that Preysense warnings are\r\nonly shown if the relevant option " +
+        "in the Options menu is enabled.");
             this.cmdCombatPreysense.UseVisualStyleBackColor = true;
             this.cmdCombatPreysense.Click += new System.EventHandler(this.cmdCombatPreysense_Click);
             // 
@@ -570,6 +630,8 @@ namespace Finmer.Editor
             this.cmdCombatSetGrappled.Size = new System.Drawing.Size(176, 24);
             this.cmdCombatSetGrappled.TabIndex = 4;
             this.cmdCombatSetGrappled.Text = "Set Participants Grappling";
+            this.ttpCommand.SetToolTip(this.cmdCombatSetGrappled, "Force two characters to start grappling with each other, or cancel\r\nan ongoing gr" +
+        "apple.");
             this.cmdCombatSetGrappled.UseVisualStyleBackColor = true;
             this.cmdCombatSetGrappled.Click += new System.EventHandler(this.cmdCombatSetGrappled_Click);
             // 
@@ -580,6 +642,8 @@ namespace Finmer.Editor
             this.cmdCombatSetVored.Size = new System.Drawing.Size(176, 24);
             this.cmdCombatSetVored.TabIndex = 3;
             this.cmdCombatSetVored.Text = "Set Participants Swallowed";
+            this.ttpCommand.SetToolTip(this.cmdCombatSetVored, "Force a character to have swallowed another character, or undo\r\nsuch a situation." +
+        "");
             this.cmdCombatSetVored.UseVisualStyleBackColor = true;
             this.cmdCombatSetVored.Click += new System.EventHandler(this.cmdCombatSetVored_Click);
             // 
@@ -590,6 +654,8 @@ namespace Finmer.Editor
             this.cmdCombatStop.Size = new System.Drawing.Size(176, 24);
             this.cmdCombatStop.TabIndex = 1;
             this.cmdCombatStop.Text = "Stop Combat";
+            this.ttpCommand.SetToolTip(this.cmdCombatStop, "Exit the currently active combat session. Meant to be used from\r\nwithin a combat " +
+        "event.");
             this.cmdCombatStop.UseVisualStyleBackColor = true;
             this.cmdCombatStop.Click += new System.EventHandler(this.cmdCombatStop_Click);
             // 
@@ -600,6 +666,8 @@ namespace Finmer.Editor
             this.cmdCombatBegin.Size = new System.Drawing.Size(176, 24);
             this.cmdCombatBegin.TabIndex = 0;
             this.cmdCombatBegin.Text = "Begin Combat";
+            this.ttpCommand.SetToolTip(this.cmdCombatBegin, "Start a combat session with configured participants. You may\r\nadd scripts to cert" +
+        "ain events, to customize combat behavior.");
             this.cmdCombatBegin.UseVisualStyleBackColor = true;
             this.cmdCombatBegin.Click += new System.EventHandler(this.cmdCombatBegin_Click);
             // 
@@ -621,6 +689,8 @@ namespace Finmer.Editor
             this.cmdJournalUpdate.Size = new System.Drawing.Size(176, 24);
             this.cmdJournalUpdate.TabIndex = 0;
             this.cmdJournalUpdate.Text = "Add/Update Quest";
+            this.ttpCommand.SetToolTip(this.cmdJournalUpdate, "Change the stage of a quest in the player\'s journal. If the quest is\r\nnot yet in " +
+        "the journal, it will be added.");
             this.cmdJournalUpdate.UseVisualStyleBackColor = true;
             this.cmdJournalUpdate.Click += new System.EventHandler(this.cmdJournalUpdate_Click);
             // 
@@ -631,6 +701,7 @@ namespace Finmer.Editor
             this.cmdJournalClose.Size = new System.Drawing.Size(176, 24);
             this.cmdJournalClose.TabIndex = 1;
             this.cmdJournalClose.Text = "Remove Quest";
+            this.ttpCommand.SetToolTip(this.cmdJournalClose, "Remove a quest from the player\'s journal, if it is there.");
             this.cmdJournalClose.UseVisualStyleBackColor = true;
             this.cmdJournalClose.Click += new System.EventHandler(this.cmdJournalClose_Click);
             // 
@@ -648,15 +719,13 @@ namespace Finmer.Editor
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
-            // cmdCombatApplyBuff
+            // ttpCommand
             // 
-            this.cmdCombatApplyBuff.Location = new System.Drawing.Point(16, 72);
-            this.cmdCombatApplyBuff.Name = "cmdCombatApplyBuff";
-            this.cmdCombatApplyBuff.Size = new System.Drawing.Size(176, 24);
-            this.cmdCombatApplyBuff.TabIndex = 2;
-            this.cmdCombatApplyBuff.Text = "Apply Buff";
-            this.cmdCombatApplyBuff.UseVisualStyleBackColor = true;
-            this.cmdCombatApplyBuff.Click += new System.EventHandler(this.cmdCombatApplyBuff_Click);
+            this.ttpCommand.AutomaticDelay = 250;
+            this.ttpCommand.AutoPopDelay = 60000;
+            this.ttpCommand.InitialDelay = 250;
+            this.ttpCommand.ReshowDelay = 50;
+            this.ttpCommand.Popup += new System.Windows.Forms.PopupEventHandler(this.ttpCommand_Popup);
             // 
             // FormVisualScriptCommandPalette
             // 
@@ -740,5 +809,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdCombatSetVored;
         private System.Windows.Forms.Button cmdCombatPreysense;
         private System.Windows.Forms.Button cmdCombatApplyBuff;
+        private System.Windows.Forms.ToolTip ttpCommand;
     }
 }

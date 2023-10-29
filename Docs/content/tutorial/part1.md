@@ -67,7 +67,7 @@ Select the Root node in the scene tree - it's the only one there currently. At t
 More settings will appear:
 
 - For the **Target Scene**, click the 🔗 link button, and in the dialog that pops up, select the `Scene_TownNSQ` scene - this is North Finmer's northern town square (hence 'NSQ').
-- For the **Injection Point**, pick 'inside at the end (as Choices)' in the top dropdown, and pick 'ViewBoard' in the bottom dropdown. This tells Finmer to treat your scene as extra Choice nodes to add onto the notice board's existing list of Choices.
+- For the **Injection Point**, pick 'inside at the end (as Choices)' in the top dropdown, and pick 'ViewBoard' in the bottom dropdown. This tells Finmer to treat your scene as extra buttons to add onto the notice board's existing buttons - more on that later.
 
 :::note
 If the 'Scene_TownNSQ' scene asset does not show up in the asset selection dialog when you click the 🔗 link button, your dependency on Core is not loaded correctly. Don't forget you need to reload your project or restart the editor (either works) to make the dependency change take effect.
@@ -81,7 +81,7 @@ If the 'Scene_TownNSQ' scene asset does not show up in the asset selection dialo
 
 Now we can start adding new content into the main game!
 
-With the Root node still selected, click `Add Node`. Observe how the first node we get is a Choice node, just as we configured on the Root node. Let's set up the new button to entice a player to pick up our quest. On the new choice node, apply the following settings. You can leave the two check boxes unchecked.
+With the Root node still selected, click `Add Node`. The first node we get is called a Choice node, since that is what we configured on the Root node earlier. Let's set up the new button to entice a player to pick up our quest. On the new Choice node, apply the following settings. You can leave the two check boxes unchecked.
 
 	Unique Key:		TQ01_Notice
 	Button Text:	Wanted: Strong Labor
@@ -91,7 +91,9 @@ With the Root node still selected, click `Add Node`. Observe how the first node 
 	src={require("/images/Tutorial01NoticeChoiceSettings.png")}
 	caption="Your first Choice node should look like this. You can just copy the above settings." />
 
-This creates a new button on the screen. A Choice node represents a button the player can 'choose' - hence 'Choice' node. States and Choices alternate each other: the player picks whichever Choice they like, and the game then picks a State in response. You can think of States as the game's 'reply' to the player's actions.
+This will add a new button at the bottom of the game screen, when the player visits the notice board. A Choice node represents a button the player can 'choose' - hence 'Choice' node.
+
+The other main type of nodes are called States. States and Choices alternate each other: the player picks whichever Choice they like, and the game then picks a State in response. You can think of States as the game's 'reply' to the player's actions.
 
 :::info Takeaway
 States always lead to Choices, and Choices always lead to States. The player picks Choices, the game picks States. Sometimes there is only one option, but this alternating pattern is always there. You can read more about this [in the Scene document](/asset-types/scenes).
@@ -138,9 +140,13 @@ Each line is a 'command' that the game will run. You can double-click on any of 
 	src={require("/images/Tutorial01VisPalette.png")}
 	caption="There's a lot of options here - you want 'Show Message' at the top!" />
 
+:::tip
+Hover your cursor over the buttons on the command palette to see tooltips, showing more details about what the commands do.
+:::
+
 For this first node, we merely want to print some text to the screen. This is what the 'Show Message' command is for, under the 'Interface Control' group. Click this button. In the popup that appears, use `TQ01_NOTICE` as the String Table Key. (More on this later, just follow along.) Finally, click Accept.
 
-Your script should look like this:
+Your script should look like this. If you need to edit a command, just double-click it to open the popup again to customize it.
 
 ```finmervis
 Log: TQ01_NOTICE

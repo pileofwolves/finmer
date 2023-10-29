@@ -53,6 +53,12 @@ namespace Finmer.Editor
             Close();
         }
 
+        private void ttpCommand_Popup(object sender, PopupEventArgs e)
+        {
+            if (e.AssociatedControl is Button button)
+                ttpCommand.ToolTipTitle = button.Text;
+        }
+
         private void cmdCancel_Click(object sender, System.EventArgs e)
         {
             DialogResult = DialogResult.Cancel;

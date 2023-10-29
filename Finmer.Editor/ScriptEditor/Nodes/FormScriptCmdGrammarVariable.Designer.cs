@@ -44,9 +44,9 @@
             label2.AutoSize = true;
             label2.Location = new System.Drawing.Point(16, 16);
             label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(77, 13);
+            label2.Size = new System.Drawing.Size(79, 13);
             label2.TabIndex = 0;
-            label2.Text = "Context Name:";
+            label2.Text = "Variable Name:";
             // 
             // label1
             // 

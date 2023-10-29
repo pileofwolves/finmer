@@ -46,9 +46,9 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 48);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(66, 13);
+            label1.Size = new System.Drawing.Size(37, 13);
             label1.TabIndex = 2;
-            label1.Text = "Primary Stat:";
+            label1.Text = "Ability:";
             // 
             // label2
             // 
@@ -158,7 +158,7 @@
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "Set Compass Location";
+            this.Text = "Set Ability Score";
             this.Load += new System.EventHandler(this.FormScriptCmdSetLocation_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

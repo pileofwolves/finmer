@@ -108,17 +108,6 @@
 													},
 													{
 														"NodeType": "Choice",
-														"Title": "MQ02 RoadEnc",
-														"Highlight": false,
-														"ButtonWidth": 1.0,
-														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "DebugStartMQ02()\r\nPlayer.EquippedWeapon = Item(\"W_Dagger\")\r\nStorage.SetFlag(\"MQ02_ROAD_ANTAG_SCHEDULED\", true)\r\nStorage.SetFlag(\"MQ02_OLIVER_R_SPILL_WOLF\", true)\r\nSetScene(\"Scene_RoadEnc\")"
-														},
-														"Children": []
-													},
-													{
-														"NodeType": "Choice",
 														"Title": "MQ02 Done",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
@@ -191,6 +180,41 @@
 														"ScriptAction": {
 															"!Type": "ScriptDataInline",
 															"Script": "DebugStartMQ05()\r\nJournal.Update(\"MQ05\", 20)\r\nStorage.SetFlag(\"MQ05_INTRO_ZOSK\", true)\r\nStorage.SetFlag(\"MQ05_INTRO_COURTYARD\", true)\r\nSetScene(\"Scene_RedMaw\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
+														"Title": "MQ06 Plan",
+														"Tooltip": "Bare minimum dialogue",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ06()\r\nJournal.Update(\"MQ06\", 10)\r\nSetScene(\"Scene_ForestAdept\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
+														"Title": "MQ06 Plan (Full)",
+														"Tooltip": "All bonus dialogue unlocked",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ06()\r\nJournal.Update(\"MQ06\", 10)\r\nStorage.SetFlag(\"FOREST_ADEPT_BOOK\", true)\r\nStorage.SetNumber(\"FOREST_ADEPT_BOOK_TIME\", -1)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL1\", true)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL2\", true)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL3\", true)\r\nStorage.SetFlag(\"MQ05_MAW_JOURNAL4\", true)\r\nStorage.SetFlag(\"MQ05_MAW_ROOM_IRON_FIRST\", true)\r\nStorage.SetFlag(\"MQ05_MAW_ROOM_STORAGE2_FIRST\", true)\r\nStorage.SetFlag(\"MQ05_MAW_ROOM_KITCHEN_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_FIRST\", true)\r\nStorage.SetFlag(\"TOWN_PIT_OPP4_WON\", true)\r\nStorage.SetFlag(\"TOWN_HALL_EVENT_SNITCH\", true)\r\nSetScene(\"Scene_ForestAdept\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
+														"Title": "MQ06 Abbey",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugStartMQ06()\r\nJournal.Update(\"MQ06\", 20)\r\nStorage.SetFlag(\"MQ06_DEBUG_SKIP_WALK\", true)\r\nSetScene(\"Scene_MQ06_Abbey\")"
 														},
 														"Children": []
 													},

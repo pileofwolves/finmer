@@ -1,0 +1,361 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "5cb55c23-fc8a-46d6-91f5-2835bed8016e",
+	"AssetName": "Strings_MQ06",
+	"Entries": [
+		{
+			"Key": "MQ06_AMBUSH_FRIEND_KILLED",
+			"Text": [
+				"{defender} staggers and drops down to a knee, down and out for the count."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH_VORE_DIGESTED",
+			"Text": [
+				"A loud, gnarly crunch sounds from somewhere within the solid mass of your stomach contents as the organ subdues its rebellious meal, a bubble of air displacing and swiftly released in the form of a wet belch. The taste of meat and bile rises to the back of your tongue, and you quickly swallow it back down, continuing to focus on the task at hand. It seems that at least this one attacker will never be a threat to anyone again."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH_VORE_PRED01",
+			"Text": [
+				"With the prey's feet disappearing from view, your paws starting to roam and rub up and down your gut almost entirely on instinct, you glance up to find Iso staring at you, grimacing. \"Holy shit, {player.name}, not you too,\" she whispers, just barely dodging the slicing motion of a weapon dancing through the space where she had been standing just before. That level of distraction is not a healthy preoccupation in the middle of a struggle for life and death, after all. As your prey settles fully in the depths of your gut, wobbling and fighting against their fate as {player.species}-fat, the black-furred pantheress manages to tear her gaze away from you to focus on the scene. \"That's... sick. I can't trust anybody,\" she grunts."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH_VORE_WIN",
+			"Text": [
+				"In a swift, smooth motion, you part your jaws wide enough to send flecks of saliva flying. As {thug.aliaspossessive} eyes widen with realization and fear, you engulf their head all at once. With a greedy swipe of the tongue to mat down the thug's fur and dislodge the hood covering their features, though with them already lodged in your gullet, it's too late to actually make out any identifying features. Not that it matters: this preything is reduced to nothing but food, and all food is the same in the end. The first swallow reverberates through the trees, and you draw several stunned pairs of eyes as you devour your meal. Nobody dares interrupt the predator at work, the fight more or less pausing.\\n\\nStruggling is useless at this point for {thug}; each gulp pushes them deeper into the crushing depths of your digestive tract. The dry, tasteless fabric of their clothes rubs against your tongue, the cloth quickly draining your maw of moisture, making for a rather unpleasant eating experience. Still, spurred on by the incredible flavors lingering on the fur you'd already gulped down, saliva production is in overdrive, and with a few slow, wet swallows your stomach begins expanding to accommodate the load of fresh meat. An incredible feeling of predatory euphoria washes over you as your meal's legs slide down your throat, gravity assisting in the prey's devourment, and with a final, rumbling belch, they are sealed away in a slimy, acidic pit. That's all you can fit, but oh, does it feel good."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH01",
+			"Text": [
+				"Your pleasant walk in the woods is interrupted by three figures emerging from the dense forestry. Clad in identical, dull black leather armor, faces covered with cloth wrappings, their only identifying features are general body shape, and tail. The trio - rodent, canine and feline - approach, and your two companions stop in their tracks, already expecting the worst."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH02",
+			"Text": [
+				"\"Finally,\" quips the feline. From their voice alone, you cannot quite tell their gender, but perhaps it doesn't really matter. \"Told you they'd leave eventually.\" The smaller fellow beside them, a rodent of some description, sneers and steps forward, pulling a short, sharp blade from their belt. \"Been too long since I got to cut someone up. Mmm, maybe I'll let you choose which limb I go for first.\""
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH03",
+			"Text": [
+				"The last remaining assassin glances anxiously at the three of you, perhaps finally realizing the little hitsquad had grossly underestimated the threat, stumbles backwards. {^thug} sheathes their weapon and turn tail, leaving their comrades to their fates by sprinting away as fast as their legs - and the mushy soil - can carry them."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_CHIP01_FRIEND",
+			"Text": [
+				"The robed figure doesn't get particularly far until their escape attempt is disrupted. A huge, snarling mass of gray-and-silver fur erupts from between the trees. Chip pounces on the biped that had dared to make a fool of his master, pinning his target not with his front paws like most ferals would when hunting, but rather, with wide open jaws. {^thug} realizes too late what is happening and can do nothing but watch as they are engulfed in that slimy maw with a wet squelch. The wolf, for his part, wastes little time, tossing his muzzle upwards with each swallow, his meal disappearing down his gullet with staggering speed. The display is a stark departure from how comparatively gently the wolf had treated you before when you'd taken a dive down his throat. It's obvious Chip has no intent of letting this meal back out through the same way they went in."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_CHIP01_NOTFRIEND",
+			"Text": [
+				"The robed figure doesn't get particularly far until their escape attempt is disrupted. A huge, snarling mass of gray-and-silver fur erupts from between the trees. Chip pounces on the biped that had dared to make a fool of his master, pinning his target not with his front paws like most ferals would when hunting, but rather, with wide open jaws. {^thug} realizes too late what is happening and can do nothing but watch as they are engulfed in that slimy maw with a wet squelch. The wolf, for his part, wastes little time, tossing his muzzle upwards with each swallow, his meal disappearing down his gullet with staggering speed. You briefly wonder what it would feel like to be rammed down a slimy tube with such violence."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_CHIP02",
+			"Text": [
+				"A soft, furry bulge soon forms on Chip's belly as the form of his prey slides down his gullet, vanishing into his chest only to reappear soon after as a hallmark of a satisfied predator. The swollen dome shifts and writhes, the meat within struggling for dear life. A useless endeavour, of course - they wouldn't be leaving without Chip's blessing. The oversized canine in question doesn't even bother to pay attention to the dying struggles of his meal, instead preoccupied with licking his lips and releasing a loud, wet belch. A drool-soaked black scarf slides from his tongue, landing on the ground with a splat. To your side, Iso looks a little perturbed at this whole chain of events, while Rux looks mostly impassive, or, perhaps... proud?"
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_CHIP02_PLAYERPRED",
+			"Text": [
+				"\"At least I can't blame an oversized guard dog for eating people,\" the mayor mumbles, casting a sidelong glance in your general direction. Her gaze lingers on your hugely distended {player.furry} gut, lumps shifting underneath as the organ pushes its contents around mercilessly. Rux is silent, though you do find yourself wondering what opinion swims behind those tired eyes of his."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_CHIP03",
+			"Text": [
+				"\"Here, boy,\" the red panda commands, and with perked ears, the massive lupine bounds over like a newborn pup desperate for love and attention. Rux receives a wet slurp on the face for his trouble, and returns rubs and muzzle scritches in kind. It is obvious how much the two have bonded over the years, and if it weren't for the fact that a person is literally drowning in digestive fluids right this moment, the exchange might have been considered cute. Before long, though, Rux sends the monstrous guard dog on his way, and Chip cheerily trots off in the direction where you came from, back to the cabin. You exchange glances with Iso, and the Adept raises an eyebrow while cleaning the slobber of his fur with a small towel he'd retrieved from nowhere. \"What?\" he asks."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_NOCHIP01",
+			"Text": [
+				"Just as you are about to give chase, Iso takes aim and flings her knife into the walls of trees. The blade cleaves through the air, falling short of the fleeing adversary who, wisely, had shifted directions. Dirt and dry leaves scatter on the ground where the weapon lands harmlessly, its target escaping. Neither you nor Rux judge the assailant easy to apprehend at this point. By the time the panicked, rapid footfalls fade away into the distance, Iso shrugs and casually walks over to her blade to retrieve it."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH04_NOCHIP01_PLAYERPRED",
+			"Text": [
+				"\"The only good thing I have to say to you, {player.name}, is that at least that one won't get away,\" the mayor mumbles, casting a sidelong glance in your general direction. Her gaze lingers on your hugely distended {player.furry} gut, lumps shifting underneath as the organ pushes its contents around mercilessly. The red panda is silent, though you do find yourself wondering what opinion swims behind those tired eyes of his."
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH05",
+			"Text": [
+				"Deciding it best to pursue a different conversation topic, Iso scratches the side of her muzzle. \"So who were these? Spirits, am I going to have to start worrying about being assassinated now too?\" She sighs, sticking her paws in her sides as she takes in the scene before her. \"I thought becoming the mayor was a good thing. I wanted to help people, give them the channels they need to get stuff done. I know you can't please everyone, but... this...\""
+			]
+		},
+		{
+			"Key": "MQ06_AMBUSH06",
+			"Text": [
+				"Ever the comforting presence of the crew, Rux gives his friend a hearty chuckle, his striped tail swaying back and forth once. \"You'll be fine, Iso. Making enemies is part of the job, and it's just another obstacle you can overcome.\"\\n\\nThe mayor, in turn, considers this, unsure how to respond for a few moments. Content to instead stick her paws in her coat, she steps away from the corpse at her feet with a wide berth, before continuing to walk in the direction you had been traveling before this distraction took place. \"Let's... just go. We have somewhere to be,\" she quips, not really waiting for either of you to follow her in kind.\\n\\nNot wanting to be caught dawdling, you begin moving as well, but not before the Adept prods the ground with his staff, sighing. \"I'm getting too old for this,\" he rumbles quietly."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_CANCEL",
+			"Text": [
+				"You receive understanding nods when you explain that you need to take care of a few things in preparation. \"Don't take too long, {player.name},\" Iso says."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_PRE_ISO_LEFT",
+			"Text": [
+				"Together with the old panda, you decide to give Iso a few moments to collect her thoughts. It does not take long for her to re-emerge from the guest room, without the picture frame this time. She looks refreshed and, while still downcast, more present and level-headed. Probably for the best - the matters you are about to discuss would benefit from a more objective point of view."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_PRE_SQ06_CALLOUT",
+			"Text": [
+				"Iso rubs at a paw and shifts on the sofa. She appears a little tense. \"Hold on, {player.name}. Did you still want to try our luck and see if we can find anything related to Randall at my home? Probably a slim chance, but if we want to go there, we have to do it before we take the fight to him.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_RETURN",
+			"Text": [
+				"The two co-conspirators stop the rummaging they had both been doing around the house, to regard you fully. \"Ready to go?\" Rux asks, paws folded behind his back. \"We'll likely be in for a fight, so if you have any stocking-up left to do, now's the time.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_AMBER",
+			"Text": [
+				"You confirm that the Red Maw does, in fact, house a natural amber deposit. Only a small fraction of it has actually been excavated; there may be more buried under layers of rock and sediment. Rux humms in response to this, scratching his chin. \"If anything,\" he grumbles, \"it will be a good source of commerce for our southern neighbors. But I imagine there will have to be a lot of work to restructuring the mine itself, not to mention refining and cleaning the crystals themselves. All things I can advise them on,\" the red panda finishes with a chuckle."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_JOURNALS",
+			"Text": [
+				"It seemed like the original proprietors of the mine complex had no idea what dark fate they were in for, when things took a turn for the worse. While their story is a tragic one, there is little it can do for the here and now - though it does explain why the place had been abandoned and forgotten, making it easy pickings for a very lucky wolf strolling along the beach one day."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_LOCATION",
+			"Text": [
+				"Perhaps the single most important takeaway of the whole excursion is the location of the final piece of the puzzle. Dalsida Abbey, as it was once called, seems to have housed some manner of monastery dedicated to either studying or worshiping the Far Shore - perhaps both. Though their teachings and identities have been erased through time, it's obvious the area holds great significance to someone who would be interested in the same kind of research. The red panda opposite the coffee table grinds his teeth, appearing a little frustrated and - for the first time since you met the Adept - unsure how to respond. \"Okay, that more or less confirms my worst-case theory,\" he sighs, rubbing his brow. \"Is- is there anything else you can share?\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_MEMBERS",
+			"Text": [
+				"Beside the boss himself, there are two Red Maw members remaining at large that you know of. The two ladies - Sahro and Mia - had both found early retirement after running into you. Toby, the whimpering arctic fox, was never cut out for the predation life to begin with. And after 'dispatching' the rodent, Jett, only Mako the husky and Ethel the bluebird remain. Assuming the boss hadn't thought of recruiting replacements, that would mean the three of you are evenly matched - while unnerving to be going up against such people, the tactical information is valuable nevertheless."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_WEREWOLF",
+			"Text": [
+				"Your infiltration had revealed the ultimate goal of Randall's operation: to transform into a different being, blessed with the shape of the hunt - not quite like the werewolves of legend, but something very close to it. Considering the wolf's behavior so far, it's not hard to imagine the idea and intent behind it. To be blessed with a form possessing unstoppable strength, not to mention insatiable appetite, would no doubt be a dream come true for a prolific man-eater like him. Iso, for her part, appears horrified. \"He- he was always fascinated by legends of giant beasts and the like, especially children's tales like those of 'werewolves'... but I never- ugh. How did I never...\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN_TOPIC_ZOSK",
+			"Text": [
+				"You explain that Zosk, the chameleon merchant, had been providing construction and excavation equipment to the Red Maw all along. The cruel irony, of course, is that you had happily taken him up on a ride when you first visited South Finmer, not knowing his delivery is what you had been trying to stop in the first place. Whether the trader knows exactly what he was doing, or whether he had simply avoided asking too many inconvenient questions, remains a mystery - but perhaps it doesn't matter anymore. Iso nods grimly."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN01",
+			"Text": [
+				"You take a seat at the coffee table, joining your allies as they ponder over the maps, papers, notes and writing materials scattered across the table. It's obvious they haven't been wasting time while you were away on your own. Likewise, you have a fair bit to add to the conversation as well - hopefully it would be enough to forge a plan of attack.\\n\\nRux is the first to speak up. \"Well, I think out of the three of us, you likely have the most evidence, {player.name}. Tell us, how did you fare?\"\\n\\nThinking of everything you'd seen, you begin describing what you know."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN02",
+			"Text": [
+				"Receiving two nods in return, you fall silent, waiting for the other two to fill the remaining gaps. There's a lot of information to digest here. Mayor Iso taps a marking on the map - a tiny marker representing the nearby abbey specifically. Ordinarily a little-known historical site and occasional tourist attraction, it seems the old monastery holds more secrets still, despite having been picked over by many a looter."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN03",
+			"Text": [
+				"\"We had surmised that the old abbey was important to the rampant wolf, but this confirms some theories I had,\" Rux begins. He brushes both paws across the map, flattening it out across the surface of the table. A forest pass can be seen starting at South Finmer, trailing southeast until it reaches a range of hills. There, Dalsida Abbey was founded."
+			]
+		},
+		{
+			"Key": "MQ06_PLAN04_BOOK",
+			"Text": [
+				"\"I've managed to translate portions of the book you gave me, {player.name} - my thanks again for that. It has been fascinating. Most of it is very religious and gospel-like in nature, not too interesting for me, but there is more.\" He pulls the old tome from a shelf behind him, before flipping to a particular page and setting it down. The text is utter gibberish to you - and going by her reaction, to Iso as well - though drawings transcend language. These pages depict the abbey itself, showing a lush courtyard with intricately decorated buildings surrounding it. Floor plans are shown, as well. They appear to feature arbitrary networks of blue lines criss-crossing through the maps, converging inside the chapel. Somewhat like a plan for a plumbing system, but strangely messy and jittery.\\n\\nRux points to this last drawing in particular. \"I'll save you the long story, but I believe these people built this place on that spot, far away from others, for a very specific reason. Remember, the Finmer towns did not exist back then. They believe there is some sort of power, or maybe a weakness, or something along those lines, converging there.\" His finger traces along the drawings, following a path along the deep blue network. \"Here. They called these 'channels'. I wonder what they were meant to carry. These 'tubes' do not actually exist anywhere in the abbey as it is today; no book or visitor has ever mentioned them. So... what do they represent?\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN04_NOBOOK",
+			"Text": [
+				"\"I've been scrounging up all the details I can from the literature I have lying around. Little is known about the place, unfortunately.\" He pulls a few scraps of paper from under the map and puts them on top, spreading them out for viewing. The handwriting is an unreadable scrawl that makes Edgard's notes look like calligraphy by comparison. The Adept gestures at them as if it's supposed to mean anything to you anyway.\\n\\n\"I believe the abbey was the focal point of a very religious group. Without a first-hand account, it's hard to say exactly why they built their chapel where they did, so far removed from civilization. Remember, the Finmer towns did not exist yet at the time.\" He sighs, studying his own notes, as if hoping there might be a secret clue hidden in there that he had somehow missed all this time. \"But I'm certain they believed there is some manner of dormant power converging there.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN05",
+			"Text": [
+				"Iso nods slowly, having been quietly observing. From what you can gather, the two have gone over most of this information already, though with the new intelligence you had added, their theories are cast into a new light. \"Well, if that's the case,\" she begins, \"what if the thing that's flowing through here, whatever it is, if it even exists, is not exactly... tangible?\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN06",
+			"Text": [
+				"In response, the scholar nods in approval. \"I'm thinking the same, Iso,\" he rumbles. \"To found what is more-or-less a cult around the legend of the Shore, to dedicate every second of one's life to its study and worship... what did they know that we do not?\" Another thought occurs to him then, a grimace forming on his snout. The Adept deflates a little, releasing a drawn-out sigh. \"Was I perhaps wrong to dismiss Willow all this time? I do not like things I cannot see. But maybe the history matters little. What's important is that Randall evidently thinks he can claim this power for himself, else he wouldn't bother with such a ruin.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN07",
+			"Text": [
+				"The black feline beside him nods gently. \"We couldn't really come up with any plausible ideas as to what he wanted to do with all the amber he was getting, but... with the two discoveries you made, I think he wants to turn himself into some super-powerful form. A true apex predator.\" A few moments pass, Iso idly rubbing one paw into the other.\\n\\n\"Maybe it's a little egotistical of me to assume, but... this way, nobody would be able to stop him from getting what he wants: me.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN08",
+			"Text": [
+				"The red panda humms, crossing his arms. \"Well,\" he begins, reaching under his sleeve with one paw to scratch at his forearm. \"Then our course of action is rather simple. If the old abbey is the centerpiece of the wolf's scheme, then we have few options but to get there before he does... prepare countermeasures.\"\\n\\nIso inhales sharply, studying the map for a few more moments, before humming in what you surmise must be agreement. \"Even if we do, what can we do? Say we're too late; can we like, undo what he's trying?\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN09",
+			"Text": [
+				"To that, Rux flashes a rare smile. \"I suppose that depends on how far along he is when we get there. But I have some tricks up my sleeve. Material enhancement, and by extent transmutation, is my field of study, as you know, Iso.\" The Adept rises from the comfortable sofa and pats himself down, padding over to the shelf to put back some notebooks that had been scattered on the table.\\n\\n\"I don't believe him to be particularly well-trained, but perhaps he doesn't need to be, if he seems set on 'tapping' some sort of hitherto unknown energy source. Either way, I believe I am capable of countering any reactions he might start. Though I would need you two to take care of the more... physical half of the job.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN10",
+			"Text": [
+				"The feline, too, gets up and stretches her legs, idly rubbing a paw along her thigh to stimulate the blood flow. \"Alright, well, then what are we waiting for? I trust you can take care of the, er, enchanting stuff, Rux; {player.name}, we'll have to keep them busy in the mean time. Assuming they're even there. If not, I guess we could lay some traps.\"\\n\\n\"Then we are agreed,\" the robed hermit declares, before turning to you, paws folded neatly behind his back. \"But let us not be overly hasty. {player.name}, are you ready to go? We'll be busy for a while, so you may want to stock up. But don't delay; we do not know how much time we have.\""
+			]
+		},
+		{
+			"Key": "MQ06_PLAN11",
+			"Text": [
+				"You haven't finished speaking the full sentence and Iso is already halfway out the door. The red panda, standing idly around the fireplace, gives you a cheeky grin before shrugging and heading that way as well. He stops by one of the many shelves lining the walls, briefly staring down a glimmering chunk of polished amber crystal. A prized possession to be sure - they rarely come in such sizes, as you have learned on your mining tour. Seemingly deciding to not take it along, Rux strolls out the door, wordlessly glancing behind him. You follow."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_NOTPRED",
+			"Text": [
+				"The mayor sighs. \"You got anything?\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED01",
+			"Text": [
+				"For you, the walk had been a particularly tiresome slog considering you were dragging along the weight of another adult person. The mass of meat hidden under your {player.fur} had stopped moving long ago, the digestive system doing its best to pulverize the food within. An arduous task in its own right - more so when the baleful eyes of the black pantheress walking by your side keeps you from crashing under the nearest tree and sleeping off the worst."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED02",
+			"Text": [
+				"\"So,\" Iso begins, finally shattering the silence interleaving with your footfalls. \"You never told me you're a pred, {player.name}. Tell me something.\" She turns her head to face you, paws stuck in her pockets. Her expression is unreadable, frustratingly neutral. There is something in her eyes that hadn't been there before the incident just now - something cold - and you find yourself having to consciously keep yourself from shrinking under the mayor's gaze. \"How many people have you murdered?\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED03_FEW",
+			"Text": [
+				"In response, you get a snort. \"Likely story,\" Iso grumbles. \"I...\" she starts, trailing off immediately, gaze averting to the dense shrubbery along the packed dirt road. \"We'll... talk about this later, after we deal with Randall.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED03_MANY",
+			"Text": [
+				"In response, you get a snort. \"Yeah, I can imagine,\" Iso grumbles. \"I...\" she starts, trailing off immediately, gaze averting to the dense shrubbery along the packed dirt road. \"We'll... talk about this later, after we deal with Randall.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED04",
+			"Text": [
+				"The Adept, for his part, addresses you for the first time since you'd openly presented yourself as a predator, cut from the very same cloth as Randall himself. \"I will say I am intrigued about one thing, {player.name}.\" He turns to face you, but then looks back to the road without actually waiting for an answer. \"You're not the first predator I've met in my days. I'm curious: what is your reasoning?\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED05_DEFAULT",
+			"Text": [
+				"\"I sometimes wonder if Randall is able to put it into words so simply,\" Iso sighs. There seems to be little more to add to the conversation, until the mayor continues after having spent several moments lost in thought. \"Look, I- I'm not happy about this,\" she rationalizes, keeping up the walking pace despite the weight of the topic. \"But maybe fighting fire with fire is what we need. I... used to say that all predators are monsters. Then again, I guess you could've eaten me any time you wanted,\" she sighs."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED05_SQ05_COMFORT",
+			"Text": [
+				"\"I sometimes wonder if Randall is able to put it into words so simply,\" Iso sighs. There seems to be little more to add to the conversation, until the mayor continues after having spent several moments lost in thought. \"Look, I- I'm not happy about this,\" she rationalizes, keeping up the walking pace despite the weight of the topic. \"But maybe fighting fire with fire is what we need. I... used to say that all predators are monsters. But I know you're not; you were there for me every time, despite the fact that you don't owe me anything. And... I appreciate what you did back in my place,\" she sighs."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_PRED06",
+			"Text": [
+				"\"There's something to be said for self-defense, I suppose, even if it's... a little hard to ignore that bulge of yours. So maybe I'll say that what you did makes you a monster, but you're *our* monster, heh. Does that make sense?\" She offers you a weak smile, paws never leaving her pockets still. It's probably for the best; the pantheress is fidgety at the best of times, so she probably wouldn't know how to keep her paws occupied otherwise. Beside her, Rux humms sagely.\\n\\n\"Okay, that's enough of that,\" the mayor says. \"Let's change the subject. You got anything?\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_GANG",
+			"Text": [
+				"\"No different from usual, I suppose,\" the pantheress replies with a casual shrug. \"I'm a little unsure as yet how we'll bring them in, but if possible, I suppose I'd like to get them alive as much as possible. We have a justice system for a reason, and while their, er, tool of choice is a cruel one, predation is not really different from 'regular' murder as far as the law is concerned.\" A soft sigh follows, and she scratches the side of her muzzle as she continues walking by your side. \"I know the laws vary a bit depending on where you are, but here, unless there are extraordinary circumstances at play, such crimes are usually met with capital punishment. It's probably for the best; no-one wants to have those things living in their neighborhoods.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_GANG_PLAYERPRED",
+			"Text": [
+				"She casts a suspicious glance at you for a few seconds. \"No offense. But, um, yeah. You did ask. We'll... come up with a 'solution' later.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_KIDNAP",
+			"Text": [
+				"You mention that during your visit to the Maw, you had discovered evidence of kidnappings: there was an unused room by the sleeping quarters, with only bindings and ropes scattered on the floor. In retrospect, that is very likely where they would have 'stored' any prey they managed to get their greedy paws on and didn't swallow right away. Rux grimaces, perhaps the most emotion you've seen from him in the past few hours. \"A cruel fate, to be strung up like meat in a larder,\" he sighs. \"I would not wish that upon anyone.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_PIT",
+			"Text": [
+				"Off-handedly, you mention the existence of the underground predation club, hidden away in the nooks and crannies of North Finmer's night life. Iso stares at you incredulously, a little unsure how to respond, perhaps judging whether or not you are simply joking. Having visited the place yourself, of course, you know for yourself it is all too real, and more than a few prospective combatants have left the ring as fat on superior predators' waistlines. You describe the cage fights, where two enter and only one leaves - an attraction for a more unsavory crowd, to be sure."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_PIT_CHAMPION",
+			"Text": [
+				"Off-handedly, you mention the existence of the underground predation club, hidden away in the nooks and crannies of North Finmer's night life. Iso stares at you incredulously, a little unsure how to respond, perhaps judging whether or not you are simply joking. Of course, being the current regent champion, you know all too well the ins and outs of the fighting ring's proceedings; more than a few prey have found their fate as fat on a superior predator's waistline - yours. There's no need to share that extra detail with the mayor, however. One step at a time - and so you describe the place more generally, as well as the cage fights."
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_PIT2",
+			"Text": [
+				"\"I, uh... Wow. Okay.\" she stammers simply. \"I'll... have to look into that. And then figure out why this news hasn't reached me before. Right under my nose, too... I suppose I shouldn't ask how you know about all this.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_REPAY",
+			"Text": [
+				"The black-furred cat winces, the question plucking a sensitive snare. Rux says nothing, only adding a mysterious, sagely nod to the discussion. \"Well... the truth is that there's not a whole lot I can do. Most of Randall's, er, murders, happened in South Finmer, and I actually have no official jurisdiction there. Some sway, sure, but it has to come from the town council.\" She falls silent for a moment, swishing tail betraying her brooding thoughts. \"If there's anyone on my side of town, though... I... I don't know. We'll figure it out as we go, I guess. It's probably best to just treat these 'incidents' the same as we would any other killing. Spirits, and that's assuming I even manage to stay in power after this shitshow ends.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_RUXRANDALL",
+			"Text": [
+				"Rux shakes his head when you voice your question. \"We've never met in person, that wolf and I. Iso showed me a few pictures once, but those are of different times, so it is probably best not to dig those up again.\" A few moments of silence pass, the red panda appearing in thought, so you give him a few moments to find the right words. \"It's a shame, really. If he really is capable of pulling off this transmutation with so little preparation and study, I would consider him gifted, even if he's abusing something otherworldly to give him a boost. I would have liked to help him steer such talent. But I think we may be beyond that stage now.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK_TOPIC_SOUTHFINMER",
+			"Text": [
+				"Perhaps somewhat surprisingly, considering your question was directed at the mayor, Rux takes the lead in answering this one. \"Our southern friends have adopted a different model of governance, shall we say. Where our mutual friend here has the final say in many matters of operation in North Finmer, they established a council. One requires a majority vote to get things done,\" he explains. Iso, not to be outdone, adds in a chuckle of her own. \"Except they are very bad at actually agreeing on anything. The council members hail from many places. Different ideals, different priorities. I can sometimes talk sense into them, but I wouldn't be surprised if they were barely even aware of the Maw's operations.\""
+			]
+		},
+		{
+			"Key": "MQ06_WALK01",
+			"Text": [
+				"Dim {!sun}light filters through the canopy of the woods as the three of you stride through the untamed growth. The Adept weaves between the trees as if he were marching on a cobblestone street. Whether he sees something more than you do, or whether he has walked this road so many times it's burned into his memory, you cannot say. Luckily, all you need to do is keep up, and that is easy enough. Iso makes few attempts at bringing up smalltalk topics. None of them last longer than a few words - and it's not just because there is a tension hanging in the air. There is a long road ahead, literally and figuratively, and beyond another review of the plan you had hastily put together, all there is to do is to walk. So instead, in this moment you find yourself simply taking pleasure in the beauty of nature, untouched by civilization. Another step, one foot in front of the other..."
+			]
+		},
+		{
+			"Key": "MQ06_WALK02",
+			"Text": [
+				"There is not always much to say. Idle chatter had ground to a halt by the time you approach the halfway point of your multi-hour journey. A somewhat tense silence takes hold instead. Both of your companions had each pointed out small shortcuts here and there to keep off the main roads and cut off bits and pieces of travel time. Still, the abbey is quite a distance from the Adept's home, and everyone is understandably apprehensive about the upcoming confrontation. Despite having been able to come up with a somewhat sensible plan, owing to the intelligence you managed to collect, all this is still a long shot. That is, if the antagonistic wolf even succeeds in his plan, considering Rux did mention there are no other formally trained Adepts in the Finmer region."
+			]
+		},
+		{
+			"Key": "MQ06_WALK03",
+			"Text": [
+				"Tense silence takes the stage once more, your conversation topics having run dry. Neither of your companions seem particularly willing to contribute smalltalk of their own, so the only thing left to do is to walk. One foot in front of the other, just as before. Maybe the idea of riding along on a chatty chameleon merchant's rickety carriage is not such a curse after all."
+			]
+		}
+	]
+}

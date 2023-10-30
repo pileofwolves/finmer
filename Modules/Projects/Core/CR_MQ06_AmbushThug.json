@@ -1,0 +1,32 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "4005f0fc-f819-42fe-a895-6d3b4a992ceb",
+	"AssetName": "CR_MQ06_AmbushThug",
+	"ObjectName": "Thug",
+	"Strength": 5,
+	"Agility": 5,
+	"Body": 5,
+	"Wits": 5,
+	"Flags": 0,
+	"Level": 1,
+	"Size": "Medium",
+	"Gender": "Neutral",
+	"Equipment1": "795c79f2-ce54-4c2f-837e-d767e3c2599a",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": false,
+	"AutoVorePrey": false,
+	"StringMappings": [
+		{
+			"Key": "VORE_WIN",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ06_AMBUSH_VORE_WIN"
+		},
+		{
+			"Key": "KILL_DIGESTED",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ06_AMBUSH_VORE_DIGESTED"
+		}
+	]
+}

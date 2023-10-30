@@ -1,0 +1,28 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "ae966009-6659-461b-a1db-135aedae0231",
+	"AssetName": "CR_MQ06_Rux",
+	"ObjectName": "Rux",
+	"ObjectAlias": "the red panda",
+	"Strength": 5,
+	"Agility": 6,
+	"Body": 7,
+	"Wits": 12,
+	"Flags": 3,
+	"Level": 8,
+	"Size": "Medium",
+	"Gender": "Male",
+	"Equipment1": "f7fe3c07-3f64-4dda-9cdf-b1532081bd41",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": false,
+	"AutoVorePrey": false,
+	"StringMappings": [
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToNpcAsTarget",
+			"NewKey": "MQ06_AMBUSH_FRIEND_KILLED"
+		}
+	]
+}

@@ -1365,6 +1365,12 @@
 																			"!Type": "CommandLog",
 																			"Text": "SQ05_ROOM_BEDROOM_TALK3_HUG",
 																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetFlag",
+																			"VariableName": "SQ05_ROOM_BEDROOM_HUG",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
 																		}
 																	]
 																},

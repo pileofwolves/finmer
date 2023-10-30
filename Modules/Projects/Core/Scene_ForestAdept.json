@@ -29,6 +29,12 @@
 						},
 						{
 							"!Type": "CommandVarSetFlag",
+							"VariableName": "SQ05_ISO_LEFT",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandVarSetFlag",
 							"VariableName": "SQ05_DONE",
 							"OperandMode": "Literal",
 							"OperandLiteral": true
@@ -1637,6 +1643,121 @@
 					},
 					{
 						"NodeType": "Choice",
+						"Key": "Cabin_C_AbbeyBook",
+						"Title": "Book",
+						"Tooltip": "Give the untranslated book you found to Rux.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "FOREST_ADEPT_BOOK",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionPlayerHasItem",
+									"ItemGuid": "b5225d74-e3fb-4561-bc60-d80be316335f"
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Rux_Book1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "FOREST_ADEPT_BOOK",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										},
+										{
+											"!Type": "CommandVarSetNumber",
+											"VariableName": "FOREST_ADEPT_BOOK_TIME",
+											"ValueOperation": "Set",
+											"OperandMode": "Script",
+											"OperandText": "GetTimeHourTotal()"
+										},
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "b5225d74-e3fb-4561-bc60-d80be316335f",
+											"Add": false
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ04_ADEPT_BOOK01",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Book2",
+										"Title": "Explain",
+										"Tooltip": "Explain where you found the book.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Talk_R_Rux_Book2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ04_ADEPT_BOOK02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Talk_C_Rux_Book3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ04_ADEPT_BOOK03",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandPlayerSetMoney",
+																	"ValueOperation": "Add",
+																	"OperandMode": "Script",
+																	"OperandText": "RewardGold.Rux_Book"
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Cabin_Main"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
 						"Key": "Cabin_C_SQ05",
 						"Title": "Iso's Home",
 						"Tooltip": "Tell Iso you want to pick up the lead that she mentioned, at her home.",
@@ -1918,6 +2039,867 @@
 										]
 									}
 								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_MQ06",
+						"Title": "Plan Next Steps",
+						"Tooltip": "It's time to put together all your findings with your co-conspirators.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ06_AVAILABLE",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "MQ06_R_Plan_SQ06_IsoLeft",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "SQ05_ISO_LEFT",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_PLAN_PRE_ISO_LEFT",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "SQ05_ISO_LEFT",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "MQ06_R_Plan_SQ06_Callout",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_PLAN_PRE_SQ06_CALLOUT",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "SQ06_AVAILABLE",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Title": "Visit Iso's Home",
+										"Tooltip": "She's right, this lead has to be taken care of now or never.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "SQ05_R_Intro2"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Title": "No need",
+										"Tooltip": "It'll take time you don't have, and there's probably nothing to be found anyway.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01"
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "MQ06_R_Plan01",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandVarSetFlag",
+											"VariableName": "MQ06_AVAILABLE",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										},
+										{
+											"!Type": "CommandLogSplit"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_PLAN01",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Location",
+										"Title": "Location",
+										"Tooltip": "Describe the maps and location info you found.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_LOCATION",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_LOCATION",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_LOCATION",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ06_R_Plan01_Continue",
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Location"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Werewolf"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Amber"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Journals"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Members"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan_Topic_Zosk"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "MQ06_C_Plan02"
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Werewolf",
+										"Title": "Goal",
+										"Tooltip": "Describe Randall's ultimate goal, as far as you gathered.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_WEREWOLF",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_WEREWOLF",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_WEREWOLF",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01_Continue"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Amber",
+										"Title": "Amber",
+										"Tooltip": "Confirm that the Red Maw is indeed an untapped amber mine.",
+										"Highlight": true,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_AMBER",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_ROOM_IRON_FIRST",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01_Continue"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Journals",
+										"Title": "Journals",
+										"Tooltip": "You discovered the cruel fate of the original proprietors.",
+										"Highlight": true,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_JOURNALS",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_JOURNALS",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_JOURNALS",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_JOURNAL1",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_JOURNAL2",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_JOURNAL3",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_JOURNAL4",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01_Continue"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Members",
+										"Title": "Red Maw",
+										"Tooltip": "You know the exact size of the opposition.",
+										"Highlight": true,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_MEMBERS",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_MEMBERS",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_MEMBERS",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ05_MAW_ROOM_STORAGE2_FIRST",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01_Continue"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan_Topic_Zosk",
+										"Title": "Zosk",
+										"Tooltip": "You discovered Zosk's role in this story.",
+										"Highlight": true,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLog",
+													"Text": "MQ06_PLAN_TOPIC_ZOSK",
+													"IsRaw": false
+												},
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_ZOSK",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_ZOSK",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "MQ06_R_Plan01_Continue"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "MQ06_C_Plan02",
+										"Title": "Done",
+										"Tooltip": "You have nothing else to add.",
+										"Highlight": false,
+										"ButtonWidth": 0.65,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_LOCATION",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_PLAN_TOPIC_WEREWOLF",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "MQ06_R_Plan02",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_PLAN02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "MQ06_C_Plan03",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "MQ06_R_Plan03",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_PLAN03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "MQ06_C_Plan04",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ06_R_Plan04_Book",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_PLAN04_BOOK",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"ScriptAppear": {
+																					"!Type": "ScriptDataVisualCondition",
+																					"Mode": "All",
+																					"Operand": true,
+																					"Tests": [
+																						{
+																							"!Type": "ConditionVarFlag",
+																							"VariableName": "FOREST_ADEPT_BOOK",
+																							"OperandMode": "Literal",
+																							"OperandLiteral": true
+																						},
+																						{
+																							"!Type": "ConditionVarNumber",
+																							"VariableName": "FOREST_ADEPT_BOOK_TIME",
+																							"Operator": "Lesser",
+																							"OperandMode": "Script",
+																							"OperandText": "GetTimeHourTotal()"
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "MQ06_C_Plan05",
+																						"Title": "Continue",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "MQ06_R_Plan05",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_PLAN05",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "MQ06_C_Plan06",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "MQ06_R_Plan06",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_PLAN06",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "MQ06_C_Plan07",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "MQ06_R_Plan07",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ06_PLAN07",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "MQ06_C_Plan08",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "MQ06_R_Plan08",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataVisualAction",
+																																					"Nodes": [
+																																						{
+																																							"!Type": "CommandLog",
+																																							"Text": "MQ06_PLAN08",
+																																							"IsRaw": false
+																																						}
+																																					]
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "MQ06_C_Plan09",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "State",
+																																								"Key": "MQ06_R_Plan09",
+																																								"ScriptAction": {
+																																									"!Type": "ScriptDataVisualAction",
+																																									"Nodes": [
+																																										{
+																																											"!Type": "CommandLog",
+																																											"Text": "MQ06_PLAN09",
+																																											"IsRaw": false
+																																										}
+																																									]
+																																								},
+																																								"Children": [
+																																									{
+																																										"NodeType": "Choice",
+																																										"Key": "MQ06_C_Plan10",
+																																										"Highlight": false,
+																																										"ButtonWidth": 1.0,
+																																										"Children": [
+																																											{
+																																												"NodeType": "State",
+																																												"Key": "MQ06_R_Plan10",
+																																												"ScriptAction": {
+																																													"!Type": "ScriptDataVisualAction",
+																																													"Nodes": [
+																																														{
+																																															"!Type": "CommandLog",
+																																															"Text": "MQ06_PLAN10",
+																																															"IsRaw": false
+																																														}
+																																													]
+																																												},
+																																												"Children": [
+																																													{
+																																														"NodeType": "Choice",
+																																														"Key": "MQ06_C_Plan11",
+																																														"Title": "Ready",
+																																														"Tooltip": "You can leave now.",
+																																														"Highlight": false,
+																																														"ButtonWidth": 1.0,
+																																														"Children": [
+																																															{
+																																																"NodeType": "State",
+																																																"Key": "MQ06_R_Plan11",
+																																																"ScriptAction": {
+																																																	"!Type": "ScriptDataVisualAction",
+																																																	"Nodes": [
+																																																		{
+																																																			"!Type": "CommandLog",
+																																																			"Text": "MQ06_PLAN11",
+																																																			"IsRaw": false
+																																																		}
+																																																	]
+																																																},
+																																																"Children": [
+																																																	{
+																																																		"NodeType": "Choice",
+																																																		"Key": "MQ06_C_PlanEnd",
+																																																		"Highlight": false,
+																																																		"ButtonWidth": 1.0,
+																																																		"ScriptAction": {
+																																																			"!Type": "ScriptDataVisualAction",
+																																																			"Nodes": [
+																																																				{
+																																																					"!Type": "CommandSetScene",
+																																																					"SceneGuid": "a2c536c6-8374-49ac-a558-0d3ea23de0a7"
+																																																				}
+																																																			]
+																																																		},
+																																																		"Children": []
+																																																	}
+																																																]
+																																															}
+																																														]
+																																													},
+																																													{
+																																														"NodeType": "Choice",
+																																														"Key": "MQ06_C_Plan11B",
+																																														"Title": "Not ready",
+																																														"Tooltip": "You need to take care of a few things first.",
+																																														"Highlight": false,
+																																														"ButtonWidth": 1.0,
+																																														"ScriptAction": {
+																																															"!Type": "ScriptDataVisualAction",
+																																															"Nodes": [
+																																																{
+																																																	"!Type": "CommandLog",
+																																																	"Text": "MQ06_PLAN_CANCEL",
+																																																	"IsRaw": false
+																																																},
+																																																{
+																																																	"!Type": "CommandVarSetFlag",
+																																																	"VariableName": "MQ06_PLAN_CANCEL",
+																																																	"OperandMode": "Literal",
+																																																	"OperandLiteral": true
+																																																}
+																																															]
+																																														},
+																																														"Children": [
+																																															{
+																																																"NodeType": "Link",
+																																																"LinkTarget": "Cabin_Main"
+																																															}
+																																														]
+																																													}
+																																												]
+																																											}
+																																										]
+																																									}
+																																								]
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			},
+																			{
+																				"NodeType": "State",
+																				"Key": "MQ06_R_Plan04_NoBook",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_PLAN04_NOBOOK",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "MQ06_C_Plan05"
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_MQ06_PlanReturn",
+						"Title": "Ready to Leave",
+						"Tooltip": "You're ready to depart for Dalsida Abbey.",
+						"Highlight": true,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandVarSetFlag",
+									"VariableName": "MQ06_PLAN_CANCEL",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ06_PLAN_CANCEL",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "MQ06_R_Plan11"
 							}
 						]
 					}
@@ -2581,6 +3563,25 @@
 						"Title": "Talk to Iso",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "FOREST_ADEPT_ISO_LEFT",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "SQ05_ISO_LEFT",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
 						"Children": [
 							{
 								"NodeType": "State",
@@ -3186,7 +4187,7 @@
 								"Key": "Chip_Endo_Vore",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "local fight = Combat2()\r\nlocal good_boye = Creature(\"CR_MQ04_Chip\")\r\ngood_boye.PredatorDigests = false\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(good_boye)\r\nfight:SetVored(good_boye, Player)\r\nfight:OnRoundEnd(function(round)\r\n    Log(\"MQ04_CHIP_ENDO\" .. tostring(round))\r\n    AdvanceTime(2)\r\n    if round >= 3 then fight:End() end\r\nend)\r\nfight:Begin()"
+									"Script": "Storage.SetFlag(\"FOREST_DIREWOLF_FRIENDLY\", true)\r\nlocal fight = Combat2()\r\nlocal good_boye = Creature(\"CR_MQ04_Chip\")\r\ngood_boye.PredatorDigests = false\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(good_boye)\r\nfight:SetVored(good_boye, Player)\r\nfight:OnRoundEnd(function(round)\r\n    Log(\"MQ04_CHIP_ENDO\" .. tostring(round))\r\n    AdvanceTime(2)\r\n    if round >= 3 then fight:End() end\r\nend)\r\nfight:Begin()"
 								},
 								"Children": [
 									{

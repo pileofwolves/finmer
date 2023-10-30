@@ -415,6 +415,21 @@
 																											"!Type": "CommandLog",
 																											"Text": "MQ05_OUTRO_ZOSK5",
 																											"IsRaw": false
+																										},
+																										{
+																											"!Type": "CommandVarSetFlag",
+																											"VariableName": "MQ06_AVAILABLE",
+																											"OperandMode": "Literal",
+																											"OperandLiteral": true
+																										},
+																										{
+																											"!Type": "CommandJournalClose",
+																											"JournalGuid": "d127b368-5ed9-4e1d-b389-4842632b2c4b"
+																										},
+																										{
+																											"!Type": "CommandJournalUpdate",
+																											"JournalGuid": "8d07c457-9cbc-4144-bd08-5ab12962f205",
+																											"Stage": 10
 																										}
 																									]
 																								},

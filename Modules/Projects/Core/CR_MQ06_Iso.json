@@ -1,0 +1,28 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "bfd1615b-fa76-459e-8c92-a1a50399bde5",
+	"AssetName": "CR_MQ06_Iso",
+	"ObjectName": "Iso",
+	"ObjectAlias": "the pantheress",
+	"Strength": 6,
+	"Agility": 7,
+	"Body": 6,
+	"Wits": 6,
+	"Flags": 3,
+	"Level": 6,
+	"Size": "Medium",
+	"Gender": "Female",
+	"Equipment1": "795c79f2-ce54-4c2f-837e-d767e3c2599a",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": false,
+	"AutoVorePrey": false,
+	"StringMappings": [
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToNpcAsTarget",
+			"NewKey": "MQ06_AMBUSH_FRIEND_KILLED"
+		}
+	]
+}

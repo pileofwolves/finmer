@@ -1,0 +1,1187 @@
+﻿{
+	"!Type": "AssetScene",
+	"AssetID": "a2c536c6-8374-49ac-a558-0d3ea23de0a7",
+	"AssetName": "Scene_MQ06_Abbey",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_MQ06_Abbey_Custom"
+	},
+	"IsPatch": false,
+	"Root": {
+		"NodeType": "Root",
+		"Key": "Root",
+		"Children": [
+			{
+				"NodeType": "State",
+				"Key": "Debug_SkipToAbbey",
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionIsDevModeEnabled"
+						},
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "MQ06_DEBUG_SKIP_WALK",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Debug Skip",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Abbey_R_Approach"
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Travel_R_Walk1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "On the road"
+						},
+						{
+							"!Type": "CommandSaveCheckpoint"
+						},
+						{
+							"!Type": "CommandGrammarSetVariable",
+							"VariableName": "sun",
+							"OperandMode": "Script",
+							"OperandText": "GetIsNight() and \"moon\" or \"sun\""
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_WALK01",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Travel_C_Walk2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Travel_R_Ambush1"
+							},
+							{
+								"NodeType": "State",
+								"Key": "Travel_R_Walk2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_WALK02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Travel_C_Walk3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandComment",
+													"Comment": "Extra \"let's talk\" comment for when the pred branch doesn't do that"
+												},
+												{
+													"!Type": "CommandIf",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "ISO_KNOWS_PLAYER_PRED",
+															"OperandMode": "Literal",
+															"OperandLiteral": false
+														}
+													],
+													"HasElseBranch": false,
+													"MainSubgroup": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_WALK_NOTPRED",
+															"IsRaw": false
+														}
+													]
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Travel_R_Walk_Pred1",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_WALK_PRED01",
+															"IsRaw": false
+														}
+													]
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataVisualCondition",
+													"Mode": "All",
+													"Operand": true,
+													"Tests": [
+														{
+															"!Type": "ConditionVarFlag",
+															"VariableName": "ISO_KNOWS_PLAYER_PRED",
+															"OperandMode": "Literal",
+															"OperandLiteral": true
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_Walk_Pred2",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Travel_R_Walk_Pred2",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_WALK_PRED02",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Walk_Pred3A",
+																		"Title": "Just One",
+																		"Tooltip": "The fool in your gut now is the first.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Player.TotalPreySwallowed == 1"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Travel_R_Walk_Pred3_Few",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_WALK_PRED03_FEW",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Travel_C_Walk_Pred4",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Travel_R_Walk_Pred4",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_WALK_PRED04",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5A",
+																										"Title": "Pleasure",
+																										"Tooltip": "Because it's stimulating like nothing else.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Travel_R_Walk_Pred5",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandIf",
+																															"Mode": "All",
+																															"Operand": true,
+																															"Tests": [
+																																{
+																																	"!Type": "ConditionVarFlag",
+																																	"VariableName": "SQ05_ROOM_BEDROOM_HUG",
+																																	"OperandMode": "Literal",
+																																	"OperandLiteral": true
+																																}
+																															],
+																															"HasElseBranch": true,
+																															"MainSubgroup": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_WALK_PRED05_SQ05_COMFORT",
+																																	"IsRaw": false
+																																}
+																															],
+																															"ElseSubgroup": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_WALK_PRED05_DEFAULT",
+																																	"IsRaw": false
+																																}
+																															]
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Travel_C_Walk_Pred6",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataVisualAction",
+																															"Nodes": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_WALK_PRED06",
+																																	"IsRaw": false
+																																}
+																															]
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "Travel_R_WalkTalk"
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5B",
+																										"Title": "Necessity",
+																										"Tooltip": "Because surely you are allowed to defend yourself.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Walk_Pred5"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5C",
+																										"Title": "Food",
+																										"Tooltip": "Because it's a convenient source of nutrition.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Walk_Pred5"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5D",
+																										"Title": "Power",
+																										"Tooltip": "Because having such absolute control over prey is intoxicating.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Walk_Pred5"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5E",
+																										"Title": "Vigilante",
+																										"Tooltip": "Because you want to take bad people out - your way.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Walk_Pred5"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Walk_Pred5F",
+																										"Title": "Protection",
+																										"Tooltip": "Because there is someone you want to protect.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.75,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Walk_Pred5"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Walk_Pred3B",
+																		"Title": "Several",
+																		"Tooltip": "[Lie] A bunch, probably.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Player.TotalPreySwallowed == 1"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Travel_R_Walk_Pred3_Many",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_WALK_PRED03_MANY",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Link",
+																						"LinkTarget": "Travel_C_Walk_Pred4"
+																					}
+																				]
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Walk_Pred3C",
+																		"Title": "Few",
+																		"Tooltip": "The thug wasn't the first.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Player.TotalPreySwallowed ~= 1"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Travel_R_Walk_Pred3_Few"
+																			}
+																		]
+																	},
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Walk_Pred3D",
+																		"Title": "Many",
+																		"Tooltip": "You do enjoy 'partaking' every now and then.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAppear": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "return Player.TotalPreySwallowed ~= 1"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Travel_R_Walk_Pred3_Many"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											},
+											{
+												"NodeType": "State",
+												"Key": "Travel_R_WalkTalk",
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_Gang",
+														"Title": "Justice",
+														"Tooltip": "Ask what kind of fate is in store for the Maw members.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_GANG",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																},
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ06_WALK_TOPIC_GANG",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandIf",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarFlag",
+																			"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	],
+																	"HasElseBranch": false,
+																	"MainSubgroup": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_WALK_TOPIC_GANG_PLAYERPRED",
+																			"IsRaw": false
+																		}
+																	]
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_GANG",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_WalkTalk"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_Kidnap",
+														"Title": "Kidnapping",
+														"Tooltip": "Mention that you saw evidence of 'prey storage' in the amber mine.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ06_WALK_TOPIC_KIDNAP",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_KIDNAP",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_KIDNAP",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																},
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ05_MAW_ROOM_KITCHEN_FIRST",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_WalkTalk"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_Pit",
+														"Title": "Pred Club",
+														"Tooltip": "Mention the underground fighting ring in North Finmer.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_PIT",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																},
+																{
+																	"!Type": "CommandIf",
+																	"Mode": "All",
+																	"Operand": true,
+																	"Tests": [
+																		{
+																			"!Type": "ConditionVarFlag",
+																			"VariableName": "TOWN_PIT_OPP4_WON",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	],
+																	"HasElseBranch": true,
+																	"MainSubgroup": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_WALK_TOPIC_PIT_CHAMPION",
+																			"IsRaw": false
+																		}
+																	],
+																	"ElseSubgroup": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_WALK_TOPIC_PIT",
+																			"IsRaw": false
+																		}
+																	]
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_PIT",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																},
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TOWN_PIT_FIRST",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Travel_R_WalkTalk_Pit",
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_WalkTalk_Pit02",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataVisualAction",
+																			"Nodes": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_WALK_TOPIC_PIT2",
+																					"IsRaw": false
+																				}
+																			]
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Travel_R_WalkTalk"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_Repay",
+														"Title": "Repayment",
+														"Tooltip": "Ask how those affected by the Red Maw will be compensated.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ06_WALK_TOPIC_REPAY",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_REPAY",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_REPAY",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_WalkTalk"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_RuxRandall",
+														"Title": "Rux & Randall",
+														"Tooltip": "Ask Rux what the wolf is to him.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ06_WALK_TOPIC_RUXRANDALL",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_RUXRANDALL",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_RUXRANDALL",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_WalkTalk"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_SouthFinmer",
+														"Title": "South Finmer",
+														"Tooltip": "Ask what South Finmer is doing to help.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLog",
+																	"Text": "MQ06_WALK_TOPIC_SOUTHFINMER",
+																	"IsRaw": false
+																},
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_SOUTHFINMER",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "MQ06_WALK_TOPIC_SOUTHFINMER",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_WalkTalk"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkTalk_Done",
+														"Title": "Done",
+														"Tooltip": "Nothing else to add.",
+														"Highlight": false,
+														"ButtonWidth": 0.6,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Travel_R_Walk3"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Travel_R_Walk3",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_WALK03",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Travel_C_WalkEnd",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandLogSplit"
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Abbey_R_Approach"
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Travel_R_Ambush1",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_AMBUSH01",
+							"IsRaw": false
+						}
+					]
+				},
+				"ScriptAppear": {
+					"!Type": "ScriptDataVisualCondition",
+					"Mode": "All",
+					"Operand": true,
+					"Tests": [
+						{
+							"!Type": "ConditionVarFlag",
+							"VariableName": "TOWN_HALL_EVENT_SNITCH",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Travel_C_Ambush2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Travel_R_Ambush2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_AMBUSH02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Travel_C_Ambush3",
+										"Title": "Let's go",
+										"Tooltip": "Of course this wouldn't go smoothly.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Travel_R_Ambush3",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "local fight = Combat2()\r\nlocal thugs = { MQ06_MakeAmbushThugs() }\r\nlocal t1, t2, t3 = unpack(thugs)\r\nlocal iso = Creature(\"CR_MQ06_Iso\")\r\niso.IsAlly = true\r\nlocal rux = Creature(\"CR_MQ06_Rux\")\r\nrux.IsAlly = true\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(iso)\r\nfight:AddParticipant(rux)\r\nfight:AddParticipant(t1)\r\nfight:AddParticipant(t2)\r\nfight:AddParticipant(t3)\r\nfight:OnCreatureVored(function(pred, prey)\r\n    if pred == Player then\r\n        -- Iso turns that smile upside down\r\n        Sleep(2)\r\n        Storage.SetFlag(\"ISO_KNOWS_PLAYER_PRED\", true)\r\n        Log(\"MQ06_AMBUSH_VORE_PRED01\")\r\n\r\n        -- Disallow swallowing the other thugs\r\n        t1.Flags = ECharacterFlags.NoPrey + ECharacterFlags.NoGrapple\r\n        t2.Flags = t1.Flags\r\n        t3.Flags = t1.Flags\r\n    end\r\nend)\r\nlocal fight_end_cb = function()\r\n    -- Combat ends if only one thug is left standing\r\n    local live_thugs = 0\r\n    for i, t in ipairs(thugs) do\r\n        if not t:IsDead() then\r\n            Text.SetContext(\"thug\", t)\r\n            live_thugs = live_thugs + 1\r\n        end\r\n    end\r\n    if live_thugs <= 1 then\r\n        fight:End()\r\n    end\r\nend\r\nfight:OnCreatureKilled(fight_end_cb)\r\nfight:OnCreatureVored(fight_end_cb)\r\nfight:Begin()\r\nLog(\"MQ06_AMBUSH03\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_Ambush4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Travel_R_Ambush4_Chip1",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandIf",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "FOREST_DIREWOLF_FRIENDLY",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": true
+																				}
+																			],
+																			"HasElseBranch": true,
+																			"MainSubgroup": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_AMBUSH04_CHIP01_FRIEND",
+																					"IsRaw": false
+																				}
+																			],
+																			"ElseSubgroup": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_AMBUSH04_CHIP01_NOTFRIEND",
+																					"IsRaw": false
+																				}
+																			]
+																		}
+																	]
+																},
+																"ScriptAppear": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "return not Storage.GetFlag(\"FOREST_DIREWOLF_DEAD\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Ambush4_Chip2",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Travel_R_Ambush4_Chip2",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_AMBUSH04_CHIP02",
+																							"IsRaw": false
+																						},
+																						{
+																							"!Type": "CommandIf",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							],
+																							"HasElseBranch": false,
+																							"MainSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_AMBUSH04_CHIP02_PLAYERPRED",
+																									"IsRaw": false
+																								}
+																							]
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Travel_C_Ambush4_Chip3",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Travel_R_Ambush4_Chip3",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_AMBUSH04_CHIP03",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Travel_C_Ambush5",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Travel_R_Ambush5"
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															},
+															{
+																"NodeType": "State",
+																"Key": "Travel_R_Ambush4_NoChip",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_AMBUSH04_NOCHIP01",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandIf",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": true
+																				}
+																			],
+																			"HasElseBranch": false,
+																			"MainSubgroup": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_AMBUSH04_NOCHIP01_PLAYERPRED",
+																					"IsRaw": false
+																				}
+																			]
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "Travel_C_Ambush5"
+																	}
+																]
+															},
+															{
+																"NodeType": "State",
+																"Key": "Travel_R_Ambush5",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_AMBUSH05",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Travel_C_Ambush6",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Travel_R_Ambush6",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_AMBUSH06",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Travel_C_Ambush7",
+																						"Title": "Keep going",
+																						"Tooltip": "Time to get out of here.",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataVisualAction",
+																							"Nodes": [
+																								{
+																									"!Type": "CommandLogSplit"
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "Travel_R_Walk2"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Abbey_R_Approach",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "Dalsida Abbey"
+						},
+						{
+							"!Type": "CommandPlayerHealAll"
+						},
+						{
+							"!Type": "CommandSaveCheckpoint"
+						}
+					]
+				},
+				"Children": []
+			}
+		]
+	}
+}

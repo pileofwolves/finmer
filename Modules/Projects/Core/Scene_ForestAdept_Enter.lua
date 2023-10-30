@@ -11,3 +11,6 @@ if Storage.GetFlag("FOREST_ADEPT_FIRST") and not Storage.GetFlag("FOREST_ADEPT_S
         Log("MQ04_ADEPT_ENTER_CHIP")
     end
 end
+
+-- Reset 'Iso taking a breather' flag when revisiting the scene
+Storage.SetFlag("SQ05_ISO_LEFT", false)

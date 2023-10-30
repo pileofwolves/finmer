@@ -1,0 +1,20 @@
+﻿{
+	"!Type": "AssetJournal",
+	"AssetID": "8d07c457-9cbc-4144-bd08-5ab12962f205",
+	"AssetName": "MQ06",
+	"Title": "Love Like Fire",
+	"Stages": [
+		{
+			"Key": 10,
+			"Text": "In the Red Maw amber mine, you made alarming discoveries. When you are ready, return to Rux's forest cabin to discuss and prepare for the next step."
+		},
+		{
+			"Key": 20,
+			"Text": "Together with Adept Rux and Mayor Iso, you threw together a plan. Travel to the Dalsida Abbey with your allies and stop Randall."
+		},
+		{
+			"Key": 30,
+			"Text": "Stop Randall, at any cost."
+		}
+	]
+}

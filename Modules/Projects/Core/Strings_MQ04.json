@@ -46,6 +46,24 @@
 			]
 		},
 		{
+			"Key": "MQ04_ADEPT_BOOK01",
+			"Text": [
+				"You pull the old tome out of your pack, and hand it to the red panda. He accepts it with curiosity, then surprise when his eyes linger on the title inscribed on the cover. \"I recognize this language,\" he mumbles, turning the cover and gently flipping through a few pages. All of the script is hand-written - neat and expertly spaced, yet tainted with that slight random inaccuracy of ink pressed to paper one stroke at a time. All diagrams, notes and pictures drawn. The amount of work that must have gone into producing even a single copy is staggering. \"It's old. Very old. Where did you find this?\""
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BOOK02",
+			"Text": [
+				"When you explain you lifted this from a dilapidated abbey somewhere to the south, Rux nods. \"I see; I'm not surprised. That place has a lot of history related to the Shore. Most of it has been lost to time.\" He turns another page and shows you a surprisingly well-preserved image, filling the entirety of one of the pages. It is an impression of a grey, rocky coast, facing a dark blue ocean underneath an empty, pale sky. Cold white streaks of wind, or perhaps fog, swirl around the scene, stirring waves from the fake water. The artistry on display is impressive."
+			]
+		},
+		{
+			"Key": "MQ04_ADEPT_BOOK03",
+			"Text": [
+				"\"Thanks for bringing this to me, {player.name}. I don't fully understand this script, but with some time, I think I might be able to understand bits and pieces. I'm going to study this with great interest.\" From nowhere in particular, Rux presses a pawful of coins into yours, and winks when you realize it is more than some spare change you might have gotten at any other general store for this trinket."
+			]
+		},
+		{
 			"Key": "MQ04_ADEPT_ENTER_CHIP",
 			"Text": [
 				"The sleeping form of Chip, the resident guard dog, is sprawled between trees just off to the side of the clearing. Despite his imposing stature, the giant wolf does not seem to be particularly active if he can help it."

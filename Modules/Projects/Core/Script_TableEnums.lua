@@ -24,8 +24,8 @@ EItemType = {
 EGender = {
     Male            = 0,
     Female          = 1,
-    Neuter          = 2,
-    Herm            = 3,
+    Neutral         = 2,
+    Ungendered      = 3,
 }
 
 ECharacterFlags = {

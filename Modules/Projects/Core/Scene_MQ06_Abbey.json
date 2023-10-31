@@ -913,7 +913,7 @@
 												"Key": "Travel_R_Ambush3",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "local fight = Combat2()\r\nlocal thugs = { MQ06_MakeAmbushThugs() }\r\nlocal t1, t2, t3 = unpack(thugs)\r\nlocal iso = Creature(\"CR_MQ06_Iso\")\r\niso.IsAlly = true\r\nlocal rux = Creature(\"CR_MQ06_Rux\")\r\nrux.IsAlly = true\r\nfight:AddParticipant(Player)\r\nfight:AddParticipant(iso)\r\nfight:AddParticipant(rux)\r\nfight:AddParticipant(t1)\r\nfight:AddParticipant(t2)\r\nfight:AddParticipant(t3)\r\nfight:OnCreatureVored(function(pred, prey)\r\n    if pred == Player then\r\n        -- Iso turns that smile upside down\r\n        Sleep(2)\r\n        Storage.SetFlag(\"ISO_KNOWS_PLAYER_PRED\", true)\r\n        Log(\"MQ06_AMBUSH_VORE_PRED01\")\r\n\r\n        -- Disallow swallowing the other thugs\r\n        t1.Flags = ECharacterFlags.NoPrey + ECharacterFlags.NoGrapple\r\n        t2.Flags = t1.Flags\r\n        t3.Flags = t1.Flags\r\n    end\r\nend)\r\nlocal fight_end_cb = function()\r\n    -- Combat ends if only one thug is left standing\r\n    local live_thugs = 0\r\n    for i, t in ipairs(thugs) do\r\n        if not t:IsDead() then\r\n            Text.SetContext(\"thug\", t)\r\n            live_thugs = live_thugs + 1\r\n        end\r\n    end\r\n    if live_thugs <= 1 then\r\n        fight:End()\r\n    end\r\nend\r\nfight:OnCreatureKilled(fight_end_cb)\r\nfight:OnCreatureVored(fight_end_cb)\r\nfight:Begin()\r\nLog(\"MQ06_AMBUSH03\")"
+													"Script": "local fight = MQ06_MakeCombat_Ambush()\r\nfight:Begin()\r\nLog(\"MQ06_AMBUSH03\")"
 												},
 												"Children": [
 													{

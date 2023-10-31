@@ -1,6 +1,6 @@
 local potions = {
-    "U_PotionHeal1",
-    "U_PotionHeal1",
+    "U_PotionHeal",
+    "U_PotionHeal",
     "U_PotionDigestResist",
     "U_PotionDigestResist",
     "U_PotionAttack",

@@ -2748,6 +2748,11 @@
 																																																	"!Type": "ScriptDataVisualAction",
 																																																	"Nodes": [
 																																																		{
+																																																			"!Type": "CommandJournalUpdate",
+																																																			"JournalGuid": "8d07c457-9cbc-4144-bd08-5ab12962f205",
+																																																			"Stage": 20
+																																																		},
+																																																		{
 																																																			"!Type": "CommandLog",
 																																																			"Text": "MQ06_PLAN11",
 																																																			"IsRaw": false

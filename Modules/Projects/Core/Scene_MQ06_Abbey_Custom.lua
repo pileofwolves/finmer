@@ -20,3 +20,55 @@ function MQ06_MakeAmbushThugs()
 
     return t1, t2, t3
 end
+
+local function MQ06_MakeCombat_Ambush()
+    local fight = Combat2()
+
+    -- Prepare combatants
+    local thugs = { MQ06_MakeAmbushThugs() }
+    local iso = Creature("CR_MQ06_Iso"); iso.IsAlly = true
+    local rux = Creature("CR_MQ06_Rux"); rux.IsAlly = true
+    fight:AddParticipant(Player)
+    fight:AddParticipant(iso)
+    fight:AddParticipant(rux)
+    for i, t in ipairs(thugs) do
+        fight:AddParticipant(t)
+    end
+
+    -- Utility used in multiple combat callbacks
+    local function CheckCombatEnd()
+        -- Count number of thugs still in the fight
+        local live_thugs = 0
+        for i, t in ipairs(thugs) do
+            if not t:IsDead() and not fight:IsSwallowed(t) then
+                Text.SetContext("thug", t) -- Used later in text
+                live_thugs = live_thugs + 1
+            end
+        end
+        -- Combat ends if only one thug is left standing
+        if live_thugs <= 1 then
+            fight:End()
+        end
+    end
+
+    -- Check whether to end combat whenever an opponent could be incapacitated
+    fight:OnCreatureKilled(CheckCombatEnd)
+    fight:OnCreatureVored(function(pred, prey)
+        -- Comments on player revealing their pred side
+        if pred == Player then
+            -- Iso turns that smile upside down
+            Sleep(2)
+            Storage.SetFlag("ISO_KNOWS_PLAYER_PRED", true)
+            Log("MQ06_AMBUSH_VORE_PRED01")
+
+            -- Disallow swallowing the other thugs
+            for i, t in ipairs(thugs) do
+                t.Flags = ECharacterFlags.NoPrey + ECharacterFlags.NoGrapple
+            end
+        end
+        -- End combat if only one thug is left
+        CheckCombatEnd()
+    end)
+
+    return fight
+end

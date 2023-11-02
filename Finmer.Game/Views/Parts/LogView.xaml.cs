@@ -142,7 +142,7 @@ namespace Finmer.Views
                     Text = vm.Text,
                     Style = vm.TextStyle,
                     Foreground = brush,
-                    Margin = new Thickness(0.0, 0.0, 0.0, 12.0),
+                    Margin = new Thickness(0, 8, 0, 8),
                     TextWrapping = TextWrapping.Wrap
                 };
             }

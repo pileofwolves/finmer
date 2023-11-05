@@ -174,7 +174,6 @@ namespace Finmer.Gameplay
         private IEnumerable<Participant> GetLiveUnoccupiedOpponents(Participant attacker)
         {
             return GetLiveOpponents(attacker).Where(candidate =>
-                !candidate.IsGrappling() &&
                 !candidate.IsSwallowed());
         }
 
@@ -193,7 +192,7 @@ namespace Finmer.Gameplay
         private IEnumerable<Participant> GetViableGrappleTargets(Participant initiator)
         {
             return GetLiveUnoccupiedOpponents(initiator)
-                .Where(candidate => initiator.Character.CanGrapple(candidate.Character));
+                .Where(candidate => !candidate.IsGrappling() && initiator.Character.CanGrapple(candidate.Character));
         }
 
         /// <summary>
@@ -207,7 +206,7 @@ namespace Finmer.Gameplay
 
             // Otherwise, anyone will do
             return GetLiveUnoccupiedOpponents(predator)
-                .Where(candidate => predator.Character.CanSwallow(candidate.Character));
+                .Where(candidate => !candidate.IsGrappling() && predator.Character.CanSwallow(candidate.Character));
         }
 
         /// <summary>

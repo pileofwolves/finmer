@@ -68,7 +68,7 @@
 		"type": "function",
 		"qualifier": "combat:",
 		"name": "OnCreatureReleased",
-		"remarks": "Invokes the specified function when any participant is regurgitated by their predator. The predator and prey are passed as arguments to the callback. Note that because the combat system does not normally offer an action for a predator to release their prey, this callback is only invoked when a script uses the UnsetVored function.",
+		"remarks": "Invokes the specified function when any participant is regurgitated by their predator. The predator and prey are passed as arguments to the callback. This callback runs when a script uses the UnsetVored function, or when a predator is killed and their prey is released.",
 		"input": [
 			{
 				"name": "callback",

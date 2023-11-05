@@ -218,6 +218,26 @@ namespace Finmer.Gameplay.Combat
             // Remove any buffs from the victim so they do not have special logic ticking every turn
             victim.LocalBuffs.Clear();
 
+            // If the victim was grappling with someone, remove those states
+            var grapple_partner = victim.GrapplingWith;
+            if (grapple_partner != null)
+                victim.Session.UnsetGrappling(victim, grapple_partner);
+
+            // Regurgitate prey that hasn't been killed yet
+            if (!victim.IsPlayer())
+            {
+                foreach (var prey in victim.Prey)
+                {
+                    // Chyme stays chyme, sorry
+                    if (prey.Character.IsDead())
+                        continue;
+
+                    // Release victim
+                    victim.Session.UnsetVored(victim, prey);
+                    CombatDisplay.ShowSimpleMessage(victim.Character.PredatorDigests ? @"vore_release_kill_digest" : @"vore_release_kill_endo", victim, prey);
+                }
+            }
+
             // If the victim was not swallowed, there may be auto-vore triggers we need to activate, check now
             if (!victim.IsSwallowed())
                 CombatLogic.HandleAutoVore(killer, victim);

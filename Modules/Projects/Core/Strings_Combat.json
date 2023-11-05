@@ -220,38 +220,30 @@
 			]
 		},
 		{
-			"Key": "VORE_RELEASE1_KILLED",
+			"Key": "VORE_RELEASE_KILL_DIGEST",
 			"Text": [
-				"{prey} {prey emerge} from {predator}",
-				"{prey} {prey emerge} from the late {predator}",
-				"{prey} {prey crawl} out of {predator}",
-				"{prey} {prey climb} out of {predator}",
-				"{prey} {prey push} {prey.possessive} way out of {predator}"
+				"{prey} {prey emerge} from {predator}, looking partially digested.",
+				"{prey} {prey emerge} from the late {predator}, looking a little bit singed.",
+				"{prey} {prey crawl} out of {predator}, coated in digestive acid and slime.",
+				"{prey} {prey climb} out of {predator}, looking a bit worse for the wear.",
+				"{prey} {prey push} {prey.possessive} way out of {predator}, coated in digestive acid and slime."
 			]
 		},
 		{
-			"Key": "VORE_RELEASE1_VOLUNTARY",
+			"Key": "VORE_RELEASE_KILL_ENDO",
+			"Text": [
+				"{prey} {prey emerge} from {predator}, covered in thick slime from head to toe.",
+				"{prey} {prey emerge} from the late {predator}, coated in stomach slimes.",
+				"{prey} {prey crawl} out of {predator}, slimy but no worse for the wear.",
+				"{prey} {prey push} {prey.possessive} way out of {predator}, soaked in stomach fluids but no worse for the wear."
+			]
+		},
+		{
+			"Key": "VORE_RELEASE_VOLUNTARY",
 			"Text": [
 				"{prey} is released from {predator}",
 				"{prey} is coughed up by {predator}",
 				"{prey} is spat back up {predator}"
-			]
-		},
-		{
-			"Key": "VORE_RELEASE2_DIGEST",
-			"Text": [
-				", looking partially digested.",
-				", looking a little bit singed.",
-				", coated in digestive acid and slime.",
-				", looking a bit worse for the wear."
-			]
-		},
-		{
-			"Key": "VORE_RELEASE2_ENDO",
-			"Text": [
-				", covered in thick slime from head to toe.",
-				", coated in stomach slimes.",
-				", slimy but no worse for the wear."
 			]
 		},
 		{

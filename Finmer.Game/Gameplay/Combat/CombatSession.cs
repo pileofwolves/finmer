@@ -24,6 +24,7 @@ namespace Finmer.Gameplay.Combat
     public class CombatSession : ScriptableObject
     {
 
+        private const string k_CallbackName_OnRoundStart = "OnRoundStart";
         private const string k_CallbackName_OnRoundEnd = "OnRoundEnd";
         private const string k_CallbackName_OnCombatEnd = "OnCombatEnd";
         private const string k_CallbackName_OnCharacterKilled = "OnCreatureKilled";
@@ -33,6 +34,7 @@ namespace Finmer.Gameplay.Combat
 
         private readonly ScriptCallbackTable m_Binder;
         private Participant m_WhoseTurn;
+        private int m_Round;
 
         /// <summary>
         /// Collection of participating characters in this combat.
@@ -43,7 +45,18 @@ namespace Finmer.Gameplay.Combat
         /// The combat turn number. Starts at 1 for the first round.
         /// </summary>
         [ScriptableProperty(EScriptAccess.Read)]
-        public int Round { get; set; } = 1;
+        public int Round
+        {
+            get => m_Round;
+            set
+            {
+                if (m_Round != 0)
+                    OnRoundEnd?.Invoke(m_Round);
+
+                m_Round = value;
+                OnRoundStart?.Invoke(m_Round);
+            }
+        }
 
         /// <summary>
         /// The amount of XP to award to the player at the end of combat.
@@ -174,14 +187,6 @@ namespace Finmer.Gameplay.Combat
             // Update display state
             a.UpdateDisplay();
             b.UpdateDisplay();
-        }
-
-        /// <summary>
-        /// Notify event listeners that a round has ended.
-        /// </summary>
-        public void NotifyRoundEnded()
-        {
-            OnRoundEnd?.Invoke(Round);
         }
 
         /// <summary>
@@ -376,6 +381,16 @@ namespace Finmer.Gameplay.Combat
         }
 
         [ScriptableFunction]
+        protected static int ExportedOnRoundStart(IntPtr state)
+        {
+            // Keep the function around so the callback can find it
+            var self = FromLuaNonOptional<CombatSession>(state, 1);
+            self.m_Binder.Bind(state, k_CallbackName_OnRoundStart);
+
+            return 0;
+        }
+
+        [ScriptableFunction]
         protected static int ExportedOnRoundEnd(IntPtr state)
         {
             // Keep the function around so the callback can find it
@@ -504,6 +519,16 @@ namespace Finmer.Gameplay.Combat
 
         private void AttachScriptCallbacks()
         {
+            OnRoundStart += round =>
+            {
+                IntPtr stack = ScriptContext.LuaState;
+                if (m_Binder.PrepareCall(stack, k_CallbackName_OnRoundStart, out var coroutine))
+                {
+                    LuaApi.lua_pushnumber(coroutine, round);
+                    InternalProtectedCallback(stack, coroutine, 1);
+                }
+            };
+
             OnRoundEnd += round =>
             {
                 IntPtr stack = ScriptContext.LuaState;
@@ -577,7 +602,12 @@ namespace Finmer.Gameplay.Combat
         /// <summary>
         /// Called when a round ends.
         /// </summary>
-        public event RoundEndHandler OnRoundEnd;
+        public event RoundUpdateHandler OnRoundStart;
+
+        /// <summary>
+        /// Called when a round ends.
+        /// </summary>
+        public event RoundUpdateHandler OnRoundEnd;
 
         /// <summary>
         /// Called when combat ends.

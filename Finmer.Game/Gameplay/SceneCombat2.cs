@@ -53,6 +53,10 @@ namespace Finmer.Gameplay
 
             // Open the combat UI on the display
             CombatDisplay.OpenCombatUI(Session);
+
+            // Begin the first round, if this is a new combat session
+            if (Session.Round < 1)
+                Session.Round = 1;
         }
 
         public override void Leave()

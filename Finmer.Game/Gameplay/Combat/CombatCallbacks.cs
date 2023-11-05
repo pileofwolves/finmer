@@ -10,10 +10,10 @@ namespace Finmer.Gameplay.Combat
 {
 
     /// <summary>
-    /// Describes a handler for a combat event where a round has ended.
+    /// Describes a handler for a combat event where a round has changed state.
     /// </summary>
-    /// <param name="round">The round number that is ENDING (not starting), where 1 is the first round.</param>
-    public delegate void RoundEndHandler(int round);
+    /// <param name="round">The round number that is starting or ending, where 1 is the first round.</param>
+    public delegate void RoundUpdateHandler(int round);
 
     /// <summary>
     /// Describes a handler for when the player wins and the combat session ends.

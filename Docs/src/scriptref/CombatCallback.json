@@ -2,8 +2,21 @@
 	{
 		"type": "function",
 		"qualifier": "combat:",
+		"name": "OnRoundStart",
+		"remarks": "Invokes the specified function when a combat round begins, before combat end logic, user input or AI actions are evaluated. The round parameter passed to the function is the number of the round that just ended (starting at 1).",
+		"input": [
+			{
+				"name": "callback",
+				"type": "function(round)",
+				"desc": "user callback function"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
 		"name": "OnRoundEnd",
-		"remarks": "Invokes the specified function when a combat round ends. The round parameter passed to the function is the number of the round that just ended (starting at 1).",
+		"remarks": "Invokes the specified function when a combat round ends, after the last participant has acted. The round parameter passed to the function is the number of the round that just ended (starting at 1).",
 		"input": [
 			{
 				"name": "callback",

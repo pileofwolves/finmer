@@ -364,8 +364,7 @@ namespace Finmer.Gameplay.Combat
                 participant.DigestionImmunity = false;
             }
 
-            // Run user callbacks
-            session.NotifyRoundEnded();
+            // Increment round counter, which will also run round-related user callbacks
             session.Round++;
         }
 

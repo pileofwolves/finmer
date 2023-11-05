@@ -1,0 +1,33 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "0945cf55-03cb-441c-87c1-a7e94486e327",
+	"AssetName": "CR_MQ06_Mako",
+	"ObjectName": "Mako",
+	"ObjectAlias": "the husky",
+	"Strength": 6,
+	"Agility": 7,
+	"Body": 5,
+	"Wits": 5,
+	"Flags": 3,
+	"Level": 5,
+	"Size": "Medium",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": false,
+	"AutoVorePrey": false,
+	"StringMappings": [
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ06_ABBEY_FIGHT1_MAKO_DOWN"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToNpcAsTarget",
+			"NewKey": "MQ06_ABBEY_FIGHT1_MAKO_DOWN"
+		}
+	]
+}

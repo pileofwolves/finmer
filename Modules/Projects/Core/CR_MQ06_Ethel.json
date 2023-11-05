@@ -1,0 +1,33 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "7af88b1b-5fc8-4071-836b-fe3eb1709a3c",
+	"AssetName": "CR_MQ06_Ethel",
+	"ObjectName": "Ethel",
+	"ObjectAlias": "the bluebird",
+	"Strength": 6,
+	"Agility": 6,
+	"Body": 7,
+	"Wits": 3,
+	"Flags": 3,
+	"Level": 6,
+	"Size": "Medium",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "00000000-0000-0000-0000-000000000000",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": false,
+	"AutoVorePrey": false,
+	"StringMappings": [
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ06_ABBEY_FIGHT1_ETHEL_DOWN"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToNpcAsTarget",
+			"NewKey": "MQ06_ABBEY_FIGHT1_ETHEL_DOWN"
+		}
+	]
+}

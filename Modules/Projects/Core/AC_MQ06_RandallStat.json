@@ -1,0 +1,31 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "99959e4e-4390-44cd-8585-cf18a8885cd9",
+	"AssetName": "AC_MQ06_RandallStat",
+	"ObjectName": "Randall's Amber Paws",
+	"FlavorText": "'cause buff guys deserve lots of HP, mhm",
+	"ItemType": "Equipable",
+	"EquipSlot": "Accessory",
+	"EquipEffects": [
+		{
+			"!Type": "EquipEffectGroup",
+			"ProcStyle": "Always",
+			"Buffs": [
+				{
+					"!Type": "BuffHealth",
+					"Delta": 12
+				},
+				{
+					"!Type": "BuffSwallowDice",
+					"Delta": -1
+				},
+				{
+					"!Type": "BuffGrappleDice",
+					"Delta": -1
+				}
+			]
+		}
+	],
+	"PurchaseValue": 0,
+	"IsQuestItem": false
+}

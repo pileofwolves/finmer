@@ -1,0 +1,41 @@
+﻿{
+	"!Type": "AssetCreature",
+	"AssetID": "87c787b1-ef53-41c0-8e31-69e704e4becc",
+	"AssetName": "CR_MQ06_WereRandall",
+	"ObjectName": "Randall",
+	"ObjectAlias": "the werewolf",
+	"Strength": 8,
+	"Agility": 8,
+	"Body": 8,
+	"Wits": 10,
+	"Flags": 3,
+	"Level": 6,
+	"Size": "Large",
+	"Gender": "Male",
+	"Equipment1": "00000000-0000-0000-0000-000000000000",
+	"Equipment2": "00000000-0000-0000-0000-000000000000",
+	"Equipment3": "99959e4e-4390-44cd-8585-cf18a8885cd9",
+	"Equipment4": "00000000-0000-0000-0000-000000000000",
+	"IsPredator": true,
+	"AutoVorePrey": false,
+	"AutoVorePredator": true,
+	"PredatorDigests": true,
+	"PredatorDisposal": false,
+	"StringMappings": [
+		{
+			"Key": "VORE_WIN",
+			"Rule": "NpcToPlayer",
+			"NewKey": "MQ06_ABBEY_FIGHT2_RANDALL_VORE1"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "PlayerToNpc",
+			"NewKey": "MQ06_ABBEY_FIGHT2_RANDALL_DOWN"
+		},
+		{
+			"Key": "KILL_GENERIC",
+			"Rule": "NpcToNpcAsTarget",
+			"NewKey": "MQ06_ABBEY_FIGHT2_RANDALL_DOWN"
+		}
+	]
+}

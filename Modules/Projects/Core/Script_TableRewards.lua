@@ -11,6 +11,8 @@ RewardXP = {
 
     MQ03_Accept = 10,
 
+    MQ06_Complete           = 100,
+
     SQ01_Complete = 60,
 
     -- anger + kill:    25 + 20 =   45 XP

@@ -14,6 +14,19 @@
 			{
 				"NodeType": "State",
 				"Key": "Debug_SkipToAbbey",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandSaveCheckpoint"
+						}
+					]
+				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataVisualCondition",
 					"Mode": "All",
@@ -33,13 +46,49 @@
 				"Children": [
 					{
 						"NodeType": "Choice",
-						"Title": "Debug Skip",
+						"Title": "Approach",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
 								"NodeType": "Link",
-								"LinkTarget": "Abbey_R_Approach"
+								"LinkTarget": "Abbey_R_Intro1"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Fight 1",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Abbey_Fight1"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Fight 2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Abbey_Fight2"
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Fight 3",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Abbey_Fight3"
 							}
 						]
 					}
@@ -93,6 +142,11 @@
 											"!Type": "CommandLog",
 											"Text": "MQ06_WALK02",
 											"IsRaw": false
+										},
+										{
+											"!Type": "CommandSetInventoryEnabled",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
 										}
 									]
 								},
@@ -829,21 +883,72 @@
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "Travel_C_WalkEnd",
+										"Key": "Travel_C_Walk4_NonLethal",
+										"Title": "Yes",
+										"Tooltip": "We are better than them.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
 												{
-													"!Type": "CommandLogSplit"
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "MQ06_PREFER_NONLETHAL",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
 												}
 											]
 										},
 										"Children": [
 											{
+												"NodeType": "State",
+												"Key": "Travel_R_Walk4",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_WALK04",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Travel_C_WalkEnd",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandLogSplit"
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "Abbey_R_Intro1"
+															}
+														]
+													}
+												]
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Travel_C_Walk4_Lethal",
+										"Title": "No",
+										"Tooltip": "They don't deserve that kind of mercy.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
 												"NodeType": "Link",
-												"LinkTarget": "Abbey_R_Approach"
+												"LinkTarget": "Travel_R_Walk4"
 											}
 										]
 									}
@@ -863,6 +968,11 @@
 							"!Type": "CommandLog",
 							"Text": "MQ06_AMBUSH01",
 							"IsRaw": false
+						},
+						{
+							"!Type": "CommandSetInventoryEnabled",
+							"OperandMode": "Literal",
+							"OperandLiteral": false
 						}
 					]
 				},
@@ -890,14 +1000,8 @@
 								"NodeType": "State",
 								"Key": "Travel_R_Ambush2",
 								"ScriptAction": {
-									"!Type": "ScriptDataVisualAction",
-									"Nodes": [
-										{
-											"!Type": "CommandLog",
-											"Text": "MQ06_AMBUSH02",
-											"IsRaw": false
-										}
-									]
+									"!Type": "ScriptDataInline",
+									"Script": "SaveData.TakeCheckpoint(true)\r\nLog(\"MQ06_AMBUSH02\")"
 								},
 								"Children": [
 									{
@@ -1163,7 +1267,7 @@
 			},
 			{
 				"NodeType": "State",
-				"Key": "Abbey_R_Approach",
+				"Key": "Abbey_R_Intro1",
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
@@ -1177,10 +1281,1829 @@
 						},
 						{
 							"!Type": "CommandSaveCheckpoint"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_ABBEY_INTRO01",
+							"IsRaw": false
 						}
 					]
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Abbey_C_Intro2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Abbey_R_Intro2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ABBEY_INTRO02",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandSetInventoryEnabled",
+											"OperandMode": "Literal",
+											"OperandLiteral": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Abbey_C_Intro3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Abbey_R_Intro3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ABBEY_INTRO03",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Abbey_C_Intro4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Abbey_R_Intro4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ABBEY_INTRO04",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Abbey_C_Intro5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Abbey_R_Intro5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandIf",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "ABBEY_EXPLORE_CHAPEL_S3",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							],
+																							"HasElseBranch": true,
+																							"MainSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_ABBEY_INTRO05_VISITED",
+																									"IsRaw": false
+																								}
+																							],
+																							"ElseSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_ABBEY_INTRO05_NOTVISITED",
+																									"IsRaw": false
+																								}
+																							]
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Abbey_C_Intro6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Abbey_R_Intro6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_ABBEY_INTRO06",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Abbey_C_Intro7",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Abbey_R_Intro7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_ABBEY_INTRO07",
+																															"IsRaw": false
+																														},
+																														{
+																															"!Type": "CommandIf",
+																															"Mode": "All",
+																															"Operand": true,
+																															"Tests": [
+																																{
+																																	"!Type": "ConditionVarFlag",
+																																	"VariableName": "MQ06_AMBUSH_THUG_EATEN",
+																																	"OperandMode": "Literal",
+																																	"OperandLiteral": true
+																																}
+																															],
+																															"HasElseBranch": false,
+																															"MainSubgroup": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_ABBEY_INTRO07_PLAYERPRED",
+																																	"IsRaw": false
+																																}
+																															]
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Abbey_C_Intro8",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Abbey_R_Intro8",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ06_ABBEY_INTRO08",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Abbey_C_Intro9",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "Abbey_R_Intro9",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "SaveData.TakeCheckpoint(true)\r\nif Player.TotalPreyDigested > 0 then\r\n    if Storage.GetFlag(\"MQ06_AMBUSH_THUG_EATEN\") then\r\n        Log(\"MQ06_ABBEY_INTRO09_PRED_THUG\")\r\n    else\r\n        Log(\"MQ06_ABBEY_INTRO09_PRED_ANY\")\r\n    end\r\nelse\r\n    Log(\"MQ06_ABBEY_INTRO09_DEFAULT\")\r\nend"
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "Abbey_C_Intro10",
+																																						"Title": "Fight",
+																																						"Tooltip": "Come on, then.",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "Link",
+																																								"LinkTarget": "Abbey_Fight1"
+																																							}
+																																						]
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Abbey_Fight1",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "local fight = MQ06_MakeCombat_Fight1()\r\nfight:Begin()\r\nLogSplit()\r\nLog(\"MQ06_ABBEY_FIGHT1_END01\")"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Abbey_Fight1_R_End2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ABBEY_FIGHT1_END02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Abbey_Fight1_C_End3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Abbey_Fight1_R_End3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ABBEY_FIGHT1_END03",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Abbey_Fight1_C_End4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Abbey_Fight1_R_End4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ABBEY_FIGHT1_END04",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Abbey_Fight1_C_End5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Abbey_Fight1_R_End5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_ABBEY_FIGHT1_END05",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Abbey_Fight1_C_End6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Abbey_Fight1_R_End6",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_ABBEY_FIGHT1_END06",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Abbey_Fight1_C_End7",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Abbey_Fight1_R_End7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_ABBEY_FIGHT1_END07",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Abbey_Fight1_C_End8",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Abbey_Fight1_R_End8",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataInline",
+																																	"Script": "SaveData.TakeCheckpoint(true)\r\nLog(\"MQ06_ABBEY_FIGHT1_END08\")"
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Abbey_Fight1_C_Fight2",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "Abbey_Fight2"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Abbey_Fight2",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "local fight = MQ06_MakeCombat_Fight2()\r\nfight:Begin()\r\nLogSplit()"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Abbey_Fight2_R_Vore1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ABBEY_FIGHT2_RANDALL_VORE2",
+											"IsRaw": false
+										}
+									]
+								},
+								"ScriptAppear": {
+									"!Type": "ScriptDataVisualCondition",
+									"Mode": "All",
+									"Operand": true,
+									"Tests": [
+										{
+											"!Type": "ConditionVarFlag",
+											"VariableName": "MQ06_ABBEY_PLAYER_SWALLOWED",
+											"OperandMode": "Literal",
+											"OperandLiteral": true
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Abbey_Fight2_C_Vore2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Abbey_Fight2_R_Vore2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ABBEY_FIGHT2_RANDALL_VORE3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Abbey_Fight2_C_Vore3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "EndingC"
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							},
+							{
+								"NodeType": "State",
+								"Key": "Abbey_Fight2_R_End1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ABBEY_FIGHT2_END01",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Abbey_Fight2_C_End2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Abbey_Fight2_R_End2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ABBEY_FIGHT2_END02",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Abbey_Fight2_C_End3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Abbey_Fight2_R_End3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ABBEY_FIGHT2_END03",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Abbey_Fight2_C_End4",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Abbey_Fight2_R_End4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandInlineSnippet",
+																							"Snippet": "SaveData.TakeCheckpoint(true)"
+																						},
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_ABBEY_FIGHT2_END04",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Abbey_Fight2_C_Fight3",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "Abbey_Fight3"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Abbey_Fight3",
+				"ScriptAction": {
+					"!Type": "ScriptDataInline",
+					"Script": "local fight = MQ06_MakeCombat_Fight3()\r\nfight:Begin()\r\nLogSplit()"
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Abbey_Fight2_R_Vore1"
+							},
+							{
+								"NodeType": "State",
+								"Key": "Abbey_Fight3_R_Seal1",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSaveCheckpoint"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ENDING_A_SEAL1",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Abbey_Fight3_C_Seal2",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Abbey_Fight3_R_Seal2",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ENDING_A_SEAL2",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Abbey_Fight3_C_Seal3",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Abbey_Fight3_R_Seal3",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ENDING_A_SEAL3",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Abbey_Fight3_C_Seal4",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Abbey_Fight3_R_Seal4",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_ENDING_A_SEAL4",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Abbey_Fight3_C_Seal5",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Abbey_Fight3_R_Seal5",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_ENDING_A_SEAL5",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Abbey_Fight3_C_Seal6",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Abbey_Fight3_R_Seal6",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_ENDING_A_SEAL6",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Abbey_Fight3_C_Seal7",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Abbey_Fight3_R_Seal7",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ06_ENDING_A_SEAL7",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Abbey_C_EndingA_Regular",
+																																		"Title": "Wait",
+																																		"Tooltip": "The fight is already over, and he knows it too.",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "EndingA_Regular"
+																																			}
+																																		]
+																																	},
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Abbey_C_EndingA_Swallow",
+																																		"Title": "Swallow",
+																																		"Tooltip": "Looks like defenseless prey.",
+																																		"Highlight": true,
+																																		"ButtonWidth": 1.0,
+																																		"ScriptAppear": {
+																																			"!Type": "ScriptDataInline",
+																																			"Script": "return Player.TotalPreyDigested > 0"
+																																		},
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "EndingA_Swallow"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "EndingA_Regular",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_ENDING_A_REGULAR1",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "EndingA_C_Regular2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "EndingA_R_Regular2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ENDING_A_REGULAR2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "EndingA_C_Regular3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "EndingA_R_Regular3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ENDING_A_REGULAR3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "EndingA_C_Regular4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "EndingA_R_Regular4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ENDING_A_REGULAR4",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "EndingA_C_ToEpilogue",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "EndingA_R_Disposal1"
+																			},
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Epilogue"
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "EndingA_Swallow",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandIf",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ06_AMBUSH_THUG_EATEN",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								}
+							],
+							"HasElseBranch": false,
+							"MainSubgroup": [
+								{
+									"!Type": "CommandLog",
+									"Text": "MQ06_ENDING_A_VORE_GREEDY",
+									"IsRaw": false
+								}
+							]
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_ENDING_A_VORE1",
+							"IsRaw": false
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "MQ06_RANDALL_EATEN",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "ISO_KNOWS_PLAYER_PRED",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "-- Manually increase vore counters because we circumvent combat\r\nPlayer.TotalPreySwallowed = Player.TotalPreySwallowed + 1\r\nPlayer.TotalPreyDigested = Player.TotalPreyDigested + 1"
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "EndingA_C_Swallow2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "EndingA_R_Swallow2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ENDING_A_VORE2",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "EndingA_C_Swallow3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "EndingA_R_Swallow3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ENDING_A_VORE3",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "EndingA_C_Swallow4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "EndingA_R_Swallow4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandIf",
+																			"Mode": "All",
+																			"Operand": true,
+																			"Tests": [
+																				{
+																					"!Type": "ConditionVarFlag",
+																					"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																					"OperandMode": "Literal",
+																					"OperandLiteral": true
+																				}
+																			],
+																			"HasElseBranch": true,
+																			"MainSubgroup": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_ENDING_A_VORE_ISO_KNOWS",
+																					"IsRaw": false
+																				}
+																			],
+																			"ElseSubgroup": [
+																				{
+																					"!Type": "CommandLog",
+																					"Text": "MQ06_ENDING_A_VORE_ISO_SAD",
+																					"IsRaw": false
+																				}
+																			]
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "EndingA_C_Swallow5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "EndingA_R_Swallow5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandLog",
+																							"Text": "MQ06_ENDING_A_VORE4",
+																							"IsRaw": false
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "EndingA_C_Disposal1",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "EndingA_R_Disposal1",
+																								"ScriptAction": {
+																									"!Type": "ScriptDataVisualAction",
+																									"Nodes": [
+																										{
+																											"!Type": "CommandInlineSnippet",
+																											"Snippet": "AdvanceTime(2)"
+																										},
+																										{
+																											"!Type": "CommandLogSplit"
+																										},
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_ENDING_A_DISPOSAL1",
+																											"IsRaw": false
+																										}
+																									]
+																								},
+																								"ScriptAppear": {
+																									"!Type": "ScriptDataInline",
+																									"Script": "return Player.IsExplicitDisposalEnabled and\r\n    (Storage.GetFlag(\"MQ06_AMBUSH_THUG_EATEN\") or\r\n     Storage.GetFlag(\"MQ06_RANDALL_EATEN\"))"
+																								},
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "EndingA_C_Disposal2",
+																										"Highlight": false,
+																										"ButtonWidth": 1.0,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "EndingA_R_Disposal2",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandIf",
+																															"Mode": "All",
+																															"Operand": true,
+																															"Tests": [
+																																{
+																																	"!Type": "ConditionVarFlag",
+																																	"VariableName": "MQ06_RANDALL_EATEN",
+																																	"OperandMode": "Literal",
+																																	"OperandLiteral": true
+																																}
+																															],
+																															"HasElseBranch": true,
+																															"MainSubgroup": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_ENDING_A_DISPOSAL2_RANDALL",
+																																	"IsRaw": false
+																																}
+																															],
+																															"ElseSubgroup": [
+																																{
+																																	"!Type": "CommandLog",
+																																	"Text": "MQ06_ENDING_A_DISPOSAL2_THUG",
+																																	"IsRaw": false
+																																}
+																															]
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "EndingA_C_Disposal3",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "EndingA_R_Disposal3",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ06_ENDING_A_DISPOSAL3",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "EndingA_C_Disposal4",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "Link",
+																																				"LinkTarget": "Epilogue"
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							},
+																							{
+																								"NodeType": "Link",
+																								"LinkTarget": "Epilogue"
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "EndingC",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_ENDING_C_DIGEST1",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "EndingC_C_Digest2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "EndingC_R_Digest2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_ENDING_C_DIGEST2",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandIf",
+											"Mode": "All",
+											"Operand": false,
+											"Tests": [
+												{
+													"!Type": "ConditionIsDisposalEnabled"
+												}
+											],
+											"HasElseBranch": false,
+											"MainSubgroup": [
+												{
+													"!Type": "CommandEndGame"
+												}
+											]
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "EndingC_C_Disposal1",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionIsDisposalEnabled"
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "EndingC_R_Disposal1",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLogSplit"
+														},
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_ENDING_C_DISPOSAL1",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "EndingC_C_Disposal2",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "EndingC_R_Disposal2",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ENDING_C_DISPOSAL2",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandEndGame"
+																		}
+																	]
+																},
+																"Children": []
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
+			},
+			{
+				"NodeType": "State",
+				"Key": "Epilogue",
+				"ScriptAction": {
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandComment",
+							"Comment": "Advance to next morning"
+						},
+						{
+							"!Type": "CommandInlineSnippet",
+							"Snippet": "SetTimeHour(5)\r\nSetTimeHour(17)"
+						},
+						{
+							"!Type": "CommandComment",
+							"Comment": "Wrap up quest"
+						},
+						{
+							"!Type": "CommandJournalClose",
+							"JournalGuid": "8d07c457-9cbc-4144-bd08-5ab12962f205"
+						},
+						{
+							"!Type": "CommandPlayerAddXP",
+							"OperandMode": "Script",
+							"OperandText": "RewardXP.MQ06_Complete"
+						},
+						{
+							"!Type": "CommandComment",
+							"Comment": "Start epilogue"
+						},
+						{
+							"!Type": "CommandLogSplit"
+						},
+						{
+							"!Type": "CommandSleep",
+							"OperandMode": "Literal",
+							"OperandLiteral": 1.0
+						},
+						{
+							"!Type": "CommandSetLocation",
+							"OperandMode": "Literal",
+							"OperandText": "North Finmer, Town Hall"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "MQ06_EPILOGUE01",
+							"IsRaw": false
+						}
+					]
+				},
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Key": "Epilogue_C_Chat2",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Epilogue_R_Chat2",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "MQ06_EPILOGUE02",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Epilogue_C_Chat3",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "State",
+												"Key": "Epilogue_R_Chat3",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
+														{
+															"!Type": "CommandLog",
+															"Text": "MQ06_EPILOGUE03",
+															"IsRaw": false
+														}
+													]
+												},
+												"Children": [
+													{
+														"NodeType": "Choice",
+														"Key": "Epilogue_C_Chat4",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "Epilogue_R_Chat4",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_EPILOGUE04",
+																			"IsRaw": false
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Key": "Epilogue_C_Chat5",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "State",
+																				"Key": "Epilogue_R_Chat5",
+																				"ScriptAction": {
+																					"!Type": "ScriptDataVisualAction",
+																					"Nodes": [
+																						{
+																							"!Type": "CommandIf",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							],
+																							"HasElseBranch": true,
+																							"MainSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_EPILOGUE05_PLAYERPRED",
+																									"IsRaw": false
+																								}
+																							],
+																							"ElseSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_EPILOGUE05_DEFAULT",
+																									"IsRaw": false
+																								}
+																							]
+																						}
+																					]
+																				},
+																				"Children": [
+																					{
+																						"NodeType": "Choice",
+																						"Key": "Epilogue_C_Chat6",
+																						"Highlight": false,
+																						"ButtonWidth": 1.0,
+																						"ScriptAction": {
+																							"!Type": "ScriptDataVisualAction",
+																							"Nodes": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_EPILOGUE06",
+																									"IsRaw": false
+																								}
+																							]
+																						},
+																						"Children": [
+																							{
+																								"NodeType": "State",
+																								"Key": "Epilogue_R_Chat6",
+																								"Children": [
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Epilogue_C_Topic_Health",
+																										"Title": "Health",
+																										"Tooltip": "That cut looked nasty. Ask if it's healing alright.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.8,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_HEALTH",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												},
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ06_EPILOGUE_TOPIC_HEALTH",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_HEALTH",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Epilogue_R_Chat6"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Epilogue_C_Topic_Canbell",
+																										"Title": "Canbell",
+																										"Tooltip": "Ask where Acting Mayor Canbell went.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.8,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_CANBELL",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												},
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ06_EPILOGUE_TOPIC_CANBELL",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_CANBELL",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Epilogue_R_Chat6"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Epilogue_C_Topic_Mako",
+																										"Title": "Mako",
+																										"Tooltip": "You captured one Red Maw member alive. Where is he?",
+																										"Highlight": true,
+																										"ButtonWidth": 0.8,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_MAKO",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												},
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ06_EPILOGUE_TOPIC_MAKO",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_MAKO",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												},
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MAKO_DEAD",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Epilogue_R_Chat6"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Epilogue_C_Topic_Rux",
+																										"Title": "Rux",
+																										"Tooltip": "Ask what Rux is going to do now.",
+																										"Highlight": false,
+																										"ButtonWidth": 0.8,
+																										"ScriptAction": {
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandVarSetFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_RUX",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": true
+																												},
+																												{
+																													"!Type": "CommandLog",
+																													"Text": "MQ06_EPILOGUE_TOPIC_RUX",
+																													"IsRaw": false
+																												}
+																											]
+																										},
+																										"ScriptAppear": {
+																											"!Type": "ScriptDataVisualCondition",
+																											"Mode": "All",
+																											"Operand": true,
+																											"Tests": [
+																												{
+																													"!Type": "ConditionVarFlag",
+																													"VariableName": "MQ06_EPILOGUE_TOPIC_RUX",
+																													"OperandMode": "Literal",
+																													"OperandLiteral": false
+																												}
+																											]
+																										},
+																										"Children": [
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Epilogue_R_Chat6"
+																											}
+																										]
+																									},
+																									{
+																										"NodeType": "Choice",
+																										"Key": "Epilogue_C_Chat7",
+																										"Title": "Farewell",
+																										"Tooltip": "Who knows what's next in store?",
+																										"Highlight": false,
+																										"ButtonWidth": 0.65,
+																										"Children": [
+																											{
+																												"NodeType": "State",
+																												"Key": "Epilogue_R_Chat7",
+																												"ScriptAction": {
+																													"!Type": "ScriptDataVisualAction",
+																													"Nodes": [
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_EPILOGUE07",
+																															"IsRaw": false
+																														}
+																													]
+																												},
+																												"Children": [
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Epilogue_C_Chat8",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"Children": [
+																															{
+																																"NodeType": "State",
+																																"Key": "Epilogue_R_Chat8",
+																																"ScriptAction": {
+																																	"!Type": "ScriptDataVisualAction",
+																																	"Nodes": [
+																																		{
+																																			"!Type": "CommandLog",
+																																			"Text": "MQ06_EPILOGUE08",
+																																			"IsRaw": false
+																																		}
+																																	]
+																																},
+																																"Children": [
+																																	{
+																																		"NodeType": "Choice",
+																																		"Key": "Epilogue_C_Thanks",
+																																		"Highlight": false,
+																																		"ButtonWidth": 1.0,
+																																		"Children": [
+																																			{
+																																				"NodeType": "State",
+																																				"Key": "Epilogue_R_Thanks",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataInline",
+																																					"Script": "LogSplit()\r\nLog(\"MQ06_EPILOGUE_THANKS\", Color.Highlight)"
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "Epilogue_C_Exit",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"ScriptAction": {
+																																							"!Type": "ScriptDataVisualAction",
+																																							"Nodes": [
+																																								{
+																																									"!Type": "CommandSetScene",
+																																									"SceneGuid": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba"
+																																								}
+																																							]
+																																						},
+																																						"Children": []
+																																					}
+																																				]
+																																			}
+																																		]
+																																	}
+																																]
+																															}
+																														]
+																													}
+																												]
+																											}
+																										]
+																									}
+																								]
+																							}
+																						]
+																					}
+																				]
+																			}
+																		]
+																	}
+																]
+															}
+														]
+													}
+												]
+											}
+										]
+									}
+								]
+							}
+						]
+					}
+				]
 			}
 		]
 	}

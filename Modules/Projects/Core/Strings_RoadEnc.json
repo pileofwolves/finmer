@@ -4,6 +4,12 @@
 	"AssetName": "Strings_RoadEnc",
 	"Entries": [
 		{
+			"Key": "CLIFFSIDE_ENTER",
+			"Text": [
+				"Built into the face of the cliff, you find a small alcove. The perfect place to stop and rest. The view from here is stunning - without trees obstructing the panorama, beyond the sheer drop of the cliff face on the opposite side of the road, the ocean stretches on as far as the eye can see.\\n\\nThe charred remains of an old campfire sits just outside the alcove; clearly you are not the first to have camped out here."
+			]
+		},
+		{
 			"Key": "ROAD_NO_ENC",
 			"Text": [
 				"The scenery is quite beautiful. Most landscapes in the area are completely untouched by civilization, allowing nature's bounty to unfold to its fullest potential.",

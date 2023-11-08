@@ -15,12 +15,22 @@
 				"NodeType": "State",
 				"Key": "Main",
 				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")"
+					"!Type": "ScriptDataVisualAction",
+					"Nodes": [
+						{
+							"!Type": "CommandSaveCheckpoint"
+						},
+						{
+							"!Type": "CommandLog",
+							"Text": "CLIFFSIDE_ENTER",
+							"IsRaw": false
+						}
+					]
 				},
 				"Children": [
 					{
 						"NodeType": "Compass",
+						"Key": "CompassN",
 						"CompassLinkDirection": "North",
 						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
 						"ScriptAction": {
@@ -30,12 +40,61 @@
 					},
 					{
 						"NodeType": "Compass",
+						"Key": "CompassS",
 						"CompassLinkDirection": "South",
 						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "BeginRoadTravel(ECompass.South, \"Scene_PortGate\")"
 						}
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Rest",
+						"Tooltip": "Take a moment and unwind.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "FOREST_SLEEP",
+									"IsRaw": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandPlayerHealAll"
+										},
+										{
+											"!Type": "CommandSaveDialog"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "FOREST_SLEEP_WAKEUP",
+											"IsRaw": false
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CompassN"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "CompassS"
+									}
+								]
+							}
+						]
 					}
 				]
 			}

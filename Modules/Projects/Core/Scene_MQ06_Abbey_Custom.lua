@@ -112,7 +112,7 @@ local function MQ06_MakeCombat_Fight1()
     return fight
 end
 
-local function MQ06_OnPlayerKilled_Revive()
+local function MQ06_OnPlayerKilled()
     -- Note: we do not need to check CombatSession::IsSwallowed, because OnCreatureVored ends the combat
     if not Storage.GetFlag("MQ06_ABBEY_FIGHT_REVIVED") then
         Sleep(1)
@@ -120,6 +120,10 @@ local function MQ06_OnPlayerKilled_Revive()
         Storage.SetFlag("MQ06_ABBEY_FIGHT_REVIVED", true)
         Sleep(1)
         Player.Health = Player.HealthMax
+    else
+        -- Combat ends with vore
+        Storage.SetFlag("MQ06_ABBEY_PLAYER_SWALLOWED", true)
+        GetActiveCombat():End()
     end
 end
 
@@ -140,7 +144,7 @@ local function MQ06_MakeCombat_Fight2()
     end)
 
     -- Just for fun, one retry is allowed
-    fight:OnPlayerKilled(MQ06_OnPlayerKilled_Revive)
+    fight:OnPlayerKilled(MQ06_OnPlayerKilled)
 
     return fight
 end
@@ -200,7 +204,7 @@ local function MQ06_MakeCombat_Fight3()
     end)
 
     -- Just for fun, one retry is allowed
-    fight:OnPlayerKilled(MQ06_OnPlayerKilled_Revive)
+    fight:OnPlayerKilled(MQ06_OnPlayerKilled)
 
     return fight
 end

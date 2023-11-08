@@ -1136,7 +1136,7 @@
 																										"Title": "Rux",
 																										"Tooltip": "Ask how she knows an Adept.",
 																										"Highlight": false,
-																										"ButtonWidth": 1.0,
+																										"ButtonWidth": 0.75,
 																										"Children": [
 																											{
 																												"NodeType": "Link",
@@ -1149,7 +1149,7 @@
 																										"Title": "Randall",
 																										"Tooltip": "Ask why Randall is chasing after her.",
 																										"Highlight": false,
-																										"ButtonWidth": 1.0,
+																										"ButtonWidth": 0.75,
 																										"Children": [
 																											{
 																												"NodeType": "Link",
@@ -1162,7 +1162,7 @@
 																										"Title": "Plan",
 																										"Tooltip": "Ask her what this 'plan' was that supposedly failed.",
 																										"Highlight": false,
-																										"ButtonWidth": 1.0,
+																										"ButtonWidth": 0.75,
 																										"Children": [
 																											{
 																												"NodeType": "Link",
@@ -1175,7 +1175,7 @@
 																										"Title": "Panic",
 																										"Tooltip": "Ask her why she is in such a panicked hurry.",
 																										"Highlight": false,
-																										"ButtonWidth": 1.0,
+																										"ButtonWidth": 0.75,
 																										"Children": [
 																											{
 																												"NodeType": "Link",
@@ -1188,7 +1188,7 @@
 																										"Title": "Ring",
 																										"Tooltip": "Ask her why you, not Iso, possess the ring.",
 																										"Highlight": false,
-																										"ButtonWidth": 1.0,
+																										"ButtonWidth": 0.75,
 																										"Children": [
 																											{
 																												"NodeType": "Link",

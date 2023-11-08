@@ -284,7 +284,7 @@ Room {
 Room {
     key             = "Room_Terminus",
     label           = "Red Maw, Pit",
-    text_first      = "MQ05_MAW_ROOM_TERMINUS",
+    text_first      = "MQ05_MAW_ROOM_TERMINUS_FIRST",
     text_repeat     = "MQ05_MAW_ROOM_TERMINUS",
     link_n          = BranchNodeLink("MQ05_MAW_ROOM_TERMINUS_FIRST", "Room_Shaft3", "Encounter_Jett"),
 }

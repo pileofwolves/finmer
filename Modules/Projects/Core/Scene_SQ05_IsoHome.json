@@ -21,7 +21,7 @@
 						"Title": "Done",
 						"Tooltip": "That's enough talking for now.",
 						"Highlight": false,
-						"ButtonWidth": 0.7,
+						"ButtonWidth": 0.6,
 						"Children": [
 							{
 								"NodeType": "State",
@@ -83,7 +83,7 @@
 						"Title": "Randall",
 						"Tooltip": "You didn't get the chance to ask about her relationship with Randall...",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -134,7 +134,7 @@
 						"Title": "Canbell",
 						"Tooltip": "Ask why Canbell is now Acting Mayor.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -181,7 +181,7 @@
 						"Title": "Weird feeling",
 						"Tooltip": "Ask about the 'weird feeling' she mentioned.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -234,7 +234,7 @@
 						"Title": "Direction",
 						"Tooltip": "Ask how she even knows where you're going.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -281,7 +281,7 @@
 						"Title": "Disappearance",
 						"Tooltip": "Ask how she is going to explain her disappearance to her people.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -328,7 +328,7 @@
 						"Title": "Predation",
 						"Tooltip": "Ask if the act of predation is a common issue here.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -375,7 +375,7 @@
 						"Title": "Rux",
 						"Tooltip": "Ask who Rux is to her.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -422,7 +422,7 @@
 						"Title": "Business Partners",
 						"Tooltip": "Ask what kind of business relationship she has with Rux.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [

@@ -1554,7 +1554,7 @@
 						"Title": "Leave",
 						"Tooltip": "Return to the wilderness beyond the doorway.",
 						"Highlight": false,
-						"ButtonWidth": 0.75,
+						"ButtonWidth": 0.6,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -1577,7 +1577,7 @@
 						"Key": "Cabin_C_Talk",
 						"Title": "Talk",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"Children": [
 							{
 								"NodeType": "Link",
@@ -1591,7 +1591,7 @@
 						"Title": "Rest",
 						"Tooltip": "Sit by the fire a moment and record your progress.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"Children": [
 							{
 								"NodeType": "State",
@@ -1628,6 +1628,14 @@
 									{
 										"NodeType": "Link",
 										"LinkTarget": "Cabin_C_SQ05"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_MQ06"
+									},
+									{
+										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_MQ06_PlanReturn"
 									}
 								]
 							}
@@ -1639,7 +1647,7 @@
 						"Title": "Trade",
 						"Tooltip": "Ask Rux if he has any supplies to spare.",
 						"Highlight": false,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "ShowRuxShop()"
@@ -1657,7 +1665,7 @@
 						"Title": "Book",
 						"Tooltip": "Give the untranslated book you found to Rux.",
 						"Highlight": true,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAppear": {
 							"!Type": "ScriptDataVisualCondition",
 							"Mode": "All",
@@ -1772,7 +1780,7 @@
 						"Title": "Iso's Home",
 						"Tooltip": "Tell Iso you want to pick up the lead that she mentioned, at her home.",
 						"Highlight": true,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAppear": {
 							"!Type": "ScriptDataVisualCondition",
 							"Mode": "All",
@@ -2058,7 +2066,7 @@
 						"Title": "Plan Next Steps",
 						"Tooltip": "It's time to put together all your findings with your co-conspirators.",
 						"Highlight": true,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAppear": {
 							"!Type": "ScriptDataVisualCondition",
 							"Mode": "All",
@@ -2886,7 +2894,7 @@
 						"Title": "Ready to Leave",
 						"Tooltip": "You're ready to depart for Dalsida Abbey.",
 						"Highlight": true,
-						"ButtonWidth": 1.0,
+						"ButtonWidth": 0.8,
 						"ScriptAction": {
 							"!Type": "ScriptDataVisualAction",
 							"Nodes": [
@@ -3290,7 +3298,7 @@
 										"Key": "Talk_C_Rux_Leave",
 										"Title": "(Back)",
 										"Highlight": false,
-										"ButtonWidth": 0.7,
+										"ButtonWidth": 0.6,
 										"Children": [
 											{
 												"NodeType": "Link",
@@ -3304,7 +3312,7 @@
 										"Title": "Adept",
 										"Tooltip": "Ask if he is an Adept, and what that title even means.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3347,7 +3355,7 @@
 										"Title": "Amber",
 										"Tooltip": "Ask what the amber crystals are, and why they are so important.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3444,7 +3452,7 @@
 										"Title": "Shore",
 										"Tooltip": "Ask him for his take on the mystical Shore that Willow mentioned.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3487,7 +3495,7 @@
 										"Title": "Spirits",
 										"Tooltip": "Ask him what he thinks about the spirits that some hold sacred.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3530,7 +3538,7 @@
 										"Title": "Guard Wolf",
 										"Tooltip": "Ask about the giant wolf you met outside.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3617,7 +3625,7 @@
 										"Title": "Bridge Incident",
 										"Tooltip": "Ask her to recap the whole story.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3892,7 +3900,7 @@
 										"Title": "Willow",
 										"Tooltip": "Ask her if she's doing alright after the other night.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [
@@ -3935,7 +3943,7 @@
 										"Title": "Randall",
 										"Tooltip": "Ask her how she relates to the wolf, exactly.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataVisualAction",
 											"Nodes": [

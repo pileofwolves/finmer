@@ -14,9 +14,6 @@
 				"!Type": "CommandSetInventoryEnabled",
 				"OperandMode": "Literal",
 				"OperandLiteral": true
-			},
-			{
-				"!Type": "CommandSaveCheckpoint"
 			}
 		]
 	},
@@ -31,6 +28,9 @@
 				"ScriptAction": {
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
+						{
+							"!Type": "CommandSaveCheckpoint"
+						},
 						{
 							"!Type": "CommandIf",
 							"Mode": "All",
@@ -64,14 +64,25 @@
 									"IsRaw": false
 								}
 							]
-						},
-						{
-							"!Type": "CommandInlineSnippet",
-							"Snippet": "AddLink(ECompass.West, function()\r\n    BeginRoadTravel(\"Scene_PortGate\")\r\nend)\r\nAddLink(ECompass.North, \"Scene_DalsidaAbbey\")"
 						}
 					]
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "a053b667-2eeb-4b6d-ac53-e323cb016dd6"
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "West",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(\"Scene_PortGate\")"
+						}
+					}
+				]
 			}
 		]
 	}

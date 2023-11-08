@@ -18,6 +18,12 @@
 					"!Type": "ScriptDataVisualAction",
 					"Nodes": [
 						{
+							"!Type": "CommandGrammarSetVariable",
+							"VariableName": "sun",
+							"OperandMode": "Script",
+							"OperandText": "GetIsNight() and \"sun\" or \"moon\""
+						},
+						{
 							"!Type": "CommandLog",
 							"Text": "PORT_GATE_ENTER",
 							"IsRaw": false

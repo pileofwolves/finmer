@@ -140,7 +140,7 @@
 		{
 			"Key": "PORT_TAVERN_TALK_BRIDGE",
 			"Text": [
-				"\"Oh, yes,\" she comments dryly. \"Well, we only found out quite late that... that whole thing happened. The bridge is right next door for you guys, of course, but for us it's a two hours' walk away, so that slows things.\" Holly shifts slightly, rolling her eyes with mock indignation as she sticks two paws into her sides. \"We only really noticed something was up when the caravans stopped coming. Then by the time the council had bickered enough to actually make a damn decision, you guys had already dealt with the problem. Though, that said, I am still very curious to understand what exactly happened. As are you, of course, honey.\""
+				"\"Oh, yes,\" she comments dryly. \"Well, we only found out quite late that... that whole thing happened. The bridge is right next door for you guys, of course, but for us it's a few hours' walk away, so that slows things.\" Holly shifts slightly, rolling her eyes with mock indignation as she sticks two paws into her sides. \"We only really noticed something was up when the caravans stopped coming. Then by the time the council had bickered enough to actually make a damn decision, you guys had already dealt with the problem. Though, that said, I am still very curious to understand what exactly happened. As are you, of course, honey.\""
 			]
 		},
 		{
@@ -173,13 +173,13 @@
 		{
 			"Key": "PORT_TAVERN_TALK_MQ03_TAVERN",
 			"Text": [
-				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day. \"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is a mess and the lock on the back door is busted.\""
+				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day.\\n\\n\"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is a mess and the lock on the back door is busted.\""
 			]
 		},
 		{
 			"Key": "PORT_TAVERN_TALK_MQ03_TAVERN_ALT",
 			"Text": [
-				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day. \"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is ransacked and the town guard is investigating a body out back of my restaurant.\""
+				"Holly grunts and sets down some dishes, taking a step closer toward you before sitting down on the floor again. You briefly wonder if that posture might get uncomfortable after serving the counter all day, every day.\\n\\n\"What in the world happened after I left?\" she begins, her arms crossed indignantly while she glares daggers at you. \"I was out chatting with Willow for a bit, and when I come back you've vanished, my dining room is ransacked and the town guard is investigating a body out back of my restaurant.\""
 			]
 		},
 		{

@@ -293,7 +293,7 @@
 																		"Title": "Don't know",
 																		"Tooltip": "Say you don't have any particular reason for traveling here.",
 																		"Highlight": false,
-																		"ButtonWidth": 1.0,
+																		"ButtonWidth": 0.8,
 																		"Children": [
 																			{
 																				"NodeType": "Link",
@@ -307,7 +307,7 @@
 																		"Title": "Explore",
 																		"Tooltip": "Say you felt the call of adventure. Or maybe you just like traveling.",
 																		"Highlight": false,
-																		"ButtonWidth": 1.0,
+																		"ButtonWidth": 0.8,
 																		"Children": [
 																			{
 																				"NodeType": "Link",
@@ -321,7 +321,7 @@
 																		"Title": "Search",
 																		"Tooltip": "Say you intend to help find the missing mayor.",
 																		"Highlight": false,
-																		"ButtonWidth": 1.0,
+																		"ButtonWidth": 0.8,
 																		"Children": [
 																			{
 																				"NodeType": "Link",
@@ -335,7 +335,7 @@
 																		"Title": "Jobs",
 																		"Tooltip": "Say you intend to look for work.",
 																		"Highlight": false,
-																		"ButtonWidth": 1.0,
+																		"ButtonWidth": 0.8,
 																		"Children": [
 																			{
 																				"NodeType": "Link",
@@ -349,7 +349,7 @@
 																		"Title": "Food",
 																		"Tooltip": "Say you wish to try the local cuisine (perhaps in more ways than one).",
 																		"Highlight": false,
-																		"ButtonWidth": 1.0,
+																		"ButtonWidth": 0.8,
 																		"Children": [
 																			{
 																				"NodeType": "Link",

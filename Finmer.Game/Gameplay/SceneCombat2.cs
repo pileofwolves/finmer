@@ -655,7 +655,10 @@ namespace Finmer.Gameplay
             ui.AddButton(new ChoiceButtonModel { Choice = 0, Label = "(< Back)", Width = 0.5f });
 
             for (int i = 0; i < m_PotentialPlayerItems.Count; i++)
-                ui.AddButton(new ChoiceButtonModel { Choice = i + 1, Label = m_PotentialPlayerItems[i].Asset.ObjectName });
+            {
+                var asset = m_PotentialPlayerItems[i].Asset;
+                ui.AddButton(new ChoiceButtonModel { Choice = i + 1, Label = asset.ObjectName, Tooltip = asset.UseDescription });
+            }
         }
 
         private void ShowUISwallowed(GameUI ui)

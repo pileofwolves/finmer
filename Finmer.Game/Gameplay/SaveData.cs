@@ -51,7 +51,6 @@ namespace Finmer.Gameplay
         public const string k_Character_Health = @"health";
         public const string k_Character_IsPredator = @"predator";
         public const string k_Character_PredatorDigest = @"predator_digest";
-        public const string k_Character_PredatorFullness = @"predator_fullness";
         public const string k_Character_EquipBase = @"equip_";
 
         public const string k_Player_SpeciesSingular = @"species";

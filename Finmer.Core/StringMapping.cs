@@ -24,10 +24,7 @@ namespace Finmer.Core
             NpcToPlayer,
             PlayerToNpc,
             NpcToNpcAsInstigator,
-            NpcToNpcAsTarget,
-
-            // Backwards compatibility
-            NpcToNpc = NpcToNpcAsInstigator
+            NpcToNpcAsTarget
         }
 
         /// <summary>

@@ -194,15 +194,14 @@ namespace Finmer.Core.VisualScripting.Nodes
                 {
                     ID = instream.ReadStringProperty(@"Variable"),
                     Creature = instream.ReadGuidProperty(@"Creature"),
-                    IsAlly = version >= 18 && instream.ReadBooleanProperty(@"IsAlly")
+                    IsAlly = instream.ReadBooleanProperty(@"IsAlly")
                 });
                 instream.EndObject();
             }
             instream.EndArray();
 
             // Callback bodies
-            if (version >= 17)
-                CallbackCombatStart = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCombatStart));
+            CallbackCombatStart = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCombatStart));
             CallbackRoundEnd = DeserializeOptionalSubgroup(instream, version, nameof(CallbackRoundEnd));
             CallbackPlayerKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackPlayerKilled));
             CallbackCreatureKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCreatureKilled));

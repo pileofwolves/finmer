@@ -56,39 +56,24 @@ namespace Finmer.Core.Assets
         {
             base.Deserialize(instream, version);
 
-            if (version >= 16)
-            {
-                // Read script data
-                Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
-                if (Contents != null)
-                    Contents.Name = Name;
+            // Read script data
+            Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
+            if (Contents != null)
+                Contents.Name = Name;
 
-                // Read load order
-                if (version >= 18)
-                {
-                    LoadOrder.Clear();
-                    for (int i = 0, c = instream.BeginArray(nameof(LoadOrder)); i < c; i++)
-                    {
-                        instream.BeginObject();
-                        LoadOrder.Add(new LoadOrderDependency
-                        {
-                            TargetAsset = instream.ReadGuidProperty(nameof(LoadOrderDependency.TargetAsset)),
-                            Relation = instream.ReadEnumProperty<LoadOrderDependency.ERelation>(nameof(LoadOrderDependency.Relation)),
-                        });
-                        instream.EndObject();
-                    }
-                    instream.EndArray();
-                }
-            }
-            else
+            // Read load order
+            LoadOrder.Clear();
+            for (int i = 0, c = instream.BeginArray(nameof(LoadOrder)); i < c; i++)
             {
-                // V15 backwards compatibility
-                Contents = new ScriptDataExternal
+                instream.BeginObject();
+                LoadOrder.Add(new LoadOrderDependency
                 {
-                    Name = Name
-                };
-                Contents.Deserialize(instream, version);
+                    TargetAsset = instream.ReadGuidProperty(nameof(LoadOrderDependency.TargetAsset)),
+                    Relation = instream.ReadEnumProperty<LoadOrderDependency.ERelation>(nameof(LoadOrderDependency.Relation)),
+                });
+                instream.EndObject();
             }
+            instream.EndArray();
         }
 
     }

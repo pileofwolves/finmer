@@ -106,10 +106,6 @@ namespace Finmer.Gameplay
             }
         }
 
-        [ScriptableProperty(EScriptAccess.Read)]
-        [Obsolete("Backwards compatibility only; use 'IsExplicitDisposalEnabled' instead")]
-        public bool PreferScat => IsExplicitDisposalEnabled;
-
         /// <summary>
         /// Wraps disposal setting for scripts.
         /// </summary>

@@ -146,12 +146,6 @@ namespace Finmer.Gameplay
         public bool PredatorDigests { get; set; }
 
         /// <summary>
-        /// Currently unused.
-        /// </summary>
-        [ScriptableProperty(EScriptAccess.ReadWrite)]
-        public float PredatorFullness { get; set; }
-
-        /// <summary>
         /// Equipment slot 1.
         /// </summary>
         [CanBeNull]
@@ -276,7 +270,6 @@ namespace Finmer.Gameplay
             // Vore stats
             props.SetBool(SaveData.k_Character_IsPredator, IsPredator);
             props.SetBool(SaveData.k_Character_PredatorDigest, PredatorDigests);
-            props.SetFloat(SaveData.k_Character_PredatorFullness, PredatorFullness);
 
             // Equipment
             for (var i = 0; i < k_EquipSlotCount; i++)
@@ -310,7 +303,6 @@ namespace Finmer.Gameplay
             // Combat settings
             IsPredator = input.GetBool(SaveData.k_Character_IsPredator);
             PredatorDigests = input.GetBool(SaveData.k_Character_PredatorDigest);
-            PredatorFullness = input.GetFloat(SaveData.k_Character_PredatorFullness);
 
             // Load equipment
             for (var i = 0; i < k_EquipSlotCount; i++)

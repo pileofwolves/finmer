@@ -161,24 +161,10 @@ namespace Finmer.Core.Assets
             {
                 EquipSlot = instream.ReadEnumProperty<EEquipSlot>(nameof(EquipSlot));
 
-                // Read equipment effect groups
-                if (version >= 19)
-                {
-                    // V19 onwards: equip effect groups with nested buffs and proc settings
-                    for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
-                        EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
-                    instream.EndArray();
-                }
-                else
-                {
-                    // V18 backwards compatibility: proc data didn't exist yet. If item had buffs, wrap them in a group with the Always proc mode.
-                    var implicit_group = new EquipEffectGroup();
-                    for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
-                        implicit_group.Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null, version));
-                    instream.EndArray();
-                    if (implicit_group.Buffs.Count != 0)
-                        EquipEffects.Add(implicit_group);
-                }
+                // V19 onwards: equip effect groups with nested buffs and proc settings
+                for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
+                    EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
+                instream.EndArray();
             }
             PurchaseValue = instream.ReadInt32Property(nameof(PurchaseValue));
             IsQuestItem = instream.ReadBooleanProperty(nameof(IsQuestItem));
@@ -191,23 +177,9 @@ namespace Finmer.Core.Assets
                 CanUseInBattle = instream.ReadBooleanProperty(nameof(CanUseInBattle));
                 UseDescription = instream.ReadStringProperty(nameof(UseDescription));
 
-                // Attached scripts
-                if (version >= 16)
-                {
-                    UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript), version);
-                }
-                else
-                {
-                    // V15 backwards compatibility
-                    instream.BeginObject("UseScript");
-                    UseScript = new AssetScript();
-                    UseScript.Deserialize(instream, version);
-                    instream.EndObject();
-                }
-
-                // If there is no UseScript object, instantiate one now
-                if (UseScript == null)
-                    UseScript = new AssetScript { ID = Guid.NewGuid() };
+                // Read attached UseScript, or if there is none, instantiate one now
+                UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript), version)
+                    ?? new AssetScript { ID = Guid.NewGuid() };
 
                 // Ensure the script is named
                 UseScript.Name = GetUseScriptName();

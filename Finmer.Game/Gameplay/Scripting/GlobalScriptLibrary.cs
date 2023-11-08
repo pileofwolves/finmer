@@ -47,7 +47,6 @@ namespace Finmer.Gameplay.Scripting
 
             // Misc global utilities
             context.RegisterGlobalFunction("IsDevModeEnabled", ExportedIsDevModeEnabled);
-            context.RegisterGlobalFunction("IsDebugMode", ExportedIsDevModeEnabled); // BC
             context.RegisterGlobalFunction("Sleep", ExportedSleep);
         }
 

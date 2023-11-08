@@ -1,6 +1,5 @@
 function ApplyPlayerStartingGear()
     -- Remove tutorial prey, if any
-    Player.PredatorFullness = 0
     Player.TotalPreySwallowed = 0
     Player.TotalPreyDigested = 0
 

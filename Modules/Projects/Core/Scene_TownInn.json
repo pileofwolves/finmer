@@ -1368,7 +1368,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
-															"Script": "return IsDebugMode()"
+															"Script": "return IsDevModeEnabled()"
 														},
 														"Children": [
 															{

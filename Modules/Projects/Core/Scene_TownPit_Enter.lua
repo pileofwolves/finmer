@@ -1,2 +1,2 @@
 SetLocation("The Club")
-SetInventoryEnabled(IsDebugMode())
+SetInventoryEnabled(IsDevModeEnabled())

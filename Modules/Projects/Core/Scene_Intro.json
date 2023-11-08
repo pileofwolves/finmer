@@ -53,7 +53,7 @@
 						},
 						"ScriptAppear": {
 							"!Type": "ScriptDataInline",
-							"Script": "return IsDebugMode()"
+							"Script": "return IsDevModeEnabled()"
 						},
 						"Children": [
 							{

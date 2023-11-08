@@ -702,7 +702,7 @@
 								"Key": "Entry_R_Claim_Reward",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    if IsDebugMode() then print(\"warning: entitled > #RewardGoldPit\") end\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer:ModifyMoney(totalReward)\r\nLog(\"TOWN_PIT_DESK_REWARD\")"
+									"Script": "local entitled = Storage.GetNumber(\"TOWN_PIT_CASH_ENTITLED\")\r\nlocal claimed = Storage.GetNumber(\"TOWN_PIT_CASH_CLAIMED\")\r\n\r\n-- U1 Hotfix: Cap reward so we don't read out of bounds in the table\r\nif entitled > #RewardGoldPit then\r\n    if IsDevModeEnabled() then print(\"warning: entitled > #RewardGoldPit\") end\r\n    entitled = #RewardGoldPit\r\nend\r\n\r\n-- Apply tiered reward table\r\nlocal totalReward = 0\r\nwhile claimed < entitled do\r\n    local reward = RewardGoldPit[claimed + 1]\r\n    totalReward = totalReward + reward\r\n    claimed = claimed + 1\r\nend\r\n\r\n-- Save edited number\r\nStorage.SetNumber(\"TOWN_PIT_CASH_CLAIMED\", claimed)\r\nStorage.SetNumber(\"TOWN_PIT_CASH_BUGGED\", 0)\r\n\r\n-- Award calculated money\r\nPlayer:ModifyMoney(totalReward)\r\nLog(\"TOWN_PIT_DESK_REWARD\")"
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
@@ -773,7 +773,7 @@
 						"ButtonWidth": 1.0,
 						"ScriptAppear": {
 							"!Type": "ScriptDataInline",
-							"Script": "return IsDebugMode()"
+							"Script": "return IsDevModeEnabled()"
 						},
 						"Children": [
 							{
@@ -1028,7 +1028,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
-															"Script": "return IsDebugMode()"
+															"Script": "return IsDevModeEnabled()"
 														},
 														"Children": [
 															{
@@ -1289,7 +1289,7 @@
 										"ButtonWidth": 1.0,
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
-											"Script": "return IsDebugMode()"
+											"Script": "return IsDevModeEnabled()"
 										},
 										"Children": [
 											{
@@ -1372,7 +1372,7 @@
 										"ButtonWidth": 1.0,
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
-											"Script": "return IsDebugMode()"
+											"Script": "return IsDevModeEnabled()"
 										},
 										"Children": [
 											{
@@ -1470,7 +1470,7 @@
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
-															"Script": "return IsDebugMode()"
+															"Script": "return IsDevModeEnabled()"
 														},
 														"Children": [
 															{

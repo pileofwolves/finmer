@@ -108,8 +108,13 @@
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"ScriptAction": {
-																											"!Type": "ScriptDataInline",
-																											"Script": "SetScene(\"Scene_RoadCarriageRide\")"
+																											"!Type": "ScriptDataVisualAction",
+																											"Nodes": [
+																												{
+																													"!Type": "CommandSetScene",
+																													"SceneGuid": "3063766b-f21c-43d4-acd2-8c77773ed8c4"
+																												}
+																											]
 																										},
 																										"Children": []
 																									}

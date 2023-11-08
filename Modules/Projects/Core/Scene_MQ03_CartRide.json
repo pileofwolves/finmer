@@ -1,10 +1,10 @@
 ﻿{
 	"!Type": "AssetScene",
 	"AssetID": "3063766b-f21c-43d4-acd2-8c77773ed8c4",
-	"AssetName": "Scene_RoadCarriageRide",
+	"AssetName": "Scene_MQ03_CartRide",
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
-		"Name": "Scene_RoadCarriageRide_Enter"
+		"Name": "Scene_MQ03_CartRide_Enter"
 	},
 	"IsPatch": false,
 	"Root": {

@@ -23,7 +23,7 @@
 						"NodeType": "Choice",
 						"Key": "Leave",
 						"Title": "Leave",
-						"Tooltip": "Leave the busy fellow to his work.",
+						"Tooltip": "Leave the busy tradeswoman to her work.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"ScriptAction": {
@@ -179,7 +179,7 @@
 								"Key": "Chat_R_General",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"TOWN_SMITHY_CHAT_GENERAL\")"
+									"Script": "-- One rumor allowed until time advances\r\nlocal now = GetTimeHourTotal()\r\nif Storage.GetNumber(\"TOWN_SMITHY_CHAT_TIME\") ~= now then\r\n    Storage.SetNumber(\"TOWN_SMITHY_CHAT_TIME\", now)\r\n    local context = Creature(\"CR_RandomAnthro\")\r\n    context.Name = \"the smith\"\r\n    context.Alias = \"the vixen\"\r\n    context.Gender = EGender.Female\r\n    Rumor.Present(context)\r\nelse\r\n    Log(\"TOWN_SMITHY_CHAT_GENERAL\")\r\nend"
 								},
 								"Children": [
 									{

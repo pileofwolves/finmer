@@ -335,7 +335,7 @@ namespace Finmer.Gameplay.Combat
             int health_diff = participant.CumulativeBuffs.OfType<BuffHealthOverTime>().Sum(buff => buff.Delta);
             participant.Character.Health += health_diff;
             if (participant.Character.IsDead())
-                participant.Session.NotifyParticipantKilled(participant, null);
+                participant.Session.NotifyParticipantKilled(participant, participant);
 
             // Count down temporary buffs, iterating in reverse order so we can easily pop items from the end
             bool has_buffs = participant.LocalBuffs.Any();
@@ -375,11 +375,10 @@ namespace Finmer.Gameplay.Combat
         /// In the Editor, creatures can be configured to automatically swallow or be swallowed when they or other participants are
         /// defeated in combat through a non-vore method, to help reduce logic branches a scene designer needs to take into account.
         /// </remarks>
-        /// <param name="killer">The participant who killed the victim.</param>
         /// <param name="victim">The participant who lost all health.</param>
-        public static void HandleAutoVore(Participant killer, Participant victim)
+        public static void HandleAutoVore(Participant victim)
         {
-            var session = killer.Session;
+            var session = victim.Session;
             var all_participants = session.Participants;
 
             // NPC prey

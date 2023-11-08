@@ -240,7 +240,7 @@ namespace Finmer.Gameplay.Combat
 
             // If the victim was not swallowed, there may be auto-vore triggers we need to activate, check now
             if (!victim.IsSwallowed())
-                CombatLogic.HandleAutoVore(killer, victim);
+                CombatLogic.HandleAutoVore(victim);
 
             // Now that the killer/victim relation is finalized, handle it.
             // Note that we must check swallowed state again here because any auto-vore triggers may have changed it.

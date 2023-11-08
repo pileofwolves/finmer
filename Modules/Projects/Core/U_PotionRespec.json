@@ -1,0 +1,24 @@
+﻿{
+	"!Type": "AssetItem",
+	"AssetID": "a2968829-67e1-46fd-967c-49313ab4f98e",
+	"AssetName": "U_PotionRespec",
+	"ObjectName": "Mindblank Potion",
+	"FlavorText": "Few can say they've had the privilege of being able to start over, to wipe the slate clean just like that. For those people, consequences are usually few to begin with. For everyone else, there are magical solutions instead.",
+	"ItemType": "Usable",
+	"PurchaseValue": 10,
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": false,
+	"UseDescription": "Refunds all Ability Points, so you can reallocate them on the Character Sheet.",
+	"UseScript": {
+		"!Type": "AssetScript",
+		"AssetID": "91771458-e384-46f1-97e8-ee6846120dd6",
+		"AssetName": "U_PotionRespec_Use",
+		"Contents": {
+			"!Type": "ScriptDataExternal",
+			"Name": "U_PotionRespec_Use"
+		},
+		"LoadOrder": []
+	}
+}

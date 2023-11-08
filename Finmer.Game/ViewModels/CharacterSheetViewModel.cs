@@ -133,6 +133,7 @@ namespace Finmer.ViewModels
                 case AssetItem.EItemType.Usable:
                     // Use and consume the item
                     ItemUtilities.UseItem(GameController.Session, item);
+                    RefreshAbilityScores();
                     break;
 
                 default:
@@ -179,6 +180,16 @@ namespace Finmer.ViewModels
             // So instead, we'll just allocate a new container entirely, copying the player's inventory into it.
             Inventory = new List<Item>(Player.Inventory);
             OnPropertyChanged(nameof(Inventory));
+        }
+
+        private void RefreshAbilityScores()
+        {
+            OnPropertyChanged(nameof(Strength));
+            OnPropertyChanged(nameof(Agility));
+            OnPropertyChanged(nameof(Body));
+            OnPropertyChanged(nameof(Wits));
+            OnPropertyChanged(nameof(AbilityPoints));
+            OnPropertyChanged(nameof(AbilityPointVisibility));
         }
 
         private void RefreshDiceReadouts()

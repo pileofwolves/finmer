@@ -18,6 +18,9 @@ function ShowAlchemyShop()
         shop:MarkRestocked()
         shop:RemoveDefaultStock()
         AddRandomizableShopStock(shop, potions, math.random(4, 5))
+
+        -- Always stock 1 respec potion, so players have the option available
+        shop:AddItem(Item("U_PotionRespec"), 1)
     end
     shop:Show()
     shop:Save()

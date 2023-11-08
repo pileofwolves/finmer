@@ -674,7 +674,7 @@
 								"Key": "SQ02_R_Explain",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"I_SQ02_WolfTrophy\")\r\nPlayer:ModifyMoney(RewardGold.SQ02)\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nJournal.Close(\"SQ02\")"
+									"Script": "Log(\"SQ02_TOWNHALL_EXPLAIN\")\r\nPlayer:TakeItem(\"I_SQ02_WolfTrophy\")\r\nPlayer:ModifyMoney(RewardGold.SQ02_Complete)\r\nPlayer:AwardXP(RewardXP.SQ02_HandIn)\r\nJournal.Close(\"SQ02\")"
 								},
 								"Children": [
 									{

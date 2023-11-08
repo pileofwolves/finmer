@@ -473,7 +473,7 @@
 												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Log(\"MQ03_TAVERN_FINALE3\")"
+													"Script": "Log(\"MQ03_TAVERN_FINALE3\")\r\nPlayer:AwardXP(RewardXP.DiscoveryMinor)"
 												},
 												"Children": [
 													{

@@ -22,7 +22,7 @@
 			"ProcStyle": "EnemyAttackHit",
 			"ProcTarget": "Self",
 			"ProcChance": 0.75,
-			"Duration": 5,
+			"Duration": 4,
 			"Buffs": [
 				{
 					"!Type": "BuffDefenseDice",

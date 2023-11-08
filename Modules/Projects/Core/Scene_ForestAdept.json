@@ -40,6 +40,11 @@
 							"OperandLiteral": true
 						},
 						{
+							"!Type": "CommandPlayerAddXP",
+							"OperandMode": "Script",
+							"OperandText": "RewardXP.SQ05_Complete"
+						},
+						{
 							"!Type": "CommandJournalClose",
 							"JournalGuid": "111ccd42-93c2-4c28-aa66-b3090be0b793"
 						},
@@ -230,6 +235,11 @@
 							"!Type": "CommandLog",
 							"Text": "MQ04_ADEPT_INTRO01",
 							"IsRaw": false
+						},
+						{
+							"!Type": "CommandPlayerAddXP",
+							"OperandMode": "Script",
+							"OperandText": "RewardXP.DiscoveryMajor"
 						}
 					]
 				},
@@ -3111,6 +3121,11 @@
 																																							"!Type": "CommandLog",
 																																							"Text": "MQ04_ADEPT_PLAN08",
 																																							"IsRaw": false
+																																						},
+																																						{
+																																							"!Type": "CommandPlayerAddXP",
+																																							"OperandMode": "Script",
+																																							"OperandText": "RewardXP.MQ04_Complete"
 																																						},
 																																						{
 																																							"!Type": "CommandJournalClose",

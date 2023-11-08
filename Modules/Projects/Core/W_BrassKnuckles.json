@@ -22,7 +22,7 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
-			"ProcChance": 0.3,
+			"ProcChance": 0.33,
 			"Duration": 1,
 			"Buffs": [
 				{

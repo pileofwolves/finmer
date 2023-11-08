@@ -1,51 +1,54 @@
 RewardXP = {
-    DiscoveryMinor = 15,
+    -- Misc
+    DiscoveryMinor          = 15,
+    DiscoveryMajor          = 20,
+    OptionalSceneMinor      = 10,
+    OptionalSceneMajor      = 15,
 
-    MQ01_Accept = 20,
-    MQ01_Complete = 20,
+    -- Main quests
+    MQ01_Accept             = 20,
+    MQ01_Complete           = 50,
+    MQ02_Pacifist           = 25,
+    MQ02_Complete           = 100,
+    MQ03_Accept             = 25,
+    MQ03_Complete           = 150,
+    MQ04_Complete           = 100,
+    MQ05_Complete           = 150,
+    MQ06_Complete           = 150,
 
-    MQ02_Complete = 100,
-    MQ02_OliverNoViolence = 40, -- minor compensation for XP missed by not fighting
-    MQ02_EncNoViolence = 40, -- minor compensation for XP missed by not fighting
-    MQ02_ChaseComplete = 40,
+    -- Side quests
+    SQ01_Complete           = 75,
+    SQ02_StealthSlay        = 50,
+    SQ02_HandIn             = 50,
+    SQ02_Befriend           = 100,
+    SQ03_HandIn             = 60,
+    SQ05_Complete           = 100,
 
-    MQ03_Accept = 10,
-
-    MQ06_Complete           = 100,
-
-    SQ01_Complete = 60,
-
-    -- anger + kill:    25 + 20 =   45 XP
-    -- stealth + kill:  60 + 20 =   80 XP
-    -- befriend:                    80 XP
-    SQ02_StealthSlay = 80,
-    SQ02_HandIn = 20,
-    SQ02_Befriend = 100,
-
-    SQ03_HandIn = 60,
-
-    -- cash rewards for pit fights
-    SQ04_Opp1 = 20,
-    SQ04_Opp2 = 25,
-    SQ04_Opp3 = 30,
-    SQ04_Opp4 = 35,
+    -- Club fights
+    SQ04_Opp1               = 20,
+    SQ04_Opp2               = 25,
+    SQ04_Opp3               = 30,
+    SQ04_Opp4               = 35,
 }
 
 RewardGold = {
-    MQ02_Complete = 40,
-    KillOliver = 25,
-    SQ01 = 80,
-    SQ02 = 70,
-    SQ03 = 60,
+    -- Main quests
+    MQ02_Complete           = 40,
+    MQ02_OliverKill         = 25,
+    MQ03_Snitch             = 25,
 
-    MQ03_Snitch     = 25,
+    -- Side quests
+    SQ01_Complete           = 80,
+    SQ02_Complete           = 70,
+    SQ03_Complete           = 65,
 
-    Rux_Book        = 20,
+    -- Misc
+    Rux_Book                = 20,
 }
 
 RewardGoldPit = {
-    35,
-    40,
-    45,
-    55
+    25,
+    30,
+    30,
+    35
 }

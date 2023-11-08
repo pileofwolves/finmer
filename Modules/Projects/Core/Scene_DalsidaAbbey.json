@@ -42,7 +42,7 @@
 				"Key": "Explore_Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "SetInventoryEnabled(true)\r\nTimedCheckpoint(\"ABBEY_COURTYARD\")\r\nAddLink(ECompass.South, \"Scene_DalsidaPass\")\r\n\r\nif Storage.GetFlag(\"ABBEY_EXPLORE_COURTYARD\") then\r\n    Log(\"ABBEY_EXPLORE_COURTYARD\")\r\nelse\r\n    Storage.SetFlag(\"ABBEY_EXPLORE_COURTYARD\", true)\r\n    Log(\"ABBEY_EXPLORE_COURTYARD_FIRST\")\r\nend"
+					"Script": "SetInventoryEnabled(true)\r\nTimedCheckpoint(\"ABBEY_COURTYARD\")\r\nAddLink(ECompass.South, \"Scene_DalsidaPass\")\r\n\r\nif Storage.GetFlag(\"ABBEY_EXPLORE_COURTYARD\") then\r\n    Log(\"ABBEY_EXPLORE_COURTYARD\")\r\nelse\r\n    Player:AwardXP(RewardXP.DiscoveryMinor)\r\n    Storage.SetFlag(\"ABBEY_EXPLORE_COURTYARD\", true)\r\n    Log(\"ABBEY_EXPLORE_COURTYARD_FIRST\")\r\nend"
 				},
 				"Children": [
 					{

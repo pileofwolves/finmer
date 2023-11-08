@@ -12,8 +12,8 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Self",
-			"ProcChance": 0.5,
-			"Duration": 3,
+			"ProcChance": 1.0,
+			"Duration": 4,
 			"Buffs": [
 				{
 					"!Type": "BuffAttackDice",
@@ -34,6 +34,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 55,
+	"PurchaseValue": 40,
 	"IsQuestItem": false
 }

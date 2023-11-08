@@ -25,7 +25,7 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "WielderGrappled",
 			"ProcTarget": "Self",
-			"ProcChance": 0.75,
+			"ProcChance": 0.8,
 			"Duration": 3,
 			"Buffs": [
 				{

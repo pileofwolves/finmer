@@ -396,7 +396,7 @@
 								"Key": "Oliver_R_SQ03_Handin",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"OLIVER_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
+									"Script": "Log(\"OLIVER_SQ03_HANDIN\")\r\nJournal.Close(\"SQ03\")\r\n\r\nPlayer:TakeItem(\"I_SQ03_OliverSupplies\")\r\nPlayer:GiveItem(\"U_PotionHeal\", true)\r\nPlayer:ModifyMoney(RewardGold.SQ03_Complete)\r\nPlayer:AwardXP(RewardXP.SQ03_HandIn)"
 								},
 								"Children": [
 									{
@@ -1073,7 +1073,7 @@
 																																				"Key": "Oliver1_R_End_NoHug",
 																																				"ScriptAction": {
 																																					"!Type": "ScriptDataInline",
-																																					"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_OliverNoViolence)\r\nJournal.Update(\"MQ02\", 20)"
+																																					"Script": "Log(\"MQ02_OLIVER_R_END1\")\r\nPlayer:AwardXP(RewardXP.MQ02_Pacifist)\r\nJournal.Update(\"MQ02\", 20)"
 																																				},
 																																				"Children": [
 																																					{
@@ -1282,7 +1282,7 @@
 																														"ButtonWidth": 1.0,
 																														"ScriptAction": {
 																															"!Type": "ScriptDataInline",
-																															"Script": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.KillOliver)\r\nJournal.Update(\"MQ02\", 21)"
+																															"Script": "Log(\"MQ02_OLIVER_POSTVORE_STEAL\")\r\nPlayer:GiveItem(\"I_Amber02\", true)\r\nPlayer:ModifyMoney(RewardGold.MQ02_OliverKill)\r\nJournal.Update(\"MQ02\", 21)"
 																														},
 																														"Children": [
 																															{

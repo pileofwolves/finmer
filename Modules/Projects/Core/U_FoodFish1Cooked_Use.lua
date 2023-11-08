@@ -1,1 +1,2 @@
-Player.Health = Player.Health + (Player.HealthMax * 0.25)
+Player.Health = Player.Health + 6
+Player:ApplyBuff(Buff.GrappleDice(1, 2))

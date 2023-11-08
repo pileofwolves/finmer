@@ -22,7 +22,7 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
-			"ProcChance": 0.8,
+			"ProcChance": 1.0,
 			"Duration": 1,
 			"Buffs": [
 				{
@@ -48,6 +48,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 50,
+	"PurchaseValue": 40,
 	"IsQuestItem": false
 }

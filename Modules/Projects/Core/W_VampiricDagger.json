@@ -12,7 +12,7 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Self",
-			"ProcChance": 0.25,
+			"ProcChance": 0.6,
 			"Duration": 2,
 			"Buffs": [
 				{
@@ -22,6 +22,6 @@
 			]
 		}
 	],
-	"PurchaseValue": 40,
+	"PurchaseValue": 35,
 	"IsQuestItem": false
 }

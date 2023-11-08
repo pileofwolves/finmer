@@ -6,6 +6,6 @@
 	"ObjectAlias": "toolbox",
 	"FlavorText": "A wooden box filled with tools, balms and substances for cutting, shaping, gouging and polishing wood. These would be of interest to the local carpenter, who lives near the woods east of North Finmer.",
 	"ItemType": "Generic",
-	"PurchaseValue": 75,
+	"PurchaseValue": 25,
 	"IsQuestItem": true
 }

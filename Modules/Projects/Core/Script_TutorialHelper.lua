@@ -5,7 +5,7 @@ function ApplyPlayerStartingGear()
     Player.TotalPreyDigested = 0
 
     -- Assign starting equipment
-    Player.Money = 7
+    Player.Money = 17
     Player.EquippedArmor = Item("A_ClothArmor")
     Player.EquippedAccessory1 = Item("AC_IsoRing")
 

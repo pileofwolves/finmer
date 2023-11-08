@@ -28,9 +28,9 @@
 		},
 		{
 			"!Type": "EquipEffectGroup",
-			"ProcStyle": "TurnStart",
+			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
-			"ProcChance": 0.5,
+			"ProcChance": 0.75,
 			"Duration": 2,
 			"Buffs": [
 				{

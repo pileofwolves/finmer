@@ -10,7 +10,7 @@
 	"IsConsumable": true,
 	"CanUseInField": true,
 	"CanUseInBattle": true,
-	"UseDescription": "Heal 5 HP.",
+	"UseDescription": "Restores 4 HP.",
 	"UseScript": {
 		"!Type": "AssetScript",
 		"AssetID": "e738d640-5752-41bd-a1d3-a3202e66bce5",

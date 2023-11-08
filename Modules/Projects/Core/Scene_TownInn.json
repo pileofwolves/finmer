@@ -855,7 +855,7 @@
 												"Key": "ZoskMQ01_R_First1",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Storage.SetFlag(\"TOWN_INN_ZOSK_MET\", true)\r\nLog(\"INN_ZOSK_GREET_FIRST1\")"
+													"Script": "Storage.SetFlag(\"TOWN_INN_ZOSK_MET\", true)\r\nLog(\"INN_ZOSK_GREET_FIRST1\")\r\nPlayer:AwardXP(RewardXP.OptionalSceneMinor)"
 												},
 												"Children": [
 													{
@@ -1285,7 +1285,7 @@
 																																				"Key": "Foxtaur_R_StmtWrap3",
 																																				"ScriptAction": {
 																																					"!Type": "ScriptDataInline",
-																																					"Script": "Log(\"INN_FOXTAUR_STMT_WRAPUP3\")"
+																																					"Script": "Log(\"INN_FOXTAUR_STMT_WRAPUP3\")\r\nPlayer:AwardXP(RewardXP.OptionalSceneMinor)"
 																																				},
 																																				"Children": [
 																																					{

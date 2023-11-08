@@ -1,1 +1,1 @@
-Player.Health = Player.Health + 5
+Player.Health = Player.Health + 4

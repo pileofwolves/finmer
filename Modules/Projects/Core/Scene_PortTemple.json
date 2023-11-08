@@ -1753,6 +1753,11 @@
 																																	"OperandText": "GetTimeHourTotal()"
 																																},
 																																{
+																																	"!Type": "CommandPlayerAddXP",
+																																	"OperandMode": "Script",
+																																	"OperandText": "RewardXP.MQ03_Complete"
+																																},
+																																{
 																																	"!Type": "CommandJournalClose",
 																																	"JournalGuid": "fb14b2b1-f0cf-474d-a311-720266f557d3"
 																																},

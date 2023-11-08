@@ -440,7 +440,7 @@
 																						"ButtonWidth": 1.0,
 																						"ScriptAction": {
 																							"!Type": "ScriptDataInline",
-																							"Script": "-- Progress the main quest\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nJournal.Update(\"MQ03\", 40)\r\n\r\n-- Teleport to South Finmer\r\nSetScene(\"Scene_PortCentral\")"
+																							"Script": "-- Progress the main quest\r\nStorage.SetFlag(\"MQ03_RODE_SOUTH\", true)\r\nPlayer:AwardXP(RewardXP.DiscoveryMajor)\r\nJournal.Update(\"MQ03\", 40)\r\n\r\n-- Teleport to South Finmer\r\nSetScene(\"Scene_PortCentral\")"
 																						},
 																						"Children": []
 																					}

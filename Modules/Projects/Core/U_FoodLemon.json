@@ -4,7 +4,21 @@
 	"AssetName": "U_FoodLemon",
 	"ObjectName": "Lemon",
 	"FlavorText": "An awfully sour-tasting fruit on its own, lemon is often used as a spice, or to aid with preservation of fish.",
-	"ItemType": "Generic",
+	"ItemType": "Usable",
 	"PurchaseValue": 1,
-	"IsQuestItem": false
+	"IsQuestItem": false,
+	"IsConsumable": true,
+	"CanUseInField": true,
+	"CanUseInBattle": true,
+	"UseDescription": "Grants +1 Attack Die and -1 Defense Die for 2 turns.",
+	"UseScript": {
+		"!Type": "AssetScript",
+		"AssetID": "edb453ba-e8e1-4f23-aa29-25f3f0df4e60",
+		"AssetName": "U_FoodLemon_Use",
+		"Contents": {
+			"!Type": "ScriptDataExternal",
+			"Name": "U_FoodLemon_Use"
+		},
+		"LoadOrder": []
+	}
 }

@@ -423,6 +423,11 @@
 																											"OperandLiteral": true
 																										},
 																										{
+																											"!Type": "CommandPlayerAddXP",
+																											"OperandMode": "Script",
+																											"OperandText": "RewardXP.MQ05_Complete"
+																										},
+																										{
 																											"!Type": "CommandJournalClose",
 																											"JournalGuid": "d127b368-5ed9-4e1d-b389-4842632b2c4b"
 																										},

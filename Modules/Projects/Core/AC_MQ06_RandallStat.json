@@ -13,15 +13,15 @@
 			"Buffs": [
 				{
 					"!Type": "BuffHealth",
-					"Delta": 12
+					"Delta": 13
 				},
 				{
 					"!Type": "BuffSwallowDice",
-					"Delta": -1
+					"Delta": -2
 				},
 				{
 					"!Type": "BuffGrappleDice",
-					"Delta": -1
+					"Delta": -2
 				}
 			]
 		}

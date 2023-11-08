@@ -11,7 +11,7 @@
 			"!Type": "EquipEffectGroup",
 			"ProcStyle": "EnemyAttackHit",
 			"ProcTarget": "Opponent",
-			"ProcChance": 0.5,
+			"ProcChance": 1.0,
 			"Duration": 1,
 			"Buffs": [
 				{

@@ -609,7 +609,7 @@
 												"Key": "SQ01_R_Handin2",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01)"
+													"Script": "Log(\"SQ01_HANDIN2\")\r\n\r\n-- mark quest complete\r\nPlayer:TakeItem(\"I_SQ01_VialFull\")\r\nStorage.SetNumber(\"SQ01\", 2)\r\nStorage.SetNumber(\"TOWN_ALCH_REWARD\", GetTimeHourTotal() + 20)\r\nJournal.Update(\"SQ01\", 30)\r\n\r\n-- award money and xp\r\nPlayer:AwardXP(RewardXP.SQ01_Complete)\r\nPlayer:ModifyMoney(RewardGold.SQ01_Complete)"
 												},
 												"Children": [
 													{

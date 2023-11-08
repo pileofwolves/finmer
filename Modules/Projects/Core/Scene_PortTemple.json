@@ -345,7 +345,11 @@
 													},
 													{
 														"NodeType": "Link",
-														"LinkTarget": "Main_C_Rest"
+														"LinkTarget": "Main_C_RestMorning"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Main_C_RestNight"
 													}
 												]
 											}
@@ -872,14 +876,19 @@
 					},
 					{
 						"NodeType": "Choice",
-						"Key": "Main_C_Rest",
-						"Title": "Rest",
+						"Key": "Main_C_RestMorning",
+						"Title": "Rest until Morning",
 						"Tooltip": "Rest for a moment and record your progress.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Rest()"
+						},
 						"Children": [
 							{
 								"NodeType": "State",
+								"Key": "Main_R_Rest",
 								"ScriptAction": {
 									"!Type": "ScriptDataVisualAction",
 									"Nodes": [
@@ -910,6 +919,24 @@
 										"LinkTarget": "Main_C_Talk"
 									}
 								]
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Main_C_RestNight",
+						"Title": "Rest until Night",
+						"Tooltip": "Rest for a moment and record your progress.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "RestUntilNight()"
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Main_R_Rest"
 							}
 						]
 					}

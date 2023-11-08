@@ -290,6 +290,15 @@ namespace Finmer.Gameplay
             if (asset_id != null)
                 Asset = (AssetCreature)GameController.Content.GetAssetByID(new Guid(asset_id));
 
+            // Load equipment
+            // Note: must be loaded before Health, because equip effects may modify HealthMax
+            for (var i = 0; i < k_EquipSlotCount; i++)
+            {
+                PropertyBag nested = input.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i));
+                if (nested != null)
+                    Equipment[i] = Item.FromSaveData(ScriptContext, nested);
+            }
+
             // Core stats
             Strength = input.GetInt(SaveData.k_Character_Strength);
             Agility = input.GetInt(SaveData.k_Character_Agility);
@@ -303,14 +312,6 @@ namespace Finmer.Gameplay
             // Combat settings
             IsPredator = input.GetBool(SaveData.k_Character_IsPredator);
             PredatorDigests = input.GetBool(SaveData.k_Character_PredatorDigest);
-
-            // Load equipment
-            for (var i = 0; i < k_EquipSlotCount; i++)
-            {
-                PropertyBag nested = input.GetNestedPropertyBag(SaveData.CombineBase(SaveData.k_Character_EquipBase, i));
-                if (nested != null)
-                    Equipment[i] = Item.FromSaveData(ScriptContext, nested);
-            }
         }
 
         /// <summary>

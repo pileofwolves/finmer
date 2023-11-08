@@ -16,9 +16,28 @@
 				"Key": "Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")\r\n\r\n-- Travel to either of the towns from here\r\nAddLink(ECompass.North, function() BeginRoadTravel(\"Scene_RoadNorth\") end)\r\nAddLink(ECompass.South, function() BeginRoadTravel(\"Scene_PortGate\") end)"
+					"Script": "TimedCheckpoint(\"CLIFFSIDE\")\r\nLog(\"CLIFFSIDE_ENTER\")"
 				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(ECompass.North, \"Scene_RoadNorth\")"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "South",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(ECompass.South, \"Scene_PortGate\")"
+						}
+					}
+				]
 			}
 		]
 	}

@@ -2,6 +2,10 @@
 	"!Type": "AssetScene",
 	"AssetID": "0a1575cb-f99e-4ca1-9558-dffbdfcb1c28",
 	"AssetName": "Scene_RoadEnc",
+	"ScriptCustom": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Scene_RoadEnc_Custom"
+	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_RoadEnc_Enter"
@@ -16,22 +20,9 @@
 				"Key": "ENC_None",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "Log(\"ROAD_NO_ENC\")"
+					"Script": "Log(\"ROAD_NO_ENC\")\r\nShowContinueCompassLink()"
 				},
-				"Children": [
-					{
-						"NodeType": "Choice",
-						"Key": "GoNextEncounter",
-						"Title": "Move on",
-						"Highlight": false,
-						"ButtonWidth": 1.0,
-						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "ContinueRoadTravel()"
-						},
-						"Children": []
-					}
-				]
+				"Children": []
 			}
 		]
 	}

@@ -79,7 +79,7 @@
 						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "BeginRoadTravel(\"Scene_PortGate\")"
+							"Script": "BeginRoadTravel(ECompass.West, \"Scene_PortGate\")"
 						}
 					}
 				]

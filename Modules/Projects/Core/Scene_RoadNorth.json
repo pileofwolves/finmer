@@ -216,7 +216,7 @@
 				"Key": "Main",
 				"ScriptAction": {
 					"!Type": "ScriptDataInline",
-					"Script": "Log(\"ROAD_NORTH\")\r\nAddLink(ECompass.North, \"Scene_TownGate\")\r\nAddLink(ECompass.East, GoEast)\r\n\r\n-- If the player can go south for the first time, they must travel with the carriage\r\nif not Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") or Storage.GetFlag(\"MQ03_RODE_SOUTH\") then\r\n    AddLink(ECompass.South, GoSouth)\r\nend"
+					"Script": "Log(\"ROAD_NORTH\")"
 				},
 				"Children": [
 					{
@@ -248,6 +248,33 @@
 								]
 							}
 						]
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "b9679eeb-2f51-4b30-8206-e42fde7353a8"
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "South",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "GoSouth()"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- If the player can go south for the first time, they must travel with the carriage\r\nreturn not Storage.GetFlag(\"BRIDGE_IS_REPAIRED\") or Storage.GetFlag(\"MQ03_RODE_SOUTH\")"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "East",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "BeginRoadTravel(ECompass.East, \"Scene_ForestCottage\")"
+						}
 					}
 				]
 			}

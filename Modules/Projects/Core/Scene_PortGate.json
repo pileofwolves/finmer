@@ -85,7 +85,7 @@
 						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "BeginRoadTravel(\"Scene_Cliffside\")"
+							"Script": "BeginRoadTravel(ECompass.North, \"Scene_Cliffside\")"
 						}
 					},
 					{
@@ -94,7 +94,7 @@
 						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
-							"Script": "BeginRoadTravel(\"Scene_DalsidaPass\")"
+							"Script": "BeginRoadTravel(ECompass.East, \"Scene_DalsidaPass\")"
 						}
 					}
 				]

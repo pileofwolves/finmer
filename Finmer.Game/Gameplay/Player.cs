@@ -275,7 +275,9 @@ namespace Finmer.Gameplay
 
             // Game version
             output.SetString(SaveData.k_GameVersion, CompileConstants.k_VersionString);
-            output.SetInt(SaveData.k_GameRevision, CompileConstants.k_VersionRevision);
+            output.SetInt(SaveData.k_GameVersionMajor, CompileConstants.k_VersionMajor);
+            output.SetInt(SaveData.k_GameVersionMinor, CompileConstants.k_VersionMinor);
+            output.SetInt(SaveData.k_GameVersionRevision, CompileConstants.k_VersionRevision);
 
             // Journal
             output.SetNestedPropertyBag(SaveData.k_Player_Journal, Journal.SaveState());

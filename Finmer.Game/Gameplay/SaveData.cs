@@ -89,7 +89,9 @@ namespace Finmer.Gameplay
         public const string k_Journal_EntryStage = @"stage_";
 
         public const string k_GameVersion = @"game_version";
-        public const string k_GameRevision = @"game_revision";
+        public const string k_GameVersionMajor = @"version_major";
+        public const string k_GameVersionMinor = @"version_minor";
+        public const string k_GameVersionRevision = @"version_rev";
 
         /// <summary>
         /// Returns a culture-independent namespaced array index.

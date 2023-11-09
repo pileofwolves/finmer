@@ -286,6 +286,12 @@
 			]
 		},
 		{
+			"Key": "MQ04_ADEPT_SELLAMBER",
+			"Text": [
+				"Rux's eyes light up when you fish the crystals out of your pack. \"Oh!\" he says, seemingly almost excited as a cub unpacking a present. \"Yes, I'll gladly buy those off of you. Better they're with me than on the street, heh. And if you do ever have need of these services, I'll be sure to keep them available.\" He exchanges the glittering amber crystals for a pouch of coins and casts a cheeky grin in your direction. \"I trust this will be acceptable to you?\""
+			]
+		},
+		{
 			"Key": "MQ04_ADEPT_TALK_ADEPT",
 			"Text": [
 				"The striped panda cracks a faint smile, and nods slowly. \"Indeed. A person who has studied the art of burning amber is known as an Adept. After having dedicated decades of my life to learning the intricacies of the mineral, I count myself among that group.\" He sighs, taking a sip of his tea. \"There aren't many of us. I know of no others in Finmer's territories. Some big cities have schools specifically for training Adepts, but it requires a certain predisposition, not to mention affluence.\""

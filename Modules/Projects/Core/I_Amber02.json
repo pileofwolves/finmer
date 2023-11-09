@@ -3,8 +3,8 @@
 	"AssetID": "95623bd8-43cd-4198-bffc-9c903d7f36a6",
 	"AssetName": "I_Amber02",
 	"ObjectName": "Amber Shards",
-	"FlavorText": "The refraction of light through the misty crystals is often used to tell useless glass apart from true amber. It is deemed a precious material by the select few who dare tame the arcane.",
+	"FlavorText": "The refraction of light through the misty crystals is often used to tell useless glass apart from true amber. It is deemed a precious material by the select few who dare tame the arcane. This item may be of use to someone.",
 	"ItemType": "Generic",
-	"PurchaseValue": 65,
+	"PurchaseValue": 0,
 	"IsQuestItem": false
 }

@@ -2925,6 +2925,39 @@
 								"LinkTarget": "MQ06_R_Plan11"
 							}
 						]
+					},
+					{
+						"NodeType": "Choice",
+						"Key": "Cabin_C_SellAmber",
+						"Title": "Sell Amber",
+						"Tooltip": "You've found amber on your travels; maybe Rux is interested in it.",
+						"Highlight": true,
+						"ButtonWidth": 0.8,
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"MQ04_ADEPT_SELLAMBER\")\r\n\r\nlocal num_amber1, num_amber2 = 0, 0\r\nwhile Player:TakeItem(\"I_Amber01\") do num_amber1 = num_amber1 + 1 end\r\nwhile Player:TakeItem(\"I_Amber02\") do num_amber2 = num_amber2 + 1 end\r\n\r\nStorage.ModifyNumber(\"RUX_AMBER_SOLD_1\", num_amber1)\r\nStorage.ModifyNumber(\"RUX_AMBER_SOLD_2\", num_amber2)\r\n\r\nPlayer:ModifyMoney((num_amber1 * 20) + (num_amber2 * 35))"
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "Any",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionPlayerHasItem",
+									"ItemGuid": "3476c303-554a-4651-8952-aac9c1a8f329"
+								},
+								{
+									"!Type": "ConditionPlayerHasItem",
+									"ItemGuid": "95623bd8-43cd-4198-bffc-9c903d7f36a6"
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "Link",
+								"LinkTarget": "Cabin_Main"
+							}
+						]
 					}
 				]
 			},

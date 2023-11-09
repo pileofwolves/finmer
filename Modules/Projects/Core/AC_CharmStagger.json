@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
 			"ProcChance": 0.5,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_STAGGER",
 			"Duration": 2,
 			"Buffs": [
 				{

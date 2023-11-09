@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderGrappled",
 			"ProcTarget": "Self",
 			"ProcChance": 0.5,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_PRED2A",
 			"Duration": 1,
 			"Buffs": [
 				{
@@ -25,6 +26,7 @@
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Self",
 			"ProcChance": 0.5,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_PRED2B",
 			"Duration": 2,
 			"Buffs": [
 				{

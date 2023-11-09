@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderSwallowsPrey",
 			"ProcTarget": "Self",
 			"ProcChance": 1.0,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_PRED1",
 			"Duration": 2,
 			"Buffs": [
 				{

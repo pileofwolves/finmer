@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
 			"ProcChance": 0.6,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_ARMORBREAK",
 			"Duration": 4,
 			"Buffs": [
 				{

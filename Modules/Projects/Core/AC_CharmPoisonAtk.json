@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderAttackHit",
 			"ProcTarget": "Opponent",
 			"ProcChance": 0.85,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_POISONATK",
 			"Duration": 4,
 			"Buffs": [
 				{

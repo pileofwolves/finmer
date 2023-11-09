@@ -12,6 +12,7 @@
 			"ProcStyle": "WielderAttackMiss",
 			"ProcTarget": "Self",
 			"ProcChance": 0.66,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_MISSRECOVER",
 			"Duration": 1,
 			"Buffs": [
 				{

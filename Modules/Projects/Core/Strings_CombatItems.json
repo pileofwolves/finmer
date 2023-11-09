@@ -1,0 +1,61 @@
+﻿{
+	"!Type": "AssetStringTable",
+	"AssetID": "a9356b41-ad8b-4b95-8b27-e3c0688f14be",
+	"AssetName": "Strings_CombatItems",
+	"Entries": [
+		{
+			"Key": "ITEM_PROC_CHARM_ARMORBREAK",
+			"Text": [
+				"The corrosive oil coating {attacker.aliaspossessive} {!weapon} weakens {defender.aliaspossessive} clothing."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_MISSRECOVER",
+			"Text": [
+				"Using the heavy counterweight, {instigator} manages to recover quickly."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_POISONATK",
+			"Text": [
+				"{attacker.aliaspossessive} {attacker tear} apart {defender.aliaspossessive} armor and clothes."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_POISONDEF",
+			"Text": [
+				"{defender} is poisoned by the venom coating {attacker.aliaspossessive} {!weapon}."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_PRED1",
+			"Text": [
+				"{attacker.aliaspossessive} magical necklace soothes {attacker.possessive} throat, to help make room for the next meal."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_PRED2A",
+			"Text": [
+				"{attacker.aliaspossessive} fanged mask frightens {attacker.possessive} prey into submission."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_PRED2B",
+			"Text": [
+				"{attacker.aliaspossessive} fanged visage distracts {defender}."
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_PREY",
+			"Text": [
+				"{attacker.aliaspossessive} slick oil coating makes {attacker.object} hard to grab a hold of!"
+			]
+		},
+		{
+			"Key": "ITEM_PROC_CHARM_STAGGER",
+			"Text": [
+				"An eerie glow of {attacker.aliaspossessive} wristband captures {defender.aliaspossessive} attention, lowering {defender.possessive} guard."
+			]
+		}
+	]
+}

@@ -26,6 +26,7 @@
 			"ProcStyle": "WielderGrappled",
 			"ProcTarget": "Self",
 			"ProcChance": 0.8,
+			"ProcStringTableKey": "ITEM_PROC_CHARM_PREY",
 			"Duration": 3,
 			"Buffs": [
 				{

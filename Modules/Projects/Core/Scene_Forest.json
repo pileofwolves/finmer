@@ -35,8 +35,51 @@
 							"Operand": true,
 							"Tests": [
 								{
-									"!Type": "ConditionPlayerEquipment",
-									"ItemGuid": "c2238bbd-9af9-4167-9024-2e631fec5f83"
+									"!Type": "ConditionVarFlag",
+									"VariableName": "MQ03_DONE",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "FOREST_ADEPT_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSetScene",
+											"SceneGuid": "12bf6348-0e15-43a4-88af-4eb8f435cb69"
+										}
+									]
+								},
+								"Children": []
+							}
+						]
+					},
+					{
+						"NodeType": "Choice",
+						"Title": "Rux's Cabin",
+						"Tooltip": "You know the path to the Adept's cabin now.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "FOREST_ADEPT_FIRST",
+									"OperandMode": "Literal",
+									"OperandLiteral": true
 								}
 							]
 						},

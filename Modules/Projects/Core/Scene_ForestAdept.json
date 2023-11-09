@@ -837,14 +837,8 @@
 																				"NodeType": "State",
 																				"Key": "MQ04_R_Bedside_End4",
 																				"ScriptAction": {
-																					"!Type": "ScriptDataVisualAction",
-																					"Nodes": [
-																						{
-																							"!Type": "CommandLog",
-																							"Text": "MQ04_ADEPT_BEDSIDE_END04",
-																							"IsRaw": false
-																						}
-																					]
+																					"!Type": "ScriptDataInline",
+																					"Script": "Log(\"MQ04_ADEPT_BEDSIDE_END04\")\r\n-- Remove the ring\r\nif Player.EquippedAccessory1 ~= nil and Player.EquippedAccessory1.AssetName == \"AC_IsoRing2\" then\r\n    Player.EquippedAccessory1 = nil\r\nelseif Player.EquippedAccessory2 ~= nil and Player.EquippedAccessory2.AssetName == \"AC_IsoRing2\" then\r\n    Player.EquippedAccessory2 = nil\r\nelse\r\n    Player:TakeItem(\"AC_IsoRing2\")\r\nend"
 																				},
 																				"Children": [
 																					{

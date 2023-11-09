@@ -412,18 +412,6 @@
 			]
 		},
 		{
-			"Key": "MQ06_ENDING_A_VORE_ISO_KNOWS",
-			"Text": [
-				"\"Ah, shit. That's about what I should have expected, I guess,\" the pantheress breathes, having taken several steps backwards. You cannot fault her for putting a healthy distance between herself and the one that had just swallowed a lesser predator whole. \"I... spirits, I don't... we're done here.\" With a heavy sigh, she turns tail and departs the chapel, through the same hole in the wall you had ventured in through. Whatever, you have a delightfully pleasurable meal to digest."
-			]
-		},
-		{
-			"Key": "MQ06_ENDING_A_VORE_ISO_SAD",
-			"Text": [
-				"\"Holy shit, {player.name},\" the pantheress breathes, having taken several surprised steps backwards. \"What the hell came over you? I-I... I thought you weren't...\" Iso's words trail off, the pantheress unable to come up with a response. Her eyes wear poorly-disguised look of betrayal. With a heavy sigh, she turns tail and departs the chapel, through the same hole in the wall you had ventured in through. Whatever, you have a delightfully pleasurable meal to digest."
-			]
-		},
-		{
 			"Key": "MQ06_ENDING_A_VORE1",
 			"Text": [
 				"This monster had gotten away with more than enough. It's time he gets a taste of his own medicine - and you are absolutely starving. You roughly brush Iso aside, part your jaws wide, and dive in. Randall's eyes widen in surprise and fear, and a paw rises up to meet your snout, though he is far too weakened to actually provide any resistance whatsoever.\\n\\n\"N-no, wait-\" the dying wolf stammers before the entirety of his head is engulfed inside your own. Your co-conspirator gasps behind you, and you hear a desperate, distant plea for you to stop, to leave the lupine, but you pay her no mind. The predator inside you takes over, and there is a delightful meal here to be devoured. Your tongue slathers your prey in thick, rough coatings of warm, sticky saliva, and copious strands of slobber leak from your lips."
@@ -444,7 +432,25 @@
 		{
 			"Key": "MQ06_ENDING_A_VORE4",
 			"Text": [
-				"Rux studies you for several moments, seemingly searching for something in your drool-flecked, satisfied face. He scratches his chin with one paw, the amber crystal embedded in his forearm glimmering despite having gone inert.\\n\\n\"Maybe he deserved it, but I advise you to take caution, {player.species}, lest you find yourself walking the same path,\" he warns. With a soft sigh, he shakes his head, before a ghost of a smirk creeps onto his muzzle. \"I'm already sheltering one voracious 'guard dog'; I suppose another wouldn't change much. We'll wait for you outside.\" With that, he departs, leaving you and your noxiously growling belly bulge to your own devices."
+				"The next thing you know is a flash of pain in your cheek. You'd stopped paying attention to what your compatriots were up to, and it takes a brief moment for you to realize that you had just been on the receiving end of a left hook. Iso's wide eyes, stricken with tears, glare into yours, bleeding rage and the hurt of betrayal. You stagger backwards, your stuffed stomach gurgling and groaning in protest.\\n\\n\"Fuck you, {player.name}! How could- could you?!\" The pantheress stumbles back and forth, uncertain and fidgeting, clearly unsure what to do or where to leave her paws. \"He wasn't... I-I... He wasn't yours to kill.\""
+			]
+		},
+		{
+			"Key": "MQ06_ENDING_A_VORE4_ISO_KNOWS",
+			"Text": [
+				"The pantheress breathes heavily, barely managing to rebuild her composure, though the haunted glimmer of betrayal never leaves her eyes. \"I-I thought you were... in better control... than that. He wanted us dead, but I wish he...\" Iso's words trail off, the pantheress unable to bring herself to speak the words. With a heavy sigh, she turns tail and departs the chapel, through the same hole in the wall you had ventured in through. Whatever, you have a delightfully pleasurable meal to digest."
+			]
+		},
+		{
+			"Key": "MQ06_ENDING_A_VORE4_ISO_SAD",
+			"Text": [
+				"The pantheress breathes heavily, barely managing to rebuild her composure, though the haunted glimmer of betrayal never leaves her eyes. \"I-I... I thought you weren't... but you're just a sicko like the rest...\" Iso's words trail off, the pantheress unable to come up with a more coherent response. With a heavy sigh, she turns tail and departs the chapel, through the same hole in the wall you had ventured in through. Whatever, you have a delightfully pleasurable meal to digest."
+			]
+		},
+		{
+			"Key": "MQ06_ENDING_A_VORE5",
+			"Text": [
+				"Rux studies you for several moments, seemingly searching for something in your drool-flecked, satisfied face. He scratches his chin with one paw, the amber crystal embedded in his forearm glimmering despite having gone inert.\\n\\n\"Maybe he deserved it, but I advise you to take caution, {player.species}, lest you find yourself walking the same path,\" he warns. With a soft sigh, he shakes his head, before a ghost of a smirk creeps onto his muzzle. \"I'm already sheltering one voracious 'guard dog'; I suppose another wouldn't change much. She's rightfully upset, but she'll come around. We'll wait for you outside.\" With that, he departs, leaving you and your noxiously growling belly bulge to your own devices."
 			]
 		},
 		{
@@ -516,7 +522,7 @@
 		{
 			"Key": "MQ06_EPILOGUE03",
 			"Text": [
-				"The door beside you swings open and she strides out into the square, flanked by a guard in shining plate, face covered with a helmet. They carry a massive halberd around like it is a mere wooden stick. \"So when word arrives from the council, let me know directly, please. Or when you hear anything about Canbell,\" Iso finishes. \"I'll probably just sleep in my office while that, uh, break-in is being taken care of.\"\\n\\n\"Yes, ma'am,\" the guard replies simply, before saluting and marching off. The mayor, now fully reinstated into public office, turns to you with a wry smile."
+				"The door beside you swings open and she strides out into the square, flanked by a guard in shining plate, face covered with a helmet. They carry a massive halberd around like it is a mere wooden stick. \"So when word arrives from the council, let me know directly, please. Or when you hear anything about Canbell,\" Iso finishes. \"I'll probably just sleep in my office while that, uh, break-in is being taken care of.\"\\n\\n\"Yes, ma'am,\" the guard replies simply, before saluting and marching off. The mayor, now fully reinstated into public office, turns to you, the corner of her lips tugging upwards if ever imperceptibly."
 			]
 		},
 		{
@@ -528,13 +534,13 @@
 		{
 			"Key": "MQ06_EPILOGUE05_DEFAULT",
 			"Text": [
-				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. \"You did a lot for me, when you never owed me anything. Don't think I'll forget that. If anything, I put you in harm's way. I just... hope this whole saga is over. I need... I need some time.\""
+				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. \"You did a lot for me, when you never owed me anything. Don't think I'll forget that. If anything, I put you in harm's way. I just... hope this whole saga is over. I need... I need some time. To think.\""
 			]
 		},
 		{
 			"Key": "MQ06_EPILOGUE05_PLAYERPRED",
 			"Text": [
-				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. Her gaze lingers on your stomach for a brief moment, now mostly flat and devoid of prey. \"You may be a pred too, but I'll take one in better control of {player.possessive} urges, heh. I won't forget what you did for me, so... let's not worry about any, uh, charges. I just... hope this whole saga is over. I need... I need some time.\""
+				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. Her gaze lingers on your stomach for a brief moment, now mostly flat and devoid of prey. \"Look, I- I'm sorry for... punching you, yesterday. You may be a pred too, but I'll take one in better control of {player.possessive} urges, heh. I won't forget what you did for me, so... let's not worry about any, uh, predation-related charges. I just... hope this whole saga is over. I need... I need some time. To think.\""
 			]
 		},
 		{

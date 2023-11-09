@@ -2334,159 +2334,183 @@
 																	"!Type": "ScriptDataVisualAction",
 																	"Nodes": [
 																		{
-																			"!Type": "CommandIf",
-																			"Mode": "All",
-																			"Operand": true,
-																			"Tests": [
-																				{
-																					"!Type": "ConditionVarFlag",
-																					"VariableName": "ISO_KNOWS_PLAYER_PRED",
-																					"OperandMode": "Literal",
-																					"OperandLiteral": true
-																				}
-																			],
-																			"HasElseBranch": true,
-																			"MainSubgroup": [
-																				{
-																					"!Type": "CommandLog",
-																					"Text": "MQ06_ENDING_A_VORE_ISO_KNOWS",
-																					"IsRaw": false
-																				}
-																			],
-																			"ElseSubgroup": [
-																				{
-																					"!Type": "CommandLog",
-																					"Text": "MQ06_ENDING_A_VORE_ISO_SAD",
-																					"IsRaw": false
-																				}
-																			]
+																			"!Type": "CommandLog",
+																			"Text": "MQ06_ENDING_A_VORE4",
+																			"IsRaw": false
 																		}
 																	]
 																},
 																"Children": [
 																	{
 																		"NodeType": "Choice",
-																		"Key": "EndingA_C_Swallow5",
+																		"Key": "EndingA_C_Swallow4B",
 																		"Highlight": false,
 																		"ButtonWidth": 1.0,
 																		"Children": [
 																			{
 																				"NodeType": "State",
-																				"Key": "EndingA_R_Swallow5",
+																				"Key": "EndingA_R_Swallow4B",
 																				"ScriptAction": {
 																					"!Type": "ScriptDataVisualAction",
 																					"Nodes": [
 																						{
-																							"!Type": "CommandLog",
-																							"Text": "MQ06_ENDING_A_VORE4",
-																							"IsRaw": false
+																							"!Type": "CommandIf",
+																							"Mode": "All",
+																							"Operand": true,
+																							"Tests": [
+																								{
+																									"!Type": "ConditionVarFlag",
+																									"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																									"OperandMode": "Literal",
+																									"OperandLiteral": true
+																								}
+																							],
+																							"HasElseBranch": true,
+																							"MainSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_ENDING_A_VORE4_ISO_KNOWS",
+																									"IsRaw": false
+																								}
+																							],
+																							"ElseSubgroup": [
+																								{
+																									"!Type": "CommandLog",
+																									"Text": "MQ06_ENDING_A_VORE4_ISO_SAD",
+																									"IsRaw": false
+																								}
+																							]
 																						}
 																					]
 																				},
 																				"Children": [
 																					{
 																						"NodeType": "Choice",
-																						"Key": "EndingA_C_Disposal1",
+																						"Key": "EndingA_C_Swallow5",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
 																							{
 																								"NodeType": "State",
-																								"Key": "EndingA_R_Disposal1",
+																								"Key": "EndingA_R_Swallow5",
 																								"ScriptAction": {
 																									"!Type": "ScriptDataVisualAction",
 																									"Nodes": [
 																										{
-																											"!Type": "CommandInlineSnippet",
-																											"Snippet": "AdvanceTime(2)"
-																										},
-																										{
-																											"!Type": "CommandLogSplit"
-																										},
-																										{
 																											"!Type": "CommandLog",
-																											"Text": "MQ06_ENDING_A_DISPOSAL1",
+																											"Text": "MQ06_ENDING_A_VORE5",
 																											"IsRaw": false
 																										}
 																									]
 																								},
-																								"ScriptAppear": {
-																									"!Type": "ScriptDataInline",
-																									"Script": "return Player.IsExplicitDisposalEnabled and\r\n    (Storage.GetFlag(\"MQ06_AMBUSH_THUG_EATEN\") or\r\n     Storage.GetFlag(\"MQ06_RANDALL_EATEN\"))"
-																								},
 																								"Children": [
 																									{
 																										"NodeType": "Choice",
-																										"Key": "EndingA_C_Disposal2",
+																										"Key": "EndingA_C_Disposal1",
 																										"Highlight": false,
 																										"ButtonWidth": 1.0,
 																										"Children": [
 																											{
 																												"NodeType": "State",
-																												"Key": "EndingA_R_Disposal2",
+																												"Key": "EndingA_R_Disposal1",
 																												"ScriptAction": {
 																													"!Type": "ScriptDataVisualAction",
 																													"Nodes": [
 																														{
-																															"!Type": "CommandIf",
-																															"Mode": "All",
-																															"Operand": true,
-																															"Tests": [
-																																{
-																																	"!Type": "ConditionVarFlag",
-																																	"VariableName": "MQ06_RANDALL_EATEN",
-																																	"OperandMode": "Literal",
-																																	"OperandLiteral": true
-																																}
-																															],
-																															"HasElseBranch": true,
-																															"MainSubgroup": [
-																																{
-																																	"!Type": "CommandLog",
-																																	"Text": "MQ06_ENDING_A_DISPOSAL2_RANDALL",
-																																	"IsRaw": false
-																																}
-																															],
-																															"ElseSubgroup": [
-																																{
-																																	"!Type": "CommandLog",
-																																	"Text": "MQ06_ENDING_A_DISPOSAL2_THUG",
-																																	"IsRaw": false
-																																}
-																															]
+																															"!Type": "CommandInlineSnippet",
+																															"Snippet": "AdvanceTime(2)"
+																														},
+																														{
+																															"!Type": "CommandLogSplit"
+																														},
+																														{
+																															"!Type": "CommandLog",
+																															"Text": "MQ06_ENDING_A_DISPOSAL1",
+																															"IsRaw": false
 																														}
 																													]
+																												},
+																												"ScriptAppear": {
+																													"!Type": "ScriptDataInline",
+																													"Script": "return Player.IsExplicitDisposalEnabled and\r\n    (Storage.GetFlag(\"MQ06_AMBUSH_THUG_EATEN\") or\r\n     Storage.GetFlag(\"MQ06_RANDALL_EATEN\"))"
 																												},
 																												"Children": [
 																													{
 																														"NodeType": "Choice",
-																														"Key": "EndingA_C_Disposal3",
+																														"Key": "EndingA_C_Disposal2",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
 																																"NodeType": "State",
-																																"Key": "EndingA_R_Disposal3",
+																																"Key": "EndingA_R_Disposal2",
 																																"ScriptAction": {
 																																	"!Type": "ScriptDataVisualAction",
 																																	"Nodes": [
 																																		{
-																																			"!Type": "CommandLog",
-																																			"Text": "MQ06_ENDING_A_DISPOSAL3",
-																																			"IsRaw": false
+																																			"!Type": "CommandIf",
+																																			"Mode": "All",
+																																			"Operand": true,
+																																			"Tests": [
+																																				{
+																																					"!Type": "ConditionVarFlag",
+																																					"VariableName": "MQ06_RANDALL_EATEN",
+																																					"OperandMode": "Literal",
+																																					"OperandLiteral": true
+																																				}
+																																			],
+																																			"HasElseBranch": true,
+																																			"MainSubgroup": [
+																																				{
+																																					"!Type": "CommandLog",
+																																					"Text": "MQ06_ENDING_A_DISPOSAL2_RANDALL",
+																																					"IsRaw": false
+																																				}
+																																			],
+																																			"ElseSubgroup": [
+																																				{
+																																					"!Type": "CommandLog",
+																																					"Text": "MQ06_ENDING_A_DISPOSAL2_THUG",
+																																					"IsRaw": false
+																																				}
+																																			]
 																																		}
 																																	]
 																																},
 																																"Children": [
 																																	{
 																																		"NodeType": "Choice",
-																																		"Key": "EndingA_C_Disposal4",
+																																		"Key": "EndingA_C_Disposal3",
 																																		"Highlight": false,
 																																		"ButtonWidth": 1.0,
 																																		"Children": [
 																																			{
-																																				"NodeType": "Link",
-																																				"LinkTarget": "Epilogue"
+																																				"NodeType": "State",
+																																				"Key": "EndingA_R_Disposal3",
+																																				"ScriptAction": {
+																																					"!Type": "ScriptDataVisualAction",
+																																					"Nodes": [
+																																						{
+																																							"!Type": "CommandLog",
+																																							"Text": "MQ06_ENDING_A_DISPOSAL3",
+																																							"IsRaw": false
+																																						}
+																																					]
+																																				},
+																																				"Children": [
+																																					{
+																																						"NodeType": "Choice",
+																																						"Key": "EndingA_C_Disposal4",
+																																						"Highlight": false,
+																																						"ButtonWidth": 1.0,
+																																						"Children": [
+																																							{
+																																								"NodeType": "Link",
+																																								"LinkTarget": "Epilogue"
+																																							}
+																																						]
+																																					}
+																																				]
 																																			}
 																																		]
 																																	}
@@ -2495,14 +2519,14 @@
 																														]
 																													}
 																												]
+																											},
+																											{
+																												"NodeType": "Link",
+																												"LinkTarget": "Epilogue"
 																											}
 																										]
 																									}
 																								]
-																							},
-																							{
-																								"NodeType": "Link",
-																								"LinkTarget": "Epilogue"
 																							}
 																						]
 																					}
@@ -2777,7 +2801,7 @@
 																							"Tests": [
 																								{
 																									"!Type": "ConditionVarFlag",
-																									"VariableName": "ISO_KNOWS_PLAYER_PRED",
+																									"VariableName": "MQ06_RANDALL_EATEN",
 																									"OperandMode": "Literal",
 																									"OperandLiteral": true
 																								}

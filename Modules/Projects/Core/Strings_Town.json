@@ -37,7 +37,7 @@
 		{
 			"Key": "TOWN_FIRST",
 			"Text": [
-				"You wake up with a start, gasping for breath, coughing and sputtering. In sheer defiance of your sore and aching muscles, you brace yourself against the floor, trying - and failing - to push yourself up. It doesn't help that your head won't stop spinning, either. {player.name} - that's who you are. You remember... nothing... only that you are a {player.species} named {player.name}.\\n\\nHalfway through another attempt to rise, you vaguely register the sound of approaching footsteps just as an arm wraps around your shoulders. Confused, you flail in wild panic, but you hear a loud voice just above you. \"Whoa, calm down!\""
+				"You wake up with a start, gasping for breath, coughing and sputtering. In sheer defiance of your sore and aching muscles, you brace yourself against the floor, trying - and failing - to push yourself up. It doesn't help that your head won't stop spinning, either. {player.name} - that's who you are. You remember... nothing... only that you are a {player.species} named {player.name}.\\n\\nHalfway through another attempt to rise, you vaguely register the sound of approaching footsteps just as an arm wraps around your shoulders. Confused, you flail in wild panic, but you hear a loud voice just above you.\\n\\n\"Whoa, calm down!\""
 			]
 		},
 		{
@@ -67,7 +67,7 @@
 		{
 			"Key": "TOWN_FIRST_FOX_LEAVE2",
 			"Text": [
-				"Your rescuer studies you carefully for a few quiet moments, clutching the drained canteen perhaps a tad too tightly as he considers what you told him. A flash of inspiration seems to strike him and he tilts his head just slightly. You can't help but feel a little exposed under that scrutinizing gaze. \"Say, haven't I seen you around here yesterday?\""
+				"Your rescuer studies you carefully for a few quiet moments, clutching the drained canteen perhaps a tad too tightly as he considers what you told him. A flash of inspiration seems to strike him and he tilts his head just slightly. You can't help but feel a little exposed under that scrutinizing gaze.\\n\\n\"Say, haven't I seen you around here yesterday?\""
 			]
 		},
 		{
@@ -91,7 +91,7 @@
 		{
 			"Key": "TOWN_FIRST_FOX2",
 			"Text": [
-				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. The gesture is not unwelcome, but does very little to settle your frazzled nerves. \"There ya go,\" he says. Anxiously, you look around; it seems you're in a narrow alleyway between two stone buildings. You can see the bright sun just overhead, bathing the immediate environs as well as whatever is just ahead in warmth. \"So,\" the vulpine begins. \"You look like you've been through the wringer, friend. Ain't every day I stumble across {player.speciesplural} passed out in an alley. I'm Gabe. Tell me, what's your story?\""
+				"Once you're back on your feet, you take a moment to slow your breathing while the fox gives your back a pat or two. The gesture is not unwelcome, but does very little to settle your frazzled nerves. \"There ya go,\" he says. Anxiously, you look around; it seems you're in a narrow alleyway between two stone buildings. You can see the bright sun just overhead, bathing the immediate environs as well as whatever is just ahead in warmth.\\n\\n\"So,\" the vulpine begins. \"You look like you've been through the wringer, friend. Ain't every day I stumble across {player.speciesplural} passed out in an alley. I'm Gabe. Tell me, what's your story?\""
 			]
 		},
 		{

@@ -6,7 +6,7 @@
 		{
 			"Key": "OPENING",
 			"Text": [
-				"To say the plan had derailed spectacularly would be an understatement. Now you desperately navigate narrow streets you never intended to visit, trying and failing to lose the unknown assailant hot on your tail. The moonlight glimmers on the smooth, worn cobblestones, casting an eerie glow on the town you so desperately seek to escape. A foot splashes in a muddy pool closely behind you. Too close. Adrenaline surges. Something smacks into the back of your head, and you lose balance, tumbling to the cold streets beneath with an unceremonious crash. Overwhelmed by panic, your limbs flail in a hopeless attempt to put distance between your attacker and yourself, before another crunching impact knocks you out cold..."
+				"To say the plan had derailed spectacularly would be an understatement. Now you desperately navigate narrow streets you never intended to visit, trying and failing to lose the unknown assailant hot on your tail.\\n\\nThe moonlight glimmers on the smooth, worn cobblestones, casting an eerie glow on the town you so desperately seek to escape. A foot splashes in a muddy pool closely behind you. Too close. Adrenaline surges.\\n\\nSomething smacks into the back of your head, and you lose balance, tumbling to the cold streets beneath with an unceremonious crash. Overwhelmed by panic, your limbs flail in a hopeless attempt to put distance between your attacker and yourself, before another crunching impact knocks you out cold..."
 			]
 		},
 		{
@@ -19,8 +19,8 @@
 			"Key": "TDUMMY_ATTACK_HIT",
 			"Text": [
 				"You slash away at the dummy, dealing {!damage} damage. You're sure it deserved that.",
-				"You strike at the dummy, dealing {!damage} damage.",
-				"With a majestic leap followed by a dead-on blow, you deal {!damage} damage."
+				"You awkwardly strike at the dummy, dealing {!damage} damage.",
+				"With a majestic leap, you slam your weapon into the dummy and deal {!damage} damage."
 			]
 		},
 		{
@@ -50,13 +50,13 @@
 		{
 			"Key": "TUTORIAL_NOTE_DICE",
 			"Text": [
-				"DICE: When attacking, you roll Attack Dice equal to your Strength stat, while your opponent rolls Defence Dice equal to their Agility stat. You deal damage equal to your total Attack minus their Defence."
+				"DICE: When attacking, you roll Attack Dice equal to your Strength stat, while your opponent rolls Defence Dice equal to their Agility stat. You deal damage equal to your total Attack minus their Defence. To get more dice, you can level up, change your equipment loadout, or use consumable items."
 			]
 		},
 		{
 			"Key": "TUTORIAL_NOTE_GRAPPLE",
 			"Text": [
-				"GRAPPLING: You can enter hand-to-hand fights with most characters. Like with attacking, you must roll more Grapple Dice (based on Agility) than your opponent. When grappled, the target cannot do anything other than trying to escape, and it makes swallowing them easier."
+				"GRAPPLING: You can enter hand-to-hand fights with most characters. Like with attacking, you must roll more Grapple Dice (based on Strength) than your opponent. When grappled, the target cannot do anything other than trying to escape, and it makes swallowing them easier."
 			]
 		},
 		{
@@ -92,7 +92,7 @@
 		{
 			"Key": "TUTORIAL_TALK1",
 			"Text": [
-				"The holler of your instructor, a {instructor.name}, pulls you from your daydream. {^instructor.subject} looks up from {instructor.possessive} clipboard and glances you over, seemingly gauging your aptitude. A judgment is filed - something along the lines of \"it'll have to do\". A soft sigh follows before {instructor.subject} continues. \"Pick up that practice weapon from over there and we'll begin.\""
+				"The holler of your instructor, a {instructor.name}, pulls you from your daydream. {^instructor.subject} looks up from {instructor.possessive} clipboard and glances you over, seemingly gauging your aptitude. Whatever {instructor} is thinking, you cannot tell, but perhaps {instructor.subject} seems a little skeptical. A soft sigh follows before {instructor.subject} continues. \"Pick up that practice weapon from over there and we'll begin.\""
 			]
 		},
 		{
@@ -116,13 +116,13 @@
 		{
 			"Key": "TUTORIAL_TALK5",
 			"Text": [
-				"\"Hm, well done,\" {instructor} compliments, jotting down some notes on {instructor.possessive} clipboard before flipping to a different page. \"You are certainly a quick study, for a {player.species}. Dare I say you even look good with some prey on your midsection.\" {^instructor.subject} snorts, clicking {instructor.possessive} pen a few times. \"Watch your back, {player.name}, and choose your allies carefully. I will let you have your dream back now.\""
+				"\"Hm, well done,\" {instructor} compliments, jotting down some notes on {instructor.possessive} clipboard before flipping to a different page. \"You are certainly a quick study, for a {player.species}. Dare I say you even look good with some prey on your midsection.\" {^instructor.subject} snorts, clicking {instructor.possessive} pen a few times. \"Watch your back, {player.name}, and choose your allies carefully. Good luck.\""
 			]
 		},
 		{
 			"Key": "WELCOME",
 			"Text": [
-				"WELCOME TO FINMER.\\n\\n[You can click any of the buttons below to interact with the area and respond to things. Use the compass on the left to move around the world (if available).]\\n"
+				"WELCOME TO FINMER.\\n\\n< You can click any of the buttons below to interact with the area and respond to things. Use the compass on the left to move around the world (if available). >"
 			]
 		}
 	]

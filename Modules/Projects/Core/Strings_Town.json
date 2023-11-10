@@ -131,6 +131,24 @@
 			]
 		},
 		{
+			"Key": "TOWN_GATE_GUARD_TALK",
+			"Text": [
+				"One of the two halberd-wielding guards, a vaguely canine-shaped person clad in steel armor, snaps to attention when you approach."
+			]
+		},
+		{
+			"Key": "TOWN_GATE_GUARD_TALK_BRIDGE",
+			"Text": [
+				"The canine shifts weight to the other leg. With the face hidden behind a steel visor, it is impossible to read how they responded, exactly, but nevertheless, the answer is as neutral as it is disappointing. \"Rest assured, citizen, we'll get to the bottom of this. I know there are a lot of questions, but we have everything under control.\""
+			]
+		},
+		{
+			"Key": "TOWN_GATE_GUARD_TALK_WHO",
+			"Text": [
+				"A visored helmet stares back at you with quiet dispassion. You get the impression that the guard may be a little confused as to why someone is walking up to them and ask such a random, personal question. To their credit, the soldier shrugs it off. \"I got into military service when I was of age, like most of my family. There's honor to be found in serving your community like that, I think.\""
+			]
+		},
+		{
 			"Key": "TOWN_GATE_MQ01LOCK",
 			"Text": [
 				"Out there waits the untamed wild... you're not sure if you feel prepared to leave the safety of the town just yet."
@@ -180,6 +198,12 @@
 			"Text": [
 				"You get up from your seat.",
 				"You get off the barstool and glance around the room."
+			]
+		},
+		{
+			"Key": "TOWN_INN_BARKEEP_TALK_INN",
+			"Text": [
+				"{bartender.name} chuckles dryly. \"My inn, huh?\" {^bartender} sets the mug he'd been fidgeting with down on the counter and glances at the door of his establishment, almost wistfully. \"Well, honestly, it's a pretty straightforward history. Every good hamlet needs a watering hole. Had to try my luck elsewhere after I, er, made some bad investments, so I wandered for some time, until I wound up here. Came for the view, stayed for the people, as they say.\" {^bartender.subject} grins at you. \"Anything else I can get ya?\""
 			]
 		},
 		{
@@ -333,6 +357,12 @@
 			"Text": [
 				"The fox leans in and says, %rumor",
 				"With a smirk on his muzzle, the fox says %rumor"
+			]
+		},
+		{
+			"Key": "TOWN_MARKET_FISH_WHO",
+			"Text": [
+				"Gabe blinks at you. \"Who, me?\" he asks, a somewhat confused frown lingering on his muzzle for a brief second before it vanishes. \"Oh, I don't hear that question often! But no worries, friend. Er, well, I'm from another city, Stiegal, originally. Heard about a new trading post that'd been set up on the Great North Road, wanted to help, and here I am. That's quite a few years ago now, ha!\""
 			]
 		},
 		{

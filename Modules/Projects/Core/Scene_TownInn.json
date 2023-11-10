@@ -108,7 +108,7 @@
 														"Title": "Drink",
 														"Tooltip": "Buy a drink and spend some time at the bar.",
 														"Highlight": false,
-														"ButtonWidth": 1.0,
+														"ButtonWidth": 0.8,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
 															"Script": "return Player.Money >= 1"
@@ -141,11 +141,54 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Key": "BarkeepTalkInn",
+														"Title": "Inn",
+														"Tooltip": "Ask about how this inn came to be.",
+														"Highlight": false,
+														"ButtonWidth": 0.8,
+														"ScriptAction": {
+															"!Type": "ScriptDataVisualAction",
+															"Nodes": [
+																{
+																	"!Type": "CommandVarSetFlag",
+																	"VariableName": "TOWN_INN_BARKEEP_TALK_INN",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": true
+																},
+																{
+																	"!Type": "CommandLog",
+																	"Text": "TOWN_INN_BARKEEP_TALK_INN",
+																	"IsRaw": false
+																}
+															]
+														},
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TOWN_INN_BARKEEP_TALK_INN",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "Link",
+																"LinkTarget": "BarkeepTalkRoot"
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
 														"Key": "BarkeepTalkMQ01Start",
 														"Title": "Work",
 														"Tooltip": "Ask the barkeep if he knows any leads for work.",
 														"Highlight": false,
-														"ButtonWidth": 1.0,
+														"ButtonWidth": 0.8,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
 															"Script": "return not Storage.GetFlag(\"mq01_available\")"
@@ -243,7 +286,7 @@
 														"Title": "Show Pass",
 														"Tooltip": "Show the pass from the mayor.",
 														"Highlight": true,
-														"ButtonWidth": 1.0,
+														"ButtonWidth": 0.8,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
 															"Script": "return Player:HasItem(\"I_MQ01_InnPass\")"
@@ -338,7 +381,7 @@
 														"Title": "Bridge Supplies",
 														"Tooltip": "Say you've got news.",
 														"Highlight": true,
-														"ButtonWidth": 1.0,
+														"ButtonWidth": 0.8,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
 															"Script": "return Storage.GetFlag(\"FOREST_COTTAGE_ENTRY_FIRST\") and not Storage.GetFlag(\"MQ02_DONE\")"
@@ -577,7 +620,7 @@
 														"Title": "Rent a Room",
 														"Tooltip": "Ask about a bed for the night.",
 														"Highlight": false,
-														"ButtonWidth": 1.0,
+														"ButtonWidth": 0.8,
 														"ScriptAppear": {
 															"!Type": "ScriptDataInline",
 															"Script": "-- Room is not yet made available, and also player is not about to get a free room\r\n-- (hide this option in the latter case because it's very confusing for the player)\r\nreturn not Storage.GetFlag(\"town_inn_rented_room\") and not Player:HasItem(\"I_MQ01_InnPass\")"

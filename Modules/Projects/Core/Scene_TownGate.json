@@ -2,6 +2,31 @@
 	"!Type": "AssetScene",
 	"AssetID": "b9679eeb-2f51-4b30-8206-e42fde7353a8",
 	"AssetName": "Scene_TownGate",
+	"ScriptEnter": {
+		"!Type": "ScriptDataVisualAction",
+		"Nodes": [
+			{
+				"!Type": "CommandSetLocation",
+				"OperandMode": "Literal",
+				"OperandText": "North Finmer, Watchtower"
+			},
+			{
+				"!Type": "CommandSetInventoryEnabled",
+				"OperandMode": "Literal",
+				"OperandLiteral": true
+			},
+			{
+				"!Type": "CommandLog",
+				"Text": "TOWN_GATE_FIRST",
+				"IsRaw": false
+			},
+			{
+				"!Type": "CommandLog",
+				"Text": "TOWN_GATE",
+				"IsRaw": false
+			}
+		]
+	},
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",
@@ -10,11 +35,165 @@
 			{
 				"NodeType": "State",
 				"Key": "Main",
-				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "SetLocation(\"North Finmer, Watchtower\")\r\nSetInventoryEnabled(true)\r\nAddLink(ECompass.North, \"Scene_TownMarket\")\r\nAddLink(ECompass.South, function()\r\n    -- player can pass if MQ01 was completed\r\n    if Storage.GetFlag(\"mq01_done\") then\r\n        SetScene(\"Scene_RoadNorth\")\r\n    else\r\n        Log(\"town_gate_mq01lock\")\r\n    end\r\nend)\r\n\r\nLog(\"town_gate_first\")\r\nLog(\"town_gate\")"
-				},
-				"Children": []
+				"Children": [
+					{
+						"NodeType": "Choice",
+						"Title": "Chat",
+						"Tooltip": "Maybe one of the guards wants to talk.",
+						"Highlight": false,
+						"ButtonWidth": 0.75,
+						"ScriptAction": {
+							"!Type": "ScriptDataVisualAction",
+							"Nodes": [
+								{
+									"!Type": "CommandLog",
+									"Text": "TOWN_GATE_GUARD_TALK",
+									"IsRaw": false
+								}
+							]
+						},
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "Any",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "TOWN_GATE_GUARD_TALK_BRIDGE",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								},
+								{
+									"!Type": "ConditionVarFlag",
+									"VariableName": "TOWN_GATE_GUARD_TALK_WHO",
+									"OperandMode": "Literal",
+									"OperandLiteral": false
+								}
+							]
+						},
+						"Children": [
+							{
+								"NodeType": "State",
+								"Key": "Talk_R_Root",
+								"Children": [
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Leave",
+										"Title": "Leave",
+										"Highlight": false,
+										"ButtonWidth": 0.6,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Main"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Who",
+										"Title": "Guard",
+										"Tooltip": "Ask about how they joined the military.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "TOWN_GATE_GUARD_TALK_WHO",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "TOWN_GATE_GUARD_TALK_WHO",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "TOWN_GATE_GUARD_TALK_WHO",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Bridge",
+										"Title": "Bridge",
+										"Tooltip": "Ask if they know what happened to the broken bridge.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "TOWN_GATE_GUARD_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "TOWN_GATE_GUARD_TALK_BRIDGE",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "TOWN_GATE_GUARD_TALK_BRIDGE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Root"
+											}
+										]
+									}
+								]
+							}
+						]
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "7fa92424-80ed-46a4-913d-96be0790cb49"
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "South",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "-- Player can pass if MQ01 was completed\r\nif Storage.GetFlag(\"MQ01_DONE\") then\r\n    SetScene(\"Scene_RoadNorth\")\r\nelse\r\n    Log(\"TOWN_GATE_MQ01LOCK\")\r\nend"
+						}
+					}
+				]
 			}
 		]
 	}

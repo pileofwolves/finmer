@@ -504,7 +504,7 @@
 					},
 					{
 						"NodeType": "Choice",
-						"Key": "GoFishStall",
+						"Key": "Fish_C_Root",
 						"Title": "Fish Stall",
 						"Tooltip": "They sell fish in a fishing village, who knew?",
 						"Highlight": false,
@@ -520,14 +520,14 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "R_FishStall",
+								"Key": "Fish_R_Root",
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "FishLeave",
+										"Key": "Fish_C_Leave",
 										"Title": "Leave",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.6,
 										"ScriptAction": {
 											"!Type": "ScriptDataInline",
 											"Script": "Log(\"town_market_fish_leave\")"
@@ -541,11 +541,28 @@
 									},
 									{
 										"NodeType": "Choice",
+										"Key": "Fish_C_Browse",
+										"Title": "Browse",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataInline",
+											"Script": "local shop = Shop(\"TownMarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()"
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Fish_R_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
 										"Key": "Fish_C_MQ01Setup",
 										"Title": "Work",
 										"Tooltip": "Ask the fox if he knows any leads for work.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
 											"Script": "return not Storage.GetFlag(\"mq01_available\")"
@@ -629,7 +646,7 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"LinkTarget": "R_FishStall"
+																"LinkTarget": "Fish_R_Root"
 															}
 														]
 													}
@@ -639,15 +656,15 @@
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "Fish_C_Talk",
+										"Key": "Fish_C_Rumor",
 										"Title": "Chat",
 										"Tooltip": "Ask the fox how business is.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "Fish_R_Talk",
+												"Key": "Fish_R_Rumor",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "-- One rumor allowed until time advances\r\nlocal now = GetTimeHourTotal()\r\nif Storage.GetNumber(\"TOWN_MARKET_FISH_CHAT_TIME\") ~= now then\r\n    Storage.SetNumber(\"TOWN_MARKET_FISH_CHAT_TIME\", now)\r\n    local context = Creature(\"CR_RandomAnthro\")\r\n    context.Name = \"Gabe\"\r\n    context.Alias = \"the fox\"\r\n    context.Gender = EGender.Male\r\n    Rumor.Present(context)\r\nelse\r\n    Log(\"TOWN_MARKET_FISH_TALK_NO\")\r\nend"
@@ -662,7 +679,7 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"LinkTarget": "R_FishStall"
+																"LinkTarget": "Fish_R_Root"
 															}
 														]
 													}
@@ -672,15 +689,46 @@
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "FishBuy",
-										"Title": "Buy",
+										"Key": "Fish_C_Who",
+										"Title": "Fox",
+										"Tooltip": "Ask the fox to tell a little about himself.",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
-											"!Type": "ScriptDataInline",
-											"Script": "local shop = Shop(\"TownMarketFish\")\r\nshop.Title = \"Gabe's Fish Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodFish1Raw\"), -1)\r\n    shop:AddItem(Item(\"U_FoodFish1Cooked\"), -1)\r\n    shop:AddItem(Item(\"U_FoodLemon\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()"
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "TOWN_MARKET_FISH_WHO",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "TOWN_MARKET_FISH_WHO",
+													"IsRaw": false
+												}
+											]
 										},
-										"Children": []
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "TOWN_MARKET_FISH_WHO",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Fish_R_Root"
+											}
+										]
 									}
 								]
 							}
@@ -688,7 +736,7 @@
 					},
 					{
 						"NodeType": "Choice",
-						"Key": "GoFruitStall",
+						"Key": "Fruit_C_Root",
 						"Title": "Fruit Stall",
 						"Tooltip": "And fruit & veggies too, apparently, if you're into that sort of thing.",
 						"Highlight": false,
@@ -704,14 +752,14 @@
 						"Children": [
 							{
 								"NodeType": "State",
-								"Key": "FruitStall",
+								"Key": "Fruit_R_Root",
 								"Children": [
 									{
 										"NodeType": "Choice",
-										"Key": "FruitLeave",
+										"Key": "Fruit_C_Leave",
 										"Title": "Leave",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.6,
 										"Children": [
 											{
 												"NodeType": "Link",
@@ -721,14 +769,14 @@
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "FruitTalk",
+										"Key": "Fruit_C_Talk",
 										"Title": "Chat",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "FruitTalkResponse",
+												"Key": "Fruit_R_Talk",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
 													"Script": "Text.SetContext(\"vendor\", fruit_vendor)\r\nLog(\"TOWN_MARKET_FRUIT_TALK_NO\")"
@@ -736,14 +784,14 @@
 												"Children": [
 													{
 														"NodeType": "Choice",
-														"Key": "FruitTalkExit",
+														"Key": "Fruit_C_Talk2",
 														"Title": "Continue",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"Children": [
 															{
 																"NodeType": "Link",
-																"LinkTarget": "FruitStall"
+																"LinkTarget": "Fruit_R_Root"
 															}
 														]
 													}
@@ -753,15 +801,20 @@
 									},
 									{
 										"NodeType": "Choice",
-										"Key": "FruitBuy",
-										"Title": "Buy",
+										"Key": "Fruit_C_Browse",
+										"Title": "Browse",
 										"Highlight": false,
-										"ButtonWidth": 1.0,
+										"ButtonWidth": 0.8,
 										"ScriptAction": {
 											"!Type": "ScriptDataInline",
 											"Script": "local shop = Shop(\"TownMarketFruit\")\r\nshop.Title = \"Fresh Foods Stand\"\r\nshop.RestockInterval = 20\r\nif shop.RestockRequired then\r\n    shop:MarkRestocked()\r\n    shop:RemoveDefaultStock()\r\n    shop:AddItem(Item(\"U_FoodBread\"), -1)\r\n    shop:AddItem(Item(\"U_FoodCheese\"), -1)\r\n    shop:AddItem(Item(\"U_FoodGrapes\"), -1)\r\nend\r\nshop:Show()\r\nshop:Save()"
 										},
-										"Children": []
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Fruit_R_Root"
+											}
+										]
 									}
 								]
 							}

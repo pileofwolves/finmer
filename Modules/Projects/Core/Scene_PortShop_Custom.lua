@@ -14,6 +14,7 @@ local accessories = {
     "AC_CharmBody",
     "AC_CharmFight",
     "AC_CharmPoisonAtk",
+    "AC_CharmPred2",
 }
 
 local function ShowGeneralShop()

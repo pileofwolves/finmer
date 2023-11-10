@@ -90,14 +90,30 @@
 														"NodeType": "Choice",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
-														"ScriptAction": {
-															"!Type": "ScriptDataInline",
-															"Script": "Log(\"PORT_SHOP_TOBY_FIRST4\")"
-														},
 														"Children": [
 															{
-																"NodeType": "Link",
-																"LinkTarget": "Main"
+																"NodeType": "State",
+																"ScriptAction": {
+																	"!Type": "ScriptDataInline",
+																	"Script": "Log(\"PORT_SHOP_TOBY_FIRST4\")"
+																},
+																"Children": [
+																	{
+																		"NodeType": "Choice",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"ScriptAction": {
+																			"!Type": "ScriptDataInline",
+																			"Script": "Log(\"PORT_SHOP_TOBY_FIRST5\")\r\nPlayer:GiveItem(\"AC_CharmStagger\")"
+																		},
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Main"
+																			}
+																		]
+																	}
+																]
 															}
 														]
 													}

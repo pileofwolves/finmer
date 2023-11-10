@@ -113,6 +113,12 @@
 			]
 		},
 		{
+			"Key": "PORT_SHOP_TOBY_FIRST5",
+			"Text": [
+				"The fox materializes by your side when you glance over your shoulder, and he offers you something he'd just fished out of a pocket. \"Um, sorry, {player.name}, I-I wanted to... give you this. Thanks. For, um, not, urp. You know.\" Toby sighs and backs off after he pushes a strange, soft wristband into your paws. \"I grabbed this from *them*, just before I left. But I think you'll get more use out of it than I would.\" With that, he flees, quite literally, into the back room, before you can respond."
+			]
+		},
+		{
 			"Key": "PORT_TAVERN_ENTER",
 			"Text": [
 				"South Finmer's public dining room is a compact, comfortable space. Wide stone arches support the wooden ceiling beams, the floor set with thick flagstones, well-polished through years of travel. Worn dark wooden tables with chairs and benches line the walls, while the counter and bar takes up the corner of the room. A tiger-taur curiously eyes you from behind the bar, but says nothing and returns to her cleaning work."

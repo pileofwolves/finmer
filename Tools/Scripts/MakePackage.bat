@@ -2,6 +2,7 @@
 
 if "%1"=="" goto ERR_ARG
 set "STAGEDIR=%CD%\Staging"
+set "INCLUDEDIR=%CD%\PackInclude"
 set "GAMEDIR=%STAGEDIR%\Contents"
 set "PACKNAME=%1"
 
@@ -22,6 +23,11 @@ echo .log >> %STAGEDIR%\IgnoreList
 rem Copy Game artifacts, plus Modules (non-recursive to skip Samples)
 xcopy /S /Y /EXCLUDE:%STAGEDIR%\IgnoreList Finmer.Game\bin\Release %GAMEDIR%
 xcopy /I /Y Modules\*.furball %GAMEDIR%\Modules
+
+rem Copy 'pack include' files
+IF EXIST %INCLUDEDIR% (
+	xcopy /S /Y %INCLUDEDIR%\* %GAMEDIR%
+)
 
 rem Extract PDBs for archival
 move /Y %GAMEDIR%\x64\Lua51.pdb %STAGEDIR%\Lua51_x64.pdb

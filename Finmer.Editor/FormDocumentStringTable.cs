@@ -13,6 +13,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
+using Finmer.Core;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
 
@@ -170,7 +171,7 @@ namespace Finmer.Editor
                 return;
 
             // Check for uniqueness of the key
-            string new_key = e.Label.ToUpperInvariant();
+            string new_key = e.Label.MakeSafeIdentifier();
             if (m_RawDictionary.ContainsKey(new_key))
                 return;
 

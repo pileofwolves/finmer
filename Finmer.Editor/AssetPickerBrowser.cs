@@ -7,7 +7,6 @@
  */
 
 using System;
-using System.Drawing;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 
@@ -45,7 +44,7 @@ namespace Finmer.Editor
             lsvAssets.Items.Add(item);
         }
 
-        private void lsvAssets_SelectedIndexChanged(object sender, System.EventArgs e)
+        private void lsvAssets_SelectedIndexChanged(object sender, EventArgs e)
         {
             var selection = lsvAssets.SelectedItems;
             if (selection.Count == 0)

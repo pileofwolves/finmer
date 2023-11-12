@@ -6,28 +6,21 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-
 namespace Finmer.Core
 {
 
     /// <summary>
     /// A container for extension methods.
     /// </summary>
-    internal static class Extensions
+    public static class Extensions
     {
 
         /// <summary>
-        /// Iterates over a collection and invokes the specified delegate on each item.
+        /// Formats the input user string to be suitable for unique key usage in the game engine.
         /// </summary>
-        /// <param name="source">The collection to iterate through.</param>
-        /// <param name="fn">The function to invoke for each item.</param>
-        public static void ForEach<TResult>(this IEnumerable<TResult> source, Action<TResult> fn)
+        public static string MakeSafeIdentifier(this string str)
         {
-            TResult[] copy = source.ToArray(); // copy protects against enumerable modification errors
-            foreach (TResult item in copy) fn(item);
+            return str.Trim().ToUpperInvariant().Replace(' ', '_');
         }
 
     }

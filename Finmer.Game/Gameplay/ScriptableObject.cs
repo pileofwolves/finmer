@@ -76,7 +76,7 @@ namespace Finmer.Gameplay
         {
             if (String.IsNullOrEmpty(tag))
                 throw new ArgumentNullException(nameof(tag));
-            Tags.Add(tag.ToUpperInvariant());
+            Tags.Add(tag.MakeSafeIdentifier());
         }
 
         /// <summary>
@@ -86,7 +86,7 @@ namespace Finmer.Gameplay
         {
             if (String.IsNullOrEmpty(tag))
                 throw new ArgumentNullException(nameof(tag));
-            Tags.Remove(tag.ToUpperInvariant());
+            Tags.Remove(tag.MakeSafeIdentifier());
         }
 
         /// <summary>
@@ -96,7 +96,7 @@ namespace Finmer.Gameplay
         {
             if (String.IsNullOrEmpty(tag))
                 throw new ArgumentNullException(nameof(tag));
-            return Tags.Contains(tag.ToUpperInvariant());
+            return Tags.Contains(tag.MakeSafeIdentifier());
         }
 
         /// <inheritdoc />
@@ -126,7 +126,7 @@ namespace Finmer.Gameplay
 
             // Read tags
             for (var i = 0; i < input.GetInt(SaveData.k_Object_TagCount); i++)
-                Tags.Add(input.GetString(SaveData.k_Object_TagBase + i).ToUpperInvariant());
+                Tags.Add(input.GetString(SaveData.k_Object_TagBase + i).MakeSafeIdentifier());
         }
 
         /// <summary>
@@ -374,7 +374,7 @@ namespace Finmer.Gameplay
         protected static int ExportedAddTag(IntPtr state)
         {
             var self = FromLua(state, 1);
-            self.Tags.Add(LuaApi.luaL_checkstring(state, 2).ToUpperInvariant());
+            self.AddTag(LuaApi.luaL_checkstring(state, 2));
             return 0;
         }
 
@@ -382,7 +382,7 @@ namespace Finmer.Gameplay
         protected static int ExportedRemoveTag(IntPtr state)
         {
             var self = FromLua(state, 1);
-            self.Tags.Remove(LuaApi.luaL_checkstring(state, 2).ToUpperInvariant());
+            self.RemoveTag(LuaApi.luaL_checkstring(state, 2));
             return 0;
         }
 

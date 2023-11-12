@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -36,7 +37,7 @@ namespace Finmer.Editor
         {
             // String table keys are uppercase-only by convention
             if (!chkRaw.Checked)
-                txtMessage.Text = txtMessage.Text.ToUpperInvariant();
+                txtMessage.Text = txtMessage.Text.MakeSafeIdentifier();
 
             // Copy settings to node
             var node = (CommandLog)Node;

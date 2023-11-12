@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -32,7 +33,7 @@ namespace Finmer.Editor
         private void cmdAccept_Click(object sender, System.EventArgs e)
         {
             var node = (CommandVarSetFlag)Node;
-            node.VariableName = txtContextName.Text.ToUpperInvariant();
+            node.VariableName = txtContextName.Text.MakeSafeIdentifier();
             node.Value = sveValue.GetValue();
         }
 

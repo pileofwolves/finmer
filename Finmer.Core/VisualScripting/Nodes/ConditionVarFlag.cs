@@ -47,7 +47,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteStringProperty(nameof(VariableName), VariableName.ToUpperInvariant());
+            outstream.WriteStringProperty(nameof(VariableName), VariableName.MakeSafeIdentifier());
             Operand.Serialize(outstream);
         }
 

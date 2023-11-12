@@ -242,7 +242,8 @@ namespace Finmer.Core
         public void Serialize(BinaryWriter outstream)
         {
             outstream.Write(m_PropBool.Count);
-            m_PropBool.ForEach(outstream.Write);
+            foreach (var flag in m_PropBool)
+                outstream.Write(flag);
 
             outstream.Write(m_PropBytes.Count);
             foreach (var pair in m_PropBytes)

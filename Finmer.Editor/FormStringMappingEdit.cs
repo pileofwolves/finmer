@@ -28,8 +28,8 @@ namespace Finmer.Editor
             Mapping = mapping;
 
             // Populate UI
-            txtOldKey.Text = mapping.Key.ToUpperInvariant();
-            txtNewKey.Text = mapping.NewKey.ToUpperInvariant();
+            txtOldKey.Text = mapping.Key.MakeSafeIdentifier();
+            txtNewKey.Text = mapping.NewKey.MakeSafeIdentifier();
             cmbRule.SelectedIndex = (int)mapping.Rule;
         }
 
@@ -38,8 +38,8 @@ namespace Finmer.Editor
             // Save the mapping data, which may have been edited
             Mapping = new StringMapping
             {
-                Key = txtOldKey.Text.ToUpperInvariant(),
-                NewKey = txtNewKey.Text.ToUpperInvariant(),
+                Key = txtOldKey.Text.MakeSafeIdentifier(),
+                NewKey = txtNewKey.Text.MakeSafeIdentifier(),
                 Rule = (StringMapping.ERule)cmbRule.SelectedIndex
             };
 

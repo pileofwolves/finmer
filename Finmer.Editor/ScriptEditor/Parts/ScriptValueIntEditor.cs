@@ -8,6 +8,7 @@
 
 using System;
 using System.Windows.Forms;
+using Finmer.Core;
 using Finmer.Core.VisualScripting;
 
 namespace Finmer.Editor
@@ -39,7 +40,7 @@ namespace Finmer.Editor
                 return new ValueWrapperInt
                 {
                     OperandMode = ValueWrapperInt.EOperandMode.Variable,
-                    OperandText = txtNumberVar.Text.ToUpperInvariant()
+                    OperandText = txtNumberVar.Text.MakeSafeIdentifier()
                 };
             }
             else

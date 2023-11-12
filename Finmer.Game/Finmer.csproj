@@ -178,6 +178,9 @@
     <Compile Include="Views\Parts\DotProgressIndicatorView.xaml.cs">
       <DependentUpon>DotProgressIndicatorView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\Parts\HelpButtonView.xaml.cs">
+      <DependentUpon>HelpButtonView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\Parts\ItemActionsShopSell.xaml.cs">
       <DependentUpon>ItemActionsShopSell.xaml</DependentUpon>
     </Compile>
@@ -351,6 +354,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\Parts\DotProgressIndicatorView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Parts\HelpButtonView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

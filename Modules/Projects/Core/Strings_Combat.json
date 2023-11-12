@@ -51,27 +51,17 @@
 			"Key": "GRAPPLE_HIT",
 			"Text": [
 				"{attacker} {attacker grab} a hold of {defender} and {attacker pull} {defender.object} closer.",
-				"{attacker} {attacker snatch} {defender.aliaspossessive} wrists and {attacker start} scuffling around with {defender.object}."
-			]
-		},
-		{
-			"Key": "GRAPPLE_MISS",
-			"Text": [
-				"{attacker.alias} {attacker try} to get close to {defender.alias}, but {defender.subject} quickly {defender dodge}.",
-				"{attacker.alias} {attacker try} to grab {defender.alias} but {defender.subject} {defender move} out of the way."
-			]
-		},
-		{
-			"Key": "GRAPPLE_PIN_HIT",
-			"Text": [
+				"{attacker} {attacker snatch} {defender.aliaspossessive} wrists and {attacker start} scuffling around with {defender.object}.",
 				"{attacker} {attacker push} {defender} down on the ground with {attacker.object} on top.",
 				"{attacker} {attacker pull} {defender} into a tight hug, preventing {defender.object} from moving.",
 				"{attacker} {attacker wrap} {attacker.possessive} arms around {defender} and {attacker squeeze} {defender.object} against {attacker.object}."
 			]
 		},
 		{
-			"Key": "GRAPPLE_PIN_MISS",
+			"Key": "GRAPPLE_MISS",
 			"Text": [
+				"{attacker.alias} {attacker try} to get close to {defender.alias}, but {defender.subject} quickly {defender dodge}.",
+				"{attacker.alias} {attacker try} to grab {defender.alias} but {defender.subject} {defender move} out of the way.",
 				"{attacker} {attacker try} to immobilize {defender} underneath {attacker.object} but {defender} {defender wiggle} out of {attacker.possessive} grip.",
 				"{attacker} {attacker try} to wrap {attacker.possessive} arms around {defender} but {defender.subject} {defender push} {attacker} away."
 			]
@@ -109,21 +99,16 @@
 			]
 		},
 		{
-			"Key": "TURN_DEFEND",
-			"Text": [
-				"{instigator} {instigator brace} for an incoming blow.",
-				"{instigator} {instigator shield} {instigator.object}self.",
-				"{instigator} {instigator try} deflecting attacks."
-			]
-		},
-		{
 			"Key": "TURN_WAIT",
 			"Text": [
 				"{instigator} {instigator decide} twiddling {instigator.possessive} thumbs is a better way of spending {instigator.possessive} time.",
 				"{instigator} blankly {instigator stare} ahead of {instigator.object}.",
 				"{instigator} {instigator do} absolutely nothing.",
 				"{instigator} just {instigator wait} around for a bit.",
-				"{instigator} {instigator wait} for a better moment to act."
+				"{instigator} {instigator wait} for a better moment to act.",
+				"{instigator} {instigator brace} for an incoming blow.",
+				"{instigator} {instigator shield} {instigator.object}self.",
+				"{instigator} {instigator try} deflecting attacks."
 			]
 		},
 		{
@@ -174,7 +159,7 @@
 				"With a loud glorp, the stomach spills more acids onto you. You can barely keep your head above the caustic soup you're already adding to.",
 				"{predator} belches loudly, causing the stomach to close snugly around you. The slimy, muscular walls knead at you, rubbing acids on your skin.",
 				"The warm slickness surrounds and kneads on you. The slick stomach walls squeeze you powerfully, before relaxing again.",
-				"You wince as the muscles grind against you. {predator} {predator feel} a soft gurgle as your body slowly loses form in {predator.possessive} belly.",
+				"You wince as the muscles grind against you. {^predator} {predator feel} a soft gurgle as your body slowly loses form in {predator.possessive} belly.",
 				"Surrounded by pressing stomach walls, you're slowly rendered into a soup of churning slop. The stomach walls busily knead and churn around you.",
 				"{predator.aliaspossessive} stomach lets out a loud, squelching gurgle as it tirelessly works on its meal. You hear wet squelches and glorps around you as the stomach shifts.",
 				"{predator.aliaspossessive} gut kneads on every fiber of your body, doing its best to soften you down into mush to fuel {predator.possessive} next hunt."

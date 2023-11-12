@@ -315,6 +315,13 @@ namespace Finmer.Gameplay.Combat
         {
             Character character = participant.Character;
 
+            // Show POV prey messages
+            if (participant.IsSwallowed() && participant.IsPlayer())
+            {
+                Participant predator = participant.Predator;
+                CombatDisplay.ShowSimpleMessage(predator.Character.PredatorDigests ? @"vore_pov_digest" : @"vore_pov_endo", predator, participant);
+            }
+
             // Digest prey, if any
             if (participant.Prey.Count != 0 && character.PredatorDigests)
             {

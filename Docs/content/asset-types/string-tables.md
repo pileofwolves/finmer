@@ -83,14 +83,14 @@ The following commands are available for all objects:
 
 Additionally, for Items, these properties are available:
 
-- `{context.value}` returns the value in coins of the item
+- `{context.value}` evaluates to the value in coins of the item
 
 Additionally, for the Player, these properties are available. You can always refer to the player anywhere, with `{player}`.
 
-- `{player.species}` returns the lowercase singular species name of the player ('dragon', 'tiger').
-- `{player.speciesplural}` returns the lowercase plural species name of the player ('dragons', 'tigers').
-- `{player.fur}` returns the noun describing the player's coat ('fur', 'scales').
-- `{player.furry}` returns the adjective describing the player's coat ('furry', 'scaly').
+- `{player.species}` evaluates to the lowercase singular species name of the player ('dragon', 'tiger').
+- `{player.speciesplural}` evaluates to the lowercase plural species name of the player ('dragons', 'tigers').
+- `{player.fur}` evaluates to the noun describing the player's coat ('fur', 'scales').
+- `{player.furry}` evaluates to the adjective describing the player's coat ('furry', 'scaly').
 
 ### Usage Example
 
@@ -108,3 +108,41 @@ Dave nimbly dodges your awkward punch, and you hit the wall instead.
 ```
 
 I'm sure you can see this feature being useful for avoiding duplicate text everywhere just to make the grammar work. :)
+
+### Special Commands
+
+#### Uppercase Command
+
+If the command starts with a caret (`^`), the first character of the evaluated text will be converted to uppercase. This is useful when the first word in a sentence is a grammar command - normally it would generate lowercase text, which would look like a mistake.
+
+For example, these two strings:
+
+```
+You tap the merchant on the shoulder. {shopkeeper.subject} turns to face you.
+You tap the merchant on the shoulder. {^shopkeeper.subject} turns to face you.
+```
+
+would be rendered as follows. Note how the first one, without caret, is grammatically incorrect.
+
+```
+You tap the merchant on the shoulder. she turns to face you.
+You tap the merchant on the shoulder. She turns to face you.
+```
+
+#### Randomizer Command
+
+If the command starts with a question mark (`?`), the command is interpreted as a set of options, of which one will be chosen randomly. The next character must be a pipe (`|`), and from there, the different options are separated by a pipe (`|`).
+
+You can have as many options as you like, and there is no limit to the length of each option. Nested grammar commands - e.g. having another command inside one of the random options - is currently not yet supported.
+
+Like so:
+
+```
+My favorite fruit is {?|apple|orange|banana|pear}.
+```
+
+which could, randomly, be rendered as:
+
+```
+My favorite fruit is banana.
+```

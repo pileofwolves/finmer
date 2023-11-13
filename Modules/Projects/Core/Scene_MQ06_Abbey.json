@@ -263,6 +263,7 @@
 																					{
 																						"NodeType": "Choice",
 																						"Key": "Travel_C_Walk_Pred4",
+																						"Title": "Continue",
 																						"Highlight": false,
 																						"ButtonWidth": 1.0,
 																						"Children": [
@@ -2698,6 +2699,12 @@
 							"OperandText": "RewardXP.MQ06_Complete"
 						},
 						{
+							"!Type": "CommandVarSetFlag",
+							"VariableName": "MQ06_DONE",
+							"OperandMode": "Literal",
+							"OperandLiteral": true
+						},
+						{
 							"!Type": "CommandComment",
 							"Comment": "Start epilogue"
 						},
@@ -2810,15 +2817,38 @@
 																							"MainSubgroup": [
 																								{
 																									"!Type": "CommandLog",
-																									"Text": "MQ06_EPILOGUE05_PLAYERPRED",
+																									"Text": "MQ06_EPILOGUE05_RANDALL_EATEN",
 																									"IsRaw": false
 																								}
 																							],
 																							"ElseSubgroup": [
 																								{
-																									"!Type": "CommandLog",
-																									"Text": "MQ06_EPILOGUE05_DEFAULT",
-																									"IsRaw": false
+																									"!Type": "CommandIf",
+																									"Mode": "All",
+																									"Operand": true,
+																									"Tests": [
+																										{
+																											"!Type": "ConditionVarFlag",
+																											"VariableName": "MQ06_AMBUSH_THUG_EATEN",
+																											"OperandMode": "Literal",
+																											"OperandLiteral": true
+																										}
+																									],
+																									"HasElseBranch": true,
+																									"MainSubgroup": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_EPILOGUE05_THUG_EATEN",
+																											"IsRaw": false
+																										}
+																									],
+																									"ElseSubgroup": [
+																										{
+																											"!Type": "CommandLog",
+																											"Text": "MQ06_EPILOGUE05_DEFAULT",
+																											"IsRaw": false
+																										}
+																									]
 																								}
 																							]
 																						}

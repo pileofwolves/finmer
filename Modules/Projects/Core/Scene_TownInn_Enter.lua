@@ -12,7 +12,7 @@ else
 end
 
 -- Mention present patrons
-if not Storage.GetFlag("town_inn_foxtaur_arrested") then
+if Storage.GetFlag("MQ03_DONE") and not Storage.GetFlag("town_inn_foxtaur_arrested") then
     Log("TOWN_INN_PATRONS_TAUR")
 end
 if not Storage.GetFlag("MQ03_STARTED") then

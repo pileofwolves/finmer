@@ -165,6 +165,12 @@
 													"VariableName": "TOWN_GATE_GUARD_TALK_BRIDGE",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ01_AVAILABLE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
 												}
 											]
 										},

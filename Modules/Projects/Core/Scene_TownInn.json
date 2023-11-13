@@ -667,7 +667,7 @@
 										},
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
-											"Script": "return not Storage.GetFlag(\"town_inn_foxtaur_arrested\")"
+											"Script": "return Storage.GetFlag(\"MQ03_DONE\") and not Storage.GetFlag(\"town_inn_foxtaur_arrested\")"
 										},
 										"Children": [
 											{

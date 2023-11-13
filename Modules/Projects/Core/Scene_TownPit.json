@@ -477,7 +477,7 @@
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
-									"Script": "return Player.PredatorFullness > 0.1"
+									"Script": "-- Disabled with PredatorFullness removed\r\nreturn false"
 								},
 								"Children": [
 									{

@@ -354,7 +354,7 @@
 		{
 			"Key": "MQ06_ENDING_A_REGULAR3",
 			"Text": [
-				"\"I love you too, Randall,\" she replies softly, cupping her lover's paw with another one of hers. A gentle squeeze, a minute hiccup in her breathing. \"I love you more than anything else.\"\\n\\nRandall says nothing for the longest time, but squeezes Iso's paws with all the strength he has left. \"Don't... d-don't let me go,\" he whispers, the simple request charged with unspoken fears and unrealized desires. Gone is the taunting, arrogant voice you were so used to, making way for something far ."
+				"\"I love you too, Randall,\" she replies softly, cupping her lover's paw with another one of hers. A gentle squeeze, a minute hiccup in her breathing. \"I love you more than anything else.\"\\n\\nRandall says nothing for the longest time, but squeezes Iso's paws with all the strength he has left. \"Don't... d-don't let me go,\" he whispers, the simple request charged with unspoken fears and unrealized desires. Gone is the taunting, arrogant voice you were so used to, making way for something far more primal."
 			]
 		},
 		{
@@ -538,9 +538,15 @@
 			]
 		},
 		{
-			"Key": "MQ06_EPILOGUE05_PLAYERPRED",
+			"Key": "MQ06_EPILOGUE05_RANDALL_EATEN",
 			"Text": [
-				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. Her gaze lingers on your stomach for a brief moment, now mostly flat and devoid of prey. \"Look, I- I'm sorry for... punching you, yesterday. You may be a pred too, but I'll take one in better control of {player.possessive} urges, heh. I won't forget what you did for me, so... let's not worry about any, uh, predation-related charges. I just... hope this whole saga is over. I need... I need some time. To think.\""
+				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. Her gaze lingers on your stomach for a brief moment, now mostly flat and devoid of prey. \"Look, I- I'm sorry for... punching you, yesterday. You may be a pred too, but I'll take one in better control of {player.possessive3p} urges, heh. I won't forget what you did for me, so... let's not worry about any, uh, predation-related charges. I just... hope this whole saga is over. I need... I need some time. To think.\""
+			]
+		},
+		{
+			"Key": "MQ06_EPILOGUE05_THUG_EATEN",
+			"Text": [
+				"\"Thank you, {player.name}. For everything.\" A long, deep sigh flows from her lips, and she retracts her paw, sticking both of them into her pockets instead. Iso takes a few moments to consider her words, slender black tail slowly swaying back and forth behind her. Her gaze lingers on your stomach for a brief moment, now mostly flat and devoid of prey. \"You know, you may be a pred too, but I'll take one in better control of {player.possessive3p} urges, heh. I won't forget what you did for me, so... let's not worry about any, uh, predation-related charges. I just... hope this whole saga is over. I need... I need some time. To think.\""
 			]
 		},
 		{

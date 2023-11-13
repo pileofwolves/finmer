@@ -19,6 +19,7 @@ echo .ipdb >> %STAGEDIR%\IgnoreList
 echo .lib >> %STAGEDIR%\IgnoreList
 echo .dmp >> %STAGEDIR%\IgnoreList
 echo .log >> %STAGEDIR%\IgnoreList
+echo .gitignore >> %STAGEDIR%\IgnoreList
 
 rem Copy Game artifacts, plus Modules (non-recursive to skip Samples)
 xcopy /S /Y /EXCLUDE:%STAGEDIR%\IgnoreList Finmer.Game\bin\Release %GAMEDIR%
@@ -26,7 +27,7 @@ xcopy /I /Y Modules\*.furball %GAMEDIR%\Modules
 
 rem Copy 'pack include' files
 IF EXIST %INCLUDEDIR% (
-	xcopy /S /Y %INCLUDEDIR%\* %GAMEDIR%
+	xcopy /S /Y /EXCLUDE:%STAGEDIR%\IgnoreList %INCLUDEDIR%\* %GAMEDIR%
 )
 
 rem Extract PDBs for archival

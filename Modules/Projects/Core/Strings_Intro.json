@@ -56,7 +56,7 @@
 		{
 			"Key": "TUTORIAL_NOTE_GRAPPLE",
 			"Text": [
-				"GRAPPLING: You can enter hand-to-hand fights with most characters. Like with attacking, you must roll more Grapple Dice (based on Strength) than your opponent. When grappled, the target cannot do anything other than trying to escape, and it makes swallowing them easier."
+				"GRAPPLING: You can enter hand-to-hand fights with most characters. Like with attacking, you must roll more Grapple Dice (based on Strength) than your opponent. When grappled, the target cannot do anything other than trying to escape, and it makes swallowing them easier - though you don't have to grapple to swallow prey."
 			]
 		},
 		{
@@ -74,7 +74,7 @@
 		{
 			"Key": "TUTORIAL_NOTE_VORE1",
 			"Text": [
-				"SWALLOWING: To swallow another character, you must win three rounds of dice in a row. The predator rolls dice based on their Body stat; the prey uses their Agility. The higher number wins. If the predator is grappling their prey - as you are now - the prey loses 2 dice."
+				"SWALLOWING: To swallow another character, you must win three rounds of dice in a row. The predator rolls dice based on their Body stat; the prey uses their Agility. The higher number wins. Bigger preds require fewer won rounds to succeed. If the predator is grappling their prey - as you are now - the prey loses 2 dice."
 			]
 		},
 		{

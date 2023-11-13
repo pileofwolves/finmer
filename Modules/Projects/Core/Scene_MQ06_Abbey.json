@@ -1018,7 +1018,7 @@
 												"Key": "Travel_R_Ambush3",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "local fight = MQ06_MakeCombat_Ambush()\r\nfight:Begin()\r\nLog(\"MQ06_AMBUSH03\")"
+													"Script": "local fight = MQ06_MakeCombat_Ambush()\r\nfight:Begin()\r\n\r\nif fight:IsGrappling(Player) then\r\n    Log(\"MQ06_AMBUSH03_GRAPPLE\")\r\nelse\r\n    Log(\"MQ06_AMBUSH03\")\r\nend"
 												},
 												"Children": [
 													{

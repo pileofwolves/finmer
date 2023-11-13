@@ -946,7 +946,7 @@
 								"Key": "Op1_R_1",
 								"ScriptAction": {
 									"!Type": "ScriptDataInline",
-									"Script": "Log(\"TOWN_PIT_O_VULPES1B\")"
+									"Script": "Text.SetVariable(\"mister\", Player.Gender == EGender.Male and \"mister\" or \"miss\")\r\nLog(\"TOWN_PIT_O_VULPES1B\")"
 								},
 								"Children": [
 									{

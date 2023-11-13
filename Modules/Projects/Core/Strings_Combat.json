@@ -99,16 +99,19 @@
 			]
 		},
 		{
+			"Key": "TURN_STUNNED",
+			"Text": [
+				"{instigator} {instigator be} too dazed to do anything."
+			]
+		},
+		{
 			"Key": "TURN_WAIT",
 			"Text": [
 				"{instigator} {instigator decide} twiddling {instigator.possessive} thumbs is a better way of spending {instigator.possessive} time.",
 				"{instigator} blankly {instigator stare} ahead of {instigator.object}.",
 				"{instigator} {instigator do} absolutely nothing.",
 				"{instigator} just {instigator wait} around for a bit.",
-				"{instigator} {instigator wait} for a better moment to act.",
-				"{instigator} {instigator brace} for an incoming blow.",
-				"{instigator} {instigator shield} {instigator.object}self.",
-				"{instigator} {instigator try} deflecting attacks."
+				"{instigator} {instigator wait} for a better moment to act."
 			]
 		},
 		{

@@ -1621,6 +1621,10 @@
 									},
 									{
 										"NodeType": "Link",
+										"LinkTarget": "Cabin_C_AbbeyBook"
+									},
+									{
+										"NodeType": "Link",
 										"LinkTarget": "Cabin_C_SQ05"
 									},
 									{

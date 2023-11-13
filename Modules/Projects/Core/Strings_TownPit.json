@@ -521,7 +521,7 @@
 		{
 			"Key": "TOWN_PIT_O_VULPES1B",
 			"Text": [
-				"As a gray fox, his fur is a noisy but neutral shade, with orange and white tufts sticking out here and there from his curiously blue clothes. He confidently marches over to you and places a paw on your shoulder, as if caressing you. \"A pleasure, %mister {player.species},\" he quips. \"I hear we're both new, then? I'm honored that you'll be my first,\" your opponent adds, teasingly licking his lips.\\n\\nBefore you can so much as respond, Venna interjects, glaring at the overly eager fox. \"You know the rules, Vulpes,\" she states dryly, yet the accused vulpine never loses his smile. Instead, he gives you a bow, holding on to his feathered hat with one paw to ensure it doesn't fall off. With that, he makes his way over to the other side of the room. What a curious fellow."
+				"As a gray fox, his fur is a noisy but neutral shade, with orange and white tufts sticking out here and there from his curiously blue clothes. He confidently marches over to you and places a paw on your shoulder, as if caressing you. \"A pleasure, {!mister} {player.species},\" he quips. \"I hear we're both new, then? I'm honored that you'll be my first,\" your opponent adds, teasingly licking his lips.\\n\\nBefore you can so much as respond, Venna interjects, glaring at the overly eager fox. \"You know the rules, Vulpes,\" she states dryly, yet the accused vulpine never loses his smile. Instead, he gives you a bow, holding on to his feathered hat with one paw to ensure it doesn't fall off. With that, he makes his way over to the other side of the room. What a curious fellow."
 			]
 		},
 		{

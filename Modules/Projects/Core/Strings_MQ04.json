@@ -60,7 +60,7 @@
 		{
 			"Key": "MQ04_ADEPT_BOOK03",
 			"Text": [
-				"\"Thanks for bringing this to me, {player.name}. I don't fully understand this script, but with some time, I think I might be able to understand bits and pieces. I'm going to study this with great interest.\" From nowhere in particular, Rux presses a pawful of coins into yours, and winks when you realize it is more than some spare change you might have gotten at any other general store for this trinket."
+				"\"Thanks for bringing this to me, {player.name}. I don't fully understand this script, but with some time, I think I might be able to grasp bits and pieces. I'm going to study this with great interest.\" From nowhere in particular, Rux presses a pawful of coins into yours, and winks when you realize it is more than some spare change you might have gotten at any other general store for this trinket."
 			]
 		},
 		{

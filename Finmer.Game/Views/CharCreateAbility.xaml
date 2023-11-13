@@ -15,13 +15,13 @@
         <vm:AbilityPointCollectionViewModel x:Key="AbilityCollection">
             <vm:AbilityPointViewModel
                 Name="Strength"
-                Description="Physical prowess. Improves offense and predation prowess." />
+                Description="Physical prowess. Improves offense and grappling." />
             <vm:AbilityPointViewModel
                 Name="Agility"
                 Description="Quickness. Improves dodging and resisting predation." />
             <vm:AbilityPointViewModel
                 Name="Body"
-                Description="Physical fortitude. Each Body point grants one Health point." />
+                Description="Physical fortitude. Improves predation and max Health." />
             <vm:AbilityPointViewModel
                 Name="Wits"
                 Description="Mental prowess. Affects turn order and perception." />

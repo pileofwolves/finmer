@@ -262,6 +262,12 @@
 			]
 		},
 		{
+			"Key": "MQ06_AMBUSH03_GRAPPLE",
+			"Text": [
+				"The last remaining assassin glances anxiously at the three of you, perhaps finally realizing the little hitsquad had grossly underestimated the threat, puts everything they have into pushing you backwards. {^thug} winds up dropping onto the ground, scrambles up and turns tail, leaving their comrades to their fates by sprinting away as fast as their legs - and the mushy soil - can carry them."
+			]
+		},
+		{
 			"Key": "MQ06_AMBUSH04_CHIP01_FRIEND",
 			"Text": [
 				"The robed figure doesn't get particularly far until their escape attempt is disrupted. A huge, snarling mass of gray-and-silver fur erupts from between the trees. Chip pounces on the biped that had dared to make a fool of his master, pinning his target not with his front paws like most ferals would when hunting, but rather, with wide open jaws. {^thug} realizes too late what is happening and can do nothing but watch as they are engulfed in that slimy maw with a wet squelch. The wolf, for his part, wastes little time, tossing his muzzle upwards with each swallow, his meal disappearing down his gullet with staggering speed. The display is a stark departure from how comparatively gently the wolf had treated you before when you'd taken a dive down his throat. It's obvious Chip has no intent of letting this meal back out through the same way they went in."

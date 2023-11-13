@@ -2,10 +2,6 @@
 	"!Type": "AssetScene",
 	"AssetID": "8bd05185-f23d-43ac-bb88-300df2b54acc",
 	"AssetName": "Scene_ForestClearing",
-	"ScriptCustom": {
-		"!Type": "ScriptDataExternal",
-		"Name": "Scene_ForestClearing_Custom"
-	},
 	"ScriptEnter": {
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_ForestClearing_Enter"
@@ -15,24 +11,6 @@
 		"NodeType": "Root",
 		"Key": "Root",
 		"Children": [
-			{
-				"NodeType": "State",
-				"Key": "SavePoint_Clearing",
-				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "Log(\"FOREST_CLEARING_SAVEPOINT\")\r\nStorage.SetFlag(\"savepoint\", false)"
-				},
-				"ScriptAppear": {
-					"!Type": "ScriptDataInline",
-					"Script": "return Storage.GetFlag(\"savepoint\")"
-				},
-				"Children": [
-					{
-						"NodeType": "Link",
-						"LinkTarget": "Clearing_C_Leave"
-					}
-				]
-			},
 			{
 				"NodeType": "State",
 				"Key": "SQ02_Start",
@@ -276,7 +254,7 @@
 								},
 								"ScriptAppear": {
 									"!Type": "ScriptDataInline",
-									"Script": "return Player.Wits < 6"
+									"Script": "return Player.Wits < 5"
 								},
 								"Children": [
 									{
@@ -340,7 +318,7 @@
 												"Key": "SQ02_R_Slay",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "Text.SetVariable(\"weapon\", Player.EquippedWeapon.Alias)\r\nLog(\"SQ02_SNEAK_SLAY_OK\")\r\n\r\n-- Progress the quest\r\nStorage.SetFlag(\"FOREST_DIREWOLF_DEAD\", true)\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend"
+													"Script": "local weapon = Player.EquippedWeapon\r\nif weapon ~= nil then\r\n    Text.SetVariable(\"weapon\", weapon.Alias)\r\n    Log(\"SQ02_SNEAK_SLAY_OK\")\r\nelse\r\n    Log(\"SQ02_SNEAK_SLAY_OK_NOWEAPON\")\r\nend\r\n\r\n-- Progress the quest\r\nStorage.SetFlag(\"FOREST_DIREWOLF_DEAD\", true)\r\nStorage.SetNumber(\"SQ02\", 2)\r\nJournal.Update(\"SQ02\", 20)\r\nPlayer:GiveItem(\"I_SQ02_WolfTrophy\", true)\r\n\r\n-- Award XP when fought stealthily (otherwise the combat already awarded XP)\r\nif not Storage.GetFlag(\"SQ02_DIREWOLF_FOUGHT\") then\r\n    Player:AwardXP(RewardXP.SQ02_StealthSlay)\r\nend"
 												},
 												"Children": [
 													{
@@ -387,13 +365,23 @@
 						"NodeType": "Choice",
 						"Key": "SQ02_C_SneakAway",
 						"Title": "Sneak away",
-						"Tooltip": "[Wits] Try to get away again without being noticed.",
+						"Tooltip": "Let sleeping dogs lie. You can come back later.",
 						"Highlight": false,
 						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"NodeType": "Link",
-								"LinkTarget": "SQ02_R_SneakFail"
+								"NodeType": "State",
+								"Key": "SQ02_R_SneakAway",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandSetScene",
+											"SceneGuid": "d93a8b96-ed74-4de1-9f57-5f404f9ea351"
+										}
+									]
+								},
+								"Children": []
 							}
 						]
 					}
@@ -435,7 +423,7 @@
 												"NodeType": "State",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "has_slept_in_clearing = true\r\nSaveData.ShowSaveDialog()"
+													"Script": "SaveData.ShowSaveDialog()"
 												},
 												"Children": [
 													{

@@ -4,12 +4,6 @@
 	"AssetName": "Strings_Forest",
 	"Entries": [
 		{
-			"Key": "FOREST_CLEARING_SAVEPOINT",
-			"Text": [
-				"You wake up and get up from the forest floor with a yawn and a stretch, and begin tearing down the little makeshift camp. Around you the endless expanse of trees still awaits."
-			]
-		},
-		{
 			"Key": "FOREST_ENTRY",
 			"Text": [
 				"As you wander off into the woods, the vast expanse of trees quickly takes over the immediate surroundings, and it becomes quite difficult to discern where exactly you're going."
@@ -53,7 +47,7 @@
 		{
 			"Key": "FOREST_SLEEP_WAKEUP",
 			"Text": [
-				"Several hours later, you awaken, feeling refreshed."
+				"Several hours later, you awaken, feeling refreshed. You get up from the forest floor with a yawn and a stretch, and begin tearing down the little makeshift camp. Around you the endless expanse of trees still awaits."
 			]
 		}
 	]

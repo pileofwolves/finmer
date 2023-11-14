@@ -220,6 +220,17 @@
 													},
 													{
 														"NodeType": "Choice",
+														"Title": "MQ06 Done",
+														"Highlight": false,
+														"ButtonWidth": 0.6,
+														"ScriptAction": {
+															"!Type": "ScriptDataInline",
+															"Script": "DebugCompleteMQ06()\r\nSetScene(\"Scene_TownNSQ\")"
+														},
+														"Children": []
+													},
+													{
+														"NodeType": "Choice",
 														"Title": "SQ02",
 														"Tooltip": "For testing SQ02 / MQ02",
 														"Highlight": false,

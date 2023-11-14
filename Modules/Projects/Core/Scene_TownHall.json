@@ -658,7 +658,7 @@
 				},
 				"ScriptAppear": {
 					"!Type": "ScriptDataInline",
-					"Script": "return Player:HasItem(\"I_SQ02_WolfTrophy\")"
+					"Script": "return Player:HasItem(\"I_SQ02_WolfTrophy\")\r\n    and not Storage.GetFlag(\"MQ06_DONE\")"
 				},
 				"Children": [
 					{

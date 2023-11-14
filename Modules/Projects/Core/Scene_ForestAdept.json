@@ -3370,6 +3370,12 @@
 													"VariableName": "MQ04_ADEPT_TALK_ADEPT",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
 												}
 											]
 										},
@@ -3411,6 +3417,12 @@
 												{
 													"!Type": "ConditionVarFlag",
 													"VariableName": "MQ04_ADEPT_TALK_AMBER",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
 												}
@@ -3510,6 +3522,12 @@
 													"VariableName": "MQ04_ADEPT_TALK_SHORE",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
 												}
 											]
 										},
@@ -3551,6 +3569,12 @@
 												{
 													"!Type": "ConditionVarFlag",
 													"VariableName": "MQ04_ADEPT_TALK_SPIRITS",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
 												}
@@ -3602,6 +3626,159 @@
 													"VariableName": "FOREST_DIREWOLF_DEAD",
 													"OperandMode": "Literal",
 													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Arm",
+										"Title": "Arm",
+										"Tooltip": "Ask about the amber crystal fused with his flesh.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "RUX_TALK_TOPIC_ARM",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "RUX_TALK_TOPIC_ARM",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "RUX_TALK_TOPIC_ARM",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_RandallTF",
+										"Title": "Werewolf",
+										"Tooltip": "Ask what he thinks about the transformation Randall performed.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "RUX_TALK_TOPIC_RANDALLTF",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "RUX_TALK_TOPIC_RANDALLTF",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "RUX_TALK_TOPIC_RANDALLTF",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												}
+											]
+										},
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Talk_R_Rux_Root"
+											}
+										]
+									},
+									{
+										"NodeType": "Choice",
+										"Key": "Talk_C_Rux_Rift",
+										"Title": "Rift",
+										"Tooltip": "Ask about the strange rift you left behind at Dalsida Abbey.",
+										"Highlight": false,
+										"ButtonWidth": 0.8,
+										"ScriptAction": {
+											"!Type": "ScriptDataVisualAction",
+											"Nodes": [
+												{
+													"!Type": "CommandVarSetFlag",
+													"VariableName": "RUX_TALK_TOPIC_RIFT",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
+												},
+												{
+													"!Type": "CommandLog",
+													"Text": "RUX_TALK_TOPIC_RIFT",
+													"IsRaw": false
+												}
+											]
+										},
+										"ScriptAppear": {
+											"!Type": "ScriptDataVisualCondition",
+											"Mode": "All",
+											"Operand": true,
+											"Tests": [
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "RUX_TALK_TOPIC_RIFT",
+													"OperandMode": "Literal",
+													"OperandLiteral": false
+												},
+												{
+													"!Type": "ConditionVarFlag",
+													"VariableName": "MQ06_DONE",
+													"OperandMode": "Literal",
+													"OperandLiteral": true
 												}
 											]
 										},
@@ -3629,7 +3806,7 @@
 							"Tests": [
 								{
 									"!Type": "ConditionVarFlag",
-									"VariableName": "FOREST_ADEPT_ISO_LEFT",
+									"VariableName": "MQ06_DONE",
 									"OperandMode": "Literal",
 									"OperandLiteral": false
 								},

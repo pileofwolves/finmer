@@ -1,6 +1,7 @@
 local function DebugStartMQ01()
     Storage.SetFlag("TOWN_FIRST", true)
     Storage.SetFlag("TOWN_INN_RENTED_ROOM", true)
+    Storage.SetFlag("MQ01_AVAILABLE", true)
     Storage.SetFlag("MQ01_STARTED", true)
 end
 
@@ -72,4 +73,11 @@ local function DebugStartMQ06()
     Storage.SetFlag("MQ05_DONE", true)
     Storage.SetFlag("SQ05_AVAILABLE", false)
     Storage.SetFlag("MQ06_AVAILABLE", true)
+end
+
+local function DebugCompleteMQ06()
+    DebugStartMQ06()
+    Player:AwardXP(RewardXP.MQ06_Complete)
+    Storage.SetFlag("MQ06_AVAILABLE", false)
+    Storage.SetFlag("MQ06_DONE", true)
 end

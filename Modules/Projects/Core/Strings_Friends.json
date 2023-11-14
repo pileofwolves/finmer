@@ -175,6 +175,24 @@
 			"Text": [
 				"Oliver snorts, and offers you a vague hint of a smirk. \"I have quite the queue to go through. This... um, all this, has been occupying my mind of late. But, um, keeping my paws busy really does help a lot.\" He offers you a flick of the ear and a smile, one that you cannot quite identify as either genuine or forced. \"So don't worry, the Finmer community will get their paws on the things they need. Actually, I hear someone is shipping construction stuff to our Southern friends. But I dunno what for; if they were in need of construction work, I would know. Hope it's not a competitor...\""
 			]
+		},
+		{
+			"Key": "RUX_TALK_TOPIC_ARM",
+			"Text": [
+				"The red panda sighs, and rolls down his sleeve. \"Yes, that,\" he states simply, glancing at the large gem set into the back of his forearm. The smooth surface refracts the lantern light shining on it, like beams shining through a turbulent ocean. It is still and appears almost decorative, unlike last time you saw it, when it was swirling and also on fire. \"It... is the result of an old, painful experiment in my younger days. I have some regrets about it, but I won't deny it is useful to have a 'rechargeable' amber crystal with you, always.\" The maroon sleeve drops back down. \"And that is all I will say about that.\""
+			]
+		},
+		{
+			"Key": "RUX_TALK_TOPIC_RANDALLTF",
+			"Text": [
+				"His eyes soften a little, and his gaze wanders out the window. \"It is... a tragedy, really.\" Rux sighs, and scratches the back of his head, appearing a little forlorn, though the emotion is swiftly buried under a fairly neutral grimace. \"I'll say he was talented, to be able to pull off a stunt like that, with so little training, and without killing himself. Uncontrolled burns have a tendency to... explosively release energy, you see.\"\\n\\nHe trails off, not really focusing on you anymore. \"Maybe I could have taught him. Maybe I should have seen it,\" he mumbles, before seeming to remember that there is someone else in the room."
+			]
+		},
+		{
+			"Key": "RUX_TALK_TOPIC_RIFT",
+			"Text": [
+				"An indignant grunt is all the response you get at first, before you understand that Rux had, in fact, been considering an answer for a few seconds.\\n\\n\"I've been thinking about that too, {player.name}. I'll admit, I've never seen anything like that... the air itself shattering. There is... much we do not understand about this world. And this incident has changed my view on a few things, too.\" The red panda rubs his chin, eyes lingering briefly on some of the books on his many shelves. \"I saw the 'hole' was still there, too. Alarming as it looks, I hope it is not something to worry about, but time will tell.\""
+			]
 		}
 	]
 }

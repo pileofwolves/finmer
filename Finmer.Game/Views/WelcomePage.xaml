@@ -115,7 +115,7 @@
                 Style="{StaticResource WelcomeText}">
                 I'd love to hear from you. Please feel free to leave any feedback, comments or suggestions on
                 <Hyperlink Command="{Binding VisitWebsiteCommand}">the community website</Hyperlink>, or e-mail me at
-                <Hyperlink Command="{Binding EmailCommand}">nuntiswolf@gmail.com</Hyperlink>.
+                <Hyperlink Command="{Binding EmailCommand}">nuntis@finmer.dev</Hyperlink>.
             </TextBlock>
 
             <StackPanel

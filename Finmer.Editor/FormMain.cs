@@ -797,15 +797,13 @@ namespace Finmer.Editor
 
         private void rbtHelpDoc_Click(object sender, EventArgs e)
         {
-            string doc_path = Path.Combine(GetModulesFolder(), "Docs", "Documentation.html");
             try
             {
-                Process.Start(doc_path);
+                Process.Start(@"https://docs.finmer.dev");
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show($"Could not open the documentation pages: {ex.Message}\n\nThe documentation files are expected to reside under the Modules folder. Check that the game launch settings in the Editor Preferences are correct.",
-                    "Finmer Editor", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                // Ignore errors
             }
         }
 

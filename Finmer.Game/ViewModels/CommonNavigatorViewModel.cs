@@ -63,8 +63,7 @@ namespace Finmer.ViewModels
 
         private static void OnClickWebsite(object args)
         {
-            // TODO: Soon, friend, soon :)
-            Process.Start(@"https://whoknows.where");
+            Process.Start(@"https://finmer.dev");
         }
 
         private static void OnClickGH(object args)
@@ -80,7 +79,7 @@ namespace Finmer.ViewModels
         private static void OnClickEmail(object args)
         {
             // TODO: Replace
-            Process.Start(@"mailto:nuntiswolf@gmail.com");
+            Process.Start(@"mailto:nuntis@finmer.dev");
         }
 
         private static void OnNavigateGame(object args)

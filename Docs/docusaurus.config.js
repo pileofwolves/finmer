@@ -4,7 +4,7 @@
 const config = {
   title: 'Finmer Editor',
   tagline: 'Furry text adventure engine',
-  url: 'https://whoknowswhere',
+  url: 'https://docs.finmer.dev',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -33,6 +33,14 @@ const config = {
         },
       },
     ],
+  ],
+
+  scripts: [
+    {
+      defer: true,
+      'data-domain': 'docs.finmer.dev',
+      src: 'https://finmer.stream/js/script.js',
+    }
   ],
 
   themeConfig:
@@ -71,7 +79,7 @@ const config = {
             label: 'Script Reference',
           },
           {
-            href: 'https://whoknowswhere',
+            href: 'https://finmer.dev',
             label: 'Back to Community',
             position: 'right',
           },
@@ -103,7 +111,7 @@ const config = {
             items: [
               {
                 label: 'Community Site',
-                href: 'https://whoknowswhere',
+                href: 'https://finmer.dev',
               },
               {
                 label: 'FurAffinity',

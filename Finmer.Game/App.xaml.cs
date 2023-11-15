@@ -82,7 +82,7 @@ namespace Finmer
 
             // Let the user know what's happening
             MessageBox.Show("Finmer encountered an internal error. A crash report (two files) should have been saved to the game folder. " +
-                "Please send them to nuntiswolf@gmail.com, or 'nuntis' on FurAffinity so it can be investigated! <3" +
+                "Please e-mail them to nuntis@finmer.dev so it can be investigated and fixed! <3" +
                 Environment.NewLine + Environment.NewLine + "Exception class: " + ex.GetType().Name,
                 "Sorry! I'll do better next time :(",
                 MessageBoxButton.OK,

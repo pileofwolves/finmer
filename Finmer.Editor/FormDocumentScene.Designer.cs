@@ -580,10 +580,10 @@
             // 
             this.nudChoiceCustomWidth.DecimalPlaces = 2;
             this.nudChoiceCustomWidth.Increment = new decimal(new int[] {
-            25,
+            1,
             0,
             0,
-            131072});
+            65536});
             this.nudChoiceCustomWidth.Location = new System.Drawing.Point(104, 184);
             this.nudChoiceCustomWidth.Maximum = new decimal(new int[] {
             30,
@@ -591,10 +591,10 @@
             0,
             65536});
             this.nudChoiceCustomWidth.Minimum = new decimal(new int[] {
-            25,
+            2,
             0,
             0,
-            131072});
+            65536});
             this.nudChoiceCustomWidth.Name = "nudChoiceCustomWidth";
             this.nudChoiceCustomWidth.Size = new System.Drawing.Size(72, 20);
             this.nudChoiceCustomWidth.TabIndex = 8;

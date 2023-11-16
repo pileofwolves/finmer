@@ -78,13 +78,14 @@
             <TextBlock
                 Style="{StaticResource WelcomeText}">
                 A popular trading post along the Great North Road, the bustling coastal community of Finmer sees
-                no lack of commerce and opportunity. Ever humble in its appearance, the impressive environs alone
+                no lack of commerce and opportunity. Ever humble in its appearance, the beautiful environs alone
                 are worth visiting for.
             </TextBlock>
             <TextBlock
                 Style="{StaticResource WelcomeText}">
-                Yet not all is well. A recent prominent disappearance may be a premonition of a frightening chain
-                of events - one that may turn out to be the undoing of the fledgling town.
+                Yet not all is well. The mayor has vanished. A bridge mysteriously exploded in the dead of night.
+                What happened? Who was responsible? Unravel the truth behind a strange conspiracy, before it may
+                turn out to be the undoing of the fledgling town.
             </TextBlock>
 
             <TextBlock

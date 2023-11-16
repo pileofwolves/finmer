@@ -132,7 +132,7 @@ const config = {
         copyright: `Copyright © ${new Date().getFullYear()} Nuntis the Wolf. Documentation pages built with Docusaurus.`,
       },
       colorMode: {
-        defaultMode: 'dark',
+        defaultMode: 'light',
       },
       prism: {
         theme: require('prism-react-renderer/themes/vsLight'),

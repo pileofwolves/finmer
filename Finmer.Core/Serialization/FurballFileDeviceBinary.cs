@@ -121,12 +121,14 @@ namespace Finmer.Core.Serialization
             // Verify file magic
             char[] header = instream.ReadChars(k_FurballHeader.Length);
             if (!header.SequenceEqual(k_FurballHeader))
-                throw new FurballInvalidHeaderException("Invalid asset package header");
+                throw new FurballInvalidHeaderException("Invalid module header");
 
             // Verify file version
             fileVersion = instream.ReadByte();
-            if (fileVersion != k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible asset package file version (got version {fileVersion}, expected version {k_LatestVersion})");
+            if (fileVersion < k_LatestVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {fileVersion} (expected version {k_LatestVersion}). The module is from an older version of the game; please ask the module author to update it.");
+            if (fileVersion > k_LatestVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {fileVersion} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
 
             return new FurballMetadata
             {

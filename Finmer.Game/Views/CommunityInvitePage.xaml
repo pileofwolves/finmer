@@ -84,7 +84,7 @@
                 <TextBlock
                     Style="{StaticResource TextBlockDefault}"
                     TextWrapping="Wrap">
-                    I'm very glad that you are enjoying this game so far.
+                    I hope that you are enjoying this game so far.
                     <LineBreak />
                     <LineBreak />
                     Finmer is a passion project that started way back in 2015. It grew and changed forms several times, until in 2019 I first released a demo of a story set in a quiet little trading post. The reception has been incredible, and I am thankful for everyone's enthusiasm.

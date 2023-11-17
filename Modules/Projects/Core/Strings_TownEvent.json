@@ -70,6 +70,18 @@
 			]
 		},
 		{
+			"Key": "INN_FOXTAUR_DECLINE",
+			"Text": [
+				"The mighty creature shrugs casually as you turn and walk away. \"Alright, suit yourself. I'll be around if you change your mind,\" he says, though you catch a vague hint of disappointment on that smooth voice."
+			]
+		},
+		{
+			"Key": "INN_FOXTAUR_DECLINE_RETURN",
+			"Text": [
+				"A curious, mischievous glint shines in the foxtaur's eyes when you approach him once more. \"Ah, changed your mind then, did ya, {player.species}? Well, feel free to join me upstairs then, so we can talk in private.\""
+			]
+		},
+		{
 			"Key": "INN_FOXTAUR_HELLO",
 			"Text": [
 				"The foxtaur grins as you introduce yourself. He simply answers in a gruff and reserved voice, \"And what does a {player.species} like yourself want?\" The {partner}, whom you assume to be the taur's girlfriend, finally tears her gaze away from the big guy's lustrous amber fur, and inquisitively investigates you instead."

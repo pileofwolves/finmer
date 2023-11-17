@@ -38,7 +38,7 @@
 			"Key": "GRAPPLE_ESCAPE_HIT",
 			"Text": [
 				"{attacker} {attacker push} {attacker.possessive} opponent away from {attacker.object}.",
-				"{attacker} {attacker squirm} out of {defender}'s hold."
+				"{attacker} {attacker squirm} out of {defender.aliaspossessive} hold."
 			]
 		},
 		{

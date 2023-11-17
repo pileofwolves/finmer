@@ -661,10 +661,6 @@
 										"Tooltip": "Talk to the big fuzzy-looking taur in the corner.",
 										"Highlight": false,
 										"ButtonWidth": 1.0,
-										"ScriptAction": {
-											"!Type": "ScriptDataInline",
-											"Script": "Text.SetContext(\"partner\", foxtaur_partner)\r\nLog(\"INN_FOXTAUR_APPROACH\")"
-										},
 										"ScriptAppear": {
 											"!Type": "ScriptDataInline",
 											"Script": "return Storage.GetFlag(\"MQ03_DONE\") and not Storage.GetFlag(\"town_inn_foxtaur_arrested\")"
@@ -672,10 +668,32 @@
 										"Children": [
 											{
 												"NodeType": "State",
-												"Key": "FoxtaurTalkRoot",
+												"Key": "Foxtaur_R_DeclineReturn",
 												"ScriptAction": {
 													"!Type": "ScriptDataInline",
-													"Script": "PreySense(Creature(\"CR_Town_Foxtaur\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
+													"Script": "Log(\"INN_FOXTAUR_DECLINE_RETURN\")"
+												},
+												"ScriptAppear": {
+													"!Type": "ScriptDataInline",
+													"Script": "return Storage.GetFlag(\"INN_FOXTAUR_DECLINE\")"
+												},
+												"Children": [
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Foxtaur_C_GoUpstairs"
+													},
+													{
+														"NodeType": "Link",
+														"LinkTarget": "Foxtaur_C_GoDecline"
+													}
+												]
+											},
+											{
+												"NodeType": "State",
+												"Key": "Foxtaur_R_Approach",
+												"ScriptAction": {
+													"!Type": "ScriptDataInline",
+													"Script": "Text.SetContext(\"partner\", foxtaur_partner)\r\nLog(\"INN_FOXTAUR_APPROACH\")\r\nPreySense(Creature(\"CR_Town_Foxtaur\"), EPreySenseType.OralVore, EPreySenseType.DigestionFatal)"
 												},
 												"Children": [
 													{
@@ -792,12 +810,31 @@
 																														"NodeType": "Choice",
 																														"Key": "Foxtaur_C_GoUpstairs",
 																														"Title": "Join him",
+																														"Tooltip": "A chat in private it is, then.",
 																														"Highlight": false,
 																														"ButtonWidth": 1.0,
 																														"Children": [
 																															{
 																																"NodeType": "Link",
 																																"LinkTarget": "Foxtaur_Private"
+																															}
+																														]
+																													},
+																													{
+																														"NodeType": "Choice",
+																														"Key": "Foxtaur_C_GoDecline",
+																														"Title": "Decline",
+																														"Tooltip": "Maybe not.",
+																														"Highlight": false,
+																														"ButtonWidth": 1.0,
+																														"ScriptAction": {
+																															"!Type": "ScriptDataInline",
+																															"Script": "Log(\"INN_FOXTAUR_DECLINE\")\r\nStorage.SetFlag(\"INN_FOXTAUR_DECLINE\", true)"
+																														},
+																														"Children": [
+																															{
+																																"NodeType": "Link",
+																																"LinkTarget": "Main"
 																															}
 																														]
 																													}

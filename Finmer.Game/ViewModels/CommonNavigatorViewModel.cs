@@ -25,9 +25,14 @@ namespace Finmer.ViewModels
     {
 
         /// <summary>
-        /// Command for opening a FA link in an external browser.
+        /// Command for opening the main website in an external browser.
         /// </summary>
         public ICommand VisitWebsiteCommand => m_CommandVisitWebsite ?? (m_CommandVisitWebsite = new RelayCommand(OnClickWebsite));
+
+        /// <summary>
+        /// Command for opening the main website in an external browser.
+        /// </summary>
+        public ICommand VisitWebsiteInviteCommand => m_CommandVisitWebsiteInvite ?? (m_CommandVisitWebsiteInvite = new RelayCommand(OnClickWebsiteInvite));
 
         /// <summary>
         /// Command for opening the GitHub repository in an external browser.
@@ -55,6 +60,7 @@ namespace Finmer.ViewModels
         public ICommand ExitCommand => m_CommandExit ?? (m_CommandExit = new RelayCommand(OnExit));
 
         private ICommand m_CommandVisitWebsite;
+        private ICommand m_CommandVisitWebsiteInvite;
         private ICommand m_CommandVisitGitHub;
         private ICommand m_CommandDonate;
         private ICommand m_CommandEmail;
@@ -63,7 +69,12 @@ namespace Finmer.ViewModels
 
         private static void OnClickWebsite(object args)
         {
-            Process.Start(@"https://finmer.dev");
+            Process.Start(@"https://finmer.dev/?utm_source=game&utm_medium=menu&utm_campaign=general");
+        }
+
+        private static void OnClickWebsiteInvite(object args)
+        {
+            Process.Start(@"https://finmer.dev/?utm_source=game&utm_medium=invite&utm_campaign=general");
         }
 
         private static void OnClickGH(object args)

@@ -799,7 +799,7 @@ namespace Finmer.Editor
         {
             try
             {
-                Process.Start(@"https://docs.finmer.dev");
+                Process.Start(@"https://docs.finmer.dev/?utm_source=editor&utm_medium=about_dialog&utm_campaign=general");
             }
             catch (Exception)
             {

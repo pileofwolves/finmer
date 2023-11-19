@@ -32,11 +32,11 @@ If you save two projects in the same folder, the Editor cannot tell which files 
 
 ## Linking with the base game
 
-We'll need to link the Core module. Finmer doesn't yet know that we intend to make use of the base game, so we need to tell it that. This lets us import and use all its stuff in our mod.
+We'll need to link the Core module. Finmer doesn't yet know that we intend to add stuff on top of the base game, so we need to tell it that.
 
 ![Module Settings button](/images/Tutorial01ModSettingsButton.png)
 
-Click the 🏷️ `Module Settings` button on the Toolbar. Here, we need to add Core as a dependency so that we can build upon the content provided by the base game. Under the Dependencies menu, click on the `Add` button and locate `Core.furball` on your computer. It's  Add it, save your module and then reload the editor (such as by reopening your project).
+Click the 🏷️ `Module Settings` button on the Toolbar. Here, we need to add Core as a dependency so that we can build upon the content provided by the base game. Under the Dependencies menu, click on the `Add` button and locate `Core.furball` on your computer. It's in the Modules folder of your game download. Add it, save your module and then reload the editor (such as by reopening your project).
 
 Adding a module as a dependency means telling Finmer that your module requires these others also. All content of your dependencies - like scenes and items - will then become available anywhere you can choose such assets in your module.
 

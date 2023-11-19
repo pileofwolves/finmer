@@ -1,15 +1,16 @@
 ---
 slug: /
 sidebar_position: 1
+title: Welcome!
 ---
 
-# Welcome
+![Title banner](/images/TitleBanner.png)
 
 Hi, and welcome to this guide. You're about to make some content for Finmer, and that's awesome!
 
 ## What am I looking at?
 
-Finmer is a **furry text adventure game** built with adult vore content and mod support in mind. If that doesn't sound like it's quite your cup of tea, or if you don't know what some of those labels mean, you should probably close this tab.
+Finmer is a **furry text adventure game** built with adult vore content and mod support in mind.
 
 I have spent a sizable portion of my free time over the last several years building this game for your enjoyment, and I am humbled and honored by the fact that you're interested in adding some content of your own. I hope that this document provides all the information needed to get your paws dirty.
 
@@ -23,6 +24,6 @@ Start with the ['Getting Started' help pages (click here!)](/getting-started/abo
 
 In these pages, we will discuss each element of the Editor and the game. There's also [a step-by-step guide to creating an example module here](/getting-started/about-modules).
 
-Content in Finmer is powered by the Lua scripting language. **You do not need to know Lua to create content for Finmer.** There is a **visual-scripting feature**, allowing you to put together scripts using small building blocks. If, however, you'd like to use the engine to its fullest potential, some scripting knowledge will be useful.
+Content in Finmer is powered by the Lua scripting language. **You do not need to know Lua to create content for Finmer!** There is a **visual-scripting feature**, allowing you to put together scripts using small building blocks. If, however, you'd like to use the engine to its fullest potential, some scripting knowledge will be useful.
 
 Feel free to look at the small example projects bundled with this editor, or the Core module (which contains my own stuff), to see how some things are set up! 

@@ -4,7 +4,7 @@ sidebar_position: 10
 
 # Setup Guide
 
-The Editor is optionally included with copies of Finmer. If you don't have a copy yet, you can download it from [GitHub Releases](https://github.com/pileofwolves/finmer/releases), or if you prefer, compile and run your own copy from source.
+The Editor is optionally included with copies of Finmer. If you don't have a copy yet, you can download it from the [official website](https://get.finmer.dev/) or [GitHub Releases](https://github.com/pileofwolves/finmer/releases), or if you prefer, compile and run your own copy from source.
 
 ## System Requirements
 
@@ -12,7 +12,7 @@ The following prerequisites must be installed on your computer. If you're using 
 
 - Windows 7 or later, 32-bits or 64-bits.
 - Microsoft .NET Framework 4.8 ([download here](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer))
-- Visual C++ 2019 Redistributable ([download here](https://aka.ms/vs/17/release/vc_redist.x64.exe))
+- Visual C++ 2022 Redistributable ([download here](https://aka.ms/vs/17/release/vc_redist.x64.exe))
 
 To run the Editor, simply launch the `Finmer.Editor.exe` program.
 

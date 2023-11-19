@@ -13,7 +13,7 @@ Finmer is a **furry text adventure game** built with adult vore content and mod 
 
 I have spent a sizable portion of my free time over the last several years building this game for your enjoyment, and I am humbled and honored by the fact that you're interested in adding some content of your own. I hope that this document provides all the information needed to get your paws dirty.
 
-If you ever have any questions, concerns, suggestions or bug reports, you can contact me as ~nuntis on FurAffinity, or create an [Issue on GitHub](https://github.com/pileofwolves/finmer/issues), or via email at [nuntiswolf@gmail.com](mailto:nuntiswolf@gmail.com). I won't bite (but might swallow)!
+If you ever have any questions, concerns, suggestions or bug reports, you can contact me as ~nuntis on FurAffinity, or create an [Issue on GitHub](https://github.com/pileofwolves/finmer/issues), or via email at [nuntis@finmer.dev](mailto:nuntis@finmer.dev). I won't bite (but might swallow)!
 
 ## How to use this document
 

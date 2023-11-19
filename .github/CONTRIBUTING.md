@@ -4,7 +4,7 @@ Hey! Thanks a lot for your interest in helping improve Finmer! :heart:
 
 I hope this document helps you get started with the project. Issue reports are welcome! If you find anything missing here, or if you have any trouble with the game - both in terms of technical issues or content problems - or if you have any questions about navigating the project or using the editor, please get in touch!
 
-I can be reached by creating an issue here on GitHub, or via e-mail (nuntiswolf@gmail.com), or via [@nuntis on FurAffinity](https://www.furaffinity.net/user/nuntis/).
+I can be reached by creating an issue here on GitHub, or via e-mail (nuntis@finmer.dev), or via [@nuntis on FurAffinity](https://www.furaffinity.net/user/nuntis/).
 
 ## :bulb: Getting started
 

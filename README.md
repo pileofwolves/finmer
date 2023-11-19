@@ -62,7 +62,7 @@ The project structure is as follows:
 
 Issue reports and code pull requests are welcome! Please check [the contribution guidelines](.github/CONTRIBUTING.md) for more info and tips on getting started.
 
-PLEASE NOTE: This repository is *not* the right place to make suggestions or requests for entirely new content. Pull requests that add entirely new content (other than fixes or tweaks, of course) are not accepted at this time. If you wish to make such suggestions, please get in touch by creating an issue here, or on FurAffinity or email (nuntiswolf@gmail.com) to discuss.
+PLEASE NOTE: This repository is *not* the right place to make suggestions or requests for entirely new content. Pull requests that add entirely new content (other than fixes or tweaks, of course) are not accepted at this time. If you wish to make such suggestions, please get in touch by creating an issue here, or on FurAffinity or email (nuntis@finmer.dev) to discuss.
 
 ## MAKING CONTENT / USING THE EDITOR
 

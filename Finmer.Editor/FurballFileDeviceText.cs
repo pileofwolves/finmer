@@ -49,7 +49,8 @@ namespace Finmer.Editor
                         {
                             ID = header_reader.ReadGuidProperty("ID"),
                             Title = header_reader.ReadStringProperty("Title"),
-                            Author = header_reader.ReadStringProperty("Author")
+                            Author = header_reader.ReadStringProperty("Author"),
+                            FormatVersion = project_version
                         }
                     };
 
@@ -103,7 +104,8 @@ namespace Finmer.Editor
                     {
                         ID = header_reader.ReadGuidProperty("ID"),
                         Title = header_reader.ReadStringProperty("Title"),
-                        Author = header_reader.ReadStringProperty("Author")
+                        Author = header_reader.ReadStringProperty("Author"),
+                        FormatVersion = header_reader.ReadInt32Property("FormatVersion")
                     };
                 }
             }

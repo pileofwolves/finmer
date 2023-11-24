@@ -33,7 +33,7 @@ namespace Finmer.Core.Serialization
                     // Read basic configuration
                     var output = new Furball
                     {
-                        Metadata = ReadHeaderFromStream(instream, out int file_version)
+                        Metadata = ReadHeaderFromStream(instream)
                     };
 
                     // Read dependencies list
@@ -49,7 +49,7 @@ namespace Finmer.Core.Serialization
                     // Read asset blobs
                     for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
                     {
-                        var asset = ReadAssetFromStream(instream, file_version);
+                        var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
                         asset.SourceModuleName = file.Name;
                         output.Assets.Add(asset);
                     }
@@ -70,7 +70,7 @@ namespace Finmer.Core.Serialization
                 using (var file_stream = new FileStream(file.FullName, FileMode.Open))
                 using (var instream = new BinaryReader(file_stream, Encoding.UTF8, true))
                 {
-                    return ReadHeaderFromStream(instream, out int _);
+                    return ReadHeaderFromStream(instream);
                 }
             }
             catch (IOException ex)
@@ -116,7 +116,7 @@ namespace Finmer.Core.Serialization
             }
         }
 
-        private FurballMetadata ReadHeaderFromStream(BinaryReader instream, out int fileVersion)
+        private FurballMetadata ReadHeaderFromStream(BinaryReader instream)
         {
             // Verify file magic
             char[] header = instream.ReadChars(k_FurballHeader.Length);
@@ -124,17 +124,18 @@ namespace Finmer.Core.Serialization
                 throw new FurballInvalidHeaderException("Invalid module header");
 
             // Verify file version
-            fileVersion = instream.ReadByte();
-            if (fileVersion < k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {fileVersion} (expected version {k_LatestVersion}). The module is from an older version of the game; please ask the module author to update it.");
-            if (fileVersion > k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {fileVersion} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
+            byte version = instream.ReadByte();
+            if (version < k_LatestVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from an older version of the game; please ask the module author to update it.");
+            if (version > k_LatestVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
 
             return new FurballMetadata
             {
                 ID = new Guid(instream.ReadBytes(16)),
                 Title = instream.ReadString(),
                 Author = instream.ReadString(),
+                FormatVersion = version
             };
         }
 

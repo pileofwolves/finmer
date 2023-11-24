@@ -179,6 +179,12 @@
     <Compile Include="FormPreferences.Designer.cs">
       <DependentUpon>FormPreferences.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormProjectUpgrade.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProjectUpgrade.Designer.cs">
+      <DependentUpon>FormProjectUpgrade.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatBegin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -591,6 +597,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormPreferences.resx">
       <DependentUpon>FormPreferences.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProjectUpgrade.resx">
+      <DependentUpon>FormProjectUpgrade.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormStringMappingEdit.resx">
       <DependentUpon>FormStringMappingEdit.cs</DependentUpon>

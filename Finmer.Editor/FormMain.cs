@@ -372,6 +372,20 @@ namespace Finmer.Editor
                         return;
                     }
 
+                    // Show upgrade warning, if this version is older but upgradable
+                    if (Program.ActiveFurball.Metadata.FormatVersion != FurballFileDevice.k_LatestVersion)
+                    {
+                        using (var upgrade_prompt = new FormProjectUpgrade())
+                        {
+                            if (upgrade_prompt.ShowDialog(this) != DialogResult.OK)
+                            {
+                                // User declined to upgrade; abort the project load and reset main window
+                                rbtProjNew_Click(null, EventArgs.Empty);
+                                return;
+                            }
+                        }
+                    }
+
                     loading_window.SetLabel("Loading dependencies...");
 
                     // Figure out the folder where the module file is located
@@ -553,7 +567,8 @@ namespace Finmer.Editor
                 {
                     ID = Guid.NewGuid(),
                     Title = "Untitled",
-                    Author = "A Snack"
+                    Author = "A Snack",
+                    FormatVersion = FurballFileDevice.k_LatestVersion
                 }
             };
             Program.ActiveDependencies = new Furball();

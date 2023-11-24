@@ -32,6 +32,11 @@ namespace Finmer.Core
         /// </summary>
         public string Author { get; set; }
 
+        /// <summary>
+        /// Gets or sets the furball file format version that the file was last saved in.
+        /// </summary>
+        public int FormatVersion { get; set; }
+
     }
 
 }

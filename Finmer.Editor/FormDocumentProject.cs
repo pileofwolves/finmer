@@ -40,7 +40,8 @@ namespace Finmer.Editor
             {
                 ID = m_Furball.Metadata.ID,
                 Title = txtTitle.Text,
-                Author = txtAuthor.Text
+                Author = txtAuthor.Text,
+                FormatVersion = m_Furball.Metadata.FormatVersion
             };
         }
 
@@ -137,7 +138,8 @@ namespace Finmer.Editor
             {
                 ID = Guid.NewGuid(),
                 Title = txtTitle.Text,
-                Author = txtAuthor.Text
+                Author = txtAuthor.Text,
+                FormatVersion = m_Furball.Metadata.FormatVersion
             };
 
             // Update UI

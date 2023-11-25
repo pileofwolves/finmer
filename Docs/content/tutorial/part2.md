@@ -83,10 +83,10 @@ Let's create some choices to ask these questions. Create three choice nodes off 
 	Appears When:
 		Visual Script:
 		(If ALL of the following is TRUE:)
-		Flag 'TQ01_DISCUSSED_FRIEND' Equals False
+		Flag 'TQ01_DISCUSSED_LOCATION' Equals False
 		
 		Lua:
-		return not Storage.GetFlag("TQ01_DISCUSSED_FRIEND")
+		return not Storage.GetFlag("TQ01_DISCUSSED_LOCATION")
 
 &nbsp;
 

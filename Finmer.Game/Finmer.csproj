@@ -92,6 +92,7 @@
     <Compile Include="Gameplay\GameSession.cs" />
     <Compile Include="Gameplay\GameSnapshot.cs" />
     <Compile Include="Gameplay\Gender.cs" />
+    <Compile Include="Gameplay\InitExceptions.cs" />
     <Compile Include="Gameplay\ISaveable.cs" />
     <Compile Include="Gameplay\ItemUtilities.cs" />
     <Compile Include="Gameplay\Journal.cs" />

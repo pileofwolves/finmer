@@ -75,16 +75,32 @@ namespace Finmer.Gameplay.Scripting
         /// <summary>
         /// Load the platform-appropriate Lua library. Note that we never unload the library, because there is no need to.
         /// </summary>
+        /// <exception cref="ScriptRuntimeLoadException">Throws if library load fails.</exception>
         public static void LoadNativeLibrary()
         {
             if (s_NativeLibraryHandle != IntPtr.Zero)
                 return;
 
-            // Load either the 32-bit or 64-bit Lua runtime module, depending on the OS
-            string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            s_NativeLibraryHandle = NativeMethods.LoadLibrary(Environment.Is64BitProcess
-                ? Path.Combine(basePath, "x64", "Lua51.dll")
-                : Path.Combine(basePath, "x86", "Lua51.dll"));
+            // Look for either the 32-bit or 64-bit Lua runtime module, depending on the OS
+            string base_path = AppDomain.CurrentDomain.BaseDirectory;
+            string full_path = Environment.Is64BitProcess
+                ? Path.Combine(base_path, "x64", "Lua51.dll")
+                : Path.Combine(base_path, "x86", "Lua51.dll");
+
+            // Verify the file exists on disk, so we can provide a sensible error message if not
+            if (!File.Exists(full_path))
+                throw new ScriptRuntimeLoadException($"Missing Lua script runtime (searching here: {full_path})\r\n\r\nPlease make sure all files from the zip file are extracted. If that doesn't help, please reach out to nuntis@finmer.dev.");
+
+            // Load the dynamic module
+            s_NativeLibraryHandle = NativeMethods.LoadLibrary(full_path);
+
+            // Raise exception if the library could not be loaded; the game cannot proceed
+            if (s_NativeLibraryHandle == IntPtr.Zero)
+            {
+                // The module load most commonly fails because dependency resolving fails (e.g. ERROR_MOD_NOT_FOUND)
+                int error = Marshal.GetLastWin32Error();
+                throw new ScriptRuntimeLoadException($"Failed to load Lua script runtime (error {error}). Please make sure the Visual C++ 2022 Redistributable is installed. A download link is on the game download page.");
+            }
         }
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
@@ -437,7 +453,7 @@ namespace Finmer.Gameplay.Scripting
         private static class NativeMethods
         {
 
-            [DllImport("kernel32.dll", CharSet = CharSet.Unicode)]
+            [DllImport("kernel32.dll", CharSet = CharSet.Unicode, SetLastError = true)]
             public static extern IntPtr LoadLibrary(string dllToLoad);
 
         }

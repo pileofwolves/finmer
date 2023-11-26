@@ -77,16 +77,25 @@ namespace Finmer
             if (!(e.ExceptionObject is Exception ex))
                 return;
 
-            // Write a crash report
-            Logger.WriteExceptionReport(ex);
+            // Init exceptions have special handling, in that they do not produce a crash report
+            if (ex is ApplicationInitException init_exception)
+            {
+                // Only display a dialog box
+                MessageBox.Show(init_exception.Message, "Finmer", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+            else
+            {
+                // Write a crash report
+                Logger.WriteExceptionReport(ex);
 
-            // Let the user know what's happening
-            MessageBox.Show("Finmer encountered an internal error. A crash report (two files) should have been saved to the game folder. " +
-                "Please e-mail them to nuntis@finmer.dev so it can be investigated and fixed! <3" +
-                Environment.NewLine + Environment.NewLine + "Exception class: " + ex.GetType().Name,
-                "Sorry! I'll do better next time :(",
-                MessageBoxButton.OK,
-                MessageBoxImage.Error);
+                // Let the user know what's happening
+                MessageBox.Show("Finmer encountered an internal error. A crash report (two files) should have been saved to the game folder. " +
+                    "Please e-mail them to nuntis@finmer.dev so it can be investigated and fixed! <3" +
+                    Environment.NewLine + Environment.NewLine + "Exception class: " + ex.GetType().Name,
+                    "Sorry! I'll do better next time :(",
+                    MessageBoxButton.OK,
+                    MessageBoxImage.Error);
+            }
         }
 
     }

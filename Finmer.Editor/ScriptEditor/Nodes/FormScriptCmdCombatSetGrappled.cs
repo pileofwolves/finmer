@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -22,21 +23,21 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCmdCombatSetGrappled_Load(object sender, System.EventArgs e)
+        private void FormScriptCmdCombatSetGrappled_Load(object sender, EventArgs e)
         {
             var node = (CommandCombatSetGrappled)Node;
-            txtInstigator.Text = node.InstigatorName;
-            txtTarget.Text = node.TargetName;
+            instigator.SetParticipantID(node.InstigatorName);
+            target.SetParticipantID(node.TargetName);
             optModeSet.Checked = node.Mode == CommandCombatSetGrappled.EMode.Set;
             optModeUnset.Checked = node.Mode == CommandCombatSetGrappled.EMode.Unset;
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             // Copy settings to node
             var node = (CommandCombatSetGrappled)Node;
-            node.InstigatorName = txtInstigator.Text;
-            node.TargetName = txtTarget.Text;
+            node.InstigatorName = instigator.GetParticipantID();
+            node.TargetName = target.GetParticipantID();
             node.Mode = optModeSet.Checked ? CommandCombatSetGrappled.EMode.Set : CommandCombatSetGrappled.EMode.Unset;
         }
 

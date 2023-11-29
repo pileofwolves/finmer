@@ -82,7 +82,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                     throw new InvalidScriptNodeException("Buff target is NPC, but no participant ID is set");
 
                 // Add the buff directly to a combat participant
-                string participant_variable = CommandCombatBegin.GetParticipantVariableName(ParticipantID);
+                string participant_variable = CombatUtilities.GetParticipantVariableName(ParticipantID);
                 output.AppendLine("assert(_combat ~= nil, \"Apply Buff to NPC command can only be used in combat context\")");
                 output.AppendLine($"assert({participant_variable} ~= nil, \"No NPC participant with name '{ParticipantID}'\")");
                 output.AppendLine($"_combat:ApplyBuff({participant_variable}, {GetLuaBuffCtor()})");

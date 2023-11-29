@@ -6,7 +6,9 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Windows.Forms;
+using Finmer.Core;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -28,19 +30,19 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCmdCombatParticipant_Load(object sender, System.EventArgs e)
+        private void FormScriptCmdCombatParticipant_Load(object sender, EventArgs e)
         {
             txtNpcName.Text = Participant.ID;
             apcNpcAsset.SelectedGuid = Participant.Creature;
             chkIsAlly.Checked = Participant.IsAlly;
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             // Update the participant with UI state
             Participant = new CommandCombatBegin.Participant
             {
-                ID = txtNpcName.Text,
+                ID = txtNpcName.Text.MakeSafeIdentifier(),
                 Creature = apcNpcAsset.SelectedGuid,
                 IsAlly = chkIsAlly.Checked
             };

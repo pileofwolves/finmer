@@ -105,7 +105,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             if (IncludePlayer)
             {
                 // Emit a local variable that creators can use to easily refer to the PC
-                output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Player", GetParticipantVariableName("player"));
+                output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Player", CombatUtilities.GetParticipantVariableName(CombatUtilities.k_PlayerParticipantID));
                 output.AppendLine();
                 output.AppendLine("_combat:AddParticipant(Player)");
             }
@@ -123,7 +123,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                     throw new InvalidScriptNodeException($"Could not find a Creature asset with ID {participant.Creature} (participant \"{participant.ID}\")");
 
                 // Add them as a local variable and participant
-                var variable_name = GetParticipantVariableName(participant.ID);
+                var variable_name = CombatUtilities.GetParticipantVariableName(participant.ID);
                 output.AppendFormat(CultureInfo.InvariantCulture, "local {0} = Creature(\"{1}\")", variable_name, creature.Name);
                 output.AppendLine();
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:AddParticipant({0})", variable_name);
@@ -259,14 +259,6 @@ namespace Finmer.Core.VisualScripting.Nodes
                     Nodes = CallbackCreatureReleased
                 };
             }
-        }
-
-        /// <summary>
-        /// Returns a Lua local variable name identifying a participant, given a unique participant key.
-        /// </summary>
-        internal static string GetParticipantVariableName(string id)
-        {
-            return "_par_" + id.ToLowerInvariant();
         }
 
         private void SerializeOptionalSubgroup(IFurballContentWriter outstream, string name, List<ScriptNode> nodes)

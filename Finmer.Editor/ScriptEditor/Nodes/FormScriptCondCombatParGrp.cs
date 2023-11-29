@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -22,18 +23,26 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCondCombatParGrp_Load(object sender, System.EventArgs e)
+        private void FormScriptCondCombatParGrp_Load(object sender, EventArgs e)
         {
             var node = (ConditionCombatParGrappling)Node;
-            txtNpcName.Text = node.ParticipantName;
-            txtPartnerName.Text = node.TargetName;
+            participant.SetParticipantID(node.ParticipantName);
+            partner.SetParticipantID(node.TargetName);
+
+            chkWithPartner.Checked = !String.IsNullOrEmpty(node.TargetName);
+            partner.Enabled = chkWithPartner.Checked;
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             var node = (ConditionCombatParGrappling)Node;
-            node.ParticipantName = txtNpcName.Text.ToLowerInvariant();
-            node.TargetName = txtPartnerName.Text.ToLowerInvariant();
+            node.ParticipantName = participant.GetParticipantID();
+            node.TargetName = chkWithPartner.Checked ? partner.GetParticipantID() : String.Empty;
+        }
+
+        private void chkWithPartner_CheckedChanged(object sender, EventArgs e)
+        {
+            partner.Enabled = chkWithPartner.Checked;
         }
 
     }

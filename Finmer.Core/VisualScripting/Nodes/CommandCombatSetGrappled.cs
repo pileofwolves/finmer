@@ -36,7 +36,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Participant ID of the grapple initiator involved.
         /// </summary>
-        public string InstigatorName { get; set; } = String.Empty;
+        public string InstigatorName { get; set; } = CombatUtilities.k_PlayerParticipantID;
 
         /// <summary>
         /// Participant ID of the grapple target involved.
@@ -61,9 +61,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             output.Append(Mode == EMode.Set ? "SetGrappling" : "UnsetGrappling");
             output.Append('(');
 
-            output.Append(CommandCombatBegin.GetParticipantVariableName(InstigatorName));
+            output.Append(CombatUtilities.GetParticipantVariableName(InstigatorName));
             output.Append(',');
-            output.Append(CommandCombatBegin.GetParticipantVariableName(TargetName));
+            output.Append(CombatUtilities.GetParticipantVariableName(TargetName));
             output.Append(')');
 
             output.AppendLine();

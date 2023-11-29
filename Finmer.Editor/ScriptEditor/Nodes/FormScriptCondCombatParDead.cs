@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -22,16 +23,16 @@ namespace Finmer.Editor
             InitializeComponent();
         }
 
-        private void FormScriptCondCombatParDead_Load(object sender, System.EventArgs e)
+        private void FormScriptCondCombatParDead_Load(object sender, EventArgs e)
         {
             var node = (ConditionCombatParDead)Node;
-            txtNpcName.Text = node.ParticipantName;
+            participant.SetParticipantID(node.ParticipantName);
         }
 
-        private void cmdAccept_Click(object sender, System.EventArgs e)
+        private void cmdAccept_Click(object sender, EventArgs e)
         {
             var node = (ConditionCombatParDead)Node;
-            node.ParticipantName = txtNpcName.Text.ToLowerInvariant();
+            node.ParticipantName = participant.GetParticipantID();
         }
 
     }

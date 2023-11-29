@@ -30,13 +30,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label label2;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.txtPreyName = new System.Windows.Forms.TextBox();
-            this.txtPredatorName = new System.Windows.Forms.TextBox();
+            this.chkWithPredator = new System.Windows.Forms.CheckBox();
+            this.prey = new Finmer.Editor.CombatParticipantIDEditor();
+            this.predator = new Finmer.Editor.CombatParticipantIDEditor();
             label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -44,25 +43,16 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(115, 13);
+            label1.Size = new System.Drawing.Size(182, 13);
             label1.TabIndex = 0;
-            label1.Text = "Prey Participant Name:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 72);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(182, 13);
-            label2.TabIndex = 2;
-            label2.Text = "(Optional) Predator Participant Name:";
+            label1.Text = "Check if this participant is swallowed:";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(88, 160);
+            this.cmdAccept.Location = new System.Drawing.Point(57, 233);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 4;
@@ -77,7 +67,7 @@
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(216, 159);
+            this.cmdCancel.Location = new System.Drawing.Point(185, 232);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 5;
@@ -86,21 +76,30 @@
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // txtPreyName
+            // chkWithPredator
             // 
-            this.txtPreyName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPreyName.Location = new System.Drawing.Point(16, 32);
-            this.txtPreyName.Name = "txtPreyName";
-            this.txtPreyName.Size = new System.Drawing.Size(320, 22);
-            this.txtPreyName.TabIndex = 1;
+            this.chkWithPredator.AutoSize = true;
+            this.chkWithPredator.Location = new System.Drawing.Point(16, 112);
+            this.chkWithPredator.Name = "chkWithPredator";
+            this.chkWithPredator.Size = new System.Drawing.Size(141, 17);
+            this.chkWithPredator.TabIndex = 2;
+            this.chkWithPredator.Text = "By this specific predator:";
+            this.chkWithPredator.UseVisualStyleBackColor = true;
+            this.chkWithPredator.CheckedChanged += new System.EventHandler(this.chkWithPredator_CheckedChanged);
             // 
-            // txtPredatorName
+            // prey
             // 
-            this.txtPredatorName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPredatorName.Location = new System.Drawing.Point(16, 88);
-            this.txtPredatorName.Name = "txtPredatorName";
-            this.txtPredatorName.Size = new System.Drawing.Size(320, 22);
-            this.txtPredatorName.TabIndex = 3;
+            this.prey.Location = new System.Drawing.Point(16, 40);
+            this.prey.Name = "prey";
+            this.prey.Size = new System.Drawing.Size(291, 56);
+            this.prey.TabIndex = 1;
+            // 
+            // predator
+            // 
+            this.predator.Location = new System.Drawing.Point(16, 136);
+            this.predator.Name = "predator";
+            this.predator.Size = new System.Drawing.Size(291, 56);
+            this.predator.TabIndex = 3;
             // 
             // FormScriptCondCombatParSwl
             // 
@@ -108,10 +107,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(352, 208);
-            this.Controls.Add(this.txtPredatorName);
-            this.Controls.Add(label2);
-            this.Controls.Add(this.txtPreyName);
+            this.ClientSize = new System.Drawing.Size(321, 281);
+            this.Controls.Add(this.chkWithPredator);
+            this.Controls.Add(this.prey);
+            this.Controls.Add(this.predator);
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
@@ -132,8 +131,9 @@
         #endregion
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.TextBox txtPreyName;
-        private System.Windows.Forms.TextBox txtPredatorName;
+        private System.Windows.Forms.CheckBox chkWithPredator;
+        private CombatParticipantIDEditor prey;
+        private CombatParticipantIDEditor predator;
     }
 
 }

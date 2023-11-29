@@ -23,7 +23,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// The name of the participant to inspect.
         /// </summary>
-        public string ParticipantName { get; set; } = String.Empty;
+        public string ParticipantName { get; set; } = CombatUtilities.k_PlayerParticipantID;
 
         /// <summary>
         /// The name of the grapple partner. Optional, may be empty string.
@@ -33,8 +33,8 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override string GetEditorDescription(IContentStore content)
         {
             return String.IsNullOrWhiteSpace(TargetName)
-                ? $"Participant '{ParticipantName}' Is Grappling"
-                : $"Participant '{ParticipantName}' Is Grappling With '{TargetName}'";
+                ? $"Participant {CombatUtilities.GetEditorParticipantDescription(ParticipantName)} Is Grappling"
+                : $"Participant {CombatUtilities.GetEditorParticipantDescription(ParticipantName)} Is Grappling With {CombatUtilities.GetEditorParticipantDescription(TargetName)}";
         }
 
         public override EColor GetEditorColor()
@@ -47,17 +47,17 @@ namespace Finmer.Core.VisualScripting.Nodes
             // Emit condition
             if (String.IsNullOrWhiteSpace(TargetName))
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:IsGrappling({0})",
-                    CommandCombatBegin.GetParticipantVariableName(ParticipantName));
+                    CombatUtilities.GetParticipantVariableName(ParticipantName));
             else
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:GetGrapplingWith({0}) == {1}",
-                    CommandCombatBegin.GetParticipantVariableName(ParticipantName),
-                    CommandCombatBegin.GetParticipantVariableName(TargetName));
+                    CombatUtilities.GetParticipantVariableName(ParticipantName),
+                    CombatUtilities.GetParticipantVariableName(TargetName));
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteStringProperty(nameof(ParticipantName), ParticipantName.ToLowerInvariant());
-            outstream.WriteStringProperty(nameof(TargetName), TargetName.ToLowerInvariant());
+            outstream.WriteStringProperty(nameof(ParticipantName), ParticipantName);
+            outstream.WriteStringProperty(nameof(TargetName), TargetName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)

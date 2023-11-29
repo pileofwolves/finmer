@@ -95,6 +95,7 @@
     <Compile Include="Serialization\FurballFileDeviceBinary.cs" />
     <Compile Include="StringMapping.cs" />
     <Compile Include="StringTable.cs" />
+    <Compile Include="VisualScripting\CombatUtilities.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatApplyBuff.cs" />

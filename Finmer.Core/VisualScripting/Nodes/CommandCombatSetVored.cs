@@ -36,7 +36,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Participant ID of the predator involved.
         /// </summary>
-        public string PredatorName { get; set; } = String.Empty;
+        public string PredatorName { get; set; } = CombatUtilities.k_PlayerParticipantID;
 
         /// <summary>
         /// Participant ID of the prey involved.
@@ -61,9 +61,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             output.Append(Mode == EMode.Set ? "SetVored" : "UnsetVored");
             output.Append('(');
 
-            output.Append(CommandCombatBegin.GetParticipantVariableName(PredatorName));
+            output.Append(CombatUtilities.GetParticipantVariableName(PredatorName));
             output.Append(',');
-            output.Append(CommandCombatBegin.GetParticipantVariableName(PreyName));
+            output.Append(CombatUtilities.GetParticipantVariableName(PreyName));
             output.Append(')');
 
             output.AppendLine();

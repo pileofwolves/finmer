@@ -32,7 +32,7 @@
             System.Windows.Forms.Label label1;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.txtNpcName = new System.Windows.Forms.TextBox();
+            this.participant = new Finmer.Editor.CombatParticipantIDEditor();
             label1 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
@@ -41,9 +41,9 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(91, 13);
+            label1.Size = new System.Drawing.Size(173, 13);
             label1.TabIndex = 0;
-            label1.Text = "Participant Name:";
+            label1.Text = "Check if this participant has no HP:";
             // 
             // cmdAccept
             // 
@@ -74,13 +74,12 @@
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // txtNpcName
+            // participant
             // 
-            this.txtNpcName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNpcName.Location = new System.Drawing.Point(16, 32);
-            this.txtNpcName.Name = "txtNpcName";
-            this.txtNpcName.Size = new System.Drawing.Size(320, 22);
-            this.txtNpcName.TabIndex = 1;
+            this.participant.Location = new System.Drawing.Point(16, 40);
+            this.participant.Name = "participant";
+            this.participant.Size = new System.Drawing.Size(320, 56);
+            this.participant.TabIndex = 1;
             // 
             // FormScriptCondCombatParDead
             // 
@@ -89,7 +88,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(352, 183);
-            this.Controls.Add(this.txtNpcName);
+            this.Controls.Add(this.participant);
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
@@ -110,7 +109,7 @@
         #endregion
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.TextBox txtNpcName;
+        private CombatParticipantIDEditor participant;
     }
 
 }

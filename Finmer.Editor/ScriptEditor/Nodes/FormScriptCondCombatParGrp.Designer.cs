@@ -30,13 +30,12 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Label label1;
-            System.Windows.Forms.Label label2;
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
-            this.txtNpcName = new System.Windows.Forms.TextBox();
-            this.txtPartnerName = new System.Windows.Forms.TextBox();
+            this.participant = new Finmer.Editor.CombatParticipantIDEditor();
+            this.partner = new Finmer.Editor.CombatParticipantIDEditor();
+            this.chkWithPartner = new System.Windows.Forms.CheckBox();
             label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -44,25 +43,16 @@
             label1.AutoSize = true;
             label1.Location = new System.Drawing.Point(16, 16);
             label1.Name = "label1";
-            label1.Size = new System.Drawing.Size(91, 13);
+            label1.Size = new System.Drawing.Size(176, 13);
             label1.TabIndex = 0;
-            label1.Text = "Participant Name:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(16, 72);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(163, 13);
-            label2.TabIndex = 2;
-            label2.Text = "(Optional) Grapple Partner Name:";
+            label1.Text = "Check if this participant is grappling:";
             // 
             // cmdAccept
             // 
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(88, 160);
+            this.cmdAccept.Location = new System.Drawing.Point(57, 233);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 4;
@@ -77,7 +67,7 @@
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(216, 159);
+            this.cmdCancel.Location = new System.Drawing.Point(185, 232);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 5;
@@ -86,21 +76,30 @@
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             // 
-            // txtNpcName
+            // participant
             // 
-            this.txtNpcName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtNpcName.Location = new System.Drawing.Point(16, 32);
-            this.txtNpcName.Name = "txtNpcName";
-            this.txtNpcName.Size = new System.Drawing.Size(320, 22);
-            this.txtNpcName.TabIndex = 1;
+            this.participant.Location = new System.Drawing.Point(16, 40);
+            this.participant.Name = "participant";
+            this.participant.Size = new System.Drawing.Size(291, 56);
+            this.participant.TabIndex = 1;
             // 
-            // txtPartnerName
+            // partner
             // 
-            this.txtPartnerName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPartnerName.Location = new System.Drawing.Point(16, 88);
-            this.txtPartnerName.Name = "txtPartnerName";
-            this.txtPartnerName.Size = new System.Drawing.Size(320, 22);
-            this.txtPartnerName.TabIndex = 3;
+            this.partner.Location = new System.Drawing.Point(16, 136);
+            this.partner.Name = "partner";
+            this.partner.Size = new System.Drawing.Size(291, 73);
+            this.partner.TabIndex = 3;
+            // 
+            // chkWithPartner
+            // 
+            this.chkWithPartner.AutoSize = true;
+            this.chkWithPartner.Location = new System.Drawing.Point(16, 112);
+            this.chkWithPartner.Name = "chkWithPartner";
+            this.chkWithPartner.Size = new System.Drawing.Size(126, 17);
+            this.chkWithPartner.TabIndex = 2;
+            this.chkWithPartner.Text = "With specific partner:";
+            this.chkWithPartner.UseVisualStyleBackColor = true;
+            this.chkWithPartner.CheckedChanged += new System.EventHandler(this.chkWithPartner_CheckedChanged);
             // 
             // FormScriptCondCombatParGrp
             // 
@@ -108,10 +107,10 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(352, 208);
-            this.Controls.Add(this.txtPartnerName);
-            this.Controls.Add(label2);
-            this.Controls.Add(this.txtNpcName);
+            this.ClientSize = new System.Drawing.Size(321, 281);
+            this.Controls.Add(this.chkWithPartner);
+            this.Controls.Add(this.partner);
+            this.Controls.Add(this.participant);
             this.Controls.Add(label1);
             this.Controls.Add(this.cmdCancel);
             this.Controls.Add(this.cmdAccept);
@@ -132,8 +131,9 @@
         #endregion
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
-        private System.Windows.Forms.TextBox txtNpcName;
-        private System.Windows.Forms.TextBox txtPartnerName;
+        private CombatParticipantIDEditor participant;
+        private CombatParticipantIDEditor partner;
+        private System.Windows.Forms.CheckBox chkWithPartner;
     }
 
 }

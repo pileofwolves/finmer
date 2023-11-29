@@ -23,7 +23,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// The name of the participant to inspect.
         /// </summary>
-        public string ParticipantName { get; set; } = String.Empty;
+        public string ParticipantName { get; set; } = CombatUtilities.k_PlayerParticipantID;
 
         /// <summary>
         /// The name of the predator. Optional, may be empty string.
@@ -33,8 +33,8 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override string GetEditorDescription(IContentStore content)
         {
             return String.IsNullOrWhiteSpace(PredatorName)
-                ? $"Participant '{ParticipantName}' Is Swallowed"
-                : $"Participant '{ParticipantName}' Is Swallowed By '{PredatorName}'";
+                ? $"Participant {CombatUtilities.GetEditorParticipantDescription(ParticipantName)} Is Swallowed"
+                : $"Participant {CombatUtilities.GetEditorParticipantDescription(ParticipantName)} Is Swallowed By {CombatUtilities.GetEditorParticipantDescription(PredatorName)}";
         }
 
         public override EColor GetEditorColor()
@@ -47,17 +47,17 @@ namespace Finmer.Core.VisualScripting.Nodes
             // Emit condition
             if (String.IsNullOrWhiteSpace(PredatorName))
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:IsSwallowed({0})",
-                    CommandCombatBegin.GetParticipantVariableName(ParticipantName));
+                    CombatUtilities.GetParticipantVariableName(ParticipantName));
             else
                 output.AppendFormat(CultureInfo.InvariantCulture, "_combat:GetPredator({0}) == {1}",
-                    CommandCombatBegin.GetParticipantVariableName(ParticipantName),
-                    CommandCombatBegin.GetParticipantVariableName(PredatorName));
+                    CombatUtilities.GetParticipantVariableName(ParticipantName),
+                    CombatUtilities.GetParticipantVariableName(PredatorName));
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteStringProperty(nameof(ParticipantName), ParticipantName.ToLowerInvariant());
-            outstream.WriteStringProperty(nameof(PredatorName), PredatorName.ToLowerInvariant());
+            outstream.WriteStringProperty(nameof(ParticipantName), ParticipantName);
+            outstream.WriteStringProperty(nameof(PredatorName), PredatorName);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)

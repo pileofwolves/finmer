@@ -33,9 +33,9 @@
             System.Windows.Forms.ColumnHeader columnHeader2;
             System.Windows.Forms.GroupBox grpParticipants;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormScriptCmdCombatBegin));
+            System.Windows.Forms.ColumnHeader columnHeader3;
             System.Windows.Forms.Label label1;
             System.Windows.Forms.GroupBox grpCallbacks;
-            System.Windows.Forms.ColumnHeader columnHeader3;
             this.cmdNpcEdit = new System.Windows.Forms.Button();
             this.cmdNpcRemove = new System.Windows.Forms.Button();
             this.cmdNpcAdd = new System.Windows.Forms.Button();
@@ -50,12 +50,13 @@
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.eventLog1 = new System.Diagnostics.EventLog();
+            this.chkCallbackRS = new System.Windows.Forms.CheckBox();
             columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             grpParticipants = new System.Windows.Forms.GroupBox();
+            columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             label1 = new System.Windows.Forms.Label();
             grpCallbacks = new System.Windows.Forms.GroupBox();
-            columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             grpParticipants.SuspendLayout();
             grpCallbacks.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.eventLog1)).BeginInit();
@@ -63,7 +64,7 @@
             // 
             // columnHeader1
             // 
-            columnHeader1.Text = "Name";
+            columnHeader1.Text = "ID";
             columnHeader1.Width = 125;
             // 
             // columnHeader2
@@ -144,6 +145,11 @@
             this.lsvNpcs.SelectedIndexChanged += new System.EventHandler(this.lsvNpcs_SelectedIndexChanged);
             this.lsvNpcs.DoubleClick += new System.EventHandler(this.lsvNpcs_DoubleClick);
             // 
+            // columnHeader3
+            // 
+            columnHeader3.Text = "Ally?";
+            columnHeader3.Width = 45;
+            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -165,6 +171,7 @@
             // 
             // grpCallbacks
             // 
+            grpCallbacks.Controls.Add(this.chkCallbackRS);
             grpCallbacks.Controls.Add(this.chkCallbackCS);
             grpCallbacks.Controls.Add(this.chkCallbackCR);
             grpCallbacks.Controls.Add(this.chkCallbackCV);
@@ -173,7 +180,7 @@
             grpCallbacks.Controls.Add(this.chkCallbackRE);
             grpCallbacks.Location = new System.Drawing.Point(16, 256);
             grpCallbacks.Name = "grpCallbacks";
-            grpCallbacks.Size = new System.Drawing.Size(360, 104);
+            grpCallbacks.Size = new System.Drawing.Size(360, 128);
             grpCallbacks.TabIndex = 1;
             grpCallbacks.TabStop = false;
             grpCallbacks.Text = "Run Custom Scripts When";
@@ -183,28 +190,28 @@
             this.chkCallbackCS.AutoSize = true;
             this.chkCallbackCS.Location = new System.Drawing.Point(16, 24);
             this.chkCallbackCS.Name = "chkCallbackCS";
-            this.chkCallbackCS.Size = new System.Drawing.Size(87, 17);
+            this.chkCallbackCS.Size = new System.Drawing.Size(126, 17);
             this.chkCallbackCS.TabIndex = 0;
-            this.chkCallbackCS.Text = "Combat Start";
+            this.chkCallbackCS.Text = "Before Combat Starts";
             this.chkCallbackCS.UseVisualStyleBackColor = true;
             // 
             // chkCallbackCR
             // 
             this.chkCallbackCR.AutoSize = true;
-            this.chkCallbackCR.Location = new System.Drawing.Point(176, 72);
+            this.chkCallbackCR.Location = new System.Drawing.Point(16, 96);
             this.chkCallbackCR.Name = "chkCallbackCR";
             this.chkCallbackCR.Size = new System.Drawing.Size(145, 17);
-            this.chkCallbackCR.TabIndex = 5;
+            this.chkCallbackCR.TabIndex = 6;
             this.chkCallbackCR.Text = "Any Participant Released";
             this.chkCallbackCR.UseVisualStyleBackColor = true;
             // 
             // chkCallbackCV
             // 
             this.chkCallbackCV.AutoSize = true;
-            this.chkCallbackCV.Location = new System.Drawing.Point(176, 48);
+            this.chkCallbackCV.Location = new System.Drawing.Point(176, 72);
             this.chkCallbackCV.Name = "chkCallbackCV";
             this.chkCallbackCV.Size = new System.Drawing.Size(128, 17);
-            this.chkCallbackCV.TabIndex = 4;
+            this.chkCallbackCV.TabIndex = 5;
             this.chkCallbackCV.Text = "Any Participant Vored";
             this.chkCallbackCV.UseVisualStyleBackColor = true;
             // 
@@ -214,28 +221,28 @@
             this.chkCallbackCK.Location = new System.Drawing.Point(16, 72);
             this.chkCallbackCK.Name = "chkCallbackCK";
             this.chkCallbackCK.Size = new System.Drawing.Size(76, 17);
-            this.chkCallbackCK.TabIndex = 2;
+            this.chkCallbackCK.TabIndex = 4;
             this.chkCallbackCK.Text = "NPC Killed";
             this.chkCallbackCK.UseVisualStyleBackColor = true;
             // 
             // chkCallbackPK
             // 
             this.chkCallbackPK.AutoSize = true;
-            this.chkCallbackPK.Location = new System.Drawing.Point(16, 48);
+            this.chkCallbackPK.Location = new System.Drawing.Point(176, 48);
             this.chkCallbackPK.Name = "chkCallbackPK";
             this.chkCallbackPK.Size = new System.Drawing.Size(83, 17);
-            this.chkCallbackPK.TabIndex = 1;
+            this.chkCallbackPK.TabIndex = 3;
             this.chkCallbackPK.Text = "Player Killed";
             this.chkCallbackPK.UseVisualStyleBackColor = true;
             // 
             // chkCallbackRE
             // 
             this.chkCallbackRE.AutoSize = true;
-            this.chkCallbackRE.Location = new System.Drawing.Point(176, 24);
+            this.chkCallbackRE.Location = new System.Drawing.Point(16, 48);
             this.chkCallbackRE.Name = "chkCallbackRE";
-            this.chkCallbackRE.Size = new System.Drawing.Size(80, 17);
-            this.chkCallbackRE.TabIndex = 3;
-            this.chkCallbackRE.Text = "Round End";
+            this.chkCallbackRE.Size = new System.Drawing.Size(85, 17);
+            this.chkCallbackRE.TabIndex = 2;
+            this.chkCallbackRE.Text = "Round Ends";
             this.chkCallbackRE.UseVisualStyleBackColor = true;
             // 
             // cmdAccept
@@ -243,7 +250,7 @@
             this.cmdAccept.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdAccept.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.cmdAccept.Image = global::Finmer.Editor.Properties.Resources.tick;
-            this.cmdAccept.Location = new System.Drawing.Point(128, 393);
+            this.cmdAccept.Location = new System.Drawing.Point(128, 417);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
             this.cmdAccept.TabIndex = 2;
@@ -258,7 +265,7 @@
             this.cmdCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(256, 392);
+            this.cmdCancel.Location = new System.Drawing.Point(256, 416);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
             this.cmdCancel.TabIndex = 3;
@@ -273,10 +280,15 @@
             this.eventLog1.Source = "gjhgjhm";
             this.eventLog1.SynchronizingObject = this;
             // 
-            // columnHeader3
+            // chkCallbackRS
             // 
-            columnHeader3.Text = "Ally?";
-            columnHeader3.Width = 45;
+            this.chkCallbackRS.AutoSize = true;
+            this.chkCallbackRS.Location = new System.Drawing.Point(176, 24);
+            this.chkCallbackRS.Name = "chkCallbackRS";
+            this.chkCallbackRS.Size = new System.Drawing.Size(88, 17);
+            this.chkCallbackRS.TabIndex = 1;
+            this.chkCallbackRS.Text = "Round Starts";
+            this.chkCallbackRS.UseVisualStyleBackColor = true;
             // 
             // FormScriptCmdCombatBegin
             // 
@@ -284,7 +296,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(392, 441);
+            this.ClientSize = new System.Drawing.Size(392, 465);
             this.Controls.Add(grpCallbacks);
             this.Controls.Add(grpParticipants);
             this.Controls.Add(this.cmdCancel);
@@ -322,6 +334,7 @@
         private System.Windows.Forms.CheckBox chkCallbackCV;
         private System.Windows.Forms.CheckBox chkCallbackCS;
         private System.Windows.Forms.Button cmdNpcEdit;
+        private System.Windows.Forms.CheckBox chkCallbackRS;
     }
 
 }

@@ -12,6 +12,17 @@
 	},
 	{
 		"type": "function",
+		"name": "GetActiveCombat",
+		"remarks": "Returns the Combat Session that is currently in progress, e.g. while a combat callback is running. If there is no active combat, returns nil. Useful if you need access to the combat such as from within an Item Use Script.",
+		"output": [
+			{
+				"type": "Combat Session",
+				"desc": "active combat, or nil if there is none"
+			}
+		]
+	},
+	{
+		"type": "function",
 		"qualifier": "combat:",
 		"name": "AddParticipant",
 		"remarks": "Adds a new participant to the combat session. All participants must be added before calling Begin.",
@@ -34,5 +45,12 @@
 		"qualifier": "combat:",
 		"name": "End",
 		"remarks": "Manually stops a combat session. Any pending XP will be awarded to the player, and the script that originally called Begin will be resumed. You don't need to call this unless you want to stop the fight mid-way through."
+	},
+	{
+		"type": "property",
+		"qualifier": "combat.",
+		"name": "Round",
+		"remarks": "The current round number. Starts at 1, and increments after all participants have performed an action.",
+		"valuetype": "number"
 	}
 ]

@@ -17,6 +17,8 @@ The basic flow is that you create a new session using the `Combat2` function, ad
 
 A newly created session does not contain any participants at all, not even the player character (whom you can add with the global variable `Player`). You could, if you want to, forego adding the player to a combat session, and have only AI-controlled participants fight it out.
 
+NPC participants can be created by using the `Creature` function, described in the [Constructors](script-reference/ctors.md) section.
+
 <LuaReference group={ApiGroupBasic} />
 
 ## Participant State

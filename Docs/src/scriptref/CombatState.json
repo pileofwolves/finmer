@@ -2,6 +2,24 @@
 	{
 		"type": "function",
 		"qualifier": "combat:",
+		"name": "ApplyBuff",
+		"remarks": "Applies a temporary effect to a participant (may be the Player or an NPC). Refer to the 'Constructors' > 'Buffs' section for functions that create PendingBuffs.",
+		"input": [
+			{
+				"name": "participant",
+				"type": "Creature",
+				"desc": "the character to apply the buff to"
+			},
+			{
+				"name": "buff",
+				"type": "PendingBuff",
+				"desc": "the new buff to apply"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "combat:",
 		"name": "IsGrappling",
 		"remarks": "Returns true if this Creature is currently grappling with anyone.",
 		"input": [

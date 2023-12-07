@@ -1,0 +1,158 @@
+[
+	{
+		"type": "function",
+		"name": "Buff.AttackDice",
+		"remarks": "Creates and returns a new buff that modifies Attack Dice.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the modification in dice, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.DefenseDice",
+		"remarks": "Creates and returns a new buff that modifies Defense Dice.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the modification in dice, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.GrappleDice",
+		"remarks": "Creates and returns a new buff that modifies Grapple Dice.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the modification in dice, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.SwallowDice",
+		"remarks": "Creates and returns a new buff that modifies Swallow Dice.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the modification in dice, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.StruggleDice",
+		"remarks": "Creates and returns a new buff that modifies Struggle Dice.",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the modification in dice, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.HealthOverTime",
+		"remarks": "Creates and returns a new buff that applies a health change every turn (e.g. poison or regeneration).",
+		"input": [
+			{
+				"name": "delta",
+				"type": "number",
+				"desc": "the HP modification, may be positive or negative"
+			},
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Buff.Stun",
+		"remarks": "Creates and returns a new buff that forces a participant to skip their turn.",
+		"input": [
+			{
+				"name": "duration",
+				"type": "number",
+				"desc": "number of combat rounds during which the buff remains active"
+			}
+		],
+		"output": [
+			{
+				"type": "PendingBuff",
+				"desc": "a new instance of the requested buff"
+			}
+		]
+	}
+]

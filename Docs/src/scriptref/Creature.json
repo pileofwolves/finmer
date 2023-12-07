@@ -56,11 +56,38 @@
 		"writable": true
 	},
 	{
+		"type": "enum",
+		"name": "ESize",
+		"coremod": "true",
+		"values": [
+			{
+				"name": "Tiny",
+				"desc": "2 steps smaller than Medium."
+			},
+			{
+				"name": "Small",
+				"desc": "1 step smaller than Medium."
+			},
+			{
+				"name": "Medium",
+				"desc": "Standard size. Player has this size by default."
+			},
+			{
+				"name": "Large",
+				"desc": "1 step larger than Medium."
+			},
+			{
+				"name": "Huge",
+				"desc": "2 steps larger than Medium."
+			}
+		]
+	},
+	{
 		"type": "property",
 		"qualifier": "creature.",
 		"name": "Size",
-		"remarks": "The character's body size. The return value is a member of ESize, a table defined in the Core module.",
-		"valuetype": "number",
+		"remarks": "The character's body size. The table of acceptable values is shown above. This determines number of wins required to swallow prey (predators require fewer wins for smaller prey), and the max size of swallow or grapple targets.",
+		"valuetype": "ESize",
 		"writable": false
 	},
 	{
@@ -118,5 +145,55 @@
 		"remarks": "Gets or sets the Item in the fourth equipment slot. A nil value indicates an empty slot.",
 		"valuetype": "Item",
 		"writable": true
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "IsDead",
+		"remarks": "Returns whether this Creature currently has 0 HP.",
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if creature has 0 HP, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "CanSwallow",
+		"remarks": "Returns whether this Creature is capable of swallowing the specified other Creature. Predators can only swallow prey of the same or smaller Size, and the prey must not have the 'Cannot Be Vored' override checked in the editor.",
+		"input": [
+			{
+				"name": "prey",
+				"type": "Creature",
+				"desc": "the other creature acting as prey"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if specified prey can be swallowed, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"qualifier": "object:",
+		"name": "CanGrapple",
+		"remarks": "Returns whether this Creature is capable of grappling with the specified other Creature. Creatures can only grapple targets of the same or smaller Size, and the target must not have the 'Cannot Be Grappled' override checked in the editor.",
+		"input": [
+			{
+				"name": "target",
+				"type": "Creature",
+				"desc": "the other creature acting as grapple target"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if specified target can be grappled, false otherwise"
+			}
+		]
 	}
 ]

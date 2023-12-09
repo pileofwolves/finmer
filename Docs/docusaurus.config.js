@@ -140,6 +140,24 @@ const config = {
         additionalLanguages: ['lua'],
       },
     }),
+
+  plugins: [
+    [
+      "docusaurus-booklet",
+      /** @type {import("docusaurus-booklet").BookletPluginOptions} */
+      ({
+        cover: {
+          title: "Finmer Editor",
+        },
+        selectors: {
+          mainContent: "article",
+          pagination: ".pagination-nav__link--next",
+          sidebar: ".theme-doc-sidebar-menu",
+          exclude: ["nav.navbar,footer.footer,.theme-doc-toc-mobile",".card",".breadcrumbs",".theme-edit-this-page"],
+        },
+      })
+    ]
+  ]
 };
 
 module.exports = config;

@@ -37,8 +37,8 @@ namespace Finmer.Editor
                     var project_version = header_reader.ReadInt32Property("FormatVersion");
 
                     // Validate that the version is within supported range
-                    if (project_version < 19)
-                        throw new FurballInvalidHeaderException($"Unsupported project version {project_version} (minimum supported is 19). Please use an older version of the Editor to upgrade your project.");
+                    if (project_version < k_MinimumVersion)
+                        throw new FurballInvalidHeaderException($"Unsupported project version {project_version} (minimum supported is {k_MinimumVersion}). Please use an older version of the Editor to upgrade your project.");
                     if (project_version > k_LatestVersion)
                         throw new FurballInvalidHeaderException($"Unsupported project version {project_version} (latest version is {k_LatestVersion}). Please use a newer version of the Editor to open your project.");
 

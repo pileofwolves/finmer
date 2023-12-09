@@ -23,6 +23,11 @@ namespace Finmer.Core.Serialization
         public const byte k_LatestVersion = 20;
 
         /// <summary>
+        /// Lowest furball file format version number that this device can open.
+        /// </summary>
+        public const byte k_MinimumVersion = 19;
+
+        /// <summary>
         /// Reads a full module file from disk.
         /// </summary>
         /// <param name="file">The main file to read.</param>

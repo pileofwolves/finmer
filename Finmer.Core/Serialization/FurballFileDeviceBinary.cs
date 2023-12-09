@@ -125,8 +125,8 @@ namespace Finmer.Core.Serialization
 
             // Verify file version
             byte version = instream.ReadByte();
-            if (version < k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from an older version of the game; please ask the module author to update it.");
+            if (version < k_MinimumVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {version} (minimum version {k_MinimumVersion}, latest version {k_LatestVersion}). The module is from an outdated version of the game; please ask the module author to update it.");
             if (version > k_LatestVersion)
                 throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
 

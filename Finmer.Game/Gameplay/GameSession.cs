@@ -136,7 +136,8 @@ namespace Finmer.Gameplay
             // Stop the script thread
             m_ScriptThreadStop = true;
             m_ScriptWaitEvent.Set();
-            m_ScriptThread.Join();
+            if (!m_ScriptThread.ThreadState.HasFlag(System.Threading.ThreadState.Unstarted))
+                m_ScriptThread.Join();
 
             // Clean up thread
             m_ScriptWaitEvent.Dispose();

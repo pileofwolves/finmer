@@ -7,6 +7,8 @@
  */
 
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 using Finmer.Core.Assets;
 using WeifenLuo.WinFormsUI.Docking;
@@ -36,11 +38,13 @@ namespace Finmer.Editor
         }
 
         private bool m_Dirty;
+        private List<WeakReference<EditorWindow>> m_NestedWindows = new List<WeakReference<EditorWindow>>();
 
         protected EditorWindow()
         {
             Load += EditorWindow_Load;
             FormClosing += EditorWindow_FormClosing;
+            FormClosed += EditorWindow_FormClosed;
         }
 
         /// <summary>
@@ -62,6 +66,20 @@ namespace Finmer.Editor
                 Text = GetWindowTitle();
         }
 
+        /// <summary>
+        /// Sets this window as owning the specified window, so that it will be flushed and closed together with this one.
+        /// </summary>
+        protected void RegisterNestedWindow(EditorWindow nested)
+        {
+            // Check if this exact asset is already owned, so we don't register a duplicate window
+            foreach (var reference in m_NestedWindows)
+                if (reference.TryGetTarget(out var candidate) && candidate == nested)
+                    return;
+
+            // These are weak references so that this parent window doesn't keep the nested editors alive after the user closes their tabs
+            m_NestedWindows.Add(new WeakReference<EditorWindow>(nested));
+        }
+
         private void EditorWindow_Load(object sender, EventArgs args)
         {
             UpdateText();
@@ -69,13 +87,42 @@ namespace Finmer.Editor
 
         private void EditorWindow_FormClosing(object sender, FormClosingEventArgs args)
         {
-            if (Dirty)
+            // We should display the save prompt if either the main window, or any nested window, is dirty
+            bool any_dirty = Dirty || m_NestedWindows.Any(reference => reference.TryGetTarget(out var window) && !window.IsDisposed && window.Dirty);
+
+            // Save confirmation prompt
+            if (any_dirty)
             {
                 DialogResult dr = MessageBox.Show($"Would you like to save changes to {GetWindowTitle()}?", "Finmer Editor", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
-                if (dr == DialogResult.Cancel)
-                    args.Cancel = true;
-                if (dr == DialogResult.Yes)
-                    Flush();
+                switch (dr)
+                {
+                    case DialogResult.Cancel:
+                        args.Cancel = true;
+                        break;
+
+                    case DialogResult.Yes:
+                        // Flush all nested windows
+                        foreach (var reference in m_NestedWindows)
+                            if (reference.TryGetTarget(out var nested_window) && !nested_window.IsDisposed)
+                                nested_window.Flush(); 
+                        
+                        // Flush the main asset
+                        Flush();
+                        break;
+                }
+            }
+        }
+
+        private void EditorWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            foreach (var reference in m_NestedWindows)
+            {
+                if (reference.TryGetTarget(out var nested_window) && !nested_window.IsDisposed)
+                {
+                    // Force the window to close, without displaying a confirmation prompt
+                    nested_window.Dirty = false;
+                    nested_window.Close();
+                }
             }
         }
 

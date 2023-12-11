@@ -63,8 +63,6 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             AssetItem item = (AssetItem)Asset;
 
             // Core stats
@@ -96,6 +94,8 @@ namespace Finmer.Editor
 
             // Inventory icon
             item.InventoryIcon = m_IconBytes;
+
+            base.Flush();
         }
 
         private void cmdEditUseScript_Click(object sender, EventArgs e)

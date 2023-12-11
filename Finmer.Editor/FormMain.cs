@@ -256,31 +256,6 @@ namespace Finmer.Editor
             {
                 // Make sure editor windows commit any changes
                 window.Flush();
-
-                // Asset windows are allowed to replace their contained asset instance, in which case we may need to replace the one referenced by the module.
-                if (window is AssetWindow asset_window)
-                {
-                    // Find the asset represented by this editor window
-                    var new_asset = asset_window.Asset;
-                    var old_asset = Program.ActiveFurball.GetAssetByID(new_asset.ID);
-                    Debug.Assert(old_asset != null, "Asset ID changes are not supported");
-                    Debug.Assert(old_asset.Name.Equals(new_asset.Name, StringComparison.InvariantCulture), "Asset name changes must be copied by window");
-                    Debug.Assert(GetEditorWindowKey(old_asset) == GetEditorWindowKey(new_asset), "Window key has changed");
-
-                    // If the window still points to the same asset object, we do not need to replace anything
-                    if (ReferenceEquals(new_asset, old_asset))
-                        continue;
-
-                    // Otherwise, the old asset must be removed, so it can be replaced with the editor window's newly created asset
-                    var assets = Program.ActiveFurball.Assets;
-                    assets.Remove(old_asset);
-                    assets.Add(new_asset);
-
-                    // Replace the reference on the asset tree node, so we won't re-open the old asset later
-                    var tree_node = FindAssetTreeNode(old_asset);
-                    if (tree_node != null)
-                        tree_node.Tag = new_asset;
-                }
             }
 
             // Commit the module to disk
@@ -311,6 +286,15 @@ namespace Finmer.Editor
             rbtProjSave.Enabled = false;
 
             return true;
+        }
+
+        internal void ReplaceAssetTreeNode(AssetBase old_asset, AssetBase new_asset)
+        {
+            Debug.Assert(GetEditorWindowKey(old_asset) == GetEditorWindowKey(new_asset), "Window key has changed");
+
+            var tree_node = FindAssetTreeNode(old_asset);
+            if (tree_node != null)
+                tree_node.Tag = new_asset;
         }
 
         private bool SaveAs()

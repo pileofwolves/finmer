@@ -52,8 +52,6 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Apply fields to the previously selected entry, if there was one, to ensure changes are committed
             if (m_SelectedEntry != null)
             {
@@ -76,6 +74,8 @@ namespace Finmer.Editor
 
             // Sort the entries so the key IDs are in ascending order
             m_Journal.Stages.Sort((a, b) => a.Key.CompareTo(b.Key));
+
+            base.Flush();
         }
 
         private void UpdateEntryLabel(object sender, EventArgs e)

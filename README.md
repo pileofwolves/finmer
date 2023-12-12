@@ -66,6 +66,6 @@ PLEASE NOTE: This repository is *not* the right place to make suggestions or req
 
 ## MAKING CONTENT / USING THE EDITOR
 
-Please refer to the [Documentation.html](Modules/Docs/Documentation.html) file in the Modules folder for detailed information on the workings of the Editor, as well as a Lua script reference.
+Please refer to the [editor documentation](https://docs.finmer.dev) for detailed information on the workings of the Editor, as well as a Lua script reference.
 
 Your custom modules and/or game content files belong to you; you are free to copy and distribute them as you see fit.

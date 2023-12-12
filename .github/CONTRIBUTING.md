@@ -10,7 +10,7 @@ I can be reached by creating an issue here on GitHub, or via e-mail (nuntis@finm
 
 Please check the project's main README file for building instructions.
 
-- **Want to create content?** Check out the Editor Documentation (`/Modules/Projects/Documentation.html`) for info on how content modules work, what kind of assets there are, and how they interact with the game application.
+- **Want to create content?** Check out the [Editor Documentation](https://docs.finmer.dev) for info on how content modules work, what kind of assets there are, and how they interact with the game application.
 - **Want to add/change features?** Check below for project structure notes and code style guidelines.
 
 Pull requests are accepted for both code and content (though not entirely _new_ content, see README).
@@ -63,7 +63,7 @@ I recommend using JetBrains' [ReSharper](https://www.jetbrains.com/resharper/) e
 
 ## Editor Documentation
 
-The Editor documentation is kept in a HTML file in `/Modules/Projects/Documentation.html`. When making large-scale changes to the editor, or when modifying Lua script APIs, please be sure to also update the documentation file so module creators always have the most up-to-date and correct info available.
+The Editor documentation is maintained as a Docusaurus static website project in the `/Docs` folder. When making large-scale changes to the editor, or when modifying Lua script APIs, please be sure to also update the documentation files so module creators always have the most up-to-date and correct info available.
 
 ## XAML and MVVM notes
 

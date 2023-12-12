@@ -45,9 +45,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return Mode == EMode.Set
-                ? $"Force '{PredatorName}' to Swallow Prey '{PreyName}'"
-                : $"Force '{PredatorName}' to Release Prey '{PreyName}'";
+            return $"Force Participant {CombatUtilities.GetEditorParticipantDescription(PredatorName)} to {(Mode == EMode.Set ? "Swallow" : "Release")} Prey {CombatUtilities.GetEditorParticipantDescription(PreyName)}";
         }
 
         public override EColor GetEditorColor()

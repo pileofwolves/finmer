@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Restore Player Health";
+            return "Restore All Player Health";
         }
 
         public override EColor GetEditorColor()

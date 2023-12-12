@@ -51,13 +51,13 @@ namespace Finmer.Core.VisualScripting.Nodes
             switch (ValueOperation)
             {
                 case EOperation.Add:
-                    return String.Format(CultureInfo.InvariantCulture, "Modify Variable {0} by {1}", VariableName, Value.GetOperandDescription());
+                    return String.Format(CultureInfo.InvariantCulture, "Modify Number Variable {0} by {1}", VariableName, Value.GetOperandDescription());
                 case EOperation.Multiply:
-                    return String.Format(CultureInfo.InvariantCulture, "Multiply Variable {0} with {1}", VariableName, Value.GetOperandDescription());
+                    return String.Format(CultureInfo.InvariantCulture, "Multiply Number Variable {0} with {1}", VariableName, Value.GetOperandDescription());
                 case EOperation.Divide:
-                    return String.Format(CultureInfo.InvariantCulture, "Divide Variable {0} by {1}", VariableName, Value.GetOperandDescription());
+                    return String.Format(CultureInfo.InvariantCulture, "Divide Number Variable {0} by {1}", VariableName, Value.GetOperandDescription());
                 case EOperation.Set:
-                    return String.Format(CultureInfo.InvariantCulture, "Set Variable {0} to {1}", VariableName, Value.GetOperandDescription());
+                    return String.Format(CultureInfo.InvariantCulture, "Set Number Variable {0} to {1}", VariableName, Value.GetOperandDescription());
                 default:
                     throw new InvalidScriptNodeException("Invalid operation mode");
             }

@@ -32,7 +32,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return String.Format(CultureInfo.InvariantCulture, "Set String {0} to {1}", VariableName, Value.GetOperandDescription());
+            return String.Format(CultureInfo.InvariantCulture, "Set String Variable {0} to {1}", VariableName, Value.GetOperandDescription());
         }
 
         public override EColor GetEditorColor()

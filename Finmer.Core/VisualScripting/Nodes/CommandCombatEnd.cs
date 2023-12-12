@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "End Combat";
+            return "Stop Combat";
         }
 
         public override EColor GetEditorColor()

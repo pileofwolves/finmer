@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Show Save Menu";
+            return "Open Save Menu";
         }
 
         public override EColor GetEditorColor()

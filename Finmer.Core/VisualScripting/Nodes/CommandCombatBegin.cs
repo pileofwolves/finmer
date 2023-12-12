@@ -92,7 +92,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return String.Format(CultureInfo.InvariantCulture, "Start Combat with {0} Participants", Participants.Count + (IncludePlayer ? 1 : 0));
+            return String.Format(CultureInfo.InvariantCulture, "Begin Combat with {0} Participants", Participants.Count + (IncludePlayer ? 1 : 0));
         }
 
         public override EColor GetEditorColor()

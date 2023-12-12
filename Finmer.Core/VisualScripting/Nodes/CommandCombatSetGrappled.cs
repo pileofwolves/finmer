@@ -45,9 +45,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return Mode == EMode.Set
-                ? $"Force '{InstigatorName}' to Grapple '{TargetName}'"
-                : $"Force '{InstigatorName}' to Release Grappled '{TargetName}'";
+            return $"Force Participant {CombatUtilities.GetEditorParticipantDescription(InstigatorName)} to {(Mode == EMode.Set ? "Grapple" : "Release Grappled")} {CombatUtilities.GetEditorParticipantDescription(TargetName)}";
         }
 
         public override EColor GetEditorColor()

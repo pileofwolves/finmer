@@ -31,7 +31,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Log: " + Text;
+            return "Show Message: " + Text;
         }
 
         public override EColor GetEditorColor()

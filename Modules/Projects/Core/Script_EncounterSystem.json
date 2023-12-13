@@ -1,0 +1,10 @@
+﻿{
+	"!Type": "AssetScript",
+	"AssetID": "e276be73-9c75-4e33-be43-9d34efaf8980",
+	"AssetName": "Script_EncounterSystem",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_EncounterSystem"
+	},
+	"LoadOrder": []
+}

@@ -1,0 +1,15 @@
+﻿{
+	"!Type": "AssetScript",
+	"AssetID": "4cf9b0fe-0302-4aeb-891d-2ff2900e87d1",
+	"AssetName": "Script_EncounterList",
+	"Contents": {
+		"!Type": "ScriptDataExternal",
+		"Name": "Script_EncounterList"
+	},
+	"LoadOrder": [
+		{
+			"TargetAsset": "e276be73-9c75-4e33-be43-9d34efaf8980",
+			"Relation": "After"
+		}
+	]
+}

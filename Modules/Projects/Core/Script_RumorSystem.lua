@@ -16,7 +16,7 @@ function Rumor.Add(args)
         error("text argument to Rumor.Add must be string") end
     if type(args.weight) ~= "number" then
         error("weight argument to Rumor.Add must be number or nil") end
-    if type(args.check) ~= "function" and type(check) ~= "nil" then
+    if type(args.check) ~= "function" and type(args.check) ~= "nil" then
         error("check argument to Rumor.Add must be function or nil") end
 
     -- Add the new rumor to the set

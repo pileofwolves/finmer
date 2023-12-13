@@ -18,11 +18,43 @@
 			{
 				"NodeType": "State",
 				"Key": "Entrypoint",
-				"ScriptAction": {
-					"!Type": "ScriptDataInline",
-					"Script": "AddLink(ECompass.North, Wander)\r\nAddLink(ECompass.East, Wander)\r\nAddLink(ECompass.South, Wander)\r\nAddLink(ECompass.West, ExitForest)"
-				},
 				"Children": [
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "West",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Log(\"FOREST_EXIT\")\r\nAdvanceTime(1)\r\nSetScene(\"Scene_ForestCottage\")"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "North",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Wander()"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "South",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Wander()"
+						}
+					},
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "East",
+						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"ScriptAction": {
+							"!Type": "ScriptDataInline",
+							"Script": "Wander()"
+						}
+					},
 					{
 						"NodeType": "Choice",
 						"Title": "Use Ring",

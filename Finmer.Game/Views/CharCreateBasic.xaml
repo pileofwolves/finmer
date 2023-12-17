@@ -22,7 +22,7 @@
         <v:DotProgressIndicatorView
             HorizontalAlignment="Center"
             Margin="0,0,0,6"
-            DotCount="3"
+            DotCount="{Binding TotalPages, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type vb:CharCreateViewBase}}}"
             FilledCount="1" />
         <TextBlock
             Style="{StaticResource TextBlockLarge}"

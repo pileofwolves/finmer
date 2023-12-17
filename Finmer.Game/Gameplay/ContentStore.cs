@@ -22,6 +22,12 @@ namespace Finmer.Gameplay
     public class ContentStore : IContentStore
     {
 
+        /// <summary>
+        /// Gets the number of game start scenes in loaded content.
+        /// </summary>
+        public int GameStartCount { get; private set; }
+
+
         private const int k_DefaultCapacity = 128;
 
         private readonly Dictionary<Guid, AssetBase> m_GuidMap = new Dictionary<Guid, AssetBase>(k_DefaultCapacity);
@@ -52,6 +58,10 @@ namespace Finmer.Gameplay
                 m_MergedStrings.Merge(string_table.Table);
                 return;
             }
+
+            // Count game start scenes
+            if (asset is AssetScene scene && scene.IsGameStart)
+                GameStartCount++;
 
             // Map the asset to its GUID and name, for fast lookup
             m_GuidMap.Add(asset.ID, asset);

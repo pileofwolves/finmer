@@ -132,6 +132,11 @@ namespace Finmer.Gameplay
         /// <param name="patch">The patch to process.</param>
         private static void InjectScenePatch(AssetScene patch)
         {
+            // Game start scenes cannot be patches
+            if (patch.IsGameStart)
+                throw new SceneCompilerException(
+                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' is also a game start; this is not allowed. Please either make the scene not a patch, or not a game start.");
+
             // Find the target scene
             var target_scene = GameController.Content.GetAssetByID(patch.InjectTargetScene) as AssetScene;
             if (target_scene == null)
@@ -219,9 +224,15 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void CompileScenes()
         {
+            var content = GameController.Content;
+
+            // There must be at least one game start scene, else no new saves can be created
+            if (content.GameStartCount == 0)
+                throw new LoaderException("There are no game start locations in any loaded modules.\r\n\r\nIf using total conversion mods, please make sure there are modules that include game start locations.");
+
+            // Precompile all loaded scenes
             using (var script_compiler = new ScriptCompiler())
             {
-                var content = GameController.Content;
                 var all_scenes = content.GetAssetsByType<AssetScene>();
                 foreach (var scene in all_scenes)
                 {

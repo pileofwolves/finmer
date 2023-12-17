@@ -84,6 +84,36 @@ namespace Finmer.Editor
             return window;
         }
 
+        public void UpdateAssetIcon(AssetBase asset)
+        {
+            // Find the node representing the asset we're indexing with. Might not be found; in that case bail.
+            TreeNode node = FindAssetTreeNode(asset);
+            if (node != null)
+                UpdateAssetIcon(asset, node);
+        }
+
+        private void UpdateAssetIcon(AssetBase asset, TreeNode node)
+        {
+            // Find the right icon for the asset
+            string key;
+            switch (asset)
+            {
+                case AssetScene scene:          key = "scene";
+                    if (scene.IsGameStart)      key = "scene_start";
+                    else if (scene.IsPatch)     key = "scene_patch";        break;
+                case AssetItem _:               key = "item";               break;
+                case AssetCreature _:           key = "creature";           break;
+                case AssetStringTable _:        key = "text";               break;
+                case AssetScript _:             key = "script";             break;
+                case AssetJournal _:            key = "text";               break;
+                default:                        throw new ArgumentException(nameof(asset));
+            }
+
+            // Apply the new icon
+            node.ImageKey = key;
+            node.SelectedImageKey = key;
+        }
+
         private static int GetEditorWindowKey(IFurballSerializable data)
         {
             // For assets, use the asset GUID, which is guaranteed to not be changed by the editor window.
@@ -184,33 +214,17 @@ namespace Finmer.Editor
             var node = new TreeNode(asset.Name);
             switch (asset)
             {
-                case AssetScene _:
-                    node.ImageKey = "scene";
-                    m_NodeScenes.Nodes.Add(node);
-                    break;
-                case AssetItem _:
-                    node.ImageKey = "item";
-                    m_NodeItems.Nodes.Add(node);
-                    break;
-                case AssetCreature _:
-                    node.ImageKey = "creature";
-                    m_NodeCreatures.Nodes.Add(node);
-                    break;
-                case AssetStringTable _:
-                    node.ImageKey = "text";
-                    m_NodeTexts.Nodes.Add(node);
-                    break;
-                case AssetScript _:
-                    node.ImageKey = "script";
-                    m_NodeScripts.Nodes.Add(node);
-                    break;
-                case AssetJournal _:
-                    node.ImageKey = "text";
-                    m_NodeJournals.Nodes.Add(node);
-                    break;
-                default:
-                    throw new ArgumentException(nameof(asset));
+                case AssetScene _:          m_NodeScenes.Nodes.Add(node);           break;
+                case AssetItem _:           m_NodeItems.Nodes.Add(node);            break;
+                case AssetCreature _:       m_NodeCreatures.Nodes.Add(node);        break;
+                case AssetStringTable _:    m_NodeTexts.Nodes.Add(node);            break;
+                case AssetScript _:         m_NodeScripts.Nodes.Add(node);          break;
+                case AssetJournal _:        m_NodeJournals.Nodes.Add(node);         break;
+                default:                    throw new ArgumentException(nameof(asset));
             }
+
+            // Configure its starting icon
+            UpdateAssetIcon(asset, node);
 
             // If requested, select it now
             if (select)
@@ -500,7 +514,7 @@ namespace Finmer.Editor
         private TreeNode FindAssetTreeNodeInGroup(TreeNodeCollection collection, AssetBase asset)
         {
             foreach (TreeNode node in collection)
-                if (node.Tag == asset)
+                if (((AssetBase)node.Tag).ID == asset.ID)
                     return node;
 
             return null;

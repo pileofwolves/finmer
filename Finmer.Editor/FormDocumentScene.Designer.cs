@@ -32,7 +32,6 @@
             System.Windows.Forms.Label lblNodeTitle;
             System.Windows.Forms.Label lblInjectTargetNode;
             System.Windows.Forms.Label lblInjectTargetScene;
-            System.Windows.Forms.Label lblRootInfo;
             System.Windows.Forms.Label lblNodeKey;
             System.Windows.Forms.Label lblLinkTarget;
             System.Windows.Forms.Label label1;
@@ -40,6 +39,7 @@
             System.Windows.Forms.Label lblCompassTarget;
             System.Windows.Forms.Label lblCompassExplanation;
             System.Windows.Forms.Label label2;
+            System.Windows.Forms.Label lblGameStartDesc;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentScene));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbAddNode = new System.Windows.Forms.ToolStripButton();
@@ -62,11 +62,14 @@
             this.splitNodeSettings = new System.Windows.Forms.SplitContainer();
             this.tbcNode = new System.Windows.Forms.TabControl();
             this.tbpNodeRoot = new System.Windows.Forms.TabPage();
+            this.pnlGameStartSettings = new System.Windows.Forms.Panel();
+            this.txtGameStartDesc = new System.Windows.Forms.TextBox();
+            this.chkRootGameStart = new System.Windows.Forms.CheckBox();
+            this.chkRootInject = new System.Windows.Forms.CheckBox();
             this.pnlInjectionSettings = new System.Windows.Forms.Panel();
             this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
             this.cmbInjectTargetMode = new System.Windows.Forms.ComboBox();
             this.cmbInjectTargetNode = new System.Windows.Forms.ComboBox();
-            this.chkRootInject = new System.Windows.Forms.CheckBox();
             this.tbpNodeState = new System.Windows.Forms.TabPage();
             this.txtNodeStateKey = new System.Windows.Forms.TextBox();
             this.tbpNodeChoice = new System.Windows.Forms.TabPage();
@@ -91,7 +94,6 @@
             lblNodeTitle = new System.Windows.Forms.Label();
             lblInjectTargetNode = new System.Windows.Forms.Label();
             lblInjectTargetScene = new System.Windows.Forms.Label();
-            lblRootInfo = new System.Windows.Forms.Label();
             lblNodeKey = new System.Windows.Forms.Label();
             lblLinkTarget = new System.Windows.Forms.Label();
             label1 = new System.Windows.Forms.Label();
@@ -99,6 +101,7 @@
             lblCompassTarget = new System.Windows.Forms.Label();
             lblCompassExplanation = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
+            lblGameStartDesc = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -110,6 +113,7 @@
             this.splitNodeSettings.SuspendLayout();
             this.tbcNode.SuspendLayout();
             this.tbpNodeRoot.SuspendLayout();
+            this.pnlGameStartSettings.SuspendLayout();
             this.pnlInjectionSettings.SuspendLayout();
             this.tbpNodeState.SuspendLayout();
             this.tbpNodeChoice.SuspendLayout();
@@ -156,15 +160,6 @@
             lblInjectTargetScene.Size = new System.Drawing.Size(75, 13);
             lblInjectTargetScene.TabIndex = 0;
             lblInjectTargetScene.Text = "Target Scene:";
-            // 
-            // lblRootInfo
-            // 
-            lblRootInfo.Enabled = false;
-            lblRootInfo.Location = new System.Drawing.Point(8, 8);
-            lblRootInfo.Name = "lblRootInfo";
-            lblRootInfo.Size = new System.Drawing.Size(192, 32);
-            lblRootInfo.TabIndex = 0;
-            lblRootInfo.Text = "The Root node is the starting point of the scene and can\'t be edited directly.";
             // 
             // lblNodeKey
             // 
@@ -231,6 +226,15 @@
             label2.Size = new System.Drawing.Size(65, 13);
             label2.TabIndex = 0;
             label2.Text = "Unique Key:";
+            // 
+            // lblGameStartDesc
+            // 
+            lblGameStartDesc.AutoSize = true;
+            lblGameStartDesc.Location = new System.Drawing.Point(0, 8);
+            lblGameStartDesc.Name = "lblGameStartDesc";
+            lblGameStartDesc.Size = new System.Drawing.Size(119, 13);
+            lblGameStartDesc.TabIndex = 0;
+            lblGameStartDesc.Text = "Game Start Description:";
             // 
             // toolStrip
             // 
@@ -467,9 +471,10 @@
             // 
             // tbpNodeRoot
             // 
-            this.tbpNodeRoot.Controls.Add(this.pnlInjectionSettings);
+            this.tbpNodeRoot.Controls.Add(this.pnlGameStartSettings);
+            this.tbpNodeRoot.Controls.Add(this.chkRootGameStart);
             this.tbpNodeRoot.Controls.Add(this.chkRootInject);
-            this.tbpNodeRoot.Controls.Add(lblRootInfo);
+            this.tbpNodeRoot.Controls.Add(this.pnlInjectionSettings);
             this.tbpNodeRoot.Location = new System.Drawing.Point(4, 22);
             this.tbpNodeRoot.Name = "tbpNodeRoot";
             this.tbpNodeRoot.Padding = new System.Windows.Forms.Padding(3);
@@ -478,6 +483,47 @@
             this.tbpNodeRoot.Text = "Root Node";
             this.tbpNodeRoot.UseVisualStyleBackColor = true;
             // 
+            // pnlGameStartSettings
+            // 
+            this.pnlGameStartSettings.Controls.Add(this.txtGameStartDesc);
+            this.pnlGameStartSettings.Controls.Add(lblGameStartDesc);
+            this.pnlGameStartSettings.Location = new System.Drawing.Point(8, 56);
+            this.pnlGameStartSettings.Name = "pnlGameStartSettings";
+            this.pnlGameStartSettings.Size = new System.Drawing.Size(192, 136);
+            this.pnlGameStartSettings.TabIndex = 3;
+            this.pnlGameStartSettings.Visible = false;
+            // 
+            // txtGameStartDesc
+            // 
+            this.txtGameStartDesc.Location = new System.Drawing.Point(0, 24);
+            this.txtGameStartDesc.Multiline = true;
+            this.txtGameStartDesc.Name = "txtGameStartDesc";
+            this.txtGameStartDesc.Size = new System.Drawing.Size(192, 48);
+            this.txtGameStartDesc.TabIndex = 1;
+            this.txtGameStartDesc.TextChanged += new System.EventHandler(this.txtGameStartDesc_TextChanged);
+            // 
+            // chkRootGameStart
+            // 
+            this.chkRootGameStart.AutoSize = true;
+            this.chkRootGameStart.Location = new System.Drawing.Point(8, 32);
+            this.chkRootGameStart.Name = "chkRootGameStart";
+            this.chkRootGameStart.Size = new System.Drawing.Size(90, 17);
+            this.chkRootGameStart.TabIndex = 2;
+            this.chkRootGameStart.Text = "Is Game Start";
+            this.chkRootGameStart.UseVisualStyleBackColor = true;
+            this.chkRootGameStart.CheckedChanged += new System.EventHandler(this.chkRootGameStart_CheckedChanged);
+            // 
+            // chkRootInject
+            // 
+            this.chkRootInject.AutoSize = true;
+            this.chkRootInject.Location = new System.Drawing.Point(8, 8);
+            this.chkRootInject.Name = "chkRootInject";
+            this.chkRootInject.Size = new System.Drawing.Size(65, 17);
+            this.chkRootInject.TabIndex = 1;
+            this.chkRootInject.Text = "Is Patch";
+            this.chkRootInject.UseVisualStyleBackColor = true;
+            this.chkRootInject.CheckedChanged += new System.EventHandler(this.chkRootInject_CheckedChanged);
+            // 
             // pnlInjectionSettings
             // 
             this.pnlInjectionSettings.Controls.Add(this.assetInjectTargetScene);
@@ -485,9 +531,9 @@
             this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetNode);
             this.pnlInjectionSettings.Controls.Add(lblInjectTargetNode);
             this.pnlInjectionSettings.Controls.Add(lblInjectTargetScene);
-            this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 72);
+            this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 56);
             this.pnlInjectionSettings.Name = "pnlInjectionSettings";
-            this.pnlInjectionSettings.Size = new System.Drawing.Size(184, 152);
+            this.pnlInjectionSettings.Size = new System.Drawing.Size(192, 152);
             this.pnlInjectionSettings.TabIndex = 0;
             this.pnlInjectionSettings.Visible = false;
             // 
@@ -512,7 +558,7 @@
             "inside, at the end (as Choices)"});
             this.cmbInjectTargetMode.Location = new System.Drawing.Point(0, 72);
             this.cmbInjectTargetMode.Name = "cmbInjectTargetMode";
-            this.cmbInjectTargetMode.Size = new System.Drawing.Size(184, 21);
+            this.cmbInjectTargetMode.Size = new System.Drawing.Size(192, 21);
             this.cmbInjectTargetMode.TabIndex = 3;
             this.cmbInjectTargetMode.SelectedIndexChanged += new System.EventHandler(this.cmbInjectTargetMode_SelectedIndexChanged);
             // 
@@ -521,20 +567,9 @@
             this.cmbInjectTargetNode.FormattingEnabled = true;
             this.cmbInjectTargetNode.Location = new System.Drawing.Point(0, 96);
             this.cmbInjectTargetNode.Name = "cmbInjectTargetNode";
-            this.cmbInjectTargetNode.Size = new System.Drawing.Size(184, 21);
+            this.cmbInjectTargetNode.Size = new System.Drawing.Size(192, 21);
             this.cmbInjectTargetNode.TabIndex = 4;
             this.cmbInjectTargetNode.TextChanged += new System.EventHandler(this.cmbInjectTargetNode_TextChanged);
-            // 
-            // chkRootInject
-            // 
-            this.chkRootInject.AutoSize = true;
-            this.chkRootInject.Location = new System.Drawing.Point(8, 48);
-            this.chkRootInject.Name = "chkRootInject";
-            this.chkRootInject.Size = new System.Drawing.Size(65, 17);
-            this.chkRootInject.TabIndex = 1;
-            this.chkRootInject.Text = "Is Patch";
-            this.chkRootInject.UseVisualStyleBackColor = true;
-            this.chkRootInject.CheckedChanged += new System.EventHandler(this.chkRootInject_CheckedChanged);
             // 
             // tbpNodeState
             // 
@@ -809,6 +844,8 @@
             this.tbcNode.ResumeLayout(false);
             this.tbpNodeRoot.ResumeLayout(false);
             this.tbpNodeRoot.PerformLayout();
+            this.pnlGameStartSettings.ResumeLayout(false);
+            this.pnlGameStartSettings.PerformLayout();
             this.pnlInjectionSettings.ResumeLayout(false);
             this.pnlInjectionSettings.PerformLayout();
             this.tbpNodeState.ResumeLayout(false);
@@ -876,5 +913,8 @@
         private System.Windows.Forms.ComboBox cmbCompassDirection;
         private AssetPickerControl assetCompassTarget;
         private System.Windows.Forms.TextBox txtNodeCompassKey;
+        private System.Windows.Forms.Panel pnlGameStartSettings;
+        private System.Windows.Forms.TextBox txtGameStartDesc;
+        private System.Windows.Forms.CheckBox chkRootGameStart;
     }
 }

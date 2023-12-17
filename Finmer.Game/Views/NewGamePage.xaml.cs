@@ -6,10 +6,14 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
+using System.Collections.Generic;
 using System.ComponentModel;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Windows;
 using Finmer.Core;
+using Finmer.Core.Assets;
 using Finmer.Gameplay;
 using Finmer.Models;
 using Finmer.Utility;
@@ -26,25 +30,41 @@ namespace Finmer.Views
     public partial class NewGamePage : INotifyPropertyChanged
     {
 
-        private readonly PropertyBag m_Player;
+        private readonly PropertyBag m_InitialSaveData;
+        private readonly List<CharCreateViewBase> m_Pages = new List<CharCreateViewBase>(4);
+
         private CharCreateViewBase m_CurrentPage;
-        private int m_Page = 1;
+        private int m_CurrentPageIndex;
 
         public NewGamePage()
         {
             InitializeComponent();
 
             // Restore the last character the user created, or create a new one if there is none
-            m_Player = UserConfig.NewGamePreset ?? new PropertyBag();
+            m_InitialSaveData = (PropertyBag)UserConfig.NewGamePreset?.Clone() ?? new PropertyBag();
+
+            // Set up the page list
+            m_Pages.Add(new CharCreateBasic());
+            m_Pages.Add(new CharCreateSpecies());
+            m_Pages.Add(new CharCreateAbility());
+
+            // Optionally, mods may add additional game starts. If there are any, we let the user choose; if not, grab the first one.
+            if (GameController.Content.GameStartCount > 1)
+                m_Pages.Add(new CharCreateScene());
+            else
+                m_InitialSaveData.SetBytes(SaveData.k_System_StartSceneID, GetDefaultGameStart().ToByteArray());
 
             // Initialize data binding
             DataContext = this;
 
+            // Whenever navigation completes, re-enable the navigation buttons
             NewGameCarousel.NavigationComplete += (sender, args) =>
             {
                 BackButton.IsHitTestVisible = true;
                 NextButton.IsHitTestVisible = true;
             };
+
+            // Navigate to the first page
             GoPage(ENavigatorAnimation.Instant);
         }
 
@@ -54,47 +74,47 @@ namespace Finmer.Views
 
         private void NextButton_Click(object sender, RoutedEventArgs e)
         {
-            m_Page++;
+            m_CurrentPageIndex++;
             GoPage(ENavigatorAnimation.SlideLeft);
         }
 
         private void BackButton_Click(object sender, RoutedEventArgs e)
         {
-            m_Page--;
+            m_CurrentPageIndex--;
             GoPage(ENavigatorAnimation.SlideRight);
         }
 
         private void GoPage(ENavigatorAnimation anim)
         {
+            // Unsubscribe property event handler
             if (m_CurrentPage != null)
-                m_CurrentPage.PropertyChanged -= CurrentPage_PropertyChanged;
+                PropertyChangedEventManager.RemoveHandler(m_CurrentPage, CurrentPage_PropertyChanged, nameof(CharCreateViewBase.CanGoNext));
 
+            // Disable user input
             BackButton.IsHitTestVisible = false;
             NextButton.IsHitTestVisible = false;
 
-            switch (m_Page)
+            // If the user backed out all the way, return to main menu
+            if (m_CurrentPageIndex < 0)
             {
-                case 0:
-                    GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
-                    return;
-                case 1:
-                    m_CurrentPage = new CharCreateBasic();
-                    break;
-                case 2:
-                    m_CurrentPage = new CharCreateSpecies();
-                    break;
-                case 3:
-                    m_CurrentPage = new CharCreateAbility();
-                    break;
-                case 4:
-                    DoBeginGame();
-                    return;
-                default:
-                    return;
+                GameController.Window.Navigate(new TitlePage(), ENavigatorAnimation.SlideRight);
+                return;
             }
 
-            m_CurrentPage.InitialSaveData = m_Player;
-            m_CurrentPage.PropertyChanged += CurrentPage_PropertyChanged;
+            // If the user completed all pages, begin the game
+            if (m_CurrentPageIndex >= m_Pages.Count)
+            {
+                DoBeginGame();
+                return;
+            }
+
+            // Initialize next page
+            m_CurrentPage = m_Pages[m_CurrentPageIndex];
+            m_CurrentPage.InitialSaveData = m_InitialSaveData;
+            m_CurrentPage.TotalPages = m_Pages.Count;
+            PropertyChangedEventManager.AddHandler(m_CurrentPage, CurrentPage_PropertyChanged, nameof(CharCreateViewBase.CanGoNext));
+
+            // Navigate to next page
             NewGameCarousel.Navigate(m_CurrentPage, anim, true);
         }
 
@@ -107,17 +127,16 @@ namespace Finmer.Views
         private void DoBeginGame()
         {
             // Store this character in the user config, so the next time this menu is opened, the same settings are restored
-            UserConfig.NewGamePreset = m_Player;
+            UserConfig.NewGamePreset = (PropertyBag)m_InitialSaveData.Clone();
 
-            // Initialize the save data with basic defaults.
-            // The scripts in content can make any other adjustments if needed (such as starting equipment).
-            m_Player.SetInt(SaveData.k_Character_Level, 1);
-            m_Player.SetInt(SaveData.k_Player_TimeDay, 1);
-            m_Player.SetInt(SaveData.k_Player_TimeHour, 9);
-
-            // Launch the session
-            GameSnapshot save_data = new GameSnapshot(m_Player, new PropertyBag(), new PropertyBag());
+            // Initialize new save data and start the game
+            GameSnapshot save_data = GameSnapshot.FromInitialSaveData(m_InitialSaveData);
             NavigationUtilities.BeginSessionAndNavigate(save_data);
+        }
+
+        private static Guid GetDefaultGameStart()
+        {
+            return GameController.Content.GetAssetsByType<AssetScene>().First(scene => scene.IsGameStart).ID;
         }
 
         [NotifyPropertyChangedInvocator]

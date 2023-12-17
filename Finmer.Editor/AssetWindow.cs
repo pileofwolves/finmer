@@ -8,6 +8,7 @@
 
 using System;
 using System.Diagnostics;
+using System.Windows.Forms;
 using Finmer.Core.Assets;
 
 namespace Finmer.Editor
@@ -23,6 +24,11 @@ namespace Finmer.Editor
         /// Gets or sets the asset that this window is editing.
         /// </summary>
         public AssetBase Asset { get; set; }
+
+        protected AssetWindow()
+        {
+            FormClosed += AssetWindow_FormClosed;
+        }
 
         protected override string GetWindowTitle()
         {
@@ -50,6 +56,11 @@ namespace Finmer.Editor
                 // Replace the reference on the asset tree node, so we won't re-open the old asset later
                 Program.MainForm.ReplaceAssetTreeNode(old_asset, new_asset);
             }
+        }
+        private void AssetWindow_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            // Ensure the asset icon is up-to-date - discarding changes may have changed the asset contents
+            Program.MainForm.UpdateAssetIcon(Asset);
         }
 
     }

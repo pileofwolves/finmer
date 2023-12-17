@@ -8,7 +8,6 @@
 
 using System;
 using System.Windows.Input;
-using Finmer.Core;
 using Finmer.Gameplay;
 using Finmer.Models;
 using Finmer.Utility;
@@ -91,8 +90,30 @@ namespace Finmer.ViewModels
 
         private static void OnQuickStart(object args)
         {
+            // Backwards compatibility: verify that the preset includes a scene ID, which was not present at launch
+            var scene_id_bytes = UserConfig.NewGamePreset.GetBytes(SaveData.k_System_StartSceneID);
+            if (scene_id_bytes == null)
+            {
+                // Present a popup dialog with the error message
+                GameController.Window.OpenPopup(new SimpleMessageDialog {
+                    Message = "Preset save data is outdated (missing initial scene ID). Please go through the character creation screen once to update it."
+                });
+                return;
+            }
+
+            // Verify that the quick start scene exists; it may have been unloaded
+            var scene_id = new Guid(scene_id_bytes);
+            if (GameController.Content.GetAssetByID(scene_id) == null)
+            {
+                // Present a popup dialog with the error message
+                GameController.Window.OpenPopup(new SimpleMessageDialog {
+                    Message = $"Preset save data has unknown start scene ID {scene_id} - it may have been in an uninstalled module. Please go through the character creation screen once to update it."
+                });
+                return;
+            }
+
             // Start a new game using the last configured character creator preset
-            GameSnapshot save_data = new GameSnapshot(UserConfig.NewGamePreset, new PropertyBag(), new PropertyBag());
+            GameSnapshot save_data = GameSnapshot.FromInitialSaveData(UserConfig.NewGamePreset);
             NavigationUtilities.BeginSessionAndNavigate(save_data);
         }
 

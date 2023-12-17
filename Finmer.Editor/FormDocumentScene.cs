@@ -80,11 +80,13 @@ namespace Finmer.Editor
             trvNodes.ExpandAll();
             trvNodes.ResumeLayout();
 
-            // Set up patch settings panel
+            // Set up scene root settings panel
             chkRootInject.Checked = m_Scene.IsPatch;
+            chkRootGameStart.Checked = m_Scene.IsGameStart;
             cmbInjectTargetMode.SelectedIndex = (int)m_Scene.InjectMode;
             assetInjectTargetScene.SelectedGuid = m_Scene.InjectTargetScene;
             cmbInjectTargetNode.Text = m_Scene.InjectTargetNode;
+            txtGameStartDesc.Text = m_Scene.GameStartDescription;
             UpdateInjectionNodeList();
 
             // Mark the asset as dirty when the user changes node scripts
@@ -769,9 +771,49 @@ namespace Finmer.Editor
             tsbScriptEnter.Enabled = !inject;
             tsbScriptLeave.Enabled = !inject;
 
-            if (m_SkipDirtyUpdates) return;
+            // Do not mark asset as dirty if UI is being set up
+            if (m_SkipDirtyUpdates)
+                return;
 
+            // Uncheck game start if checking patch
+            if (inject)
+                chkRootGameStart.Checked = false;
+
+            // Update scene data
             m_Scene.IsPatch = inject;
+            Dirty = true;
+
+            // Update icon on main form
+            Program.MainForm.UpdateAssetIcon(m_Scene);
+        }
+
+        private void chkRootGameStart_CheckedChanged(object sender, EventArgs e)
+        {
+            bool mode = chkRootGameStart.Checked;
+            pnlGameStartSettings.Visible = mode;
+
+            // Do not mark asset as dirty if UI is being set up
+            if (m_SkipDirtyUpdates)
+                return;
+
+            // Uncheck game start if checking patch
+            if (mode)
+                chkRootInject.Checked = false;
+
+            // Update scene data
+            m_Scene.IsGameStart = mode;
+            Dirty = true;
+
+            // Update icon on main form
+            Program.MainForm.UpdateAssetIcon(m_Scene);
+        }
+
+        private void txtGameStartDesc_TextChanged(object sender, EventArgs e)
+        {
+            if (m_SkipDirtyUpdates)
+                return;
+
+            m_Scene.GameStartDescription = txtGameStartDesc.Text;
             Dirty = true;
         }
 

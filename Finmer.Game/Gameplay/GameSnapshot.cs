@@ -39,6 +39,25 @@ namespace Finmer.Gameplay
             InterfaceData = ui;
         }
 
+        /// <summary>
+        /// Initialize a new GameSnapshot using initial save data from the character creator.
+        /// </summary>
+        public static GameSnapshot FromInitialSaveData(PropertyBag initial_save)
+        {
+            // Initialize the save data with basic defaults.
+            // The scripts in content can make any other adjustments if needed (such as starting equipment).
+            initial_save.SetInt(SaveData.k_Character_Level, 1);
+            initial_save.SetInt(SaveData.k_Player_TimeDay, 1);
+            initial_save.SetInt(SaveData.k_Player_TimeHour, 9);
+
+            // Move the start scene ID to a separate PropertyBag for scene data
+            var scene_data = new PropertyBag();
+            scene_data.SetBytes(SaveData.k_System_CurrentSceneID, initial_save.GetBytes(SaveData.k_System_StartSceneID));
+
+            // Generate the session
+            return new GameSnapshot(initial_save, scene_data, new PropertyBag());
+        }
+
     }
 
 }

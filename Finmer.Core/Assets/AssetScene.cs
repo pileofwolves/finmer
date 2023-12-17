@@ -79,6 +79,11 @@ namespace Finmer.Core.Assets
         public CompiledScript PrecompiledScript { get; set; }
 
         /// <summary>
+        /// Indicates whether this scene can be selected by the player as game start, when creating new save data.
+        /// </summary>
+        public bool IsGameStart { get; set; }
+
+        /// <summary>
         /// Indicates whether this scene is a patch, meaning it adds or replaces nodes in another scene.
         /// </summary>
         public bool IsPatch { get; set; }
@@ -98,6 +103,11 @@ namespace Finmer.Core.Assets
         /// </summary>
         public string InjectTargetNode { get; set; } = String.Empty;
 
+        /// <summary>
+        /// User-friendly description of the game start.
+        /// </summary>
+        public string GameStartDescription { get; set; } = String.Empty;
+
         public override void Serialize(IFurballContentWriter outstream)
         {
             base.Serialize(outstream);
@@ -106,6 +116,11 @@ namespace Finmer.Core.Assets
             outstream.WriteNestedScriptProperty(nameof(ScriptCustom), ScriptCustom);
             outstream.WriteNestedScriptProperty(nameof(ScriptEnter), ScriptEnter);
             outstream.WriteNestedScriptProperty(nameof(ScriptLeave), ScriptLeave);
+
+            // Game start settings
+            outstream.WriteBooleanProperty(nameof(IsGameStart), IsGameStart);
+            if (IsGameStart)
+                outstream.WriteStringProperty(nameof(GameStartDescription), GameStartDescription);
 
             // Patching settings
             outstream.WriteBooleanProperty(nameof(IsPatch), IsPatch);
@@ -130,6 +145,14 @@ namespace Finmer.Core.Assets
             ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
             ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
             ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
+
+            // Game start settings
+            if (version >= 20)
+            {
+                IsGameStart = instream.ReadBooleanProperty(nameof(IsGameStart));
+                if (IsGameStart)
+                    GameStartDescription = instream.ReadStringProperty(nameof(GameStartDescription));
+            }
 
             // Assign script names
             if (ScriptCustom != null)

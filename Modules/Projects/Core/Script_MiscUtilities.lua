@@ -72,38 +72,6 @@ end
 -- Clock management and querying
 ------------------------------------------------------------------------------
 
-function GetTimeDay()
-    local day, _ = GetTime()
-    return day
-end
-
-function GetTimeHour()
-    local _, hour = GetTime()
-    return hour
-end
-
-function GetTimeHourTotal()
-    local day, hour = GetTime()
-    return hour + day * 24
-end
-
-function GetIsNight()
-    local hour = GetTimeHour()
-    return hour < 6 or hour > 20
-end
-
-function SetTimeHour(target)
-    local now = GetTimeHour()
-    local diff = target - now
-    if diff < 0 then
-        -- move clock "backwards" (a full cycle) to reach an earlier timestamp
-        AdvanceTime(24 + diff)
-    elseif diff > 0 then
-        -- move clock forwards by difference to target
-        AdvanceTime(diff)
-    end
-end
-
 function FoodComa()
     -- Used to have its own animation; is now an alias for Rest().
     Rest()

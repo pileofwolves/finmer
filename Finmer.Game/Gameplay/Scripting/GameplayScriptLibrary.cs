@@ -32,9 +32,16 @@ namespace Finmer.Gameplay.Scripting
             context.RegisterGlobalFunction("Item", ExportedNewItem);
             context.RegisterGlobalFunction("Shop", ExportedNewShop);
 
-            // Misc gameplay
+            // Time and clock
             context.RegisterGlobalFunction("GetTime", ExportedGetTime);
+            context.RegisterGlobalFunction("GetTimeHour", ExportedGetTimeHour);
+            context.RegisterGlobalFunction("GetTimeHourTotal", ExportedGetTimeHourTotal);
+            context.RegisterGlobalFunction("GetTimeDay", ExportedGetTimeDay);
+            context.RegisterGlobalFunction("GetIsNight", ExportedGetIsNight);
+            context.RegisterGlobalFunction("SetTimeHour", ExportedSetTimeHour);
             context.RegisterGlobalFunction("AdvanceTime", ExportedAddTime);
+
+            // Misc gameplay
             context.RegisterGlobalFunction("SetScene", ExportedSetScene);
             context.RegisterGlobalFunction("EndGame", ExportedEndGame);
 
@@ -110,6 +117,52 @@ namespace Finmer.Gameplay.Scripting
             lua_pushnumber(L, GameController.Session.Player.TimeDay);
             lua_pushnumber(L, GameController.Session.Player.TimeHour);
             return 2;
+        }
+
+        private static int ExportedGetTimeDay(IntPtr L)
+        {
+            lua_pushnumber(L, GameController.Session.Player.TimeDay);
+            return 1;
+        }
+
+        private static int ExportedGetTimeHour(IntPtr L)
+        {
+            lua_pushnumber(L, GameController.Session.Player.TimeHour);
+            return 1;
+        }
+
+        private static int ExportedGetTimeHourTotal(IntPtr L)
+        {
+            lua_pushnumber(L, GameController.Session.Player.TimeHourCumulative);
+            return 1;
+        }
+
+        private static int ExportedGetIsNight(IntPtr L)
+        {
+            int hour = GameController.Session.Player.TimeHour;
+            lua_pushboolean(L, hour < 6 || hour > 20);
+            return 1;
+        }
+
+        private static int ExportedSetTimeHour(IntPtr L)
+        {
+            var session = GameController.Session;
+            var player = session.Player;
+
+            // Find easiest way to reach the target time
+            int diff = (int)luaL_checknumber(L, 1) - player.TimeHour;
+            if (diff < 0)
+            {
+                // Move clock "backwards" (a full day cycle) to reach an earlier hour timestamp
+                session.AdvanceTime(24 + diff);
+            }
+            else
+            {
+                // Move clock forward by difference to target time
+                session.AdvanceTime(diff);
+            }
+
+            return 0;
         }
 
         private static int ExportedAddTime(IntPtr L)

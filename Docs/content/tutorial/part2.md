@@ -27,7 +27,7 @@ For simplicity, we're going to omit the simple 'show a single message' scripts f
 The first state node:
 
 	Unique Key:		TQ01_Tobias_Meet
-	Actions Taken:	Log 'TQ01_MEET'
+	Actions Taken:	Show Message 'TQ01_MEET'
 
 The next choice node:
 
@@ -38,7 +38,7 @@ The next choice node:
 And the next state node:
 
 	Unique Key:		TQ01_Tobias_Explain
-	Actions Taken:	Log 'TQ01_EXPLAIN'
+	Actions Taken:	Show Message 'TQ01_EXPLAIN'
 
 Now, let's go back to our `TQ01_Strings` string table and add the two sets we just referenced in the scene, to give the scene nodes we just created some actual text to work with. Add in the sets and strings as follows:
 
@@ -109,7 +109,7 @@ Add new state nodes to the three choices we just created, one for each choice:
 	Unique Key:		TQ01_Expo_Friend
 	Actions Taken:
 		Visual Script:
-		Log: TQ01_INFO_FRIEND
+		Show Message: TQ01_INFO_FRIEND
 		Set Flag TQ01_DISCUSSED_FRIEND to True
 		
 		Lua:
@@ -122,7 +122,7 @@ Add new state nodes to the three choices we just created, one for each choice:
 	Unique Key:		TQ01_Expo_Location
 	Actions Taken:
 		Visual Script:
-		Log: TQ01_INFO_LOCATION
+		Show Message: TQ01_INFO_LOCATION
 		Set Flag TQ01_DISCUSSED_LOCATION to True
 		
 		Lua:
@@ -135,7 +135,7 @@ Add new state nodes to the three choices we just created, one for each choice:
 	Unique Key:		TQ01_Expo_Reward
 	Actions Taken:
 		Visual Script:
-		Log: TQ01_INFO_REWARD
+		Show Message: TQ01_INFO_REWARD
 		Set Flag TQ01_DISCUSSED_REWARD to True
 		
 		Lua:
@@ -200,7 +200,7 @@ And the accompanying state node:
 	Unique Key:		TQ01_Expo_End
 	Actions Taken:
 		Visual Script:
-			Log: TQ01_INFO_END
+			Show Message: TQ01_INFO_END
 			Update Quest 'TQ01' to Stage 1
 			Set Number Variable TQ01_PROGRESS to 2.00
 		

@@ -73,7 +73,7 @@ SetLocation("Abandoned Campsite")
 With that ready, add the first state node from the Root, with the following settings:
 
 	Unique Key:			TQ01_Hideout
-	Actions Taken:		Log: TQ01_HIDEOUT
+	Actions Taken:		Show Message: TQ01_HIDEOUT
 
 To go with it, add the following entry to our `TQ01_Strings` string table:
 
@@ -90,7 +90,7 @@ We see a prone figure on the ground, so let's make a choice node to approach the
 And on that node, add a new state node:
 
 	Unique Key:			TQ01_Approach2
-	Actions Taken:		Log: TQ01_APPROACH
+	Actions Taken:		Show Message: TQ01_APPROACH
 
 Along with the accompanying string table entry:
 
@@ -107,11 +107,11 @@ Huh, Theo seems to be a goner. Well, that saves us some effort. We should see if
 For a little bit of character customization weight, we should make it so that the more attentive player characters are able to identify the cause for the wounds on Theo's body. We'll make **two different state nodes** as children from the `TQ01_Investigate` choice node:
 
 	Unique Key:			TQ01_InvestigatePass
-	Actions Taken:		Log: TQ01_INVESTIGATEWIT
+	Actions Taken:		Show Message: TQ01_INVESTIGATEWIT
 	Appears When:
 		Visual Script:
 		(If ALL of the following is TRUE:)
-		Player Wits >= 5.00
+		Player Wits Stat >= 5.00
 		
 		Lua:
 		return Player.Wits >= 5
@@ -119,7 +119,7 @@ For a little bit of character customization weight, we should make it so that th
 &nbsp;
 
 	Unique Key:			TQ01_InvestigateFail
-	Actions Taken:		Log: TQ01_INVESTIGATELOWWIT
+	Actions Taken:		Show Message: TQ01_INVESTIGATELOWWIT
 
 As explained in [the main documentation](/asset-types/scenes#node-scripts), the game checks states in order, from top to bottom. The first one to 'pass' is the one that will be selected. Hence, the node with the most specific requirements to trigger should be the first. If the low-wits state is the first child, it would always be chosen since it does not have an 'Appears When' script. Instead, if the high-wits state is first, it will be checked first. If its 'Appears When' script does not pass, then the game selects the low-wits state, providing us with the branching conversation we're looking for.
 
@@ -163,7 +163,7 @@ With the item ready, let's go back to the scene. The branch has reconverged, so 
 <TabItem value="visual" label="Visual Script">
 
 ```finmervis
-Log: TQ01_NOTICE
+Show Message: TQ01_NOTICE
 Modify Player Money by 5
 Add TQ01_I_Pendant to Inventory
 ```
@@ -195,7 +195,7 @@ So we've granted the item to the player, as well as a bit of loose change that T
 Followed by a state:
 
 	Unique Key:			TQ01_Fight
-	Actions Taken:		Log: TQ01_FIGHT_LEAD
+	Actions Taken:		Show Message: TQ01_FIGHT_LEAD
 
 `TQ01_FIGHT_LEAD`:
 
@@ -235,7 +235,10 @@ Start Combat with
 	Run Custom Scripts When:
 	- Any Participant Vored
 When Any Creature is Swallowed:
-	If Participant 'wolf' Is Swallowed By 'player':
+	Conditional Branch:
+		(If ALL of the following is TRUE:)
+		Participant 'wolf' Is Swallowed By 'player'
+	Then:
 		Set Flag TQ01_WOLF_NOM to True
 	End If
 ```
@@ -271,9 +274,10 @@ Let's apply that idea now. Create two new state nodes in TQ01_Fight_Start:
 
 	Unique Key:			TQ01_Fight_Nom_Win
 	Actions Taken:
-		Log: TQ01_FIGHT_FINISH_NOM
-		Inline Lua: FoodComa()
-		Log: TQ01_FIGHT_FINISH_NOM2
+		Show Message: TQ01_FIGHT_FINISH_NOM
+		Advance Time: 5 hours
+		Wait: 2 seconds
+		Show Message: TQ01_FIGHT_FINISH_NOM2
 	Appears When:
 		(If ALL of the following is TRUE:)
 		Flag 'TQ01_WOLF_NOM' Equals True
@@ -281,7 +285,7 @@ Let's apply that idea now. Create two new state nodes in TQ01_Fight_Start:
 &nbsp;
 
 	Unique Key:			TQ01_Fight_Win
-	Actions Taken:		Log: TQ01_FIGHT_FINISH
+	Actions Taken:		Show Message: TQ01_FIGHT_FINISH
 
 </TabItem>
 <TabItem value="lua" label="Lua Script">
@@ -291,7 +295,8 @@ Let's apply that idea now. Create two new state nodes in TQ01_Fight_Start:
 ```lua
 -- Actions Taken
 	Log("TQ01_FIGHT_FINISH_NOM")
-	FoodComa()
+	AdvanceTime(5)
+	Sleep(2)
 	Log("TQ01_FIGHT_FINISH_NOM2")
 
 -- Appears When
@@ -299,15 +304,13 @@ Let's apply that idea now. Create two new state nodes in TQ01_Fight_Start:
 ```
 
 	Unique Key:			TQ01_Fight_Win
-	Actions Taken:		Log: TQ01_FIGHT_FINISH
+	Actions Taken:		Show Message: TQ01_FIGHT_FINISH
 
 </TabItem>
 </Tabs>
 
 
 Remember that the most specific node has to be at the top and the catch-all at the bottom. This way, the 'more specific' scenario - the player swallowing the assailant - will be checked first, and the regular path will act as a fallback.
-
-Note that we made use of the `FoodComa()` function - this is a utility function defined within the Core module and provides a convenience tool for simulating the player resting off their meal. It pauses the script for a few second and advances the game clock. If you'd like to see how it works, open the Core module in the Editor and view it in the `Script_MiscUtilities` script asset.
 
 For the relevant strings, add the following to `TQ01_Strings`:
 

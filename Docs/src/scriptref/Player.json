@@ -184,7 +184,7 @@
 		"type": "function",
 		"qualifier": "Player:",
 		"name": "ApplyBuff",
-		"remarks": "Applies a temporary effect to the player in combat. If the player is in combat, the effect is applied immediately. If not, the effect is queued and will be applied on the next combat the player enters. Refer to the 'Asset Instantation' > 'Buffs' section for functions that create PendingBuffs.",
+		"remarks": "Applies a temporary effect to the player in combat. If the player is in combat, the effect is applied immediately. If not, the effect is queued and will be applied on the next combat the player enters. Refer to the 'Constructors' > 'Buffs' section for functions that create PendingBuffs.",
 		"input": [
 			{
 				"name": "buff",

@@ -50,6 +50,14 @@
 	color: var(--api-color-signature);
 }
 
+.scriptapi .title .signature.argtable::before {
+	content: '{';
+}
+
+.scriptapi .title .signature.argtable::after {
+	content: '}';
+}
+
 .scriptapi .title .signature > div.optional::before {
 	content: '[';
 	font-style: normal;
@@ -58,6 +66,10 @@
 .scriptapi .title .signature > div.optional::after {
 	content: ']';
 	font-style: normal;
+}
+
+.scriptapi .title .signature .tablekey {
+	color: var(--api-color-signature);
 }
 
 /* Combine comma and optional prefix */

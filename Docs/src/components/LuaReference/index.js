@@ -25,10 +25,19 @@ function NoteIcon() {
 function MakeArgumentList(entry) {
 	// We still want to draw the empty argument list '()' even if there are no arguments
 	const arg_list = entry.input ?? [];
+	let sig_classes = styles.signature;
+
+	// Functions that take parameters as a table of named keys are displayed slightly differently
+	let sig_arg = null;
+	if (entry.argtable) {
+		sig_classes += ' ' + styles.argtable;
+		sig_arg = <span className={styles.tablekey}> = ...</span>;
+	}
+
 	return (
-		<div className={styles.signature}>
+		<div className={sig_classes}>
 			{arg_list.map((argument, index) =>
-				<div className={argument.optional && styles.optional}>{argument.name}</div>
+				<div className={argument.optional && styles.optional}>{argument.name}{sig_arg}</div>
 			)}
 		</div>
 	)

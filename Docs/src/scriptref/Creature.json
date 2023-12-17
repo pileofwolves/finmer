@@ -148,7 +148,7 @@
 	},
 	{
 		"type": "function",
-		"qualifier": "object:",
+		"qualifier": "creature:",
 		"name": "IsDead",
 		"remarks": "Returns whether this Creature currently has 0 HP.",
 		"output": [
@@ -160,7 +160,7 @@
 	},
 	{
 		"type": "function",
-		"qualifier": "object:",
+		"qualifier": "creature:",
 		"name": "CanSwallow",
 		"remarks": "Returns whether this Creature is capable of swallowing the specified other Creature. Predators can only swallow prey of the same or smaller Size, and the prey must not have the 'Cannot Be Vored' override checked in the editor.",
 		"input": [
@@ -179,7 +179,7 @@
 	},
 	{
 		"type": "function",
-		"qualifier": "object:",
+		"qualifier": "creature:",
 		"name": "CanGrapple",
 		"remarks": "Returns whether this Creature is capable of grappling with the specified other Creature. Creatures can only grapple targets of the same or smaller Size, and the target must not have the 'Cannot Be Grappled' override checked in the editor.",
 		"input": [

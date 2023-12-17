@@ -1,0 +1,83 @@
+[
+	{
+		"type": "function",
+		"name": "Rumor.Add",
+		"remarks": "Adds a new rumor to the table of rumors. Note that arguments are expected as named keys in a table. See Example section at the bottom of the page.",
+		"argtable": true,
+		"coremod": true,
+		"input": [
+			{
+				"name": "id",
+				"type": "string",
+				"desc": "unique ID of the rumor; only used for Rumor.Remove"
+			},
+			{
+				"name": "text",
+				"type": "string",
+				"desc": "string table key representing the rumor text"
+			},
+			{
+				"name": "weight",
+				"type": "number",
+				"optional": true,
+				"desc": "relative selection weight; defaults to 1"
+			},
+			{
+				"name": "check",
+				"type": "function",
+				"optional": true,
+				"desc": "eligibility check function; rumor is not shown if function returns false"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Rumor.Remove",
+		"remarks": "Delete the rumor with the specified ID from the table of rumors.",
+		"coremod": true,
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the ID of the rumor to delete, previously passed to Rumor.Add"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Rumor.RemoveAll",
+		"remarks": "Deletes all rumors from the rumor table.",
+		"coremod": true
+	},
+	{
+		"type": "function",
+		"name": "Rumor.Shuffle",
+		"remarks": "Re-shuffle all rumors, meaning ones that have just been shown could be shown again. This is primarily useful if you just added a new rumor during gameplay (as opposed to in a Script Asset), which will not be shuffled into the list of possible rumors until all other rumors have been exhausted.",
+		"coremod": true
+	},
+	{
+		"type": "function",
+		"name": "Rumor.Get",
+		"remarks": "Selects a random, eligible rumor, makes it ineligible for selection until the next shuffle, and returns its string table key. You can pass this to Log() or similar, to display the rumor text on-screen.",
+		"coremod": true,
+		"output": [
+			{
+				"type": "string",
+				"desc": "string table key of the selected rumor"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Rumor.Present",
+		"remarks": "Utility function that assigns the rumor mill grammar context, selects a random rumor, and displays it.",
+		"coremod": true,
+		"input": [
+			{
+				"name": "mill",
+				"type": "Creature",
+				"desc": "the value of the 'mill' grammar context; this is the creature speaking the rumor to the player"
+			}
+		]
+	}
+]

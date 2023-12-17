@@ -1,0 +1,52 @@
+[
+	{
+		"type": "function",
+		"name": "Encounter.Add",
+		"remarks": "Adds a new encounter to the group with the specified ID. Note that arguments are expected as named keys in a table. The encounter activation function (the fn parameter) should generally cause a switch to a different scene, so that some kind of interactive encounter can start.",
+		"argtable": true,
+		"coremod": true,
+		"input": [
+			{
+				"name": "group",
+				"type": "string",
+				"desc": "ID of the group to add the encounter to"
+			},
+			{
+				"name": "fn",
+				"type": "function",
+				"desc": "activation function that should start the encounter"
+			},
+			{
+				"name": "weight",
+				"type": "number",
+				"optional": true,
+				"desc": "relative selection weight; defaults to 1"
+			},
+			{
+				"name": "check",
+				"type": "function",
+				"optional": true,
+				"desc": "eligibility check function; encounter is not selected if function returns false"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Encounter.Roll",
+		"remarks": "Selects a random, eligible encounter from the specified group, and returns its activation function. Call the function to start the encounter.",
+		"coremod": true,
+		"input": [
+			{
+				"name": "group",
+				"type": "string",
+				"desc": "ID of the group to get an encounter from"
+			}
+		],
+		"output": [
+			{
+				"type": "function",
+				"desc": "activation function of the selected encounter, or nil if there are no eligible encounters"
+			}
+		]
+	}
+]

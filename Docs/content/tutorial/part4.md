@@ -33,10 +33,9 @@ Now, let's finish the quest up. Create a new state node off of `TQ01_Return:`
 <TabItem value="visual" label="Visual Script">
 
 	Unique Key:			TQ01_Complete_Quest
-	Button Text:		Continue
 	Actions Taken:
 		-- Print message
-		Log: TQ01_COMPLETION
+		Show Message: TQ01_COMPLETION
 
 		-- Prevent player from completing the quest again
 		Set Number Variable TQ01_PROGRESS to 4.00
@@ -53,7 +52,6 @@ Now, let's finish the quest up. Create a new state node off of `TQ01_Return:`
 <TabItem value="lua" label="Lua Script">
 
 	Unique Key:			TQ01_Complete_Quest
-	Button Text:		Continue
 
 ```lua
 -- Actions Taken

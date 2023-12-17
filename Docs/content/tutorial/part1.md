@@ -149,7 +149,7 @@ For this first node, we merely want to print some text to the screen. This is wh
 Your script should look like this. If you need to edit a command, just double-click it to open the popup again to customize it.
 
 ```finmervis
-Log: TQ01_NOTICE
+Show Message: TQ01_NOTICE
 ```
 
 </TabItem>
@@ -210,7 +210,7 @@ The `TQ01_Start` node's updated Actions Taken script:
 <TabItem value="visual" label="Visual Script">
 
 ```finmervis
-Log: TQ01_NOTICE
+Show Message: TQ01_NOTICE
 Set Number Variable 'TQ01_PROGRESS' to 1.00
 Update Quest 'TQ01' to Stage 0
 ```

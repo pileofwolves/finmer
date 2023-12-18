@@ -69,7 +69,7 @@ namespace Finmer.Views
                     ValidStarts.Add(new GameStartInfo
                     {
                         Title = scene.GameStartDescription,
-                        Author = "Nuntis the Wolf",
+                        Author = scene.Module.Author,
                         Scene = scene.ID
                     });
                 }

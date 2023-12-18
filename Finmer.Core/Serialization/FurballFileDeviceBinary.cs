@@ -50,7 +50,7 @@ namespace Finmer.Core.Serialization
                     for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
                     {
                         var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
-                        asset.SourceModuleName = file.Name;
+                        asset.Module = output.Metadata;
                         output.Assets.Add(asset);
                     }
 

@@ -45,11 +45,11 @@ namespace Finmer.Gameplay
 
             // Validate that the UUID is unique
             if (m_GuidMap.TryGetValue(asset.ID, out var duplicate))
-                throw new DuplicateContentException($"Duplicate asset ID '{asset.ID}' found. All asset IDs must be unique.\r\n\r\nA: {duplicate.Name} (in {duplicate.SourceModuleName})\r\nB: {asset.Name} (in {asset.SourceModuleName})");
+                throw new DuplicateContentException($"Duplicate asset ID '{asset.ID}' found. All asset IDs must be unique.\r\n\r\nA: {duplicate.Name} (in {duplicate.Module.Title})\r\nB: {asset.Name} (in {asset.Module.Title})");
 
             // Validate that the name is unique
             if (m_NameMap.TryGetValue(asset.Name, out duplicate))
-                throw new DuplicateContentException($"Duplicate asset name '{asset.Name}' found. All asset names must be unique.\r\n\r\nA: {duplicate.ID} (in {duplicate.SourceModuleName})\r\nB: {asset.ID} (in {asset.SourceModuleName})");
+                throw new DuplicateContentException($"Duplicate asset name '{asset.Name}' found. All asset names must be unique.\r\n\r\nA: {duplicate.ID} (in {duplicate.Module.Title})\r\nB: {asset.ID} (in {asset.Module.Title})");
 
             // Special handling for string tables: merge them into the main table instead of registering them,
             // since we don't need the individual table at runtime, only the full, merged collection.

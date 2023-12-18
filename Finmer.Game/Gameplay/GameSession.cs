@@ -317,7 +317,7 @@ namespace Finmer.Gameplay
                 {
                     // Register the target script in the graph as well
                     var target = GameController.Content.GetAssetByID<AssetScript>(dependency.TargetAsset)
-                        ?? throw new UnsolvableConstraintException($"Script '{script.Name}' (in module {script.SourceModuleName}) has a load-order dependency on script '{dependency.TargetAsset}', but no such script is loaded.");
+                        ?? throw new UnsolvableConstraintException($"Script '{script.Name}' (in module {script.Module.Title}) has a load-order dependency on script '{dependency.TargetAsset}', but no such script is loaded.");
                     solver.AddNode(target, target.Name);
 
                     // Add an edge between the two nodes

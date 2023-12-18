@@ -52,7 +52,7 @@ Dependencies let you easily import content from other modules. You don't _need_ 
 
 Now we're ready to start building. Create a new scene by clicking `Add Asset` on the Toolbar, then click Scene.
 
-The new scene will have a name like "NewScene1" in the asset list on the left. Click the scene in the list, and press the `Rename` button on the Toolbar (it's under the 'Assets' group). You can also press `F2` on your keyboard as a shortcut for Rename.
+The new scene will have a name like "NewScene1" in the asset list on the left. Click the scene in the list, and press the `Rename` button on the Toolbar (it's under the 'Assets' group). You can also click twice on the asset to rename it.
 
 You are free to name it whatever you like. For this tutorial, we'll follow the practice of grouping things together. In Core, things related to quests are usually prefixed with the quest number, to clearly group them. Since this is our first tutorial quest, we will use the prefix `TQ01` - short for **'Tutorial Quest 1'**. This scene will be used to patch a new notice into the town's notice board, so let's call the scene `TQ01_Patch_NoticeBoard`.
 

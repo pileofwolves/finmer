@@ -44,7 +44,34 @@ All nodes have a unique key. This key is used by the game internally to refer to
 
 You are free to name them whatever you want, but I recommend keeping them at least somewhat organized. For example, you might want to group nodes related to the same topic together using a common prefix.
 
-## Node Scripts
+## Special Types of Scenes
+
+When selecting the Root node of the scene node tree, two options appear that specialize the role of the scene. Only up to one of these can be selected at a time.
+
+### 🛠️ Patches
+
+Patches can be used to inject new scene nodes into a scene asset from a different module. For instance, you can use this to patch in new areas or dialogue trees into the Core module, adding them on to the main game. Or you can patch scenes from other people's mods.
+
+To use this feature, tick the 'Is Patch' check box on the Root node. Select the scene you wish to add nodes on to, and then choose the injection point, which tells Finmer how exactly to inject your custom nodes. The target node, where your new nodes will be added, is identified with its Unique Key. It may be beneficial to open the module you're patching in the Editor, so you can see more clearly what a good target node would be for your edit.
+
+Injection Mode                      | Effect
+---                                 | ---
+Before (as States)                  | The patch will add new States _before_ the target injection point, forcing the game to select them (per their Appears When script) before the target.
+After (as States)                   | The patch will add new States _after_ the target injection point. They can only be selected if the Appears When script of the target evaluates to false.
+Inside, at the start (as Choices)   | The patch will add new Choices before all existing ones.
+Inside, at the end (as Choices)     | The patch will add new Choices at the end of the existing ones.
+
+It is currently not possible to _replace_ Actions Taken or Appears When scripts on existing scene nodes. However, you could add new nodes with scripts that replace the old ones, and inject your custom nodes such that they appear before the base module has a chance to show the originals.
+
+### 🏁 Game Start Locations
+
+Game Starts represent locations where the player can start a new story. You can use this to allow players to start a new game entirely within your custom mod (such as a total conversion mod) without ever having to go through the main story from the Core module.
+
+If there are multiple Game Starts in loaded modules, the game will allow the player to choose which one they want to play. Set the 'Game Start Description' to a brief description of the story or the start location; this is shown to the player in the dialog where they choose which story they wish to start.
+
+## Scripting with Scenes
+
+### Node Scripts
 
 Each node may optionally contain either or both of two special scripts. In short:
 
@@ -69,7 +96,7 @@ After a Choice is selected, the game will go over all child States, in order fro
 
 For Choices, it's a bit simpler: every child Choice whose Appears When function evaluates to `true` (or doesn't have one at all) will appear at the bottom of the screen.
 
-## Scene-Wide Scripts
+### Scene-Wide Scripts
 
 A Scene may optionally have these scripts:
 

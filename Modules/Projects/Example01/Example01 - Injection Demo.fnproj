@@ -1,8 +1,8 @@
 ﻿{
-	"FormatVersion": 19,
+	"FormatVersion": 20,
 	"ID": "8dcd6623-c5a6-44a5-8f2d-9bdfbd6b4d8c",
 	"Title": "Example 1: Injection Demo",
-	"Author": "Nuntis",
+	"Author": "Nuntis the Wolf",
 	"Dependencies": [
 		{
 			"ID": "edcf99d2-6ced-40fa-87e9-86cda5e570ee",

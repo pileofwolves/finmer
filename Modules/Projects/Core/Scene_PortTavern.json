@@ -6,6 +6,7 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_PortTavern_Enter"
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

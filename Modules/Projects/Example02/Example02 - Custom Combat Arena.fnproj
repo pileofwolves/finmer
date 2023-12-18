@@ -1,8 +1,8 @@
 ﻿{
-	"FormatVersion": 19,
+	"FormatVersion": 20,
 	"ID": "76c6b55b-243a-4d11-999e-918b0061691e",
 	"Title": "Custom Combat Debug Tool",
-	"Author": "Nuntis",
+	"Author": "Nuntis the Wolf",
 	"Dependencies": [
 		{
 			"ID": "edcf99d2-6ced-40fa-87e9-86cda5e570ee",

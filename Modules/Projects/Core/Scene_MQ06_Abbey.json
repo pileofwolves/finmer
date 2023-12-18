@@ -6,6 +6,7 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_MQ06_Abbey_Custom"
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

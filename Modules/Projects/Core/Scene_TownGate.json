@@ -27,6 +27,7 @@
 			}
 		]
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

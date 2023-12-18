@@ -2,6 +2,7 @@
 	"!Type": "AssetScene",
 	"AssetID": "3e0c96ff-4469-4fdb-8a49-161a3112571d",
 	"AssetName": "TQ01_Patch_RoadNorth",
+	"IsGameStart": false,
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",

@@ -6,6 +6,7 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_TownNSQ_Enter"
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

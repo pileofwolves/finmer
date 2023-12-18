@@ -2,6 +2,7 @@
 	"!Type": "AssetScene",
 	"AssetID": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a",
 	"AssetName": "TQ01_Patch_NoticeBoard",
+	"IsGameStart": false,
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",

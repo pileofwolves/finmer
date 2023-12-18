@@ -17,6 +17,7 @@
 			}
 		]
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",
@@ -1603,6 +1604,7 @@
 																}
 															],
 															"HasCallbackCombatStart": false,
+															"HasCallbackRoundStart": false,
 															"HasCallbackRoundEnd": false,
 															"HasCallbackPlayerKilled": false,
 															"HasCallbackCreatureKilled": false,

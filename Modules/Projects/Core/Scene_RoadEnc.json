@@ -10,6 +10,7 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_RoadEnc_Enter"
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

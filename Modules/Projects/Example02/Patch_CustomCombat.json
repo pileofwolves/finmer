@@ -2,6 +2,7 @@
 	"!Type": "AssetScene",
 	"AssetID": "11a6076b-6854-414c-8874-b7430c506b48",
 	"AssetName": "Patch_CustomCombat",
+	"IsGameStart": false,
 	"IsPatch": true,
 	"InjectMode": "InsideAtEnd",
 	"InjectTargetScene": "ab250357-19c3-4e27-9c8f-505e01f329af",

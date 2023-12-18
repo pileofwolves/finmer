@@ -6,6 +6,8 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_Intro_Custom"
 	},
+	"IsGameStart": true,
+	"GameStartDescription": "Finmer - Main Story",
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",

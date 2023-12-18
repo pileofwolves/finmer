@@ -6,6 +6,7 @@
 		"!Type": "ScriptDataExternal",
 		"Name": "Scene_RedMaw_Custom"
 	},
+	"IsGameStart": false,
 	"IsPatch": false,
 	"Root": {
 		"NodeType": "Root",
@@ -545,6 +546,7 @@
 																}
 															],
 															"HasCallbackCombatStart": false,
+															"HasCallbackRoundStart": false,
 															"HasCallbackRoundEnd": false,
 															"HasCallbackPlayerKilled": false,
 															"HasCallbackCreatureKilled": false,
@@ -781,6 +783,7 @@
 																				}
 																			],
 																			"HasCallbackCombatStart": false,
+																			"HasCallbackRoundStart": false,
 																			"HasCallbackRoundEnd": false,
 																			"HasCallbackPlayerKilled": false,
 																			"HasCallbackCreatureKilled": false,
@@ -889,6 +892,7 @@
 													"TargetName": "player"
 												}
 											],
+											"HasCallbackRoundStart": false,
 											"HasCallbackRoundEnd": true,
 											"CallbackRoundEnd": [
 												{
@@ -2332,6 +2336,7 @@
 																					"PreyName": "player"
 																				}
 																			],
+																			"HasCallbackRoundStart": false,
 																			"HasCallbackRoundEnd": false,
 																			"HasCallbackPlayerKilled": false,
 																			"HasCallbackCreatureKilled": false,

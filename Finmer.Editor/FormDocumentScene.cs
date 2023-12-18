@@ -37,10 +37,6 @@ namespace Finmer.Editor
         private int m_SelectedTreeIndex;
         private int m_SelectedTreeMaxIndex;
 
-        private WeakReference<EditorWindow> m_ScriptEditorEnter;
-        private WeakReference<EditorWindow> m_ScriptEditorLeave;
-        private WeakReference<EditorWindow> m_ScriptEditorCustom;
-
         private readonly TabPage m_TabPageNodeRoot;
         private readonly TabPage m_TabPageNodeState;
         private readonly TabPage m_TabPageNodeChoice;
@@ -84,11 +80,13 @@ namespace Finmer.Editor
             trvNodes.ExpandAll();
             trvNodes.ResumeLayout();
 
-            // Set up patch settings panel
+            // Set up scene root settings panel
             chkRootInject.Checked = m_Scene.IsPatch;
+            chkRootGameStart.Checked = m_Scene.IsGameStart;
             cmbInjectTargetMode.SelectedIndex = (int)m_Scene.InjectMode;
             assetInjectTargetScene.SelectedGuid = m_Scene.InjectTargetScene;
             cmbInjectTargetNode.Text = m_Scene.InjectTargetNode;
+            txtGameStartDesc.Text = m_Scene.GameStartDescription;
             UpdateInjectionNodeList();
 
             // Mark the asset as dirty when the user changes node scripts
@@ -105,15 +103,6 @@ namespace Finmer.Editor
             // If a node was already selected, update its node text to "commit" pending changes
             if (m_SelectedNode != null)
                 UpdateNodeText(m_SelectedTree, m_SelectedNode);
-
-            // Ensure scene scripts are committed, since the serialization of the scene asset depends on it
-            // These are weak references so that this scene editor doesn't keep the script editors alive after the user closes them
-            if (m_ScriptEditorEnter != null && m_ScriptEditorEnter.TryGetTarget(out var enter_script_window) && !enter_script_window.IsDisposed)
-                enter_script_window.Flush();
-            if (m_ScriptEditorLeave != null && m_ScriptEditorLeave.TryGetTarget(out var leave_script_window) && !leave_script_window.IsDisposed)
-                leave_script_window.Flush();
-            if (m_ScriptEditorCustom != null && m_ScriptEditorCustom.TryGetTarget(out var custom_script_window) && !custom_script_window.IsDisposed)
-                custom_script_window.Flush();
 
             // Force the new asset to take on the old asset's name - this can only be changed outside the editor window, so if the user
             // changed this after the editor window made a copy of the source asset, the name would be overwritten with the old one.
@@ -539,19 +528,19 @@ namespace Finmer.Editor
         private void tsbScriptCustom_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptCustom = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptCustom);
-            m_ScriptEditorCustom = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptCustom));
+            RegisterNestedWindow(Program.MainForm.OpenEditorWindow(m_Scene.ScriptCustom));
         }
 
         private void tsbScriptEnter_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptEnter = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptEnter);
-            m_ScriptEditorEnter = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptEnter));
+            RegisterNestedWindow(Program.MainForm.OpenEditorWindow(m_Scene.ScriptEnter));
         }
 
         private void tsbScriptLeave_Click(object sender, EventArgs e)
         {
             m_Scene.ScriptLeave = ScriptDataWrapper.EnsureWrapped(m_Scene.ScriptLeave);
-            m_ScriptEditorLeave = new WeakReference<EditorWindow>(Program.MainForm.OpenEditorWindow(m_Scene.ScriptLeave));
+            RegisterNestedWindow(Program.MainForm.OpenEditorWindow(m_Scene.ScriptLeave));
         }
 
         private void tsbMoveUp_Click(object sender, EventArgs e)
@@ -782,9 +771,49 @@ namespace Finmer.Editor
             tsbScriptEnter.Enabled = !inject;
             tsbScriptLeave.Enabled = !inject;
 
-            if (m_SkipDirtyUpdates) return;
+            // Do not mark asset as dirty if UI is being set up
+            if (m_SkipDirtyUpdates)
+                return;
 
+            // Uncheck game start if checking patch
+            if (inject)
+                chkRootGameStart.Checked = false;
+
+            // Update scene data
             m_Scene.IsPatch = inject;
+            Dirty = true;
+
+            // Update icon on main form
+            Program.MainForm.UpdateAssetIcon(m_Scene);
+        }
+
+        private void chkRootGameStart_CheckedChanged(object sender, EventArgs e)
+        {
+            bool mode = chkRootGameStart.Checked;
+            pnlGameStartSettings.Visible = mode;
+
+            // Do not mark asset as dirty if UI is being set up
+            if (m_SkipDirtyUpdates)
+                return;
+
+            // Uncheck game start if checking patch
+            if (mode)
+                chkRootInject.Checked = false;
+
+            // Update scene data
+            m_Scene.IsGameStart = mode;
+            Dirty = true;
+
+            // Update icon on main form
+            Program.MainForm.UpdateAssetIcon(m_Scene);
+        }
+
+        private void txtGameStartDesc_TextChanged(object sender, EventArgs e)
+        {
+            if (m_SkipDirtyUpdates)
+                return;
+
+            m_Scene.GameStartDescription = txtGameStartDesc.Text;
             Dirty = true;
         }
 

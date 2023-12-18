@@ -41,6 +41,7 @@ namespace Finmer.Editor
 
             // Callbacks
             chkCallbackCS.Checked = node.CallbackCombatStart != null;
+            chkCallbackRS.Checked = node.CallbackRoundStart != null;
             chkCallbackRE.Checked = node.CallbackRoundEnd != null;
             chkCallbackPK.Checked = node.CallbackPlayerKilled != null;
             chkCallbackCK.Checked = node.CallbackCreatureKilled != null;
@@ -62,6 +63,7 @@ namespace Finmer.Editor
 
             // Callbacks
             node.CallbackCombatStart = chkCallbackCS.Checked ? (node.CallbackCombatStart ?? new List<ScriptNode>()) : null;
+            node.CallbackRoundStart = chkCallbackRS.Checked ? (node.CallbackRoundStart ?? new List<ScriptNode>()) : null;
             node.CallbackRoundEnd = chkCallbackRE.Checked ? (node.CallbackRoundEnd ?? new List<ScriptNode>()) : null;
             node.CallbackPlayerKilled = chkCallbackPK.Checked ? (node.CallbackPlayerKilled ?? new List<ScriptNode>()) : null;
             node.CallbackCreatureKilled = chkCallbackCK.Checked ? (node.CallbackCreatureKilled ?? new List<ScriptNode>()) : null;

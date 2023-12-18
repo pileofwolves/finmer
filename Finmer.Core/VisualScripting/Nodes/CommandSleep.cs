@@ -27,7 +27,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return String.Format(CultureInfo.InvariantCulture, "Sleep {0} seconds", Seconds.GetOperandDescription());
+            return String.Format(CultureInfo.InvariantCulture, "Wait {0} seconds", Seconds.GetOperandDescription());
         }
 
         public override EColor GetEditorColor()

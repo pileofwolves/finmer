@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Log Horizontal Bar";
+            return "Show Horizontal Bar";
         }
 
         public override EColor GetEditorColor()

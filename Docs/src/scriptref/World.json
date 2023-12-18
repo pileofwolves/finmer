@@ -22,8 +22,7 @@
 	{
 		"type": "function",
 		"name": "GetTimeDay",
-		"remarks": "Returns only the day portion of the current world clock time. Equivalent to calling GetTime and discarding one return value.",
-		"coremod": true,
+		"remarks": "Returns only the day portion of the current world clock time.",
 		"output": [
 			{
 				"type": "number",
@@ -34,8 +33,7 @@
 	{
 		"type": "function",
 		"name": "GetTimeHour",
-		"remarks": "Returns only the hour portion of the current world clock time. Equivalent to calling GetTime and discarding one return value.",
-		"coremod": true,
+		"remarks": "Returns only the hour portion of the current world clock time.",
 		"output": [
 			{
 				"type": "number",
@@ -47,11 +45,21 @@
 		"type": "function",
 		"name": "GetTimeHourTotal",
 		"remarks": "Returns the total number of hours passed on the clock. Useful for setting timers. Equivalent GetTimeDay() * 24 + GetTimeHour().",
-		"coremod": true,
 		"output": [
 			{
 				"type": "number",
 				"desc": "cumulative hour total"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "GetIsNight",
+		"remarks": "Returns whether the current world clock time is either earlier than 06:00, or later than 20:00.",
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if night, false if day"
 			}
 		]
 	},
@@ -71,7 +79,6 @@
 		"type": "function",
 		"name": "SetTimeHour",
 		"remarks": "Advances the time of the world clock so that the current hour matches the input hour number.",
-		"coremod": true,
 		"input": [
 			{
 				"name": "hour",

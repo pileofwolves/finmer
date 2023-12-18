@@ -152,6 +152,9 @@
     <Compile Include="Views\Base\GrayscaleToggleImage.cs" />
     <Compile Include="Views\Base\StackablePopupBase.cs" />
     <Compile Include="Views\Base\WrappedUIElementItemsControl.cs" />
+    <Compile Include="Views\CharCreateScene.xaml.cs">
+      <DependentUpon>CharCreateScene.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\CharCreateSpecies.xaml.cs">
       <DependentUpon>CharCreateSpecies.xaml</DependentUpon>
     </Compile>
@@ -318,6 +321,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </DesignData>
+    <Page Include="Views\CharCreateScene.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\CharCreateSpecies.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

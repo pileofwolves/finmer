@@ -34,6 +34,7 @@ namespace Finmer.Editor
             System.Windows.Forms.GroupBox groupBox6;
             System.Windows.Forms.GroupBox groupBox4;
             System.Windows.Forms.GroupBox groupBox1;
+            System.Windows.Forms.GroupBox groupBox5;
             this.cmdPlayerGetMaxHealth = new System.Windows.Forms.Button();
             this.cmdPlayerGetLevel = new System.Windows.Forms.Button();
             this.cmdPlayerGetStat = new System.Windows.Forms.Button();
@@ -53,16 +54,22 @@ namespace Finmer.Editor
             this.cmdSystemDisposal = new System.Windows.Forms.Button();
             this.cmdSystemExplorer = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
+            this.cmdTimeHourTotal = new System.Windows.Forms.Button();
+            this.cmdTimeHour = new System.Windows.Forms.Button();
+            this.cmdTimeDay = new System.Windows.Forms.Button();
+            this.cmdTimeNight = new System.Windows.Forms.Button();
             groupBox3 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox6 = new System.Windows.Forms.GroupBox();
             groupBox4 = new System.Windows.Forms.GroupBox();
             groupBox1 = new System.Windows.Forms.GroupBox();
+            groupBox5 = new System.Windows.Forms.GroupBox();
             groupBox3.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox6.SuspendLayout();
             groupBox4.SuspendLayout();
             groupBox1.SuspendLayout();
+            groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox3
@@ -159,7 +166,7 @@ namespace Finmer.Editor
             groupBox2.Location = new System.Drawing.Point(240, 16);
             groupBox2.Name = "groupBox2";
             groupBox2.Size = new System.Drawing.Size(208, 112);
-            groupBox2.TabIndex = 2;
+            groupBox2.TabIndex = 3;
             groupBox2.TabStop = false;
             groupBox2.Text = "Variables";
             // 
@@ -196,10 +203,10 @@ namespace Finmer.Editor
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(240, 288);
+            groupBox6.Location = new System.Drawing.Point(16, 392);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
-            groupBox6.TabIndex = 4;
+            groupBox6.TabIndex = 2;
             groupBox6.TabStop = false;
             groupBox6.Text = "Advanced";
             // 
@@ -219,10 +226,10 @@ namespace Finmer.Editor
             groupBox4.Controls.Add(this.cmdCombatGrappling);
             groupBox4.Controls.Add(this.cmdCombatSwallowed);
             groupBox4.Controls.Add(this.cmdCombatDead);
-            groupBox4.Location = new System.Drawing.Point(240, 144);
+            groupBox4.Location = new System.Drawing.Point(16, 240);
             groupBox4.Name = "groupBox4";
             groupBox4.Size = new System.Drawing.Size(208, 136);
-            groupBox4.TabIndex = 3;
+            groupBox4.TabIndex = 1;
             groupBox4.TabStop = false;
             groupBox4.Text = "Combat";
             // 
@@ -271,10 +278,10 @@ namespace Finmer.Editor
             groupBox1.Controls.Add(this.cmdSystemDevMode);
             groupBox1.Controls.Add(this.cmdSystemDisposal);
             groupBox1.Controls.Add(this.cmdSystemExplorer);
-            groupBox1.Location = new System.Drawing.Point(16, 240);
+            groupBox1.Location = new System.Drawing.Point(240, 296);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new System.Drawing.Size(208, 112);
-            groupBox1.TabIndex = 1;
+            groupBox1.TabIndex = 5;
             groupBox1.TabStop = false;
             groupBox1.Text = "System";
             // 
@@ -312,22 +319,76 @@ namespace Finmer.Editor
             // 
             this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(320, 376);
+            this.cmdCancel.Location = new System.Drawing.Point(320, 440);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(128, 32);
-            this.cmdCancel.TabIndex = 5;
+            this.cmdCancel.TabIndex = 6;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.cmdCancel.UseVisualStyleBackColor = true;
             this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
             // 
+            // groupBox5
+            // 
+            groupBox5.Controls.Add(this.cmdTimeNight);
+            groupBox5.Controls.Add(this.cmdTimeHourTotal);
+            groupBox5.Controls.Add(this.cmdTimeHour);
+            groupBox5.Controls.Add(this.cmdTimeDay);
+            groupBox5.Location = new System.Drawing.Point(240, 144);
+            groupBox5.Name = "groupBox5";
+            groupBox5.Size = new System.Drawing.Size(208, 136);
+            groupBox5.TabIndex = 4;
+            groupBox5.TabStop = false;
+            groupBox5.Text = "Time";
+            // 
+            // cmdTimeHourTotal
+            // 
+            this.cmdTimeHourTotal.Location = new System.Drawing.Point(16, 72);
+            this.cmdTimeHourTotal.Name = "cmdTimeHourTotal";
+            this.cmdTimeHourTotal.Size = new System.Drawing.Size(176, 24);
+            this.cmdTimeHourTotal.TabIndex = 2;
+            this.cmdTimeHourTotal.Text = "Total Hours Passed";
+            this.cmdTimeHourTotal.UseVisualStyleBackColor = true;
+            this.cmdTimeHourTotal.Click += new System.EventHandler(this.cmdTimeHourTotal_Click);
+            // 
+            // cmdTimeHour
+            // 
+            this.cmdTimeHour.Location = new System.Drawing.Point(16, 48);
+            this.cmdTimeHour.Name = "cmdTimeHour";
+            this.cmdTimeHour.Size = new System.Drawing.Size(176, 24);
+            this.cmdTimeHour.TabIndex = 1;
+            this.cmdTimeHour.Text = "Current Hour (0-23)";
+            this.cmdTimeHour.UseVisualStyleBackColor = true;
+            this.cmdTimeHour.Click += new System.EventHandler(this.cmdTimeHour_Click);
+            // 
+            // cmdTimeDay
+            // 
+            this.cmdTimeDay.Location = new System.Drawing.Point(16, 24);
+            this.cmdTimeDay.Name = "cmdTimeDay";
+            this.cmdTimeDay.Size = new System.Drawing.Size(176, 24);
+            this.cmdTimeDay.TabIndex = 0;
+            this.cmdTimeDay.Text = "Current Day";
+            this.cmdTimeDay.UseVisualStyleBackColor = true;
+            this.cmdTimeDay.Click += new System.EventHandler(this.cmdTimeDay_Click);
+            // 
+            // cmdTimeNight
+            // 
+            this.cmdTimeNight.Location = new System.Drawing.Point(16, 96);
+            this.cmdTimeNight.Name = "cmdTimeNight";
+            this.cmdTimeNight.Size = new System.Drawing.Size(176, 24);
+            this.cmdTimeNight.TabIndex = 3;
+            this.cmdTimeNight.Text = "Is Night";
+            this.cmdTimeNight.UseVisualStyleBackColor = true;
+            this.cmdTimeNight.Click += new System.EventHandler(this.cmdTimeNight_Click);
+            // 
             // FormVisualScriptConditionPalette
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
-            this.ClientSize = new System.Drawing.Size(465, 424);
+            this.ClientSize = new System.Drawing.Size(465, 489);
+            this.Controls.Add(groupBox5);
             this.Controls.Add(groupBox1);
             this.Controls.Add(groupBox4);
             this.Controls.Add(groupBox6);
@@ -347,6 +408,7 @@ namespace Finmer.Editor
             groupBox6.ResumeLayout(false);
             groupBox4.ResumeLayout(false);
             groupBox1.ResumeLayout(false);
+            groupBox5.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -371,5 +433,9 @@ namespace Finmer.Editor
         private System.Windows.Forms.Button cmdSystemDevMode;
         private System.Windows.Forms.Button cmdSystemDisposal;
         private System.Windows.Forms.Button cmdSystemExplorer;
+        private System.Windows.Forms.Button cmdTimeNight;
+        private System.Windows.Forms.Button cmdTimeHourTotal;
+        private System.Windows.Forms.Button cmdTimeHour;
+        private System.Windows.Forms.Button cmdTimeDay;
     }
 }

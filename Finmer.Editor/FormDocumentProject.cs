@@ -33,8 +33,6 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Save changed data back to the module
             m_Furball.Metadata = new FurballMetadata
             {
@@ -43,6 +41,8 @@ namespace Finmer.Editor
                 Author = txtAuthor.Text,
                 FormatVersion = m_Furball.Metadata.FormatVersion
             };
+
+            base.Flush();
         }
 
         protected override string GetWindowTitle()

@@ -21,10 +21,25 @@ namespace Finmer.Views.Base
     public abstract class CharCreateViewBase : UserControl, INotifyPropertyChanged
     {
 
+        private int m_TotalPages;
+
         /// <summary>
         /// Indicates whether the user may proceed to the next page in the character creation wizard.
         /// </summary>
         public abstract bool CanGoNext { get; }
+
+        /// <summary>
+        /// Returns the total number of steps (pages) in the character creation process.
+        /// </summary>
+        public int TotalPages
+        {
+            get => m_TotalPages;
+            set
+            {
+                m_TotalPages = value;
+                OnPropertyChanged();
+            }
+        }
 
         /// <summary>
         /// Contains the initial save data block that will be used to generate a new game.

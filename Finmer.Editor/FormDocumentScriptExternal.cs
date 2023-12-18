@@ -57,8 +57,6 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Flush the script editor
             scriptEditorHost.Flush();
 
@@ -66,6 +64,8 @@ namespace Finmer.Editor
             AssetScript script = (AssetScript)Asset;
             if (script.Contents != null)
                 script.Contents.Name = Asset.Name;
+
+            base.Flush();
         }
 
     }

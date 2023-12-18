@@ -28,7 +28,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return $"Switch to Scene '{content.GetAssetName(SceneGuid)}'";
+            return $"Change Scene to {content.GetAssetName(SceneGuid)}";
         }
 
         public override EColor GetEditorColor()

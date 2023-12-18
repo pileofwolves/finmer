@@ -132,22 +132,27 @@ namespace Finmer.Gameplay
         /// <param name="patch">The patch to process.</param>
         private static void InjectScenePatch(AssetScene patch)
         {
+            // Game start scenes cannot be patches
+            if (patch.IsGameStart)
+                throw new SceneCompilerException(
+                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' is also a game start; this is not allowed. Please either make the scene not a patch, or not a game start.");
+
             // Find the target scene
             var target_scene = GameController.Content.GetAssetByID(patch.InjectTargetScene) as AssetScene;
             if (target_scene == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target scene with GUID {patch.InjectTargetScene}, but no such scene was found.");
+                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into target scene with GUID {patch.InjectTargetScene}, but no such scene was found.");
 
             // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
             if (target_scene == patch)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into itself. This is not supported.");
+                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into itself. This is not supported.");
 
             // Find the anchor node the patch should be added to
             AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectTargetNode);
             if (target_node == null)
                 throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectTargetNode}', but no such node was found.");
+                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectTargetNode}', but no such node was found.");
 
             // Find the injection point (target parent node) and the index at which to insert our patch
             AssetScene.SceneNode insert_parent;
@@ -171,7 +176,7 @@ namespace Finmer.Gameplay
                     insert_index = insert_parent.Children.Count;
                     break;
                 default:
-                    throw new SceneCompilerException($"Patch '{patch.Name}' in module '{patch.SourceModuleName}' requested invalid injection mode. Module file is likely corrupt.");
+                    throw new SceneCompilerException($"Patch '{patch.Name}' in module '{patch.Module.Title}' requested invalid injection mode. Module file is likely corrupt.");
             }
 
             // Insert the patch nodes into the target scene
@@ -208,7 +213,7 @@ namespace Finmer.Gameplay
                     }
                     catch (ScriptCompilationException ex)
                     {
-                        throw new LoaderException($"Failed to compile script '{script.Name}' in module '{script.SourceModuleName}': {ex.Message}", ex);
+                        throw new LoaderException($"Failed to compile script '{script.Name}' in module '{script.Module.Title}': {ex.Message}", ex);
                     }
                 }
             }
@@ -219,9 +224,15 @@ namespace Finmer.Gameplay
         /// </summary>
         private static void CompileScenes()
         {
+            var content = GameController.Content;
+
+            // There must be at least one game start scene, else no new saves can be created
+            if (content.GameStartCount == 0)
+                throw new LoaderException("There are no game start locations in any loaded modules.\r\n\r\nIf using total conversion mods, please make sure there are modules that include game start locations.");
+
+            // Precompile all loaded scenes
             using (var script_compiler = new ScriptCompiler())
             {
-                var content = GameController.Content;
                 var all_scenes = content.GetAssetsByType<AssetScene>();
                 foreach (var scene in all_scenes)
                 {
@@ -239,7 +250,7 @@ namespace Finmer.Gameplay
                     }
                     catch (SceneCompilerException ex)
                     {
-                        throw new LoaderException($"Failed to build scene '{scene.Name}' in module '{scene.SourceModuleName}':\r\n\r\n{ex.Message}", ex);
+                        throw new LoaderException($"Failed to build scene '{scene.Name}' in module '{scene.Module.Title}':\r\n\r\n{ex.Message}", ex);
                     }
                 }
             }

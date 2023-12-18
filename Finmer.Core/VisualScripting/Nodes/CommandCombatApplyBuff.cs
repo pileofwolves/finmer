@@ -53,8 +53,8 @@ namespace Finmer.Core.VisualScripting.Nodes
         {
             string buff_text = Effect?.GetDescription() ?? "(Unset)";
             return Target == ETarget.Player
-                ? $"Apply '{buff_text}' to Player for {Duration} round(s)"
-                : $"Apply '{buff_text}' to NPC {ParticipantID} for {Duration} round(s)";
+                ? $"Apply Buff '{buff_text}' to Player for {Duration} round(s)"
+                : $"Apply Buff '{buff_text}' to NPC {ParticipantID} for {Duration} round(s)";
         }
 
         public override EColor GetEditorColor()

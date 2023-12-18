@@ -40,10 +40,10 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             // Flush the script editor
             scriptEditorHost.Flush();
+
+            base.Flush();
         }
 
         protected override string GetWindowTitle()

@@ -48,6 +48,8 @@ namespace Finmer.Editor
             { typeof(CommandShop),                  () => new FormScriptCmdShop() },
             { typeof(CommandJournalClose),          () => new FormScriptCmdJournalClose() },
             { typeof(CommandJournalUpdate),         () => new FormScriptCmdJournalUpdate() },
+            { typeof(CommandTimeAdvance),           () => new FormScriptCmdTimeAdvance() },
+            { typeof(CommandTimeSetHour),           () => new FormScriptCmdTimeSetHour() },
             { typeof(CommandVarSetFlag),            () => new FormScriptCmdVarSetFlag() },
             { typeof(CommandVarSetNumber),          () => new FormScriptCmdVarSetNum() },
             { typeof(CommandVarSetString),          () => new FormScriptCmdVarSetStr() },
@@ -67,6 +69,9 @@ namespace Finmer.Editor
             { typeof(ConditionCombatParDead),       () => new FormScriptCondCombatParDead() },
             { typeof(ConditionCombatParGrappling),  () => new FormScriptCondCombatParGrp() },
             { typeof(ConditionCombatParSwallowed),  () => new FormScriptCondCombatParSwl() },
+            { typeof(ConditionTimeDay),             () => new FormScriptCondNumberComp() },
+            { typeof(ConditionTimeHour),            () => new FormScriptCondNumberComp() },
+            { typeof(ConditionTimeHourTotal),       () => new FormScriptCondNumberComp() },
         };
 
         /// <summary>

@@ -29,9 +29,9 @@ namespace Finmer.Core.Assets
         public string Name { get; set; } = String.Empty;
 
         /// <summary>
-        /// Gets or sets the name of the module this asset was loaded from.
+        /// Gets or sets the metadata of the module this asset was loaded from.
         /// </summary>
-        public string SourceModuleName { get; set; } = String.Empty;
+        public FurballMetadata Module { get; set; }
 
         /// <summary>
         /// Save the asset to a stream.

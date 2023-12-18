@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Clear Log";
+            return "Clear Message Log";
         }
 
         public override EColor GetEditorColor()

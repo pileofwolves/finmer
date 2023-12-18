@@ -1,0 +1,86 @@
+﻿<vb:CharCreateViewBase
+    x:Class="Finmer.Views.CharCreateScene"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:v="clr-namespace:Finmer.Views"
+    xmlns:vb="clr-namespace:Finmer.Views.Base"
+    mc:Ignorable="d"
+    d:DesignHeight="400" d:DesignWidth="600"
+    Loaded="Page_OnLoaded">
+    <UserControl.Resources>
+        <Style x:Key="Separator" TargetType="Grid">
+            <Setter Property="Margin" Value="10" />
+        </Style>
+    </UserControl.Resources>
+    <StackPanel
+        Width="600"
+        HorizontalAlignment="Center"
+        Orientation="Vertical">
+        <v:DotProgressIndicatorView
+            HorizontalAlignment="Center"
+            Margin="0,0,0,6"
+            DotCount="{Binding TotalPages, RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type vb:CharCreateViewBase}}}"
+            FilledCount="4" />
+        <TextBlock
+            Style="{StaticResource TextBlockLarge}"
+            Text="Story"
+            HorizontalAlignment="Center" />
+        <TextBlock
+            Style="{StaticResource TextBlockSubtle}"
+            Text="There is more than one story installed."
+            HorizontalAlignment="Center" />
+
+        <Grid Style="{StaticResource Separator}" />
+
+        <TextBlock
+            Style="{StaticResource TextBlockDefault}"
+            HorizontalAlignment="Center"
+            Text="Select which game start you would like to play:" />
+
+        <Grid Style="{StaticResource Separator}" />
+
+        <ListBox
+            x:Name="GameStartList"
+            ItemsSource="{Binding ValidStarts, RelativeSource={RelativeSource FindAncestor, AncestorType=v:CharCreateScene}}"
+            Width="330"
+            Height="250"
+            SelectionChanged="GameStartList_OnSelectionChanged"
+            SelectionMode="Single">
+            <ListBox.Template>
+                <ControlTemplate>
+                    <ScrollViewer
+                        VerticalScrollBarVisibility="Auto"
+                        HorizontalScrollBarVisibility="Disabled"
+                        Focusable="False"
+                        CanContentScroll="True">
+                        <ItemsPresenter />
+                    </ScrollViewer>
+                </ControlTemplate>
+            </ListBox.Template>
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel
+                        Orientation="Vertical"
+                        IsItemsHost="True" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel
+                        Orientation="Vertical"
+                        Margin="4"
+                        Tag="{Binding Scene}">
+                        <TextBlock
+                            Text="{Binding Title}"
+                            Style="{StaticResource TextBlockDefault}" />
+                        <TextBlock
+                            Text="{Binding Author, StringFormat='{}by {0}'}"
+                            Style="{StaticResource TextBlockSubtle}" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </StackPanel>
+</vb:CharCreateViewBase>

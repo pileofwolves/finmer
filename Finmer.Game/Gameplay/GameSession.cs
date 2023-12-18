@@ -41,11 +41,6 @@ namespace Finmer.Gameplay
         private const int k_ScriptStackSize = 128 * 1024;
 
         /// <summary>
-        /// The name of the default scene asset to load when save data does not provide one (i.e. a new game).
-        /// </summary>
-        private const string k_DefaultSceneName = @"Scene_Intro";
-
-        /// <summary>
         /// The Player object associated with this session.
         /// </summary>
         public Player Player { get; }
@@ -323,7 +318,7 @@ namespace Finmer.Gameplay
                 {
                     // Register the target script in the graph as well
                     var target = GameController.Content.GetAssetByID<AssetScript>(dependency.TargetAsset)
-                        ?? throw new UnsolvableConstraintException($"Script '{script.Name}' (in module {script.SourceModuleName}) has a load-order dependency on script '{dependency.TargetAsset}', but no such script is loaded.");
+                        ?? throw new UnsolvableConstraintException($"Script '{script.Name}' (in module {script.Module.Title}) has a load-order dependency on script '{dependency.TargetAsset}', but no such script is loaded.");
                     solver.AddNode(target, target.Name);
 
                     // Add an edge between the two nodes
@@ -429,22 +424,23 @@ namespace Finmer.Gameplay
         private void RestoreScene(GameSnapshot snapshot)
         {
             // Grab the GUID of the scene to restore
-            var scene_bytes = snapshot.SceneData.GetBytes(SaveData.k_System_CurrentSceneID);
-            if (scene_bytes == null)
+            var scene_bytes = snapshot.SceneData.GetBytes(SaveData.k_System_CurrentSceneID)
+                ?? throw new ScriptException("Missing current scene ID in save data");
+
+            // Find this asset in content
+            var asset_id = new Guid(scene_bytes);
+            var asset = (AssetScene)GameController.Content.GetAssetByID(asset_id);
+            var restored_scene = new SceneScripted(ScriptContext, asset);
+
+            if (String.IsNullOrEmpty(snapshot.SceneData.GetString(SaveData.k_System_CurrentSceneState)))
             {
-                // Save data does not include a scene GUID; fall back to the default initial scene
-                var initial_scene = (AssetScene)GameController.Content.GetAssetByName(k_DefaultSceneName);
-                PushScene(new SceneScripted(ScriptContext, initial_scene));
+                // This is newly created save data; enter the scene from the top
+                PushScene(restored_scene);
             }
             else
             {
-                // Find this asset in content
-                var asset_id = new Guid(scene_bytes);
-                var asset = (AssetScene)GameController.Content.GetAssetByID(asset_id);
-
                 // Add this scene onto the stack.
                 // Note that we do not use PushScene() here, since that queues Enter and Turn events which we do not want.
-                var restored_scene = new SceneScripted(ScriptContext, asset);
                 m_SceneStack.Push(restored_scene);
 
                 // Restore state and run the next state function (as if it were the initial turn)

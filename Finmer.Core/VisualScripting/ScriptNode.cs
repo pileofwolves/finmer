@@ -35,6 +35,7 @@ namespace Finmer.Core.VisualScripting
             Combat,
             Player,
             Journal,
+            Time,
         }
 
         /// <summary>

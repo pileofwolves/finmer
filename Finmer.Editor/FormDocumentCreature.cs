@@ -91,8 +91,6 @@ namespace Finmer.Editor
 
         public override void Flush()
         {
-            base.Flush();
-
             AssetCreature creature = (AssetCreature)Asset;
 
             // Core stats
@@ -138,6 +136,8 @@ namespace Finmer.Editor
 
             // Update the stats overview
             UpdateCombatOverview();
+
+            base.Flush();
         }
 
         private void UpdateCombatOverview()

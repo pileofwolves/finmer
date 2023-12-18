@@ -50,7 +50,7 @@ namespace Finmer.Core.Serialization
                     for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
                     {
                         var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
-                        asset.SourceModuleName = file.Name;
+                        asset.Module = output.Metadata;
                         output.Assets.Add(asset);
                     }
 
@@ -125,8 +125,8 @@ namespace Finmer.Core.Serialization
 
             // Verify file version
             byte version = instream.ReadByte();
-            if (version < k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from an older version of the game; please ask the module author to update it.");
+            if (version < k_MinimumVersion)
+                throw new FurballInvalidHeaderException($"Incompatible module version {version} (minimum version {k_MinimumVersion}, latest version {k_LatestVersion}). The module is from an outdated version of the game; please ask the module author to update it.");
             if (version > k_LatestVersion)
                 throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
 

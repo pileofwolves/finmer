@@ -80,11 +80,13 @@ namespace Finmer.Editor
             this.assetImages.Images.SetKeyName(0, "folder");
             this.assetImages.Images.SetKeyName(1, "folder_open");
             this.assetImages.Images.SetKeyName(2, "scene");
-            this.assetImages.Images.SetKeyName(3, "item");
-            this.assetImages.Images.SetKeyName(4, "creature");
-            this.assetImages.Images.SetKeyName(5, "text");
-            this.assetImages.Images.SetKeyName(6, "script");
-            this.assetImages.Images.SetKeyName(7, "feat");
+            this.assetImages.Images.SetKeyName(3, "scene_start");
+            this.assetImages.Images.SetKeyName(4, "scene_patch");
+            this.assetImages.Images.SetKeyName(5, "item");
+            this.assetImages.Images.SetKeyName(6, "creature");
+            this.assetImages.Images.SetKeyName(7, "text");
+            this.assetImages.Images.SetKeyName(8, "script");
+            this.assetImages.Images.SetKeyName(9, "feat");
             // 
             // dlgSave
             // 

@@ -129,6 +129,8 @@
     <Compile Include="VisualScripting\Nodes\CommandSetLocation.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSetScene.cs" />
     <Compile Include="VisualScripting\Nodes\CommandShop.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandTimeSetHour.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandTimeAdvance.cs" />
     <Compile Include="VisualScripting\Nodes\CommandSleep.cs" />
     <Compile Include="VisualScripting\Nodes\CommandInlineSnippet.cs" />
     <Compile Include="VisualScripting\Nodes\CommandExitScript.cs" />
@@ -144,6 +146,10 @@
     <Compile Include="VisualScripting\Nodes\ConditionCombatParDead.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParGrappling.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionCombatParSwallowed.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionTimeIsNight.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionTimeDay.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionTimeHourTotal.cs" />
+    <Compile Include="VisualScripting\Nodes\ConditionTimeHour.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerLevel.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerHasItem.cs" />
     <Compile Include="VisualScripting\Nodes\ConditionPlayerEquipment.cs" />

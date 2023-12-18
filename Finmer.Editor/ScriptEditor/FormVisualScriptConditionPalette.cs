@@ -148,6 +148,26 @@ namespace Finmer.Editor
             AddScriptNode(new ConditionIsDevModeEnabled());
         }
 
+        private void cmdTimeDay_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionTimeDay());
+        }
+
+        private void cmdTimeHour_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionTimeHour());
+        }
+
+        private void cmdTimeHourTotal_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionTimeHourTotal());
+        }
+
+        private void cmdTimeNight_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new ConditionTimeIsNight());
+        }
+
     }
 
 }

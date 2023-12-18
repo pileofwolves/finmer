@@ -270,6 +270,16 @@ namespace Finmer.Editor
             AddScriptNode(new CommandGrammarSetVariable());
         }
 
+        private void cmdTimeAdvance_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandTimeAdvance());
+        }
+
+        private void cmdTimeSetHour_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandTimeSetHour());
+        }
+
     }
 
 }

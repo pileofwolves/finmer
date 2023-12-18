@@ -75,6 +75,7 @@ namespace Finmer.Editor
                 case ScriptNode.EColor.SaveData:            return Color.FromArgb(255, 5, 129, 131);
                 case ScriptNode.EColor.Player:              return Color.FromArgb(255, 144, 3, 11);
                 case ScriptNode.EColor.Journal:             return Color.FromArgb(255, 165, 139, 57);
+                case ScriptNode.EColor.Time:                return Color.FromArgb(255, 40, 114, 60);
                 case ScriptNode.EColor.Variable:            return Color.FromArgb(255, 198, 23, 38);
                 case ScriptNode.EColor.Sleep:               return Color.FromArgb(255, 230, 24, 81);
                 case ScriptNode.EColor.Combat:              return Color.FromArgb(255, 166, 19, 220);

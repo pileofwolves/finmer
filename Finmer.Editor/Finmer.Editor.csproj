@@ -329,6 +329,18 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdShop.Designer.cs">
       <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdTimeSetHour.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdTimeSetHour.Designer.cs">
+      <DependentUpon>FormScriptCmdTimeSetHour.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdTimeAdvance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdTimeAdvance.Designer.cs">
+      <DependentUpon>FormScriptCmdTimeAdvance.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdVarSetFlag.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -687,6 +699,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdShop.resx">
       <DependentUpon>FormScriptCmdShop.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdTimeSetHour.resx">
+      <DependentUpon>FormScriptCmdTimeSetHour.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdTimeAdvance.resx">
+      <DependentUpon>FormScriptCmdTimeAdvance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdVarSetFlag.resx">
       <DependentUpon>FormScriptCmdVarSetFlag.cs</DependentUpon>

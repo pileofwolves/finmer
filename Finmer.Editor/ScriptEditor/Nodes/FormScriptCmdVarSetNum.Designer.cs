@@ -31,18 +31,14 @@
         {
             System.Windows.Forms.Label label1;
             System.Windows.Forms.Label label2;
-            System.Windows.Forms.Label label3;
+            this.lblOperandContext = new System.Windows.Forms.Label();
             this.cmdAccept = new System.Windows.Forms.Button();
             this.cmdCancel = new System.Windows.Forms.Button();
             this.txtContextName = new System.Windows.Forms.TextBox();
-            this.optModeMul = new System.Windows.Forms.RadioButton();
-            this.optModeAdd = new System.Windows.Forms.RadioButton();
             this.sveValue = new Finmer.Editor.ScriptValueFloatEditor();
-            this.optModeDiv = new System.Windows.Forms.RadioButton();
-            this.optModeSet = new System.Windows.Forms.RadioButton();
+            this.cmbOperation = new System.Windows.Forms.ComboBox();
             label1 = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
-            label3 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -63,14 +59,14 @@
             label2.TabIndex = 0;
             label2.Text = "Variable Name:";
             // 
-            // label3
+            // lblOperandContext
             // 
-            label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(16, 136);
-            label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(97, 13);
-            label3.TabIndex = 7;
-            label3.Text = "with / to this value:";
+            this.lblOperandContext.AutoSize = true;
+            this.lblOperandContext.Location = new System.Drawing.Point(16, 136);
+            this.lblOperandContext.Name = "lblOperandContext";
+            this.lblOperandContext.Size = new System.Drawing.Size(97, 13);
+            this.lblOperandContext.TabIndex = 4;
+            this.lblOperandContext.Text = "with / to this value:";
             // 
             // cmdAccept
             // 
@@ -80,7 +76,7 @@
             this.cmdAccept.Location = new System.Drawing.Point(56, 376);
             this.cmdAccept.Name = "cmdAccept";
             this.cmdAccept.Size = new System.Drawing.Size(119, 32);
-            this.cmdAccept.TabIndex = 9;
+            this.cmdAccept.TabIndex = 6;
             this.cmdAccept.Text = "Accept";
             this.cmdAccept.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdAccept.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -95,7 +91,7 @@
             this.cmdCancel.Location = new System.Drawing.Point(184, 375);
             this.cmdCancel.Name = "cmdCancel";
             this.cmdCancel.Size = new System.Drawing.Size(119, 32);
-            this.cmdCancel.TabIndex = 10;
+            this.cmdCancel.TabIndex = 7;
             this.cmdCancel.Text = "Cancel";
             this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
@@ -111,28 +107,6 @@
             this.txtContextName.Size = new System.Drawing.Size(288, 22);
             this.txtContextName.TabIndex = 1;
             // 
-            // optModeMul
-            // 
-            this.optModeMul.AutoSize = true;
-            this.optModeMul.Location = new System.Drawing.Point(80, 96);
-            this.optModeMul.Name = "optModeMul";
-            this.optModeMul.Size = new System.Drawing.Size(60, 17);
-            this.optModeMul.TabIndex = 4;
-            this.optModeMul.TabStop = true;
-            this.optModeMul.Text = "Multiply";
-            this.optModeMul.UseVisualStyleBackColor = true;
-            // 
-            // optModeAdd
-            // 
-            this.optModeAdd.AutoSize = true;
-            this.optModeAdd.Location = new System.Drawing.Point(24, 96);
-            this.optModeAdd.Name = "optModeAdd";
-            this.optModeAdd.Size = new System.Drawing.Size(44, 17);
-            this.optModeAdd.TabIndex = 3;
-            this.optModeAdd.TabStop = true;
-            this.optModeAdd.Text = "Add";
-            this.optModeAdd.UseVisualStyleBackColor = true;
-            // 
             // sveValue
             // 
             this.sveValue.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -141,29 +115,34 @@
             this.sveValue.Location = new System.Drawing.Point(16, 160);
             this.sveValue.Name = "sveValue";
             this.sveValue.Size = new System.Drawing.Size(295, 198);
-            this.sveValue.TabIndex = 8;
+            this.sveValue.TabIndex = 5;
             // 
-            // optModeDiv
+            // cmbOperation
             // 
-            this.optModeDiv.AutoSize = true;
-            this.optModeDiv.Location = new System.Drawing.Point(144, 96);
-            this.optModeDiv.Name = "optModeDiv";
-            this.optModeDiv.Size = new System.Drawing.Size(55, 17);
-            this.optModeDiv.TabIndex = 5;
-            this.optModeDiv.TabStop = true;
-            this.optModeDiv.Text = "Divide";
-            this.optModeDiv.UseVisualStyleBackColor = true;
-            // 
-            // optModeSet
-            // 
-            this.optModeSet.AutoSize = true;
-            this.optModeSet.Location = new System.Drawing.Point(208, 96);
-            this.optModeSet.Name = "optModeSet";
-            this.optModeSet.Size = new System.Drawing.Size(41, 17);
-            this.optModeSet.TabIndex = 6;
-            this.optModeSet.TabStop = true;
-            this.optModeSet.Text = "Set";
-            this.optModeSet.UseVisualStyleBackColor = true;
+            this.cmbOperation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbOperation.FormattingEnabled = true;
+            this.cmbOperation.Items.AddRange(new object[] {
+            "Math: Add or Subtract",
+            "Math: Multiply",
+            "Math: Divide",
+            "Math: Set to Specific Value",
+            "Math: Random",
+            "Time: Set to Current Day",
+            "Time: Set to Current Hour",
+            "Time: Set to Total Hours Passed",
+            "Player: Set to Player\'s Strength stat",
+            "Player: Set to Player\'s Agility stat",
+            "Player: Set to Player\'s Body stat",
+            "Player: Set to Player\'s Wits stat",
+            "Player: Set to Player\'s Money total",
+            "Player: Set to Player\'s Level",
+            "Player: Set to Player\'s Health",
+            "Player: Set to Player\'s Max Health"});
+            this.cmbOperation.Location = new System.Drawing.Point(16, 88);
+            this.cmbOperation.Name = "cmbOperation";
+            this.cmbOperation.Size = new System.Drawing.Size(288, 21);
+            this.cmbOperation.TabIndex = 3;
+            this.cmbOperation.SelectedIndexChanged += new System.EventHandler(this.cmbOperation_SelectedIndexChanged);
             // 
             // FormScriptCmdVarSetNum
             // 
@@ -172,12 +151,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.cmdCancel;
             this.ClientSize = new System.Drawing.Size(320, 424);
-            this.Controls.Add(label3);
-            this.Controls.Add(this.optModeSet);
-            this.Controls.Add(this.optModeDiv);
+            this.Controls.Add(this.cmbOperation);
+            this.Controls.Add(this.lblOperandContext);
             this.Controls.Add(this.sveValue);
-            this.Controls.Add(this.optModeMul);
-            this.Controls.Add(this.optModeAdd);
             this.Controls.Add(label1);
             this.Controls.Add(this.txtContextName);
             this.Controls.Add(label2);
@@ -201,11 +177,9 @@
         private System.Windows.Forms.Button cmdAccept;
         private System.Windows.Forms.Button cmdCancel;
         private System.Windows.Forms.TextBox txtContextName;
-        private System.Windows.Forms.RadioButton optModeMul;
-        private System.Windows.Forms.RadioButton optModeAdd;
         private ScriptValueFloatEditor sveValue;
-        private System.Windows.Forms.RadioButton optModeDiv;
-        private System.Windows.Forms.RadioButton optModeSet;
+        private System.Windows.Forms.ComboBox cmbOperation;
+        private System.Windows.Forms.Label lblOperandContext;
     }
 
 }

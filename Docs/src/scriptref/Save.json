@@ -19,8 +19,8 @@
 	},
 	{
 		"type": "function",
-		"name": "SaveData.IsRestoringSave",
-		"remarks": "For advanced users. Indicates whether save data is currently being restored. This will return true during the first State or Choice node script(s) that run after save data is loaded. In all other cases, this will return false. This function can be used to detect that the player reloaded save data.",
+		"name": "SaveData.IsRestoringGame",
+		"remarks": "For advanced users. Indicates whether a game is currently starting up, including starting a new game. This will return true between the time gameplay starts, and the first State has finished running. In all other cases, this will return false. So it will return true during the first State's Actions Taken script, or Choice node's Appears When scripts (but not Actions Taken, because they run later, when the player clicks them), or in Script asset main bodies. You can use this function to detect that the player reloaded save data.",
 		"output": [
 			{
 				"type": "boolean",

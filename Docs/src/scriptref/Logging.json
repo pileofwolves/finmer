@@ -2,7 +2,7 @@
 	{
 		"type": "function",
 		"name": "Log",
-		"remarks": "Adds a message to the game window. The specified key is looked up in the string tables, and a random entry will be chosen. If the key cannot be found, a placeholder message is used instead. Color may be obtained using the Color table.",
+		"remarks": "Adds a message to the game window. The specified key is looked up in the string tables, and a random entry will be chosen. If the key cannot be found, a placeholder message is used instead. Color may be obtained using the Color function; see below.",
 		"input": [
 			{
 				"name": "key",
@@ -12,7 +12,7 @@
 			{
 				"name": "color",
 				"type": "Color",
-				"desc": "the color to draw with",
+				"desc": "the color to draw with; default is white",
 				"optional": true
 			}
 		]
@@ -30,8 +30,37 @@
 			{
 				"name": "color",
 				"type": "Color",
-				"desc": "the color to draw with",
+				"desc": "the color to draw with; default is white",
 				"optional": true
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Color",
+		"remarks": "Returns a new color. You can pass these to Log or LogRaw to change the color of the text output. Note that you can also create colors by simply creating a table with three named keys (r, g, b).",
+		"coremod": true,
+		"input": [
+			{
+				"name": "r",
+				"type": "number",
+				"desc": "brightness of the red channel (0 to 255)"
+			},
+			{
+				"name": "g",
+				"type": "number",
+				"desc": "brightness of the green channel (0 to 255)"
+			},
+			{
+				"name": "b",
+				"type": "number",
+				"desc": "brightness of the blue channel (0 to 255)"
+			}
+		],
+		"output": [
+			{
+				"type": "Color",
+				"desc": "a table with three keys (r, g, b) describing the color"
 			}
 		]
 	},

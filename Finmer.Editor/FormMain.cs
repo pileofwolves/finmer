@@ -133,21 +133,18 @@ namespace Finmer.Editor
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.Control | Keys.S))
+            switch (keyData)
             {
-                if (rbtProjSave.Enabled)
-                    rbtProjSave.PerformClick();
-                return true;
+                case Keys.Control | Keys.S:     rbtProjSave.PerformClick();                 return true;
+                case Keys.Control | Keys.O:     rbtProjOpen.PerformClick();                 return true;
+                case Keys.Delete:               rbtAssetDelete.PerformClick();              return true;
+                case Keys.F1:                   rbtHelpDoc.PerformClick();                  return true;
+                case Keys.F2:                   rbtAssetRename.PerformClick();              return true;
+                case Keys.F5:                   rbtPlayDev.PerformClick();                  return true;
+                case Keys.Control | Keys.F5:    rbtPlayNormal.PerformClick();               return true;
+                default:                        return base.ProcessCmdKey(ref msg, keyData);
             }
 
-            if (keyData == (Keys.Control | Keys.O))
-            {
-                if (rbtProjOpen.Enabled)
-                    rbtProjOpen.PerformClick();
-                return true;
-            }
-
-            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private EditorWindow CreateEditorWindow(IFurballSerializable data)

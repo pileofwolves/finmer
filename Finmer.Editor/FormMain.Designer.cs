@@ -157,7 +157,7 @@ namespace Finmer.Editor
             this.rbtProjOpen.SmallImage = global::Finmer.Editor.Properties.Resources.folder_horizontal_open;
             this.rbtProjOpen.Text = "&Open Module";
             this.rbtProjOpen.ToolTip = "Open a module from disk.";
-            this.rbtProjOpen.ToolTipTitle = "Open Furball";
+            this.rbtProjOpen.ToolTipTitle = "Open Furball (Ctrl+O)";
             this.rbtProjOpen.Click += new System.EventHandler(this.rbtProjOpen_Click);
             // 
             // rbtProjSave
@@ -169,8 +169,8 @@ namespace Finmer.Editor
             this.rbtProjSave.Name = "rbtProjSave";
             this.rbtProjSave.SmallImage = global::Finmer.Editor.Properties.Resources.disk;
             this.rbtProjSave.Text = "&Save Module";
-            this.rbtProjSave.ToolTip = "It\'s a save button. I\'m sure you know what it does.";
-            this.rbtProjSave.ToolTipTitle = "Save Furball";
+            this.rbtProjSave.ToolTip = "Save pending project changes to disk.";
+            this.rbtProjSave.ToolTipTitle = "Save Furball (Ctrl+S)";
             this.rbtProjSave.Click += new System.EventHandler(this.rbtProjSave_Click);
             // 
             // rbtProjNew
@@ -271,7 +271,7 @@ namespace Finmer.Editor
             this.rbtPlayDev.Text = "Launch Dev Mode";
             this.rbtPlayDev.ToolTip = "Launches Finmer with a development console enabled, where you can input arbitrary" +
     " Lua code to cheat or change things as required.";
-            this.rbtPlayDev.ToolTipTitle = "Launch Dev Mode";
+            this.rbtPlayDev.ToolTipTitle = "Launch Dev Mode (F5)";
             this.rbtPlayDev.Click += new System.EventHandler(this.rbtPlayDev_Click);
             // 
             // rbtPlayNormal
@@ -283,7 +283,7 @@ namespace Finmer.Editor
             this.rbtPlayNormal.SmallImage = global::Finmer.Editor.Properties.Resources.control;
             this.rbtPlayNormal.Text = "Launch Normally";
             this.rbtPlayNormal.ToolTip = "Launches Finmer.";
-            this.rbtPlayNormal.ToolTipTitle = "Launch Normally";
+            this.rbtPlayNormal.ToolTipTitle = "Launch Normally (Ctrl+F5)";
             this.rbtPlayNormal.Click += new System.EventHandler(this.rbtPlayNormal_Click);
             // 
             // rbtPreferences
@@ -409,9 +409,9 @@ namespace Finmer.Editor
             this.rbtAssetRename.Name = "rbtAssetRename";
             this.rbtAssetRename.SmallImage = global::Finmer.Editor.Properties.Resources.document_rename;
             this.rbtAssetRename.Text = "Rename";
-            this.rbtAssetRename.ToolTip = "Change the text identifier of an asset. Its GUID will not be regenerated, so save" +
-    "-game compatibility (i.e. for Items) is preserved.";
-            this.rbtAssetRename.ToolTipTitle = "Rename Asset";
+            this.rbtAssetRename.ToolTip = "Change the name of an asset. Its GUID - used in save data - will not be affected." +
+    "";
+            this.rbtAssetRename.ToolTipTitle = "Rename Asset (F2)";
             this.rbtAssetRename.Click += new System.EventHandler(this.rbtAssetRename_Click);
             // 
             // rbtAssetDelete
@@ -423,8 +423,8 @@ namespace Finmer.Editor
             this.rbtAssetDelete.Name = "rbtAssetDelete";
             this.rbtAssetDelete.SmallImage = global::Finmer.Editor.Properties.Resources.cross_script;
             this.rbtAssetDelete.Text = "Delete";
-            this.rbtAssetDelete.ToolTip = "Does what it says on the tin.";
-            this.rbtAssetDelete.ToolTipTitle = "Delete Asset";
+            this.rbtAssetDelete.ToolTip = "Remove this asset from the project.";
+            this.rbtAssetDelete.ToolTipTitle = "Delete Asset (Del)";
             this.rbtAssetDelete.Click += new System.EventHandler(this.rbtAssetDelete_Click);
             // 
             // rpnHelp
@@ -445,7 +445,7 @@ namespace Finmer.Editor
             this.rbtHelpDoc.SmallImage = global::Finmer.Editor.Properties.Resources.book;
             this.rbtHelpDoc.Text = "Documentation";
             this.rbtHelpDoc.ToolTip = "Opens the included editor documentation in your web browser.";
-            this.rbtHelpDoc.ToolTipTitle = "Open Documentation";
+            this.rbtHelpDoc.ToolTipTitle = "Open Documentation (F1)";
             this.rbtHelpDoc.Click += new System.EventHandler(this.rbtHelpDoc_Click);
             // 
             // rbtHelpAbout

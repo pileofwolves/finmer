@@ -72,6 +72,7 @@
     <Compile Include="BandedListView.Designer.cs">
       <DependentUpon>BandedListView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Clipboard.cs" />
     <Compile Include="EditorContentStore.cs" />
     <Compile Include="EditorWindow.cs">
       <SubType>Form</SubType>
@@ -898,6 +899,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="FinmerIcon.ico" />
+    <None Include="Resources\scissors.png" />
+    <None Include="Resources\clipboard-paste.png" />
     <None Include="Resources\document-number.png" />
     <None Include="Resources\document-copy.png" />
     <None Include="Resources\sort-quantity.png" />

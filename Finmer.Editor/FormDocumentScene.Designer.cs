@@ -49,6 +49,10 @@
             this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMoveUp = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbClipboardCut = new System.Windows.Forms.ToolStripButton();
+            this.tsbClipboardCopy = new System.Windows.Forms.ToolStripButton();
+            this.tsbClipboardPaste = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbScriptCustom = new System.Windows.Forms.ToolStripButton();
             this.tsbScriptEnter = new System.Windows.Forms.ToolStripButton();
@@ -246,6 +250,10 @@
             this.toolStripSeparator1,
             this.tsbMoveUp,
             this.tsbMoveDown,
+            this.toolStripSeparator4,
+            this.tsbClipboardCut,
+            this.tsbClipboardCopy,
+            this.tsbClipboardPaste,
             this.toolStripSeparator3,
             this.tsbScriptCustom,
             this.tsbScriptEnter,
@@ -255,7 +263,7 @@
             this.tsbCollapse});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
             this.toolStrip.Name = "toolStrip";
-            this.toolStrip.Size = new System.Drawing.Size(688, 25);
+            this.toolStrip.Size = new System.Drawing.Size(893, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
             // 
@@ -266,16 +274,18 @@
             this.tsbAddNode.Name = "tsbAddNode";
             this.tsbAddNode.Size = new System.Drawing.Size(81, 22);
             this.tsbAddNode.Text = "Add Node";
-            this.tsbAddNode.ToolTipText = "Add State or Choice Node";
+            this.tsbAddNode.ToolTipText = "Add State or Choice Node (Ctrl+N)";
             this.tsbAddNode.Click += new System.EventHandler(this.tsbAddNode_Click);
             // 
             // tsbRemoveNode
             // 
+            this.tsbRemoveNode.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
             this.tsbRemoveNode.Image = global::Finmer.Editor.Properties.Resources.minus;
             this.tsbRemoveNode.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbRemoveNode.Name = "tsbRemoveNode";
-            this.tsbRemoveNode.Size = new System.Drawing.Size(102, 22);
+            this.tsbRemoveNode.Size = new System.Drawing.Size(23, 22);
             this.tsbRemoveNode.Text = "Remove Node";
+            this.tsbRemoveNode.ToolTipText = "Remove Node (Del)";
             this.tsbRemoveNode.Click += new System.EventHandler(this.tsbRemoveNode_Click);
             // 
             // tsbAddLink
@@ -285,7 +295,7 @@
             this.tsbAddLink.Name = "tsbAddLink";
             this.tsbAddLink.Size = new System.Drawing.Size(49, 22);
             this.tsbAddLink.Text = "Link";
-            this.tsbAddLink.ToolTipText = "Add Link to Other Node";
+            this.tsbAddLink.ToolTipText = "Add Link to Other Node (Ctrl+L)";
             this.tsbAddLink.Click += new System.EventHandler(this.tsbAddLink_Click);
             // 
             // tsbAddCompass
@@ -295,7 +305,7 @@
             this.tsbAddCompass.Name = "tsbAddCompass";
             this.tsbAddCompass.Size = new System.Drawing.Size(76, 22);
             this.tsbAddCompass.Text = "Compass";
-            this.tsbAddCompass.ToolTipText = "Add Compass Item";
+            this.tsbAddCompass.ToolTipText = "Add Compass Item (Ctrl+B)";
             this.tsbAddCompass.Click += new System.EventHandler(this.tsbAddCompass_Click);
             // 
             // toolStripSeparator1
@@ -311,6 +321,7 @@
             this.tsbMoveUp.Name = "tsbMoveUp";
             this.tsbMoveUp.Size = new System.Drawing.Size(23, 22);
             this.tsbMoveUp.Text = "Move Up";
+            this.tsbMoveUp.ToolTipText = "Move Up (Alt+Up Arrow)";
             this.tsbMoveUp.Click += new System.EventHandler(this.tsbMoveUp_Click);
             // 
             // tsbMoveDown
@@ -321,7 +332,46 @@
             this.tsbMoveDown.Name = "tsbMoveDown";
             this.tsbMoveDown.Size = new System.Drawing.Size(23, 22);
             this.tsbMoveDown.Text = "Move Down";
+            this.tsbMoveDown.ToolTipText = "Move Down (Alt+Down Arrow)";
             this.tsbMoveDown.Click += new System.EventHandler(this.tsbMoveDown_Click);
+            // 
+            // toolStripSeparator4
+            // 
+            this.toolStripSeparator4.Name = "toolStripSeparator4";
+            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // tsbClipboardCut
+            // 
+            this.tsbClipboardCut.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClipboardCut.Enabled = false;
+            this.tsbClipboardCut.Image = global::Finmer.Editor.Properties.Resources.scissors;
+            this.tsbClipboardCut.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClipboardCut.Name = "tsbClipboardCut";
+            this.tsbClipboardCut.Size = new System.Drawing.Size(23, 22);
+            this.tsbClipboardCut.Text = "Cut Nodes (Ctrl+X)";
+            this.tsbClipboardCut.Click += new System.EventHandler(this.tsbClipboardCut_Click);
+            // 
+            // tsbClipboardCopy
+            // 
+            this.tsbClipboardCopy.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClipboardCopy.Enabled = false;
+            this.tsbClipboardCopy.Image = global::Finmer.Editor.Properties.Resources.document_copy;
+            this.tsbClipboardCopy.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClipboardCopy.Name = "tsbClipboardCopy";
+            this.tsbClipboardCopy.Size = new System.Drawing.Size(23, 22);
+            this.tsbClipboardCopy.Text = "Copy Nodes (Ctrl+C)";
+            this.tsbClipboardCopy.Click += new System.EventHandler(this.tsbClipboardCopy_Click);
+            // 
+            // tsbClipboardPaste
+            // 
+            this.tsbClipboardPaste.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClipboardPaste.Enabled = false;
+            this.tsbClipboardPaste.Image = global::Finmer.Editor.Properties.Resources.clipboard_paste;
+            this.tsbClipboardPaste.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClipboardPaste.Name = "tsbClipboardPaste";
+            this.tsbClipboardPaste.Size = new System.Drawing.Size(23, 22);
+            this.tsbClipboardPaste.Text = "Paste Nodes (Ctrl+V)";
+            this.tsbClipboardPaste.Click += new System.EventHandler(this.tsbClipboardPaste_Click);
             // 
             // toolStripSeparator3
             // 
@@ -334,8 +384,8 @@
             this.tsbScriptCustom.Image = global::Finmer.Editor.Properties.Resources.script_code;
             this.tsbScriptCustom.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbScriptCustom.Name = "tsbScriptCustom";
-            this.tsbScriptCustom.Size = new System.Drawing.Size(102, 22);
-            this.tsbScriptCustom.Text = "Custom Script";
+            this.tsbScriptCustom.Size = new System.Drawing.Size(110, 22);
+            this.tsbScriptCustom.Text = "Custom Header";
             this.tsbScriptCustom.ToolTipText = "Edit Custom Scene Script Header";
             this.tsbScriptCustom.Click += new System.EventHandler(this.tsbScriptCustom_Click);
             // 
@@ -372,7 +422,7 @@
             this.tsbExpand.Image = global::Finmer.Editor.Properties.Resources.arrow_out;
             this.tsbExpand.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbExpand.Name = "tsbExpand";
-            this.tsbExpand.Size = new System.Drawing.Size(23, 20);
+            this.tsbExpand.Size = new System.Drawing.Size(23, 22);
             this.tsbExpand.Text = "Expand All";
             this.tsbExpand.Click += new System.EventHandler(this.tsbExpand_Click);
             // 
@@ -382,7 +432,7 @@
             this.tsbCollapse.Image = global::Finmer.Editor.Properties.Resources.arrow_in;
             this.tsbCollapse.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbCollapse.Name = "tsbCollapse";
-            this.tsbCollapse.Size = new System.Drawing.Size(23, 20);
+            this.tsbCollapse.Size = new System.Drawing.Size(23, 22);
             this.tsbCollapse.Text = "Collapse All";
             this.tsbCollapse.Click += new System.EventHandler(this.tsbCollapse_Click);
             // 
@@ -401,7 +451,7 @@
             // splitNodeList.Panel2
             // 
             this.splitNodeList.Panel2.Controls.Add(this.splitNodeSettings);
-            this.splitNodeList.Size = new System.Drawing.Size(688, 526);
+            this.splitNodeList.Size = new System.Drawing.Size(893, 526);
             this.splitNodeList.SplitterDistance = 254;
             this.splitNodeList.TabIndex = 1;
             // 
@@ -416,7 +466,7 @@
             this.trvNodes.Location = new System.Drawing.Point(0, 0);
             this.trvNodes.Name = "trvNodes";
             this.trvNodes.SelectedImageIndex = 0;
-            this.trvNodes.Size = new System.Drawing.Size(688, 254);
+            this.trvNodes.Size = new System.Drawing.Size(893, 254);
             this.trvNodes.TabIndex = 0;
             this.trvNodes.ItemDrag += new System.Windows.Forms.ItemDragEventHandler(this.trvNodes_ItemDrag);
             this.trvNodes.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.trvNodes_AfterSelect);
@@ -449,7 +499,7 @@
             // splitNodeSettings.Panel2
             // 
             this.splitNodeSettings.Panel2.Controls.Add(this.tbcScripts);
-            this.splitNodeSettings.Size = new System.Drawing.Size(688, 268);
+            this.splitNodeSettings.Size = new System.Drawing.Size(893, 268);
             this.splitNodeSettings.SplitterDistance = 218;
             this.splitNodeSettings.TabIndex = 0;
             this.splitNodeSettings.Visible = false;
@@ -772,7 +822,7 @@
             this.tbcScripts.Location = new System.Drawing.Point(0, 0);
             this.tbcScripts.Name = "tbcScripts";
             this.tbcScripts.SelectedIndex = 0;
-            this.tbcScripts.Size = new System.Drawing.Size(466, 268);
+            this.tbcScripts.Size = new System.Drawing.Size(671, 268);
             this.tbcScripts.TabIndex = 0;
             // 
             // tbpScriptAction
@@ -781,7 +831,7 @@
             this.tbpScriptAction.Location = new System.Drawing.Point(4, 22);
             this.tbpScriptAction.Name = "tbpScriptAction";
             this.tbpScriptAction.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpScriptAction.Size = new System.Drawing.Size(458, 242);
+            this.tbpScriptAction.Size = new System.Drawing.Size(663, 242);
             this.tbpScriptAction.TabIndex = 0;
             this.tbpScriptAction.Text = "Actions Taken";
             this.tbpScriptAction.UseVisualStyleBackColor = true;
@@ -795,7 +845,7 @@
             this.scriptAction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAction.Location = new System.Drawing.Point(3, 3);
             this.scriptAction.Name = "scriptAction";
-            this.scriptAction.Size = new System.Drawing.Size(452, 236);
+            this.scriptAction.Size = new System.Drawing.Size(657, 236);
             this.scriptAction.TabIndex = 0;
             // 
             // tbpScriptAppear
@@ -804,7 +854,7 @@
             this.tbpScriptAppear.Location = new System.Drawing.Point(4, 22);
             this.tbpScriptAppear.Name = "tbpScriptAppear";
             this.tbpScriptAppear.Padding = new System.Windows.Forms.Padding(3);
-            this.tbpScriptAppear.Size = new System.Drawing.Size(458, 242);
+            this.tbpScriptAppear.Size = new System.Drawing.Size(663, 242);
             this.tbpScriptAppear.TabIndex = 1;
             this.tbpScriptAppear.Text = "Appears When";
             this.tbpScriptAppear.UseVisualStyleBackColor = true;
@@ -818,18 +868,19 @@
             this.scriptAppear.Dock = System.Windows.Forms.DockStyle.Fill;
             this.scriptAppear.Location = new System.Drawing.Point(3, 3);
             this.scriptAppear.Name = "scriptAppear";
-            this.scriptAppear.Size = new System.Drawing.Size(452, 236);
+            this.scriptAppear.Size = new System.Drawing.Size(657, 236);
             this.scriptAppear.TabIndex = 0;
             // 
             // FormDocumentScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(688, 551);
+            this.ClientSize = new System.Drawing.Size(893, 551);
             this.Controls.Add(this.splitNodeList);
             this.Controls.Add(this.toolStrip);
             this.Name = "FormDocumentScene";
             this.Text = "Scene";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.FormDocumentScene_FormClosed);
             this.Load += new System.EventHandler(this.FormDocumentScene_Load);
             this.toolStrip.ResumeLayout(false);
             this.toolStrip.PerformLayout();
@@ -916,5 +967,9 @@
         private System.Windows.Forms.Panel pnlGameStartSettings;
         private System.Windows.Forms.TextBox txtGameStartDesc;
         private System.Windows.Forms.CheckBox chkRootGameStart;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+        private System.Windows.Forms.ToolStripButton tsbClipboardCut;
+        private System.Windows.Forms.ToolStripButton tsbClipboardCopy;
+        private System.Windows.Forms.ToolStripButton tsbClipboardPaste;
     }
 }

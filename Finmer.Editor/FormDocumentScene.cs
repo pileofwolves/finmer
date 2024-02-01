@@ -31,7 +31,6 @@ namespace Finmer.Editor
         private AssetScene m_Scene;
         private AssetScene m_PatchTargetScene;
         private AssetScene.SceneNode m_SelectedNode;
-
         private TreeNode m_SelectedTree, m_SelectedTreeParent;
 
         private int m_SelectedTreeIndex;
@@ -46,6 +45,7 @@ namespace Finmer.Editor
         private bool m_SkipDirtyUpdates = true;
         private bool m_SkipTreeSelect;
 
+        private static readonly Clipboard<AssetScene.SceneNode> s_Clipboard = new Clipboard<AssetScene.SceneNode>();
         private static readonly Regex s_StateKeyRegex = new Regex(@"^(\w+)_R_([A-Za-z_]+)(\d*)[A-Z]?$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex s_ChoiceKeyRegex = new Regex(@"^(\w+)_C_(.+)[A-Z]?$",
@@ -89,9 +89,41 @@ namespace Finmer.Editor
             txtGameStartDesc.Text = m_Scene.GameStartDescription;
             UpdateInjectionNodeList();
 
+            // Other scene editor forms may change the shared clipboard; ensure this form updates its toolbar if the user copies from another scene
+            s_Clipboard.ContentChanged += Clipboard_ContentChanged;
+
             // Mark the asset as dirty when the user changes node scripts
             scriptAction.Dirty += (o, arg) => Dirty = true;
             scriptAppear.Dirty += (o, arg) => Dirty = true;
+        }
+
+        private void FormDocumentScene_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            s_Clipboard.ContentChanged -= Clipboard_ContentChanged;
+        }
+
+        private void Clipboard_ContentChanged()
+        {
+            // When the user switches to this form, they may have copied something from another scene asset
+            tsbClipboardPaste.Enabled = CanPasteInSelectedNode();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Delete:               if (tsbRemoveNode.Enabled)      tsbRemoveNode_Click(this, EventArgs.Empty);         return true;
+                case Keys.Alt | Keys.Up:        if (tsbMoveUp.Enabled)          tsbMoveUp_Click(this, EventArgs.Empty);             return true;
+                case Keys.Alt | Keys.Down:      if (tsbMoveDown.Enabled)        tsbMoveDown_Click(this, EventArgs.Empty);           return true;
+                case Keys.Control | Keys.N:     if (tsbAddNode.Enabled)         tsbAddNode_Click(this, EventArgs.Empty);            return true;
+                case Keys.Control | Keys.L:     if (tsbAddLink.Enabled)         tsbAddLink_Click(this, EventArgs.Empty);            return true;
+                case Keys.Control | Keys.B:     if (tsbAddCompass.Enabled)      tsbAddCompass_Click(this, EventArgs.Empty);         return true;
+                case Keys.Control | Keys.X:     if (tsbClipboardCut.Enabled)    tsbClipboardCut_Click(this, EventArgs.Empty);       return true;
+                case Keys.Control | Keys.C:     if (tsbClipboardCopy.Enabled)   tsbClipboardCopy_Click(this, EventArgs.Empty);      return true;
+                case Keys.Control | Keys.V:     if (tsbClipboardPaste.Enabled)  tsbClipboardPaste_Click(this, EventArgs.Empty);     return true;
+                default:                        return base.ProcessCmdKey(ref msg, keyData);
+            }
+
         }
 
         public override void Flush()
@@ -162,6 +194,9 @@ namespace Finmer.Editor
             tsbAddNode.Enabled = m_SelectedNode.IsFullNode();
             tsbAddLink.Enabled = tsbAddNode.Enabled;
             tsbRemoveNode.Enabled = !is_root;
+            tsbClipboardCut.Enabled = !is_root;
+            tsbClipboardCopy.Enabled = !is_root;
+            tsbClipboardPaste.Enabled = CanPasteInSelectedNode();
 
             // Node can have a compass child if it's a state, or a root node acting as a placeholder state
             bool can_host_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State
@@ -746,17 +781,7 @@ namespace Finmer.Editor
             // Retrieve the SceneNodes represented by these tree items
             var source_sn = (AssetScene.SceneNode)source.Tag;
             var target_sn = (AssetScene.SceneNode)target.Tag;
-
-            // Cannot parent nodes to leaf nodes, or to themselves
-            if (source_sn == target_sn || !target_sn.IsFullNode())
-                return;
-
-            // Nodes must follow the State/Choice alternation. Some extra logic is required to handle the Root node correctly.
-            bool target_is_root = target_sn.NodeType == AssetScene.ENodeType.Root;
-            bool can_parent_generic = target_sn.NodeType == GetAcceptableParentType(source_sn);
-            bool can_parent_root_node = target_is_root && source_sn.NodeType == GetAcceptableRootType();
-            bool can_parent_root_leaf = target_is_root && GetInverseNodeType(GetAcceptableParentType(source_sn)) == GetAcceptableRootType();
-            if (can_parent_generic || can_parent_root_node || can_parent_root_leaf)
+            if (CanReparentNode(source_sn, target_sn))
             {
                 // Notify the system which actions are allowed now
                 e.Effect = e.AllowedEffect;
@@ -913,6 +938,44 @@ namespace Finmer.Editor
             }
         }
 
+        private void tsbClipboardCut_Click(object sender, EventArgs e)
+        {
+            // Store the selected node in the clipboard
+            s_Clipboard.Set(m_SelectedNode);
+
+            // Remove the node from the scene tree, to emulate cutting behavior. This will reselect another node, and update the toolbar accordingly.
+            m_SelectedNode.Parent.Children.Remove(m_SelectedNode);
+            m_SelectedTree.Remove();
+
+            // This asset has been modified
+            Dirty = true;
+        }
+
+        private void tsbClipboardCopy_Click(object sender, EventArgs e)
+        {
+            // Store the selected node in the clipboard, without erasing it from the scene tree
+            s_Clipboard.Set(m_SelectedNode);
+
+            // Update UI
+            tsbClipboardPaste.Enabled = CanPasteInSelectedNode();
+        }
+
+        private void tsbClipboardPaste_Click(object sender, EventArgs e)
+        {
+            // Sanity check; prevent linking up broken content just in case the toolbar button is enabled when it shouldn't
+            if (!CanPasteInSelectedNode())
+                return;
+
+            // Attach a copy of the clipboard contents to the selected node
+            var copy = s_Clipboard.CopyBuffer();
+            copy.Parent = m_SelectedNode;
+            m_SelectedNode.Children.Add(copy);
+            AddNodeToTreeView(m_SelectedTree.Nodes, copy, true);
+
+            // This asset has been modified
+            Dirty = true;
+        }
+
         private AssetScene.ENodeType GetInverseNodeType(AssetScene.ENodeType type)
         {
             // The inverse of the root node is whichever type can be parented to the root (given the patch mode)
@@ -927,6 +990,31 @@ namespace Finmer.Editor
         private AssetScene.ENodeType GetAcceptableRootType()
         {
             return m_Scene.InjectMode >= AssetScene.ESceneInjectMode.InsideAtStart ? AssetScene.ENodeType.Choice : AssetScene.ENodeType.State;
+        }
+
+        private bool CanReparentNode(AssetScene.SceneNode source, AssetScene.SceneNode target)
+        {
+            // Cannot parent nodes to leaf nodes, or to themselves
+            if (source == target || !target.IsFullNode())
+                return false;
+
+            // If the source is a Link and has no parent (e.g. a Link copied to the clipboard), we have no context for its State/Choice status and must accept the move
+            if (source.NodeType == AssetScene.ENodeType.Link && source.Parent == null)
+                return true;
+
+            // Nodes must follow the State/Choice alternation. Some extra logic is required to handle the Root node correctly.
+            bool target_is_root = target.NodeType == AssetScene.ENodeType.Root;
+            bool can_parent_generic = target.NodeType == GetAcceptableParentType(source);
+            bool can_parent_root_node = target_is_root && source.NodeType == GetAcceptableRootType();
+            bool can_parent_root_leaf = target_is_root && GetInverseNodeType(GetAcceptableParentType(source)) == GetAcceptableRootType();
+            return can_parent_generic || can_parent_root_node || can_parent_root_leaf;
+        }
+
+        private bool CanPasteInSelectedNode()
+        {
+            return s_Clipboard.HasContent()
+                && m_SelectedNode != null
+                && CanReparentNode(s_Clipboard.PeekBuffer(), m_SelectedNode);
         }
 
         private static AssetScene.ENodeType GetAcceptableParentType(AssetScene.SceneNode child)

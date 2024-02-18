@@ -302,7 +302,10 @@ namespace Finmer.Models
         /// </summary>
         public void ClearLog()
         {
-            Dispatcher.Invoke(() => Messages.Clear());
+            Dispatcher.BeginInvoke(new Action(() =>
+            {
+                Messages.Clear();
+            }));
         }
 
     }

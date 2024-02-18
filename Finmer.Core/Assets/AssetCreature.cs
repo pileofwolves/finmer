@@ -34,12 +34,12 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// The name of the object, used as value for GameObject.Name.
         /// </summary>
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = String.Empty;
 
         /// <summary>
         /// The alternate name of the object, used as value for GameObject.Alias.
         /// </summary>
-        public string ObjectAlias { get; set; }
+        public string ObjectAlias { get; set; } = String.Empty;
 
         /// <summary>
         /// The creature's Strength combat stat.

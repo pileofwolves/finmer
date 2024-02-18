@@ -43,17 +43,17 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// The name of the object, used as value for GameObject.Name.
         /// </summary>
-        public string ObjectName { get; set; }
+        public string ObjectName { get; set; } = String.Empty;
 
         /// <summary>
         /// The alternate name of the object, used as value for GameObject.Alias.
         /// </summary>
-        public string ObjectAlias { get; set; }
+        public string ObjectAlias { get; set; } = String.Empty;
 
         /// <summary>
         /// Arbitrary narrative or informative text displayed at the bottom of the item tooltip.
         /// </summary>
-        public string FlavorText { get; set; }
+        public string FlavorText { get; set; } = String.Empty;
 
         /// <summary>
         /// The in-game functionality group of the item.

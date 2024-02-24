@@ -34,6 +34,7 @@ namespace Finmer.Editor
         private readonly Dictionary<int, EditorWindow> m_OpenWindows = new Dictionary<int, EditorWindow>();
 
         private bool m_Dirty;
+        private bool m_IsEditingAssetName;
         private string m_Filename;
 
         public FormMain()
@@ -133,6 +134,10 @@ namespace Finmer.Editor
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+            // Make sure the Delete key can still be used in contexts outside the asset list (e.g. when typing text in an asset editor)
+            if (keyData == Keys.Delete && (m_IsEditingAssetName || dockPanel.ContainsFocus))
+                return base.ProcessCmdKey(ref msg, keyData);
+
             switch (keyData)
             {
                 case Keys.Control | Keys.S:     rbtProjSave.PerformClick();                 return true;
@@ -144,7 +149,6 @@ namespace Finmer.Editor
                 case Keys.Control | Keys.F5:    rbtPlayNormal.PerformClick();               return true;
                 default:                        return base.ProcessCmdKey(ref msg, keyData);
             }
-
         }
 
         private EditorWindow CreateEditorWindow(IFurballSerializable data)
@@ -850,10 +854,14 @@ namespace Finmer.Editor
         {
             // Disallow editing of the root nodes
             e.CancelEdit = e.Node.Parent == null;
+
+            m_IsEditingAssetName = !e.CancelEdit;
         }
 
         private void trvAssetList_AfterLabelEdit(object sender, NodeLabelEditEventArgs e)
         {
+            m_IsEditingAssetName = false;
+
             // Discard empty names or names that are not unique
             if (String.IsNullOrWhiteSpace(e.Label) || !IsAssetNameUnique(e.Label))
             {

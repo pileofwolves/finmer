@@ -67,6 +67,7 @@ namespace Finmer.Editor
             this.dockPanel = new WeifenLuo.WinFormsUI.Docking.DockPanel();
             this.dlgOpenBinary = new System.Windows.Forms.OpenFileDialog();
             this.dlgSaveBinary = new System.Windows.Forms.SaveFileDialog();
+            this.rbtAssetDuplicate = new System.Windows.Forms.RibbonButton();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer)).BeginInit();
             this.splitContainer.Panel1.SuspendLayout();
             this.splitContainer.Panel2.SuspendLayout();
@@ -305,6 +306,7 @@ namespace Finmer.Editor
             this.rpnAssets.Items.Add(this.rbtAssetAdd);
             this.rpnAssets.Items.Add(this.rbtAssetRename);
             this.rpnAssets.Items.Add(this.rbtAssetDelete);
+            this.rpnAssets.Items.Add(this.rbtAssetDuplicate);
             this.rpnAssets.Name = "rpnAssets";
             this.rpnAssets.Text = "Assets";
             // 
@@ -519,6 +521,20 @@ namespace Finmer.Editor
             // 
             this.dlgSaveBinary.Filter = "Furball Packages (*.furball)|*.furball";
             // 
+            // rbtAssetDuplicate
+            // 
+            this.rbtAssetDuplicate.Enabled = false;
+            this.rbtAssetDuplicate.Image = ((System.Drawing.Image)(resources.GetObject("rbtAssetDuplicate.Image")));
+            this.rbtAssetDuplicate.LargeImage = ((System.Drawing.Image)(resources.GetObject("rbtAssetDuplicate.LargeImage")));
+            this.rbtAssetDuplicate.MaxSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.rbtAssetDuplicate.MinSizeMode = System.Windows.Forms.RibbonElementSizeMode.Medium;
+            this.rbtAssetDuplicate.Name = "rbtAssetDuplicate";
+            this.rbtAssetDuplicate.SmallImage = global::Finmer.Editor.Properties.Resources.document_copy;
+            this.rbtAssetDuplicate.Text = "Duplicate";
+            this.rbtAssetDuplicate.ToolTip = "Make a copy of the selected asset.";
+            this.rbtAssetDuplicate.ToolTipTitle = "Duplicate Asset (Ctrl+D)";
+            this.rbtAssetDuplicate.Click += new System.EventHandler(this.rbtAssetDuplicate_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -577,6 +593,7 @@ namespace Finmer.Editor
         private RibbonButton rbtPakSettings;
         private SaveFileDialog dlgSaveBinary;
         private RibbonButton rbtPreferences;
+        private RibbonButton rbtAssetDuplicate;
     }
 }
 

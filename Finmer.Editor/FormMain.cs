@@ -787,11 +787,13 @@ namespace Finmer.Editor
         private void rbtAssetDelete_Click(object sender, EventArgs e)
         {
             TreeNode node = trvAssetList.SelectedNode;
-            if (node?.Parent == null) return;
+            if (node?.Parent == null)
+                return;
 
             var asset = (AssetBase)node.Tag;
-
-            if (MessageBox.Show($"Are you sure you want to remove '{asset.Name}'? This operation cannot be undone.", "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No) return;
+            if (MessageBox.Show($"Are you sure you want to remove '{asset.Name}'? This operation cannot be undone.",
+                    "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation) == DialogResult.No)
+                return;
 
             // Close editor window for the asset, if it was still open
             if (m_OpenWindows.TryGetValue(GetEditorWindowKey(asset), out var open_window))
@@ -807,6 +809,58 @@ namespace Finmer.Editor
             trvAssetList.SelectedNode.Remove();
 
             MarkDirty();
+        }
+
+        private void rbtAssetDuplicate_Click(object sender, EventArgs e)
+        {
+            TreeNode node = trvAssetList.SelectedNode;
+            if (node?.Parent == null)
+                return;
+
+            // Find an open editor window associated with this asset
+            var asset = (AssetBase)node.Tag;
+            if (m_OpenWindows.TryGetValue(GetEditorWindowKey(asset), out var asset_window))
+            {
+                if (asset_window.Dirty)
+                {
+                    // If the editor window has unsaved changes, the user may wish to include these unsaved changes in the duplicate - ask.
+                    var dr = MessageBox.Show($"The asset {asset.Name} has unsaved changes. Would you like to first save the asset, and then duplicate it? (Pressing No will mean the asset is duplicated without the unsaved changes.)",
+                        "Finmer Editor", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Exclamation);
+                    if (dr == DialogResult.Cancel)
+                        return;
+
+                    if (dr == DialogResult.Yes)
+                    {
+                        // Flush the window and re-acquire the asset reference (it may have been replaced)
+                        asset_window.Flush();
+                        asset = (AssetBase)node.Tag;
+                    }
+                }
+            }
+
+            // Create a deep copy of the selected asset
+            var duplicate = AssetSerializer.DuplicateAsset(asset);
+
+            // Generate a unique name for the new asset, with a number suffix
+            int suffix = 2;
+            string new_name;
+            while (true)
+            {
+                // Check if this suffixed name is already in use
+                new_name = $"{asset.Name}_{suffix}";
+                if (Program.ActiveFurball.GetAssetByName(new_name) == null)
+                    break;
+
+                // If so, try the next number suffix
+                suffix++;
+            }
+
+            // Replace the asset's metadata with unique IDs
+            duplicate.ID = Guid.NewGuid();
+            duplicate.Name = new_name;
+
+            // Add the duplicated asset to the module
+            RegisterNewAsset(duplicate);
         }
 
         private void rbtHelpDoc_Click(object sender, EventArgs e)
@@ -848,6 +902,7 @@ namespace Finmer.Editor
             bool not_root = trvAssetList.SelectedNode?.Parent != null;
             rbtAssetRename.Enabled = not_root;
             rbtAssetDelete.Enabled = not_root;
+            rbtAssetDuplicate.Enabled = not_root;
         }
 
         private void trvAssetList_BeforeLabelEdit(object sender, NodeLabelEditEventArgs e)

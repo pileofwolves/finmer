@@ -110,6 +110,11 @@ namespace Finmer.Editor
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
+            // Do not eat keypresses if focus lies elsewhere; all the below keyboard shortcuts relate to the node tree.
+            // Particularly the cut/copy/paste shortcuts should remain functional while typing in the script editor views.
+            if (!trvNodes.ContainsFocus)
+                return base.ProcessCmdKey(ref msg, keyData);
+
             switch (keyData)
             {
                 case Keys.Delete:               if (tsbRemoveNode.Enabled)      tsbRemoveNode_Click(this, EventArgs.Empty);         return true;
@@ -123,7 +128,6 @@ namespace Finmer.Editor
                 case Keys.Control | Keys.V:     if (tsbClipboardPaste.Enabled)  tsbClipboardPaste_Click(this, EventArgs.Empty);     return true;
                 default:                        return base.ProcessCmdKey(ref msg, keyData);
             }
-
         }
 
         public override void Flush()

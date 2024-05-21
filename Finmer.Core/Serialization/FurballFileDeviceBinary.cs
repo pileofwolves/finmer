@@ -8,6 +8,7 @@
 
 using System;
 using System.IO;
+using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
@@ -36,22 +37,19 @@ namespace Finmer.Core.Serialization
                         Metadata = ReadHeaderFromStream(instream)
                     };
 
-                    // Read dependencies list
-                    for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
+                    // In format versions 21 and onwards, furballs are GZIP compressed
+                    if (output.Metadata.FormatVersion >= 21)
                     {
-                        output.Dependencies.Add(new FurballDependency
+                        using (var compressed_stream = new GZipStream(instream.BaseStream, CompressionMode.Decompress, true))
+                        using (var compressed_instream = new BinaryReader(compressed_stream, Encoding.UTF8, true))
                         {
-                            ID = new Guid(instream.ReadBytes(16)),
-                            FileNameHint = instream.ReadString()
-                        });
+                            ReadFurballContent(compressed_instream, output);
+                        }
                     }
-
-                    // Read asset blobs
-                    for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
+                    // In format versions 20 and below, furballs are uncompressed
+                    else
                     {
-                        var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
-                        asset.Module = output.Metadata;
-                        output.Assets.Add(asset);
+                        ReadFurballContent(instream, output);
                     }
 
                     return output;
@@ -93,26 +91,57 @@ namespace Finmer.Core.Serialization
                     outstream.Write(furball.Metadata.Title);
                     outstream.Write(furball.Metadata.Author);
 
-                    // Dependency table
-                    outstream.Write(furball.Dependencies.Count);
-                    foreach (FurballDependency dependency in furball.Dependencies)
+                    // In format versions 21 and onwards, furballs are GZIP compressed
+                    using (var compressed_stream = new GZipStream(outstream.BaseStream, CompressionMode.Compress, true))
+                    using (var compressed_outstream = new BinaryWriter(compressed_stream, Encoding.UTF8, true))
                     {
-                        outstream.Write(dependency.ID.ToByteArray());
-                        outstream.Write(dependency.FileNameHint);
-                    }
-
-                    // Asset table
-                    outstream.Write(furball.Assets.Count);
-                    var content_writer = new FurballContentWriterBinary(outstream);
-                    foreach (AssetBase asset in furball.Assets)
-                    {
-                        AssetSerializer.SerializeAsset(content_writer, asset);
+                        WriteFurballContent(compressed_outstream, furball);
                     }
                 }
             }
             catch (Exception ex)
             {
                 throw new FurballIOException(ex.Message, ex);
+            }
+        }
+
+        private void ReadFurballContent(BinaryReader instream, Furball output)
+        {
+            // Read dependencies list
+            for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
+            {
+                output.Dependencies.Add(new FurballDependency
+                {
+                    ID = new Guid(instream.ReadBytes(16)),
+                    FileNameHint = instream.ReadString()
+                });
+            }
+
+            // Read asset blobs
+            for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
+            {
+                var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
+                asset.Module = output.Metadata;
+                output.Assets.Add(asset);
+            }
+        }
+
+        private void WriteFurballContent(BinaryWriter outstream, Furball furball)
+        {
+            // Dependency table
+            outstream.Write(furball.Dependencies.Count);
+            foreach (FurballDependency dependency in furball.Dependencies)
+            {
+                outstream.Write(dependency.ID.ToByteArray());
+                outstream.Write(dependency.FileNameHint);
+            }
+
+            // Asset table
+            outstream.Write(furball.Assets.Count);
+            var content_writer = new FurballContentWriterBinary(outstream);
+            foreach (AssetBase asset in furball.Assets)
+            {
+                AssetSerializer.SerializeAsset(content_writer, asset);
             }
         }
 

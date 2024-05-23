@@ -57,6 +57,8 @@
     <Compile Include="Buffs\EBuffImpact.cs" />
     <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
+    <Compile Include="Serialization\GZipBinaryReader.cs" />
+    <Compile Include="Serialization\GZipBinaryWriter.cs" />
     <Compile Include="LoadOrderDependency.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />
     <Compile Include="Assets\AssetBase.cs" />

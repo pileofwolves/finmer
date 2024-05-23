@@ -8,7 +8,6 @@
 
 using System;
 using System.IO;
-using System.IO.Compression;
 using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
@@ -29,30 +28,8 @@ namespace Finmer.Core.Serialization
             try
             {
                 using (var file_stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
-                using (var instream = new BinaryReader(file_stream, Encoding.UTF8, true))
                 {
-                    // Read basic configuration
-                    var output = new Furball
-                    {
-                        Metadata = ReadHeaderFromStream(instream)
-                    };
-
-                    // In format versions 21 and onwards, furballs are GZIP compressed
-                    if (output.Metadata.FormatVersion >= 21)
-                    {
-                        using (var compressed_stream = new GZipStream(instream.BaseStream, CompressionMode.Decompress, true))
-                        using (var compressed_instream = new BinaryReader(compressed_stream, Encoding.UTF8, true))
-                        {
-                            ReadFurballContent(compressed_instream, output);
-                        }
-                    }
-                    // In format versions 20 and below, furballs are uncompressed
-                    else
-                    {
-                        ReadFurballContent(instream, output);
-                    }
-
-                    return output;
+                    return ReadModuleFromStream(file_stream, true);
                 }
             }
             catch (IOException ex)
@@ -66,9 +43,8 @@ namespace Finmer.Core.Serialization
             try
             {
                 using (var file_stream = new FileStream(file.FullName, FileMode.Open))
-                using (var instream = new BinaryReader(file_stream, Encoding.UTF8, true))
                 {
-                    return ReadHeaderFromStream(instream);
+                    return ReadModuleFromStream(file_stream, false).Metadata;
                 }
             }
             catch (IOException ex)
@@ -82,20 +58,37 @@ namespace Finmer.Core.Serialization
             try
             {
                 using (var stream = new FileStream(file.FullName, FileMode.Create))
-                using (var outstream = new BinaryWriter(stream, Encoding.UTF8, true))
                 {
                     // File header
-                    outstream.Write(k_FurballHeader);
-                    outstream.Write(k_LatestVersion);
-                    outstream.Write(furball.Metadata.ID.ToByteArray());
-                    outstream.Write(furball.Metadata.Title);
-                    outstream.Write(furball.Metadata.Author);
+                    using (var outstream = new BinaryWriter(stream, Encoding.UTF8, true))
+                    {
+                        outstream.Write(k_FurballHeader);
+                        outstream.Write(k_LatestVersion);
+                    }
 
                     // In format versions 21 and onwards, furballs are GZIP compressed
-                    using (var compressed_stream = new GZipStream(outstream.BaseStream, CompressionMode.Compress, true))
-                    using (var compressed_outstream = new BinaryWriter(compressed_stream, Encoding.UTF8, true))
+                    using (var outstream = new GZipBinaryWriter(stream, Encoding.UTF8, true))
                     {
-                        WriteFurballContent(compressed_outstream, furball);
+                        // Leftover metadata chunk
+                        outstream.Write(furball.Metadata.ID.ToByteArray());
+                        outstream.Write(furball.Metadata.Title);
+                        outstream.Write(furball.Metadata.Author);
+
+                        // Dependency table
+                        outstream.Write(furball.Dependencies.Count);
+                        foreach (FurballDependency dependency in furball.Dependencies)
+                        {
+                            outstream.Write(dependency.ID.ToByteArray());
+                            outstream.Write(dependency.FileNameHint);
+                        }
+
+                        // Asset table
+                        outstream.Write(furball.Assets.Count);
+                        var content_writer = new FurballContentWriterBinary(outstream);
+                        foreach (AssetBase asset in furball.Assets)
+                        {
+                            AssetSerializer.SerializeAsset(content_writer, asset);
+                        }
                     }
                 }
             }
@@ -105,67 +98,85 @@ namespace Finmer.Core.Serialization
             }
         }
 
-        private void ReadFurballContent(BinaryReader instream, Furball output)
+        /// <summary>
+        /// Reads a Furball from the specified stream.
+        /// </summary>
+        /// <param name="stream">The stream to read from. The stream will not be closed by this method; the caller must do this.</param>
+        /// <param name="read_fully">Whether or not to read the dependencies and assets of the furball. If false, reads only the metadata.</param>
+        private Furball ReadModuleFromStream(Stream stream, bool read_fully)
         {
-            // Read dependencies list
-            for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
+            var format_version = ReadHeaderFromStream(stream, out var instream);
+
+            Furball furball;
+
+            using (instream)
             {
-                output.Dependencies.Add(new FurballDependency
+                furball = new Furball
                 {
-                    ID = new Guid(instream.ReadBytes(16)),
-                    FileNameHint = instream.ReadString()
-                });
+                    Metadata = new FurballMetadata
+                    {
+                        ID = new Guid(instream.ReadBytes(16)),
+                        Title = instream.ReadString(),
+                        Author = instream.ReadString(),
+                        FormatVersion = format_version
+                    }
+                };
+
+                if (read_fully)
+                {
+                    // Read dependencies list
+                    for (int num_dependencies = instream.ReadInt32(); num_dependencies > 0; num_dependencies--)
+                    {
+                        furball.Dependencies.Add(new FurballDependency
+                        {
+                            ID = new Guid(instream.ReadBytes(16)),
+                            FileNameHint = instream.ReadString()
+                        });
+                    }
+
+                    // Read asset blobs
+                    for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
+                    {
+                        var asset = ReadAssetFromStream(instream, furball.Metadata.FormatVersion);
+                        asset.Module = furball.Metadata;
+                        furball.Assets.Add(asset);
+                    }
+                }
             }
 
-            // Read asset blobs
-            for (int num_assets = instream.ReadInt32(); num_assets > 0; num_assets--)
-            {
-                var asset = ReadAssetFromStream(instream, output.Metadata.FormatVersion);
-                asset.Module = output.Metadata;
-                output.Assets.Add(asset);
-            }
+            return furball;
         }
 
-        private void WriteFurballContent(BinaryWriter outstream, Furball furball)
+        private byte ReadHeaderFromStream(Stream instream, out BinaryReader new_stream)
         {
-            // Dependency table
-            outstream.Write(furball.Dependencies.Count);
-            foreach (FurballDependency dependency in furball.Dependencies)
+            byte version;
+
+            using (var reader = new BinaryReader(instream, Encoding.UTF8, true))
             {
-                outstream.Write(dependency.ID.ToByteArray());
-                outstream.Write(dependency.FileNameHint);
+                // Verify file magic
+                char[] header = reader.ReadChars(k_FurballHeader.Length);
+                if (!header.SequenceEqual(k_FurballHeader))
+                    throw new FurballInvalidHeaderException("Invalid module header");
+
+                // Verify file version
+                version = reader.ReadByte();
+                if (version < k_MinimumVersion)
+                    throw new FurballInvalidHeaderException($"Incompatible module version {version} (minimum version {k_MinimumVersion}, latest version {k_LatestVersion}). The module is from an outdated version of the game; please ask the module author to update it.");
+                if (version > k_LatestVersion)
+                    throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
             }
 
-            // Asset table
-            outstream.Write(furball.Assets.Count);
-            var content_writer = new FurballContentWriterBinary(outstream);
-            foreach (AssetBase asset in furball.Assets)
+            // In format versions 21 and onwards, furballs are GZIP compressed
+            if (version >= 21)
             {
-                AssetSerializer.SerializeAsset(content_writer, asset);
+                new_stream = new GZipBinaryReader(instream, Encoding.UTF8, true);
             }
-        }
-
-        private FurballMetadata ReadHeaderFromStream(BinaryReader instream)
-        {
-            // Verify file magic
-            char[] header = instream.ReadChars(k_FurballHeader.Length);
-            if (!header.SequenceEqual(k_FurballHeader))
-                throw new FurballInvalidHeaderException("Invalid module header");
-
-            // Verify file version
-            byte version = instream.ReadByte();
-            if (version < k_MinimumVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {version} (minimum version {k_MinimumVersion}, latest version {k_LatestVersion}). The module is from an outdated version of the game; please ask the module author to update it.");
-            if (version > k_LatestVersion)
-                throw new FurballInvalidHeaderException($"Incompatible module version {version} (expected version {k_LatestVersion}). The module is from a newer version of the game; please download the latest version of Finmer to play it.");
-
-            return new FurballMetadata
+            else
             {
-                ID = new Guid(instream.ReadBytes(16)),
-                Title = instream.ReadString(),
-                Author = instream.ReadString(),
-                FormatVersion = version
-            };
+                new_stream = new BinaryReader(instream, Encoding.UTF8, true);
+            }
+
+            return version;
         }
 
         private AssetBase ReadAssetFromStream(BinaryReader instream, int version)

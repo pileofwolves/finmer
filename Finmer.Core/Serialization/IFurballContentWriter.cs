@@ -62,8 +62,10 @@ namespace Finmer.Core.Serialization
         void WriteStringProperty(string key, string value);
 
         /// <summary>
-        /// Write a key/value-pair with the specified value.
+        /// Write a byte array with the specified key.
+        /// The byte array may be null, but it may not be empty, and an exception is thrown in this case.
         /// </summary>
+        /// <exception cref="ArgumentException">Thrown when attempting to write a zero-length byte array.</exception>
         void WriteByteArrayProperty(string key, byte[] value);
 
         /// <summary>
@@ -102,7 +104,7 @@ namespace Finmer.Core.Serialization
         void EndObject();
 
         /// <summary>
-        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginObject().
+        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginArray().
         /// </summary>
         void EndArray();
 

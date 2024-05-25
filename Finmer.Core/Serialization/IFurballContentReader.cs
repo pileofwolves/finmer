@@ -70,7 +70,7 @@ namespace Finmer.Core.Serialization
         string ReadStringProperty(string key);
 
         /// <summary>
-        /// Read the value of a byte array property.
+        /// Read the value of a byte array property, which may be null.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
         byte[] ReadByteArrayProperty(string key);
@@ -111,7 +111,7 @@ namespace Finmer.Core.Serialization
         void EndObject();
 
         /// <summary>
-        /// Exit out of an array that was opened with BeginObject(). This function must be called an equal number of times as BeginObject().
+        /// Exit out of an array that was opened with BeginArray(). This function must be called an equal number of times as BeginArray().
         /// </summary>
         void EndArray();
 

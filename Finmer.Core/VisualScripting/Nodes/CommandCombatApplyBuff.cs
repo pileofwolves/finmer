@@ -97,7 +97,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 outstream.WriteStringProperty(nameof(ParticipantID), ParticipantID);
 
             outstream.WriteNestedObjectProperty(nameof(Effect), Effect);
-            outstream.WriteInt32Property(nameof(Duration), Duration);
+            outstream.WriteCompressedInt32Property(nameof(Duration), Duration);
         }
 
         public override void Deserialize(IFurballContentReader instream, int version)
@@ -108,7 +108,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 ParticipantID = instream.ReadStringProperty(nameof(ParticipantID));
 
             Effect = instream.ReadNestedObjectProperty<Buff>(nameof(Effect), version);
-            Duration = instream.ReadInt32Property(nameof(Duration));
+            Duration = instream.ReadCompressedInt32Property(nameof(Duration));
         }
 
         private string GetLuaBuffCtor()

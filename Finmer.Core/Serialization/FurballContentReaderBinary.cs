@@ -20,10 +20,12 @@ namespace Finmer.Core.Serialization
     {
 
         private readonly BinaryReader m_Stream;
+        private readonly int m_Version;
 
-        public FurballContentReaderBinary(BinaryReader instream)
+        public FurballContentReaderBinary(BinaryReader instream, int version)
         {
             m_Stream = instream;
+            m_Version = version;
         }
 
         public bool ReadBooleanProperty(string key)

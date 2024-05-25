@@ -33,6 +33,15 @@ namespace Finmer.Core.Serialization
         void WriteInt32Property(string key, int value);
 
         /// <summary>
+        /// Writes a 32-bit integer associated with the specified key.
+        /// The integer may be compressed in a format chosen by the implementation, although this is not required;
+        /// an implementation may choose to write the number normally.
+        /// </summary>
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        /// <param name="value">The number to be written.</param>
+        void WriteCompressedInt32Property(string key, int value);
+
+        /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
         void WriteFloatProperty(string key, float value);

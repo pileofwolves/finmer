@@ -75,6 +75,12 @@ namespace Finmer.Editor
             }
         }
 
+        public int ReadCompressedInt32Property(string key)
+        {
+            // We don't do any special compression here, just redirect to the normal version
+            return ReadInt32Property(key);
+        }
+
         public float ReadFloatProperty(string key)
         {
             try

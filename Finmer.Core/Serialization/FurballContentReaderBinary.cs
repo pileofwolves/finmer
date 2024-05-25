@@ -43,6 +43,31 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadInt32();
         }
 
+        public int ReadCompressedInt32Property(string key)
+        {
+            // In versions 20 and below, these were plain uncompressed integers
+            if (m_Version < 21)
+                return ReadInt32Property(key);
+
+            // The following is a re-implementation of Read7BitEncodedInt() from BinaryReader
+
+            int read_value = 0; // The value being read
+            int shift = 0;      // The position of the next seven bits
+            byte next;          // The next byte to be read
+
+            do {
+                if (shift == 5 * 7)
+                    throw new FormatException("Int too long");
+
+                next = m_Stream.ReadByte();
+
+                read_value |= (next & 0x7F) << shift;
+                shift += 7;
+            } while ((next & 0x80u) != 0);
+
+            return read_value;
+        }
+
         public float ReadFloatProperty(string key)
         {
             return m_Stream.ReadSingle();

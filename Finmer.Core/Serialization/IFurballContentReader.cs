@@ -40,6 +40,12 @@ namespace Finmer.Core.Serialization
         int ReadInt32Property(string key);
 
         /// <summary>
+        /// Read the value of a 32-bit integer property that was written with the corresponding method in IFurballContentWriter.
+        /// </summary>
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        int ReadCompressedInt32Property(string key);
+
+        /// <summary>
         /// Read the value of a 32-bit float property.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>

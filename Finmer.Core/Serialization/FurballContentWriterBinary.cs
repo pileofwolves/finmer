@@ -42,6 +42,20 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
+        public void WriteCompressedInt32Property(string key, int value)
+        {
+            // The following is a re-implementation of Write7BitEncodedInt() from BinaryWriter
+
+            uint unsigned_value = (uint)value;
+
+            while (unsigned_value >= 0x80u) {
+                m_Stream.Write((byte) (unsigned_value | 0x80u));
+                unsigned_value >>= 7;
+            }
+
+            m_Stream.Write((byte)unsigned_value);
+        }
+
         public void WriteFloatProperty(string key, float value)
         {
             m_Stream.Write(value);

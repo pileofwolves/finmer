@@ -98,11 +98,14 @@ namespace Finmer.Core.Serialization
         {
             if (value == null)
             {
-                m_Stream.Write(-1);
+                WriteCompressedInt32Property(null, 0);
             }
             else
             {
-                m_Stream.Write(value.Length);
+                if (value.Length == 0)
+                    throw new ArgumentException("Attempt to write zero-length byte array", "value");
+
+                WriteCompressedInt32Property(null, value.Length);
                 m_Stream.Write(value);
             }
         }
@@ -139,7 +142,7 @@ namespace Finmer.Core.Serialization
 
         public void BeginArray(string key, int numElements)
         {
-            m_Stream.Write(numElements);
+            WriteCompressedInt32Property(null, numElements);
         }
 
         public void EndObject()

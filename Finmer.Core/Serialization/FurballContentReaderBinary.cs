@@ -107,8 +107,10 @@ namespace Finmer.Core.Serialization
 
         public byte[] ReadByteArrayProperty(string key)
         {
-            int length = m_Stream.ReadInt32();
-            if (length < 0)
+            // In versions <= 20, we used to write -1 for null byte arrays (we now write 0)
+            // This method will handle that fine, since it delegates to ReadInt32Property in those versions
+            int length = ReadCompressedInt32Property(null);
+            if (length <= 0)
                 return null;
 
             return m_Stream.ReadBytes(length);
@@ -148,7 +150,7 @@ namespace Finmer.Core.Serialization
 
         public int BeginArray(string key)
         {
-            return m_Stream.ReadInt32();
+            return ReadCompressedInt32Property(null);
         }
 
         public void EndObject()

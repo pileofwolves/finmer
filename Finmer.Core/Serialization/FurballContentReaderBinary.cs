@@ -45,27 +45,7 @@ namespace Finmer.Core.Serialization
 
         public int ReadCompressedInt32Property(string key)
         {
-            // In versions 20 and below, these were plain uncompressed integers
-            if (m_Version < 21)
-                return ReadInt32Property(key);
-
-            // The following is a re-implementation of Read7BitEncodedInt() from BinaryReader
-
-            int read_value = 0; // The value being read
-            int shift = 0;      // The position of the next seven bits
-            byte next;          // The next byte to be read
-
-            do {
-                if (shift == 5 * 7)
-                    throw new FormatException("Int too long");
-
-                next = m_Stream.ReadByte();
-
-                read_value |= (next & 0x7F) << shift;
-                shift += 7;
-            } while ((next & 0x80u) != 0);
-
-            return read_value;
+            return Read7BitEncodedInt();
         }
 
         public float ReadFloatProperty(string key)
@@ -109,7 +89,7 @@ namespace Finmer.Core.Serialization
         {
             // In versions <= 20, we used to write -1 for null byte arrays (we now write 0)
             // This method will handle that fine, since it delegates to ReadInt32Property in those versions
-            int length = ReadCompressedInt32Property(null);
+            int length = Read7BitEncodedInt();
             if (length <= 0)
                 return null;
 
@@ -150,7 +130,7 @@ namespace Finmer.Core.Serialization
 
         public int BeginArray(string key)
         {
-            return ReadCompressedInt32Property(null);
+            return Read7BitEncodedInt();
         }
 
         public void EndObject()
@@ -161,6 +141,31 @@ namespace Finmer.Core.Serialization
         public void EndArray()
         {
             // Irrelevant for binary objects
+        }
+
+        private int Read7BitEncodedInt()
+        {
+            // In versions 20 and below, these were plain uncompressed integers
+            if (m_Version < 21)
+                return m_Stream.ReadInt32();
+
+            // The following is a re-implementation of Read7BitEncodedInt() from BinaryReader
+
+            int read_value = 0; // The value being read
+            int shift = 0;      // The position of the next seven bits
+            byte next;          // The next byte to be read
+
+            do {
+                if (shift == 5 * 7)
+                    throw new FormatException("Int too long");
+
+                next = m_Stream.ReadByte();
+
+                read_value |= (next & 0x7F) << shift;
+                shift += 7;
+            } while ((next & 0x80u) != 0);
+
+            return read_value;
         }
 
     }

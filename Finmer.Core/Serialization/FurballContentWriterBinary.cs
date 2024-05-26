@@ -94,7 +94,7 @@ namespace Finmer.Core.Serialization
             else
             {
                 if (value.Length == 0)
-                    throw new ArgumentException("Attempt to write zero-length byte array", "value");
+                    throw new ArgumentException("Attempt to write zero-length byte array", nameof(value));
 
                 Write7BitEncodedInt(value.Length);
                 m_Stream.Write(value);

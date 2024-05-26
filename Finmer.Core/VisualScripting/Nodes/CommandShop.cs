@@ -94,7 +94,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             // Basic configuration
             outstream.WriteStringProperty(nameof(Key), Key);
             outstream.WriteStringProperty(nameof(Title), Title);
-            outstream.WriteInt32Property(nameof(RestockInterval), RestockInterval);
+            outstream.WriteCompressedInt32Property(nameof(RestockInterval), RestockInterval);
 
             // Merchandise list
             outstream.BeginArray(nameof(Merchandise), Merchandise.Count);
@@ -102,7 +102,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             {
                 outstream.BeginObject();
                 outstream.WriteGuidProperty(@"Item", stock.Key);
-                outstream.WriteInt32Property(@"Quantity", stock.Value);
+                outstream.WriteCompressedInt32Property(@"Quantity", stock.Value);
                 outstream.EndObject();
             }
             outstream.EndArray();
@@ -113,14 +113,14 @@ namespace Finmer.Core.VisualScripting.Nodes
             // Basic configuration
             Key = instream.ReadStringProperty(nameof(Key));
             Title = instream.ReadStringProperty(nameof(Title));
-            RestockInterval = instream.ReadInt32Property(nameof(RestockInterval));
+            RestockInterval = instream.ReadCompressedInt32Property(nameof(RestockInterval));
 
             // Merchandise list
             Merchandise.Clear();
             for (int i = 0, c = instream.BeginArray(nameof(Merchandise)); i < c; i++)
             {
                 instream.BeginObject();
-                Merchandise.Add(instream.ReadGuidProperty(@"Item"), instream.ReadInt32Property(@"Quantity"));
+                Merchandise.Add(instream.ReadGuidProperty(@"Item"), instream.ReadCompressedInt32Property(@"Quantity"));
                 instream.EndObject();
             }
             instream.EndArray();

@@ -48,7 +48,7 @@ namespace Finmer.Editor.CLI
             var module = in_device.ReadModule(in_file);
 
             // Write it back to the requested output path using the other device
-            Console.WriteLine($"Writing module {in_file.Name}");
+            Console.WriteLine($"Writing module {out_file.Name}");
             out_device.WriteModule(module, out_file);
 
             return Program.k_ExitCode_Success;

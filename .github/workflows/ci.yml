@@ -11,24 +11,28 @@ jobs:
         configuration: [Debug, Release]
     env:
       SolutionName: Finmer.sln
+      Configuration: ${{ matrix.configuration }}
+      CLIPath: .\Finmer.Editor.CLI\bin\${{ matrix.configuration }}\Finmer.Editor.CLI.exe
 
     steps:
     # Download repository
     - name: Checkout
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     # Add MSBuild to the PATH
     - name: Setup MSBuild
-      uses: microsoft/setup-msbuild@v1
+      uses: microsoft/setup-msbuild@v2
 
     # Restore NuGet packages
     - name: Restore packages
       run: msbuild $env:SolutionName /t:Restore /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
 
     # Build all executables
     - name: Build solution
       run: msbuild $env:SolutionName /p:Configuration=$env:Configuration
-      env:
-        Configuration: ${{ matrix.configuration }}
+
+    # Build the game content, to validate file integrity
+    - name: Pack Core module
+      run: ${{env.CLIPath}} pack .\Modules\Projects\Core\Core.fnproj Core.furball
+    - name: Describe packaged Core module
+      run: ${{env.CLIPath}} show Core.furball

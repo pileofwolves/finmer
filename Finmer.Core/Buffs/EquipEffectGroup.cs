@@ -113,7 +113,7 @@ namespace Finmer.Core.Buffs
                 outstream.WriteEnumProperty(nameof(ProcTarget), ProcTarget);
                 outstream.WriteFloatProperty(nameof(ProcChance), ProcChance);
                 outstream.WriteStringProperty(nameof(ProcStringTableKey), ProcStringTableKey);
-                outstream.WriteInt32Property(nameof(Duration), Duration);
+                outstream.WriteCompressedInt32Property(nameof(Duration), Duration);
             }
 
             // Buff collection
@@ -134,7 +134,7 @@ namespace Finmer.Core.Buffs
                 ProcTarget = instream.ReadEnumProperty<EProcTarget>(nameof(ProcTarget));
                 ProcChance = instream.ReadFloatProperty(nameof(ProcChance));
                 ProcStringTableKey = instream.ReadStringProperty(nameof(ProcStringTableKey));
-                Duration = instream.ReadInt32Property(nameof(Duration));
+                Duration = instream.ReadCompressedInt32Property(nameof(Duration));
             }
 
             // Buff collection

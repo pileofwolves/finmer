@@ -123,12 +123,12 @@ namespace Finmer.Core.Assets
             // Core stats
             outstream.WriteStringProperty(nameof(ObjectName), ObjectName);
             outstream.WriteStringProperty(nameof(ObjectAlias), ObjectAlias);
-            outstream.WriteInt32Property(nameof(Strength), Strength);
-            outstream.WriteInt32Property(nameof(Agility), Agility);
-            outstream.WriteInt32Property(nameof(Body), Body);
-            outstream.WriteInt32Property(nameof(Wits), Wits);
-            outstream.WriteInt32Property(nameof(Flags), Flags);
-            outstream.WriteInt32Property(nameof(Level), Level);
+            outstream.WriteCompressedInt32Property(nameof(Strength), Strength);
+            outstream.WriteCompressedInt32Property(nameof(Agility), Agility);
+            outstream.WriteCompressedInt32Property(nameof(Body), Body);
+            outstream.WriteCompressedInt32Property(nameof(Wits), Wits);
+            outstream.WriteCompressedInt32Property(nameof(Flags), Flags);
+            outstream.WriteCompressedInt32Property(nameof(Level), Level);
             outstream.WriteEnumProperty(nameof(Size), Size);
             outstream.WriteEnumProperty(nameof(Gender), Gender);
 
@@ -169,12 +169,12 @@ namespace Finmer.Core.Assets
             // Core stats
             ObjectName = instream.ReadStringProperty(nameof(ObjectName));
             ObjectAlias = instream.ReadStringProperty(nameof(ObjectAlias));
-            Strength = instream.ReadInt32Property(nameof(Strength));
-            Agility = instream.ReadInt32Property(nameof(Agility));
-            Body = instream.ReadInt32Property(nameof(Body));
-            Wits = instream.ReadInt32Property(nameof(Wits));
-            Flags = instream.ReadInt32Property(nameof(Flags));
-            Level = instream.ReadInt32Property(nameof(Level));
+            Strength = instream.ReadCompressedInt32Property(nameof(Strength));
+            Agility = instream.ReadCompressedInt32Property(nameof(Agility));
+            Body = instream.ReadCompressedInt32Property(nameof(Body));
+            Wits = instream.ReadCompressedInt32Property(nameof(Wits));
+            Flags = instream.ReadCompressedInt32Property(nameof(Flags));
+            Level = instream.ReadCompressedInt32Property(nameof(Level));
             Size = instream.ReadEnumProperty<ESize>(nameof(Size));
             Gender = instream.ReadEnumProperty<EGender>(nameof(Gender));
 

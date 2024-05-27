@@ -42,6 +42,11 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
+        public void WriteCompressedInt32Property(string key, int value)
+        {
+            Write7BitEncodedInt(value);
+        }
+
         public void WriteFloatProperty(string key, float value)
         {
             m_Stream.Write(value);
@@ -84,11 +89,14 @@ namespace Finmer.Core.Serialization
         {
             if (value == null)
             {
-                m_Stream.Write(-1);
+                Write7BitEncodedInt(0);
             }
             else
             {
-                m_Stream.Write(value.Length);
+                if (value.Length == 0)
+                    throw new ArgumentException("Attempt to write zero-length byte array", nameof(value));
+
+                Write7BitEncodedInt(value.Length);
                 m_Stream.Write(value);
             }
         }
@@ -125,7 +133,7 @@ namespace Finmer.Core.Serialization
 
         public void BeginArray(string key, int numElements)
         {
-            m_Stream.Write(numElements);
+            Write7BitEncodedInt(numElements);
         }
 
         public void EndObject()
@@ -136,6 +144,20 @@ namespace Finmer.Core.Serialization
         public void EndArray()
         {
             // Irrelevant for binary objects
+        }
+
+        private void Write7BitEncodedInt(int value)
+        {
+            // The following is a re-implementation of Write7BitEncodedInt() from BinaryWriter
+
+            uint unsigned_value = (uint)value;
+
+            while (unsigned_value >= 0x80u) {
+                m_Stream.Write((byte) (unsigned_value | 0x80u));
+                unsigned_value >>= 7;
+            }
+
+            m_Stream.Write((byte)unsigned_value);
         }
 
     }

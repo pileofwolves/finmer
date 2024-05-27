@@ -48,6 +48,12 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
+        public void WriteCompressedInt32Property(string key, int value)
+        {
+            // We don't do any special compression here, just redirect to the normal version
+            WriteInt32Property(key, value);
+        }
+
         public void WriteFloatProperty(string key, float value)
         {
             m_Stream.WritePropertyName(key);

@@ -122,7 +122,7 @@ namespace Finmer.Core.Serialization
                 // Read the serialized asset as if it's a new object, thus effectively duplicating it
                 using (var reader = new BinaryReader(ms, Encoding.UTF8, true))
                 {
-                    var deserializer = new FurballContentReaderBinary(reader);
+                    var deserializer = new FurballContentReaderBinary(reader, FurballFileDevice.k_LatestVersion);
                     return (TAsset)DeserializeAsset(deserializer, FurballFileDevice.k_LatestVersion);
                 }
             }

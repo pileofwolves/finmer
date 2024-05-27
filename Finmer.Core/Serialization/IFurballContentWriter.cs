@@ -33,6 +33,15 @@ namespace Finmer.Core.Serialization
         void WriteInt32Property(string key, int value);
 
         /// <summary>
+        /// Writes a 32-bit integer associated with the specified key.
+        /// The integer may be compressed in a format chosen by the implementation, although this is not required;
+        /// an implementation may choose to write the number normally.
+        /// </summary>
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        /// <param name="value">The number to be written.</param>
+        void WriteCompressedInt32Property(string key, int value);
+
+        /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
         void WriteFloatProperty(string key, float value);
@@ -53,8 +62,10 @@ namespace Finmer.Core.Serialization
         void WriteStringProperty(string key, string value);
 
         /// <summary>
-        /// Write a key/value-pair with the specified value.
+        /// Write a byte array with the specified key.
+        /// The byte array may be null, but it may not be empty, and an exception is thrown in this case.
         /// </summary>
+        /// <exception cref="ArgumentException">Thrown when attempting to write a zero-length byte array.</exception>
         void WriteByteArrayProperty(string key, byte[] value);
 
         /// <summary>
@@ -93,7 +104,7 @@ namespace Finmer.Core.Serialization
         void EndObject();
 
         /// <summary>
-        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginObject().
+        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginArray().
         /// </summary>
         void EndArray();
 

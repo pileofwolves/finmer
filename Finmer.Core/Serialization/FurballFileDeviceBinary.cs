@@ -188,7 +188,7 @@ namespace Finmer.Core.Serialization
         private static AssetBase ReadAssetFromStream(BinaryReader instream, int version)
         {
             // Deserialize an asset of the appropriate type
-            IFurballContentReader content_reader = new FurballContentReaderBinary(instream);
+            IFurballContentReader content_reader = new FurballContentReaderBinary(instream, version);
             AssetBase asset = AssetSerializer.DeserializeAsset(content_reader, version) as AssetBase;
             if (asset == null)
                 throw new FurballInvalidAssetException("Could not parse asset in stream");

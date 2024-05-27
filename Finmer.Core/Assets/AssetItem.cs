@@ -131,7 +131,7 @@ namespace Finmer.Core.Assets
                 }
                 outstream.EndArray();
             }
-            outstream.WriteInt32Property(nameof(PurchaseValue), PurchaseValue);
+            outstream.WriteCompressedInt32Property(nameof(PurchaseValue), PurchaseValue);
             outstream.WriteBooleanProperty(nameof(IsQuestItem), IsQuestItem);
 
             // Usable item data
@@ -166,7 +166,7 @@ namespace Finmer.Core.Assets
                     EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
                 instream.EndArray();
             }
-            PurchaseValue = instream.ReadInt32Property(nameof(PurchaseValue));
+            PurchaseValue = instream.ReadCompressedInt32Property(nameof(PurchaseValue));
             IsQuestItem = instream.ReadBooleanProperty(nameof(IsQuestItem));
 
             // Usable item data

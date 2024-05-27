@@ -56,14 +56,14 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Serialize(IFurballContentWriter outstream)
         {
             outstream.WriteGuidProperty(nameof(JournalGuid), JournalGuid);
-            outstream.WriteInt32Property(nameof(Stage), Stage);
+            outstream.WriteCompressedInt32Property(nameof(Stage), Stage);
         }
 
 
         public override void Deserialize(IFurballContentReader instream, int version)
         {
             JournalGuid = instream.ReadGuidProperty(nameof(JournalGuid));
-            Stage = instream.ReadInt32Property(nameof(Stage));
+            Stage = instream.ReadCompressedInt32Property(nameof(Stage));
         }
 
     }

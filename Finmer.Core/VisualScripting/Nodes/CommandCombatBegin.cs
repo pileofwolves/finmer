@@ -187,7 +187,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             SerializeOptionalSubgroup(outstream, nameof(CallbackCreatureReleased), CallbackCreatureReleased);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Basic configuration
             IncludePlayer = instream.ReadBooleanProperty(nameof(IncludePlayer));
@@ -208,14 +208,14 @@ namespace Finmer.Core.VisualScripting.Nodes
             instream.EndArray();
 
             // Callback bodies
-            CallbackCombatStart = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCombatStart));
-            if (version >= 20)
-                CallbackRoundStart = DeserializeOptionalSubgroup(instream, version, nameof(CallbackRoundStart));
-            CallbackRoundEnd = DeserializeOptionalSubgroup(instream, version, nameof(CallbackRoundEnd));
-            CallbackPlayerKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackPlayerKilled));
-            CallbackCreatureKilled = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCreatureKilled));
-            CallbackCreatureVored = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCreatureVored));
-            CallbackCreatureReleased = DeserializeOptionalSubgroup(instream, version, nameof(CallbackCreatureReleased));
+            CallbackCombatStart = DeserializeOptionalSubgroup(instream, nameof(CallbackCombatStart));
+            if (instream.GetVersion() >= 20)
+                CallbackRoundStart = DeserializeOptionalSubgroup(instream, nameof(CallbackRoundStart));
+            CallbackRoundEnd = DeserializeOptionalSubgroup(instream, nameof(CallbackRoundEnd));
+            CallbackPlayerKilled = DeserializeOptionalSubgroup(instream, nameof(CallbackPlayerKilled));
+            CallbackCreatureKilled = DeserializeOptionalSubgroup(instream, nameof(CallbackCreatureKilled));
+            CallbackCreatureVored = DeserializeOptionalSubgroup(instream, nameof(CallbackCreatureVored));
+            CallbackCreatureReleased = DeserializeOptionalSubgroup(instream, nameof(CallbackCreatureReleased));
         }
 
         public override IEnumerable<Subgroup> GetSubgroups()
@@ -289,7 +289,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 SerializeSubgroup(outstream, name, nodes);
         }
 
-        private List<ScriptNode> DeserializeOptionalSubgroup(IFurballContentReader instream, int version, string name)
+        private List<ScriptNode> DeserializeOptionalSubgroup(IFurballContentReader instream, string name)
         {
             // Read the presence flag
             bool has_callback = instream.ReadBooleanProperty("Has" + name);
@@ -297,7 +297,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 return null;
 
             // If callback exists, deserialize the subgroup
-            return DeserializeSubgroup(instream, version, name);
+            return DeserializeSubgroup(instream, name);
         }
 
         private void EmitCallbackFunction(StringBuilder output, IContentStore content, string name, List<ScriptNode> body)

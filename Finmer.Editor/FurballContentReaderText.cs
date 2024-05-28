@@ -13,6 +13,7 @@ using System.IO;
 using System.Linq;
 using Finmer.Core.Serialization;
 using Newtonsoft.Json.Linq;
+using static WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender;
 
 namespace Finmer.Editor
 {
@@ -28,12 +29,26 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
+        private readonly int m_Version;
         private JToken m_CurrentArrayElement;
+
+        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int version)
+        {
+            m_SearchPath = searchPath;
+            m_TokenStack.Push(root);
+            m_Version = version;
+        }
 
         public FurballContentReaderText(JObject root, DirectoryInfo searchPath)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
+            m_Version = ReadInt32Property("FormatVersion");
+        }
+
+        public int GetVersion()
+        {
+            return m_Version;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -155,7 +170,7 @@ namespace Finmer.Editor
             }
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
         {
             try
             {
@@ -182,7 +197,7 @@ namespace Finmer.Editor
                 // Otherwise, recursively deserialize the asset
                 Debug.Assert(value.Type == JTokenType.Object);
                 m_TokenStack.Push(value);
-                var asset = AssetSerializer.DeserializeAsset(this, version);
+                var asset = AssetSerializer.DeserializeAsset(this);
                 m_TokenStack.Pop();
 
                 // Validate the type of the deserialized object

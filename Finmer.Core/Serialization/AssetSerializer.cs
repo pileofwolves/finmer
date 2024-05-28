@@ -58,7 +58,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Instantiates and deserializes an asset from the input stream.
         /// </summary>
-        public static IFurballSerializable DeserializeAsset(IFurballContentReader instream, int version)
+        public static IFurballSerializable DeserializeAsset(IFurballContentReader instream)
         {
             // Obtain the ctor for this object
             // Admittedly doing this explicit type check is a hack, but since the type ID is internal to AssetSerializer to begin
@@ -77,7 +77,7 @@ namespace Finmer.Core.Serialization
             var asset = constructor();
 
             // Read its data from stream
-            asset.Deserialize(instream, version);
+            asset.Deserialize(instream);
 
             return asset;
         }
@@ -123,7 +123,7 @@ namespace Finmer.Core.Serialization
                 using (var reader = new BinaryReader(ms, Encoding.UTF8, true))
                 {
                     var deserializer = new FurballContentReaderBinary(reader, FurballFileDevice.k_LatestVersion);
-                    return (TAsset)DeserializeAsset(deserializer, FurballFileDevice.k_LatestVersion);
+                    return (TAsset)DeserializeAsset(deserializer);
                 }
             }
         }

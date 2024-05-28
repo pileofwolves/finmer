@@ -85,11 +85,11 @@ namespace Finmer.Core.VisualScripting.Nodes
             Value.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Stat = instream.ReadEnumProperty<EStat>(nameof(Stat));
             StatOperation = instream.ReadEnumProperty<EOperation>(nameof(StatOperation));
-            Value.Deserialize(instream, version);
+            Value.Deserialize(instream);
         }
 
     }

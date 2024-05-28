@@ -85,10 +85,10 @@ namespace Finmer.Core.VisualScripting
             RightOperand.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Operator = instream.ReadEnumProperty<EOperator>(nameof(Operator));
-            RightOperand.Deserialize(instream, version);
+            RightOperand.Deserialize(instream);
         }
 
         /// <summary>

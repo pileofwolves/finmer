@@ -34,7 +34,7 @@ namespace Finmer.Editor
                 {
                     // Read the project version number
                     var header_reader = new FurballContentReaderText(JObject.Load(json_stream), null);
-                    var project_version = header_reader.ReadInt32Property("FormatVersion");
+                    var project_version = header_reader.GetVersion();
 
                     // Validate that the version is within supported range
                     if (project_version < k_MinimumVersion)
@@ -105,7 +105,7 @@ namespace Finmer.Editor
                         ID = header_reader.ReadGuidProperty("ID"),
                         Title = header_reader.ReadStringProperty("Title"),
                         Author = header_reader.ReadStringProperty("Author"),
-                        FormatVersion = header_reader.ReadInt32Property("FormatVersion")
+                        FormatVersion = header_reader.GetVersion()
                     };
                 }
             }
@@ -122,10 +122,10 @@ namespace Finmer.Editor
             using (var json_stream = new JsonTextReader(read_stream))
             {
                 // Wrap a filesystem-agnostic reader around the json object
-                var content_reader = new FurballContentReaderText(JObject.Load(json_stream), GetProjectDirectory(file));
+                var content_reader = new FurballContentReaderText(JObject.Load(json_stream), GetProjectDirectory(file), version);
 
                 // Deserialize the asset
-                AssetBase asset = AssetSerializer.DeserializeAsset(content_reader, version) as AssetBase;
+                AssetBase asset = AssetSerializer.DeserializeAsset(content_reader) as AssetBase;
                 if (asset == null)
                     throw new FurballInvalidAssetException("Could not parse asset in stream");
 

@@ -28,6 +28,11 @@ namespace Finmer.Core.Serialization
             m_Version = version;
         }
 
+        public int GetVersion()
+        {
+            return m_Version;
+        }
+
         public bool ReadBooleanProperty(string key)
         {
             return m_Stream.ReadBoolean();
@@ -96,7 +101,7 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadBytes(length);
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
         {
             // A single byte indicates whether the asset is null or not
             bool is_present = m_Stream.ReadBoolean();
@@ -104,7 +109,7 @@ namespace Finmer.Core.Serialization
                 return null;
 
             // It is present, so recursively deserialize it
-            var asset = AssetSerializer.DeserializeAsset(this, version);
+            var asset = AssetSerializer.DeserializeAsset(this);
             if (!(asset is TExpected expected))
                 // Error handling here to remove boilerplate from callers
                 throw new FurballInvalidAssetException($"Unexpected nested asset type in property '{key}'");

@@ -13,7 +13,6 @@ using System.IO;
 using System.Linq;
 using Finmer.Core.Serialization;
 using Newtonsoft.Json.Linq;
-using static WeifenLuo.WinFormsUI.Docking.VisualStudioToolStripExtender;
 
 namespace Finmer.Editor
 {

@@ -29,7 +29,7 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
-        private readonly int m_FormatVersion;
+        private int m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
         public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int format_version)
@@ -39,11 +39,11 @@ namespace Finmer.Editor
             m_FormatVersion = format_version;
         }
 
-        public FurballContentReaderText(JObject root, DirectoryInfo searchPath)
+        public static FurballContentReaderText ForProjectMetadata(JObject root)
         {
-            m_SearchPath = searchPath;
-            m_TokenStack.Push(root);
-            m_FormatVersion = ReadInt32Property("FormatVersion");
+            var reader = new FurballContentReaderText(root, null, 0);
+            reader.m_FormatVersion = reader.ReadInt32Property("FormatVersion");
+            return reader;
         }
 
         public int GetFormatVersion()

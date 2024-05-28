@@ -147,7 +147,7 @@ namespace Finmer.Core.Assets
             ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave));
 
             // Game start settings
-            if (instream.GetVersion() >= 20)
+            if (instream.GetFormatVersion() >= 20)
             {
                 IsGameStart = instream.ReadBooleanProperty(nameof(IsGameStart));
                 if (IsGameStart)

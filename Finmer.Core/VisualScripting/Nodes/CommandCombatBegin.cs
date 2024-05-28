@@ -209,7 +209,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
             // Callback bodies
             CallbackCombatStart = DeserializeOptionalSubgroup(instream, nameof(CallbackCombatStart));
-            if (instream.GetVersion() >= 20)
+            if (instream.GetFormatVersion() >= 20)
                 CallbackRoundStart = DeserializeOptionalSubgroup(instream, nameof(CallbackRoundStart));
             CallbackRoundEnd = DeserializeOptionalSubgroup(instream, nameof(CallbackRoundEnd));
             CallbackPlayerKilled = DeserializeOptionalSubgroup(instream, nameof(CallbackPlayerKilled));

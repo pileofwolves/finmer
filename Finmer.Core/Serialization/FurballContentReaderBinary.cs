@@ -20,17 +20,17 @@ namespace Finmer.Core.Serialization
     {
 
         private readonly BinaryReader m_Stream;
-        private readonly int m_Version;
+        private readonly int m_FormatVersion;
 
-        public FurballContentReaderBinary(BinaryReader instream, int version)
+        public FurballContentReaderBinary(BinaryReader instream, int format_version)
         {
             m_Stream = instream;
-            m_Version = version;
+            m_FormatVersion = format_version;
         }
 
-        public int GetVersion()
+        public int GetFormatVersion()
         {
-            return m_Version;
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -151,7 +151,7 @@ namespace Finmer.Core.Serialization
         private int Read7BitEncodedInt()
         {
             // In versions 20 and below, these were plain uncompressed integers
-            if (m_Version < 21)
+            if (m_FormatVersion < 21)
                 return m_Stream.ReadInt32();
 
             // The following is a re-implementation of Read7BitEncodedInt() from BinaryReader

@@ -34,7 +34,7 @@ namespace Finmer.Editor
                 {
                     // Read the project version number
                     var header_reader = new FurballContentReaderText(JObject.Load(json_stream), null);
-                    var project_version = header_reader.GetVersion();
+                    var project_version = header_reader.GetFormatVersion();
 
                     // Validate that the version is within supported range
                     if (project_version < k_MinimumVersion)
@@ -105,7 +105,7 @@ namespace Finmer.Editor
                         ID = header_reader.ReadGuidProperty("ID"),
                         Title = header_reader.ReadStringProperty("Title"),
                         Author = header_reader.ReadStringProperty("Author"),
-                        FormatVersion = header_reader.GetVersion()
+                        FormatVersion = header_reader.GetFormatVersion()
                     };
                 }
             }

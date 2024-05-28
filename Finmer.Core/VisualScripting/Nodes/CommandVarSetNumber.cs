@@ -162,7 +162,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             VariableName = instream.ReadStringProperty(nameof(VariableName));
             ValueOperation = instream.ReadEnumProperty<EOperation>(nameof(ValueOperation));
 
-            if (HasRightOperand() || instream.GetVersion() < 20)
+            if (HasRightOperand() || instream.GetFormatVersion() < 20)
                 Value.Deserialize(instream);
         }
 

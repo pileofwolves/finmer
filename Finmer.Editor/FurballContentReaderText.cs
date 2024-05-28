@@ -29,26 +29,26 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
-        private readonly int m_Version;
+        private readonly int m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
-        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int version)
+        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int format_version)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
-            m_Version = version;
+            m_FormatVersion = format_version;
         }
 
         public FurballContentReaderText(JObject root, DirectoryInfo searchPath)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
-            m_Version = ReadInt32Property("FormatVersion");
+            m_FormatVersion = ReadInt32Property("FormatVersion");
         }
 
-        public int GetVersion()
+        public int GetFormatVersion()
         {
-            return m_Version;
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)

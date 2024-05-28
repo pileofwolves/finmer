@@ -24,7 +24,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Returns the format version of the module file being read.
         /// </summary>
-        int GetVersion();
+        int GetFormatVersion();
 
         /// <summary>
         /// Read the value of a boolean property.

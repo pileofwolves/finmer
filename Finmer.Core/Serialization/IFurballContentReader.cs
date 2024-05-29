@@ -22,6 +22,11 @@ namespace Finmer.Core.Serialization
     {
 
         /// <summary>
+        /// Returns the format version of the module file being read.
+        /// </summary>
+        int GetFormatVersion();
+
+        /// <summary>
         /// Read the value of a boolean property.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
@@ -79,8 +84,7 @@ namespace Finmer.Core.Serialization
         /// Recursively deserializes a nested asset, or returns null if it is unset.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        /// <param name="version">Furball file format version that the object is expected to be stored in.</param>
-        TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable;
+        TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable;
 
         /// <summary>
         /// Reads a raw string token from the stream, such as an array element.

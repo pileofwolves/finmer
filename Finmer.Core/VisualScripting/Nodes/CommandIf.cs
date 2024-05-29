@@ -84,18 +84,18 @@ namespace Finmer.Core.VisualScripting.Nodes
             base.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Configuration
-            Condition.Deserialize(instream, version);
+            Condition.Deserialize(instream);
             HasElseBranch = instream.ReadBooleanProperty("HasElseBranch");
 
             // Node subgroups
-            MainSubgroup = DeserializeSubgroup(instream, version, nameof(MainSubgroup));
+            MainSubgroup = DeserializeSubgroup(instream, nameof(MainSubgroup));
             if (HasElseBranch)
-                ElseSubgroup = DeserializeSubgroup(instream, version, nameof(ElseSubgroup));
+                ElseSubgroup = DeserializeSubgroup(instream, nameof(ElseSubgroup));
 
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
         }
 
         public override IEnumerable<Subgroup> GetSubgroups()

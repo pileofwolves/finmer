@@ -53,7 +53,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteBooleanProperty("IsRaw", IsRaw);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Text = instream.ReadStringProperty("Text");
             IsRaw = instream.ReadBooleanProperty("IsRaw");

@@ -97,7 +97,7 @@ namespace Finmer.Core.Buffs
             outstream.WriteStringProperty(nameof(TooltipText), TooltipText);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             TooltipText = instream.ReadStringProperty(nameof(TooltipText));
         }

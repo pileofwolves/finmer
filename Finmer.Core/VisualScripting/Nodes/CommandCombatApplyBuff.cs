@@ -100,14 +100,14 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteCompressedInt32Property(nameof(Duration), Duration);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Target = instream.ReadEnumProperty<ETarget>(nameof(Target));
 
             if (Target == ETarget.NPC)
                 ParticipantID = instream.ReadStringProperty(nameof(ParticipantID));
 
-            Effect = instream.ReadNestedObjectProperty<Buff>(nameof(Effect), version);
+            Effect = instream.ReadNestedObjectProperty<Buff>(nameof(Effect));
             Duration = instream.ReadCompressedInt32Property(nameof(Duration));
         }
 

@@ -59,11 +59,11 @@ namespace Finmer.Core.Assets
             outstream.EndArray();
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Recursively deserialize each of the nodes in the node array
             for (int i = 0, count = instream.BeginArray("Nodes"); i < count; i++)
-                Nodes.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
+                Nodes.Add(instream.ReadNestedObjectProperty<ScriptNode>(null));
             instream.EndArray();
         }
 

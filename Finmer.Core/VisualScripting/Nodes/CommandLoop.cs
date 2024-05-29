@@ -54,10 +54,10 @@ namespace Finmer.Core.VisualScripting.Nodes
             base.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            LoopBody = DeserializeSubgroup(instream, version, nameof(LoopBody));
-            base.Deserialize(instream, version);
+            LoopBody = DeserializeSubgroup(instream, nameof(LoopBody));
+            base.Deserialize(instream);
         }
 
         public override IEnumerable<Subgroup> GetSubgroups()

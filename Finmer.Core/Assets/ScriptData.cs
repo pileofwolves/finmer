@@ -34,7 +34,7 @@ namespace Finmer.Core.Assets
 
         public abstract void Serialize(IFurballContentWriter outstream);
 
-        public abstract void Deserialize(IFurballContentReader instream, int version);
+        public abstract void Deserialize(IFurballContentReader instream);
 
     }
 

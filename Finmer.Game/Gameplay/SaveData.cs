@@ -143,7 +143,7 @@ namespace Finmer.Gameplay
                 {
                     // Reconstruct and deserialize the asset
                     var reader = new FurballContentReaderBinary(br, FurballFileDevice.k_LatestVersion);
-                    var result = AssetSerializer.DeserializeAsset(reader, FurballFileDevice.k_LatestVersion) as TAsset;
+                    var result = AssetSerializer.DeserializeAsset(reader) as TAsset;
 
                     // If casting failed, the asset was of some unexpected type
                     if (result == null)

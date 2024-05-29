@@ -123,7 +123,7 @@ namespace Finmer.Core.Buffs
             outstream.EndArray();
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             // Group type
             ProcStyle = instream.ReadEnumProperty<EProcStyle>(nameof(ProcStyle));
@@ -139,7 +139,7 @@ namespace Finmer.Core.Buffs
 
             // Buff collection
             for (int i = 0, c = instream.BeginArray(nameof(Buffs)); i < c; i++)
-                Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null, version));
+                Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null));
             instream.EndArray();
         }
 

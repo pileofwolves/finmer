@@ -43,7 +43,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteStringProperty("Snippet", Snippet);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Snippet = instream.ReadStringProperty("Snippet");
         }

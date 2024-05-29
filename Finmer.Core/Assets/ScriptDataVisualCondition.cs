@@ -54,9 +54,9 @@ namespace Finmer.Core.Assets
             Condition.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            Condition.Deserialize(instream, version);
+            Condition.Deserialize(instream);
         }
 
     }

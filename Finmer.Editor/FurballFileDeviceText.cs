@@ -33,7 +33,7 @@ namespace Finmer.Editor
                 using (var json_stream = new JsonTextReader(read_stream))
                 {
                     // Read the project version number
-                    var header_reader = FurballContentReaderText.ForProjectMetadata(JObject.Load(json_stream));
+                    var header_reader = FurballContentReaderText.FromProjectMetadata(JObject.Load(json_stream));
                     var project_version = header_reader.GetFormatVersion();
 
                     // Validate that the version is within supported range
@@ -99,7 +99,7 @@ namespace Finmer.Editor
                 using (var read_stream = new StreamReader(file_stream, Encoding.UTF8))
                 using (var json_stream = new JsonTextReader(read_stream))
                 {
-                    var header_reader = FurballContentReaderText.ForProjectMetadata(JObject.Load(json_stream));
+                    var header_reader = FurballContentReaderText.FromProjectMetadata(JObject.Load(json_stream));
                     return new FurballMetadata
                     {
                         ID = header_reader.ReadGuidProperty("ID"),

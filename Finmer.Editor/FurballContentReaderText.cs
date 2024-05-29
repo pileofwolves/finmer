@@ -31,6 +31,12 @@ namespace Finmer.Editor
         private int m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
+        /// <summary>
+        /// Constructs a new FurballContentReaderText.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the asset file.</param>
+        /// <param name="searchPath">Directory to search for any external file references.</param>
+        /// <param name="format_version">Format version number.</param>
         public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int format_version)
         {
             m_SearchPath = searchPath;
@@ -38,7 +44,11 @@ namespace Finmer.Editor
             m_FormatVersion = format_version;
         }
 
-        public static FurballContentReaderText ForProjectMetadata(JObject root)
+        /// <summary>
+        /// Constructs a new FurballContentReaderText using format version information from the specified project file.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the project file.</param>
+        public static FurballContentReaderText FromProjectMetadata(JObject root)
         {
             var reader = new FurballContentReaderText(root, null, 0);
             reader.m_FormatVersion = reader.ReadInt32Property("FormatVersion");

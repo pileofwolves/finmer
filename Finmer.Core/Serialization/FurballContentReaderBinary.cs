@@ -20,15 +20,15 @@ namespace Finmer.Core.Serialization
     {
 
         private readonly BinaryReader m_Stream;
-        private readonly int m_FormatVersion;
+        private readonly uint m_FormatVersion;
 
-        public FurballContentReaderBinary(BinaryReader instream, int format_version)
+        public FurballContentReaderBinary(BinaryReader instream, uint format_version)
         {
             m_Stream = instream;
             m_FormatVersion = format_version;
         }
 
-        public int GetFormatVersion()
+        public uint GetFormatVersion()
         {
             return m_FormatVersion;
         }

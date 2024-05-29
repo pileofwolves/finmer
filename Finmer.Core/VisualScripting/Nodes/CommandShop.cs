@@ -108,7 +108,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.EndArray();
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Basic configuration
             Key = instream.ReadStringProperty(nameof(Key));

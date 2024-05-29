@@ -38,7 +38,7 @@ namespace Finmer.Core.Assets
             outstream.WriteStringProperty("Script", ScriptText);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Note: Name is implicit for inline scripts so it does not need to be read or written
 

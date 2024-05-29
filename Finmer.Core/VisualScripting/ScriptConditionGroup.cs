@@ -83,13 +83,13 @@ namespace Finmer.Core.VisualScripting
             outstream.EndArray();
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             Mode = instream.ReadEnumProperty<EConditionMode>("Mode");
             Operand = instream.ReadBooleanProperty("Operand");
 
             for (int i = 0, c = instream.BeginArray("Tests"); i < c; i++)
-                Tests.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null, version));
+                Tests.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null));
             instream.EndArray();
         }
 

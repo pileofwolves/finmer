@@ -37,10 +37,10 @@ namespace Finmer.Core.Assets
             Wrapped.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Forward deserialization call
-            Wrapped.Deserialize(instream, version);
+            Wrapped.Deserialize(instream);
         }
 
         public override string GetScriptText(IContentStore content)

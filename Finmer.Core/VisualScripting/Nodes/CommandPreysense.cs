@@ -90,7 +90,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteGuidProperty(nameof(CreatureGuid), CreatureGuid);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Mode = (ESenseType)instream.ReadCompressedInt32Property(nameof(Mode));
             CreatureGuid = instream.ReadGuidProperty(nameof(CreatureGuid));

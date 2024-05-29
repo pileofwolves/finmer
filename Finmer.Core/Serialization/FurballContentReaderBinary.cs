@@ -20,12 +20,17 @@ namespace Finmer.Core.Serialization
     {
 
         private readonly BinaryReader m_Stream;
-        private readonly int m_Version;
+        private readonly int m_FormatVersion;
 
-        public FurballContentReaderBinary(BinaryReader instream, int version)
+        public FurballContentReaderBinary(BinaryReader instream, int format_version)
         {
             m_Stream = instream;
-            m_Version = version;
+            m_FormatVersion = format_version;
+        }
+
+        public int GetFormatVersion()
+        {
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -96,7 +101,7 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadBytes(length);
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
         {
             // A single byte indicates whether the asset is null or not
             bool is_present = m_Stream.ReadBoolean();
@@ -104,7 +109,7 @@ namespace Finmer.Core.Serialization
                 return null;
 
             // It is present, so recursively deserialize it
-            var asset = AssetSerializer.DeserializeAsset(this, version);
+            var asset = AssetSerializer.DeserializeAsset(this);
             if (!(asset is TExpected expected))
                 // Error handling here to remove boilerplate from callers
                 throw new FurballInvalidAssetException($"Unexpected nested asset type in property '{key}'");
@@ -146,7 +151,7 @@ namespace Finmer.Core.Serialization
         private int Read7BitEncodedInt()
         {
             // In versions 20 and below, these were plain uncompressed integers
-            if (m_Version < 21)
+            if (m_FormatVersion < 21)
                 return m_Stream.ReadInt32();
 
             // The following is a re-implementation of Read7BitEncodedInt() from BinaryReader

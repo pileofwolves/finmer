@@ -60,7 +60,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         }
 
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             JournalGuid = instream.ReadGuidProperty(nameof(JournalGuid));
             Stage = instream.ReadCompressedInt32Property(nameof(Stage));

@@ -137,17 +137,17 @@ namespace Finmer.Core.Assets
             outstream.EndObject();
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             // Read scene scripts
-            ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom), version);
-            ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter), version);
-            ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave), version);
+            ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom));
+            ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter));
+            ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave));
 
             // Game start settings
-            if (version >= 20)
+            if (instream.GetFormatVersion() >= 20)
             {
                 IsGameStart = instream.ReadBooleanProperty(nameof(IsGameStart));
                 if (IsGameStart)
@@ -174,7 +174,7 @@ namespace Finmer.Core.Assets
             // Read the scene node tree recursively
             instream.BeginObject("Root");
             Root = new SceneNode();
-            Root.Deserialize(instream, version);
+            Root.Deserialize(instream);
             instream.EndObject();
         }
 
@@ -354,7 +354,7 @@ namespace Finmer.Core.Assets
                 }
             }
 
-            public void Deserialize(IFurballContentReader instream, int version)
+            public void Deserialize(IFurballContentReader instream)
             {
                 // Core metadata
                 NodeType = instream.ReadEnumProperty<ENodeType>(nameof(NodeType));
@@ -398,8 +398,8 @@ namespace Finmer.Core.Assets
                 if (read_scripts)
                 {
                     // Deserialize scripts
-                    ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction), version);
-                    ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear), version);
+                    ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction));
+                    ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear));
 
                     // Correct script names
                     if (ScriptAction != null)
@@ -418,7 +418,7 @@ namespace Finmer.Core.Assets
                         {
                             // Read this child node
                             var child = new SceneNode();
-                            child.Deserialize(instream, version);
+                            child.Deserialize(instream);
                             child.Parent = this;
                             Children.Add(child);
                         }

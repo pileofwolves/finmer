@@ -148,9 +148,9 @@ namespace Finmer.Core.Assets
             outstream.WriteAttachment(GetIconAttachmentName(), InventoryIcon);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             // Core stats
             ObjectName = instream.ReadStringProperty(nameof(ObjectName));
@@ -163,7 +163,7 @@ namespace Finmer.Core.Assets
 
                 // V19 onwards: equip effect groups with nested buffs and proc settings
                 for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
-                    EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
+                    EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null));
                 instream.EndArray();
             }
             PurchaseValue = instream.ReadCompressedInt32Property(nameof(PurchaseValue));
@@ -178,7 +178,7 @@ namespace Finmer.Core.Assets
                 UseDescription = instream.ReadStringProperty(nameof(UseDescription));
 
                 // Read attached UseScript, or if there is none, instantiate one now
-                UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript), version)
+                UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript))
                     ?? new AssetScript { ID = Guid.NewGuid() };
 
                 // Ensure the script is named

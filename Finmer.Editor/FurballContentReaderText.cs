@@ -28,12 +28,36 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
+        private int m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
-        public FurballContentReaderText(JObject root, DirectoryInfo searchPath)
+        /// <summary>
+        /// Constructs a new FurballContentReaderText.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the asset file.</param>
+        /// <param name="searchPath">Directory to search for any external file references.</param>
+        /// <param name="format_version">Format version number.</param>
+        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int format_version)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
+            m_FormatVersion = format_version;
+        }
+
+        /// <summary>
+        /// Constructs a new FurballContentReaderText using format version information from the specified project file.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the project file.</param>
+        public static FurballContentReaderText FromProjectMetadata(JObject root)
+        {
+            var reader = new FurballContentReaderText(root, null, 0);
+            reader.m_FormatVersion = reader.ReadInt32Property("FormatVersion");
+            return reader;
+        }
+
+        public int GetFormatVersion()
+        {
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -155,7 +179,7 @@ namespace Finmer.Editor
             }
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
         {
             try
             {
@@ -182,7 +206,7 @@ namespace Finmer.Editor
                 // Otherwise, recursively deserialize the asset
                 Debug.Assert(value.Type == JTokenType.Object);
                 m_TokenStack.Push(value);
-                var asset = AssetSerializer.DeserializeAsset(this, version);
+                var asset = AssetSerializer.DeserializeAsset(this);
                 m_TokenStack.Pop();
 
                 // Validate the type of the deserialized object

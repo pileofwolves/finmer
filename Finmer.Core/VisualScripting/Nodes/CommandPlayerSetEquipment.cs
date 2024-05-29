@@ -79,7 +79,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteGuidProperty(nameof(ItemGuid), ItemGuid);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             EquipSlot = instream.ReadEnumProperty<ESlot>(nameof(EquipSlot));
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));

@@ -52,9 +52,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteBooleanProperty(nameof(IsCaseSensitive), IsCaseSensitive);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            Comparison.Deserialize(instream, version);
+            Comparison.Deserialize(instream);
             IsCaseSensitive = instream.ReadBooleanProperty(nameof(IsCaseSensitive));
         }
 

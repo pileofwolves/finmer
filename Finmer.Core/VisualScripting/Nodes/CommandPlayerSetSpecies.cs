@@ -70,7 +70,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteStringProperty(nameof(CoatAdjective), CoatAdjective.ToLowerInvariant());
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Singular = instream.ReadStringProperty(nameof(Singular));
             Plural = instream.ReadStringProperty(nameof(Plural));

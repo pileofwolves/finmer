@@ -32,7 +32,7 @@ namespace Finmer.Core.Serialization
                 using (var file_stream = new FileStream(file.FullName, FileMode.Open, FileAccess.Read))
                 {
                     // Read the file header and version from the raw file stream
-                    int version = ReadHeaderVersionFromStream(file_stream);
+                    uint version = ReadHeaderVersionFromStream(file_stream);
 
                     // Then wrap the rest of the file stream in a reader that may be decompressing, based on file version
                     using (var instream = CreateModuleReader(file_stream, version))
@@ -78,7 +78,7 @@ namespace Finmer.Core.Serialization
             {
                 using (var file_stream = new FileStream(file.FullName, FileMode.Open))
                 {
-                    int version = ReadHeaderVersionFromStream(file_stream);
+                    uint version = ReadHeaderVersionFromStream(file_stream);
 
                     using (var instream = CreateModuleReader(file_stream, version))
                         return ReadMetadataFromStream(instream, version);
@@ -140,7 +140,7 @@ namespace Finmer.Core.Serialization
         /// Validates that the input stream represents a Furball, and reads its format version number.
         /// </summary>
         /// <exception cref="FurballInvalidHeaderException">Throws if the stream does not represent a Furball, or if the version is incompatible.</exception>
-        private static int ReadHeaderVersionFromStream(Stream instream)
+        private static uint ReadHeaderVersionFromStream(Stream instream)
         {
             using (var reader = new BinaryReader(instream, Encoding.UTF8, true))
             {
@@ -165,7 +165,7 @@ namespace Finmer.Core.Serialization
         /// </summary>
         /// <param name="instream">The stream to read from.</param>
         /// <param name="version">The format version number that was read from the file header.</param>
-        private static FurballMetadata ReadMetadataFromStream(BinaryReader instream, int version)
+        private static FurballMetadata ReadMetadataFromStream(BinaryReader instream, uint version)
         {
             return new FurballMetadata
             {
@@ -185,7 +185,7 @@ namespace Finmer.Core.Serialization
         /// <exception cref="FurballInvalidAssetException">Throws if the asset cannot be deserialized.</exception>
         /// <exception cref="FurballException">Throws if an I/O error occurs.</exception>
         /// <exception cref="IOException">Throws if an I/O error occurs.</exception>
-        private static AssetBase ReadAssetFromStream(BinaryReader instream, int version)
+        private static AssetBase ReadAssetFromStream(BinaryReader instream, uint version)
         {
             // Deserialize an asset of the appropriate type
             IFurballContentReader content_reader = new FurballContentReaderBinary(instream, version);
@@ -199,7 +199,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Returns a BinaryReader suitable for the target format version, that wraps the specified base stream.
         /// </summary>
-        private static BinaryReader CreateModuleReader(Stream base_stream, int version)
+        private static BinaryReader CreateModuleReader(Stream base_stream, uint version)
         {
             // From format versions 21 onward, modules are GZIP compressed
             return version >= 21

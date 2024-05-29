@@ -115,7 +115,7 @@ namespace Finmer.Editor
             }
         }
 
-        private AssetBase ReadAssetFromFile(FileInfo file, int version)
+        private AssetBase ReadAssetFromFile(FileInfo file, uint version)
         {
             using (var file_stream = new FileStream(file.FullName, FileMode.Open))
             using (var read_stream = new StreamReader(file_stream, Encoding.UTF8))

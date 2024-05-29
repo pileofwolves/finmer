@@ -28,7 +28,7 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
-        private int m_FormatVersion;
+        private uint m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Finmer.Editor
         /// <param name="root">The JSON document that describes the asset file.</param>
         /// <param name="searchPath">Directory to search for any external file references.</param>
         /// <param name="format_version">Format version number.</param>
-        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, int format_version)
+        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, uint format_version)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
@@ -51,11 +51,11 @@ namespace Finmer.Editor
         public static FurballContentReaderText FromProjectMetadata(JObject root)
         {
             var reader = new FurballContentReaderText(root, null, 0);
-            reader.m_FormatVersion = reader.ReadInt32Property("FormatVersion");
+            reader.m_FormatVersion = (uint)reader.ReadInt32Property("FormatVersion");
             return reader;
         }
 
-        public int GetFormatVersion()
+        public uint GetFormatVersion()
         {
             return m_FormatVersion;
         }

@@ -24,7 +24,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Describes an equipment slot.
         /// </summary>
-        public enum ESlot
+        public enum ESlot : byte
         {
             Weapon,
             Armor,
@@ -81,7 +81,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Deserialize(IFurballContentReader instream)
         {
-            EquipSlot = instream.ReadEnumProperty<ESlot>(nameof(EquipSlot));
+            EquipSlot = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<ESlot>(nameof(EquipSlot)) : (ESlot)instream.ReadInt32Property(nameof(EquipSlot));
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
         }
 

@@ -23,7 +23,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Describes what to do with the value.
         /// </summary>
-        public enum EOperation
+        public enum EOperation : byte
         {
             Add,
             Set
@@ -70,7 +70,7 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Deserialize(IFurballContentReader instream)
         {
-            ValueOperation = instream.ReadEnumProperty<EOperation>(nameof(ValueOperation));
+            ValueOperation = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EOperation>(nameof(ValueOperation)) : (EOperation)instream.ReadInt32Property(nameof(ValueOperation));
             Value.Deserialize(instream);
         }
 

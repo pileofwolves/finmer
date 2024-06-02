@@ -20,7 +20,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Identifies a primary stat.
         /// </summary>
-        public enum EStat : byte
+        public enum EStat
         {
             Strength,
             Agility,
@@ -52,7 +52,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         public override void Deserialize(IFurballContentReader instream)
         {
             base.Deserialize(instream);
-            Stat = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EStat>(nameof(Stat)) : (EStat)instream.ReadInt32Property(nameof(Stat));
+            Stat = instream.ReadEnumProperty<EStat>("Stat");
         }
 
         protected override string GetLeftOperandExpression()

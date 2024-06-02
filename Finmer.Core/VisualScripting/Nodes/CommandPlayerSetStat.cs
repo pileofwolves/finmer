@@ -23,7 +23,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Describes the stat to influence.
         /// </summary>
-        public enum EStat : byte
+        public enum EStat
         {
             Strength,
             Agility,
@@ -34,7 +34,7 @@ namespace Finmer.Core.VisualScripting.Nodes
         /// <summary>
         /// Describes what to do with the stat.
         /// </summary>
-        public enum EOperation : byte
+        public enum EOperation
         {
             Add,
             Set
@@ -87,8 +87,8 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Deserialize(IFurballContentReader instream)
         {
-            Stat = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EStat>(nameof(Stat)) : (EStat)instream.ReadInt32Property(nameof(Stat));
-            StatOperation = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EOperation>(nameof(StatOperation)) : (EOperation)instream.ReadInt32Property(nameof(StatOperation));
+            Stat = instream.ReadEnumProperty<EStat>(nameof(Stat));
+            StatOperation = instream.ReadEnumProperty<EOperation>(nameof(StatOperation));
             Value.Deserialize(instream);
         }
 

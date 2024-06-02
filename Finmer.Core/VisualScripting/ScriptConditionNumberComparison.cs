@@ -22,7 +22,7 @@ namespace Finmer.Core.VisualScripting
         /// <summary>
         /// Describes how two operands should be compared.
         /// </summary>
-        public enum EOperator : byte
+        public enum EOperator
         {
             Equal,
             NotEqual,
@@ -87,7 +87,7 @@ namespace Finmer.Core.VisualScripting
 
         public override void Deserialize(IFurballContentReader instream)
         {
-            Operator = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EOperator>(nameof(Operator)) : (EOperator)instream.ReadInt32Property(nameof(Operator));
+            Operator = instream.ReadEnumProperty<EOperator>(nameof(Operator));
             RightOperand.Deserialize(instream);
         }
 

@@ -22,7 +22,7 @@ namespace Finmer.Core.VisualScripting
         /// <summary>
         /// Describes the conjunction mode for combining multiple conditions.
         /// </summary>
-        public enum EConditionMode : byte
+        public enum EConditionMode
         {
             All,
             Any
@@ -85,7 +85,7 @@ namespace Finmer.Core.VisualScripting
 
         public void Deserialize(IFurballContentReader instream)
         {
-            Mode = instream.GetFormatVersion() >= 21 ? instream.ReadEnumProperty<EConditionMode>(nameof(Mode)) : (EConditionMode)instream.ReadInt32Property(nameof(Mode));
+            Mode = instream.ReadEnumProperty<EConditionMode>("Mode");
             Operand = instream.ReadBooleanProperty("Operand");
 
             for (int i = 0, c = instream.BeginArray("Tests"); i < c; i++)

@@ -1,0 +1,38 @@
+[
+	{
+		"type": "function",
+		"name": "Modules.IsModuleLoaded",
+		"remarks": "Checks if a module with the specified unique ID has been loaded (i.e., it's in the 'Modules' folder).",
+		"input": [
+			{
+				"name": "id",
+				"type": "string",
+				"desc": "the ID of the module"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the module is loaded, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Modules.HasAssetByID",
+		"remarks": "Checks if an asset with the specified unique ID has been loaded.",
+		"input": [
+			{
+				"name": "id",
+				"type": "string",
+				"desc": "the ID of the asset"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the asset is loaded, false otherwise"
+			}
+		]
+	}
+]

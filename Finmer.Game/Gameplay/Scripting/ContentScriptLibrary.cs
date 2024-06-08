@@ -37,7 +37,8 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedContentIsModuleLoadedByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
-            var id = Guid.Parse(string_id);
+            if (!Guid.TryParse(string_id, out var id))
+                return luaL_argerror(state, 1, "invalid id format");
 
             lua_pushboolean(state, GameController.LoadedModules.Any(metadata => id == metadata.ID));
 
@@ -47,7 +48,8 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedContentIsAssetLoadedByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
-            var id = Guid.Parse(string_id);
+            if (!Guid.TryParse(string_id, out var id))
+                return luaL_argerror(state, 1, "invalid id format");
 
             lua_pushboolean(state, GameController.Content.GetAssetByID(id) != null);
 

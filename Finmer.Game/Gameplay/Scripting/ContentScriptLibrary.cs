@@ -29,12 +29,12 @@ namespace Finmer.Gameplay.Scripting
 
             // Modules table
             lua_createtable(state, 0, 2);
-            context.RegisterFunction("IsModuleLoaded", ExportedModulesIsModuleLoaded);
-            context.RegisterFunction("HasAssetByID", ExportedModulesHasAssetByID);
+            context.RegisterFunction("IsModuleLoadedByID", ExportedContentIsModuleLoadedByID);
+            context.RegisterFunction("IsAssetLoadedByID", ExportedContentIsAssetLoadedByID);
             lua_setglobal(state, "Content");
         }
 
-        private static int ExportedContentIsModuleLoaded(IntPtr state)
+        private static int ExportedContentIsModuleLoadedByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
             var id = Guid.Parse(string_id);
@@ -44,7 +44,7 @@ namespace Finmer.Gameplay.Scripting
             return 1;
         }
 
-        private static int ExportedContentHasAssetByID(IntPtr state)
+        private static int ExportedContentIsAssetLoadedByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
             var id = Guid.Parse(string_id);

@@ -1,7 +1,7 @@
 [
 	{
 		"type": "function",
-		"name": "Content.IsModuleLoaded",
+		"name": "Content.IsModuleLoadedByID",
 		"remarks": "Checks if a module with the specified unique ID has been loaded (i.e., it's in the 'Modules' folder).",
 		"input": [
 			{
@@ -19,7 +19,7 @@
 	},
 	{
 		"type": "function",
-		"name": "Content.HasAssetByID",
+		"name": "Content.IsAssetLoadedByID",
 		"remarks": "Checks if an asset with the specified unique ID has been loaded.",
 		"input": [
 			{

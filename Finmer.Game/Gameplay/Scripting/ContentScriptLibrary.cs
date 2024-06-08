@@ -28,9 +28,11 @@ namespace Finmer.Gameplay.Scripting
             IntPtr state = context.LuaState;
 
             // Modules table
-            lua_createtable(state, 0, 2);
+            lua_createtable(state, 0, 4);
             context.RegisterFunction("IsModuleLoadedByID", ExportedContentIsModuleLoadedByID);
+            context.RegisterFunction("IsModuleLoadedByName", ExportedContentIsModuleLoadedByName);
             context.RegisterFunction("IsAssetLoadedByID", ExportedContentIsAssetLoadedByID);
+            context.RegisterFunction("IsAssetLoadedByName", ExportedContentIsAssetLoadedByName);
             lua_setglobal(state, "Content");
         }
 
@@ -45,6 +47,15 @@ namespace Finmer.Gameplay.Scripting
             return 1;
         }
 
+        private static int ExportedContentIsModuleLoadedByName(IntPtr state)
+        {
+            var name = luaL_checkstring(state, 1);
+
+            lua_pushboolean(state, GameController.LoadedModules.Any(metadata => name == metadata.Title));
+
+            return 1;
+        }
+
         private static int ExportedContentIsAssetLoadedByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
@@ -52,6 +63,15 @@ namespace Finmer.Gameplay.Scripting
                 return luaL_argerror(state, 1, "invalid id format");
 
             lua_pushboolean(state, GameController.Content.GetAssetByID(id) != null);
+
+            return 1;
+        }
+
+        private static int ExportedContentIsAssetLoadedByName(IntPtr state)
+        {
+            var name = luaL_checkstring(state, 1);
+
+            lua_pushboolean(state, GameController.Content.GetAssetByName(name) != null);
 
             return 1;
         }

@@ -14,9 +14,9 @@ namespace Finmer.Gameplay.Scripting
 {
 
     /// <summary>
-    /// Script library containing functions related to modules and assets.
+    /// Script library containing functions related to the content repository, mainly for inspecting modules and assets.
     /// </summary>
-    internal static class ModuleScriptLibrary
+    internal static class ContentScriptLibrary
     {
 
         /// <summary>
@@ -31,10 +31,10 @@ namespace Finmer.Gameplay.Scripting
             lua_createtable(state, 0, 2);
             context.RegisterFunction("IsModuleLoaded", ExportedModulesIsModuleLoaded);
             context.RegisterFunction("HasAssetByID", ExportedModulesHasAssetByID);
-            lua_setglobal(state, "Modules");
+            lua_setglobal(state, "Content");
         }
 
-        private static int ExportedModulesIsModuleLoaded(IntPtr state)
+        private static int ExportedContentIsModuleLoaded(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
             var id = Guid.Parse(string_id);
@@ -44,7 +44,7 @@ namespace Finmer.Gameplay.Scripting
             return 1;
         }
 
-        private static int ExportedModulesHasAssetByID(IntPtr state)
+        private static int ExportedContentHasAssetByID(IntPtr state)
         {
             var string_id = luaL_checkstring(state, 1);
             var id = Guid.Parse(string_id);

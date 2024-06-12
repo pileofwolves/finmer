@@ -27,7 +27,7 @@ namespace Finmer.Gameplay.Scripting
         {
             IntPtr state = context.LuaState;
 
-            // Modules table
+            // Content table
             lua_createtable(state, 0, 4);
             context.RegisterFunction("IsModuleLoadedByID", ExportedContentIsModuleLoadedByID);
             context.RegisterFunction("IsModuleLoadedByName", ExportedContentIsModuleLoadedByName);
@@ -51,7 +51,7 @@ namespace Finmer.Gameplay.Scripting
         {
             var name = luaL_checkstring(state, 1);
 
-            lua_pushboolean(state, GameController.LoadedModules.Any(metadata => name == metadata.Title));
+            lua_pushboolean(state, GameController.LoadedModules.Any(metadata => String.Equals(name, metadata.Title, StringComparison.InvariantCulture)));
 
             return 1;
         }

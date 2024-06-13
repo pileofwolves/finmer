@@ -109,6 +109,7 @@
     <Compile Include="Gameplay\Scripting\ScriptException.cs" />
     <Compile Include="Gameplay\Scripting\UIScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\GlobalScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\ContentScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\LuaApi.cs" />
     <Compile Include="Gameplay\ScriptableObject.cs" />
     <Compile Include="Gameplay\Scripting\ScriptContext.cs" />

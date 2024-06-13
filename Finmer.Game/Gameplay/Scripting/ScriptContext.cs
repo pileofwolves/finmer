@@ -71,6 +71,7 @@ namespace Finmer.Gameplay.Scripting
             GrammarScriptLibrary.Inject(this);
             SaveDataScriptLibrary.Inject(this);
             Combat2ScriptLibrary.Inject(this);
+            ContentScriptLibrary.Inject(this);
             Debug.Assert(lua_gettop(LuaState) == 0);
         }
 

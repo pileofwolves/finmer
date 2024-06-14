@@ -330,7 +330,7 @@
 														"NodeType": "Choice",
 														"Key": "SQ01_C_DiscussNosy2",
 														"Title": "Investigate",
-														"Tooltip": "Press him futher...",
+														"Tooltip": "Press him further...",
 														"Highlight": false,
 														"ButtonWidth": 1.0,
 														"ScriptAppear": {

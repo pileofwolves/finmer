@@ -51,7 +51,7 @@
 		{
 			"Key": "PORT_SHOP_ENTER_FIRST2",
 			"Text": [
-				"Pat humms at your response, before nodding slowly. \"Pleased to make your acquiantance, then, {player.name}. What can this fellow do for you today?\""
+				"Pat humms at your response, before nodding slowly. \"Pleased to make your acquaintance, then, {player.name}. What can this fellow do for you today?\""
 			]
 		},
 		{

@@ -21,8 +21,6 @@ namespace Finmer.Gameplay.Scripting
     internal static class GlobalScriptLibrary
     {
 
-        private static Random s_RNG;
-
         /// <summary>
         /// Register the library contents in the ScriptContext.
         /// </summary>
@@ -30,16 +28,6 @@ namespace Finmer.Gameplay.Scripting
         public static void Inject(ScriptContext context)
         {
             IntPtr state = context.LuaState;
-
-            // Re-seed the RNG
-            s_RNG = new Random();
-
-            // Replace the built-in RNG with our custom one
-            lua_getglobal(state, "math");
-            lua_pushnil(state); // math.randomseed is not supported
-            lua_setfield(state, -2, "randomseed");
-            context.RegisterFunction("random", ExportedRandom);
-            lua_pop(state, 1);
 
             // Override some default functions
             context.RegisterGlobalFunction("require", ExportedRequire);
@@ -84,36 +72,6 @@ namespace Finmer.Gameplay.Scripting
         private static int ExportedIsDevModeEnabled(IntPtr L)
         {
             lua_pushboolean(L, GameController.IsDevModeEnabled);
-            return 1;
-        }
-
-        private static int ExportedRandom(IntPtr L)
-        {
-            // Re-implementation of Lua's default math.random function, but with a much higher-quality underlying RNG
-            double rand = s_RNG.NextDouble();
-            switch (lua_gettop(L))
-            {
-                case 0:
-                    lua_pushnumber(L, rand);
-                    break;
-                case 1:
-                {
-                    var upper = (int)luaL_checknumber(L, 1);
-                    if (upper < 1) luaL_error(L, "interval is empty");
-                    lua_pushnumber(L, Math.Floor(rand * upper) + 1);
-                    break;
-                }
-
-                case 2:
-                {
-                    var lower = (int)luaL_checknumber(L, 1);
-                    var upper = (int)luaL_checknumber(L, 2);
-                    if (lower > upper) luaL_error(L, "interval is empty");
-                    lua_pushnumber(L, Math.Floor(rand * (upper - lower + 1)) + lower);
-                    break;
-                }
-            }
-
             return 1;
         }
 

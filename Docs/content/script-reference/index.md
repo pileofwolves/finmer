@@ -20,7 +20,7 @@ The game engine may or may not expose additional functions or properties that ar
 
 Lua is a simple, elegant script language. If you would like to learn it, there are lots of resources available online for you to peruse. You can find the official [Lua 5.1 reference manual here](https://www.lua.org/manual/5.1/manual.html), and a large directory of [user-made tutorials here](http://lua-users.org/wiki/TutorialDirectory). Check the [Script Reference](/category/script-reference) to see what you can do with the game engine.
 
-The game makes available for you most standard Lua libraries. You can use the `base`, `coroutine`, `table`, `string` and `math` libraries. Note that for security reasons, the `io`, `os`, `package` and `debug` libraries are unavailable. 
+The game makes available for you most standard Lua libraries. You can use the `base`, `coroutine`, `table`, `string`, `math` and `bit32` libraries. Note that for security reasons, the `io`, `os`, `package` and `debug` libraries are unavailable. 
 
 ## Reference pages
 

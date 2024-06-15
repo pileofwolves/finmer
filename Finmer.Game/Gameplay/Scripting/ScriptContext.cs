@@ -66,6 +66,7 @@ namespace Finmer.Gameplay.Scripting
 
             // Register global libraries
             GlobalScriptLibrary.Inject(this);
+            MathScriptLibrary.Inject(this);
             GameplayScriptLibrary.Inject(this);
             UIScriptLibrary.Inject(this);
             GrammarScriptLibrary.Inject(this);

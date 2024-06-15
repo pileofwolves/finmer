@@ -100,6 +100,7 @@
     <Compile Include="Gameplay\SaveDataExceptions.cs" />
     <Compile Include="Gameplay\SceneCombat2.cs" />
     <Compile Include="Gameplay\Scripting\Combat2ScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\MathScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\GameplayScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\LuaUtils.cs" />
     <Compile Include="Gameplay\Scripting\SaveDataScriptLibrary.cs" />

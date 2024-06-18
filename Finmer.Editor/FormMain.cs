@@ -718,9 +718,9 @@ namespace Finmer.Editor
             {
                 Name = GetUniqueAssetName("NewScene"),
                 ID = asset_guid,
-                Root = new AssetScene.SceneNode
+                Root = new SceneNode
                 {
-                    NodeType = AssetScene.ENodeType.Root,
+                    NodeType = SceneNode.ENodeType.Root,
                     Key = "Root"
                 }
             };

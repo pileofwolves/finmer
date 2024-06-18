@@ -30,7 +30,7 @@ namespace Finmer.Editor
 
         private AssetScene m_Scene;
         private AssetScene m_PatchTargetScene;
-        private AssetScene.SceneNode m_SelectedNode;
+        private SceneNode m_SelectedNode;
         private TreeNode m_SelectedTree, m_SelectedTreeParent;
 
         private int m_SelectedTreeIndex;
@@ -45,7 +45,7 @@ namespace Finmer.Editor
         private bool m_SkipDirtyUpdates = true;
         private bool m_SkipTreeSelect;
 
-        private static readonly Clipboard<AssetScene.SceneNode> s_Clipboard = new Clipboard<AssetScene.SceneNode>();
+        private static readonly Clipboard<SceneNode> s_Clipboard = new Clipboard<SceneNode>();
         private static readonly Regex s_StateKeyRegex = new Regex(@"^(\w+)_R_([A-Za-z_]+)(\d*)[A-Z]?$",
             RegexOptions.Compiled | RegexOptions.CultureInvariant);
         private static readonly Regex s_ChoiceKeyRegex = new Regex(@"^(\w+)_C_(.+)[A-Z]?$",
@@ -180,7 +180,7 @@ namespace Finmer.Editor
             UpdateMoveButtons();
 
             // Determine which logical node was selected
-            m_SelectedNode = trvNodes.SelectedNode?.Tag as AssetScene.SceneNode;
+            m_SelectedNode = trvNodes.SelectedNode?.Tag as SceneNode;
             Debug.Assert(m_SelectedNode != null);
 
             // We're about to programmatically update UI elements, so prevent them from reacting to changes
@@ -194,7 +194,7 @@ namespace Finmer.Editor
 
             // Configure toolbar for this node
             bool is_root = m_SelectedNode == m_Scene.Root;
-            tbcScripts.Visible = !is_root && m_SelectedNode.NodeType != AssetScene.ENodeType.Link;
+            tbcScripts.Visible = !is_root && m_SelectedNode.NodeType != SceneNode.ENodeType.Link;
             tsbAddNode.Enabled = m_SelectedNode.IsFullNode();
             tsbAddLink.Enabled = tsbAddNode.Enabled;
             tsbRemoveNode.Enabled = !is_root;
@@ -203,27 +203,27 @@ namespace Finmer.Editor
             tsbClipboardPaste.Enabled = CanPasteInSelectedNode();
 
             // Node can have a compass child if it's a state, or a root node acting as a placeholder state
-            bool can_host_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State
-                || (is_root && GetAcceptableRootType() == AssetScene.ENodeType.Choice);
+            bool can_host_compass = m_SelectedNode.NodeType == SceneNode.ENodeType.State
+                || (is_root && GetAcceptableRootType() == SceneNode.ENodeType.Choice);
             tsbAddCompass.Enabled = tsbAddNode.Enabled && can_host_compass;
 
             // Display specific settings for the node
             switch (m_SelectedNode.NodeType)
             {
-                case AssetScene.ENodeType.Root:
+                case SceneNode.ENodeType.Root:
                     // Root node has a separate collection of settings
                     Debug.Assert(is_root);
                     tbcNode.TabPages.Add(m_TabPageNodeRoot);
                     break;
 
-                case AssetScene.ENodeType.State:
+                case SceneNode.ENodeType.State:
                     // Populate state-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeState);
                     txtNodeStateKey.Text = m_SelectedNode.Key;
 
                     break;
 
-                case AssetScene.ENodeType.Choice:
+                case SceneNode.ENodeType.Choice:
                     // Populate choice-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeChoice);
                     txtNodeChoiceKey.Text = m_SelectedNode.Key;
@@ -237,7 +237,7 @@ namespace Finmer.Editor
 
                     break;
 
-                case AssetScene.ENodeType.Link:
+                case SceneNode.ENodeType.Link:
                     // Populate link-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeLink);
                     UpdateLinkTargetList();
@@ -245,7 +245,7 @@ namespace Finmer.Editor
 
                     break;
 
-                case AssetScene.ENodeType.Compass:
+                case SceneNode.ENodeType.Compass:
                     // Populate compass-specific settings
                     tbcNode.TabPages.Add(m_TabPageNodeCompass);
                     txtNodeCompassKey.Text = m_SelectedNode.Key;
@@ -274,24 +274,24 @@ namespace Finmer.Editor
             trvNodes.Focus();
         }
 
-        private void UpdateNodeImage(TreeNode treeNode, AssetScene.SceneNode sceneNode)
+        private void UpdateNodeImage(TreeNode treeNode, SceneNode sceneNode)
         {
             // Select the appropriate image for this node
             switch (sceneNode.NodeType)
             {
-                case AssetScene.ENodeType.Root:
+                case SceneNode.ENodeType.Root:
                     treeNode.ImageKey = "node_root";
                     break;
-                case AssetScene.ENodeType.Link:
+                case SceneNode.ENodeType.Link:
                     treeNode.ImageKey = "node_link";
                     break;
-                case AssetScene.ENodeType.Compass:
+                case SceneNode.ENodeType.Compass:
                     treeNode.ImageKey = "node_compass";
                     break;
-                case AssetScene.ENodeType.State:
+                case SceneNode.ENodeType.State:
                     treeNode.ImageKey = "node_state";
                     break;
-                case AssetScene.ENodeType.Choice:
+                case SceneNode.ENodeType.Choice:
                     treeNode.ImageKey = "node_choice";
                     break;
             }
@@ -307,10 +307,10 @@ namespace Finmer.Editor
 
         private void UpdateLinkTargetList()
         {
-            void AddToLinkTargetList(AssetScene.SceneNode node)
+            void AddToLinkTargetList(SceneNode node)
             {
                 // Cannot link to another link, or to the root node
-                if (node.NodeType == AssetScene.ENodeType.Link || node.NodeType == AssetScene.ENodeType.Root)
+                if (node.NodeType == SceneNode.ENodeType.Link || node.NodeType == SceneNode.ENodeType.Root)
                     return;
 
                 // Cannot link to nodes that have no key
@@ -318,8 +318,8 @@ namespace Finmer.Editor
                     return;
 
                 // To be a valid link target, the candidate must either be of the same type or be a compass link where compass links are accepted.
-                bool can_accept_compass = m_SelectedNode.NodeType == AssetScene.ENodeType.State;
-                bool is_compass = node.NodeType == AssetScene.ENodeType.Compass;
+                bool can_accept_compass = m_SelectedNode.NodeType == SceneNode.ENodeType.State;
+                bool is_compass = node.NodeType == SceneNode.ENodeType.Compass;
                 bool is_same_type = node.NodeType == GetInverseNodeType(m_SelectedNode.Parent.NodeType);
                 if ((is_compass && can_accept_compass) || is_same_type)
                     cmbLinkTarget.Items.Add(node.Key);
@@ -354,7 +354,7 @@ namespace Finmer.Editor
             m_PatchTargetScene = target_scene;
             target_scene.Root.Children
                 .Traverse(node => node.Children)
-                .Where(node => node.NodeType == AssetScene.ENodeType.State && !String.IsNullOrEmpty(node.Key))
+                .Where(node => node.NodeType == SceneNode.ENodeType.State && !String.IsNullOrEmpty(node.Key))
                 .Select(node => node.Key)
                 .ForEach(name => cmbInjectTargetNode.Items.Add(name));
 
@@ -364,7 +364,7 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
-        private void AddNodeToTreeView(TreeNodeCollection collection, AssetScene.SceneNode scene_node, bool select = false)
+        private void AddNodeToTreeView(TreeNodeCollection collection, SceneNode scene_node, bool select = false)
         {
             // create and add a node
             var tree_node = new TreeNode
@@ -382,21 +382,21 @@ namespace Finmer.Editor
                 trvNodes.SelectedNode = tree_node;
         }
 
-        private void UpdateNodeText(TreeNode tree_node, AssetScene.SceneNode scene_node)
+        private void UpdateNodeText(TreeNode tree_node, SceneNode scene_node)
         {
             // Generate the node name based on its configuration
             switch (scene_node.NodeType)
             {
-                case AssetScene.ENodeType.Root:
+                case SceneNode.ENodeType.Root:
                     tree_node.ForeColor = Color.Black;
                     tree_node.Text = "Root";
                     break;
 
-                case AssetScene.ENodeType.State:
-                case AssetScene.ENodeType.Choice:
+                case SceneNode.ENodeType.State:
+                case SceneNode.ENodeType.Choice:
                 {
                     // For generic nodes, concatenate the node key and any prefixes
-                    bool is_state = scene_node.NodeType == AssetScene.ENodeType.State;
+                    bool is_state = scene_node.NodeType == SceneNode.ENodeType.State;
                     bool has_action_script = scene_node.ScriptAction != null && scene_node.ScriptAction.HasContent();
                     bool has_appear_script = scene_node.ScriptAppear != null && scene_node.ScriptAppear.HasContent();
                     string choice_caption = String.IsNullOrWhiteSpace(scene_node.Title) ? "Continue" : scene_node.Title;
@@ -412,7 +412,7 @@ namespace Finmer.Editor
                     break;
                 }
 
-                case AssetScene.ENodeType.Link:
+                case SceneNode.ENodeType.Link:
                 {
                     // Link target
                     tree_node.ForeColor = Color.DarkSlateGray;
@@ -420,7 +420,7 @@ namespace Finmer.Editor
                     break;
                 }
 
-                case AssetScene.ENodeType.Compass:
+                case SceneNode.ENodeType.Compass:
                 {
                     // Compass link
                     bool has_action_script = scene_node.ScriptAction != null && scene_node.ScriptAction.HasContent();
@@ -448,7 +448,7 @@ namespace Finmer.Editor
                 return;
 
             // Generate a new node
-            var node = new AssetScene.SceneNode
+            var node = new SceneNode
             {
                 NodeType = GetInverseNodeType(m_SelectedNode.NodeType),
                 Parent = m_SelectedNode
@@ -473,9 +473,9 @@ namespace Finmer.Editor
                 return;
 
             // Generate a new node
-            var node = new AssetScene.SceneNode
+            var node = new SceneNode
             {
-                NodeType = AssetScene.ENodeType.Link,
+                NodeType = SceneNode.ENodeType.Link,
                 Parent = m_SelectedNode
             };
 
@@ -493,9 +493,9 @@ namespace Finmer.Editor
                 return;
 
             // Generate a new node
-            var node = new AssetScene.SceneNode
+            var node = new SceneNode
             {
-                NodeType = AssetScene.ENodeType.Compass,
+                NodeType = SceneNode.ENodeType.Compass,
                 Parent = m_SelectedNode
             };
 
@@ -640,7 +640,7 @@ namespace Finmer.Editor
             if (m_SkipDirtyUpdates) return;
             Dirty = true;
 
-            m_SelectedNode.CompassLinkDirection = (AssetScene.ECompassDirection)cmbCompassDirection.SelectedIndex;
+            m_SelectedNode.CompassLinkDirection = (SceneNode.ECompassDirection)cmbCompassDirection.SelectedIndex;
         }
 
         private void assetCompassTarget_SelectedAssetChanged(object sender, EventArgs e)
@@ -680,12 +680,12 @@ namespace Finmer.Editor
             var target = trvNodes.GetNodeAt(trvNodes.PointToClient(new Point(e.X, e.Y)));
 
             // Get the SceneNode of those node representations
-            var source_sn = (AssetScene.SceneNode)source.Tag;
-            var target_sn = (AssetScene.SceneNode)target.Tag;
+            var source_sn = (SceneNode)source.Tag;
+            var target_sn = (SceneNode)target.Tag;
 
             // Get the SceneNode of the source node's parent, so we can remove it from there
             var source_parent = source.Parent;
-            var source_parent_sn = (AssetScene.SceneNode)source_parent.Tag;
+            var source_parent_sn = (SceneNode)source_parent.Tag;
 
             // Perform the drag/drop operation
             switch (e.Effect)
@@ -707,9 +707,9 @@ namespace Finmer.Editor
 
                 case DragDropEffects.Link:
                     // Create a new link node that points to the target
-                    var link = new AssetScene.SceneNode
+                    var link = new SceneNode
                     {
-                        NodeType = AssetScene.ENodeType.Link,
+                        NodeType = SceneNode.ENodeType.Link,
                         LinkTarget = source_sn.Key,
                         Parent = target_sn
                     };
@@ -737,7 +737,7 @@ namespace Finmer.Editor
             while (stack.Count > 0)
             {
                 TreeNode node = stack.Pop();
-                var node_sn = (AssetScene.SceneNode)node.Tag;
+                var node_sn = (SceneNode)node.Tag;
 
                 // Links do not have keys
                 if (!node_sn.IsFullNode())
@@ -759,8 +759,8 @@ namespace Finmer.Editor
         {
             // Find the type of node that is double-clicked on, and see if it's a link node
             var link_node = e.Node;
-            var link_node_sn = (AssetScene.SceneNode)link_node.Tag;
-            if (link_node_sn.NodeType == AssetScene.ENodeType.Link)
+            var link_node_sn = (SceneNode)link_node.Tag;
+            if (link_node_sn.NodeType == SceneNode.ENodeType.Link)
             {
                 // If node is a link node, jump to the node it's linked to.
                 var search_key = link_node_sn.LinkTarget;
@@ -783,8 +783,8 @@ namespace Finmer.Editor
                 return;
 
             // Retrieve the SceneNodes represented by these tree items
-            var source_sn = (AssetScene.SceneNode)source.Tag;
-            var target_sn = (AssetScene.SceneNode)target.Tag;
+            var source_sn = (SceneNode)source.Tag;
+            var target_sn = (SceneNode)target.Tag;
             if (CanReparentNode(source_sn, target_sn))
             {
                 // Notify the system which actions are allowed now
@@ -980,34 +980,34 @@ namespace Finmer.Editor
             Dirty = true;
         }
 
-        private AssetScene.ENodeType GetInverseNodeType(AssetScene.ENodeType type)
+        private SceneNode.ENodeType GetInverseNodeType(SceneNode.ENodeType type)
         {
             // The inverse of the root node is whichever type can be parented to the root (given the patch mode)
-            if (type == AssetScene.ENodeType.Root)
+            if (type == SceneNode.ENodeType.Root)
                 return GetAcceptableRootType();
 
             // Otherwise, States and Choices must alternate
-            Debug.Assert(type == AssetScene.ENodeType.State || type == AssetScene.ENodeType.Choice);
-            return type == AssetScene.ENodeType.State ? AssetScene.ENodeType.Choice : AssetScene.ENodeType.State;
+            Debug.Assert(type == SceneNode.ENodeType.State || type == SceneNode.ENodeType.Choice);
+            return type == SceneNode.ENodeType.State ? SceneNode.ENodeType.Choice : SceneNode.ENodeType.State;
         }
 
-        private AssetScene.ENodeType GetAcceptableRootType()
+        private SceneNode.ENodeType GetAcceptableRootType()
         {
-            return m_Scene.InjectMode >= AssetScene.ESceneInjectMode.InsideAtStart ? AssetScene.ENodeType.Choice : AssetScene.ENodeType.State;
+            return m_Scene.InjectMode >= AssetScene.ESceneInjectMode.InsideAtStart ? SceneNode.ENodeType.Choice : SceneNode.ENodeType.State;
         }
 
-        private bool CanReparentNode(AssetScene.SceneNode source, AssetScene.SceneNode target)
+        private bool CanReparentNode(SceneNode source, SceneNode target)
         {
             // Cannot parent nodes to leaf nodes, or to themselves
             if (source == target || !target.IsFullNode())
                 return false;
 
             // If the source is a Link and has no parent (e.g. a Link copied to the clipboard), we have no context for its State/Choice status and must accept the move
-            if (source.NodeType == AssetScene.ENodeType.Link && source.Parent == null)
+            if (source.NodeType == SceneNode.ENodeType.Link && source.Parent == null)
                 return true;
 
             // Nodes must follow the State/Choice alternation. Some extra logic is required to handle the Root node correctly.
-            bool target_is_root = target.NodeType == AssetScene.ENodeType.Root;
+            bool target_is_root = target.NodeType == SceneNode.ENodeType.Root;
             bool can_parent_generic = target.NodeType == GetAcceptableParentType(source);
             bool can_parent_root_node = target_is_root && source.NodeType == GetAcceptableRootType();
             bool can_parent_root_leaf = target_is_root && GetInverseNodeType(GetAcceptableParentType(source)) == GetAcceptableRootType();
@@ -1021,20 +1021,20 @@ namespace Finmer.Editor
                 && CanReparentNode(s_Clipboard.PeekBuffer(), m_SelectedNode);
         }
 
-        private static AssetScene.ENodeType GetAcceptableParentType(AssetScene.SceneNode child)
+        private static SceneNode.ENodeType GetAcceptableParentType(SceneNode child)
         {
             switch (child.NodeType)
             {
-                case AssetScene.ENodeType.Choice:
-                case AssetScene.ENodeType.Compass:
+                case SceneNode.ENodeType.Choice:
+                case SceneNode.ENodeType.Compass:
                     // Choices and Compasses can be parented to States
-                    return AssetScene.ENodeType.State;
+                    return SceneNode.ENodeType.State;
 
-                case AssetScene.ENodeType.State:
+                case SceneNode.ENodeType.State:
                     // States go on Choices
-                    return AssetScene.ENodeType.Choice;
+                    return SceneNode.ENodeType.Choice;
 
-                case AssetScene.ENodeType.Link:
+                case SceneNode.ENodeType.Link:
                     // Links can be on either States or Choices - make sure we maintain the current node alternation
                     return child.Parent.NodeType;
 
@@ -1046,13 +1046,13 @@ namespace Finmer.Editor
         /// <summary>
         /// Auto-generate a unique key for a child node of the specified parent, using the parent's type and key as input.
         /// </summary>
-        private static string GenerateChildNodeKey(AssetScene.SceneNode parent)
+        private static string GenerateChildNodeKey(SceneNode parent)
         {
             string part_group, part_topic, part_type;
 
             switch (parent.NodeType)
             {
-                case AssetScene.ENodeType.State:
+                case SceneNode.ENodeType.State:
                 {
                     // Parse the key of the parent State. If unsuccessful, we cannot auto-generate a key.
                     var match = s_StateKeyRegex.Match(parent.Key);
@@ -1083,7 +1083,7 @@ namespace Finmer.Editor
                     break;
                 }
 
-                case AssetScene.ENodeType.Choice:
+                case SceneNode.ENodeType.Choice:
                 {
                     // Parse the key of the parent Choice. If unsuccessful, we cannot auto-generate a key.
                     var match = s_ChoiceKeyRegex.Match(parent.Key);

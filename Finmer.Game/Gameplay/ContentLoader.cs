@@ -149,13 +149,13 @@ namespace Finmer.Gameplay
                     $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into itself. This is not supported.");
 
             // Find the anchor node the patch should be added to
-            AssetScene.SceneNode target_node = target_scene.GetNodeByKey(patch.InjectTargetNode);
+            SceneNode target_node = target_scene.GetNodeByKey(patch.InjectTargetNode);
             if (target_node == null)
                 throw new SceneCompilerException(
                     $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectTargetNode}', but no such node was found.");
 
             // Find the injection point (target parent node) and the index at which to insert our patch
-            AssetScene.SceneNode insert_parent;
+            SceneNode insert_parent;
             int insert_index;
             switch (patch.InjectMode)
             {
@@ -180,7 +180,7 @@ namespace Finmer.Gameplay
             }
 
             // Insert the patch nodes into the target scene
-            foreach (AssetScene.SceneNode patch_node in patch.Root.Children)
+            foreach (SceneNode patch_node in patch.Root.Children)
                 insert_parent.Children.Insert(insert_index++, patch_node);
         }
 

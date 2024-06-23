@@ -36,12 +36,6 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
-        public void WriteByteProperty(string key, byte value)
-        {
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
-        }
-
         public void WriteInt32Property(string key, int value)
         {
             m_Stream.WritePropertyName(key);
@@ -87,12 +81,6 @@ namespace Finmer.Editor
             if (String.IsNullOrEmpty(value))
                 return;
 
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
-        }
-
-        public void WriteByteArrayProperty(string key, byte[] value)
-        {
             m_Stream.WritePropertyName(key);
             m_Stream.WriteValue(value);
         }

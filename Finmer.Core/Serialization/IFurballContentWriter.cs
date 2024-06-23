@@ -25,11 +25,6 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
-        void WriteByteProperty(string key, byte value);
-
-        /// <summary>
-        /// Write a key/value-pair with the specified value.
-        /// </summary>
         void WriteInt32Property(string key, int value);
 
         /// <summary>
@@ -62,16 +57,9 @@ namespace Finmer.Core.Serialization
         void WriteStringProperty(string key, string value);
 
         /// <summary>
-        /// Write a byte array with the specified key.
-        /// The byte array may be null, but it may not be empty, and an exception is thrown in this case.
-        /// </summary>
-        /// <exception cref="ArgumentException">Thrown when attempting to write a zero-length byte array.</exception>
-        void WriteByteArrayProperty(string key, byte[] value);
-
-        /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
-        void WriteNestedObjectProperty( string key, IFurballSerializable value);
+        void WriteNestedObjectProperty(string key, IFurballSerializable value);
 
         /// <summary>
         /// Write a raw string value, such as an array element.

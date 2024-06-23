@@ -33,12 +33,6 @@ namespace Finmer.Core.Serialization
         bool ReadBooleanProperty(string key);
 
         /// <summary>
-        /// Read the value of an 8-bit integer property.
-        /// </summary>
-        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        byte ReadByteProperty(string key);
-
-        /// <summary>
         /// Read the value of a 32-bit integer property.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
@@ -73,12 +67,6 @@ namespace Finmer.Core.Serialization
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
         string ReadStringProperty(string key);
-
-        /// <summary>
-        /// Read the value of a byte array property, which may be null.
-        /// </summary>
-        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        byte[] ReadByteArrayProperty(string key);
 
         /// <summary>
         /// Recursively deserializes a nested asset, or returns null if it is unset.

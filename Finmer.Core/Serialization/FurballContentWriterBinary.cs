@@ -32,11 +32,6 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
-        public void WriteByteProperty(string key, byte value)
-        {
-            m_Stream.Write(value);
-        }
-
         public void WriteInt32Property(string key, int value)
         {
             m_Stream.Write(value);
@@ -85,22 +80,6 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
-        public void WriteByteArrayProperty(string key, byte[] value)
-        {
-            if (value == null)
-            {
-                Write7BitEncodedInt(0);
-            }
-            else
-            {
-                if (value.Length == 0)
-                    throw new ArgumentException("Attempt to write zero-length byte array", nameof(value));
-
-                Write7BitEncodedInt(value.Length);
-                m_Stream.Write(value);
-            }
-        }
-
         public void WriteNestedObjectProperty(string key, IFurballSerializable value)
         {
             // The input asset may be null; in that case indicate that in the stream and exit
@@ -123,7 +102,18 @@ namespace Finmer.Core.Serialization
         public void WriteAttachment(string key, byte[] value)
         {
             // Implemented as in-place byte array
-            WriteByteArrayProperty(key, value);
+            if (value == null)
+            {
+                Write7BitEncodedInt(0);
+            }
+            else
+            {
+                if (value.Length == 0)
+                    throw new ArgumentException("Attempt to write zero-length byte array", nameof(value));
+
+                Write7BitEncodedInt(value.Length);
+                m_Stream.Write(value);
+            }
         }
 
         public void BeginObject(string key = null)

@@ -73,19 +73,6 @@ namespace Finmer.Editor
             }
         }
 
-        public byte ReadByteProperty(string key)
-        {
-            try
-            {
-                Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                return (byte)CurrentToken[key];
-            }
-            catch (Exception ex) when (!(ex is FurballException))
-            {
-                throw new FurballInvalidAssetException($"Cannot read byte {key} at path {CurrentToken.Path}", ex);
-            }
-        }
-
         public int ReadInt32Property(string key)
         {
             try
@@ -156,26 +143,6 @@ namespace Finmer.Editor
             catch (Exception ex) when (!(ex is FurballException))
             {
                 throw new FurballInvalidAssetException($"Cannot read string {key} at path {CurrentToken.Path}", ex);
-            }
-        }
-
-        public byte[] ReadByteArrayProperty(string key)
-        {
-            try
-            {
-                Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                JToken value = CurrentToken[key];
-
-                // Handle null values properly
-                if (value == null || value.Type == JTokenType.Null)
-                    return null;
-
-                // Otherwise, deserialize the byte array
-                return (byte[])value;
-            }
-            catch (Exception ex) when (!(ex is FurballException))
-            {
-                throw new FurballInvalidAssetException($"Cannot read byte array {key} at path {CurrentToken.Path}", ex);
             }
         }
 

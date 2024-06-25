@@ -47,10 +47,16 @@ namespace Finmer.Gameplay
         /// Activate a new GameSession using the provided save data.
         /// </summary>
         /// <param name="snapshot">Save data with which to reconstruct the game.</param>
+        /// <exception cref="InvalidSaveDataException">Throws if save data is broken.</exception>
+        /// <exception cref="UnsolvableConstraintException">Throws if load order dependency tree cannot be resolved.</exception>
+        /// <exception cref="ScriptException">Throws if script execution raises an error.</exception>
         public static void BeginNewSession(GameSnapshot snapshot)
         {
             // Ensure the old session is removed first
             ExitSession();
+
+            // Validate basic integrity of the snapshot, to ensure it can be loaded
+            snapshot.Validate();
 
             // Set up the new gameplay session
             Session = new GameSession(snapshot);

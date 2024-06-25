@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using Finmer.Core;
 
 namespace Finmer.Gameplay
@@ -56,6 +57,22 @@ namespace Finmer.Gameplay
 
             // Generate the session
             return new GameSnapshot(initial_save, scene_data, new PropertyBag());
+        }
+
+        /// <summary>
+        /// Validates that this snapshot can be loaded. If a problem is found that would prevent the snapshot from being loaded, an exception is thrown.
+        /// </summary>
+        /// <exception cref="InvalidSaveDataException">Throws if validation did not pass.</exception>
+        public void Validate()
+        {
+            var scene_guid_bytes = SceneData.GetBytes(SaveData.k_System_CurrentSceneID);
+            if (scene_guid_bytes == null || scene_guid_bytes.Length != 16)
+                throw new InvalidSaveDataException("Current scene ID missing from scene properties");
+
+            var scene_guid = new Guid(scene_guid_bytes);
+            var scene = GameController.Content.GetAssetByID(scene_guid);
+            if (scene == null)
+                throw new InvalidSaveDataException($"Current scene ID {scene_guid} is not a known Scene asset");
         }
 
     }

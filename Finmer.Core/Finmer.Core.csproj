@@ -85,6 +85,7 @@
     <Compile Include="Minidump.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBag.cs" />
+    <Compile Include="Serialization\EFurballObjectMode.cs" />
     <Compile Include="Serialization\FurballContentReaderBinary.cs" />
     <Compile Include="Serialization\FurballContentWriterBinary.cs" />
     <Compile Include="Serialization\IContentStore.cs" />

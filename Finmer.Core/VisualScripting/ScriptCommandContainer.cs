@@ -53,7 +53,7 @@ namespace Finmer.Core.VisualScripting
         {
             outstream.BeginArray(key, nodes.Count);
             foreach (var node in nodes)
-                outstream.WriteNestedObjectProperty(null, node);
+                outstream.WriteObjectProperty(null, node, EFurballObjectMode.Required);
             outstream.EndArray();
         }
 
@@ -67,7 +67,7 @@ namespace Finmer.Core.VisualScripting
 
             // Read the nested nodes
             for (int i = 0; i < count; i++)
-                output.Add(instream.ReadNestedObjectProperty<ScriptNode>(null));
+                output.Add(instream.ReadObjectProperty<ScriptNode>(null, EFurballObjectMode.Required));
             instream.EndArray();
 
             return output;

@@ -72,7 +72,8 @@ namespace Finmer.Core.Serialization
         /// Recursively deserializes a nested asset, or returns null if it is unset.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable;
+        /// <param name="mode">Whether the object is allowed to be absent or not.</param>
+        TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable;
 
         /// <summary>
         /// Reads a raw string token from the stream, such as an array element.

@@ -85,12 +85,16 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadString();
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
+        public TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable
         {
-            // A single byte indicates whether the asset is null or not
-            bool is_present = m_Stream.ReadBoolean();
-            if (!is_present)
-                return null;
+            // If the object is required, the presence prefix is omitted
+            if (mode == EFurballObjectMode.Optional || GetFormatVersion() < 21)
+            {
+                // A single byte indicates whether the asset is null or not
+                bool is_present = m_Stream.ReadBoolean();
+                if (!is_present)
+                    return null;
+            }
 
             // It is present, so recursively deserialize it
             var asset = AssetSerializer.DeserializeAsset(this);

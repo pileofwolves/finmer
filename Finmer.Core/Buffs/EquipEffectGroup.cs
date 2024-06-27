@@ -119,7 +119,7 @@ namespace Finmer.Core.Buffs
             // Buff collection
             outstream.BeginArray(nameof(Buffs), Buffs.Count);
             foreach (var buff in Buffs)
-                outstream.WriteNestedObjectProperty(null, buff);
+                outstream.WriteObjectProperty(null, buff, EFurballObjectMode.Required);
             outstream.EndArray();
         }
 
@@ -139,7 +139,7 @@ namespace Finmer.Core.Buffs
 
             // Buff collection
             for (int i = 0, c = instream.BeginArray(nameof(Buffs)); i < c; i++)
-                Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null));
+                Buffs.Add(instream.ReadObjectProperty<Buff>(null, EFurballObjectMode.Required));
             instream.EndArray();
         }
 

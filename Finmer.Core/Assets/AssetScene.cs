@@ -90,9 +90,9 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Custom scene scripts
-            outstream.WriteNestedScriptProperty(nameof(ScriptCustom), ScriptCustom);
-            outstream.WriteNestedScriptProperty(nameof(ScriptEnter), ScriptEnter);
-            outstream.WriteNestedScriptProperty(nameof(ScriptLeave), ScriptLeave);
+            outstream.WriteScriptProperty(nameof(ScriptCustom), ScriptCustom);
+            outstream.WriteScriptProperty(nameof(ScriptEnter), ScriptEnter);
+            outstream.WriteScriptProperty(nameof(ScriptLeave), ScriptLeave);
 
             // Game start settings
             outstream.WriteBooleanProperty(nameof(IsGameStart), IsGameStart);
@@ -119,9 +119,9 @@ namespace Finmer.Core.Assets
             base.Deserialize(instream);
 
             // Read scene scripts
-            ScriptCustom = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptCustom));
-            ScriptEnter = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptEnter));
-            ScriptLeave = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptLeave));
+            ScriptCustom = instream.ReadObjectProperty<ScriptData>(nameof(ScriptCustom), EFurballObjectMode.Optional);
+            ScriptEnter = instream.ReadObjectProperty<ScriptData>(nameof(ScriptEnter), EFurballObjectMode.Optional);
+            ScriptLeave = instream.ReadObjectProperty<ScriptData>(nameof(ScriptLeave), EFurballObjectMode.Optional);
 
             // Game start settings
             if (instream.GetFormatVersion() >= 20)

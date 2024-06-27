@@ -127,7 +127,7 @@ namespace Finmer.Core.Assets
                 foreach (var effect in EquipEffects)
                 {
                     // Serialize each equip effect
-                    outstream.WriteNestedObjectProperty(null, effect);
+                    outstream.WriteObjectProperty(null, effect, EFurballObjectMode.Required);
                 }
                 outstream.EndArray();
             }
@@ -141,7 +141,7 @@ namespace Finmer.Core.Assets
                 outstream.WriteBooleanProperty(nameof(CanUseInField), CanUseInField);
                 outstream.WriteBooleanProperty(nameof(CanUseInBattle), CanUseInBattle);
                 outstream.WriteStringProperty(nameof(UseDescription), UseDescription);
-                outstream.WriteNestedObjectProperty(nameof(UseScript), UseScript);
+                outstream.WriteObjectProperty(nameof(UseScript), UseScript, EFurballObjectMode.Optional);
             }
 
             // Icon data
@@ -163,7 +163,7 @@ namespace Finmer.Core.Assets
 
                 // V19 onwards: equip effect groups with nested buffs and proc settings
                 for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
-                    EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null));
+                    EquipEffects.Add(instream.ReadObjectProperty<EquipEffectGroup>(null, EFurballObjectMode.Required));
                 instream.EndArray();
             }
             PurchaseValue = instream.ReadCompressedInt32Property(nameof(PurchaseValue));
@@ -178,7 +178,7 @@ namespace Finmer.Core.Assets
                 UseDescription = instream.ReadStringProperty(nameof(UseDescription));
 
                 // Read attached UseScript, or if there is none, instantiate one now
-                UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript))
+                UseScript = instream.ReadObjectProperty<AssetScript>(nameof(UseScript), EFurballObjectMode.Optional)
                     ?? new AssetScript { ID = Guid.NewGuid() };
 
                 // Ensure the script is named

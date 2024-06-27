@@ -59,7 +59,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
-        void WriteNestedObjectProperty(string key, IFurballSerializable value);
+        void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode);
 
         /// <summary>
         /// Write a raw string value, such as an array element.

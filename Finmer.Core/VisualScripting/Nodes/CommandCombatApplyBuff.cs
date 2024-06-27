@@ -96,7 +96,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             if (Target == ETarget.NPC)
                 outstream.WriteStringProperty(nameof(ParticipantID), ParticipantID);
 
-            outstream.WriteNestedObjectProperty(nameof(Effect), Effect);
+            outstream.WriteObjectProperty(nameof(Effect), Effect, EFurballObjectMode.Required);
             outstream.WriteCompressedInt32Property(nameof(Duration), Duration);
         }
 
@@ -107,7 +107,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             if (Target == ETarget.NPC)
                 ParticipantID = instream.ReadStringProperty(nameof(ParticipantID));
 
-            Effect = instream.ReadNestedObjectProperty<Buff>(nameof(Effect));
+            Effect = instream.ReadObjectProperty<Buff>(nameof(Effect), EFurballObjectMode.Required);
             Duration = instream.ReadCompressedInt32Property(nameof(Duration));
         }
 

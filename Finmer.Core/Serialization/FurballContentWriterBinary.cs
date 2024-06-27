@@ -80,17 +80,25 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
-        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
+        public void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode)
         {
-            // The input asset may be null; in that case indicate that in the stream and exit
+            // Input object may be absent
             if (value == null)
             {
+                // If the object is mandatory, throw
+                if (mode == EFurballObjectMode.Required)
+                    throw new FurballInvalidAssetException($"Property {key} cannot be null");
+
+                // Write prefix indicating an optional object is absent
                 m_Stream.Write(false);
                 return;
             }
 
+            // Write a prefix indicating that the optional object is present
+            if (mode == EFurballObjectMode.Optional)
+                m_Stream.Write(true);
+
             // Recursively serialize the asset
-            m_Stream.Write(true);
             AssetSerializer.SerializeAsset(this, value);
         }
 

@@ -146,7 +146,7 @@ namespace Finmer.Editor
             }
         }
 
-        public TExpected ReadNestedObjectProperty<TExpected>(string key) where TExpected : class, IFurballSerializable
+        public TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable
         {
             try
             {
@@ -168,7 +168,15 @@ namespace Finmer.Editor
 
                 // Handle null values properly; the asset may be absent
                 if (value == null || value.Type == JTokenType.Null)
+                {
+                    // If the nested object is non-optional, throw.
+                    // Note that the optional mode was introduced with format version 21, but in any well-formatted module a required object
+                    // will not be absent (and if it is, it would be invalid anyway), so we do not need to do a version check here.
+                    if (mode == EFurballObjectMode.Required)
+                        throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} must be non-null");
+
                     return null;
+                }
 
                 // Otherwise, recursively deserialize the asset
                 Debug.Assert(value.Type == JTokenType.Object);
@@ -179,13 +187,14 @@ namespace Finmer.Editor
                 // Validate the type of the deserialized object
                 if (!(asset is TExpected expected))
                     // Error handling here to remove boilerplate from callers
-                    throw new InvalidDataException("Nested asset is unexpected type");
+                    throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} is of unexpected type {asset.GetType().Name}");
 
                 return expected;
             }
             catch (Exception ex) when (!(ex is FurballException))
             {
-                throw new FurballInvalidAssetException($"Cannot read nested asset {key} at path {CurrentToken.Path}", ex);
+                // Wrap all exceptions in FurballExceptions, so that they are simpler for the caller to catch
+                throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} cannot be deserialized: {ex.Message}", ex);
             }
         }
 

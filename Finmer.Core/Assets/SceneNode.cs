@@ -162,8 +162,8 @@ namespace Finmer.Core.Assets
             if (write_scripts)
             {
                 // Write node scripts
-                outstream.WriteNestedScriptProperty(nameof(ScriptAction), ScriptAction);
-                outstream.WriteNestedScriptProperty(nameof(ScriptAppear), ScriptAppear);
+                outstream.WriteScriptProperty(nameof(ScriptAction), ScriptAction);
+                outstream.WriteScriptProperty(nameof(ScriptAppear), ScriptAppear);
             }
 
             if (write_children)
@@ -224,8 +224,8 @@ namespace Finmer.Core.Assets
             if (read_scripts)
             {
                 // Deserialize scripts
-                ScriptAction = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAction));
-                ScriptAppear = instream.ReadNestedObjectProperty<ScriptData>(nameof(ScriptAppear));
+                ScriptAction = instream.ReadObjectProperty<ScriptData>(nameof(ScriptAction), EFurballObjectMode.Optional);
+                ScriptAppear = instream.ReadObjectProperty<ScriptData>(nameof(ScriptAppear), EFurballObjectMode.Optional);
 
                 // Correct script names
                 if (ScriptAction != null)

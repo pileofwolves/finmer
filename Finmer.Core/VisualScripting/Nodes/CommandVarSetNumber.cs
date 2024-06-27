@@ -157,13 +157,13 @@ namespace Finmer.Core.VisualScripting.Nodes
                 Value.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             VariableName = instream.ReadStringProperty(nameof(VariableName));
             ValueOperation = instream.ReadEnumProperty<EOperation>(nameof(ValueOperation));
 
-            if (HasRightOperand() || version < 20)
-                Value.Deserialize(instream, version);
+            if (HasRightOperand() || instream.GetFormatVersion() < 20)
+                Value.Deserialize(instream);
         }
 
         /// <summary>

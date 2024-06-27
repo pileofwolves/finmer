@@ -56,7 +56,7 @@ namespace Finmer.Core.VisualScripting
 
         public virtual void Serialize(IFurballContentWriter outstream) {}
 
-        public virtual void Deserialize(IFurballContentReader instream, int version) {}
+        public virtual void Deserialize(IFurballContentReader instream) {}
 
     }
 

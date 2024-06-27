@@ -20,7 +20,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// The latest version number of the furball file format. Used for migrating old content to new formats.
         /// </summary>
-        public const byte k_LatestVersion = 20;
+        public const byte k_LatestVersion = 21;
 
         /// <summary>
         /// Lowest furball file format version number that this device can open.

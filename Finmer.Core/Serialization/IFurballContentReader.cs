@@ -22,22 +22,27 @@ namespace Finmer.Core.Serialization
     {
 
         /// <summary>
+        /// Returns the format version of the module file being read.
+        /// </summary>
+        uint GetFormatVersion();
+
+        /// <summary>
         /// Read the value of a boolean property.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
         bool ReadBooleanProperty(string key);
 
         /// <summary>
-        /// Read the value of an 8-bit integer property.
-        /// </summary>
-        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        byte ReadByteProperty(string key);
-
-        /// <summary>
         /// Read the value of a 32-bit integer property.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
         int ReadInt32Property(string key);
+
+        /// <summary>
+        /// Read the value of a 32-bit integer property that was written with the corresponding method in IFurballContentWriter.
+        /// </summary>
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        int ReadCompressedInt32Property(string key);
 
         /// <summary>
         /// Read the value of a 32-bit float property.
@@ -64,17 +69,11 @@ namespace Finmer.Core.Serialization
         string ReadStringProperty(string key);
 
         /// <summary>
-        /// Read the value of a byte array property.
-        /// </summary>
-        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        byte[] ReadByteArrayProperty(string key);
-
-        /// <summary>
         /// Recursively deserializes a nested asset, or returns null if it is unset.
         /// </summary>
         /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
-        /// <param name="version">Furball file format version that the object is expected to be stored in.</param>
-        TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable;
+        /// <param name="mode">Whether the object is allowed to be absent or not.</param>
+        TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable;
 
         /// <summary>
         /// Reads a raw string token from the stream, such as an array element.
@@ -105,7 +104,7 @@ namespace Finmer.Core.Serialization
         void EndObject();
 
         /// <summary>
-        /// Exit out of an array that was opened with BeginObject(). This function must be called an equal number of times as BeginObject().
+        /// Exit out of an array that was opened with BeginArray(). This function must be called an equal number of times as BeginArray().
         /// </summary>
         void EndArray();
 

@@ -27,7 +27,7 @@ namespace Finmer.Core.Buffs
             outstream.WriteInt32Property("Delta", Delta);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             Delta = instream.ReadInt32Property("Delta");
         }

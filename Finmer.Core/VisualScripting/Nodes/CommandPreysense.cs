@@ -86,13 +86,13 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void Serialize(IFurballContentWriter outstream)
         {
-            outstream.WriteInt32Property(nameof(Mode), (int)Mode);
+            outstream.WriteCompressedInt32Property(nameof(Mode), (int)Mode);
             outstream.WriteGuidProperty(nameof(CreatureGuid), CreatureGuid);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            Mode = (ESenseType)instream.ReadInt32Property(nameof(Mode));
+            Mode = (ESenseType)instream.ReadCompressedInt32Property(nameof(Mode));
             CreatureGuid = instream.ReadGuidProperty(nameof(CreatureGuid));
         }
 

@@ -45,7 +45,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Load the asset from a stream, overwriting existing data.
         /// </summary>
-        public virtual void Deserialize(IFurballContentReader instream, int version)
+        public virtual void Deserialize(IFurballContentReader instream)
         {
             ID = instream.ReadGuidProperty(@"AssetID");
             Name = instream.ReadStringProperty(@"AssetName");

@@ -45,7 +45,7 @@ namespace Finmer.Core.VisualScripting
             outstream.WriteStringProperty(nameof(OperandText), OperandText);
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             OperandMode = instream.ReadEnumProperty<EOperandMode>(nameof(OperandMode));
             OperandText = instream.ReadStringProperty(nameof(OperandText));

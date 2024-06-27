@@ -25,12 +25,16 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
-        void WriteByteProperty(string key, byte value);
+        void WriteInt32Property(string key, int value);
 
         /// <summary>
-        /// Write a key/value-pair with the specified value.
+        /// Writes a 32-bit integer associated with the specified key.
+        /// The integer may be compressed in a format chosen by the implementation, although this is not required;
+        /// an implementation may choose to write the number normally.
         /// </summary>
-        void WriteInt32Property(string key, int value);
+        /// <param name="key">The key of the key/value pair, to be used in content formats that support named keys.</param>
+        /// <param name="value">The number to be written.</param>
+        void WriteCompressedInt32Property(string key, int value);
 
         /// <summary>
         /// Write a key/value-pair with the specified value.
@@ -55,12 +59,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Write a key/value-pair with the specified value.
         /// </summary>
-        void WriteByteArrayProperty(string key, byte[] value);
-
-        /// <summary>
-        /// Write a key/value-pair with the specified value.
-        /// </summary>
-        void WriteNestedObjectProperty( string key, IFurballSerializable value);
+        void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode);
 
         /// <summary>
         /// Write a raw string value, such as an array element.
@@ -93,7 +92,7 @@ namespace Finmer.Core.Serialization
         void EndObject();
 
         /// <summary>
-        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginObject().
+        /// Close an array that was opened with BeginArray(). This function must be called an equal number of times as BeginArray().
         /// </summary>
         void EndArray();
 

@@ -20,10 +20,17 @@ namespace Finmer.Core.Serialization
     {
 
         private readonly BinaryReader m_Stream;
+        private readonly uint m_FormatVersion;
 
-        public FurballContentReaderBinary(BinaryReader instream)
+        public FurballContentReaderBinary(BinaryReader instream, uint format_version)
         {
             m_Stream = instream;
+            m_FormatVersion = format_version;
+        }
+
+        public uint GetFormatVersion()
+        {
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -31,14 +38,14 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadBoolean();
         }
 
-        public byte ReadByteProperty(string key)
-        {
-            return m_Stream.ReadByte();
-        }
-
         public int ReadInt32Property(string key)
         {
             return m_Stream.ReadInt32();
+        }
+
+        public int ReadCompressedInt32Property(string key)
+        {
+            return Read7BitEncodedInt();
         }
 
         public float ReadFloatProperty(string key)
@@ -78,24 +85,19 @@ namespace Finmer.Core.Serialization
             return m_Stream.ReadString();
         }
 
-        public byte[] ReadByteArrayProperty(string key)
+        public TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable
         {
-            int length = m_Stream.ReadInt32();
-            if (length < 0)
-                return null;
-
-            return m_Stream.ReadBytes(length);
-        }
-
-        public TExpected ReadNestedObjectProperty<TExpected>( string key, int version) where TExpected : class, IFurballSerializable
-        {
-            // A single byte indicates whether the asset is null or not
-            bool is_present = m_Stream.ReadBoolean();
-            if (!is_present)
-                return null;
+            // If the object is required, the presence prefix is omitted
+            if (mode == EFurballObjectMode.Optional || GetFormatVersion() < 21)
+            {
+                // A single byte indicates whether the asset is null or not
+                bool is_present = m_Stream.ReadBoolean();
+                if (!is_present)
+                    return null;
+            }
 
             // It is present, so recursively deserialize it
-            var asset = AssetSerializer.DeserializeAsset(this, version);
+            var asset = AssetSerializer.DeserializeAsset(this);
             if (!(asset is TExpected expected))
                 // Error handling here to remove boilerplate from callers
                 throw new FurballInvalidAssetException($"Unexpected nested asset type in property '{key}'");
@@ -110,8 +112,13 @@ namespace Finmer.Core.Serialization
 
         public byte[] ReadAttachment(string key)
         {
-            // Implemented as in-place byte array
-            return ReadByteArrayProperty(key);
+            // Attachments are implemented as an in-place byte array.
+            // Note tha in format 21 the length prefix for an omitted byte array changed from -1 to 0.
+            int length = Read7BitEncodedInt();
+            if (length <= 0)
+                return null;
+
+            return m_Stream.ReadBytes(length);
         }
 
         public void BeginObject(string key = null)
@@ -121,7 +128,7 @@ namespace Finmer.Core.Serialization
 
         public int BeginArray(string key)
         {
-            return m_Stream.ReadInt32();
+            return Read7BitEncodedInt();
         }
 
         public void EndObject()
@@ -132,6 +139,32 @@ namespace Finmer.Core.Serialization
         public void EndArray()
         {
             // Irrelevant for binary objects
+        }
+
+        private int Read7BitEncodedInt()
+        {
+            // In versions 20 and below, these were plain uncompressed integers
+            if (m_FormatVersion < 21)
+                return m_Stream.ReadInt32();
+
+            // Compressed integers are encoded as a sequence of bytes where the lower 7 bits represent chunks of the integer,
+            // and the upper bit is set if another byte follows. This allows for compact encoding of small integers.
+            int output = 0;
+            int shift = 0;
+            byte next;
+            do
+            {
+                // A compressed integer can be up to 5 bytes long; if we are shifting further than that, the stream is corrupt
+                if (shift >= 5 * 7)
+                    throw new FurballInvalidAssetException("Compressed integer is too long");
+
+                // Read the next byte, and mask the lower 7 bits into 
+                next = m_Stream.ReadByte();
+                output |= (next & 0x7F) << shift;
+                shift += 7;
+            } while ((next & 0x80) != 0);
+
+            return output;
         }
 
     }

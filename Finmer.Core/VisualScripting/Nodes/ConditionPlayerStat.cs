@@ -49,9 +49,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteEnumProperty("Stat", Stat);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
             Stat = instream.ReadEnumProperty<EStat>("Stat");
         }
 

@@ -36,16 +36,16 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
-        public void WriteByteProperty(string key, byte value)
+        public void WriteInt32Property(string key, int value)
         {
             m_Stream.WritePropertyName(key);
             m_Stream.WriteValue(value);
         }
 
-        public void WriteInt32Property(string key, int value)
+        public void WriteCompressedInt32Property(string key, int value)
         {
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
+            // We don't do any special compression here, just redirect to the normal version
+            WriteInt32Property(key, value);
         }
 
         public void WriteFloatProperty(string key, float value)
@@ -85,17 +85,17 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
-        public void WriteByteArrayProperty(string key, byte[] value)
-        {
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
-        }
-
-        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
+        public void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode)
         {
             // The input asset may be null; in that case omit the property entirely, for brevity. The reader will interpret this as null.
             if (value == null)
+            {
+                // If the value is required, but absent, throw
+                if (mode == EFurballObjectMode.Required)
+                    throw new FurballInvalidAssetException($"Property {key} at path {m_Stream.Path} is null, but is not optional");
+
                 return;
+            }
 
             // Key is optional (if we're writing an array)
             if (key != null)

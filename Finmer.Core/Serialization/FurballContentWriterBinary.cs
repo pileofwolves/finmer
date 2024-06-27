@@ -32,14 +32,14 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
-        public void WriteByteProperty(string key, byte value)
+        public void WriteInt32Property(string key, int value)
         {
             m_Stream.Write(value);
         }
 
-        public void WriteInt32Property(string key, int value)
+        public void WriteCompressedInt32Property(string key, int value)
         {
-            m_Stream.Write(value);
+            Write7BitEncodedInt(value);
         }
 
         public void WriteFloatProperty(string key, float value)
@@ -80,30 +80,25 @@ namespace Finmer.Core.Serialization
             m_Stream.Write(value);
         }
 
-        public void WriteByteArrayProperty(string key, byte[] value)
+        public void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode)
         {
+            // Input object may be absent
             if (value == null)
             {
-                m_Stream.Write(-1);
-            }
-            else
-            {
-                m_Stream.Write(value.Length);
-                m_Stream.Write(value);
-            }
-        }
+                // If the object is mandatory, throw
+                if (mode == EFurballObjectMode.Required)
+                    throw new FurballInvalidAssetException($"Property {key} cannot be null");
 
-        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
-        {
-            // The input asset may be null; in that case indicate that in the stream and exit
-            if (value == null)
-            {
+                // Write prefix indicating an optional object is absent
                 m_Stream.Write(false);
                 return;
             }
 
+            // Write a prefix indicating that the optional object is present
+            if (mode == EFurballObjectMode.Optional)
+                m_Stream.Write(true);
+
             // Recursively serialize the asset
-            m_Stream.Write(true);
             AssetSerializer.SerializeAsset(this, value);
         }
 
@@ -115,7 +110,18 @@ namespace Finmer.Core.Serialization
         public void WriteAttachment(string key, byte[] value)
         {
             // Implemented as in-place byte array
-            WriteByteArrayProperty(key, value);
+            if (value == null)
+            {
+                Write7BitEncodedInt(0);
+            }
+            else
+            {
+                if (value.Length == 0)
+                    throw new ArgumentException("Attempt to write zero-length byte array", nameof(value));
+
+                Write7BitEncodedInt(value.Length);
+                m_Stream.Write(value);
+            }
         }
 
         public void BeginObject(string key = null)
@@ -125,7 +131,7 @@ namespace Finmer.Core.Serialization
 
         public void BeginArray(string key, int numElements)
         {
-            m_Stream.Write(numElements);
+            Write7BitEncodedInt(numElements);
         }
 
         public void EndObject()
@@ -136,6 +142,20 @@ namespace Finmer.Core.Serialization
         public void EndArray()
         {
             // Irrelevant for binary objects
+        }
+
+        private void Write7BitEncodedInt(int value)
+        {
+            // The following is a re-implementation of Write7BitEncodedInt() from BinaryWriter
+
+            uint unsigned_value = (uint)value;
+
+            while (unsigned_value >= 0x80u) {
+                m_Stream.Write((byte) (unsigned_value | 0x80u));
+                unsigned_value >>= 7;
+            }
+
+            m_Stream.Write((byte)unsigned_value);
         }
 
     }

@@ -35,7 +35,7 @@ namespace Finmer.Core
         /// <summary>
         /// Gets or sets the furball file format version that the file was last saved in.
         /// </summary>
-        public int FormatVersion { get; set; }
+        public uint FormatVersion { get; set; }
 
     }
 

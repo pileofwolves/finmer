@@ -54,9 +54,9 @@ namespace Finmer.Core.Assets
             outstream.EndArray(); // Entries
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             Table = new StringTable();
 

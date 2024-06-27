@@ -54,7 +54,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteGuidProperty(nameof(JournalGuid), JournalGuid);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             JournalGuid = instream.ReadGuidProperty(nameof(JournalGuid));
         }

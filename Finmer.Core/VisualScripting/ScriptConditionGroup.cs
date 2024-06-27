@@ -79,17 +79,17 @@ namespace Finmer.Core.VisualScripting
 
             outstream.BeginArray("Tests", Tests.Count);
             foreach (var condition in Tests)
-                outstream.WriteNestedObjectProperty(null, condition);
+                outstream.WriteObjectProperty(null, condition, EFurballObjectMode.Required);
             outstream.EndArray();
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             Mode = instream.ReadEnumProperty<EConditionMode>("Mode");
             Operand = instream.ReadBooleanProperty("Operand");
 
             for (int i = 0, c = instream.BeginArray("Tests"); i < c; i++)
-                Tests.Add(instream.ReadNestedObjectProperty<ScriptCondition>(null, version));
+                Tests.Add(instream.ReadObjectProperty<ScriptCondition>(null, EFurballObjectMode.Required));
             instream.EndArray();
         }
 

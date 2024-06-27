@@ -28,12 +28,36 @@ namespace Finmer.Editor
         private readonly DirectoryInfo m_SearchPath;
         private readonly Stack<JToken> m_TokenStack = new Stack<JToken>();
         private readonly Stack<JToken> m_ArrayStack = new Stack<JToken>();
+        private uint m_FormatVersion;
         private JToken m_CurrentArrayElement;
 
-        public FurballContentReaderText(JObject root, DirectoryInfo searchPath)
+        /// <summary>
+        /// Constructs a new FurballContentReaderText.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the asset file.</param>
+        /// <param name="searchPath">Directory to search for any external file references.</param>
+        /// <param name="format_version">Format version number.</param>
+        public FurballContentReaderText(JObject root, DirectoryInfo searchPath, uint format_version)
         {
             m_SearchPath = searchPath;
             m_TokenStack.Push(root);
+            m_FormatVersion = format_version;
+        }
+
+        /// <summary>
+        /// Constructs a new FurballContentReaderText using format version information from the specified project file.
+        /// </summary>
+        /// <param name="root">The JSON document that describes the project file.</param>
+        public static FurballContentReaderText FromProjectMetadata(JObject root)
+        {
+            var reader = new FurballContentReaderText(root, null, 0);
+            reader.m_FormatVersion = (uint)reader.ReadInt32Property("FormatVersion");
+            return reader;
+        }
+
+        public uint GetFormatVersion()
+        {
+            return m_FormatVersion;
         }
 
         public bool ReadBooleanProperty(string key)
@@ -49,19 +73,6 @@ namespace Finmer.Editor
             }
         }
 
-        public byte ReadByteProperty(string key)
-        {
-            try
-            {
-                Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                return (byte)CurrentToken[key];
-            }
-            catch (Exception ex) when (!(ex is FurballException))
-            {
-                throw new FurballInvalidAssetException($"Cannot read byte {key} at path {CurrentToken.Path}", ex);
-            }
-        }
-
         public int ReadInt32Property(string key)
         {
             try
@@ -73,6 +84,12 @@ namespace Finmer.Editor
             {
                 throw new FurballInvalidAssetException($"Cannot read int {key} at path {CurrentToken.Path}", ex);
             }
+        }
+
+        public int ReadCompressedInt32Property(string key)
+        {
+            // We don't do any special compression here, just redirect to the normal version
+            return ReadInt32Property(key);
         }
 
         public float ReadFloatProperty(string key)
@@ -129,27 +146,7 @@ namespace Finmer.Editor
             }
         }
 
-        public byte[] ReadByteArrayProperty(string key)
-        {
-            try
-            {
-                Debug.Assert(CurrentToken.Type == JTokenType.Object);
-                JToken value = CurrentToken[key];
-
-                // Handle null values properly
-                if (value == null || value.Type == JTokenType.Null)
-                    return null;
-
-                // Otherwise, deserialize the byte array
-                return (byte[])value;
-            }
-            catch (Exception ex) when (!(ex is FurballException))
-            {
-                throw new FurballInvalidAssetException($"Cannot read byte array {key} at path {CurrentToken.Path}", ex);
-            }
-        }
-
-        public TExpected ReadNestedObjectProperty<TExpected>(string key, int version) where TExpected : class, IFurballSerializable
+        public TExpected ReadObjectProperty<TExpected>(string key, EFurballObjectMode mode) where TExpected : class, IFurballSerializable
         {
             try
             {
@@ -171,24 +168,33 @@ namespace Finmer.Editor
 
                 // Handle null values properly; the asset may be absent
                 if (value == null || value.Type == JTokenType.Null)
+                {
+                    // If the nested object is non-optional, throw.
+                    // Note that the optional mode was introduced with format version 21, but in any well-formatted module a required object
+                    // will not be absent (and if it is, it would be invalid anyway), so we do not need to do a version check here.
+                    if (mode == EFurballObjectMode.Required)
+                        throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} must be non-null");
+
                     return null;
+                }
 
                 // Otherwise, recursively deserialize the asset
                 Debug.Assert(value.Type == JTokenType.Object);
                 m_TokenStack.Push(value);
-                var asset = AssetSerializer.DeserializeAsset(this, version);
+                var asset = AssetSerializer.DeserializeAsset(this);
                 m_TokenStack.Pop();
 
                 // Validate the type of the deserialized object
                 if (!(asset is TExpected expected))
                     // Error handling here to remove boilerplate from callers
-                    throw new InvalidDataException("Nested asset is unexpected type");
+                    throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} is of unexpected type {asset.GetType().Name}");
 
                 return expected;
             }
             catch (Exception ex) when (!(ex is FurballException))
             {
-                throw new FurballInvalidAssetException($"Cannot read nested asset {key} at path {CurrentToken.Path}", ex);
+                // Wrap all exceptions in FurballExceptions, so that they are simpler for the caller to catch
+                throw new FurballInvalidAssetException($"Object {key} at path {CurrentToken.Path} cannot be deserialized: {ex.Message}", ex);
             }
         }
 

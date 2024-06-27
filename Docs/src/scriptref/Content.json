@@ -1,0 +1,74 @@
+[
+	{
+		"type": "function",
+		"name": "Content.IsModuleLoadedByID",
+		"remarks": "Checks if a module with the specified unique ID has been loaded (i.e., it's in the 'Modules' folder). Module IDs look like the following: \"edcf99d2-6ced-40fa-87e9-86cda5e570ee\", and can be found in Module Settings in the editor.",
+		"input": [
+			{
+				"name": "id",
+				"type": "string",
+				"desc": "the ID of the module, case insensitive"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the module is loaded, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Content.IsModuleLoadedByName",
+		"remarks": "Checks if a module with the specified name has been loaded. Module names can be found in Module Settings in the editor.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the name of the module, case sensitive"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the module is loaded, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Content.IsAssetLoadedByID",
+		"remarks": "Checks if an asset with the specified unique ID has been loaded. Asset IDs look like the following: \"66f65198-ff19-4fd9-a039-52cbe6f14c2b\", and can be found as the \"Asset GUID\" in the editor.",
+		"input": [
+			{
+				"name": "id",
+				"type": "string",
+				"desc": "the ID of the asset, case insensitive"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the asset is loaded, false otherwise"
+			}
+		]
+	},
+	{
+		"type": "function",
+		"name": "Content.IsAssetLoadedByName",
+		"remarks": "Checks if an asset with the specified name has been loaded. The names of assets are listed in the left side pane of the editor.",
+		"input": [
+			{
+				"name": "name",
+				"type": "string",
+				"desc": "the name of the asset, case sensitive"
+			}
+		],
+		"output": [
+			{
+				"type": "boolean",
+				"desc": "true if the asset is loaded, false otherwise"
+			}
+		]
+	}
+]

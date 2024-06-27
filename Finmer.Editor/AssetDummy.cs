@@ -23,7 +23,7 @@ namespace Finmer.Editor
             throw new NotSupportedException();
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             throw new NotSupportedException();
         }

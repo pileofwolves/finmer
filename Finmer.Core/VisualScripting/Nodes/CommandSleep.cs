@@ -46,9 +46,9 @@ namespace Finmer.Core.VisualScripting.Nodes
             Seconds.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            Seconds.Deserialize(instream, version);
+            Seconds.Deserialize(instream);
         }
 
     }

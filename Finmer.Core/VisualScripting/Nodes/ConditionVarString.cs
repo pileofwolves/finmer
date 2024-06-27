@@ -51,10 +51,10 @@ namespace Finmer.Core.VisualScripting.Nodes
             Operand.Serialize(outstream);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             VariableName = instream.ReadStringProperty(nameof(VariableName));
-            Operand.Deserialize(instream, version);
+            Operand.Deserialize(instream);
         }
 
     }

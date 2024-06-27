@@ -23,7 +23,7 @@ namespace Finmer.Core.Serialization
         /// <summary>
         /// Load the object from an asset stream, overwriting existing instance data.
         /// </summary>
-        void Deserialize(IFurballContentReader instream, int version);
+        void Deserialize(IFurballContentReader instream);
 
     }
 

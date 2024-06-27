@@ -53,16 +53,16 @@ namespace Finmer.Core.Assets
             foreach (QuestStage stage in Stages)
             {
                 outstream.BeginObject();
-                outstream.WriteInt32Property("Key", stage.Key);
+                outstream.WriteCompressedInt32Property("Key", stage.Key);
                 outstream.WriteStringProperty("Text", stage.Text);
                 outstream.EndObject();
             }
             outstream.EndArray();
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             // Read metadata
             Title = instream.ReadStringProperty(nameof(Title));
@@ -74,7 +74,7 @@ namespace Finmer.Core.Assets
                 instream.BeginObject();
                 QuestStage stage = new QuestStage
                 {
-                    Key = instream.ReadInt32Property("Key"),
+                    Key = instream.ReadCompressedInt32Property("Key"),
                     Text = instream.ReadStringProperty("Text")
                 };
                 Stages.Add(stage);

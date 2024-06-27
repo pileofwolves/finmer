@@ -74,7 +74,7 @@ namespace Finmer.Core.VisualScripting.Nodes
                 outstream.WriteBooleanProperty(nameof(Quiet), Quiet);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             ItemGuid = instream.ReadGuidProperty(nameof(ItemGuid));
             Add = instream.ReadBooleanProperty(nameof(Add));

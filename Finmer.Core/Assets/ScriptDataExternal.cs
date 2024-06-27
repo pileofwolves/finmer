@@ -30,7 +30,7 @@ namespace Finmer.Core.Assets
             outstream.WriteAttachment(GetScriptAttachmentName(), source_utf8);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             // Look for an attachment file
             Name = instream.ReadStringProperty("Name");

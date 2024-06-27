@@ -48,6 +48,7 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Assets\SceneNode.cs" />
     <Compile Include="Assets\ScriptDataVisualCondition.cs" />
     <Compile Include="Assets\ScriptDataWrapper.cs" />
     <Compile Include="Assets\ScriptDataInline.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="Minidump.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBag.cs" />
+    <Compile Include="Serialization\EFurballObjectMode.cs" />
     <Compile Include="Serialization\FurballContentReaderBinary.cs" />
     <Compile Include="Serialization\FurballContentWriterBinary.cs" />
     <Compile Include="Serialization\IContentStore.cs" />

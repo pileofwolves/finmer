@@ -115,14 +115,18 @@ namespace Finmer.Editor
 
             // Convert it to a member of the generic enum
             if (!Enum.TryParse(name, out TEnum enum_value))
-                throw new FurballInvalidAssetException($"Property '{key}' has value '{name}' which is not a member of enum type '{enum_type.Name}'");
+                throw new FurballInvalidAssetException($"Property {key} at path {CurrentToken.Path} has value '{name}' which is not a member of enum type '{enum_type.Name}'");
 
             return enum_value;
         }
 
         public Guid ReadGuidProperty(string key)
         {
-            return Guid.Parse(ReadStringProperty(key));
+            var string_value = ReadStringProperty(key);
+            if (String.IsNullOrEmpty(string_value))
+                return Guid.Empty;
+
+            return Guid.Parse(string_value);
         }
 
         public string ReadStringProperty(string key)
@@ -134,7 +138,7 @@ namespace Finmer.Editor
                 // String properties may be omitted from the document, to help reduce file size.
                 // In that case, they are interpreted as empty strings.
                 JToken element = CurrentToken[key];
-                if (element == null)
+                if (element == null || element.Type == JTokenType.Null)
                     return String.Empty;
 
                 // Property is present; convert it to a string

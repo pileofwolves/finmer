@@ -59,6 +59,7 @@
     <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="LoadOrderDependency.cs" />
+    <Compile Include="Serialization\AbstractFurballSerializableAttribute.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />
     <Compile Include="Assets\AssetBase.cs" />
     <Compile Include="Assets\AssetJournal.cs" />

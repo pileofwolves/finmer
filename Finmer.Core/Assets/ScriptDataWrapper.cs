@@ -15,6 +15,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Contains a downstream ScriptData, transparently wrapped in order to enable type replacement in the editor.
     /// </summary>
+    [AbstractFurballSerializable]
     public sealed class ScriptDataWrapper : ScriptData
     {
 
@@ -80,11 +81,16 @@ namespace Finmer.Core.Assets
         /// </summary>
         public static void WriteScriptProperty(this IFurballContentWriter outstream, string key, ScriptData data)
         {
-            // If the script is empty, then don't bother serializing it at all
-            if (data != null && !data.HasContent())
-                data = null;
+            // Unwrap script wrappers, so we only write the type of the innermost wrapped script
+            ScriptData unwrapped = data;
+            while (unwrapped is ScriptDataWrapper wrapper)
+                unwrapped = wrapper.Wrapped;
 
-            outstream.WriteObjectProperty(key, data, EFurballObjectMode.Optional);
+            // If the script is empty, then don't bother serializing it at all
+            if (unwrapped != null && !data.HasContent())
+                unwrapped = null;
+
+            outstream.WriteObjectProperty(key, unwrapped, EFurballObjectMode.Optional);
         }
 
     }

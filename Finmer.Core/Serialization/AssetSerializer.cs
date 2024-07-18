@@ -13,7 +13,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
-using Finmer.Core.Assets;
 
 namespace Finmer.Core.Serialization
 {
@@ -38,7 +37,7 @@ namespace Finmer.Core.Serialization
             var assembly = Assembly.GetCallingAssembly();
             var furball_types = assembly.GetExportedTypes()
                 .Where(t => !t.IsAbstract && typeof(IFurballSerializable).IsAssignableFrom(t))
-                .Where(t => t != typeof(ScriptDataWrapper)); // Explicitly excluded, not meant to be serialized
+                .Where(t => t.GetCustomAttribute<AbstractFurballSerializableAttribute>() == null);
 
             // Register those types
             foreach (var type in furball_types)
@@ -87,16 +86,15 @@ namespace Finmer.Core.Serialization
         /// </summary>
         public static void SerializeAsset(IFurballContentWriter outstream, IFurballSerializable asset)
         {
-            // Unwrap script wrappers, so we only write the type ID of the innermost wrapped script
-            IFurballSerializable unwrapped_type = asset;
-            while (unwrapped_type is ScriptDataWrapper wrapper)
-                unwrapped_type = wrapper.Wrapped;
+            // Forbid serialization of types that have been marked as abstract
+            if (asset.GetType().GetCustomAttribute<AbstractFurballSerializableAttribute>() != null)
+                throw new FurballInvalidAssetException($"Cannot serialize type {asset.GetType().Name} because it is marked as abstract");
 
             // Write the type identifier to the stream
             if (outstream is FurballContentWriterBinary binary)
-                binary.WriteInt32Property(k_FurballObjectTypeKey, ComputeTypeHash(unwrapped_type.GetType()));
+                binary.WriteInt32Property(k_FurballObjectTypeKey, ComputeTypeHash(asset.GetType()));
             else
-                outstream.WriteStringProperty(k_FurballObjectTypeKey, unwrapped_type.GetType().Name);
+                outstream.WriteStringProperty(k_FurballObjectTypeKey, asset.GetType().Name);
 
             // Write asset contents
             asset.Serialize(outstream);

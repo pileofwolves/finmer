@@ -23,16 +23,19 @@ jobs:
     - name: Setup MSBuild
       uses: microsoft/setup-msbuild@v2
 
-    # Restore NuGet packages
+    # Build all executables
     - name: Restore packages
       run: msbuild $env:SolutionName /t:Restore /p:Configuration=$env:Configuration
-
-    # Build all executables
     - name: Build solution
       run: msbuild $env:SolutionName /p:Configuration=$env:Configuration
 
-    # Build the game content, to validate file integrity
+    # Build the game content to validate project file integrity
     - name: Pack Core module
       run: ${{env.CLIPath}} pack .\Modules\Projects\Core\Core.fnproj Core.furball
-    - name: Describe packaged Core module
-      run: ${{env.CLIPath}} show Core.furball
+
+    # Load content files to validate deserialization logic
+    - name: Module load check
+      run: |
+        ${{env.CLIPath}} show Core.furball
+        ${{env.CLIPath}} show .\Modules\Projects\Tests\Format19.furball
+        ${{env.CLIPath}} show .\Modules\Projects\Tests\Format20.furball

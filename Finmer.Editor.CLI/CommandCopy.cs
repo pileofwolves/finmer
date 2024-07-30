@@ -17,21 +17,21 @@ namespace Finmer.Editor.CLI
     /// <summary>
     /// Generic command for copying a module.
     /// </summary>
-    internal static class CommandCopy
+    public abstract class CommandCopy : Command
     {
 
         /// <summary>
-        /// Run the command.
+        /// Copy an input module from one device to another.
         /// </summary>
         /// <param name="file_list">List of file paths to operate on.</param>
         /// <param name="options">List of command line options.</param>
         /// <param name="in_device">Device to read the input module with.</param>
         /// <param name="out_device">Device to write the output module with.</param>
         /// <returns>Program exit code.</returns>
-        public static int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options, FurballFileDevice in_device, FurballFileDevice out_device)
+        protected int CopyInternal(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options, FurballFileDevice in_device, FurballFileDevice out_device)
         {
             if (file_list.Count != 2)
-                return CommandHelp.Run();
+                return ShowCommandUsage();
 
             // Interpret the file list as an input and output path
             var in_file = file_list[0];

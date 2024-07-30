@@ -43,12 +43,14 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Command.cs" />
     <Compile Include="CommandUnpack.cs" />
     <Compile Include="CommandPack.cs" />
     <Compile Include="CommandHelp.cs" />
     <Compile Include="CommandCopy.cs" />
     <Compile Include="CommandMerge.cs" />
     <Compile Include="CommandShow.cs" />
+    <Compile Include="Help.cs" />
     <Compile Include="Utilities.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

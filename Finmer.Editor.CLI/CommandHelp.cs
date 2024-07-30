@@ -7,6 +7,9 @@
  */
 
 using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Text;
 
 namespace Finmer.Editor.CLI
 {
@@ -14,59 +17,51 @@ namespace Finmer.Editor.CLI
     /// <summary>
     /// Command for displaying CLI usage help text.
     /// </summary>
-    internal static class CommandHelp
+    public sealed class CommandHelp : Command
     {
 
-        private const string k_HelpText = @"
-help
-    Displays this help text.
-
-show <path>
-    Loads the module at the specified path, and displays basic information
-    about it. Both Editor projects (fnproj) and Furball files are accepted.
-
-    Available options:
-    -v          List all individual asset files in the module.
-
-pack [options] <in-project> <out-furball>
-    Loads the Editor project at the specified path, and saves it as a Furball
-    at the specified output path.
-
-    Available options:
-    -y          Overwrite output file if it already exists.
-
-unpack <in-furball> <out-project>
-    Loads the Furball at the specified input path, and saves it as an Editor
-    project. The .fnproj file will be at the specified output path. Caution:
-    files for each asset in the module will be generated alongside the .fnproj
-    file. Using an empty folder as the destination is recommended.
-
-    Available options:
-    -y          Overwrite output file if it already exists.
-
-merge [options] <in1> <in2> <in...> <output>
-    Merges the input modules into one. Both Editor projects (fnproj) and
-    Furball files are accepted. The output path should be a Furball file. The
-    IDs of the input modules will be merged in a deterministic manner, so that
-    merging the same modules always results in the same merged module ID.
-
-    Available options:
-    -y          Overwrite output file if it already exists.
-    -title=     Specifies the merged module's title. Defaults to ""Merged Module"".
-    -author=    Specifies the merged module's author. Defaults to a list of all
-                authors of input modules.
-";
-
-        /// <summary>
-        /// .
-        /// </summary>
-        /// <returns>Program exit code.</returns>
-        public static int Run()
+        /// <inheritdoc />
+        public override IEnumerable<string> GetNames()
         {
-            // Write the help text
-            Console.WriteLine(k_HelpText);
+            // For convenience, we accept a few variations of 'help' switches that are common in other CLI programs
+            yield return "help";
+            yield return "-help";
+            yield return "/help";
+            yield return "?";
+            yield return "-?";
+            yield return "/?";
+        }
 
-            // Return failure error code to indicate no valid command was run
+        /// <inheritdoc />
+        public override Help GetHelp()
+        {
+            return new Help
+            {
+                Usage = String.Empty,
+                Description = "Display a list of available commands."
+            };
+        }
+
+        public override int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
+        {
+            // Build a string describing all supported commands
+            var builder = new StringBuilder();
+            builder.AppendLine();
+            builder.AppendLine("Available commands:");
+            builder.AppendLine();
+            foreach (var command in Program.Commands)
+            {
+                builder.Append(' ', 4);
+                builder.AppendLine(command.GetHelp().GetSynopsis(command));
+            }
+
+            builder.AppendLine();
+            builder.AppendLine("Run a command without arguments to view additional help.");
+
+            // Display it
+            Console.WriteLine(builder.ToString());
+
+            // Return failure error code to indicate no meaningful command was run
             return Program.k_ExitCode_Failure;
         }
 

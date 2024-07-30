@@ -20,19 +20,50 @@ namespace Finmer.Editor.CLI
     /// <summary>
     /// Command for merging multiple modules into one.
     /// </summary>
-    internal static class CommandMerge
+    public sealed class CommandMerge : Command
     {
 
-        /// <summary>
-        /// Run the command.
-        /// </summary>
-        /// <param name="file_list">List of file paths to operate on.</param>
-        /// <param name="options">List of command line options.</param>
-        /// <returns>Program exit code.</returns>
-        public static int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
+        /// <inheritdoc />
+        public override IEnumerable<string> GetNames()
+        {
+            yield return "merge";
+        }
+
+        /// <inheritdoc />
+        public override Help GetHelp()
+        {
+            return new Help
+            {
+                Usage = "<in1> <in2> <in...> <output>",
+                Description = "Merges the input modules into one. Both Editor projects (fnproj) and Furball files are accepted. " +
+                    "The last path specified is assumed to be the output, and should be a Furball file. The IDs of the input modules " +
+                    "will be merged in a deterministic manner, so that merging the same modules always results in the same merged module ID.",
+                Parameters = new List<Help.Parameter>
+                {
+                    new Help.Parameter
+                    {
+                        Name = "-y",
+                        Description = "Overwrite output file if it already exists."
+                    },
+                    new Help.Parameter
+                    {
+                        Name = "-title=",
+                        Description = "Set output module title. Default is \"Merged Module\"."
+                    },
+                    new Help.Parameter
+                    {
+                        Name = "-author=",
+                        Description = "Set output module author. Default is a list of all authors of input modules."
+                    }
+                }
+            };
+        }
+
+        /// <inheritdoc />
+        public override int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
         {
             if (file_list.Count < 2)
-                return CommandHelp.Run();
+                return ShowCommandUsage();
 
             // Parse the file list such that the last path is the output path, and all other paths are input modules
             var num_in_files = file_list.Count - 1;

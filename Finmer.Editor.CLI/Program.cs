@@ -21,8 +21,20 @@ namespace Finmer.Editor.CLI
     public static class Program
     {
 
-        public const int k_ExitCode_Success = 0;
-        public const int k_ExitCode_Failure = 1;
+        internal const int k_ExitCode_Success = 0;
+        internal const int k_ExitCode_Failure = 1;
+
+        /// <summary>
+        /// Collection of available CLI commands.
+        /// </summary>
+        internal static readonly List<Command> Commands = new List<Command>
+        {
+            new CommandHelp(),
+            new CommandShow(),
+            new CommandPack(),
+            new CommandUnpack(),
+            new CommandMerge(),
+        };
 
         /// <summary>
         /// Main entry point.
@@ -33,7 +45,7 @@ namespace Finmer.Editor.CLI
             if (args == null || args.Length == 0)
             {
                 WriteLogo(Array.Empty<string>());
-                return CommandHelp.Run();
+                return new CommandHelp().Run(Array.Empty<FileInfo>(), Array.Empty<string>());
             }
 
             // Parse the command line; all command line options after the first one (the main command) are additional info or switches
@@ -53,31 +65,14 @@ namespace Finmer.Editor.CLI
 
             try
             {
-                // Run the main command
-                var command = args[0].ToLowerInvariant();
-                switch (command)
-                {
-                    case @"help":
-                    case @"?": // A few common variants of the help switch, for ease of use
-                    case @"/?":
-                    case @"-?":
-                        return CommandHelp.Run();
+                // Find the requested command
+                var command_text = args[0].ToLowerInvariant();
+                var command = Commands.Find(candidate => candidate.GetNames().Contains(command_text));
+                if (command == null)
+                    return Utilities.DisplayError($"Unknown command: {command_text}. Run 'help' for usage details.");
 
-                    case @"show":
-                        return CommandShow.Run(file_list, options);
-
-                    case @"pack":
-                        return CommandPack.Run(file_list, options);
-
-                    case @"unpack":
-                        return CommandUnpack.Run(file_list, options);
-
-                    case @"merge":
-                        return CommandMerge.Run(file_list, options);
-
-                    default:
-                        return Utilities.DisplayError($"Unknown command: {command}. Run 'help' for usage details.");
-                }
+                // Run the command
+                return command.Run(file_list, options);
             }
             catch (FurballException ex)
             {

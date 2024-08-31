@@ -55,7 +55,7 @@ namespace Finmer.Gameplay
             {
                 using (var minidump = new FileStream(base_name + ".dmp", FileMode.Create))
                 {
-                    Minidump.Write(minidump.SafeFileHandle, Minidump.EMinidumpOptions.Normal, Minidump.EExceptionInfo.Present);
+                    Minidump.Write(minidump.SafeFileHandle, Minidump.EMinidumpOptions.Default, Minidump.EExceptionInfo.Present);
                 }
             }
             catch (Exception)

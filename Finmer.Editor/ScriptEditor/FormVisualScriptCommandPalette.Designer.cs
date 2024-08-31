@@ -750,8 +750,7 @@ namespace Finmer.Editor
             this.cmdTimeAdvance.Size = new System.Drawing.Size(176, 24);
             this.cmdTimeAdvance.TabIndex = 0;
             this.cmdTimeAdvance.Text = "Advance Clock by Hours";
-            this.ttpCommand.SetToolTip(this.cmdTimeAdvance, "Change the stage of a quest in the player\'s journal. If the quest is\r\nnot yet in " +
-        "the journal, it will be added.");
+            this.ttpCommand.SetToolTip(this.cmdTimeAdvance, "Advance the clock by a set number of hours.");
             this.cmdTimeAdvance.UseVisualStyleBackColor = true;
             this.cmdTimeAdvance.Click += new System.EventHandler(this.cmdTimeAdvance_Click);
             // 
@@ -762,7 +761,7 @@ namespace Finmer.Editor
             this.cmdTimeSetHour.Size = new System.Drawing.Size(176, 24);
             this.cmdTimeSetHour.TabIndex = 1;
             this.cmdTimeSetHour.Text = "Set Current Hour (0-23)";
-            this.ttpCommand.SetToolTip(this.cmdTimeSetHour, "Remove a quest from the player\'s journal, if it is there.");
+            this.ttpCommand.SetToolTip(this.cmdTimeSetHour, "Advance the clock as much as needed to reach a certain hour.");
             this.cmdTimeSetHour.UseVisualStyleBackColor = true;
             this.cmdTimeSetHour.Click += new System.EventHandler(this.cmdTimeSetHour_Click);
             // 

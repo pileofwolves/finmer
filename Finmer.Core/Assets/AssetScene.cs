@@ -20,17 +20,6 @@ namespace Finmer.Core.Assets
     {
 
         /// <summary>
-        /// Describes a patch injection point, relative to a State node.
-        /// </summary>
-        public enum ESceneInjectMode : byte
-        {
-            BeforeTarget,
-            AfterTarget,
-            InsideAtStart,
-            InsideAtEnd
-        }
-
-        /// <summary>
         /// The root node of the scene node tree.
         /// </summary>
         public SceneNode Root { get; set; }
@@ -61,27 +50,17 @@ namespace Finmer.Core.Assets
         public bool IsGameStart { get; set; }
 
         /// <summary>
-        /// Indicates whether this scene is a patch, meaning it adds or replaces nodes in another scene.
+        /// Indicates whether this scene is a patch group, meaning it contains patches that modify a target scene, such as by adding or removing nodes.
         /// </summary>
-        public bool IsPatch { get; set; }
+        public bool IsPatchGroup { get; set; }
 
         /// <summary>
-        /// The method with which to inject patch nodes. Relevant only if IsPatch is set.
+        /// The Asset ID of the target scene to inject a patch into. Relevant only if IsPatchGroup is set.
         /// </summary>
-        public ESceneInjectMode InjectMode { get; set; } = ESceneInjectMode.AfterTarget;
+        public Guid PatchTargetScene { get; set; } = Guid.Empty;
 
         /// <summary>
-        /// The Asset ID of the target scene to inject a patch into. Relevant only if IsPatch is set.
-        /// </summary>
-        public Guid InjectTargetScene { get; set; } = Guid.Empty;
-
-        /// <summary>
-        /// The name of the scene node in the target scene into which to inject a patch. Relevant only if IsPatch is set.
-        /// </summary>
-        public string InjectTargetNode { get; set; } = String.Empty;
-
-        /// <summary>
-        /// User-friendly description of the game start.
+        /// User-friendly description of the game start. Relevant only if IsGameStart is set.
         /// </summary>
         public string GameStartDescription { get; set; } = String.Empty;
 
@@ -100,13 +79,9 @@ namespace Finmer.Core.Assets
                 outstream.WriteStringProperty(nameof(GameStartDescription), GameStartDescription);
 
             // Patching settings
-            outstream.WriteBooleanProperty(nameof(IsPatch), IsPatch);
-            if (IsPatch)
-            {
-                outstream.WriteEnumProperty(nameof(InjectMode), InjectMode);
-                outstream.WriteGuidProperty(nameof(InjectTargetScene), InjectTargetScene);
-                outstream.WriteStringProperty(nameof(InjectTargetNode), InjectTargetNode);
-            }
+            outstream.WriteBooleanProperty(nameof(IsPatchGroup), IsPatchGroup);
+            if (IsPatchGroup)
+                outstream.WriteGuidProperty(nameof(PatchTargetScene), PatchTargetScene);
 
             // Scene node hierarchy
             outstream.BeginObject(nameof(Root));
@@ -140,12 +115,16 @@ namespace Finmer.Core.Assets
                 ScriptLeave.Name = Name + "_Leave";
 
             // Read modding/injection settings
-            IsPatch = instream.ReadBooleanProperty(nameof(IsPatch));
-            if (IsPatch)
+            if (instream.GetFormatVersion() >= 21)
             {
-                InjectMode = instream.ReadEnumProperty<ESceneInjectMode>(nameof(InjectMode));
-                InjectTargetScene = instream.ReadGuidProperty(nameof(InjectTargetScene));
-                InjectTargetNode = instream.ReadStringProperty(nameof(InjectTargetNode));
+                IsPatchGroup = instream.ReadBooleanProperty(nameof(IsPatchGroup));
+                if (IsPatchGroup)
+                    PatchTargetScene = instream.ReadGuidProperty(nameof(PatchTargetScene));
+            }
+            else
+            {
+                // Because patch configuration has moved to a different object, read the old header out-of-line and store it for later use
+                V20ConversionUtil.ReadV20PatchSettings(this, instream);
             }
 
             // Read the scene node tree recursively
@@ -153,6 +132,10 @@ namespace Finmer.Core.Assets
             Root = new SceneNode();
             Root.Deserialize(instream);
             instream.EndObject();
+
+            // Upgrade legacy patches to the new V21 format
+            if (IsPatchGroup && instream.GetFormatVersion() < 21)
+                V20ConversionUtil.WrapV20Patch(this);
         }
 
         /// <summary>

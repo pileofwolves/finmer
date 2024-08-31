@@ -16,14 +16,29 @@ namespace Finmer.Core.Compilers
     /// The exception that is thrown by the SceneCompiler if an AssetScene cannot be compiled.
     /// </summary>
     [Serializable]
-    public sealed class SceneCompilerException : ApplicationException
+    public class SceneCompilerException : ApplicationException
     {
 
-        private SceneCompilerException(SerializationInfo info, StreamingContext context) : base(info, context) {}
+        protected SceneCompilerException(SerializationInfo info, StreamingContext context) : base(info, context) {}
 
         public SceneCompilerException(string message) : base(message) { }
 
         public SceneCompilerException(string message, Exception innerException) : base(message, innerException) { }
+
+    }
+
+    /// <summary>
+    /// Represents the exception that is thrown when reading or applying of a scene patch fails.
+    /// </summary>
+    [Serializable]
+    public sealed class InvalidScenePatchException : SceneCompilerException
+    {
+
+        private InvalidScenePatchException(SerializationInfo info, StreamingContext context) : base(info, context) { }
+
+        public InvalidScenePatchException(string message) : base(message) { }
+
+        public InvalidScenePatchException(string message, Exception inner) : base(message, inner) { }
 
     }
 

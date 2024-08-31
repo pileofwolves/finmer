@@ -91,7 +91,7 @@ namespace Finmer.Editor.CLI
             Console.WriteLine();
             Console.WriteLine("=== Asset Summary ===");
             Console.WriteLine($"Total:            {module.Assets.Count}");
-            Console.WriteLine($"Scenes:           {module.Assets.OfType<AssetScene>().Count()} ({module.Assets.OfType<AssetScene>().Count(scene => scene.IsPatch)} patches)");
+            Console.WriteLine($"Scenes:           {module.Assets.OfType<AssetScene>().Count()} ({module.Assets.OfType<AssetScene>().Count(scene => scene.IsPatchGroup)} patches)");
             Console.WriteLine($"Creatures:        {module.Assets.OfType<AssetCreature>().Count()}");
             Console.WriteLine($"Items:            {module.Assets.OfType<AssetItem>().Count()}");
             Console.WriteLine($"String Tables:    {module.Assets.OfType<AssetStringTable>().Count()}");

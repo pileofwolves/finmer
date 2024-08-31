@@ -109,79 +109,60 @@ namespace Finmer.Gameplay
         }
 
         /// <summary>
-        /// Inject all scene patches.
+        /// Apply all scene patches.
         /// </summary>
         private static void CompileScenePatches()
         {
             try
             {
-                // Find all scene patches and inject them
+                // Find all scene patches and apply them
                 foreach (AssetScene scene in GameController.Content.GetAssetsByType<AssetScene>())
-                    if (scene.IsPatch)
-                        InjectScenePatch(scene);
+                    if (scene.IsPatchGroup)
+                        ApplyPatchGroup(scene);
             }
-            catch (SceneCompilerException ex)
+            catch (InvalidScenePatchException ex)
             {
                 throw new LoaderException("Error while applying scene patches:\r\n" + ex.Message, ex);
             }
         }
 
         /// <summary>
-        /// Process an individual scene patch.
+        /// Process an individual scene patch group.
         /// </summary>
-        /// <param name="patch">The patch to process.</param>
-        private static void InjectScenePatch(AssetScene patch)
+        /// <param name="patch_group">The patch group to process.</param>
+        private static void ApplyPatchGroup(AssetScene patch_group)
         {
-            // Game start scenes cannot be patches
-            if (patch.IsGameStart)
-                throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' is also a game start; this is not allowed. Please either make the scene not a patch, or not a game start.");
-
-            // Find the target scene
-            var target_scene = GameController.Content.GetAssetByID(patch.InjectTargetScene) as AssetScene;
-            if (target_scene == null)
-                throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into target scene with GUID {patch.InjectTargetScene}, but no such scene was found.");
-
-            // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
-            if (target_scene == patch)
-                throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into itself. This is not supported.");
-
-            // Find the anchor node the patch should be added to
-            SceneNode target_node = target_scene.GetNodeByKey(patch.InjectTargetNode);
-            if (target_node == null)
-                throw new SceneCompilerException(
-                    $"Patch '{patch.Name}' in module '{patch.Module.Title}' requested injection into target Scene '{target_scene.Name}' at node '{patch.InjectTargetNode}', but no such node was found.");
-
-            // Find the injection point (target parent node) and the index at which to insert our patch
-            SceneNode insert_parent;
-            int insert_index;
-            switch (patch.InjectMode)
+            try
             {
-                case AssetScene.ESceneInjectMode.BeforeTarget:
-                    insert_parent = target_node.Parent;
-                    insert_index = insert_parent.Children.IndexOf(target_node);
-                    break;
-                case AssetScene.ESceneInjectMode.AfterTarget:
-                    insert_parent = target_node.Parent;
-                    insert_index = insert_parent.Children.IndexOf(target_node) + 1;
-                    break;
-                case AssetScene.ESceneInjectMode.InsideAtStart:
-                    insert_parent = target_node;
-                    insert_index = 0;
-                    break;
-                case AssetScene.ESceneInjectMode.InsideAtEnd:
-                    insert_parent = target_node;
-                    insert_index = insert_parent.Children.Count;
-                    break;
-                default:
-                    throw new SceneCompilerException($"Patch '{patch.Name}' in module '{patch.Module.Title}' requested invalid injection mode. Module file is likely corrupt.");
-            }
+                // Game start scenes cannot be patches
+                if (patch_group.IsGameStart)
+                    throw new InvalidScenePatchException("Patch group is also a game start; this is not allowed. Please either make the scene not a patch, or not a game start.");
 
-            // Insert the patch nodes into the target scene
-            foreach (SceneNode patch_node in patch.Root.Children)
-                insert_parent.Children.Insert(insert_index++, patch_node);
+                // Find the target scene
+                var target_scene = GameController.Content.GetAssetByID(patch_group.PatchTargetScene) as AssetScene;
+                if (target_scene == null)
+                    throw new InvalidScenePatchException($"Target scene with GUID {patch_group.PatchTargetScene} could not be found.");
+
+                // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
+                if (target_scene == patch_group)
+                    throw new InvalidScenePatchException("Target scene is the patch group itself. This is not supported.");
+
+                // Find all patches within this patch group
+                foreach (var patch in patch_group.Root.Children)
+                {
+                    // Ensure that this node is actually a patch, so it includes a PatchData object
+                    if (patch.NodeType != SceneNode.ENodeType.Patch)
+                        throw new InvalidScenePatchException($"Patch '{patch.Key}' has invalid node type {patch.NodeType}. Module file may be corrupted.");
+
+                    // Apply this patch onto the target scene
+                    patch.PatchData.Apply(target_scene, patch, GameController.Content);
+                }
+            }
+            catch (InvalidScenePatchException ex)
+            {
+                // Add context of the patch group onto the exception, then rethrow as nested exception
+                throw new InvalidScenePatchException($"Patch group '{patch_group.Name}' in module '{patch_group.Module.Title}' could not be applied: {ex.Message}", ex);
+            }
         }
 
         /// <summary>
@@ -239,7 +220,7 @@ namespace Finmer.Gameplay
                     try
                     {
                         // Convert the scene graph into a Lua script, and precompile the Lua script as well
-                        if (!scene.IsPatch)
+                        if (!scene.IsPatchGroup)
                             SceneCompiler.Compile(scene, script_compiler, content);
 
                         // Discard the scene graph since it is no longer needed and will just take up space

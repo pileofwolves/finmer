@@ -156,9 +156,16 @@ end"
             if (state.NodeNames.Contains(node.Key))
                 throw new SceneCompilerException($"Node key '{node.Key}' is used more than once.");
 
+            // The root node has a fixed name
+            if (node.Parent == null)
+            {
+                Debug.Assert(String.IsNullOrEmpty(node.Key));
+                node.Key = @"_Root_";
+            }
+
             // Sanity checks that indicate deserialization errors
-            Debug.Assert(node.IsFullNode() || node.Children.Count == 0,
-                $"Node '{node.Key}' is a link, but also contains child nodes. This indicates a deserialization bug.");
+            Debug.Assert(node.Features.HasFlag(SceneNode.ENodeFeature.Children) || node.Children.Count == 0,
+                $"Node '{node.Key}' is a leaf node, but also contains child nodes. This indicates a deserialization bug.");
 
             // Enqueue all children
             foreach (Node child in node.Children)
@@ -198,7 +205,7 @@ end"
             }
 
             // Track the node name so we can verify its uniqueness
-            if (node.IsFullNode())
+            if (node.Features.HasFlag(SceneNode.ENodeFeature.Key))
                 state.NodeNames.Add(node.Key);
 
             // Generate code for the downstream node.
@@ -255,6 +262,8 @@ end"
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is a state, but parent '{node.Parent.Key}' is also a state; this is not supported");
                     if (resolved_child.NodeType == SceneNode.ENodeType.Link)
                         throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is also a link. Recursive link resolving is not supported.");
+                    if (resolved_child.NodeType == SceneNode.ENodeType.Patch)
+                        throw new SceneCompilerException($"Node '{node.Key}' contains a link to '{link_target_key}' which is a Patch. This is not supported.");
                 }
 
                 // Generate code for the resolved child node

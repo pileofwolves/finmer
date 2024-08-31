@@ -48,6 +48,10 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Assets\PatchType.cs" />
+    <Compile Include="Assets\PatchTypeTargetNodeBase.cs" />
+    <Compile Include="Assets\PatchTypeAddNodes.cs" />
+    <Compile Include="Assets\V20ConversionUtil.cs" />
     <Compile Include="Assets\SceneNode.cs" />
     <Compile Include="Assets\ScriptDataVisualCondition.cs" />
     <Compile Include="Assets\ScriptDataWrapper.cs" />

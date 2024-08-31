@@ -28,7 +28,8 @@ namespace Finmer.Core.Assets
             State,
             Choice,
             Link,
-            Compass
+            Compass,
+            Patch
         }
 
         /// <summary>
@@ -43,9 +44,26 @@ namespace Finmer.Core.Assets
         }
 
         /// <summary>
+        /// Bitmask of relevant features for a node.
+        /// </summary>
+        [Flags]
+        public enum ENodeFeature : byte
+        {
+            None                = 0,
+            Key                 = 1 << 0,
+            Children            = 1 << 1,
+            Scripts             = 1 << 2
+        }
+
+        /// <summary>
         /// The specialization / intended purpose of this node.
         /// </summary>
         public ENodeType NodeType { get; set; }
+
+        /// <summary>
+        /// Returns the feature set associated with this node's type.
+        /// </summary>
+        public ENodeFeature Features => GetFeaturesForType(NodeType);
 
         /// <summary>
         /// The unique identifier of this node. May be an empty string, in which case a key should be auto-generated.
@@ -98,6 +116,11 @@ namespace Finmer.Core.Assets
         public ScriptData ScriptAppear { get; set; }
 
         /// <summary>
+        /// Patch nodes: Configuration describing how to apply the patch.
+        /// </summary>
+        public PatchType PatchData { get; set; }
+
+        /// <summary>
         /// State, Choice nodes: Tree of downstream scene nodes.
         /// </summary>
         public List<SceneNode> Children { get; } = new List<SceneNode>();
@@ -107,22 +130,15 @@ namespace Finmer.Core.Assets
         /// </summary>
         public SceneNode Parent { get; set; }
 
-        /// <summary>
-        /// Indicates whether this node is a full member of the scene tree and can have child nodes. If false, the node is a leaf node.
-        /// </summary>
-        public bool IsFullNode()
-        {
-            return NodeType == ENodeType.Root || NodeType == ENodeType.Choice || NodeType == ENodeType.State;
-        }
-
+        /// <inheritdoc />
         public void Serialize(IFurballContentWriter outstream)
         {
-            // Core metadata
+            // Node type is written first, since that determines which fields follow
             outstream.WriteEnumProperty(nameof(NodeType), NodeType);
-            outstream.WriteStringProperty(nameof(Key), Key);
 
-            bool write_scripts = false;
-            bool write_children = false;
+            // Not all types of nodes have keys; strip keys for 
+            if (Features.HasFlag(ENodeFeature.Key))
+                outstream.WriteStringProperty(nameof(Key), Key);
 
             // Node-specific metadata
             switch (NodeType)
@@ -133,17 +149,6 @@ namespace Finmer.Core.Assets
                     outstream.WriteStringProperty(nameof(Tooltip), Tooltip);
                     outstream.WriteBooleanProperty(nameof(Highlight), Highlight);
                     outstream.WriteFloatProperty(nameof(ButtonWidth), ButtonWidth);
-                    write_scripts = true;
-                    write_children = true;
-                    break;
-
-                case ENodeType.State:
-                    write_scripts = true;
-                    write_children = true;
-                    break;
-
-                case ENodeType.Root:
-                    write_children = true;
                     break;
 
                 case ENodeType.Link:
@@ -155,18 +160,22 @@ namespace Finmer.Core.Assets
                     // Compass link configuration
                     outstream.WriteEnumProperty(nameof(CompassLinkDirection), CompassLinkDirection);
                     outstream.WriteGuidProperty(nameof(CompassLinkScene), CompassLinkScene);
-                    write_scripts = true;
+                    break;
+
+                case ENodeType.Patch:
+                    // Patch configuration
+                    outstream.WriteObjectProperty(nameof(PatchData), PatchData, EFurballObjectMode.Required);
                     break;
             }
 
-            if (write_scripts)
+            if (Features.HasFlag(ENodeFeature.Scripts))
             {
                 // Write node scripts
                 outstream.WriteScriptProperty(nameof(ScriptAction), ScriptAction);
                 outstream.WriteScriptProperty(nameof(ScriptAppear), ScriptAppear);
             }
 
-            if (write_children)
+            if (Features.HasFlag(ENodeFeature.Children))
             {
                 // Recursively serialize child nodes
                 outstream.BeginArray(nameof(Children), Children.Count);
@@ -180,14 +189,15 @@ namespace Finmer.Core.Assets
             }
         }
 
+        /// <inheritdoc />
         public void Deserialize(IFurballContentReader instream)
         {
             // Core metadata
             NodeType = instream.ReadEnumProperty<ENodeType>(nameof(NodeType));
-            Key = instream.ReadStringProperty(nameof(Key));
 
-            bool read_scripts = false;
-            bool read_children = false;
+            // As of format version 21, the key is omitted for node types that don't need one
+            if (Features.HasFlag(ENodeFeature.Key) || instream.GetFormatVersion() < 21)
+                Key = instream.ReadStringProperty(nameof(Key));
 
             // Read node-specific settings
             switch (NodeType)
@@ -197,17 +207,6 @@ namespace Finmer.Core.Assets
                     Tooltip = instream.ReadStringProperty(nameof(Tooltip));
                     Highlight = instream.ReadBooleanProperty(nameof(Highlight));
                     ButtonWidth = instream.ReadFloatProperty(nameof(ButtonWidth));
-                    read_scripts = true;
-                    read_children = true;
-                    break;
-
-                case ENodeType.State:
-                    read_scripts = true;
-                    read_children = true;
-                    break;
-
-                case ENodeType.Root:
-                    read_children = true;
                     break;
 
                 case ENodeType.Link:
@@ -217,11 +216,14 @@ namespace Finmer.Core.Assets
                 case ENodeType.Compass:
                     CompassLinkDirection = instream.ReadEnumProperty<ECompassDirection>(nameof(CompassLinkDirection));
                     CompassLinkScene = instream.ReadGuidProperty(nameof(CompassLinkScene));
-                    read_scripts = true;
+                    break;
+
+                case ENodeType.Patch:
+                    PatchData = instream.ReadObjectProperty<PatchType>(nameof(PatchData), EFurballObjectMode.Required);
                     break;
             }
 
-            if (read_scripts)
+            if (Features.HasFlag(ENodeFeature.Scripts))
             {
                 // Deserialize scripts
                 ScriptAction = instream.ReadObjectProperty<ScriptData>(nameof(ScriptAction), EFurballObjectMode.Optional);
@@ -234,7 +236,7 @@ namespace Finmer.Core.Assets
                     ScriptAppear.Name = Key + "/AppearsWhen";
             }
 
-            if (read_children)
+            if (Features.HasFlag(ENodeFeature.Children))
             {
                 // Recursively deserialize child nodes
                 Children.Clear();
@@ -251,6 +253,23 @@ namespace Finmer.Core.Assets
                     instream.EndObject();
                 }
                 instream.EndArray();
+            }
+        }
+
+        /// <summary>
+        /// Returns the feature set expected for the specified node type.
+        /// </summary>
+        private ENodeFeature GetFeaturesForType(ENodeType type)
+        {
+            switch (type)
+            {
+                case ENodeType.Root:            return ENodeFeature.Children;
+                case ENodeType.State:           return ENodeFeature.Key | ENodeFeature.Children | ENodeFeature.Scripts;
+                case ENodeType.Choice:          return ENodeFeature.Key | ENodeFeature.Children | ENodeFeature.Scripts;
+                case ENodeType.Link:            return ENodeFeature.None;
+                case ENodeType.Compass:         return ENodeFeature.Key | ENodeFeature.Scripts;
+                case ENodeType.Patch:           return ENodeFeature.Key | (PatchData?.GetPatchRootFeatures() ?? ENodeFeature.None);
+                default:                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }
 

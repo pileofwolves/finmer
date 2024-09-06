@@ -800,25 +800,48 @@ namespace Finmer.Editor
 
         private void chkRootInject_CheckedChanged(object sender, EventArgs e)
         {
-            bool inject = chkRootInject.Checked;
-            pnlInjectionSettings.Visible = inject;
-            tsbScriptCustom.Enabled = !inject;
-            tsbScriptEnter.Enabled = !inject;
-            tsbScriptLeave.Enabled = !inject;
+            // If the patch mode isn't actually being changed, no need to do anything (relevant for the checkbox being reverted, see below)
+            if (chkRootInject.Checked == m_Scene.IsPatchGroup)
+                return;
+
+            // If the scene already has nodes in it, they must be deleted
+            if (!m_SkipDirtyUpdates && m_Scene.Root.Children.Count != 0)
+            {
+                if (MessageBox.Show("To change the patch group setting, all nodes in the scene must be removed. If you wish to keep them, Copy (Ctrl+C) or Cut (Ctrl+X) them onto the clipboard first.\r\n\r\nWould you like to continue and erase the scene contents?",
+                        "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                {
+                    // Set the checkbox back to its previous value
+                    chkRootInject.Checked = m_Scene.IsPatchGroup;
+                    return;
+                }
+
+                // Erase the scene contents
+                m_Scene.Root.Children.Clear();
+                trvNodes.Nodes.Clear();
+                AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root, true);
+            }
+
+            // Invert state of the patch group
+            bool is_patch_group = chkRootInject.Checked;
+            pnlInjectionSettings.Visible = is_patch_group;
+            tsbScriptCustom.Enabled = !is_patch_group;
+            tsbScriptEnter.Enabled = !is_patch_group;
+            tsbScriptLeave.Enabled = !is_patch_group;
 
             // Do not mark asset as dirty if UI is being set up
             if (m_SkipDirtyUpdates)
                 return;
 
-            // Uncheck game start if checking patch
-            if (inject)
+            // Uncheck game start if checking patch, since they are mutually exclusive
+            if (is_patch_group)
                 chkRootGameStart.Checked = false;
 
             // Update scene data
-            m_Scene.IsPatchGroup = inject;
-            Dirty = true;
+            m_Scene.IsPatchGroup = is_patch_group;
 
-            // Update icon on main form
+            // Update UI with changed settings
+            Dirty = true;
+            UpdateToolbar();
             Program.MainForm.UpdateAssetIcon(m_Scene);
         }
 

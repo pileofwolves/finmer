@@ -41,26 +41,28 @@
             System.Windows.Forms.Label lblGameStartDesc;
             System.Windows.Forms.Label lblPatchAddTarget;
             System.Windows.Forms.Label lblPatchAddKey;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentScene));
+            System.Windows.Forms.ToolStripMenuItem mnuAddPatchHeader;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
             this.toolStrip = new System.Windows.Forms.ToolStrip();
             this.tsbAddPatch = new System.Windows.Forms.ToolStripDropDownButton();
-            this.tsbAddPatchNodeAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddPatchNodeAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAddNode = new System.Windows.Forms.ToolStripButton();
             this.tsbRemoveNode = new System.Windows.Forms.ToolStripButton();
             this.tsbAddLink = new System.Windows.Forms.ToolStripButton();
             this.tsbAddCompass = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMoveUp = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClipboardCut = new System.Windows.Forms.ToolStripButton();
             this.tsbClipboardCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbClipboardPaste = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbScriptCustom = new System.Windows.Forms.ToolStripButton();
             this.tsbScriptEnter = new System.Windows.Forms.ToolStripButton();
             this.tsbScriptLeave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExpand = new System.Windows.Forms.ToolStripButton();
             this.tsbCollapse = new System.Windows.Forms.ToolStripButton();
             this.splitNodeList = new System.Windows.Forms.SplitContainer();
@@ -112,6 +114,12 @@
             lblGameStartDesc = new System.Windows.Forms.Label();
             lblPatchAddTarget = new System.Windows.Forms.Label();
             lblPatchAddKey = new System.Windows.Forms.Label();
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            mnuAddPatchHeader = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -264,18 +272,18 @@
             this.tsbRemoveNode,
             this.tsbAddLink,
             this.tsbAddCompass,
-            this.toolStripSeparator1,
+            toolStripSeparator1,
             this.tsbMoveUp,
             this.tsbMoveDown,
-            this.toolStripSeparator4,
+            toolStripSeparator4,
             this.tsbClipboardCut,
             this.tsbClipboardCopy,
             this.tsbClipboardPaste,
-            this.toolStripSeparator3,
+            toolStripSeparator3,
             this.tsbScriptCustom,
             this.tsbScriptEnter,
             this.tsbScriptLeave,
-            this.toolStripSeparator2,
+            toolStripSeparator2,
             this.tsbExpand,
             this.tsbCollapse});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
@@ -287,7 +295,9 @@
             // tsbAddPatch
             // 
             this.tsbAddPatch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.tsbAddPatchNodeAdd});
+            mnuAddPatchHeader,
+            toolStripSeparator5,
+            this.mnuAddPatchNodeAdd});
             this.tsbAddPatch.Image = global::Finmer.Editor.Properties.Resources.plus;
             this.tsbAddPatch.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.tsbAddPatch.Name = "tsbAddPatch";
@@ -296,11 +306,12 @@
             this.tsbAddPatch.ToolTipText = "Add New Patch to Patch Group";
             this.tsbAddPatch.Visible = false;
             // 
-            // tsbAddPatchNodeAdd
+            // mnuAddPatchNodeAdd
             // 
-            this.tsbAddPatchNodeAdd.Name = "tsbAddPatchNodeAdd";
-            this.tsbAddPatchNodeAdd.Size = new System.Drawing.Size(133, 22);
-            this.tsbAddPatchNodeAdd.Text = "Add Nodes";
+            this.mnuAddPatchNodeAdd.Name = "mnuAddPatchNodeAdd";
+            this.mnuAddPatchNodeAdd.Size = new System.Drawing.Size(181, 22);
+            this.mnuAddPatchNodeAdd.Text = "Add/Insert Nodes";
+            this.mnuAddPatchNodeAdd.Click += new System.EventHandler(this.mnuAddPatchNodeAdd_Click);
             // 
             // tsbAddNode
             // 
@@ -345,8 +356,8 @@
             // 
             // toolStripSeparator1
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbMoveUp
             // 
@@ -372,8 +383,8 @@
             // 
             // toolStripSeparator4
             // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbClipboardCut
             // 
@@ -410,8 +421,8 @@
             // 
             // toolStripSeparator3
             // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbScriptCustom
             // 
@@ -448,8 +459,8 @@
             // 
             // toolStripSeparator2
             // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbExpand
             // 
@@ -929,6 +940,18 @@
             this.scriptAppear.Size = new System.Drawing.Size(657, 236);
             this.scriptAppear.TabIndex = 0;
             // 
+            // mnuAddPatchHeader
+            // 
+            mnuAddPatchHeader.Enabled = false;
+            mnuAddPatchHeader.Name = "mnuAddPatchHeader";
+            mnuAddPatchHeader.Size = new System.Drawing.Size(181, 22);
+            mnuAddPatchHeader.Text = "Select type of patch:";
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new System.Drawing.Size(178, 6);
+            // 
             // FormDocumentScene
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -985,10 +1008,8 @@
 		private System.Windows.Forms.ComboBox cmbLinkTarget;
 		private System.Windows.Forms.ToolStripButton tsbAddNode;
 		private System.Windows.Forms.ToolStripButton tsbRemoveNode;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton tsbScriptEnter;
 		private System.Windows.Forms.ToolStripButton tsbScriptLeave;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton tsbExpand;
 		private System.Windows.Forms.ToolStripButton tsbCollapse;
 		private System.Windows.Forms.TabPage tbpScriptAction;
@@ -997,7 +1018,6 @@
 		private System.Windows.Forms.ImageList imlNodeIcons;
 		private System.Windows.Forms.TextBox txtNodeStateKey;
 		private System.Windows.Forms.ToolStripButton tsbScriptCustom;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton tsbMoveUp;
 		private System.Windows.Forms.ToolStripButton tsbMoveDown;
 		private System.Windows.Forms.TextBox txtNodeChoiceTitle;
@@ -1025,7 +1045,6 @@
         private System.Windows.Forms.Panel pnlGameStartSettings;
         private System.Windows.Forms.TextBox txtGameStartDesc;
         private System.Windows.Forms.CheckBox chkRootGameStart;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbClipboardCut;
         private System.Windows.Forms.ToolStripButton tsbClipboardCopy;
         private System.Windows.Forms.ToolStripButton tsbClipboardPaste;
@@ -1034,6 +1053,6 @@
         private System.Windows.Forms.ComboBox cmbPatchAddMode;
         private System.Windows.Forms.TextBox txtNodePatchAddKey;
         private System.Windows.Forms.ToolStripDropDownButton tsbAddPatch;
-        private System.Windows.Forms.ToolStripMenuItem tsbAddPatchNodeAdd;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddPatchNodeAdd;
     }
 }

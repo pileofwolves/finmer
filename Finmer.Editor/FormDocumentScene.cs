@@ -533,6 +533,23 @@ namespace Finmer.Editor
             trvNodes.CollapseAll();
         }
 
+        private void mnuAddPatchNodeAdd_Click(object sender, EventArgs e)
+        {
+            Debug.Assert(m_SelectedNode.NodeType == SceneNode.ENodeType.Root);
+
+            // Generate a new Patch
+            var node = new SceneNode
+            {
+                NodeType = SceneNode.ENodeType.Patch,
+                Parent = m_Scene.Root,
+                PatchData = new PatchTypeAddNodes()
+            };
+
+            // Append it to the scene tree
+            m_SelectedNode.Children.Add(node);
+            AddNodeToTreeView(m_SelectedTree.Nodes, node, true);
+        }
+
         private void txtNodeKey_TextChanged(object sender, EventArgs e)
         {
             if (m_SkipDirtyUpdates) return;

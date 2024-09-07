@@ -273,7 +273,7 @@ namespace Finmer.Editor
                     bool patch_is_resolved = IsPatchNodeResolved(scene_node);
                     tree_node.ImageKey = patch_is_resolved ? "node_patch" : "node_patch_error";
                     break;
-            }
+                }
             }
 
             tree_node.SelectedImageKey = tree_node.ImageKey;
@@ -828,28 +828,32 @@ namespace Finmer.Editor
 
         private void chkRootInject_CheckedChanged(object sender, EventArgs e)
         {
-            // If the patch mode isn't actually being changed, no need to do anything (relevant for the checkbox being reverted, see below)
-            if (chkRootInject.Checked == m_Scene.IsPatchGroup)
-                return;
-
-            // If the scene already has nodes in it, they must be deleted
-            if (!m_SkipDirtyUpdates && m_Scene.Root.Children.Count != 0)
+            // Skip interaction checks when the UI is being set up on startup
+            if (!m_SkipDirtyUpdates)
             {
-                if (MessageBox.Show("To change the patch group setting, all nodes in the scene must be removed. If you wish to keep them, Copy (Ctrl+C) or Cut (Ctrl+X) them onto the clipboard first.\r\n\r\nWould you like to continue and erase the scene contents?",
-                        "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
-                {
-                    // Set the checkbox back to its previous value
-                    chkRootInject.Checked = m_Scene.IsPatchGroup;
+                // If the patch mode isn't actually being changed, no need to do anything (relevant for the checkbox being reverted, see below)
+                if (chkRootInject.Checked == m_Scene.IsPatchGroup)
                     return;
-                }
 
-                // Erase the scene contents
-                m_Scene.Root.Children.Clear();
-                trvNodes.Nodes.Clear();
-                AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root, true);
+                // If the scene already has nodes in it, they must be deleted
+                if (m_Scene.Root.Children.Count != 0)
+                {
+                    if (MessageBox.Show("To change the patch group setting, all nodes in the scene must be removed. If you wish to keep them, Copy (Ctrl+C) or Cut (Ctrl+X) them onto the clipboard first.\r\n\r\nWould you like to continue and erase the scene contents?",
+                            "Finmer Editor", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button2) == DialogResult.No)
+                    {
+                        // Set the checkbox back to its previous value
+                        chkRootInject.Checked = m_Scene.IsPatchGroup;
+                        return;
+                    }
+
+                    // Erase the scene contents
+                    m_Scene.Root.Children.Clear();
+                    trvNodes.Nodes.Clear();
+                    AddNodeToTreeView(trvNodes.Nodes, m_Scene.Root, true);
+                }
             }
 
-            // Invert state of the patch group
+            // Update UI configuration
             bool is_patch_group = chkRootInject.Checked;
             pnlInjectionSettings.Visible = is_patch_group;
             tsbScriptCustom.Enabled = !is_patch_group;

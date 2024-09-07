@@ -530,6 +530,7 @@
             this.imlNodeIcons.Images.SetKeyName(3, "node_link");
             this.imlNodeIcons.Images.SetKeyName(4, "node_compass");
             this.imlNodeIcons.Images.SetKeyName(5, "node_patch");
+            this.imlNodeIcons.Images.SetKeyName(6, "node_patch_error");
             // 
             // splitNodeSettings
             // 

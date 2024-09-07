@@ -257,20 +257,26 @@ namespace Finmer.Editor
             trvNodes.Focus();
         }
 
-        private void UpdateNodeImage(TreeNode treeNode, SceneNode sceneNode)
+        private void UpdateNodeImage(TreeNode tree_node, SceneNode scene_node)
         {
             // Select the appropriate image for this node
-            switch (sceneNode.NodeType)
+            switch (scene_node.NodeType)
             {
-                case SceneNode.ENodeType.Root:          treeNode.ImageKey = "node_root";            break;
-                case SceneNode.ENodeType.Link:          treeNode.ImageKey = "node_link";            break;
-                case SceneNode.ENodeType.Compass:       treeNode.ImageKey = "node_compass";         break;
-                case SceneNode.ENodeType.State:         treeNode.ImageKey = "node_state";           break;
-                case SceneNode.ENodeType.Choice:        treeNode.ImageKey = "node_choice";          break;
-                case SceneNode.ENodeType.Patch:         treeNode.ImageKey = "node_patch";           break;
+                case SceneNode.ENodeType.Root:          tree_node.ImageKey = "node_root";           break;
+                case SceneNode.ENodeType.Link:          tree_node.ImageKey = "node_link";           break;
+                case SceneNode.ENodeType.Compass:       tree_node.ImageKey = "node_compass";        break;
+                case SceneNode.ENodeType.State:         tree_node.ImageKey = "node_state";          break;
+                case SceneNode.ENodeType.Choice:        tree_node.ImageKey = "node_choice";         break;
+                case SceneNode.ENodeType.Patch:
+                {
+                    // For Patches that target external nodes, give a clear indicator if the target is invalid
+                    bool patch_is_resolved = IsPatchNodeResolved(scene_node);
+                    tree_node.ImageKey = patch_is_resolved ? "node_patch" : "node_patch_error";
+                    break;
+            }
             }
 
-            treeNode.SelectedImageKey = treeNode.ImageKey;
+            tree_node.SelectedImageKey = tree_node.ImageKey;
         }
 
         private void UpdateMoveButtons()
@@ -339,19 +345,23 @@ namespace Finmer.Editor
         {
             bool is_root = m_SelectedNode == m_Scene.Root;
             bool is_patch_group = is_root && m_Scene.IsPatchGroup;
+
+            // If a patch targeting a node cannot be resolved, its effective type falls back to its actual underlying type of Patch
+            bool is_patch_valid = m_SelectedNode.NodeType != SceneNode.ENodeType.Patch || IsPatchNodeResolved(m_SelectedNode);
+
             tsbAddPatch.Visible = is_patch_group;
             tsbAddNode.Visible = !is_patch_group;
             tsbAddCompass.Visible = !is_patch_group;
             tsbAddLink.Visible = !is_patch_group;
-            tbcScripts.Visible = !is_root && m_SelectedNode.NodeType != SceneNode.ENodeType.Link;
-            tsbAddNode.Enabled = m_SelectedNode.Features.HasFlag(SceneNode.ENodeFeature.Children);
+            tbcScripts.Visible = m_SelectedNode.Features.HasFlag(SceneNode.ENodeFeature.Scripts);
+            tsbAddNode.Enabled = m_SelectedNode.Features.HasFlag(SceneNode.ENodeFeature.Children) && is_patch_valid;
             tsbAddLink.Enabled = tsbAddNode.Enabled;
             tsbRemoveNode.Enabled = !is_root;
             tsbClipboardCut.Enabled = !is_root;
             tsbClipboardCopy.Enabled = !is_root;
             tsbClipboardPaste.Enabled = CanPasteInSelectedNode();
 
-            // Node can have a compass child if it's a state, or a root node acting as a placeholder state
+            // Node can have a compass child if it's a State, or a Patch node that targets a State
             bool can_host_compass = GetEffectiveNodeType(m_SelectedNode) == SceneNode.ENodeType.State;
             tsbAddCompass.Enabled = tsbAddNode.Enabled && can_host_compass;
         }
@@ -434,9 +444,10 @@ namespace Finmer.Editor
                 case SceneNode.ENodeType.Patch:
                 {
                     // Patch root
+                    bool patch_is_resolved = IsPatchNodeResolved(scene_node);
                     string[] elements =
                     {
-                        "Patch:",
+                        patch_is_resolved ? "Patch:" : "<Patch Target Not Found>",
                         String.IsNullOrWhiteSpace(scene_node.Key) ? String.Empty : $"[{scene_node.Key}]",
                         scene_node.PatchData.GetEditorDescription(Program.LoadedContent)
                     };
@@ -908,6 +919,11 @@ namespace Finmer.Editor
             ComboBox box = (ComboBox)sender;
             ((PatchTypeTargetNodeBase)m_SelectedNode.PatchData).TargetNode = box.Text;
             Dirty = true;
+
+            // Re-resolve the patch target, and reflect in the icon whether the target node is known
+            UpdateToolbar();
+            UpdateNodeText(m_SelectedTree, m_SelectedNode);
+            UpdateNodeImage(m_SelectedTree, m_SelectedNode);
         }
 
         private void cmbPatchAddMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -1019,9 +1035,7 @@ namespace Finmer.Editor
                     return target_node.NodeType;
                 }
 
-                // If the patch target cannot be resolved, at least avoid returning the Patch node type
-                Debug.Fail($"Unable to resolve patch target {patch_tree.TargetNode} in {m_Scene.PatchTargetScene}");
-                //return SceneNode.ENodeType.Choice;
+                // If the patch target cannot be resolved, return the Patch node type unchanged
             }
 
             // Note: this function does not resolve Links, because there are no current use cases where this function is called for Links
@@ -1029,6 +1043,14 @@ namespace Finmer.Editor
 
             // All other node types are local to this scene tree
             return node.NodeType;
+        }
+
+        private bool IsPatchNodeResolved(SceneNode scene_node)
+        {
+            Debug.Assert(scene_node.NodeType == SceneNode.ENodeType.Patch);
+            Debug.Assert(scene_node.PatchData != null);
+
+            return GetEffectiveNodeType(scene_node) != SceneNode.ENodeType.Patch;
         }
 
         private static SceneNode.ENodeType GetAcceptableParentType(SceneNode child)

@@ -144,6 +144,10 @@ namespace Finmer.Core.Assets
         /// <param name="key">The unique key to find.</param>
         public SceneNode GetNodeByKey(string key)
         {
+            // As a special exception, empty keys are valid but anonymous by definition
+            if (String.IsNullOrWhiteSpace(key))
+                return null;
+
             // Prepare a stack with the root elements in it
             Stack<SceneNode> stack = new Stack<SceneNode>();
             foreach (var root_child in Root.Children)
@@ -154,8 +158,8 @@ namespace Finmer.Core.Assets
             {
                 SceneNode node = stack.Pop();
 
-                // Links do not have keys
-                if (node.NodeType == SceneNode.ENodeType.Link || node.NodeType == SceneNode.ENodeType.Root)
+                // Some types of nodes do not have keys, and as such cannot be found with this function
+                if (!node.Features.HasFlag(SceneNode.ENodeFeature.Key))
                     continue;
 
                 // Is this the node we're looking for?

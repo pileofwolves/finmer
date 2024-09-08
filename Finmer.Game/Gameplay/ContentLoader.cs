@@ -8,6 +8,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using Finmer.Core;
@@ -146,6 +147,10 @@ namespace Finmer.Gameplay
                 // Validate that the patch isn't targeting itself, which would likely cause cycles in the scene node graph
                 if (target_scene == patch_group)
                     throw new InvalidScenePatchException("Target scene is the patch group itself. This is not supported.");
+
+                // We do not allow patching patches because the order in which patches are applied is undefined
+                if (target_scene.IsPatchGroup)
+                    throw new InvalidScenePatchException($"Target scene '{target_scene.Name}' is a patch group. This is not supported, because the order of operations (which patch applies first) is undefined, and so results would be unpredictable.");
 
                 // Find all patches within this patch group
                 foreach (var patch in patch_group.Root.Children)

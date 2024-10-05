@@ -236,6 +236,23 @@ namespace Finmer.Editor
                     cmbPatchAddMode.SelectedIndex = (int)patch_add.Mode;
                     break;
 
+                case SceneNode.ENodeType.Patch when m_SelectedNode.PatchData is PatchTypeReplaceNode patch_replace:
+                    // Patch (Replace Nodes)
+                    tbcNode.TabPages.Add(tbpNodePatchReplace);
+                    UpdatePatchTargetNodeList(cmbPatchReplaceTargetNode);
+                    txtNodePatchReplaceKey.Text = m_SelectedNode.Key;
+                    cmbPatchReplaceTargetNode.Text = patch_replace.TargetNode;
+                    chkPatchReplaceKeepChildren.Checked = patch_replace.KeepChildren;
+                    break;
+
+                case SceneNode.ENodeType.Patch when m_SelectedNode.PatchData is PatchTypeRemoveNode patch_remove:
+                    // Patch (Remove Nodes)
+                    tbcNode.TabPages.Add(tbpNodePatchRemove);
+                    UpdatePatchTargetNodeList(cmbPatchRemoveTargetNode);
+                    txtNodePatchRemoveKey.Text = m_SelectedNode.Key;
+                    cmbPatchRemoveTargetNode.Text = patch_remove.TargetNode;
+                    break;
+
                 default:
                     throw new InvalidOperationException();
             }
@@ -546,6 +563,21 @@ namespace Finmer.Editor
 
         private void mnuAddPatchNodeAdd_Click(object sender, EventArgs e)
         {
+            CreatePatch(new PatchTypeAddNodes());
+        }
+
+        private void mnuAddPatchNodeReplace_Click(object sender, EventArgs e)
+        {
+            CreatePatch(new PatchTypeReplaceNode());
+        }
+
+        private void mnuAddPatchNodeRemove_Click(object sender, EventArgs e)
+        {
+            CreatePatch(new PatchTypeRemoveNode());
+        }
+
+        private void CreatePatch(PatchType patch_data)
+        {
             Debug.Assert(m_SelectedNode.NodeType == SceneNode.ENodeType.Root);
 
             // Generate a new Patch
@@ -553,7 +585,7 @@ namespace Finmer.Editor
             {
                 NodeType = SceneNode.ENodeType.Patch,
                 Parent = m_Scene.Root,
-                PatchData = new PatchTypeAddNodes()
+                PatchData = patch_data
             };
 
             // Append it to the scene tree
@@ -683,6 +715,15 @@ namespace Finmer.Editor
             Dirty = true;
 
             m_SelectedNode.CompassLinkScene = assetCompassTarget.SelectedGuid;
+        }
+
+        private void chkPatchReplaceKeepChildren_CheckedChanged(object sender, EventArgs e)
+        {
+            if (m_SkipDirtyUpdates) return;
+            Dirty = true;
+
+            ((PatchTypeReplaceNode)m_SelectedNode.PatchData).KeepChildren = chkPatchReplaceKeepChildren.Checked;
+            UpdateNodeText(m_SelectedTree, m_SelectedNode);
         }
 
         private void trvNodes_ItemDrag(object sender, ItemDragEventArgs e)
@@ -1033,7 +1074,9 @@ namespace Finmer.Editor
                 var target_node = patched_scene?.GetNodeByKey(patch_tree.TargetNode);
                 if (target_node != null)
                 {
-                    if (node.PatchData is PatchTypeAddNodes patch_add && patch_add.Mode <= PatchTypeAddNodes.EInjectMode.AfterTarget)
+                    // Some types of patches implicitly break the alternating order of States and Choices, which we must account for here
+                    if ((node.PatchData is PatchTypeReplaceNode) ||
+                        (node.PatchData is PatchTypeAddNodes patch_add && patch_add.Mode <= PatchTypeAddNodes.EInjectMode.AfterTarget))
                         return GetAcceptableParentType(target_node);
 
                     return target_node.NodeType;
@@ -1054,6 +1097,7 @@ namespace Finmer.Editor
             Debug.Assert(scene_node.NodeType == SceneNode.ENodeType.Patch);
             Debug.Assert(scene_node.PatchData != null);
 
+            // If the patch node's effective type cannot be deduced from the target scene, then it is unresolved
             return GetEffectiveNodeType(scene_node) != SceneNode.ENodeType.Patch;
         }
 

@@ -49,6 +49,8 @@
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
     <Compile Include="Assets\PatchType.cs" />
+    <Compile Include="Assets\PatchTypeReplaceNode.cs" />
+    <Compile Include="Assets\PatchTypeRemoveNode.cs" />
     <Compile Include="Assets\PatchTypeTargetNodeBase.cs" />
     <Compile Include="Assets\PatchTypeAddNodes.cs" />
     <Compile Include="Assets\V20ConversionUtil.cs" />

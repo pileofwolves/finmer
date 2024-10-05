@@ -14,7 +14,6 @@ using System.Linq;
 using System.Text;
 using Finmer.Core.Assets;
 using Finmer.Core.Serialization;
-using Node = Finmer.Core.Assets.SceneNode;
 
 namespace Finmer.Core.Compilers
 {
@@ -67,7 +66,7 @@ namespace Finmer.Core.Compilers
                 state.Backlog.Push(scene.Root);
                 while (state.Backlog.Count > 0)
                 {
-                    Node node = state.Backlog.Pop();
+                    SceneNode node = state.Backlog.Pop();
                     CompileNode(state, node);
                 }
 
@@ -138,7 +137,7 @@ end"
         /// </summary>
         /// <param name="state">A reference to the scene undergoing compilation.</param>
         /// <param name="key">The unique key to find.</param>
-        private static Node FindNodeByKey(CompilerState state, string key)
+        private static SceneNode FindNodeByKey(CompilerState state, string key)
         {
             return state.Scene.GetNodeByKey(key);
         }
@@ -148,7 +147,7 @@ end"
         /// </summary>
         /// <param name="state">The object in which to store the generated code.</param>
         /// <param name="node">The node to generate code for.</param>
-        private static void CompileNode(CompilerState state, Node node)
+        private static void CompileNode(CompilerState state, SceneNode node)
         {
             // Basic validation
             if (node.Key.Length > 32)
@@ -168,7 +167,7 @@ end"
                 $"Node '{node.Key}' is a leaf node, but also contains child nodes. This indicates a deserialization bug.");
 
             // Enqueue all children
-            foreach (Node child in node.Children)
+            foreach (SceneNode child in node.Children)
             {
                 // States and choices must alternate
                 if (node.NodeType == child.NodeType)
@@ -228,7 +227,7 @@ end"
         /// </summary>
         /// <param name="state">The object in which to store the generated code.</param>
         /// <param name="node">The node to generate code for.</param>
-        private static void CompileStateNode(CompilerState state, Node node)
+        private static void CompileStateNode(CompilerState state, SceneNode node)
         {
             Debug.Assert(node.NodeType == SceneNode.ENodeType.State);
 
@@ -244,9 +243,9 @@ end"
             }
 
             // Emit AddButton calls (wrapped in CanAppear tests) for all child Choices of this State
-            foreach (Node child in node.Children)
+            foreach (SceneNode child in node.Children)
             {
-                Node resolved_child = child;
+                SceneNode resolved_child = child;
 
                 // Follow links to their respective targets
                 if (child.NodeType == SceneNode.ENodeType.Link)
@@ -325,7 +324,7 @@ end"
         /// </summary>
         /// <param name="state">The object in which to store the generated code.</param>
         /// <param name="node">The node to generate code for.</param>
-        private static void CompileChoiceNode(CompilerState state, Node node)
+        private static void CompileChoiceNode(CompilerState state, SceneNode node)
         {
             Debug.Assert(node.NodeType == SceneNode.ENodeType.Choice || node.NodeType == SceneNode.ENodeType.Root);
 
@@ -341,10 +340,10 @@ end"
             }
 
             // Emit tests for all child States. We go over all child States until we find a passing one, which then becomes the next State.
-            Node last = node.Children.LastOrDefault();
-            foreach (Node child in node.Children)
+            SceneNode last = node.Children.LastOrDefault();
+            foreach (SceneNode child in node.Children)
             {
-                Node resolved_child = child;
+                SceneNode resolved_child = child;
 
                 // Resolve the link, if this node is a link
                 if (child.NodeType == SceneNode.ENodeType.Link)
@@ -385,7 +384,7 @@ end"
 
             public int NextStateID { get; set; }
             public int NextAutoKey { get; set; }
-            public Stack<Node> Backlog { get; } = new Stack<Node>();
+            public Stack<SceneNode> Backlog { get; } = new Stack<SceneNode>();
             public HashSet<string> NodeNames { get; } = new HashSet<string>();
 
             public IScriptCompiler Compiler { get; set; }

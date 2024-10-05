@@ -106,6 +106,7 @@
             this.cmbPatchAddMode = new System.Windows.Forms.ComboBox();
             this.cmbPatchAddTargetNode = new System.Windows.Forms.ComboBox();
             this.tbpNodePatchReplace = new System.Windows.Forms.TabPage();
+            this.chkPatchReplaceKeepChildren = new System.Windows.Forms.CheckBox();
             this.txtNodePatchReplaceKey = new System.Windows.Forms.TextBox();
             this.cmbPatchReplaceTargetNode = new System.Windows.Forms.ComboBox();
             this.tbpNodePatchRemove = new System.Windows.Forms.TabPage();
@@ -116,7 +117,6 @@
             this.scriptAction = new Finmer.Editor.ScriptEditorHost();
             this.tbpScriptAppear = new System.Windows.Forms.TabPage();
             this.scriptAppear = new Finmer.Editor.ScriptEditorHost();
-            this.chkPatchReplaceKeepChildren = new System.Windows.Forms.CheckBox();
             lblNodeTooltip = new System.Windows.Forms.Label();
             lblNodeTitle = new System.Windows.Forms.Label();
             lblInjectTargetScene = new System.Windows.Forms.Label();
@@ -245,6 +245,7 @@
             // 
             lblCompassExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            lblCompassExplanation.ForeColor = System.Drawing.SystemColors.GrayText;
             lblCompassExplanation.Location = new System.Drawing.Point(8, 152);
             lblCompassExplanation.Name = "lblCompassExplanation";
             lblCompassExplanation.Size = new System.Drawing.Size(192, 80);
@@ -323,9 +324,12 @@
             // 
             // lblPatchAddExplanation
             // 
-            lblPatchAddExplanation.Location = new System.Drawing.Point(8, 192);
+            lblPatchAddExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            lblPatchAddExplanation.ForeColor = System.Drawing.SystemColors.GrayText;
+            lblPatchAddExplanation.Location = new System.Drawing.Point(8, 184);
             lblPatchAddExplanation.Name = "lblPatchAddExplanation";
-            lblPatchAddExplanation.Size = new System.Drawing.Size(192, 40);
+            lblPatchAddExplanation.Size = new System.Drawing.Size(192, 48);
             lblPatchAddExplanation.TabIndex = 5;
             lblPatchAddExplanation.Text = "This type of patch will insert all child nodes in or around the target node, as c" +
     "onfigured above.";
@@ -333,12 +337,16 @@
             // 
             // label3
             // 
-            label3.Location = new System.Drawing.Point(8, 168);
+            label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            label3.ForeColor = System.Drawing.SystemColors.GrayText;
+            label3.Location = new System.Drawing.Point(8, 136);
             label3.Name = "label3";
-            label3.Size = new System.Drawing.Size(192, 64);
+            label3.Size = new System.Drawing.Size(192, 96);
             label3.TabIndex = 10;
-            label3.Text = "This type of patch will remove the target node from the scene, and replace it wit" +
-    "h the child nodes of this patch.";
+            label3.Text = "Removes target node, and replaces it with the child of this patch.\r\n\r\nIf Keep Chi" +
+    "ldren is ticked, child nodes of the target node are moved to the first replaceme" +
+    "nt node.";
             label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
             // 
             // label4
@@ -361,9 +369,12 @@
             // 
             // label6
             // 
-            label6.Location = new System.Drawing.Point(8, 192);
+            label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            label6.ForeColor = System.Drawing.SystemColors.GrayText;
+            label6.Location = new System.Drawing.Point(8, 184);
             label6.Name = "label6";
-            label6.Size = new System.Drawing.Size(192, 40);
+            label6.Size = new System.Drawing.Size(192, 48);
             label6.TabIndex = 10;
             label6.Text = "This type of patch will remove the target node, and all its children, from the sc" +
     "ene.";
@@ -1021,6 +1032,17 @@
             this.tbpNodePatchReplace.Text = "Patch Node (Replace)";
             this.tbpNodePatchReplace.UseVisualStyleBackColor = true;
             // 
+            // chkPatchReplaceKeepChildren
+            // 
+            this.chkPatchReplaceKeepChildren.AutoSize = true;
+            this.chkPatchReplaceKeepChildren.Location = new System.Drawing.Point(11, 110);
+            this.chkPatchReplaceKeepChildren.Name = "chkPatchReplaceKeepChildren";
+            this.chkPatchReplaceKeepChildren.Size = new System.Drawing.Size(92, 17);
+            this.chkPatchReplaceKeepChildren.TabIndex = 11;
+            this.chkPatchReplaceKeepChildren.Text = "Keep Children";
+            this.chkPatchReplaceKeepChildren.UseVisualStyleBackColor = true;
+            this.chkPatchReplaceKeepChildren.CheckedChanged += new System.EventHandler(this.chkPatchReplaceKeepChildren_CheckedChanged);
+            // 
             // txtNodePatchReplaceKey
             // 
             this.txtNodePatchReplaceKey.Location = new System.Drawing.Point(8, 24);
@@ -1127,17 +1149,6 @@
             this.scriptAppear.Name = "scriptAppear";
             this.scriptAppear.Size = new System.Drawing.Size(657, 236);
             this.scriptAppear.TabIndex = 0;
-            // 
-            // chkPatchReplaceKeepChildren
-            // 
-            this.chkPatchReplaceKeepChildren.AutoSize = true;
-            this.chkPatchReplaceKeepChildren.Location = new System.Drawing.Point(11, 110);
-            this.chkPatchReplaceKeepChildren.Name = "chkPatchReplaceKeepChildren";
-            this.chkPatchReplaceKeepChildren.Size = new System.Drawing.Size(92, 17);
-            this.chkPatchReplaceKeepChildren.TabIndex = 11;
-            this.chkPatchReplaceKeepChildren.Text = "Keep Children";
-            this.chkPatchReplaceKeepChildren.UseVisualStyleBackColor = true;
-            this.chkPatchReplaceKeepChildren.CheckedChanged += new System.EventHandler(this.chkPatchReplaceKeepChildren_CheckedChanged);
             // 
             // FormDocumentScene
             // 

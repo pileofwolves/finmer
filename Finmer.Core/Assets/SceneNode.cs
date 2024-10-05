@@ -196,8 +196,10 @@ namespace Finmer.Core.Assets
             NodeType = instream.ReadEnumProperty<ENodeType>(nameof(NodeType));
 
             // As of format version 21, the key is omitted for node types that don't need one
-            if (Features.HasFlag(ENodeFeature.Key) || instream.GetFormatVersion() < 21)
+            if (Features.HasFlag(ENodeFeature.Key))
                 Key = instream.ReadStringProperty(nameof(Key));
+            else if (instream.GetFormatVersion() < 21)
+                instream.ReadStringProperty(nameof(Key));
 
             // Read node-specific settings
             switch (NodeType)

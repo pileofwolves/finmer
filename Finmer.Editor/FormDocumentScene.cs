@@ -954,6 +954,7 @@ namespace Finmer.Editor
                 return;
 
             m_PatchTargetScene = Program.LoadedContent.GetAssetByID<AssetScene>(assetInjectTargetScene.SelectedGuid);
+            m_Scene.PatchTargetScene = assetInjectTargetScene.SelectedGuid;
         }
 
         private void cmbPatchTargetNode_TextChanged(object sender, EventArgs e)
@@ -1070,8 +1071,7 @@ namespace Finmer.Editor
             // Patch nodes represent a remote point in another scene tree; try to resolve the patch to find the actual type of the targeted node
             if (node.NodeType == SceneNode.ENodeType.Patch && node.PatchData is PatchTypeTargetNodeBase patch_tree)
             {
-                var patched_scene = Program.LoadedContent.GetAssetByID<AssetScene>(m_Scene.PatchTargetScene);
-                var target_node = patched_scene?.GetNodeByKey(patch_tree.TargetNode);
+                var target_node = m_PatchTargetScene?.GetNodeByKey(patch_tree.TargetNode);
                 if (target_node != null)
                 {
                     // Some types of patches implicitly break the alternating order of States and Choices, which we must account for here

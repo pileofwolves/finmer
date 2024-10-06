@@ -53,6 +53,7 @@ namespace Finmer.Editor
             listViewGroup2});
             this.lsvAssets.HideSelection = false;
             this.lsvAssets.Location = new System.Drawing.Point(8, 8);
+            this.lsvAssets.MultiSelect = false;
             this.lsvAssets.Name = "lsvAssets";
             this.lsvAssets.Size = new System.Drawing.Size(352, 368);
             this.lsvAssets.TabIndex = 0;

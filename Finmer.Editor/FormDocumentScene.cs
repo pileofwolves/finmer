@@ -80,6 +80,10 @@ namespace Finmer.Editor
             // Mark the asset as dirty when the user changes node scripts
             scriptAction.Dirty += (o, arg) => Dirty = true;
             scriptAppear.Dirty += (o, arg) => Dirty = true;
+
+            // Compass nodes and patch groups cannot target the scene they're contained in
+            assetCompassTarget.SelectorPredicate = candidate => candidate.ID != m_Scene.ID;
+            assetInjectTargetScene.SelectorPredicate = candidate => candidate.ID != m_Scene.ID;
         }
 
         private void FormDocumentScene_FormClosed(object sender, FormClosedEventArgs e)

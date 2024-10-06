@@ -64,6 +64,10 @@ namespace Finmer.Editor
             assetEquip2.SelectedGuid = creature.Equipment[1];
             assetEquip3.SelectedGuid = creature.Equipment[2];
             assetEquip4.SelectedGuid = creature.Equipment[3];
+            assetEquip1.SelectorPredicate = asset => asset is AssetItem ci && ci.ItemType == AssetItem.EItemType.Equipable && ci.EquipSlot == AssetItem.EEquipSlot.Weapon;
+            assetEquip2.SelectorPredicate = asset => asset is AssetItem ci && ci.ItemType == AssetItem.EItemType.Equipable && ci.EquipSlot == AssetItem.EEquipSlot.Armor;
+            assetEquip3.SelectorPredicate = asset => asset is AssetItem ci && ci.ItemType == AssetItem.EItemType.Equipable && ci.EquipSlot == AssetItem.EEquipSlot.Accessory;
+            assetEquip4.SelectorPredicate = assetEquip3.SelectorPredicate;
 
             // String mappings
             foreach (var mapping in creature.StringMappings)

@@ -233,72 +233,76 @@
             // 
             label17.Location = new System.Drawing.Point(16, 272);
             label17.Name = "label17";
-            label17.Size = new System.Drawing.Size(48, 24);
+            label17.Size = new System.Drawing.Size(64, 24);
             label17.TabIndex = 19;
-            label17.Text = "Slot 4:";
+            label17.Text = "Accessory:";
             label17.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label15
             // 
             label15.Location = new System.Drawing.Point(16, 248);
             label15.Name = "label15";
-            label15.Size = new System.Drawing.Size(48, 24);
+            label15.Size = new System.Drawing.Size(64, 24);
             label15.TabIndex = 17;
-            label15.Text = "Slot 3:";
+            label15.Text = "Accessory:";
             label15.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label14
             // 
             label14.Location = new System.Drawing.Point(16, 224);
             label14.Name = "label14";
-            label14.Size = new System.Drawing.Size(48, 24);
+            label14.Size = new System.Drawing.Size(64, 24);
             label14.TabIndex = 15;
-            label14.Text = "Slot 2:";
+            label14.Text = "Armor:";
             label14.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label13
             // 
             label13.Location = new System.Drawing.Point(16, 200);
             label13.Name = "label13";
-            label13.Size = new System.Drawing.Size(48, 24);
+            label13.Size = new System.Drawing.Size(64, 24);
             label13.TabIndex = 13;
-            label13.Text = "Slot 1:";
+            label13.Text = "Weapon:";
             label13.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // assetEquip4
             // 
             this.assetEquip4.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
-            this.assetEquip4.Location = new System.Drawing.Point(64, 272);
+            this.assetEquip4.Location = new System.Drawing.Point(80, 272);
             this.assetEquip4.Name = "assetEquip4";
             this.assetEquip4.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetEquip4.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip4.SelectorPredicate = null;
+            this.assetEquip4.Size = new System.Drawing.Size(264, 24);
             this.assetEquip4.TabIndex = 20;
             // 
             // assetEquip3
             // 
             this.assetEquip3.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
-            this.assetEquip3.Location = new System.Drawing.Point(64, 248);
+            this.assetEquip3.Location = new System.Drawing.Point(80, 248);
             this.assetEquip3.Name = "assetEquip3";
             this.assetEquip3.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetEquip3.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip3.SelectorPredicate = null;
+            this.assetEquip3.Size = new System.Drawing.Size(264, 24);
             this.assetEquip3.TabIndex = 18;
             // 
             // assetEquip2
             // 
             this.assetEquip2.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
-            this.assetEquip2.Location = new System.Drawing.Point(64, 224);
+            this.assetEquip2.Location = new System.Drawing.Point(80, 224);
             this.assetEquip2.Name = "assetEquip2";
             this.assetEquip2.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetEquip2.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip2.SelectorPredicate = null;
+            this.assetEquip2.Size = new System.Drawing.Size(264, 24);
             this.assetEquip2.TabIndex = 16;
             // 
             // assetEquip1
             // 
             this.assetEquip1.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Item;
-            this.assetEquip1.Location = new System.Drawing.Point(64, 200);
+            this.assetEquip1.Location = new System.Drawing.Point(80, 200);
             this.assetEquip1.Name = "assetEquip1";
             this.assetEquip1.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetEquip1.Size = new System.Drawing.Size(280, 24);
+            this.assetEquip1.SelectorPredicate = null;
+            this.assetEquip1.Size = new System.Drawing.Size(264, 24);
             this.assetEquip1.TabIndex = 14;
             // 
             // label12

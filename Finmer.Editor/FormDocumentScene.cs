@@ -33,6 +33,8 @@ namespace Finmer.Editor
         private SceneNode m_SelectedNode;
         private TreeNode m_SelectedTree, m_SelectedTreeParent;
 
+        private Dictionary<int, SceneNode> m_PatchTargetCache = new Dictionary<int, SceneNode>();
+
         private int m_SelectedTreeIndex;
         private int m_SelectedTreeMaxIndex;
 
@@ -1075,7 +1077,21 @@ namespace Finmer.Editor
             // Patch nodes represent a remote point in another scene tree; try to resolve the patch to find the actual type of the targeted node
             if (node.NodeType == SceneNode.ENodeType.Patch && node.PatchData is PatchTypeTargetNodeBase patch_tree)
             {
-                var target_node = m_PatchTargetScene?.GetNodeByKey(patch_tree.TargetNode);
+                Debug.Assert(m_PatchTargetScene != m_Scene && m_PatchTargetScene != Asset);
+
+                // Look for the target node in the cache
+                int cache_key = GetSceneNodeCacheKey(m_PatchTargetScene, patch_tree.TargetNode);
+                if (!m_PatchTargetCache.TryGetValue(cache_key, out var target_node))
+                {
+                    // Search for the target node the hard way, using a depth-first search through the target scene tree
+                    target_node = m_PatchTargetScene?.GetNodeByKey(patch_tree.TargetNode);
+
+                    // If we found it, cache it for future use
+                    if (target_node != null)
+                        m_PatchTargetCache.Add(cache_key, target_node);
+                }
+
+                // If we found the node in the target scene, use it to determine the real type of this patch node
                 if (target_node != null)
                 {
                     // Some types of patches implicitly break the alternating order of States and Choices, which we must account for here
@@ -1247,6 +1263,21 @@ namespace Finmer.Editor
 
             // Otherwise, if we can't find a usable suffix, abort the auto-generation
             return String.Empty;
+        }
+
+        /// <summary>
+        /// Returns a hash (cache key) for an unresolved scene node.
+        /// </summary>
+        private static int GetSceneNodeCacheKey(AssetScene scene, string key)
+        {
+            unchecked
+            {
+                // Combine the hashes of the scene and a node key (which is unresolved at this point, that's what the cache is for)
+                int hash = 17;
+                hash = hash * 31 + scene.GetHashCode();
+                hash = hash * 31 + key.GetHashCode();
+                return hash;
+            }
         }
 
     }

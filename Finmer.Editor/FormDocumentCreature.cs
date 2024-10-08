@@ -36,9 +36,9 @@ namespace Finmer.Editor
             txtAlias.Text = creature.ObjectAlias;
             txtGuid.Text = Asset.ID.ToString();
             nudStr.Value = creature.Strength;
-            nudDex.Value = creature.Agility;
-            nudCon.Value = creature.Body;
-            nudWis.Value = creature.Wits;
+            nudAgi.Value = creature.Agility;
+            nudBody.Value = creature.Body;
+            nudWits.Value = creature.Wits;
             nudLevel.Value = creature.Level;
             cmbGender.SelectedIndex = (int)creature.Gender;
             cmbSize.SelectedIndex = (int)creature.Size;
@@ -101,9 +101,9 @@ namespace Finmer.Editor
             creature.ObjectName = txtName.Text;
             creature.ObjectAlias = txtAlias.Text;
             creature.Strength = (int)nudStr.Value;
-            creature.Agility = (int)nudDex.Value;
-            creature.Body = (int)nudCon.Value;
-            creature.Wits = (int)nudWis.Value;
+            creature.Agility = (int)nudAgi.Value;
+            creature.Body = (int)nudBody.Value;
+            creature.Wits = (int)nudWits.Value;
             creature.Level = (int)nudLevel.Value;
             creature.Gender = (EGender)cmbGender.SelectedIndex;
             creature.Size = (AssetCreature.ESize)cmbSize.SelectedIndex;
@@ -191,7 +191,7 @@ namespace Finmer.Editor
             builder.AppendFormat(CultureInfo.InvariantCulture, "{0:+#;-#;0}",
                 Math.Max(1, creature.Agility + all_buffs.OfType<BuffStruggleDice>().Sum(buff => buff.Delta)));
 
-            lblCombatOverview.Text = builder.ToString();
+            lblCombatSummaryValues.Text = builder.ToString();
         }
 
         /// <summary>

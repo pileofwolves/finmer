@@ -82,10 +82,11 @@ namespace Finmer.Editor
             this.cmdCombatBegin = new System.Windows.Forms.Button();
             this.cmdJournalUpdate = new System.Windows.Forms.Button();
             this.cmdJournalClose = new System.Windows.Forms.Button();
-            this.cmdCancel = new System.Windows.Forms.Button();
-            this.ttpCommand = new System.Windows.Forms.ToolTip(this.components);
             this.cmdTimeAdvance = new System.Windows.Forms.Button();
             this.cmdTimeSetHour = new System.Windows.Forms.Button();
+            this.cmdCancel = new System.Windows.Forms.Button();
+            this.ttpCommand = new System.Windows.Forms.ToolTip(this.components);
+            this.cmdFlowLoopTimes = new System.Windows.Forms.Button();
             groupBox1 = new System.Windows.Forms.GroupBox();
             groupBox2 = new System.Windows.Forms.GroupBox();
             groupBox3 = new System.Windows.Forms.GroupBox();
@@ -112,6 +113,7 @@ namespace Finmer.Editor
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(this.cmdFlowLoopTimes);
             groupBox1.Controls.Add(this.cmdFlowSleep);
             groupBox1.Controls.Add(this.cmdFlowComment);
             groupBox1.Controls.Add(this.cmdFlowExit);
@@ -120,17 +122,17 @@ namespace Finmer.Editor
             groupBox1.Controls.Add(this.cmdFlowIf);
             groupBox1.Location = new System.Drawing.Point(16, 16);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new System.Drawing.Size(208, 184);
+            groupBox1.Size = new System.Drawing.Size(208, 208);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Flow Control";
             // 
             // cmdFlowSleep
             // 
-            this.cmdFlowSleep.Location = new System.Drawing.Point(16, 120);
+            this.cmdFlowSleep.Location = new System.Drawing.Point(16, 144);
             this.cmdFlowSleep.Name = "cmdFlowSleep";
             this.cmdFlowSleep.Size = new System.Drawing.Size(176, 24);
-            this.cmdFlowSleep.TabIndex = 4;
+            this.cmdFlowSleep.TabIndex = 5;
             this.cmdFlowSleep.Text = "Wait";
             this.ttpCommand.SetToolTip(this.cmdFlowSleep, "Pause the script for a number of seconds.\r\nDramatic pause, oh my!");
             this.cmdFlowSleep.UseVisualStyleBackColor = true;
@@ -138,10 +140,10 @@ namespace Finmer.Editor
             // 
             // cmdFlowComment
             // 
-            this.cmdFlowComment.Location = new System.Drawing.Point(16, 144);
+            this.cmdFlowComment.Location = new System.Drawing.Point(16, 168);
             this.cmdFlowComment.Name = "cmdFlowComment";
             this.cmdFlowComment.Size = new System.Drawing.Size(176, 24);
-            this.cmdFlowComment.TabIndex = 5;
+            this.cmdFlowComment.TabIndex = 6;
             this.cmdFlowComment.Text = "Comment";
             this.ttpCommand.SetToolTip(this.cmdFlowComment, "Add comments to the script. These don\'t do anything in-game,\r\nbut may be useful f" +
         "or your own notekeeping purposes.");
@@ -150,10 +152,10 @@ namespace Finmer.Editor
             // 
             // cmdFlowExit
             // 
-            this.cmdFlowExit.Location = new System.Drawing.Point(16, 96);
+            this.cmdFlowExit.Location = new System.Drawing.Point(16, 120);
             this.cmdFlowExit.Name = "cmdFlowExit";
             this.cmdFlowExit.Size = new System.Drawing.Size(176, 24);
-            this.cmdFlowExit.TabIndex = 3;
+            this.cmdFlowExit.TabIndex = 4;
             this.cmdFlowExit.Text = "Exit Script";
             this.ttpCommand.SetToolTip(this.cmdFlowExit, "Stop running the current script.");
             this.cmdFlowExit.UseVisualStyleBackColor = true;
@@ -161,10 +163,10 @@ namespace Finmer.Editor
             // 
             // cmdFlowLoopBreak
             // 
-            this.cmdFlowLoopBreak.Location = new System.Drawing.Point(16, 72);
+            this.cmdFlowLoopBreak.Location = new System.Drawing.Point(16, 96);
             this.cmdFlowLoopBreak.Name = "cmdFlowLoopBreak";
             this.cmdFlowLoopBreak.Size = new System.Drawing.Size(176, 24);
-            this.cmdFlowLoopBreak.TabIndex = 2;
+            this.cmdFlowLoopBreak.TabIndex = 3;
             this.cmdFlowLoopBreak.Text = "Break Loop";
             this.ttpCommand.SetToolTip(this.cmdFlowLoopBreak, "Exit a Loop command.");
             this.cmdFlowLoopBreak.UseVisualStyleBackColor = true;
@@ -176,7 +178,7 @@ namespace Finmer.Editor
             this.cmdFlowLoop.Name = "cmdFlowLoop";
             this.cmdFlowLoop.Size = new System.Drawing.Size(176, 24);
             this.cmdFlowLoop.TabIndex = 1;
-            this.cmdFlowLoop.Text = "Loop";
+            this.cmdFlowLoop.Text = "Loop Forever";
             this.ttpCommand.SetToolTip(this.cmdFlowLoop, "Repeat a group of commands.");
             this.cmdFlowLoop.UseVisualStyleBackColor = true;
             this.cmdFlowLoop.Click += new System.EventHandler(this.cmdFlowLoop_Click);
@@ -249,7 +251,7 @@ namespace Finmer.Editor
             groupBox3.Controls.Add(this.cmdPlayerSetHealth);
             groupBox3.Controls.Add(this.cmdPlayerSetEquipment);
             groupBox3.Controls.Add(this.cmdPlayerSetMoney);
-            groupBox3.Location = new System.Drawing.Point(16, 216);
+            groupBox3.Location = new System.Drawing.Point(16, 240);
             groupBox3.Name = "groupBox3";
             groupBox3.Size = new System.Drawing.Size(208, 280);
             groupBox3.TabIndex = 1;
@@ -417,7 +419,7 @@ namespace Finmer.Editor
             // groupBox6
             // 
             groupBox6.Controls.Add(this.cmdAdvLuaScript);
-            groupBox6.Location = new System.Drawing.Point(16, 512);
+            groupBox6.Location = new System.Drawing.Point(16, 536);
             groupBox6.Name = "groupBox6";
             groupBox6.Size = new System.Drawing.Size(208, 64);
             groupBox6.TabIndex = 2;
@@ -710,28 +712,6 @@ namespace Finmer.Editor
             this.cmdJournalClose.UseVisualStyleBackColor = true;
             this.cmdJournalClose.Click += new System.EventHandler(this.cmdJournalClose_Click);
             // 
-            // cmdCancel
-            // 
-            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
-            this.cmdCancel.Location = new System.Drawing.Point(536, 568);
-            this.cmdCancel.Name = "cmdCancel";
-            this.cmdCancel.Size = new System.Drawing.Size(136, 32);
-            this.cmdCancel.TabIndex = 11;
-            this.cmdCancel.Text = "Cancel";
-            this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.cmdCancel.UseVisualStyleBackColor = true;
-            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
-            // 
-            // ttpCommand
-            // 
-            this.ttpCommand.AutomaticDelay = 250;
-            this.ttpCommand.AutoPopDelay = 60000;
-            this.ttpCommand.InitialDelay = 250;
-            this.ttpCommand.ReshowDelay = 50;
-            this.ttpCommand.Popup += new System.Windows.Forms.PopupEventHandler(this.ttpCommand_Popup);
-            // 
             // groupBox11
             // 
             groupBox11.Controls.Add(this.cmdTimeAdvance);
@@ -764,6 +744,39 @@ namespace Finmer.Editor
             this.ttpCommand.SetToolTip(this.cmdTimeSetHour, "Advance the clock as much as needed to reach a certain hour.");
             this.cmdTimeSetHour.UseVisualStyleBackColor = true;
             this.cmdTimeSetHour.Click += new System.EventHandler(this.cmdTimeSetHour_Click);
+            // 
+            // cmdCancel
+            // 
+            this.cmdCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.cmdCancel.Image = global::Finmer.Editor.Properties.Resources.cross;
+            this.cmdCancel.Location = new System.Drawing.Point(536, 568);
+            this.cmdCancel.Name = "cmdCancel";
+            this.cmdCancel.Size = new System.Drawing.Size(136, 32);
+            this.cmdCancel.TabIndex = 11;
+            this.cmdCancel.Text = "Cancel";
+            this.cmdCancel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.cmdCancel.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.cmdCancel.UseVisualStyleBackColor = true;
+            this.cmdCancel.Click += new System.EventHandler(this.cmdCancel_Click);
+            // 
+            // ttpCommand
+            // 
+            this.ttpCommand.AutomaticDelay = 250;
+            this.ttpCommand.AutoPopDelay = 60000;
+            this.ttpCommand.InitialDelay = 250;
+            this.ttpCommand.ReshowDelay = 50;
+            this.ttpCommand.Popup += new System.Windows.Forms.PopupEventHandler(this.ttpCommand_Popup);
+            // 
+            // cmdFlowLoopTimes
+            // 
+            this.cmdFlowLoopTimes.Location = new System.Drawing.Point(16, 72);
+            this.cmdFlowLoopTimes.Name = "cmdFlowLoopTimes";
+            this.cmdFlowLoopTimes.Size = new System.Drawing.Size(176, 24);
+            this.cmdFlowLoopTimes.TabIndex = 2;
+            this.cmdFlowLoopTimes.Text = "Loop X Times";
+            this.ttpCommand.SetToolTip(this.cmdFlowLoopTimes, "Repeat a group of commands.");
+            this.cmdFlowLoopTimes.UseVisualStyleBackColor = true;
+            this.cmdFlowLoopTimes.Click += new System.EventHandler(this.cmdFlowLoopTimes_Click);
             // 
             // FormVisualScriptCommandPalette
             // 
@@ -852,5 +865,6 @@ namespace Finmer.Editor
         private System.Windows.Forms.ToolTip ttpCommand;
         private System.Windows.Forms.Button cmdTimeAdvance;
         private System.Windows.Forms.Button cmdTimeSetHour;
+        private System.Windows.Forms.Button cmdFlowLoopTimes;
     }
 }

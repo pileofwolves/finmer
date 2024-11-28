@@ -14,20 +14,31 @@ namespace Finmer.Core.VisualScripting.Nodes
 {
 
     /// <summary>
-    /// Command that loops a body of commands forever.
+    /// Command that loops a body of commands for a set number of times.
     /// </summary>
-    public sealed class CommandLoop : ScriptCommandContainer
+    public sealed class CommandLoopTimes : ScriptCommandContainer
     {
+
+        /// <summary>
+        /// The number of times to repeat the loop body.
+        /// </summary>
+        public ValueWrapperInt RepeatCount { get; set; } = new ValueWrapperInt();
 
         /// <summary>
         /// The nested nodes that form the loop body.
         /// </summary>
-
         public List<ScriptNode> LoopBody { get; set; } = new List<ScriptNode>();
+
+        public CommandLoopTimes()
+        {
+            // A loop count of one is a sensible default - looks a bit better than zero
+            RepeatCount.OperandMode = ValueWrapperInt.EOperandMode.Literal;
+            RepeatCount.OperandLiteral = 1;
+        }
 
         public override string GetEditorDescription(IContentStore content)
         {
-            return "Loop:";
+            return $"Repeat {RepeatCount.GetOperandDescription()} Times:";
         }
 
         public override EColor GetEditorColor()
@@ -37,26 +48,43 @@ namespace Finmer.Core.VisualScripting.Nodes
 
         public override void EmitLua(StringBuilder output, IContentStore content)
         {
+            string iterator_variable = CombatUtilities.GetLocalVariableIdentifier(this, 1);
+            string count_variable = CombatUtilities.GetLocalVariableIdentifier(this, 2);
+
+            // Evaluate count variable once, since the expression could have side-effects
+            output.Append("do local ");
+            output.Append(count_variable);
+            output.Append(" = ");
+            output.AppendLine(RepeatCount.GetOperandLuaSnippet());
+
             // Emit loop header
-            output.AppendLine("while true do");
+            output.Append("for ");
+            output.Append(iterator_variable);
+            output.Append(" = 1,");
+            output.Append(count_variable);
+            output.AppendLine(" do");
 
             // Emit loop body
             foreach (var node in LoopBody)
                 node.EmitLua(output, content);
 
             // Emit end
-            output.AppendLine("end");
+            output.AppendLine("end end");
         }
 
         public override void Serialize(IFurballContentWriter outstream)
         {
+            outstream.WriteObjectProperty(nameof(RepeatCount), RepeatCount, EFurballObjectMode.Required);
             SerializeSubgroup(outstream, nameof(LoopBody), LoopBody);
+
             base.Serialize(outstream);
         }
 
         public override void Deserialize(IFurballContentReader instream)
         {
+            RepeatCount = instream.ReadObjectProperty<ValueWrapperInt>(nameof(RepeatCount), EFurballObjectMode.Required);
             LoopBody = DeserializeSubgroup(instream, nameof(LoopBody));
+
             base.Deserialize(instream);
         }
 

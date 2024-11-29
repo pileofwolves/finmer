@@ -76,9 +76,9 @@ namespace Finmer.Core.Assets
             var patch_root = scene.Root;
             patch_root.Key = String.Empty; // Remove 'Root' key that was the default with V20 scenes
             patch_root.NodeType = SceneNode.ENodeType.Patch;
-            patch_root.PatchData = new PatchTypeAddNodes
+            patch_root.Patch = new ScenePatchAddNodes
             {
-                Mode = (PatchTypeAddNodes.EInjectMode)PatchMode, // Order of elements is the same
+                Mode = (ScenePatchAddNodes.EInjectMode)PatchMode, // Order of elements is the same
                 TargetNode = PatchTargetNode
             };
 

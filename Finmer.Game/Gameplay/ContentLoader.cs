@@ -160,7 +160,7 @@ namespace Finmer.Gameplay
                         throw new InvalidScenePatchException($"Patch '{patch.Key}' has invalid node type {patch.NodeType}. Module file may be corrupted.");
 
                     // Apply this patch onto the target scene
-                    patch.PatchData.Apply(target_scene, patch, GameController.Content);
+                    patch.Patch.Apply(target_scene, patch, GameController.Content);
                 }
             }
             catch (InvalidScenePatchException ex)

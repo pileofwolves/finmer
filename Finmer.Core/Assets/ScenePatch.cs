@@ -14,7 +14,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Represents a configuration for the application of a scene patch.
     /// </summary>
-    public abstract class PatchType : IFurballSerializable
+    public abstract class ScenePatch : IFurballSerializable
     {
 
         /// <inheritdoc />

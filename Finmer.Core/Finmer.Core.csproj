@@ -48,11 +48,11 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
-    <Compile Include="Assets\PatchType.cs" />
-    <Compile Include="Assets\PatchTypeReplaceNode.cs" />
-    <Compile Include="Assets\PatchTypeRemoveNode.cs" />
-    <Compile Include="Assets\PatchTypeTargetNodeBase.cs" />
-    <Compile Include="Assets\PatchTypeAddNodes.cs" />
+    <Compile Include="Assets\ScenePatch.cs" />
+    <Compile Include="Assets\ScenePatchReplaceNode.cs" />
+    <Compile Include="Assets\ScenePatchRemoveNode.cs" />
+    <Compile Include="Assets\ScenePatchTargetNodeBase.cs" />
+    <Compile Include="Assets\ScenePatchAddNodes.cs" />
     <Compile Include="Assets\V20ConversionUtil.cs" />
     <Compile Include="Assets\SceneNode.cs" />
     <Compile Include="Assets\ScriptDataVisualCondition.cs" />

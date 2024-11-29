@@ -119,7 +119,7 @@ namespace Finmer.Core.Assets
         /// <summary>
         /// Patch nodes: Configuration describing how to apply the patch.
         /// </summary>
-        public PatchType PatchData { get; set; }
+        public ScenePatch Patch { get; set; }
 
         /// <summary>
         /// State, Choice nodes: Tree of downstream scene nodes.
@@ -165,7 +165,7 @@ namespace Finmer.Core.Assets
 
                 case ENodeType.Patch:
                     // Patch configuration
-                    outstream.WriteObjectProperty(nameof(PatchData), PatchData, EFurballObjectMode.Required);
+                    outstream.WriteObjectProperty(nameof(Patch), Patch, EFurballObjectMode.Required);
                     break;
             }
 
@@ -222,7 +222,7 @@ namespace Finmer.Core.Assets
                     break;
 
                 case ENodeType.Patch:
-                    PatchData = instream.ReadObjectProperty<PatchType>(nameof(PatchData), EFurballObjectMode.Required);
+                    Patch = instream.ReadObjectProperty<ScenePatch>(nameof(Patch), EFurballObjectMode.Required);
                     break;
             }
 
@@ -271,7 +271,7 @@ namespace Finmer.Core.Assets
                 case ENodeType.Choice:          return ENodeFeature.Key | ENodeFeature.Children | ENodeFeature.Scripts;
                 case ENodeType.Link:            return ENodeFeature.None;
                 case ENodeType.Compass:         return ENodeFeature.Key | ENodeFeature.Scripts;
-                case ENodeType.Patch:           return ENodeFeature.Key | (PatchData?.GetPatchRootFeatures() ?? ENodeFeature.None);
+                case ENodeType.Patch:           return ENodeFeature.Key | (Patch?.GetPatchRootFeatures() ?? ENodeFeature.None);
                 default:                        throw new ArgumentOutOfRangeException(nameof(type), type, null);
             }
         }

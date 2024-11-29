@@ -15,7 +15,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Base class for patch subtypes that target a specific scene node.
     /// </summary>
-    public abstract class PatchTypeTargetNodeBase : PatchType
+    public abstract class ScenePatchTargetNodeBase : ScenePatch
     {
 
         /// <summary>

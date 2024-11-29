@@ -16,7 +16,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Patch subtype that removes a specific target node, and its children, from the scene tree.
     /// </summary>
-    public sealed class PatchTypeRemoveNode : PatchTypeTargetNodeBase
+    public sealed class ScenePatchRemoveNode : ScenePatchTargetNodeBase
     {
 
         /// <inheritdoc />
@@ -35,7 +35,7 @@ namespace Finmer.Core.Assets
         public override void Apply(AssetScene target_scene, SceneNode patch, IContentStore content)
         {
             Debug.Assert(patch.NodeType == SceneNode.ENodeType.Patch);
-            Debug.Assert(patch.PatchData == this);
+            Debug.Assert(patch.Patch == this);
 
             // Find the anchor node the patch should be added to
             SceneNode target_node = target_scene.GetNodeByKey(TargetNode);

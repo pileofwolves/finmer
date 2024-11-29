@@ -16,7 +16,7 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Patch subtype that replaces a specific target node in-place in the scene tree.
     /// </summary>
-    public sealed class PatchTypeReplaceNode : PatchTypeTargetNodeBase
+    public sealed class ScenePatchReplaceNode : ScenePatchTargetNodeBase
     {
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Finmer.Core.Assets
         public override void Apply(AssetScene target_scene, SceneNode patch, IContentStore content)
         {
             Debug.Assert(patch.NodeType == SceneNode.ENodeType.Patch);
-            Debug.Assert(patch.PatchData == this);
+            Debug.Assert(patch.Patch == this);
 
             // Replacing a node with nothing does not make sense; for this purpose the Remove patch should be used instead
             if (patch.Children.Count == 0)

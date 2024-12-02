@@ -35,7 +35,6 @@ namespace Finmer.Editor.CLI
         /// </summary>
         /// <param name="file_list">List of file paths to operate on.</param>
         /// <param name="options">List of command line options.</param>
-        /// <exception cref="InvalidCommandUsageException">Thrown if user-specified parameters are missing or invalid.</exception>
         /// <exception cref="FurballException">Thrown if any input or output module operations result in I/O errors.</exception>
         /// <returns>Program exit code.</returns>
         public abstract int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options);

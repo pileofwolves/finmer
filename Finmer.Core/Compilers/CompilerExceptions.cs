@@ -16,7 +16,7 @@ namespace Finmer.Core.Compilers
     /// The exception that is thrown by the SceneCompiler if an AssetScene cannot be compiled.
     /// </summary>
     [Serializable]
-    public class SceneCompilerException : ApplicationException
+    public class SceneCompilerException : Exception
     {
 
         protected SceneCompilerException(SerializationInfo info, StreamingContext context) : base(info, context) {}
@@ -46,7 +46,7 @@ namespace Finmer.Core.Compilers
     /// The exception that is thrown if a script is invalid.
     /// </summary>
     [Serializable]
-    public sealed class ScriptCompilationException : ApplicationException
+    public sealed class ScriptCompilationException : Exception
     {
 
         private ScriptCompilationException(SerializationInfo info, StreamingContext context) : base(info, context) {}

@@ -16,7 +16,7 @@ namespace Finmer.Gameplay
     /// Represents an exception that prevents the application from starting up.
     /// </summary>
     [Serializable]
-    public abstract class ApplicationInitException : ApplicationException
+    public abstract class ApplicationInitException : Exception
     {
 
         protected ApplicationInitException(SerializationInfo info, StreamingContext context) : base(info, context) { }

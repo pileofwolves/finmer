@@ -16,7 +16,7 @@ namespace Finmer.Core.Serialization
     /// Represents an exception that occurs during (de)serialization of game content module files.
     /// </summary>
     [Serializable]
-    public abstract class FurballException : ApplicationException
+    public abstract class FurballException : Exception
     {
 
         protected FurballException(SerializationInfo info, StreamingContext context) : base(info, context) {}

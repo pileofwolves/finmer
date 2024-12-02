@@ -27,8 +27,6 @@ namespace Finmer.Gameplay.Scripting
         /// <param name="context"></param>
         public static void Inject(ScriptContext context)
         {
-            IntPtr state = context.LuaState;
-
             // Override some default functions
             context.RegisterGlobalFunction("require", ExportedRequire);
             context.RegisterGlobalFunction("print", ExportedPrint);

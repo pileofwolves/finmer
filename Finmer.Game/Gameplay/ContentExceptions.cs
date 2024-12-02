@@ -16,7 +16,7 @@ namespace Finmer.Gameplay
     /// Represents the exception that is thrown when loading of game content fails.
     /// </summary>
     [Serializable]
-    public sealed class LoaderException : ApplicationException
+    public sealed class LoaderException : Exception
     {
 
         private LoaderException(SerializationInfo info, StreamingContext context) : base(info, context) {}
@@ -31,7 +31,7 @@ namespace Finmer.Gameplay
     /// Represents the exception that is thrown when duplicate assets are found.
     /// </summary>
     [Serializable]
-    public sealed class DuplicateContentException : ApplicationException
+    public sealed class DuplicateContentException : Exception
     {
 
         private DuplicateContentException(SerializationInfo info, StreamingContext context) : base(info, context) {}
@@ -46,7 +46,7 @@ namespace Finmer.Gameplay
     /// Represents the exception that is thrown when a request to load an asset cannot be fulfilled because the asset does not exist.
     /// </summary>
     [Serializable]
-    public sealed class MissingContentException : ApplicationException
+    public sealed class MissingContentException : Exception
     {
 
         private MissingContentException(SerializationInfo info, StreamingContext context) : base(info, context) {}
@@ -61,7 +61,7 @@ namespace Finmer.Gameplay
     /// Represents the exception that is thrown when a set of dependency constraints is unsolvable, i.e. cannot be topologically sorted.
     /// </summary>
     [Serializable]
-    public sealed class UnsolvableConstraintException : ApplicationException
+    public sealed class UnsolvableConstraintException : Exception
     {
 
         private UnsolvableConstraintException(SerializationInfo info, StreamingContext context) : base(info, context) {}

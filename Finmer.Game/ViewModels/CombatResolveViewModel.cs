@@ -73,8 +73,8 @@ namespace Finmer.ViewModels
             CombatDisplay.ResolveRound round = info.Rounds[roundIndex];
 
             // Update the participant view-models to show the new sets of dice
-            Participant1ViewModel = new CombatResolveParticipantViewModel(info.Instigator, info.Action, round.OffenseTotal, round.OffenseDice);
-            Participant2ViewModel = new CombatResolveParticipantViewModel(info.Target, info.Action, round.DefenseTotal, round.DefenseDice);
+            Participant1ViewModel = new CombatResolveParticipantViewModel(info.Instigator, info.ActionLabelInstigator, round.OffenseTotal, round.OffenseDice);
+            Participant2ViewModel = new CombatResolveParticipantViewModel(info.Target, info.ActionLabelTarget, round.DefenseTotal, round.DefenseDice);
 
             // Update the display of round victory pips
             m_PipsViewModel.NumLeftPips = round.OffenseRoundsWon;

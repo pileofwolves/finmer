@@ -55,7 +55,8 @@ namespace Finmer.Gameplay.Combat
             {
                 Instigator = instigator,
                 Target = target,
-                Action = CombatDisplay.EResolveType.Attack,
+                ActionLabelInstigator = "Attack",
+                ActionLabelTarget = "Defense",
                 LogKey = log_key,
                 Rounds = new List<CombatDisplay.ResolveRound>
                 {
@@ -111,7 +112,8 @@ namespace Finmer.Gameplay.Combat
             {
                 Instigator = instigator,
                 Target = target,
-                Action = CombatDisplay.EResolveType.Grapple,
+                ActionLabelInstigator = "Grapple",
+                ActionLabelTarget = "Grapple",
                 LogKey = success ? logKeyWin : logKeyLose,
                 Rounds = new List<CombatDisplay.ResolveRound>
                 {
@@ -209,7 +211,8 @@ namespace Finmer.Gameplay.Combat
             {
                 Instigator = instigator,
                 Target = target,
-                Action = CombatDisplay.EResolveType.Vore,
+                ActionLabelInstigator = "Swallow",
+                ActionLabelTarget = "Struggle",
                 Rounds = new List<CombatDisplay.ResolveRound>(k_NumVoreRoundsToWin)
             };
 

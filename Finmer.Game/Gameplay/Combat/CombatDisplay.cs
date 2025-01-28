@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading;
@@ -25,16 +26,6 @@ namespace Finmer.Gameplay.Combat
     /// </remarks>
     public static class CombatDisplay
     {
-
-        /// <summary>
-        /// Describes the type of resolve animation to show.
-        /// </summary>
-        public enum EResolveType
-        {
-            Attack,
-            Grapple,
-            Vore
-        }
 
         /// <summary>
         /// Represents a single round of dice rolls.
@@ -91,9 +82,14 @@ namespace Finmer.Gameplay.Combat
             public Participant Target { get; set; }
 
             /// <summary>
-            /// The type of combat action that is being performed. Determines which words are shown on the UI.
+            /// Label to use for the resolve view for the instigator.
             /// </summary>
-            public EResolveType Action { get; set; }
+            public string ActionLabelInstigator { get; set; }
+
+            /// <summary>
+            /// Label to use for the resolve view for the target.
+            /// </summary>
+            public string ActionLabelTarget { get; set; }
 
             /// <summary>
             /// Collection of individual groups of rolled dice to display.
@@ -172,7 +168,8 @@ namespace Finmer.Gameplay.Combat
                 }
 
                 // Print text to game log while the dialog is closing
-                WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);
+                if (!String.IsNullOrEmpty(settings.LogKey))
+                    WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);
 
                 // Wait for fade-out animation
                 Debug.Assert(vm != null);
@@ -180,7 +177,7 @@ namespace Finmer.Gameplay.Combat
                 Thread.Sleep(500);
                 GameUI.Instance.CombatStateViewModel.CombatResolveViewModel = null;
             }
-            else
+            else if (!String.IsNullOrEmpty(settings.LogKey))
             {
                 // Print text to game log
                 WriteCombatLog(settings.LogKey, settings.Instigator, settings.Target);

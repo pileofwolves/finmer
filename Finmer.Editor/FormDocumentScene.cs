@@ -1079,6 +1079,10 @@ namespace Finmer.Editor
             {
                 Debug.Assert(m_PatchTargetScene != m_Scene && m_PatchTargetScene != Asset);
 
+                // If the user has not specified a patch target, then we cannot evaluate whether the patch matches the target scene tree
+                if (m_PatchTargetScene == null)
+                    return SceneNode.ENodeType.Patch;
+
                 // Look for the target node in the cache
                 int cache_key = GetSceneNodeCacheKey(m_PatchTargetScene, patch_tree.TargetNode);
                 if (!m_PatchTargetCache.TryGetValue(cache_key, out var target_node))

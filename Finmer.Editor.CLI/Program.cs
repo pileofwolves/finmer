@@ -1,6 +1,6 @@
 ﻿/*
  * FINMER - Interactive Text Adventure
- * Copyright (C) 2019-2024 Nuntis the Wolf.
+ * Copyright (C) 2019-2025 Nuntis the Wolf.
  *
  * Licensed under the GNU General Public License v3.0 (GPL3). See LICENSE.md for details.
  * SPDX-License-Identifier: GPL-3.0-only
@@ -90,7 +90,7 @@ namespace Finmer.Editor.CLI
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
                 Console.WriteLine($"Finmer Editor CLI version {CompileConstants.k_VersionString} (format {FurballFileDevice.k_LatestVersion})");
-                Console.WriteLine("(C) Nuntis the Wolf, 2019-2024. Licensed under GNU GPL v3.");
+                Console.WriteLine("(C) Nuntis the Wolf, 2019-2025. Licensed under GNU GPL v3.");
             }
 
             // Reset text color

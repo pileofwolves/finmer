@@ -39,7 +39,7 @@ const config = {
     {
       defer: true,
       'data-domain': 'docs.finmer.dev',
-      src: 'https://finmer.stream/js/script.js',
+      src: 'https://pl.finmer.dev/js/script.js',
     }
   ],
 

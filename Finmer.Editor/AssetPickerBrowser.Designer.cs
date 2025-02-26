@@ -29,7 +29,7 @@ namespace Finmer.Editor
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("Current Project", System.Windows.Forms.HorizontalAlignment.Left);
+            System.Windows.Forms.ListViewGroup listViewGroup1 = new System.Windows.Forms.ListViewGroup("This Project", System.Windows.Forms.HorizontalAlignment.Left);
             System.Windows.Forms.ListViewGroup listViewGroup2 = new System.Windows.Forms.ListViewGroup("Dependencies", System.Windows.Forms.HorizontalAlignment.Left);
             this.lsvAssets = new System.Windows.Forms.ListView();
             this.clhAsset = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
@@ -44,7 +44,7 @@ namespace Finmer.Editor
             this.clhAsset,
             this.clhName});
             this.lsvAssets.FullRowSelect = true;
-            listViewGroup1.Header = "Current Project";
+            listViewGroup1.Header = "This Project";
             listViewGroup1.Name = "grpMain";
             listViewGroup2.Header = "Dependencies";
             listViewGroup2.Name = "grpDeps";
@@ -53,6 +53,7 @@ namespace Finmer.Editor
             listViewGroup2});
             this.lsvAssets.HideSelection = false;
             this.lsvAssets.Location = new System.Drawing.Point(8, 8);
+            this.lsvAssets.MultiSelect = false;
             this.lsvAssets.Name = "lsvAssets";
             this.lsvAssets.Size = new System.Drawing.Size(352, 368);
             this.lsvAssets.TabIndex = 0;

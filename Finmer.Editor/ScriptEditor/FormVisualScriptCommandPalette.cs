@@ -80,6 +80,11 @@ namespace Finmer.Editor
             AddScriptNode(new CommandLoop());
         }
 
+        private void cmdFlowLoopTimes_Click(object sender, System.EventArgs e)
+        {
+            AddScriptNode(new CommandLoopTimes());
+        }
+
         private void cmdFlowLoopBreak_Click(object sender, System.EventArgs e)
         {
             AddScriptNode(new CommandLoopBreak());

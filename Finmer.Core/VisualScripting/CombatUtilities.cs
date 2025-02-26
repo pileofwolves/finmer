@@ -7,6 +7,8 @@
  */
 
 using System;
+using System.Globalization;
+using System.Runtime.CompilerServices;
 
 namespace Finmer.Core.VisualScripting
 {
@@ -39,6 +41,16 @@ namespace Finmer.Core.VisualScripting
                 return "Player";
 
             return "NPC " + id.MakeSafeIdentifier();
+        }
+
+        /// <summary>
+        /// Returns a deterministic string based on node scope, that can be used as a unique identifier for a local or global variable in script.
+        /// </summary>
+        /// <param name="scope">The node providing the scope. This determines the 'group' for the slot parameter.</param>
+        /// <param name="slot">Numeric suffix to append to the identifier. Used for emitting multiple variables in one node.</param>
+        internal static string GetLocalVariableIdentifier(ScriptNode scope, int slot)
+        {
+            return String.Format(CultureInfo.InvariantCulture, "__var_{0:x08}_{1}", RuntimeHelpers.GetHashCode(scope), slot);
         }
 
     }

@@ -215,6 +215,7 @@ namespace Finmer.Gameplay.Scripting
         public static extern int lua_next(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]
+        [return: MarshalAs(UnmanagedType.SysUInt)]
         public static extern UIntPtr lua_objlen(IntPtr L, int index);
 
         [DllImport(LUA_DLL, CallingConvention = LUA_CALLING_CONVENTION)]

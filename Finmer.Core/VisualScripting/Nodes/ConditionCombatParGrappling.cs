@@ -60,7 +60,7 @@ namespace Finmer.Core.VisualScripting.Nodes
             outstream.WriteStringProperty(nameof(TargetName), TargetName);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
             ParticipantName = instream.ReadStringProperty(nameof(ParticipantName));
             TargetName = instream.ReadStringProperty(nameof(TargetName));

@@ -63,6 +63,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\ReferenceNonNullConverter.cs" />
     <Compile Include="Converters\BuffIconToImageConverter.cs" />
     <Compile Include="Converters\BuffImpactToImageConverter.cs" />
     <Compile Include="Converters\ChainConverter.cs" />
@@ -100,6 +101,8 @@
     <Compile Include="Gameplay\SaveDataExceptions.cs" />
     <Compile Include="Gameplay\SceneCombat2.cs" />
     <Compile Include="Gameplay\Scripting\Combat2ScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\EffectScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\MathScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\GameplayScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\LuaUtils.cs" />
     <Compile Include="Gameplay\Scripting\SaveDataScriptLibrary.cs" />
@@ -109,6 +112,7 @@
     <Compile Include="Gameplay\Scripting\ScriptException.cs" />
     <Compile Include="Gameplay\Scripting\UIScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\GlobalScriptLibrary.cs" />
+    <Compile Include="Gameplay\Scripting\ContentScriptLibrary.cs" />
     <Compile Include="Gameplay\Scripting\LuaApi.cs" />
     <Compile Include="Gameplay\ScriptableObject.cs" />
     <Compile Include="Gameplay\Scripting\ScriptContext.cs" />

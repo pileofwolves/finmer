@@ -38,7 +38,7 @@ namespace Finmer.Core.Assets
             base.Serialize(outstream);
 
             // Write script object
-            outstream.WriteNestedScriptProperty(nameof(Contents), Contents);
+            outstream.WriteScriptProperty(nameof(Contents), Contents);
 
             // Write load order table
             outstream.BeginArray(nameof(LoadOrder), LoadOrder.Count);
@@ -52,12 +52,12 @@ namespace Finmer.Core.Assets
             outstream.EndArray();
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             // Read script data
-            Contents = instream.ReadNestedObjectProperty<ScriptData>(nameof(Contents), version);
+            Contents = instream.ReadObjectProperty<ScriptData>(nameof(Contents), EFurballObjectMode.Optional);
             if (Contents != null)
                 Contents.Name = Name;
 

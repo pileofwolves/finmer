@@ -30,7 +30,6 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.Label lblNodeTooltip;
             System.Windows.Forms.Label lblNodeTitle;
-            System.Windows.Forms.Label lblInjectTargetNode;
             System.Windows.Forms.Label lblInjectTargetScene;
             System.Windows.Forms.Label lblNodeKey;
             System.Windows.Forms.Label lblLinkTarget;
@@ -40,24 +39,39 @@
             System.Windows.Forms.Label lblCompassExplanation;
             System.Windows.Forms.Label label2;
             System.Windows.Forms.Label lblGameStartDesc;
+            System.Windows.Forms.Label lblPatchAddTarget;
+            System.Windows.Forms.Label lblPatchAddKey;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+            System.Windows.Forms.ToolStripMenuItem mnuAddPatchHeader;
+            System.Windows.Forms.ToolStripSeparator toolStripSeparator5;
+            System.Windows.Forms.Label lblPatchAddExplanation;
+            System.Windows.Forms.Label label3;
+            System.Windows.Forms.Label label4;
+            System.Windows.Forms.Label label5;
+            System.Windows.Forms.Label label6;
+            System.Windows.Forms.Label label7;
+            System.Windows.Forms.Label label8;
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormDocumentScene));
             this.toolStrip = new System.Windows.Forms.ToolStrip();
+            this.tsbAddPatch = new System.Windows.Forms.ToolStripDropDownButton();
+            this.mnuAddPatchNodeAdd = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddPatchNodeReplace = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuAddPatchNodeRemove = new System.Windows.Forms.ToolStripMenuItem();
             this.tsbAddNode = new System.Windows.Forms.ToolStripButton();
             this.tsbRemoveNode = new System.Windows.Forms.ToolStripButton();
             this.tsbAddLink = new System.Windows.Forms.ToolStripButton();
             this.tsbAddCompass = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbMoveUp = new System.Windows.Forms.ToolStripButton();
             this.tsbMoveDown = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbClipboardCut = new System.Windows.Forms.ToolStripButton();
             this.tsbClipboardCopy = new System.Windows.Forms.ToolStripButton();
             this.tsbClipboardPaste = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbScriptCustom = new System.Windows.Forms.ToolStripButton();
             this.tsbScriptEnter = new System.Windows.Forms.ToolStripButton();
             this.tsbScriptLeave = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.tsbExpand = new System.Windows.Forms.ToolStripButton();
             this.tsbCollapse = new System.Windows.Forms.ToolStripButton();
             this.splitNodeList = new System.Windows.Forms.SplitContainer();
@@ -66,14 +80,12 @@
             this.splitNodeSettings = new System.Windows.Forms.SplitContainer();
             this.tbcNode = new System.Windows.Forms.TabControl();
             this.tbpNodeRoot = new System.Windows.Forms.TabPage();
+            this.pnlInjectionSettings = new System.Windows.Forms.Panel();
+            this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
             this.pnlGameStartSettings = new System.Windows.Forms.Panel();
             this.txtGameStartDesc = new System.Windows.Forms.TextBox();
             this.chkRootGameStart = new System.Windows.Forms.CheckBox();
             this.chkRootInject = new System.Windows.Forms.CheckBox();
-            this.pnlInjectionSettings = new System.Windows.Forms.Panel();
-            this.assetInjectTargetScene = new Finmer.Editor.AssetPickerControl();
-            this.cmbInjectTargetMode = new System.Windows.Forms.ComboBox();
-            this.cmbInjectTargetNode = new System.Windows.Forms.ComboBox();
             this.tbpNodeState = new System.Windows.Forms.TabPage();
             this.txtNodeStateKey = new System.Windows.Forms.TextBox();
             this.tbpNodeChoice = new System.Windows.Forms.TabPage();
@@ -89,6 +101,17 @@
             this.txtNodeCompassKey = new System.Windows.Forms.TextBox();
             this.assetCompassTarget = new Finmer.Editor.AssetPickerControl();
             this.cmbCompassDirection = new System.Windows.Forms.ComboBox();
+            this.tbpNodePatchAdd = new System.Windows.Forms.TabPage();
+            this.txtNodePatchAddKey = new System.Windows.Forms.TextBox();
+            this.cmbPatchAddMode = new System.Windows.Forms.ComboBox();
+            this.cmbPatchAddTargetNode = new System.Windows.Forms.ComboBox();
+            this.tbpNodePatchReplace = new System.Windows.Forms.TabPage();
+            this.chkPatchReplaceKeepChildren = new System.Windows.Forms.CheckBox();
+            this.txtNodePatchReplaceKey = new System.Windows.Forms.TextBox();
+            this.cmbPatchReplaceTargetNode = new System.Windows.Forms.ComboBox();
+            this.tbpNodePatchRemove = new System.Windows.Forms.TabPage();
+            this.txtNodePatchRemoveKey = new System.Windows.Forms.TextBox();
+            this.cmbPatchRemoveTargetNode = new System.Windows.Forms.ComboBox();
             this.tbcScripts = new System.Windows.Forms.TabControl();
             this.tbpScriptAction = new System.Windows.Forms.TabPage();
             this.scriptAction = new Finmer.Editor.ScriptEditorHost();
@@ -96,7 +119,6 @@
             this.scriptAppear = new Finmer.Editor.ScriptEditorHost();
             lblNodeTooltip = new System.Windows.Forms.Label();
             lblNodeTitle = new System.Windows.Forms.Label();
-            lblInjectTargetNode = new System.Windows.Forms.Label();
             lblInjectTargetScene = new System.Windows.Forms.Label();
             lblNodeKey = new System.Windows.Forms.Label();
             lblLinkTarget = new System.Windows.Forms.Label();
@@ -106,6 +128,21 @@
             lblCompassExplanation = new System.Windows.Forms.Label();
             label2 = new System.Windows.Forms.Label();
             lblGameStartDesc = new System.Windows.Forms.Label();
+            lblPatchAddTarget = new System.Windows.Forms.Label();
+            lblPatchAddKey = new System.Windows.Forms.Label();
+            toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator4 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
+            toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            mnuAddPatchHeader = new System.Windows.Forms.ToolStripMenuItem();
+            toolStripSeparator5 = new System.Windows.Forms.ToolStripSeparator();
+            lblPatchAddExplanation = new System.Windows.Forms.Label();
+            label3 = new System.Windows.Forms.Label();
+            label4 = new System.Windows.Forms.Label();
+            label5 = new System.Windows.Forms.Label();
+            label6 = new System.Windows.Forms.Label();
+            label7 = new System.Windows.Forms.Label();
+            label8 = new System.Windows.Forms.Label();
             this.toolStrip.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitNodeList)).BeginInit();
             this.splitNodeList.Panel1.SuspendLayout();
@@ -117,13 +154,16 @@
             this.splitNodeSettings.SuspendLayout();
             this.tbcNode.SuspendLayout();
             this.tbpNodeRoot.SuspendLayout();
-            this.pnlGameStartSettings.SuspendLayout();
             this.pnlInjectionSettings.SuspendLayout();
+            this.pnlGameStartSettings.SuspendLayout();
             this.tbpNodeState.SuspendLayout();
             this.tbpNodeChoice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudChoiceCustomWidth)).BeginInit();
             this.tbpNodeLink.SuspendLayout();
             this.tbpNodeCompass.SuspendLayout();
+            this.tbpNodePatchAdd.SuspendLayout();
+            this.tbpNodePatchReplace.SuspendLayout();
+            this.tbpNodePatchRemove.SuspendLayout();
             this.tbcScripts.SuspendLayout();
             this.tbpScriptAction.SuspendLayout();
             this.tbpScriptAppear.SuspendLayout();
@@ -146,15 +186,6 @@
             lblNodeTitle.Size = new System.Drawing.Size(65, 13);
             lblNodeTitle.TabIndex = 2;
             lblNodeTitle.Text = "Button Text:";
-            // 
-            // lblInjectTargetNode
-            // 
-            lblInjectTargetNode.AutoSize = true;
-            lblInjectTargetNode.Location = new System.Drawing.Point(0, 56);
-            lblInjectTargetNode.Name = "lblInjectTargetNode";
-            lblInjectTargetNode.Size = new System.Drawing.Size(77, 13);
-            lblInjectTargetNode.TabIndex = 2;
-            lblInjectTargetNode.Text = "Injection Point:";
             // 
             // lblInjectTargetScene
             // 
@@ -214,6 +245,7 @@
             // 
             lblCompassExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            lblCompassExplanation.ForeColor = System.Drawing.SystemColors.GrayText;
             lblCompassExplanation.Location = new System.Drawing.Point(8, 152);
             lblCompassExplanation.Name = "lblCompassExplanation";
             lblCompassExplanation.Size = new System.Drawing.Size(192, 80);
@@ -240,25 +272,152 @@
             lblGameStartDesc.TabIndex = 0;
             lblGameStartDesc.Text = "Game Start Description:";
             // 
+            // lblPatchAddTarget
+            // 
+            lblPatchAddTarget.AutoSize = true;
+            lblPatchAddTarget.Location = new System.Drawing.Point(8, 56);
+            lblPatchAddTarget.Name = "lblPatchAddTarget";
+            lblPatchAddTarget.Size = new System.Drawing.Size(135, 13);
+            lblPatchAddTarget.TabIndex = 2;
+            lblPatchAddTarget.Text = "Target Node and Location:";
+            // 
+            // lblPatchAddKey
+            // 
+            lblPatchAddKey.AutoSize = true;
+            lblPatchAddKey.Location = new System.Drawing.Point(8, 8);
+            lblPatchAddKey.Name = "lblPatchAddKey";
+            lblPatchAddKey.Size = new System.Drawing.Size(65, 13);
+            lblPatchAddKey.TabIndex = 0;
+            lblPatchAddKey.Text = "Unique Key:";
+            // 
+            // toolStripSeparator1
+            // 
+            toolStripSeparator1.Name = "toolStripSeparator1";
+            toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator4
+            // 
+            toolStripSeparator4.Name = "toolStripSeparator4";
+            toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator3
+            // 
+            toolStripSeparator3.Name = "toolStripSeparator3";
+            toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
+            // 
+            // toolStripSeparator2
+            // 
+            toolStripSeparator2.Name = "toolStripSeparator2";
+            toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
+            // 
+            // mnuAddPatchHeader
+            // 
+            mnuAddPatchHeader.Enabled = false;
+            mnuAddPatchHeader.Name = "mnuAddPatchHeader";
+            mnuAddPatchHeader.Size = new System.Drawing.Size(181, 22);
+            mnuAddPatchHeader.Text = "Select type of patch:";
+            // 
+            // toolStripSeparator5
+            // 
+            toolStripSeparator5.Name = "toolStripSeparator5";
+            toolStripSeparator5.Size = new System.Drawing.Size(178, 6);
+            // 
+            // lblPatchAddExplanation
+            // 
+            lblPatchAddExplanation.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            lblPatchAddExplanation.ForeColor = System.Drawing.SystemColors.GrayText;
+            lblPatchAddExplanation.Location = new System.Drawing.Point(8, 184);
+            lblPatchAddExplanation.Name = "lblPatchAddExplanation";
+            lblPatchAddExplanation.Size = new System.Drawing.Size(192, 48);
+            lblPatchAddExplanation.TabIndex = 5;
+            lblPatchAddExplanation.Text = "This type of patch will insert all child nodes in or around the target node, as c" +
+    "onfigured above.";
+            lblPatchAddExplanation.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label3
+            // 
+            label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            label3.ForeColor = System.Drawing.SystemColors.GrayText;
+            label3.Location = new System.Drawing.Point(8, 136);
+            label3.Name = "label3";
+            label3.Size = new System.Drawing.Size(192, 96);
+            label3.TabIndex = 10;
+            label3.Text = "Removes target node, and replaces it with the child of this patch.\r\n\r\nIf Keep Chi" +
+    "ldren is ticked, child nodes of the target node are moved to the first replaceme" +
+    "nt node.";
+            label3.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new System.Drawing.Point(8, 8);
+            label4.Name = "label4";
+            label4.Size = new System.Drawing.Size(65, 13);
+            label4.TabIndex = 6;
+            label4.Text = "Unique Key:";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new System.Drawing.Point(8, 56);
+            label5.Name = "label5";
+            label5.Size = new System.Drawing.Size(135, 13);
+            label5.TabIndex = 8;
+            label5.Text = "Target Node and Location:";
+            // 
+            // label6
+            // 
+            label6.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            label6.ForeColor = System.Drawing.SystemColors.GrayText;
+            label6.Location = new System.Drawing.Point(8, 184);
+            label6.Name = "label6";
+            label6.Size = new System.Drawing.Size(192, 48);
+            label6.TabIndex = 10;
+            label6.Text = "This type of patch will remove the target node, and all its children, from the sc" +
+    "ene.";
+            label6.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Location = new System.Drawing.Point(8, 8);
+            label7.Name = "label7";
+            label7.Size = new System.Drawing.Size(65, 13);
+            label7.TabIndex = 6;
+            label7.Text = "Unique Key:";
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Location = new System.Drawing.Point(8, 56);
+            label8.Name = "label8";
+            label8.Size = new System.Drawing.Size(135, 13);
+            label8.TabIndex = 8;
+            label8.Text = "Target Node and Location:";
+            // 
             // toolStrip
             // 
             this.toolStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsbAddPatch,
             this.tsbAddNode,
             this.tsbRemoveNode,
             this.tsbAddLink,
             this.tsbAddCompass,
-            this.toolStripSeparator1,
+            toolStripSeparator1,
             this.tsbMoveUp,
             this.tsbMoveDown,
-            this.toolStripSeparator4,
+            toolStripSeparator4,
             this.tsbClipboardCut,
             this.tsbClipboardCopy,
             this.tsbClipboardPaste,
-            this.toolStripSeparator3,
+            toolStripSeparator3,
             this.tsbScriptCustom,
             this.tsbScriptEnter,
             this.tsbScriptLeave,
-            this.toolStripSeparator2,
+            toolStripSeparator2,
             this.tsbExpand,
             this.tsbCollapse});
             this.toolStrip.Location = new System.Drawing.Point(0, 0);
@@ -266,6 +425,43 @@
             this.toolStrip.Size = new System.Drawing.Size(893, 25);
             this.toolStrip.TabIndex = 0;
             this.toolStrip.Text = "toolStrip1";
+            // 
+            // tsbAddPatch
+            // 
+            this.tsbAddPatch.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            mnuAddPatchHeader,
+            toolStripSeparator5,
+            this.mnuAddPatchNodeAdd,
+            this.mnuAddPatchNodeReplace,
+            this.mnuAddPatchNodeRemove});
+            this.tsbAddPatch.Image = global::Finmer.Editor.Properties.Resources.plus;
+            this.tsbAddPatch.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAddPatch.Name = "tsbAddPatch";
+            this.tsbAddPatch.Size = new System.Drawing.Size(93, 22);
+            this.tsbAddPatch.Text = "New Patch";
+            this.tsbAddPatch.ToolTipText = "Add New Patch to Patch Group";
+            this.tsbAddPatch.Visible = false;
+            // 
+            // mnuAddPatchNodeAdd
+            // 
+            this.mnuAddPatchNodeAdd.Name = "mnuAddPatchNodeAdd";
+            this.mnuAddPatchNodeAdd.Size = new System.Drawing.Size(181, 22);
+            this.mnuAddPatchNodeAdd.Text = "Add/Insert Nodes";
+            this.mnuAddPatchNodeAdd.Click += new System.EventHandler(this.mnuAddPatchNodeAdd_Click);
+            // 
+            // mnuAddPatchNodeReplace
+            // 
+            this.mnuAddPatchNodeReplace.Name = "mnuAddPatchNodeReplace";
+            this.mnuAddPatchNodeReplace.Size = new System.Drawing.Size(181, 22);
+            this.mnuAddPatchNodeReplace.Text = "Replace Node";
+            this.mnuAddPatchNodeReplace.Click += new System.EventHandler(this.mnuAddPatchNodeReplace_Click);
+            // 
+            // mnuAddPatchNodeRemove
+            // 
+            this.mnuAddPatchNodeRemove.Name = "mnuAddPatchNodeRemove";
+            this.mnuAddPatchNodeRemove.Size = new System.Drawing.Size(181, 22);
+            this.mnuAddPatchNodeRemove.Text = "Remove Node";
+            this.mnuAddPatchNodeRemove.Click += new System.EventHandler(this.mnuAddPatchNodeRemove_Click);
             // 
             // tsbAddNode
             // 
@@ -308,11 +504,6 @@
             this.tsbAddCompass.ToolTipText = "Add Compass Item (Ctrl+B)";
             this.tsbAddCompass.Click += new System.EventHandler(this.tsbAddCompass_Click);
             // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbMoveUp
             // 
             this.tsbMoveUp.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
@@ -334,11 +525,6 @@
             this.tsbMoveDown.Text = "Move Down";
             this.tsbMoveDown.ToolTipText = "Move Down (Alt+Down Arrow)";
             this.tsbMoveDown.Click += new System.EventHandler(this.tsbMoveDown_Click);
-            // 
-            // toolStripSeparator4
-            // 
-            this.toolStripSeparator4.Name = "toolStripSeparator4";
-            this.toolStripSeparator4.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbClipboardCut
             // 
@@ -373,11 +559,6 @@
             this.tsbClipboardPaste.Text = "Paste Nodes (Ctrl+V)";
             this.tsbClipboardPaste.Click += new System.EventHandler(this.tsbClipboardPaste_Click);
             // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 25);
-            // 
             // tsbScriptCustom
             // 
             this.tsbScriptCustom.AutoToolTip = false;
@@ -410,11 +591,6 @@
             this.tsbScriptLeave.Text = "Leave Script";
             this.tsbScriptLeave.ToolTipText = "Edit Scene Leave Script";
             this.tsbScriptLeave.Click += new System.EventHandler(this.tsbScriptLeave_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 25);
             // 
             // tsbExpand
             // 
@@ -483,6 +659,8 @@
             this.imlNodeIcons.Images.SetKeyName(2, "node_choice");
             this.imlNodeIcons.Images.SetKeyName(3, "node_link");
             this.imlNodeIcons.Images.SetKeyName(4, "node_compass");
+            this.imlNodeIcons.Images.SetKeyName(5, "node_patch");
+            this.imlNodeIcons.Images.SetKeyName(6, "node_patch_error");
             // 
             // splitNodeSettings
             // 
@@ -511,6 +689,9 @@
             this.tbcNode.Controls.Add(this.tbpNodeChoice);
             this.tbcNode.Controls.Add(this.tbpNodeLink);
             this.tbcNode.Controls.Add(this.tbpNodeCompass);
+            this.tbcNode.Controls.Add(this.tbpNodePatchAdd);
+            this.tbcNode.Controls.Add(this.tbpNodePatchReplace);
+            this.tbcNode.Controls.Add(this.tbpNodePatchRemove);
             this.tbcNode.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbcNode.Location = new System.Drawing.Point(0, 0);
             this.tbcNode.Name = "tbcNode";
@@ -521,10 +702,10 @@
             // 
             // tbpNodeRoot
             // 
+            this.tbpNodeRoot.Controls.Add(this.pnlInjectionSettings);
             this.tbpNodeRoot.Controls.Add(this.pnlGameStartSettings);
             this.tbpNodeRoot.Controls.Add(this.chkRootGameStart);
             this.tbpNodeRoot.Controls.Add(this.chkRootInject);
-            this.tbpNodeRoot.Controls.Add(this.pnlInjectionSettings);
             this.tbpNodeRoot.Location = new System.Drawing.Point(4, 22);
             this.tbpNodeRoot.Name = "tbpNodeRoot";
             this.tbpNodeRoot.Padding = new System.Windows.Forms.Padding(3);
@@ -532,6 +713,26 @@
             this.tbpNodeRoot.TabIndex = 0;
             this.tbpNodeRoot.Text = "Root Node";
             this.tbpNodeRoot.UseVisualStyleBackColor = true;
+            // 
+            // pnlInjectionSettings
+            // 
+            this.pnlInjectionSettings.Controls.Add(this.assetInjectTargetScene);
+            this.pnlInjectionSettings.Controls.Add(lblInjectTargetScene);
+            this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 56);
+            this.pnlInjectionSettings.Name = "pnlInjectionSettings";
+            this.pnlInjectionSettings.Size = new System.Drawing.Size(192, 152);
+            this.pnlInjectionSettings.TabIndex = 0;
+            this.pnlInjectionSettings.Visible = false;
+            // 
+            // assetInjectTargetScene
+            // 
+            this.assetInjectTargetScene.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
+            this.assetInjectTargetScene.Location = new System.Drawing.Point(0, 24);
+            this.assetInjectTargetScene.Name = "assetInjectTargetScene";
+            this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
+            this.assetInjectTargetScene.TabIndex = 1;
+            this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
             // 
             // pnlGameStartSettings
             // 
@@ -568,58 +769,11 @@
             this.chkRootInject.AutoSize = true;
             this.chkRootInject.Location = new System.Drawing.Point(8, 8);
             this.chkRootInject.Name = "chkRootInject";
-            this.chkRootInject.Size = new System.Drawing.Size(65, 17);
+            this.chkRootInject.Size = new System.Drawing.Size(97, 17);
             this.chkRootInject.TabIndex = 1;
-            this.chkRootInject.Text = "Is Patch";
+            this.chkRootInject.Text = "Is Patch Group";
             this.chkRootInject.UseVisualStyleBackColor = true;
             this.chkRootInject.CheckedChanged += new System.EventHandler(this.chkRootInject_CheckedChanged);
-            // 
-            // pnlInjectionSettings
-            // 
-            this.pnlInjectionSettings.Controls.Add(this.assetInjectTargetScene);
-            this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetMode);
-            this.pnlInjectionSettings.Controls.Add(this.cmbInjectTargetNode);
-            this.pnlInjectionSettings.Controls.Add(lblInjectTargetNode);
-            this.pnlInjectionSettings.Controls.Add(lblInjectTargetScene);
-            this.pnlInjectionSettings.Location = new System.Drawing.Point(8, 56);
-            this.pnlInjectionSettings.Name = "pnlInjectionSettings";
-            this.pnlInjectionSettings.Size = new System.Drawing.Size(192, 152);
-            this.pnlInjectionSettings.TabIndex = 0;
-            this.pnlInjectionSettings.Visible = false;
-            // 
-            // assetInjectTargetScene
-            // 
-            this.assetInjectTargetScene.AssetType = Finmer.Editor.AssetPickerControl.EPickerType.Scene;
-            this.assetInjectTargetScene.Location = new System.Drawing.Point(0, 24);
-            this.assetInjectTargetScene.Name = "assetInjectTargetScene";
-            this.assetInjectTargetScene.SelectedGuid = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.assetInjectTargetScene.Size = new System.Drawing.Size(184, 24);
-            this.assetInjectTargetScene.TabIndex = 1;
-            this.assetInjectTargetScene.SelectedAssetChanged += new System.EventHandler(this.assetInjectTargetScene_SelectedAssetChanged);
-            // 
-            // cmbInjectTargetMode
-            // 
-            this.cmbInjectTargetMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbInjectTargetMode.FormattingEnabled = true;
-            this.cmbInjectTargetMode.Items.AddRange(new object[] {
-            "before (as States)",
-            "after (as States)",
-            "inside, at the start (as Choices)",
-            "inside, at the end (as Choices)"});
-            this.cmbInjectTargetMode.Location = new System.Drawing.Point(0, 72);
-            this.cmbInjectTargetMode.Name = "cmbInjectTargetMode";
-            this.cmbInjectTargetMode.Size = new System.Drawing.Size(192, 21);
-            this.cmbInjectTargetMode.TabIndex = 3;
-            this.cmbInjectTargetMode.SelectedIndexChanged += new System.EventHandler(this.cmbInjectTargetMode_SelectedIndexChanged);
-            // 
-            // cmbInjectTargetNode
-            // 
-            this.cmbInjectTargetNode.FormattingEnabled = true;
-            this.cmbInjectTargetNode.Location = new System.Drawing.Point(0, 96);
-            this.cmbInjectTargetNode.Name = "cmbInjectTargetNode";
-            this.cmbInjectTargetNode.Size = new System.Drawing.Size(192, 21);
-            this.cmbInjectTargetNode.TabIndex = 4;
-            this.cmbInjectTargetNode.TextChanged += new System.EventHandler(this.cmbInjectTargetNode_TextChanged);
             // 
             // tbpNodeState
             // 
@@ -814,6 +968,131 @@
             this.cmbCompassDirection.TabIndex = 3;
             this.cmbCompassDirection.SelectedIndexChanged += new System.EventHandler(this.cmbCompassDirection_SelectedIndexChanged);
             // 
+            // tbpNodePatchAdd
+            // 
+            this.tbpNodePatchAdd.Controls.Add(lblPatchAddExplanation);
+            this.tbpNodePatchAdd.Controls.Add(lblPatchAddKey);
+            this.tbpNodePatchAdd.Controls.Add(this.txtNodePatchAddKey);
+            this.tbpNodePatchAdd.Controls.Add(this.cmbPatchAddMode);
+            this.tbpNodePatchAdd.Controls.Add(this.cmbPatchAddTargetNode);
+            this.tbpNodePatchAdd.Controls.Add(lblPatchAddTarget);
+            this.tbpNodePatchAdd.Location = new System.Drawing.Point(4, 22);
+            this.tbpNodePatchAdd.Name = "tbpNodePatchAdd";
+            this.tbpNodePatchAdd.Size = new System.Drawing.Size(210, 242);
+            this.tbpNodePatchAdd.TabIndex = 5;
+            this.tbpNodePatchAdd.Text = "Patch Node (Add)";
+            this.tbpNodePatchAdd.UseVisualStyleBackColor = true;
+            // 
+            // txtNodePatchAddKey
+            // 
+            this.txtNodePatchAddKey.Location = new System.Drawing.Point(8, 24);
+            this.txtNodePatchAddKey.MaxLength = 32;
+            this.txtNodePatchAddKey.Name = "txtNodePatchAddKey";
+            this.txtNodePatchAddKey.Size = new System.Drawing.Size(192, 20);
+            this.txtNodePatchAddKey.TabIndex = 1;
+            this.txtNodePatchAddKey.TextChanged += new System.EventHandler(this.txtNodeKey_TextChanged);
+            // 
+            // cmbPatchAddMode
+            // 
+            this.cmbPatchAddMode.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cmbPatchAddMode.FormattingEnabled = true;
+            this.cmbPatchAddMode.Items.AddRange(new object[] {
+            "Before Target",
+            "After Target",
+            "Inside Target, at Start",
+            "Inside Target, at End",
+            "Inside Target, randomly"});
+            this.cmbPatchAddMode.Location = new System.Drawing.Point(8, 96);
+            this.cmbPatchAddMode.Name = "cmbPatchAddMode";
+            this.cmbPatchAddMode.Size = new System.Drawing.Size(192, 21);
+            this.cmbPatchAddMode.TabIndex = 4;
+            this.cmbPatchAddMode.SelectedIndexChanged += new System.EventHandler(this.cmbPatchAddMode_SelectedIndexChanged);
+            // 
+            // cmbPatchAddTargetNode
+            // 
+            this.cmbPatchAddTargetNode.FormattingEnabled = true;
+            this.cmbPatchAddTargetNode.Location = new System.Drawing.Point(8, 72);
+            this.cmbPatchAddTargetNode.Name = "cmbPatchAddTargetNode";
+            this.cmbPatchAddTargetNode.Size = new System.Drawing.Size(192, 21);
+            this.cmbPatchAddTargetNode.TabIndex = 3;
+            this.cmbPatchAddTargetNode.TextChanged += new System.EventHandler(this.cmbPatchTargetNode_TextChanged);
+            // 
+            // tbpNodePatchReplace
+            // 
+            this.tbpNodePatchReplace.Controls.Add(this.chkPatchReplaceKeepChildren);
+            this.tbpNodePatchReplace.Controls.Add(label3);
+            this.tbpNodePatchReplace.Controls.Add(label4);
+            this.tbpNodePatchReplace.Controls.Add(this.txtNodePatchReplaceKey);
+            this.tbpNodePatchReplace.Controls.Add(this.cmbPatchReplaceTargetNode);
+            this.tbpNodePatchReplace.Controls.Add(label5);
+            this.tbpNodePatchReplace.Location = new System.Drawing.Point(4, 22);
+            this.tbpNodePatchReplace.Name = "tbpNodePatchReplace";
+            this.tbpNodePatchReplace.Size = new System.Drawing.Size(210, 242);
+            this.tbpNodePatchReplace.TabIndex = 6;
+            this.tbpNodePatchReplace.Text = "Patch Node (Replace)";
+            this.tbpNodePatchReplace.UseVisualStyleBackColor = true;
+            // 
+            // chkPatchReplaceKeepChildren
+            // 
+            this.chkPatchReplaceKeepChildren.AutoSize = true;
+            this.chkPatchReplaceKeepChildren.Location = new System.Drawing.Point(11, 110);
+            this.chkPatchReplaceKeepChildren.Name = "chkPatchReplaceKeepChildren";
+            this.chkPatchReplaceKeepChildren.Size = new System.Drawing.Size(92, 17);
+            this.chkPatchReplaceKeepChildren.TabIndex = 11;
+            this.chkPatchReplaceKeepChildren.Text = "Keep Children";
+            this.chkPatchReplaceKeepChildren.UseVisualStyleBackColor = true;
+            this.chkPatchReplaceKeepChildren.CheckedChanged += new System.EventHandler(this.chkPatchReplaceKeepChildren_CheckedChanged);
+            // 
+            // txtNodePatchReplaceKey
+            // 
+            this.txtNodePatchReplaceKey.Location = new System.Drawing.Point(8, 24);
+            this.txtNodePatchReplaceKey.MaxLength = 32;
+            this.txtNodePatchReplaceKey.Name = "txtNodePatchReplaceKey";
+            this.txtNodePatchReplaceKey.Size = new System.Drawing.Size(192, 20);
+            this.txtNodePatchReplaceKey.TabIndex = 7;
+            this.txtNodePatchReplaceKey.TextChanged += new System.EventHandler(this.txtNodeKey_TextChanged);
+            // 
+            // cmbPatchReplaceTargetNode
+            // 
+            this.cmbPatchReplaceTargetNode.FormattingEnabled = true;
+            this.cmbPatchReplaceTargetNode.Location = new System.Drawing.Point(8, 72);
+            this.cmbPatchReplaceTargetNode.Name = "cmbPatchReplaceTargetNode";
+            this.cmbPatchReplaceTargetNode.Size = new System.Drawing.Size(192, 21);
+            this.cmbPatchReplaceTargetNode.TabIndex = 9;
+            this.cmbPatchReplaceTargetNode.TextChanged += new System.EventHandler(this.cmbPatchTargetNode_TextChanged);
+            // 
+            // tbpNodePatchRemove
+            // 
+            this.tbpNodePatchRemove.Controls.Add(label6);
+            this.tbpNodePatchRemove.Controls.Add(label7);
+            this.tbpNodePatchRemove.Controls.Add(this.txtNodePatchRemoveKey);
+            this.tbpNodePatchRemove.Controls.Add(this.cmbPatchRemoveTargetNode);
+            this.tbpNodePatchRemove.Controls.Add(label8);
+            this.tbpNodePatchRemove.Location = new System.Drawing.Point(4, 22);
+            this.tbpNodePatchRemove.Name = "tbpNodePatchRemove";
+            this.tbpNodePatchRemove.Size = new System.Drawing.Size(210, 242);
+            this.tbpNodePatchRemove.TabIndex = 7;
+            this.tbpNodePatchRemove.Text = "Patch Node (Remove)";
+            this.tbpNodePatchRemove.UseVisualStyleBackColor = true;
+            // 
+            // txtNodePatchRemoveKey
+            // 
+            this.txtNodePatchRemoveKey.Location = new System.Drawing.Point(8, 24);
+            this.txtNodePatchRemoveKey.MaxLength = 32;
+            this.txtNodePatchRemoveKey.Name = "txtNodePatchRemoveKey";
+            this.txtNodePatchRemoveKey.Size = new System.Drawing.Size(192, 20);
+            this.txtNodePatchRemoveKey.TabIndex = 7;
+            this.txtNodePatchRemoveKey.TextChanged += new System.EventHandler(this.txtNodeKey_TextChanged);
+            // 
+            // cmbPatchRemoveTargetNode
+            // 
+            this.cmbPatchRemoveTargetNode.FormattingEnabled = true;
+            this.cmbPatchRemoveTargetNode.Location = new System.Drawing.Point(8, 72);
+            this.cmbPatchRemoveTargetNode.Name = "cmbPatchRemoveTargetNode";
+            this.cmbPatchRemoveTargetNode.Size = new System.Drawing.Size(192, 21);
+            this.cmbPatchRemoveTargetNode.TabIndex = 9;
+            this.cmbPatchRemoveTargetNode.TextChanged += new System.EventHandler(this.cmbPatchTargetNode_TextChanged);
+            // 
             // tbcScripts
             // 
             this.tbcScripts.Controls.Add(this.tbpScriptAction);
@@ -895,10 +1174,10 @@
             this.tbcNode.ResumeLayout(false);
             this.tbpNodeRoot.ResumeLayout(false);
             this.tbpNodeRoot.PerformLayout();
-            this.pnlGameStartSettings.ResumeLayout(false);
-            this.pnlGameStartSettings.PerformLayout();
             this.pnlInjectionSettings.ResumeLayout(false);
             this.pnlInjectionSettings.PerformLayout();
+            this.pnlGameStartSettings.ResumeLayout(false);
+            this.pnlGameStartSettings.PerformLayout();
             this.tbpNodeState.ResumeLayout(false);
             this.tbpNodeState.PerformLayout();
             this.tbpNodeChoice.ResumeLayout(false);
@@ -908,6 +1187,12 @@
             this.tbpNodeLink.PerformLayout();
             this.tbpNodeCompass.ResumeLayout(false);
             this.tbpNodeCompass.PerformLayout();
+            this.tbpNodePatchAdd.ResumeLayout(false);
+            this.tbpNodePatchAdd.PerformLayout();
+            this.tbpNodePatchReplace.ResumeLayout(false);
+            this.tbpNodePatchReplace.PerformLayout();
+            this.tbpNodePatchRemove.ResumeLayout(false);
+            this.tbpNodePatchRemove.PerformLayout();
             this.tbcScripts.ResumeLayout(false);
             this.tbpScriptAction.ResumeLayout(false);
             this.tbpScriptAppear.ResumeLayout(false);
@@ -925,10 +1210,8 @@
 		private System.Windows.Forms.ComboBox cmbLinkTarget;
 		private System.Windows.Forms.ToolStripButton tsbAddNode;
 		private System.Windows.Forms.ToolStripButton tsbRemoveNode;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
 		private System.Windows.Forms.ToolStripButton tsbScriptEnter;
 		private System.Windows.Forms.ToolStripButton tsbScriptLeave;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
 		private System.Windows.Forms.ToolStripButton tsbExpand;
 		private System.Windows.Forms.ToolStripButton tsbCollapse;
 		private System.Windows.Forms.TabPage tbpScriptAction;
@@ -937,7 +1220,6 @@
 		private System.Windows.Forms.ImageList imlNodeIcons;
 		private System.Windows.Forms.TextBox txtNodeStateKey;
 		private System.Windows.Forms.ToolStripButton tsbScriptCustom;
-		private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
 		private System.Windows.Forms.ToolStripButton tsbMoveUp;
 		private System.Windows.Forms.ToolStripButton tsbMoveDown;
 		private System.Windows.Forms.TextBox txtNodeChoiceTitle;
@@ -952,8 +1234,6 @@
         private System.Windows.Forms.TabPage tbpNodeRoot;
         private System.Windows.Forms.Panel pnlInjectionSettings;
         private AssetPickerControl assetInjectTargetScene;
-        private System.Windows.Forms.ComboBox cmbInjectTargetMode;
-        private System.Windows.Forms.ComboBox cmbInjectTargetNode;
         private System.Windows.Forms.CheckBox chkRootInject;
         private System.Windows.Forms.TabPage tbpNodeState;
         private System.Windows.Forms.TabPage tbpNodeChoice;
@@ -967,9 +1247,23 @@
         private System.Windows.Forms.Panel pnlGameStartSettings;
         private System.Windows.Forms.TextBox txtGameStartDesc;
         private System.Windows.Forms.CheckBox chkRootGameStart;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator4;
         private System.Windows.Forms.ToolStripButton tsbClipboardCut;
         private System.Windows.Forms.ToolStripButton tsbClipboardCopy;
         private System.Windows.Forms.ToolStripButton tsbClipboardPaste;
+        private System.Windows.Forms.TabPage tbpNodePatchAdd;
+        private System.Windows.Forms.ComboBox cmbPatchAddTargetNode;
+        private System.Windows.Forms.ComboBox cmbPatchAddMode;
+        private System.Windows.Forms.TextBox txtNodePatchAddKey;
+        private System.Windows.Forms.ToolStripDropDownButton tsbAddPatch;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddPatchNodeAdd;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddPatchNodeReplace;
+        private System.Windows.Forms.ToolStripMenuItem mnuAddPatchNodeRemove;
+        private System.Windows.Forms.TabPage tbpNodePatchReplace;
+        private System.Windows.Forms.TextBox txtNodePatchReplaceKey;
+        private System.Windows.Forms.ComboBox cmbPatchReplaceTargetNode;
+        private System.Windows.Forms.TabPage tbpNodePatchRemove;
+        private System.Windows.Forms.TextBox txtNodePatchRemoveKey;
+        private System.Windows.Forms.ComboBox cmbPatchRemoveTargetNode;
+        private System.Windows.Forms.CheckBox chkPatchReplaceKeepChildren;
     }
 }

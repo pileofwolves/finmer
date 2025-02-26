@@ -18,6 +18,10 @@
     <UserControl.Resources>
         <cv:StringCapFirstConverter x:Key="StringCapFirstConverter" />
         <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <cv:ChainConverter x:Key="NonNullToVisibilityConverter">
+            <cv:ReferenceNonNullConverter />
+            <BooleanToVisibilityConverter />
+        </cv:ChainConverter>
     </UserControl.Resources>
     <Grid>
         <!-- Background sky colors -->
@@ -160,7 +164,7 @@
             <Grid
                 Grid.Column="1"
                 Grid.Row="0"
-                Visibility="{Binding UI.IsInCombat, Converter={StaticResource BooleanToVisibilityConverter}}">
+                Visibility="{Binding UI.CombatStateViewModel, Converter={StaticResource NonNullToVisibilityConverter}}">
                 <Grid
                     Visibility="{Binding UI.CombatStateViewModel.IsResolveVisible, Converter={StaticResource BooleanToVisibilityConverter}}">
                     <v:CombatResolvePanelView

@@ -53,21 +53,21 @@ namespace Finmer.Core.VisualScripting
         {
             outstream.BeginArray(key, nodes.Count);
             foreach (var node in nodes)
-                outstream.WriteNestedObjectProperty(null, node);
+                outstream.WriteObjectProperty(null, node, EFurballObjectMode.Required);
             outstream.EndArray();
         }
 
         /// <summary>
         /// Helper method for reading a subgroup from an input stream that was written using SerializeSubgroup().
         /// </summary>
-        protected List<ScriptNode> DeserializeSubgroup(IFurballContentReader instream, int version, string key)
+        protected List<ScriptNode> DeserializeSubgroup(IFurballContentReader instream, string key)
         {
             var count = instream.BeginArray(key);
             var output = new List<ScriptNode>(count);
 
             // Read the nested nodes
             for (int i = 0; i < count; i++)
-                output.Add(instream.ReadNestedObjectProperty<ScriptNode>(null, version));
+                output.Add(instream.ReadObjectProperty<ScriptNode>(null, EFurballObjectMode.Required));
             instream.EndArray();
 
             return output;

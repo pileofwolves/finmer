@@ -16,7 +16,7 @@ namespace Finmer.Gameplay
     /// Represents the exception that is thrown when save data cannot be reconstructed into a game session.
     /// </summary>
     [Serializable]
-    public sealed class InvalidSaveDataException : ApplicationException
+    public sealed class InvalidSaveDataException : Exception
     {
 
         private InvalidSaveDataException(SerializationInfo info, StreamingContext context) : base(info, context) {}

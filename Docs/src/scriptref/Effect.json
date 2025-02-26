@@ -1,0 +1,75 @@
+[
+	{
+		"type": "function",
+		"name": "Effect.ShowOpposedDiceRoll",
+		"remarks": "Displays an animation for a six-sided dice (D6) roll between two opposing characters. Die values and labels can be customized. Multiple rounds may be provided; they will be displayed in order. Note that if the player has combat animations disabled, this animation is also hidden.",
+		"argtable": true,
+		"input": [
+			{
+				"name": "instigator",
+				"type": "Creature",
+				"desc": "creature to display on the left side of the die roll"
+			},
+			{
+				"name": "target",
+				"type": "Creature",
+				"desc": "creature to display on the right side of the die roll"
+			},
+			{
+				"name": "label_instigator",
+				"type": "string",
+				"optional": true,
+				"desc": "description for left-side roll; default is \"Total\""
+			},
+			{
+				"name": "label_target",
+				"type": "string",
+				"optional": true,
+				"desc": "description for right-side roll; default is \"Total\""
+			},
+			{
+				"name": "log_key",
+				"type": "string",
+				"optional": true,
+				"desc": "if non-nil, log combat text with this key; default is nil"
+			},
+			{
+				"name": "rounds",
+				"type": "array of DiceRound",
+				"desc": "list of rounds to display, see below for layout"
+			}
+		]
+	},
+	{
+		"type": "struct",
+		"name": "DiceRound",
+		"fields": [
+			{
+				"name": "instigator_dice",
+				"type": "DiceList",
+				"desc": "describes the individual die faces on the instigator's side"
+			},
+			{
+				"name": "target_dice",
+				"type": "DiceList",
+				"desc": "describes the individual die faces on the target's side"
+			}
+		]
+	},
+	{
+		"type": "struct",
+		"name": "DiceList",
+		"fields": [
+			{
+				"name": "hostile",
+				"type": "boolean",
+				"desc": "optional, if true, use red dice, if false, use white dice"
+			},
+			{
+				"name": "...",
+				"type": "array of number",
+				"desc": "d6 die faces (range 1-6) in order of display"
+			}
+		]
+	}
+]

@@ -113,17 +113,17 @@ namespace Finmer.Core.Buffs
                 outstream.WriteEnumProperty(nameof(ProcTarget), ProcTarget);
                 outstream.WriteFloatProperty(nameof(ProcChance), ProcChance);
                 outstream.WriteStringProperty(nameof(ProcStringTableKey), ProcStringTableKey);
-                outstream.WriteInt32Property(nameof(Duration), Duration);
+                outstream.WriteCompressedInt32Property(nameof(Duration), Duration);
             }
 
             // Buff collection
             outstream.BeginArray(nameof(Buffs), Buffs.Count);
             foreach (var buff in Buffs)
-                outstream.WriteNestedObjectProperty(null, buff);
+                outstream.WriteObjectProperty(null, buff, EFurballObjectMode.Required);
             outstream.EndArray();
         }
 
-        public void Deserialize(IFurballContentReader instream, int version)
+        public void Deserialize(IFurballContentReader instream)
         {
             // Group type
             ProcStyle = instream.ReadEnumProperty<EProcStyle>(nameof(ProcStyle));
@@ -134,12 +134,12 @@ namespace Finmer.Core.Buffs
                 ProcTarget = instream.ReadEnumProperty<EProcTarget>(nameof(ProcTarget));
                 ProcChance = instream.ReadFloatProperty(nameof(ProcChance));
                 ProcStringTableKey = instream.ReadStringProperty(nameof(ProcStringTableKey));
-                Duration = instream.ReadInt32Property(nameof(Duration));
+                Duration = instream.ReadCompressedInt32Property(nameof(Duration));
             }
 
             // Buff collection
             for (int i = 0, c = instream.BeginArray(nameof(Buffs)); i < c; i++)
-                Buffs.Add(instream.ReadNestedObjectProperty<Buff>(null, version));
+                Buffs.Add(instream.ReadObjectProperty<Buff>(null, EFurballObjectMode.Required));
             instream.EndArray();
         }
 

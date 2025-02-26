@@ -16,7 +16,7 @@ namespace Finmer.Gameplay.Scripting
     /// The exception that is thrown when an unrecoverable error occurs in a ScriptContext.
     /// </summary>
     [Serializable]
-    public sealed class ScriptException : ApplicationException
+    public sealed class ScriptException : Exception
     {
 
         private ScriptException(SerializationInfo info, StreamingContext context) : base(info, context) {}

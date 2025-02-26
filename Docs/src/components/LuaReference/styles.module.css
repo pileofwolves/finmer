@@ -116,17 +116,17 @@
     list-style-type: none;
 }
 
-.scriptapi .type::before {
+.scriptapi > .type::before {
     content: 'Type:';
     float: left;
 }
 
-.scriptapi .input::before {
+.scriptapi > .input::before {
     content: 'Parameters:';
     float: left;
 }
 
-.scriptapi .output::before {
+.scriptapi > .output::before {
     content: 'Returns:';
     float: left;
 }
@@ -152,3 +152,33 @@
 	float: left;
 	width: 70%;
 }
+
+.scriptapi .struct {
+	table-layout: fixed;
+	display: table;
+}
+
+.scriptapi .struct .field {
+	display: table-row;
+}
+
+.scriptapi .struct .field .name {
+	font-family: monospace;
+	font-weight: bold;
+	font-size: 1rem;
+	display: table-cell;
+	width: 25%;
+}
+
+.scriptapi .struct .field .type {
+	font-family: monospace;
+	font-size: 1rem;
+	display: table-cell;
+	width: 20%;
+}
+
+.scriptapi .struct .field .desc {
+	width: 65%;
+	display: table-cell;
+}
+

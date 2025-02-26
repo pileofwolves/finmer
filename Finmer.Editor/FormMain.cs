@@ -99,15 +99,15 @@ namespace Finmer.Editor
             string key;
             switch (asset)
             {
-                case AssetScene scene:          key = "scene";
-                    if (scene.IsGameStart)      key = "scene_start";
-                    else if (scene.IsPatch)     key = "scene_patch";        break;
-                case AssetItem _:               key = "item";               break;
-                case AssetCreature _:           key = "creature";           break;
-                case AssetStringTable _:        key = "text";               break;
-                case AssetScript _:             key = "script";             break;
-                case AssetJournal _:            key = "text";               break;
-                default:                        throw new ArgumentException(nameof(asset));
+                case AssetScene scene:              key = "scene";
+                    if (scene.IsGameStart)          key = "scene_start";
+                    else if (scene.IsPatchGroup)    key = "scene_patch";        break;
+                case AssetItem _:                   key = "item";               break;
+                case AssetCreature _:               key = "creature";           break;
+                case AssetStringTable _:            key = "text";               break;
+                case AssetScript _:                 key = "script";             break;
+                case AssetJournal _:                key = "text";               break;
+                default:                            throw new ArgumentException(nameof(asset));
             }
 
             // Apply the new icon
@@ -718,10 +718,9 @@ namespace Finmer.Editor
             {
                 Name = GetUniqueAssetName("NewScene"),
                 ID = asset_guid,
-                Root = new AssetScene.SceneNode
+                Root = new SceneNode
                 {
-                    NodeType = AssetScene.ENodeType.Root,
-                    Key = "Root"
+                    NodeType = SceneNode.ENodeType.Root
                 }
             };
             RegisterNewAsset(asset);

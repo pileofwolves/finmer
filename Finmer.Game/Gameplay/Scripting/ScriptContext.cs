@@ -66,11 +66,14 @@ namespace Finmer.Gameplay.Scripting
 
             // Register global libraries
             GlobalScriptLibrary.Inject(this);
+            MathScriptLibrary.Inject(this);
             GameplayScriptLibrary.Inject(this);
             UIScriptLibrary.Inject(this);
             GrammarScriptLibrary.Inject(this);
             SaveDataScriptLibrary.Inject(this);
             Combat2ScriptLibrary.Inject(this);
+            ContentScriptLibrary.Inject(this);
+            EffectScriptLibrary.Inject(this);
             Debug.Assert(lua_gettop(LuaState) == 0);
         }
 

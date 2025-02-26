@@ -89,6 +89,19 @@ function MakeEnumerator(enumerator) {
 	)
 }
 
+// Returns HTML elements describing a struct field
+function MakeStructField(field) {
+	return (
+		<>
+			<div className={styles.field}>
+				<div className={styles.type}>{field.type}</div>
+				<div className={styles.name}>{field.name}</div>
+				<div className={styles.desc}>{field.desc}</div>
+			</div>
+		</>
+	)
+}
+
 // Returns HTML elements describing the origin of the function
 function MakeOriginNote(entry) {
 	if (!entry.coremod)
@@ -152,6 +165,21 @@ function MakeEnumReference(entry) {
 	)
 }
 
+// Generates a structured type reference document block
+function MakeStructReference(entry) {
+	return (
+		<div className={styles.scriptapi}>
+			<div className={styles.title}>
+				<div className={styles.qualifier}>struct&nbsp;</div>
+				{entry.name}
+			</div>
+			<div className={styles.struct}>
+				{entry.fields.map((field, index) => MakeStructField(field))}
+			</div>
+		</div>
+	)
+}
+
 // Generates documentation for an API element
 function LuaReferenceBlock(entry) {
 	switch (entry.type) {
@@ -161,6 +189,8 @@ function LuaReferenceBlock(entry) {
 			return MakePropertyReference(entry);
 		case "enum":
 			return MakeEnumReference(entry);
+		case "struct":
+			return MakeStructReference(entry);
 		default:
 			throw new Error("invalid script reference type: " + entry.type);
 	}

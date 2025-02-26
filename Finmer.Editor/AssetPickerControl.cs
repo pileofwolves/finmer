@@ -24,6 +24,11 @@ namespace Finmer.Editor
     {
 
         /// <summary>
+        /// Contains a predicate that filters assets to show in the browser. If null, no filtering is performed.
+        /// </summary>
+        public Predicate<AssetBase> SelectorPredicate { get; set; }
+
+        /// <summary>
         /// Describes which AssetBase derived type can be selected.
         /// </summary>
         public enum EPickerType
@@ -146,9 +151,11 @@ namespace Finmer.Editor
                 // Add all acceptable assets to the dialog from both the current project and all loaded dependencies
                 Type target_type = s_AssetTypeLookup[AssetType];
                 foreach (var asset in Program.ActiveFurball.Assets.Where(asset => asset.GetType() == target_type))
-                    browser.AddSelectableAsset(asset, asset.ID == m_SelectedAssetGuid, false);
+                    if (SelectorPredicate == null || SelectorPredicate(asset))
+                        browser.AddSelectableAsset(asset, asset.ID == m_SelectedAssetGuid, false);
                 foreach (var asset in Program.ActiveDependencies.Assets.Where(asset => asset.GetType() == target_type))
-                    browser.AddSelectableAsset(asset, asset.ID == m_SelectedAssetGuid, true);
+                    if (SelectorPredicate == null || SelectorPredicate(asset))
+                        browser.AddSelectableAsset(asset, asset.ID == m_SelectedAssetGuid, true);
 
                 // Present the dialog, and only use results if the user confirmed
                 if (browser.ShowDialog() != DialogResult.OK)

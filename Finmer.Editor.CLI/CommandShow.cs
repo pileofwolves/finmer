@@ -19,19 +19,39 @@ namespace Finmer.Editor.CLI
     /// <summary>
     /// Command for displaying the contents and metadata of a module.
     /// </summary>
-    internal static class CommandShow
+    public sealed class CommandShow : Command
     {
 
-        /// <summary>
-        /// Run the command.
-        /// </summary>
-        /// <param name="file_list">List of file paths to operate on.</param>
-        /// <param name="options">List of command line options.</param>
-        /// <returns>Program exit code.</returns>
-        public static int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
+        /// <inheritdoc />
+        public override IEnumerable<string> GetNames()
+        {
+            yield return "show";
+            yield return "view";
+        }
+
+        /// <inheritdoc />
+        public override Help GetHelp()
+        {
+            return new Help
+            { 
+                Usage = "<path>",
+                Description = "Loads the module at the specified path, and displays basic information about it. Both Editor projects (fnproj) and Furball files are accepted.",
+                Parameters = new List<Help.Parameter>
+                {
+                    new Help.Parameter
+                    {
+                        Name = "-v",
+                        Description = "List all individual asset files in the module."
+                    }
+                }
+            };
+        }
+
+        /// <inheritdoc />
+        public override int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
         {
             if (file_list.Count != 1)
-                return CommandHelp.Run();
+                return ShowCommandUsage();
 
             // Interpret the file list as a single input path
             var in_file = file_list[0];
@@ -71,7 +91,7 @@ namespace Finmer.Editor.CLI
             Console.WriteLine();
             Console.WriteLine("=== Asset Summary ===");
             Console.WriteLine($"Total:            {module.Assets.Count}");
-            Console.WriteLine($"Scenes:           {module.Assets.OfType<AssetScene>().Count()} ({module.Assets.OfType<AssetScene>().Count(scene => scene.IsPatch)} patches)");
+            Console.WriteLine($"Scenes:           {module.Assets.OfType<AssetScene>().Count()} ({module.Assets.OfType<AssetScene>().Count(scene => scene.IsPatchGroup)} patches)");
             Console.WriteLine($"Creatures:        {module.Assets.OfType<AssetCreature>().Count()}");
             Console.WriteLine($"Items:            {module.Assets.OfType<AssetItem>().Count()}");
             Console.WriteLine($"String Tables:    {module.Assets.OfType<AssetStringTable>().Count()}");

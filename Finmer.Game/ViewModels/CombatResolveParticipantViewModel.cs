@@ -24,14 +24,14 @@ namespace Finmer.ViewModels
 
         public List<EDieFace> DieFaces { get; }
 
-        public CombatDisplay.EResolveType ResolveType { get; }
+        public string Label { get; }
 
-        public CombatResolveParticipantViewModel(Participant participant, CombatDisplay.EResolveType resolveType, int dieTotal, List<EDieFace> dieFaces)
+        public CombatResolveParticipantViewModel(Participant participant, string label, int dieTotal, List<EDieFace> dieFaces)
         {
             Participant = participant;
             DieTotal = dieTotal;
             DieFaces = dieFaces;
-            ResolveType = resolveType;
+            Label = label;
         }
 
     }

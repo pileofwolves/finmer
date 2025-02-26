@@ -6,6 +6,7 @@
  * SPDX-License-Identifier: GPL-3.0-only
  */
 
+using Finmer.Core.Assets;
 using Finmer.Core.VisualScripting.Nodes;
 
 namespace Finmer.Editor
@@ -27,6 +28,7 @@ namespace Finmer.Editor
             var node = (CommandPlayerSetEquipment)Node;
             cmbSlot.SelectedIndex = (int)node.EquipSlot;
             apcItem.SelectedGuid = node.ItemGuid;
+            apcItem.SelectorPredicate = candidate => candidate is AssetItem candidate_item && candidate_item.ItemType == AssetItem.EItemType.Equipable;
         }
 
         private void cmdAccept_Click(object sender, System.EventArgs e)

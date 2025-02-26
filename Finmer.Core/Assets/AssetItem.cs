@@ -127,11 +127,11 @@ namespace Finmer.Core.Assets
                 foreach (var effect in EquipEffects)
                 {
                     // Serialize each equip effect
-                    outstream.WriteNestedObjectProperty(null, effect);
+                    outstream.WriteObjectProperty(null, effect, EFurballObjectMode.Required);
                 }
                 outstream.EndArray();
             }
-            outstream.WriteInt32Property(nameof(PurchaseValue), PurchaseValue);
+            outstream.WriteCompressedInt32Property(nameof(PurchaseValue), PurchaseValue);
             outstream.WriteBooleanProperty(nameof(IsQuestItem), IsQuestItem);
 
             // Usable item data
@@ -141,16 +141,16 @@ namespace Finmer.Core.Assets
                 outstream.WriteBooleanProperty(nameof(CanUseInField), CanUseInField);
                 outstream.WriteBooleanProperty(nameof(CanUseInBattle), CanUseInBattle);
                 outstream.WriteStringProperty(nameof(UseDescription), UseDescription);
-                outstream.WriteNestedObjectProperty(nameof(UseScript), UseScript);
+                outstream.WriteObjectProperty(nameof(UseScript), UseScript, EFurballObjectMode.Optional);
             }
 
             // Icon data
             outstream.WriteAttachment(GetIconAttachmentName(), InventoryIcon);
         }
 
-        public override void Deserialize(IFurballContentReader instream, int version)
+        public override void Deserialize(IFurballContentReader instream)
         {
-            base.Deserialize(instream, version);
+            base.Deserialize(instream);
 
             // Core stats
             ObjectName = instream.ReadStringProperty(nameof(ObjectName));
@@ -163,10 +163,10 @@ namespace Finmer.Core.Assets
 
                 // V19 onwards: equip effect groups with nested buffs and proc settings
                 for (int count = instream.BeginArray(nameof(EquipEffects)); count > 0; count--)
-                    EquipEffects.Add(instream.ReadNestedObjectProperty<EquipEffectGroup>(null, version));
+                    EquipEffects.Add(instream.ReadObjectProperty<EquipEffectGroup>(null, EFurballObjectMode.Required));
                 instream.EndArray();
             }
-            PurchaseValue = instream.ReadInt32Property(nameof(PurchaseValue));
+            PurchaseValue = instream.ReadCompressedInt32Property(nameof(PurchaseValue));
             IsQuestItem = instream.ReadBooleanProperty(nameof(IsQuestItem));
 
             // Usable item data
@@ -178,7 +178,7 @@ namespace Finmer.Core.Assets
                 UseDescription = instream.ReadStringProperty(nameof(UseDescription));
 
                 // Read attached UseScript, or if there is none, instantiate one now
-                UseScript = instream.ReadNestedObjectProperty<AssetScript>(nameof(UseScript), version)
+                UseScript = instream.ReadObjectProperty<AssetScript>(nameof(UseScript), EFurballObjectMode.Optional)
                     ?? new AssetScript { ID = Guid.NewGuid() };
 
                 // Ensure the script is named

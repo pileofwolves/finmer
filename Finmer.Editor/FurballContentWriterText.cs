@@ -36,16 +36,16 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
-        public void WriteByteProperty(string key, byte value)
+        public void WriteInt32Property(string key, int value)
         {
             m_Stream.WritePropertyName(key);
             m_Stream.WriteValue(value);
         }
 
-        public void WriteInt32Property(string key, int value)
+        public void WriteCompressedInt32Property(string key, int value)
         {
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
+            // We don't do any special compression here, just redirect to the normal version
+            WriteInt32Property(key, value);
         }
 
         public void WriteFloatProperty(string key, float value)
@@ -61,7 +61,7 @@ namespace Finmer.Editor
 
             // Validate that the specified value is a valid value for the input enum type
             if (!Enum.IsDefined(enum_type, value))
-                throw new FurballInvalidAssetException($"Property '{key}' has value {value} which is not valid for enum type '{enum_type.Name}'");
+                throw new FurballInvalidAssetException($"Property {key} at path {m_Stream.Path} has value {value} which is not a valid value of {enum_type.Name}");
 
             // Write the name of the enum value to the output document
             string name = Enum.GetName(enum_type, value);
@@ -72,7 +72,11 @@ namespace Finmer.Editor
         public void WriteGuidProperty(string key, Guid value)
         {
             m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value.ToString());
+
+            if (value == Guid.Empty)
+                m_Stream.WriteNull();
+            else
+                m_Stream.WriteValue(value.ToString());
         }
 
         public void WriteStringProperty(string key, string value)
@@ -85,17 +89,17 @@ namespace Finmer.Editor
             m_Stream.WriteValue(value);
         }
 
-        public void WriteByteArrayProperty(string key, byte[] value)
-        {
-            m_Stream.WritePropertyName(key);
-            m_Stream.WriteValue(value);
-        }
-
-        public void WriteNestedObjectProperty(string key, IFurballSerializable value)
+        public void WriteObjectProperty(string key, IFurballSerializable value, EFurballObjectMode mode)
         {
             // The input asset may be null; in that case omit the property entirely, for brevity. The reader will interpret this as null.
             if (value == null)
+            {
+                // If the value is required, but absent, throw
+                if (mode == EFurballObjectMode.Required)
+                    throw new FurballInvalidAssetException($"Property {key} at path {m_Stream.Path} is null, but is not optional");
+
                 return;
+            }
 
             // Key is optional (if we're writing an array)
             if (key != null)
@@ -120,7 +124,7 @@ namespace Finmer.Editor
 
             // To avoid accidentally overwriting asset files, prevent writing attachments with the .json extension
             if (key.EndsWith(".json", StringComparison.InvariantCultureIgnoreCase))
-                throw new FurballInvalidAssetException($"Cannot use attachment key '{key}'");
+                throw new FurballInvalidAssetException($"Attachment key '{key}' is reserved");
 
             // If the specified value is null, erase the attachment, otherwise dump it to the file
             string attachment_path = Path.Combine(m_AttachmentsFolder.FullName, key);

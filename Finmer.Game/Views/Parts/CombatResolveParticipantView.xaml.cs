@@ -9,7 +9,6 @@
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows;
-using Finmer.Gameplay.Combat;
 using Finmer.ViewModels;
 using JetBrains.Annotations;
 
@@ -35,7 +34,7 @@ namespace Finmer.Views
         /// Dependency property for ParticipantDisplayMode.
         /// </summary>
         public static readonly DependencyProperty ParticipantDisplayModeProperty = DependencyProperty.Register(
-            "ParticipantDisplayMode", typeof(EParticipantDisplayMode), typeof(CombatResolveParticipantView),
+            nameof(ParticipantDisplayMode), typeof(EParticipantDisplayMode), typeof(CombatResolveParticipantView),
             new PropertyMetadata(EParticipantDisplayMode.Attacker));
 
         /// <summary>
@@ -79,10 +78,10 @@ namespace Finmer.Views
         private void View_OnDataContextChanged(object sender, DependencyPropertyChangedEventArgs e)
         {
             if (e.OldValue is INotifyPropertyChanged old_context)
-                PropertyChangedEventManager.RemoveHandler(old_context, ViewModel_OnPropertyChanged, nameof(CombatResolveParticipantViewModel.ResolveType));
+                PropertyChangedEventManager.RemoveHandler(old_context, ViewModel_OnPropertyChanged, nameof(CombatResolveParticipantViewModel.Label));
 
             if (e.NewValue is INotifyPropertyChanged new_context)
-                PropertyChangedEventManager.AddHandler(new_context, ViewModel_OnPropertyChanged, nameof(CombatResolveParticipantViewModel.ResolveType));
+                PropertyChangedEventManager.AddHandler(new_context, ViewModel_OnPropertyChanged, nameof(CombatResolveParticipantViewModel.Label));
 
             // Ensure the TotalLabel is updated at least once
             m_ViewModel = e.NewValue as CombatResolveParticipantViewModel;
@@ -91,7 +90,7 @@ namespace Finmer.Views
 
         private void ViewModel_OnPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName.Equals(nameof(CombatResolveParticipantViewModel.ResolveType)))
+            if (e.PropertyName.Equals(nameof(CombatResolveParticipantViewModel.Label)))
                 OnPropertyChanged(nameof(TotalLabel));
         }
 
@@ -101,20 +100,7 @@ namespace Finmer.Views
             if (m_ViewModel == null)
                 return "Total";
 
-            switch (m_ViewModel.ResolveType)
-            {
-                case CombatDisplay.EResolveType.Attack:
-                    return IsAttacker ? "Attack" : "Defense";
-
-                case CombatDisplay.EResolveType.Grapple:
-                    return "Grapple";
-
-                case CombatDisplay.EResolveType.Vore:
-                    return IsAttacker ? "Swallow" : "Struggle";
-
-                default:
-                    return "Total";
-            }
+            return m_ViewModel.Label;
         }
 
         [NotifyPropertyChangedInvocator]

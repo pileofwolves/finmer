@@ -204,6 +204,12 @@
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdCombatApplyBuff.Designer.cs">
       <DependentUpon>FormScriptCmdCombatApplyBuff.cs</DependentUpon>
     </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLoopTimes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScriptEditor\Nodes\FormScriptCmdLoopTimes.Designer.cs">
+      <DependentUpon>FormScriptCmdLoopTimes.cs</DependentUpon>
+    </Compile>
     <Compile Include="ScriptEditor\Nodes\FormScriptCmdPreysense.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -637,6 +643,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdCombatApplyBuff.resx">
       <DependentUpon>FormScriptCmdCombatApplyBuff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdLoopTimes.resx">
+      <DependentUpon>FormScriptCmdLoopTimes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ScriptEditor\Nodes\FormScriptCmdPreysense.resx">
       <DependentUpon>FormScriptCmdPreysense.cs</DependentUpon>

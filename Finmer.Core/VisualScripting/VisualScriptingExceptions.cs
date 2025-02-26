@@ -16,7 +16,7 @@ namespace Finmer.Core.VisualScripting
     /// The exception that is thrown when a visual script is broken.
     /// </summary>
     [Serializable]
-    public sealed class InvalidScriptNodeException : ApplicationException
+    public sealed class InvalidScriptNodeException : Exception
     {
 
         private InvalidScriptNodeException(SerializationInfo info, StreamingContext context) : base(info, context) {}

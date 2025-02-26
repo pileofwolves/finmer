@@ -48,6 +48,13 @@
     <Compile Include="..\Finmer.Game\Properties\AssemblyVersion.cs">
       <Link>Properties\AssemblyVersion.cs</Link>
     </Compile>
+    <Compile Include="Assets\ScenePatch.cs" />
+    <Compile Include="Assets\ScenePatchReplaceNode.cs" />
+    <Compile Include="Assets\ScenePatchRemoveNode.cs" />
+    <Compile Include="Assets\ScenePatchTargetNodeBase.cs" />
+    <Compile Include="Assets\ScenePatchAddNodes.cs" />
+    <Compile Include="Assets\V20ConversionUtil.cs" />
+    <Compile Include="Assets\SceneNode.cs" />
     <Compile Include="Assets\ScriptDataVisualCondition.cs" />
     <Compile Include="Assets\ScriptDataWrapper.cs" />
     <Compile Include="Assets\ScriptDataInline.cs" />
@@ -58,6 +65,7 @@
     <Compile Include="Buffs\EquipEffectGroup.cs" />
     <Compile Include="Compilers\CompilerExceptions.cs" />
     <Compile Include="LoadOrderDependency.cs" />
+    <Compile Include="Serialization\AbstractFurballSerializableAttribute.cs" />
     <Compile Include="Serialization\AssetSerializer.cs" />
     <Compile Include="Assets\AssetBase.cs" />
     <Compile Include="Assets\AssetJournal.cs" />
@@ -84,6 +92,7 @@
     <Compile Include="Minidump.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PropertyBag.cs" />
+    <Compile Include="Serialization\EFurballObjectMode.cs" />
     <Compile Include="Serialization\FurballContentReaderBinary.cs" />
     <Compile Include="Serialization\FurballContentWriterBinary.cs" />
     <Compile Include="Serialization\IContentStore.cs" />
@@ -99,6 +108,7 @@
     <Compile Include="VisualScripting\Nodes\CommandCombatBegin.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatEnd.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatApplyBuff.cs" />
+    <Compile Include="VisualScripting\Nodes\CommandLoopTimes.cs" />
     <Compile Include="VisualScripting\Nodes\CommandPreysense.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetGrappled.cs" />
     <Compile Include="VisualScripting\Nodes\CommandCombatSetVored.cs" />

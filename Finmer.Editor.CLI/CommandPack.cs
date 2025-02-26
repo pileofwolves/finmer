@@ -16,19 +16,38 @@ namespace Finmer.Editor.CLI
     /// <summary>
     /// Command for converting an Editor project into a Furball.
     /// </summary>
-    internal static class CommandPack
+    public sealed class CommandPack : CommandCopy
     {
 
-        /// <summary>
-        /// Run the command.
-        /// </summary>
-        /// <param name="file_list">List of file paths to operate on.</param>
-        /// <param name="options">List of command line options.</param>
-        /// <returns>Program exit code.</returns>
-        public static int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
+        /// <inheritdoc />
+        public override IEnumerable<string> GetNames()
+        {
+            yield return "pack";
+        }
+
+        /// <inheritdoc />
+        public override Help GetHelp()
+        {
+            return new Help
+            {
+                Usage = "<in-project> <out-furball>",
+                Description = "Loads the Editor project at the specified path, and saves it as a Furball at the specified output path.",
+                Parameters = new List<Help.Parameter>
+                {
+                    new Help.Parameter
+                    {
+                        Name = "-y",
+                        Description = "Overwrite output file if it already exists."
+                    }
+                }
+            };
+        }
+
+        /// <inheritdoc />
+        public override int Run(IReadOnlyList<FileInfo> file_list, IReadOnlyList<string> options)
         {
             // Read module as editor project, and write back as furball
-            return CommandCopy.Run(file_list, options, new FurballFileDeviceText(), new FurballFileDeviceBinary());
+            return CopyInternal(file_list, options, new FurballFileDeviceText(), new FurballFileDeviceBinary());
         }
 
     }

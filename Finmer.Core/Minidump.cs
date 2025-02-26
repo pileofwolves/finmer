@@ -49,7 +49,9 @@ namespace Finmer.Core
             WithFullAuxiliaryState = 0x00008000,
             WithPrivateWriteCopyMemory = 0x00010000,
             IgnoreInaccessibleMemory = 0x00020000,
-            ValidTypeFlags = 0x0003ffff
+            ValidTypeFlags = 0x0003ffff,
+
+            Default = Normal | WithIndirectlyReferencedMemory | WithProcessThreadData | WithHandleData
         }
 
         // Overload requiring MiniDumpExceptionInformation

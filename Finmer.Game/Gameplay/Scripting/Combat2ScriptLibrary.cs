@@ -29,7 +29,8 @@ namespace Finmer.Gameplay.Scripting
             IntPtr state = context.LuaState;
 
             // Combat globals
-            context.RegisterGlobalFunction("Combat2", ExportedNewCombat2State);
+            context.RegisterGlobalFunction("Combat2", ExportedNewCombatSession); // Backwards compatibility
+            context.RegisterGlobalFunction("CombatSession", ExportedNewCombatSession);
             context.RegisterGlobalFunction("GetActiveCombat", ExportedGetActiveCombat);
 
             // Buff table
@@ -44,7 +45,7 @@ namespace Finmer.Gameplay.Scripting
             lua_setglobal(state, "Buff");
         }
 
-        private static int ExportedNewCombat2State(IntPtr state)
+        private static int ExportedNewCombatSession(IntPtr state)
         {
             // Create a new CombatState on the caller stack (not the main thread stack!) and return it to the caller
             var combat = new CombatSession(ScriptContext.FromLua(state));

@@ -13,13 +13,17 @@ Functions relating to the combat system. You can start and stop fights, and mani
 
 ## Basics
 
-The basic flow is that you create a new session using the `Combat2` function, add some participants, and then start it with the `Begin` method.
+The basic flow is that you create a new session using the `CombatSession` function, add some participants, and then start it with the `Begin` method.
 
 A newly created session does not contain any participants at all, not even the player character (whom you can add with the global variable `Player`). You could, if you want to, forego adding the player to a combat session, and have only AI-controlled participants fight it out.
 
 NPC participants can be created by using the `Creature` function, described in the [Constructors](script-reference/ctors.md) section.
 
 <LuaReference group={ApiGroupBasic} />
+
+:::info
+For backwards compatibility with older versions of Finmer, the `CombatSession` function is also available under the old name `Combat2`. The two are identical. It is recommended that, for new projects, you use the new name instead.
+:::
 
 ## Participant State
 

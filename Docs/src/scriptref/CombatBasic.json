@@ -1,7 +1,7 @@
 [
 	{
 		"type": "function",
-		"name": "Combat2",
+		"name": "CombatSession",
 		"remarks": "Creates and returns a new Combat Session. You can call the other combat functions on this object.",
 		"output": [
 			{

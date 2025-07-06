@@ -118,7 +118,7 @@ namespace Finmer.Editor
             // 
             this.ribbon.QuickAccessToolbar.Visible = false;
             this.ribbon.RibbonTabFont = new System.Drawing.Font("Trebuchet MS", 9F);
-            this.ribbon.Size = new System.Drawing.Size(1008, 144);
+            this.ribbon.Size = new System.Drawing.Size(1008, 128);
             this.ribbon.TabIndex = 3;
             this.ribbon.Tabs.Add(this.rtabHome);
             this.ribbon.TabSpacing = 0;
@@ -134,7 +134,7 @@ namespace Finmer.Editor
             this.rtabHome.Panels.Add(this.rpnPlay);
             this.rtabHome.Panels.Add(this.rpnAssets);
             this.rtabHome.Panels.Add(this.rpnHelp);
-            this.rtabHome.Text = "Home";
+            this.rtabHome.Text = "";
             // 
             // rpnProject
             // 
@@ -468,7 +468,7 @@ namespace Finmer.Editor
             this.splitContainer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer.IsSplitterFixed = true;
-            this.splitContainer.Location = new System.Drawing.Point(0, 144);
+            this.splitContainer.Location = new System.Drawing.Point(0, 128);
             this.splitContainer.Name = "splitContainer";
             // 
             // splitContainer.Panel1
@@ -480,7 +480,7 @@ namespace Finmer.Editor
             // splitContainer.Panel2
             // 
             this.splitContainer.Panel2.Controls.Add(this.dockPanel);
-            this.splitContainer.Size = new System.Drawing.Size(1008, 537);
+            this.splitContainer.Size = new System.Drawing.Size(1008, 553);
             this.splitContainer.SplitterDistance = 270;
             this.splitContainer.TabIndex = 4;
             // 
@@ -496,7 +496,7 @@ namespace Finmer.Editor
             this.trvAssetList.Location = new System.Drawing.Point(0, 4);
             this.trvAssetList.Name = "trvAssetList";
             this.trvAssetList.SelectedImageIndex = 0;
-            this.trvAssetList.Size = new System.Drawing.Size(270, 533);
+            this.trvAssetList.Size = new System.Drawing.Size(270, 549);
             this.trvAssetList.TabIndex = 0;
             this.trvAssetList.BeforeLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.trvAssetList_BeforeLabelEdit);
             this.trvAssetList.AfterLabelEdit += new System.Windows.Forms.NodeLabelEditEventHandler(this.trvAssetList_AfterLabelEdit);
@@ -510,7 +510,7 @@ namespace Finmer.Editor
             this.dockPanel.DocumentStyle = WeifenLuo.WinFormsUI.Docking.DocumentStyle.DockingWindow;
             this.dockPanel.Location = new System.Drawing.Point(0, 0);
             this.dockPanel.Name = "dockPanel";
-            this.dockPanel.Size = new System.Drawing.Size(734, 537);
+            this.dockPanel.Size = new System.Drawing.Size(734, 553);
             this.dockPanel.TabIndex = 0;
             // 
             // dlgOpenBinary

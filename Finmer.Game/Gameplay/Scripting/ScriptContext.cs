@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
 using Finmer.Core;
 using Finmer.Core.Compilers;
 using Finmer.Models;
@@ -293,30 +294,32 @@ namespace Finmer.Gameplay.Scripting
             }
         }
 
-        public byte[] Precompile(string body, string chunkname)
+        private static int PrecompileChunkWriter(IntPtr _, IntPtr chunk_ptr, UIntPtr chunk_len, IntPtr userdata)
         {
+            // Marshal the data behind the unmanaged pointer to a managed byte array
+            int count = (int)chunk_len.ToUInt32();
+            var chunk_bytes = new byte[count];
+            Marshal.Copy(chunk_ptr, chunk_bytes, 0, count);
+
+            // Write the bytes to the output stream
+            var outstream = (MemoryStream)GCHandle.FromIntPtr(userdata).Target;
+            outstream.Write(chunk_bytes, 0, count);
+
+            return 0;
+        }
+
+        public byte[] Precompile(string body, string chunk_name)
+        {
+            byte[] utf8_body = Encoding.UTF8.GetBytes(body);
+
             // Try to compile the script
-            if (luaL_loadbuffer(LuaState, body, new UIntPtr(unchecked((ulong)body.Length)), chunkname) != 0)
+            if (luaL_loadbuffer_binary(LuaState, utf8_body, new UIntPtr(unchecked((ulong)utf8_body.Length)), chunk_name) != 0)
             {
                 // An error occurred
-                string message = $"In script {chunkname}: {lua_tostring(LuaState, -1)}";
+                string message = $"In script {chunk_name}: {lua_tostring(LuaState, -1)}";
                 lua_pop(LuaState, 1);
 
                 throw new ScriptCompilationException(message);
-            }
-
-            int WriteChunk(IntPtr _, IntPtr chunkPtr, UIntPtr chunkLen, IntPtr userdata)
-            {
-                // Marshal the data behind the unmanaged pointer to a managed byte array
-                int count = (int)chunkLen.ToUInt32();
-                var chunk_bytes = new byte[count];
-                Marshal.Copy(chunkPtr, chunk_bytes, 0, count);
-
-                // Write the bytes to the output stream
-                var outstream = (MemoryStream)GCHandle.FromIntPtr(userdata).Target;
-                outstream.Write(chunk_bytes, 0, count);
-
-                return 0;
             }
 
             using (var ms = new MemoryStream())
@@ -325,12 +328,13 @@ namespace Finmer.Gameplay.Scripting
                 var handle = GCHandle.Alloc(ms);
 
                 // Write the Lua function to the stream
-                lua_Writer writer = WriteChunk; // Keep delegate alive
+                lua_Writer writer = PrecompileChunkWriter; // Keep delegate alive
                 lua_dump(LuaState, writer, GCHandle.ToIntPtr(handle), false);
                 lua_pop(LuaState, 1);
 
                 // Discard the handle
                 handle.Free();
+                GC.KeepAlive(writer);
 
                 // And we're done
                 return ms.ToArray();

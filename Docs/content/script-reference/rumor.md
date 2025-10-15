@@ -29,21 +29,21 @@ When adding your own rumors, do so in a Script asset that calls `Rumor.Add`. Mak
 
 As a quick example, add a `RUMOR_EXAMPLE_TEXT` string table set to any string table, and enter this text. Note the use of the `{mill}` grammar context; please consult the section on [Grammar & Contexts](/asset-types/string-tables#grammar--contexts) for information on how to use the grammar engine.
 
-> "I heard something incredible last week," {mill} {mill exclaim} eagerly. "I forgot what it was, though."
+> "I heard something incredible last week," \{mill} \{mill exclaim} eagerly. "I forgot what it was, though."
 
 Then hook it up in script, like so. Don't forget to add a Load Order dependency to load _after_ `Script_RumorSystem`, else the `Rumor.Add` function may not yet be loaded, leading to errors.
 
 ```lua
 Rumor.Add {
-	id		= "MyCustomRumor",			-- Internal ID; used only for Rumor.Remove
-	text	= "RUMOR_EXAMPLE_TEXT",		-- The string table key that you just added
-	weight	= 1,						-- Relative weight: higher number = more likely to get picked
-	
-	-- Optional! You may add a 'check' function if you wish to restrict when the rumor may be shown.
-	-- This is useful to, for instance, show a rumor only before, or after, a certain quest was completed.
-	check	= function()
-		return Storage.GetFlag("MY_QUEST_COMPLETED")
-	end
+    id      = "MyCustomRumor",          -- Internal ID; used only for Rumor.Remove
+    text    = "RUMOR_EXAMPLE_TEXT",     -- The string table key that you just added
+    weight  = 1,                        -- Relative weight: higher number = more likely to get picked
+    
+    -- Optional! You may add a 'check' function if you wish to restrict when the rumor may be shown.
+    -- This is useful to, for instance, show a rumor only before, or after, a certain quest was completed.
+    check   = function()
+    	return Storage.GetFlag("MY_QUEST_COMPLETED")
+    end
 }
 ```
 

@@ -135,8 +135,8 @@ const config = {
         defaultMode: 'light',
       },
       prism: {
-        theme: require('prism-react-renderer/themes/vsLight'),
-        darkTheme: require('prism-react-renderer/themes/vsDark'),
+        theme: require('prism-react-renderer').themes.vsLight,
+        darkTheme: require('prism-react-renderer').themes.vsDark,
         additionalLanguages: ['lua'],
       },
     }),

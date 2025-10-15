@@ -41,7 +41,8 @@ namespace Finmer.Gameplay.Scripting
             var value = luaL_checkstring(state, 2);
 
             // Register the variable
-            TextParser.SetVariable(key, value);
+            var text_parser = GameController.Session.TextParser;
+            text_parser.SetVariable(key, value);
 
             return 0;
         }
@@ -54,7 +55,8 @@ namespace Finmer.Gameplay.Scripting
             var persist = lua_toboolean(state, 3); // Optional
 
             // Register the grammar context
-            TextParser.SetContext(key, context, persist);
+            var text_parser = GameController.Session.TextParser;
+            text_parser.SetContext(key, context, persist);
 
             return 0;
         }

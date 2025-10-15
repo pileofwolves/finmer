@@ -2,6 +2,9 @@
 sidebar_position: 5
 ---
 
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
 # String Tables
 
 String Tables contain game text, for display to the player. A table consists of a list of _sets_, each with one or more pieces of text in it.
@@ -109,9 +112,9 @@ Dave nimbly dodges your awkward punch, and you hit the wall instead.
 
 I'm sure you can see this feature being useful for avoiding duplicate text everywhere just to make the grammar work. :)
 
-### Special Commands
+## Special Commands
 
-#### Uppercase Command
+### Uppercase Command
 
 If the command starts with a caret (`^`), the first character of the evaluated text will be converted to uppercase. This is useful when the first word in a sentence is a grammar command - normally it would generate lowercase text, which would look like a mistake.
 
@@ -129,7 +132,7 @@ You tap the merchant on the shoulder. she turns to face you.
 You tap the merchant on the shoulder. She turns to face you.
 ```
 
-#### Randomizer Command
+### Randomizer Command
 
 If the command starts with a question mark (`?`), the command is interpreted as a set of options, of which one will be chosen randomly. The next character must be a pipe (`|`), and from there, the different options are separated by a pipe (`|`).
 
@@ -145,4 +148,48 @@ which could, randomly, be rendered as:
 
 ```
 My favorite fruit is banana.
+```
+
+### Nested Key Command
+
+If the command starts with an at-sign (`@`), the command is interpreted as a string table key. The key is looked up in string tables, resolved, and inserted in place of the command.
+
+Any grammar tags and commands in the nested key are also resolved, including any additional nested key commands. Recursion up to 5 levels of depth is supported; deeper recursion will show an error message.
+
+Example: If you have a string table key `EXAMPLE_INNER` with these entries:
+
+```
+always
+never
+```
+
+then you can insert it into another string like so, randomly selecting one of the entries:
+
+```
+I {@EXAMPLE_INNER} put pineapple on my pizza.
+```
+
+### Variable Key Command
+
+If the command starts with two at-signs (`@@`), the command is interpreted as a string variable name. The variable name is looked up (as if with `Storage.GetString`), and the resulting value is then interpreted as a string table key, like with the single-at-sign command.
+
+Example: First set a string variable to `EXAMPLE_INNER` - the same key used in the above example - using a Lua script or the equivalent Visual Script command.
+
+<Tabs groupId="script-lang">
+<TabItem value="visual" label="Visual Script">
+```finmervis
+Set String Variable EXAMPLE_VARIABLE to "EXAMPLE_INNER"
+```
+</TabItem>
+<TabItem value="lua" label="Lua Script">
+```lua
+Storage.SetString("EXAMPLE_VARIABLE", "EXAMPLE_INNER")
+```
+</TabItem>
+</Tabs>
+
+Afterward, it can be used like follows. The variable (`EXAMPLE_VARIABLE`) is substituted for its value (`EXAMPLE_INNER`) and that is then treated as a string table key to substitute into the text.
+
+```
+I {@@EXAMPLE_VARIABLE} put pineapple on my pizza.
 ```

@@ -51,6 +51,11 @@ namespace Finmer.Gameplay
         public ScriptContext ScriptContext { get; } = new ScriptContext();
 
         /// <summary>
+        /// Grammar context resolver for this session.
+        /// </summary>
+        public TextParser TextParser { get; }
+
+        /// <summary>
         /// The directional link manager for this session.
         /// </summary>
         public CompassController Compass { get; }
@@ -90,9 +95,8 @@ namespace Finmer.Gameplay
             // Allow scripts to access the player object as a global variable
             ScriptContext.PinObjectAsGlobal(Player, "Player");
 
-            // Bind player grammar context
-            TextParser.ClearAllContexts();
-            TextParser.SetContext("player", Player, true);
+            // Initialize text parsing system
+            TextParser = new TextParser(GameController.Content, Player);
 
             // Restore UI state
             GameUI.Reset();

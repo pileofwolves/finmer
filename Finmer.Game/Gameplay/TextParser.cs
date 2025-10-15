@@ -17,6 +17,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Finmer.Core;
+using Finmer.Gameplay.Scripting;
 using Finmer.Utility;
 
 namespace Finmer.Gameplay
@@ -30,25 +31,38 @@ namespace Finmer.Gameplay
     /// text on the fly depending on the input grammar context. For example, the same text template could be reused for
     /// different verb forms or pronoun sets.
     /// </remarks>
-    internal static class TextParser
+    public sealed class TextParser
     {
 
-        private static readonly Dictionary<string, string> s_Variables = new Dictionary<string, string>();
-        private static readonly Dictionary<string, Context> s_Contexts = new Dictionary<string, Context>();
+        private readonly Dictionary<string, string> m_Variables = new Dictionary<string, string>();
+        private readonly Dictionary<string, Context> m_Contexts = new Dictionary<string, Context>();
+        private readonly ContentStore m_Content;
+        private readonly Player m_Player;
+
+        private int m_RecursionCount;
+        private const int k_MaxRecursionCount = 5;
+
+        public TextParser(ContentStore content, Player player)
+        {
+            m_Content = content;
+            m_Player = player;
+
+            SetContext(@"player", player, true);
+        }
 
         /// <summary>
         /// Adds or replaces a substitutable variable with the specified value.
         /// </summary>
         /// <param name="key">The key of the value. This is what game text should reference in a grammar tag.</param>
         /// <param name="value">The text that the grammar tag will be replaced with.</param>
-        public static void SetVariable(string key, string value)
+        public void SetVariable(string key, string value)
         {
             // Add a prefix/postfix to the key so it looks like a grammar tag
             string grammar_tag = $"{{!{key}}}";
 
             // Register the tag
-            s_Variables.Remove(grammar_tag);
-            s_Variables.Add(grammar_tag, value);
+            m_Variables.Remove(grammar_tag);
+            m_Variables.Add(grammar_tag, value);
         }
 
         /// <summary>
@@ -57,32 +71,32 @@ namespace Finmer.Gameplay
         /// <param name="key">The key templates can use to address this context.</param>
         /// <param name="subject">The context object to register.</param>
         /// <param name="persist">If true, the context will persist through ClearContext calls.</param>
-        public static void SetContext(string key, GameObject subject, bool persist)
+        public void SetContext(string key, GameObject subject, bool persist)
         {
-            if (s_Contexts.ContainsKey(key))
-                s_Contexts.Remove(key);
+            if (m_Contexts.ContainsKey(key))
+                m_Contexts.Remove(key);
 
-            s_Contexts.Add(key, new Context(subject, persist));
+            m_Contexts.Add(key, new Context(subject, persist));
         }
 
         /// <summary>
         /// Removes all non-persistent grammar contexts.
         /// </summary>
-        public static void ClearNonPersistentContexts()
+        public void ClearNonPersistentContexts()
         {
-            s_Variables.Clear();
-            s_Contexts
+            m_Variables.Clear();
+            m_Contexts
                 .Where(context => !context.Value.IsPersistent)
-                .ForEach(context => s_Contexts.Remove(context.Key));
+                .ForEach(context => m_Contexts.Remove(context.Key));
         }
 
         /// <summary>
         /// Removes all grammar contexts.
         /// </summary>
-        public static void ClearAllContexts()
+        public void ClearAllContexts()
         {
-            s_Variables.Clear();
-            s_Contexts.Clear();
+            m_Variables.Clear();
+            m_Contexts.Clear();
         }
 
         /// <summary>
@@ -91,7 +105,7 @@ namespace Finmer.Gameplay
         /// <param name="input">The string table key to transform.</param>
         /// <param name="instigator">The character who performed some action.</param>
         /// <param name="target">The character who is the target of the instigator's action. Optional, may be null.</param>
-        public static string EvaluateStringMappings(string input, Character instigator, Character target = null)
+        public string EvaluateStringMappings(string input, Character instigator, Character target = null)
         {
             // Find a matching rule in the instigator's string mappings
             var asset = instigator.Asset;
@@ -149,45 +163,59 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Parses a text template and replaces all tags with configured substitutes and contexts.
         /// </summary>
-        /// <param name="raw">The unmodified template whose tags to substitute.</param>
-        public static string Parse(string raw)
+        /// <param name="template">The unmodified template whose tags to substitute.</param>
+        public string Evaluate(string template)
         {
-            // Insert newlines
-            raw = raw.Replace("\\n", Environment.NewLine);
-
-            // Apply variable substitutions
-            s_Variables.ForEach(pair => raw = raw.Replace(pair.Key, pair.Value));
-
-            // Handle grammar tags
-            var index_end = 0;
-            while (true)
+            try
             {
-                // Search the text for tags enclosed by curly braces
-                int index_start = raw.IndexOf('{', index_end);
-                if (index_start == -1)
-                    break;
-                index_end = raw.IndexOf('}', index_start);
-                if (index_end == -1)
-                    break;
+                m_RecursionCount++;
 
-                // Handle this grammar tag
-                string command = raw.Substring(index_start + 1, index_end - index_start - 1);
-                string replacement = ProcessGrammarTag(command);
+                // Avoid entering into an infinite recursive loop if content is set up to recurse infinitely
+                if (m_RecursionCount >= k_MaxRecursionCount)
+                    return "{max grammar tag recursion count exceeded}";
 
-                // Remove the raw grammar tag, and inject the generated replacement
-                Debug.Assert(replacement != null);
-                raw = raw.Remove(index_start, index_end - index_start + 1);
-                raw = raw.Insert(index_start, replacement);
-                index_end = index_start + replacement.Length;
+                // Insert newlines
+                template = template.Replace("\\n", Environment.NewLine);
+
+                // Apply variable substitutions
+                m_Variables.ForEach(pair => template = template.Replace(pair.Key, pair.Value));
+
+                // Handle grammar tags
+                var index_end = 0;
+                while (true)
+                {
+                    // Search the text for tags enclosed by curly braces
+                    int index_start = template.IndexOf('{', index_end);
+                    if (index_start == -1)
+                        break;
+                    index_end = template.IndexOf('}', index_start);
+                    if (index_end == -1)
+                        break;
+
+                    // Handle this grammar tag
+                    string command = template.Substring(index_start + 1, index_end - index_start - 1);
+                    string replacement = ProcessGrammarTag(command);
+
+                    // Remove the template grammar tag, and inject the generated replacement
+                    Debug.Assert(replacement != null);
+                    template = template.Remove(index_start, index_end - index_start + 1);
+                    template = template.Insert(index_start, replacement);
+                    index_end = index_start + replacement.Length;
+                }
+            }
+            finally
+            {
+                // Regardless of how we exit this method, make sure the recursion counter is decremented again
+                m_RecursionCount--;
             }
 
-            return raw;
+            return template;
         }
 
         /// <summary>
         /// Process a single grammar tag, returning the string it should be replaced with.
         /// </summary>
-        private static string ProcessGrammarTag(string command)
+        private string ProcessGrammarTag(string command)
         {
             // Prefix modifier: caret means we should capitalize the first character
             bool cap_first = false;
@@ -210,11 +238,15 @@ namespace Finmer.Gameplay
         /// <summary>
         /// Process a single grammar tag that has its prefix modifiers removed.
         /// </summary>
-        private static string ProcessGrammarTagInternal(string command)
+        private string ProcessGrammarTagInternal(string command)
         {
             // Randomized expression
             if (command.StartsWith("?", StringComparison.InvariantCulture))
                 return HandleRandomizedTag(command);
+
+            // Nested key expression
+            if (command.StartsWith("@", StringComparison.InvariantCulture))
+                return HandleKeyTag(command);
 
             // This is a context-based command; find the context key and parameter
             int index_split = command.IndexOfAny(new[] { ' ', '.' });
@@ -223,7 +255,7 @@ namespace Finmer.Gameplay
 
             // Find the context for this key
             string context_key = command.Substring(0, index_split);
-            if (!s_Contexts.TryGetValue(context_key, out Context context))
+            if (!m_Contexts.TryGetValue(context_key, out Context context))
                 return $"{{undefined context '{context_key}'}}";
 
             // Short form: If no split is found, and only the context name is present, then assume the Alias property is desired.
@@ -260,6 +292,28 @@ namespace Finmer.Gameplay
 
             PrintDebugInfo(command, "[invalid]");
             return "{invalid randomized expression}";
+        }
+
+        private string HandleKeyTag(string command)
+        {
+            // Strip off the at-sign
+            command = command.Substring(1);
+
+            if (command.Length < 1)
+                return "{invalid parameter}";
+
+            // Two at-signs in a row 
+            if (command[0] == '@')
+            {
+                // Strip off the second at-sign
+                var variable = command.Substring(1);
+
+                // Look up the variable, using its value as final key
+                command = m_Player.AdditionalSaveData.GetString(SaveDataScriptLibrary.GetNamespacedPropertyPath(variable));
+            }
+
+            // Recursively resolve this string key
+            return m_Content.GetAndParseString(command);
         }
 
         private static string HandlePropertyTag(Context context, string command, string key)

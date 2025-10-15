@@ -143,7 +143,7 @@ namespace Finmer.Gameplay
         /// <param name="key">The table key to look up.</param>
         public string GetAndParseString(string key)
         {
-            return TextParser.Parse(m_MergedStrings.GetRandomEntry(key));
+            return GameController.Session.TextParser.Evaluate(m_MergedStrings.GetRandomEntry(key));
         }
 
     }

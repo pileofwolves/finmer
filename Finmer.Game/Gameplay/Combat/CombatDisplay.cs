@@ -220,24 +220,26 @@ namespace Finmer.Gameplay.Combat
 
         private static void WriteCombatLog(string key, Participant instigator, Participant target)
         {
-            TextParser.SetContext("attacker", instigator.Character, false);
-            TextParser.SetContext("predator", instigator.Character, false);
-            TextParser.SetContext("defender", target.Character, false);
-            TextParser.SetContext("prey", target.Character, false);
+            var text_parser = GameController.Session.TextParser;
+            text_parser.SetContext("attacker", instigator.Character, false);
+            text_parser.SetContext("predator", instigator.Character, false);
+            text_parser.SetContext("defender", target.Character, false);
+            text_parser.SetContext("prey", target.Character, false);
 
-            string new_key = TextParser.EvaluateStringMappings(key, instigator.Character, target.Character);
+            string new_key = text_parser.EvaluateStringMappings(key, instigator.Character, target.Character);
             GameUI.Instance.Log(GameController.Content.GetAndParseString(new_key), Theme.LogColorDefault);
         }
 
         private static void WriteCombatLog(string key, Participant instigator)
         {
-            TextParser.SetContext("instigator", instigator.Character, false);
+            var text_parser = GameController.Session.TextParser;
+            text_parser.SetContext("instigator", instigator.Character, false);
 
             // If the character has a predator, make sure that context is available as well
             if (instigator.IsSwallowed())
-                TextParser.SetContext("predator", instigator.Predator.Character, false);
+                text_parser.SetContext("predator", instigator.Predator.Character, false);
 
-            string new_key = TextParser.EvaluateStringMappings(key, instigator.Character);
+            string new_key = text_parser.EvaluateStringMappings(key, instigator.Character);
             GameUI.Instance.Log(GameController.Content.GetAndParseString(new_key), Theme.LogColorDefault);
         }
 

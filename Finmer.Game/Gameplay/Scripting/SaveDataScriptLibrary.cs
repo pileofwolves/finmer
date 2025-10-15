@@ -104,7 +104,7 @@ namespace Finmer.Gameplay.Scripting
             return GameController.Session.Player.AdditionalSaveData;
         }
 
-        private static string GetNamespacedPropertyPath(string property)
+        internal static string GetNamespacedPropertyPath(string property)
         {
             // Namespace the properties set through scripts, so that they do not clash with save data set by game code
             return @"LUA_" + property;

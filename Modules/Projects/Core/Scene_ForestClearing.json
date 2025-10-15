@@ -7,10 +7,9 @@
 		"Name": "Scene_ForestClearing_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -69,7 +68,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "fggd",
 																"LinkTarget": "SQ02_R_Slay"
 															}
 														]
@@ -435,7 +433,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "Clearing_R_Camp"
 															}
 														]
@@ -462,12 +459,10 @@
 												"Children": [
 													{
 														"NodeType": "Link",
-														"Key": "AutoLink",
 														"LinkTarget": "Clearing_C_Save"
 													},
 													{
 														"NodeType": "Link",
-														"Key": "AutoLink",
 														"LinkTarget": "Clearing_C_Leave"
 													}
 												]

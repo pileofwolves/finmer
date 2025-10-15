@@ -11,10 +11,9 @@
 		"Name": "Scene_Forest_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -23,7 +22,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "West",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Log(\"FOREST_EXIT\")\r\nAdvanceTime(1)\r\nSetScene(\"Scene_ForestCottage\")"
@@ -32,7 +31,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "North",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Wander()"
@@ -41,7 +40,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "South",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Wander()"
@@ -50,7 +49,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "East",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "Wander()"

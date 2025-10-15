@@ -18,10 +18,9 @@
 		]
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",

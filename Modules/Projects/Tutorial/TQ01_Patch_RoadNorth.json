@@ -3,32 +3,39 @@
 	"AssetID": "3e0c96ff-4469-4fdb-8a49-161a3112571d",
 	"AssetName": "TQ01_Patch_RoadNorth",
 	"IsGameStart": false,
-	"IsPatch": true,
-	"InjectMode": "InsideAtEnd",
-	"InjectTargetScene": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
-	"InjectTargetNode": "Main",
+	"IsPatchGroup": true,
+	"PatchTargetScene": "29d8cf1a-9899-4da9-87c8-4e8b1aa1f7dc",
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
-				"NodeType": "Compass",
-				"CompassLinkDirection": "West",
-				"CompassLinkScene": "062b100c-1f16-494e-b451-81128f6ddaaa",
-				"ScriptAppear": {
-					"!Type": "ScriptDataVisualCondition",
-					"Mode": "All",
-					"Operand": true,
-					"Tests": [
-						{
-							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01_PROGRESS",
-							"Operator": "Equal",
-							"OperandMode": "Literal",
-							"OperandLiteral": 2.0
+				"NodeType": "Patch",
+				"Patch": {
+					"!Type": "ScenePatchAddNodes",
+					"TargetNode": "Main",
+					"Mode": "InsideTargetLast"
+				},
+				"Children": [
+					{
+						"NodeType": "Compass",
+						"CompassLinkDirection": "West",
+						"CompassLinkScene": "062b100c-1f16-494e-b451-81128f6ddaaa",
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
+								{
+									"!Type": "ConditionVarNumber",
+									"VariableName": "TQ01_PROGRESS",
+									"Operator": "Equal",
+									"OperandMode": "Literal",
+									"OperandLiteral": 2.0
+								}
+							]
 						}
-					]
-				}
+					}
+				]
 			}
 		]
 	}

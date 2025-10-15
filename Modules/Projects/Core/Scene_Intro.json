@@ -8,10 +8,9 @@
 	},
 	"IsGameStart": true,
 	"GameStartDescription": "Finmer - Main Story",
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",

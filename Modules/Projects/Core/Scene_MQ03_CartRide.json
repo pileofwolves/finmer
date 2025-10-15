@@ -7,10 +7,9 @@
 		"Name": "Scene_MQ03_CartRide_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -67,17 +66,14 @@
 																"Children": [
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
@@ -94,7 +90,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Memory"
 																			}
 																		]
@@ -124,22 +119,18 @@
 																"Children": [
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -167,22 +158,18 @@
 																"Children": [
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskClient"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -210,22 +197,18 @@
 																"Children": [
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskZosk"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskFamily"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskCargo"
 																	},
 																	{
 																		"NodeType": "Link",
-																		"Key": "AutoLink",
 																		"LinkTarget": "Ride_C_AskEnd"
 																	}
 																]
@@ -298,7 +281,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
@@ -312,7 +294,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
@@ -326,7 +307,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
@@ -340,7 +320,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]
@@ -354,7 +333,6 @@
 																		"Children": [
 																			{
 																				"NodeType": "Link",
-																				"Key": "AutoLink",
 																				"LinkTarget": "Ride_Reflect"
 																			}
 																		]

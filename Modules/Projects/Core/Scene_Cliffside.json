@@ -7,10 +7,9 @@
 		"Name": "Scene_Cliffside_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -33,7 +32,7 @@
 						"NodeType": "Compass",
 						"Key": "CompassN",
 						"CompassLinkDirection": "North",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "BeginRoadTravel(ECompass.North, \"Scene_RoadNorth\")"
@@ -43,7 +42,7 @@
 						"NodeType": "Compass",
 						"Key": "CompassS",
 						"CompassLinkDirection": "South",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "BeginRoadTravel(ECompass.South, \"Scene_PortGate\")"

@@ -3,10 +3,9 @@
 	"AssetID": "f30fd178-a844-4a97-ad92-93773024bbf1",
 	"AssetName": "Scene_SQ05_IsoHome",
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",

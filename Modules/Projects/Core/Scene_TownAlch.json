@@ -11,10 +11,9 @@
 		"Name": "Scene_TownAlch_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -170,7 +169,6 @@
 						"Children": [
 							{
 								"NodeType": "Link",
-								"Key": "Shop",
 								"LinkTarget": "Main"
 							}
 						]

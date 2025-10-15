@@ -3,73 +3,80 @@
 	"AssetID": "66cd4c39-d16b-4d7a-bbcb-996b13c0b92a",
 	"AssetName": "TQ01_Patch_NoticeBoard",
 	"IsGameStart": false,
-	"IsPatch": true,
-	"InjectMode": "InsideAtEnd",
-	"InjectTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
-	"InjectTargetNode": "ViewBoard",
+	"IsPatchGroup": true,
+	"PatchTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
-				"NodeType": "Choice",
-				"Key": "TQ01_Notice",
-				"Title": "Wanted: Strong Labor",
-				"Tooltip": "A 'help wanted' request, of sorts...",
-				"Highlight": false,
-				"ButtonWidth": 1.0,
-				"ScriptAppear": {
-					"!Type": "ScriptDataVisualCondition",
-					"Mode": "All",
-					"Operand": true,
-					"Tests": [
-						{
-							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01_PROGRESS",
-							"Operator": "Equal",
-							"OperandMode": "Literal",
-							"OperandLiteral": 0.0
-						}
-					]
+				"NodeType": "Patch",
+				"Patch": {
+					"!Type": "ScenePatchAddNodes",
+					"TargetNode": "ViewBoard",
+					"Mode": "InsideTargetLast"
 				},
 				"Children": [
 					{
-						"NodeType": "State",
-						"Key": "TQ01_Start",
-						"ScriptAction": {
-							"!Type": "ScriptDataVisualAction",
-							"Nodes": [
+						"NodeType": "Choice",
+						"Key": "TQ01_Notice",
+						"Title": "Wanted: Strong Labor",
+						"Tooltip": "A 'help wanted' request, of sorts...",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
 								{
-									"!Type": "CommandComment",
-									"Comment": "Display the opening text (the board notice)"
-								},
-								{
-									"!Type": "CommandLog",
-									"Text": "TQ01_NOTICE",
-									"IsRaw": false
-								},
-								{
-									"!Type": "CommandComment",
-									"Comment": "Enable the intro scene with Tobias in the inn"
-								},
-								{
-									"!Type": "CommandVarSetNumber",
+									"!Type": "ConditionVarNumber",
 									"VariableName": "TQ01_PROGRESS",
-									"ValueOperation": "Set",
+									"Operator": "Equal",
 									"OperandMode": "Literal",
-									"OperandLiteral": 1.0
-								},
-								{
-									"!Type": "CommandJournalUpdate",
-									"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
-									"Stage": 0
+									"OperandLiteral": 0.0
 								}
 							]
 						},
 						"Children": [
 							{
-								"NodeType": "Link",
-								"LinkTarget": "ReturnToBoard"
+								"NodeType": "State",
+								"Key": "TQ01_Start",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandComment",
+											"Comment": "Display the opening text (the board notice)"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "TQ01_NOTICE",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandComment",
+											"Comment": "Enable the intro scene with Tobias in the inn"
+										},
+										{
+											"!Type": "CommandVarSetNumber",
+											"VariableName": "TQ01_PROGRESS",
+											"ValueOperation": "Set",
+											"OperandMode": "Literal",
+											"OperandLiteral": 1.0
+										},
+										{
+											"!Type": "CommandJournalUpdate",
+											"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+											"Stage": 0
+										}
+									]
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "ReturnToBoard"
+									}
+								]
 							}
 						]
 					}

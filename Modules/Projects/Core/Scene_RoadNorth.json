@@ -11,10 +11,9 @@
 		"Name": "Scene_RoadNorth_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -258,7 +257,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "South",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "GoSouth()"
@@ -271,7 +270,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "East",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "BeginRoadTravel(ECompass.East, \"Scene_ForestCottage\")"

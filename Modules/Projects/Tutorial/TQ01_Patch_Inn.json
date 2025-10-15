@@ -3,226 +3,274 @@
 	"AssetID": "144b2054-982c-4f0a-9755-722e19c1fc20",
 	"AssetName": "TQ01_Patch_Inn",
 	"IsGameStart": false,
-	"IsPatch": true,
-	"InjectMode": "InsideAtEnd",
-	"InjectTargetScene": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
-	"InjectTargetNode": "InnTalkRoot",
+	"IsPatchGroup": true,
+	"PatchTargetScene": "0b23fd11-9316-4796-9eff-d4bba1205ba9",
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
-				"NodeType": "Choice",
-				"Key": "TQ01_Tobias",
-				"Title": "Dingo",
-				"Tooltip": "The dingo on the bench.",
-				"Highlight": false,
-				"ButtonWidth": 1.0,
-				"ScriptAppear": {
-					"!Type": "ScriptDataVisualCondition",
-					"Mode": "All",
-					"Operand": true,
-					"Tests": [
-						{
-							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01_PROGRESS",
-							"Operator": "Equal",
-							"OperandMode": "Literal",
-							"OperandLiteral": 1.0
-						}
-					]
+				"NodeType": "Patch",
+				"Patch": {
+					"!Type": "ScenePatchAddNodes",
+					"TargetNode": "InnTalkRoot",
+					"Mode": "InsideTargetLast"
 				},
 				"Children": [
 					{
-						"NodeType": "State",
-						"Key": "TQ01_Tobias_Meet",
-						"ScriptAction": {
-							"!Type": "ScriptDataVisualAction",
-							"Nodes": [
+						"NodeType": "Choice",
+						"Key": "TQ01_Tobias",
+						"Title": "Dingo",
+						"Tooltip": "The dingo on the bench.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
 								{
-									"!Type": "CommandLog",
-									"Text": "TQ01_MEET",
-									"IsRaw": false
+									"!Type": "ConditionVarNumber",
+									"VariableName": "TQ01_PROGRESS",
+									"Operator": "Equal",
+									"OperandMode": "Literal",
+									"OperandLiteral": 1.0
 								}
 							]
 						},
 						"Children": [
 							{
-								"NodeType": "Choice",
-								"Key": "TQ01_Continue",
-								"Title": "Continue",
-								"Tooltip": "Shake paws and introduce yourself.",
-								"Highlight": false,
-								"ButtonWidth": 1.0,
+								"NodeType": "State",
+								"Key": "TQ01_Tobias_Meet",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandLog",
+											"Text": "TQ01_MEET",
+											"IsRaw": false
+										}
+									]
+								},
 								"Children": [
 									{
-										"NodeType": "State",
-										"Key": "TQ01_Tobias_Explain",
-										"ScriptAction": {
-											"!Type": "ScriptDataVisualAction",
-											"Nodes": [
-												{
-													"!Type": "CommandLog",
-													"Text": "TQ01_EXPLAIN",
-													"IsRaw": false
-												}
-											]
-										},
+										"NodeType": "Choice",
+										"Key": "TQ01_Continue",
+										"Title": "Continue",
+										"Tooltip": "Shake paws and introduce yourself.",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
 										"Children": [
 											{
-												"NodeType": "Choice",
-												"Key": "TQ01_Choice_Friend",
-												"Title": "Friend",
-												"Tooltip": "Ask about this \"friend\".",
-												"Highlight": false,
-												"ButtonWidth": 1.0,
-												"ScriptAppear": {
-													"!Type": "ScriptDataVisualCondition",
-													"Mode": "All",
-													"Operand": true,
-													"Tests": [
+												"NodeType": "State",
+												"Key": "TQ01_Tobias_Explain",
+												"ScriptAction": {
+													"!Type": "ScriptDataVisualAction",
+													"Nodes": [
 														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_FRIEND",
-															"OperandMode": "Literal",
-															"OperandLiteral": false
+															"!Type": "CommandLog",
+															"Text": "TQ01_EXPLAIN",
+															"IsRaw": false
 														}
 													]
 												},
 												"Children": [
 													{
-														"NodeType": "State",
-														"Key": "TQ01_Expo_Friend",
-														"ScriptAction": {
-															"!Type": "ScriptDataVisualAction",
-															"Nodes": [
+														"NodeType": "Choice",
+														"Key": "TQ01_Choice_Friend",
+														"Title": "Friend",
+														"Tooltip": "Ask about this \"friend\".",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
 																{
-																	"!Type": "CommandLog",
-																	"Text": "TQ01_INFO_FRIEND",
-																	"IsRaw": false
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TQ01_DISCUSSED_FRIEND",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "TQ01_Expo_Friend",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "TQ01_INFO_FRIEND",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetFlag",
+																			"VariableName": "TQ01_DISCUSSED_FRIEND",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
 																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Reward"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Location"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_End"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "TQ01_Choice_Location",
+														"Title": "Location",
+														"Tooltip": "Where you might be able to find the thief.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
 																{
-																	"!Type": "CommandVarSetFlag",
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TQ01_DISCUSSED_LOCATION",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "TQ01_Expo_Location",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "TQ01_INFO_LOCATION",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetFlag",
+																			"VariableName": "TQ01_DISCUSSED_LOCATION",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Reward"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Friend"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_End"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "TQ01_Choice_Reward",
+														"Title": "Reward",
+														"Tooltip": "What you can expect for helping out.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
+																	"VariableName": "TQ01_DISCUSSED_REWARD",
+																	"OperandMode": "Literal",
+																	"OperandLiteral": false
+																}
+															]
+														},
+														"Children": [
+															{
+																"NodeType": "State",
+																"Key": "TQ01_Expo_Reward",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "TQ01_INFO_REWARD",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandVarSetFlag",
+																			"VariableName": "TQ01_DISCUSSED_REWARD",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": true
+																		}
+																	]
+																},
+																"Children": [
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Location"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_Friend"
+																	},
+																	{
+																		"NodeType": "Link",
+																		"LinkTarget": "TQ01_Choice_End"
+																	}
+																]
+															}
+														]
+													},
+													{
+														"NodeType": "Choice",
+														"Key": "TQ01_Choice_End",
+														"Title": "Accept",
+														"Tooltip": "That should be everything for now.",
+														"Highlight": false,
+														"ButtonWidth": 1.0,
+														"ScriptAppear": {
+															"!Type": "ScriptDataVisualCondition",
+															"Mode": "All",
+															"Operand": true,
+															"Tests": [
+																{
+																	"!Type": "ConditionVarFlag",
 																	"VariableName": "TQ01_DISCUSSED_FRIEND",
 																	"OperandMode": "Literal",
 																	"OperandLiteral": true
-																}
-															]
-														},
-														"Children": [
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Reward"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Location"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_End"
-															}
-														]
-													}
-												]
-											},
-											{
-												"NodeType": "Choice",
-												"Key": "TQ01_Choice_Location",
-												"Title": "Location",
-												"Tooltip": "Where you might be able to find the thief.",
-												"Highlight": false,
-												"ButtonWidth": 1.0,
-												"ScriptAppear": {
-													"!Type": "ScriptDataVisualCondition",
-													"Mode": "All",
-													"Operand": true,
-													"Tests": [
-														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_LOCATION",
-															"OperandMode": "Literal",
-															"OperandLiteral": false
-														}
-													]
-												},
-												"Children": [
-													{
-														"NodeType": "State",
-														"Key": "TQ01_Expo_Location",
-														"ScriptAction": {
-															"!Type": "ScriptDataVisualAction",
-															"Nodes": [
-																{
-																	"!Type": "CommandLog",
-																	"Text": "TQ01_INFO_LOCATION",
-																	"IsRaw": false
 																},
 																{
-																	"!Type": "CommandVarSetFlag",
+																	"!Type": "ConditionVarFlag",
 																	"VariableName": "TQ01_DISCUSSED_LOCATION",
 																	"OperandMode": "Literal",
 																	"OperandLiteral": true
-																}
-															]
-														},
-														"Children": [
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Reward"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Friend"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_End"
-															}
-														]
-													}
-												]
-											},
-											{
-												"NodeType": "Choice",
-												"Key": "TQ01_Choice_Reward",
-												"Title": "Reward",
-												"Tooltip": "What you can expect for helping out.",
-												"Highlight": false,
-												"ButtonWidth": 1.0,
-												"ScriptAppear": {
-													"!Type": "ScriptDataVisualCondition",
-													"Mode": "All",
-													"Operand": true,
-													"Tests": [
-														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_REWARD",
-															"OperandMode": "Literal",
-															"OperandLiteral": false
-														}
-													]
-												},
-												"Children": [
-													{
-														"NodeType": "State",
-														"Key": "TQ01_Expo_Reward",
-														"ScriptAction": {
-															"!Type": "ScriptDataVisualAction",
-															"Nodes": [
-																{
-																	"!Type": "CommandLog",
-																	"Text": "TQ01_INFO_REWARD",
-																	"IsRaw": false
 																},
 																{
-																	"!Type": "CommandVarSetFlag",
+																	"!Type": "ConditionVarFlag",
 																	"VariableName": "TQ01_DISCUSSED_REWARD",
 																	"OperandMode": "Literal",
 																	"OperandLiteral": true
@@ -231,98 +279,48 @@
 														},
 														"Children": [
 															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Location"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_Friend"
-															},
-															{
-																"NodeType": "Link",
-																"Key": "AutoLink",
-																"LinkTarget": "TQ01_Choice_End"
-															}
-														]
-													}
-												]
-											},
-											{
-												"NodeType": "Choice",
-												"Key": "TQ01_Choice_End",
-												"Title": "Accept",
-												"Tooltip": "That should be everything for now.",
-												"Highlight": false,
-												"ButtonWidth": 1.0,
-												"ScriptAppear": {
-													"!Type": "ScriptDataVisualCondition",
-													"Mode": "All",
-													"Operand": true,
-													"Tests": [
-														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_FRIEND",
-															"OperandMode": "Literal",
-															"OperandLiteral": true
-														},
-														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_LOCATION",
-															"OperandMode": "Literal",
-															"OperandLiteral": true
-														},
-														{
-															"!Type": "ConditionVarFlag",
-															"VariableName": "TQ01_DISCUSSED_REWARD",
-															"OperandMode": "Literal",
-															"OperandLiteral": true
-														}
-													]
-												},
-												"Children": [
-													{
-														"NodeType": "State",
-														"Key": "TQ01_Expo_End",
-														"ScriptAction": {
-															"!Type": "ScriptDataVisualAction",
-															"Nodes": [
-																{
-																	"!Type": "CommandLog",
-																	"Text": "TQ01_WRAPUP",
-																	"IsRaw": false
+																"NodeType": "State",
+																"Key": "TQ01_Expo_End",
+																"ScriptAction": {
+																	"!Type": "ScriptDataVisualAction",
+																	"Nodes": [
+																		{
+																			"!Type": "CommandLog",
+																			"Text": "TQ01_WRAPUP",
+																			"IsRaw": false
+																		},
+																		{
+																			"!Type": "CommandComment",
+																			"Comment": "Advance the quest's state"
+																		},
+																		{
+																			"!Type": "CommandJournalUpdate",
+																			"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
+																			"Stage": 1
+																		},
+																		{
+																			"!Type": "CommandVarSetNumber",
+																			"VariableName": "TQ01_PROGRESS",
+																			"ValueOperation": "Set",
+																			"OperandMode": "Literal",
+																			"OperandLiteral": 2.0
+																		}
+																	]
 																},
-																{
-																	"!Type": "CommandComment",
-																	"Comment": "Advance the quest's state"
-																},
-																{
-																	"!Type": "CommandJournalUpdate",
-																	"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c",
-																	"Stage": 1
-																},
-																{
-																	"!Type": "CommandVarSetNumber",
-																	"VariableName": "TQ01_PROGRESS",
-																	"ValueOperation": "Set",
-																	"OperandMode": "Literal",
-																	"OperandLiteral": 2.0
-																}
-															]
-														},
-														"Children": [
-															{
-																"NodeType": "Choice",
-																"Key": "TQ01_Expo_Accept",
-																"Title": "Continue",
-																"Tooltip": "Tell him you'll get the job done.",
-																"Highlight": false,
-																"ButtonWidth": 1.0,
 																"Children": [
 																	{
-																		"NodeType": "Link",
-																		"LinkTarget": "Main"
+																		"NodeType": "Choice",
+																		"Key": "TQ01_Expo_Accept",
+																		"Title": "Continue",
+																		"Tooltip": "Tell him you'll get the job done.",
+																		"Highlight": false,
+																		"ButtonWidth": 1.0,
+																		"Children": [
+																			{
+																				"NodeType": "Link",
+																				"LinkTarget": "Main"
+																			}
+																		]
 																	}
 																]
 															}
@@ -335,99 +333,99 @@
 								]
 							}
 						]
-					}
-				]
-			},
-			{
-				"NodeType": "Choice",
-				"Key": "TQ01_Return",
-				"Title": "Tobias",
-				"Tooltip": "Report your success to Tobias.",
-				"Highlight": false,
-				"ButtonWidth": 1.0,
-				"ScriptAppear": {
-					"!Type": "ScriptDataVisualCondition",
-					"Mode": "All",
-					"Operand": true,
-					"Tests": [
-						{
-							"!Type": "ConditionVarNumber",
-							"VariableName": "TQ01_PROGRESS",
-							"Operator": "Equal",
-							"OperandMode": "Literal",
-							"OperandLiteral": 3.0
-						}
-					]
-				},
-				"Children": [
+					},
 					{
-						"NodeType": "State",
-						"Key": "TQ01_Complete_Quest",
-						"ScriptAction": {
-							"!Type": "ScriptDataVisualAction",
-							"Nodes": [
+						"NodeType": "Choice",
+						"Key": "TQ01_Return",
+						"Title": "Tobias",
+						"Tooltip": "Report your success to Tobias.",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
+						"ScriptAppear": {
+							"!Type": "ScriptDataVisualCondition",
+							"Mode": "All",
+							"Operand": true,
+							"Tests": [
 								{
-									"!Type": "CommandComment",
-									"Comment": "Print final message"
-								},
-								{
-									"!Type": "CommandLog",
-									"Text": "TQ01_COMPLETION",
-									"IsRaw": false
-								},
-								{
-									"!Type": "CommandComment",
-									"Comment": "Prevent player from completing the quest again"
-								},
-								{
-									"!Type": "CommandVarSetNumber",
+									"!Type": "ConditionVarNumber",
 									"VariableName": "TQ01_PROGRESS",
-									"ValueOperation": "Set",
+									"Operator": "Equal",
 									"OperandMode": "Literal",
-									"OperandLiteral": 4.0
-								},
-								{
-									"!Type": "CommandComment",
-									"Comment": "Remove the journal entry and the quest item"
-								},
-								{
-									"!Type": "CommandJournalClose",
-									"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c"
-								},
-								{
-									"!Type": "CommandPlayerSetItem",
-									"ItemGuid": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
-									"Add": false
-								},
-								{
-									"!Type": "CommandComment",
-									"Comment": "Grant rewards"
-								},
-								{
-									"!Type": "CommandPlayerSetMoney",
-									"ValueOperation": "Add",
-									"OperandMode": "Literal",
-									"OperandLiteral": 55
-								},
-								{
-									"!Type": "CommandPlayerAddXP",
-									"OperandMode": "Literal",
-									"OperandLiteral": 50
+									"OperandLiteral": 3.0
 								}
 							]
 						},
 						"Children": [
 							{
-								"NodeType": "Choice",
-								"Key": "TQ01_Exit",
-								"Title": "Continue",
-								"Tooltip": "And that's that!",
-								"Highlight": false,
-								"ButtonWidth": 1.0,
+								"NodeType": "State",
+								"Key": "TQ01_Complete_Quest",
+								"ScriptAction": {
+									"!Type": "ScriptDataVisualAction",
+									"Nodes": [
+										{
+											"!Type": "CommandComment",
+											"Comment": "Print final message"
+										},
+										{
+											"!Type": "CommandLog",
+											"Text": "TQ01_COMPLETION",
+											"IsRaw": false
+										},
+										{
+											"!Type": "CommandComment",
+											"Comment": "Prevent player from completing the quest again"
+										},
+										{
+											"!Type": "CommandVarSetNumber",
+											"VariableName": "TQ01_PROGRESS",
+											"ValueOperation": "Set",
+											"OperandMode": "Literal",
+											"OperandLiteral": 4.0
+										},
+										{
+											"!Type": "CommandComment",
+											"Comment": "Remove the journal entry and the quest item"
+										},
+										{
+											"!Type": "CommandJournalClose",
+											"JournalGuid": "8dee0929-981c-4562-85d0-4752e755cc3c"
+										},
+										{
+											"!Type": "CommandPlayerSetItem",
+											"ItemGuid": "b2f3a727-a4fe-49e3-87ec-dcfee157fdfa",
+											"Add": false
+										},
+										{
+											"!Type": "CommandComment",
+											"Comment": "Grant rewards"
+										},
+										{
+											"!Type": "CommandPlayerSetMoney",
+											"ValueOperation": "Add",
+											"OperandMode": "Literal",
+											"OperandLiteral": 55
+										},
+										{
+											"!Type": "CommandPlayerAddXP",
+											"OperandMode": "Literal",
+											"OperandLiteral": 50
+										}
+									]
+								},
 								"Children": [
 									{
-										"NodeType": "Link",
-										"LinkTarget": "Main"
+										"NodeType": "Choice",
+										"Key": "TQ01_Exit",
+										"Title": "Continue",
+										"Tooltip": "And that's that!",
+										"Highlight": false,
+										"ButtonWidth": 1.0,
+										"Children": [
+											{
+												"NodeType": "Link",
+												"LinkTarget": "Main"
+											}
+										]
 									}
 								]
 							}

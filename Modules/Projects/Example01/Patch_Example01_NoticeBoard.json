@@ -3,34 +3,40 @@
 	"AssetID": "8f5d239d-a48f-474e-99a4-784ea6519e70",
 	"AssetName": "Patch_Example01_NoticeBoard",
 	"IsGameStart": false,
-	"IsPatch": true,
-	"InjectMode": "InsideAtEnd",
-	"InjectTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
-	"InjectTargetNode": "ViewBoard",
+	"IsPatchGroup": true,
+	"PatchTargetScene": "2e3703aa-9bf3-4a32-9b03-e30f414c87ba",
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
-				"NodeType": "Choice",
-				"Key": "Board_C_Example01",
-				"Title": "Mod Test",
-				"Tooltip": "Hey, I come from a mod!",
-				"Highlight": false,
-				"ButtonWidth": 1.0,
+				"NodeType": "Patch",
+				"Patch": {
+					"!Type": "ScenePatchAddNodes",
+					"TargetNode": "ViewBoard",
+					"Mode": "InsideTargetLast"
+				},
 				"Children": [
 					{
-						"NodeType": "State",
-						"Key": "Board_R_Example01",
-						"ScriptAction": {
-							"!Type": "ScriptDataInline",
-							"Script": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_EXAMPLE01\")"
-						},
+						"NodeType": "Choice",
+						"Key": "Board_C_Example01",
+						"Title": "Mod Test",
+						"Tooltip": "Hey, I come from a mod!",
+						"Highlight": false,
+						"ButtonWidth": 1.0,
 						"Children": [
 							{
-								"NodeType": "Link",
-								"Key": "Unnamed",
-								"LinkTarget": "ReturnToBoard"
+								"NodeType": "State",
+								"Key": "Board_R_Example01",
+								"ScriptAction": {
+									"!Type": "ScriptDataInline",
+									"Script": "Log(\"NOTICE__BEGIN\")\r\nLog(\"NOTICE_EXAMPLE01\")"
+								},
+								"Children": [
+									{
+										"NodeType": "Link",
+										"LinkTarget": "ReturnToBoard"
+									}
+								]
 							}
 						]
 					}

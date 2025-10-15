@@ -28,10 +28,9 @@
 		]
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -194,7 +193,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "South",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "-- Player can pass if MQ01 was completed\r\nif Storage.GetFlag(\"MQ01_DONE\") then\r\n    SetScene(\"Scene_RoadNorth\")\r\nelse\r\n    Log(\"TOWN_GATE_MQ01LOCK\")\r\nend"

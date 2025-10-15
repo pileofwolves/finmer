@@ -11,10 +11,9 @@
 		"Name": "Scene_CustomCombat_Enter"
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -38,7 +37,6 @@
 						"Children": [
 							{
 								"NodeType": "Link",
-								"Key": "AutoLink",
 								"LinkTarget": "Main"
 							}
 						]
@@ -64,7 +62,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "Main"
 											}
 										]
@@ -104,7 +101,6 @@
 												"Children": [
 													{
 														"NodeType": "Link",
-														"Key": "AutoLink",
 														"LinkTarget": "C_Part__Cancel"
 													},
 													{
@@ -121,7 +117,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -140,7 +135,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -159,7 +153,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -178,7 +171,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -197,7 +189,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -216,7 +207,6 @@
 														"Children": [
 															{
 																"NodeType": "Link",
-																"Key": "AutoLink",
 																"LinkTarget": "R_ParticipantMenu"
 															}
 														]
@@ -239,7 +229,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_Part_Add"
 											}
 										]
@@ -261,7 +250,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
@@ -283,7 +271,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
@@ -305,7 +292,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
@@ -327,7 +313,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_ParticipantMenu"
 											}
 										]
@@ -350,7 +335,6 @@
 								"Children": [
 									{
 										"NodeType": "Link",
-										"Key": "AutoLink",
 										"LinkTarget": "C_Part__Cancel"
 									},
 									{
@@ -367,7 +351,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -386,7 +369,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -405,7 +387,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -424,7 +405,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -443,7 +423,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -462,7 +441,6 @@
 										"Children": [
 											{
 												"NodeType": "Link",
-												"Key": "AutoLink",
 												"LinkTarget": "R_CheatMenu"
 											}
 										]
@@ -485,7 +463,6 @@
 						"Children": [
 							{
 								"NodeType": "Link",
-								"Key": "AutoLink",
 								"LinkTarget": "Main"
 							}
 						]

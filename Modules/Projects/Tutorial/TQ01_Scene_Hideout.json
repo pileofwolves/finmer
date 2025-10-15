@@ -13,10 +13,9 @@
 		]
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -92,7 +91,6 @@
 												"Children": [
 													{
 														"NodeType": "Link",
-														"Key": "AutoLink",
 														"LinkTarget": "TQ01_Search"
 													}
 												]
@@ -264,7 +262,6 @@
 																								"Children": [
 																									{
 																										"NodeType": "Link",
-																										"Key": "AutoLink",
 																										"LinkTarget": "TQ01_To_Road"
 																									}
 																								]

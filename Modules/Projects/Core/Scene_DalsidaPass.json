@@ -18,10 +18,9 @@
 		]
 	},
 	"IsGameStart": false,
-	"IsPatch": false,
+	"IsPatchGroup": false,
 	"Root": {
 		"NodeType": "Root",
-		"Key": "Root",
 		"Children": [
 			{
 				"NodeType": "State",
@@ -77,7 +76,7 @@
 					{
 						"NodeType": "Compass",
 						"CompassLinkDirection": "West",
-						"CompassLinkScene": "00000000-0000-0000-0000-000000000000",
+						"CompassLinkScene": null,
 						"ScriptAction": {
 							"!Type": "ScriptDataInline",
 							"Script": "BeginRoadTravel(ECompass.West, \"Scene_PortGate\")"

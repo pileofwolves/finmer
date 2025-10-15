@@ -16,7 +16,6 @@ namespace Finmer.Core.Assets
     /// <summary>
     /// Represents a node in the scene node tree.
     /// </summary>
-    [AbstractFurballSerializable]
     public class SceneNode : IFurballSerializable
     {
 

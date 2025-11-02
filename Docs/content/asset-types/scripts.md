@@ -23,13 +23,13 @@ For example, you might have a Script asset that exports a function, like so:
 ```lua title="MyScriptAsset" showLineNumbers
 -- Roll 'count' D6 dice, and return the sum.
 function RollSomeDice(count)
-	local total = 0
-	for i = 1, count do
-		local roll = math.random(1, 6)
-		total = total + roll
-	end
-	
-	return total
+    local total = 0
+    for i = 1, count do
+        local roll = math.random(1, 6)
+        total = total + roll
+    end
+    
+    return total
 end
 ```
 

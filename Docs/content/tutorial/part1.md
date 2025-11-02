@@ -48,7 +48,7 @@ Adding a module as a dependency means telling Finmer that your module requires t
 Dependencies let you easily import content from other modules. You don't _need_ to add dependencies if you don't intend to use them. If you want, you can make a 'total conversion' mod that doesn't make use of any Core content.
 :::
 
-## Creating a scene patch
+## Creating a new scene
 
 Now we're ready to start building. Create a new scene by clicking `Add Asset` on the Toolbar, then click Scene.
 
@@ -60,18 +60,25 @@ You are free to name it whatever you like. For this tutorial, we'll follow the p
   src={require("/images/Tutorial01FirstScene.png")}
   caption="Your first scene asset." />
 
-Open the scene asset if it's not open already. You can do this by double-clicking it in the asset list. The Scene Editor will appear.
+Open the scene asset if it's not open already. You can do this by double-clicking it in the asset list. The Scene editor will appear.
 
-Select the Root node in the scene tree - it's the only one there currently. At the bottom of the Scene Editor, a panel of settings will appear for the node you selected. Tick the 'Is Patch' check box to mark this scene as adding some content on top of another scene.
+The Scene editor lets you arrange a tree of events that determines what happens in-game, and when. The toolbar at the top of the Scene editor page lets you add, remove, rearrange and copy nodes around. There are also buttons for editing scene-wide scripts. For more information, check the [Scene Asset documentation](/asset-types/scenes).
 
-More settings will appear:
+## Creating a patch
 
-- For the **Target Scene**, click the 🔗 link button, and in the dialog that pops up, select the `Scene_TownNSQ` scene - this is North Finmer's northern town square (hence 'NSQ').
-- For the **Injection Point**, pick 'inside at the end (as Choices)' in the top dropdown, and pick 'ViewBoard' in the bottom dropdown. This tells Finmer to treat your scene as extra buttons to add onto the notice board's existing buttons - more on that later.
+We will now tell Finmer where our custom content fits in the main game.
+
+Select the Root node in the scene tree - it's the only one in the list. At the bottom of the Scene Editor, a panel of settings will appear for the node you selected. Tick the **Is Patch Group** check box to mark this scene as changing some content in another scene.
+
+Next, the **Target Scene**, click the 🔗 link button, and in the dialog that pops up, select the `Scene_TownNSQ` scene - this is North Finmer's northern town square (hence 'NSQ').
 
 :::note
 If the 'Scene_TownNSQ' scene asset does not show up in the asset selection dialog when you click the 🔗 link button, your dependency on Core is not loaded correctly. Don't forget you need to reload your project or restart the editor (either works) to make the dependency change take effect.
 :::
+
+Then, with the Root node still selected, click the ➕ `New Patch` button on the toolbar, and select the `Add/Insert Nodes` type. This creates a patch that will add something new into the Target Scene we just configured - the north town square.
+
+On the new patch node, set the Target Node to `ViewBoard` - that is the node in the Core module that contains all the notice board contents - and set the location dropdown to `Inside Target, at End`.
 
 <CaptionedImage
 	src={require("/images/Tutorial01PatchConfig.png")}
@@ -81,11 +88,13 @@ If the 'Scene_TownNSQ' scene asset does not show up in the asset selection dialo
 
 Now we can start adding new content into the main game!
 
-With the Root node still selected, click `Add Node`. The first node we get is called a Choice node, since that is what we configured on the Root node earlier. Let's set up the new button to entice a player to pick up our quest. On the new Choice node, apply the following settings. You can leave the two check boxes unchecked.
+With the Patch node still selected, click `Add Node`. The first node we get is called a 💬 Choice node. Because we targeted the `ViewBoard` node in the `Scene_TownNSQ` scene with our patch settings, this 💬 Choice node - a new dialogue option - will be added directly to the notice board. Let's set up the new button to entice a player to pick up our quest. On the new 💬 Choice node, apply the following settings. You can leave the two check boxes unchecked.
 
-	Unique Key:		TQ01_Notice
-	Button Text:	Wanted: Strong Labor
-	Tooltip:		A 'help wanted' request of sorts...
+```
+Unique Key:     TQ01_Notice
+Button Text:    Wanted: Strong Labor
+Tooltip:        A 'help wanted' request of sorts...
+```
 
 <CaptionedImage
 	src={require("/images/Tutorial01NoticeChoiceSettings.png")}
@@ -93,10 +102,10 @@ With the Root node still selected, click `Add Node`. The first node we get is ca
 
 This will add a new button at the bottom of the game screen, when the player visits the notice board. A Choice node represents a button the player can 'choose' - hence 'Choice' node.
 
-The other main type of nodes are called States. States and Choices alternate each other: the player picks whichever Choice they like, and the game then picks a State in response. You can think of States as the game's 'reply' to the player's actions.
+The other main type of nodes are called 📃 States. 📃 States and 💬 Choices alternate each other: the player picks whichever 💬 Choice they like, and the game then picks a 📃 State in response. You can think of States as the game's 'reply' to the player's actions.
 
 :::info Takeaway
-States always lead to Choices, and Choices always lead to States. The player picks Choices, the game picks States. Sometimes there is only one option, but this alternating pattern is always there. You can read more about this [in the Scene document](/asset-types/scenes).
+States always lead to Choices, and Choices always lead to States. The player picks Choices, the game picks States. You can read more about this [in the Scene document](/asset-types/scenes).
 :::
 
 Next, add another node onto this Choice node (with the choice selected, click `Add Node` again), which results in a State node. This node will represent the game responding to the player picking up the notice, and transition us to the next set of choices. Let's give it a Unique Key of `TQ01_Start`. We will also need some script logic on the Actions Taken tab, but we'll get back to that later.
@@ -170,15 +179,17 @@ Log("TQ01_NOTICE")
 </TabItem>
 </Tabs>
 
-## A spool of yarn
+## A spool of yarn: String Table assets
 
 Next, we will write the actual text that will be shown to the player.
 
-Create a new String Table asset and give it a name. For this tutorial, we'll go with `TQ01_Strings`. In our new String Table, click Add Set and call it `TQ01_NOTICE` - recall that this is the name we just used in our script. Then, in the big input field for that new string set, you can put whatever you feel like an ad for hired muscle would entail. Something like this: 
+Create a new String Table asset. This will be where all of the text of our new quest will go. For this tutorial, we'll name it `TQ01_Strings`.
+
+In our new String Table, click Add Set and call it `TQ01_NOTICE` - recall that this is the name we just used in our script. Then, in the big input field for that new string set, you can put whatever you feel like an ad for hired muscle would entail. Something like this: 
 
 `TQ01_NOTICE`:
 
-> A message is tacked haphazardly to the notice board: "To all able-bodied adventurers: if you are looking for a few quick coins, I have a deal for you. Meet me in the local inn for more details. -Tobias O. Natobi"\n\nHmm… Seems valid enough.
+> A message is tacked haphazardly to the notice board: "To all able-bodied adventurers: if you are looking for a few quick coins, I have a deal for you. Meet me in the local inn for more details. -Tobias O. Natobi"\n\nHmm... Seems valid enough.
 
 Note the `\n` snippets near the end of the string - all instances of `\n` (forward slash followed by lowercase 'n') will be converted by the game to a line break. So `\n\n` is a blank line.
 
@@ -189,6 +200,8 @@ With that string ready to go, let's go back to our scene. Take a look again at t
 <CaptionedImage
 	src={require("/images/Tutorial01StringInAction.png")}
 	caption="So the wordsmithing begins!" />
+
+## A spool of yarn: Journal assets
 
 Next, let's get a journal going to keep track of everything that we do on this adventure of ours. Journals are meant to help remind players about what was going on in a story if they take a break or go off and do something else.
 

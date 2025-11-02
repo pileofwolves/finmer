@@ -12,13 +12,23 @@ The quest start is ready to go; now let's make a character who provides the play
 
 ## Patching the inn scene
 
-To start, add another scene asset. Name it `TQ01_Patch_Inn`. Just as we did before for the notice board, mark this scene as a patch, and target `Scene_TownInn`. We'll want to inject **as choices at the end** of the **InnTalkRoot node**. Finally, add a Choice node to this patch with the following settings:
+Let's set up the basic structure:
+
+1. Add a new Scene. Name it `TQ01_Patch_Inn`.
+2. Just as we did before for the notice board, mark this scene as a **Patch Group**.
+3. Set the **Target Scene** to `Scene_TownInn` - that's the inn area in North Finmer.
+4. In your new Patch Group, add an 'Add/Insert Nodes' patch, with the target node `InnTalkRoot`, and the location 'Inside Target, at End'. This will let us add a new dialogue option to the node that determines who the player can talk to.
+5. Finally, add a Choice node to this Patch with the following settings:
 
 ```
 Unique Key:     TQ01_Tobias
 Button Text:    Dingo
 Tooltip:        Talk to the dingo on the bench
 ```
+
+It should look like this. The settings of all three nodes are shown here so you can double-check.
+
+![Inn patch setup](/images/Tutorial02InnPatch.png)
 
 For the general layout of our conversation, we're going to go with Tobias asking whether we're here for the notice, introducing ourselves, and having him explain the situation before we ask questions. To start, we're going to add a node off of the choice node we just made, then another pair of choice/state nodes from that.
 

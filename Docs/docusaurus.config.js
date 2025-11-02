@@ -129,7 +129,7 @@ const config = {
             ],
           },
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Nuntis the Wolf. Documentation pages built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Nuntis the Wolf. See LICENSE.md for source distribution license (GNU General Public License v3).`,
       },
       colorMode: {
         defaultMode: 'light',

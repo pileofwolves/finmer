@@ -4,7 +4,9 @@ sidebar_position: 3
 
 # Creatures
 
-Creatures are things that can participate in the combat system. Each Creature has Health, stats determining combat effectiveness, and a set of flags that may override combat behavior. While Creatures are generally AI-controlled NPCs, note that the Player is also a Creature.
+Creatures are things that can participate in the combat system. Each Creature has Health, stats determining combat effectiveness, and a set of flags that may override combat behavior.
+
+All Creature assets that you create in the Editor are AI-controlled in-game. However, note that for the purpose of scripting, the player character is also a Creature; all properties and tools that you can use on Creatures you can also use on the player.
 
 :::note
 Creatures are only relevant for the combat system. Dialogue trees with NPCs are built with Scenes instead.
@@ -49,7 +51,7 @@ Does Not Give XP|When defeated, does not award XP.
 The following options are available to customize a predator's behavior in combat.
 
 :::caution
-If you turn off 'Digests Prey', swallowed prey will be stuck forever, because in the standard combat system prey cannot escape once swallowed. Therefore, you must manually script a different method for combat to end.
+If you turn off 'Digests Prey', swallowed prey will be stuck forever, because in the standard combat system prey cannot escape once swallowed. In this case, you must implement a custom method for combat to end using scripts.
 :::
 
 Option|Description

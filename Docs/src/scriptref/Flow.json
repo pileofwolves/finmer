@@ -2,7 +2,7 @@
 	{
 		"type": "function",
 		"name": "SetScene",
-		"remarks": "Switches to a different scene. In order: the new scene will be loaded, the current scene's LeaveScript will be executed, the new scene is made active, and the new scene's EnterScript is executed. Note that SetScene will terminate the currently running script, so any instructions coming after it will not run.",
+		"remarks": "Switches to a different Scene. The current scene's Leave Script runs, followed by the new scene's Enter Script. This function does not return; any instructions coming after this function call will not run.",
 		"input": [
 			{
 				"name": "name",

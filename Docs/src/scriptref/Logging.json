@@ -38,7 +38,7 @@
 	{
 		"type": "function",
 		"name": "Color",
-		"remarks": "Returns a new color. You can pass these to Log or LogRaw to change the color of the text output. Note that you can also create colors by simply creating a table with three named keys (r, g, b).",
+		"remarks": "Returns a new color. You can pass these to Log or LogRaw to change the color of the text output. Note that you can also create colors by creating a table with three named keys (r, g, b) - that is what this function does internally.",
 		"coremod": true,
 		"input": [
 			{

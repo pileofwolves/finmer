@@ -26,7 +26,7 @@ The downside of this format is that it is rather bulky. Because it consists of s
 
 To solve this, there is the _furball_ format. A _furball_ is a compact single file that contains an entire module. Think of it like **a zip file that contains your project**. It is optimized to load quickly, and because it's just one small file, it's super easy to distribute to other players.
 
-To let others enjoy your custom content, simply post the furball file in the community forum, or your favorite Discord chat or file sharing site, etc. All the player needs to do to 'install' your content, is dropping the furball file in their Finmer's `Modules` folder. The game will then load it automatically.
+To let others enjoy your custom content, post the furball file in the community forum, or your favorite Discord chat or file sharing site, etc. All the player needs to do to 'install' your content, is dropping the furball file in their Finmer's `Modules` folder. The game will then load it automatically.
 
 :::info In short
 The _project_ is what you make in the Editor, and it is then used by the Editor to create the _furball_ file that the game works with.
@@ -36,7 +36,7 @@ The _project_ is what you make in the Editor, and it is then used by the Editor 
 
 When you save your project in the Editor, it will also automatically save such a furball file in the game's Modules folder. This enables quick testing: when you save your work, you can immediately click the Play button and get into the game without further steps.
 
-You can also manually export your project as a furball by clicking the `Publish Furball` button on the Toolbar. Simply choose a location on your PC and the Editor will save a furball there, ready for distribution.
+You can also manually export your project as a furball by clicking the `Publish Furball` button on the Toolbar. Choose a location on your PC and the Editor will save a furball there, ready for distribution.
 
 ### Importing furballs
 

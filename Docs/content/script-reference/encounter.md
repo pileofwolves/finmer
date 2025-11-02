@@ -21,7 +21,7 @@ When adding custom encounters, do so in a Script asset that calls `Encounter.Add
 
 ## Built-in encounter groups
 
-These encounter groups are used by the Core module. If you want to add encounters to the main game's locations, simply use one of the variable names listed below as the value for the `group` argument to `Encounter.Add`.
+These encounter groups are used by the Core module. If you want to add encounters to the main game's locations, use one of the variable names listed below as the value for the `group` argument to `Encounter.Add`.
 
 Of course, you do not have to use one of these groups; you can also create a new one if you like.
 

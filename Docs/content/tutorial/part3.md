@@ -14,9 +14,9 @@ Tobias mentioned the area to look for Theo would be west of town, so we'll add o
 
 Create **two** new scene assets. Name one `TQ01_Scene_Hideout`, which will contain Theo's camp, and name the other `TQ01_Patch_RoadNorth`, which will hook up the camp scene to the main game.
 
-Open `TQ01_Patch_RoadNorth` in the editor. This one is also a patch, that must be injected into `Scene_RoadNorth`. This time, we'll use a neat trick to add a new compass button into the main game. Set the Injection Point to "inside at the end (as Choices)" with the injection node set to Main.
+Open `TQ01_Patch_RoadNorth` in the editor. Once again, configure it as a Patch Group, with the Target Scene `Scene_RoadNorth`. Create an 'Add/Insert Nodes' patch targeting the `Main` node, and set it to 'Inside Target, at End'. We will use this to add a new option on the compass rose for the player to travel to.
 
-In this patch scene, click the Root node in the node tree, and then click the Compass button. This will add a new Compass node, which is kind of like a Choice node except it adds a button to the compass on the left-hand side of the game screen, instead of a regular button at the bottom. Just like a regular Choice node, it can also have scripts on it, which we will use to ensure the player can only see this button after talking to Tobias in the inn. 
+In this patch scene, click the Root node in the node tree, and then click the Compass button. This will add a new Compass node, which is kind of like a Choice node except it adds a button to the compass on the left-hand side of the game screen, instead of a regular button at the bottom. Just like a regular Choice node, it can also have scripts on it, which we will use to ensure the player can only see this button after talking to Tobias in the inn.
 
 <CaptionedImage
     src={require("/images/Tutorial03RoadPatch.png")}
@@ -49,7 +49,7 @@ Since we only want to activate this patch and show the westbound link when the t
 
 ## Playing detective
 
-Now, we'll build the `TQ01_Scene_Hideout` scene proper. This is not a patch, unlike the other scenes - it's a full, proper scene, so don't tick the 'Is Patch' box.
+Now, we'll build the `TQ01_Scene_Hideout` scene proper. This is not a patch, unlike the other scenes - it's a full, proper scene, so don't tick the 'Is Patch Group' box this time.
 
 First off, we'd like to tell the player where they are. In Finmer, we usually use the text displayed above the in-game compass for that. Since the player is entering a new in-game area when they enter this scene, we should update this location label.
 

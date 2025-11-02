@@ -14,7 +14,7 @@ The following prerequisites must be installed on your computer. If you're using 
 - Microsoft .NET Framework 4.8 ([download here](https://dotnet.microsoft.com/en-us/download/dotnet-framework/thank-you/net48-web-installer))
 - Visual C++ 2022 Redistributable ([download here](https://aka.ms/vs/17/release/vc_redist.x64.exe))
 
-To run the Editor, simply launch the `Finmer.Editor.exe` program.
+To run the Editor, launch the `Finmer.Editor.exe` program.
 
 ## Layout
 

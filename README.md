@@ -4,21 +4,23 @@
 
 Welcome to Finmer, an 18+ interactive text adventure.
 
-## :warning: CAUTION
+> [!WARNING]
+> This repository contains **adult fiction and fantasy content**. Proceed at your own risk. If you stumbled across this project by accident, chances are you're not interested in the subject matter and should move on. :)
 
-This repository contains adult fiction and fantasy content. Proceed at your own risk. If you stumbled across this project by accident, chances are you're not interested in the subject matter and should move on. :)
+## DOWNLOADS
 
-## LATEST RELEASES
+To play the latest builds without compiling the source tree yourself:
 
-**If you simply wish to play the latest stable version**, please check the Releases tab, or visit my [FurAffinity page](https://www.furaffinity.net/user/nuntis/) for downloads.
+- Check the Releases tab for the latest patch release.
+- Check [my FurAffinity page](https://www.furaffinity.net/user/nuntis/) for the latest major content release.
 
 ## LICENSE
 
-The program source code is licensed under the [GNU General Public License v3 (GPL3)](LICENSE.md).
+- The program source code ('engine') is licensed under the [GNU General Public License v3 (GPL3)](LICENSE.md).
+- Game content files and assets included in this repository (including files in the Modules folder, text, scripts, images, audio, video) are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
+- Your game content files that you create yourself using the Editor belong to you; you are free to copy and distribute these custom modules as you see fit.
 
-Game content files and assets included in this repository (including files in the Modules folder, text, scripts, images, audio, video) are licensed under Creative Commons Attribution-NonCommercial-ShareAlike 4.0 International License ([CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/)).
-
-In short, this means modifying and redistributing the project (with source included) as you like is generally fine, however you are *not* allowed to redistribute *for commercial purposes* the game content files (as defined above) included in this repository.
+In short, this means modifying and redistributing the Finmer engine as you like is fine, provided that you **include all source code**. However, redistributing game content files (as defined above) included in this repository **for commercial purposes is prohibited**.
 
 Some fictional characters appearing in this project belong to others, and have been implemented with written permission from their respective owners.
 
@@ -26,12 +28,15 @@ Some fictional characters appearing in this project belong to others, and have b
 
 ### Prerequisites
 
-Finmer currently only officially supports Windows. To build the game from source, the following prerequisites are needed:
+> [!IMPORTANT]
+> Windows 10 or higher is required. Linux - including Steam Deck - and macOS are not officially supported.
+
+To build the project from source, the following is required. You can install all of these directly from the Visual Studio Installer.
 
 - Visual Studio 2022 or newer
 - .NET Framework 4.8 SDK and targeting pack
-- C++11 compiler or newer
-- C# 7.3 compiler or newer
+- C++11 compatible compiler
+- C# 7.3 compatible compiler
 
 ### Building from source
 
@@ -52,9 +57,10 @@ Check [CONTRIBUTING.md](.github/CONTRIBUTING.md) for more info on running the pr
 
 The project structure is as follows:
 
-- **Finmer.Core** is a library containing functionality shared by the game and editor, or objects that can/should be abstracted away from applications.
-- **Finmer.Game** is the main game (a WPF application), and contains all UI and gameplay code.
-- **Finmer.Editor** is a WinForms application that enables editing of modules (game content files).
+- **Finmer.Core** is a library containing functionality and class hierarchies shared by the game and editor.
+- **Finmer.Game** is the main game application. It contains all UI and gameplay code.
+- **Finmer.Editor** is an application that enables editing of modules (game content files).
+- **Finmer.Editor.CLI** is a command-line application that enables manipulation of game content files from scripts.
 - **External** contains third-party libraries.
 - **Modules** contains all game content files, as well as the editor documentation and example modules.
 
@@ -68,4 +74,3 @@ PLEASE NOTE: This repository is *not* the right place to make suggestions or req
 
 Please refer to the [editor documentation](https://docs.finmer.dev) for detailed information on the workings of the Editor, as well as a Lua script reference.
 
-Your custom modules and/or game content files belong to you; you are free to copy and distribute them as you see fit.

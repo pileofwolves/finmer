@@ -10,6 +10,7 @@ using System;
 using System.Diagnostics;
 using System.Drawing;
 using System.Windows.Forms;
+using Finmer.Core;
 using Finmer.Core.Buffs;
 using Finmer.Core.Serialization;
 using Finmer.Core.VisualScripting.Nodes;
@@ -47,7 +48,7 @@ namespace Finmer.Editor
         {
             // Copy settings to replacement instance
             m_Node.Target = optTargetPlayer.Checked ? CommandCombatApplyBuff.ETarget.Player : CommandCombatApplyBuff.ETarget.NPC;
-            m_Node.ParticipantID = txtTargetNPC.Text;
+            m_Node.ParticipantID = txtTargetNPC.Text.MakeSafeIdentifier();
             m_Node.Duration = (int)nudDuration.Value;
 
             // Replace output node with the edited one

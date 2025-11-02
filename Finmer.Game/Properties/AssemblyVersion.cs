@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 
-[assembly: AssemblyVersion("1.0.1.0")]
-[assembly: AssemblyFileVersion("1.0.1.0")]
+[assembly: AssemblyVersion("1.1.0.0")]
+[assembly: AssemblyFileVersion("1.1.0.0")]
 
 [assembly: AssemblyCompany("Nuntis the Wolf")]
 [assembly: AssemblyProduct("Finmer - Text Adventure")]
@@ -17,9 +17,9 @@ namespace Finmer
     {
 
         public const int k_VersionMajor = 1;
-        public const int k_VersionMinor = 0;
-        public const int k_VersionRevision = 1;
-        public const string k_VersionString = "1.0.1";
+        public const int k_VersionMinor = 1;
+        public const int k_VersionRevision = 0;
+        public const string k_VersionString = "1.1.0";
 
     }
 
